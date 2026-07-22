@@ -493,3 +493,487 @@ Each group plays an important role in reducing software supply chain risk.
 - Both direct and transitive dependencies must be managed.
 - Unsupported software should be replaced or isolated.
 - Effective vulnerability management includes inventory, monitoring, scanning, patching, and continuous review.
+
+# The Vulnerability Ecosystem
+
+Modern vulnerability management relies on standardized identifiers, scoring systems, and databases.
+
+Instead of every organization inventing its own naming system, the cybersecurity industry uses globally recognized standards to describe vulnerabilities and assess risk.
+
+The most important standards include:
+
+```
+Vulnerability Report
+
+↓
+
+CVE
+
+↓
+
+CWE
+
+↓
+
+CVSS
+
+↓
+
+NVD
+
+↓
+
+Vendor Patch
+
+↓
+
+Security Teams
+
+↓
+
+Remediation
+```
+
+---
+
+# Common Vulnerabilities and Exposures (CVE)
+
+## Overview
+
+A **Common Vulnerabilities and Exposures (CVE)** identifier is a unique public identifier assigned to a specific publicly disclosed security vulnerability.
+
+A CVE does **not** contain the patch itself or the exploit code. It provides a standardized identifier so vendors, researchers, and organizations can discuss the same vulnerability consistently.
+
+Example format:
+
+```
+CVE-2021-44228
+```
+
+Where:
+
+- **2021** → Year the CVE was assigned.
+- **44228** → Unique identifier.
+
+---
+
+## Example
+
+```
+CVE-2021-44228
+
+↓
+
+Apache Log4j
+
+↓
+
+Remote Code Execution
+```
+
+Security tools, advisories, and scanners all reference the same CVE ID.
+
+---
+
+# CVE Lifecycle
+
+```
+Researcher Discovers Issue
+
+↓
+
+Vendor Notified
+
+↓
+
+CVE Assigned
+
+↓
+
+Patch Developed
+
+↓
+
+Public Disclosure
+
+↓
+
+Organizations Patch Systems
+```
+
+Timely patching after disclosure is essential to reduce exposure.
+
+---
+
+# Common Weakness Enumeration (CWE)
+
+## Overview
+
+While a CVE identifies a **specific vulnerability**, a **Common Weakness Enumeration (CWE)** identifies the **underlying class of software weakness** that caused it.
+
+Think of it this way:
+
+- **CVE** = Specific instance.
+- **CWE** = General category.
+
+---
+
+## Example
+
+```
+CVE-XXXX-YYYY
+
+↓
+
+Caused By
+
+↓
+
+CWE-79
+
+↓
+
+Cross-Site Scripting
+```
+
+Multiple CVEs can map to the same CWE because different applications may contain the same type of weakness.
+
+---
+
+## Common CWEs
+
+| CWE | Weakness |
+|------|----------|
+| CWE-79 | Cross-Site Scripting (XSS) |
+| CWE-89 | SQL Injection |
+| CWE-22 | Path Traversal |
+| CWE-287 | Improper Authentication |
+| CWE-352 | Cross-Site Request Forgery (CSRF) |
+| CWE-798 | Hardcoded Credentials |
+| CWE-918 | Server-Side Request Forgery (SSRF) |
+
+Understanding the associated CWE helps developers address the root cause rather than only fixing a single occurrence.
+
+---
+
+# Common Vulnerability Scoring System (CVSS)
+
+## Overview
+
+Not every vulnerability presents the same level of risk.
+
+The **Common Vulnerability Scoring System (CVSS)** provides a standardized numerical score from **0.0 to 10.0** that estimates the technical severity of a vulnerability.
+
+---
+
+## CVSS Severity Levels
+
+| Score | Severity |
+|-------:|----------|
+| 0.0 | None |
+| 0.1 – 3.9 | Low |
+| 4.0 – 6.9 | Medium |
+| 7.0 – 8.9 | High |
+| 9.0 – 10.0 | Critical |
+
+---
+
+## Example
+
+```
+CVE-2021-44228
+
+↓
+
+CVSS 10.0
+
+↓
+
+Critical
+```
+
+A high CVSS score indicates significant technical impact, but organizations should also consider business context.
+
+---
+
+# CVSS Base Metrics
+
+CVSS evaluates several characteristics of a vulnerability.
+
+Examples include:
+
+- Attack Vector (Network, Local, Physical)
+- Attack Complexity
+- Privileges Required
+- User Interaction
+- Scope
+- Confidentiality Impact
+- Integrity Impact
+- Availability Impact
+
+These metrics determine the overall Base Score.
+
+---
+
+# Common Platform Enumeration (CPE)
+
+## Overview
+
+A **Common Platform Enumeration (CPE)** is a standardized way to identify software, operating systems, and hardware products.
+
+Example:
+
+```
+Vendor
+
+↓
+
+Product
+
+↓
+
+Version
+```
+
+Security scanners use CPE names to determine whether a system matches software affected by a particular CVE.
+
+---
+
+# National Vulnerability Database (NVD)
+
+## Overview
+
+The **National Vulnerability Database (NVD)** is a publicly available database that enriches CVE records with additional information.
+
+Typical entries include:
+
+- CVSS score
+- CWE mappings
+- Affected products
+- References
+- Technical details
+
+Many vulnerability scanners use NVD data to identify known issues.
+
+---
+
+# Exploit Prediction Scoring System (EPSS)
+
+## Overview
+
+A high CVSS score does not necessarily mean a vulnerability will be exploited soon.
+
+The **Exploit Prediction Scoring System (EPSS)** estimates the likelihood that a vulnerability will be exploited in the near future based on observed trends and other signals.
+
+Example:
+
+```
+High CVSS
+
+↓
+
+Low EPSS
+
+↓
+
+Technically severe but currently less likely to be exploited
+```
+
+or
+
+```
+Medium CVSS
+
+↓
+
+High EPSS
+
+↓
+
+Likely to be exploited soon
+```
+
+Organizations often use EPSS alongside CVSS to prioritize remediation.
+
+---
+
+# Known Exploited Vulnerabilities (KEV)
+
+## Overview
+
+Some vulnerabilities are actively exploited in the wild.
+
+The **Known Exploited Vulnerabilities (KEV)** catalog identifies vulnerabilities with confirmed real-world exploitation.
+
+Security teams frequently prioritize KEV-listed vulnerabilities because attackers are already using them.
+
+---
+
+# Why CVSS Alone Is Not Enough
+
+Consider two vulnerabilities:
+
+```
+Vulnerability A
+
+CVSS 9.8
+
+↓
+
+Internal Test Server
+```
+
+```
+Vulnerability B
+
+CVSS 7.5
+
+↓
+
+Internet-Facing Payment System
+
+↓
+
+Actively Exploited
+```
+
+Although Vulnerability A has a higher technical score, Vulnerability B may require more urgent remediation because of exposure and active exploitation.
+
+Risk-based prioritization considers:
+
+- Technical severity
+- Asset value
+- Internet exposure
+- Business impact
+- Exploitation status
+- Compensating controls
+
+---
+
+# Software Bill of Materials (SBOM)
+
+## Overview
+
+A **Software Bill of Materials (SBOM)** is an inventory of all software components, libraries, and dependencies used by an application.
+
+Think of it as an ingredient list for software.
+
+---
+
+## Example
+
+```
+Online Banking Application
+
+│
+
+├── Spring Boot
+├── Log4j
+├── Jackson
+├── PostgreSQL Driver
+├── OpenSSL
+└── JWT Library
+```
+
+If a vulnerability is disclosed in one component, the SBOM helps identify affected applications quickly.
+
+---
+
+# Benefits of SBOM
+
+- Improved visibility into dependencies.
+- Faster impact assessment.
+- Easier vulnerability management.
+- Better regulatory compliance.
+- Enhanced software supply chain security.
+
+---
+
+# Vulnerability Disclosure Process
+
+Responsible disclosure typically follows this sequence:
+
+```
+Researcher
+
+↓
+
+Vendor
+
+↓
+
+CVE Assignment
+
+↓
+
+Patch Development
+
+↓
+
+Security Advisory
+
+↓
+
+Public Disclosure
+
+↓
+
+Customer Remediation
+```
+
+Coordinated disclosure allows vendors time to develop and distribute fixes before widespread public awareness.
+
+---
+
+# Enterprise Vulnerability Prioritization
+
+Many organizations use a combination of factors to prioritize remediation.
+
+Typical workflow:
+
+```
+Asset Inventory
+
+↓
+
+Identify Components
+
+↓
+
+Match Against CVEs
+
+↓
+
+Assess CVSS
+
+↓
+
+Check EPSS
+
+↓
+
+Review KEV
+
+↓
+
+Evaluate Business Impact
+
+↓
+
+Patch Priority
+```
+
+This approach balances technical severity with operational and business risk.
+
+---
+
+# Key Takeaways
+
+- CVEs uniquely identify publicly disclosed vulnerabilities.
+- CWEs describe the underlying class of weakness that caused a vulnerability.
+- CVSS provides a standardized severity score but should not be used in isolation.
+- CPEs identify affected software products in a standardized format.
+- NVD enriches vulnerability information with technical details and scoring.
+- EPSS estimates the likelihood of near-term exploitation.
+- KEV highlights vulnerabilities known to be actively exploited.
+- SBOMs provide visibility into software dependencies, enabling faster response to newly disclosed vulnerabilities.
