@@ -1131,3 +1131,589 @@ Each layer complements the others and limits the impact of failures elsewhere.
 - Zero Trust extends verification beyond traditional network boundaries.
 - Simplicity, compartmentalization, and minimizing attack surface reduce opportunities for attackers.
 - Applying these principles during system design is significantly more effective than attempting to retrofit security after development.
+
+# Business Logic Vulnerabilities
+
+## Overview
+
+Business logic defines how an application is intended to operate.
+
+Examples include:
+
+- User registration
+- Login workflow
+- Checkout process
+- Money transfers
+- Loan approval
+- Ticket booking
+- Refund processing
+- Coupon redemption
+- Password reset
+- Reward point redemption
+
+Business logic vulnerabilities occur when attackers abuse **legitimate functionality** in ways the designers did not anticipate.
+
+Unlike SQL Injection or Cross-Site Scripting, these attacks often involve **valid requests** sent in an unexpected sequence or frequency.
+
+---
+
+# Why Business Logic Matters
+
+Consider an online shopping website.
+
+Intended workflow:
+
+```
+Browse Products
+
+↓
+
+Add to Cart
+
+↓
+
+Apply Coupon
+
+↓
+
+Pay
+
+↓
+
+Order Created
+```
+
+Everything appears secure.
+
+However, what happens if an attacker:
+
+- Applies the same coupon multiple times?
+- Changes item quantities during checkout?
+- Cancels after receiving a refund?
+- Submits the payment request repeatedly?
+- Modifies shipping costs?
+
+If these scenarios were never considered during design, attackers may exploit the application's intended functionality.
+
+---
+
+# Characteristics of Business Logic Flaws
+
+Unlike traditional vulnerabilities:
+
+✔ Authentication works.
+
+✔ Authorization works.
+
+✔ Input validation works.
+
+✔ No SQL Injection exists.
+
+✔ No XSS exists.
+
+The application simply allows actions that should never have been permitted.
+
+---
+
+# Example 1 — Coupon Abuse
+
+## Intended Rule
+
+```
+One coupon
+
+↓
+
+One order
+```
+
+---
+
+## Vulnerable Design
+
+The application never verifies whether the coupon has already been used.
+
+Attack flow:
+
+```
+Coupon
+
+↓
+
+Discount
+
+↓
+
+Coupon Again
+
+↓
+
+Discount Again
+
+↓
+
+Repeat
+```
+
+Final price:
+
+```
+₹0
+```
+
+No programming bug exists.
+
+The business rule was never enforced.
+
+---
+
+# Example 2 — Unlimited Password Reset
+
+Intended process:
+
+```
+Forgot Password
+
+↓
+
+OTP
+
+↓
+
+Reset Password
+```
+
+Missing design controls:
+
+- Rate limiting
+- OTP expiration
+- Retry limits
+- Account lockout
+
+Attackers may repeatedly request OTPs, brute-force codes, or flood users with reset messages.
+
+---
+
+# Example 3 — Race Condition
+
+Suppose a coupon should only be redeemed once.
+
+Application logic:
+
+```
+Check Coupon
+
+↓
+
+Apply Discount
+
+↓
+
+Mark Used
+```
+
+If two requests arrive simultaneously:
+
+```
+Request A
+
+↓
+
+Coupon Valid
+
+─────────────
+
+Request B
+
+↓
+
+Coupon Valid
+
+↓
+
+Both Complete
+
+↓
+
+Coupon Used Twice
+```
+
+The design failed to consider concurrent requests.
+
+---
+
+# Example 4 — Banking Transfer
+
+Transfer workflow:
+
+```
+Enter Amount
+
+↓
+
+Transfer Money
+```
+
+Missing controls:
+
+- Daily limits
+- Velocity checks
+- MFA for high-value transfers
+- Fraud detection
+- Risk scoring
+
+Attackers can automate large numbers of transfers without violating application rules.
+
+---
+
+# Example 5 — Airline Booking
+
+Application assumes:
+
+```
+Reserve Seat
+
+↓
+
+Payment
+
+↓
+
+Ticket
+```
+
+If seat reservation expires after payment instead of before, attackers may reserve thousands of seats without completing purchases, causing denial of inventory.
+
+---
+
+# Abuse Cases
+
+Traditional software engineering focuses on **use cases**.
+
+Security engineering also considers **abuse cases**.
+
+---
+
+## Use Case
+
+```
+Customer
+
+↓
+
+Login
+
+↓
+
+Purchase Product
+
+↓
+
+Logout
+```
+
+---
+
+## Abuse Case
+
+```
+Bot
+
+↓
+
+Credential Stuffing
+
+↓
+
+Account Takeover
+
+↓
+
+Fraudulent Purchase
+```
+
+Both should be considered during design.
+
+---
+
+# Threat Modeling
+
+Threat modeling is a structured process used to identify potential threats before development begins.
+
+It answers questions such as:
+
+- What are we protecting?
+- Who are the attackers?
+- How might they attack?
+- Which security controls are required?
+- What happens if they succeed?
+
+---
+
+# Threat Modeling Process
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Assets
+
+↓
+
+Threats
+
+↓
+
+Mitigations
+
+↓
+
+Validation
+```
+
+Threat modeling is most effective during the design phase, before implementation begins.
+
+---
+
+# Identifying Assets
+
+Examples of assets include:
+
+- Customer accounts
+- Passwords
+- Authentication tokens
+- Payment information
+- API keys
+- Personal data
+- Intellectual property
+- Audit logs
+- Financial transactions
+
+The value of an asset influences the level of protection it requires.
+
+---
+
+# Trust Boundaries
+
+A trust boundary exists whenever data moves between components with different trust levels.
+
+Example:
+
+```
+Internet
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+Each boundary requires:
+
+- Authentication
+- Authorization
+- Input validation
+- Logging
+- Error handling
+
+Never assume data remains trustworthy after crossing a boundary.
+
+---
+
+# Data Flow Diagram (DFD)
+
+A Data Flow Diagram helps visualize how information moves through a system.
+
+Example:
+
+```
+Customer
+
+↓
+
+Browser
+
+↓
+
+API Gateway
+
+↓
+
+Application Server
+
+↓
+
+Database
+
+↓
+
+Payment Gateway
+```
+
+Security teams review each connection to identify:
+
+- Trust boundaries
+- Sensitive data
+- External dependencies
+- Attack opportunities
+
+---
+
+# STRIDE Threat Modeling
+
+Microsoft's STRIDE model categorizes common threats.
+
+| Threat | Description |
+|---------|-------------|
+| **S** – Spoofing | Pretending to be another user or system |
+| **T** – Tampering | Unauthorized modification of data |
+| **R** – Repudiation | Denying actions due to insufficient logging |
+| **I** – Information Disclosure | Exposure of confidential information |
+| **D** – Denial of Service | Preventing legitimate access |
+| **E** – Elevation of Privilege | Gaining unauthorized permissions |
+
+---
+
+## Example
+
+Password reset service:
+
+Possible STRIDE threats:
+
+- Spoofing through stolen credentials
+- Tampering with reset requests
+- Repudiation if reset events are not logged
+- Information disclosure through verbose responses
+- Denial of Service by flooding reset requests
+- Privilege escalation through insecure recovery flows
+
+---
+
+# DREAD Risk Assessment
+
+DREAD is a historical model for evaluating risk.
+
+| Category | Meaning |
+|----------|---------|
+| Damage | How severe is the impact? |
+| Reproducibility | Can the attack be repeated easily? |
+| Exploitability | How difficult is exploitation? |
+| Affected Users | How many users are impacted? |
+| Discoverability | How easy is it to find the vulnerability? |
+
+Although less commonly used today, it illustrates structured risk analysis.
+
+---
+
+# Attack Trees
+
+Attack trees model how an attacker could achieve a goal.
+
+Example:
+
+```
+Compromise Customer Account
+
+│
+
+├── Steal Password
+
+├── Guess Weak Password
+
+├── Bypass Password Reset
+
+├── Session Hijacking
+
+└── Social Engineering
+```
+
+Each branch represents a possible attack path.
+
+Attack trees help designers identify missing security controls.
+
+---
+
+# Secure Design Review Checklist
+
+During architecture reviews, ask:
+
+### Authentication
+
+- Is MFA required where appropriate?
+- Are passwords stored securely?
+- Is session management robust?
+
+---
+
+### Authorization
+
+- Are permissions defined clearly?
+- Are sensitive actions re-authorized?
+- Is least privilege enforced?
+
+---
+
+### Business Logic
+
+- Can workflows be abused?
+- Are transaction limits enforced?
+- Are duplicate requests handled safely?
+- Are race conditions considered?
+
+---
+
+### Data Protection
+
+- Is sensitive data encrypted?
+- Are secrets protected?
+- Are backups secured?
+
+---
+
+### Availability
+
+- Are rate limits implemented?
+- Is abuse detection available?
+- Are resource limits enforced?
+
+---
+
+# Real-World Examples
+
+Examples of insecure design include:
+
+- Unlimited coupon redemption
+- Unlimited OTP requests
+- Missing transaction approval
+- Unlimited file uploads
+- Unlimited login attempts
+- No fraud detection
+- No spending limits
+- Missing approval workflows
+- Predictable password recovery
+- Missing anti-automation controls
+
+These are not coding mistakes—they are missing security requirements.
+
+---
+
+# Key Takeaways
+
+- Business logic vulnerabilities exploit intended application behavior rather than software bugs.
+- Threat modeling helps identify security risks before implementation begins.
+- Abuse cases should be designed alongside normal use cases.
+- STRIDE provides a structured approach for identifying threats across an architecture.
+- Data Flow Diagrams, trust boundaries, and attack trees help security teams reason about system design.
+- Strong application security begins with thoughtful architecture and security requirements—not just secure code.
