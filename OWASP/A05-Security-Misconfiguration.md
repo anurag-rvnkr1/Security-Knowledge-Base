@@ -1079,3 +1079,614 @@ Examples of breaches involving security misconfiguration include:
 - Weak CORS and HTTP method configurations can expose application functionality.
 - File permissions and TLS settings should follow the principle of least privilege and modern cryptographic standards.
 - Regular hardening and configuration reviews are essential to prevent these issues.
+
+# Advanced Infrastructure & Cloud Misconfigurations
+
+Modern applications rarely run on a single web server.
+
+A typical enterprise environment includes:
+
+```
+                    Internet
+                        │
+                ┌───────▼────────┐
+                │ Load Balancer  │
+                └───────┬────────┘
+                        │
+                 Web Application
+                        │
+        ┌───────────────┼────────────────┐
+        │               │                │
+    Database        Object Storage    Cache
+        │               │                │
+        ├───────────────┼────────────────┤
+        │               │                │
+   Kubernetes      CI/CD Pipeline    Monitoring
+        │               │                │
+        └───────────────┼────────────────┘
+                        │
+                  Cloud Provider
+```
+
+Every component introduces configuration risks.
+
+---
+
+# 1. Cloud Security Misconfiguration
+
+## Overview
+
+Cloud providers offer secure services, but customers are responsible for configuring them securely.
+
+This is known as the **Shared Responsibility Model**.
+
+Cloud misconfigurations are among the leading causes of data breaches.
+
+---
+
+## Common Cloud Misconfigurations
+
+### Public Object Storage
+
+Example:
+
+```
+AWS S3 Bucket
+
+↓
+
+Public Read
+
+↓
+
+Anyone on Internet
+```
+
+Possible exposure:
+
+- Customer records
+- Backups
+- Source code
+- Images
+- Financial documents
+
+---
+
+### Excessive IAM Permissions
+
+Instead of:
+
+```
+Developer
+
+↓
+
+Read Logs
+```
+
+Administrator grants:
+
+```
+AdministratorAccess
+```
+
+If the account is compromised, attackers gain unrestricted control.
+
+---
+
+### Open Security Groups
+
+Dangerous rule:
+
+```
+0.0.0.0/0
+
+↓
+
+SSH (22)
+```
+
+This allows SSH access from anywhere on the Internet.
+
+---
+
+### Unencrypted Storage
+
+Sensitive databases stored without encryption increase the impact of data theft.
+
+---
+
+### Disabled Logging
+
+Without audit logs:
+
+- Attacks remain undetected.
+- Forensics become difficult.
+- Compliance requirements may not be met.
+
+---
+
+## Prevention
+
+- Apply least privilege IAM.
+- Encrypt storage.
+- Restrict network exposure.
+- Enable audit logging.
+- Continuously review cloud configurations.
+
+---
+
+# 2. Docker Misconfiguration
+
+## Overview
+
+Containers simplify deployment but require proper hardening.
+
+---
+
+## Common Misconfigurations
+
+### Running as Root
+
+```
+Container
+
+↓
+
+root
+```
+
+If compromised, attackers gain elevated privileges within the container.
+
+---
+
+### Privileged Containers
+
+```
+docker run --privileged
+```
+
+Provides extensive access to the host system.
+
+Avoid unless absolutely necessary.
+
+---
+
+### Sensitive Mounts
+
+Dangerous example:
+
+```
+-v /:/host
+```
+
+Container gains access to the host filesystem.
+
+---
+
+### Secrets in Images
+
+Avoid embedding:
+
+- API keys
+- Database passwords
+- Tokens
+- SSH keys
+
+inside container images.
+
+---
+
+### Outdated Images
+
+Using old base images introduces known vulnerabilities.
+
+---
+
+## Best Practices
+
+- Use minimal base images.
+- Run as non-root.
+- Read-only file systems where possible.
+- Drop unnecessary Linux capabilities.
+- Scan images regularly.
+- Store secrets externally.
+
+---
+
+# 3. Kubernetes Misconfiguration
+
+## Overview
+
+Kubernetes introduces additional security considerations.
+
+---
+
+## Common Issues
+
+### Anonymous API Access
+
+Cluster API exposed without authentication.
+
+---
+
+### Dashboard Exposure
+
+Public Kubernetes dashboards have resulted in numerous real-world compromises.
+
+---
+
+### Excessive RBAC Permissions
+
+Bad example:
+
+```
+ClusterRole
+
+↓
+
+cluster-admin
+```
+
+Assigned unnecessarily.
+
+---
+
+### Privileged Pods
+
+Containers receive elevated Linux capabilities.
+
+---
+
+### Missing Network Policies
+
+Without network segmentation:
+
+```
+Pod A
+
+↓
+
+Any Pod
+```
+
+Attackers can move laterally within the cluster.
+
+---
+
+### Secrets Stored in Plaintext
+
+Secrets should be encrypted and access-controlled.
+
+---
+
+## Best Practices
+
+- Enable RBAC.
+- Restrict API access.
+- Use Network Policies.
+- Encrypt Secrets.
+- Keep Kubernetes updated.
+- Enable audit logging.
+
+---
+
+# 4. Database Misconfiguration
+
+## Common Issues
+
+- Default credentials
+- Internet-exposed databases
+- No authentication
+- Weak passwords
+- Excessive database privileges
+- Missing encryption
+- Unpatched versions
+
+---
+
+## Example
+
+```
+MongoDB
+
+↓
+
+Authentication Disabled
+
+↓
+
+Public Internet
+
+↓
+
+Entire Database Accessible
+```
+
+---
+
+## Prevention
+
+- Restrict network access.
+- Enable authentication.
+- Encrypt data.
+- Patch regularly.
+- Apply least privilege.
+
+---
+
+# 5. Reverse Proxy & Load Balancer Misconfiguration
+
+Examples include:
+
+- Missing HTTPS redirection
+- Weak TLS configuration
+- Improper header forwarding
+- Missing request filtering
+- Exposed internal services
+
+---
+
+## Secure Configuration
+
+```
+Internet
+
+↓
+
+Load Balancer
+
+↓
+
+HTTPS Only
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application
+```
+
+---
+
+# 6. CI/CD Pipeline Misconfiguration
+
+## Risks
+
+Development pipelines often have powerful privileges.
+
+Common issues include:
+
+- Hardcoded secrets
+- Excessive build permissions
+- Untrusted pull request execution
+- Insecure artifacts
+- Missing code signing
+
+---
+
+## Example
+
+Pipeline stores:
+
+```
+AWS_SECRET_KEY
+
+↓
+
+Repository
+```
+
+Anyone with repository access gains cloud credentials.
+
+---
+
+## Best Practices
+
+- Use secret managers.
+- Require approvals.
+- Restrict pipeline permissions.
+- Scan dependencies.
+- Verify artifacts.
+
+---
+
+# 7. Secrets Management Failures
+
+## Common Examples
+
+Secrets stored in:
+
+```
+Git Repository
+
+Docker Image
+
+Configuration File
+
+JavaScript Source
+
+Environment Backup
+```
+
+---
+
+## Secure Storage
+
+Use dedicated secret management solutions.
+
+Examples include:
+
+- Cloud Secret Managers
+- HashiCorp Vault
+- Kubernetes Secrets (with encryption)
+- Hardware Security Modules (HSMs)
+
+---
+
+# 8. Infrastructure as Code (IaC) Misconfiguration
+
+Infrastructure defined in code must also be reviewed.
+
+Common issues include:
+
+- Public storage
+- Open security groups
+- Weak IAM policies
+- Missing encryption
+- Hardcoded secrets
+
+Review IaC before deployment.
+
+---
+
+# Configuration Drift
+
+## Overview
+
+Systems evolve over time.
+
+Example:
+
+```
+Secure Baseline
+
+↓
+
+Manual Change
+
+↓
+
+Emergency Fix
+
+↓
+
+Temporary Exception
+
+↓
+
+Another Patch
+
+↓
+
+Configuration Drift
+```
+
+Eventually, production no longer matches the approved secure baseline.
+
+---
+
+## Risks
+
+- Unknown exposures
+- Compliance violations
+- Inconsistent environments
+- Difficult troubleshooting
+
+---
+
+## Prevention
+
+- Infrastructure as Code
+- Configuration management
+- Automated compliance checks
+- Continuous monitoring
+- Regular configuration audits
+
+---
+
+# Detection Methodology
+
+Security misconfigurations require a combination of automated and manual assessment.
+
+---
+
+## Web Servers
+
+Look for:
+
+- Directory listing
+- Debug pages
+- Missing headers
+- Weak TLS
+- Verbose errors
+
+---
+
+## Cloud
+
+Review:
+
+- IAM policies
+- Public storage
+- Security groups
+- Logging configuration
+- Encryption settings
+
+---
+
+## Containers
+
+Check:
+
+- Image vulnerabilities
+- Privileged containers
+- Running as root
+- Exposed Docker socket
+- Embedded secrets
+
+---
+
+## Kubernetes
+
+Verify:
+
+- RBAC
+- Network Policies
+- Pod Security
+- Dashboard exposure
+- API authentication
+
+---
+
+## Databases
+
+Review:
+
+- Network exposure
+- Authentication
+- Encryption
+- Privileges
+- Patch level
+
+---
+
+# Common Detection Tools
+
+| Tool | Purpose |
+|------|---------|
+| Burp Suite | Web application configuration testing |
+| Nikto | Web server misconfiguration scanning |
+| Nmap | Service discovery and configuration assessment |
+| SSL Labs | TLS and HTTPS evaluation |
+| Trivy | Container image and IaC scanning |
+| Docker Bench | Docker security benchmarking |
+| kube-bench | Kubernetes CIS Benchmark validation |
+| kube-hunter | Kubernetes penetration testing |
+| Prowler | AWS security assessment |
+| ScoutSuite | Multi-cloud security auditing |
+| OpenSCAP | Compliance and configuration auditing |
+| Lynis | Linux system hardening assessment |
+
+---
+
+# Key Takeaways
+
+- Security misconfiguration affects cloud platforms, containers, Kubernetes, databases, CI/CD pipelines, and traditional infrastructure—not just web applications.
+- Cloud IAM, public storage, privileged containers, exposed dashboards, and poor secrets management are among today's most common enterprise security issues.
+- Infrastructure as Code and continuous configuration validation help prevent configuration drift.
+- Automated tools can identify many misconfigurations, but manual reviews remain essential for understanding business context and deployment risks.
+- Secure configuration is an ongoing process that requires continuous monitoring, auditing, and hardening throughout the system lifecycle.
+
