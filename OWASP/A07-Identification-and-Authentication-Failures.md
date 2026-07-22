@@ -1212,3 +1212,843 @@ Repeated prompts may lead users to approve malicious requests ("MFA fatigue").
 - Password managers improve password quality and reduce reuse.
 - Passwordless authentication eliminates many risks associated with shared secrets.
 - FIDO2, WebAuthn, passkeys, and hardware security keys provide strong, phishing-resistant authentication and represent the direction of modern identity systems.
+
+# Enterprise Authentication Protocols and Session Management
+
+Modern authentication does not end after a user enters their password.
+
+After successful authentication, applications must securely maintain the user's authenticated state while ensuring that attackers cannot steal, modify, or abuse it.
+
+This is accomplished using:
+
+- Sessions
+- Cookies
+- Tokens
+- Identity Providers (IdP)
+- Authentication Protocols
+- Single Sign-On (SSO)
+
+---
+
+# Authentication vs Session Management
+
+Authentication proves identity.
+
+Session management maintains that authenticated identity.
+
+```
+User
+
+↓
+
+Login
+
+↓
+
+Authentication
+
+↓
+
+Session Created
+
+↓
+
+User Makes Requests
+
+↓
+
+Session Validated
+
+↓
+
+Access Granted
+```
+
+Without secure session management, authentication becomes meaningless.
+
+---
+
+# What is a Session?
+
+A session is the server's way of remembering an authenticated user.
+
+Instead of asking for the password on every request:
+
+```
+GET /profile
+
+↓
+
+Password?
+
+↓
+
+GET /orders
+
+↓
+
+Password?
+
+↓
+
+GET /settings
+
+↓
+
+Password?
+```
+
+The server creates a session after login.
+
+Example:
+
+```
+Login
+
+↓
+
+Session ID Generated
+
+↓
+
+Browser Stores Cookie
+
+↓
+
+Every Request Includes Cookie
+```
+
+---
+
+# Session Architecture
+
+```
+           User
+             │
+             ▼
+        Login Request
+             │
+             ▼
+      Authentication
+             │
+             ▼
+Generate Session Identifier
+             │
+             ▼
+ Store Session (Server)
+             │
+             ▼
+ Session Cookie Sent
+             │
+             ▼
+ Browser Stores Cookie
+             │
+             ▼
+ Future Requests
+             │
+             ▼
+Cookie Validated
+             │
+             ▼
+Authenticated User
+```
+
+---
+
+# Session Identifier
+
+The session ID acts as the user's identity after login.
+
+Example:
+
+```
+SESSIONID=81fd9381af81f9d8...
+```
+
+A secure session ID should be:
+
+- Random
+- Unpredictable
+- Cryptographically secure
+- Long enough to resist guessing
+
+Never use:
+
+```
+SESSIONID=12345
+
+SESSIONID=admin
+
+SESSIONID=user1
+```
+
+Predictable identifiers enable session guessing attacks.
+
+---
+
+# Cookies
+
+Sessions are commonly maintained using HTTP cookies.
+
+Example:
+
+```
+Set-Cookie:
+
+SESSIONID=abc123...
+```
+
+The browser automatically includes the cookie in future requests.
+
+---
+
+# Cookie Flow
+
+```
+Login
+
+↓
+
+Server
+
+↓
+
+Set-Cookie
+
+↓
+
+Browser Stores Cookie
+
+↓
+
+Future Requests
+
+↓
+
+Cookie Included
+
+↓
+
+Server Validates Session
+```
+
+---
+
+# Important Cookie Attributes
+
+## HttpOnly
+
+```
+Set-Cookie:
+
+HttpOnly
+```
+
+Prevents JavaScript from reading the cookie.
+
+Helps reduce the impact of Cross-Site Scripting (XSS).
+
+---
+
+## Secure
+
+```
+Set-Cookie:
+
+Secure
+```
+
+Only transmits the cookie over HTTPS.
+
+Never send authentication cookies over HTTP.
+
+---
+
+## SameSite
+
+Controls when cookies are sent with cross-site requests.
+
+Values:
+
+```
+Strict
+
+Lax
+
+None
+```
+
+Helps reduce Cross-Site Request Forgery (CSRF).
+
+---
+
+# Cookie Security
+
+Good:
+
+```
+HttpOnly
+
+Secure
+
+SameSite=Lax
+```
+
+Better:
+
+```
+HttpOnly
+
+Secure
+
+SameSite=Strict
+```
+
+The appropriate value depends on application requirements.
+
+---
+
+# Session Timeout
+
+Sessions should expire automatically.
+
+Example:
+
+```
+Login
+
+↓
+
+30 Minutes Idle
+
+↓
+
+Session Expires
+```
+
+Benefits:
+
+- Reduces risk from abandoned devices
+- Limits session hijacking window
+- Improves overall security
+
+---
+
+# Session Rotation
+
+After authentication:
+
+```
+Old Session ID
+
+↓
+
+Login
+
+↓
+
+New Session ID
+```
+
+Changing the session ID after login helps prevent session fixation.
+
+---
+
+# Session Fixation
+
+## Overview
+
+In a session fixation attack, the attacker causes the victim to authenticate using a session ID already known to the attacker.
+
+Example:
+
+```
+Attacker Creates Session
+
+↓
+
+Victim Uses Same Session
+
+↓
+
+Victim Logs In
+
+↓
+
+Attacker Reuses Session
+```
+
+---
+
+## Prevention
+
+- Generate a new session after login.
+- Rotate session IDs after privilege changes.
+- Never accept user-controlled session identifiers.
+
+---
+
+# Session Hijacking
+
+## Overview
+
+Instead of stealing passwords, attackers steal authenticated sessions.
+
+Example:
+
+```
+Victim Logged In
+
+↓
+
+Session Cookie Stolen
+
+↓
+
+Attacker Uses Cookie
+
+↓
+
+Authenticated
+```
+
+Attack methods include:
+
+- Cross-Site Scripting (XSS)
+- Malware
+- Network interception (without HTTPS)
+- Device compromise
+
+---
+
+# Session Management Best Practices
+
+- Use HTTPS everywhere.
+- Rotate session identifiers.
+- Set idle and absolute timeouts.
+- Store sessions securely.
+- Invalidate sessions on logout.
+- Revoke sessions after password changes.
+- Allow users to view and terminate active sessions.
+
+---
+
+# Token-Based Authentication
+
+Many modern APIs use tokens instead of server-side sessions.
+
+```
+Login
+
+↓
+
+Server Issues Token
+
+↓
+
+Client Stores Token
+
+↓
+
+Client Sends Token
+
+↓
+
+Server Verifies Token
+```
+
+Common in:
+
+- REST APIs
+- Mobile applications
+- Microservices
+- Single Page Applications (SPA)
+
+---
+
+# JSON Web Token (JWT)
+
+## Overview
+
+JWT is a compact token format used to securely transmit claims.
+
+Structure:
+
+```
+Header
+
+.
+
+Payload
+
+.
+
+Signature
+```
+
+Example:
+
+```
+xxxxx.yyyyy.zzzzz
+```
+
+---
+
+# JWT Architecture
+
+```
+User Login
+
+↓
+
+Authentication
+
+↓
+
+JWT Generated
+
+↓
+
+Client Stores Token
+
+↓
+
+Authorization Header
+
+↓
+
+Server Verifies Signature
+
+↓
+
+Access Granted
+```
+
+---
+
+# JWT Claims
+
+Typical claims:
+
+```
+sub
+
+iss
+
+aud
+
+exp
+
+iat
+
+role
+```
+
+Examples:
+
+- Subject
+- Issuer
+- Audience
+- Expiration
+- Issued Time
+- User Role
+
+Never store sensitive secrets inside the JWT payload because it is only encoded, not encrypted.
+
+---
+
+# Access Tokens
+
+Access tokens authorize API requests.
+
+```
+Login
+
+↓
+
+Access Token
+
+↓
+
+API Requests
+```
+
+Characteristics:
+
+- Short lifetime
+- Frequently renewed
+- Limited scope
+
+---
+
+# Refresh Tokens
+
+Refresh tokens obtain new access tokens without requiring the user to log in again.
+
+```
+Access Token Expired
+
+↓
+
+Refresh Token
+
+↓
+
+New Access Token
+```
+
+Refresh tokens should:
+
+- Have longer lifetimes than access tokens.
+- Be stored securely.
+- Be revocable.
+
+---
+
+# OAuth 2.0
+
+## Overview
+
+OAuth 2.0 is an authorization framework.
+
+It allows one application to access resources on behalf of a user without exposing the user's password.
+
+Example:
+
+```
+User
+
+↓
+
+Google Login
+
+↓
+
+Website
+```
+
+The website never learns the user's Google password.
+
+---
+
+# OAuth 2.0 Components
+
+```
+Resource Owner
+
+↓
+
+Client
+
+↓
+
+Authorization Server
+
+↓
+
+Resource Server
+```
+
+Each component has a distinct role in the authorization process.
+
+---
+
+# OAuth Authorization Flow
+
+```
+User
+
+↓
+
+Client Application
+
+↓
+
+Authorization Server
+
+↓
+
+User Authenticates
+
+↓
+
+Authorization Code
+
+↓
+
+Access Token
+
+↓
+
+API Access
+```
+
+The Authorization Code Flow with PKCE is widely recommended for web and mobile applications.
+
+---
+
+# OpenID Connect (OIDC)
+
+OAuth answers:
+
+```
+Can this application access the resource?
+```
+
+OIDC answers:
+
+```
+Who is the user?
+```
+
+OIDC extends OAuth 2.0 by adding an identity layer.
+
+It introduces the **ID Token**, which contains information about the authenticated user.
+
+---
+
+# SAML
+
+Security Assertion Markup Language (SAML) is an XML-based protocol commonly used for enterprise Single Sign-On.
+
+Common environments:
+
+- Corporate portals
+- Government organizations
+- Universities
+- Legacy enterprise applications
+
+Flow:
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+SAML Assertion
+
+↓
+
+Application
+```
+
+---
+
+# Identity Provider (IdP)
+
+An Identity Provider authenticates users and issues authentication assertions or tokens.
+
+Examples include enterprise identity platforms that support standards such as SAML, OAuth 2.0, and OpenID Connect.
+
+---
+
+# Service Provider (SP)
+
+The Service Provider is the application that trusts the Identity Provider.
+
+Example:
+
+```
+Identity Provider
+
+↓
+
+Authenticated User
+
+↓
+
+Service Provider
+
+↓
+
+Application Access
+```
+
+---
+
+# Single Sign-On (SSO)
+
+SSO allows users to authenticate once and access multiple applications.
+
+```
+Login Once
+
+↓
+
+Identity Provider
+
+↓
+
+Application A
+
+Application B
+
+Application C
+```
+
+Benefits:
+
+- Improved user experience
+- Centralized authentication
+- Simplified account management
+- Consistent security policies
+
+---
+
+# Common Authentication Mistakes
+
+- Weak session identifiers
+- Missing HTTPS
+- Cookies without `HttpOnly` or `Secure`
+- Long-lived sessions
+- Missing logout invalidation
+- Unsigned or improperly validated JWTs
+- Excessive token lifetimes
+- Storing secrets in JWT payloads
+- Insecure refresh token storage
+- Incorrect OAuth flow selection
+- Accepting expired or malformed tokens
+
+---
+
+# Enterprise Authentication Flow
+
+```
+                User
+                  │
+                  ▼
+         Identity Provider
+                  │
+      Authentication + MFA
+                  │
+                  ▼
+        Identity Assertion
+                  │
+                  ▼
+        Access / ID Token
+                  │
+                  ▼
+         Service Provider
+                  │
+                  ▼
+         Session Established
+                  │
+                  ▼
+         Protected Resources
+```
+
+---
+
+# Key Takeaways
+
+- Authentication verifies identity, while session management preserves that authenticated state.
+- Sessions and cookies must be protected using secure identifiers, HTTPS, and appropriate cookie attributes.
+- Session fixation and session hijacking are common threats mitigated through session rotation, secure cookie handling, and proper invalidation.
+- JWTs are widely used for token-based authentication but require careful validation and secure token lifecycle management.
+- OAuth 2.0 provides delegated authorization, while OpenID Connect adds authentication and identity information.
+- SAML and Single Sign-On enable centralized authentication for enterprise environments.
+- Secure session and token management are as important as the initial authentication process.
