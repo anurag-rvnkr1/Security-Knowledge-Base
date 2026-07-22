@@ -977,3 +977,658 @@ This approach balances technical severity with operational and business risk.
 - EPSS estimates the likelihood of near-term exploitation.
 - KEV highlights vulnerabilities known to be actively exploited.
 - SBOMs provide visibility into software dependencies, enabling faster response to newly disclosed vulnerabilities.
+
+# Software Supply Chain Security
+
+## Overview
+
+Modern software is rarely built entirely from custom code.
+
+A typical application may depend on hundreds or even thousands of third-party components downloaded from public package repositories.
+
+Example:
+
+```
+Application
+
+↓
+
+Framework
+
+↓
+
+Libraries
+
+↓
+
+Dependencies
+
+↓
+
+Transitive Dependencies
+
+↓
+
+Operating System
+
+↓
+
+Compiler
+
+↓
+
+Container Image
+```
+
+Every dependency becomes part of the application's **software supply chain**.
+
+If any component in this chain is compromised, the application itself may also become compromised.
+
+---
+
+# What is a Supply Chain Attack?
+
+A supply chain attack targets the software development or distribution process instead of attacking the application directly.
+
+Rather than exploiting your code, attackers compromise something you trust.
+
+Example:
+
+```
+Developer
+
+↓
+
+Downloads Trusted Package
+
+↓
+
+Package is Malicious
+
+↓
+
+Application Built
+
+↓
+
+Production Deployment
+
+↓
+
+Attacker Gains Access
+```
+
+---
+
+# Common Supply Chain Attack Techniques
+
+```
+Software Supply Chain
+
+├── Dependency Confusion
+├── Typosquatting
+├── Malicious Packages
+├── Dependency Hijacking
+├── Compromised Maintainer Accounts
+├── Build Pipeline Compromise
+├── Signed Package Abuse
+├── Container Image Poisoning
+├── Compromised Updates
+└── Repository Compromise
+```
+
+---
+
+# Dependency Confusion
+
+## Overview
+
+Many organizations use both:
+
+- Internal package repositories
+- Public repositories
+
+If dependency resolution prefers the public repository, an attacker may publish a package with the same name as an internal package.
+
+---
+
+## Example
+
+Internal package:
+
+```
+company-utils
+```
+
+Attacker uploads:
+
+```
+company-utils
+```
+
+to a public package repository.
+
+Build process:
+
+```
+Developer
+
+↓
+
+Install Dependencies
+
+↓
+
+Public Repository
+
+↓
+
+Malicious Package Installed
+```
+
+The attacker gains code execution during the build or deployment process.
+
+---
+
+## Prevention
+
+- Use private package namespaces.
+- Configure package manager priorities.
+- Verify package sources.
+- Restrict public package resolution.
+
+---
+
+# Typosquatting
+
+## Overview
+
+Attackers publish packages with names similar to legitimate packages.
+
+Example:
+
+Legitimate:
+
+```
+requests
+```
+
+Malicious:
+
+```
+requestss
+```
+
+or
+
+```
+requsets
+```
+
+Developers accidentally install the malicious package.
+
+---
+
+## Example
+
+```
+pip install requsets
+```
+
+instead of
+
+```
+pip install requests
+```
+
+The malicious package executes attacker-controlled code.
+
+---
+
+## Prevention
+
+- Review package names carefully.
+- Use dependency allowlists.
+- Verify package maintainers.
+- Automate dependency validation.
+
+---
+
+# Malicious Packages
+
+## Overview
+
+Some packages are intentionally created with malicious functionality.
+
+Examples include:
+
+- Credential theft
+- Cryptocurrency miners
+- Reverse shells
+- Environment variable theft
+- SSH key exfiltration
+
+---
+
+## Example Attack Flow
+
+```
+Developer
+
+↓
+
+pip install package
+
+↓
+
+Post-install Script
+
+↓
+
+Read Environment Variables
+
+↓
+
+Send Secrets
+
+↓
+
+Attacker
+```
+
+---
+
+## Common Targets
+
+Sensitive information often targeted includes:
+
+- AWS credentials
+- Azure credentials
+- GitHub tokens
+- API keys
+- SSH keys
+- Database passwords
+
+---
+
+# Dependency Hijacking
+
+## Overview
+
+Instead of publishing a new malicious package, attackers compromise an existing dependency.
+
+Example:
+
+```
+Trusted Package
+
+↓
+
+Maintainer Account Compromised
+
+↓
+
+Malicious Update
+
+↓
+
+Millions Download Update
+```
+
+Organizations unknowingly install malware through normal updates.
+
+---
+
+# Compromised Maintainer Accounts
+
+Open-source projects often rely on volunteers.
+
+If a maintainer account is compromised:
+
+```
+Maintainer
+
+↓
+
+Account Compromised
+
+↓
+
+Publish New Version
+
+↓
+
+Trusted Users Install Update
+```
+
+The package remains trusted while containing malicious code.
+
+---
+
+# Repository Compromise
+
+Attackers may compromise:
+
+- Package repositories
+- Mirrors
+- Build infrastructure
+
+Result:
+
+```
+Package Repository
+
+↓
+
+Modified Package
+
+↓
+
+Automatic Downloads
+
+↓
+
+Organization Compromised
+```
+
+---
+
+# Build Pipeline Compromise
+
+CI/CD pipelines have access to:
+
+- Secrets
+- Signing keys
+- Cloud credentials
+- Deployment systems
+
+Attack flow:
+
+```
+Attacker
+
+↓
+
+CI/CD Pipeline
+
+↓
+
+Modify Build
+
+↓
+
+Malicious Release
+
+↓
+
+Customers Install
+```
+
+---
+
+# Container Image Poisoning
+
+Containers often begin with public base images.
+
+Example:
+
+```
+FROM ubuntu:latest
+```
+
+If an attacker compromises or replaces the image source:
+
+```
+Container
+
+↓
+
+Malicious Base Image
+
+↓
+
+Production Deployment
+```
+
+---
+
+## Prevention
+
+- Use trusted registries.
+- Pin image versions.
+- Scan container images.
+- Verify image signatures.
+
+---
+
+# Signed vs Unsigned Packages
+
+Package signing helps verify authenticity.
+
+Unsigned package:
+
+```
+Download
+
+↓
+
+No Integrity Verification
+```
+
+Signed package:
+
+```
+Download
+
+↓
+
+Verify Digital Signature
+
+↓
+
+Install
+```
+
+Digital signatures reduce the risk of tampering but do not guarantee that the package itself is free from vulnerabilities.
+
+---
+
+# Lock Files
+
+Dependency versions should be fixed using lock files.
+
+Examples:
+
+Python
+
+```
+requirements.txt
+poetry.lock
+```
+
+Node.js
+
+```
+package-lock.json
+```
+
+Yarn
+
+```
+yarn.lock
+```
+
+Go
+
+```
+go.sum
+```
+
+These files ensure consistent dependency versions across environments.
+
+---
+
+# Why Lock Files Matter
+
+Without lock files:
+
+```
+Developer A
+
+↓
+
+Library v1.2
+```
+
+```
+Developer B
+
+↓
+
+Library v1.5
+```
+
+Different versions may contain different vulnerabilities or behavior.
+
+Lock files improve reproducibility and reduce unexpected updates.
+
+---
+
+# Package Repositories
+
+Common package ecosystems include:
+
+Python
+
+- PyPI
+
+Node.js
+
+- npm
+
+Java
+
+- Maven Central
+
+.NET
+
+- NuGet
+
+Ruby
+
+- RubyGems
+
+Go
+
+- Go Modules
+
+These repositories should be treated as external dependencies and monitored accordingly.
+
+---
+
+# Real-World Case Studies
+
+## Log4Shell (2021)
+
+Affected:
+
+```
+Apache Log4j
+```
+
+Impact:
+
+- Remote Code Execution
+- Widespread exploitation
+- Global emergency patching efforts
+
+---
+
+## SolarWinds (2020)
+
+Attackers compromised the software build process.
+
+Result:
+
+```
+Legitimate Update
+
+↓
+
+Backdoor
+
+↓
+
+Thousands of Customers
+```
+
+This demonstrated how trusted software updates can become attack vectors.
+
+---
+
+## XZ Utils (2024)
+
+Attackers inserted a backdoor into a widely used compression library after gaining influence over the project's maintenance process.
+
+The malicious code targeted authentication workflows in specific environments before being discovered prior to broad deployment.
+
+---
+
+## event-stream (npm)
+
+A widely used npm package was compromised after maintainership changed hands.
+
+Malicious code targeted cryptocurrency wallet users.
+
+---
+
+## ua-parser-js
+
+A compromised release of the package included malware capable of installing cryptocurrency miners and credential-stealing software.
+
+---
+
+## Codecov
+
+Attackers modified the Codecov Bash uploader script.
+
+Result:
+
+```
+CI/CD Pipeline
+
+↓
+
+Environment Variables
+
+↓
+
+Credentials Stolen
+```
+
+---
+
+# Supply Chain Security Best Practices
+
+- Maintain an inventory of all dependencies.
+- Use trusted package repositories.
+- Verify package signatures where supported.
+- Pin dependency versions.
+- Review new dependencies before adoption.
+- Remove unused packages.
+- Monitor security advisories.
+- Scan dependencies continuously.
+- Protect CI/CD pipelines.
+- Use the principle of least privilege for build systems.
+- Generate and maintain SBOMs.
+- Regularly review transitive dependencies.
+
+---
+
+# Key Takeaways
+
+- Software supply chain attacks target trusted dependencies rather than your application's own code.
+- Dependency confusion, typosquatting, malicious packages, and compromised maintainers are common attack techniques.
+- Lock files and trusted repositories improve dependency integrity and reproducibility.
+- CI/CD pipelines and container images are high-value targets that require strong security controls.
+- Continuous dependency monitoring, SBOMs, and secure build practices are essential for modern application security.
