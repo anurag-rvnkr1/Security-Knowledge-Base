@@ -1632,3 +1632,581 @@ Credentials Stolen
 - Lock files and trusted repositories improve dependency integrity and reproducibility.
 - CI/CD pipelines and container images are high-value targets that require strong security controls.
 - Continuous dependency monitoring, SBOMs, and secure build practices are essential for modern application security.
+
+# Detection
+
+Identifying vulnerable and outdated components requires continuous visibility into all software assets and dependencies.
+
+Unlike traditional penetration testing, vulnerability management is an ongoing process rather than a one-time activity.
+
+Typical detection methods include:
+
+- Software inventory
+- Dependency scanning
+- Container image scanning
+- Operating system vulnerability scanning
+- Cloud workload scanning
+- SBOM analysis
+- Security advisory monitoring
+- Manual verification
+
+---
+
+# Vulnerability Management Lifecycle
+
+A mature vulnerability management program follows a structured process.
+
+```
+Asset Inventory
+
+↓
+
+Component Identification
+
+↓
+
+Vulnerability Detection
+
+↓
+
+Risk Assessment
+
+↓
+
+Prioritization
+
+↓
+
+Remediation
+
+↓
+
+Verification
+
+↓
+
+Continuous Monitoring
+```
+
+This lifecycle repeats continuously as new vulnerabilities are discovered.
+
+---
+
+# Dependency Scanning
+
+Dependency scanners inspect application packages and compare them against known vulnerability databases.
+
+Typical workflow:
+
+```
+Source Code
+
+↓
+
+Dependency Files
+
+↓
+
+Scanner
+
+↓
+
+CVE Database
+
+↓
+
+Security Report
+```
+
+Examples of dependency files:
+
+Python
+
+```
+requirements.txt
+
+poetry.lock
+```
+
+Node.js
+
+```
+package.json
+
+package-lock.json
+```
+
+Java
+
+```
+pom.xml
+
+build.gradle
+```
+
+---
+
+# Container Image Scanning
+
+Container images often contain:
+
+- Operating system packages
+- Runtime libraries
+- Language packages
+- Configuration files
+
+Scanning should occur:
+
+```
+Image Build
+
+↓
+
+Vulnerability Scan
+
+↓
+
+Policy Validation
+
+↓
+
+Deployment
+```
+
+Never deploy unscanned production images.
+
+---
+
+# Operating System Scanning
+
+Review:
+
+- Installed packages
+- Kernel version
+- Security updates
+- Running services
+- End-of-life software
+
+Outdated operating systems often expose well-known vulnerabilities.
+
+---
+
+# Cloud Workload Assessment
+
+Review cloud workloads for:
+
+- Unsupported operating systems
+- Outdated container images
+- Vulnerable virtual machines
+- Unpatched managed services
+- Deprecated runtimes
+
+---
+
+# Software Bill of Materials (SBOM) Analysis
+
+SBOMs enable rapid impact assessment.
+
+Example:
+
+```
+New CVE Released
+
+↓
+
+Search SBOM
+
+↓
+
+Affected Applications
+
+↓
+
+Prioritize Patching
+```
+
+Without an SBOM, organizations may spend significant time determining where vulnerable components are used.
+
+---
+
+# Security Advisory Monitoring
+
+Organizations should continuously monitor:
+
+- Vendor advisories
+- Open-source project announcements
+- Operating system updates
+- Cloud provider bulletins
+- National vulnerability databases
+
+Timely awareness shortens remediation time.
+
+---
+
+# Patch Management Lifecycle
+
+Applying patches safely requires planning.
+
+```
+Vendor Releases Patch
+
+↓
+
+Review Advisory
+
+↓
+
+Assess Business Impact
+
+↓
+
+Test in Non-Production
+
+↓
+
+Approval
+
+↓
+
+Production Deployment
+
+↓
+
+Verification
+
+↓
+
+Documentation
+```
+
+Emergency patches may require an accelerated process, but validation remains important.
+
+---
+
+# Risk-Based Prioritization
+
+Not every vulnerability requires the same response.
+
+Consider:
+
+Technical Factors
+
+- CVSS score
+- EPSS score
+- Known exploitation
+- Ease of exploitation
+
+Business Factors
+
+- Internet exposure
+- Asset criticality
+- Sensitive data
+- Regulatory requirements
+- Availability requirements
+
+Prioritize based on overall risk rather than severity alone.
+
+---
+
+# Common Detection Tools
+
+| Tool | Primary Purpose |
+|------|-----------------|
+| OWASP Dependency-Check | Detect vulnerable application dependencies |
+| Trivy | Scan containers, file systems, repositories, and IaC |
+| Snyk | Identify and remediate dependency vulnerabilities |
+| Dependabot | Automated dependency update suggestions |
+| osv-scanner | Scan projects using the Open Source Vulnerability database |
+| Syft | Generate Software Bills of Materials (SBOMs) |
+| Grype | Scan SBOMs and container images for vulnerabilities |
+| GitHub Code Scanning | Security analysis integrated with GitHub repositories |
+
+---
+
+# Prevention
+
+Effective prevention combines secure development practices with continuous monitoring.
+
+---
+
+## 1. Maintain a Software Inventory
+
+Know exactly which:
+
+- Libraries
+- Frameworks
+- Operating systems
+- Containers
+- Third-party services
+
+are used throughout the environment.
+
+An accurate inventory is the foundation of vulnerability management.
+
+---
+
+## 2. Remove Unused Components
+
+Unused software increases attack surface.
+
+Regularly remove:
+
+- Obsolete libraries
+- Legacy frameworks
+- Unused plugins
+- Deprecated APIs
+- Test packages
+
+---
+
+## 3. Keep Components Updated
+
+Adopt a regular update schedule.
+
+Balance:
+
+- Security
+- Stability
+- Compatibility
+
+Avoid remaining on unsupported versions without a documented business justification.
+
+---
+
+## 4. Verify Package Integrity
+
+Before installing packages:
+
+- Confirm the package source.
+- Verify checksums or signatures where available.
+- Review maintainers for unfamiliar projects.
+- Prefer official repositories.
+
+---
+
+## 5. Secure the Software Supply Chain
+
+Protect:
+
+- Source repositories
+- Build systems
+- CI/CD pipelines
+- Artifact repositories
+- Deployment infrastructure
+
+Compromising any of these can affect downstream software.
+
+---
+
+## 6. Generate and Maintain SBOMs
+
+An SBOM should be generated for each release.
+
+Benefits include:
+
+- Faster incident response
+- Easier compliance
+- Improved dependency visibility
+- Simplified vulnerability tracking
+
+---
+
+## 7. Continuous Monitoring
+
+Security does not end after deployment.
+
+Continuously monitor:
+
+- New CVEs
+- Vendor advisories
+- Dependency updates
+- End-of-life announcements
+- Threat intelligence
+
+---
+
+# Best Practices
+
+✔ Maintain complete asset inventories.
+
+✔ Remove unused software.
+
+✔ Update dependencies regularly.
+
+✔ Scan applications during development.
+
+✔ Scan containers before deployment.
+
+✔ Generate SBOMs.
+
+✔ Monitor security advisories.
+
+✔ Use trusted repositories.
+
+✔ Protect CI/CD pipelines.
+
+✔ Apply risk-based prioritization.
+
+✔ Validate patches before production deployment.
+
+✔ Automate dependency updates where appropriate.
+
+---
+
+# Practical Lab
+
+## Objective
+
+Assess an application for vulnerable and outdated components.
+
+---
+
+## Scenario
+
+Application stack:
+
+- Ubuntu Server
+- Docker
+- Nginx
+- Python
+- Django
+- PostgreSQL
+
+---
+
+## Tasks
+
+1. Inventory installed components.
+2. Generate an SBOM.
+3. Scan dependencies for known vulnerabilities.
+4. Scan the container image.
+5. Identify outdated software.
+6. Prioritize findings based on business risk.
+7. Recommend remediation.
+8. Produce a vulnerability management report.
+
+---
+
+## Expected Learning Outcomes
+
+After completing this lab, you should be able to:
+
+- Identify vulnerable components.
+- Understand dependency relationships.
+- Interpret CVE and CVSS information.
+- Prioritize remediation activities.
+- Recommend secure update strategies.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is a vulnerable component?
+
+A software library, framework, operating system, container image, or other dependency that contains a known security vulnerability.
+
+---
+
+### What is a CVE?
+
+A Common Vulnerabilities and Exposures (CVE) identifier is a unique identifier assigned to a publicly disclosed security vulnerability.
+
+---
+
+### What is an SBOM?
+
+A Software Bill of Materials is an inventory of all software components and dependencies used within an application.
+
+---
+
+## Intermediate
+
+### What is the difference between CVE and CWE?
+
+A CVE identifies a specific publicly disclosed vulnerability, while a CWE describes the general class of software weakness that can lead to vulnerabilities.
+
+---
+
+### Why are transitive dependencies important?
+
+Applications may indirectly include vulnerable packages through other libraries. These transitive dependencies can introduce security risks even when developers did not explicitly install them.
+
+---
+
+### Why shouldn't organizations always apply every update immediately?
+
+Updates may introduce compatibility issues or operational risks. Mature organizations assess risk, test changes, and deploy updates through a controlled patch management process.
+
+---
+
+## Advanced
+
+### How would you build a vulnerability management program?
+
+A comprehensive program includes:
+
+1. Asset inventory.
+2. Dependency inventory.
+3. Continuous vulnerability scanning.
+4. SBOM generation.
+5. Risk-based prioritization.
+6. Patch management.
+7. Verification.
+8. Continuous monitoring and reporting.
+
+---
+
+### Explain how you would respond to a critical zero-day affecting a widely used library.
+
+A structured response includes:
+
+1. Identify affected assets using inventories and SBOMs.
+2. Assess exposure and business impact.
+3. Apply temporary mitigations if available.
+4. Test vendor patches or workarounds.
+5. Deploy fixes according to emergency change procedures.
+6. Verify remediation.
+7. Monitor for signs of exploitation.
+8. Document lessons learned and improve response processes.
+
+---
+
+# References
+
+## OWASP
+
+- OWASP Top 10 (2021)
+- OWASP Dependency-Check
+- OWASP CycloneDX
+
+## NIST
+
+- NIST Secure Software Development Framework (SSDF)
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+
+## CISA
+
+- Known Exploited Vulnerabilities (KEV) Catalog
+- Secure by Design Guidance
+
+## OpenSSF
+
+- OpenSSF Scorecard
+- OpenSSF Best Practices
+
+## Supply Chain Security
+
+- CycloneDX
+- SPDX
+- Sigstore
+
+---
+
+# Summary
+
+Vulnerable and Outdated Components remain one of the most significant risks in modern software because applications rely extensively on third-party libraries, frameworks, operating systems, containers, and cloud services. Effective management requires maintaining accurate inventories, generating Software Bills of Materials (SBOMs), continuously monitoring security advisories, scanning dependencies, protecting the software supply chain, and applying risk-based patch management.
+
+Organizations that integrate vulnerability management into the Secure Software Development Lifecycle (SSDLC) are better positioned to reduce exposure, respond quickly to newly disclosed vulnerabilities, and maintain resilient software systems.
