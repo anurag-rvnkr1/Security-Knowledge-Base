@@ -1263,3 +1263,617 @@ Well-designed validation, network segmentation, and monitoring significantly red
 - Cloud metadata services require additional protections because they are designed for trusted local workloads.
 - Outbound network restrictions and allowlists provide strong defense-in-depth even when application validation fails.
 - Multiple independent security controls are more effective than relying on a single blacklist or regular expression.
+
+# Detection, Prevention, and Enterprise Mitigations
+
+---
+
+# Overview
+
+Preventing SSRF requires more than validating user-supplied URLs.
+
+A secure design combines:
+
+- Secure application architecture
+- Input validation
+- Outbound request controls
+- Network segmentation
+- Identity and access management
+- Cloud security controls
+- Continuous monitoring
+- Detection engineering
+
+This layered approach significantly reduces the likelihood and impact of SSRF.
+
+---
+
+# Defense-in-Depth Architecture
+
+```
+                 User Input
+                      │
+                      ▼
+          Input Validation Layer
+                      │
+                      ▼
+        URL Canonicalization Layer
+                      │
+                      ▼
+      Host & IP Verification Layer
+                      │
+                      ▼
+       Allowlist Verification Layer
+                      │
+                      ▼
+        Outbound Firewall Policy
+                      │
+                      ▼
+         Approved Destination Only
+                      │
+                      ▼
+               External Service
+```
+
+Each layer should independently verify that the request is safe before it leaves the application.
+
+---
+
+# Secure Application Design
+
+Applications should never allow arbitrary outbound requests.
+
+Instead:
+
+```
+User
+
+↓
+
+Choose Resource
+
+↓
+
+Application Maps Resource
+
+↓
+
+Known Destination
+
+↓
+
+Request Sent
+```
+
+Instead of accepting an unrestricted URL from users, applications should map user selections to predefined, trusted destinations whenever possible.
+
+---
+
+# Secure URL Validation
+
+Before making an outbound request, verify:
+
+- URL scheme
+- Hostname
+- Port
+- DNS resolution
+- Final resolved IP address
+- Redirect targets
+
+Validation should occur after normalization to avoid inconsistencies.
+
+---
+
+# URL Canonicalization
+
+Normalize URLs before applying validation rules.
+
+```
+User Input
+
+↓
+
+Normalize
+
+↓
+
+Canonical URL
+
+↓
+
+Validation
+
+↓
+
+Outbound Request
+```
+
+This helps ensure that equivalent representations are evaluated consistently.
+
+---
+
+# Allowlist-Based Validation
+
+Allowlisting is generally more reliable than attempting to block every dangerous destination.
+
+Example:
+
+```
+Allowed Domains
+
+↓
+
+api.partner.com
+
+↓
+
+cdn.example.com
+
+↓
+
+images.example.com
+```
+
+Requests to destinations outside the allowlist should be rejected unless explicitly required.
+
+---
+
+# Scheme Validation
+
+Only permit protocols required by the application.
+
+Example:
+
+```
+Allowed
+
+HTTPS
+HTTP (if necessary)
+```
+
+Reject unnecessary or unsupported schemes to reduce attack surface.
+
+---
+
+# Redirect Validation
+
+Every redirect should be validated before following it.
+
+```
+Original Request
+
+↓
+
+Redirect
+
+↓
+
+Validate Destination
+
+↓
+
+Continue or Reject
+```
+
+Blindly following redirects may allow requests to reach unintended systems.
+
+---
+
+# DNS Validation
+
+Hostname validation alone is insufficient.
+
+A secure workflow includes:
+
+```
+Hostname
+
+↓
+
+DNS Resolution
+
+↓
+
+Resolved IP
+
+↓
+
+Private Address?
+
+↓
+
+Reject / Allow
+```
+
+Both the hostname and the resolved address should satisfy security policy.
+
+---
+
+# Outbound Firewall (Egress Filtering)
+
+Applications rarely need unrestricted outbound network access.
+
+Example policy:
+
+```
+Application
+
+↓
+
+Firewall
+
+↓
+
+Partner API
+
+✓ Allowed
+```
+
+```
+Application
+
+↓
+
+Firewall
+
+↓
+
+Private Network
+
+✗ Blocked
+```
+
+Restricting outbound traffic significantly limits SSRF impact.
+
+---
+
+# Network Segmentation
+
+Sensitive systems should not be directly reachable from public-facing applications.
+
+```
+Internet
+
+↓
+
+Web Application
+
+↓
+
+DMZ
+
+↓
+
+Internal API
+
+↓
+
+Database
+```
+
+Each network boundary should enforce appropriate access controls.
+
+---
+
+# Zero Trust Networking
+
+Modern architectures should verify every connection.
+
+```
+Application
+
+↓
+
+Authenticate
+
+↓
+
+Authorize
+
+↓
+
+Connect
+```
+
+Trust should be based on identity and policy rather than network location.
+
+---
+
+# Cloud Security Controls
+
+Applications running in cloud environments require additional safeguards.
+
+Recommended practices include:
+
+- Restrict unnecessary metadata access.
+- Apply least privilege to instance identities.
+- Monitor metadata requests.
+- Segment workloads.
+- Limit outbound connectivity.
+
+Cloud-native controls complement application-level defenses.
+
+---
+
+# AWS Best Practices
+
+Recommendations include:
+
+- Use **IMDSv2** instead of IMDSv1 where supported.
+- Grant only required IAM permissions to compute instances.
+- Monitor metadata access patterns.
+- Restrict outbound traffic from application workloads.
+
+---
+
+# Azure Best Practices
+
+Recommendations include:
+
+- Apply least privilege to managed identities.
+- Monitor access to instance metadata.
+- Restrict unnecessary outbound communication.
+- Use network security controls to isolate workloads.
+
+---
+
+# Google Cloud Best Practices
+
+Recommendations include:
+
+- Use minimally privileged service accounts.
+- Restrict outbound traffic where practical.
+- Monitor metadata access.
+- Apply network segmentation.
+
+---
+
+# Kubernetes Security
+
+Applications running in Kubernetes should follow additional controls.
+
+Example architecture:
+
+```
+Ingress
+
+↓
+
+Application Pod
+
+↓
+
+Service
+
+↓
+
+Internal API
+```
+
+Recommendations:
+
+- Use NetworkPolicies to limit pod-to-pod communication.
+- Apply least privilege to service accounts.
+- Restrict access to cluster management APIs.
+- Monitor unusual outbound requests.
+
+---
+
+# Service Mesh
+
+A service mesh can provide additional controls for service-to-service communication.
+
+Capabilities may include:
+
+- Mutual TLS (mTLS)
+- Service identity
+- Traffic policies
+- Authorization rules
+- Observability
+
+These controls help reduce the impact of SSRF within microservice environments.
+
+---
+
+# Secure Coding Practices
+
+Developers should:
+
+- Avoid accepting arbitrary URLs from users.
+- Validate all outbound destinations.
+- Enforce allowlists where possible.
+- Normalize URLs before validation.
+- Validate redirects.
+- Handle errors safely.
+- Log outbound requests.
+- Apply appropriate timeouts.
+
+Security should be built into application design rather than added later.
+
+---
+
+# Logging for SSRF Detection
+
+Log security-relevant outbound requests, including:
+
+- Timestamp
+- Request destination
+- Resolved IP
+- HTTP method
+- Response status
+- User identity (if applicable)
+- Request identifier
+
+Example:
+
+```
+Timestamp:
+2026-08-15T10:45:12Z
+
+Destination:
+api.partner.com
+
+Resolved IP:
+198.51.100.20
+
+Status:
+200
+```
+
+Avoid logging sensitive request bodies or credentials.
+
+---
+
+# Monitoring for SSRF
+
+Monitor for unusual outbound activity such as:
+
+- Requests to private address ranges
+- Requests to metadata services
+- Unexpected DNS lookups
+- High volumes of outbound requests
+- Access to administrative endpoints
+- Requests outside normal application behavior
+
+Behavioral monitoring improves detection of attempted exploitation.
+
+---
+
+# SIEM Detection Use Cases
+
+Potential detection scenarios include:
+
+Authentication
+
+- SSRF attempts followed by cloud identity usage
+
+Network
+
+- Outbound connections to unexpected destinations
+
+Application
+
+- Requests targeting internal services
+
+Cloud
+
+- Metadata service access from application workloads
+
+Infrastructure
+
+- Sudden increase in outbound traffic
+
+These detections should be tailored to the application's expected behavior.
+
+---
+
+# Example Detection Workflow
+
+```
+Application Log
+
+↓
+
+Outbound Request
+
+↓
+
+SIEM Correlation
+
+↓
+
+Destination Analysis
+
+↓
+
+Alert
+
+↓
+
+SOC Investigation
+```
+
+Correlating multiple telemetry sources improves detection confidence.
+
+---
+
+# WAF Considerations
+
+A Web Application Firewall (WAF) may help detect suspicious request patterns but should not be relied upon as the sole SSRF defense.
+
+WAFs can complement:
+
+- Input validation
+- Network controls
+- Application allowlists
+- Monitoring
+
+Defense-in-depth remains essential.
+
+---
+
+# Secure Architecture Checklist
+
+## Application
+
+✔ Validate URLs after normalization.
+
+✔ Use allowlists where practical.
+
+✔ Restrict supported schemes.
+
+✔ Validate redirects.
+
+✔ Log outbound requests.
+
+---
+
+## Infrastructure
+
+✔ Restrict outbound traffic.
+
+✔ Segment networks.
+
+✔ Protect cloud metadata services.
+
+✔ Apply least privilege.
+
+✔ Monitor DNS activity.
+
+---
+
+## Operations
+
+✔ SIEM integration.
+
+✔ Detection engineering.
+
+✔ Threat hunting.
+
+✔ Security monitoring.
+
+✔ Regular architecture reviews.
+
+---
+
+# Business Impact
+
+Organizations implementing layered SSRF defenses benefit from:
+
+- Reduced attack surface.
+- Improved protection of internal services.
+- Better visibility into outbound traffic.
+- Lower likelihood of cloud credential exposure.
+- Stronger compliance with secure development practices.
+- Faster detection and response to anomalous behavior.
+
+---
+
+# Key Takeaways
+
+- Effective SSRF prevention requires secure application design, not just input filtering.
+- Validate canonical URLs, resolved IP addresses, and redirect destinations before making outbound requests.
+- Restrict outbound connectivity using firewalls, segmentation, and least-privilege principles.
+- Cloud environments require additional protections for metadata services and workload identities.
+- Logging, monitoring, and SIEM-based detection provide visibility into suspicious outbound request patterns.
+- Multiple independent security controls provide stronger protection than any single mitigation technique.
+
