@@ -488,3 +488,646 @@ Examples of insecure design include:
 - Threat modeling, abuse case analysis, and Secure SDLC are essential for preventing design flaws.
 - Every system should be designed with the assumption that attackers will intentionally misuse legitimate functionality.
 - Security is most effective when integrated into architecture from the beginning rather than added after development.
+
+# Secure Design Principles
+
+Secure design principles are fundamental guidelines that help architects and developers build systems that remain secure even when individual controls fail.
+
+Rather than relying on a single security feature, secure systems use multiple complementary controls to reduce risk.
+
+---
+
+# 1. Defense in Depth
+
+## Overview
+
+Defense in Depth means protecting a system with **multiple independent layers of security**.
+
+If one layer fails, additional layers continue to provide protection.
+
+---
+
+## Insecure Architecture
+
+```
+Internet
+
+↓
+
+Database
+```
+
+If an attacker reaches the database, there are no additional barriers.
+
+---
+
+## Secure Architecture
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+Web Server
+
+↓
+
+Web Application Firewall (WAF)
+
+↓
+
+Application
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Logging & Monitoring
+
+↓
+
+Database
+```
+
+Even if one control is bypassed, others continue to reduce the attacker's progress.
+
+---
+
+## Real-World Example
+
+Online banking typically uses:
+
+- HTTPS
+- Multi-Factor Authentication (MFA)
+- Device recognition
+- Fraud detection
+- Transaction limits
+- Session monitoring
+- Account lockout
+- Behavioral analytics
+
+No single control is expected to stop every attack.
+
+---
+
+## Benefits
+
+- Reduces single points of failure
+- Improves resilience
+- Limits attacker movement
+- Increases detection opportunities
+
+---
+
+# 2. Principle of Least Privilege
+
+## Overview
+
+Every user, application, and service should receive **only the minimum permissions necessary** to perform its intended tasks.
+
+---
+
+## Example
+
+Customer:
+
+✔ View profile
+
+✔ Place orders
+
+✘ Delete users
+
+✘ Access admin dashboard
+
+---
+
+Administrator:
+
+✔ Manage users
+
+✔ Configure system
+
+✔ View audit logs
+
+---
+
+## Application Example
+
+Instead of connecting to the database as:
+
+```
+root
+```
+
+Create a dedicated account:
+
+```
+app_user
+```
+
+with only:
+
+- SELECT
+- INSERT
+- UPDATE
+
+Avoid unnecessary permissions such as:
+
+- DROP DATABASE
+- CREATE USER
+- GRANT ALL
+
+---
+
+## Benefits
+
+- Reduces damage after compromise
+- Limits insider abuse
+- Simplifies auditing
+- Reduces attack surface
+
+---
+
+# 3. Fail Securely
+
+## Overview
+
+When an error occurs, the application should default to a secure state.
+
+---
+
+## Insecure Example
+
+Authentication service becomes unavailable.
+
+Application response:
+
+```
+Authentication Failed
+
+↓
+
+Allow Access
+```
+
+This is catastrophic.
+
+---
+
+## Secure Example
+
+Authentication service becomes unavailable.
+
+Application response:
+
+```
+Authentication Failed
+
+↓
+
+Access Denied
+```
+
+The system prioritizes security over convenience.
+
+---
+
+## Examples
+
+Secure failures include:
+
+- Denying access when authorization cannot be verified.
+- Rejecting malformed tokens.
+- Blocking expired sessions.
+- Refusing invalid cryptographic keys.
+
+---
+
+# 4. Secure by Default
+
+## Overview
+
+The default configuration should be the safest configuration.
+
+Users should never have to enable security manually.
+
+---
+
+## Example
+
+New account:
+
+```
+Password Required
+
+MFA Optional
+
+Email Verification Required
+```
+
+Better:
+
+```
+Password Required
+
+Email Verification Required
+
+Strong Password Policy Enabled
+
+Secure Session Configuration Enabled
+```
+
+---
+
+## Server Example
+
+Default:
+
+```
+Directory Listing
+
+Enabled
+```
+
+Secure Default:
+
+```
+Directory Listing
+
+Disabled
+```
+
+---
+
+# 5. Complete Mediation
+
+## Overview
+
+Every request to a protected resource should be authorized.
+
+Never assume that a previous authorization remains valid forever.
+
+---
+
+## Architecture
+
+```
+User
+
+↓
+
+Request
+
+↓
+
+Authorization Check
+
+↓
+
+Resource
+```
+
+Every request follows this process.
+
+---
+
+## Common Mistake
+
+Application checks authorization only during login.
+
+Subsequent requests bypass authorization.
+
+Attackers exploit this by directly accessing protected endpoints.
+
+---
+
+# 6. Separation of Duties
+
+## Overview
+
+Critical actions should require multiple independent roles or approvals.
+
+---
+
+## Banking Example
+
+Employee:
+
+```
+Create Transfer
+```
+
+Manager:
+
+```
+Approve Transfer
+```
+
+Finance:
+
+```
+Release Funds
+```
+
+No single individual controls the entire process.
+
+---
+
+## Benefits
+
+- Reduces fraud
+- Prevents accidental mistakes
+- Improves accountability
+- Supports compliance requirements
+
+---
+
+# 7. Economy of Mechanism
+
+## Overview
+
+Security mechanisms should be as simple as possible while still meeting security requirements.
+
+Complex systems are more difficult to understand, test, and maintain.
+
+---
+
+## Example
+
+Instead of:
+
+```
+15 Custom Authentication Modules
+```
+
+Use:
+
+```
+One Well-Tested Authentication Framework
+```
+
+Simple, well-understood solutions are generally more secure than overly complex custom implementations.
+
+---
+
+# 8. Minimize Attack Surface
+
+## Overview
+
+Every exposed feature is a potential entry point for attackers.
+
+Reduce unnecessary functionality.
+
+---
+
+## Remove
+
+- Unused APIs
+- Debug endpoints
+- Test accounts
+- Default credentials
+- Sample applications
+- Unnecessary services
+- Legacy protocols
+
+---
+
+## Example
+
+Instead of exposing:
+
+```
+80 APIs
+```
+
+Expose only:
+
+```
+20 Required APIs
+```
+
+---
+
+## Benefits
+
+- Fewer vulnerabilities
+- Smaller testing scope
+- Reduced maintenance effort
+- Lower risk
+
+---
+
+# 9. Zero Trust
+
+## Overview
+
+Zero Trust assumes that no user, device, or network should be trusted automatically.
+
+Every request must be continuously verified.
+
+Core principle:
+
+> **Never trust. Always verify.**
+
+---
+
+## Traditional Model
+
+```
+Internal Network
+
+↓
+
+Trusted
+```
+
+---
+
+## Zero Trust Model
+
+```
+User
+
+↓
+
+Authenticate
+
+↓
+
+Authorize
+
+↓
+
+Evaluate Device
+
+↓
+
+Evaluate Context
+
+↓
+
+Grant Limited Access
+```
+
+---
+
+## Continuous Verification
+
+Checks may include:
+
+- User identity
+- Device health
+- Geographic location
+- Time of access
+- Risk score
+- Behavioral analytics
+
+Trust is not permanent.
+
+---
+
+# 10. Compartmentalization
+
+## Overview
+
+Separate systems into isolated components so that compromise of one component does not automatically compromise the entire environment.
+
+---
+
+## Example
+
+Instead of:
+
+```
+One Large Database
+
+↓
+
+Everything
+```
+
+Use:
+
+```
+Customer Database
+
+Inventory Database
+
+Payment Database
+
+Logging Database
+```
+
+Compromise of one component has limited impact.
+
+---
+
+## Cloud Example
+
+Separate:
+
+- Production
+- Development
+- Testing
+
+Use different:
+
+- Accounts
+- Networks
+- Secrets
+- IAM roles
+
+---
+
+# Comparing Secure vs Insecure Designs
+
+| Principle | Secure Design | Insecure Design |
+|------------|---------------|-----------------|
+| Defense in Depth | Multiple security layers | Single control |
+| Least Privilege | Minimal permissions | Excessive permissions |
+| Fail Securely | Deny on failure | Allow on failure |
+| Secure by Default | Security enabled | Security optional |
+| Complete Mediation | Check every request | Check once |
+| Separation of Duties | Multiple approvals | Single actor controls everything |
+| Economy of Mechanism | Simple, well-tested controls | Complex custom security |
+| Attack Surface | Only necessary features exposed | Unused features remain enabled |
+| Zero Trust | Verify every request | Trust internal users automatically |
+| Compartmentalization | Isolated components | Flat architecture |
+
+---
+
+# Applying These Principles Together
+
+A mature application rarely depends on just one principle.
+
+Example:
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+Load Balancer
+
+↓
+
+Web Application Firewall
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Rules
+
+↓
+
+Rate Limiting
+
+↓
+
+Application
+
+↓
+
+Audit Logging
+
+↓
+
+Encrypted Database
+```
+
+Each layer complements the others and limits the impact of failures elsewhere.
+
+---
+
+# Key Takeaways
+
+- Secure design is achieved through multiple complementary principles rather than a single security feature.
+- Defense in Depth, Least Privilege, and Complete Mediation are foundational concepts in modern application security.
+- Zero Trust extends verification beyond traditional network boundaries.
+- Simplicity, compartmentalization, and minimizing attack surface reduce opportunities for attackers.
+- Applying these principles during system design is significantly more effective than attempting to retrofit security after development.
