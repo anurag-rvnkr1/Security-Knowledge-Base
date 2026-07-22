@@ -1717,3 +1717,473 @@ These are not coding mistakes—they are missing security requirements.
 - STRIDE provides a structured approach for identifying threats across an architecture.
 - Data Flow Diagrams, trust boundaries, and attack trees help security teams reason about system design.
 - Strong application security begins with thoughtful architecture and security requirements—not just secure code.
+
+# Detection
+
+Detecting Insecure Design is fundamentally different from detecting implementation vulnerabilities.
+
+Traditional security scanners are effective at finding:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Hardcoded credentials
+- Security misconfigurations
+
+However, they generally **cannot determine whether the application's business rules or architecture are secure**.
+
+As a result, Insecure Design is primarily identified through:
+
+- Architecture reviews
+- Threat modeling
+- Business logic testing
+- Abuse case analysis
+- Manual penetration testing
+- Secure design reviews
+
+---
+
+# Security Design Review
+
+A Security Design Review evaluates whether the application's architecture includes appropriate security controls before implementation.
+
+Typical review process:
+
+```
+Business Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Threat Modeling
+
+↓
+
+Security Requirements
+
+↓
+
+Risk Assessment
+
+↓
+
+Design Approval
+
+↓
+
+Development
+```
+
+This process identifies architectural weaknesses early, when they are least expensive to fix.
+
+---
+
+# Architecture Review Checklist
+
+During an architecture review, consider the following questions.
+
+## Authentication
+
+- Is authentication required for all sensitive functions?
+- Is MFA required for high-risk actions?
+- Are session tokens protected?
+- Is account recovery secure?
+
+---
+
+## Authorization
+
+- Are user roles clearly defined?
+- Is least privilege enforced?
+- Are sensitive operations re-authorized?
+- Is access verified on every request?
+
+---
+
+## Business Logic
+
+- Can workflows be abused?
+- Are transaction limits enforced?
+- Are duplicate requests prevented?
+- Are concurrent operations handled safely?
+- Are financial operations reversible only through approved processes?
+
+---
+
+## Data Protection
+
+- Is sensitive data encrypted in transit?
+- Is sensitive data encrypted at rest where appropriate?
+- Are cryptographic keys managed securely?
+- Are secrets stored outside application code?
+
+---
+
+## Availability
+
+- Are rate limits implemented?
+- Is abuse detection available?
+- Are quotas defined?
+- Are resource exhaustion attacks considered?
+
+---
+
+## Monitoring
+
+- Are important security events logged?
+- Can suspicious behavior be detected?
+- Are alerts generated for critical actions?
+- Are logs protected from tampering?
+
+---
+
+# Integrating Security into the SDLC
+
+Secure design should be embedded into every stage of software development.
+
+```
+Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Architecture
+
+↓
+
+Secure Design Review
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Continuous Monitoring
+```
+
+Security should never be treated as a final testing phase.
+
+---
+
+# Prevention
+
+The most effective way to prevent Insecure Design is to build security requirements into the architecture from the beginning.
+
+---
+
+## 1. Perform Threat Modeling
+
+Before development begins:
+
+- Identify assets.
+- Identify attackers.
+- Identify attack paths.
+- Define security controls.
+- Prioritize risks.
+
+Threat modeling should be revisited whenever significant architectural changes occur.
+
+---
+
+## 2. Define Security Requirements
+
+Security requirements should be documented alongside functional requirements.
+
+Examples:
+
+- MFA required for administrative actions.
+- Password reset tokens expire after 15 minutes.
+- Maximum daily transfer limit.
+- Maximum failed login attempts.
+- Audit logging for privileged actions.
+- Approval required for high-value transactions.
+
+---
+
+## 3. Design for Abuse Cases
+
+For every normal use case, consider how it could be misused.
+
+Example:
+
+Normal:
+
+```
+User
+
+↓
+
+Request Refund
+
+↓
+
+Refund Approved
+```
+
+Abuse:
+
+```
+Attacker
+
+↓
+
+Repeated Refund Requests
+
+↓
+
+Financial Loss
+```
+
+Design controls should prevent or detect abusive behavior.
+
+---
+
+## 4. Apply Secure Design Principles
+
+Ensure the architecture incorporates:
+
+- Defense in Depth
+- Least Privilege
+- Complete Mediation
+- Fail Securely
+- Secure Defaults
+- Separation of Duties
+- Zero Trust
+- Compartmentalization
+
+These principles should influence system design before implementation.
+
+---
+
+## 5. Limit Trust
+
+Treat all external input as untrusted.
+
+Validate data crossing every trust boundary.
+
+Examples:
+
+- Browser → API
+- API → Backend Service
+- Backend Service → Database
+- Third-party Service → Internal Application
+
+---
+
+## 6. Conduct Regular Design Reviews
+
+Architecture evolves over time.
+
+Review designs whenever:
+
+- New features are added.
+- Third-party services are integrated.
+- Authentication models change.
+- Sensitive data handling changes.
+- Infrastructure is redesigned.
+
+---
+
+# Secure Coding vs Secure Design
+
+| Secure Coding | Secure Design |
+|---------------|---------------|
+| Prevents implementation bugs | Prevents architectural flaws |
+| Focuses on code quality | Focuses on system architecture |
+| Addresses vulnerabilities such as SQL Injection and XSS | Addresses business logic and missing security controls |
+| Verified through code review and testing | Verified through design reviews and threat modeling |
+
+Both are essential and complementary.
+
+---
+
+# Best Practices
+
+✔ Perform threat modeling early.
+
+✔ Document security requirements.
+
+✔ Design abuse cases alongside normal use cases.
+
+✔ Apply Defense in Depth.
+
+✔ Enforce Least Privilege.
+
+✔ Protect trust boundaries.
+
+✔ Review architectures regularly.
+
+✔ Integrate security into the SDLC.
+
+✔ Conduct business logic testing.
+
+✔ Include security architects in major design decisions.
+
+✔ Review third-party integrations for security impact.
+
+✔ Monitor production systems for abuse patterns.
+
+---
+
+# Practical Lab
+
+## Objective
+
+Evaluate an application's architecture for design weaknesses.
+
+---
+
+## Scenario
+
+An online banking platform supports:
+
+- User registration
+- Login
+- Money transfers
+- Password reset
+- Beneficiary management
+
+---
+
+## Tasks
+
+1. Identify valuable assets.
+2. Draw a simple Data Flow Diagram.
+3. Mark trust boundaries.
+4. Identify STRIDE threats.
+5. Define abuse cases.
+6. Recommend security controls.
+7. Prioritize risks based on business impact.
+
+---
+
+## Expected Learning Outcomes
+
+You should be able to:
+
+- Recognize architectural weaknesses.
+- Differentiate design flaws from coding bugs.
+- Perform basic threat modeling.
+- Identify business logic risks.
+- Recommend design-level mitigations.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is Insecure Design?
+
+A category of vulnerabilities caused by missing or inadequate security controls in the application's architecture or business logic rather than programming mistakes.
+
+---
+
+### How is Insecure Design different from SQL Injection?
+
+SQL Injection is an implementation flaw caused by unsafe query construction. Insecure Design results from poor architectural decisions or missing security requirements.
+
+---
+
+### What is threat modeling?
+
+Threat modeling is the structured process of identifying assets, threats, attack paths, and appropriate security controls before development begins.
+
+---
+
+## Intermediate
+
+### What is a business logic vulnerability?
+
+A flaw where an application's intended workflow can be abused because the design fails to enforce necessary business rules or security constraints.
+
+---
+
+### What is a trust boundary?
+
+A trust boundary is the point where data moves between components with different trust levels. Data crossing these boundaries should be authenticated, authorized, validated, and monitored.
+
+---
+
+### Why can't automated scanners reliably detect Insecure Design?
+
+Because they primarily analyze code patterns or runtime behavior. Business rules, workflow abuse, and architectural decisions generally require human understanding and contextual analysis.
+
+---
+
+## Advanced
+
+### How would you conduct a secure design review?
+
+A structured approach includes:
+
+1. Understanding business requirements.
+2. Identifying critical assets.
+3. Mapping data flows.
+4. Identifying trust boundaries.
+5. Performing threat modeling (e.g., STRIDE).
+6. Reviewing authentication and authorization models.
+7. Evaluating business logic.
+8. Assessing availability and abuse resistance.
+9. Documenting risks and recommended mitigations.
+
+---
+
+### Give an example where perfectly written code is still insecure.
+
+A payment system that allows unlimited high-value transfers without transaction limits, fraud detection, or step-up authentication may function exactly as designed, yet remain insecure because the design lacks essential security controls.
+
+---
+
+# References
+
+## OWASP
+
+- OWASP Top 10 (2021)
+- OWASP ASVS
+- OWASP Web Security Testing Guide (WSTG)
+- OWASP Threat Modeling Cheat Sheet
+- OWASP Abuse Case Cheat Sheet
+- OWASP Proactive Controls
+
+## Microsoft
+
+- Microsoft Security Development Lifecycle (SDL)
+- STRIDE Threat Modeling
+
+## NIST
+
+- NIST Secure Software Development Framework (SSDF)
+- NIST SP 800-53
+- NIST Cybersecurity Framework (CSF)
+
+## MITRE
+
+- MITRE ATT&CK (for understanding attacker behavior)
+- CAPEC (Common Attack Pattern Enumeration and Classification)
+
+---
+
+# Summary
+
+Insecure Design represents weaknesses introduced during system planning and architecture rather than implementation. These flaws often stem from missing security requirements, inadequate threat modeling, poor business logic, or failure to anticipate abuse cases.
+
+Preventing Insecure Design requires integrating security into the software development lifecycle through threat modeling, secure design principles, architecture reviews, and continuous evaluation of business workflows. By addressing security at the design stage, organizations can eliminate entire classes of vulnerabilities before a single line of code is written.
