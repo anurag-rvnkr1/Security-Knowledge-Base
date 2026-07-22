@@ -1790,3 +1790,552 @@ A mature software supply chain should include:
 - Code signing, artifact signing, and secure update mechanisms reduce the risk of tampered software reaching production.
 - Frameworks and technologies such as Sigstore, Cosign, SLSA, in-toto, Secure Boot, and TPM strengthen software supply chain security.
 - Real-world incidents such as SolarWinds, XZ Utils, Codecov, and NotPetya demonstrate that attacks on trusted software distribution channels can have global consequences.
+
+# Detection
+
+Software and Data Integrity Failures are often difficult to detect because attackers abuse
+trusted processes rather than exploiting traditional application vulnerabilities.
+
+Instead of attacking production servers directly, they target:
+
+- Source code repositories
+- CI/CD pipelines
+- Build systems
+- Dependency repositories
+- Software update mechanisms
+- Artifact repositories
+- Signing infrastructure
+
+Early detection requires visibility across the entire Software Development Lifecycle (SDLC).
+
+---
+
+# Detection Architecture
+
+```
+             Source Code
+                  │
+                  ▼
+         Source Repository Scan
+                  │
+                  ▼
+        Dependency Verification
+                  │
+                  ▼
+        Build Pipeline Security
+                  │
+                  ▼
+       Artifact Integrity Check
+                  │
+                  ▼
+     Container Image Verification
+                  │
+                  ▼
+        Production Monitoring
+                  │
+                  ▼
+         Continuous Auditing
+```
+
+Every stage should include integrity verification and security monitoring.
+
+---
+
+# What Should Be Monitored?
+
+Organizations should continuously monitor:
+
+## Source Code
+
+- Unauthorized commits
+- Suspicious pull requests
+- Force pushes
+- Branch protection bypasses
+- Unexpected contributor activity
+
+---
+
+## Dependencies
+
+Monitor for:
+
+- New CVEs
+- Malicious packages
+- Package ownership changes
+- Unexpected dependency updates
+- Dependency confusion attempts
+- Typosquatting packages
+
+---
+
+## CI/CD Pipeline
+
+Monitor:
+
+- Pipeline configuration changes
+- New secrets
+- Build failures
+- Build script modifications
+- Unauthorized workflow execution
+- Unexpected artifacts
+
+---
+
+## Build Systems
+
+Review:
+
+- Compiler versions
+- Build environment
+- Build scripts
+- Build logs
+- Generated binaries
+- Build provenance
+
+Unexpected differences may indicate compromise.
+
+---
+
+## Artifact Repository
+
+Verify:
+
+- Digital signatures
+- Checksums
+- Publisher identity
+- Version consistency
+- Upload history
+
+Artifacts should never be trusted solely because they exist in a repository.
+
+---
+
+## Container Images
+
+Monitor:
+
+- Base image updates
+- Image signatures
+- Image digests
+- Vulnerability scan results
+- Registry activity
+
+---
+
+## Production Systems
+
+Look for:
+
+- Unexpected binaries
+- Unauthorized configuration changes
+- Unsigned software
+- Integrity verification failures
+- Unexpected software versions
+
+---
+
+# Integrity Monitoring Workflow
+
+```
+Software Created
+
+↓
+
+Sign Artifact
+
+↓
+
+Publish
+
+↓
+
+Verify Signature
+
+↓
+
+Deploy
+
+↓
+
+Monitor Integrity
+
+↓
+
+Alert on Modification
+```
+
+Continuous verification is more effective than one-time validation.
+
+---
+
+# Detection Tools
+
+| Tool | Purpose |
+|------|----------|
+| OWASP Dependency-Check | Dependency vulnerability detection |
+| Trivy | Containers, filesystems, repositories, IaC scanning |
+| Grype | Vulnerability scanning |
+| Syft | SBOM generation |
+| osv-scanner | Open Source Vulnerability database scanning |
+| GitHub Dependabot | Dependency monitoring |
+| GitHub Code Scanning | Static analysis |
+| Cosign | Artifact signing & verification |
+| Sigstore | Software signing ecosystem |
+| in-toto | Supply chain attestation |
+| OpenSSF Scorecard | Repository security assessment |
+
+---
+
+# Prevention
+
+The best defense is to establish trust at every stage of software development.
+
+---
+
+# Secure Software Development Lifecycle (SSDLC)
+
+Security should be integrated throughout development.
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Build
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Integrity verification belongs at every phase.
+
+---
+
+# Secure CI/CD
+
+Protect:
+
+- Build servers
+- Secrets
+- Signing keys
+- Pipeline definitions
+- Artifact repositories
+
+Recommendations:
+
+- Require MFA for pipeline administrators.
+- Separate development and production pipelines.
+- Use ephemeral build runners where practical.
+- Limit permissions using least privilege.
+- Audit all pipeline changes.
+
+---
+
+# Secure Source Code Management
+
+Implement:
+
+- Branch protection
+- Mandatory code reviews
+- Signed commits (where supported)
+- MFA for repository access
+- Protected release branches
+- Secret scanning
+- Commit history auditing
+
+---
+
+# Secure Dependency Management
+
+Organizations should:
+
+- Approve new dependencies.
+- Remove unused packages.
+- Pin dependency versions.
+- Continuously monitor CVEs.
+- Maintain Software Bills of Materials (SBOMs).
+- Prefer trusted package repositories.
+
+---
+
+# Secure Build Systems
+
+Every build should be:
+
+- Repeatable
+- Auditable
+- Isolated
+- Logged
+- Verifiable
+
+Avoid:
+
+- Manual production builds
+- Shared build accounts
+- Unsigned artifacts
+- Untrusted plugins
+
+---
+
+# Artifact Protection
+
+Before deployment:
+
+```
+Artifact
+
+↓
+
+Verify Publisher
+
+↓
+
+Verify Signature
+
+↓
+
+Verify Checksum
+
+↓
+
+Deploy
+```
+
+Reject artifacts that fail any verification step.
+
+---
+
+# Secure Update Mechanisms
+
+Software updates should:
+
+- Use HTTPS
+- Be digitally signed
+- Verify signatures before installation
+- Prevent downgrade attacks
+- Validate version numbers
+
+Never install unsigned updates automatically.
+
+---
+
+# Data Integrity Protection
+
+Protect critical data using:
+
+- Input validation
+- Digital signatures (where appropriate)
+- Cryptographic hashes
+- Database integrity controls
+- Secure transport (TLS)
+
+---
+
+# Enterprise Best Practices
+
+✔ Verify every software artifact before deployment.
+
+✔ Use cryptographic signatures.
+
+✔ Protect signing keys using secure key management.
+
+✔ Maintain SBOMs for all production applications.
+
+✔ Continuously monitor dependency vulnerabilities.
+
+✔ Protect CI/CD infrastructure.
+
+✔ Enforce MFA for source code repositories.
+
+✔ Generate build provenance.
+
+✔ Implement reproducible builds where feasible.
+
+✔ Perform regular security reviews of the software supply chain.
+
+✔ Audit third-party software providers.
+
+✔ Maintain incident response procedures for supply chain compromises.
+
+---
+
+# Practical Lab
+
+## Objective
+
+Evaluate the integrity of a software delivery pipeline.
+
+---
+
+## Scenario
+
+Application Components:
+
+- Git repository
+- GitHub Actions
+- Docker
+- Kubernetes
+- Python
+- PostgreSQL
+
+---
+
+## Tasks
+
+1. Generate an SBOM.
+2. Scan dependencies.
+3. Verify container image signatures.
+4. Review CI/CD permissions.
+5. Identify unsigned artifacts.
+6. Verify build provenance.
+7. Review repository security settings.
+8. Recommend improvements.
+
+---
+
+## Expected Learning Outcomes
+
+After completing this lab, you should be able to:
+
+- Assess software supply chain security.
+- Verify artifact integrity.
+- Identify insecure build practices.
+- Recommend improvements to CI/CD security.
+- Understand modern integrity verification workflows.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is software integrity?
+
+Software integrity ensures that software has not been modified without authorization and originates from a trusted source.
+
+---
+
+### What is a digital signature?
+
+A digital signature uses asymmetric cryptography to verify both the integrity and authenticity of software or data.
+
+---
+
+### What is code signing?
+
+Code signing is the process of digitally signing executables or software packages so users and systems can verify the publisher and detect tampering.
+
+---
+
+## Intermediate
+
+### Why are hashes alone insufficient for software verification?
+
+Hashes detect whether data has changed but do not identify who created the software. Digital signatures combine integrity verification with publisher authentication.
+
+---
+
+### What is build provenance?
+
+Build provenance records how, where, and from which source code an artifact was produced, helping verify that it came from an expected and trusted build process.
+
+---
+
+### Why is SBOM important?
+
+An SBOM provides a complete inventory of software components, enabling organizations to quickly identify applications affected by newly disclosed vulnerabilities and improve supply chain visibility.
+
+---
+
+## Advanced
+
+### How would you secure an enterprise CI/CD pipeline?
+
+A secure CI/CD pipeline should include:
+
+1. MFA for administrators.
+2. Least-privilege access.
+3. Isolated build environments.
+4. Secret management.
+5. Artifact signing.
+6. Build provenance.
+7. Dependency scanning.
+8. Container image scanning.
+9. Policy enforcement before deployment.
+10. Continuous monitoring and auditing.
+
+---
+
+### How would you respond to a suspected software supply chain compromise?
+
+A structured response includes:
+
+1. Identify affected repositories, pipelines, and artifacts.
+2. Stop deployments involving potentially compromised artifacts.
+3. Verify signatures, hashes, and build provenance.
+4. Rotate credentials and signing keys if compromise is suspected.
+5. Rebuild artifacts from trusted source code.
+6. Review logs for unauthorized changes.
+7. Notify stakeholders and affected customers if required.
+8. Conduct a post-incident review and strengthen controls.
+
+---
+
+# References
+
+## OWASP
+
+- OWASP Top 10 (2021)
+- OWASP Software Supply Chain Security Guidance
+- OWASP Dependency-Check
+
+## NIST
+
+- NIST Secure Software Development Framework (SSDF)
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+
+## CISA
+
+- Secure by Design
+- Secure by Demand
+- Software Supply Chain Guidance
+
+## OpenSSF
+
+- OpenSSF Scorecard
+- OpenSSF Best Practices
+
+## Supply Chain Security
+
+- Sigstore
+- Cosign
+- in-toto
+- SLSA
+- SPDX
+- CycloneDX
+
+---
+
+# Summary
+
+Software and Data Integrity Failures arise when organizations place implicit trust in software, data, or build processes without verifying their authenticity and integrity. Modern applications rely heavily on complex software supply chains, making secure development practices, artifact signing, dependency governance, SBOM generation, and protected CI/CD pipelines essential.
+
+A mature integrity program verifies every stage of the software lifecycle—from source code to deployment—using cryptographic signatures, build provenance, continuous monitoring, and controlled release processes. By integrating these controls into the Secure Software Development Lifecycle (SSDLC), organizations can significantly reduce the risk of software supply chain attacks and unauthorized modifications.
