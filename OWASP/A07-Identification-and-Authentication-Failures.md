@@ -580,3 +580,635 @@ Authentication failures can result in:
 - True MFA combines different authentication factors rather than multiple credentials of the same type.
 - The identity lifecycle includes registration, authentication, account recovery, and deprovisioning.
 - Weak authentication mechanisms are a leading cause of account compromise and should be designed with layered security controls from the outset.
+
+# Password Security
+
+## Overview
+
+Passwords remain the most widely used authentication mechanism.
+
+Despite the growth of passwordless authentication, billions of users still authenticate using passwords every day.
+
+Because passwords are frequently targeted by attackers, secure password handling is one of the most important responsibilities of an application.
+
+---
+
+# Password Lifecycle
+
+```
+User Creates Password
+
+↓
+
+Application Validates Policy
+
+↓
+
+Password Hashed
+
+↓
+
+Salt Added
+
+↓
+
+Stored Securely
+
+↓
+
+User Logs In
+
+↓
+
+Password Verified
+
+↓
+
+Access Granted
+```
+
+At no point should the original plaintext password be stored or recoverable.
+
+---
+
+# Strong Password Characteristics
+
+A secure password should be:
+
+- Long
+- Unique
+- Random
+- Difficult to guess
+- Not reused across services
+
+Example:
+
+```
+CorrectHorseBatteryStaple!92
+```
+
+Long passphrases are generally easier for users to remember and harder for attackers to crack than short, complex passwords.
+
+---
+
+# Weak Password Examples
+
+```
+password
+
+admin123
+
+qwerty
+
+welcome
+
+company2024
+```
+
+Weak passwords are vulnerable to:
+
+- Dictionary attacks
+- Brute-force attacks
+- Credential stuffing
+- Password spraying
+
+---
+
+# Password Policies
+
+A modern password policy should emphasize strength without creating unnecessary complexity.
+
+Recommended practices include:
+
+- Minimum length (e.g., 12–16 characters)
+- Allow passphrases
+- Block commonly used passwords
+- Prevent reuse of recent passwords
+- Encourage password managers
+- Avoid arbitrary composition rules that reduce usability
+
+Forced periodic password changes are generally discouraged unless there is evidence of compromise.
+
+---
+
+# Why Passwords Should Never Be Stored in Plaintext
+
+Imagine the database contains:
+
+```
+Username        Password
+
+Alice           MyPassword123
+
+Bob             Admin@123
+```
+
+If the database is compromised, every password is immediately exposed.
+
+Instead, applications should store only **password hashes**.
+
+---
+
+# Hashing
+
+## Overview
+
+A hash function converts data into a fixed-length value.
+
+```
+Password
+
+↓
+
+Hash Function
+
+↓
+
+Hash Value
+```
+
+Hashing is a **one-way operation**.
+
+The original password should not be recoverable from the hash.
+
+---
+
+# Encryption vs Hashing
+
+| Encryption | Hashing |
+|------------|---------|
+| Reversible with a key | One-way operation |
+| Used to protect data | Used to verify passwords |
+| Original data can be recovered | Original password should not be recoverable |
+
+Passwords should be **hashed**, not encrypted.
+
+---
+
+# Password Verification
+
+Registration:
+
+```
+Password
+
+↓
+
+Hash
+
+↓
+
+Database
+```
+
+Login:
+
+```
+Entered Password
+
+↓
+
+Hash
+
+↓
+
+Compare
+
+↓
+
+Match?
+
+↓
+
+Access
+```
+
+The application compares hashes, not plaintext passwords.
+
+---
+
+# Salt
+
+## Overview
+
+A salt is a random value added to each password before hashing.
+
+Example:
+
+```
+Password
+
+↓
+
+Random Salt
+
+↓
+
+Hash
+```
+
+Every user should have a unique salt.
+
+---
+
+# Why Salt Matters
+
+Without salt:
+
+```
+Alice
+
+password123
+
+↓
+
+Hash A
+
+Bob
+
+password123
+
+↓
+
+Hash A
+```
+
+Both users have identical hashes.
+
+With unique salts:
+
+```
+Alice
+
+password123 + Salt1
+
+↓
+
+Hash X
+
+Bob
+
+password123 + Salt2
+
+↓
+
+Hash Y
+```
+
+Different hashes make large-scale attacks such as rainbow table attacks significantly less effective.
+
+---
+
+# Pepper
+
+A pepper is an additional secret value stored separately from the password database.
+
+```
+Password
+
+↓
+
+Salt
+
+↓
+
+Pepper
+
+↓
+
+Hash
+```
+
+Unlike salts, peppers are not stored alongside password hashes.
+
+If implemented, the pepper should be protected using secure key management.
+
+---
+
+# Password Hashing Algorithms
+
+General-purpose hash functions such as MD5 and SHA-1 are **not appropriate for password storage** because they are too fast.
+
+Modern password hashing algorithms are intentionally computationally expensive to slow down offline attacks.
+
+---
+
+## Argon2
+
+Argon2 is widely regarded as the modern recommendation for password hashing.
+
+Features:
+
+- Memory-hard
+- Configurable cost
+- Resistant to GPU attacks
+- Designed specifically for password storage
+
+---
+
+## bcrypt
+
+bcrypt has been widely used for many years.
+
+Advantages:
+
+- Adaptive work factor
+- Broad library support
+- Proven in production
+
+---
+
+## scrypt
+
+scrypt is another memory-hard password hashing algorithm.
+
+Advantages:
+
+- High memory requirements
+- Increased resistance to specialized hardware attacks
+
+---
+
+## PBKDF2
+
+PBKDF2 remains widely supported and is commonly used in enterprise environments.
+
+It increases computational cost through many hashing iterations.
+
+---
+
+# Comparison of Password Hashing Algorithms
+
+| Algorithm | Recommended | Memory Hard | Adaptive Cost |
+|-----------|-------------|-------------|---------------|
+| Argon2 | Yes | Yes | Yes |
+| bcrypt | Yes | Limited | Yes |
+| scrypt | Yes | Yes | Yes |
+| PBKDF2 | Acceptable | No | Yes |
+| SHA-256 | No (alone) | No | No |
+| MD5 | No | No | No |
+
+---
+
+# Password Managers
+
+Password managers help users create and store:
+
+- Long passwords
+- Unique passwords
+- Random passwords
+
+Benefits:
+
+- Reduces password reuse
+- Simplifies account management
+- Improves overall password quality
+
+Organizations should encourage, not discourage, password manager usage.
+
+---
+
+# Passwordless Authentication
+
+Passwords are vulnerable to:
+
+- Phishing
+- Credential stuffing
+- Password reuse
+- Offline cracking
+
+Passwordless authentication removes the shared secret entirely.
+
+Examples include:
+
+- Passkeys
+- FIDO2 security keys
+- Platform authenticators
+- Biometrics (used locally to unlock credentials)
+
+---
+
+# Passkeys
+
+Passkeys are a modern, phishing-resistant authentication method based on public-key cryptography.
+
+Instead of storing a password, the device generates a **public/private key pair**.
+
+Registration:
+
+```
+Device
+
+↓
+
+Generate Key Pair
+
+↓
+
+Public Key
+
+↓
+
+Server
+```
+
+The **private key never leaves the user's device**.
+
+---
+
+# Authentication with Passkeys
+
+```
+Server
+
+↓
+
+Challenge
+
+↓
+
+Device Signs Challenge
+
+↓
+
+Server Verifies Signature
+
+↓
+
+Login Successful
+```
+
+No password is transmitted or stored on the server.
+
+---
+
+# FIDO2
+
+FIDO2 is an open authentication standard designed to support strong, phishing-resistant authentication.
+
+It consists of:
+
+- WebAuthn
+- CTAP (Client to Authenticator Protocol)
+
+FIDO2 enables authentication using:
+
+- Security keys
+- Built-in platform authenticators
+- Passkeys
+
+---
+
+# WebAuthn
+
+WebAuthn is a web standard that allows browsers to communicate securely with authenticators.
+
+Supported authenticators include:
+
+- USB security keys
+- NFC security keys
+- Platform authenticators
+- Passkeys
+- Biometrics (used to unlock local credentials)
+
+---
+
+# Hardware Security Keys
+
+Examples include:
+
+```
+USB
+
+NFC
+
+Bluetooth
+```
+
+Authentication flow:
+
+```
+Username
+
+↓
+
+Insert Security Key
+
+↓
+
+Touch Key
+
+↓
+
+Authenticated
+```
+
+Advantages:
+
+- Phishing resistant
+- Strong cryptographic authentication
+- Private keys remain on the device
+
+---
+
+# One-Time Passwords (OTP)
+
+OTPs provide temporary authentication codes.
+
+Common types:
+
+- HOTP (counter-based)
+- TOTP (time-based)
+
+---
+
+# Time-Based One-Time Password (TOTP)
+
+Example:
+
+```
+Authenticator App
+
+↓
+
+6-digit Code
+
+↓
+
+30 Seconds
+
+↓
+
+Expires
+```
+
+Examples of authenticator applications include those implementing the TOTP standard.
+
+---
+
+# SMS OTP
+
+SMS-based OTPs remain common but have limitations.
+
+Risks include:
+
+- SIM swapping
+- SMS interception
+- Mobile network attacks
+- Social engineering
+
+Where possible, authenticator apps or security keys provide stronger protection.
+
+---
+
+# Push Authentication
+
+Authentication flow:
+
+```
+Login Attempt
+
+↓
+
+Push Notification
+
+↓
+
+Approve
+
+↓
+
+Authenticated
+```
+
+Benefits:
+
+- Convenient
+- No manual code entry
+
+Potential risk:
+
+Repeated prompts may lead users to approve malicious requests ("MFA fatigue").
+
+---
+
+# Authentication Method Comparison
+
+| Method | Security | Phishing Resistance | User Convenience |
+|---------|----------|--------------------|------------------|
+| Password | Medium | Low | High |
+| Password + TOTP | High | Moderate | Moderate |
+| SMS OTP | Moderate | Low | High |
+| Push Authentication | High | Moderate | High |
+| Hardware Security Key | Very High | High | Moderate |
+| Passkey (FIDO2/WebAuthn) | Very High | High | High |
+
+---
+
+# Key Takeaways
+
+- Passwords should always be stored using modern password hashing algorithms such as Argon2, bcrypt, scrypt, or PBKDF2.
+- Salts protect against precomputed attacks, while peppers add an additional layer of defense when managed securely.
+- Password managers improve password quality and reduce reuse.
+- Passwordless authentication eliminates many risks associated with shared secrets.
+- FIDO2, WebAuthn, passkeys, and hardware security keys provide strong, phishing-resistant authentication and represent the direction of modern identity systems.
