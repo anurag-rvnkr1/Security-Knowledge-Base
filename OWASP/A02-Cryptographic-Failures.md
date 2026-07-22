@@ -1777,3 +1777,610 @@ Security testing should verify:
 - Protect passwords using dedicated password-hashing algorithms like Argon2 or bcrypt.
 - Secure key management is just as important as selecting strong algorithms.
 
+# Detection
+
+Detecting cryptographic failures requires evaluating how sensitive data is protected both **in transit** and **at rest**. Security assessments should verify algorithms, protocol versions, key management, certificate validation, and secret handling.
+
+---
+
+# Manual Testing
+
+## 1. Verify HTTPS Enforcement
+
+Check whether all sensitive pages automatically redirect from HTTP to HTTPS.
+
+Example:
+
+```
+http://example.com/login
+```
+
+Expected:
+
+```
+301/302 Redirect
+
+↓
+
+https://example.com/login
+```
+
+If credentials can be submitted over HTTP, the application is vulnerable.
+
+---
+
+## 2. Inspect TLS Configuration
+
+Review:
+
+- Supported TLS versions
+- Cipher suites
+- Certificate chain
+- Key length
+- Expiration date
+- HSTS configuration
+
+---
+
+## 3. Inspect Cookies
+
+Authentication cookies should include:
+
+```
+Secure
+```
+
+```
+HttpOnly
+```
+
+```
+SameSite=Lax
+```
+
+or
+
+```
+SameSite=Strict
+```
+
+Missing attributes increase the risk of session theft.
+
+---
+
+## 4. Search for Sensitive Data Exposure
+
+Look for:
+
+- Passwords
+- API keys
+- Access tokens
+- JWT secrets
+- Database credentials
+- Credit card numbers
+- Personal information
+
+Inspect:
+
+- HTML source
+- JavaScript files
+- API responses
+- Mobile application packages
+- Git repositories
+- Configuration files
+
+---
+
+## 5. Review Password Storage
+
+Verify that passwords use modern password hashing algorithms:
+
+✔ Argon2
+
+✔ bcrypt
+
+✔ scrypt
+
+✔ PBKDF2
+
+Never store:
+
+- Plaintext passwords
+- MD5 hashes
+- SHA-1 hashes
+- Unsalted hashes
+
+---
+
+# Automated Detection
+
+## Burp Suite
+
+Useful for:
+
+- Identifying HTTP endpoints
+- Inspecting cookies
+- Finding mixed content
+- Reviewing security headers
+- Detecting exposed secrets in responses
+
+---
+
+## Nmap
+
+Check supported TLS versions:
+
+```bash
+nmap --script ssl-enum-ciphers \
+-p 443 example.com
+```
+
+Provides:
+
+- TLS versions
+- Supported ciphers
+- Weak cipher identification
+
+---
+
+## OpenSSL
+
+Retrieve certificate details:
+
+```bash
+openssl s_client \
+-connect example.com:443
+```
+
+Useful for verifying:
+
+- Certificate chain
+- Expiration
+- Issuer
+- Supported protocol
+
+---
+
+## SSL Labs
+
+Analyze:
+
+- TLS configuration
+- Cipher suites
+- Certificate quality
+- HSTS
+- Forward secrecy
+- Overall security rating
+
+---
+
+# Prevention
+
+Strong cryptography requires secure implementation, continuous maintenance, and disciplined key management.
+
+---
+
+## 1. Use Modern Algorithms
+
+Encryption:
+
+- AES-256-GCM
+- ChaCha20-Poly1305
+
+Integrity:
+
+- SHA-256
+- SHA-3
+
+Password Storage:
+
+- Argon2id
+- bcrypt
+- scrypt
+- PBKDF2
+
+---
+
+## 2. Disable Weak Algorithms
+
+Remove support for:
+
+- DES
+- 3DES
+- RC4
+- MD5
+- SHA-1
+- SSLv2
+- SSLv3
+- TLS 1.0
+- TLS 1.1
+
+---
+
+## 3. Enforce HTTPS Everywhere
+
+Every page handling sensitive information should use HTTPS.
+
+Implement:
+
+- HTTP → HTTPS redirects
+- HSTS
+- Secure cookies
+- Modern TLS
+
+---
+
+## 4. Protect Secrets
+
+Never hardcode:
+
+- Passwords
+- API keys
+- JWT secrets
+- Database credentials
+- Encryption keys
+
+Use:
+
+- Environment variables
+- Secret managers
+- KMS/HSM solutions
+
+---
+
+## 5. Secure Key Management
+
+Follow the full key lifecycle:
+
+```
+Generate
+
+↓
+
+Store
+
+↓
+
+Rotate
+
+↓
+
+Backup
+
+↓
+
+Revoke
+
+↓
+
+Destroy
+```
+
+Limit key access using least privilege and audit all key usage.
+
+---
+
+## 6. Encrypt Sensitive Data at Rest
+
+Examples:
+
+- Database encryption
+- Disk encryption
+- Backup encryption
+- Object storage encryption
+
+Only encrypt data that requires confidentiality, and manage keys separately from the encrypted data.
+
+---
+
+# Secure Coding Examples
+
+## Python
+
+Password hashing with `bcrypt`:
+
+```python
+import bcrypt
+
+password = b"StrongPassword123!"
+
+hashed = bcrypt.hashpw(
+    password,
+    bcrypt.gensalt()
+)
+
+print(hashed)
+```
+
+---
+
+## Java
+
+Generate secure random bytes:
+
+```java
+import java.security.SecureRandom;
+
+SecureRandom random =
+    new SecureRandom();
+
+byte[] key = new byte[32];
+
+random.nextBytes(key);
+```
+
+---
+
+## Node.js
+
+Generate a secure token:
+
+```javascript
+const crypto = require("crypto");
+
+const token =
+    crypto.randomBytes(32)
+          .toString("hex");
+
+console.log(token);
+```
+
+---
+
+## Environment Variables
+
+Instead of:
+
+```python
+SECRET_KEY = "admin123"
+```
+
+Use:
+
+```python
+import os
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+```
+
+---
+
+# Best Practices
+
+✔ Encrypt sensitive data in transit using TLS.
+
+✔ Encrypt sensitive data at rest when appropriate.
+
+✔ Use strong, well-vetted cryptographic algorithms.
+
+✔ Hash passwords with dedicated password-hashing algorithms.
+
+✔ Use unique salts for every password.
+
+✔ Consider using a server-side pepper for additional protection.
+
+✔ Rotate cryptographic keys periodically.
+
+✔ Store secrets outside application code.
+
+✔ Keep cryptographic libraries up to date.
+
+✔ Validate TLS certificates correctly.
+
+✔ Disable insecure protocols and cipher suites.
+
+✔ Review cryptographic implementations during code reviews.
+
+✔ Perform regular penetration testing and configuration audits.
+
+---
+
+# Useful Commands
+
+## View Certificate
+
+```bash
+openssl s_client \
+-connect example.com:443
+```
+
+---
+
+## Check Certificate Dates
+
+```bash
+openssl x509 \
+-noout \
+-dates \
+-in certificate.pem
+```
+
+---
+
+## Generate SHA-256 Hash
+
+```bash
+echo "hello" | sha256sum
+```
+
+---
+
+## Generate Random Bytes
+
+```bash
+openssl rand -hex 32
+```
+
+---
+
+## Scan TLS Configuration
+
+```bash
+nmap \
+--script ssl-enum-ciphers \
+-p 443 example.com
+```
+
+---
+
+# Practical Lab
+
+## Objective
+
+Assess the cryptographic posture of a web application.
+
+---
+
+## Lab Steps
+
+1. Deploy or access a web application (e.g., OWASP Juice Shop).
+
+2. Confirm all sensitive pages use HTTPS.
+
+3. Inspect cookies for:
+
+- Secure
+- HttpOnly
+- SameSite
+
+4. Review the TLS certificate.
+
+5. Scan supported TLS versions using Nmap.
+
+6. Examine the certificate using OpenSSL.
+
+7. Search responses and JavaScript files for exposed secrets.
+
+8. Document findings and recommend mitigations.
+
+---
+
+## Expected Learning Outcomes
+
+You should be able to:
+
+- Evaluate HTTPS implementations.
+- Identify weak TLS configurations.
+- Recognize insecure password storage.
+- Detect exposed secrets.
+- Recommend modern cryptographic controls.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is a Cryptographic Failure?
+
+A vulnerability caused by missing, weak, or improperly implemented cryptographic protections, resulting in exposure or compromise of sensitive information.
+
+---
+
+### Why was "Sensitive Data Exposure" renamed?
+
+Because the underlying issue is incorrect implementation of cryptography rather than the exposure itself.
+
+---
+
+### What is the difference between encryption and hashing?
+
+- Encryption is reversible with a key and provides confidentiality.
+- Hashing is one-way and is primarily used for integrity verification and password storage.
+
+---
+
+### Why is Base64 not encryption?
+
+Base64 is an encoding mechanism. It can be decoded by anyone and provides no confidentiality.
+
+---
+
+## Intermediate
+
+### Why shouldn't passwords be encrypted?
+
+Encrypted passwords can be decrypted if the key is compromised. Passwords should instead be hashed using dedicated password-hashing algorithms such as Argon2 or bcrypt.
+
+---
+
+### What is the purpose of a salt?
+
+A salt is a unique random value added before hashing. It prevents identical passwords from producing identical hashes and defeats rainbow table attacks.
+
+---
+
+### What is the purpose of a pepper?
+
+A pepper is a secret value stored separately from the database and combined with passwords before hashing. It adds an additional layer of defense if the password database is compromised.
+
+---
+
+### Why does HTTPS use both symmetric and asymmetric cryptography?
+
+Asymmetric cryptography is used during the TLS handshake to establish trust and exchange session keys securely. Symmetric cryptography is then used for bulk data encryption because it is significantly faster.
+
+---
+
+## Advanced
+
+### What is Forward Secrecy?
+
+Forward Secrecy ensures that if a server's long-term private key is compromised, previously captured encrypted sessions remain secure because each session used a unique ephemeral key.
+
+---
+
+### Why is Argon2 preferred over MD5?
+
+Argon2 is intentionally slow, memory-intensive, and resistant to GPU and ASIC attacks. MD5 is extremely fast and vulnerable to collisions, making it unsuitable for password storage.
+
+---
+
+### How would you assess an application's cryptographic implementation during a penetration test?
+
+A thorough assessment includes:
+
+- Verifying HTTPS enforcement.
+- Reviewing TLS versions and cipher suites.
+- Inspecting certificates.
+- Checking cookie security attributes.
+- Evaluating password storage.
+- Searching for exposed secrets.
+- Reviewing key management practices.
+- Identifying deprecated algorithms or insecure protocol usage.
+
+---
+
+# References
+
+## OWASP
+
+- OWASP Top 10 (2021)
+- OWASP Cryptographic Storage Cheat Sheet
+- OWASP Transport Layer Security Cheat Sheet
+- OWASP Password Storage Cheat Sheet
+- OWASP ASVS
+- OWASP Web Security Testing Guide
+
+## Standards
+
+- NIST SP 800-57 (Key Management)
+- NIST SP 800-63B (Digital Identity Guidelines)
+- FIPS 140-3
+- RFC 8446 (TLS 1.3)
+
+## MITRE
+
+- CWE-295: Improper Certificate Validation
+- CWE-321: Use of Hard-coded Cryptographic Key
+- CWE-326: Inadequate Encryption Strength
+- CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+- CWE-328: Use of Weak Hash
+
+---
+
+# Summary
+
+Cryptographic Failures occur when applications fail to adequately protect sensitive information through proper cryptographic design and implementation. Strong algorithms alone are not sufficient—secure key management, modern TLS configurations, proper password hashing, certificate validation, and disciplined secret management are equally important.
+
+By using well-established cryptographic standards, regularly reviewing implementations, and following OWASP and NIST guidance, organizations can significantly reduce the risk of data compromise and build resilient, trustworthy applications.
