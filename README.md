@@ -1,4 +1,3 @@
-# 🛡️ Cybersecurity Notes
 
 <div align="center">
 
