@@ -494,3 +494,761 @@ Modern systems rely on cryptography in many areas:
 - Encryption protects confidentiality, while hashing verifies integrity.
 - Base64 encoding is **not** a security mechanism.
 - Strong cryptographic design is essential for protecting modern applications, user data, and communications.
+
+# Core Cryptographic Concepts
+
+To implement secure applications, it is essential to understand the major cryptographic techniques and where each should be used. Using the wrong cryptographic primitive—or using the right one incorrectly—is a common cause of security vulnerabilities.
+
+---
+
+# Symmetric Encryption
+
+## Overview
+
+Symmetric encryption uses **a single secret key** for both encryption and decryption.
+
+```
+          Secret Key
+              │
+              ▼
+Plaintext → Encrypt → Ciphertext
+                           │
+                           ▼
+                   Decrypt → Plaintext
+              ▲
+              │
+          Same Secret Key
+```
+
+Both the sender and the receiver must know the same secret key.
+
+---
+
+## Advantages
+
+- Very fast
+- Efficient for large amounts of data
+- Low CPU usage
+- Ideal for databases, files, backups, and VPN traffic
+
+---
+
+## Disadvantages
+
+- Secure key distribution is difficult
+- If the key is compromised, all encrypted data is compromised
+- Not suitable for exchanging secrets over an insecure channel
+
+---
+
+## Common Algorithms
+
+### AES (Advanced Encryption Standard)
+
+The current industry standard.
+
+Supports:
+
+- AES-128
+- AES-192
+- AES-256
+
+Widely used in:
+
+- HTTPS
+- BitLocker
+- FileVault
+- VPNs
+- Cloud Storage
+- Database Encryption
+
+---
+
+### ChaCha20
+
+A modern stream cipher.
+
+Advantages:
+
+- Very fast on mobile devices
+- Excellent software performance
+- Resistant to timing attacks
+
+Frequently paired with:
+
+```
+ChaCha20-Poly1305
+```
+
+---
+
+## Example
+
+```
+Message
+
+↓
+
+AES-256
+
+↓
+
+Ciphertext
+
+↓
+
+AES-256
+
+↓
+
+Original Message
+```
+
+---
+
+# Asymmetric Encryption
+
+## Overview
+
+Asymmetric encryption uses **two mathematically related keys**.
+
+```
+Public Key
+
+↓
+
+Encrypt
+
+↓
+
+Ciphertext
+
+↓
+
+Private Key
+
+↓
+
+Decrypt
+```
+
+The keys are different.
+
+```
+Public Key
+
+Can be shared.
+```
+
+```
+Private Key
+
+Must remain secret.
+```
+
+---
+
+## Advantages
+
+- No need to share a secret key beforehand
+- Enables secure communication over the Internet
+- Supports digital signatures
+- Enables certificate-based authentication
+
+---
+
+## Disadvantages
+
+- Much slower than symmetric encryption
+- Computationally expensive
+- Not suitable for encrypting large files
+
+---
+
+## Common Algorithms
+
+### RSA
+
+One of the oldest public-key algorithms.
+
+Common key sizes:
+
+```
+2048-bit
+
+3072-bit
+
+4096-bit
+```
+
+Used for:
+
+- Key exchange
+- Digital signatures
+- Certificates
+
+---
+
+### ECC (Elliptic Curve Cryptography)
+
+Provides equivalent security with much smaller keys.
+
+Advantages:
+
+- Faster
+- Smaller certificates
+- Better mobile performance
+
+Widely used in:
+
+- TLS
+- Mobile applications
+- Cryptocurrency
+- Modern authentication systems
+
+---
+
+# Why HTTPS Uses Both
+
+Many people assume HTTPS uses only RSA.
+
+It actually combines symmetric and asymmetric cryptography.
+
+```
+Browser
+
+        │
+
+Public Key
+
+        │
+
+Generate AES Session Key
+
+        │
+
+Encrypt Session Key
+
+        │
+
+Server
+
+Decrypt Session Key
+
+        │
+
+Both now share AES Key
+
+        │
+
+Encrypted Communication
+```
+
+After the secure handshake, nearly all communication uses fast symmetric encryption (AES or ChaCha20).
+
+---
+
+# TLS (Transport Layer Security)
+
+TLS secures communication between client and server.
+
+Examples:
+
+```
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+Web Server
+```
+
+```
+Mobile App
+
+↓
+
+TLS
+
+↓
+
+API
+```
+
+```
+Email Client
+
+↓
+
+TLS
+
+↓
+
+Mail Server
+```
+
+---
+
+## TLS Handshake
+
+Simplified process:
+
+```
+Client
+
+↓
+
+Hello
+
+↓
+
+Server
+
+↓
+
+Certificate
+
+↓
+
+Public Key Verification
+
+↓
+
+Generate Session Key
+
+↓
+
+Encrypted Channel
+
+↓
+
+Secure Communication
+```
+
+The handshake:
+
+- Verifies server identity
+- Negotiates encryption algorithms
+- Establishes secure session keys
+
+---
+
+# Public Key Infrastructure (PKI)
+
+PKI enables trust on the Internet.
+
+```
+Certificate Authority
+
+↓
+
+Signs Certificate
+
+↓
+
+Website
+
+↓
+
+Browser
+
+↓
+
+Trusted Connection
+```
+
+Without PKI, attackers could easily impersonate websites.
+
+---
+
+## Digital Certificates
+
+A certificate contains:
+
+- Domain Name
+- Public Key
+- Certificate Authority
+- Expiration Date
+- Signature
+- Serial Number
+
+Example:
+
+```
+www.bank.com
+
+↓
+
+Certificate
+
+↓
+
+Trusted
+```
+
+---
+
+# Certificate Authorities (CA)
+
+Examples:
+
+- DigiCert
+- GlobalSign
+- Let's Encrypt
+- Sectigo
+
+Browsers trust these authorities.
+
+If a certificate is signed by a trusted CA, browsers establish a secure connection.
+
+---
+
+# Digital Signatures
+
+Encryption protects confidentiality.
+
+Digital signatures protect:
+
+- Authenticity
+- Integrity
+- Non-repudiation
+
+Process:
+
+```
+Message
+
+↓
+
+Hash
+
+↓
+
+Private Key
+
+↓
+
+Digital Signature
+```
+
+Verification:
+
+```
+Message
+
+↓
+
+Hash
+
+↓
+
+Public Key
+
+↓
+
+Verify Signature
+```
+
+If verification succeeds:
+
+✔ Message has not changed
+
+✔ Sender is authentic
+
+---
+
+# Hash Functions
+
+A cryptographic hash converts data into a fixed-length value.
+
+```
+Input
+
+↓
+
+SHA-256
+
+↓
+
+64-character Hash
+```
+
+Properties:
+
+- Deterministic
+- Fast
+- One-way
+- Collision resistant
+- Avalanche effect
+
+---
+
+## Example
+
+```
+Password123
+
+↓
+
+SHA-256
+
+↓
+
+ef92b778...
+```
+
+Changing one character completely changes the output.
+
+---
+
+# Password Hashing
+
+Passwords should **never** be encrypted for storage.
+
+Instead:
+
+```
+Password
+
+↓
+
+Password Hash Function
+
+↓
+
+Store Hash
+```
+
+During login:
+
+```
+User Password
+
+↓
+
+Hash
+
+↓
+
+Compare
+
+↓
+
+Stored Hash
+```
+
+---
+
+## Modern Password Hashing Algorithms
+
+### Argon2
+
+Winner of the Password Hashing Competition.
+
+Recommended for new systems.
+
+Provides protection against:
+
+- GPU attacks
+- ASIC attacks
+- Rainbow tables
+
+---
+
+### bcrypt
+
+Still widely used.
+
+Features:
+
+- Automatic salting
+- Configurable work factor
+- Resistant to brute-force attacks
+
+---
+
+### scrypt
+
+Designed to require large amounts of memory.
+
+Helps defend against specialized cracking hardware.
+
+---
+
+### PBKDF2
+
+Recommended in many enterprise environments.
+
+Uses:
+
+- Iterations
+- Salt
+- Configurable work factor
+
+---
+
+## Never Use
+
+❌ MD5
+
+❌ SHA-1
+
+❌ Plain SHA-256 for password storage
+
+These algorithms are too fast and unsuitable for protecting passwords against offline attacks.
+
+---
+
+# Salting
+
+A salt is a random value added before hashing.
+
+Instead of:
+
+```
+Password
+
+↓
+
+Hash
+```
+
+Use:
+
+```
+Random Salt
+
++
+
+Password
+
+↓
+
+Hash
+```
+
+Benefits:
+
+- Prevents rainbow table attacks
+- Ensures identical passwords produce different hashes
+- Forces attackers to crack each password individually
+
+---
+
+## Example
+
+User A
+
+```
+Password123
+```
+
+Salt
+
+```
+AB12
+```
+
+Stored:
+
+```
+AB12 + Hash
+```
+
+---
+
+User B
+
+Same password:
+
+```
+Password123
+```
+
+Different salt:
+
+```
+XY91
+```
+
+Different hash produced.
+
+---
+
+# Pepper
+
+A pepper is an additional secret value stored separately from the database.
+
+```
+Password
+
++
+
+Salt
+
++
+
+Pepper
+
+↓
+
+Hash
+```
+
+Unlike salts, peppers are **not stored alongside user records**.
+
+Even if the database is compromised, the attacker still needs the server-side pepper to verify guesses efficiently.
+
+---
+
+# Cryptographically Secure Random Number Generator (CSPRNG)
+
+Randomness is essential for generating:
+
+- Session IDs
+- Password reset tokens
+- API keys
+- Encryption keys
+- Initialization Vectors (IVs)
+- Nonces
+
+Weak random number generators can make these values predictable.
+
+Examples of secure sources include:
+
+- `/dev/urandom` (Linux)
+- `os.urandom()` (Python)
+- `SecureRandom` (Java)
+- `crypto.randomBytes()` (Node.js)
+
+Avoid general-purpose pseudo-random generators (such as `rand()` or `Math.random()`) for security-sensitive values.
+
+---
+
+# Key Management
+
+Even the strongest encryption is ineffective if cryptographic keys are mishandled.
+
+Best practices include:
+
+- Generate strong keys using a CSPRNG.
+- Store keys separately from encrypted data.
+- Rotate keys periodically.
+- Restrict key access using least privilege.
+- Back up keys securely.
+- Use dedicated key management systems (KMS) or Hardware Security Modules (HSMs) for sensitive environments.
+
+---
+
+# Key Takeaways
+
+- **Symmetric encryption** is fast and ideal for protecting large amounts of data.
+- **Asymmetric encryption** enables secure key exchange and digital signatures.
+- **TLS** combines both approaches to secure Internet communications.
+- **Hashing** is used for integrity and password verification, not confidentiality.
+- Passwords should be stored using dedicated password-hashing algorithms such as **Argon2**, **bcrypt**, **scrypt**, or **PBKDF2**.
+- Salts and peppers strengthen password storage against offline attacks.
+- Secure random number generation and proper key management are critical components of any cryptographic system.
