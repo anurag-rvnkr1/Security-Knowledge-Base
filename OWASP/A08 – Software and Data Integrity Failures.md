@@ -1057,3 +1057,736 @@ Because deserialization often occurs in trusted application code, successful exp
 - Binary object serialization formats generally require greater caution than simple data formats.
 - Use schema validation, trusted serializers, and least-privilege design to reduce deserialization risk.
 - Prefer simple data formats (such as JSON) for untrusted input when practical, and avoid reconstructing arbitrary object graphs from external data.
+
+# Software Supply Chain Integrity
+
+---
+
+# Overview
+
+Modern applications depend on software produced by many different parties.
+
+A typical enterprise application may include:
+
+- Open-source libraries
+- Third-party SDKs
+- Container images
+- Build tools
+- Operating system packages
+- Cloud SDKs
+- CI/CD pipelines
+
+Every component must be trusted.
+
+A compromise at any point can affect every downstream system.
+
+```
+Developer
+
+↓
+
+Source Code
+
+↓
+
+Dependencies
+
+↓
+
+Build Pipeline
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment
+
+↓
+
+Production
+```
+
+This entire path is known as the **software supply chain**.
+
+---
+
+# Trust in Software
+
+Software should never be trusted simply because it exists.
+
+Instead, organizations should verify:
+
+- Who created it
+- Whether it has been modified
+- Whether it originated from a trusted source
+- Whether it is the expected version
+- Whether it has been approved for deployment
+
+Trust should always be established through verification rather than assumption.
+
+---
+
+# Software Integrity Verification
+
+```
+Software
+
+↓
+
+Checksum
+
+↓
+
+Digital Signature
+
+↓
+
+Publisher Verification
+
+↓
+
+Deployment
+```
+
+If any verification step fails, deployment should stop until the issue is investigated.
+
+---
+
+# Hash Functions
+
+## Overview
+
+Hash functions produce a fixed-length digest representing data.
+
+Example:
+
+```
+Installer.exe
+
+↓
+
+SHA-256
+
+↓
+
+A94F9E...
+```
+
+If the file changes—even by a single byte—the resulting hash changes.
+
+---
+
+# Why Hashes Matter
+
+Imagine downloading software from the internet.
+
+Without verification:
+
+```
+Download
+
+↓
+
+Install
+
+↓
+
+Hope It Is Genuine
+```
+
+With verification:
+
+```
+Download
+
+↓
+
+Calculate Hash
+
+↓
+
+Compare Vendor Hash
+
+↓
+
+Match?
+
+↓
+
+Install
+```
+
+A matching hash indicates the file has not been altered since the vendor generated the reference value.
+
+---
+
+# Checksums
+
+A checksum is a value used to detect accidental or unauthorized modifications.
+
+Common algorithms:
+
+- SHA-256
+- SHA-384
+- SHA-512
+
+Legacy algorithms such as **MD5** and **SHA-1** should not be relied upon for modern integrity verification due to known cryptographic weaknesses.
+
+---
+
+# Digital Signatures
+
+## Overview
+
+Hashes verify integrity, but they do not identify **who created the file**.
+
+Digital signatures provide:
+
+- Integrity
+- Authenticity
+- Non-repudiation
+
+Signing process:
+
+```
+Software
+
+↓
+
+Hash
+
+↓
+
+Sign Hash
+
+↓
+
+Digital Signature
+```
+
+Verification process:
+
+```
+Software
+
+↓
+
+Hash
+
+↓
+
+Verify Signature
+
+↓
+
+Trusted?
+```
+
+---
+
+# Code Signing
+
+Code signing applies a digital signature to software before distribution.
+
+```
+Developer
+
+↓
+
+Compile
+
+↓
+
+Sign Binary
+
+↓
+
+Publish
+
+↓
+
+Customer Verifies Signature
+```
+
+Benefits include:
+
+- Detecting tampering
+- Identifying the publisher
+- Building user trust
+
+---
+
+# Signing Certificates
+
+Code signing relies on cryptographic certificates issued by trusted Certificate Authorities (CAs).
+
+```
+Certificate Authority
+
+↓
+
+Developer Certificate
+
+↓
+
+Sign Application
+
+↓
+
+Verify Publisher
+```
+
+If signing keys are compromised, attackers may produce software that appears legitimate.
+
+Protecting signing keys is therefore critical.
+
+---
+
+# Package Integrity
+
+Package managers often support integrity verification.
+
+Examples include:
+
+```
+Python
+
+↓
+
+PyPI
+```
+
+```
+Node.js
+
+↓
+
+npm
+```
+
+```
+Java
+
+↓
+
+Maven Central
+```
+
+Organizations should:
+
+- Prefer official repositories.
+- Verify package authenticity where supported.
+- Avoid downloading packages from untrusted mirrors.
+
+---
+
+# Artifact Signing
+
+Artifacts include:
+
+- Executables
+- Container images
+- Libraries
+- Packages
+- Archives
+
+Before deployment:
+
+```
+Artifact
+
+↓
+
+Verify Signature
+
+↓
+
+Deploy
+```
+
+Unsigned or unexpectedly modified artifacts should be investigated before use.
+
+---
+
+# Container Image Integrity
+
+Containers should originate from trusted registries.
+
+Example workflow:
+
+```
+Container Image
+
+↓
+
+Scan
+
+↓
+
+Verify Signature
+
+↓
+
+Deploy
+```
+
+Organizations should avoid relying on mutable tags such as `latest` in production deployments. Prefer version-pinned or digest-pinned images.
+
+---
+
+# Secure Boot
+
+Secure Boot protects the startup process by ensuring that only trusted boot components execute.
+
+```
+Power On
+
+↓
+
+Firmware Verification
+
+↓
+
+Bootloader Verification
+
+↓
+
+Operating System
+
+↓
+
+System Starts
+```
+
+This helps prevent unauthorized boot-time malware.
+
+---
+
+# Trusted Platform Module (TPM)
+
+A TPM is a hardware security component that securely stores cryptographic material and measures aspects of the system state.
+
+Common uses include:
+
+- Secure Boot support
+- Disk encryption key protection
+- Device identity
+- Platform attestation
+
+---
+
+# Platform Attestation
+
+Attestation allows one system to verify another system's integrity.
+
+```
+System
+
+↓
+
+Measurements
+
+↓
+
+Attestation
+
+↓
+
+Verifier
+
+↓
+
+Trusted?
+```
+
+This is commonly used in cloud computing and zero-trust environments.
+
+---
+
+# Sigstore
+
+Sigstore is an open-source ecosystem for signing and verifying software artifacts.
+
+Its goals include:
+
+- Simplifying artifact signing
+- Improving transparency
+- Supporting modern software supply chains
+
+Developers can verify that an artifact was produced by the expected identity and has not been modified.
+
+---
+
+# Cosign
+
+Cosign is a popular tool within the Sigstore ecosystem for signing and verifying container images and other artifacts.
+
+Example workflow:
+
+```
+Container Image
+
+↓
+
+Sign
+
+↓
+
+Registry
+
+↓
+
+Verify Before Deployment
+```
+
+Integrating verification into CI/CD pipelines helps prevent unauthorized artifacts from reaching production.
+
+---
+
+# SLSA (Supply-chain Levels for Software Artifacts)
+
+SLSA is a security framework designed to strengthen software build integrity.
+
+It provides guidance for:
+
+- Secure build systems
+- Provenance generation
+- Artifact integrity
+- Build isolation
+- Tamper resistance
+
+Higher SLSA levels generally provide stronger assurances about the software build process.
+
+---
+
+# Build Provenance
+
+Build provenance records how software was produced.
+
+Typical information includes:
+
+- Source repository
+- Commit identifier
+- Build system
+- Build configuration
+- Build timestamp
+- Builder identity
+
+Example:
+
+```
+Source Code
+
+↓
+
+Build Server
+
+↓
+
+Signed Provenance
+
+↓
+
+Artifact
+```
+
+This information helps organizations verify that an artifact originated from an expected build process.
+
+---
+
+# in-toto Attestations
+
+in-toto is a framework for recording and verifying each step of the software supply chain.
+
+Example:
+
+```
+Developer
+
+↓
+
+Source Commit
+
+↓
+
+Build
+
+↓
+
+Test
+
+↓
+
+Package
+
+↓
+
+Deploy
+```
+
+Each stage produces signed metadata, allowing consumers to verify that required steps were completed and were not tampered with.
+
+---
+
+# Reproducible Builds
+
+A reproducible build produces identical outputs when built from the same source code and environment.
+
+```
+Source Code
+
+↓
+
+Build A
+
+↓
+
+Artifact X
+```
+
+```
+Same Source
+
+↓
+
+Build B
+
+↓
+
+Artifact X
+```
+
+Matching outputs increase confidence that the build process has not introduced unauthorized changes.
+
+---
+
+# Secure Update Mechanisms
+
+Applications should verify updates before installation.
+
+```
+Update Available
+
+↓
+
+Download
+
+↓
+
+Verify Signature
+
+↓
+
+Verify Version
+
+↓
+
+Install
+```
+
+Applications should reject updates that fail verification.
+
+---
+
+# Real-World Case Studies
+
+## SolarWinds (2020)
+
+Attackers compromised the software build process.
+
+```
+Build Server
+
+↓
+
+Malicious Build
+
+↓
+
+Signed Update
+
+↓
+
+Thousands of Customers
+```
+
+This incident demonstrated that trusted software updates can become large-scale attack vectors when build integrity is compromised.
+
+---
+
+## XZ Utils (2024)
+
+Attackers gradually gained influence within an open-source project and introduced a backdoor into a widely used compression library.
+
+The incident highlighted the importance of maintainer trust, code review, and independent verification throughout the supply chain.
+
+---
+
+## Codecov (2021)
+
+Attackers modified the Codecov Bash uploader.
+
+Result:
+
+```
+CI/CD
+
+↓
+
+Environment Variables
+
+↓
+
+Credentials Exposed
+```
+
+This showed how compromising development tooling can impact many organizations simultaneously.
+
+---
+
+## NotPetya via MeDoc (2017)
+
+Attackers compromised the update mechanism of the MeDoc accounting software.
+
+```
+Trusted Update
+
+↓
+
+Malicious Payload
+
+↓
+
+Organization Compromise
+```
+
+The attack spread rapidly across organizations and caused widespread operational disruption.
+
+---
+
+# Enterprise Supply Chain Security Principles
+
+A mature software supply chain should include:
+
+- Trusted repositories
+- Dependency governance
+- Artifact signing
+- Build provenance
+- Secure CI/CD
+- Continuous vulnerability scanning
+- SBOM generation
+- Cryptographic verification
+- Separation of duties
+- Change management
+
+---
+
+# Key Takeaways
+
+- Software integrity depends on verifying both the origin and integrity of every component.
+- Hashes detect modification, while digital signatures also verify authenticity.
+- Code signing, artifact signing, and secure update mechanisms reduce the risk of tampered software reaching production.
+- Frameworks and technologies such as Sigstore, Cosign, SLSA, in-toto, Secure Boot, and TPM strengthen software supply chain security.
+- Real-world incidents such as SolarWinds, XZ Utils, Codecov, and NotPetya demonstrate that attacks on trusted software distribution channels can have global consequences.
