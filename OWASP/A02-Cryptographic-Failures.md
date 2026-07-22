@@ -1252,3 +1252,528 @@ Best practices include:
 - Passwords should be stored using dedicated password-hashing algorithms such as **Argon2**, **bcrypt**, **scrypt**, or **PBKDF2**.
 - Salts and peppers strengthen password storage against offline attacks.
 - Secure random number generation and proper key management are critical components of any cryptographic system.
+
+# Common Cryptographic Misconfigurations
+
+Cryptography is only as secure as its implementation. Even when strong algorithms are available, poor configuration or misuse can completely undermine security.
+
+Many real-world data breaches are caused not by breaking encryption, but by **incorrect implementation**.
+
+---
+
+# 1. Using Weak or Deprecated Algorithms
+
+## Overview
+
+Older cryptographic algorithms were once considered secure but are now vulnerable due to advances in cryptanalysis and computing power.
+
+Applications that continue using deprecated algorithms expose sensitive data to unnecessary risk.
+
+---
+
+## Insecure Algorithms
+
+### DES (Data Encryption Standard)
+
+```
+Key Size:
+56 bits
+```
+
+Problems:
+
+- Extremely small key size
+- Vulnerable to brute-force attacks
+- Deprecated
+
+---
+
+### 3DES (Triple DES)
+
+Improved upon DES but is now deprecated.
+
+Problems:
+
+- Slow performance
+- Vulnerable to birthday attacks
+- Replaced by AES
+
+---
+
+### RC4
+
+Previously used in SSL/TLS.
+
+Problems:
+
+- Biased keystream
+- Practical attacks exist
+- Officially prohibited in modern TLS
+
+---
+
+### MD5
+
+Originally designed as a cryptographic hash.
+
+Problems:
+
+- Collision attacks
+- Fast cracking
+- Unsuitable for password storage
+- Unsuitable for digital signatures
+
+Example:
+
+```
+Password
+
+↓
+
+MD5
+
+↓
+
+5f4dcc3b5aa765d61d8327deb882cf99
+```
+
+Attackers can recover many MD5 hashes within seconds using rainbow tables or GPUs.
+
+---
+
+### SHA-1
+
+Once widely trusted.
+
+Now vulnerable to collision attacks.
+
+Should not be used for:
+
+- Certificates
+- Digital signatures
+- Password storage
+
+Use SHA-256 or SHA-3 instead.
+
+---
+
+# Secure Alternatives
+
+| Deprecated | Recommended |
+|------------|-------------|
+| DES | AES-256 |
+| 3DES | AES-GCM |
+| RC4 | ChaCha20-Poly1305 |
+| MD5 | SHA-256 / SHA-3 (integrity only) |
+| SHA-1 | SHA-256 / SHA-3 |
+| Plain SHA-256 (passwords) | Argon2, bcrypt, scrypt, PBKDF2 |
+
+---
+
+# 2. Hardcoded Secrets
+
+One of the most common developer mistakes is embedding secrets directly into source code.
+
+Example:
+
+```python
+API_KEY = "1234567890abcdef"
+```
+
+Or:
+
+```java
+String password = "admin123";
+```
+
+Or:
+
+```javascript
+const jwtSecret = "secret123";
+```
+
+If source code is leaked or pushed to GitHub, attackers immediately obtain these secrets.
+
+---
+
+## Secure Approach
+
+Store secrets using:
+
+- Environment variables
+- Secret management systems
+- Cloud KMS
+- HashiCorp Vault
+- AWS Secrets Manager
+- Azure Key Vault
+- Google Secret Manager
+
+---
+
+# 3. Weak Password Storage
+
+## Insecure
+
+```
+password
+
+↓
+
+MD5
+
+↓
+
+Database
+```
+
+Attackers can recover millions of passwords rapidly using GPU-based cracking.
+
+---
+
+## Secure
+
+```
+Password
+
+↓
+
+Salt
+
+↓
+
+Argon2
+
+↓
+
+Database
+```
+
+Argon2 is intentionally slow and memory-intensive, making offline attacks significantly more expensive.
+
+---
+
+# 4. Missing HTTPS
+
+Some applications still transmit sensitive data over HTTP.
+
+```
+Browser
+
+↓
+
+HTTP
+
+↓
+
+Internet
+
+↓
+
+Server
+```
+
+Traffic is transmitted in plaintext.
+
+Attackers on the same network can capture:
+
+- Usernames
+- Passwords
+- Session cookies
+- Tokens
+- Personal data
+
+---
+
+## Secure Version
+
+```
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+TLS Encryption
+
+↓
+
+Server
+```
+
+The data is encrypted in transit.
+
+---
+
+# 5. Weak TLS Configuration
+
+Even when HTTPS is enabled, poor TLS configuration can introduce vulnerabilities.
+
+Examples include:
+
+- TLS 1.0 enabled
+- TLS 1.1 enabled
+- Weak cipher suites
+- Self-signed certificates in production
+- Expired certificates
+- Missing certificate validation
+- Weak Diffie-Hellman parameters
+
+---
+
+## Recommended Configuration
+
+Enable only modern protocols:
+
+- TLS 1.2
+- TLS 1.3
+
+Disable:
+
+- SSLv2
+- SSLv3
+- TLS 1.0
+- TLS 1.1
+
+---
+
+# 6. Poor Key Management
+
+Strong encryption is ineffective if cryptographic keys are mishandled.
+
+Common mistakes:
+
+- Keys stored in source code
+- Keys committed to Git
+- Same key shared across environments
+- No key rotation
+- No access control
+- Keys stored with encrypted data
+
+---
+
+## Secure Key Lifecycle
+
+```
+Generate
+
+↓
+
+Store Securely
+
+↓
+
+Use
+
+↓
+
+Rotate
+
+↓
+
+Revoke
+
+↓
+
+Destroy
+```
+
+---
+
+# 7. Predictable Random Values
+
+Applications often generate:
+
+- Session IDs
+- Password reset tokens
+- API keys
+- JWT secrets
+
+Using insecure generators such as:
+
+```javascript
+Math.random()
+```
+
+or:
+
+```c
+rand()
+```
+
+can produce predictable values.
+
+---
+
+## Secure Generators
+
+Python:
+
+```python
+import secrets
+
+token = secrets.token_urlsafe(32)
+```
+
+Node.js:
+
+```javascript
+crypto.randomBytes(32)
+```
+
+Java:
+
+```java
+SecureRandom random = new SecureRandom();
+```
+
+---
+
+# 8. Sensitive Data Stored in Plaintext
+
+Examples:
+
+```
+Database
+
+↓
+
+Passwords
+
+↓
+
+Credit Cards
+
+↓
+
+API Keys
+
+↓
+
+Medical Records
+```
+
+If the database is compromised, attackers immediately obtain usable information.
+
+Sensitive information should be encrypted at rest where appropriate, and passwords should be hashed using dedicated password-hashing algorithms.
+
+---
+
+# 9. Improper Certificate Validation
+
+Some applications ignore certificate validation errors.
+
+Example (Python):
+
+```python
+requests.get(
+    url,
+    verify=False
+)
+```
+
+This disables TLS certificate verification and makes the application vulnerable to Man-in-the-Middle (MITM) attacks.
+
+Similarly, mobile applications that trust all certificates or implement insecure certificate validation are at risk.
+
+---
+
+# 10. Client-Side Encryption Misuse
+
+Developers sometimes believe encrypting data in JavaScript alone is sufficient.
+
+Example:
+
+```
+Browser
+
+↓
+
+Encrypt
+
+↓
+
+Send
+```
+
+However:
+
+- Attackers control the browser environment.
+- Client-side code can be modified.
+- Encryption keys embedded in client-side code can be extracted.
+
+Client-side encryption should complement—not replace—server-side security and proper key management.
+
+---
+
+# Real-World Example: Heartbleed (CVE-2014-0160)
+
+Heartbleed was a critical vulnerability in OpenSSL's implementation of the TLS Heartbeat extension.
+
+Impact:
+
+- Allowed attackers to read portions of server memory.
+- Potentially exposed private keys, passwords, cookies, and other sensitive data.
+- Affected millions of servers worldwide.
+
+The flaw was not caused by weak cryptographic algorithms, but by an implementation error in a widely used cryptographic library.
+
+---
+
+# Real-World Example: Equifax (2017)
+
+The Equifax breach exposed personal information of approximately 147 million individuals.
+
+Root cause:
+
+- An unpatched Apache Struts vulnerability.
+
+While not a cryptographic failure itself, the incident highlighted the importance of protecting sensitive data through layered security, including strong cryptography and key management.
+
+---
+
+# Detecting Cryptographic Failures
+
+Security testing should verify:
+
+- Is HTTPS enforced?
+- Are strong TLS versions enabled?
+- Are weak ciphers disabled?
+- Are passwords hashed correctly?
+- Are secrets exposed?
+- Is certificate validation implemented correctly?
+- Are encryption keys stored securely?
+- Is sensitive data encrypted where appropriate?
+
+---
+
+# Manual Testing Checklist
+
+✔ Verify HTTPS on every sensitive page.
+
+✔ Check HTTP response headers.
+
+✔ Inspect cookies (`Secure`, `HttpOnly`, `SameSite`).
+
+✔ Identify weak TLS versions.
+
+✔ Review certificate validity.
+
+✔ Search source code for hardcoded secrets.
+
+✔ Verify password hashing algorithms.
+
+✔ Review key management practices.
+
+---
+
+# Key Takeaways
+
+- Strong cryptographic algorithms are ineffective if implemented incorrectly.
+- Avoid deprecated algorithms such as DES, RC4, MD5, and SHA-1.
+- Never hardcode secrets or cryptographic keys.
+- Always enforce HTTPS with modern TLS configurations.
+- Protect passwords using dedicated password-hashing algorithms like Argon2 or bcrypt.
+- Secure key management is just as important as selecting strong algorithms.
+
