@@ -1044,3 +1044,480 @@ Whether this is possible depends on the database engine and application configur
 - Error messages, timing differences, and application behavior can all reveal sensitive information to attackers.
 - Eliminating SQL Injection requires secure coding practices, least-privilege database accounts, proper error handling, and comprehensive input handling—not simple keyword filtering.
 
+# Other Injection Vulnerabilities
+
+While SQL Injection is the most well-known injection attack, many modern applications use technologies such as NoSQL databases, operating system commands, template engines, LDAP directories, GraphQL APIs, and XML processors. Each of these can become vulnerable if untrusted input is interpreted as executable instructions.
+
+---
+
+# 1. NoSQL Injection
+
+## Overview
+
+NoSQL Injection targets applications using NoSQL databases instead of traditional relational databases.
+
+Common NoSQL databases include:
+
+- MongoDB
+- CouchDB
+- Cassandra
+- Redis (certain use cases)
+- Firebase Firestore (query misuse scenarios)
+
+Unlike SQL databases, NoSQL databases often use JSON-like query structures.
+
+---
+
+## Typical Architecture
+
+```
+User
+
+   │
+
+Web Application
+
+   │
+
+MongoDB Driver
+
+   │
+
+MongoDB Database
+```
+
+If user input is inserted directly into the query object, attackers may manipulate the query logic.
+
+---
+
+## Vulnerable Example
+
+Imagine an application builds a MongoDB query directly from user input.
+
+Conceptually:
+
+```
+User Input
+
+↓
+
+Application
+
+↓
+
+MongoDB Query
+
+↓
+
+Database
+```
+
+If the application fails to validate the structure of incoming JSON, an attacker may inject operators such as comparison operators instead of simple values, potentially altering the intended query.
+
+---
+
+## Common Causes
+
+- Trusting JSON input
+- Dynamic query construction
+- Missing schema validation
+- Lack of input type checking
+
+---
+
+## Potential Impact
+
+- Authentication bypass
+- Data disclosure
+- Unauthorized record access
+- Privilege escalation
+- Database manipulation
+
+---
+
+# Prevention
+
+- Validate input types.
+- Use strict schemas.
+- Reject unexpected JSON operators.
+- Build queries using safe APIs rather than directly accepting client-supplied query objects.
+- Apply least privilege to database accounts.
+
+---
+
+# 2. OS Command Injection
+
+## Overview
+
+OS Command Injection occurs when an application executes operating system commands using user-controlled input.
+
+Instead of attacking the database, the attacker targets the underlying operating system.
+
+---
+
+## Architecture
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+Shell
+
+↓
+
+Operating System
+```
+
+If user input is concatenated into shell commands, attackers may execute unintended system commands.
+
+---
+
+## Common Sources
+
+- Network diagnostic tools
+- Ping utilities
+- File management features
+- Backup scripts
+- Image processing pipelines
+- Administrative utilities
+
+---
+
+## Example (Conceptual)
+
+An application allows users to test connectivity by supplying a host.
+
+Unsafe design:
+
+```
+Application
+
+↓
+
+Build Shell Command
+
+↓
+
+Execute
+```
+
+If user input is not handled safely, it may alter the command being executed.
+
+---
+
+## Possible Impact
+
+- Remote Code Execution (RCE)
+- File disclosure
+- System reconnaissance
+- Malware installation
+- Privilege escalation
+- Full server compromise
+
+---
+
+## Prevention
+
+- Avoid shell execution when native APIs are available.
+- If shell execution is unavoidable, avoid invoking a shell interpreter and pass arguments safely through language-specific process APIs.
+- Validate and whitelist acceptable input.
+- Run services with minimal operating system privileges.
+- Log and monitor command execution.
+
+---
+
+# 3. LDAP Injection
+
+## Overview
+
+LDAP (Lightweight Directory Access Protocol) is commonly used for:
+
+- Active Directory
+- Enterprise authentication
+- User directories
+- Corporate identity management
+
+Applications often build LDAP filters to authenticate users or search directory information.
+
+---
+
+## Architecture
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+LDAP Query
+
+↓
+
+Active Directory
+```
+
+Improper construction of LDAP filters may allow attackers to alter search conditions.
+
+---
+
+## Risks
+
+- Authentication bypass
+- User enumeration
+- Unauthorized directory access
+- Information disclosure
+
+---
+
+## Prevention
+
+- Escape special LDAP characters.
+- Use framework-provided LDAP APIs.
+- Validate input.
+- Restrict directory permissions.
+- Apply least privilege.
+
+---
+
+# 4. XPath Injection
+
+## Overview
+
+XPath is a query language used to retrieve information from XML documents.
+
+Applications that dynamically construct XPath expressions from user input may become vulnerable.
+
+---
+
+## Architecture
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+XPath Query
+
+↓
+
+XML Document
+```
+
+If user input changes the query logic, unauthorized XML data may be retrieved.
+
+---
+
+## Example Use Cases
+
+- Legacy web applications
+- XML configuration systems
+- SOAP services
+- XML authentication systems
+
+---
+
+## Prevention
+
+- Use parameterized XPath APIs where available.
+- Escape reserved characters.
+- Validate user input.
+- Avoid dynamic XPath construction.
+
+---
+
+# 5. Server-Side Template Injection (SSTI)
+
+## Overview
+
+Modern web frameworks often use server-side template engines to generate HTML dynamically.
+
+Popular template engines include:
+
+- Jinja2 (Python)
+- Twig (PHP)
+- Freemarker (Java)
+- Velocity
+- Thymeleaf
+- Smarty
+- Handlebars (server-side usage)
+
+If untrusted input is interpreted as template syntax instead of plain text, attackers may execute template expressions.
+
+---
+
+## Architecture
+
+```
+User Input
+
+↓
+
+Template Engine
+
+↓
+
+HTML Response
+```
+
+Instead of treating input as text, the template engine evaluates it.
+
+---
+
+## Typical Impact
+
+Depending on the template engine:
+
+- Information disclosure
+- File access
+- Remote Code Execution
+- Server compromise
+
+---
+
+## Prevention
+
+- Never render user input directly as templates.
+- Separate template code from user-controlled data.
+- Use sandboxing where supported.
+- Keep template engines updated.
+
+---
+
+# 6. Expression Language (EL) Injection
+
+## Overview
+
+Several Java frameworks evaluate expression languages dynamically.
+
+Examples include:
+
+- Jakarta Expression Language
+- Spring Expression Language (SpEL)
+- OGNL (Object Graph Navigation Language)
+
+Improper evaluation of user-controlled expressions may lead to:
+
+- Authorization bypass
+- Information disclosure
+- Remote Code Execution
+
+---
+
+## Prevention
+
+- Disable unnecessary expression evaluation.
+- Never evaluate user-controlled expressions.
+- Restrict accessible objects and methods.
+- Keep frameworks updated.
+
+---
+
+# 7. GraphQL Injection
+
+## Overview
+
+GraphQL allows clients to request exactly the data they need.
+
+If GraphQL queries, filters, or resolvers fail to validate input correctly, injection-style vulnerabilities may arise.
+
+---
+
+## Common Risks
+
+- Excessive data exposure
+- Unauthorized field access
+- Resolver manipulation
+- Denial of Service through expensive queries
+- Backend injection into downstream systems
+
+---
+
+## Prevention
+
+- Validate input.
+- Implement authorization at the resolver level.
+- Limit query depth and complexity.
+- Disable introspection in production where appropriate.
+- Rate limit API requests.
+
+---
+
+# Comparing Injection Types
+
+| Injection Type | Target Interpreter | Typical Impact |
+|----------------|-------------------|----------------|
+| SQL Injection | SQL Database | Data theft, authentication bypass |
+| NoSQL Injection | NoSQL Database | Unauthorized queries |
+| OS Command Injection | Operating System Shell | Remote Code Execution |
+| LDAP Injection | LDAP Directory | Authentication bypass |
+| XPath Injection | XML Processor | XML data disclosure |
+| SSTI | Template Engine | Remote Code Execution |
+| EL Injection | Expression Engine | Code execution, privilege escalation |
+| GraphQL Injection | GraphQL Resolver | Unauthorized data access |
+
+---
+
+# Detection Methodology
+
+During a penetration test, evaluate every location where user input reaches an interpreter.
+
+Common attack surfaces include:
+
+- URL parameters
+- POST bodies
+- JSON payloads
+- XML requests
+- GraphQL queries
+- HTTP headers
+- Cookies
+- File names
+- Search fields
+- Authentication forms
+
+Testing should determine:
+
+- Is user input reflected?
+- Does application behavior change unexpectedly?
+- Are interpreter errors exposed?
+- Are queries dynamically constructed?
+- Are unexpected operators accepted?
+- Can application logic be altered?
+
+---
+
+# General Prevention Strategy
+
+Regardless of the interpreter involved, the security principles remain consistent:
+
+1. Treat all user input as untrusted.
+2. Validate input against expected formats.
+3. Use safe APIs that separate code from data.
+4. Escape data only when appropriate for the target context.
+5. Avoid dynamic command or query construction.
+6. Apply least privilege to backend services.
+7. Hide detailed error messages from users.
+8. Log suspicious requests and monitor for repeated attack patterns.
+9. Keep frameworks and libraries updated.
+10. Perform regular code reviews and security testing.
+
+---
+
+# Key Takeaways
+
+- Injection vulnerabilities are not limited to SQL databases.
+- Any interpreter that processes untrusted input can become an attack target.
+- The root cause across all injection types is the same: user-controlled input being interpreted as executable instructions.
+- Secure APIs, parameterization, input validation, and least privilege are the most effective defenses.
+- Modern penetration tests should assess SQL, NoSQL, operating system commands, template engines, LDAP, GraphQL, XML, and other interpreters as part of a comprehensive application security review.
