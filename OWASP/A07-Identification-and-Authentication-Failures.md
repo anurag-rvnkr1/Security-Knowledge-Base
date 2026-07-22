@@ -2052,3 +2052,661 @@ Benefits:
 - OAuth 2.0 provides delegated authorization, while OpenID Connect adds authentication and identity information.
 - SAML and Single Sign-On enable centralized authentication for enterprise environments.
 - Secure session and token management are as important as the initial authentication process.
+
+# Authentication Attacks
+
+Modern authentication systems are constantly targeted by attackers because compromising an account often provides direct access to sensitive data without requiring exploitation of software vulnerabilities.
+
+The most common attacks target:
+
+- Passwords
+- Authentication workflows
+- Session management
+- Multi-Factor Authentication (MFA)
+- Identity recovery mechanisms
+- User behavior
+
+---
+
+# Credential Stuffing
+
+## Overview
+
+Credential stuffing is an attack where previously leaked username/password combinations are automatically tested against another application.
+
+Attackers exploit the fact that many users reuse passwords across multiple services.
+
+Example:
+
+```
+Data Breach
+
+↓
+
+Email + Password Leaked
+
+↓
+
+Automated Login Attempts
+
+↓
+
+Another Website
+
+↓
+
+Successful Login
+```
+
+---
+
+## Why Credential Stuffing Works
+
+Users frequently reuse passwords.
+
+Example:
+
+```
+Netflix
+
+↓
+
+Password:
+
+Summer@2025
+
+↓
+
+Bank
+
+↓
+
+Same Password
+
+↓
+
+Account Compromised
+```
+
+---
+
+## Detection Indicators
+
+Possible indicators include:
+
+- High volume of failed logins
+- Multiple usernames from one IP
+- Multiple IPs targeting one account
+- Known breached credentials
+- Automated browser behavior
+- Login attempts from unusual locations
+
+---
+
+## Prevention
+
+- Multi-Factor Authentication
+- Password managers
+- Breached password detection
+- Rate limiting
+- Device fingerprinting
+- Risk-based authentication
+
+---
+
+# Password Spraying
+
+## Overview
+
+Instead of trying many passwords for one account, attackers try one common password against many accounts.
+
+Example:
+
+```
+Password:
+
+Welcome@123
+
+↓
+
+Alice
+
+Bob
+
+Charlie
+
+David
+
+Emma
+```
+
+This avoids triggering traditional account lockout policies.
+
+---
+
+## Detection
+
+Look for:
+
+- One password attempted against many usernames
+- Distributed login failures
+- Authentication spikes
+- Geographic anomalies
+
+---
+
+## Prevention
+
+- MFA
+- Strong password policies
+- Detection rules
+- Intelligent rate limiting
+- Monitoring failed logins
+
+---
+
+# Brute Force Attack
+
+## Overview
+
+A brute force attack systematically tries many password combinations until one succeeds.
+
+```
+Password?
+
+↓
+
+123456
+
+↓
+
+password
+
+↓
+
+Admin123
+
+↓
+
+Correct Password
+```
+
+---
+
+## Types
+
+### Simple Brute Force
+
+Every possible combination is attempted.
+
+---
+
+### Dictionary Attack
+
+Uses lists of common passwords.
+
+---
+
+### Hybrid Attack
+
+Combines:
+
+- Dictionary words
+- Numbers
+- Symbols
+- Predictable substitutions
+
+Example:
+
+```
+password
+
+↓
+
+P@ssword123
+```
+
+---
+
+## Prevention
+
+- MFA
+- Account lockout
+- CAPTCHA (where appropriate)
+- Rate limiting
+- Password hashing
+- Monitoring
+
+---
+
+# Account Enumeration
+
+## Overview
+
+Applications sometimes reveal whether a username exists.
+
+Example:
+
+Bad responses:
+
+```
+Unknown username
+```
+
+or
+
+```
+Incorrect password
+```
+
+Attackers can identify valid accounts before attempting password attacks.
+
+---
+
+## Secure Response
+
+Always return a generic message:
+
+```
+Invalid username or password.
+```
+
+Avoid revealing which field was incorrect.
+
+---
+
+# MFA Fatigue Attack
+
+## Overview
+
+Attackers repeatedly trigger MFA push notifications until a user approves one by mistake.
+
+Example:
+
+```
+Attacker
+
+↓
+
+Push Notification
+
+↓
+
+Reject
+
+↓
+
+Push Notification
+
+↓
+
+Reject
+
+↓
+
+Push Notification
+
+↓
+
+Approve
+
+↓
+
+Account Access
+```
+
+---
+
+## Prevention
+
+- Number matching
+- User education
+- Limit repeated prompts
+- Risk-based authentication
+- Hardware security keys
+
+---
+
+# SIM Swapping
+
+## Overview
+
+Attackers convince a mobile carrier to transfer a victim's phone number to a SIM card they control.
+
+Result:
+
+```
+SMS OTP
+
+↓
+
+Attacker Receives Code
+
+↓
+
+Account Compromise
+```
+
+---
+
+## Prevention
+
+- Prefer authenticator apps or hardware keys over SMS
+- Carrier account PINs
+- User awareness
+- Monitor phone number changes
+
+---
+
+# Authentication Bypass
+
+Authentication bypass occurs when an attacker gains access without completing the intended authentication process.
+
+Examples include:
+
+- Logic flaws
+- Misconfigured authentication checks
+- Broken access control interactions
+- Default credentials
+- Insecure debug functionality
+
+---
+
+# Session Theft
+
+Attackers may steal authenticated sessions through:
+
+- Cross-Site Scripting (XSS)
+- Malware
+- Browser compromise
+- Physical access
+- Insecure networks (without HTTPS)
+
+---
+
+# Detection
+
+Authentication monitoring should include:
+
+## Login Events
+
+Monitor:
+
+- Successful logins
+- Failed logins
+- Password resets
+- Account lockouts
+- MFA failures
+- New device registrations
+- Session creation
+- Session termination
+
+---
+
+## Behavioral Analytics
+
+Look for:
+
+- Impossible travel
+- New countries
+- New devices
+- Unusual login times
+- Multiple failed attempts
+- High-risk IP addresses
+- Anonymous proxies or VPNs (where relevant)
+
+---
+
+## Security Logs
+
+Important authentication events include:
+
+```
+Authentication Success
+
+Authentication Failure
+
+Password Reset
+
+MFA Enrollment
+
+MFA Failure
+
+Account Locked
+
+Privilege Change
+
+Session Created
+
+Session Destroyed
+```
+
+---
+
+# Prevention
+
+A secure authentication system should implement layered controls.
+
+---
+
+## Strong Authentication
+
+- MFA
+- Passkeys
+- FIDO2/WebAuthn
+- Hardware security keys
+
+---
+
+## Password Security
+
+- Argon2, bcrypt, scrypt, or PBKDF2
+- Unique salts
+- Strong password policy
+- Password managers
+- Breached password detection
+
+---
+
+## Session Security
+
+- HTTPS
+- Secure cookies
+- HttpOnly
+- SameSite
+- Session rotation
+- Session expiration
+- Logout invalidation
+
+---
+
+## Monitoring
+
+- Centralized logging
+- SIEM integration
+- UEBA (User and Entity Behavior Analytics)
+- Alerting
+- Threat intelligence integration
+
+---
+
+# Best Practices
+
+✔ Enforce MFA for all privileged accounts.
+
+✔ Encourage password manager usage.
+
+✔ Never store plaintext passwords.
+
+✔ Hash passwords using modern password hashing algorithms.
+
+✔ Rotate session identifiers after authentication.
+
+✔ Protect cookies using `HttpOnly`, `Secure`, and appropriate `SameSite` settings.
+
+✔ Implement account lockout or adaptive throttling to slow automated attacks.
+
+✔ Monitor authentication events and investigate anomalies.
+
+✔ Review authentication logs regularly.
+
+✔ Prefer phishing-resistant authentication methods such as passkeys or hardware security keys.
+
+---
+
+# Practical Lab
+
+## Objective
+
+Evaluate the authentication security of a web application.
+
+---
+
+## Scenario
+
+The application provides:
+
+- User registration
+- Login
+- Password reset
+- MFA
+- Session management
+
+---
+
+## Tasks
+
+1. Review the password policy.
+2. Verify passwords are securely hashed.
+3. Test account lockout behavior.
+4. Evaluate password reset workflow.
+5. Assess MFA implementation.
+6. Inspect cookie attributes.
+7. Review session expiration.
+8. Attempt account enumeration.
+9. Review authentication logs.
+10. Recommend improvements.
+
+---
+
+## Expected Learning Outcomes
+
+After completing this lab, you should be able to:
+
+- Identify authentication weaknesses.
+- Assess session management.
+- Evaluate MFA implementation.
+- Recommend secure authentication controls.
+- Understand common authentication attack techniques.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is the difference between identification, authentication, and authorization?
+
+- **Identification** is claiming an identity (e.g., username or email).
+- **Authentication** verifies that claimed identity (e.g., password, MFA, passkey).
+- **Authorization** determines what an authenticated user is allowed to access.
+
+---
+
+### Why should passwords be hashed instead of encrypted?
+
+Hashing is a one-way process designed for password verification. Encryption is reversible with a key, making it unsuitable as the primary mechanism for password storage.
+
+---
+
+### What is Multi-Factor Authentication (MFA)?
+
+MFA requires two or more different authentication factors (such as a password and a hardware security key), making account compromise significantly more difficult.
+
+---
+
+## Intermediate
+
+### What is credential stuffing?
+
+Credential stuffing uses leaked username/password pairs from previous data breaches to attempt automated logins on other services where users may have reused the same credentials.
+
+---
+
+### Why is Argon2 recommended for password hashing?
+
+Argon2 is memory-hard, configurable, and specifically designed for secure password storage, making offline password cracking more expensive for attackers.
+
+---
+
+### Explain the difference between OAuth 2.0 and OpenID Connect.
+
+OAuth 2.0 is an authorization framework that allows delegated access to resources. OpenID Connect builds on OAuth 2.0 by adding an identity layer for user authentication through ID tokens.
+
+---
+
+## Advanced
+
+### How would you design a secure authentication system?
+
+A secure design should include:
+
+1. Strong password hashing (Argon2, bcrypt, scrypt, or PBKDF2).
+2. MFA or phishing-resistant authentication (passkeys/FIDO2).
+3. Secure session management.
+4. HTTPS everywhere.
+5. Rate limiting and account protection.
+6. Secure password recovery.
+7. Centralized logging and monitoring.
+8. Risk-based authentication.
+9. Regular security testing and reviews.
+
+---
+
+### How would you investigate suspected credential stuffing in a SOC?
+
+A structured approach includes:
+
+1. Review authentication logs for spikes in failed logins.
+2. Identify affected accounts and IP addresses.
+3. Correlate with threat intelligence (known breached credentials or malicious IPs).
+4. Check for successful logins following repeated failures.
+5. Force password resets for impacted users if necessary.
+6. Require MFA enrollment or re-verification.
+7. Block or throttle malicious sources.
+8. Document findings and tune detection rules.
+
+---
+
+# References
+
+## OWASP
+
+- OWASP Top 10 (2021)
+- OWASP Authentication Cheat Sheet
+- OWASP Session Management Cheat Sheet
+- OWASP Password Storage Cheat Sheet
+- OWASP Multifactor Authentication Cheat Sheet
+
+## NIST
+
+- NIST SP 800-63 Digital Identity Guidelines
+- NIST Cybersecurity Framework (CSF)
+- NIST Secure Software Development Framework (SSDF)
+
+## FIDO Alliance
+
+- FIDO2 Specifications
+- WebAuthn Guidance
+
+## IETF
+
+- OAuth 2.0
+- OpenID Connect
+- JSON Web Token (JWT)
+
+---
+
+# Summary
+
+Identification and Authentication Failures remain one of the most common causes of account compromise. Secure authentication requires more than strong passwords—it demands a layered approach that includes modern password hashing, phishing-resistant MFA, secure session management, robust account recovery, continuous monitoring, and risk-based controls. Organizations should adopt standards such as OAuth 2.0, OpenID Connect, WebAuthn, and FIDO2 where appropriate, while continuously monitoring authentication events to detect and respond to credential attacks and unauthorized access attempts.
