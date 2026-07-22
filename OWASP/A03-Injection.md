@@ -1521,3 +1521,629 @@ Regardless of the interpreter involved, the security principles remain consisten
 - The root cause across all injection types is the same: user-controlled input being interpreted as executable instructions.
 - Secure APIs, parameterization, input validation, and least privilege are the most effective defenses.
 - Modern penetration tests should assess SQL, NoSQL, operating system commands, template engines, LDAP, GraphQL, XML, and other interpreters as part of a comprehensive application security review.
+
+# Detection
+
+Injection vulnerabilities should be identified through a combination of manual testing, automated scanning, secure code review, and architecture analysis. Automated tools can discover common issues, but manual verification is essential to understand the root cause and confirm exploitability.
+
+---
+
+# Manual Testing
+
+## 1. Identify User-Controlled Input
+
+Locate every place where the application accepts external input, including:
+
+- URL parameters
+- Query strings
+- POST bodies
+- JSON requests
+- XML requests
+- GraphQL queries
+- Cookies
+- HTTP headers
+- File uploads
+- Search forms
+
+Trace how this input flows through the application.
+
+---
+
+## 2. Observe Application Behavior
+
+Check whether unexpected input causes:
+
+- Different responses
+- Error messages
+- Delays
+- Authentication bypass
+- Missing authorization checks
+- Unexpected output
+
+Unexpected behavior often indicates that user input is reaching an interpreter.
+
+---
+
+## 3. Review Error Messages
+
+Examples include:
+
+```
+SQL syntax error
+```
+
+```
+MongoDB query failed
+```
+
+```
+LDAP Exception
+```
+
+```
+Template rendering error
+```
+
+```
+Command execution failed
+```
+
+Detailed error messages may reveal:
+
+- Database type
+- Query structure
+- Table names
+- Framework information
+- Template engine
+- Operating system
+
+---
+
+## 4. Review Source Code
+
+Look for:
+
+- String concatenation
+- Dynamic query generation
+- Shell execution
+- Template rendering of user input
+- Unsafe evaluation functions
+
+Examples:
+
+```python
+query = "SELECT * FROM users WHERE id=" + user_input
+```
+
+```javascript
+exec("ping " + host)
+```
+
+```python
+Template(user_input)
+```
+
+These patterns deserve careful review.
+
+---
+
+# Automated Detection
+
+Automation helps identify common injection points but should always be followed by manual validation.
+
+---
+
+## Burp Suite
+
+Useful modules:
+
+- Proxy
+- Repeater
+- Intruder
+- Comparer
+- Logger
+
+Typical workflow:
+
+```
+Browser
+
+↓
+
+Burp Proxy
+
+↓
+
+Capture Request
+
+↓
+
+Send to Repeater
+
+↓
+
+Modify Input
+
+↓
+
+Analyze Response
+```
+
+Burp Suite helps identify:
+
+- SQL Injection
+- SSTI
+- LDAP Injection
+- XPath Injection
+- Command Injection
+- Header Injection
+
+---
+
+## sqlmap
+
+`sqlmap` automates SQL Injection detection and exploitation.
+
+Typical workflow:
+
+```
+Captured Request
+
+↓
+
+sqlmap
+
+↓
+
+Database Analysis
+
+↓
+
+Verification
+```
+
+Use sqlmap only against systems you own or have explicit authorization to test.
+
+---
+
+## ffuf
+
+Useful for discovering:
+
+- Hidden endpoints
+- Backup files
+- Administrative interfaces
+
+Additional attack surface often leads to previously unknown injection opportunities.
+
+---
+
+## Static Application Security Testing (SAST)
+
+SAST tools inspect source code for patterns such as:
+
+- Dynamic SQL
+- Unsafe template rendering
+- Shell execution
+- Hardcoded credentials
+- Dangerous API usage
+
+Examples include:
+
+- Semgrep
+- SonarQube
+- CodeQL
+
+---
+
+## Dynamic Application Security Testing (DAST)
+
+DAST evaluates a running application.
+
+Typical tools:
+
+- OWASP ZAP
+- Burp Suite Professional
+- Invicti
+- Acunetix
+
+---
+
+# Prevention
+
+Preventing injection requires secure software design rather than relying on input filtering alone.
+
+---
+
+## 1. Parameterized Queries
+
+Always use prepared statements or parameterized queries.
+
+Instead of combining SQL code and user input into a single string, send them separately to the database.
+
+This prevents user input from changing the query structure.
+
+---
+
+## 2. Input Validation
+
+Accept only expected input.
+
+Examples:
+
+- Integer IDs
+- Email format
+- UUID format
+- Specific dates
+- Enumerated values
+
+Reject unexpected characters and data types whenever possible.
+
+---
+
+## 3. Avoid Dynamic Command Construction
+
+Avoid constructing:
+
+- SQL queries
+- Shell commands
+- LDAP filters
+- XPath expressions
+- Template code
+
+using string concatenation.
+
+---
+
+## 4. Context-Aware Escaping
+
+Where parameterization is unavailable, apply escaping appropriate for the target interpreter.
+
+Escaping alone should not replace parameterization.
+
+---
+
+## 5. Least Privilege
+
+Backend services should use accounts with only the permissions they require.
+
+Examples:
+
+Application account:
+
+✔ Read Orders
+
+✔ Update Orders
+
+✘ Drop Database
+
+✘ Create Users
+
+---
+
+## 6. Secure Error Handling
+
+Users should receive generic error messages.
+
+Instead of:
+
+```
+SQL Error
+
+Unknown column
+```
+
+Return:
+
+```
+An unexpected error occurred.
+```
+
+Detailed errors should be logged securely for administrators.
+
+---
+
+## 7. Keep Components Updated
+
+Regularly update:
+
+- Database drivers
+- Frameworks
+- Template engines
+- Libraries
+- ORM components
+
+Many injection vulnerabilities arise from outdated software.
+
+---
+
+# Secure Coding Examples
+
+## Python (Django ORM)
+
+```python
+user = User.objects.filter(
+    username=username
+).first()
+```
+
+The ORM generates parameterized queries internally, reducing the risk of SQL Injection when used correctly.
+
+---
+
+## Java (Spring)
+
+```java
+PreparedStatement stmt =
+connection.prepareStatement(
+    "SELECT * FROM users WHERE id = ?"
+);
+```
+
+Prepared statements separate SQL instructions from user data.
+
+---
+
+## Node.js (Parameterized Query)
+
+```javascript
+db.query(
+    "SELECT * FROM users WHERE id = ?",
+    [userId]
+);
+```
+
+The placeholder ensures the input is treated as data rather than executable SQL.
+
+---
+
+## PHP (PDO)
+
+```php
+$stmt = $pdo->prepare(
+    "SELECT * FROM users WHERE id = ?"
+);
+
+$stmt->execute([$id]);
+```
+
+PDO prepared statements are the recommended approach for preventing SQL Injection.
+
+---
+
+# Best Practices
+
+✔ Use parameterized queries everywhere.
+
+✔ Validate all user input.
+
+✔ Apply allow-list validation where practical.
+
+✔ Avoid dynamic SQL generation.
+
+✔ Never execute shell commands with raw user input.
+
+✔ Escape data only for the appropriate context.
+
+✔ Run applications using least-privileged accounts.
+
+✔ Hide implementation details from end users.
+
+✔ Perform regular code reviews.
+
+✔ Integrate SAST and DAST into the CI/CD pipeline.
+
+✔ Conduct periodic penetration testing.
+
+✔ Monitor logs for repeated injection attempts.
+
+---
+
+# Useful Commands
+
+## Nmap Service Detection
+
+```bash
+nmap -sV example.com
+```
+
+---
+
+## Enumerate Hidden Content
+
+```bash
+ffuf -u https://example.com/FUZZ \
+-w wordlist.txt
+```
+
+---
+
+## Test HTTP Requests
+
+```bash
+curl https://example.com
+```
+
+---
+
+## Inspect Responses
+
+```bash
+curl -i https://example.com
+```
+
+---
+
+# Practical Lab
+
+## Objective
+
+Identify and remediate injection vulnerabilities in a deliberately vulnerable application.
+
+---
+
+## Recommended Labs
+
+### OWASP Juice Shop
+
+Practice:
+
+- SQL Injection
+- NoSQL Injection
+- SSTI
+- Authentication bypass
+
+---
+
+### DVWA (Damn Vulnerable Web Application)
+
+Practice:
+
+- SQL Injection
+- Command Injection
+- File Inclusion
+- Authentication flaws
+
+---
+
+### WebGoat
+
+Practice:
+
+- SQL Injection
+- XPath Injection
+- LDAP Injection
+- Secure coding exercises
+
+---
+
+## Suggested Workflow
+
+1. Intercept requests using Burp Suite.
+2. Identify user-controlled parameters.
+3. Test application behavior with unexpected input.
+4. Confirm whether an interpreter is processing user input unsafely.
+5. Identify the root cause in the application code.
+6. Recommend parameterization, validation, or safer APIs.
+7. Retest after remediation.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is an Injection vulnerability?
+
+Injection occurs when untrusted user input is interpreted as executable commands by an interpreter.
+
+---
+
+### Why is SQL Injection dangerous?
+
+Because it may allow attackers to read, modify, or delete database data, bypass authentication, or perform administrative actions.
+
+---
+
+### What is the best defense against SQL Injection?
+
+Parameterized queries (prepared statements), combined with input validation and least privilege.
+
+---
+
+### What is Command Injection?
+
+Command Injection occurs when user input is incorporated into operating system commands without proper handling, allowing unintended command execution.
+
+---
+
+## Intermediate
+
+### What is the difference between SQL Injection and NoSQL Injection?
+
+SQL Injection targets relational database query languages, while NoSQL Injection targets query mechanisms used by NoSQL databases. Both stem from unsafe handling of user-controlled input.
+
+---
+
+### Why is input validation alone insufficient?
+
+Validation reduces attack surface but cannot guarantee protection against every injection technique. Safe APIs and parameterization are still required.
+
+---
+
+### What is Server-Side Template Injection?
+
+SSTI occurs when user input is evaluated by a server-side template engine instead of being treated as plain text, potentially leading to information disclosure or code execution.
+
+---
+
+## Advanced
+
+### How would you identify an Injection vulnerability during a penetration test?
+
+A systematic approach includes:
+
+- Mapping user-controlled inputs.
+- Understanding backend technologies.
+- Testing how input reaches interpreters.
+- Observing differences in responses, errors, and timing.
+- Reviewing application behavior with malformed input.
+- Confirming findings manually.
+- Assessing business impact.
+- Providing secure remediation guidance.
+
+---
+
+### Why are ORMs generally safer than dynamic SQL?
+
+ORMs typically generate parameterized queries automatically, separating SQL logic from user input. However, unsafe raw query APIs within an ORM can still introduce SQL Injection if misused.
+
+---
+
+### What role does least privilege play in mitigating Injection?
+
+Even if an injection vulnerability exists, limiting database or operating system permissions reduces the potential impact by preventing unauthorized administrative actions.
+
+---
+
+# References
+
+## OWASP
+
+- OWASP Top 10 (2021)
+- OWASP SQL Injection Prevention Cheat Sheet
+- OWASP Query Parameterization Cheat Sheet
+- OWASP Web Security Testing Guide (WSTG)
+- OWASP ASVS
+- OWASP Juice Shop
+- OWASP WebGoat
+
+## MITRE CWE
+
+- CWE-89: SQL Injection
+- CWE-77: Command Injection
+- CWE-74: Injection
+- CWE-90: LDAP Injection
+- CWE-91: XML Injection
+- CWE-917: Expression Language Injection
+
+## Standards
+
+- NIST Secure Software Development Framework (SSDF)
+- NIST SP 800-53
+- CIS Secure Software Development Controls
+
+## Additional Resources
+
+- PortSwigger Web Security Academy
+- PostgreSQL Documentation
+- MySQL Documentation
+- MongoDB Security Documentation
+
+---
+
+# Summary
+
+Injection vulnerabilities arise when applications allow untrusted input to influence interpreters such as SQL databases, operating system shells, LDAP directories, template engines, or GraphQL resolvers. The root cause is almost always the same: failure to clearly separate executable instructions from user-supplied data.
+
+Modern defenses rely on parameterized queries, safe framework APIs, strong input validation, least privilege, secure error handling, and continuous security testing. By combining secure development practices with regular code reviews and penetration testing, organizations can significantly reduce the risk and impact of injection attacks.
