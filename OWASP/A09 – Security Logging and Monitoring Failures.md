@@ -1233,3 +1233,768 @@ Poor log management may result in:
 - Protecting log integrity through access controls, immutable storage, and documented chain of custody strengthens incident investigations.
 - Detection engineering continuously improves monitoring by transforming threat intelligence into actionable detection rules.
 
+# Detection Engineering, Alerting, and SOC Operations
+
+---
+
+# Overview
+
+Collecting logs alone does not improve security.
+
+Organizations derive value from logs only when they transform raw events into actionable detections that enable rapid investigation and response.
+
+Detection engineering is the discipline of designing, testing, maintaining, and improving these detections.
+
+```
+Raw Logs
+
+↓
+
+Normalization
+
+↓
+
+Correlation
+
+↓
+
+Detection Rule
+
+↓
+
+Alert
+
+↓
+
+Investigation
+
+↓
+
+Incident Response
+```
+
+---
+
+# What is Detection Engineering?
+
+Detection engineering is the process of creating logic that identifies malicious or suspicious activity from collected telemetry.
+
+Its goals include:
+
+- Detect attacks early
+- Reduce attacker dwell time
+- Minimize false positives
+- Improve analyst efficiency
+- Continuously adapt to new attacker techniques
+
+Detection engineering combines:
+
+- Threat intelligence
+- Threat modeling
+- Log analysis
+- Security operations
+- Continuous testing
+
+---
+
+# Detection Engineering Lifecycle
+
+```
+Threat Intelligence
+
+↓
+
+Threat Modeling
+
+↓
+
+Select Data Sources
+
+↓
+
+Create Detection Rule
+
+↓
+
+Test Rule
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Tune
+
+↓
+
+Repeat
+```
+
+Detection content should be treated as living code and reviewed regularly.
+
+---
+
+# Detection Rule
+
+A detection rule defines the conditions that indicate potentially malicious behavior.
+
+Example logic:
+
+```
+IF
+
+5 Failed Logins
+
++
+
+1 Successful Login
+
+Within 10 Minutes
+
+↓
+
+Generate Alert
+```
+
+Detection rules should be:
+
+- Specific
+- Measurable
+- Testable
+- Tuned
+- Version controlled
+
+---
+
+# Detection Pipeline
+
+```
+Security Event
+
+↓
+
+Log Generated
+
+↓
+
+Collector
+
+↓
+
+SIEM
+
+↓
+
+Correlation Rule
+
+↓
+
+Alert
+
+↓
+
+SOC Investigation
+```
+
+---
+
+# Indicators of Compromise (IOCs)
+
+## Overview
+
+IOCs are observable artifacts suggesting that a system may already be compromised.
+
+Examples:
+
+- Malicious IP addresses
+- Malicious domains
+- File hashes
+- Registry modifications
+- Suspicious processes
+- Known malware signatures
+
+Example:
+
+```
+Known Malicious IP
+
+↓
+
+Firewall Log
+
+↓
+
+Alert
+```
+
+IOCs are valuable but often become less useful as attackers change infrastructure.
+
+---
+
+# Indicators of Attack (IOAs)
+
+IOAs focus on attacker behavior rather than known artifacts.
+
+Examples:
+
+- Credential dumping
+- Lateral movement
+- Privilege escalation
+- Defense evasion
+- Unusual PowerShell execution
+- Suspicious cloud API usage
+
+Example:
+
+```
+Normal User
+
+↓
+
+Creates Administrator Account
+
+↓
+
+Alert
+```
+
+Behavior-based detections are generally more resilient than IOC-only detections.
+
+---
+
+# IOC vs IOA
+
+| Indicator of Compromise (IOC) | Indicator of Attack (IOA) |
+|--------------------------------|----------------------------|
+| Evidence of compromise | Evidence of attacker behavior |
+| Often artifact-based | Behavior-based |
+| IPs, hashes, domains | Techniques and tactics |
+| Easier to evade | More difficult to evade |
+
+Effective security programs typically use both approaches.
+
+---
+
+# MITRE ATT&CK Mapping
+
+Many organizations map detections to the MITRE ATT&CK framework.
+
+Example:
+
+```
+Credential Dumping
+
+↓
+
+MITRE ATT&CK
+
+↓
+
+Credential Access
+
+↓
+
+Detection Rule
+```
+
+Benefits include:
+
+- Standardized terminology
+- Coverage analysis
+- Gap identification
+- Threat-informed defense
+
+---
+
+# Detection Use Cases
+
+A use case describes a security scenario that should generate an alert.
+
+Examples include:
+
+Authentication
+
+- Impossible travel
+- Excessive failed logins
+- MFA bypass attempts
+
+Endpoint
+
+- Suspicious PowerShell execution
+- Credential dumping
+- Unsigned driver loading
+
+Cloud
+
+- Root account usage
+- New IAM administrator
+- Public storage bucket
+
+Network
+
+- DNS tunneling
+- Port scanning
+- Data exfiltration
+
+Application
+
+- SQL injection attempts
+- Authentication bypass
+- Privilege escalation
+
+---
+
+# Correlation Rules
+
+Single events often appear benign.
+
+Correlation links multiple related events.
+
+Example:
+
+```
+VPN Login
+
+↓
+
+New Device
+
+↓
+
+Administrative Login
+
+↓
+
+Sensitive Database Access
+
+↓
+
+Large Download
+
+↓
+
+Alert
+```
+
+Correlation reduces noise while improving detection quality.
+
+---
+
+# Alert Lifecycle
+
+```
+Detection Rule
+
+↓
+
+Alert Created
+
+↓
+
+Alert Prioritized
+
+↓
+
+SOC Review
+
+↓
+
+Investigation
+
+↓
+
+Incident?
+
+↓
+
+Response
+
+↓
+
+Closure
+
+↓
+
+Lessons Learned
+```
+
+Every alert should have a documented workflow.
+
+---
+
+# Alert Severity
+
+Organizations commonly classify alerts by impact.
+
+| Severity | Typical Response |
+|-----------|------------------|
+| Informational | Record only |
+| Low | Monitor |
+| Medium | Analyst review |
+| High | Immediate investigation |
+| Critical | Incident response activation |
+
+Severity should consider:
+
+- Asset value
+- Threat confidence
+- Business impact
+- Exploitation evidence
+
+---
+
+# Alert Enrichment
+
+Raw alerts often lack sufficient context.
+
+Enrichment may add:
+
+- User identity
+- Device information
+- Threat intelligence
+- Geolocation
+- Asset criticality
+- Previous alerts
+- Vulnerability data
+
+Example:
+
+```
+Login Alert
+
+↓
+
+Threat Intelligence
+
+↓
+
+Known Malicious IP
+
+↓
+
+Critical Alert
+```
+
+---
+
+# False Positives
+
+A false positive occurs when benign activity is incorrectly identified as malicious.
+
+Example:
+
+```
+System Administrator
+
+↓
+
+Runs PowerShell
+
+↓
+
+Detection Rule
+
+↓
+
+Alert
+
+↓
+
+Benign Activity
+```
+
+High false-positive rates increase analyst workload and contribute to alert fatigue.
+
+---
+
+# False Negatives
+
+A false negative occurs when malicious activity is not detected.
+
+Example:
+
+```
+Attacker
+
+↓
+
+Credential Theft
+
+↓
+
+No Alert
+
+↓
+
+Compromise Continues
+```
+
+False negatives increase organizational risk because attacks remain undetected.
+
+---
+
+# Balancing Detection Quality
+
+```
+Sensitive Rules
+
+↓
+
+Many Alerts
+
+↓
+
+Higher False Positives
+```
+
+```
+Strict Rules
+
+↓
+
+Fewer Alerts
+
+↓
+
+Higher False Negatives
+```
+
+Detection engineering seeks an appropriate balance between sensitivity and precision.
+
+---
+
+# User and Entity Behavior Analytics (UEBA)
+
+UEBA identifies deviations from normal behavior.
+
+Examples:
+
+```
+Normal Login
+
+India
+
+↓
+
+Sudden Login
+
+Another Country
+
+↓
+
+Alert
+```
+
+Additional examples include:
+
+- New device usage
+- Unusual working hours
+- Excessive downloads
+- Privilege abuse
+- Rare administrative actions
+
+UEBA complements rule-based detection by identifying anomalous behavior.
+
+---
+
+# Security Orchestration, Automation, and Response (SOAR)
+
+SOAR platforms automate repetitive security tasks.
+
+Typical workflow:
+
+```
+Alert
+
+↓
+
+Automatic Enrichment
+
+↓
+
+Threat Intelligence Lookup
+
+↓
+
+Create Case
+
+↓
+
+Notify Analyst
+
+↓
+
+Optional Automated Response
+```
+
+Automation allows analysts to focus on higher-value investigations.
+
+---
+
+# Threat Hunting vs Monitoring
+
+| Monitoring | Threat Hunting |
+|-------------|----------------|
+| Reactive | Proactive |
+| Waits for alerts | Searches for hidden threats |
+| Rule-based | Hypothesis-driven |
+| Continuous | Periodic or ongoing campaigns |
+
+Both approaches are important components of mature security operations.
+
+---
+
+# SOC Workflow
+
+```
+Log Collection
+
+↓
+
+SIEM
+
+↓
+
+Detection Rule
+
+↓
+
+Alert
+
+↓
+
+Tier 1 Analyst
+
+↓
+
+Tier 2 Investigation
+
+↓
+
+Incident Response
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+```
+
+Each stage should have documented procedures and escalation criteria.
+
+---
+
+# Incident Escalation
+
+Not every alert becomes a security incident.
+
+Example workflow:
+
+```
+Alert
+
+↓
+
+Validation
+
+↓
+
+False Positive?
+
+↓
+
+Yes
+
+↓
+
+Close
+```
+
+```
+No
+
+↓
+
+Incident
+
+↓
+
+Escalation
+
+↓
+
+Containment
+
+↓
+
+Recovery
+```
+
+---
+
+# Detection Maturity
+
+Organizations typically progress through several stages:
+
+```
+Manual Log Review
+
+↓
+
+Basic Alerts
+
+↓
+
+Correlation Rules
+
+↓
+
+Threat Intelligence
+
+↓
+
+Behavior Analytics
+
+↓
+
+Automation
+
+↓
+
+Continuous Improvement
+```
+
+Detection maturity is an ongoing journey rather than a one-time achievement.
+
+---
+
+# Business Impact
+
+Effective detection engineering helps organizations:
+
+- Reduce attacker dwell time
+- Detect sophisticated threats
+- Improve analyst productivity
+- Reduce investigation time
+- Enhance threat visibility
+- Improve incident response
+- Support compliance requirements
+
+---
+
+# Key Takeaways
+
+- Detection engineering transforms raw security telemetry into actionable alerts.
+- Indicators of Compromise (IOCs) identify known malicious artifacts, while Indicators of Attack (IOAs) focus on attacker behavior.
+- Mapping detections to MITRE ATT&CK improves coverage analysis and communication.
+- Correlation, enrichment, and UEBA improve detection quality beyond simple event matching.
+- Balancing false positives and false negatives is essential for effective security operations.
+- SOAR platforms automate repetitive tasks and help analysts respond more efficiently.
+- Continuous tuning and testing are necessary because attacker techniques and enterprise environments evolve over time.
