@@ -788,3 +788,821 @@ Well-designed network architecture enables:
 
 ---
 
+
+# 13 - Linux Networking
+
+# Part 2 — TCP, UDP, ARP, DNS, DHCP, Routing, Network Interfaces, and Linux Network Configuration
+
+---
+
+# Introduction
+
+After understanding network architecture, the next step is learning **how devices actually communicate**.
+
+Every Linux server continuously exchanges data using networking protocols.
+
+Examples include:
+
+- Web browsing (HTTP/HTTPS)
+- SSH remote login
+- DNS lookups
+- Email
+- Cloud APIs
+- Kubernetes communication
+- Database connections
+- SIEM log forwarding
+
+Understanding these protocols is critical for:
+
+- Linux Administration
+- DevOps
+- SOC Operations
+- Penetration Testing
+- Incident Response
+- Network Engineering
+
+---
+
+# Network Communication Process
+
+```text
+Application
+
+↓
+
+TCP / UDP
+
+↓
+
+IP
+
+↓
+
+Ethernet
+
+↓
+
+Switch
+
+↓
+
+Router
+
+↓
+
+Destination Server
+```
+
+---
+
+# Transport Layer Protocols
+
+The Transport Layer primarily uses two protocols:
+
+- TCP
+- UDP
+
+Both provide communication between applications but are designed for different purposes.
+
+---
+
+# TCP (Transmission Control Protocol)
+
+TCP is a:
+
+- Connection-oriented
+- Reliable
+- Ordered
+- Error-checked protocol
+
+It guarantees delivery of data.
+
+---
+
+# TCP Characteristics
+
+| Feature | Description |
+|----------|-------------|
+| Reliable | Yes |
+| Ordered Delivery | Yes |
+| Error Detection | Yes |
+| Retransmission | Yes |
+| Connection-Oriented | Yes |
+| Speed | Moderate |
+
+---
+
+# TCP Three-Way Handshake
+
+Before data transfer begins, TCP establishes a connection.
+
+```text
+Client                    Server
+
+SYN --------------------->
+
+      <------------------ SYN-ACK
+
+ACK --------------------->
+```
+
+After this process, communication begins.
+
+---
+
+# TCP Connection Termination
+
+```text
+FIN --------------------->
+
+      <------------------- ACK
+
+      <------------------- FIN
+
+ACK --------------------->
+```
+
+---
+
+# Common TCP Services
+
+| Protocol | Port |
+|----------|------|
+| SSH | 22 |
+| HTTP | 80 |
+| HTTPS | 443 |
+| FTP | 21 |
+| SMTP | 25 |
+| IMAP | 143 |
+| POP3 | 110 |
+
+---
+
+# UDP (User Datagram Protocol)
+
+UDP is:
+
+- Connectionless
+- Fast
+- Lightweight
+- Best-effort delivery
+
+No guarantee exists that packets arrive.
+
+---
+
+# UDP Characteristics
+
+| Feature | Description |
+|----------|-------------|
+| Reliable | No |
+| Ordered Delivery | No |
+| Retransmission | No |
+| Speed | Very Fast |
+| Connection-Oriented | No |
+
+---
+
+# Common UDP Services
+
+| Protocol | Port |
+|----------|------|
+| DNS | 53 |
+| DHCP | 67/68 |
+| NTP | 123 |
+| SNMP | 161 |
+| TFTP | 69 |
+
+---
+
+# TCP vs UDP
+
+| Feature | TCP | UDP |
+|----------|-----|-----|
+| Reliable | ✓ | ✗ |
+| Fast | Moderate | ✓ |
+| Connection | Yes | No |
+| Ordered | ✓ | ✗ |
+| Error Recovery | ✓ | ✗ |
+| Streaming | Limited | Excellent |
+
+---
+
+# When to Use TCP
+
+Choose TCP for:
+
+- SSH
+- HTTPS
+- Banking
+- File transfers
+- Email
+- Databases
+
+Reliability is more important than speed.
+
+---
+
+# When to Use UDP
+
+Choose UDP for:
+
+- Video streaming
+- Voice over IP
+- Online gaming
+- DNS
+- Live broadcasts
+
+Low latency is more important than guaranteed delivery.
+
+---
+
+# Ports
+
+Ports identify applications running on a host.
+
+Example:
+
+```text
+192.168.1.20
+
+↓
+
+Port 22 → SSH
+
+Port 80 → HTTP
+
+Port 443 → HTTPS
+```
+
+---
+
+# Port Ranges
+
+| Range | Description |
+|--------|-------------|
+| 0–1023 | Well-known ports |
+| 1024–49151 | Registered ports |
+| 49152–65535 | Dynamic/Ephemeral ports |
+
+---
+
+# Common Enterprise Ports
+
+| Port | Service |
+|------|----------|
+| 22 | SSH |
+| 25 | SMTP |
+| 53 | DNS |
+| 67 | DHCP Server |
+| 68 | DHCP Client |
+| 80 | HTTP |
+| 110 | POP3 |
+| 123 | NTP |
+| 143 | IMAP |
+| 389 | LDAP |
+| 443 | HTTPS |
+| 445 | SMB |
+| 3306 | MySQL |
+| 5432 | PostgreSQL |
+| 6379 | Redis |
+| 8080 | Alternative HTTP |
+
+---
+
+# ARP (Address Resolution Protocol)
+
+ARP maps an IPv4 address to a MAC address.
+
+Example:
+
+```text
+Need:
+
+192.168.1.15
+
+↓
+
+Who owns this IP?
+
+↓
+
+MAC Address Returned
+
+↓
+
+Frame Sent
+```
+
+---
+
+# ARP Workflow
+
+```text
+Host A
+
+↓
+
+ARP Request (Broadcast)
+
+↓
+
+Switch
+
+↓
+
+All Hosts
+
+↓
+
+Correct Host Replies
+
+↓
+
+ARP Cache Updated
+```
+
+---
+
+# ARP Cache
+
+Linux stores recently learned mappings.
+
+Example:
+
+```text
+IP Address
+
+↓
+
+MAC Address
+```
+
+View ARP cache:
+
+```bash
+ip neigh
+```
+
+or
+
+```bash
+arp -a
+```
+
+---
+
+# DNS (Domain Name System)
+
+Humans remember names.
+
+Computers use IP addresses.
+
+DNS translates:
+
+```text
+google.com
+
+↓
+
+142.x.x.x
+```
+
+---
+
+# DNS Lookup Process
+
+```text
+Browser
+
+↓
+
+DNS Resolver
+
+↓
+
+DNS Server
+
+↓
+
+IP Address
+
+↓
+
+Connect to Server
+```
+
+---
+
+# Common DNS Record Types
+
+| Record | Purpose |
+|----------|----------|
+| A | IPv4 Address |
+| AAAA | IPv6 Address |
+| MX | Mail Server |
+| NS | Name Server |
+| CNAME | Alias |
+| TXT | Text Information |
+| PTR | Reverse Lookup |
+
+---
+
+# DNS Example
+
+```text
+www.company.com
+
+↓
+
+DNS
+
+↓
+
+203.0.113.20
+
+↓
+
+HTTP Connection
+```
+
+---
+
+# DHCP (Dynamic Host Configuration Protocol)
+
+DHCP automatically assigns:
+
+- IP Address
+- Gateway
+- DNS Server
+- Subnet Mask
+- Lease Time
+
+Without DHCP, clients require manual configuration.
+
+---
+
+# DHCP Process (DORA)
+
+```text
+Client
+
+↓
+
+Discover
+
+↓
+
+Offer
+
+↓
+
+Request
+
+↓
+
+Acknowledgement
+```
+
+This sequence is commonly called **DORA**.
+
+---
+
+# Routing
+
+Routing determines how packets travel between different networks.
+
+Routers examine destination IP addresses and forward packets along the most appropriate path.
+
+---
+
+# Routing Example
+
+```text
+Client
+
+↓
+
+Router A
+
+↓
+
+ISP
+
+↓
+
+Internet
+
+↓
+
+Router B
+
+↓
+
+Server
+```
+
+---
+
+# Default Gateway
+
+A **default gateway** is the router used when traffic is destined for another network.
+
+```text
+Linux Server
+
+↓
+
+Default Gateway
+
+↓
+
+Internet
+```
+
+Without a valid default gateway, external networks are generally unreachable.
+
+---
+
+# Routing Table
+
+Linux maintains a routing table.
+
+View routes:
+
+```bash
+ip route
+```
+
+Example:
+
+```text
+default via 192.168.1.1 dev eth0
+
+192.168.1.0/24 dev eth0
+```
+
+---
+
+# Static Routing
+
+Administrator manually creates routes.
+
+Example:
+
+```bash
+sudo ip route add 10.10.0.0/16 via 192.168.1.254
+```
+
+Useful for:
+
+- Small environments
+- Testing
+- Lab networks
+
+---
+
+# Dynamic Routing
+
+Large organizations often use routing protocols such as:
+
+- OSPF
+- BGP
+- IS-IS
+- RIP (legacy)
+
+These protocols automatically exchange routing information between routers.
+
+---
+
+# Network Interface
+
+A network interface connects Linux to a network.
+
+Examples:
+
+```text
+eth0
+
+ens33
+
+enp0s3
+
+wlan0
+```
+
+Modern Linux systems commonly use predictable interface names such as `enp0s3` or `ens160`.
+
+---
+
+# Viewing Network Interfaces
+
+Display interfaces:
+
+```bash
+ip link show
+```
+
+Display addresses:
+
+```bash
+ip addr show
+```
+
+Short form:
+
+```bash
+ip a
+```
+
+---
+
+# Interface States
+
+| State | Meaning |
+|--------|----------|
+| UP | Interface enabled |
+| DOWN | Interface disabled |
+| UNKNOWN | State cannot be determined |
+
+---
+
+# Bringing Interfaces Up
+
+Enable an interface:
+
+```bash
+sudo ip link set eth0 up
+```
+
+---
+
+# Bringing Interfaces Down
+
+Disable an interface:
+
+```bash
+sudo ip link set eth0 down
+```
+
+---
+
+# Assigning an IP Address
+
+Example:
+
+```bash
+sudo ip addr add 192.168.1.100/24 dev eth0
+```
+
+This change is typically temporary until reboot unless saved using the distribution's network configuration tools.
+
+---
+
+# Removing an IP Address
+
+```bash
+sudo ip addr del 192.168.1.100/24 dev eth0
+```
+
+---
+
+# Viewing Interface Statistics
+
+```bash
+ip -s link
+```
+
+Shows statistics including:
+
+- Packets
+- Bytes
+- Errors
+- Dropped packets
+
+---
+
+# Network Configuration Workflow
+
+```text
+Interface
+
+↓
+
+IP Address
+
+↓
+
+Subnet Mask
+
+↓
+
+Gateway
+
+↓
+
+DNS
+
+↓
+
+Connectivity Test
+```
+
+---
+
+# Enterprise Example
+
+A new Linux web server is deployed.
+
+Configuration steps:
+
+```text
+Configure Interface
+
+↓
+
+Assign IP
+
+↓
+
+Configure Gateway
+
+↓
+
+Configure DNS
+
+↓
+
+Verify Routing
+
+↓
+
+Test Connectivity
+
+↓
+
+Deploy Application
+```
+
+---
+
+# Cybersecurity Perspective
+
+Many attacks target network protocols.
+
+Examples include:
+
+- ARP spoofing
+- DNS poisoning
+- Rogue DHCP servers
+- TCP SYN floods
+- UDP amplification attacks
+
+Security teams should:
+
+- Monitor abnormal network traffic.
+- Use secure DNS where appropriate.
+- Segment networks.
+- Restrict unnecessary services.
+- Monitor open ports and listening applications.
+
+---
+
+# Business Impact
+
+Reliable network configuration enables:
+
+- Continuous business operations
+- Stable application communication
+- Faster troubleshooting
+- Secure remote administration
+- Cloud connectivity
+- High service availability
+
+---
+
+# Enterprise Best Practices
+
+- Use predictable interface naming.
+- Document IP addressing schemes.
+- Minimize unnecessary open ports.
+- Use DHCP reservations where appropriate for critical systems.
+- Monitor routing changes.
+- Restrict management services such as SSH to trusted networks.
+- Review ARP and routing anomalies during security investigations.
+
+---
+
+# Key Takeaways
+
+- TCP provides reliable, connection-oriented communication.
+- UDP prioritizes speed and low latency.
+- ARP resolves IPv4 addresses to MAC addresses.
+- DNS translates hostnames into IP addresses.
+- DHCP automates network configuration.
+- Routing directs packets between networks.
+- Linux provides powerful tools (`ip`, `ip route`, `ip neigh`) for managing network interfaces and connectivity.
+
+---
+
+
