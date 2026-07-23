@@ -724,3 +724,868 @@ A DNS outage can affect nearly every application that depends on name resolution
 - DNS primarily uses **UDP port 53**, with **TCP port 53** used for zone transfers and larger responses.
 - DNS is a critical dependency for enterprise networking, cloud services, and modern cybersecurity operations.
 
+# 11 - Domain Name System (DNS)
+
+# Part 2 — DNS Record Types, Zone Files, Caching, TTL, Zone Transfers, Split-Horizon DNS, and Enterprise Architecture
+
+---
+
+# Overview
+
+DNS is much more than a database that maps domain names to IP addresses.
+
+A DNS server stores numerous types of information including:
+
+- IPv4 addresses
+- IPv6 addresses
+- Mail servers
+- Name servers
+- Service locations
+- Domain ownership information
+- Security policies
+- Certificate authority restrictions
+
+All of this information is stored as **DNS Resource Records (RRs)**.
+
+Understanding these records is essential for network engineers, cloud engineers, system administrators, SOC analysts, and cybersecurity professionals.
+
+---
+
+# What is a DNS Resource Record?
+
+A **Resource Record (RR)** is an entry stored inside a DNS zone.
+
+Example:
+
+```
+www.example.com
+
+↓
+
+A Record
+
+↓
+
+192.168.10.20
+```
+
+Every DNS lookup ultimately retrieves one or more resource records.
+
+---
+
+# General DNS Record Structure
+
+Most resource records contain:
+
+| Field | Description |
+|--------|-------------|
+| Name | Domain or host name |
+| TTL | Cache lifetime |
+| Class | Usually IN (Internet) |
+| Type | Record type (A, MX, etc.) |
+| Data | Record-specific value |
+
+Example:
+
+```
+www.example.com.
+
+3600
+
+IN
+
+A
+
+192.168.10.20
+```
+
+---
+
+# A Record (Address Record)
+
+The **A Record** maps a hostname to an IPv4 address.
+
+Example:
+
+```
+www.example.com
+
+↓
+
+192.168.10.20
+```
+
+Typical use cases:
+
+- Websites
+- Application servers
+- Internal systems
+- APIs
+
+Example zone entry:
+
+```text
+www    IN    A      192.168.10.20
+```
+
+---
+
+# AAAA Record (IPv6 Address)
+
+The **AAAA Record** maps a hostname to an IPv6 address.
+
+Example:
+
+```
+www.example.com
+
+↓
+
+2001:db8:10::20
+```
+
+Example:
+
+```text
+www    IN    AAAA    2001:db8:10::20
+```
+
+Modern dual-stack environments often publish both A and AAAA records.
+
+---
+
+# CNAME Record (Canonical Name)
+
+A **CNAME** creates an alias pointing one hostname to another hostname.
+
+Example:
+
+```
+portal.example.com
+
+↓
+
+www.example.com
+
+↓
+
+192.168.10.20
+```
+
+Instead of storing another IP address, the alias references the canonical hostname.
+
+Example:
+
+```text
+portal    IN    CNAME    www.example.com.
+```
+
+### Advantages
+
+- Simplifies management
+- Reduces duplicate records
+- Eases service migration
+- Supports load-balanced environments
+
+---
+
+# MX Record (Mail Exchange)
+
+The **MX Record** identifies mail servers responsible for receiving email.
+
+Example:
+
+```
+example.com
+
+↓
+
+mail.example.com
+
+↓
+
+SMTP Server
+```
+
+Example:
+
+```text
+example.com.    IN    MX    10 mail.example.com.
+```
+
+Lower preference values indicate higher priority.
+
+---
+
+# MX Priority
+
+Example:
+
+| Priority | Mail Server |
+|----------|-------------|
+| 10 | mail1.example.com |
+| 20 | mail2.example.com |
+
+If the preferred server is unavailable, mail delivery attempts continue with the next highest-priority server.
+
+---
+
+# TXT Record
+
+TXT records store arbitrary text associated with a domain.
+
+Common uses:
+
+- SPF
+- DKIM
+- Domain verification
+- Security policies
+- Cloud service validation
+
+Example:
+
+```text
+example.com.
+
+TXT
+
+"v=spf1 include:_spf.example.com -all"
+```
+
+TXT records are widely used for email authentication and ownership verification.
+
+---
+
+# NS Record (Name Server)
+
+An **NS Record** identifies the authoritative name servers for a DNS zone.
+
+Example:
+
+```text
+example.com.
+
+IN
+
+NS
+
+ns1.example.com.
+```
+
+Large organizations typically configure multiple authoritative name servers for redundancy.
+
+---
+
+# SOA Record (Start of Authority)
+
+Every DNS zone contains exactly one **SOA Record**.
+
+It defines administrative information about the zone.
+
+Typical fields include:
+
+- Primary name server
+- Responsible administrator
+- Serial number
+- Refresh interval
+- Retry interval
+- Expire timer
+- Negative cache TTL
+
+Example:
+
+```text
+example.com.
+
+IN
+
+SOA
+
+ns1.example.com. admin.example.com.
+```
+
+---
+
+# SOA Serial Number
+
+The serial number tracks zone updates.
+
+Example:
+
+```
+2026072301
+```
+
+Secondary DNS servers compare serial numbers to determine whether they need to synchronize with the primary server.
+
+A common format is:
+
+```
+YYYYMMDDNN
+```
+
+where `NN` is an increment for multiple updates on the same day.
+
+---
+
+# PTR Record (Pointer Record)
+
+PTR records support **reverse DNS**.
+
+Example:
+
+```
+192.168.10.20
+
+↓
+
+server01.example.com
+```
+
+Typical uses:
+
+- Email validation
+- Logging
+- Security monitoring
+- Network troubleshooting
+
+Reverse lookups are stored under the **in-addr.arpa** (IPv4) or **ip6.arpa** (IPv6) namespaces.
+
+---
+
+# SRV Record (Service Record)
+
+SRV records specify the location of network services.
+
+Example:
+
+```
+LDAP
+
+↓
+
+Domain Controller
+
+↓
+
+Port
+
+389
+```
+
+Common enterprise services:
+
+- Active Directory
+- SIP
+- XMPP
+- Kerberos
+
+Example:
+
+```text
+_ldap._tcp.example.com.
+```
+
+---
+
+# CAA Record (Certification Authority Authorization)
+
+CAA records specify which Certificate Authorities (CAs) are permitted to issue TLS certificates for a domain.
+
+Example:
+
+```text
+example.com.
+
+IN
+
+CAA
+
+0 issue "letsencrypt.org"
+```
+
+Benefits:
+
+- Reduces unauthorized certificate issuance
+- Improves domain security
+- Supports certificate management policies
+
+---
+
+# Additional Record Types
+
+| Record | Purpose |
+|----------|----------|
+| SPF (TXT-based) | Sender Policy Framework |
+| DKIM (TXT-based) | Email signing |
+| DMARC (TXT-based) | Email authentication policy |
+| NAPTR | Service discovery |
+| TLSA | DANE/TLS associations |
+| SSHFP | SSH host key verification |
+
+Many modern security technologies rely on TXT and related record types.
+
+---
+
+# DNS Zone Files
+
+A **zone file** stores all resource records for a DNS zone.
+
+Example:
+
+```
+example.com
+
+↓
+
+Zone File
+
+↓
+
+All DNS Records
+```
+
+Administrators update zone files to publish new services or modify existing records.
+
+---
+
+# Simplified Zone File Example
+
+```text
+$ORIGIN example.com.
+
+@       IN SOA ns1.example.com. admin.example.com.
+
+@       IN NS  ns1.example.com.
+@       IN NS  ns2.example.com.
+
+www     IN A      192.168.10.20
+mail    IN A      192.168.10.30
+@       IN MX 10  mail.example.com.
+```
+
+Actual production zone files may contain hundreds or thousands of records.
+
+---
+
+# Forward Lookup Zone
+
+Forward zones resolve:
+
+```
+Hostname
+
+↓
+
+IP Address
+```
+
+Example:
+
+```
+vpn.example.com
+
+↓
+
+192.168.10.50
+```
+
+---
+
+# Reverse Lookup Zone
+
+Reverse zones resolve:
+
+```
+IP Address
+
+↓
+
+Hostname
+```
+
+Example:
+
+```
+192.168.10.50
+
+↓
+
+vpn.example.com
+```
+
+---
+
+# DNS Caching
+
+DNS servers and clients cache responses to reduce lookup time and network traffic.
+
+Benefits:
+
+- Faster resolution
+- Reduced latency
+- Lower bandwidth usage
+- Reduced load on authoritative servers
+
+Caching occurs at multiple layers.
+
+---
+
+# Browser Cache
+
+Web browsers maintain their own DNS cache.
+
+```
+Browser
+
+↓
+
+DNS Cache
+
+↓
+
+Fast Resolution
+```
+
+Repeated visits often avoid another DNS query until the cached entry expires.
+
+---
+
+# Operating System Cache
+
+Operating systems also maintain a local DNS resolver cache.
+
+Example workflow:
+
+```
+Application
+
+↓
+
+OS Cache
+
+↓
+
+Resolver
+
+↓
+
+DNS Server
+```
+
+If a valid cached record exists, no external query is necessary.
+
+---
+
+# Recursive Resolver Cache
+
+Enterprise recursive resolvers cache responses received from authoritative servers.
+
+Example:
+
+```
+Employee 1
+
+↓
+
+DNS Query
+
+↓
+
+Resolver
+
+↓
+
+Cache Updated
+
+──────────────
+
+Employee 2
+
+↓
+
+Same Query
+
+↓
+
+Answer Returned From Cache
+```
+
+This reduces latency and external DNS traffic.
+
+---
+
+# Time To Live (TTL)
+
+Each DNS record contains a **Time To Live (TTL)** value.
+
+Example:
+
+```
+3600 Seconds
+
+↓
+
+1 Hour
+```
+
+TTL tells resolvers how long they may cache a record before requesting a fresh copy.
+
+---
+
+# TTL Example
+
+```
+A Record
+
+↓
+
+TTL
+
+3600
+
+↓
+
+Cache
+
+↓
+
+Expires
+
+↓
+
+Query Again
+```
+
+---
+
+# TTL Considerations
+
+### Short TTL
+
+Advantages:
+
+- Faster propagation of changes
+- Flexible failover
+- Better load-balancing responsiveness
+
+Disadvantages:
+
+- Increased DNS traffic
+- Higher server load
+
+---
+
+### Long TTL
+
+Advantages:
+
+- Reduced DNS queries
+- Lower latency
+- Better scalability
+
+Disadvantages:
+
+- Slower propagation of updates
+- Stale cached information may persist longer
+
+Administrators should choose TTL values based on operational requirements.
+
+---
+
+# Zone Transfers
+
+Authoritative DNS servers often replicate zone data.
+
+```
+Primary DNS
+
+↓
+
+Secondary DNS
+```
+
+Synchronization is performed through **zone transfers**.
+
+---
+
+# Full Zone Transfer (AXFR)
+
+AXFR transfers the entire zone.
+
+```
+Primary
+
+↓
+
+Entire Zone
+
+↓
+
+Secondary
+```
+
+Typically used during initial synchronization or major recovery events.
+
+---
+
+# Incremental Zone Transfer (IXFR)
+
+IXFR transfers only the changes made since the previous synchronization.
+
+```
+Primary
+
+↓
+
+Changed Records
+
+↓
+
+Secondary
+```
+
+Benefits:
+
+- Lower bandwidth usage
+- Faster synchronization
+- Reduced server load
+
+---
+
+# Split-Horizon DNS (Split-Brain DNS)
+
+Organizations often maintain separate DNS views for internal and external users.
+
+Example:
+
+```
+Internal Users
+
+↓
+
+Internal DNS
+
+↓
+
+10.10.10.20
+
+──────────────
+
+Internet Users
+
+↓
+
+Public DNS
+
+↓
+
+198.51.100.20
+```
+
+Both responses correspond to the same hostname but return different IP addresses.
+
+---
+
+# Benefits of Split-Horizon DNS
+
+- Improved security
+- Internal resource isolation
+- Simplified private addressing
+- Better traffic optimization
+- Reduced exposure of internal infrastructure
+
+---
+
+# Enterprise DNS Architecture
+
+Typical enterprise deployment:
+
+```
+Clients
+
+↓
+
+Local Resolver
+
+↓
+
+Enterprise Recursive Resolver
+
+↓
+
+Firewall
+
+↓
+
+Internet
+
+↓
+
+Root Servers
+
+↓
+
+TLD Servers
+
+↓
+
+Authoritative Servers
+```
+
+Internal zones are typically resolved locally, while external domains follow the public DNS hierarchy.
+
+---
+
+# High Availability
+
+Enterprise DNS deployments commonly use:
+
+- Multiple recursive resolvers
+- Multiple authoritative servers
+- Anycast deployments
+- Redundant network paths
+- Geographic distribution
+
+These measures improve resilience and reduce downtime.
+
+---
+
+# Common DNS Issues
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Incorrect website IP | Stale cache or outdated record |
+| Email delivery problems | Incorrect MX record |
+| Reverse lookup failure | Missing PTR record |
+| Slow resolution | High latency or resolver issues |
+| Secondary server out of date | Zone transfer failure |
+
+---
+
+# Business Impact
+
+Proper DNS record management enables:
+
+- Reliable application access
+- Secure email delivery
+- Efficient cloud service integration
+- High Availability
+- Rapid disaster recovery
+- Strong security posture
+
+Incorrect DNS records can result in application outages, authentication failures, and service disruption.
+
+---
+
+# Key Takeaways
+
+- DNS stores information as **Resource Records (RRs)**.
+- Common record types include **A, AAAA, CNAME, MX, TXT, NS, SOA, PTR, SRV, and CAA**.
+- **Zone files** define the records for a DNS zone.
+- **TTL** controls how long DNS responses may be cached.
+- DNS caching occurs in browsers, operating systems, recursive resolvers, and applications.
+- **AXFR** performs full zone transfers, while **IXFR** transfers only incremental changes.
+- **Split-horizon DNS** allows organizations to provide different answers to internal and external clients.
+- Redundant authoritative servers, recursive resolvers, and well-managed zones are fundamental to enterprise DNS reliability.
+
