@@ -1329,3 +1329,727 @@ Documentation helps:
 ---
 
 
+# 25 - Linux Interview Questions
+
+# Part 3 — Advanced Linux Administration, Troubleshooting Scenarios, Cybersecurity, DevOps, Cloud, and Enterprise Scenario-Based Interview Questions
+
+---
+
+# Introduction
+
+Senior Linux interviews focus less on memorizing commands and more on:
+
+- Problem-solving
+- Troubleshooting methodology
+- Linux internals
+- Security
+- Automation
+- High Availability
+- Cloud platforms
+- Enterprise architecture
+- Production incident handling
+
+Many questions are scenario-based to evaluate how you think under pressure.
+
+---
+
+# Advanced Linux Administration
+
+---
+
+# Q71. A Linux server suddenly becomes slow. How would you troubleshoot it?
+
+### Answer
+
+Follow a structured approach:
+
+```text
+Identify Symptoms
+
+↓
+
+Check System Load
+
+↓
+
+Review CPU
+
+↓
+
+Review Memory
+
+↓
+
+Check Disk Usage
+
+↓
+
+Check Disk I/O
+
+↓
+
+Review Network
+
+↓
+
+Review Logs
+
+↓
+
+Identify Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+```
+
+Commands:
+
+```bash
+uptime
+```
+
+```bash
+top
+```
+
+```bash
+free -h
+```
+
+```bash
+df -h
+```
+
+```bash
+journalctl -xe
+```
+
+Interview Tip:
+
+Never say "I would reboot the server first."
+
+---
+
+# Q72. Users report they cannot access a website hosted on your Linux server. What will you check?
+
+### Answer
+
+Possible investigation:
+
+```text
+Web Service
+
+↓
+
+Listening Port
+
+↓
+
+Firewall
+
+↓
+
+DNS
+
+↓
+
+Routing
+
+↓
+
+Logs
+
+↓
+
+Application
+```
+
+Commands:
+
+```bash
+systemctl status nginx
+```
+
+```bash
+ss -tulpn
+```
+
+```bash
+ip addr
+```
+
+```bash
+journalctl -u nginx
+```
+
+Possible causes:
+
+- Service stopped
+- Configuration error
+- Firewall rules
+- DNS issue
+- SSL certificate problem
+
+---
+
+# Q73. A filesystem is 100% full. What will you do?
+
+### Answer
+
+Steps:
+
+```bash
+df -h
+```
+
+Locate large directories:
+
+```bash
+du -sh /*
+```
+
+Check deleted-but-open files:
+
+```bash
+lsof
+```
+
+Review:
+
+- Log growth
+- Temporary files
+- Backups
+- Application-generated data
+
+Implement cleanup carefully and validate afterwards.
+
+---
+
+# Q74. The system cannot boot after an update. What are your steps?
+
+### Answer
+
+Possible workflow:
+
+```text
+Bootloader
+
+↓
+
+Kernel
+
+↓
+
+initramfs
+
+↓
+
+Filesystem
+
+↓
+
+systemd
+
+↓
+
+Logs
+
+↓
+
+Recovery
+```
+
+Investigate:
+
+- GRUB entries
+- Previous kernel (if available)
+- Boot logs
+- Filesystem configuration
+- Failed services
+
+---
+
+# Q75. How would you troubleshoot high memory usage?
+
+### Answer
+
+Commands:
+
+```bash
+free -h
+```
+
+```bash
+top
+```
+
+```bash
+ps aux --sort=-%mem
+```
+
+Look for:
+
+- Memory leaks
+- Unexpected workloads
+- Swap activity
+- Large caches
+- Application issues
+
+---
+
+# Linux Troubleshooting Scenarios
+
+---
+
+# Q76. SSH suddenly stops working. How would you investigate?
+
+### Answer
+
+Check:
+
+- SSH service status
+- Listening port
+- Firewall
+- Network connectivity
+- Authentication logs
+- SSH configuration
+
+Commands:
+
+```bash
+systemctl status ssh
+```
+
+```bash
+ss -tulpn
+```
+
+```bash
+journalctl -u ssh
+```
+
+```bash
+sshd -t
+```
+
+---
+
+# Q77. DNS resolution fails but IP connectivity works. What does that indicate?
+
+### Answer
+
+This suggests a DNS-related problem rather than a general network failure.
+
+Investigate:
+
+- `/etc/resolv.conf`
+- DNS server reachability
+- Local `/etc/hosts`
+- Resolver configuration
+- DNS service availability
+
+---
+
+# Q78. Applications are timing out intermittently. How would you approach this?
+
+### Answer
+
+Investigate:
+
+- CPU utilization
+- Memory pressure
+- Disk I/O
+- Network latency
+- DNS performance
+- Application logs
+- Recent configuration or deployment changes
+
+Avoid focusing on only one subsystem until evidence supports it.
+
+---
+
+# Q79. A service starts successfully but exits immediately. What are possible causes?
+
+### Answer
+
+Possible causes:
+
+- Invalid configuration
+- Missing dependencies
+- Permission issues
+- Missing files
+- Port conflicts
+- Runtime exceptions
+
+Review:
+
+```bash
+systemctl status service-name
+```
+
+```bash
+journalctl -u service-name
+```
+
+---
+
+# Q80. What information should be included in an incident report?
+
+### Answer
+
+A complete report should include:
+
+- Incident summary
+- Timeline
+- Impact
+- Symptoms
+- Investigation steps
+- Root cause
+- Resolution
+- Validation
+- Preventive actions
+- Lessons learned
+
+---
+
+# Cybersecurity Interview Questions
+
+---
+
+# Q81. Why is Linux widely used in cybersecurity?
+
+### Answer
+
+Reasons include:
+
+- Open-source transparency
+- Powerful command-line tools
+- Strong networking capabilities
+- Extensive security tooling
+- Flexibility for automation
+- Broad adoption in servers and cloud environments
+
+---
+
+# Q82. What are common Linux log files used during investigations?
+
+### Answer
+
+Examples:
+
+| Log | Purpose |
+|------|----------|
+| `/var/log/auth.log` | Authentication events (Debian/Ubuntu) |
+| `/var/log/secure` | Authentication events (RHEL-family) |
+| `journalctl` | Systemd journal |
+| `dmesg` | Kernel messages |
+| Application logs | Service-specific events |
+
+---
+
+# Q83. Explain the Principle of Least Privilege.
+
+### Answer
+
+Provide users and processes with only the permissions necessary to perform their tasks.
+
+Benefits:
+
+- Reduced attack surface
+- Limited damage from compromised accounts
+- Better compliance
+- Improved accountability
+
+---
+
+# Q84. How do you detect repeated SSH brute-force attempts?
+
+### Answer
+
+Review authentication logs for repeated failed login attempts.
+
+Example:
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+Investigate:
+
+- Source IP addresses
+- Target accounts
+- Frequency
+- Time patterns
+
+---
+
+# Q85. What is log correlation?
+
+### Answer
+
+Log correlation is the process of combining events from multiple systems to identify patterns, relationships, and root causes.
+
+Example:
+
+```text
+Firewall Log
+
+↓
+
+Authentication Log
+
+↓
+
+Web Server Log
+
+↓
+
+SIEM
+
+↓
+
+Incident Timeline
+```
+
+---
+
+# DevOps & Cloud Interview Questions
+
+---
+
+# Q86. Why is Linux the preferred operating system for cloud platforms?
+
+### Answer
+
+Reasons:
+
+- Stability
+- Performance
+- Automation support
+- Strong networking
+- Container ecosystem
+- Broad cloud provider support
+- Lower resource requirements
+
+---
+
+# Q87. What is Infrastructure as Code (IaC)?
+
+### Answer
+
+Infrastructure as Code manages infrastructure through version-controlled configuration files rather than manual processes.
+
+Common tools:
+
+- Terraform
+- Ansible
+- Pulumi
+- AWS CloudFormation
+
+---
+
+# Q88. What is a container?
+
+### Answer
+
+A container packages an application with its dependencies while sharing the host operating system kernel.
+
+Benefits:
+
+- Portability
+- Consistency
+- Efficient resource usage
+- Rapid deployment
+
+Common platforms:
+
+- Docker
+- Podman
+
+---
+
+# Q89. What is Kubernetes?
+
+### Answer
+
+Kubernetes is a container orchestration platform used to deploy, scale, and manage containerized applications.
+
+Key features:
+
+- Scheduling
+- Self-healing
+- Service discovery
+- Rolling updates
+- Horizontal scaling
+
+---
+
+# Q90. Why is shell scripting important for DevOps?
+
+### Answer
+
+Shell scripting enables:
+
+- Automation
+- Monitoring
+- Deployment
+- Backup tasks
+- Log processing
+- Routine administration
+
+It reduces manual effort and improves consistency.
+
+---
+
+# Enterprise Scenario-Based Questions
+
+---
+
+# Q91. A production server is compromised. What are your first steps?
+
+### Answer
+
+High-level response:
+
+```text
+Identify
+
+↓
+
+Contain
+
+↓
+
+Preserve Evidence
+
+↓
+
+Investigate
+
+↓
+
+Recover
+
+↓
+
+Lessons Learned
+```
+
+Focus on:
+
+- Preserving logs and evidence
+- Limiting further impact
+- Following organizational incident response procedures
+- Avoiding unnecessary changes before evidence is collected
+
+---
+
+# Q92. Users report intermittent application outages. What would you check?
+
+### Answer
+
+Investigate:
+
+- System resources
+- Application logs
+- Network connectivity
+- DNS
+- Database health
+- Load balancer status
+- Recent deployments
+- Monitoring alerts
+
+---
+
+# Q93. A service repeatedly crashes after startup. How do you troubleshoot?
+
+### Answer
+
+Review:
+
+- Service status
+- Service logs
+- Configuration
+- Dependencies
+- File permissions
+- Resource availability
+- Recent updates
+
+Validate changes before restarting again.
+
+---
+
+# Q94. How do you reduce Mean Time to Resolution (MTTR)?
+
+### Answer
+
+Strategies:
+
+- Standardized troubleshooting playbooks
+- Centralized logging
+- Monitoring and alerting
+- Runbooks
+- Automation
+- Good documentation
+- Regular incident reviews
+
+---
+
+# Q95. What is the difference between a workaround and a permanent fix?
+
+| Workaround | Permanent Fix |
+|------------|---------------|
+| Restores service temporarily | Eliminates the root cause |
+| May require ongoing attention | Prevents recurrence |
+| Used during incident response | Implemented after analysis |
+
+---
+
+# HR + Technical Tips
+
+Interviewers may ask:
+
+- Describe a production issue you solved.
+- How do you prioritize incidents?
+- Tell us about a troubleshooting challenge.
+- How do you handle pressure during outages?
+- How do you learn new Linux technologies?
+
+Structure your answers using the **STAR** method:
+
+- **S**ituation
+- **T**ask
+- **A**ction
+- **R**esult
+
+---
+
+# Enterprise Best Practices
+
+- Follow a structured troubleshooting methodology.
+- Validate before implementing changes.
+- Preserve evidence when security incidents are suspected.
+- Perform root cause analysis after restoring service.
+- Document incidents thoroughly.
+- Automate repetitive operational tasks where appropriate.
+- Keep systems updated through controlled change management.
+- Continuously improve runbooks based on lessons learned.
+
+---
+
+# Key Takeaways
+
+- Advanced interviews emphasize reasoning over memorization.
+- Scenario-based questions test real-world operational thinking.
+- Security, cloud, and DevOps concepts are increasingly expected for Linux roles.
+- Strong candidates explain both *what* they would do and *why*.
+
+---
+
