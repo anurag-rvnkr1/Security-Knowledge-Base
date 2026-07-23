@@ -749,3 +749,650 @@ A standardized filesystem layout enables organizations to:
 ---
 
 
+# Part 2 — Inodes, Superblocks, File Metadata, Hard Links, Symbolic Links, Directory Internals, and Filesystem Navigation
+
+---
+
+# Introduction
+
+When users create a file, they usually think only about its name and contents.
+
+Internally, however, Linux stores significantly more information:
+
+- File metadata
+- Storage block locations
+- Ownership
+- Permissions
+- Timestamps
+- File size
+- Links
+- Filesystem metadata
+
+Understanding these internal structures is essential for:
+
+- Linux Administration
+- Performance Optimization
+- Digital Forensics
+- Incident Response
+- Malware Analysis
+- Filesystem Recovery
+
+---
+
+# How Linux Stores a File
+
+Creating a file involves several steps.
+
+```text
+User Creates File
+        │
+        ▼
+Allocate Inode
+        │
+        ▼
+Allocate Data Blocks
+        │
+        ▼
+Store Metadata
+        │
+        ▼
+Create Directory Entry
+```
+
+Notice that the **filename is not stored inside the inode**—it is stored in the directory entry.
+
+---
+
+# What is an Inode?
+
+An **inode (Index Node)** is a data structure that stores metadata about a file.
+
+Every file and directory has a unique inode number **within a filesystem**.
+
+An inode does **not** store:
+
+- Filename
+- Parent directory name
+
+Instead, it stores everything required to locate and manage the file.
+
+---
+
+# Information Stored in an Inode
+
+Typical inode information includes:
+
+- File type
+- Owner (UID)
+- Group (GID)
+- Permissions
+- File size
+- Number of hard links
+- Access time (atime)
+- Modification time (mtime)
+- Change time (ctime)
+- Block pointers
+- Flags
+
+---
+
+# Inode Architecture
+
+```text
+                Inode
+
+        ┌──────────────────┐
+
+        │ File Type        │
+
+        │ Owner            │
+
+        │ Permissions      │
+
+        │ Size             │
+
+        │ Timestamps       │
+
+        │ Block Pointers   │
+
+        └──────────────────┘
+
+                │
+
+                ▼
+
+         Actual Data Blocks
+```
+
+The inode acts as the metadata record for the file.
+
+---
+
+# Filename Storage
+
+The directory stores mappings between filenames and inode numbers.
+
+Example:
+
+```text
+Directory
+
+report.txt  ─────► Inode 52418
+
+notes.txt   ─────► Inode 52419
+
+photo.jpg   ─────► Inode 52420
+```
+
+The directory knows the filename; the inode knows the file metadata.
+
+---
+
+# Viewing Inode Numbers
+
+Display inode numbers:
+
+```bash
+ls -i
+```
+
+Example:
+
+```text
+52418 report.txt
+
+52419 notes.txt
+```
+
+Display detailed inode information:
+
+```bash
+stat report.txt
+```
+
+---
+
+# Example `stat` Output
+
+```text
+File: report.txt
+
+Size: 2048
+
+Blocks: 8
+
+Inode: 52418
+
+Owner: anurag
+
+Permissions: -rw-r--r--
+```
+
+`stat` is a valuable tool for administrators and forensic analysts.
+
+---
+
+# Why Inodes Matter
+
+Inodes enable Linux to:
+
+- Locate file data efficiently.
+- Separate metadata from filenames.
+- Support hard links.
+- Improve filesystem organization.
+- Simplify file lookup.
+
+---
+
+# Data Blocks
+
+The actual contents of a file are stored in **data blocks**, not in the inode.
+
+```text
+Directory
+
+↓
+
+Inode
+
+↓
+
+Data Blocks
+
+↓
+
+Actual File Content
+```
+
+Large files occupy multiple data blocks.
+
+---
+
+# Block Size
+
+Filesystems divide storage into fixed-size blocks.
+
+Common block sizes:
+
+- 1 KB
+- 2 KB
+- 4 KB
+- 8 KB
+
+Example:
+
+A 1 KB file stored on a 4 KB block consumes an entire 4 KB block on disk, though filesystems may employ optimizations depending on their design.
+
+---
+
+# Block Allocation
+
+```text
+Disk
+
+┌────┬────┬────┬────┬────┐
+
+│ B1 │ B2 │ B3 │ B4 │ B5 │
+
+└────┴────┴────┴────┴────┘
+
+       ▲
+
+       │
+
+    Inode Points Here
+```
+
+The filesystem tracks which blocks belong to each file.
+
+---
+
+# Superblock
+
+The **superblock** stores metadata about the entire filesystem.
+
+Information includes:
+
+- Filesystem type
+- Block size
+- Total blocks
+- Free blocks
+- Total inodes
+- Free inodes
+- Mount status
+- Filesystem state
+
+Without a valid superblock, mounting the filesystem may fail.
+
+---
+
+# Superblock Architecture
+
+```text
+Filesystem
+
+├── Superblock
+
+├── Inode Table
+
+├── Data Blocks
+
+└── Free Space
+```
+
+The superblock is one of the most critical filesystem structures.
+
+---
+
+# Backup Superblocks
+
+Many Linux filesystems maintain backup copies of the superblock.
+
+Benefits:
+
+- Filesystem recovery
+- Corruption repair
+- Disaster recovery
+
+This improves resilience against metadata corruption.
+
+---
+
+# Viewing Filesystem Information
+
+Display filesystem details:
+
+```bash
+df -T
+```
+
+Show block device information:
+
+```bash
+lsblk
+```
+
+Display filesystem metadata (ext-based filesystems):
+
+```bash
+sudo tune2fs -l /dev/sdX1
+```
+
+Replace `/dev/sdX1` with the appropriate device.
+
+---
+
+# File Metadata
+
+Metadata describes a file without including its contents.
+
+Metadata includes:
+
+- Owner
+- Group
+- Size
+- Permissions
+- Timestamps
+- Inode number
+- File type
+
+Metadata is essential for access control and auditing.
+
+---
+
+# Linux File Timestamps
+
+Linux tracks several timestamps.
+
+| Timestamp | Description |
+|-----------|-------------|
+| atime | Last access time |
+| mtime | Last content modification |
+| ctime | Last metadata change |
+
+Some filesystems may also support **birth/creation time** depending on the filesystem and kernel version.
+
+---
+
+# Timestamp Example
+
+```text
+report.txt
+
+Created
+
+↓
+
+Modified
+
+↓
+
+Accessed
+
+↓
+
+Permissions Changed
+```
+
+Different operations update different timestamps.
+
+---
+
+# Hard Links
+
+A **hard link** creates another directory entry pointing to the **same inode**.
+
+Example:
+
+```text
+report.txt
+
+↓
+
+Inode 52418
+
+↑
+
+report_backup.txt
+```
+
+Both names reference identical file data.
+
+---
+
+# Hard Link Characteristics
+
+- Shares the same inode
+- Shares file contents
+- Shares metadata
+- No distinction between "original" and "copy"
+- Cannot span different filesystems
+- Typically cannot reference directories
+
+---
+
+# Create Hard Link
+
+```bash
+ln report.txt report_backup.txt
+```
+
+Verify:
+
+```bash
+ls -li
+```
+
+Both files should display the same inode number.
+
+---
+
+# Symbolic (Soft) Links
+
+A symbolic link is a special file that stores the **path** to another file or directory.
+
+Example:
+
+```text
+shortcut
+
+↓
+
+/home/anurag/report.txt
+```
+
+Unlike hard links, symbolic links reference a pathname rather than an inode directly.
+
+---
+
+# Symbolic Link Characteristics
+
+- Different inode from target
+- Stores target path
+- Can span filesystems
+- Can reference directories
+- May become broken if the target is removed
+
+---
+
+# Create Symbolic Link
+
+```bash
+ln -s report.txt shortcut.txt
+```
+
+List symbolic links:
+
+```bash
+ls -l
+```
+
+Example:
+
+```text
+shortcut.txt -> report.txt
+```
+
+---
+
+# Hard Link vs Symbolic Link
+
+| Feature | Hard Link | Symbolic Link |
+|----------|-----------|---------------|
+| Same Inode | Yes | No |
+| Cross Filesystem | No | Yes |
+| Points To | Inode | Path |
+| Can Link Directories | Generally No | Yes |
+| Broken if Target Deleted | No (data remains while links exist) | Yes |
+
+---
+
+# Directory Internals
+
+Directories are special files that map filenames to inode numbers.
+
+Example:
+
+```text
+Projects
+
+↓
+
+report.txt → Inode 4021
+
+notes.txt → Inode 4022
+
+image.jpg → Inode 4023
+```
+
+The filesystem consults these mappings during file lookup.
+
+---
+
+# File Lookup Process
+
+```text
+Open File
+
+↓
+
+Search Directory
+
+↓
+
+Find Inode Number
+
+↓
+
+Read Inode
+
+↓
+
+Locate Data Blocks
+
+↓
+
+Read File
+```
+
+Efficient directory structures contribute to fast file access.
+
+---
+
+# Navigating the Filesystem
+
+Display current directory:
+
+```bash
+pwd
+```
+
+List files:
+
+```bash
+ls
+```
+
+Change directory:
+
+```bash
+cd /etc
+```
+
+Return to previous directory:
+
+```bash
+cd -
+```
+
+Go to home directory:
+
+```bash
+cd ~
+```
+
+---
+
+# Useful Navigation Commands
+
+| Command | Purpose |
+|----------|----------|
+| `pwd` | Print working directory |
+| `ls` | List directory contents |
+| `cd` | Change directory |
+| `tree` | Display directory hierarchy (if installed) |
+| `find` | Search for files |
+| `locate` | Search using indexed database |
+
+---
+
+# Cybersecurity Perspective
+
+Knowledge of inodes and metadata is valuable when investigating:
+
+- Deleted files
+- File tampering
+- Malware persistence
+- Unauthorized modifications
+- Timestamp manipulation
+- Log integrity
+- Hidden files and links
+
+Forensic analysts frequently examine inode information to reconstruct events.
+
+---
+
+# Business Impact
+
+Understanding filesystem internals enables organizations to:
+
+- Improve troubleshooting.
+- Recover damaged filesystems.
+- Detect unauthorized changes.
+- Support forensic investigations.
+- Optimize storage management.
+
+---
+
+# Enterprise Best Practices
+
+- Monitor filesystem health regularly.
+- Use appropriate filesystem checking tools during maintenance windows.
+- Preserve file metadata during backups where required.
+- Avoid unnecessary manual manipulation of filesystem structures.
+- Audit critical files for unexpected ownership or timestamp changes.
+- Train administrators on the differences between hard and symbolic links.
+
+---
+
+# Key Takeaways
+
+- Inodes store file metadata, while directories map filenames to inode numbers.
+- File contents reside in data blocks referenced by inodes.
+- The superblock contains metadata describing the filesystem itself.
+- Hard links share an inode; symbolic links reference a pathname.
+- Understanding filesystem internals is fundamental for administration, recovery, and digital forensics.
+
+---
+
+
