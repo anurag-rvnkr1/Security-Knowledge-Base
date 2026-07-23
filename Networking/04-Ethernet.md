@@ -1653,3 +1653,767 @@ Efficient Ethernet switching provides:
 - Modern switched Ethernet provides one **collision domain per switch port**, while broadcast domains are controlled using **routers or VLANs**.
 - Full-duplex communication eliminates collisions and is the standard for enterprise Ethernet.
 - Store-and-forward switching is the dominant forwarding method because it verifies frame integrity before transmission.
+
+# 04 - Ethernet
+
+# Part 4 — Ethernet Security, Enterprise Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+Ethernet is the foundation of nearly every enterprise LAN, but because it operates at Layer 2, it is also a common target for attackers seeking to gain unauthorized access, intercept traffic, or disrupt communication.
+
+Many organizations focus heavily on Layer 3 and Layer 7 security while overlooking Layer 2. However, a successful Layer 2 attack can bypass higher-layer protections if appropriate safeguards are not implemented.
+
+This section explores common Ethernet attacks, enterprise security controls, troubleshooting methodologies, practical labs, and interview preparation.
+
+---
+
+# Layer 2 Threat Landscape
+
+Common Ethernet attacks include:
+
+- MAC Spoofing
+- CAM Table Overflow
+- ARP Spoofing
+- DHCP Starvation
+- Rogue DHCP Servers
+- VLAN Hopping
+- STP Manipulation
+- Broadcast Storms
+- Layer 2 Loops
+- Rogue Switches
+
+Understanding these attacks is critical for SOC analysts, network engineers, and penetration testers.
+
+---
+
+# MAC Spoofing
+
+## What is MAC Spoofing?
+
+MAC Spoofing is the process of changing a network interface's MAC address to impersonate another device.
+
+Example:
+
+```
+Original MAC
+
+00:11:22:33:44:55
+
+↓
+
+Spoofed MAC
+
+AA:BB:CC:DD:EE:FF
+```
+
+---
+
+## Why Attackers Use It
+
+- Bypass MAC filtering
+- Impersonate trusted devices
+- Evade simple access controls
+- Hide device identity
+- Facilitate lateral movement
+
+---
+
+## Detection
+
+- Duplicate MAC addresses
+- MAC address changes on a switch port
+- MAC flapping alerts
+- Unexpected vendor OUIs
+
+---
+
+## Prevention
+
+- IEEE 802.1X authentication
+- Switch Port Security
+- NAC (Network Access Control)
+- Continuous monitoring
+- Asset inventory validation
+
+---
+
+# CAM Table Overflow Attack
+
+## Objective
+
+Overflow the switch's CAM table with fake MAC addresses.
+
+```
+Attacker
+
+↓
+
+Thousands of Fake MAC Addresses
+
+↓
+
+CAM Table Full
+```
+
+---
+
+## Result
+
+When the CAM table becomes full:
+
+```
+Unknown Traffic
+
+↓
+
+Flood All Ports
+```
+
+This behavior can allow an attacker to capture traffic that would normally be forwarded only to its intended destination.
+
+---
+
+## Prevention
+
+- Port Security
+- MAC address limits per port
+- Rate limiting
+- Network monitoring
+- Enterprise-grade switching hardware
+
+---
+
+# ARP Spoofing
+
+ARP is inherently trust-based and lacks authentication.
+
+An attacker sends forged ARP replies:
+
+```
+Victim
+
+↓
+
+Gateway MAC?
+
+↓
+
+Attacker Responds
+
+↓
+
+"I'm the Gateway."
+```
+
+Result:
+
+```
+Victim
+
+↓
+
+Attacker
+
+↓
+
+Gateway
+```
+
+This enables a Man-in-the-Middle (MitM) attack.
+
+---
+
+## Detection
+
+- Duplicate ARP responses
+- Unexpected ARP cache changes
+- Multiple IP addresses resolving to the same MAC
+- IDS/IPS alerts
+
+---
+
+## Prevention
+
+- Dynamic ARP Inspection (DAI)
+- DHCP Snooping
+- Static ARP entries (where appropriate)
+- VLAN segmentation
+- IP-MAC binding validation
+
+---
+
+# DHCP Starvation
+
+An attacker rapidly sends DHCP requests using different spoofed MAC addresses.
+
+```
+DHCP Pool
+
+↓
+
+Exhausted
+```
+
+Legitimate users can no longer obtain IP addresses.
+
+---
+
+## Prevention
+
+- DHCP Snooping
+- Rate limiting
+- Port Security
+- Network Access Control
+
+---
+
+# Rogue DHCP Server
+
+An attacker introduces an unauthorized DHCP server.
+
+```
+Client
+
+↓
+
+DHCP Discover
+
+↓
+
+Attacker Responds First
+```
+
+The attacker can provide:
+
+- Malicious default gateway
+- Malicious DNS server
+- Incorrect subnet configuration
+
+This may redirect user traffic through attacker-controlled systems.
+
+---
+
+## Prevention
+
+- DHCP Snooping
+- Trusted switch ports
+- Network monitoring
+- Switch security policies
+
+---
+
+# VLAN Hopping
+
+VLAN Hopping allows traffic intended for one VLAN to reach another through misconfiguration or protocol abuse.
+
+Two common techniques are:
+
+### Switch Spoofing
+
+An attacker attempts to negotiate a trunk link with a switch.
+
+### Double Tagging
+
+The attacker crafts a frame with two VLAN tags so that one tag is removed by the first switch, potentially allowing the frame to reach another VLAN.
+
+---
+
+## Prevention
+
+- Disable Dynamic Trunking Protocol (DTP) where not required.
+- Configure access ports explicitly.
+- Use an unused native VLAN.
+- Restrict trunk ports.
+- Audit VLAN configurations regularly.
+
+---
+
+# STP Manipulation
+
+The Spanning Tree Protocol (STP) prevents Layer 2 loops.
+
+An attacker may send malicious Bridge Protocol Data Units (BPDUs) to influence STP topology.
+
+Potential impacts:
+
+- Traffic interception
+- Network instability
+- Temporary outages
+
+---
+
+## Prevention
+
+- BPDU Guard
+- Root Guard
+- Loop Guard
+- Restrict physical access
+- Disable unused ports
+
+---
+
+# Broadcast Storm
+
+A broadcast storm occurs when excessive broadcast traffic consumes network bandwidth.
+
+Common causes include:
+
+- Layer 2 loops
+- Misconfigured devices
+- Malware
+- Faulty network equipment
+
+---
+
+## Prevention
+
+- Spanning Tree Protocol (STP)
+- Storm Control
+- Network segmentation
+- Loop prevention
+- Monitoring
+
+---
+
+# Layer 2 Security Features
+
+Enterprise switches commonly support:
+
+| Feature | Purpose |
+|----------|----------|
+| Port Security | Restrict MAC addresses per port |
+| DHCP Snooping | Block rogue DHCP servers |
+| Dynamic ARP Inspection | Prevent ARP spoofing |
+| IP Source Guard | Validate IP-to-port bindings |
+| BPDU Guard | Protect STP |
+| Root Guard | Prevent unauthorized root bridge election |
+| Storm Control | Limit broadcast, multicast, and unknown unicast traffic |
+| 802.1X | Authenticate devices before network access |
+
+---
+
+# Enterprise Defense Architecture
+
+```
+Employee
+
+↓
+
+802.1X Authentication
+
+↓
+
+Access Switch
+
+↓
+
+Port Security
+
+↓
+
+DHCP Snooping
+
+↓
+
+Dynamic ARP Inspection
+
+↓
+
+Core Switch
+
+↓
+
+Firewall
+
+↓
+
+Application Servers
+```
+
+Each security control addresses a different class of Layer 2 threats.
+
+---
+
+# Enterprise Troubleshooting Methodology
+
+When diagnosing Ethernet issues:
+
+```
+Physical Link
+
+↓
+
+Interface Status
+
+↓
+
+Speed & Duplex
+
+↓
+
+VLAN Assignment
+
+↓
+
+MAC Learning
+
+↓
+
+ARP Resolution
+
+↓
+
+IP Connectivity
+
+↓
+
+Application
+```
+
+This layered approach helps isolate faults efficiently.
+
+---
+
+# Common Ethernet Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Link Down | Cable, NIC, or port failure |
+| High CRC Errors | Damaged cable or electromagnetic interference |
+| Duplex Mismatch | Different duplex settings on each end |
+| MAC Flapping | Loop or duplicate connection |
+| Excessive Broadcasts | Broadcast storm or malware |
+| Slow Performance | Congestion, errors, or incorrect speed negotiation |
+| Unknown Unicast Flooding | CAM table aging or overflow |
+
+---
+
+# Practical Lab 1 — View MAC Address
+
+## Windows
+
+```cmd
+ipconfig /all
+```
+
+## Linux
+
+```bash
+ip link show
+```
+
+or
+
+```bash
+ip addr
+```
+
+Record:
+
+- MAC Address
+- Interface Name
+- Link State
+
+---
+
+# Practical Lab 2 — View ARP Cache
+
+Windows
+
+```cmd
+arp -a
+```
+
+Linux
+
+```bash
+ip neigh
+```
+
+Observe:
+
+- IP Address
+- MAC Address
+- Interface
+
+---
+
+# Practical Lab 3 — Packet Capture
+
+Requirements:
+
+- Wireshark
+- Two devices on the same LAN
+
+Procedure:
+
+1. Start packet capture.
+2. Ping another device.
+3. Observe:
+   - Ethernet II header
+   - Source MAC
+   - Destination MAC
+   - EtherType
+   - ARP requests and replies
+   - IPv4 packets
+
+---
+
+# Practical Lab 4 — Switch Verification (Cisco IOS Example)
+
+Display interface status:
+
+```text
+show interfaces status
+```
+
+Display MAC address table:
+
+```text
+show mac address-table
+```
+
+Display interface errors:
+
+```text
+show interfaces
+```
+
+Verify VLAN configuration:
+
+```text
+show vlan brief
+```
+
+Review the output for:
+
+- Learned MAC addresses
+- Interface status
+- VLAN assignments
+- Error counters
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+Users on one office floor cannot access internal resources.
+
+### Investigation
+
+**Step 1**
+
+Check switch interfaces.
+
+Result:
+
+All ports are operational.
+
+---
+
+**Step 2**
+
+Review MAC address table.
+
+Observation:
+
+Multiple MAC addresses are rapidly appearing on different ports.
+
+---
+
+**Step 3**
+
+Check STP status.
+
+Observation:
+
+An unauthorized switch has created a Layer 2 loop.
+
+---
+
+**Step 4**
+
+Enable BPDU Guard and disconnect the unauthorized device.
+
+---
+
+## Outcome
+
+- Loop eliminated
+- Broadcast traffic normalized
+- Network services restored
+
+---
+
+# Best Practices
+
+- Enable Port Security on access ports.
+- Implement IEEE 802.1X for device authentication.
+- Use DHCP Snooping and Dynamic ARP Inspection.
+- Disable unused interfaces.
+- Place unused ports into an isolated VLAN and administratively shut them down when appropriate.
+- Configure BPDU Guard and Root Guard.
+- Monitor MAC address changes.
+- Review switch logs regularly.
+- Segment large networks using VLANs.
+- Keep switch firmware up to date.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is Ethernet?
+
+Ethernet is a family of LAN technologies standardized as IEEE 802.3 that provides Layer 1 and Layer 2 communication using Ethernet frames and MAC addresses.
+
+---
+
+### What is a MAC address?
+
+A MAC address is a unique Layer 2 identifier assigned to a network interface for communication within a local network.
+
+---
+
+### What is the purpose of the CAM table?
+
+The CAM table maps MAC addresses to switch ports, allowing switches to forward frames efficiently.
+
+---
+
+### What is the difference between a hub and a switch?
+
+| Hub | Switch |
+|------|---------|
+| Layer 1 | Layer 2 |
+| Broadcasts all traffic | Forwards based on MAC addresses |
+| Shared collision domain | One collision domain per port |
+| Lower performance | Higher performance |
+
+---
+
+## Intermediate
+
+### What happens when a switch receives a frame for an unknown destination MAC?
+
+The switch floods the frame out all ports except the incoming port while learning the source MAC address. Once the destination responds, the switch updates its CAM table.
+
+---
+
+### Explain CAM table overflow.
+
+A CAM table overflow attack attempts to fill the switch's MAC table with fake entries. If successful, the switch may flood unknown unicast traffic, increasing the risk of traffic interception.
+
+---
+
+### What is the purpose of the FCS?
+
+The Frame Check Sequence (FCS) uses a CRC value to detect accidental transmission errors in Ethernet frames.
+
+---
+
+## Advanced
+
+### Explain the complete Layer 2 forwarding process.
+
+A strong answer should include:
+
+1. Frame arrival
+2. Source MAC learning
+3. CAM table lookup
+4. Forwarding or flooding decision
+5. Frame transmission through the appropriate port
+
+---
+
+### How would you secure an enterprise access switch?
+
+A comprehensive answer should mention:
+
+- 802.1X
+- Port Security
+- DHCP Snooping
+- Dynamic ARP Inspection
+- BPDU Guard
+- Root Guard
+- Storm Control
+- Secure management (SSH instead of Telnet)
+- VLAN segmentation
+- Continuous monitoring
+
+---
+
+### Why is Layer 2 security important?
+
+Compromising Layer 2 can allow attackers to intercept traffic, disrupt communications, bypass basic access controls, and launch attacks such as ARP spoofing or CAM table overflow. Strong Layer 2 controls form an essential part of a defense-in-depth strategy.
+
+---
+
+# References
+
+## Standards
+
+- IEEE 802.3 — Ethernet
+- IEEE 802.1Q — VLAN Tagging
+- IEEE 802.1D — Spanning Tree Protocol
+- IEEE 802.1X — Port-Based Network Access Control
+
+## Security Guidance
+
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-41 — Firewalls
+- NIST SP 800-53 — Security and Privacy Controls
+
+## Vendor Documentation
+
+- Cisco Campus LAN Design Guide
+- Juniper Switching Documentation
+- Aruba Campus Switching Documentation
+- Wireshark User Guide
+
+---
+
+# Summary
+
+Ethernet is the foundation of modern local area networking. It enables efficient communication using Ethernet frames, MAC addressing, and intelligent switching. Understanding Ethernet frame processing, MAC learning, collision domains, broadcast domains, and Layer 2 security is essential for designing resilient enterprise networks and investigating network incidents. Enterprise security features such as Port Security, DHCP Snooping, Dynamic ARP Inspection, and IEEE 802.1X help defend against common Layer 2 attacks and strengthen overall network security.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ Ethernet architecture and IEEE 802.3
+
+✔ Ethernet frame structure
+
+✔ EtherType and FCS
+
+✔ MAC address structure and OUI
+
+✔ Unicast, Broadcast, and Multicast
+
+✔ CAM table learning and forwarding
+
+✔ Unknown unicast flooding
+
+✔ Collision domains and broadcast domains
+
+✔ Half-duplex vs. full-duplex communication
+
+✔ Switching methods
+
+✔ Layer 2 attacks and enterprise mitigations
+
+✔ Practical packet analysis with Wireshark
+
+✔ Enterprise troubleshooting methodology
+
+✔ Interview preparation from beginner to advanced
+
+✔ Best practices for securing Ethernet networks
