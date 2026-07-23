@@ -1643,3 +1643,915 @@ Automation with Bash provides:
 ---
 
 
+# 15 - Linux Shell and Bash Scripting
+
+# Part 3 — Conditional Statements, Loops, Functions, Arrays, Error Handling, Debugging, and Advanced Bash Scripting
+
+---
+
+# Introduction
+
+Enterprise Bash scripts rarely consist of a few simple commands.
+
+Production scripts commonly include:
+
+- Decision making
+- Repeated execution
+- Functions
+- Arrays
+- Error handling
+- Logging
+- Debugging
+- Defensive programming
+
+These features make scripts reliable, maintainable, and scalable.
+
+---
+
+# Advanced Script Workflow
+
+```text
+Start
+
+↓
+
+Initialize Variables
+
+↓
+
+Validate Input
+
+↓
+
+Execute Functions
+
+↓
+
+Handle Errors
+
+↓
+
+Generate Output
+
+↓
+
+Log Results
+
+↓
+
+Exit
+```
+
+---
+
+# Conditional Statements
+
+Conditional statements allow scripts to execute different actions depending on conditions.
+
+Common constructs:
+
+- `if`
+- `if-else`
+- `elif`
+- `case`
+
+---
+
+# Basic `if` Statement
+
+Syntax:
+
+```bash
+if condition
+then
+    commands
+fi
+```
+
+Example:
+
+```bash
+#!/usr/bin/env bash
+
+NUMBER=10
+
+if [ "$NUMBER" -gt 5 ]
+then
+    echo "Greater than 5"
+fi
+```
+
+---
+
+# `if-else`
+
+```bash
+#!/usr/bin/env bash
+
+AGE=16
+
+if [ "$AGE" -ge 18 ]
+then
+    echo "Adult"
+else
+    echo "Minor"
+fi
+```
+
+---
+
+# `elif`
+
+```bash
+#!/usr/bin/env bash
+
+MARKS=82
+
+if [ "$MARKS" -ge 90 ]
+then
+    echo "Grade A"
+elif [ "$MARKS" -ge 75 ]
+then
+    echo "Grade B"
+else
+    echo "Grade C"
+fi
+```
+
+---
+
+# Comparison Operators
+
+## Numeric Operators
+
+| Operator | Meaning |
+|-----------|----------|
+| `-eq` | Equal |
+| `-ne` | Not equal |
+| `-gt` | Greater than |
+| `-lt` | Less than |
+| `-ge` | Greater than or equal |
+| `-le` | Less than or equal |
+
+Example:
+
+```bash
+[ "$A" -gt "$B" ]
+```
+
+---
+
+## String Operators
+
+| Operator | Meaning |
+|-----------|----------|
+| `=` | Equal |
+| `!=` | Not equal |
+| `-z` | Empty string |
+| `-n` | Non-empty string |
+
+Example:
+
+```bash
+[ "$USER" = "root" ]
+```
+
+---
+
+## File Test Operators
+
+| Operator | Meaning |
+|-----------|----------|
+| `-f` | Regular file exists |
+| `-d` | Directory exists |
+| `-r` | Readable |
+| `-w` | Writable |
+| `-x` | Executable |
+| `-e` | Path exists |
+| `-s` | File exists and is not empty |
+
+Example:
+
+```bash
+if [ -f "/etc/passwd" ]
+then
+    echo "File exists"
+fi
+```
+
+---
+
+# Logical Operators
+
+AND:
+
+```bash
+[ "$A" -gt 5 ] && [ "$A" -lt 20 ]
+```
+
+OR:
+
+```bash
+[ "$USER" = "root" ] || [ "$USER" = "admin" ]
+```
+
+NOT:
+
+```bash
+[ ! -f secret.txt ]
+```
+
+---
+
+# `case` Statement
+
+Useful when evaluating multiple fixed options.
+
+Example:
+
+```bash
+#!/usr/bin/env bash
+
+read -p "Choose (start|stop): " ACTION
+
+case "$ACTION" in
+    start)
+        echo "Starting service"
+        ;;
+    stop)
+        echo "Stopping service"
+        ;;
+    *)
+        echo "Invalid option"
+        ;;
+esac
+```
+
+---
+
+# Loops
+
+Loops repeat commands until a condition changes.
+
+Types:
+
+- `for`
+- `while`
+- `until`
+- Nested loops
+
+---
+
+# `for` Loop
+
+```bash
+for i in 1 2 3 4 5
+do
+    echo "$i"
+done
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+---
+
+# Range Loop
+
+```bash
+for i in {1..10}
+do
+    echo "$i"
+done
+```
+
+---
+
+# Loop Through Files
+
+```bash
+for FILE in *.txt
+do
+    echo "$FILE"
+done
+```
+
+---
+
+# C-Style `for` Loop
+
+```bash
+for ((i=1; i<=5; i++))
+do
+    echo "$i"
+done
+```
+
+---
+
+# `while` Loop
+
+```bash
+COUNT=1
+
+while [ "$COUNT" -le 5 ]
+do
+    echo "$COUNT"
+    COUNT=$((COUNT + 1))
+done
+```
+
+---
+
+# `until` Loop
+
+Runs until the condition becomes true.
+
+```bash
+COUNT=1
+
+until [ "$COUNT" -gt 5 ]
+do
+    echo "$COUNT"
+    COUNT=$((COUNT + 1))
+done
+```
+
+---
+
+# `break`
+
+Terminate a loop immediately.
+
+```bash
+for i in {1..10}
+do
+    if [ "$i" -eq 5 ]
+    then
+        break
+    fi
+
+    echo "$i"
+done
+```
+
+---
+
+# `continue`
+
+Skip the current iteration.
+
+```bash
+for i in {1..5}
+do
+    if [ "$i" -eq 3 ]
+    then
+        continue
+    fi
+
+    echo "$i"
+done
+```
+
+---
+
+# Arrays
+
+Arrays store multiple values.
+
+Declare:
+
+```bash
+FRUITS=("Apple" "Orange" "Banana")
+```
+
+Access first element:
+
+```bash
+echo "${FRUITS[0]}"
+```
+
+---
+
+# Array Operations
+
+Display all values:
+
+```bash
+echo "${FRUITS[@]}"
+```
+
+Display array size:
+
+```bash
+echo "${#FRUITS[@]}"
+```
+
+Add an element:
+
+```bash
+FRUITS+=("Mango")
+```
+
+---
+
+# Loop Through Arrays
+
+```bash
+for ITEM in "${FRUITS[@]}"
+do
+    echo "$ITEM"
+done
+```
+
+---
+
+# Functions
+
+Functions group reusable commands.
+
+Syntax:
+
+```bash
+function_name() {
+
+    commands
+
+}
+```
+
+---
+
+# Function Example
+
+```bash
+greet() {
+
+    echo "Welcome to Linux"
+
+}
+
+greet
+```
+
+---
+
+# Function with Arguments
+
+```bash
+greet() {
+
+    echo "Hello $1"
+
+}
+
+greet "Anurag"
+```
+
+---
+
+# Returning Values
+
+Functions return exit codes using `return`.
+
+Example:
+
+```bash
+check_file() {
+
+    [ -f "$1" ]
+
+}
+
+check_file "/etc/passwd"
+
+echo $?
+```
+
+For textual output, use `echo` inside the function and capture it with command substitution if needed.
+
+---
+
+# Local Variables
+
+Limit variable scope:
+
+```bash
+example() {
+
+    local NAME="Linux"
+
+    echo "$NAME"
+
+}
+```
+
+---
+
+# Reading Command-Line Arguments
+
+```bash
+#!/usr/bin/env bash
+
+echo "Script: $0"
+
+echo "First: $1"
+
+echo "Second: $2"
+```
+
+---
+
+# Processing All Arguments
+
+```bash
+for ARG in "$@"
+do
+    echo "$ARG"
+done
+```
+
+`"$@"` preserves individual arguments, including those containing spaces.
+
+---
+
+# Exit Codes
+
+Exit successfully:
+
+```bash
+exit 0
+```
+
+Failure example:
+
+```bash
+exit 1
+```
+
+---
+
+# Defensive Error Handling
+
+Example:
+
+```bash
+cp report.txt backup/
+
+if [ $? -eq 0 ]
+then
+    echo "Backup successful"
+else
+    echo "Backup failed"
+fi
+```
+
+A more concise approach:
+
+```bash
+if cp report.txt backup/
+then
+    echo "Backup successful"
+else
+    echo "Backup failed"
+fi
+```
+
+---
+
+# Strict Mode
+
+Many production scripts begin with:
+
+```bash
+set -euo pipefail
+```
+
+Meaning:
+
+| Option | Purpose |
+|---------|----------|
+| `-e` | Exit on command failure |
+| `-u` | Treat unset variables as errors |
+| `pipefail` | Fail a pipeline if any command fails |
+
+These options help catch common scripting mistakes early.
+
+---
+
+# Traps
+
+Execute cleanup before exiting.
+
+Example:
+
+```bash
+cleanup() {
+
+    echo "Cleaning temporary files"
+
+}
+
+trap cleanup EXIT
+```
+
+Useful for:
+
+- Removing temporary files
+- Releasing locks
+- Cleaning resources
+
+---
+
+# Debugging Scripts
+
+Run with debugging enabled:
+
+```bash
+bash -x script.sh
+```
+
+Or inside the script:
+
+```bash
+set -x
+```
+
+Disable debugging:
+
+```bash
+set +x
+```
+
+---
+
+# Syntax Checking
+
+Verify script syntax without execution:
+
+```bash
+bash -n script.sh
+```
+
+This detects syntax errors before running the script.
+
+---
+
+# Logging
+
+Append log messages:
+
+```bash
+echo "$(date): Backup completed" >> backup.log
+```
+
+Production scripts often include:
+
+- Timestamp
+- Hostname
+- User
+- Script name
+- Status
+- Error details
+
+---
+
+# Example Log Function
+
+```bash
+log() {
+
+    echo "$(date): $1"
+
+}
+
+log "Deployment started"
+```
+
+To persist logs:
+
+```bash
+log() {
+    echo "$(date): $1" >> script.log
+}
+```
+
+---
+
+# Temporary Files
+
+Create securely:
+
+```bash
+TEMP_FILE=$(mktemp)
+```
+
+Remove during cleanup:
+
+```bash
+rm -f "$TEMP_FILE"
+```
+
+---
+
+# ShellCheck
+
+ShellCheck is a widely used static analysis tool for shell scripts.
+
+Example:
+
+```bash
+shellcheck script.sh
+```
+
+It detects:
+
+- Quoting issues
+- Unused variables
+- Common logic mistakes
+- Portability concerns
+
+---
+
+# Enterprise Script Structure
+
+```text
+Shebang
+
+↓
+
+Strict Mode
+
+↓
+
+Variables
+
+↓
+
+Functions
+
+↓
+
+Input Validation
+
+↓
+
+Main Logic
+
+↓
+
+Logging
+
+↓
+
+Cleanup
+
+↓
+
+Exit
+```
+
+---
+
+# Enterprise Example
+
+## User Account Audit
+
+Workflow:
+
+```text
+Read User List
+
+↓
+
+Check Account
+
+↓
+
+Verify Home Directory
+
+↓
+
+Verify Shell
+
+↓
+
+Generate Report
+
+↓
+
+Save Log
+```
+
+---
+
+# Enterprise Example
+
+## Log Monitoring Script
+
+Workflow:
+
+```text
+Read Log
+
+↓
+
+Search Errors
+
+↓
+
+Count Matches
+
+↓
+
+Generate Alert
+
+↓
+
+Notify Administrator
+```
+
+---
+
+# Common Bash Mistakes
+
+| Mistake | Better Practice |
+|----------|-----------------|
+| Unquoted variables | Quote variables unless unquoted expansion is required |
+| Ignoring exit codes | Check command success |
+| Using temporary filenames manually | Use `mktemp` |
+| Hard-coded paths | Store paths in variables |
+| Repeated code | Create reusable functions |
+| Missing cleanup | Use `trap` |
+
+---
+
+# Cybersecurity Perspective
+
+Security teams frequently use Bash for:
+
+- User audits
+- File integrity checks
+- IOC searches
+- Log analysis
+- Service verification
+- Automated response
+- Scheduled security tasks
+- Evidence collection
+
+When writing security scripts:
+
+- Validate all external input.
+- Avoid executing untrusted data.
+- Run with the minimum required privileges.
+- Protect sensitive logs and output.
+- Review scripts before deploying them to production.
+
+---
+
+# Business Impact
+
+Well-designed Bash scripts provide:
+
+- Consistent administration
+- Reduced manual effort
+- Faster deployments
+- Reliable monitoring
+- Improved operational efficiency
+- Lower risk of repetitive human errors
+
+---
+
+# Enterprise Best Practices
+
+- Use descriptive function and variable names.
+- Enable strict mode where appropriate.
+- Quote variables consistently.
+- Validate all user input.
+- Handle failures gracefully.
+- Log meaningful events.
+- Remove temporary files automatically.
+- Review scripts with ShellCheck.
+- Store production scripts in version control.
+- Peer-review automation before deployment.
+
+---
+
+# Key Takeaways
+
+- Conditional statements control script execution paths.
+- Loops automate repetitive tasks.
+- Functions improve modularity and reuse.
+- Arrays simplify handling multiple values.
+- Strict mode, logging, and traps increase script reliability.
+- Debugging and static analysis tools improve script quality.
+
+---
+
