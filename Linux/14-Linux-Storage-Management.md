@@ -2142,3 +2142,801 @@ Effective filesystem management provides:
 
 ---
 
+# 14 - Linux Storage Management
+
+# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+
+---
+
+# Introduction
+
+Linux storage management is a critical skill for:
+
+- Linux System Administrators
+- DevOps Engineers
+- Cloud Engineers
+- Database Administrators
+- Storage Engineers
+- SOC Analysts
+- Security Engineers
+- Incident Responders
+
+Every enterprise relies on stable, scalable, and secure storage infrastructure to ensure application availability and data integrity.
+
+---
+
+# Enterprise Storage Lifecycle
+
+```text
+Storage Planning
+
+↓
+
+Provision Storage
+
+↓
+
+Partition Disk
+
+↓
+
+Create Filesystem
+
+↓
+
+Mount Filesystem
+
+↓
+
+Configure Persistence
+
+↓
+
+Monitor Usage
+
+↓
+
+Expand Capacity
+
+↓
+
+Backup
+
+↓
+
+Retire Storage
+```
+
+---
+
+# Practical Lab 1 — Identify Storage Devices
+
+Display all block devices:
+
+```bash
+lsblk
+```
+
+Display detailed partition information:
+
+```bash
+sudo fdisk -l
+```
+
+### Objectives
+
+- Identify disks and partitions
+- Observe mount points
+- Review storage sizes
+
+---
+
+# Practical Lab 2 — View Filesystem Usage
+
+Display filesystem utilization:
+
+```bash
+df -h
+```
+
+Display filesystem type:
+
+```bash
+df -Th
+```
+
+### Questions
+
+- Which filesystem has the highest usage?
+- Which mount point has the least free space?
+
+---
+
+# Practical Lab 3 — Analyze Directory Usage
+
+Check the size of `/var`:
+
+```bash
+du -sh /var
+```
+
+Analyze first-level directories:
+
+```bash
+du -h --max-depth=1 /
+```
+
+### Objectives
+
+- Locate large directories
+- Understand storage distribution
+
+---
+
+# Practical Lab 4 — Locate Large Files
+
+Find files larger than 1 GB:
+
+```bash
+find / -type f -size +1G
+```
+
+Sort large files:
+
+```bash
+du -ah / | sort -rh | head -20
+```
+
+### Objectives
+
+- Identify storage-consuming files
+- Practice emergency disk cleanup
+
+---
+
+# Practical Lab 5 — View Mounted Filesystems
+
+Display mounted filesystems:
+
+```bash
+findmnt
+```
+
+Alternative:
+
+```bash
+mount
+```
+
+### Objectives
+
+- Review mount points
+- Verify active filesystems
+
+---
+
+# Practical Lab 6 — Create a Filesystem
+
+Create an ext4 filesystem:
+
+```bash
+sudo mkfs.ext4 /dev/sdb1
+```
+
+Create an XFS filesystem:
+
+```bash
+sudo mkfs.xfs /dev/sdb1
+```
+
+> **Warning:** Perform this only on test disks. Formatting permanently erases existing data.
+
+---
+
+# Practical Lab 7 — Mount and Unmount a Filesystem
+
+Create a mount point:
+
+```bash
+sudo mkdir /data
+```
+
+Mount:
+
+```bash
+sudo mount /dev/sdb1 /data
+```
+
+Verify:
+
+```bash
+findmnt
+```
+
+Unmount:
+
+```bash
+sudo umount /data
+```
+
+### Objectives
+
+- Mount and unmount filesystems safely
+- Verify successful operations
+
+---
+
+# Practical Lab 8 — View UUID Information
+
+Display UUIDs:
+
+```bash
+blkid
+```
+
+Compare with:
+
+```bash
+cat /etc/fstab
+```
+
+### Objectives
+
+- Understand persistent storage identifiers
+- Review filesystem configuration
+
+---
+
+# Practical Lab 9 — Validate `/etc/fstab`
+
+Edit carefully using your preferred editor, then test:
+
+```bash
+sudo mount -a
+```
+
+### Objectives
+
+- Verify persistent mount configuration
+- Detect syntax errors before reboot
+
+---
+
+# Practical Lab 10 — Explore LVM
+
+Display Physical Volumes:
+
+```bash
+pvs
+```
+
+Display Volume Groups:
+
+```bash
+vgs
+```
+
+Display Logical Volumes:
+
+```bash
+lvs
+```
+
+### Objectives
+
+- Understand LVM hierarchy
+- Review available storage pools
+
+---
+
+# Practical Lab 11 — Review RAID
+
+Display RAID details (if configured):
+
+```bash
+cat /proc/mdstat
+```
+
+Detailed information:
+
+```bash
+sudo mdadm --detail /dev/md0
+```
+
+### Objectives
+
+- Identify RAID arrays
+- Review synchronization status
+
+---
+
+# Practical Lab 12 — Monitor Swap
+
+Display swap:
+
+```bash
+swapon --show
+```
+
+View memory and swap:
+
+```bash
+free -h
+```
+
+### Objectives
+
+- Understand swap utilization
+- Compare RAM and swap usage
+
+---
+
+# Practical Lab 13 — Check Filesystem Integrity
+
+For ext filesystems:
+
+```bash
+sudo fsck /dev/sdb1
+```
+
+For XFS:
+
+```bash
+sudo xfs_repair /dev/sdb1
+```
+
+> **Note:** Perform integrity checks on unmounted filesystems or during maintenance windows unless the filesystem supports online operations.
+
+---
+
+# Practical Lab 14 — Monitor Disk Health
+
+Display SMART health:
+
+```bash
+sudo smartctl -H /dev/sda
+```
+
+Detailed information:
+
+```bash
+sudo smartctl -a /dev/sda
+```
+
+### Objectives
+
+- Detect potential hardware failures
+- Review disk health indicators
+
+---
+
+# Practical Lab 15 — Storage Performance
+
+Display I/O statistics:
+
+```bash
+iostat
+```
+
+Extended statistics:
+
+```bash
+iostat -x
+```
+
+### Objectives
+
+- Review disk utilization
+- Identify storage bottlenecks
+
+---
+
+# Storage Troubleshooting Checklist
+
+| Check | Command |
+|--------|---------|
+| View disks | `lsblk` |
+| View partitions | `fdisk -l` |
+| Filesystem usage | `df -h` |
+| Directory usage | `du -sh` |
+| Mounted filesystems | `findmnt` |
+| UUIDs | `blkid` |
+| LVM status | `pvs`, `vgs`, `lvs` |
+| RAID status | `cat /proc/mdstat` |
+| SMART health | `smartctl` |
+| Swap | `swapon --show` |
+
+---
+
+# Enterprise Case Study 1
+
+# Filesystem Reaches 100%
+
+### Symptoms
+
+- Applications stop writing data
+- Package installation fails
+- Logging stops
+- Services become unstable
+
+### Investigation
+
+```text
+Run df
+
+↓
+
+Run du
+
+↓
+
+Locate Large Files
+
+↓
+
+Review Log Growth
+
+↓
+
+Archive or Remove Data
+
+↓
+
+Verify Free Space
+```
+
+### Root Cause
+
+Uncontrolled application log growth.
+
+### Resolution
+
+- Rotate logs
+- Archive old files
+- Monitor filesystem usage
+- Configure storage alerts
+
+---
+
+# Enterprise Case Study 2
+
+# Disk Failure in RAID
+
+### Investigation
+
+```text
+Alert
+
+↓
+
+Review RAID Status
+
+↓
+
+Identify Failed Disk
+
+↓
+
+Replace Disk
+
+↓
+
+Rebuild Array
+
+↓
+
+Verify Health
+```
+
+### Business Benefit
+
+RAID redundancy maintains service availability while replacing failed hardware.
+
+---
+
+# Enterprise Case Study 3
+
+# Production Storage Expansion
+
+### Scenario
+
+A database server approaches storage limits.
+
+### Workflow
+
+```text
+Provision New Disk
+
+↓
+
+Extend Volume Group
+
+↓
+
+Extend Logical Volume
+
+↓
+
+Grow Filesystem
+
+↓
+
+Verify Capacity
+
+↓
+
+Update Documentation
+```
+
+### Outcome
+
+- Minimal downtime
+- Increased storage capacity
+- Continued application availability
+
+---
+
+# Enterprise Case Study 4
+
+# Unexpected Storage Consumption
+
+### Investigation
+
+```text
+Alert
+
+↓
+
+Review df
+
+↓
+
+Review du
+
+↓
+
+Find Large Files
+
+↓
+
+Review Running Processes
+
+↓
+
+Identify Root Cause
+
+↓
+
+Resolve
+```
+
+### Findings
+
+- Debug logs left enabled
+- Temporary files not cleaned
+- Backup retention exceeded policy
+
+---
+
+# Common Storage Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Filesystem full | Large files or uncontrolled log growth |
+| Cannot mount filesystem | Incorrect filesystem, damaged metadata, or configuration issue |
+| Device busy during unmount | Open files or active processes |
+| Slow disk performance | High I/O load or hardware limitations |
+| RAID degraded | Disk failure |
+| LVM volume full | Insufficient free space in the Volume Group |
+| Filesystem corruption | Improper shutdown or hardware issues |
+| Swap heavily used | Memory pressure or insufficient RAM |
+
+---
+
+# Enterprise Monitoring Metrics
+
+| Metric | Importance |
+|----------|------------|
+| Disk utilization | Capacity planning |
+| Free space | Prevent outages |
+| I/O latency | Performance monitoring |
+| RAID health | High availability |
+| SMART status | Hardware reliability |
+| Filesystem growth | Trend analysis |
+| Swap usage | Memory health |
+| Mount status | Operational readiness |
+
+---
+
+# Cybersecurity Perspective
+
+Storage monitoring is an important security capability.
+
+Security teams monitor:
+
+- Unexpected filesystem growth
+- Unauthorized storage devices
+- Log tampering
+- Sensitive data exposure
+- Malware creating large files
+- Ransomware activity
+- Audit log availability
+
+Full filesystems can also disrupt security controls by preventing logs from being written.
+
+---
+
+# Business Impact
+
+Well-managed storage provides:
+
+- Reliable application performance
+- Predictable capacity growth
+- Faster recovery from failures
+- Better regulatory compliance
+- Reduced operational risk
+- Improved business continuity
+
+Poor storage management can result in:
+
+- Service outages
+- Data loss
+- Failed backups
+- Increased recovery time
+- Customer impact
+
+---
+
+# Enterprise Best Practices
+
+- Standardize partition and filesystem layouts.
+- Prefer GPT for modern systems.
+- Use UUIDs for persistent mounts.
+- Monitor disk usage continuously.
+- Configure proactive storage alerts.
+- Rotate and archive logs according to policy.
+- Test backup and recovery procedures regularly.
+- Document all storage changes.
+- Validate RAID health during routine maintenance.
+- Review SMART data periodically for early hardware failure detection.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Linux storage architecture
+- Block devices
+- Partitions
+- MBR vs GPT
+- Filesystems
+- Mounting and unmounting
+- `/etc/fstab`
+- LVM fundamentals
+- RAID concepts
+- Swap management
+- Disk usage analysis
+- Filesystem integrity
+- Storage monitoring
+- Enterprise storage best practices
+- Cybersecurity considerations
+
+---
+
+# Interview Questions
+
+## Beginner
+
+1. What is a block device?
+2. What is a partition?
+3. What is the difference between MBR and GPT?
+4. What is a filesystem?
+5. What does the `mount` command do?
+6. What is `/etc/fstab` used for?
+7. What is swap space?
+8. What is the purpose of `df`?
+9. What is the purpose of `du`?
+10. What is the difference between HDD, SSD, and NVMe?
+
+---
+
+## Intermediate
+
+1. Explain the Linux storage hierarchy.
+2. Compare ext4, XFS, and Btrfs.
+3. What are the advantages of LVM?
+4. Explain the purpose of UUIDs.
+5. How does RAID 1 differ from RAID 5?
+6. How would you troubleshoot a full filesystem?
+7. What does `fsck` do?
+8. How do you identify large files consuming storage?
+9. What information does `lsblk` provide?
+10. Explain persistent filesystem mounting.
+
+---
+
+## Advanced
+
+1. Design an enterprise storage layout for a database server.
+2. Describe the steps to safely expand an LVM-backed filesystem.
+3. Explain the role of RAID in high availability.
+4. How would you investigate filesystem corruption?
+5. Design a storage monitoring strategy for Linux servers.
+6. Explain the importance of separating application, log, and user data.
+7. How would you respond to repeated storage exhaustion alerts?
+8. Discuss the security implications of filesystem mount options.
+9. Explain how SMART monitoring contributes to preventive maintenance.
+10. Describe best practices for enterprise backup and recovery integration.
+
+---
+
+# Key Takeaways
+
+- Linux storage is organized through block devices, partitions, filesystems, and mount points.
+- GPT is the preferred partitioning scheme for modern systems.
+- LVM provides flexible storage allocation and expansion.
+- RAID improves availability and/or performance depending on the chosen level.
+- Continuous monitoring of capacity, performance, and disk health is essential.
+- Storage management is a foundational operational and security responsibility.
+
+---
+
+# References
+
+## Official Documentation
+
+- `man lsblk`
+- `man mount`
+- `man umount`
+- `man fstab`
+- `man blkid`
+- `man mkfs`
+- `man fsck`
+- `man xfs_repair`
+- `man pvcreate`
+- `man vgcreate`
+- `man lvcreate`
+- `man mdadm`
+- `man swapon`
+- `man smartctl`
+- `man iostat`
+
+## Standards & Best Practices
+
+- Red Hat Enterprise Linux Storage Administration Guide
+- Ubuntu Server Storage Documentation
+- Arch Linux Wiki – Storage
+- Linux Foundation Documentation
+- NIST SP 800-88 (Media Sanitization)
+- NIST SP 800-209 (Storage Security Guidance)
+- CIS Linux Benchmarks
+- Vendor documentation for enterprise storage arrays and RAID controllers
+
+---
+
+# Next Chapter
+
+➡️ **15-Linux-Shell-and-Bash-Scripting.md**
+
+## Topics Covered
+
+- Shell Fundamentals
+- Types of Shells
+- Bash Basics
+- Environment Variables
+- Shell Expansion
+- Input and Output Redirection
+- Pipes
+- Command Substitution
+- Bash Scripting
+- Variables and Data Types
+- Conditional Statements
+- Loops
+- Functions
+- Error Handling
+- Practical Automation
+- Enterprise Scripting Best Practices
+- Practical Labs
+- Interview Questions
+- References
