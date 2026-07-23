@@ -1467,3 +1467,755 @@ A resilient DHCP architecture is essential for modern campus, data center, and h
 - **DHCPv6** supports IPv6 environments and complements Router Advertisements.
 - Enterprise deployments typically use **redundant DHCP servers**, **relay agents**, and **high-availability designs** to ensure reliable address management.
 
+# 10 - Dynamic Host Configuration Protocol (DHCP)
+
+# Part 3 — DHCP Security, DHCP Snooping, Rogue DHCP, Starvation Attacks, Option 82, Virtualization, Cloud Networking, and Enterprise Best Practices
+
+---
+
+# Overview
+
+DHCP is one of the most important infrastructure services in an enterprise network.
+
+However, because DHCP operates before a client has complete network configuration, it is also an attractive target for attackers.
+
+Compromising DHCP can allow an attacker to:
+
+- Prevent devices from obtaining IP addresses
+- Redirect user traffic
+- Perform Man-in-the-Middle (MITM) attacks
+- Disrupt business operations
+- Launch phishing or credential theft attacks
+- Bypass network segmentation
+
+Modern enterprise networks protect DHCP using switch-based security features such as **DHCP Snooping**, secure switch configurations, and continuous monitoring.
+
+---
+
+# DHCP Security Challenges
+
+Common DHCP-related threats include:
+
+- Rogue DHCP servers
+- DHCP starvation attacks
+- Address pool exhaustion
+- Fake gateway assignment
+- Malicious DNS server assignment
+- Network reconnaissance
+- Unauthorized endpoint access
+
+Without proper controls, these threats can impact an entire broadcast domain.
+
+---
+
+# DHCP Starvation Attack
+
+## What is DHCP Starvation?
+
+A DHCP starvation attack attempts to **exhaust all available IP addresses** in a DHCP scope.
+
+The attacker rapidly sends numerous DHCP Discover messages using **spoofed MAC addresses**.
+
+Example:
+
+```
+Attacker
+
+↓
+
+DHCP Discover
+
+↓
+
+Fake MAC 1
+
+↓
+
+Fake MAC 2
+
+↓
+
+Fake MAC 3
+
+↓
+
+...
+
+↓
+
+DHCP Pool Exhausted
+```
+
+Legitimate users are then unable to obtain an IP address.
+
+---
+
+# Attack Workflow
+
+```
+Attacker
+
+↓
+
+Generate Thousands of Fake MAC Addresses
+
+↓
+
+DHCP Discover Messages
+
+↓
+
+DHCP Server Issues Leases
+
+↓
+
+Address Pool Exhausted
+
+↓
+
+Legitimate Client Receives No Address
+```
+
+---
+
+# Business Impact
+
+A successful starvation attack may result in:
+
+- Users unable to connect to the network
+- New devices failing to join the domain
+- VoIP phones remaining offline
+- Wireless clients unable to authenticate
+- Operational downtime
+- Increased help desk incidents
+
+---
+
+# Detection
+
+Indicators of starvation attacks include:
+
+- Rapid DHCP lease consumption
+- High number of DHCP Discover messages
+- Large numbers of unique MAC addresses
+- Unexpected address pool exhaustion
+- DHCP server logs showing abnormal lease creation
+
+Monitoring systems should alert on unusual lease growth.
+
+---
+
+# Mitigation
+
+Recommended controls include:
+
+- DHCP Snooping
+- Port Security
+- Rate limiting
+- IEEE 802.1X authentication
+- Network Access Control (NAC)
+- Endpoint authentication
+- Switch interface security
+
+---
+
+# Rogue DHCP Server
+
+## What is a Rogue DHCP Server?
+
+A rogue DHCP server is an **unauthorized DHCP server** connected to the network.
+
+Example:
+
+```
+Legitimate DHCP Server
+
+──────────────
+
+Attacker DHCP Server
+
+↓
+
+Client Accepts Wrong Offer
+```
+
+The client may accept whichever valid offer arrives first.
+
+---
+
+# Rogue DHCP Attack
+
+The attacker provides malicious configuration:
+
+```
+IP Address
+
+↓
+
+Correct
+
+Gateway
+
+↓
+
+Attacker
+
+DNS
+
+↓
+
+Malicious DNS Server
+```
+
+Traffic can then be intercepted or redirected.
+
+---
+
+# Business Impact
+
+A rogue DHCP server may:
+
+- Redirect web traffic
+- Intercept corporate credentials
+- Modify DNS resolution
+- Prevent Internet access
+- Create widespread connectivity problems
+
+---
+
+# Detection
+
+Possible indicators:
+
+- Unexpected DHCP Server Identifier
+- Multiple DHCP Offers
+- Unknown gateway address
+- Incorrect DNS servers
+- Clients using unexpected IP ranges
+
+Packet captures and switch logs are valuable for identifying rogue servers.
+
+---
+
+# DHCP Snooping
+
+## What is DHCP Snooping?
+
+**DHCP Snooping** is a Layer 2 security feature available on managed switches.
+
+It protects against:
+
+- Rogue DHCP servers
+- DHCP starvation attacks
+- Unauthorized DHCP messages
+
+DHCP Snooping also builds a trusted IP-to-MAC binding database used by other security features.
+
+---
+
+# DHCP Snooping Operation
+
+```
+DHCP Packet
+
+↓
+
+Switch Receives Packet
+
+↓
+
+Validate Interface
+
+↓
+
+Trusted?
+
+↓
+
+Yes
+
+↓
+
+Forward
+
+──────────────
+
+No
+
+↓
+
+Inspect
+
+↓
+
+Allow or Drop
+```
+
+---
+
+# Trusted Ports
+
+Trusted ports typically connect to:
+
+- Legitimate DHCP servers
+- Core switches
+- Distribution switches
+- Router relay agents
+
+Example:
+
+```
+Core Switch
+
+↓
+
+Trusted Port
+
+↓
+
+DHCP Server
+```
+
+Only trusted ports are allowed to send DHCP server responses.
+
+---
+
+# Untrusted Ports
+
+Access ports connected to endpoints are usually configured as **untrusted**.
+
+Example:
+
+```
+User Laptop
+
+↓
+
+Access Port
+
+↓
+
+Untrusted
+```
+
+Clients can send DHCP Discover messages, but they cannot behave as DHCP servers.
+
+---
+
+# DHCP Snooping Binding Table
+
+The switch records validated DHCP information.
+
+Example:
+
+| MAC Address | IP Address | VLAN | Interface | Lease Time |
+|-------------|------------|------|-----------|------------|
+| 00:11:22:33:44:55 | 192.168.10.100 | 10 | Gi1/0/5 | 8 Hours |
+
+This table is fundamental for Dynamic ARP Inspection (DAI) and IP Source Guard.
+
+---
+
+# DHCP Snooping Workflow
+
+```
+Client
+
+↓
+
+DHCP Discover
+
+↓
+
+Access Switch
+
+↓
+
+Relay / DHCP Server
+
+↓
+
+DHCP ACK
+
+↓
+
+Switch Creates Binding
+
+↓
+
+Traffic Allowed
+```
+
+---
+
+# Rate Limiting
+
+DHCP Snooping can limit the number of DHCP packets accepted on an access port.
+
+Benefits include:
+
+- Slows starvation attacks
+- Protects switch CPU resources
+- Reduces broadcast abuse
+- Limits rogue client behavior
+
+Administrators should choose limits appropriate for the expected client density.
+
+---
+
+# Option 82 (Relay Agent Information)
+
+## What is Option 82?
+
+**DHCP Option 82** allows a relay agent or switch to insert additional information into DHCP requests before forwarding them to the server.
+
+Typical information includes:
+
+- Circuit ID
+- Remote ID
+
+This helps the DHCP server identify where the request originated.
+
+---
+
+# Option 82 Workflow
+
+```
+Client
+
+↓
+
+DHCP Discover
+
+↓
+
+Relay Agent
+
+↓
+
+Insert Option 82
+
+↓
+
+DHCP Server
+
+↓
+
+Policy Decision
+
+↓
+
+DHCP ACK
+```
+
+---
+
+# Benefits of Option 82
+
+Option 82 enables:
+
+- Location-aware address assignment
+- Enhanced auditing
+- Subscriber identification
+- Access policy enforcement
+- Improved troubleshooting
+
+It is commonly used in service provider and large enterprise environments.
+
+---
+
+# DHCP Snooping and DAI
+
+DHCP Snooping works closely with **Dynamic ARP Inspection (DAI)**.
+
+```
+DHCP Snooping
+
+↓
+
+Creates Binding Table
+
+↓
+
+DAI Uses Binding
+
+↓
+
+Validates ARP Packets
+```
+
+Together, these features help prevent ARP spoofing attacks.
+
+---
+
+# DHCP Snooping and IP Source Guard
+
+Another related feature is **IP Source Guard**.
+
+```
+Binding Table
+
+↓
+
+Validate
+
+↓
+
+IP Address
+
++
+
+MAC Address
+
++
+
+Switch Port
+
+↓
+
+Allow Traffic
+```
+
+Traffic that does not match the trusted binding can be blocked.
+
+---
+
+# Enterprise Security Architecture
+
+```
+User Device
+
+↓
+
+Access Switch
+
+↓
+
+DHCP Snooping
+
+↓
+
+Dynamic ARP Inspection
+
+↓
+
+IP Source Guard
+
+↓
+
+Distribution Layer
+
+↓
+
+Core Network
+```
+
+Multiple Layer 2 security features work together to provide defense in depth.
+
+---
+
+# DHCP in Virtualization
+
+Virtualization platforms frequently provide integrated DHCP capabilities.
+
+Examples include:
+
+- VMware environments
+- Hyper-V virtual switches
+- KVM/libvirt networks
+- Virtual appliances
+
+Virtual DHCP services simplify lab and development environments, while production deployments often rely on centralized enterprise DHCP servers.
+
+---
+
+# VMware Example
+
+```
+Virtual Machine
+
+↓
+
+vSwitch
+
+↓
+
+DHCP Service
+
+↓
+
+Assigned Address
+```
+
+Administrators can also configure VMs to use external enterprise DHCP servers.
+
+---
+
+# Hyper-V Example
+
+```
+VM
+
+↓
+
+Virtual Switch
+
+↓
+
+Enterprise DHCP
+```
+
+The Hyper-V virtual switch forwards DHCP traffic to the configured DHCP infrastructure.
+
+---
+
+# Docker Networking
+
+Docker bridge networks may include an integrated IP address management (IPAM) component that allocates addresses to containers.
+
+Example:
+
+```
+Docker Bridge
+
+↓
+
+Container A
+
+↓
+
+Container B
+
+↓
+
+Container C
+```
+
+The mechanism differs from traditional enterprise DHCP but serves a similar purpose of automated address assignment.
+
+---
+
+# Kubernetes Networking
+
+Kubernetes typically relies on its CNI (Container Network Interface) plugin to assign addresses to Pods.
+
+Depending on the CNI implementation:
+
+- DHCP may be used in some environments.
+- Static allocation or IPAM managed by the CNI is common.
+- Overlay networks abstract many underlying networking details.
+
+Administrators should understand the networking model used by their chosen CNI.
+
+---
+
+# DHCP in Public Cloud
+
+Public cloud providers automate address assignment through platform-managed networking services.
+
+Examples include:
+
+### AWS
+
+```
+EC2 Instance
+
+↓
+
+Elastic Network Interface
+
+↓
+
+Private IPv4 Assigned
+```
+
+---
+
+### Microsoft Azure
+
+```
+Virtual Machine
+
+↓
+
+Virtual NIC
+
+↓
+
+Private Address Assigned
+```
+
+---
+
+### Google Cloud Platform
+
+```
+VM Instance
+
+↓
+
+Virtual NIC
+
+↓
+
+Internal IPv4 Address
+```
+
+While the user experience resembles DHCP, the implementation is often tightly integrated with the provider's virtual networking infrastructure.
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Enable DHCP Snooping on access switches.
+- Mark only legitimate infrastructure ports as trusted.
+- Enable rate limiting on access interfaces.
+- Use reservations for critical systems.
+- Monitor DHCP server logs.
+- Document scopes and exclusions.
+- Review lease utilization regularly.
+- Segment users with VLANs.
+- Secure switch management access.
+- Integrate DHCP events with SIEM platforms.
+
+---
+
+# Common DHCP Security Issues
+
+| Issue | Possible Cause |
+|--------|----------------|
+| Address pool exhausted | DHCP starvation attack |
+| Wrong gateway assigned | Rogue DHCP server |
+| Incorrect DNS server | Malicious DHCP configuration |
+| Invalid bindings | Misconfigured DHCP Snooping |
+| Users cannot obtain IP addresses | Trusted port or relay configuration issue |
+
+---
+
+# Business Impact
+
+Securing DHCP helps organizations:
+
+- Prevent network outages
+- Protect user traffic
+- Improve endpoint onboarding
+- Reduce operational risk
+- Support regulatory compliance
+- Strengthen Layer 2 security
+
+Reliable DHCP security contributes directly to enterprise resilience.
+
+---
+
+# Key Takeaways
+
+- **DHCP starvation attacks** attempt to exhaust available address pools using spoofed MAC addresses.
+- **Rogue DHCP servers** can redirect traffic by providing malicious network configuration.
+- **DHCP Snooping** protects against unauthorized DHCP activity and builds a trusted binding database.
+- **Trusted** and **untrusted** switch ports are fundamental to DHCP Snooping deployments.
+- **Option 82** enables location-aware DHCP policies and enhanced auditing.
+- DHCP Snooping integrates with **Dynamic ARP Inspection (DAI)** and **IP Source Guard** to strengthen Layer 2 security.
+- Modern virtualization platforms and cloud providers automate IP address management, though implementation details differ from traditional on-premises DHCP.
+
