@@ -2305,3 +2305,988 @@ Because nearly every enterprise application depends on DNS, outages or compromis
 - Kubernetes uses **CoreDNS** for internal service discovery.
 - Enterprise DNS should be designed with redundancy, security, monitoring, and clear separation of internal and external namespaces.
 
+# 11 - Domain Name System (DNS)
+
+# Part 4 — DNS Security, Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+DNS is one of the most frequently targeted network services because nearly every application depends on it.
+
+Attackers use DNS for:
+
+- Initial access
+- Command and Control (C2)
+- Data exfiltration
+- Reconnaissance
+- Malware communication
+- Traffic redirection
+
+For defenders, DNS provides valuable telemetry for detecting malicious activity.
+
+Understanding how to analyze, secure, and troubleshoot DNS is a critical skill for network engineers, SOC analysts, incident responders, and cybersecurity professionals.
+
+---
+
+# Common DNS Attacks
+
+DNS infrastructure can be targeted through several attack techniques.
+
+Common attacks include:
+
+- DNS Cache Poisoning
+- DNS Spoofing
+- DNS Hijacking
+- DNS Tunneling
+- DNS Amplification
+- DNS Rebinding
+- Fast Flux
+- Domain Generation Algorithms (DGA)
+- Malicious DNS over HTTPS (DoH)
+
+Each attack targets different aspects of DNS and requires specific detection and mitigation strategies.
+
+---
+
+# DNS Cache Poisoning
+
+## What is DNS Cache Poisoning?
+
+DNS cache poisoning occurs when an attacker injects false DNS information into a recursive resolver's cache.
+
+Example:
+
+```
+Victim
+
+↓
+
+Query
+
+bank.example
+
+↓
+
+Compromised Resolver
+
+↓
+
+Returns
+
+Fake IP Address
+
+↓
+
+Attacker Website
+```
+
+Users unknowingly connect to the attacker's system instead of the legitimate service.
+
+---
+
+# Business Impact
+
+Cache poisoning can lead to:
+
+- Credential theft
+- Phishing attacks
+- Malware delivery
+- Session hijacking
+- Financial fraud
+- Loss of customer trust
+
+---
+
+# Mitigation
+
+Recommended controls:
+
+- DNSSEC validation
+- Randomized transaction IDs
+- Source port randomization
+- Secure recursive resolvers
+- Regular software updates
+- Monitoring for unexpected DNS changes
+
+---
+
+# DNS Spoofing
+
+DNS spoofing involves forging DNS responses to redirect users to malicious destinations.
+
+```
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Attacker Responds First
+
+↓
+
+Fake IP Address
+
+↓
+
+Malicious Server
+```
+
+Unlike cache poisoning, spoofing does not necessarily require compromising the DNS cache.
+
+---
+
+# DNS Hijacking
+
+DNS hijacking occurs when an attacker changes DNS settings or redirects DNS traffic.
+
+Possible targets include:
+
+- Home routers
+- Enterprise DNS servers
+- DHCP configurations
+- Domain registrar accounts
+- Endpoint network settings
+
+---
+
+# DNS Amplification Attack
+
+DNS amplification is a Distributed Denial-of-Service (DDoS) technique.
+
+```
+Attacker
+
+↓
+
+Spoofed DNS Query
+
+↓
+
+Open Resolver
+
+↓
+
+Large DNS Response
+
+↓
+
+Victim
+```
+
+Attackers exploit the difference between small DNS queries and much larger responses.
+
+Mitigations include:
+
+- Disable open recursion where unnecessary
+- Implement response rate limiting (RRL)
+- Apply ingress and egress filtering
+- Monitor abnormal query rates
+
+---
+
+# DNS Tunneling
+
+DNS tunneling hides data inside DNS queries and responses.
+
+Example:
+
+```
+Compromised Host
+
+↓
+
+Encoded Data
+
+↓
+
+DNS Query
+
+↓
+
+Attacker DNS Server
+```
+
+Attackers may use DNS tunneling for:
+
+- Data exfiltration
+- Command and Control (C2)
+- Firewall bypass
+- Malware communication
+
+---
+
+# Indicators of DNS Tunneling
+
+Possible indicators include:
+
+- Extremely long subdomains
+- High query volume
+- High-entropy domain names
+- Large TXT record responses
+- Frequent requests to unknown domains
+- Unusual NXDOMAIN activity
+
+No single indicator confirms tunneling; analysts should correlate multiple signals.
+
+---
+
+# DNS Rebinding
+
+DNS rebinding changes the IP address associated with a domain after the client's browser has already trusted it.
+
+Simplified workflow:
+
+```
+Victim Browser
+
+↓
+
+Legitimate IP
+
+↓
+
+TTL Expires
+
+↓
+
+Same Domain
+
+↓
+
+Internal IP Address
+```
+
+If successful, the browser may interact with internal resources under the attacker's control.
+
+---
+
+# Fast Flux
+
+Fast Flux rapidly rotates IP addresses associated with a domain.
+
+```
+Query 1
+
+↓
+
+IP A
+
+──────────────
+
+Query 2
+
+↓
+
+IP B
+
+──────────────
+
+Query 3
+
+↓
+
+IP C
+```
+
+Fast Flux is often associated with:
+
+- Botnets
+- Phishing infrastructure
+- Malware distribution
+
+---
+
+# Domain Generation Algorithms (DGA)
+
+Some malware generates hundreds or thousands of potential domain names.
+
+Example:
+
+```
+abc123.com
+
+↓
+
+xzy981.net
+
+↓
+
+qwe456.org
+
+↓
+
+...
+```
+
+The attacker only needs to register one generated domain to regain communication with infected hosts.
+
+---
+
+# DNS Packet Analysis
+
+DNS packet captures provide valuable information for troubleshooting and investigations.
+
+Typical fields include:
+
+| Field | Description |
+|--------|-------------|
+| Transaction ID | Matches requests and responses |
+| Flags | Query/Response information |
+| Question Section | Requested domain |
+| Answer Section | Returned records |
+| Authority Section | Authoritative information |
+| Additional Section | Extra resource records |
+
+---
+
+# Wireshark DNS Filters
+
+Useful display filters:
+
+```text
+dns
+```
+
+Specific query type:
+
+```text
+dns.flags.response == 0
+```
+
+Responses:
+
+```text
+dns.flags.response == 1
+```
+
+NXDOMAIN responses:
+
+```text
+dns.flags.rcode == 3
+```
+
+TCP-based DNS:
+
+```text
+tcp.port == 53
+```
+
+UDP-based DNS:
+
+```text
+udp.port == 53
+```
+
+---
+
+# Useful Wireshark Fields
+
+During packet analysis, review:
+
+- Transaction ID
+- Query Name
+- Query Type
+- Response Code
+- TTL
+- Record Type
+- Name Server
+- Flags
+- Response Time
+- Additional Records
+
+---
+
+# Cisco IOS Verification
+
+Display configured DNS servers:
+
+```text
+show hosts
+```
+
+Verify hostname resolution:
+
+```text
+ping example.com
+```
+
+Display current configuration:
+
+```text
+show running-config | include ip name-server
+```
+
+Test name resolution:
+
+```text
+ping server.example.com
+```
+
+---
+
+# Linux Verification
+
+Check configured DNS servers:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Query DNS records:
+
+```bash
+dig example.com
+```
+
+Query a specific record type:
+
+```bash
+dig example.com MX
+```
+
+Trace the resolution path:
+
+```bash
+dig +trace example.com
+```
+
+Simple lookup:
+
+```bash
+host example.com
+```
+
+Perform reverse lookup:
+
+```bash
+dig -x 192.168.10.20
+```
+
+---
+
+# Windows Verification
+
+Display DNS configuration:
+
+```cmd
+ipconfig /all
+```
+
+Flush DNS cache:
+
+```cmd
+ipconfig /flushdns
+```
+
+Display cached DNS entries:
+
+```cmd
+ipconfig /displaydns
+```
+
+Lookup a domain:
+
+```cmd
+nslookup example.com
+```
+
+PowerShell query:
+
+```powershell
+Resolve-DnsName example.com
+```
+
+---
+
+# Enterprise Troubleshooting Workflow
+
+When DNS resolution fails:
+
+```
+Verify Physical Connectivity
+
+↓
+
+Verify IP Configuration
+
+↓
+
+Check DNS Server Reachability
+
+↓
+
+Verify DNS Records
+
+↓
+
+Check Resolver Cache
+
+↓
+
+Review Zone Configuration
+
+↓
+
+Capture DNS Packets
+
+↓
+
+Inspect DNS Logs
+
+↓
+
+Test Again
+```
+
+Using a structured approach reduces troubleshooting time.
+
+---
+
+# Troubleshooting Scenario 1
+
+## Symptom
+
+Users cannot access an internal application.
+
+### Investigation
+
+Verify:
+
+- Correct A or AAAA record
+- Internal DNS zone
+- Split-horizon configuration
+- Resolver cache
+- Firewall connectivity
+
+---
+
+# Troubleshooting Scenario 2
+
+## Symptom
+
+Emails are not being delivered.
+
+Verify:
+
+- MX records
+- A/AAAA records for mail servers
+- PTR records
+- SPF, DKIM, and DMARC TXT records
+- SMTP connectivity
+
+---
+
+# Troubleshooting Scenario 3
+
+## Symptom
+
+Secondary DNS server contains outdated records.
+
+Possible causes:
+
+- Zone transfer failure
+- Incorrect SOA serial number
+- Firewall blocking TCP port 53
+- Replication issues
+
+---
+
+# Practical Lab 1 — Basic DNS Resolution
+
+Tasks:
+
+1. Query an A record.
+2. Query an AAAA record.
+3. Query MX records.
+4. Query NS records.
+5. Observe TTL values.
+6. Compare cached and uncached responses.
+
+---
+
+# Practical Lab 2 — Reverse DNS
+
+Tasks:
+
+1. Perform a PTR lookup.
+2. Verify reverse zone configuration.
+3. Compare forward and reverse records.
+4. Document inconsistencies.
+
+---
+
+# Practical Lab 3 — DNSSEC Validation
+
+Tasks:
+
+1. Query a DNSSEC-enabled domain.
+2. Inspect DNSKEY and RRSIG records.
+3. Verify validation status.
+4. Compare signed and unsigned zones.
+
+---
+
+# Practical Lab 4 — Split-Horizon DNS
+
+Topology:
+
+```
+Internal Client
+
+↓
+
+Internal DNS
+
+↓
+
+Private Address
+
+──────────────
+
+Internet Client
+
+↓
+
+Public DNS
+
+↓
+
+Public Address
+```
+
+Tasks:
+
+1. Configure separate internal and external zones.
+2. Query from both networks.
+3. Compare responses.
+
+---
+
+# Practical Lab 5 — Packet Capture
+
+Tasks:
+
+1. Capture DNS traffic using Wireshark.
+2. Filter DNS packets.
+3. Identify:
+   - Query type
+   - Response code
+   - TTL
+   - Record type
+4. Measure response time.
+
+---
+
+# SOC Detection Engineering
+
+Security teams should monitor for:
+
+- DNS tunneling indicators
+- Excessive NXDOMAIN responses
+- Unusual TXT record usage
+- Large query volumes
+- Fast Flux patterns
+- DGA-like domain names
+- Requests to newly observed domains
+- Unexpected external resolvers
+
+DNS telemetry is a valuable source of indicators for threat hunting.
+
+---
+
+# SIEM Detection Ideas
+
+Example 1:
+
+```
+IF
+
+Client
+
+↓
+
+Thousands of DNS Queries
+
+↓
+
+Short Time Window
+
+↓
+
+Generate Alert
+```
+
+Example 2:
+
+```
+IF
+
+DNS Queries
+
+↓
+
+High-Entropy Subdomains
+
+↓
+
+Generate Tunneling Alert
+```
+
+Example 3:
+
+```
+IF
+
+Large Number
+
+↓
+
+NXDOMAIN Responses
+
+↓
+
+Potential Malware Detection
+```
+
+Correlate DNS events with proxy, firewall, EDR, and authentication logs to improve confidence.
+
+---
+
+# Zeek Monitoring
+
+Zeek records DNS activity in `dns.log`, including:
+
+- Queried domain
+- Query type
+- Response code
+- TTL
+- Answer records
+- Client IP
+- Server IP
+
+Analysts can use this information to identify suspicious communication patterns.
+
+---
+
+# Suricata Monitoring
+
+Suricata can inspect DNS traffic for:
+
+- Known malicious domains
+- Suspicious query types
+- DNS tunneling patterns
+- Policy violations
+- Threat intelligence matches
+
+Alerts should be reviewed alongside packet captures and endpoint telemetry.
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Enable DNSSEC validation where supported.
+- Restrict recursive resolvers to authorized clients.
+- Limit zone transfers to approved secondary servers.
+- Implement response rate limiting.
+- Monitor DNS logs continuously.
+- Separate internal and external DNS.
+- Use redundant authoritative and recursive servers.
+- Audit stale records regularly.
+- Protect registrar accounts with MFA.
+- Integrate DNS events into SIEM and incident response workflows.
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+Users report intermittent access to the corporate portal.
+
+### Investigation
+
+The SOC identifies:
+
+- A compromised endpoint issuing unusually long DNS queries.
+- Frequent TXT record requests to an unfamiliar external domain.
+- High volumes of outbound DNS traffic.
+
+### Resolution
+
+- Isolate the compromised host.
+- Block the malicious domain.
+- Review DNS logs for additional affected systems.
+- Update endpoint protections.
+- Conduct a threat hunt for related indicators.
+- Improve DNS monitoring and alerting.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is DNS?
+
+DNS (Domain Name System) translates domain names into IP addresses and stores other resource information used by network services.
+
+---
+
+### Which ports does DNS use?
+
+DNS primarily uses:
+
+- UDP port 53
+- TCP port 53
+
+---
+
+### What is an A record?
+
+An A record maps a hostname to an IPv4 address.
+
+---
+
+## Intermediate
+
+### What is the difference between a recursive resolver and an authoritative server?
+
+A recursive resolver performs lookups on behalf of clients, while an authoritative server provides the official records for a DNS zone.
+
+---
+
+### What is TTL?
+
+TTL (Time To Live) specifies how long a DNS record may be cached before it must be refreshed.
+
+---
+
+### What is DNSSEC?
+
+DNSSEC adds authentication and integrity to DNS responses using digital signatures, helping prevent spoofed or modified records.
+
+---
+
+## Advanced
+
+### Explain DNS tunneling.
+
+DNS tunneling encapsulates data within DNS queries and responses, allowing attackers to use DNS for command-and-control communication or data exfiltration.
+
+---
+
+### How would you troubleshoot slow DNS resolution?
+
+A comprehensive answer should include:
+
+1. Verify network connectivity.
+2. Check resolver performance.
+3. Inspect DNS caches.
+4. Measure response times.
+5. Validate zone configuration.
+6. Review packet captures.
+7. Check authoritative server health.
+
+---
+
+### How would you secure enterprise DNS?
+
+Key measures include:
+
+- DNSSEC
+- Redundant resolvers
+- Restricted recursion
+- Controlled zone transfers
+- Split-horizon DNS
+- Continuous monitoring
+- SIEM integration
+- MFA for DNS administration
+- Regular audits
+
+---
+
+# References
+
+## RFCs
+
+- RFC 1034 — Domain Names: Concepts and Facilities
+- RFC 1035 — Domain Names: Implementation and Specification
+- RFC 4033 — DNS Security Introduction and Requirements
+- RFC 4034 — DNSSEC Resource Records
+- RFC 4035 — DNSSEC Protocol Modifications
+- RFC 8484 — DNS over HTTPS (DoH)
+- RFC 7858 — DNS over TLS (DoT)
+
+## Organizations
+
+- IETF
+- ICANN
+- NIST
+- CIS
+
+---
+
+# Summary
+
+DNS is a distributed, hierarchical naming system that underpins virtually every modern network service. Secure and resilient DNS deployments require careful record management, redundancy, DNSSEC where appropriate, monitoring, and integration with enterprise security controls. Understanding DNS operations, packet analysis, and attack techniques equips professionals to design, troubleshoot, and defend critical infrastructure.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ DNS fundamentals and architecture
+
+✔ DNS hierarchy and namespace
+
+✔ Recursive and iterative resolution
+
+✔ DNS resource records (A, AAAA, CNAME, MX, TXT, NS, SOA, PTR, SRV, CAA)
+
+✔ Zone files, caching, TTL, and zone transfers
+
+✔ Split-horizon DNS
+
+✔ DNSSEC, DoH, and DoT
+
+✔ Anycast DNS and DNS load balancing
+
+✔ Active Directory and cloud DNS
+
+✔ Kubernetes DNS and CoreDNS
+
+✔ DNS attacks and mitigations
+
+✔ Packet analysis with Wireshark
+
+✔ Cisco, Linux, Windows, and PowerShell verification
+
+✔ Enterprise troubleshooting
+
+✔ SOC detection engineering
+
+✔ Practical DNS labs
+
+✔ Interview preparation from beginner to advanced
+
+---
+
+# What's Next?
+
+The next chapter, **`12-NAT.md`**, will cover:
+
+- Network Address Translation (NAT) fundamentals
+- Why NAT exists and IPv4 address conservation
+- Static NAT, Dynamic NAT, and PAT (NAT Overload)
+- Source NAT (SNAT) and Destination NAT (DNAT)
+- NAT tables and packet flow
+- NAT in enterprise networks, cloud, and containers
+- NAT traversal, security implications, troubleshooting, packet analysis, and best practices
