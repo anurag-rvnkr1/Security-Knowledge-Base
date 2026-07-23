@@ -2354,3 +2354,798 @@ Effective network troubleshooting helps organizations:
 
 ---
 
+# 13 - Linux Networking
+
+# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+
+---
+
+# Introduction
+
+Linux networking is a core competency for:
+
+- Linux System Administrators
+- Network Engineers
+- DevOps Engineers
+- Cloud Engineers
+- SOC Analysts
+- Security Engineers
+- Penetration Testers
+- Incident Responders
+
+A strong understanding of networking enables administrators to deploy, troubleshoot, secure, and optimize enterprise systems.
+
+---
+
+# Enterprise Network Lifecycle
+
+```text
+Network Design
+
+↓
+
+IP Planning
+
+↓
+
+Deployment
+
+↓
+
+Configuration
+
+↓
+
+Monitoring
+
+↓
+
+Troubleshooting
+
+↓
+
+Optimization
+
+↓
+
+Security
+
+↓
+
+Documentation
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Practical Lab 1 — View Network Interfaces
+
+Display all network interfaces:
+
+```bash
+ip link show
+```
+
+Display interface addresses:
+
+```bash
+ip addr show
+```
+
+Short form:
+
+```bash
+ip a
+```
+
+### Objectives
+
+- Identify interface names
+- Observe interface states
+- View assigned IP addresses
+
+---
+
+# Practical Lab 2 — Display Routing Information
+
+Show the routing table:
+
+```bash
+ip route
+```
+
+Questions:
+
+- What is the default gateway?
+- Which interface is used?
+- Which local networks are directly connected?
+
+---
+
+# Practical Lab 3 — Test Connectivity
+
+Ping the local gateway:
+
+```bash
+ping -c 4 192.168.1.1
+```
+
+Ping a public IP:
+
+```bash
+ping -c 4 8.8.8.8
+```
+
+Ping a hostname:
+
+```bash
+ping -c 4 google.com
+```
+
+### Objectives
+
+- Differentiate IP connectivity from DNS resolution
+- Measure latency and packet loss
+
+---
+
+# Practical Lab 4 — Examine ARP Cache
+
+View neighbor entries:
+
+```bash
+ip neigh
+```
+
+Legacy command:
+
+```bash
+arp -a
+```
+
+### Observe
+
+- IP addresses
+- MAC addresses
+- Neighbor states
+
+---
+
+# Practical Lab 5 — Perform DNS Queries
+
+Query an A record:
+
+```bash
+dig example.com
+```
+
+Reverse lookup:
+
+```bash
+dig -x 8.8.8.8
+```
+
+Alternative:
+
+```bash
+nslookup example.com
+```
+
+### Objectives
+
+- Understand DNS resolution
+- Compare query results
+
+---
+
+# Practical Lab 6 — Identify Listening Services
+
+Display TCP and UDP listeners:
+
+```bash
+ss -tuln
+```
+
+Questions:
+
+- Which services are exposed?
+- Which ports are listening?
+- Are any unexpected services present?
+
+---
+
+# Practical Lab 7 — Test Web Connectivity
+
+Retrieve response headers:
+
+```bash
+curl -I https://example.com
+```
+
+Download a webpage:
+
+```bash
+curl https://example.com
+```
+
+Download a file:
+
+```bash
+wget https://example.com/file.txt
+```
+
+### Objectives
+
+- Validate HTTP/HTTPS connectivity
+- Test application availability
+
+---
+
+# Practical Lab 8 — Trace the Network Path
+
+Trace route to a remote host:
+
+```bash
+traceroute google.com
+```
+
+Or:
+
+```bash
+tracepath google.com
+```
+
+### Objectives
+
+- Observe intermediate hops
+- Identify routing delays
+
+---
+
+# Practical Lab 9 — Capture Packets
+
+Capture ICMP traffic:
+
+```bash
+sudo tcpdump icmp
+```
+
+Capture all traffic on an interface:
+
+```bash
+sudo tcpdump -i eth0
+```
+
+Save capture:
+
+```bash
+sudo tcpdump -i eth0 -w traffic.pcap
+```
+
+### Objectives
+
+- Observe packet exchange
+- Generate a PCAP for later analysis
+
+---
+
+# Practical Lab 10 — Review Interface Statistics
+
+Display interface statistics:
+
+```bash
+ip -s link
+```
+
+Review:
+
+- RX packets
+- TX packets
+- Errors
+- Dropped packets
+
+---
+
+# Practical Lab 11 — Display Interface Hardware Information
+
+```bash
+sudo ethtool eth0
+```
+
+Observe:
+
+- Link status
+- Speed
+- Duplex
+- Driver information
+
+---
+
+# Practical Lab 12 — NetworkManager
+
+List devices:
+
+```bash
+nmcli device status
+```
+
+List configured connections:
+
+```bash
+nmcli connection show
+```
+
+### Objectives
+
+- Understand NetworkManager configuration
+- Identify active connections
+
+---
+
+# Practical Lab 13 — Configure a Temporary IP Address
+
+Assign an address:
+
+```bash
+sudo ip addr add 192.168.50.100/24 dev eth0
+```
+
+Verify:
+
+```bash
+ip addr show eth0
+```
+
+Remove it:
+
+```bash
+sudo ip addr del 192.168.50.100/24 dev eth0
+```
+
+> **Note:** Changes made with the `ip` command are typically temporary and may not persist after reboot.
+
+---
+
+# Practical Lab 14 — Add a Temporary Static Route
+
+Add a route:
+
+```bash
+sudo ip route add 10.10.0.0/16 via 192.168.1.254
+```
+
+Verify:
+
+```bash
+ip route
+```
+
+Remove:
+
+```bash
+sudo ip route del 10.10.0.0/16 via 192.168.1.254
+```
+
+---
+
+# Troubleshooting Checklist
+
+| Check | Command |
+|--------|---------|
+| Interface status | `ip link` |
+| IP address | `ip addr` |
+| Gateway | `ip route` |
+| DNS | `dig`, `nslookup` |
+| ARP cache | `ip neigh` |
+| Listening services | `ss -tuln` |
+| Connectivity | `ping` |
+| Route path | `traceroute` |
+| Packet capture | `tcpdump` |
+| Interface details | `ethtool` |
+
+---
+
+# Enterprise Case Study 1
+
+# Linux Server Cannot Reach the Internet
+
+### Symptoms
+
+- Internal communication works
+- Internet access fails
+
+### Investigation
+
+```text
+Check Interface
+
+↓
+
+Verify IP Address
+
+↓
+
+Check Default Gateway
+
+↓
+
+Verify Routing
+
+↓
+
+Ping Gateway
+
+↓
+
+Ping Public IP
+
+↓
+
+Test DNS
+```
+
+### Root Cause
+
+Default gateway missing after configuration change.
+
+### Resolution
+
+- Restore gateway
+- Verify routing
+- Test connectivity
+
+---
+
+# Enterprise Case Study 2
+
+# Internal Website Not Accessible
+
+### Investigation
+
+```text
+Ping Server
+
+↓
+
+Check Listening Port
+
+↓
+
+Verify Firewall
+
+↓
+
+Inspect Routing
+
+↓
+
+Check DNS
+
+↓
+
+Review Web Service
+```
+
+### Root Cause
+
+Web server process was not running.
+
+### Resolution
+
+- Restart service
+- Verify listener on TCP port 443
+- Confirm application availability
+
+---
+
+# Enterprise Case Study 3
+
+# High Network Latency
+
+### Investigation
+
+```text
+Ping
+
+↓
+
+Traceroute
+
+↓
+
+Interface Statistics
+
+↓
+
+Packet Capture
+
+↓
+
+Bandwidth Review
+
+↓
+
+Switch Investigation
+```
+
+### Possible Causes
+
+- Congestion
+- Duplex mismatch
+- Faulty hardware
+- ISP issues
+- Excessive broadcast traffic
+
+---
+
+# Enterprise Case Study 4
+
+# Suspicious Internal Network Activity
+
+### Investigation
+
+```text
+Alert
+
+↓
+
+Review Connections
+
+↓
+
+Capture Traffic
+
+↓
+
+Inspect DNS Queries
+
+↓
+
+Analyze PCAP
+
+↓
+
+Identify Source Host
+
+↓
+
+Contain Incident
+```
+
+### Security Findings
+
+- Unauthorized outbound connections
+- DNS tunneling attempts
+- Unexpected listening service
+
+---
+
+# Common Networking Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| No IP address | DHCP failure or interface misconfiguration |
+| No Internet | Missing gateway or routing issue |
+| DNS failure | Incorrect DNS server configuration |
+| High latency | Congestion or network faults |
+| Packet loss | Link errors or unstable connectivity |
+| Connection refused | Service not listening |
+| Timeout | Firewall, routing, or host unreachable |
+| Slow downloads | Bandwidth limits or server performance |
+
+---
+
+# Enterprise Monitoring Metrics
+
+| Metric | Importance |
+|----------|------------|
+| Latency | User experience |
+| Packet loss | Connectivity quality |
+| Bandwidth | Capacity planning |
+| Interface utilization | Performance |
+| Error rate | Hardware health |
+| Dropped packets | Congestion detection |
+| Active connections | Security monitoring |
+| DNS response time | Application availability |
+
+---
+
+# Cybersecurity Perspective
+
+Networking knowledge is essential for security operations.
+
+Security teams use Linux networking tools to:
+
+- Investigate incidents
+- Detect lateral movement
+- Identify rogue devices
+- Validate firewall rules
+- Monitor exposed services
+- Analyze malicious traffic
+- Perform threat hunting
+
+Common attack techniques include:
+
+- Port scanning
+- ARP spoofing
+- DNS poisoning
+- Packet sniffing
+- SYN flooding
+- Network reconnaissance
+
+---
+
+# Business Impact
+
+Reliable networking supports:
+
+- High availability
+- Cloud connectivity
+- Remote work
+- Business continuity
+- Disaster recovery
+- Secure communications
+- Customer-facing services
+- Operational efficiency
+
+Network outages can result in:
+
+- Revenue loss
+- SLA violations
+- Productivity impacts
+- Security risks
+- Customer dissatisfaction
+
+---
+
+# Enterprise Best Practices
+
+- Document IP addressing and network topology.
+- Use meaningful interface naming where supported.
+- Restrict exposed services to required ports only.
+- Monitor latency and packet loss continuously.
+- Apply the principle of least privilege to network access.
+- Segment networks based on business functions.
+- Secure remote access with VPN and MFA where applicable.
+- Protect packet captures because they may contain sensitive data.
+- Maintain configuration backups for network devices and servers.
+- Regularly review firewall rules and routing configurations.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Networking fundamentals
+- OSI model
+- TCP/IP model
+- IPv4 and IPv6 addressing
+- Subnetting concepts
+- TCP and UDP
+- Ports and common services
+- ARP
+- DNS
+- DHCP
+- Routing
+- Network interfaces
+- Linux networking commands
+- Troubleshooting methodology
+- Packet capture
+- Enterprise monitoring
+- Cybersecurity considerations
+
+---
+
+# Interview Questions
+
+## Beginner
+
+1. What is the purpose of the OSI model?
+2. What is the difference between TCP and UDP?
+3. What is an IP address?
+4. What is a subnet mask?
+5. What is the purpose of DNS?
+6. What does DHCP do?
+7. What is a default gateway?
+8. What command displays IP addresses in Linux?
+9. What command tests connectivity?
+10. What is the loopback address in IPv4?
+
+---
+
+## Intermediate
+
+1. Compare the OSI and TCP/IP models.
+2. Explain the TCP three-way handshake.
+3. What is ARP and how does it work?
+4. Explain the DORA process used by DHCP.
+5. How do you troubleshoot a DNS issue?
+6. What information does `ss -tuln` provide?
+7. How does `traceroute` identify routing paths?
+8. What is the difference between a static and dynamic route?
+9. Explain CIDR notation with an example.
+10. How would you diagnose packet loss?
+
+---
+
+## Advanced
+
+1. Design a troubleshooting workflow for a production network outage.
+2. How would you investigate suspicious outbound network traffic?
+3. Explain how packet captures assist incident response.
+4. Describe methods to detect ARP spoofing.
+5. How would you secure enterprise DNS infrastructure?
+6. Explain the impact of network segmentation on cybersecurity.
+7. Design a monitoring strategy for Linux servers.
+8. Discuss the risks of exposing unnecessary services.
+9. Explain how routing affects high availability.
+10. Describe best practices for securing Linux network services.
+
+---
+
+# Key Takeaways
+
+- Linux networking is built on the TCP/IP protocol suite.
+- Tools such as `ip`, `ss`, `ping`, `dig`, and `tcpdump` are essential for administration and troubleshooting.
+- DNS, DHCP, ARP, and routing are foundational networking technologies.
+- A structured troubleshooting methodology reduces downtime.
+- Network segmentation, monitoring, and secure configuration strengthen enterprise security.
+
+---
+
+# References
+
+## Official Documentation
+
+- `man ip`
+- `man ss`
+- `man ping`
+- `man traceroute`
+- `man tracepath`
+- `man tcpdump`
+- `man dig`
+- `man host`
+- `man nmcli`
+- `man ethtool`
+
+## Standards & Best Practices
+
+- RFC 791 (IPv4)
+- RFC 8200 (IPv6)
+- RFC 1034 & RFC 1035 (DNS)
+- RFC 2131 (DHCP)
+- RFC 826 (ARP)
+- NIST SP 800-41 (Firewalls)
+- NIST SP 800-61 (Incident Handling)
+- CIS Linux Benchmarks
+- MITRE ATT&CK Framework
+- Linux Foundation Networking Documentation
+
+---
+
+# Next Chapter
+
+➡️ **14-Linux-Storage-Management.md**
+
+## Topics Covered
+
+- Storage Fundamentals
+- Block Devices
+- Partitions
+- MBR vs GPT
+- Filesystems
+- Mounting and Unmounting
+- `/etc/fstab`
+- LVM (Logical Volume Manager)
+- RAID Concepts
+- Swap Space
+- Disk Usage Monitoring
+- Storage Troubleshooting
+- Enterprise Storage Best Practices
+- Practical Labs
+- Interview Questions
+- References
