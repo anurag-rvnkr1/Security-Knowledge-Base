@@ -1935,3 +1935,751 @@ Without standardized communication methods, devices from different manufacturers
 - Encapsulation and decapsulation allow layered communication between systems.
 - Different networking layers use different protocol data units (Data, Segment, Packet, Frame, Bits).
 - The OSI and TCP/IP models provide structured approaches to designing, implementing, and troubleshooting computer networks.
+
+
+# 01 - Networking Fundamentals
+
+# Part 4 — Network Performance, Reliability, Enterprise Best Practices, Practical Lab, and Interview Preparation
+
+---
+
+# Overview
+
+A network is considered successful not only because it connects devices, but because it delivers **fast, reliable, secure, and predictable communication**.
+
+Enterprise networks support:
+
+- Business-critical applications
+- Cloud workloads
+- Voice and video communication
+- Financial transactions
+- Healthcare systems
+- Government infrastructure
+- Industrial control systems
+
+Even small performance issues can affect thousands of users and business operations.
+
+---
+
+# Network Performance
+
+Network performance measures how efficiently data travels between devices.
+
+The most common performance metrics include:
+
+- Bandwidth
+- Throughput
+- Latency
+- Jitter
+- Packet Loss
+- Network Utilization
+
+---
+
+# Bandwidth
+
+## Overview
+
+Bandwidth is the **maximum theoretical amount of data** that can be transmitted over a network connection in a given period.
+
+Think of bandwidth as the **width of a highway**.
+
+```
+Narrow Highway
+
+Few Cars
+
+↓
+
+Low Bandwidth
+```
+
+```
+Wide Highway
+
+Many Cars
+
+↓
+
+High Bandwidth
+```
+
+Bandwidth is commonly measured in:
+
+- Kbps (Kilobits per second)
+- Mbps (Megabits per second)
+- Gbps (Gigabits per second)
+- Tbps (Terabits per second)
+
+---
+
+## Example
+
+```
+Internet Link
+
+1 Gbps
+```
+
+This means the connection can theoretically transmit up to **1 gigabit per second** under ideal conditions.
+
+Higher bandwidth increases capacity but does **not** automatically guarantee faster application performance.
+
+---
+
+# Throughput
+
+## Overview
+
+Throughput is the **actual amount of useful data successfully delivered** across the network.
+
+```
+Bandwidth
+
+↓
+
+1 Gbps
+
+↓
+
+Actual Data Delivered
+
+↓
+
+850 Mbps
+```
+
+Throughput is typically lower than bandwidth because of:
+
+- Protocol overhead
+- Congestion
+- Retransmissions
+- Encryption overhead
+- Hardware limitations
+
+---
+
+# Bandwidth vs Throughput
+
+| Bandwidth | Throughput |
+|------------|------------|
+| Maximum capacity | Actual delivered data |
+| Theoretical | Measured |
+| Does not account for overhead | Includes real-world conditions |
+
+---
+
+# Latency
+
+## Overview
+
+Latency is the **time required for data to travel from the source to the destination**.
+
+```
+Computer A
+
+↓
+
+Network
+
+↓
+
+Computer B
+```
+
+Usually measured in:
+
+- Milliseconds (ms)
+
+---
+
+## Sources of Latency
+
+Latency may be introduced by:
+
+- Distance
+- Routing
+- Network congestion
+- Firewalls
+- Encryption
+- Packet inspection
+- Wireless interference
+
+---
+
+## Applications Sensitive to Latency
+
+Low latency is essential for:
+
+- Voice over IP (VoIP)
+- Video conferencing
+- Online gaming
+- Financial trading
+- Remote desktop
+- Industrial automation
+
+---
+
+# Jitter
+
+## Overview
+
+Jitter is the **variation in packet arrival times**.
+
+Ideal traffic:
+
+```
+Packet
+
+1
+
+2
+
+3
+
+4
+
+(Equal spacing)
+```
+
+High jitter:
+
+```
+Packet
+
+1
+
+3
+
+2
+
+4
+
+(Irregular arrival)
+```
+
+---
+
+## Impact
+
+High jitter may cause:
+
+- Audio distortion
+- Video freezing
+- Choppy voice calls
+- Streaming interruptions
+
+---
+
+# Packet Loss
+
+## Overview
+
+Packet loss occurs when transmitted packets fail to reach their destination.
+
+```
+Packet 1
+
+✓
+
+Packet 2
+
+✗ Lost
+
+Packet 3
+
+✓
+```
+
+---
+
+## Causes
+
+- Congestion
+- Hardware failures
+- Faulty cables
+- Wireless interference
+- Software bugs
+- Misconfigured devices
+
+---
+
+## Impact
+
+Packet loss can result in:
+
+- Slow downloads
+- Application timeouts
+- Poor call quality
+- Interrupted video streams
+- Reduced throughput
+
+---
+
+# Network Utilization
+
+Network utilization measures how much of the available bandwidth is currently being used.
+
+Example:
+
+```
+Bandwidth
+
+1 Gbps
+
+↓
+
+Current Usage
+
+600 Mbps
+
+↓
+
+60% Utilization
+```
+
+Consistently high utilization may indicate the need for additional capacity or traffic optimization.
+
+---
+
+# Quality of Service (QoS)
+
+## Overview
+
+Not all traffic has the same importance.
+
+Examples:
+
+| Application | Priority |
+|--------------|----------|
+| Voice Calls | High |
+| Video Meetings | High |
+| Financial Transactions | High |
+| Email | Medium |
+| File Downloads | Medium |
+| Software Updates | Low |
+
+QoS prioritizes time-sensitive traffic to improve user experience.
+
+---
+
+# QoS Workflow
+
+```
+Traffic
+
+↓
+
+Classification
+
+↓
+
+Marking
+
+↓
+
+Queuing
+
+↓
+
+Scheduling
+
+↓
+
+Transmission
+```
+
+QoS helps ensure that critical applications receive the bandwidth and low latency they require.
+
+---
+
+# Network Reliability
+
+A reliable network consistently delivers services even when components fail.
+
+Key characteristics:
+
+- Stable connectivity
+- Fault tolerance
+- Predictable performance
+- Quick recovery from failures
+
+---
+
+# High Availability (HA)
+
+## Overview
+
+High Availability minimizes downtime by eliminating single points of failure.
+
+Example:
+
+```
+          ISP 1
+            │
+        Router A
+            │
+      Core Switch
+            │
+        Server Farm
+            │
+        Router B
+            │
+          ISP 2
+```
+
+If one ISP or router fails, traffic can continue through the alternate path.
+
+---
+
+# Redundancy
+
+Redundancy provides backup components that take over when primary components fail.
+
+Common examples include:
+
+- Multiple Internet Service Providers
+- Redundant routers
+- Dual power supplies
+- Multiple firewalls
+- Clustered servers
+- Backup links
+
+---
+
+# Fault Tolerance
+
+Fault tolerance is the ability of a network to continue operating despite hardware or software failures.
+
+```
+Primary Link
+
+↓
+
+Failure
+
+↓
+
+Backup Link Activated
+
+↓
+
+Users Continue Working
+```
+
+Fault tolerance improves business continuity.
+
+---
+
+# Scalability
+
+A scalable network supports future growth without requiring a complete redesign.
+
+```
+Today
+
+50 Devices
+
+↓
+
+Next Year
+
+500 Devices
+
+↓
+
+Future
+
+5000 Devices
+```
+
+Scalable designs use modular architectures, standardized configurations, and sufficient addressing plans.
+
+---
+
+# Enterprise Network Design Principles
+
+Modern enterprise networks emphasize:
+
+- Simplicity
+- Modularity
+- Redundancy
+- Security
+- Automation
+- Observability
+- Scalability
+
+Good design reduces operational complexity and improves resilience.
+
+---
+
+# Network Documentation
+
+Accurate documentation is essential for operations and incident response.
+
+Typical documentation includes:
+
+- Physical topology diagrams
+- Logical topology diagrams
+- IP address plans
+- VLAN assignments
+- Routing tables
+- Firewall rules
+- Device inventory
+- Change history
+- Contact information
+
+Well-maintained documentation accelerates troubleshooting and supports disaster recovery.
+
+---
+
+# Monitoring and Observability
+
+Continuous monitoring enables administrators to detect issues before users are affected.
+
+Common monitoring targets include:
+
+- Bandwidth utilization
+- Interface status
+- CPU and memory usage
+- Link errors
+- Packet loss
+- Latency
+- Device health
+- Security events
+
+Common monitoring tools include:
+
+- Wireshark
+- tcpdump
+- Zeek
+- Suricata
+- Nagios
+- Zabbix
+- Prometheus
+- Grafana
+- SolarWinds
+- PRTG Network Monitor
+
+---
+
+# Enterprise Best Practices
+
+✔ Design for redundancy.
+
+✔ Eliminate single points of failure.
+
+✔ Use standardized IP addressing.
+
+✔ Segment networks using VLANs.
+
+✔ Secure network management interfaces.
+
+✔ Apply least privilege to network administration.
+
+✔ Monitor continuously.
+
+✔ Maintain accurate documentation.
+
+✔ Keep firmware and operating systems updated.
+
+✔ Perform regular configuration backups.
+
+✔ Test disaster recovery procedures.
+
+✔ Review network performance regularly.
+
+---
+
+# Practical Lab
+
+## Objective
+
+Analyze the health and performance of a small enterprise network.
+
+---
+
+## Lab Topology
+
+```
+                 Internet
+                      │
+                Edge Router
+                      │
+                 Firewall
+                      │
+                 Core Switch
+                /          \
+         Access Switch   Server Switch
+           /      \            │
+      PC-1       PC-2      Web Server
+```
+
+---
+
+## Tasks
+
+1. Identify all network devices.
+2. Measure latency between hosts.
+3. Check packet loss.
+4. Review bandwidth utilization.
+5. Identify potential single points of failure.
+6. Recommend redundancy improvements.
+7. Document the network topology.
+8. Suggest security enhancements.
+
+---
+
+## Expected Learning Outcomes
+
+After completing this lab, you should be able to:
+
+- Evaluate network performance.
+- Recognize availability risks.
+- Identify opportunities for optimization.
+- Produce basic network documentation.
+- Recommend enterprise design improvements.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is a computer network?
+
+A computer network is a collection of interconnected devices that communicate and share resources using standardized protocols.
+
+---
+
+### What is the difference between bandwidth and throughput?
+
+Bandwidth is the maximum theoretical capacity of a network connection, while throughput is the actual amount of useful data successfully transmitted.
+
+---
+
+### What causes packet loss?
+
+Common causes include congestion, faulty hardware, damaged cables, wireless interference, software issues, and network misconfigurations.
+
+---
+
+## Intermediate
+
+### What is Quality of Service (QoS)?
+
+QoS is a set of techniques used to prioritize network traffic so that time-sensitive applications receive the bandwidth and latency characteristics they require.
+
+---
+
+### Why is redundancy important?
+
+Redundancy eliminates single points of failure by providing backup paths or devices, improving availability and business continuity.
+
+---
+
+### What is the difference between latency and jitter?
+
+Latency measures the time required for data to travel between endpoints, while jitter measures the variation in packet arrival times.
+
+---
+
+## Advanced
+
+### How would you design a highly available enterprise network?
+
+A robust design should include:
+
+1. Redundant Internet connections.
+2. Multiple core switches.
+3. High-availability firewalls.
+4. Dynamic routing protocols.
+5. Redundant power supplies.
+6. Network segmentation.
+7. Continuous monitoring.
+8. Automated backups.
+9. Configuration management.
+10. Disaster recovery planning.
+
+---
+
+### How would you troubleshoot slow network performance?
+
+A structured approach includes:
+
+1. Verify user reports.
+2. Measure latency, jitter, and packet loss.
+3. Check bandwidth utilization.
+4. Review interface errors.
+5. Examine routing paths.
+6. Inspect firewall and switch logs.
+7. Analyze traffic captures if necessary.
+8. Isolate the root cause and validate the fix.
+
+---
+
+# References
+
+## Standards
+
+- IEEE 802 Series
+- IETF RFC Series
+- ISO/IEC Networking Standards
+
+## NIST
+
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+
+## Vendor Documentation
+
+- Cisco Networking Documentation
+- Juniper Documentation
+- Palo Alto Networks Documentation
+- Fortinet Documentation
+
+---
+
+# Summary
+
+Networking forms the foundation of modern digital communication. Understanding communication models, transmission methods, network performance metrics, and enterprise design principles enables professionals to build resilient, scalable, and secure infrastructures. Strong networking knowledge is essential for cybersecurity, cloud computing, DevOps, system administration, and network engineering, serving as the basis for more advanced topics such as the OSI Model, TCP/IP, routing, switching, and network security.
+
+---
+
+# Chapter Review
+
+## Skills Covered
+
+After completing this chapter, you should understand:
+
+✔ Computer networking fundamentals
+
+✔ Types of computer networks
+
+✔ Network topologies
+
+✔ Communication models
+
+✔ Data transmission methods
+
+✔ Simplex, half-duplex, and full-duplex communication
+
+✔ Circuit switching and packet switching
+
+✔ Encapsulation and decapsulation
+
+✔ Protocol Data Units (PDUs)
+
+✔ Network performance metrics
+
+✔ Quality of Service (QoS)
+
+✔ High Availability (HA)
+
+✔ Redundancy and fault tolerance
+
+✔ Enterprise network design principles
+
+✔ Network documentation
+
+✔ Basic troubleshooting methodology
