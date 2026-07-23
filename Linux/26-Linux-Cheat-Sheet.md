@@ -2143,3 +2143,540 @@ These commands are heavily used during:
 
 ---
 
+# 26 - Linux Cheat Sheet
+
+# Part 4 — Complete Linux Command Reference, Interview Revision Sheet, Daily Administrator Checklist, Learning Roadmap, and Resources
+
+---
+
+# Introduction
+
+This final section is designed as a **master revision guide** for:
+
+- Linux Administrators
+- System Administrators
+- DevOps Engineers
+- Cloud Engineers
+- Site Reliability Engineers (SRE)
+- SOC Analysts
+- Cybersecurity Engineers
+- Penetration Testers
+- Students preparing for technical interviews and certifications
+
+Use this chapter for quick revision before interviews, exams, or production work.
+
+---
+
+# Complete Linux Command Reference
+
+## Navigation
+
+| Task | Command |
+|------|---------|
+| Print current directory | `pwd` |
+| Change directory | `cd` |
+| Go to home directory | `cd ~` |
+| Go to previous directory | `cd -` |
+| List files | `ls` |
+| Long listing | `ls -l` |
+| Hidden files | `ls -la` |
+
+---
+
+## File Management
+
+| Task | Command |
+|------|---------|
+| Create file | `touch file` |
+| Create directory | `mkdir dir` |
+| Create nested directories | `mkdir -p a/b/c` |
+| Copy file | `cp src dst` |
+| Copy directory | `cp -r src dst` |
+| Move/Rename | `mv src dst` |
+| Delete file | `rm file` |
+| Delete directory | `rm -r dir` |
+| Search files | `find` |
+| File details | `stat file` |
+| File type | `file file` |
+
+---
+
+## Viewing Files
+
+| Task | Command |
+|------|---------|
+| Display file | `cat file` |
+| Interactive viewer | `less file` |
+| First lines | `head file` |
+| Last lines | `tail file` |
+| Follow log | `tail -f file` |
+
+---
+
+## Text Processing
+
+| Task | Command |
+|------|---------|
+| Search | `grep` |
+| Replace text | `sed` |
+| Pattern processing | `awk` |
+| Extract fields | `cut` |
+| Sort | `sort` |
+| Remove duplicates | `uniq` |
+| Count | `wc` |
+| Character translation | `tr` |
+
+---
+
+## Users & Permissions
+
+| Task | Command |
+|------|---------|
+| Current user | `whoami` |
+| User identity | `id` |
+| Logged-in users | `who` |
+| Add user | `useradd` |
+| Change password | `passwd` |
+| Delete user | `userdel` |
+| Add group | `groupadd` |
+| Change owner | `chown` |
+| Change permissions | `chmod` |
+| Change group | `chgrp` |
+| View ACL | `getfacl` |
+| Set ACL | `setfacl` |
+
+---
+
+## Processes
+
+| Task | Command |
+|------|---------|
+| List processes | `ps aux` |
+| Interactive monitor | `top` |
+| Search process | `pgrep` |
+| Kill process | `kill` |
+| Kill by name | `pkill` |
+| Background jobs | `jobs` |
+| Foreground job | `fg` |
+
+---
+
+## Services
+
+| Task | Command |
+|------|---------|
+| Status | `systemctl status` |
+| Start | `systemctl start` |
+| Stop | `systemctl stop` |
+| Restart | `systemctl restart` |
+| Reload | `systemctl reload` |
+| Enable | `systemctl enable` |
+| Disable | `systemctl disable` |
+| Failed services | `systemctl --failed` |
+
+---
+
+## Logs
+
+| Task | Command |
+|------|---------|
+| System journal | `journalctl` |
+| Current boot | `journalctl -b` |
+| Previous boot | `journalctl -b -1` |
+| Follow logs | `journalctl -f` |
+| Service logs | `journalctl -u service` |
+| Kernel messages | `dmesg` |
+
+---
+
+## Networking
+
+| Task | Command |
+|------|---------|
+| Interfaces | `ip addr` |
+| Routes | `ip route` |
+| Links | `ip link` |
+| Ping | `ping` |
+| Trace route | `traceroute` |
+| DNS lookup | `dig`, `host`, `nslookup` |
+| Listening ports | `ss -tulpn` |
+| ARP/Neighbors | `ip neigh` |
+
+---
+
+## Storage
+
+| Task | Command |
+|------|---------|
+| Disk usage | `df -h` |
+| Directory size | `du -sh` |
+| Block devices | `lsblk` |
+| Mount | `mount` |
+| Unmount | `umount` |
+| UUIDs | `blkid` |
+| Open files | `lsof` |
+
+---
+
+## Packages
+
+### Debian / Ubuntu
+
+| Task | Command |
+|------|---------|
+| Update | `apt update` |
+| Upgrade | `apt upgrade` |
+| Install | `apt install` |
+| Remove | `apt remove` |
+| Search | `apt search` |
+
+### RHEL / Rocky / AlmaLinux / Fedora
+
+| Task | Command |
+|------|---------|
+| Update | `dnf update` |
+| Install | `dnf install` |
+| Remove | `dnf remove` |
+| Search | `dnf search` |
+
+---
+
+## SSH
+
+| Task | Command |
+|------|---------|
+| Connect | `ssh user@host` |
+| Copy file | `scp` |
+| Generate key | `ssh-keygen` |
+| Install public key | `ssh-copy-id` |
+
+---
+
+# Linux Interview Revision Sheet
+
+## Linux Fundamentals
+
+- Linux architecture
+- Kernel responsibilities
+- Boot process
+- Filesystem hierarchy
+- Shell basics
+- Distributions
+- Inodes
+- Links
+
+---
+
+## System Administration
+
+- User management
+- Groups
+- Permissions
+- ACLs
+- Services
+- Logging
+- Package management
+- Storage management
+
+---
+
+## Networking
+
+- TCP/IP basics
+- DNS
+- Routing
+- SSH
+- Firewalls
+- Network troubleshooting
+
+---
+
+## Shell Scripting
+
+- Variables
+- Positional parameters
+- Conditions
+- Loops
+- Functions
+- Exit codes
+- Automation
+
+---
+
+## Security
+
+- Least Privilege
+- Authentication vs Authorization
+- SSH hardening
+- File permissions
+- Log monitoring
+- Patch management
+- Incident response fundamentals
+
+---
+
+## Troubleshooting
+
+Remember this workflow:
+
+```text
+Observe
+
+↓
+
+Collect Information
+
+↓
+
+Analyze
+
+↓
+
+Identify Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+
+↓
+
+Document
+
+↓
+
+Prevent Recurrence
+```
+
+---
+
+# Daily Linux Administrator Checklist
+
+## Every Day
+
+- Review system health (`uptime`, `top`)
+- Check disk usage (`df -h`)
+- Review memory (`free -h`)
+- Verify critical services (`systemctl status`)
+- Review logs (`journalctl`)
+- Check failed services (`systemctl --failed`)
+- Monitor authentication logs
+- Verify backup status
+- Confirm monitoring alerts are addressed
+
+---
+
+## Every Week
+
+- Apply approved updates
+- Remove unnecessary packages
+- Audit user accounts and groups
+- Verify scheduled jobs
+- Review firewall policies
+- Check storage growth trends
+- Review system documentation
+
+---
+
+## Every Month
+
+- Test backup restoration procedures
+- Review SSH keys and access
+- Rotate credentials where required
+- Review security advisories
+- Validate disaster recovery procedures
+- Perform capacity planning
+- Review incident reports and lessons learned
+
+---
+
+# Linux Learning Roadmap
+
+```text
+Linux Fundamentals
+        │
+        ▼
+Command Line Mastery
+        │
+        ▼
+Filesystem & Permissions
+        │
+        ▼
+Users & Groups
+        │
+        ▼
+Processes & Services
+        │
+        ▼
+Networking
+        │
+        ▼
+Storage Management
+        │
+        ▼
+Shell Scripting
+        │
+        ▼
+System Administration
+        │
+        ▼
+Security & Hardening
+        │
+        ▼
+Troubleshooting
+        │
+        ▼
+Automation
+        │
+        ▼
+Cloud & Containers
+        │
+        ▼
+DevOps / SRE / Cybersecurity
+```
+
+---
+
+# Enterprise Best Practices
+
+- Automate repetitive operational tasks.
+- Use version control for configuration files where appropriate.
+- Follow change management processes before production changes.
+- Apply the Principle of Least Privilege.
+- Monitor systems proactively using logs and metrics.
+- Keep operating systems and packages updated.
+- Test backups and recovery procedures regularly.
+- Document operational procedures and incident resolutions.
+
+---
+
+# Cybersecurity Perspective
+
+Linux is the foundation of many enterprise environments, including:
+
+- Web servers
+- Cloud infrastructure
+- Kubernetes clusters
+- Security appliances
+- SIEM platforms
+- CI/CD pipelines
+
+Strong Linux skills directly improve capabilities in:
+
+- Incident Response
+- Threat Hunting
+- Vulnerability Assessment
+- Penetration Testing
+- Digital Forensics
+- Security Automation
+
+---
+
+# Final Key Takeaways
+
+- Build a strong foundation before learning advanced topics.
+- Understand the reasoning behind commands, not just their syntax.
+- Practice Linux daily in a lab environment.
+- Learn troubleshooting as a structured process.
+- Develop automation skills through shell scripting.
+- Prioritize security in every administrative task.
+- Document your work and continuously improve operational practices.
+
+---
+
+# References
+
+## Official Documentation
+
+- Linux Foundation Documentation
+- Red Hat Enterprise Linux Documentation
+- Ubuntu Server Guide
+- Debian Administrator's Handbook
+- POSIX Standards
+
+## Manual Pages
+
+- `man bash`
+- `man systemctl`
+- `man journalctl`
+- `man ps`
+- `man ip`
+- `man ss`
+- `man grep`
+- `man find`
+- `man chmod`
+- `man chown`
+
+## Security & Operations
+
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-61 (Computer Security Incident Handling Guide)
+- CIS Benchmarks for Linux
+- Site Reliability Engineering (SRE) Workbook
+- OWASP Cheat Sheet Series (Linux-related operational practices)
+
+---
+
+# Congratulations!
+
+You have completed the complete Linux handbook, covering:
+
+- Linux Fundamentals
+- Installation
+- Architecture
+- Boot Process
+- File System
+- File Management
+- Text Processing
+- Users & Groups
+- Permissions & ACL
+- Processes
+- systemd & Services
+- Package Management
+- Networking
+- Storage Management
+- Shell & Bash Scripting
+- System Monitoring
+- Logging
+- Security
+- Firewalls
+- SSH
+- Automation
+- Hardening
+- Linux for Cybersecurity
+- Troubleshooting
+- Interview Questions
+- Cheat Sheet
+
+This knowledge base provides a comprehensive foundation for Linux administration, DevOps, cloud engineering, cybersecurity, and enterprise operations.
+
+---
+
+# Next File
+
+➡️ **Resources.md**
+
+This final companion file should include:
+
+- Recommended books
+- Official documentation
+- Linux distributions
+- Virtual labs
+- Practice platforms
+- Certifications
+- YouTube channels
+- Blogs
+- Podcasts
+- GitHub repositories
+- Learning roadmap
+- Career roadmap
+- 30/60/90-day practice plans
+- Daily, weekly, and monthly study schedules
+- Interview preparation strategy
+- Enterprise project ideas
+- Home lab setup guide
+- Community resources
+- Glossary of Linux terms
