@@ -1470,3 +1470,693 @@ Organizations should:
 
 ---
 
+# Part 3 — Packet Analysis, Wireshark, Log Analysis, Detection Engineering, SIEM Investigation, Root Cause Analysis, and Enterprise Incident Response
+
+---
+
+# Introduction
+
+Many enterprise incidents cannot be resolved through basic connectivity tests alone. Engineers must inspect packets, analyze logs, correlate events, and investigate security telemetry to identify the true root cause.
+
+Modern Network Operations Centers (NOCs) and Security Operations Centers (SOCs) rely on multiple sources of evidence, including:
+
+- Packet captures
+- Syslog
+- NetFlow/IPFIX
+- Firewall logs
+- IDS/IPS alerts
+- Authentication logs
+- Cloud logs
+- Endpoint telemetry
+- SIEM correlation
+
+Using multiple telemetry sources reduces investigation time and improves accuracy.
+
+---
+
+# Enterprise Investigation Workflow
+
+```
+Alert Generated
+
+↓
+
+Validate Alert
+
+↓
+
+Determine Scope
+
+↓
+
+Collect Evidence
+
+↓
+
+Analyze Packets
+
+↓
+
+Review Logs
+
+↓
+
+Correlate Events
+
+↓
+
+Identify Root Cause
+
+↓
+
+Contain (If Security Incident)
+
+↓
+
+Resolve
+
+↓
+
+Validate
+
+↓
+
+Document Findings
+```
+
+---
+
+# Packet Analysis
+
+Packet analysis involves examining individual network packets to understand how systems communicate.
+
+Packet captures reveal:
+
+- Protocol behavior
+- TCP sessions
+- TLS negotiation
+- DNS requests
+- Routing issues
+- Application traffic
+- Packet loss
+- Retransmissions
+
+Unlike flow records, packet captures contain the complete payload (where not encrypted).
+
+---
+
+# Packet Capture Workflow
+
+```
+Network Traffic
+
+↓
+
+Capture
+
+↓
+
+Filter
+
+↓
+
+Analyze
+
+↓
+
+Identify Problem
+
+↓
+
+Resolution
+```
+
+Packet capture should be performed on the most relevant network segment to avoid unnecessary data collection.
+
+---
+
+# Packet Capture Methods
+
+Enterprise packet collection commonly uses:
+
+- SPAN (Port Mirroring)
+- Network TAPs
+- Virtual TAPs
+- Cloud packet mirroring
+- Host-based captures
+
+Each method provides visibility into different parts of the infrastructure.
+
+---
+
+# SPAN (Port Mirroring)
+
+A SPAN port copies traffic from one or more interfaces to a monitoring device.
+
+```
+Production Switch
+
+      │
+
+Traffic Mirrored
+
+      │
+
+Monitoring Port
+
+      │
+
+Wireshark
+```
+
+SPAN is widely used because it requires no interruption to production traffic.
+
+---
+
+# Network TAP
+
+A Test Access Point (TAP) passively copies all traffic crossing a network link.
+
+Advantages:
+
+- High accuracy
+- No impact on production traffic
+- Minimal packet loss
+- Suitable for high-speed links
+
+TAPs are preferred for mission-critical monitoring.
+
+---
+
+# Wireshark
+
+Wireshark is one of the most widely used packet analysis tools.
+
+It supports thousands of protocols and provides:
+
+- Packet decoding
+- Protocol inspection
+- Stream reconstruction
+- Filtering
+- Statistics
+- Flow analysis
+
+Wireshark is commonly used for troubleshooting and forensic investigations.
+
+---
+
+# Packet Structure
+
+```
+Ethernet Header
+
+↓
+
+IP Header
+
+↓
+
+TCP / UDP Header
+
+↓
+
+Application Data
+```
+
+Understanding protocol headers is essential for accurate packet analysis.
+
+---
+
+# TCP Three-Way Handshake
+
+```
+Client
+
+SYN
+
+↓
+
+Server
+
+SYN-ACK
+
+↓
+
+Client
+
+ACK
+
+↓
+
+Connection Established
+```
+
+Failure during this sequence often indicates firewall, routing, or server issues.
+
+---
+
+# TCP Connection Termination
+
+```
+FIN
+
+↓
+
+ACK
+
+↓
+
+FIN
+
+↓
+
+ACK
+
+↓
+
+Connection Closed
+```
+
+Unexpected resets (RST packets) may indicate application errors or firewall policies.
+
+---
+
+# DNS Packet Analysis
+
+A typical DNS exchange consists of:
+
+```
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Resolver
+
+↓
+
+DNS Response
+
+↓
+
+Client
+```
+
+Common issues include:
+
+- No response
+- Incorrect IP address
+- Delayed response
+- SERVFAIL
+- NXDOMAIN
+
+---
+
+# TLS Handshake Analysis
+
+```
+Client Hello
+
+↓
+
+Server Hello
+
+↓
+
+Certificate
+
+↓
+
+Key Exchange
+
+↓
+
+Encrypted Session
+```
+
+TLS failures commonly result from:
+
+- Expired certificates
+- Unsupported cipher suites
+- Certificate trust issues
+- Protocol mismatches
+
+---
+
+# HTTP Packet Analysis
+
+Monitor for:
+
+- Request methods (GET, POST, PUT, DELETE)
+- Status codes
+- Redirects
+- Response time
+- Payload size
+
+HTTP analysis helps identify web application issues.
+
+---
+
+# Common Wireshark Display Filters
+
+| Filter | Purpose |
+|---------|----------|
+| `ip.addr == 192.168.1.10` | Traffic for a specific IP |
+| `tcp` | TCP packets only |
+| `udp` | UDP packets only |
+| `dns` | DNS traffic |
+| `http` | HTTP traffic |
+| `tls` | TLS traffic |
+| `icmp` | ICMP packets |
+| `arp` | ARP traffic |
+| `tcp.port == 443` | HTTPS traffic |
+| `tcp.flags.syn == 1` | TCP SYN packets |
+
+Display filters allow analysts to focus on relevant traffic quickly.
+
+---
+
+# Useful Wireshark Statistics
+
+Engineers commonly review:
+
+- Protocol Hierarchy
+- Conversations
+- Endpoints
+- I/O Graphs
+- Flow Graph
+- Expert Information
+
+These views help identify abnormal traffic patterns and protocol issues.
+
+---
+
+# Syslog Analysis
+
+Syslog provides a chronological record of system and network events.
+
+Typical log sources include:
+
+- Routers
+- Switches
+- Firewalls
+- VPN Gateways
+- Wireless Controllers
+- Linux Servers
+- Windows Servers
+
+Logs should be centrally collected and retained according to organizational policies.
+
+---
+
+# Authentication Log Analysis
+
+Investigate:
+
+- Failed logins
+- Successful logins
+- Account lockouts
+- Privilege changes
+- Password resets
+- MFA failures
+
+Authentication logs are often the first indicator of unauthorized access.
+
+---
+
+# Firewall Log Analysis
+
+Review:
+
+- Allowed connections
+- Denied connections
+- NAT translations
+- Rule matches
+- Threat prevention events
+- Connection durations
+
+Unexpected denied traffic may indicate policy errors or malicious activity.
+
+---
+
+# NetFlow/IPFIX Analysis
+
+Flow records provide visibility into communication patterns.
+
+Useful metrics include:
+
+- Top talkers
+- Top destinations
+- Bandwidth usage
+- Flow duration
+- Protocol distribution
+- Geographic communication
+
+NetFlow complements packet captures by providing scalable network visibility.
+
+---
+
+# SIEM Investigation Workflow
+
+```
+Alert
+
+↓
+
+Collect Related Events
+
+↓
+
+Correlate Logs
+
+↓
+
+Review Timeline
+
+↓
+
+Identify Root Cause
+
+↓
+
+Contain
+
+↓
+
+Recover
+
+↓
+
+Close Incident
+```
+
+A SIEM enables analysts to investigate events across multiple systems from a centralized platform.
+
+---
+
+# Event Correlation
+
+Correlation combines multiple related events into a single investigation.
+
+Example:
+
+```
+VPN Login
+
+↓
+
+Firewall Allow
+
+↓
+
+DNS Query
+
+↓
+
+File Download
+
+↓
+
+Endpoint Alert
+
+↓
+
+Incident
+```
+
+Without correlation, each event may appear benign in isolation.
+
+---
+
+# Detection Engineering
+
+Detection Engineering focuses on creating reliable detection logic that balances sensitivity with accuracy.
+
+Objectives:
+
+- Detect malicious behavior
+- Minimize false positives
+- Improve investigation efficiency
+- Reduce alert fatigue
+
+---
+
+# Example Detection Rule — Port Scanning
+
+```
+Single Source
+
+↓
+
+100+ Destination Ports
+
+↓
+
+Within 2 Minutes
+
+↓
+
+Medium Severity Alert
+```
+
+---
+
+# Example Detection Rule — Brute Force
+
+```
+50 Failed Logins
+
+↓
+
+Successful Login
+
+↓
+
+Privilege Escalation
+
+↓
+
+Critical Alert
+```
+
+Correlating authentication events provides higher confidence than monitoring failed logins alone.
+
+---
+
+# Example Detection Rule — DNS Tunneling
+
+Indicators include:
+
+- Long DNS queries
+- High entropy domain names
+- Large TXT records
+- Unusually high query frequency
+
+These behaviors may indicate covert data exfiltration.
+
+---
+
+# Threat Hunting
+
+Threat hunting proactively searches for malicious activity that has not yet triggered alerts.
+
+Potential hunting topics:
+
+- Unusual administrative logins
+- Rare processes
+- New external connections
+- High-volume DNS requests
+- Internal port scanning
+- Unauthorized remote administration tools
+- Unexpected cloud API activity
+
+Threat hunting complements automated detection.
+
+---
+
+# Root Cause Analysis (RCA)
+
+Resolving symptoms without understanding the underlying cause often leads to recurring incidents.
+
+```
+VPN Failure
+
+↓
+
+Routing Issue
+
+↓
+
+Configuration Error
+
+↓
+
+Unauthorized Change
+
+↓
+
+Root Cause
+```
+
+RCA should be completed for all major incidents.
+
+---
+
+# Post-Incident Review
+
+Following incident resolution, organizations should review:
+
+- Timeline of events
+- Root cause
+- Detection effectiveness
+- Response effectiveness
+- Lessons learned
+- Preventive improvements
+
+The objective is continuous operational improvement rather than assigning blame.
+
+---
+
+# Business Impact
+
+Comprehensive packet and log analysis enables organizations to:
+
+- Reduce Mean Time to Detect (MTTD)
+- Reduce Mean Time to Repair (MTTR)
+- Improve forensic investigations
+- Strengthen security posture
+- Prevent recurring incidents
+- Improve service reliability
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Capture packets only where necessary to reduce unnecessary data collection.
+- Synchronize system clocks using NTP for accurate event correlation.
+- Centralize logs in a secure SIEM.
+- Retain logs according to regulatory and business requirements.
+- Regularly tune detection rules to reduce false positives.
+- Conduct periodic threat hunting exercises.
+- Document root causes and corrective actions after major incidents.
+- Validate monitoring and detection coverage following infrastructure changes.
+
+---
+
+# Key Takeaways
+
+- Packet captures provide deep protocol-level visibility.
+- Wireshark is a powerful tool for protocol analysis and troubleshooting.
+- Centralized log analysis accelerates incident investigations.
+- SIEM platforms correlate telemetry from multiple sources.
+- Detection Engineering improves alert quality and investigation efficiency.
+- Threat hunting identifies adversary activity before significant impact.
+- Root Cause Analysis helps prevent recurring operational issues.
+
+---
+
