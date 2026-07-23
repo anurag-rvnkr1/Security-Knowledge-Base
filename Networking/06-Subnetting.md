@@ -2054,3 +2054,711 @@ Exercise:
 - Cloud platforms such as AWS, Azure, and Google Cloud rely heavily on subnetting for network segmentation and security.
 - Proper VLSM design and route summarization improve scalability, performance, and operational efficiency in enterprise environments.
 
+# 06 - Subnetting
+
+# Part 4 — Enterprise Design, Troubleshooting, Practical Labs, Wireshark Analysis, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+Subnetting is not only a mathematical exercise—it is a core component of enterprise network architecture.
+
+A well-designed subnet structure improves:
+
+- Security
+- Performance
+- Scalability
+- Fault isolation
+- Cloud integration
+- Operational efficiency
+
+Conversely, poor subnet design can lead to routing problems, overlapping address spaces, excessive broadcasts, and difficult troubleshooting.
+
+This section focuses on applying subnetting concepts in real-world enterprise environments.
+
+---
+
+# Enterprise Subnet Design Principles
+
+When designing subnets, organizations should consider:
+
+- Current host requirements
+- Future growth
+- Geographic locations
+- Department separation
+- Security zones
+- Cloud connectivity
+- High availability
+- Disaster recovery
+
+Avoid designing solely for today's needs; reserve address space for expansion.
+
+---
+
+# Enterprise Example
+
+Corporate network:
+
+```
+10.0.0.0/16
+```
+
+Design:
+
+```
+                    10.0.0.0/16
+                         │
+     ┌──────────┬──────────┬──────────┬──────────┐
+     │          │          │          │
+ HR Users    IT Users   Finance   Data Center
+10.0.10.0/24 10.0.20.0/24 10.0.30.0/24 10.0.40.0/24
+     │
+ Guest Wi-Fi
+10.0.50.0/24
+```
+
+Benefits:
+
+- Department isolation
+- Easier firewall policies
+- Simplified troubleshooting
+- Reduced broadcast domains
+
+---
+
+# Security Segmentation
+
+Subnetting supports network segmentation.
+
+Example:
+
+```
+Internet
+     │
+ Firewall
+     │
+ DMZ
+10.0.10.0/24
+     │
+ Internal LAN
+10.0.20.0/24
+     │
+ Database Network
+10.0.30.0/24
+```
+
+Traffic between these networks can be controlled using:
+
+- Firewalls
+- ACLs
+- Network security groups (cloud)
+- Microsegmentation platforms
+
+---
+
+# High Availability Design
+
+Large enterprises often deploy redundant network paths.
+
+```
+        Core Router A
+             │
+      ┌──────┴──────┐
+      │             │
+ Distribution A  Distribution B
+      │             │
+   Access Layer   Access Layer
+```
+
+Subnet planning should align with:
+
+- Redundant gateways
+- Dynamic routing
+- Failover mechanisms
+- Load balancing
+
+---
+
+# Common Subnetting Problems
+
+| Problem | Description |
+|----------|-------------|
+| Overlapping Subnets | Two networks use the same address space |
+| Incorrect Subnet Mask | Hosts cannot determine local vs remote networks |
+| Wrong Default Gateway | Traffic cannot leave the subnet |
+| Duplicate IP Address | Multiple hosts use the same IP |
+| Broadcast Storm | Excessive broadcast traffic |
+| Missing Route | Destination network unreachable |
+| Poor Address Planning | Difficult future expansion |
+
+---
+
+# Troubleshooting Workflow
+
+When diagnosing subnet-related issues:
+
+```
+Physical Layer
+
+↓
+
+Link Status
+
+↓
+
+IP Configuration
+
+↓
+
+Subnet Mask
+
+↓
+
+Default Gateway
+
+↓
+
+Routing Table
+
+↓
+
+DNS
+
+↓
+
+Application
+```
+
+Always verify lower-layer connectivity before investigating higher-layer issues.
+
+---
+
+# Example Troubleshooting Scenario
+
+### Problem
+
+A workstation cannot communicate with another workstation in the same office.
+
+---
+
+### Step 1
+
+Check IP configuration.
+
+```
+ipconfig /all
+```
+
+Result:
+
+```
+192.168.10.25
+
+255.255.255.0
+```
+
+---
+
+### Step 2
+
+Check the second workstation.
+
+```
+192.168.11.30
+
+255.255.255.0
+```
+
+Observation:
+
+The devices are on different subnets.
+
+---
+
+### Root Cause
+
+Incorrect IP assignment.
+
+---
+
+### Resolution
+
+Assign the correct subnet or ensure routing exists between the networks.
+
+---
+
+# Wireshark Analysis
+
+Capture ICMP traffic between two hosts.
+
+Observe:
+
+```
+Ethernet II
+
+↓
+
+IPv4
+
+↓
+
+ICMP Echo Request
+
+↓
+
+ICMP Echo Reply
+```
+
+Verify:
+
+- Source IP
+- Destination IP
+- TTL
+- MAC addresses
+- ARP requests (if applicable)
+
+If ARP requests are repeated without replies, investigate local Layer 2 connectivity.
+
+---
+
+# Cisco IOS Verification
+
+Display interface information:
+
+```text
+show ip interface brief
+```
+
+Display routing table:
+
+```text
+show ip route
+```
+
+Verify connected networks:
+
+```text
+show running-config
+```
+
+Verify ARP entries:
+
+```text
+show arp
+```
+
+Useful observations:
+
+- Interface status
+- Assigned IP addresses
+- Subnet masks
+- Connected routes
+- Neighbor mappings
+
+---
+
+# Linux Verification
+
+Display addresses:
+
+```bash
+ip addr
+```
+
+Display routes:
+
+```bash
+ip route
+```
+
+Display neighbors:
+
+```bash
+ip neigh
+```
+
+Test connectivity:
+
+```bash
+ping 192.168.10.1
+```
+
+Trace routing path:
+
+```bash
+traceroute 8.8.8.8
+```
+
+---
+
+# Windows Verification
+
+Display configuration:
+
+```cmd
+ipconfig /all
+```
+
+Display routes:
+
+```cmd
+route print
+```
+
+Display ARP cache:
+
+```cmd
+arp -a
+```
+
+Trace route:
+
+```cmd
+tracert 8.8.8.8
+```
+
+---
+
+# Cloud Subnet Verification
+
+## AWS
+
+Useful checks:
+
+- VPC CIDR block
+- Subnet CIDR block
+- Route tables
+- Internet Gateway
+- NAT Gateway
+- Security Groups
+- Network ACLs
+
+Example:
+
+```
+VPC
+
+10.0.0.0/16
+
+↓
+
+Private Subnet
+
+10.0.1.0/24
+```
+
+---
+
+## Azure
+
+Verify:
+
+- Virtual Network (VNet)
+- Subnet prefix
+- Route tables
+- Network Security Groups (NSGs)
+- User Defined Routes (UDRs)
+
+---
+
+## Google Cloud
+
+Verify:
+
+- VPC network
+- Regional subnet
+- Firewall rules
+- Cloud Router (if used)
+- Route configuration
+
+---
+
+# Practical Lab 1 — Determine Subnet Information
+
+Given:
+
+```
+192.168.50.145/27
+```
+
+Calculate:
+
+- Network address
+- Broadcast address
+- First usable host
+- Last usable host
+- Number of usable hosts
+
+Verify your results using a trusted subnet calculator after solving manually.
+
+---
+
+# Practical Lab 2 — VLSM Design
+
+Available network:
+
+```
+10.10.0.0/24
+```
+
+Requirements:
+
+| Network | Hosts |
+|----------|------:|
+| HR | 100 |
+| Finance | 40 |
+| IT | 20 |
+| Guest | 10 |
+| WAN | 2 |
+
+Tasks:
+
+1. Sort by host requirement.
+2. Allocate subnets using VLSM.
+3. Document network, broadcast, and usable host ranges.
+4. Reserve remaining address space.
+
+---
+
+# Practical Lab 3 — Routing Verification
+
+Build two subnets:
+
+```
+192.168.10.0/24
+
+192.168.20.0/24
+```
+
+Configure routing between them using a router or Layer 3 switch.
+
+Verify:
+
+- Local connectivity
+- Inter-subnet connectivity
+- Default gateway functionality
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A company acquires another organization.
+
+Existing networks:
+
+```
+Company A
+
+10.10.0.0/16
+```
+
+```
+Company B
+
+10.10.0.0/16
+```
+
+### Problem
+
+The address ranges overlap.
+
+Consequences:
+
+- Routing ambiguity
+- VPN conflicts
+- Application failures
+- Difficult integration
+
+### Solution Options
+
+- Renumber one network
+- Introduce temporary NAT during migration
+- Redesign the addressing plan
+- Implement route summarization where appropriate after renumbering
+
+---
+
+# Best Practices
+
+- Use hierarchical addressing.
+- Plan for future expansion.
+- Separate users, servers, management, and guest networks.
+- Document every subnet.
+- Avoid overlapping address ranges.
+- Standardize subnet sizes where appropriate.
+- Use VLSM to reduce address waste.
+- Validate changes in a test environment before deployment.
+- Maintain accurate IPAM records.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is subnetting?
+
+Subnetting is the process of dividing a larger IP network into smaller logical networks to improve efficiency, security, and manageability.
+
+---
+
+### What is a subnet mask?
+
+A subnet mask identifies the network and host portions of an IP address.
+
+---
+
+### Why is subnetting important?
+
+It reduces broadcast domains, improves security, optimizes address usage, and simplifies routing and troubleshooting.
+
+---
+
+## Intermediate
+
+### What is CIDR?
+
+Classless Inter-Domain Routing (CIDR) uses prefix lengths (for example, `/24`) instead of fixed address classes, allowing flexible subnet allocation.
+
+---
+
+### Explain VLSM.
+
+Variable Length Subnet Masking allocates different subnet sizes according to actual host requirements, reducing IPv4 address waste.
+
+---
+
+### What is route summarization?
+
+Route summarization combines contiguous networks into a single aggregated route, reducing routing table size and improving scalability.
+
+---
+
+## Advanced
+
+### Explain Longest Prefix Match.
+
+When multiple routes match a destination, routers select the route with the longest matching network prefix because it is the most specific.
+
+---
+
+### How would you design a network for multiple departments?
+
+A strong answer should include:
+
+- Department-specific subnets
+- VLAN segmentation
+- Appropriate subnet sizing
+- Future growth planning
+- Route summarization
+- Firewall policy boundaries
+- IPAM documentation
+- High availability considerations
+
+---
+
+### How would you troubleshoot a subnetting issue?
+
+A structured response should include:
+
+1. Verify physical connectivity.
+2. Check IP configuration.
+3. Validate subnet masks.
+4. Confirm default gateway.
+5. Review routing tables.
+6. Test local and remote connectivity.
+7. Analyze traffic with packet captures if needed.
+
+---
+
+# References
+
+## Standards
+
+- RFC 950 — Internet Standard Subnetting Procedure
+- RFC 1519 — CIDR
+- RFC 3021 — Using 31-Bit Prefixes on IPv4 Point-to-Point Links
+- RFC 4632 — CIDR Address Strategy
+
+## Organizations
+
+- IANA
+- ICANN
+- APNIC
+- ARIN
+- RIPE NCC
+- AFRINIC
+- LACNIC
+
+## Security Guidance
+
+- NIST SP 800-41
+- NIST SP 800-53
+- CIS Controls
+
+---
+
+# Summary
+
+Subnetting enables efficient use of IP address space while improving network performance, scalability, and security. CIDR provides flexible subnet allocation, VLSM minimizes address waste, and route summarization reduces routing complexity. Successful enterprise subnet design requires careful planning, accurate documentation, and ongoing management through IPAM and monitoring tools.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ Why subnetting is required
+
+✔ Binary subnet calculations
+
+✔ CIDR notation
+
+✔ Network, broadcast, and host calculations
+
+✔ Magic Number (Block Size) method
+
+✔ Manual subnetting techniques
+
+✔ `/25` through `/32` subnet behavior
+
+✔ Variable Length Subnet Masking (VLSM)
+
+✔ Route summarization (supernetting)
+
+✔ Longest Prefix Match (LPM)
+
+✔ Enterprise subnet planning
+
+✔ Cloud subnetting concepts
+
+✔ Troubleshooting methodologies
+
+✔ Practical labs and packet analysis
+
+✔ Interview preparation from beginner to advanced
+
+---
+
+# What's Next?
+
+The next chapter, **`07-Routing.md`**, will build on these concepts and cover:
+
+- Routing fundamentals
+- Routers and Layer 3 forwarding
+- Routing tables
+- Static routing
+- Dynamic routing protocols (RIP, OSPF, EIGRP, BGP)
+- Administrative Distance (AD)
+- Routing metrics
+- Equal-Cost Multi-Path (ECMP)
+- Default routes
+- Inter-VLAN routing
+- Route redistribution
+- Enterprise WAN design
+- Routing security
+- Packet forwarding walkthroughs
+- Wireshark and router CLI analysis
