@@ -1311,3 +1311,835 @@ These commands support:
 
 ---
 
+# 26 - Linux Cheat Sheet
+
+# Part 3 — Networking, Storage, Security, SSH, Shell Scripting, Troubleshooting, One-Liners, and Enterprise Administration
+
+---
+
+# Introduction
+
+This section contains the Linux commands most frequently used in:
+
+- System Administration
+- DevOps
+- Cloud Engineering
+- Site Reliability Engineering (SRE)
+- SOC Operations
+- Incident Response
+- Digital Forensics
+- Penetration Testing
+- Enterprise Production Support
+
+Think of this as your **day-to-day operational cheat sheet**.
+
+---
+
+# Networking
+
+---
+
+## Display IP Addresses
+
+```bash
+ip addr
+```
+
+Short form:
+
+```bash
+ip a
+```
+
+---
+
+## Display Routing Table
+
+```bash
+ip route
+```
+
+Short form:
+
+```bash
+ip r
+```
+
+---
+
+## Display Network Interfaces
+
+```bash
+ip link
+```
+
+---
+
+## Enable Network Interface
+
+```bash
+sudo ip link set eth0 up
+```
+
+---
+
+## Disable Network Interface
+
+```bash
+sudo ip link set eth0 down
+```
+
+---
+
+## Test Connectivity
+
+```bash
+ping google.com
+```
+
+Limit packets:
+
+```bash
+ping -c 4 google.com
+```
+
+---
+
+## Trace Network Path
+
+```bash
+traceroute google.com
+```
+
+Alternative:
+
+```bash
+tracepath google.com
+```
+
+---
+
+## DNS Lookup
+
+Using `dig`:
+
+```bash
+dig example.com
+```
+
+Using `host`:
+
+```bash
+host example.com
+```
+
+Using `nslookup`:
+
+```bash
+nslookup example.com
+```
+
+---
+
+## Display Listening Ports
+
+```bash
+ss -tulpn
+```
+
+TCP only:
+
+```bash
+ss -tlpn
+```
+
+UDP only:
+
+```bash
+ss -ulpn
+```
+
+---
+
+## Network Connections
+
+```bash
+ss -tunap
+```
+
+---
+
+## View ARP Table
+
+```bash
+ip neigh
+```
+
+---
+
+## Download Files
+
+Using `wget`:
+
+```bash
+wget https://example.com/file.zip
+```
+
+Using `curl`:
+
+```bash
+curl -O https://example.com/file.zip
+```
+
+---
+
+# Storage & Filesystems
+
+---
+
+## Block Devices
+
+```bash
+lsblk
+```
+
+---
+
+## Filesystem Usage
+
+```bash
+df -h
+```
+
+---
+
+## Directory Usage
+
+```bash
+du -sh *
+```
+
+---
+
+## Filesystem UUIDs
+
+```bash
+blkid
+```
+
+---
+
+## Mounted Filesystems
+
+```bash
+mount
+```
+
+---
+
+## Mount Filesystem
+
+```bash
+sudo mount /dev/sdb1 /mnt
+```
+
+---
+
+## Unmount Filesystem
+
+```bash
+sudo umount /mnt
+```
+
+---
+
+## View `/etc/fstab`
+
+```bash
+cat /etc/fstab
+```
+
+---
+
+## Open Files
+
+```bash
+lsof
+```
+
+---
+
+# SSH
+
+---
+
+## Connect to Remote Server
+
+```bash
+ssh user@host
+```
+
+---
+
+## Connect Using Specific Port
+
+```bash
+ssh -p 2222 user@host
+```
+
+---
+
+## Copy File to Remote Host
+
+```bash
+scp file.txt user@host:/tmp/
+```
+
+---
+
+## Copy Directory
+
+```bash
+scp -r directory user@host:/tmp/
+```
+
+---
+
+## Copy File from Remote Host
+
+```bash
+scp user@host:/tmp/file.txt .
+```
+
+---
+
+## Generate SSH Key Pair
+
+```bash
+ssh-keygen
+```
+
+---
+
+## Copy Public Key
+
+```bash
+ssh-copy-id user@host
+```
+
+---
+
+## SSH Configuration
+
+System-wide:
+
+```text
+/etc/ssh/sshd_config
+```
+
+Client:
+
+```text
+~/.ssh/config
+```
+
+---
+
+# Security
+
+---
+
+## Current User
+
+```bash
+whoami
+```
+
+---
+
+## User Identity
+
+```bash
+id
+```
+
+---
+
+## Current Groups
+
+```bash
+groups
+```
+
+---
+
+## View Failed Login Attempts
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-family:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+---
+
+## View Logged-in Users
+
+```bash
+who
+```
+
+Detailed view:
+
+```bash
+w
+```
+
+---
+
+## File Permissions
+
+```bash
+ls -l
+```
+
+---
+
+## Change Permissions
+
+```bash
+chmod
+```
+
+---
+
+## Change Ownership
+
+```bash
+chown
+```
+
+---
+
+## Access Control Lists
+
+Display:
+
+```bash
+getfacl file
+```
+
+Modify:
+
+```bash
+setfacl
+```
+
+---
+
+# Shell Scripting
+
+---
+
+## Script Header
+
+```bash
+#!/bin/bash
+```
+
+---
+
+## Execute Script
+
+```bash
+./script.sh
+```
+
+---
+
+## Variables
+
+```bash
+NAME="Linux"
+
+echo "$NAME"
+```
+
+---
+
+## Positional Parameters
+
+```text
+$0
+```
+
+Script name
+
+```text
+$1
+```
+
+First argument
+
+```text
+$#
+```
+
+Argument count
+
+---
+
+## Conditional
+
+```bash
+if
+```
+
+---
+
+## Loop
+
+```bash
+for
+```
+
+---
+
+## While Loop
+
+```bash
+while
+```
+
+---
+
+## Case Statement
+
+```bash
+case
+```
+
+---
+
+# Troubleshooting
+
+---
+
+## System Information
+
+```bash
+hostnamectl
+```
+
+---
+
+## Kernel Version
+
+```bash
+uname -r
+```
+
+---
+
+## Current Boot Logs
+
+```bash
+journalctl -b
+```
+
+---
+
+## Previous Boot
+
+```bash
+journalctl -b -1
+```
+
+---
+
+## Kernel Messages
+
+```bash
+dmesg
+```
+
+---
+
+## Failed Services
+
+```bash
+systemctl --failed
+```
+
+---
+
+## Service Status
+
+```bash
+systemctl status service
+```
+
+---
+
+## Process List
+
+```bash
+ps aux
+```
+
+---
+
+## Interactive Monitor
+
+```bash
+top
+```
+
+---
+
+## Memory
+
+```bash
+free -h
+```
+
+---
+
+## Storage
+
+```bash
+df -h
+```
+
+---
+
+## Largest Directories
+
+```bash
+du -sh /*
+```
+
+---
+
+## Search Logs
+
+```bash
+grep "error" logfile
+```
+
+---
+
+## Follow Logs
+
+```bash
+journalctl -f
+```
+
+---
+
+# Enterprise One-Liners
+
+---
+
+## Top CPU Consumers
+
+```bash
+ps aux --sort=-%cpu | head
+```
+
+---
+
+## Top Memory Consumers
+
+```bash
+ps aux --sort=-%mem | head
+```
+
+---
+
+## Largest Files
+
+```bash
+find / -type f -exec du -h {} + | sort -hr | head
+```
+
+---
+
+## Largest Directories
+
+```bash
+du -sh /* | sort -hr
+```
+
+---
+
+## Find Empty Files
+
+```bash
+find . -type f -empty
+```
+
+---
+
+## Find Empty Directories
+
+```bash
+find . -type d -empty
+```
+
+---
+
+## Find Files Modified Today
+
+```bash
+find . -mtime 0
+```
+
+---
+
+## Find Files Larger Than 100 MB
+
+```bash
+find / -type f -size +100M
+```
+
+---
+
+## Count Files in Current Directory
+
+```bash
+find . -maxdepth 1 -type f | wc -l
+```
+
+---
+
+## Display Open Ports
+
+```bash
+ss -tulpn
+```
+
+---
+
+## Check DNS
+
+```bash
+dig google.com
+```
+
+---
+
+## Test HTTPS Response
+
+```bash
+curl -I https://example.com
+```
+
+---
+
+## Generate SHA-256 Checksum
+
+```bash
+sha256sum file.iso
+```
+
+---
+
+# Enterprise Administration Workflow
+
+```text
+Monitoring
+
+↓
+
+Alert
+
+↓
+
+Investigation
+
+↓
+
+Logs
+
+↓
+
+Root Cause Analysis
+
+↓
+
+Resolution
+
+↓
+
+Validation
+
+↓
+
+Documentation
+
+↓
+
+Preventive Improvement
+```
+
+---
+
+# Common Linux Log Locations
+
+| Location | Purpose |
+|----------|---------|
+| `/var/log/auth.log` | Authentication (Debian/Ubuntu) |
+| `/var/log/secure` | Authentication (RHEL-family) |
+| `/var/log/syslog` | General system logs (Debian/Ubuntu) |
+| `/var/log/messages` | General system logs (RHEL-family) |
+| `/var/log/kern.log` | Kernel logs (Debian/Ubuntu) |
+| `journalctl` | systemd journal |
+| `/var/log/nginx/` | NGINX logs |
+| `/var/log/httpd/` | Apache logs (RHEL-family) |
+| `/var/log/apache2/` | Apache logs (Debian/Ubuntu) |
+
+---
+
+# Enterprise Best Practices
+
+- Verify network connectivity before investigating applications.
+- Monitor disk usage proactively to avoid outages.
+- Use SSH key authentication instead of passwords where appropriate.
+- Review logs regularly and centralize them when possible.
+- Use shell scripts to automate repetitive administrative tasks.
+- Validate changes before applying them to production systems.
+- Document incidents, resolutions, and preventive actions.
+
+---
+
+# Cybersecurity Perspective
+
+These commands are heavily used during:
+
+- Incident response
+- Threat hunting
+- Malware analysis
+- Privilege auditing
+- Vulnerability assessments
+- Log correlation
+- Forensic investigations
+- Security monitoring
+
+---
+
+# Key Takeaways
+
+- Networking and storage commands are essential for production troubleshooting.
+- SSH is the primary tool for secure remote administration.
+- Security and troubleshooting commands should be part of every administrator's toolkit.
+- Enterprise one-liners improve efficiency during investigations and operations.
+
+---
+
