@@ -621,3 +621,638 @@ Poor routing design can result in outages, degraded performance, and operational
 - The **Longest Prefix Match** rule ensures the most specific route is selected.
 - Routing is a foundational technology for enterprise, cloud, and Internet connectivity.
 
+# 07 - Routing
+
+# Part 2 — Routing Decisions, Administrative Distance, Routing Metrics, FIB, CEF, ECMP, and Packet Forwarding
+
+---
+
+# Overview
+
+In the previous section, we learned that routers use **routing tables** to forward packets between networks.
+
+However, enterprise routers do much more than simply look up a destination network.
+
+For every packet, a router must determine:
+
+- Is the destination directly connected?
+- Which route is the most trustworthy?
+- Which path is the most efficient?
+- Which interface should be used?
+- What is the next-hop MAC address?
+- Should multiple equal-cost paths be used?
+
+Understanding these decisions is essential for network engineers, SOC analysts, cloud engineers, and cybersecurity professionals.
+
+---
+
+# Packet Forwarding Workflow
+
+When a router receives a packet, it follows a structured forwarding process.
+
+```
+Receive Ethernet Frame
+
+↓
+
+Verify Frame Integrity
+
+↓
+
+Remove Layer 2 Header
+
+↓
+
+Inspect Destination IP
+
+↓
+
+Routing Table Lookup
+
+↓
+
+Select Best Route
+
+↓
+
+Resolve Next-Hop MAC
+
+↓
+
+Build New Ethernet Frame
+
+↓
+
+Transmit Packet
+```
+
+> **Important:** During normal routing, the router changes the Layer 2 frame but preserves the Layer 3 source and destination IP addresses (unless features such as NAT are applied).
+
+---
+
+# Control Plane vs Data Plane
+
+Enterprise routers separate responsibilities into different operational planes.
+
+```
+                Router
+        ┌───────────────────┐
+        │   Control Plane   │
+        ├───────────────────┤
+        │    Data Plane     │
+        └───────────────────┘
+```
+
+---
+
+## Control Plane
+
+Responsible for:
+
+- Learning routes
+- Running routing protocols
+- Building the Routing Information Base (RIB)
+- ARP/Neighbor Discovery
+- Network management
+- Device configuration
+
+Examples:
+
+- OSPF calculations
+- BGP updates
+- Static route configuration
+
+The control plane decides **where traffic should go**.
+
+---
+
+## Data Plane
+
+Responsible for:
+
+- High-speed packet forwarding
+- Looking up forwarding entries
+- Rewriting Layer 2 headers
+- Sending packets to the correct interface
+
+The data plane determines **how traffic is forwarded**.
+
+---
+
+# Routing Information Base (RIB)
+
+The **Routing Information Base (RIB)** is the logical routing table maintained by the control plane.
+
+It stores:
+
+- Connected routes
+- Static routes
+- Dynamic routes
+- Default routes
+
+Example:
+
+| Destination | Next Hop | Source |
+|-------------|----------|--------|
+| 192.168.10.0/24 | Connected | Connected |
+| 10.10.0.0/16 | 192.168.20.1 | OSPF |
+| 0.0.0.0/0 | ISP | Static |
+
+The RIB is responsible for route selection.
+
+---
+
+# Forwarding Information Base (FIB)
+
+The **Forwarding Information Base (FIB)** is an optimized forwarding table used by the data plane.
+
+```
+Routing Protocols
+
+↓
+
+RIB
+
+↓
+
+FIB
+
+↓
+
+Packet Forwarding
+```
+
+Unlike the RIB, the FIB is optimized for rapid lookups so packets can be forwarded efficiently.
+
+---
+
+# Why Routers Use a FIB
+
+If routers searched the full routing table for every packet, forwarding performance would suffer.
+
+Instead:
+
+- The control plane computes the best routes.
+- The FIB stores optimized forwarding information.
+- The data plane performs fast lookups using the FIB.
+
+This separation improves scalability and throughput.
+
+---
+
+# Cisco Express Forwarding (CEF)
+
+**Cisco Express Forwarding (CEF)** is Cisco's high-performance Layer 3 forwarding architecture.
+
+CEF uses two primary tables:
+
+```
+Forwarding Information Base (FIB)
+
+↓
+
+Adjacency Table
+```
+
+Benefits include:
+
+- Faster forwarding
+- Lower CPU utilization
+- Reduced packet processing latency
+- Better scalability
+- Hardware acceleration on supported platforms
+
+Modern enterprise routers and multilayer switches typically rely on CEF or equivalent forwarding technologies.
+
+---
+
+# Adjacency Table
+
+The adjacency table maps:
+
+```
+Next-Hop IP Address
+
+↓
+
+Destination MAC Address
+
+↓
+
+Outgoing Interface
+```
+
+Example:
+
+| Next Hop | MAC Address | Interface |
+|----------|-------------|-----------|
+| 192.168.1.1 | 00:11:22:33:44:55 | G0/0 |
+
+This allows the router to quickly build the outgoing Ethernet frame.
+
+---
+
+# ARP and Next-Hop Resolution
+
+Before sending a packet on an Ethernet network, the router must know the destination MAC address.
+
+Process:
+
+```
+Destination IP
+
+↓
+
+Routing Table
+
+↓
+
+Next-Hop IP
+
+↓
+
+ARP Lookup
+
+↓
+
+MAC Address
+
+↓
+
+Forward Frame
+```
+
+If the MAC address is unknown:
+
+1. The router sends an ARP Request.
+2. The next-hop device replies with an ARP Reply.
+3. The mapping is stored in the ARP cache.
+
+For IPv6, this process uses **Neighbor Discovery Protocol (NDP)** instead of ARP.
+
+---
+
+# Route Lookup Process
+
+A simplified route lookup:
+
+```
+Packet Arrives
+
+↓
+
+Destination IP
+
+↓
+
+Search FIB
+
+↓
+
+Longest Prefix Match
+
+↓
+
+Determine Next Hop
+
+↓
+
+Resolve MAC
+
+↓
+
+Forward Packet
+```
+
+---
+
+# Longest Prefix Match (LPM)
+
+Routers may have multiple matching routes.
+
+Example:
+
+| Route | Prefix |
+|--------|--------|
+| 10.0.0.0/8 | Broad |
+| 10.10.0.0/16 | More Specific |
+| 10.10.20.0/24 | Most Specific |
+
+Destination:
+
+```
+10.10.20.50
+```
+
+The router chooses:
+
+```
+10.10.20.0/24
+```
+
+because it has the **longest matching prefix**.
+
+---
+
+# Administrative Distance (AD)
+
+Sometimes, a router learns the same destination through multiple sources.
+
+Example:
+
+```
+Static Route
+
+↓
+
+OSPF
+
+↓
+
+RIP
+```
+
+Which route should be trusted?
+
+The answer is **Administrative Distance (AD)**.
+
+Administrative Distance measures the **trustworthiness of the route source**.
+
+Lower values are preferred.
+
+---
+
+# Common Administrative Distances
+
+| Route Source | Administrative Distance |
+|---------------|-----------------------:|
+| Connected | 0 |
+| Static | 1 |
+| eBGP | 20 |
+| EIGRP (Internal) | 90 |
+| OSPF | 110 |
+| IS-IS | 115 |
+| RIP | 120 |
+| EIGRP (External) | 170 |
+| Unknown / Unreachable | 255 |
+
+> These values are Cisco defaults. Other vendors may use different defaults.
+
+---
+
+# Example — Administrative Distance
+
+Suppose the router learns:
+
+```
+10.20.0.0/16
+
+↓
+
+Static Route
+
+AD = 1
+```
+
+and
+
+```
+10.20.0.0/16
+
+↓
+
+OSPF
+
+AD = 110
+```
+
+The router selects:
+
+```
+Static Route
+```
+
+because it has the lower Administrative Distance.
+
+---
+
+# Routing Metrics
+
+Administrative Distance decides **which routing source is trusted**.
+
+A **metric** decides the **best path within the same routing protocol**.
+
+Different routing protocols use different metrics.
+
+Examples:
+
+| Protocol | Metric |
+|----------|--------|
+| RIP | Hop Count |
+| OSPF | Cost |
+| EIGRP | Composite Metric |
+| IS-IS | Cost |
+| BGP | Path Attributes |
+
+---
+
+# Hop Count
+
+RIP selects routes based on:
+
+```
+Number of Routers Traversed
+```
+
+Example:
+
+```
+Router A
+
+↓
+
+Router B
+
+↓
+
+Router C
+```
+
+Hop count:
+
+```
+2
+```
+
+Smaller hop counts are preferred.
+
+---
+
+# OSPF Cost
+
+OSPF uses **cost**, which is generally based on interface bandwidth.
+
+Higher-bandwidth links typically have lower costs and are preferred over slower links.
+
+---
+
+# Equal-Cost Multi-Path (ECMP)
+
+Sometimes multiple routes have:
+
+- Same destination
+- Same Administrative Distance
+- Same metric
+
+Example:
+
+```
+           Router
+          /      \
+         /        \
+Route A        Route B
+```
+
+Both paths are equally good.
+
+Instead of selecting only one path, the router can install both.
+
+This feature is called **Equal-Cost Multi-Path (ECMP)**.
+
+---
+
+# Benefits of ECMP
+
+- Load sharing
+- Better bandwidth utilization
+- Increased redundancy
+- Improved availability
+- Faster failover
+
+Many enterprise networks and data centers use ECMP extensively.
+
+---
+
+# Recursive Route Lookup
+
+Sometimes a route points to a next-hop IP address rather than a directly connected interface.
+
+Example:
+
+```
+Destination
+
+10.20.0.0/16
+
+↓
+
+Next Hop
+
+192.168.1.1
+```
+
+The router must first determine how to reach:
+
+```
+192.168.1.1
+```
+
+This process is known as a **recursive lookup**.
+
+The router repeats route lookups until it finds a directly connected interface.
+
+---
+
+# TTL (Time To Live)
+
+Each IPv4 packet contains a **Time To Live (TTL)** field.
+
+Purpose:
+
+- Prevent infinite routing loops.
+
+Example:
+
+```
+TTL = 64
+```
+
+Each router decrements the TTL by **1**.
+
+If TTL reaches:
+
+```
+0
+```
+
+The router discards the packet and returns an ICMP **Time Exceeded** message.
+
+IPv6 uses a similar field called the **Hop Limit**.
+
+---
+
+# Enterprise Packet Walkthrough
+
+Consider the following path:
+
+```
+Client
+192.168.10.25
+
+↓
+
+Access Switch
+
+↓
+
+Core Router
+
+↓
+
+Firewall
+
+↓
+
+ISP
+
+↓
+
+Cloud Service
+```
+
+The forwarding sequence:
+
+1. Client determines the destination is remote.
+2. Packet is sent to the default gateway.
+3. Router performs an FIB lookup.
+4. Longest Prefix Match selects the best route.
+5. Next-hop MAC is resolved (ARP/NDP).
+6. Router rewrites the Ethernet header.
+7. Packet is forwarded toward the firewall.
+8. The process repeats at each hop until the destination is reached.
+
+---
+
+# Common Routing Decision Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Incorrect route selected | Administrative Distance or metric issue |
+| Traffic black hole | Missing or invalid next hop |
+| Routing loop | Misconfigured routes or protocol issues |
+| ARP resolution failure | Layer 2 connectivity problem |
+| ECMP imbalance | Hashing behavior or asymmetric traffic |
+| Excessive CPU usage | Software forwarding or control plane overload |
+
+---
+
+# Key Takeaways
+
+- The **RIB** stores learned routes, while the **FIB** is optimized for fast forwarding.
+- The **control plane** computes routes; the **data plane** forwards packets.
+- **Administrative Distance** determines which routing source is trusted.
+- **Metrics** determine the best path within a routing protocol.
+- **Longest Prefix Match** always selects the most specific route.
+- **ECMP** allows traffic to be distributed across multiple equal-cost paths.
+- ARP (IPv4) and Neighbor Discovery (IPv6) resolve next-hop Layer 2 addresses before packets are forwarded.
+
