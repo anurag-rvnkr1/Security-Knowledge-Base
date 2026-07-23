@@ -1463,3 +1463,682 @@ Well-managed storage provides:
 
 ---
 
+# 14 - Linux Storage Management
+
+# Part 3 — Filesystem Management, Disk Usage Analysis, Storage Troubleshooting, Performance Optimization, and Enterprise Monitoring
+
+---
+
+# Introduction
+
+Storage management does not end after creating partitions and mounting filesystems.
+
+Enterprise Linux administrators must continuously:
+
+- Monitor storage utilization
+- Expand filesystems
+- Analyze disk usage
+- Detect storage failures
+- Repair filesystems
+- Optimize performance
+- Monitor storage health
+- Plan future capacity
+
+Poor storage management can lead to:
+
+- Application outages
+- Database failures
+- System crashes
+- Lost log data
+- Backup failures
+- Security incidents
+
+---
+
+# Enterprise Storage Management Lifecycle
+
+```text
+Provision Storage
+
+↓
+
+Create Filesystem
+
+↓
+
+Mount
+
+↓
+
+Monitor Usage
+
+↓
+
+Optimize Performance
+
+↓
+
+Expand Capacity
+
+↓
+
+Backup
+
+↓
+
+Maintain
+
+↓
+
+Retire Storage
+```
+
+---
+
+# Filesystem Administration
+
+Administrators routinely perform:
+
+- Create filesystems
+- Check filesystem integrity
+- Repair filesystems
+- Resize filesystems
+- Monitor usage
+- Verify mounted storage
+
+---
+
+# Viewing Filesystem Information
+
+Display mounted filesystems:
+
+```bash
+df -Th
+```
+
+Example output:
+
+```text
+Filesystem     Type   Size Used Avail Mounted on
+
+/dev/sda2      ext4    50G  20G   28G /
+```
+
+Useful columns:
+
+- Filesystem
+- Type
+- Size
+- Used
+- Available
+- Mount Point
+
+---
+
+# Understanding `df`
+
+```bash
+df -h
+```
+
+Displays:
+
+- Total size
+- Used space
+- Available space
+- Percentage used
+
+Example:
+
+```text
+Use%
+
+72%
+```
+
+Administrators should monitor high utilization before it affects applications.
+
+---
+
+# Disk Usage Analysis with `du`
+
+Determine directory size:
+
+```bash
+du -sh /var/log
+```
+
+Analyze subdirectories:
+
+```bash
+du -h --max-depth=1 /var
+```
+
+Example:
+
+```text
+3.5G    /var/log
+
+5.1G    /var/lib
+```
+
+---
+
+# `df` vs `du`
+
+| Command | Purpose |
+|----------|----------|
+| `df` | Filesystem usage |
+| `du` | Directory/file usage |
+
+Both are important during storage investigations.
+
+---
+
+# Finding Large Files
+
+Locate files larger than 500 MB:
+
+```bash
+find / -type f -size +500M
+```
+
+Locate files larger than 1 GB:
+
+```bash
+find / -type f -size +1G
+```
+
+Useful during emergency disk cleanup.
+
+---
+
+# Sorting Large Files
+
+Example:
+
+```bash
+du -ah /var | sort -rh | head
+```
+
+Shows the largest files and directories first.
+
+---
+
+# Finding Large Directories
+
+```bash
+du -sh /*
+```
+
+Or:
+
+```bash
+du -h --max-depth=1 /
+```
+
+Helps identify where storage is being consumed.
+
+---
+
+# Filesystem Creation
+
+Create an ext4 filesystem:
+
+```bash
+sudo mkfs.ext4 /dev/sdb1
+```
+
+Create an XFS filesystem:
+
+```bash
+sudo mkfs.xfs /dev/sdb1
+```
+
+> **Warning:** Formatting destroys existing data on the target device.
+
+---
+
+# Viewing Filesystem UUID
+
+```bash
+blkid
+```
+
+Example:
+
+```text
+UUID="1234-5678"
+```
+
+UUIDs are commonly referenced in `/etc/fstab`.
+
+---
+
+# Filesystem Labels
+
+Assign an ext4 label:
+
+```bash
+sudo e2label /dev/sdb1 DATA
+```
+
+View label:
+
+```bash
+lsblk -f
+```
+
+Labels provide a human-readable identifier.
+
+---
+
+# Checking Filesystem Integrity
+
+For ext2/3/4:
+
+```bash
+sudo fsck /dev/sdb1
+```
+
+For a filesystem that may be mounted:
+
+```bash
+sudo fsck -f /dev/sdb1
+```
+
+> Filesystem checks should generally be performed on **unmounted** filesystems or from rescue/maintenance environments unless the filesystem and tool explicitly support online checking.
+
+---
+
+# Filesystem Repair Workflow
+
+```text
+Filesystem Issue
+
+↓
+
+Unmount Filesystem
+
+↓
+
+Run fsck
+
+↓
+
+Repair Errors
+
+↓
+
+Mount Filesystem
+
+↓
+
+Verify
+```
+
+---
+
+# XFS Repair
+
+XFS uses a different utility:
+
+```bash
+sudo xfs_repair /dev/sdb1
+```
+
+Unlike ext filesystems, `fsck` is not the primary repair tool for XFS.
+
+---
+
+# Viewing Mounted Filesystems
+
+Modern method:
+
+```bash
+findmnt
+```
+
+Example:
+
+```text
+TARGET
+
+/
+
+/home
+
+/data
+```
+
+Provides a structured view of active mounts.
+
+---
+
+# Monitoring Disk I/O
+
+Install the appropriate package for your distribution if necessary, then run:
+
+```bash
+iostat
+```
+
+Extended statistics:
+
+```bash
+iostat -x
+```
+
+Useful metrics include:
+
+- Read operations
+- Write operations
+- Utilization
+- Await time
+
+---
+
+# Monitoring Block Devices
+
+Display block devices:
+
+```bash
+lsblk
+```
+
+Show filesystem details:
+
+```bash
+lsblk -f
+```
+
+---
+
+# Monitoring Storage Health
+
+For drives supporting SMART, install the appropriate package (commonly `smartmontools`) and run:
+
+```bash
+sudo smartctl -H /dev/sda
+```
+
+Display detailed information:
+
+```bash
+sudo smartctl -a /dev/sda
+```
+
+SMART can help identify signs of impending hardware failure.
+
+---
+
+# Storage Performance Factors
+
+Performance depends on:
+
+- Storage type
+- Filesystem
+- RAID level
+- Queue depth
+- Workload pattern
+- Controller performance
+- Available memory
+
+---
+
+# Sequential vs Random I/O
+
+| Sequential I/O | Random I/O |
+|----------------|------------|
+| Large continuous reads/writes | Small scattered reads/writes |
+| Efficient for backups | Common in databases |
+| Higher throughput | Higher latency |
+
+---
+
+# Storage Performance Workflow
+
+```text
+Application
+
+↓
+
+Filesystem
+
+↓
+
+Storage Driver
+
+↓
+
+Disk Controller
+
+↓
+
+Physical Storage
+```
+
+Each layer can affect performance.
+
+---
+
+# Capacity Planning
+
+Administrators should monitor:
+
+- Used space
+- Growth trends
+- Backup requirements
+- Application expansion
+- Available free space
+
+Capacity planning helps prevent unexpected outages.
+
+---
+
+# Storage Threshold Example
+
+| Usage | Recommendation |
+|--------|----------------|
+| Below 70% | Normal monitoring |
+| 70–85% | Review growth |
+| Above 85% | Plan expansion |
+| Above 95% | Immediate action |
+
+Thresholds vary by organization and workload.
+
+---
+
+# Log File Growth
+
+Large log files commonly consume storage.
+
+Review:
+
+```bash
+du -sh /var/log
+```
+
+List log files:
+
+```bash
+find /var/log -type f
+```
+
+Ensure log rotation is configured appropriately.
+
+---
+
+# Storage Monitoring Workflow
+
+```text
+Filesystem
+
+↓
+
+Disk Usage
+
+↓
+
+Threshold Alert
+
+↓
+
+Investigation
+
+↓
+
+Cleanup or Expansion
+
+↓
+
+Verification
+```
+
+---
+
+# Enterprise Storage Monitoring
+
+Organizations commonly monitor:
+
+- Disk usage
+- Filesystem utilization
+- Disk latency
+- SMART status
+- I/O performance
+- RAID health
+- LVM usage
+- Capacity growth
+
+Monitoring platforms generate alerts before critical thresholds are reached.
+
+---
+
+# Enterprise Case Study
+
+## `/var` Filesystem Full
+
+Symptoms:
+
+- Services fail
+- Logs stop writing
+- Package installation errors
+- Application instability
+
+Investigation:
+
+```text
+Check df
+
+↓
+
+Check du
+
+↓
+
+Locate Large Files
+
+↓
+
+Review Logs
+
+↓
+
+Clean or Archive
+
+↓
+
+Verify Free Space
+```
+
+Resolution:
+
+- Remove unnecessary files
+- Archive old logs
+- Confirm adequate free space
+- Investigate the root cause of excessive growth
+
+---
+
+# Enterprise Case Study
+
+## Storage Expansion
+
+An application requires an additional 500 GB.
+
+Workflow:
+
+```text
+Add New Disk
+
+↓
+
+Extend LVM (if used)
+
+↓
+
+Grow Filesystem
+
+↓
+
+Verify Capacity
+
+↓
+
+Update Documentation
+```
+
+Modern filesystems and LVM often support online expansion, depending on the filesystem and deployment.
+
+---
+
+# Cybersecurity Perspective
+
+Storage monitoring supports security by helping detect:
+
+- Unexpected log growth
+- Malware creating large files
+- Ransomware encrypting large numbers of files
+- Unauthorized data collection
+- Storage-based denial-of-service attempts
+
+Security teams should monitor abnormal storage activity alongside traditional system metrics.
+
+---
+
+# Business Impact
+
+Effective filesystem management provides:
+
+- Higher availability
+- Better application performance
+- Reduced downtime
+- Predictable storage growth
+- Lower maintenance costs
+- Faster incident response
+
+---
+
+# Enterprise Best Practices
+
+- Monitor storage usage continuously.
+- Configure alerts before filesystems become critically full.
+- Use filesystem labels and UUIDs consistently.
+- Verify filesystem integrity during scheduled maintenance.
+- Rotate and archive logs appropriately.
+- Monitor SMART health for physical disks.
+- Plan capacity growth before storage exhaustion occurs.
+- Document storage changes and expansion procedures.
+
+---
+
+# Key Takeaways
+
+- `df` reports filesystem utilization, while `du` measures directory usage.
+- `find` can identify unusually large files consuming storage.
+- Filesystem integrity tools vary by filesystem type (`fsck` for ext filesystems, `xfs_repair` for XFS).
+- Performance monitoring and capacity planning are essential in enterprise environments.
+- Continuous storage monitoring improves reliability, security, and operational resilience.
+
+---
+
