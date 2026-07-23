@@ -766,3 +766,862 @@ Without reliable logs, organizations may struggle to diagnose outages or investi
 
 ---
 
+# 17 - Linux Logging
+
+# Part 2 — Log Files, `journalctl`, `logger`, `logrotate`, Syslog Configuration, and Advanced Log Management
+
+---
+
+# Introduction
+
+As Linux systems run continuously, they generate thousands or even millions of log entries.
+
+Without proper management:
+
+- Log files consume disk space
+- Important events become difficult to locate
+- Performance may degrade
+- Compliance requirements may not be met
+
+Enterprise logging therefore includes:
+
+- Log collection
+- Log filtering
+- Log rotation
+- Log retention
+- Log forwarding
+- Log analysis
+
+---
+
+# Enterprise Log Management Workflow
+
+```text
+Generate Logs
+
+↓
+
+Store Logs
+
+↓
+
+Rotate Logs
+
+↓
+
+Archive Logs
+
+↓
+
+Forward Logs
+
+↓
+
+Analyze Logs
+
+↓
+
+Alert
+
+↓
+
+Retain
+
+↓
+
+Delete (Retention Policy)
+```
+
+---
+
+# Viewing Log Files
+
+Display an entire log:
+
+```bash
+cat /var/log/syslog
+```
+
+View one screen at a time:
+
+```bash
+less /var/log/syslog
+```
+
+View the beginning:
+
+```bash
+head /var/log/syslog
+```
+
+View the end:
+
+```bash
+tail /var/log/syslog
+```
+
+---
+
+# Real-Time Log Monitoring
+
+Follow new entries:
+
+```bash
+tail -f /var/log/syslog
+```
+
+Or with Journald:
+
+```bash
+journalctl -f
+```
+
+Useful during:
+
+- Service startup
+- Troubleshooting
+- Security investigations
+- Application deployment
+
+---
+
+# Searching Logs
+
+Find SSH events:
+
+```bash
+grep sshd /var/log/auth.log
+```
+
+Case-insensitive search:
+
+```bash
+grep -i error /var/log/syslog
+```
+
+Count matching entries:
+
+```bash
+grep "Failed password" /var/log/auth.log | wc -l
+```
+
+---
+
+# Advanced Searching
+
+Search multiple patterns:
+
+```bash
+grep -E "error|warning|critical" application.log
+```
+
+Invert matches:
+
+```bash
+grep -v INFO application.log
+```
+
+Display line numbers:
+
+```bash
+grep -n ERROR application.log
+```
+
+---
+
+# Combining Commands
+
+Example:
+
+```bash
+journalctl -u ssh | grep "Failed password"
+```
+
+Or:
+
+```bash
+grep "Accepted" /var/log/auth.log | awk '{print $1,$2,$3,$9,$11}'
+```
+
+Pipelines allow administrators to extract specific information efficiently.
+
+---
+
+# Using `journalctl`
+
+---
+
+## Show Latest Entries
+
+```bash
+journalctl -n 100
+```
+
+---
+
+## Follow Live Logs
+
+```bash
+journalctl -f
+```
+
+---
+
+## Filter by Unit
+
+```bash
+journalctl -u nginx
+```
+
+Examples:
+
+```bash
+journalctl -u ssh
+```
+
+```bash
+journalctl -u NetworkManager
+```
+
+Unit names vary by distribution and installed software.
+
+---
+
+## Filter by Boot
+
+Current boot:
+
+```bash
+journalctl -b
+```
+
+Previous boot:
+
+```bash
+journalctl -b -1
+```
+
+---
+
+## Filter by Priority
+
+Critical only:
+
+```bash
+journalctl -p crit
+```
+
+Errors and above:
+
+```bash
+journalctl -p err
+```
+
+Warnings and above:
+
+```bash
+journalctl -p warning
+```
+
+---
+
+## Filter by Time
+
+Last hour:
+
+```bash
+journalctl --since "1 hour ago"
+```
+
+Specific range:
+
+```bash
+journalctl --since yesterday --until today
+```
+
+---
+
+## Filter by Process ID
+
+```bash
+journalctl _PID=1234
+```
+
+---
+
+## Filter by Executable
+
+```bash
+journalctl _COMM=sshd
+```
+
+Or:
+
+```bash
+journalctl _EXE=/usr/sbin/sshd
+```
+
+---
+
+# Exporting Journal Entries
+
+Save journal output:
+
+```bash
+journalctl -u ssh > ssh.log
+```
+
+Export specific time period:
+
+```bash
+journalctl --since yesterday > yesterday.log
+```
+
+---
+
+# Writing Custom Log Messages
+
+Linux provides:
+
+```text
+logger
+```
+
+Example:
+
+```bash
+logger "Backup completed successfully"
+```
+
+View message:
+
+```bash
+journalctl | grep Backup
+```
+
+---
+
+# Setting Priority
+
+Example:
+
+```bash
+logger -p user.warning "Disk usage is increasing"
+```
+
+Facility:
+
+```text
+user
+```
+
+Priority:
+
+```text
+warning
+```
+
+---
+
+# Tagging Log Entries
+
+```bash
+logger -t BackupScript "Backup started"
+```
+
+Filter:
+
+```bash
+journalctl | grep BackupScript
+```
+
+---
+
+# Log Rotation
+
+Without rotation:
+
+```text
+Log File
+
+↓
+
+Grows Forever
+
+↓
+
+Disk Full
+
+↓
+
+Applications Fail
+```
+
+---
+
+# What is `logrotate`?
+
+`logrotate` automatically:
+
+- Rotates logs
+- Compresses old logs
+- Removes expired logs
+- Creates new log files
+- Preserves configurable retention periods
+
+---
+
+# Log Rotation Workflow
+
+```text
+Log File
+
+↓
+
+Rotate
+
+↓
+
+Compress
+
+↓
+
+Archive
+
+↓
+
+Delete Old Logs
+```
+
+---
+
+# Configuration Directory
+
+Most systems store configuration in:
+
+```text
+/etc/logrotate.conf
+```
+
+Additional rules:
+
+```text
+/etc/logrotate.d/
+```
+
+---
+
+# Example Configuration
+
+```text
+/var/log/application.log {
+
+    weekly
+
+    rotate 4
+
+    compress
+
+    missingok
+
+    notifempty
+
+}
+```
+
+Meaning:
+
+| Directive | Description |
+|------------|-------------|
+| weekly | Rotate every week |
+| rotate 4 | Keep four archives |
+| compress | Compress old logs |
+| missingok | Ignore missing files |
+| notifempty | Do not rotate empty logs |
+
+---
+
+# Common Directives
+
+| Directive | Purpose |
+|------------|----------|
+| daily | Rotate daily |
+| weekly | Rotate weekly |
+| monthly | Rotate monthly |
+| rotate N | Keep N archived logs |
+| compress | Compress archives |
+| delaycompress | Delay compression by one rotation |
+| create | Create a new log after rotation |
+| copytruncate | Copy then truncate the original log |
+| maxsize | Rotate when log exceeds a size |
+| size | Rotate based on file size |
+
+---
+
+# Why `copytruncate`?
+
+Some applications keep log files open.
+
+`copytruncate`:
+
+```text
+Copy Log
+
+↓
+
+Create Archive
+
+↓
+
+Truncate Original
+
+↓
+
+Application Continues Writing
+```
+
+Whenever possible, applications that support reopening log files via signals or built-in mechanisms are generally preferred over `copytruncate`, as truncation has trade-offs.
+
+---
+
+# Testing `logrotate`
+
+Dry run:
+
+```bash
+logrotate -d /etc/logrotate.conf
+```
+
+Force rotation:
+
+```bash
+logrotate -f /etc/logrotate.conf
+```
+
+---
+
+# Syslog Configuration
+
+Modern distributions often use:
+
+- rsyslog
+- syslog-ng
+
+Check service:
+
+```bash
+systemctl status rsyslog
+```
+
+---
+
+# Rsyslog Configuration
+
+Primary configuration:
+
+```text
+/etc/rsyslog.conf
+```
+
+Additional configuration:
+
+```text
+/etc/rsyslog.d/
+```
+
+---
+
+# Rule Example
+
+```text
+authpriv.*    /var/log/auth.log
+```
+
+Meaning:
+
+```text
+Facility
+
+↓
+
+Priority
+
+↓
+
+Destination
+```
+
+---
+
+# Another Example
+
+```text
+mail.*    /var/log/mail.log
+```
+
+Store all mail-related messages in the specified log file.
+
+---
+
+# Restart Configuration
+
+After configuration changes:
+
+```bash
+sudo systemctl restart rsyslog
+```
+
+Always validate configuration changes before deployment where supported.
+
+---
+
+# Forwarding Logs
+
+Enterprise environments often send logs to centralized servers.
+
+Workflow:
+
+```text
+Linux Server
+
+↓
+
+Rsyslog
+
+↓
+
+Network
+
+↓
+
+Central Log Server
+
+↓
+
+SIEM
+```
+
+Benefits:
+
+- Centralized visibility
+- Long-term retention
+- Simplified investigations
+- Improved compliance
+
+---
+
+# Log Retention
+
+Retention depends on:
+
+- Business requirements
+- Regulations
+- Available storage
+- Security policies
+
+Example:
+
+| Log Type | Example Retention |
+|-----------|-------------------|
+| System | 90 days |
+| Security | 1 year |
+| Audit | 3–7 years (organization/regulation dependent) |
+| Application | 180 days |
+
+Actual retention policies should align with organizational and regulatory requirements.
+
+---
+
+# Managing Disk Usage
+
+Largest logs:
+
+```bash
+du -sh /var/log/*
+```
+
+Largest files:
+
+```bash
+find /var/log -type f -exec du -h {} + | sort -rh | head
+```
+
+---
+
+# Compressing Logs
+
+Manual compression:
+
+```bash
+gzip application.log
+```
+
+Decompress:
+
+```bash
+gunzip application.log.gz
+```
+
+View compressed logs without extraction (where supported):
+
+```bash
+zcat application.log.gz
+```
+
+---
+
+# Enterprise Log Storage
+
+```text
+Applications
+
+↓
+
+Journal
+
+↓
+
+Syslog
+
+↓
+
+Log Rotation
+
+↓
+
+Compressed Archives
+
+↓
+
+Central Log Server
+
+↓
+
+Long-Term Storage
+```
+
+---
+
+# Enterprise Example
+
+## Web Server Logs
+
+Monitor:
+
+- HTTP errors
+- Client IP addresses
+- Request volume
+- Response codes
+- Suspicious requests
+
+Workflow:
+
+```text
+NGINX
+
+↓
+
+Access Log
+
+↓
+
+Rotation
+
+↓
+
+Central Collection
+
+↓
+
+Dashboard
+```
+
+---
+
+# Enterprise Example
+
+## Database Logs
+
+Monitor:
+
+- Failed queries
+- Slow queries
+- Authentication failures
+- Replication events
+- Startup and shutdown
+
+---
+
+# Enterprise Example
+
+## Authentication Logs
+
+Track:
+
+- Failed logins
+- Successful logins
+- Sudo usage
+- Account lockouts
+- SSH authentication events
+
+---
+
+# Cybersecurity Perspective
+
+Log management is fundamental to security monitoring.
+
+Security teams rely on logs to:
+
+- Detect brute-force attacks
+- Identify privilege escalation
+- Monitor service changes
+- Investigate malware activity
+- Reconstruct attack timelines
+- Support compliance audits
+
+Recommendations:
+
+- Protect logs from unauthorized modification.
+- Restrict access to sensitive log files.
+- Rotate logs before storage becomes critical.
+- Forward security logs to centralized systems.
+- Synchronize system clocks for accurate event correlation.
+
+---
+
+# Business Impact
+
+Effective log management helps organizations:
+
+- Reduce troubleshooting time
+- Prevent storage-related outages
+- Improve regulatory compliance
+- Support digital forensics
+- Enhance operational visibility
+- Simplify incident response
+
+---
+
+# Enterprise Best Practices
+
+- Rotate logs regularly.
+- Compress archived logs.
+- Define retention policies.
+- Store security logs centrally.
+- Monitor log growth trends.
+- Protect log integrity and access.
+- Test log rotation after configuration changes.
+- Document logging and retention procedures.
+
+---
+
+# Key Takeaways
+
+- `journalctl` provides powerful querying for systemd journal entries.
+- `logger` allows applications and scripts to generate log messages.
+- `logrotate` automates log rotation, compression, and retention.
+- Syslog daemons provide flexible routing and forwarding of log messages.
+- Centralized logging improves visibility, security, and operational efficiency.
+
+---
+
