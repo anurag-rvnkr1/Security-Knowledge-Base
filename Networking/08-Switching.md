@@ -640,3 +640,635 @@ Efficient switching provides:
 - Store-and-forward is the most common enterprise switching method due to its reliability.
 - Each switch port forms its own collision domain, while broadcast domains are separated using VLANs.
 
+# 08 - Switching
+
+# Part 2 — VLANs, IEEE 802.1Q Trunking, Inter-VLAN Routing, Voice VLANs, and Enterprise Network Segmentation
+
+---
+
+# Overview
+
+A modern enterprise rarely operates as a single flat Layer 2 network.
+
+Instead, organizations divide their networks into multiple **Virtual Local Area Networks (VLANs)** to improve:
+
+- Security
+- Performance
+- Scalability
+- Broadcast control
+- Department isolation
+- Compliance
+
+Without VLANs, every connected device belongs to the same broadcast domain, making networks inefficient and difficult to secure.
+
+---
+
+# What is a VLAN?
+
+A **Virtual Local Area Network (VLAN)** is a logical Layer 2 network created on a switch.
+
+Instead of separating devices using different physical switches, VLANs allow multiple isolated networks to exist on the same switching infrastructure.
+
+Example:
+
+```
+                    Switch
+          ┌───────────────────────┐
+          │                       │
+ HR PCs   │ VLAN 10               │
+ Finance  │ VLAN 20               │
+ Servers  │ VLAN 30               │
+ Guests   │ VLAN 40               │
+          └───────────────────────┘
+```
+
+Each VLAN acts as a separate broadcast domain.
+
+---
+
+# Why VLANs are Needed
+
+Without VLANs:
+
+```
+Entire Office
+
+↓
+
+Single Broadcast Domain
+```
+
+Problems:
+
+- Excessive broadcasts
+- Limited security
+- Difficult policy enforcement
+- Poor scalability
+
+With VLANs:
+
+```
+HR
+
+↓
+
+VLAN 10
+
+──────────────
+
+Finance
+
+↓
+
+VLAN 20
+
+──────────────
+
+Servers
+
+↓
+
+VLAN 30
+
+──────────────
+
+Guest Wi-Fi
+
+↓
+
+VLAN 40
+```
+
+Benefits:
+
+- Reduced broadcasts
+- Department isolation
+- Easier access control
+- Improved security
+
+---
+
+# Broadcast Domains
+
+Remember:
+
+```
+One VLAN
+
+↓
+
+One Broadcast Domain
+```
+
+Example:
+
+```
+VLAN 10
+
+PC1
+
+PC2
+
+PC3
+
+──────────────
+
+VLAN 20
+
+PC4
+
+PC5
+
+PC6
+```
+
+Broadcasts from VLAN 10 are **not** forwarded into VLAN 20.
+
+---
+
+# Collision Domains vs Broadcast Domains
+
+| Feature | Collision Domain | Broadcast Domain |
+|----------|-----------------|------------------|
+| Controlled By | Switch Port | VLAN |
+| Traffic Type | Frame collisions | Broadcast frames |
+| Modern Switch | One per Port | One per VLAN |
+
+---
+
+# VLAN Identification
+
+Each VLAN has a unique **VLAN ID**.
+
+Range:
+
+```
+1–4094
+```
+
+Common examples:
+
+| VLAN | Purpose |
+|------|---------|
+| 1 | Default VLAN |
+| 10 | HR |
+| 20 | Finance |
+| 30 | IT |
+| 40 | Servers |
+| 50 | Guest Wi-Fi |
+| 99 | Management (common convention) |
+
+> VLAN 1 exists by default on many switches, but best practice is to avoid using it for user traffic.
+
+---
+
+# Access Ports
+
+An **access port** belongs to a single VLAN.
+
+Example:
+
+```
+PC
+
+↓
+
+Switch Port
+
+↓
+
+VLAN 10
+```
+
+Characteristics:
+
+- Carries one VLAN
+- Frames are untagged
+- Typically used for:
+
+  - Workstations
+  - Printers
+  - IP phones (with voice VLAN support)
+  - Servers (single network)
+
+---
+
+# Trunk Ports
+
+A **trunk port** carries traffic for multiple VLANs.
+
+Example:
+
+```
+Switch A
+
+↓
+
+Trunk Link
+
+↓
+
+Switch B
+```
+
+Traffic for VLANs:
+
+```
+10
+
+20
+
+30
+
+40
+```
+
+All travel over the same physical connection.
+
+---
+
+# IEEE 802.1Q Trunking
+
+The most widely used VLAN trunking standard is:
+
+```
+IEEE 802.1Q
+```
+
+802.1Q inserts a VLAN tag into Ethernet frames.
+
+Simplified frame:
+
+```
+Destination MAC
+
+↓
+
+Source MAC
+
+↓
+
+802.1Q Tag
+
+↓
+
+EtherType
+
+↓
+
+Payload
+
+↓
+
+FCS
+```
+
+The VLAN tag identifies which VLAN the frame belongs to while it traverses a trunk link.
+
+---
+
+# VLAN Tag Fields
+
+The 802.1Q tag contains:
+
+- VLAN Identifier (VID)
+- Priority Code Point (PCP)
+- Drop Eligible Indicator (DEI)
+
+For most networking tasks, the VLAN Identifier is the primary field of interest.
+
+---
+
+# Native VLAN
+
+On an 802.1Q trunk, one VLAN is designated as the **native VLAN**.
+
+Characteristics:
+
+- Frames belonging to the native VLAN are sent **without** an 802.1Q tag (on traditional configurations).
+- Both ends of the trunk must agree on the native VLAN.
+- A native VLAN mismatch can cause connectivity issues and increase security risk.
+
+Best practices:
+
+- Use an unused VLAN as the native VLAN.
+- Do not use VLAN 1 as the native VLAN for production environments.
+- Restrict access to trunk ports.
+
+---
+
+# VLAN Tagging Example
+
+```
+Switch A
+
+↓
+
+Frame
+
+↓
+
+VLAN 20 Tag Added
+
+↓
+
+Trunk
+
+↓
+
+Switch B
+
+↓
+
+Tag Removed
+
+↓
+
+Destination Device
+```
+
+End devices connected to access ports typically receive untagged frames.
+
+---
+
+# Inter-VLAN Communication
+
+Devices in different VLANs cannot communicate directly because each VLAN is a separate Layer 2 broadcast domain.
+
+Example:
+
+```
+PC
+
+VLAN 10
+
+↓
+
+×
+
+↓
+
+Server
+
+VLAN 30
+```
+
+A Layer 3 device is required to route traffic between VLANs.
+
+---
+
+# Inter-VLAN Routing
+
+Example:
+
+```
+VLAN 10
+
+↓
+
+Layer 3 Switch / Router
+
+↓
+
+VLAN 20
+```
+
+Process:
+
+1. The source host sends traffic to its default gateway.
+2. The Layer 3 device routes the packet.
+3. The packet is forwarded into the destination VLAN.
+
+---
+
+# Router-on-a-Stick
+
+A common inter-VLAN routing design for smaller networks uses a single router interface configured with multiple subinterfaces.
+
+```
+           Router
+              │
+        802.1Q Trunk
+              │
+          Layer 2 Switch
+      ┌──────┼──────┐
+      │      │      │
+   VLAN10 VLAN20 VLAN30
+```
+
+Each router subinterface corresponds to a specific VLAN.
+
+Advantages:
+
+- Cost-effective
+- Simple for small deployments
+
+Limitations:
+
+- Single physical uplink
+- Lower scalability compared to Layer 3 switching
+
+---
+
+# Layer 3 Switch
+
+Modern enterprise networks often use **Layer 3 switches** for inter-VLAN routing.
+
+```
+         Layer 3 Switch
+      ┌────────┼────────┐
+      │        │        │
+   VLAN10   VLAN20   VLAN30
+```
+
+Advantages:
+
+- Hardware-based routing
+- Low latency
+- High throughput
+- Better scalability
+- Simplified campus design
+
+---
+
+# Voice VLAN
+
+IP phones commonly use a dedicated **Voice VLAN**.
+
+Example:
+
+```
+IP Phone
+
+↓
+
+Voice VLAN 100
+
+↓
+
+PC
+
+↓
+
+Data VLAN 10
+```
+
+Benefits:
+
+- Traffic separation
+- Simplified QoS
+- Better security
+- Easier troubleshooting
+
+Voice traffic can be prioritized independently of user data.
+
+---
+
+# Management VLAN
+
+Network devices often use a dedicated **Management VLAN** for administrative access.
+
+Example:
+
+```
+Management VLAN
+
+↓
+
+Switches
+
+↓
+
+Routers
+
+↓
+
+Wireless Controllers
+```
+
+Benefits:
+
+- Isolated management traffic
+- Improved security
+- Simplified monitoring
+- Centralized administration
+
+Access to the management VLAN should be tightly controlled.
+
+---
+
+# VLAN Planning
+
+Example enterprise allocation:
+
+| VLAN | Department |
+|------|------------|
+| 10 | HR |
+| 20 | Finance |
+| 30 | IT |
+| 40 | Servers |
+| 50 | Wireless Users |
+| 60 | Guest Wi-Fi |
+| 99 | Management |
+| 100 | Voice |
+
+Planning should leave room for future growth and maintain consistent numbering conventions across sites.
+
+---
+
+# VLAN Best Practices
+
+- Separate departments into dedicated VLANs.
+- Isolate guest users from internal resources.
+- Use dedicated management and voice VLANs.
+- Avoid using VLAN 1 for production traffic.
+- Disable unused switch ports.
+- Limit which VLANs are allowed on trunk links.
+- Document VLAN assignments and purposes.
+- Align VLAN design with security policies and firewall rules.
+
+---
+
+# Common VLAN Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Devices cannot communicate | Wrong VLAN assignment |
+| Trunk not working | 802.1Q mismatch |
+| Native VLAN mismatch | Incorrect trunk configuration |
+| Missing VLAN | VLAN not created on the switch |
+| Inter-VLAN routing failure | Incorrect gateway or Layer 3 configuration |
+| Voice issues | Voice VLAN or QoS misconfiguration |
+
+---
+
+# Enterprise Example
+
+```
+                    Core Layer
+                         │
+                 Layer 3 Switch
+        ┌────────┼────────┼────────┐
+        │        │        │        │
+    VLAN10   VLAN20   VLAN30   VLAN40
+       │         │         │         │
+      HR     Finance      IT     Servers
+```
+
+This design:
+
+- Reduces broadcast traffic
+- Improves security
+- Simplifies routing
+- Supports scalable network growth
+
+---
+
+# Practical Lab 1 — Create VLANs
+
+Objective:
+
+Create the following VLANs on a managed switch:
+
+| VLAN | Name |
+|------|------|
+| 10 | HR |
+| 20 | Finance |
+| 30 | IT |
+| 40 | Servers |
+
+Assign access ports to the appropriate VLANs and verify connectivity within each VLAN.
+
+---
+
+# Practical Lab 2 — Configure a Trunk
+
+Tasks:
+
+1. Connect two switches.
+2. Configure the link as an 802.1Q trunk.
+3. Allow VLANs 10, 20, 30, and 40.
+4. Verify that traffic from each VLAN traverses the trunk correctly.
+
+---
+
+# Practical Lab 3 — Inter-VLAN Routing
+
+Using a Layer 3 switch or Router-on-a-Stick:
+
+1. Configure VLAN interfaces (SVIs) or router subinterfaces.
+2. Assign default gateways.
+3. Test communication between VLAN 10 and VLAN 20.
+4. Verify routing with `ping` and `traceroute`.
+
+---
+
+# Key Takeaways
+
+- A **VLAN** is a logical Layer 2 network that creates a separate broadcast domain.
+- **Access ports** carry traffic for a single VLAN, while **trunk ports** carry multiple VLANs.
+- **IEEE 802.1Q** is the standard protocol for VLAN tagging across trunk links.
+- Devices in different VLANs require **Layer 3 routing** to communicate.
+- Dedicated **Voice VLANs** and **Management VLANs** improve security, performance, and operational efficiency.
+- Proper VLAN planning and trunk configuration are essential for scalable enterprise networks.
+
