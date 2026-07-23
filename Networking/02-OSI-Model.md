@@ -1239,3 +1239,846 @@ The Physical Layer itself is **not directly visible** in packet captures because
 | 2. Data Link | Frame | MAC Address | Switch | Ethernet, ARP, VLAN |
 | 1. Physical | Bits | — | Hub, Cable | Ethernet PHY, Fiber |
 
+# 02 - OSI Model
+
+# Part 3 — Encapsulation, Decapsulation, Packet Journey, and Real-World Communication Flow
+
+---
+
+# Overview
+
+The true power of the OSI Model becomes apparent when we examine **how data actually travels across a network**.
+
+Whenever you:
+
+- Open a website
+- Send an email
+- Download a file
+- Watch a YouTube video
+- Connect to a cloud application
+
+the data passes through **every layer of the OSI Model**.
+
+Each layer performs its own task by adding (or removing) protocol-specific information.
+
+This process is known as:
+
+- **Encapsulation** (Sender)
+- **Decapsulation** (Receiver)
+
+Understanding these concepts is fundamental for:
+
+- Packet analysis
+- Wireshark
+- TCP/IP
+- Routing
+- Network troubleshooting
+- Cybersecurity investigations
+- Threat Hunting
+- Digital Forensics
+
+---
+
+# What is Encapsulation?
+
+Encapsulation is the process of **adding protocol information (headers and sometimes trailers)** to data as it moves **down the OSI stack**.
+
+Each layer wraps the data received from the layer above.
+
+Think of it like shipping a package.
+
+```
+Gift
+
+↓
+
+Gift Box
+
+↓
+
+Shipping Box
+
+↓
+
+Shipping Label
+
+↓
+
+Delivery Truck
+```
+
+Similarly,
+
+```
+Application Data
+
+↓
+
+Transport Header
+
+↓
+
+IP Header
+
+↓
+
+Ethernet Header
+
+↓
+
+Bits
+```
+
+---
+
+# Why Encapsulation is Necessary
+
+Each networking layer has its own responsibilities.
+
+For example:
+
+Application Layer
+
+```
+"I want to send this webpage."
+```
+
+Transport Layer
+
+```
+"I'll split it into segments."
+```
+
+Network Layer
+
+```
+"I'll determine where it should go."
+```
+
+Data Link Layer
+
+```
+"I'll deliver it to the next device."
+```
+
+Physical Layer
+
+```
+"I'll convert it into electrical, optical, or radio signals."
+```
+
+Without encapsulation, devices would not know:
+
+- Where data originated
+- Where it should be delivered
+- Which application should receive it
+- Whether data is complete
+- Whether errors occurred
+
+---
+
+# Encapsulation Process
+
+```
+Application Layer
+
+↓
+
+Data
+
+↓
+
+Transport Layer
+
+↓
+
+TCP Header
+
+↓
+
+Segment
+
+↓
+
+Network Layer
+
+↓
+
+IP Header
+
+↓
+
+Packet
+
+↓
+
+Data Link Layer
+
+↓
+
+Ethernet Header
+
+↓
+
+Ethernet Trailer
+
+↓
+
+Frame
+
+↓
+
+Physical Layer
+
+↓
+
+Bits
+```
+
+Each layer adds only the information required for its own function.
+
+---
+
+# Headers Added by Each Layer
+
+```
+Application
+
+↓
+
+Data
+
+↓
+
++---------------------+
+| TCP Header          |
++---------------------+
+| Application Data    |
++---------------------+
+
+↓
+
++---------------------+
+| IP Header           |
++---------------------+
+| TCP Header          |
++---------------------+
+| Application Data    |
++---------------------+
+
+↓
+
++---------------------+
+| Ethernet Header     |
++---------------------+
+| IP Header           |
++---------------------+
+| TCP Header          |
++---------------------+
+| Application Data    |
++---------------------+
+| Ethernet Trailer    |
++---------------------+
+```
+
+---
+
+# Protocol Data Unit (PDU) Transformation
+
+As data moves through the layers, its name changes.
+
+```
+Application
+
+↓
+
+Data
+
+↓
+
+Transport
+
+↓
+
+Segment
+
+↓
+
+Network
+
+↓
+
+Packet
+
+↓
+
+Data Link
+
+↓
+
+Frame
+
+↓
+
+Physical
+
+↓
+
+Bits
+```
+
+Remember this transformation—it is frequently asked in networking interviews.
+
+---
+
+# Example: Opening a Website
+
+Suppose a user visits:
+
+```
+https://example.com
+```
+
+The communication begins at the browser.
+
+---
+
+## Step 1 — Application Layer
+
+The browser creates an HTTPS request.
+
+Example:
+
+```
+GET /
+
+Host: example.com
+```
+
+Current PDU:
+
+```
+Data
+```
+
+---
+
+## Step 2 — Presentation Layer
+
+The request is encrypted using TLS.
+
+```
+Encrypted Data
+```
+
+---
+
+## Step 3 — Session Layer
+
+A secure session is established.
+
+```
+TLS Session
+
+↓
+
+Authenticated Session
+```
+
+---
+
+## Step 4 — Transport Layer
+
+TCP adds:
+
+- Source Port
+- Destination Port
+- Sequence Number
+- Acknowledgment Number
+- Flags
+- Window Size
+
+```
+TCP Header
+
+↓
+
+HTTPS Data
+```
+
+Current PDU:
+
+```
+Segment
+```
+
+---
+
+## Step 5 — Network Layer
+
+IP adds:
+
+- Source IP
+- Destination IP
+- TTL
+- Protocol
+- Fragmentation Information
+
+```
+IP Header
+
+↓
+
+TCP Segment
+```
+
+Current PDU:
+
+```
+Packet
+```
+
+---
+
+## Step 6 — Data Link Layer
+
+Ethernet adds:
+
+- Source MAC
+- Destination MAC
+- EtherType
+- Frame Check Sequence (FCS)
+
+```
+Ethernet Frame
+
+↓
+
+IP Packet
+```
+
+Current PDU:
+
+```
+Frame
+```
+
+---
+
+## Step 7 — Physical Layer
+
+The frame becomes:
+
+```
+010010101011001...
+```
+
+These bits are transmitted over:
+
+- Copper cable
+- Fiber optic cable
+- Wireless radio waves
+
+---
+
+# Complete Encapsulation Diagram
+
+```
+Application Layer
+
+Data
+
+↓
+
+Presentation Layer
+
+Encrypted Data
+
+↓
+
+Session Layer
+
+Session Information
+
+↓
+
+Transport Layer
+
++ TCP Header
+
+↓
+
+Segment
+
+↓
+
+Network Layer
+
++ IP Header
+
+↓
+
+Packet
+
+↓
+
+Data Link Layer
+
++ Ethernet Header
++ Ethernet Trailer
+
+↓
+
+Frame
+
+↓
+
+Physical Layer
+
+Bits
+```
+
+---
+
+# What is Decapsulation?
+
+Decapsulation is the **reverse process**.
+
+Each receiving layer removes the information added by its corresponding sender layer.
+
+```
+Bits
+
+↓
+
+Frame
+
+↓
+
+Packet
+
+↓
+
+Segment
+
+↓
+
+Data
+```
+
+---
+
+# Decapsulation Process
+
+```
+Incoming Bits
+
+↓
+
+Physical Layer
+
+↓
+
+Frame
+
+↓
+
+Data Link Layer
+
+(Removes Ethernet Header)
+
+↓
+
+Packet
+
+↓
+
+Network Layer
+
+(Removes IP Header)
+
+↓
+
+Segment
+
+↓
+
+Transport Layer
+
+(Removes TCP Header)
+
+↓
+
+Data
+
+↓
+
+Application Layer
+```
+
+---
+
+# Enterprise Communication Example
+
+Imagine an employee accessing an internal HR portal.
+
+```
+Employee Laptop
+
+↓
+
+Access Switch
+
+↓
+
+Distribution Switch
+
+↓
+
+Core Router
+
+↓
+
+Firewall
+
+↓
+
+Load Balancer
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+At each hop:
+
+- Layer 2 information changes (new MAC addresses).
+- Layer 3 information generally remains consistent (same source and destination IPs, unless NAT is involved).
+- Layer 4 ports identify the communicating applications.
+- The application data remains protected by higher-layer protocols such as TLS.
+
+---
+
+# What Changes at Each Hop?
+
+Consider a packet traveling through multiple routers.
+
+```
+Laptop
+
+↓
+
+Switch
+
+↓
+
+Router
+
+↓
+
+Firewall
+
+↓
+
+Router
+
+↓
+
+Server
+```
+
+### Changes
+
+✔ Layer 2 (MAC Addresses)
+
+Changes at every hop because Ethernet frames are rebuilt for each local network segment.
+
+---
+
+✔ Layer 3 (IP Addresses)
+
+Usually remain the same from source to destination.
+
+Exceptions include:
+
+- NAT
+- Proxy servers
+- VPN gateways
+
+---
+
+✔ Layer 4 (Ports)
+
+Remain unchanged during normal forwarding.
+
+---
+
+✔ Application Data
+
+Remains unchanged unless modified by an intermediary such as a proxy or application gateway.
+
+---
+
+# Example Ethernet Frame
+
+```
++------------------------------------------------+
+| Destination MAC                                |
++------------------------------------------------+
+| Source MAC                                     |
++------------------------------------------------+
+| EtherType                                      |
++------------------------------------------------+
+| IP Header                                      |
++------------------------------------------------+
+| TCP Header                                     |
++------------------------------------------------+
+| HTTPS Request                                  |
++------------------------------------------------+
+| Frame Check Sequence (FCS)                     |
++------------------------------------------------+
+```
+
+---
+
+# Example IP Packet
+
+```
++-----------------------------------------+
+| Version                                 |
+| Header Length                           |
+| TTL                                     |
+| Protocol                                |
+| Source IP                               |
+| Destination IP                          |
++-----------------------------------------+
+
+TCP Segment
+```
+
+---
+
+# Example TCP Segment
+
+```
++--------------------------------------+
+| Source Port                          |
+| Destination Port                     |
+| Sequence Number                      |
+| Acknowledgment Number                |
+| Flags                                |
+| Window Size                          |
++--------------------------------------+
+
+Application Data
+```
+
+---
+
+# Wireshark View
+
+When capturing packets in Wireshark, you typically observe protocol layers similar to:
+
+```
+Ethernet II
+
+↓
+
+Internet Protocol Version 4
+
+↓
+
+Transmission Control Protocol
+
+↓
+
+Transport Layer Security
+
+↓
+
+Hypertext Transfer Protocol
+```
+
+Wireshark displays protocol information in a hierarchical format, reflecting the encapsulation process.
+
+---
+
+# Encapsulation vs Decapsulation
+
+| Encapsulation | Decapsulation |
+|----------------|---------------|
+| Sender process | Receiver process |
+| Adds headers | Removes headers |
+| Moves down the OSI stack | Moves up the OSI stack |
+| Prepares data for transmission | Restores original application data |
+
+---
+
+# Common Misconceptions
+
+### Does every layer add a header?
+
+No.
+
+Most layers add headers, while the Data Link Layer also appends a trailer (such as the Ethernet FCS).
+
+---
+
+### Does every device process all seven layers?
+
+No.
+
+Different devices operate at different layers.
+
+For example:
+
+- Hubs primarily operate at Layer 1.
+- Switches primarily operate at Layer 2.
+- Routers primarily operate at Layer 3.
+- Firewalls may inspect traffic at Layers 3–7 depending on their capabilities.
+- End hosts process all layers.
+
+---
+
+### Does the IP address change at every hop?
+
+Normally, no.
+
+Routers forward packets based on the destination IP address while updating fields such as the TTL. The Layer 2 (MAC) addresses change on each link.
+
+---
+
+# Business Impact
+
+Encapsulation enables:
+
+- Reliable communication
+- Vendor interoperability
+- Secure transmission
+- Efficient routing
+- Modular protocol design
+- Simplified troubleshooting
+- Deep packet inspection
+- Traffic analysis
+- Enterprise scalability
+
+Without encapsulation, modern computer networks and the Internet would not function as standardized systems.
+
+---
+
+# Key Takeaways
+
+- Encapsulation adds protocol-specific information as data moves down the OSI stack.
+- Decapsulation removes this information as data moves up the stack at the receiver.
+- Data changes from **Data → Segment → Packet → Frame → Bits** during transmission.
+- Layer 2 information changes at each network hop, while Layer 3 addresses usually remain constant unless translation mechanisms such as NAT are used.
+- Packet analyzers like Wireshark display encapsulated protocols in a layered hierarchy, making the OSI model an invaluable framework for troubleshooting and cybersecurity analysis.
+
