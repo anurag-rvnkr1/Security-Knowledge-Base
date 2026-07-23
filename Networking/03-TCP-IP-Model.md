@@ -1953,3 +1953,815 @@ A clear understanding of each step is essential for diagnosing network issues, d
 - NAT allows private networks to communicate with the public Internet using routable IP addresses.
 - Packet analyzers such as Wireshark reveal the encapsulated protocol stack, providing valuable insight for troubleshooting and security analysis.
 
+# 03 - TCP/IP Model
+
+# Part 4 — Enterprise Troubleshooting, Security Architecture, Practical Labs, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+Understanding the TCP/IP Model is not only about learning protocols—it is about applying that knowledge to design, secure, troubleshoot, and optimize real-world networks.
+
+Enterprise engineers, SOC analysts, cloud architects, and incident responders rely on the TCP/IP Model daily to:
+
+- Diagnose network failures
+- Detect cyber attacks
+- Design secure architectures
+- Monitor traffic
+- Investigate incidents
+- Optimize application performance
+
+This section demonstrates how the TCP/IP Model is applied in enterprise environments.
+
+---
+
+# Enterprise Troubleshooting Methodology
+
+A structured troubleshooting approach reduces downtime and avoids unnecessary changes.
+
+```
+Identify Problem
+
+↓
+
+Gather Information
+
+↓
+
+Determine Layer
+
+↓
+
+Test Hypothesis
+
+↓
+
+Implement Fix
+
+↓
+
+Validate Solution
+
+↓
+
+Document Findings
+```
+
+Never begin troubleshooting by changing configurations without first identifying the affected TCP/IP layer.
+
+---
+
+# Layer-Based Troubleshooting
+
+---
+
+## Application Layer
+
+### Common Problems
+
+- Website unavailable
+- API failures
+- DNS resolution failures
+- Authentication errors
+- Email delivery failures
+- SSL/TLS certificate issues
+- File transfer failures
+
+### Symptoms
+
+- HTTP 404/500 errors
+- "Host not found"
+- Login failures
+- Browser certificate warnings
+- SMTP delivery errors
+
+### Diagnostic Tools
+
+- Browser Developer Tools
+- `curl`
+- `wget`
+- `dig`
+- `nslookup`
+- `host`
+- Postman
+- OpenSSL
+
+Example:
+
+```bash
+curl -I https://example.com
+
+dig example.com
+
+nslookup example.com
+```
+
+---
+
+## Transport Layer
+
+### Common Problems
+
+- TCP handshake failures
+- Closed ports
+- High latency
+- Packet retransmissions
+- Connection resets
+- UDP packet loss
+
+### Symptoms
+
+- Connection timeout
+- "Connection refused"
+- Slow application response
+- Interrupted sessions
+
+### Diagnostic Tools
+
+```bash
+netstat
+
+ss
+
+telnet
+
+nc
+
+nmap
+```
+
+Example
+
+```bash
+nc -vz example.com 443
+
+nmap -Pn example.com
+```
+
+---
+
+## Internet Layer
+
+### Common Problems
+
+- Incorrect IP configuration
+- Routing loops
+- Missing default gateway
+- ACL blocking traffic
+- Fragmentation issues
+
+### Symptoms
+
+- Unable to reach remote hosts
+- Ping failures
+- Traceroute stops unexpectedly
+
+### Diagnostic Tools
+
+```bash
+ping
+
+traceroute
+
+tracert
+
+ip route
+
+ipconfig
+
+ifconfig
+
+ip addr
+```
+
+---
+
+## Network Access Layer
+
+### Common Problems
+
+- Cable failures
+- VLAN mismatch
+- ARP poisoning
+- Switch port shutdown
+- MAC address learning issues
+
+### Symptoms
+
+- Link down
+- No local connectivity
+- Duplicate MAC warnings
+- Intermittent packet loss
+
+### Diagnostic Tools
+
+```bash
+arp -a
+
+ip neigh
+
+show mac address-table
+
+ethtool
+```
+
+---
+
+# Enterprise Troubleshooting Flow
+
+```
+Website Not Working
+
+↓
+
+Can Domain Resolve?
+
+↓
+
+NO
+
+↓
+
+DNS Problem
+
+──────────────
+
+YES
+
+↓
+
+Can IP Respond?
+
+↓
+
+NO
+
+↓
+
+Routing / Firewall
+
+──────────────
+
+YES
+
+↓
+
+TCP Port Open?
+
+↓
+
+NO
+
+↓
+
+Firewall / Service
+
+──────────────
+
+YES
+
+↓
+
+TLS Successful?
+
+↓
+
+NO
+
+↓
+
+Certificate Issue
+
+──────────────
+
+YES
+
+↓
+
+Application Problem
+```
+
+This methodology minimizes troubleshooting time by isolating failures to the appropriate TCP/IP layer.
+
+---
+
+# Security Across the TCP/IP Layers
+
+Security should be implemented at every layer.
+
+---
+
+## Application Layer
+
+### Common Threats
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Cross-Site Request Forgery (CSRF)
+- Server-Side Request Forgery (SSRF)
+- Authentication bypass
+- API abuse
+- XML External Entity (XXE)
+- Remote Code Execution (RCE)
+
+### Security Controls
+
+- Secure coding
+- Input validation
+- WAF
+- API Gateway
+- MFA
+- OAuth 2.0 / OpenID Connect
+- Secure session management
+- TLS
+
+---
+
+## Transport Layer
+
+### Common Threats
+
+- SYN Flood
+- UDP Flood
+- Port scanning
+- Session hijacking
+- TCP Reset attacks
+
+### Security Controls
+
+- Stateful firewalls
+- IDS/IPS
+- SYN Cookies
+- Rate limiting
+- Connection tracking
+
+---
+
+## Internet Layer
+
+### Common Threats
+
+- IP Spoofing
+- ICMP abuse
+- Route hijacking
+- Packet fragmentation attacks
+
+### Security Controls
+
+- ACLs
+- Anti-spoofing filters
+- IPsec
+- Routing protocol authentication
+- VPNs
+
+---
+
+## Network Access Layer
+
+### Common Threats
+
+- ARP Spoofing
+- MAC Flooding
+- Rogue Access Points
+- VLAN Hopping
+- DHCP Starvation
+- DHCP Spoofing
+
+### Security Controls
+
+- Port Security
+- Dynamic ARP Inspection (DAI)
+- DHCP Snooping
+- BPDU Guard
+- 802.1X Authentication
+- VLAN Segmentation
+
+---
+
+# Enterprise Security Architecture
+
+```
+                    Internet
+                        │
+                Edge Router
+                        │
+                Next-Generation Firewall
+                        │
+                  DMZ Network
+            ┌───────────┴───────────┐
+            │                       │
+      Web Servers              VPN Gateway
+            │
+      Load Balancer
+            │
+   Internal Firewall
+            │
+    Application Servers
+            │
+       Database Servers
+            │
+      SIEM / SOC Platform
+```
+
+Security controls operate across multiple TCP/IP layers to provide **Defense in Depth**.
+
+---
+
+# Wireshark Practical Lab
+
+## Objective
+
+Observe a complete HTTPS communication.
+
+---
+
+## Requirements
+
+- Wireshark
+- Web browser
+- Internet connection
+
+---
+
+## Procedure
+
+1. Start packet capture.
+2. Clear browser cache (optional).
+3. Visit an HTTPS website.
+4. Stop the capture.
+5. Filter packets using:
+
+```text
+tcp
+```
+
+or
+
+```text
+tls
+```
+
+or
+
+```text
+http
+```
+
+---
+
+## Observe
+
+### DNS Query
+
+```
+Standard Query
+
+example.com
+```
+
+---
+
+### TCP Handshake
+
+```
+SYN
+
+↓
+
+SYN ACK
+
+↓
+
+ACK
+```
+
+---
+
+### TLS Handshake
+
+```
+Client Hello
+
+↓
+
+Server Hello
+
+↓
+
+Certificate
+
+↓
+
+Finished
+```
+
+---
+
+### HTTP Request
+
+```
+GET /
+
+Host:
+
+example.com
+```
+
+---
+
+### HTTP Response
+
+```
+HTTP/1.1 200 OK
+```
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+Employees report:
+
+```
+Unable to access Microsoft 365.
+```
+
+---
+
+## Investigation
+
+### Step 1
+
+DNS
+
+```
+nslookup login.microsoftonline.com
+```
+
+Result
+
+Successful
+
+---
+
+### Step 2
+
+Ping
+
+```
+ping login.microsoftonline.com
+```
+
+Packets received.
+
+---
+
+### Step 3
+
+TCP Port
+
+```
+443
+```
+
+Reachable.
+
+---
+
+### Step 4
+
+TLS Inspection
+
+Certificate valid.
+
+---
+
+### Step 5
+
+Application Logs
+
+Identity provider is returning:
+
+```
+401 Unauthorized
+```
+
+---
+
+## Root Cause
+
+Expired authentication token issued by the identity platform.
+
+The issue resides at the **Application Layer**, not the underlying network.
+
+---
+
+# Best Practices
+
+- Use DNSSEC where appropriate.
+- Enforce TLS 1.2 or TLS 1.3.
+- Disable insecure protocols such as Telnet and FTP.
+- Use SSH for remote administration.
+- Implement least privilege for network access.
+- Monitor network traffic continuously.
+- Segment networks using VLANs and firewalls.
+- Keep firmware and networking devices up to date.
+- Implement logging and centralized monitoring.
+- Perform regular vulnerability assessments and penetration testing.
+
+---
+
+# Common TCP/IP Commands
+
+| Command | Purpose |
+|----------|----------|
+| `ping` | Test reachability |
+| `traceroute` / `tracert` | Trace packet path |
+| `ip addr` / `ifconfig` | Display interface configuration |
+| `ip route` | Display routing table |
+| `arp -a` | Display ARP cache |
+| `netstat` | Show network connections |
+| `ss` | Display socket statistics |
+| `nslookup` | DNS lookup |
+| `dig` | Advanced DNS queries |
+| `host` | Resolve domain names |
+| `curl` | Test web services |
+| `wget` | Retrieve content |
+| `tcpdump` | Capture network traffic |
+| `Wireshark` | Analyze packets |
+| `nmap` | Network discovery and port scanning |
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is the TCP/IP Model?
+
+The TCP/IP Model is a four-layer networking architecture that defines how devices communicate over interconnected networks. It is the foundation of the Internet.
+
+---
+
+### Name the four TCP/IP layers.
+
+- Application
+- Transport
+- Internet
+- Network Access
+
+---
+
+### Which protocol is responsible for reliable communication?
+
+**TCP (Transmission Control Protocol)** provides reliable, ordered, connection-oriented communication.
+
+---
+
+### Which protocol is used to resolve domain names?
+
+**DNS (Domain Name System)** translates domain names into IP addresses.
+
+---
+
+## Intermediate
+
+### What happens before an HTTPS request is sent?
+
+A typical sequence includes:
+
+1. DNS resolution
+2. ARP resolution (if needed)
+3. TCP three-way handshake
+4. TLS handshake
+5. HTTP request
+
+---
+
+### Why is NAT required?
+
+NAT enables devices using private IP addresses to communicate with external networks by translating them into routable public IP addresses.
+
+---
+
+### What is the difference between TCP and UDP?
+
+| TCP | UDP |
+|------|-----|
+| Connection-oriented | Connectionless |
+| Reliable | Best-effort delivery |
+| Ordered | Unordered |
+| Higher overhead | Lower overhead |
+| Used for web, email, file transfer | Used for DNS, VoIP, streaming |
+
+---
+
+## Advanced
+
+### Explain the journey of a packet from a browser to a web server.
+
+A complete answer should include:
+
+1. URL entry
+2. DNS resolution
+3. ARP resolution
+4. TCP handshake
+5. TLS handshake
+6. HTTP request creation
+7. Encapsulation
+8. Switching
+9. Routing
+10. NAT (if applicable)
+11. Internet traversal
+12. Server decapsulation
+13. Application processing
+14. Response transmission
+
+---
+
+### How would you troubleshoot a website that is unreachable?
+
+A structured approach includes:
+
+1. Verify DNS resolution.
+2. Test IP connectivity.
+3. Check routing and gateways.
+4. Verify TCP port accessibility.
+5. Inspect TLS negotiation.
+6. Review application and server logs.
+7. Analyze packets using Wireshark or tcpdump if necessary.
+
+---
+
+### Why is the TCP/IP Model important in cybersecurity?
+
+It helps security professionals understand where attacks occur, deploy appropriate controls at each layer, investigate incidents, and analyze network traffic during detection and response.
+
+---
+
+# References
+
+## Standards
+
+- RFC 791 – Internet Protocol (IPv4)
+- RFC 8200 – Internet Protocol Version 6 (IPv6)
+- RFC 793 – Transmission Control Protocol (TCP)
+- RFC 768 – User Datagram Protocol (UDP)
+- RFC 1035 – Domain Name System (DNS)
+
+## Security Guidance
+
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-41 (Guidelines on Firewalls and Firewall Policy)
+- NIST SP 800-61 (Computer Security Incident Handling Guide)
+
+## Vendor Documentation
+
+- Cisco Networking Documentation
+- Microsoft Learn Networking Documentation
+- Wireshark User Guide
+- IETF RFC Index
+
+---
+
+# Summary
+
+The TCP/IP Model is the practical foundation of modern networking and the Internet. It defines how applications communicate, how data is transported reliably, how packets are addressed and routed across networks, and how local devices exchange frames. A strong understanding of the TCP/IP Model enables professionals to troubleshoot network issues, design scalable infrastructures, secure communications, and analyze network traffic during cybersecurity investigations.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ History and purpose of the TCP/IP Model
+
+✔ Responsibilities of all four layers
+
+✔ Common protocols at each layer
+
+✔ Addressing (Ports, IP Addresses, MAC Addresses)
+
+✔ DNS and ARP resolution
+
+✔ TCP three-way handshake
+
+✔ TLS handshake overview
+
+✔ Encapsulation and decapsulation
+
+✔ NAT and Internet routing
+
+✔ Layer-based troubleshooting
+
+✔ Enterprise security controls
+
+✔ Packet analysis with Wireshark
+
+✔ Enterprise case studies
+
+✔ Interview preparation from beginner to advanced
+
+✔ Real-world application of the TCP/IP protocol suite
