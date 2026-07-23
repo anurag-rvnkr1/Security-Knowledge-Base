@@ -1484,3 +1484,862 @@ Poor monitoring can lead to prolonged outages, degraded customer experience, and
 - Continuous monitoring enhances both operational reliability and cybersecurity.
 
 ---
+
+# 16 - Linux System Monitoring
+
+# Part 3 — Advanced Monitoring, Log Correlation, Performance Tuning, Capacity Planning, Enterprise Monitoring Platforms, and Incident Analysis
+
+---
+
+# Introduction
+
+Modern enterprise environments rarely consist of a single Linux server.
+
+Organizations monitor:
+
+- Hundreds of Linux servers
+- Virtual machines
+- Containers
+- Kubernetes clusters
+- Cloud instances
+- Databases
+- Applications
+- Storage systems
+- Network devices
+
+Advanced monitoring focuses on:
+
+- Trend analysis
+- Predictive maintenance
+- Capacity planning
+- Alert correlation
+- Root cause analysis
+- Performance optimization
+
+---
+
+# Enterprise Monitoring Evolution
+
+```text
+Single Server
+
+↓
+
+Multiple Servers
+
+↓
+
+Centralized Monitoring
+
+↓
+
+Dashboards
+
+↓
+
+Alerting
+
+↓
+
+Automation
+
+↓
+
+Predictive Analytics
+```
+
+---
+
+# From Reactive to Proactive Monitoring
+
+| Reactive Monitoring | Proactive Monitoring |
+|----------------------|----------------------|
+| Respond after failure | Detect issues before failure |
+| Manual investigation | Automated alerts |
+| Downtime likely | Downtime minimized |
+| Limited visibility | Continuous visibility |
+
+---
+
+# Performance Baselines
+
+A **baseline** represents normal system behavior under expected workloads.
+
+Typical baseline metrics:
+
+- CPU utilization
+- Memory usage
+- Load average
+- Disk latency
+- Disk throughput
+- Network throughput
+- Process count
+- Application response time
+
+Without a baseline, it is difficult to determine whether current behavior is abnormal.
+
+---
+
+# Baseline Example
+
+| Metric | Normal Range |
+|----------|--------------|
+| CPU | 20–40% |
+| Memory | 55–70% |
+| Load Average | 0.8–1.5 |
+| Disk Usage | Below 75% |
+| Network Throughput | 80–120 Mbps |
+| Response Time | Below 150 ms |
+
+These values vary depending on workload and hardware.
+
+---
+
+# Trend Analysis
+
+Instead of looking at one measurement:
+
+```text
+40%
+
+↓
+
+42%
+
+↓
+
+45%
+
+↓
+
+55%
+
+↓
+
+70%
+```
+
+Trend analysis identifies gradual degradation before it becomes an outage.
+
+---
+
+# Capacity Planning
+
+Capacity planning predicts future infrastructure requirements.
+
+Inputs include:
+
+- Historical metrics
+- Business growth
+- Seasonal demand
+- Resource utilization
+- Application expansion
+
+---
+
+# Capacity Planning Workflow
+
+```text
+Collect Metrics
+
+↓
+
+Analyze Growth
+
+↓
+
+Forecast Capacity
+
+↓
+
+Expand Infrastructure
+
+↓
+
+Continue Monitoring
+```
+
+---
+
+# Capacity Planning Example
+
+Current usage:
+
+```text
+Disk
+
+75%
+```
+
+Growth:
+
+```text
+5% per month
+```
+
+Prediction:
+
+```text
+100%
+
+↓
+
+5 months
+```
+
+Action:
+
+Provision additional storage before reaching critical utilization.
+
+---
+
+# Performance Bottlenecks
+
+A bottleneck is the resource limiting overall system performance.
+
+Possible bottlenecks:
+
+- CPU
+- Memory
+- Storage
+- Network
+- Database
+- Application
+- External dependency
+
+---
+
+# Bottleneck Identification
+
+```text
+Slow Application
+
+↓
+
+CPU?
+
+↓
+
+Memory?
+
+↓
+
+Disk?
+
+↓
+
+Network?
+
+↓
+
+Application?
+
+↓
+
+Root Cause
+```
+
+---
+
+# CPU Bottleneck Indicators
+
+Symptoms:
+
+- High CPU utilization
+- High load average
+- Long process queues
+- Reduced responsiveness
+
+Possible causes:
+
+- Infinite loops
+- Inefficient code
+- Cryptomining malware
+- Large batch processing
+- Excessive concurrency
+
+---
+
+# Memory Bottleneck Indicators
+
+Symptoms:
+
+- Heavy swap usage
+- Out-of-memory events
+- Slow application startup
+- Increased disk activity
+
+Possible causes:
+
+- Memory leaks
+- Large caches
+- Insufficient RAM
+- Excessive workloads
+
+---
+
+# Disk Bottleneck Indicators
+
+Symptoms:
+
+- High `%util`
+- High `await`
+- Slow file access
+- Delayed database operations
+
+Possible causes:
+
+- Slow storage
+- Heavy write workloads
+- Fragmented workloads (filesystem dependent)
+- Backup operations
+- Log growth
+
+---
+
+# Network Bottleneck Indicators
+
+Symptoms:
+
+- High latency
+- Packet loss
+- Connection timeouts
+- Slow application responses
+
+Possible causes:
+
+- Congestion
+- Faulty interfaces
+- Routing problems
+- Bandwidth saturation
+
+---
+
+# Root Cause Analysis (RCA)
+
+A structured investigation should avoid assumptions.
+
+```text
+Alert
+
+↓
+
+Collect Metrics
+
+↓
+
+Review Logs
+
+↓
+
+Correlate Events
+
+↓
+
+Identify Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Verify
+
+↓
+
+Document
+```
+
+---
+
+# Log Correlation
+
+Performance metrics become significantly more valuable when combined with logs.
+
+Example:
+
+```text
+CPU Spike
+
+↓
+
+Authentication Logs
+
+↓
+
+Application Logs
+
+↓
+
+Kernel Logs
+
+↓
+
+Network Events
+
+↓
+
+Incident Timeline
+```
+
+This approach helps distinguish legitimate workload increases from operational or security issues.
+
+---
+
+# Time Synchronization
+
+Accurate timestamps are essential.
+
+All monitored systems should synchronize time using services such as:
+
+- NTP
+- Chrony
+
+Benefits:
+
+- Reliable event ordering
+- Easier forensic analysis
+- Accurate alert correlation
+
+---
+
+# Enterprise Alerting
+
+Alerts should be:
+
+- Actionable
+- Prioritized
+- Accurate
+- Timely
+
+---
+
+# Alert Severity
+
+| Severity | Meaning |
+|-----------|----------|
+| Critical | Immediate service impact |
+| High | Significant degradation |
+| Medium | Potential issue |
+| Low | Informational |
+
+---
+
+# Alert Lifecycle
+
+```text
+Metric
+
+↓
+
+Threshold
+
+↓
+
+Alert
+
+↓
+
+Notification
+
+↓
+
+Investigation
+
+↓
+
+Resolution
+
+↓
+
+Closure
+```
+
+---
+
+# Avoiding Alert Fatigue
+
+Poor alerting can overwhelm administrators.
+
+Best practices:
+
+- Remove duplicate alerts
+- Suppress known maintenance events
+- Alert on sustained conditions
+- Use escalation policies
+- Regularly review thresholds
+
+---
+
+# Enterprise Monitoring Platforms
+
+Common monitoring platforms include:
+
+| Platform | Primary Use |
+|-----------|-------------|
+| Prometheus | Metrics collection and alerting |
+| Grafana | Dashboards and visualization |
+| Zabbix | Infrastructure monitoring |
+| Nagios | Host and service monitoring |
+| Icinga | Enterprise monitoring |
+| Datadog | Cloud observability |
+| New Relic | Application performance monitoring |
+| Elastic Stack | Metrics and log analysis |
+
+---
+
+# Centralized Monitoring Architecture
+
+```text
+Linux Servers
+
+↓
+
+Monitoring Agents
+
+↓
+
+Metrics Database
+
+↓
+
+Dashboards
+
+↓
+
+Alert Manager
+
+↓
+
+Operations Team
+```
+
+---
+
+# Key Performance Indicators (KPIs)
+
+Organizations commonly track:
+
+| KPI | Purpose |
+|------|----------|
+| CPU Utilization | Resource efficiency |
+| Memory Utilization | Capacity planning |
+| Disk Usage | Storage planning |
+| Disk Latency | Storage performance |
+| Network Throughput | Connectivity health |
+| Application Response Time | User experience |
+| Error Rate | Service quality |
+| Uptime | Availability |
+
+---
+
+# Service Level Indicators (SLIs)
+
+Examples:
+
+- Request latency
+- Successful request percentage
+- Error rate
+- Availability
+- Throughput
+
+These metrics are often used to evaluate service health.
+
+---
+
+# Service Level Objectives (SLOs)
+
+Example:
+
+```text
+Availability
+
+99.9%
+```
+
+Latency objective:
+
+```text
+95% of requests
+
+↓
+
+Below 200 ms
+```
+
+SLOs define measurable operational targets.
+
+---
+
+# Enterprise Dashboard
+
+```text
+System Health
+
+├── CPU
+
+├── Memory
+
+├── Disk
+
+├── Network
+
+├── Processes
+
+├── Services
+
+├── Logs
+
+└── Alerts
+```
+
+---
+
+# Performance Tuning Strategy
+
+```text
+Measure
+
+↓
+
+Identify Bottleneck
+
+↓
+
+Optimize
+
+↓
+
+Test
+
+↓
+
+Monitor Again
+```
+
+Avoid making multiple major changes simultaneously, as this complicates root cause analysis.
+
+---
+
+# Monitoring Containers
+
+Common metrics:
+
+- CPU usage
+- Memory usage
+- Container restarts
+- Disk usage
+- Network traffic
+- Resource limits
+
+Container orchestration platforms often expose these metrics through integrated monitoring solutions.
+
+---
+
+# Monitoring Virtual Machines
+
+Monitor both:
+
+- Guest operating system
+- Hypervisor resources
+
+Potential virtualization-specific issues include:
+
+- CPU steal time
+- Storage contention
+- Memory overcommitment
+- Noisy neighbors
+
+---
+
+# Enterprise Incident Example
+
+## Database Performance Degradation
+
+Timeline:
+
+```text
+09:00
+
+↓
+
+CPU Stable
+
+↓
+
+09:10
+
+Disk Latency Increased
+
+↓
+
+09:12
+
+Database Response Time Increased
+
+↓
+
+09:15
+
+Application Timeout
+
+↓
+
+Investigation
+```
+
+Root Cause:
+
+Storage array latency caused delayed database I/O.
+
+Resolution:
+
+- Reduce storage contention
+- Optimize workload scheduling
+- Verify storage performance
+
+---
+
+# Enterprise Incident Example
+
+## Unexpected CPU Spike
+
+Investigation:
+
+```text
+Alert
+
+↓
+
+top
+
+↓
+
+ps
+
+↓
+
+Logs
+
+↓
+
+Network
+
+↓
+
+Root Cause
+```
+
+Possible findings:
+
+- Scheduled batch job
+- Infinite loop
+- Cryptomining malware
+- Application defect
+
+---
+
+# Enterprise Incident Example
+
+## Memory Exhaustion
+
+Workflow:
+
+```text
+Alert
+
+↓
+
+free
+
+↓
+
+vmstat
+
+↓
+
+Process Analysis
+
+↓
+
+Application Logs
+
+↓
+
+Memory Leak Identified
+```
+
+Resolution:
+
+- Restart affected service
+- Apply software fix
+- Increase monitoring frequency
+
+---
+
+# Cybersecurity Perspective
+
+Advanced monitoring is an important component of security operations.
+
+Indicators of compromise may include:
+
+- Persistent abnormal CPU utilization
+- Unexpected long-running processes
+- Unusual outbound network traffic
+- Rapid log growth
+- Unauthorized service creation
+- Repeated authentication failures
+- Sudden resource exhaustion
+
+Monitoring data should be correlated with:
+
+- Authentication logs
+- System logs
+- Network telemetry
+- Endpoint security events
+- Threat intelligence
+
+---
+
+# Business Impact
+
+Advanced monitoring enables organizations to:
+
+- Reduce Mean Time to Detect (MTTD)
+- Reduce Mean Time to Resolve (MTTR)
+- Improve service availability
+- Meet SLA commitments
+- Improve customer satisfaction
+- Optimize infrastructure spending
+- Support business continuity
+
+---
+
+# Enterprise Best Practices
+
+- Establish and regularly update performance baselines.
+- Monitor historical trends, not just current values.
+- Correlate metrics with logs and application events.
+- Synchronize system time across all infrastructure.
+- Review alert thresholds periodically.
+- Perform root cause analysis after major incidents.
+- Automate repetitive monitoring tasks where appropriate.
+- Document monitoring procedures and escalation paths.
+- Test alerting systems during maintenance exercises.
+- Continuously refine dashboards based on operational needs.
+
+---
+
+# Key Takeaways
+
+- Effective monitoring requires both real-time visibility and historical analysis.
+- Performance baselines enable accurate anomaly detection.
+- Capacity planning prevents resource exhaustion.
+- Metrics, logs, and alerts should be correlated during investigations.
+- Enterprise monitoring platforms provide centralized visibility across infrastructure.
+- Continuous monitoring improves reliability, security, and operational efficiency.
+
+---
+
+
