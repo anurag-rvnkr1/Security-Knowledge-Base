@@ -1625,3 +1625,878 @@ Effective log management helps organizations:
 
 ---
 
+# 17 - Linux Logging
+
+# Part 3 — Centralized Logging, Log Analysis, Security Logging, Auditing, SIEM Integration, and Enterprise Logging Architecture
+
+---
+
+# Introduction
+
+Modern organizations may generate **millions of log events every day**.
+
+Examples include:
+
+- Authentication events
+- Web requests
+- Database queries
+- Firewall events
+- DNS queries
+- VPN connections
+- Cloud infrastructure logs
+- Endpoint security alerts
+
+Managing these logs individually on each server is inefficient and increases the risk of missing critical events.
+
+Enterprise environments therefore use **centralized logging** and **Security Information and Event Management (SIEM)** platforms to collect, correlate, analyze, and retain logs.
+
+---
+
+# Enterprise Logging Evolution
+
+```text
+Single Server
+
+↓
+
+Multiple Servers
+
+↓
+
+Central Log Server
+
+↓
+
+Log Analytics
+
+↓
+
+SIEM
+
+↓
+
+Threat Detection
+
+↓
+
+Automated Response
+```
+
+---
+
+# What is Centralized Logging?
+
+Centralized logging is the practice of collecting logs from multiple systems into a single location.
+
+Benefits include:
+
+- Unified visibility
+- Simplified troubleshooting
+- Faster investigations
+- Consistent retention
+- Improved compliance
+- Easier backup and archival
+- Better security monitoring
+
+---
+
+# Centralized Logging Architecture
+
+```text
+Linux Servers
+
+↓
+
+Applications
+
+↓
+
+systemd-journald
+
+↓
+
+Syslog (rsyslog/syslog-ng)
+
+↓
+
+Secure Network Transport
+
+↓
+
+Central Log Collector
+
+↓
+
+Storage
+
+↓
+
+Dashboards
+
+↓
+
+SIEM
+
+↓
+
+SOC Analysts
+```
+
+---
+
+# Components of a Centralized Logging Solution
+
+| Component | Purpose |
+|-----------|----------|
+| Log Source | Generates events |
+| Log Collector | Receives logs |
+| Parser | Extracts fields |
+| Storage | Stores logs |
+| Search Engine | Enables querying |
+| Dashboard | Visualization |
+| Alert Engine | Generates notifications |
+| SIEM | Correlates security events |
+
+---
+
+# Why Centralize Logs?
+
+Without centralization:
+
+```text
+Server A Logs
+
+Server B Logs
+
+Server C Logs
+
+↓
+
+Manual Investigation
+
+↓
+
+Slow Response
+```
+
+With centralized logging:
+
+```text
+All Servers
+
+↓
+
+Central Collector
+
+↓
+
+Single Search
+
+↓
+
+Rapid Investigation
+```
+
+---
+
+# Secure Log Forwarding
+
+Logs should be forwarded securely.
+
+Typical approaches:
+
+- Syslog over TLS
+- VPN tunnels
+- Private management networks
+
+Benefits:
+
+- Confidentiality
+- Integrity
+- Reduced interception risk
+
+---
+
+# Enterprise Log Pipeline
+
+```text
+Application
+
+↓
+
+Journal
+
+↓
+
+Syslog
+
+↓
+
+Log Collector
+
+↓
+
+Parser
+
+↓
+
+Indexer
+
+↓
+
+Storage
+
+↓
+
+Dashboard
+
+↓
+
+Alert Engine
+```
+
+---
+
+# Structured vs Unstructured Logs
+
+## Unstructured
+
+```text
+User login successful
+```
+
+## Structured
+
+```json
+{
+  "timestamp": "2026-07-22T10:00:15Z",
+  "user": "alice",
+  "service": "sshd",
+  "event": "login_success"
+}
+```
+
+Structured logs are easier to search, filter, and analyze.
+
+---
+
+# Log Formats
+
+Common formats include:
+
+| Format | Typical Use |
+|----------|-------------|
+| Plain text | Traditional system logs |
+| Syslog | Standardized logging |
+| JSON | Applications and APIs |
+| CEF | Security tools |
+| LEEF | Enterprise security products |
+| CSV | Reports and exports |
+
+---
+
+# Log Parsing
+
+Parsing extracts meaningful fields.
+
+Example:
+
+```text
+Jul 22 10:15:30 web01 sshd[1543]:
+Accepted password for alice
+```
+
+Parsed fields:
+
+| Field | Value |
+|---------|-------|
+| Date | Jul 22 |
+| Time | 10:15:30 |
+| Host | web01 |
+| Service | sshd |
+| PID | 1543 |
+| Event | Accepted password |
+| User | alice |
+
+---
+
+# Log Enrichment
+
+Additional context may be added:
+
+- Host location
+- Asset owner
+- Department
+- Criticality
+- Threat intelligence
+- Geographic information
+- User identity
+
+This makes investigations more efficient.
+
+---
+
+# Log Correlation
+
+Correlation links related events together.
+
+Example:
+
+```text
+SSH Login
+
+↓
+
+sudo Command
+
+↓
+
+Application Started
+
+↓
+
+Configuration Changed
+
+↓
+
+Investigation Timeline
+```
+
+Instead of viewing isolated events, analysts reconstruct complete sequences.
+
+---
+
+# Correlation Example
+
+```text
+Failed Login
+
+↓
+
+Successful Login
+
+↓
+
+Privilege Escalation
+
+↓
+
+Sensitive File Access
+
+↓
+
+Large Data Transfer
+```
+
+While each event alone may appear normal, together they could indicate suspicious activity.
+
+---
+
+# Security Logging
+
+Security-relevant events include:
+
+- Authentication
+- Authorization
+- Privilege escalation
+- Service modifications
+- File permission changes
+- Firewall events
+- IDS alerts
+- Malware detections
+- VPN activity
+
+---
+
+# Authentication Monitoring
+
+Important events:
+
+- Successful logins
+- Failed logins
+- SSH logins
+- Root logins
+- `sudo` usage
+- Account lockouts
+- Password changes
+
+---
+
+# Detecting Brute-Force Activity
+
+Indicators:
+
+```text
+100 Failed Logins
+
+↓
+
+Same Source IP
+
+↓
+
+Short Time Period
+
+↓
+
+Potential Brute Force
+```
+
+Possible response:
+
+- Investigate source
+- Review successful logins
+- Consider temporary blocking
+- Verify account integrity
+
+---
+
+# Monitoring Privileged Activity
+
+Review:
+
+- `sudo` execution
+- Root shell usage
+- Administrative commands
+- User creation
+- Group membership changes
+- Service management
+
+---
+
+# File Integrity Monitoring
+
+Track changes to:
+
+- `/etc/passwd`
+- `/etc/shadow`
+- `/etc/sudoers`
+- `/etc/ssh/sshd_config`
+- Critical application configuration
+- Security policies
+
+Unexpected changes should be investigated promptly.
+
+---
+
+# Audit Logging
+
+Audit logging records security-sensitive system activity.
+
+Common audit targets include:
+
+- Authentication
+- File access
+- Process execution
+- Configuration changes
+- Privileged operations
+
+On many Linux systems, this is provided by the Linux Audit Framework (`auditd`).
+
+---
+
+# Linux Audit Framework
+
+Typical workflow:
+
+```text
+System Call
+
+↓
+
+Audit Rules
+
+↓
+
+auditd
+
+↓
+
+Audit Log
+
+↓
+
+Analysis
+```
+
+Audit logs complement traditional system logs by capturing low-level security events.
+
+---
+
+# SIEM (Security Information and Event Management)
+
+A SIEM platform:
+
+- Collects logs
+- Normalizes events
+- Correlates activity
+- Detects threats
+- Generates alerts
+- Supports investigations
+- Produces compliance reports
+
+---
+
+# SIEM Workflow
+
+```text
+Linux Logs
+
+↓
+
+Collection
+
+↓
+
+Normalization
+
+↓
+
+Correlation
+
+↓
+
+Detection Rules
+
+↓
+
+Alerts
+
+↓
+
+SOC Investigation
+```
+
+---
+
+# Common SIEM Platforms
+
+| Platform | Purpose |
+|-----------|----------|
+| Splunk Enterprise Security | Security monitoring and analytics |
+| Microsoft Sentinel | Cloud-native SIEM/SOAR |
+| Elastic Security | SIEM on the Elastic Stack |
+| IBM QRadar | Enterprise SIEM |
+| Google Security Operations | Cloud security operations |
+| ArcSight | Enterprise log management and SIEM |
+
+---
+
+# Security Operations Center (SOC)
+
+```text
+Servers
+
+↓
+
+Logs
+
+↓
+
+SIEM
+
+↓
+
+Alert Queue
+
+↓
+
+SOC Analyst
+
+↓
+
+Investigation
+
+↓
+
+Incident Response
+```
+
+---
+
+# Incident Timeline Example
+
+```text
+09:00
+
+SSH Login
+
+↓
+
+09:02
+
+sudo Executed
+
+↓
+
+09:05
+
+Configuration Changed
+
+↓
+
+09:08
+
+Service Restarted
+
+↓
+
+09:12
+
+Outbound Connection
+
+↓
+
+Investigation
+```
+
+A timeline helps analysts understand event sequence and potential impact.
+
+---
+
+# Threat Hunting with Logs
+
+Threat hunters search for unusual behavior such as:
+
+- Rare administrative commands
+- Unexpected service startups
+- New privileged accounts
+- Logins outside business hours
+- Connections to unfamiliar destinations
+- Unusual authentication patterns
+
+---
+
+# Log Retention Strategy
+
+A typical lifecycle:
+
+```text
+Generate
+
+↓
+
+Collect
+
+↓
+
+Analyze
+
+↓
+
+Archive
+
+↓
+
+Retain
+
+↓
+
+Securely Delete
+```
+
+Retention periods should align with:
+
+- Legal requirements
+- Regulatory obligations
+- Business needs
+- Incident response requirements
+
+---
+
+# Enterprise Logging Architecture
+
+```text
+Linux Hosts
+
+↓
+
+Applications
+
+↓
+
+Journal
+
+↓
+
+Syslog
+
+↓
+
+Central Log Collector
+
+↓
+
+Message Queue (Optional)
+
+↓
+
+Indexer
+
+↓
+
+Search Engine
+
+↓
+
+SIEM
+
+↓
+
+SOC
+```
+
+---
+
+# High Availability Logging
+
+Large environments improve resilience through:
+
+- Multiple log collectors
+- Redundant storage
+- Load balancing
+- Backup collectors
+- Replication
+- Regular backup testing
+
+---
+
+# Log Quality
+
+High-quality logs should include:
+
+- Accurate timestamps
+- Hostname
+- Service name
+- User identity (where appropriate)
+- Event description
+- Severity
+- Unique identifiers when available
+
+Poor-quality logs complicate investigations.
+
+---
+
+# Enterprise Example
+
+## Detecting Unauthorized Access
+
+Workflow:
+
+```text
+Authentication Logs
+
+↓
+
+Repeated Failures
+
+↓
+
+Successful Login
+
+↓
+
+Privilege Escalation
+
+↓
+
+Configuration Change
+
+↓
+
+Security Alert
+```
+
+---
+
+# Enterprise Example
+
+## Web Server Investigation
+
+Monitor:
+
+- HTTP status codes
+- Request rates
+- Client IP addresses
+- User agents
+- Authentication failures
+- Unexpected request patterns
+
+---
+
+# Enterprise Example
+
+## Database Security Monitoring
+
+Track:
+
+- Failed authentication
+- Privileged queries
+- Administrative changes
+- Replication failures
+- Slow query events
+
+---
+
+# Cybersecurity Perspective
+
+Logging is foundational to:
+
+- Threat detection
+- Digital forensics
+- Incident response
+- Threat hunting
+- Compliance
+- Insider threat investigations
+
+Effective security logging requires:
+
+- Centralized collection
+- Time synchronization
+- Secure storage
+- Restricted access
+- Regular review
+- Correlation across multiple data sources
+
+---
+
+# Business Impact
+
+Centralized logging enables organizations to:
+
+- Detect incidents faster
+- Reduce Mean Time to Detect (MTTD)
+- Reduce Mean Time to Resolve (MTTR)
+- Improve regulatory compliance
+- Support forensic investigations
+- Increase operational visibility
+- Reduce troubleshooting time
+
+---
+
+# Enterprise Best Practices
+
+- Centralize logs from all critical systems.
+- Encrypt log transport where possible.
+- Synchronize system clocks using NTP or Chrony.
+- Standardize log formats where practical.
+- Protect logs against unauthorized modification.
+- Regularly validate log collection pipelines.
+- Define retention policies based on risk and compliance.
+- Continuously review and improve detection rules.
+- Monitor the health of logging infrastructure itself.
+- Test disaster recovery procedures for log storage.
+
+---
+
+# Key Takeaways
+
+- Centralized logging simplifies management and investigations.
+- Structured logs improve search, automation, and analytics.
+- SIEM platforms correlate events across many systems.
+- Audit logs complement traditional system and application logs.
+- Security logging is essential for modern incident detection and response.
+
+---
+
+
