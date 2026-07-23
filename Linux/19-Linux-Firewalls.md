@@ -757,3 +757,933 @@ Effective firewall management helps organizations:
 
 ---
 
+# 19 - Linux Firewalls
+
+# Part 2 — iptables, nftables, firewalld, UFW, Rule Management, Chains, Tables, and Packet Processing
+
+---
+
+# Introduction
+
+Linux firewalls are implemented in the kernel through **Netfilter**, but administrators typically interact with them using user-space tools.
+
+The most common tools are:
+
+- iptables
+- nftables
+- firewalld
+- UFW (Uncomplicated Firewall)
+
+Each tool ultimately configures Netfilter, but they differ in syntax, management approach, and capabilities.
+
+---
+
+# Linux Firewall Stack
+
+```text
+Administrator
+
+↓
+
+Firewall Tool
+
+↓
+
+Netfilter
+
+↓
+
+Kernel
+
+↓
+
+Network Interface
+```
+
+---
+
+# Evolution of Linux Firewalls
+
+```text
+ipchains
+
+↓
+
+iptables
+
+↓
+
+nftables
+
+↓
+
+Future Enhancements
+```
+
+Many enterprise environments still maintain legacy `iptables` configurations, while newer distributions increasingly adopt `nftables`.
+
+---
+
+# iptables Overview
+
+`iptables` is the traditional Linux firewall management utility.
+
+It allows administrators to:
+
+- Filter packets
+- Perform NAT
+- Log traffic
+- Forward packets
+- Modify packets
+
+---
+
+# iptables Architecture
+
+```text
+Incoming Packet
+
+↓
+
+Table
+
+↓
+
+Chain
+
+↓
+
+Rules
+
+↓
+
+Target
+
+↓
+
+Decision
+```
+
+---
+
+# iptables Tables
+
+Each table has a specific purpose.
+
+| Table | Purpose |
+|---------|----------|
+| filter | Packet filtering (most common) |
+| nat | Network Address Translation |
+| mangle | Specialized packet modification |
+| raw | Connection tracking exceptions |
+| security | Security-related processing (e.g., SELinux integration) |
+
+---
+
+# Default Table
+
+If no table is specified:
+
+```text
+filter
+```
+
+is used.
+
+---
+
+# iptables Chains
+
+The filter table contains:
+
+```text
+INPUT
+
+FORWARD
+
+OUTPUT
+```
+
+---
+
+# Chain Responsibilities
+
+| Chain | Purpose |
+|---------|----------|
+| INPUT | Traffic destined for the local machine |
+| OUTPUT | Traffic generated locally |
+| FORWARD | Traffic passing through the system |
+
+---
+
+# Packet Flow
+
+Packets destined for the host:
+
+```text
+Packet
+
+↓
+
+PREROUTING
+
+↓
+
+INPUT
+
+↓
+
+Local Process
+```
+
+Packets leaving the host:
+
+```text
+Application
+
+↓
+
+OUTPUT
+
+↓
+
+POSTROUTING
+
+↓
+
+Network
+```
+
+Forwarded traffic:
+
+```text
+Incoming
+
+↓
+
+PREROUTING
+
+↓
+
+FORWARD
+
+↓
+
+POSTROUTING
+
+↓
+
+Outgoing
+```
+
+---
+
+# Viewing Rules
+
+Display rules:
+
+```bash
+sudo iptables -L
+```
+
+Verbose output:
+
+```bash
+sudo iptables -L -v
+```
+
+Numeric output:
+
+```bash
+sudo iptables -L -n
+```
+
+Combine options:
+
+```bash
+sudo iptables -L -v -n
+```
+
+---
+
+# Rule Structure
+
+A rule generally contains:
+
+- Chain
+- Match conditions
+- Target
+
+Conceptually:
+
+```text
+IF
+
+Source
+
+Destination
+
+Protocol
+
+Port
+
+↓
+
+THEN
+
+Accept
+
+Drop
+
+Reject
+```
+
+---
+
+# Common Targets
+
+| Target | Meaning |
+|----------|----------|
+| ACCEPT | Permit packet |
+| DROP | Silently discard packet |
+| REJECT | Reject packet and respond appropriately |
+| LOG | Record packet information |
+| RETURN | Return to calling chain |
+
+---
+
+# Example Rules
+
+Allow SSH:
+
+```bash
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+```
+
+Allow HTTPS:
+
+```bash
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+```
+
+Allow HTTP:
+
+```bash
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+```
+
+---
+
+# Blocking Traffic
+
+Drop Telnet:
+
+```bash
+sudo iptables -A INPUT -p tcp --dport 23 -j DROP
+```
+
+---
+
+# Default Policy
+
+View policies:
+
+```bash
+sudo iptables -L
+```
+
+Set INPUT policy:
+
+```bash
+sudo iptables -P INPUT DROP
+```
+
+A default-deny policy should be applied carefully to avoid unintentionally blocking required administrative access.
+
+---
+
+# Rule Order
+
+Rules are processed sequentially.
+
+```text
+Packet
+
+↓
+
+Rule 1
+
+↓
+
+Match?
+
+↓
+
+Yes
+
+↓
+
+Stop Processing
+```
+
+If no match:
+
+```text
+↓
+
+Rule 2
+
+↓
+
+Rule 3
+
+↓
+
+Default Policy
+```
+
+Order is therefore critical.
+
+---
+
+# Deleting Rules
+
+List with numbers:
+
+```bash
+sudo iptables -L --line-numbers
+```
+
+Delete:
+
+```bash
+sudo iptables -D INPUT 3
+```
+
+---
+
+# Flushing Rules
+
+Remove all rules:
+
+```bash
+sudo iptables -F
+```
+
+**Warning:** Flushing rules on a remote production server can immediately expose services or lock you out, depending on default policies. Always ensure you have an appropriate recovery plan.
+
+---
+
+# Saving Rules
+
+Persistence varies by distribution.
+
+Common approaches include:
+
+- Distribution-specific persistence packages
+- Startup scripts
+- Native firewall management tools
+
+Always verify that rules survive a reboot according to your platform's documentation.
+
+---
+
+# nftables
+
+`nftables` is the modern replacement for `iptables`.
+
+Advantages include:
+
+- Simpler rule management
+- Better performance
+- Unified IPv4/IPv6 handling
+- More efficient rule evaluation
+- Improved scalability
+
+---
+
+# nftables Architecture
+
+```text
+Netfilter
+
+↓
+
+nftables
+
+↓
+
+Tables
+
+↓
+
+Chains
+
+↓
+
+Rules
+```
+
+---
+
+# Checking nftables
+
+View rules:
+
+```bash
+sudo nft list ruleset
+```
+
+Check service status (distribution-dependent):
+
+```bash
+systemctl status nftables
+```
+
+---
+
+# nftables Concepts
+
+Like `iptables`, `nftables` uses:
+
+- Tables
+- Chains
+- Rules
+
+However, syntax is more consistent and expressive.
+
+---
+
+# Example nftables Rule
+
+Conceptual example:
+
+```text
+Allow TCP
+
+Port 22
+
+↓
+
+Accept
+```
+
+(Exact command syntax is covered in advanced administration documentation and varies by configuration.)
+
+---
+
+# firewalld
+
+`firewalld` is a dynamic firewall management daemon.
+
+Common on:
+
+- RHEL
+- Rocky Linux
+- AlmaLinux
+- Fedora
+
+---
+
+# firewalld Features
+
+- Dynamic rule changes
+- Zones
+- Services
+- Runtime configuration
+- Permanent configuration
+- Rich rules
+
+---
+
+# firewalld Architecture
+
+```text
+Administrator
+
+↓
+
+firewall-cmd
+
+↓
+
+firewalld
+
+↓
+
+Netfilter
+```
+
+---
+
+# Checking firewalld
+
+Status:
+
+```bash
+sudo systemctl status firewalld
+```
+
+---
+
+# Viewing Active Zones
+
+```bash
+sudo firewall-cmd --get-active-zones
+```
+
+---
+
+# Listing Configuration
+
+```bash
+sudo firewall-cmd --list-all
+```
+
+---
+
+# firewalld Zones
+
+Zones represent different trust levels.
+
+Common zones:
+
+| Zone | Typical Use |
+|-------|-------------|
+| drop | Drop all unsolicited incoming traffic |
+| block | Reject incoming connections |
+| public | Public networks |
+| external | External network interfaces |
+| dmz | Demilitarized zone |
+| work | Trusted work networks |
+| home | Home networks |
+| trusted | Highly trusted networks |
+
+---
+
+# Runtime vs Permanent Configuration
+
+Runtime:
+
+```text
+Active Until Reboot
+```
+
+Permanent:
+
+```text
+Persistent Across Reboots
+```
+
+Reload after permanent changes:
+
+```bash
+sudo firewall-cmd --reload
+```
+
+---
+
+# UFW (Uncomplicated Firewall)
+
+UFW simplifies firewall administration.
+
+Common on:
+
+- Ubuntu
+- Debian
+
+---
+
+# Checking UFW
+
+Status:
+
+```bash
+sudo ufw status
+```
+
+Verbose:
+
+```bash
+sudo ufw status verbose
+```
+
+---
+
+# Enabling UFW
+
+```bash
+sudo ufw enable
+```
+
+Disable:
+
+```bash
+sudo ufw disable
+```
+
+---
+
+# Allowing Services
+
+Allow SSH:
+
+```bash
+sudo ufw allow ssh
+```
+
+Allow HTTP:
+
+```bash
+sudo ufw allow http
+```
+
+Allow HTTPS:
+
+```bash
+sudo ufw allow https
+```
+
+Allow a port:
+
+```bash
+sudo ufw allow 8080/tcp
+```
+
+---
+
+# Denying Traffic
+
+Block Telnet:
+
+```bash
+sudo ufw deny 23/tcp
+```
+
+---
+
+# Removing Rules
+
+Delete by rule:
+
+```bash
+sudo ufw delete allow 8080/tcp
+```
+
+---
+
+# UFW Application Profiles
+
+Available profiles:
+
+```bash
+sudo ufw app list
+```
+
+Application details:
+
+```bash
+sudo ufw app info "Nginx Full"
+```
+
+---
+
+# Comparing Firewall Tools
+
+| Feature | iptables | nftables | firewalld | UFW |
+|----------|-----------|-----------|------------|------|
+| Learning Curve | Moderate | Moderate | Easy | Very Easy |
+| IPv4/IPv6 | Separate legacy syntax | Unified | Unified | Unified |
+| Dynamic Changes | Limited | Yes | Yes | Yes |
+| Enterprise Adoption | Legacy environments | Growing | Common on RHEL-family | Common on Ubuntu |
+
+---
+
+# Packet Processing Example
+
+```text
+Incoming Packet
+
+↓
+
+INPUT Chain
+
+↓
+
+Allow SSH?
+
+↓
+
+Yes
+
+↓
+
+Accept
+
+↓
+
+No
+
+↓
+
+Next Rule
+
+↓
+
+Default Policy
+```
+
+---
+
+# Enterprise Firewall Workflow
+
+```text
+Security Policy
+
+↓
+
+Firewall Rules
+
+↓
+
+Deployment
+
+↓
+
+Testing
+
+↓
+
+Monitoring
+
+↓
+
+Review
+
+↓
+
+Optimization
+```
+
+---
+
+# Firewall Logging
+
+Logging helps identify:
+
+- Blocked connections
+- Port scans
+- Invalid packets
+- Misconfigured applications
+- Suspicious traffic
+
+Logs should be reviewed regularly and integrated with centralized logging systems where appropriate.
+
+---
+
+# Firewall Rule Design
+
+Well-designed rules are:
+
+- Specific
+- Minimal
+- Documented
+- Ordered logically
+- Regularly reviewed
+
+Avoid:
+
+- Duplicate rules
+- Overly broad "allow any" rules
+- Unused exceptions
+
+---
+
+# Enterprise Example
+
+## Secure Web Server
+
+Allow:
+
+- SSH (administration)
+- HTTPS (users)
+
+Block:
+
+- Telnet
+- FTP (if unused)
+- Unnecessary management ports
+
+```text
+Internet
+
+↓
+
+Firewall
+
+↓
+
+22
+
+443
+
+↓
+
+Web Server
+```
+
+---
+
+# Cybersecurity Perspective
+
+Poor firewall configuration is a common source of security exposure.
+
+Common issues include:
+
+- Unnecessary open ports
+- Overly permissive rules
+- Missing logging
+- Forgotten temporary exceptions
+- Unused services left accessible
+
+Regular firewall audits help identify and remediate these weaknesses.
+
+---
+
+# Business Impact
+
+Effective firewall management:
+
+- Reduces attack surface
+- Protects critical services
+- Supports compliance
+- Improves network segmentation
+- Simplifies incident investigations
+- Reduces operational risk
+
+---
+
+# Enterprise Best Practices
+
+- Adopt a default-deny policy where practical.
+- Document every firewall rule.
+- Remove obsolete rules promptly.
+- Use the simplest tool that meets operational requirements.
+- Test rule changes before production deployment.
+- Log security-relevant events.
+- Regularly review firewall configurations.
+- Integrate firewall logs into centralized monitoring.
+
+---
+
+# Key Takeaways
+
+- `iptables` organizes packet filtering using tables, chains, and rules.
+- `nftables` is the modern successor to `iptables`.
+- `firewalld` provides dynamic firewall management with zones.
+- UFW simplifies firewall administration for many Ubuntu and Debian systems.
+- Rule order and default policies significantly influence firewall behavior.
+- Effective firewall management requires ongoing review and maintenance.
+
+---
+
