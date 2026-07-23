@@ -1475,3 +1475,582 @@ Determine:
 - First and last usable hosts are immediately after the network address and immediately before the broadcast address.
 - `/31` and `/32` have specialized purposes and are important for enterprise routing and security.
 
+# 06 - Subnetting
+
+# Part 3 — Variable Length Subnet Masking (VLSM), Route Summarization, Longest Prefix Match, and Enterprise Network Design
+
+---
+
+# Overview
+
+In real-world enterprise environments, not every network requires the same number of IP addresses.
+
+For example:
+
+- A data center server network may require only **30 hosts**.
+- A user VLAN may require **500 hosts**.
+- A point-to-point router link requires only **2 hosts**.
+
+Using one subnet size for every network wastes valuable IPv4 addresses.
+
+To solve this problem, organizations use **Variable Length Subnet Masking (VLSM)**.
+
+---
+
+# What is VLSM?
+
+**Variable Length Subnet Masking (VLSM)** is the practice of assigning different subnet sizes to different networks based on their actual host requirements.
+
+Instead of dividing a network into equal-sized subnets, VLSM creates subnets of varying sizes.
+
+Example:
+
+```
+10.10.0.0/16
+
+↓
+
+HR
+
+/24
+
+↓
+
+IT
+
+/23
+
+↓
+
+Servers
+
+/27
+
+↓
+
+WAN Link
+
+/31
+```
+
+Each subnet is sized according to the number of devices it must support.
+
+---
+
+# Why Do We Need VLSM?
+
+Consider an organization with four departments:
+
+| Department | Required Hosts |
+|------------|---------------:|
+| HR | 200 |
+| Finance | 50 |
+| Servers | 20 |
+| WAN Link | 2 |
+
+If every department receives a `/24` subnet:
+
+| Department | Allocated Hosts | Used Hosts | Wasted Hosts |
+|------------|----------------:|-----------:|-------------:|
+| HR | 254 | 200 | 54 |
+| Finance | 254 | 50 | 204 |
+| Servers | 254 | 20 | 234 |
+| WAN | 254 | 2 | 252 |
+
+Most of the available address space remains unused.
+
+VLSM minimizes this waste.
+
+---
+
+# VLSM Design Process
+
+A common design approach is:
+
+```
+1. List Host Requirements
+
+↓
+
+2. Sort Largest → Smallest
+
+↓
+
+3. Assign Largest Subnet First
+
+↓
+
+4. Continue Until Complete
+
+↓
+
+5. Reserve Space for Future Growth
+```
+
+Allocating the largest networks first reduces fragmentation and simplifies future expansion.
+
+---
+
+# Enterprise Example
+
+Available network:
+
+```
+192.168.10.0/24
+```
+
+Requirements:
+
+| Network | Hosts Needed |
+|----------|-------------:|
+| HR | 100 |
+| IT | 50 |
+| Servers | 25 |
+| Printers | 10 |
+| WAN | 2 |
+
+---
+
+# Step 1 — Largest Requirement
+
+HR needs:
+
+```
+100 Hosts
+```
+
+Required subnet:
+
+```
+/25
+
+126 Hosts
+```
+
+Assignment:
+
+```
+192.168.10.0/25
+```
+
+Host range:
+
+```
+192.168.10.1
+
+↓
+
+192.168.10.126
+```
+
+---
+
+# Step 2 — IT
+
+Remaining space begins at:
+
+```
+192.168.10.128
+```
+
+Requirement:
+
+```
+50 Hosts
+```
+
+Subnet:
+
+```
+/26
+
+62 Hosts
+```
+
+Assignment:
+
+```
+192.168.10.128/26
+```
+
+---
+
+# Step 3 — Servers
+
+Requirement:
+
+```
+25 Hosts
+```
+
+Subnet:
+
+```
+/27
+
+30 Hosts
+```
+
+Assignment:
+
+```
+192.168.10.192/27
+```
+
+---
+
+# Step 4 — Printers
+
+Requirement:
+
+```
+10 Hosts
+```
+
+Subnet:
+
+```
+/28
+
+14 Hosts
+```
+
+Assignment:
+
+```
+192.168.10.224/28
+```
+
+---
+
+# Step 5 — WAN Link
+
+Requirement:
+
+```
+2 Hosts
+```
+
+Subnet:
+
+```
+/31
+
+(Point-to-Point)
+```
+
+Assignment:
+
+```
+192.168.10.240/31
+```
+
+Remaining address space can be reserved for future expansion or additional infrastructure.
+
+---
+
+# Final VLSM Plan
+
+| Network | Prefix | Host Capacity |
+|----------|--------|--------------:|
+| HR | /25 | 126 |
+| IT | /26 | 62 |
+| Servers | /27 | 30 |
+| Printers | /28 | 14 |
+| WAN | /31 | 2 |
+
+This approach uses address space efficiently while allowing room for growth.
+
+---
+
+# Advantages of VLSM
+
+- Efficient IPv4 utilization
+- Smaller routing tables
+- Better scalability
+- Reduced address waste
+- Flexible enterprise design
+- Easier future expansion
+
+---
+
+# Disadvantages
+
+- More planning required
+- Increased configuration complexity
+- Documentation becomes critical
+- Incorrect planning may cause overlapping subnets
+
+---
+
+# What is Route Summarization?
+
+Route Summarization (also called **Route Aggregation** or **Supernetting**) combines multiple contiguous networks into a single summarized route.
+
+Instead of advertising many individual routes:
+
+```
+10.10.0.0/24
+
+10.10.1.0/24
+
+10.10.2.0/24
+
+10.10.3.0/24
+```
+
+We advertise:
+
+```
+10.10.0.0/22
+```
+
+This reduces routing table size and improves routing efficiency.
+
+---
+
+# Benefits of Route Summarization
+
+- Smaller routing tables
+- Faster route lookup
+- Lower CPU usage
+- Reduced memory consumption
+- Faster convergence
+- Improved scalability
+
+These benefits are especially important in large enterprise and service provider networks.
+
+---
+
+# Supernetting Example
+
+Individual routes:
+
+```
+192.168.4.0/24
+
+192.168.5.0/24
+
+192.168.6.0/24
+
+192.168.7.0/24
+```
+
+Summary:
+
+```
+192.168.4.0/22
+```
+
+A summarized route should only be created when the component networks are contiguous and share a common prefix.
+
+---
+
+# Longest Prefix Match (LPM)
+
+Routers use the **Longest Prefix Match** rule when multiple routes match the destination.
+
+Example routing table:
+
+| Route | Prefix |
+|--------|--------|
+| 10.0.0.0/8 | Broad route |
+| 10.10.0.0/16 | More specific |
+| 10.10.10.0/24 | Most specific |
+
+Destination:
+
+```
+10.10.10.25
+```
+
+Matching routes:
+
+```
+/8
+
+↓
+
+/16
+
+↓
+
+/24
+```
+
+The router selects:
+
+```
+10.10.10.0/24
+```
+
+because it has the **longest matching prefix**.
+
+---
+
+# Why Longest Prefix Match Matters
+
+Without LPM, routers could forward packets to less specific routes, resulting in inefficient or incorrect paths.
+
+LPM ensures traffic follows the most precise routing information available.
+
+---
+
+# Enterprise Routing Example
+
+```
+                     Core Router
+                         │
+      ┌──────────────────┼──────────────────┐
+      │                  │                  │
+10.10.0.0/22       10.20.0.0/22      10.30.0.0/22
+      │                  │                  │
+   HR / IT          Finance / Sales      Data Center
+```
+
+Each summarized route represents multiple smaller departmental subnets.
+
+---
+
+# Cloud Subnetting
+
+Cloud providers also rely on subnetting for workload isolation.
+
+---
+
+## AWS Example
+
+```
+VPC
+
+10.0.0.0/16
+
+├──────────────┐
+│              │
+Public
+
+10.0.1.0/24
+
+Private
+
+10.0.2.0/24
+```
+
+Public subnets typically host:
+
+- Load balancers
+- Bastion hosts
+- NAT Gateways
+
+Private subnets typically host:
+
+- Application servers
+- Databases
+- Internal services
+
+---
+
+## Azure Example
+
+```
+Virtual Network
+
+↓
+
+Subnet A
+
+↓
+
+Subnet B
+
+↓
+
+Gateway Subnet
+```
+
+Azure reserves certain IP addresses within every subnet for platform use.
+
+---
+
+## Google Cloud Example
+
+```
+VPC
+
+↓
+
+Regional Subnet
+
+↓
+
+Compute Engine
+
+↓
+
+Managed Services
+```
+
+Google Cloud uses regional subnets that can span multiple availability zones within the same region.
+
+---
+
+# Enterprise Design Best Practices
+
+- Allocate addresses hierarchically.
+- Reserve space for future growth.
+- Separate users, servers, management, and guest networks.
+- Use route summarization wherever practical.
+- Avoid overlapping address ranges.
+- Document all allocations in IPAM.
+- Standardize subnet sizes where operationally beneficial.
+
+---
+
+# Common VLSM Mistakes
+
+| Mistake | Result |
+|----------|--------|
+| Allocating small networks first | Address fragmentation |
+| Overlapping subnets | Routing conflicts |
+| Ignoring growth | Frequent redesign |
+| No documentation | Operational errors |
+| Incorrect summarization | Traffic black holes |
+
+---
+
+# Practice Scenario
+
+Available network:
+
+```
+172.16.0.0/24
+```
+
+Requirements:
+
+| Department | Hosts |
+|------------|------:|
+| Sales | 120 |
+| HR | 50 |
+| IT | 20 |
+| Guest Wi-Fi | 10 |
+| WAN Link | 2 |
+
+Exercise:
+
+1. Sort the requirements from largest to smallest.
+2. Allocate appropriate subnet sizes.
+3. Determine network, broadcast, and usable host ranges.
+4. Reserve any remaining address space for future use.
+
+---
+
+# Key Takeaways
+
+- VLSM allocates subnet sizes based on actual host requirements, reducing IPv4 address waste.
+- Plan from the largest network to the smallest to simplify allocation and future expansion.
+- Route summarization combines contiguous networks into larger prefixes, reducing routing table size.
+- Routers always use the **Longest Prefix Match (LPM)** when selecting routes.
+- Cloud platforms such as AWS, Azure, and Google Cloud rely heavily on subnetting for network segmentation and security.
+- Proper VLSM design and route summarization improve scalability, performance, and operational efficiency in enterprise environments.
+
