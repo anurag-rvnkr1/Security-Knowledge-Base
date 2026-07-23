@@ -750,3 +750,776 @@ Organizations should:
 
 ---
 
+# Part 2 — Firewalls, IDS, IPS, Proxy Servers, VPN Security, Network Access Control (NAC), DMZ, Network Segmentation, Zero Trust Architecture, and Enterprise Security Controls
+
+---
+
+# Introduction
+
+Modern enterprise networks are protected by multiple layers of security controls rather than a single perimeter firewall. As organizations adopt cloud computing, remote work, mobile devices, and Internet of Things (IoT) technologies, attackers have more potential entry points than ever before.
+
+To defend against these evolving threats, organizations deploy a combination of:
+
+- Firewalls
+- Intrusion Detection Systems (IDS)
+- Intrusion Prevention Systems (IPS)
+- Proxy Servers
+- Virtual Private Networks (VPNs)
+- Network Access Control (NAC)
+- Zero Trust Architecture (ZTA)
+- Network Segmentation
+- Secure Network Access
+- Continuous Monitoring
+
+Each control serves a specific purpose while working together as part of a Defense-in-Depth strategy.
+
+---
+
+# Enterprise Security Layers
+
+```
+                   Internet
+                       │
+               DDoS Protection
+                       │
+                 Edge Firewall
+                       │
+              Web Application Firewall
+                       │
+                      DMZ
+                       │
+               Internal Firewall
+                       │
+              Network Segmentation
+                       │
+          Endpoint Protection / EDR
+                       │
+                Applications
+                       │
+                  Databases
+```
+
+Every layer increases the effort required for an attacker to compromise enterprise assets.
+
+---
+
+# Firewalls
+
+A firewall is a security device or software solution that monitors, filters, and controls network traffic according to predefined security rules.
+
+Its primary purpose is to allow legitimate traffic while blocking unauthorized or malicious communication.
+
+---
+
+# Firewall Functions
+
+A firewall can:
+
+- Filter network traffic
+- Enforce security policies
+- Prevent unauthorized access
+- Log network activity
+- Control inbound traffic
+- Control outbound traffic
+- Support VPN connectivity
+- Perform Network Address Translation (NAT)
+
+---
+
+# Firewall Packet Flow
+
+```
+Incoming Packet
+
+↓
+
+Firewall Rules
+
+↓
+
+Allowed?
+
+├── Yes → Forward
+
+└── No → Drop
+```
+
+---
+
+# Types of Firewalls
+
+| Firewall Type | Description |
+|--------------|-------------|
+| Packet Filtering Firewall | Filters traffic using IP addresses, ports, and protocols |
+| Stateful Firewall | Tracks connection state before allowing packets |
+| Circuit-Level Gateway | Validates TCP session establishment |
+| Application Layer Firewall | Inspects Layer 7 application traffic |
+| Next-Generation Firewall (NGFW) | Deep packet inspection, application awareness, IDS/IPS integration |
+| Cloud Firewall | Firewall delivered as a cloud-native managed service |
+
+---
+
+# Packet Filtering Firewall
+
+Packet filtering firewalls examine:
+
+- Source IP
+- Destination IP
+- Source Port
+- Destination Port
+- Protocol
+
+Example Rule:
+
+```
+Allow
+
+Source:
+10.0.0.0/24
+
+Destination:
+Web Server
+
+Port:
+443
+```
+
+These firewalls are fast but lack application awareness.
+
+---
+
+# Stateful Firewall
+
+Stateful firewalls maintain a connection table.
+
+```
+Client
+
+↓
+
+TCP SYN
+
+↓
+
+Firewall
+
+↓
+
+Connection Table
+
+↓
+
+Server
+```
+
+Advantages:
+
+- Better security
+- Faster handling of established sessions
+- Automatic return traffic handling
+
+---
+
+# Next-Generation Firewall (NGFW)
+
+NGFWs combine traditional firewall capabilities with advanced security features.
+
+Capabilities include:
+
+- Deep Packet Inspection (DPI)
+- Application identification
+- User awareness
+- Malware detection
+- Intrusion Prevention
+- SSL/TLS inspection
+- Threat intelligence integration
+- URL filtering
+
+NGFWs are standard in enterprise security architectures.
+
+---
+
+# Firewall Deployment Models
+
+Common deployment models:
+
+```
+Internet
+
+↓
+
+Edge Firewall
+
+↓
+
+DMZ
+
+↓
+
+Internal Firewall
+
+↓
+
+Corporate Network
+```
+
+Additional firewalls may protect:
+
+- Data centers
+- Cloud workloads
+- Branch offices
+- Industrial networks
+- Kubernetes clusters
+
+---
+
+# Firewall Rule Best Practices
+
+Organizations should:
+
+- Follow least privilege.
+- Deny traffic by default.
+- Remove unused rules.
+- Document rule changes.
+- Review policies regularly.
+- Log important events.
+- Avoid overly permissive rules.
+
+---
+
+# Intrusion Detection System (IDS)
+
+An IDS monitors network traffic for suspicious activity and generates alerts.
+
+```
+Network Traffic
+
+↓
+
+IDS
+
+↓
+
+Alert
+
+↓
+
+SOC
+```
+
+An IDS detects attacks but does not automatically block them.
+
+---
+
+# Types of IDS
+
+| Type | Purpose |
+|------|---------|
+| Network IDS (NIDS) | Monitors network traffic |
+| Host IDS (HIDS) | Monitors individual systems |
+
+Examples of monitored activity:
+
+- Port scanning
+- Malware communication
+- Exploit attempts
+- Policy violations
+
+---
+
+# Intrusion Prevention System (IPS)
+
+An IPS detects and actively blocks malicious traffic.
+
+```
+Network Traffic
+
+↓
+
+IPS
+
+↓
+
+Malicious?
+
+├── Yes → Block
+
+└── No → Forward
+```
+
+IPS operates inline with network traffic.
+
+---
+
+# IDS vs IPS
+
+| Feature | IDS | IPS |
+|----------|-----|-----|
+| Detection | Yes | Yes |
+| Prevention | No | Yes |
+| Inline Deployment | No | Yes |
+| Generates Alerts | Yes | Yes |
+| Blocks Attacks | No | Yes |
+
+Many enterprises deploy both technologies together.
+
+---
+
+# Detection Techniques
+
+Security devices use several detection methods.
+
+### Signature-Based Detection
+
+Matches known attack signatures.
+
+Advantages:
+
+- Fast
+- Accurate for known threats
+
+Limitations:
+
+- Cannot detect unknown attacks.
+
+---
+
+### Anomaly-Based Detection
+
+Detects deviations from normal behavior.
+
+Advantages:
+
+- Can identify unknown threats.
+- Detects insider misuse.
+
+Limitations:
+
+- Higher false-positive rate.
+
+---
+
+### Behavioral Detection
+
+Builds behavioral baselines.
+
+Example:
+
+```
+Normal Login
+
+↓
+
+Office Hours
+
+↓
+
+Expected Country
+
+────────────
+
+Suspicious Login
+
+↓
+
+Midnight
+
+↓
+
+Foreign Country
+
+↓
+
+Alert
+```
+
+---
+
+# Deep Packet Inspection (DPI)
+
+Deep Packet Inspection analyzes packet contents beyond header information.
+
+It enables:
+
+- Application identification
+- Malware detection
+- Protocol validation
+- Content filtering
+- Threat detection
+
+DPI is a core capability of NGFWs and modern security gateways.
+
+---
+
+# Proxy Servers
+
+A proxy server acts as an intermediary between clients and external services.
+
+```
+Client
+
+↓
+
+Proxy Server
+
+↓
+
+Internet
+```
+
+Advantages:
+
+- Hide internal IP addresses
+- Web filtering
+- Caching
+- Malware inspection
+- Logging
+
+---
+
+# Types of Proxy Servers
+
+| Type | Purpose |
+|------|---------|
+| Forward Proxy | Protects internal users |
+| Reverse Proxy | Protects backend servers |
+| Transparent Proxy | Operates without client configuration |
+
+---
+
+# Reverse Proxy
+
+A reverse proxy sits in front of application servers.
+
+```
+Internet
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application Servers
+```
+
+Functions include:
+
+- SSL termination
+- Load balancing
+- Web Application Firewall integration
+- Rate limiting
+- Caching
+
+---
+
+# Virtual Private Network (VPN)
+
+A VPN creates an encrypted tunnel across an untrusted network.
+
+```
+Remote User
+
+↓
+
+VPN Client
+
+══════════════
+
+Encrypted Tunnel
+
+══════════════
+
+VPN Gateway
+
+↓
+
+Corporate Network
+```
+
+VPNs protect data confidentiality during transmission.
+
+---
+
+# VPN Security Best Practices
+
+Organizations should:
+
+- Require MFA.
+- Use strong encryption.
+- Rotate certificates regularly.
+- Disable obsolete protocols.
+- Monitor VPN usage.
+- Restrict access based on roles.
+
+---
+
+# Network Access Control (NAC)
+
+Network Access Control verifies users and devices before allowing network access.
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Device Health Check
+
+↓
+
+Access Decision
+```
+
+NAC helps prevent unauthorized or non-compliant devices from joining the network.
+
+---
+
+# NAC Policy Example
+
+```
+Compliant Device
+
+↓
+
+Corporate Network
+
+────────────
+
+Non-Compliant Device
+
+↓
+
+Guest Network
+
+────────────
+
+Unknown Device
+
+↓
+
+Blocked
+```
+
+---
+
+# Device Posture Assessment
+
+Before granting access, NAC may verify:
+
+- Operating system version
+- Security patches
+- Antivirus status
+- Disk encryption
+- Endpoint Detection and Response (EDR)
+- Firewall status
+
+Only compliant devices receive full network access.
+
+---
+
+# Demilitarized Zone (DMZ)
+
+A DMZ is an isolated network that hosts public-facing services.
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+DMZ
+
+↓
+
+Web Server
+
+↓
+
+Firewall
+
+↓
+
+Internal Network
+```
+
+Compromising a DMZ server should not provide direct access to internal systems.
+
+---
+
+# Services Commonly Hosted in a DMZ
+
+Examples include:
+
+- Web servers
+- Email gateways
+- DNS servers
+- Reverse proxies
+- VPN gateways
+- API gateways
+
+These systems require Internet accessibility while remaining isolated from internal assets.
+
+---
+
+# Network Segmentation
+
+Segmentation divides networks into isolated security zones.
+
+Example:
+
+```
+Corporate LAN
+
+├── Finance
+
+├── HR
+
+├── Engineering
+
+├── Guest Wi-Fi
+
+└── Data Center
+```
+
+Benefits include:
+
+- Reduced attack surface
+- Limited lateral movement
+- Easier policy enforcement
+- Improved compliance
+
+---
+
+# Microsegmentation
+
+Microsegmentation applies policies at the workload or application level.
+
+```
+Application A
+
+↓
+
+Security Policy
+
+↓
+
+Database A
+
+────────────
+
+Application B
+
+↓
+
+Security Policy
+
+↓
+
+Database B
+```
+
+Even systems within the same subnet can have different access rules.
+
+---
+
+# Zero Trust Architecture (ZTA)
+
+Zero Trust assumes no user or device is trusted by default.
+
+Core principles:
+
+- Verify explicitly.
+- Enforce least privilege.
+- Assume breach.
+- Continuously evaluate trust.
+- Authenticate every request.
+
+Identity replaces the traditional network perimeter.
+
+---
+
+# Secure Network Access
+
+Modern enterprises secure access through:
+
+- Identity providers
+- MFA
+- Conditional access
+- Device compliance
+- Risk-based authentication
+- Role-Based Access Control (RBAC)
+
+Access decisions should consider both user identity and device health.
+
+---
+
+# Enterprise Security Controls
+
+A mature enterprise security architecture typically includes:
+
+- Firewalls
+- IDS
+- IPS
+- WAF
+- VPN
+- NAC
+- Endpoint Detection and Response (EDR)
+- SIEM
+- Security Orchestration, Automation, and Response (SOAR)
+- Threat Intelligence Platforms (TIP)
+
+These controls work together to provide layered protection.
+
+---
+
+# Business Impact
+
+Strong network security controls enable organizations to:
+
+- Reduce cyber risk
+- Protect critical business systems
+- Improve regulatory compliance
+- Support secure remote work
+- Minimize downtime
+- Protect customer trust
+- Improve incident response capabilities
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Deploy NGFWs at network boundaries.
+- Separate public-facing services into a DMZ.
+- Implement NAC for endpoint validation.
+- Use Zero Trust principles across all environments.
+- Regularly review firewall rules.
+- Enable IDS/IPS monitoring.
+- Encrypt all remote access using secure VPNs.
+- Implement network segmentation and microsegmentation.
+- Integrate security devices with SIEM platforms.
+- Continuously validate security controls through testing and monitoring.
+
+---
+
+# Key Takeaways
+
+- Firewalls enforce network access policies and remain a foundational security control.
+- IDS detects malicious activity, while IPS actively blocks threats.
+- Proxy servers enhance security, privacy, and application protection.
+- VPNs provide secure remote connectivity using encrypted tunnels.
+- NAC ensures that only authorized and compliant devices access enterprise networks.
+- DMZs isolate Internet-facing services from internal resources.
+- Network segmentation and Zero Trust reduce attack surfaces and limit lateral movement.
+- Layered enterprise security controls provide stronger protection than relying on a single defense mechanism.
+
+---
+
