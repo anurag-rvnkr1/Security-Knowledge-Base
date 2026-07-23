@@ -2801,3 +2801,1122 @@ Securing TCP is therefore a foundational requirement for enterprise resilience.
 ---
 
 
+# Part 4 — TCP Packet Analysis, Wireshark, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
+
+---
+
+# Introduction
+
+Understanding TCP theory is only part of becoming a networking or cybersecurity professional.
+
+In enterprise environments, engineers and SOC analysts spend a significant amount of time:
+
+- Capturing packets
+- Troubleshooting connections
+- Investigating latency
+- Detecting attacks
+- Monitoring retransmissions
+- Identifying network bottlenecks
+- Analyzing application performance
+
+This section focuses on practical TCP analysis and enterprise operations.
+
+---
+
+# TCP Packet Analysis
+
+A TCP packet (more accurately, a **TCP segment**) contains both control information and application data.
+
+```
++------------------------------------------------------+
+| Source Port            | Destination Port            |
++------------------------------------------------------+
+| Sequence Number                                   |
++------------------------------------------------------+
+| Acknowledgment Number                             |
++------------------------------------------------------+
+| Data Offset | Reserved | TCP Flags | Window Size    |
++------------------------------------------------------+
+| Checksum              | Urgent Pointer              |
++------------------------------------------------------+
+| TCP Options (Optional)                            |
++------------------------------------------------------+
+| Application Data                                  |
++------------------------------------------------------+
+```
+
+Every field contributes to reliable communication.
+
+---
+
+# Source Port
+
+The Source Port identifies the application that initiated the connection.
+
+Example:
+
+```
+Source Port
+
+52184
+```
+
+This is typically an ephemeral port assigned by the operating system.
+
+---
+
+# Destination Port
+
+The Destination Port identifies the service being accessed.
+
+Examples:
+
+| Service | Port |
+|----------|------|
+| HTTP | 80 |
+| HTTPS | 443 |
+| SSH | 22 |
+| FTP | 21 |
+| SMTP | 25 |
+
+---
+
+# Sequence Number
+
+The Sequence Number represents the first byte carried within the TCP segment.
+
+Example:
+
+```
+Seq = 25001
+```
+
+This value allows the receiver to reorder segments and detect missing data.
+
+---
+
+# Acknowledgment Number
+
+The Acknowledgment Number indicates the next byte expected from the sender.
+
+```
+ACK = 26461
+```
+
+It confirms that all previous bytes have been received successfully.
+
+---
+
+# Window Size
+
+The Window Size advertises the amount of data the receiver is prepared to accept before requiring another acknowledgment.
+
+Example:
+
+```
+Window
+
+65535 Bytes
+```
+
+Larger windows improve throughput on high-bandwidth, high-latency links.
+
+---
+
+# TCP Flags
+
+Common TCP flags observed in captures include:
+
+| Flag | Meaning |
+|------|---------|
+| SYN | Start connection |
+| ACK | Acknowledge data |
+| FIN | Graceful close |
+| RST | Reset connection |
+| PSH | Push immediately |
+| URG | Urgent data |
+| ECE | ECN Echo |
+| CWR | Congestion Window Reduced |
+
+---
+
+# TCP Options
+
+Common options include:
+
+- MSS
+- Window Scaling
+- SACK Permitted
+- Timestamp
+- NOP (No Operation)
+
+These are negotiated during connection establishment.
+
+---
+
+# Packet Capture Workflow
+
+```
+Client
+
+↓
+
+TCP SYN
+
+↓
+
+Switch
+
+↓
+
+Firewall
+
+↓
+
+Load Balancer
+
+↓
+
+Web Server
+
+↓
+
+Response
+
+↓
+
+Client
+```
+
+Capturing packets at multiple locations helps isolate network issues.
+
+---
+
+# Wireshark
+
+Wireshark is one of the most widely used protocol analyzers for TCP troubleshooting.
+
+Typical uses include:
+
+- Connection analysis
+- Packet loss investigation
+- Retransmission analysis
+- TCP flag inspection
+- Performance troubleshooting
+- Security investigations
+
+---
+
+# Basic Display Filters
+
+Display all TCP packets:
+
+```text
+tcp
+```
+
+---
+
+Display only SYN packets:
+
+```text
+tcp.flags.syn == 1 && tcp.flags.ack == 0
+```
+
+---
+
+Display SYN-ACK packets:
+
+```text
+tcp.flags.syn == 1 && tcp.flags.ack == 1
+```
+
+---
+
+Display FIN packets:
+
+```text
+tcp.flags.fin == 1
+```
+
+---
+
+Display RST packets:
+
+```text
+tcp.flags.reset == 1
+```
+
+---
+
+Display retransmissions:
+
+```text
+tcp.analysis.retransmission
+```
+
+---
+
+Display duplicate ACKs:
+
+```text
+tcp.analysis.duplicate_ack
+```
+
+---
+
+Display lost segments:
+
+```text
+tcp.analysis.lost_segment
+```
+
+---
+
+Display out-of-order packets:
+
+```text
+tcp.analysis.out_of_order
+```
+
+---
+
+# Three-Way Handshake Analysis
+
+Normal capture:
+
+```
+Client                      Server
+
+SYN ------------------------>
+
+      <---------------- SYN-ACK
+
+ACK ------------------------->
+```
+
+Things to verify:
+
+- Correct sequence numbers
+- Correct acknowledgment numbers
+- TCP options
+- MSS negotiation
+- Window scaling
+- RTT
+
+---
+
+# Data Transfer Analysis
+
+Typical capture:
+
+```
+PSH ACK
+
+↓
+
+ACK
+
+↓
+
+PSH ACK
+
+↓
+
+ACK
+```
+
+Verify:
+
+- Payload size
+- ACK progression
+- Sequence progression
+- Window size
+
+---
+
+# Connection Termination Analysis
+
+```
+FIN
+
+↓
+
+ACK
+
+↓
+
+FIN
+
+↓
+
+ACK
+```
+
+A graceful shutdown should include all four packets.
+
+Unexpected RST packets may indicate application failures or network interruptions.
+
+---
+
+# TCP Retransmission Analysis
+
+Retransmissions indicate packet loss.
+
+Possible causes:
+
+- Congestion
+- Bad cables
+- High latency
+- Wireless interference
+- Firewall drops
+- Server overload
+
+Example:
+
+```
+Packet 500
+
+↓
+
+Lost
+
+↓
+
+Timeout
+
+↓
+
+Retransmission
+```
+
+Frequent retransmissions reduce application performance.
+
+---
+
+# Duplicate ACK Analysis
+
+Example:
+
+```
+ACK 15000
+
+↓
+
+ACK 15000
+
+↓
+
+ACK 15000
+```
+
+Multiple duplicate ACKs often indicate that an intermediate segment was lost.
+
+TCP may invoke **Fast Retransmit** after three duplicate ACKs.
+
+---
+
+# Window Analysis
+
+Small receive windows may indicate:
+
+- Slow application
+- Busy server
+- Buffer exhaustion
+- Storage bottleneck
+
+Zero Window advertisements indicate the receiver cannot currently accept additional data.
+
+---
+
+# Round-Trip Time (RTT)
+
+RTT measures the time required for a packet to travel to the destination and back.
+
+```
+Client
+
+↓
+
+Server
+
+↓
+
+Client
+
+Time
+
+25 ms
+```
+
+High RTT values increase latency and may reduce TCP throughput.
+
+---
+
+# Cisco IOS Verification
+
+Display active TCP sessions:
+
+```text
+show tcp brief
+```
+
+Display all TCP connections:
+
+```text
+show tcp
+```
+
+Display interface statistics:
+
+```text
+show interfaces
+```
+
+Display IP routing table:
+
+```text
+show ip route
+```
+
+Verify interface errors:
+
+```text
+show interfaces counters errors
+```
+
+---
+
+# Linux Verification
+
+Display listening TCP ports:
+
+```bash
+ss -tuln
+```
+
+Display active TCP connections:
+
+```bash
+ss -tan
+```
+
+Legacy equivalent:
+
+```bash
+netstat -ant
+```
+
+Capture TCP traffic:
+
+```bash
+tcpdump -i eth0 tcp
+```
+
+Capture HTTPS traffic:
+
+```bash
+tcpdump -i eth0 port 443
+```
+
+Test connectivity:
+
+```bash
+telnet server.example.com 443
+```
+
+or
+
+```bash
+nc -vz server.example.com 443
+```
+
+---
+
+# Windows Verification
+
+Display active connections:
+
+```cmd
+netstat -ano
+```
+
+Display Ethernet statistics:
+
+```cmd
+netstat -e
+```
+
+Display protocol statistics:
+
+```cmd
+netstat -s
+```
+
+Test connectivity:
+
+```powershell
+Test-NetConnection server.example.com -Port 443
+```
+
+View TCP configuration:
+
+```powershell
+Get-NetTCPConnection
+```
+
+---
+
+# Enterprise Troubleshooting Methodology
+
+A structured troubleshooting approach minimizes downtime.
+
+```
+Identify Problem
+
+↓
+
+Gather Information
+
+↓
+
+Verify Connectivity
+
+↓
+
+Verify DNS
+
+↓
+
+Verify TCP Handshake
+
+↓
+
+Inspect Firewalls
+
+↓
+
+Capture Packets
+
+↓
+
+Analyze Retransmissions
+
+↓
+
+Resolve
+
+↓
+
+Monitor
+```
+
+---
+
+# Scenario 1 — TCP Handshake Failure
+
+### Symptoms
+
+- Website unavailable
+- Timeout errors
+- No application response
+
+### Investigation
+
+Verify:
+
+- DNS resolution
+- Routing
+- Firewall rules
+- Open destination port
+- SYN/SYN-ACK exchange
+
+---
+
+# Scenario 2 — Frequent Retransmissions
+
+### Symptoms
+
+- Slow downloads
+- Poor application performance
+- High latency
+
+Possible causes:
+
+- Packet loss
+- Congested WAN links
+- Faulty network hardware
+- Duplex mismatches
+- Wireless interference
+
+---
+
+# Scenario 3 — Excessive RST Packets
+
+Possible causes:
+
+- Firewall resets
+- Idle timeout
+- Application crash
+- Invalid destination port
+- IDS/IPS intervention
+
+---
+
+# Scenario 4 — High Connection Count
+
+Indicators:
+
+- SYN Flood attack
+- Bot traffic
+- Load balancer issues
+- Application connection leaks
+
+Recommended actions:
+
+- Inspect connection tables.
+- Enable rate limiting.
+- Review firewall logs.
+- Check application health.
+
+---
+
+# SOC Detection Engineering
+
+TCP telemetry is valuable for detecting:
+
+- Port scans
+- SYN Floods
+- Session hijacking attempts
+- Lateral movement
+- Beaconing
+- Brute-force attacks
+- Malware communication
+
+---
+
+# SIEM Detection Ideas
+
+Examples:
+
+### Excessive SYN Packets
+
+```
+IF
+
+Source IP
+
+↓
+
+>1000 SYN Packets
+
+↓
+
+60 Seconds
+
+↓
+
+Alert
+```
+
+---
+
+### Multiple Destination Ports
+
+```
+Host
+
+↓
+
+20+
+
+Unique Ports
+
+↓
+
+2 Minutes
+
+↓
+
+Potential Port Scan
+```
+
+---
+
+### High RST Rate
+
+```
+Connection Resets
+
+↓
+
+Above Baseline
+
+↓
+
+Alert
+```
+
+---
+
+### Repeated Failed Connections
+
+```
+Same Host
+
+↓
+
+Hundreds of Failed Connections
+
+↓
+
+Potential Malware
+```
+
+---
+
+# Zeek Monitoring
+
+Useful Zeek logs:
+
+- conn.log
+- weird.log
+- notice.log
+
+Important fields include:
+
+- Connection state
+- Duration
+- Service
+- Bytes transferred
+- History flags
+- Originator IP
+- Responder IP
+
+These logs support threat hunting and network forensics.
+
+---
+
+# Suricata Monitoring
+
+Suricata can detect:
+
+- SYN Floods
+- TCP Flag anomalies
+- Exploit attempts
+- Known malware signatures
+- Suspicious payloads
+- Policy violations
+
+Alerts should be correlated with endpoint, DNS, and authentication logs.
+
+---
+
+# Sigma Detection Ideas
+
+Example use cases:
+
+- TCP connection spikes
+- Internal port scanning
+- Repeated connection resets
+- Long-lived suspicious sessions
+- Beaconing over uncommon ports
+
+Sigma rules can be adapted to SIEM platforms such as Microsoft Sentinel, Splunk, Elastic Security, and QRadar.
+
+---
+
+# MITRE ATT&CK Mapping
+
+| Activity | ATT&CK Technique |
+|-----------|------------------|
+| Port Scanning | T1046 |
+| Lateral Movement | T1021 |
+| Protocol Tunneling | T1572 |
+| Network Service Discovery | T1046 |
+| Denial of Service | T1498 |
+
+---
+
+# Practical Lab 1 — Three-Way Handshake
+
+Objective:
+
+Capture a TCP handshake using Wireshark.
+
+Tasks:
+
+1. Start Wireshark.
+2. Browse to an HTTP or HTTPS site.
+3. Filter with:
+
+```text
+tcp
+```
+
+4. Identify:
+
+- SYN
+- SYN-ACK
+- ACK
+- MSS
+- Window Size
+
+---
+
+# Practical Lab 2 — TCP Retransmissions
+
+Tasks:
+
+1. Capture traffic.
+2. Apply filter:
+
+```text
+tcp.analysis.retransmission
+```
+
+3. Count retransmissions.
+4. Determine probable cause.
+
+---
+
+# Practical Lab 3 — Port Scanning
+
+Environment:
+
+- Kali Linux
+- Target VM
+- Wireshark
+- Zeek
+
+Tasks:
+
+1. Perform a SYN scan with Nmap.
+2. Observe packets.
+3. Review Zeek `conn.log`.
+4. Compare results with firewall logs.
+
+---
+
+# Practical Lab 4 — Connection States
+
+Tasks:
+
+1. Open multiple SSH sessions.
+2. Execute:
+
+Linux:
+
+```bash
+ss -tan
+```
+
+Windows:
+
+```powershell
+Get-NetTCPConnection
+```
+
+3. Identify:
+
+- ESTABLISHED
+- TIME_WAIT
+- CLOSE_WAIT
+- LISTEN
+
+---
+
+# Practical Lab 5 — Firewall Inspection
+
+Tasks:
+
+1. Block TCP port 443.
+2. Attempt HTTPS access.
+3. Capture traffic.
+4. Observe:
+
+- SYN
+- No SYN-ACK (or RST/ICMP depending on policy)
+- Timeout behavior
+- Firewall logs
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+An international e-commerce platform experiences intermittent checkout failures.
+
+### Investigation
+
+The SOC and network teams observe:
+
+- Increased TCP retransmissions between application servers and the database.
+- Elevated RTT during peak traffic.
+- Firewall connection tables approaching capacity.
+- Numerous half-open TCP sessions from a malicious source.
+
+### Resolution
+
+- Enable SYN Cookies on affected servers.
+- Increase firewall connection table limits.
+- Block malicious IP addresses at the edge.
+- Optimize database network paths.
+- Implement DDoS protection and continuous TCP monitoring.
+
+### Outcome
+
+- Retransmissions reduced significantly.
+- Checkout latency returned to normal.
+- No further service disruption during subsequent traffic spikes.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is TCP?
+
+TCP (Transmission Control Protocol) is a reliable, connection-oriented Transport Layer protocol that ensures ordered and error-checked delivery of data.
+
+---
+
+### What is the Three-Way Handshake?
+
+It is the process used to establish a TCP connection:
+
+1. SYN
+2. SYN-ACK
+3. ACK
+
+---
+
+### What is a TCP segment?
+
+A TCP segment consists of a TCP header and application data transmitted between two endpoints.
+
+---
+
+## Intermediate
+
+### What is the purpose of the Sliding Window?
+
+The Sliding Window allows multiple segments to be transmitted before acknowledgments are received, improving throughput while supporting flow control.
+
+---
+
+### Explain Flow Control and Congestion Control.
+
+- **Flow Control** prevents the sender from overwhelming the receiver.
+- **Congestion Control** prevents excessive traffic from overwhelming the network.
+
+---
+
+### What causes TCP retransmissions?
+
+Common causes include packet loss, congestion, faulty hardware, wireless interference, and overloaded systems.
+
+---
+
+## Advanced
+
+### Explain SYN Flood attacks and mitigations.
+
+A SYN Flood overwhelms a server with incomplete TCP handshakes, exhausting connection resources. Mitigations include SYN Cookies, stateful firewalls, rate limiting, and DDoS protection.
+
+---
+
+### How would you troubleshoot a failed TCP connection?
+
+A structured approach includes:
+
+1. Verify DNS resolution.
+2. Confirm routing.
+3. Test TCP connectivity.
+4. Inspect firewall policies.
+5. Capture packets.
+6. Analyze handshake and retransmissions.
+7. Review server and application logs.
+
+---
+
+### Why is TIME_WAIT important?
+
+TIME_WAIT ensures delayed packets expire and allows retransmission of the final ACK if necessary, preventing old packets from interfering with new connections.
+
+---
+
+# RFC References
+
+Important TCP-related RFCs include:
+
+- RFC 793 — Transmission Control Protocol
+- RFC 1122 — Requirements for Internet Hosts
+- RFC 1323 — TCP Extensions for High Performance
+- RFC 2018 — TCP Selective Acknowledgment (SACK)
+- RFC 5681 — TCP Congestion Control
+- RFC 6298 — Computing TCP Retransmission Timeout
+- RFC 7413 — TCP Fast Open
+- RFC 9293 — Transmission Control Protocol (Updated Specification)
+
+---
+
+# Summary
+
+TCP is the foundation of reliable communication across modern enterprise networks. Its mechanisms for connection establishment, sequencing, acknowledgments, retransmissions, flow control, and congestion control enable dependable delivery for critical applications. Security controls such as stateful inspection, SYN Cookies, IDS/IPS, and continuous monitoring help protect TCP-based services from attack while practical analysis with tools like Wireshark, Zeek, and Suricata supports troubleshooting and incident response.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ TCP architecture and responsibilities
+
+✔ TCP header fields and options
+
+✔ Port numbers and application mapping
+
+✔ Three-Way Handshake and Four-Way Termination
+
+✔ Reliable data transfer and sequencing
+
+✔ Sliding Window, Flow Control, and Congestion Control
+
+✔ TCP connection states
+
+✔ TCP attacks and enterprise mitigations
+
+✔ Packet analysis with Wireshark
+
+✔ Cisco, Linux, and Windows verification commands
+
+✔ Enterprise troubleshooting methodology
+
+✔ SOC detection engineering and SIEM use cases
+
+✔ Zeek and Suricata TCP monitoring
+
+✔ Practical TCP labs
+
+✔ Interview questions from beginner to advanced
+
+✔ Core TCP RFCs
+
+---
+
+# What's Next?
+
+The next chapter, **`13-UDP.md`**, covers:
+
+- User Datagram Protocol (UDP) fundamentals
+- UDP header structure
+- Connectionless communication
+- Best-effort delivery model
+- UDP vs TCP comparison
+- Common UDP-based protocols (DNS, DHCP, SNMP, NTP, TFTP, RTP, VoIP)
+- Performance characteristics
+- UDP attacks (Amplification, Reflection, Flooding)
+- Packet analysis, troubleshooting, enterprise use cases, SOC detection, practical labs, interview questions, and best practices.
