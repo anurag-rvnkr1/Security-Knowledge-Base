@@ -1272,3 +1272,612 @@ Using a Layer 3 switch or Router-on-a-Stick:
 - Dedicated **Voice VLANs** and **Management VLANs** improve security, performance, and operational efficiency.
 - Proper VLAN planning and trunk configuration are essential for scalable enterprise networks.
 
+# 08 - Switching
+
+# Part 3 — Spanning Tree Protocol (STP), RSTP, MSTP, BPDU, Root Bridge Election, and Enterprise Layer 2 Redundancy
+
+---
+
+# Overview
+
+Redundancy is essential in enterprise networks.
+
+Organizations deploy multiple switches and redundant links to improve:
+
+- High Availability (HA)
+- Fault tolerance
+- Business continuity
+- Maintenance flexibility
+
+However, redundant Layer 2 links introduce a serious problem:
+
+> **Switching loops**
+
+Unlike IP packets, traditional Ethernet frames do **not** contain a field equivalent to IPv4's **Time To Live (TTL)**. Without a loop prevention mechanism, frames may circulate indefinitely.
+
+To solve this problem, Ethernet networks use the **Spanning Tree Protocol (STP)**.
+
+---
+
+# Learning Objectives
+
+After completing this section, you should be able to:
+
+- Explain why switching loops occur.
+- Understand broadcast storms.
+- Describe MAC address table instability.
+- Explain STP operation.
+- Understand Root Bridge election.
+- Identify STP port roles and states.
+- Compare STP, RSTP, and MSTP.
+- Configure enterprise Layer 2 redundancy.
+- Apply Layer 2 protection features.
+
+---
+
+# Why Redundant Links Are Needed
+
+Enterprise networks require redundancy.
+
+Example:
+
+```
+          Switch A
+         /        \
+        /          \
+Switch B ---------- Switch C
+```
+
+Benefits:
+
+- Link failure protection
+- High availability
+- Faster maintenance
+- Better resilience
+
+Without redundancy, a single cable failure can disconnect an entire part of the network.
+
+---
+
+# The Layer 2 Loop Problem
+
+Consider:
+
+```
+       Switch A
+      /        \
+     /          \
+Switch B ------ Switch C
+```
+
+A broadcast frame entering this topology may circulate continuously.
+
+Unlike routed packets, Ethernet frames do not normally expire due to a hop count.
+
+Consequences include:
+
+- Broadcast storms
+- Duplicate frames
+- MAC address instability
+- High CPU utilization
+- Network outages
+
+---
+
+# Broadcast Storm
+
+A broadcast storm occurs when broadcast frames are replicated repeatedly because of a switching loop.
+
+Example:
+
+```
+Broadcast
+
+↓
+
+Switch A
+
+↓
+
+Switch B
+
+↓
+
+Switch C
+
+↓
+
+Back to Switch A
+
+↓
+
+Repeat
+```
+
+The amount of traffic increases rapidly, consuming available bandwidth and device resources.
+
+---
+
+# MAC Address Table Instability
+
+Switches learn MAC addresses based on incoming frames.
+
+With a loop:
+
+```
+MAC Address
+
+↓
+
+Port 1
+
+↓
+
+Port 2
+
+↓
+
+Port 3
+
+↓
+
+Port 1
+```
+
+The switch repeatedly updates the same MAC address to different ports.
+
+This condition is known as **MAC address table instability** (or MAC flapping).
+
+---
+
+# Duplicate Frames
+
+Because loops allow multiple copies of the same frame to circulate, destination devices may receive duplicate frames.
+
+Potential impacts:
+
+- Application errors
+- Excessive bandwidth usage
+- Unexpected behavior
+
+---
+
+# What is STP?
+
+**Spanning Tree Protocol (STP)** prevents Layer 2 loops by logically blocking redundant links while preserving them as backup paths.
+
+Normal topology:
+
+```
+      A
+     / \
+    /   \
+   B-----C
+```
+
+Logical topology after STP:
+
+```
+      A
+     / \
+    /   X
+   B     C
+```
+
+The blocked link is not used for normal forwarding but can become active if another link fails.
+
+---
+
+# IEEE Standards
+
+| Standard | Name |
+|----------|------|
+| IEEE 802.1D | Spanning Tree Protocol (STP) |
+| IEEE 802.1w | Rapid Spanning Tree Protocol (RSTP) |
+| IEEE 802.1s | Multiple Spanning Tree Protocol (MSTP) |
+
+---
+
+# STP Goals
+
+- Prevent switching loops
+- Eliminate broadcast storms
+- Provide redundant paths
+- Automatically recover from failures
+- Maintain a loop-free Layer 2 topology
+
+---
+
+# Root Bridge
+
+Every STP topology elects one switch as the **Root Bridge**.
+
+The Root Bridge serves as the logical center of the spanning tree.
+
+Example:
+
+```
+          Root Bridge
+               │
+        ┌──────┴──────┐
+        │             │
+    Switch B      Switch C
+```
+
+All path calculations are performed relative to the Root Bridge.
+
+---
+
+# Bridge ID (BID)
+
+STP elects the Root Bridge using the **Bridge ID**.
+
+A Bridge ID consists of:
+
+```
+Bridge Priority
+
+↓
+
+MAC Address
+```
+
+The switch with the **lowest Bridge ID** becomes the Root Bridge.
+
+---
+
+# Root Bridge Election
+
+Election process:
+
+```
+Compare Priorities
+
+↓
+
+Lowest Priority Wins
+
+↓
+
+Tie?
+
+↓
+
+Lowest MAC Address Wins
+```
+
+Default bridge priority is commonly:
+
+```
+32768
+```
+
+Administrators often lower the priority of a core switch so it becomes the preferred Root Bridge.
+
+---
+
+# Root Port
+
+Each **non-root switch** selects one **Root Port**.
+
+The Root Port is the port with the **lowest path cost** to the Root Bridge.
+
+Example:
+
+```
+Root Bridge
+      │
+      │
+Switch B
+
+↓
+
+Root Port
+```
+
+Each non-root switch has exactly one Root Port.
+
+---
+
+# Designated Port
+
+Every network segment has one **Designated Port**.
+
+Responsibilities:
+
+- Forwards traffic toward the segment
+- Sends BPDUs for that segment
+
+The Designated Port is selected based on the lowest path cost to the Root Bridge.
+
+---
+
+# Blocked (Alternate) Port
+
+Ports that would create a Layer 2 loop are placed into a non-forwarding role.
+
+Example:
+
+```
+Switch A
+
+↓
+
+Blocked Link
+
+↓
+
+Switch B
+```
+
+The blocked link remains available for failover if the active path fails.
+
+---
+
+# STP Port Roles
+
+| Port Role | Purpose |
+|-----------|----------|
+| Root Port | Best path to the Root Bridge |
+| Designated Port | Forwards traffic for a network segment |
+| Alternate Port | Backup path (RSTP terminology) |
+| Backup Port | Redundant path on the same segment (RSTP terminology) |
+
+Classic STP often refers to blocked ports simply as **non-designated** or **blocked** ports.
+
+---
+
+# STP Port States (IEEE 802.1D)
+
+Ports transition through several states before forwarding traffic.
+
+```
+Blocking
+
+↓
+
+Listening
+
+↓
+
+Learning
+
+↓
+
+Forwarding
+```
+
+A disabled port is administratively or operationally down and does not participate.
+
+---
+
+## Blocking
+
+Characteristics:
+
+- Receives BPDUs
+- Does not forward user traffic
+- Prevents loops
+
+---
+
+## Listening
+
+The switch:
+
+- Processes BPDUs
+- Determines topology
+- Does not learn MAC addresses
+- Does not forward frames
+
+---
+
+## Learning
+
+The switch:
+
+- Learns source MAC addresses
+- Builds the CAM table
+- Still does not forward user traffic
+
+---
+
+## Forwarding
+
+The port:
+
+- Learns MAC addresses
+- Forwards frames
+- Operates normally
+
+---
+
+# BPDU (Bridge Protocol Data Unit)
+
+STP switches exchange **Bridge Protocol Data Units (BPDUs)**.
+
+BPDUs contain information such as:
+
+- Root Bridge ID
+- Sender Bridge ID
+- Path Cost
+- Timers
+
+These messages allow switches to build and maintain a loop-free topology.
+
+---
+
+# Path Cost
+
+STP selects paths based on **path cost**.
+
+Generally:
+
+- Higher-bandwidth links have lower costs.
+- Lower total path cost is preferred.
+
+Example:
+
+| Link Speed | Relative Preference |
+|------------|--------------------|
+| 10 Gbps | Preferred |
+| 1 Gbps | Next |
+| 100 Mbps | Less preferred |
+
+---
+
+# STP Convergence
+
+Convergence is the process of recalculating the spanning tree after a topology change.
+
+Classic STP convergence can take tens of seconds, depending on timers.
+
+During convergence:
+
+- Ports change states.
+- Forwarding paths are recalculated.
+- Previously blocked links may become active.
+
+---
+
+# Rapid Spanning Tree Protocol (RSTP)
+
+**RSTP (IEEE 802.1w)** improves upon classic STP.
+
+Advantages:
+
+- Faster convergence
+- Improved recovery after failures
+- Simplified port roles and states
+- Better performance in enterprise networks
+
+RSTP is widely deployed in modern campus environments.
+
+---
+
+# RSTP Port Roles
+
+RSTP introduces:
+
+- Root Port
+- Designated Port
+- Alternate Port
+- Backup Port
+
+Alternate ports provide an immediately available backup path, reducing failover time.
+
+---
+
+# RSTP Port States
+
+RSTP simplifies the port states:
+
+```
+Discarding
+
+↓
+
+Learning
+
+↓
+
+Forwarding
+```
+
+The older Blocking, Listening, and Disabled operational behavior is consolidated into the **Discarding** state where appropriate.
+
+---
+
+# Multiple Spanning Tree Protocol (MSTP)
+
+Large enterprise networks often deploy many VLANs.
+
+Running a separate spanning tree instance for every VLAN may become inefficient.
+
+**MSTP (IEEE 802.1s)** allows multiple VLANs to share a single spanning tree instance.
+
+Example:
+
+```
+Instance 1
+
+↓
+
+VLAN 10
+
+VLAN 20
+
+────────────
+
+Instance 2
+
+↓
+
+VLAN 30
+
+VLAN 40
+```
+
+Benefits:
+
+- Better scalability
+- Reduced CPU usage
+- Improved resource utilization
+
+---
+
+# Enterprise STP Design
+
+Example:
+
+```
+             Core Switch
+            (Root Bridge)
+             /        \
+            /          \
+ Distribution      Distribution
+      │                 │
+ Access Layer      Access Layer
+```
+
+Recommended practice:
+
+- Place the Root Bridge in the core layer.
+- Place the secondary Root Bridge in a redundant core/distribution device.
+- Avoid accidental Root Bridge elections at the access layer.
+
+---
+
+# Common STP Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Broadcast storm | Switching loop |
+| Incorrect Root Bridge | Default priorities |
+| Slow convergence | Legacy STP timers |
+| Frequent topology changes | Unstable links or devices |
+| Unexpected blocked port | Incorrect path cost or bridge priority |
+
+---
+
+# Enterprise Best Practices
+
+- Explicitly configure the Root Bridge.
+- Configure a secondary Root Bridge for redundancy.
+- Use RSTP or MSTP instead of legacy STP where supported.
+- Monitor topology changes.
+- Document Layer 2 topology.
+- Minimize unnecessary trunk links.
+- Design predictable Layer 2 paths.
+
+---
+
+# Key Takeaways
+
+- Redundant Layer 2 links improve availability but can create switching loops.
+- **STP** prevents loops by logically blocking redundant paths.
+- Every STP topology has one **Root Bridge** selected by the lowest **Bridge ID**.
+- **Root Ports** provide the best path to the Root Bridge, while **Designated Ports** forward traffic for each segment.
+- **BPDUs** allow switches to exchange topology information.
+- **RSTP** provides much faster convergence than classic STP.
+- **MSTP** improves scalability by allowing multiple VLANs to share spanning tree instances.
