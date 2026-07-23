@@ -865,3 +865,853 @@ Strong authentication and access controls help organizations:
 ---
 
 
+# 18 - Linux Security
+
+# Part 2 — File Security, Process Security, Linux Capabilities, SELinux, AppArmor, Kernel Security, and Secure System Configuration
+
+---
+
+# Introduction
+
+Authentication is only the first layer of Linux security.
+
+After a user or service is authenticated, Linux must enforce **what resources can be accessed** and **what actions are permitted**.
+
+This is achieved through multiple security mechanisms including:
+
+- File permissions
+- Process isolation
+- Linux capabilities
+- Mandatory Access Control (MAC)
+- Kernel security features
+- Secure configuration (Hardening)
+
+Enterprise environments combine these controls to minimize risk and reduce the impact of successful attacks.
+
+---
+
+# Linux Security Layers
+
+```text
+Users
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+File Permissions
+
+↓
+
+Process Isolation
+
+↓
+
+Capabilities
+
+↓
+
+SELinux / AppArmor
+
+↓
+
+Kernel Security
+
+↓
+
+Hardware
+```
+
+---
+
+# File Security
+
+Linux protects files using:
+
+- Ownership
+- Permissions
+- Access Control Lists (ACLs)
+- Extended attributes
+- Encryption (where implemented)
+- Mandatory Access Control
+
+---
+
+# File Ownership
+
+Every file has:
+
+```text
+Owner
+
+↓
+
+Group
+
+↓
+
+Others
+```
+
+Example:
+
+```bash
+ls -l
+```
+
+Output:
+
+```text
+-rw-r----- 1 alice developers 2048 Jul 22 report.txt
+```
+
+Meaning:
+
+| Field | Value |
+|--------|-------|
+| Owner | alice |
+| Group | developers |
+| Permissions | rw-r----- |
+
+---
+
+# Permission Review
+
+Display permissions:
+
+```bash
+ls -l
+```
+
+Change permissions:
+
+```bash
+chmod 640 report.txt
+```
+
+Change owner:
+
+```bash
+sudo chown alice report.txt
+```
+
+Change group:
+
+```bash
+sudo chgrp developers report.txt
+```
+
+---
+
+# Secure Permission Examples
+
+| File | Recommended Permissions |
+|------|--------------------------|
+| Private SSH key | `600` |
+| SSH directory | `700` |
+| `/etc/shadow` | Restricted to privileged users |
+| Public web content | Readable by web server as required |
+| Backup archives | Restricted to authorized administrators |
+
+Exact permissions depend on organizational requirements.
+
+---
+
+# Special Permission Bits
+
+Linux supports:
+
+| Permission | Purpose |
+|------------|----------|
+| SUID | Run with owner's effective UID |
+| SGID | Run with group's effective GID or inherit group on directories |
+| Sticky Bit | Restrict deletion in shared directories |
+
+---
+
+# Sticky Bit Example
+
+Common example:
+
+```text
+/tmp
+```
+
+Permissions:
+
+```text
+drwxrwxrwt
+```
+
+Behavior:
+
+Users can remove only:
+
+- Their own files
+- Files they own
+- Files removable by privileged users
+
+---
+
+# SUID Risk
+
+A SUID program executes with the effective permissions of its owner.
+
+Example:
+
+```text
+Normal User
+
+↓
+
+Execute SUID Binary
+
+↓
+
+Temporary Elevated Privileges
+
+↓
+
+Program Ends
+```
+
+Misconfigured or vulnerable SUID programs can become privilege escalation vectors.
+
+---
+
+# Finding SUID Files
+
+```bash
+find / -perm -4000 -type f 2>/dev/null
+```
+
+Review results periodically and investigate unexpected binaries.
+
+---
+
+# Access Control Lists (ACLs)
+
+ACLs provide more granular permissions than standard owner/group/others.
+
+Example:
+
+```bash
+setfacl -m u:alice:rwx project.txt
+```
+
+View ACLs:
+
+```bash
+getfacl project.txt
+```
+
+---
+
+# File Integrity
+
+Critical files should be monitored.
+
+Examples:
+
+```text
+/etc/passwd
+
+/etc/shadow
+
+/etc/sudoers
+
+/etc/ssh/sshd_config
+
+/etc/fstab
+```
+
+Unexpected modifications should trigger investigation.
+
+---
+
+# Process Security
+
+Processes should execute with only the privileges they require.
+
+Each process has:
+
+- Process ID (PID)
+- User ID (UID)
+- Group ID (GID)
+- Memory space
+- Environment
+- Resource limits
+
+---
+
+# Process Isolation
+
+Linux isolates processes.
+
+```text
+Process A
+
+↓
+
+Kernel
+
+↓
+
+Process B
+```
+
+A normal user process cannot directly access another process's memory without appropriate privileges.
+
+---
+
+# Viewing Processes
+
+```bash
+ps -ef
+```
+
+Or:
+
+```bash
+top
+```
+
+Review:
+
+- Owner
+- CPU usage
+- Memory usage
+- Command
+
+---
+
+# Killing a Process
+
+Graceful termination:
+
+```bash
+kill PID
+```
+
+Force termination:
+
+```bash
+kill -9 PID
+```
+
+`SIGKILL` (`-9`) should generally be reserved for situations where a process cannot terminate gracefully.
+
+---
+
+# Process Limits
+
+Display limits:
+
+```bash
+ulimit -a
+```
+
+Examples:
+
+- Open files
+- Stack size
+- CPU time
+- Memory limits
+- Maximum user processes
+
+These limits help protect systems from resource exhaustion.
+
+---
+
+# Linux Capabilities
+
+Traditionally, the root user possessed all administrative privileges.
+
+Linux capabilities divide those privileges into smaller, independently assignable units.
+
+Examples include:
+
+- Network administration
+- Loading kernel modules
+- Binding to privileged ports
+- Changing file ownership
+
+---
+
+# Capability Model
+
+```text
+Traditional
+
+Root
+
+↓
+
+Everything
+```
+
+```text
+Capabilities
+
+Capability A
+
+Capability B
+
+Capability C
+
+↓
+
+Only Required Privileges
+```
+
+---
+
+# Viewing Capabilities
+
+Installed capability information:
+
+```bash
+getcap /usr/bin/ping
+```
+
+Example output:
+
+```text
+/usr/bin/ping cap_net_raw=ep
+```
+
+List file capabilities:
+
+```bash
+getcap -r / 2>/dev/null
+```
+
+---
+
+# Advantages of Capabilities
+
+- Reduced privilege
+- Smaller attack surface
+- Better application isolation
+- Improved security
+
+---
+
+# Mandatory Access Control (MAC)
+
+Traditional permissions are **Discretionary Access Control (DAC)**.
+
+MAC adds an additional enforcement layer.
+
+Examples:
+
+- SELinux
+- AppArmor
+
+Even if traditional permissions allow access, MAC policies may deny it.
+
+---
+
+# DAC vs MAC
+
+| DAC | MAC |
+|------|-----|
+| User controls permissions | Policy controls access |
+| Flexible | Stronger enforcement |
+| Easier to administer | More restrictive |
+| Can be bypassed by privileged users | Policy-driven restrictions |
+
+---
+
+# SELinux
+
+SELinux (Security-Enhanced Linux) provides Mandatory Access Control.
+
+Common on:
+
+- Red Hat Enterprise Linux
+- CentOS Stream
+- Fedora
+- Rocky Linux
+- AlmaLinux
+
+---
+
+# SELinux Workflow
+
+```text
+Application
+
+↓
+
+Permission Check
+
+↓
+
+SELinux Policy
+
+↓
+
+Allow or Deny
+```
+
+---
+
+# SELinux Modes
+
+Display current mode:
+
+```bash
+getenforce
+```
+
+Modes:
+
+| Mode | Behavior |
+|------|----------|
+| Enforcing | Enforce policy and deny unauthorized actions |
+| Permissive | Log violations without enforcing |
+| Disabled | SELinux inactive |
+
+---
+
+# Viewing SELinux Status
+
+```bash
+sestatus
+```
+
+---
+
+# SELinux Contexts
+
+Display contexts:
+
+```bash
+ls -Z
+```
+
+Example:
+
+```text
+system_u:object_r:httpd_sys_content_t:s0
+```
+
+Typical fields:
+
+| Field | Purpose |
+|--------|----------|
+| User | SELinux user |
+| Role | Security role |
+| Type | Primary access control type |
+| Level | MLS/MCS security level |
+
+---
+
+# Why SELinux Matters
+
+Example:
+
+```text
+Web Server
+
+↓
+
+Compromised
+
+↓
+
+Attempts to Read
+
+/etc/shadow
+
+↓
+
+SELinux Policy
+
+↓
+
+Denied
+```
+
+Even when a service is compromised, SELinux can reduce its ability to access unrelated resources.
+
+---
+
+# AppArmor
+
+AppArmor is another Mandatory Access Control framework.
+
+Common on:
+
+- Ubuntu
+- Debian
+- SUSE Linux Enterprise
+
+---
+
+# AppArmor Workflow
+
+```text
+Application
+
+↓
+
+Profile
+
+↓
+
+Allow
+
+↓
+
+or
+
+↓
+
+Deny
+```
+
+---
+
+# Viewing AppArmor Status
+
+```bash
+sudo aa-status
+```
+
+---
+
+# AppArmor Profiles
+
+Profiles define:
+
+- Allowed files
+- Allowed capabilities
+- Network access
+- Execution permissions
+
+Applications run according to their assigned profiles.
+
+---
+
+# SELinux vs AppArmor
+
+| SELinux | AppArmor |
+|----------|-----------|
+| Label-based | Path-based |
+| Fine-grained control | Simpler profile management |
+| Common on RHEL-family systems | Common on Ubuntu/Debian/SUSE |
+| Powerful but complex | Easier to learn for many administrators |
+
+---
+
+# Kernel Security
+
+The Linux kernel enforces many security protections.
+
+Examples include:
+
+- Process isolation
+- Memory protection
+- Address Space Layout Randomization (ASLR)
+- Secure module loading
+- Namespaces
+- Control groups (cgroups)
+- Seccomp (application dependent)
+
+---
+
+# Address Space Layout Randomization (ASLR)
+
+ASLR randomizes memory locations.
+
+Without ASLR:
+
+```text
+Application
+
+↓
+
+Fixed Memory Address
+```
+
+With ASLR:
+
+```text
+Application
+
+↓
+
+Randomized Memory Address
+```
+
+This increases the difficulty of many memory corruption exploits.
+
+---
+
+# Checking ASLR
+
+```bash
+cat /proc/sys/kernel/randomize_va_space
+```
+
+Typical values:
+
+| Value | Meaning |
+|--------|----------|
+| 0 | Disabled |
+| 1 | Partial randomization |
+| 2 | Full randomization (common default) |
+
+---
+
+# Kernel Modules
+
+Loaded modules:
+
+```bash
+lsmod
+```
+
+Module information:
+
+```bash
+modinfo module_name
+```
+
+Kernel modules extend kernel functionality and should be managed carefully.
+
+---
+
+# Secure Boot
+
+Secure Boot helps ensure that only trusted boot components are executed during system startup.
+
+Benefits include:
+
+- Boot integrity
+- Reduced boot-time malware risk
+- Trusted boot chain
+
+Support depends on hardware and firmware configuration.
+
+---
+
+# Secure Configuration
+
+A secure Linux system should include:
+
+- Minimal installed software
+- Strong authentication
+- Regular updates
+- Secure file permissions
+- Firewall configuration
+- Logging
+- Monitoring
+- Backup strategy
+
+---
+
+# Secure Configuration Workflow
+
+```text
+Install
+
+↓
+
+Patch
+
+↓
+
+Configure
+
+↓
+
+Harden
+
+↓
+
+Monitor
+
+↓
+
+Audit
+
+↓
+
+Improve
+```
+
+---
+
+# Configuration Review
+
+Administrators should regularly review:
+
+- User accounts
+- Services
+- Open ports
+- Installed packages
+- Running processes
+- Scheduled jobs
+- Security policies
+
+---
+
+# Cybersecurity Perspective
+
+Many Linux compromises exploit:
+
+- Misconfigured permissions
+- Excessive privileges
+- Weak service isolation
+- Outdated software
+- Missing security controls
+
+Defense mechanisms such as capabilities, SELinux, and AppArmor significantly increase the effort required for successful attacks.
+
+---
+
+# Business Impact
+
+Strong operating system security:
+
+- Protects sensitive information
+- Reduces attack surface
+- Limits lateral movement
+- Supports regulatory compliance
+- Improves service reliability
+- Reduces incident recovery costs
+
+---
+
+# Enterprise Best Practices
+
+- Apply the principle of least privilege.
+- Regularly audit SUID/SGID binaries.
+- Use ACLs only when additional granularity is required.
+- Enable and maintain SELinux or AppArmor where supported.
+- Review Linux capabilities assigned to binaries.
+- Keep kernel and security packages updated.
+- Remove unnecessary services and software.
+- Perform periodic security configuration audits.
+
+---
+
+# Key Takeaways
+
+- File and process security form the foundation of Linux access control.
+- Linux capabilities divide root privileges into smaller, more manageable permissions.
+- SELinux and AppArmor provide Mandatory Access Control beyond traditional file permissions.
+- Kernel security features such as ASLR strengthen exploit resistance.
+- Secure configuration and regular auditing are essential components of enterprise Linux security.
+
+---
+
