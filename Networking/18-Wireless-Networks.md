@@ -1343,4 +1343,699 @@ Organizations should:
 
 ---
 
+# Part 3 — Wireless Threats, Attacks, Hardening, Monitoring, Detection Engineering, Zero Trust Integration, and Enterprise Operations
+
+---
+
+# Introduction
+
+Wireless networks extend beyond the physical boundaries of an organization. Unlike wired Ethernet, where an attacker typically requires physical access to network infrastructure, Wi-Fi signals can often be detected from parking lots, neighboring buildings, public spaces, or other nearby locations.
+
+This accessibility makes wireless infrastructure an attractive target for attackers.
+
+Enterprise wireless security requires multiple layers of defense, including:
+
+- Strong authentication
+- Secure encryption
+- Continuous monitoring
+- Network segmentation
+- Device validation
+- Threat detection
+- Incident response
+- Regular security assessments
+
+---
+
+# Security Objectives
+
+Enterprise wireless security aims to:
+
+- Protect confidential data
+- Prevent unauthorized access
+- Detect malicious activity
+- Secure wireless infrastructure
+- Protect user identities
+- Ensure service availability
+- Support compliance requirements
+
+---
+
+# Wireless Threat Landscape
+
+Common enterprise wireless threats include:
+
+- Rogue Access Points
+- Evil Twin attacks
+- Unauthorized clients
+- MAC spoofing
+- Deauthentication attacks
+- Credential theft
+- Wireless sniffing
+- Man-in-the-Middle (MITM)
+- Denial-of-Service (DoS)
+- Weak authentication
+- Misconfigured wireless infrastructure
+
+Understanding these threats helps organizations implement appropriate security controls.
+
+---
+
+# Rogue Access Points
+
+A **Rogue Access Point** is an unauthorized AP connected to the enterprise network.
+
+Example:
+
+```
+Employee
+
+↓
+
+Personal Wi-Fi Router
+
+↓
+
+Corporate Switch
+
+↓
+
+Corporate Network
+```
+
+Risks include:
+
+- Bypassing security policies
+- Unauthorized wireless access
+- Data leakage
+- Malware propagation
+
+Mitigation:
+
+- Wireless Intrusion Detection Systems (WIDS)
+- Port security
+- Network Access Control (NAC)
+- Regular wireless surveys
+
+---
+
+# Evil Twin Attack
+
+An Evil Twin is a malicious AP that imitates a legitimate wireless network.
+
+```
+Legitimate SSID
+
+Corporate-WiFi
+
+──────────────
+
+Fake SSID
+
+Corporate-WiFi
+```
+
+Unsuspecting users may connect to the malicious AP, allowing attackers to capture credentials or intercept traffic.
+
+Mitigation:
+
+- WPA3-Enterprise
+- Certificate validation
+- User awareness
+- Protected Management Frames (PMF)
+
+---
+
+# MAC Address Spoofing
+
+Attackers may change their device's MAC address to impersonate an authorized device.
+
+```
+Attacker
+
+↓
+
+Spoof MAC Address
+
+↓
+
+Attempt Network Access
+```
+
+Although MAC filtering may discourage casual misuse, it should not be relied upon as a primary security control because MAC addresses can be spoofed.
+
+---
+
+# Wireless Sniffing
+
+Attackers use wireless adapters in monitor mode to capture radio traffic.
+
+Captured information may include:
+
+- Beacon frames
+- Probe requests
+- Authentication attempts
+- Association requests
+- Management traffic
+- Unencrypted application traffic (where applicable)
+
+Strong encryption significantly reduces the value of captured traffic.
+
+---
+
+# Deauthentication Attack
+
+Attackers transmit forged deauthentication frames to disconnect clients.
+
+```
+Attacker
+
+↓
+
+Fake Deauthentication Frame
+
+↓
+
+Client Disconnects
+
+↓
+
+Reconnect Attempt
+```
+
+Possible impacts:
+
+- Service disruption
+- Credential capture (in poorly secured environments)
+- User frustration
+
+Mitigation:
+
+- WPA3
+- Protected Management Frames (IEEE 802.11w / PMF)
+- Wireless intrusion detection
+
+---
+
+# Disassociation Attack
+
+Disassociation attacks are similar to deauthentication attacks but target the association state of a client.
+
+Effects include:
+
+- Interrupted communication
+- Reauthentication attempts
+- Temporary denial of service
+
+PMF helps protect against forged management frames.
+
+---
+
+# Wireless Denial-of-Service (DoS)
+
+Wireless DoS attacks attempt to reduce network availability.
+
+Examples:
+
+- RF interference
+- Excessive association requests
+- Authentication floods
+- Beacon floods
+- Channel jamming
+
+Mitigation strategies include:
+
+- Spectrum analysis
+- Redundant AP coverage
+- Wireless monitoring
+- Rate limiting (where supported)
+
+---
+
+# Jamming
+
+Jamming occurs when an attacker intentionally transmits radio signals that interfere with legitimate Wi-Fi communications.
+
+```
+Attacker
+
+↓↓↓↓↓↓↓↓
+
+Radio Interference
+
+↓↓↓↓↓↓↓↓
+
+Wireless Clients
+
+↓
+
+Connectivity Loss
+```
+
+Indicators:
+
+- High retry rates
+- Reduced throughput
+- Frequent disconnections
+- Elevated noise levels
+
+---
+
+# Man-in-the-Middle (MITM)
+
+A wireless MITM attack positions the attacker between the client and the network.
+
+```
+Client
+
+↓
+
+Attacker
+
+↓
+
+Access Point
+```
+
+Risks include:
+
+- Traffic interception
+- Credential theft
+- Session manipulation
+
+Mitigation:
+
+- WPA3-Enterprise
+- Certificate validation
+- VPN for sensitive communications
+- User education
+
+---
+
+# Credential Theft
+
+Wireless credentials may be compromised through:
+
+- Phishing
+- Evil Twin attacks
+- Weak passwords
+- Shared credentials
+- Social engineering
+
+Mitigation:
+
+- Multi-Factor Authentication (MFA)
+- Certificate-based authentication
+- Password managers
+- Security awareness training
+
+---
+
+# Weak Password Attacks
+
+Shared wireless passwords are vulnerable to guessing attacks.
+
+Poor examples:
+
+```
+Company123
+
+Welcome123
+
+Password123
+```
+
+Better practices:
+
+- Long random passphrases
+- Regular rotation (where appropriate)
+- Prefer enterprise authentication over shared secrets
+
+---
+
+# Unauthorized Wireless Devices
+
+Common unauthorized devices include:
+
+- Personal hotspots
+- Consumer Wi-Fi routers
+- Unauthorized IoT devices
+- Wireless printers
+- Personal access points
+
+These devices can bypass organizational security controls and increase the attack surface.
+
+---
+
+# Wireless Network Segmentation
+
+Wireless networks should be segmented based on business function.
+
+Example:
+
+```
+Corporate Users
+
+↓
+
+VLAN 10
+
+──────────────
+
+Guests
+
+↓
+
+VLAN 20
+
+──────────────
+
+IoT Devices
+
+↓
+
+VLAN 30
+```
+
+Segmentation limits lateral movement and improves policy enforcement.
+
+---
+
+# Guest Network Isolation
+
+Guest wireless networks should be isolated from internal corporate resources.
+
+```
+Guest Devices
+
+↓
+
+Guest SSID
+
+↓
+
+Internet
+
+──────────────
+
+No Direct Access
+
+↓
+
+Corporate Network
+```
+
+Isolation reduces the risk of unauthorized access to sensitive systems.
+
+---
+
+# Wireless Intrusion Detection System (WIDS)
+
+A WIDS continuously monitors wireless activity to identify suspicious behavior.
+
+Capabilities include:
+
+- Rogue AP detection
+- Evil Twin detection
+- Unauthorized client detection
+- Channel monitoring
+- Attack detection
+- RF analysis
+
+WIDS generates alerts but does not actively block attacks.
+
+---
+
+# Wireless Intrusion Prevention System (WIPS)
+
+A WIPS extends WIDS by actively responding to threats.
+
+Possible actions:
+
+- Block rogue clients
+- Contain rogue APs
+- Prevent unauthorized associations
+- Enforce security policies
+
+Organizations should carefully evaluate containment features to avoid disrupting legitimate wireless communications.
+
+---
+
+# Wireless Monitoring
+
+Enterprise wireless monitoring should include:
+
+- Client count
+- AP availability
+- Signal strength (RSSI)
+- Signal-to-Noise Ratio (SNR)
+- Channel utilization
+- Authentication failures
+- Roaming events
+- RF interference
+- Throughput
+- Latency
+
+Continuous monitoring helps identify operational and security issues before they affect users.
+
+---
+
+# Logging
+
+Wireless infrastructure should generate logs for:
+
+- Authentication attempts
+- Client associations
+- Roaming events
+- AP failures
+- Configuration changes
+- Security alerts
+- Controller events
+
+Logs should be forwarded to centralized monitoring platforms.
+
+---
+
+# Centralized Logging
+
+```
+Access Points
+
+↓
+
+Wireless LAN Controller
+
+↓
+
+Syslog
+
+↓
+
+SIEM
+
+↓
+
+SOC
+```
+
+Centralized logging enables long-term retention, correlation, and incident investigation.
+
+---
+
+# Zero Trust Integration
+
+Enterprise wireless networks should align with Zero Trust principles.
+
+Key concepts:
+
+- Never trust by default
+- Verify user identity
+- Verify device compliance
+- Enforce least privilege
+- Continuously evaluate risk
+
+Connecting to Wi-Fi should not automatically grant unrestricted access to internal resources.
+
+---
+
+# Device Compliance
+
+Before granting access, organizations should evaluate:
+
+- Operating system version
+- Security patches
+- Disk encryption
+- Antivirus status
+- Endpoint Detection and Response (EDR)
+- Device certificates
+
+Non-compliant devices can be denied or placed in a restricted network.
+
+---
+
+# Threat Intelligence Integration
+
+Wireless security platforms may consume threat intelligence to identify:
+
+- Malicious IP addresses
+- Known attacker infrastructure
+- Indicators of Compromise (IOCs)
+- High-risk geolocations
+- Botnet communication
+
+Threat intelligence enhances detection capabilities when combined with wireless telemetry.
+
+---
+
+# SOC Integration
+
+Wireless infrastructure provides valuable telemetry for Security Operations Centers.
+
+SOC teams commonly monitor:
+
+- Authentication failures
+- Rogue AP detection
+- Deauthentication events
+- Unusual roaming patterns
+- Administrative logins
+- Configuration changes
+- New devices
+- MAC address anomalies
+
+Wireless logs should be correlated with endpoint, identity, and firewall telemetry.
+
+---
+
+# SIEM Correlation Examples
+
+### Rogue Access Point
+
+```
+Unknown AP Detected
+
+↓
+
+Corporate SSID Broadcast
+
+↓
+
+SOC Alert
+```
+
+---
+
+### Authentication Attack
+
+```
+Single Client
+
+↓
+
+Hundreds of Authentication Failures
+
+↓
+
+Alert
+```
+
+---
+
+### Evil Twin Detection
+
+```
+Duplicate SSID
+
+↓
+
+Different BSSID
+
+↓
+
+High-Risk Alert
+```
+
+---
+
+### Suspicious Device
+
+```
+New Device
+
+↓
+
+Restricted VLAN
+
+↓
+
+Repeated Access Attempts
+
+↓
+
+SOC Investigation
+```
+
+---
+
+# Compliance Considerations
+
+Wireless deployments contribute to compliance with:
+
+- ISO/IEC 27001
+- PCI DSS
+- HIPAA
+- NIST Cybersecurity Framework
+- CIS Controls
+
+Common compliance requirements include:
+
+- Strong authentication
+- Encryption
+- Logging
+- Network segmentation
+- Access reviews
+- Secure configuration management
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Deploy WPA3-Enterprise where supported.
+- Require IEEE 802.1X authentication.
+- Use certificate-based authentication for managed devices.
+- Separate employee, guest, and IoT networks.
+- Enable Protected Management Frames (PMF).
+- Continuously monitor for rogue APs.
+- Integrate wireless logs with SIEM platforms.
+- Conduct periodic RF site surveys and security assessments.
+- Disable unused SSIDs.
+- Keep wireless infrastructure updated with vendor security patches.
+
+---
+
+# Business Impact
+
+Strong wireless security enables organizations to:
+
+- Protect sensitive information
+- Support secure mobility
+- Improve regulatory compliance
+- Reduce cyber risk
+- Enable hybrid work
+- Enhance operational resilience
+- Increase user confidence in enterprise wireless services
+
+---
+
+# Key Takeaways
+
+- Wireless networks face unique threats due to the shared radio medium.
+- Rogue APs and Evil Twin attacks remain significant enterprise risks.
+- WPA3, IEEE 802.1X, and certificate-based authentication provide strong protection.
+- WIDS and WIPS improve visibility and response capabilities.
+- Continuous monitoring, segmentation, and Zero Trust principles strengthen wireless security.
+- SOC and SIEM integration enable rapid detection and investigation of wireless threats.
+
+---
+
 
