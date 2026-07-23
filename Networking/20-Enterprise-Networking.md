@@ -1326,3 +1326,790 @@ Organizations should:
 ---
 
 
+# Part 3 — Enterprise Network Security, Segmentation, Zero Trust, Network Access Control (NAC), Monitoring, Detection Engineering, Compliance, and Enterprise Operations
+
+---
+
+# Introduction
+
+Enterprise networks are among the most valuable assets of an organization because they connect users, applications, servers, cloud platforms, business partners, and Internet services. As organizations become increasingly digital, enterprise networks are frequent targets for cyberattacks.
+
+Modern attackers rarely rely on a single exploit. Instead, they combine techniques such as:
+
+- Credential theft
+- Phishing
+- Malware
+- Lateral movement
+- Ransomware
+- Insider threats
+- Supply chain attacks
+- Cloud compromise
+
+To defend against these threats, organizations implement multiple layers of security that extend across users, endpoints, applications, networks, and cloud infrastructure.
+
+---
+
+# Enterprise Security Objectives
+
+Enterprise network security aims to provide:
+
+- Confidentiality
+- Integrity
+- Availability
+- Authentication
+- Authorization
+- Accountability
+- Business continuity
+- Regulatory compliance
+
+These objectives align with the CIA Triad and Zero Trust security principles.
+
+---
+
+# Defense-in-Depth
+
+Defense-in-Depth uses multiple independent security controls.
+
+```
+Internet
+
+↓
+
+Edge Firewall
+
+↓
+
+IPS
+
+↓
+
+Core Network
+
+↓
+
+Internal Firewall
+
+↓
+
+Endpoint Security
+
+↓
+
+Application Security
+
+↓
+
+Data Protection
+```
+
+If one layer fails, additional controls continue protecting the organization.
+
+---
+
+# Enterprise Security Architecture
+
+Modern enterprise security consists of multiple integrated technologies.
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+IDS / IPS
+
+↓
+
+Network Segmentation
+
+↓
+
+Identity Services
+
+↓
+
+Endpoints
+
+↓
+
+Applications
+
+↓
+
+Data
+```
+
+Every layer contributes to the organization's overall security posture.
+
+---
+
+# Network Segmentation
+
+Segmentation divides a network into isolated security zones.
+
+Example:
+
+```
+Corporate Users
+
+↓
+
+VLAN 10
+
+──────────────
+
+Finance
+
+↓
+
+VLAN 20
+
+──────────────
+
+Servers
+
+↓
+
+VLAN 30
+
+──────────────
+
+Guests
+
+↓
+
+VLAN 40
+
+──────────────
+
+IoT
+
+↓
+
+VLAN 50
+```
+
+Segmentation limits unauthorized access and reduces lateral movement.
+
+---
+
+# Benefits of Segmentation
+
+Advantages include:
+
+- Reduced attack surface
+- Improved performance
+- Simplified access control
+- Better compliance
+- Easier troubleshooting
+- Enhanced visibility
+
+---
+
+# Microsegmentation
+
+Microsegmentation extends segmentation to individual workloads or applications.
+
+Example:
+
+```
+Application A
+
+↓
+
+Policy
+
+↓
+
+Database A
+
+──────────────
+
+Application B
+
+↓
+
+Policy
+
+↓
+
+Database B
+```
+
+Even systems within the same VLAN or subnet can have different security policies.
+
+---
+
+# Zero Trust Network Architecture (ZTNA)
+
+Zero Trust assumes that no user, device, or application should be trusted automatically.
+
+Core principles:
+
+- Never trust by default
+- Verify explicitly
+- Enforce least privilege
+- Continuously evaluate risk
+- Assume breach
+
+Network location alone should not determine access.
+
+---
+
+# Zero Trust Workflow
+
+```
+User
+
+↓
+
+Identity Verification
+
+↓
+
+Device Validation
+
+↓
+
+Risk Assessment
+
+↓
+
+Policy Decision
+
+↓
+
+Application Access
+```
+
+Every access request is evaluated before permission is granted.
+
+---
+
+# Identity-Based Access
+
+Modern enterprise networks use identity rather than IP address as the primary security control.
+
+Access decisions may consider:
+
+- User identity
+- Group membership
+- Device certificate
+- Geographic location
+- Device posture
+- Risk score
+- Time of access
+
+Identity-aware networking improves both security and operational flexibility.
+
+---
+
+# Least Privilege
+
+Users and devices should receive only the permissions necessary to perform their tasks.
+
+Example:
+
+```
+HR Employee
+
+↓
+
+HR Applications
+
+↓
+
+No Access
+
+↓
+
+Finance Servers
+```
+
+Limiting privileges reduces the impact of compromised accounts.
+
+---
+
+# Network Access Control (NAC)
+
+NAC verifies the identity and security posture of devices before granting network access.
+
+Typical checks include:
+
+- User authentication
+- Device certificates
+- Operating system version
+- Security patches
+- Endpoint Detection and Response (EDR)
+- Antivirus status
+- Disk encryption
+
+Non-compliant devices can be denied access or placed in a restricted network.
+
+---
+
+# NAC Workflow
+
+```
+Device Connects
+
+↓
+
+Identity Verification
+
+↓
+
+Compliance Check
+
+↓
+
+Policy Evaluation
+
+↓
+
+Approved VLAN
+
+↓
+
+Network Access
+```
+
+---
+
+# Dynamic Network Segmentation
+
+NAC solutions can dynamically assign network access based on policy.
+
+Example:
+
+```
+Employee Laptop
+
+↓
+
+VLAN 10
+
+──────────────
+
+Guest Device
+
+↓
+
+Guest VLAN
+
+──────────────
+
+IoT Sensor
+
+↓
+
+IoT VLAN
+```
+
+Dynamic segmentation improves flexibility and security.
+
+---
+
+# Secure Remote Access
+
+Enterprise remote users typically connect using:
+
+- VPN
+- Zero Trust Network Access (ZTNA)
+- Secure Access Service Edge (SASE) solutions
+
+Secure remote access should include:
+
+- Multi-Factor Authentication (MFA)
+- Device validation
+- Continuous monitoring
+
+---
+
+# Enterprise Authentication
+
+Centralized authentication platforms commonly integrate with:
+
+- Active Directory
+- LDAP
+- Microsoft Entra ID
+- RADIUS
+- TACACS+
+
+These systems provide consistent identity management across the enterprise.
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+MFA requires multiple verification factors.
+
+Examples:
+
+- Password
+- Security key
+- Mobile authenticator
+- Biometric verification
+
+MFA significantly reduces the effectiveness of credential theft.
+
+---
+
+# Network Monitoring
+
+Enterprise monitoring provides visibility into:
+
+- Availability
+- Performance
+- Capacity
+- Security
+- Configuration changes
+
+Continuous monitoring enables proactive operations.
+
+---
+
+# Network Telemetry
+
+Important telemetry sources include:
+
+- Syslog
+- SNMP
+- NetFlow
+- IPFIX
+- sFlow
+- Streaming telemetry
+- Firewall logs
+- DNS logs
+
+Combining multiple telemetry sources improves operational visibility.
+
+---
+
+# Centralized Logging
+
+```
+Routers
+
+↓
+
+Switches
+
+↓
+
+Firewalls
+
+↓
+
+Wireless Controllers
+
+↓
+
+Syslog
+
+↓
+
+SIEM
+
+↓
+
+SOC
+```
+
+Centralized logging supports troubleshooting, compliance, and incident response.
+
+---
+
+# Security Monitoring
+
+Security teams monitor:
+
+- Authentication failures
+- Administrative logins
+- Configuration changes
+- Firewall events
+- Routing changes
+- VPN activity
+- Wireless events
+- Endpoint telemetry
+
+Correlating multiple data sources improves detection accuracy.
+
+---
+
+# Detection Engineering
+
+Detection Engineering involves creating high-quality rules to identify malicious activity while minimizing false positives.
+
+Common enterprise detections include:
+
+- Port scanning
+- Brute-force attacks
+- Lateral movement
+- DNS tunneling
+- Data exfiltration
+- Unauthorized administrative access
+- Rogue devices
+- Network reconnaissance
+
+Detection logic should be continuously reviewed and improved.
+
+---
+
+# SIEM Correlation Examples
+
+### Unauthorized Administrator Login
+
+```
+Administrative Login
+
+↓
+
+Outside Business Hours
+
+↓
+
+Configuration Change
+
+↓
+
+Critical Alert
+```
+
+---
+
+### Port Scanning
+
+```
+Single Host
+
+↓
+
+Hundreds of Destination Ports
+
+↓
+
+Short Time Window
+
+↓
+
+High Severity Alert
+```
+
+---
+
+### VPN Brute Force
+
+```
+Multiple Failed Logins
+
+↓
+
+Single Account
+
+↓
+
+Multiple Source Addresses
+
+↓
+
+SOC Alert
+```
+
+---
+
+### Data Exfiltration
+
+```
+Large Outbound Transfer
+
+↓
+
+Unknown Destination
+
+↓
+
+Outside Business Hours
+
+↓
+
+Investigation
+```
+
+---
+
+# Threat Intelligence Integration
+
+Threat intelligence enhances enterprise monitoring by identifying:
+
+- Malicious IP addresses
+- Known domains
+- Indicators of Compromise (IOCs)
+- Command-and-Control infrastructure
+- Malware families
+
+Threat intelligence should be correlated with internal telemetry rather than used in isolation.
+
+---
+
+# Incident Response Integration
+
+Network monitoring supports every phase of incident response.
+
+```
+Detection
+
+↓
+
+Analysis
+
+↓
+
+Containment
+
+↓
+
+Eradication
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+```
+
+Timely telemetry accelerates investigations and reduces attacker dwell time.
+
+---
+
+# Configuration Management
+
+Maintain:
+
+- Approved baseline configurations
+- Version-controlled backups
+- Documented changes
+- Configuration reviews
+- Automated validation
+
+Configuration management reduces operational errors and supports compliance.
+
+---
+
+# Patch Management
+
+Enterprise network devices should follow a structured patching process.
+
+Recommended workflow:
+
+1. Monitor vendor advisories.
+2. Assess risk.
+3. Test updates.
+4. Schedule deployment.
+5. Verify successful installation.
+6. Update documentation.
+
+Prompt patching reduces exposure to known vulnerabilities.
+
+---
+
+# Capacity Planning
+
+Monitor long-term trends such as:
+
+- Bandwidth utilization
+- CPU usage
+- Memory usage
+- Interface growth
+- Wireless client counts
+- WAN utilization
+
+Capacity planning helps organizations scale before performance becomes a problem.
+
+---
+
+# High Availability Operations
+
+Critical services should support:
+
+- Device redundancy
+- Link redundancy
+- Multiple ISPs
+- High Availability firewalls
+- Redundant controllers
+- Backup power
+- Geographic redundancy
+
+Regular failover testing ensures resilience during real incidents.
+
+---
+
+# Compliance Considerations
+
+Enterprise networking contributes to compliance with:
+
+- ISO/IEC 27001
+- NIST Cybersecurity Framework
+- CIS Controls
+- PCI DSS
+- HIPAA
+- SOC 2
+
+Common requirements include:
+
+- Access control
+- Logging
+- Encryption
+- Change management
+- Monitoring
+- Incident response
+
+---
+
+# Business Impact
+
+A secure enterprise network enables organizations to:
+
+- Protect critical business assets
+- Reduce cyber risk
+- Improve customer trust
+- Meet regulatory requirements
+- Support digital transformation
+- Increase operational resilience
+- Enable secure hybrid work
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Adopt Zero Trust principles.
+- Segment users, servers, guests, and IoT devices.
+- Implement Network Access Control (NAC).
+- Require Multi-Factor Authentication for privileged access.
+- Centralize logs within a SIEM platform.
+- Continuously review detection rules.
+- Maintain configuration baselines.
+- Conduct regular security assessments and penetration tests.
+- Automate compliance verification where possible.
+- Test disaster recovery and failover procedures regularly.
+
+---
+
+# Key Takeaways
+
+- Enterprise network security relies on layered defenses rather than a single security control.
+- Segmentation and microsegmentation reduce the attack surface and limit lateral movement.
+- Zero Trust and NAC strengthen identity-based access control.
+- Centralized monitoring and SIEM correlation improve threat detection and incident response.
+- Configuration management, patching, and capacity planning support long-term operational resilience.
+- Compliance frameworks require continuous monitoring, logging, and secure network operations.
+
+---
+
