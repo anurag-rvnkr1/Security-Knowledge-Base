@@ -699,4 +699,648 @@ Organizations should:
 
 ---
 
+# Part 2 — Wireless Authentication, WPA2, WPA3, IEEE 802.1X, EAP, RADIUS, Enterprise Wireless Security, and Modern Wi-Fi Technologies
+
+---
+
+# Introduction
+
+Wireless networks transmit data through an open medium where any nearby device can receive radio signals. Unlike wired Ethernet, physical access to a cable is not required to observe wireless transmissions.
+
+Because of this, **authentication, encryption, and access control** are critical components of every enterprise wireless deployment.
+
+Modern wireless security focuses on:
+
+- Strong authentication
+- Robust encryption
+- Identity-based access
+- Device validation
+- Secure key management
+- Centralized policy enforcement
+
+Enterprise Wi-Fi has evolved significantly from the insecure mechanisms of early wireless networks to the strong protections available in WPA3-Enterprise.
+
+---
+
+# Wireless Security Objectives
+
+Enterprise wireless security aims to provide:
+
+- Confidentiality
+- Integrity
+- Authentication
+- Authorization
+- Availability
+- Secure roaming
+- Identity-based access
+- Device trust
+
+---
+
+# Evolution of Wireless Security
+
+Wireless security has progressed through several generations.
+
+| Technology | Status | Security |
+|------------|--------|----------|
+| Open Authentication | Legacy | None |
+| WEP | Obsolete | Weak |
+| WPA | Legacy | Improved over WEP |
+| WPA2 | Widely Deployed | Strong |
+| WPA3 | Modern | Strongest Current Standard |
+
+Organizations should avoid deploying WEP and WPA except where absolutely required for legacy compatibility.
+
+---
+
+# Open Authentication
+
+Open networks provide no authentication.
+
+```
+Client
+
+↓
+
+Access Point
+
+↓
+
+Connected
+```
+
+Characteristics:
+
+- No password
+- No encryption
+- Public access
+- Suitable only for guest networks with additional protections
+
+Examples include airports, cafés, and hotels, though many now supplement open access with captive portals.
+
+---
+
+# Wired Equivalent Privacy (WEP)
+
+WEP was the first widely adopted Wi-Fi security mechanism.
+
+Goals:
+
+- Basic confidentiality
+- Shared-key authentication
+
+Weaknesses include:
+
+- Weak cryptographic implementation
+- Small Initialization Vector (IV)
+- Predictable keys
+- Practical key recovery attacks
+
+WEP should not be used in modern enterprise environments.
+
+---
+
+# Wi-Fi Protected Access (WPA)
+
+WPA was introduced as an interim improvement over WEP.
+
+Improvements:
+
+- Temporal Key Integrity Protocol (TKIP)
+- Dynamic key generation
+- Improved integrity checking
+
+Although stronger than WEP, WPA with TKIP is now considered legacy and should be replaced.
+
+---
+
+# WPA2
+
+WPA2 became the enterprise standard for secure wireless networking.
+
+Key features:
+
+- AES encryption
+- CCMP protocol
+- Strong integrity protection
+- Robust authentication options
+
+WPA2 significantly improved wireless security and remains widely deployed.
+
+---
+
+# WPA3
+
+WPA3 enhances wireless security by addressing weaknesses in previous standards.
+
+Key improvements include:
+
+- Stronger authentication
+- Improved resistance to offline password attacks
+- Forward secrecy for personal mode through SAE
+- Mandatory Protected Management Frames (PMF) support in WPA3-certified devices
+- Enhanced cryptographic protections
+
+WPA3 is recommended for new enterprise deployments where infrastructure and client compatibility permit.
+
+---
+
+# WPA2 vs WPA3
+
+| Feature | WPA2 | WPA3 |
+|----------|-------|-------|
+| Encryption | AES-CCMP | AES-based modern security enhancements |
+| Authentication | PSK / 802.1X | SAE / 802.1X |
+| Offline Dictionary Attack Resistance | Limited | Improved |
+| Forward Secrecy (Personal Mode) | No | Yes (SAE) |
+| Enterprise Support | Yes | Yes |
+
+---
+
+# Personal vs Enterprise Mode
+
+Wireless security is commonly deployed in two modes.
+
+| Mode | Typical Use |
+|------|-------------|
+| Personal | Homes and small offices |
+| Enterprise | Medium and large organizations |
+
+Enterprise mode provides centralized authentication and policy enforcement.
+
+---
+
+# Pre-Shared Key (PSK)
+
+Personal mode typically uses a shared password.
+
+```
+Client
+
+↓
+
+Shared Password
+
+↓
+
+Access Point
+
+↓
+
+Access Granted
+```
+
+Advantages:
+
+- Easy deployment
+- Simple management
+- Suitable for small environments
+
+Limitations:
+
+- Shared credentials
+- Difficult key rotation
+- Limited accountability
+
+---
+
+# Simultaneous Authentication of Equals (SAE)
+
+SAE replaces the traditional Pre-Shared Key exchange in WPA3-Personal.
+
+Benefits:
+
+- Improved resistance to offline dictionary attacks
+- Strong mutual authentication
+- Better protection against password guessing
+
+SAE is commonly referred to as the **Dragonfly Handshake**.
+
+---
+
+# Enterprise Authentication
+
+Enterprise authentication relies on centralized identity services.
+
+```
+Client
+
+↓
+
+Access Point
+
+↓
+
+Wireless LAN Controller
+
+↓
+
+RADIUS Server
+
+↓
+
+Identity Store
+```
+
+Each user authenticates using individual credentials rather than a shared password.
+
+---
+
+# IEEE 802.1X
+
+IEEE 802.1X provides **port-based network access control**.
+
+It controls whether a device is permitted to access the network after successful authentication.
+
+Benefits include:
+
+- Individual user authentication
+- Centralized policy enforcement
+- Certificate support
+- Dynamic authorization
+- VLAN assignment
+
+---
+
+# Components of IEEE 802.1X
+
+Three primary entities participate in authentication.
+
+| Component | Function |
+|------------|----------|
+| Supplicant | Client requesting access |
+| Authenticator | Network device controlling access (typically the AP or switch) |
+| Authentication Server | Usually a RADIUS server validating credentials |
+
+---
+
+# 802.1X Authentication Process
+
+```
+Wireless Client
+
+↓
+
+Access Point
+
+↓
+
+RADIUS Server
+
+↓
+
+Authentication Success
+
+↓
+
+Network Access
+```
+
+Only authenticated users receive network connectivity.
+
+---
+
+# Extensible Authentication Protocol (EAP)
+
+EAP is a framework that supports multiple authentication methods.
+
+It does not define a single authentication mechanism but provides a structure for secure authentication exchanges.
+
+---
+
+# Common EAP Methods
+
+| Method | Description |
+|----------|-------------|
+| EAP-TLS | Certificate-based authentication |
+| PEAP | Protected EAP using a TLS tunnel |
+| EAP-TTLS | Tunneled TLS authentication |
+| EAP-FAST | Cisco-developed secure authentication method |
+
+Organizations select an EAP method based on security requirements and infrastructure.
+
+---
+
+# EAP-TLS
+
+EAP-TLS is widely regarded as one of the most secure enterprise authentication methods.
+
+Characteristics:
+
+- Mutual authentication
+- Client certificates
+- Server certificates
+- Strong cryptography
+- No password transmission
+
+Requirements:
+
+- Public Key Infrastructure (PKI)
+- Certificate lifecycle management
+
+---
+
+# Protected EAP (PEAP)
+
+PEAP protects user credentials by creating an encrypted TLS tunnel before authentication.
+
+Advantages:
+
+- Password protection
+- Broad operating system support
+- Easier deployment than full certificate-based authentication
+
+---
+
+# RADIUS
+
+The **Remote Authentication Dial-In User Service (RADIUS)** protocol provides centralized:
+
+- Authentication
+- Authorization
+- Accounting (AAA)
+
+Enterprise wireless networks commonly integrate RADIUS with:
+
+- Active Directory
+- LDAP
+- Microsoft Entra ID (formerly Azure AD) integrations via appropriate services
+- Identity management platforms
+
+---
+
+# RADIUS Workflow
+
+```
+Client
+
+↓
+
+Access Point
+
+↓
+
+RADIUS Request
+
+↓
+
+Identity Verification
+
+↓
+
+Accept
+
+↓
+
+Wireless Access
+```
+
+---
+
+# Authentication vs Authorization vs Accounting
+
+| Function | Description |
+|----------|-------------|
+| Authentication | Verifies identity |
+| Authorization | Determines permitted access |
+| Accounting | Records user activity |
+
+Together these functions form the **AAA** framework.
+
+---
+
+# Dynamic VLAN Assignment
+
+RADIUS can automatically assign users to different VLANs based on policy.
+
+Example:
+
+```
+Finance User
+
+↓
+
+VLAN 20
+
+──────────────
+
+Engineering User
+
+↓
+
+VLAN 30
+
+──────────────
+
+Guest User
+
+↓
+
+Guest VLAN
+```
+
+This simplifies segmentation and access control.
+
+---
+
+# Captive Portals
+
+Guest wireless networks often use captive portals.
+
+```
+Client
+
+↓
+
+Connect
+
+↓
+
+Web Portal
+
+↓
+
+Accept Terms
+
+↓
+
+Internet Access
+```
+
+Captive portals may support:
+
+- Guest registration
+- Sponsorship workflows
+- Temporary credentials
+- Usage policies
+
+---
+
+# Protected Management Frames (PMF)
+
+Management frames were historically vulnerable to spoofing and deauthentication attacks.
+
+Protected Management Frames provide integrity and protection for certain management traffic.
+
+Benefits include:
+
+- Protection against forged deauthentication frames
+- Improved wireless resilience
+- Enhanced security for enterprise deployments
+
+---
+
+# Fast Roaming
+
+Enterprise mobility requires seamless transitions between Access Points.
+
+Technologies commonly associated with fast roaming include:
+
+- IEEE 802.11r (Fast BSS Transition)
+- IEEE 802.11k (Radio Resource Management)
+- IEEE 802.11v (Wireless Network Management)
+
+These standards help reduce interruptions for voice and video applications.
+
+---
+
+# Band Steering
+
+Band Steering encourages capable devices to use higher-capacity frequency bands.
+
+Example:
+
+```
+Dual-Band Client
+
+↓
+
+5 GHz Preferred
+
+↓
+
+Reduced 2.4 GHz Congestion
+```
+
+Benefits include:
+
+- Better performance
+- Reduced interference
+- Improved client distribution
+
+---
+
+# Load Balancing
+
+Enterprise controllers distribute clients across Access Points.
+
+```
+Access Point 1
+
+80 Clients
+
+↓
+
+Move New Clients
+
+↓
+
+Access Point 2
+
+30 Clients
+```
+
+This improves user experience and network efficiency.
+
+---
+
+# Quality of Service (QoS)
+
+Wireless QoS prioritizes important traffic.
+
+Examples:
+
+| Traffic Type | Priority |
+|--------------|----------|
+| Voice | Highest |
+| Video | High |
+| Business Applications | Medium |
+| Web Browsing | Normal |
+| Background Downloads | Lower |
+
+QoS helps maintain consistent performance for latency-sensitive applications.
+
+---
+
+# Enterprise Wireless Architecture
+
+```
+Wireless Clients
+
+↓
+
+Access Points
+
+↓
+
+Wireless LAN Controller
+
+↓
+
+RADIUS
+
+↓
+
+Directory Services
+
+↓
+
+Corporate Network
+```
+
+Centralized authentication and policy enforcement simplify large-scale deployments.
+
+---
+
+# Business Impact
+
+Secure enterprise wireless infrastructure enables organizations to:
+
+- Support hybrid work
+- Protect corporate information
+- Reduce credential sharing
+- Improve regulatory compliance
+- Simplify user management
+- Enhance employee productivity
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Deploy WPA3 where supported.
+- Use WPA2-Enterprise rather than shared passwords when WPA3 is unavailable.
+- Require IEEE 802.1X authentication.
+- Prefer certificate-based authentication for managed devices.
+- Integrate wireless authentication with centralized identity services.
+- Use Protected Management Frames where supported.
+- Separate guest, employee, and IoT networks.
+- Monitor authentication events continuously.
+
+---
+
+# Key Takeaways
+
+- Modern enterprise wireless security relies on strong authentication and encryption.
+- WEP and WPA are obsolete for enterprise deployments.
+- WPA2 and WPA3 provide robust wireless protection.
+- IEEE 802.1X enables identity-based network access.
+- RADIUS provides centralized AAA services.
+- EAP-TLS is one of the strongest enterprise authentication methods.
+- Fast roaming technologies improve user mobility.
+- Proper segmentation and centralized management strengthen enterprise Wi-Fi security.
+
+---
+
 
