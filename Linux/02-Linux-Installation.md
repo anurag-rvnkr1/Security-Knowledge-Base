@@ -980,3 +980,746 @@ Virtualization and automated deployment provide organizations with:
 ---
 
 
+# Part 3 — Installing Linux in VirtualBox & VMware, Disk Partitioning, Filesystem Selection, LVM, Swap, and Step-by-Step Installation Walkthrough
+
+---
+
+# Introduction
+
+After selecting a Linux distribution and understanding virtualization platforms, the next step is installing Linux.
+
+Although installers differ slightly between distributions such as Ubuntu, Rocky Linux, Debian, Fedora, and Kali Linux, the overall installation workflow is remarkably similar.
+
+Understanding what happens during installation helps administrators:
+
+- Build secure systems
+- Design proper storage layouts
+- Improve disaster recovery
+- Simplify future upgrades
+- Standardize enterprise deployments
+
+---
+
+# Linux Installation Workflow
+
+```text
+Download ISO
+      │
+      ▼
+Create Virtual Machine
+      │
+      ▼
+Attach ISO
+      │
+      ▼
+Boot Installer
+      │
+      ▼
+Choose Language
+      │
+      ▼
+Configure Keyboard
+      │
+      ▼
+Configure Network
+      │
+      ▼
+Partition Disk
+      │
+      ▼
+Install Packages
+      │
+      ▼
+Create User
+      │
+      ▼
+Install Bootloader
+      │
+      ▼
+Reboot
+```
+
+---
+
+# Installing Linux in VirtualBox
+
+## Step 1 — Create a New Virtual Machine
+
+Open VirtualBox and select:
+
+```
+New
+```
+
+Provide:
+
+| Setting | Example |
+|----------|----------|
+| Name | Ubuntu Server |
+| Type | Linux |
+| Version | Ubuntu (64-bit) |
+
+---
+
+## Step 2 — Allocate Memory
+
+Recommended RAM:
+
+| Purpose | RAM |
+|----------|-----|
+| CLI Practice | 2 GB |
+| Desktop | 4 GB |
+| Development | 8 GB |
+| Kubernetes | 8–16 GB |
+
+Never allocate all available RAM to the VM.
+
+---
+
+## Step 3 — Configure CPU
+
+Recommended allocation:
+
+| Host CPU | Guest CPU |
+|-----------|-----------|
+| 4 Cores | 2 |
+| 8 Cores | 4 |
+| 16 Cores | 6–8 |
+
+Avoid assigning every CPU core to a single VM.
+
+---
+
+## Step 4 — Create Virtual Hard Disk
+
+Choose:
+
+```
+VDI (VirtualBox Disk Image)
+```
+
+Storage type:
+
+```
+Dynamically Allocated
+```
+
+Recommended sizes:
+
+| Usage | Disk Size |
+|---------|-----------|
+| Learning | 30 GB |
+| Development | 60 GB |
+| Server Lab | 80 GB |
+| Kubernetes | 100 GB |
+
+---
+
+## Step 5 — Attach Linux ISO
+
+Navigate to:
+
+```
+Settings
+
+↓
+
+Storage
+
+↓
+
+Optical Drive
+
+↓
+
+Choose ISO
+```
+
+Select the downloaded Linux ISO.
+
+---
+
+## Step 6 — Configure Networking
+
+Default:
+
+```
+NAT
+```
+
+Alternative:
+
+```
+Bridged Adapter
+```
+
+Choose based on whether the VM needs to appear directly on the physical network.
+
+---
+
+# Installing Linux in VMware
+
+VMware installation is very similar.
+
+Typical workflow:
+
+```
+Create VM
+
+↓
+
+Select ISO
+
+↓
+
+Allocate CPU
+
+↓
+
+Allocate RAM
+
+↓
+
+Create Disk
+
+↓
+
+Configure Network
+
+↓
+
+Power On
+
+↓
+
+Install Linux
+```
+
+VMware often detects Linux distributions automatically and suggests optimized settings.
+
+---
+
+# Booting the Installer
+
+After powering on the VM:
+
+```
+GRUB Menu
+
+↓
+
+Try or Install Linux
+
+↓
+
+Start Installer
+```
+
+Some distributions provide:
+
+- Live Environment
+- Memory Test
+- Rescue Mode
+- OEM Installation
+
+---
+
+# Language Selection
+
+Choose the preferred installation language.
+
+Example:
+
+```
+English (US)
+```
+
+The selected language determines:
+
+- Installer interface
+- System locale
+- Default language settings
+
+---
+
+# Keyboard Layout
+
+Examples:
+
+```
+US
+
+UK
+
+German
+
+French
+
+Japanese
+```
+
+Test the layout before continuing to avoid password entry issues later.
+
+---
+
+# Time Zone
+
+Choose:
+
+```
+Asia/Kolkata
+```
+
+or
+
+```
+UTC
+```
+
+Servers often use **UTC** to simplify log correlation across multiple regions.
+
+---
+
+# Network Configuration
+
+Options include:
+
+```
+Automatic (DHCP)
+
+Static IP
+```
+
+Enterprise servers commonly use static IP addresses, while desktop systems typically rely on DHCP.
+
+---
+
+# Hostname
+
+The hostname identifies the machine on a network.
+
+Example:
+
+```
+ubuntu-server
+
+soc-lab
+
+web01
+
+db01
+
+kali-lab
+```
+
+Enterprise naming conventions usually reflect the server's role or location.
+
+---
+
+# Creating Users
+
+Most installers create:
+
+- Root account (or disable direct root login)
+- Standard administrative user
+
+Example:
+
+```
+Username:
+
+anurag
+
+Password:
+
+********
+```
+
+Use strong, unique passwords for all accounts.
+
+---
+
+# Disk Partitioning
+
+Disk partitioning divides a storage device into logical sections.
+
+Example:
+
+```
+Disk
+
+↓
+
+Partition 1
+
+↓
+
+Partition 2
+
+↓
+
+Partition 3
+```
+
+Each partition serves a specific purpose.
+
+---
+
+# Automatic Partitioning
+
+Recommended for beginners.
+
+The installer automatically creates the required partitions.
+
+Advantages:
+
+- Fast
+- Simple
+- Minimal configuration
+
+---
+
+# Manual Partitioning
+
+Recommended for:
+
+- Servers
+- Enterprise systems
+- Advanced users
+
+Advantages:
+
+- Better organization
+- Improved security
+- Easier backups
+- Separate growth management
+
+---
+
+# Typical Linux Partition Layout
+
+```text
+Disk
+
+├── EFI System Partition
+├── /
+├── /home
+├── swap
+└── /var (optional)
+```
+
+Large enterprise deployments may also use dedicated partitions for `/tmp`, `/opt`, or application data.
+
+---
+
+# EFI System Partition (ESP)
+
+Purpose:
+
+- Stores UEFI boot files
+- Required for UEFI systems
+
+Typical size:
+
+```
+512 MB
+```
+
+Filesystem:
+
+```
+FAT32
+```
+
+Mount point:
+
+```
+/boot/efi
+```
+
+---
+
+# Root Partition
+
+Mount point:
+
+```
+/
+```
+
+Contains:
+
+- Operating system
+- Applications
+- Libraries
+- Configuration
+- Kernel
+
+Recommended sizes:
+
+| Environment | Size |
+|--------------|------|
+| Desktop | 30–50 GB |
+| Server | 40–80 GB |
+| Enterprise | Depends on workload |
+
+---
+
+# Home Partition
+
+Mount point:
+
+```
+/home
+```
+
+Stores:
+
+- User files
+- Documents
+- Downloads
+- Desktop settings
+- SSH keys
+
+Separating `/home` simplifies OS reinstalls while preserving user data.
+
+---
+
+# Swap Partition
+
+Swap extends virtual memory by using disk space when RAM is exhausted.
+
+Benefits:
+
+- Prevents crashes due to memory exhaustion
+- Supports hibernation (if configured)
+- Handles temporary memory spikes
+
+General guidance:
+
+| RAM | Suggested Swap |
+|------|----------------|
+| 2 GB | 2 GB |
+| 4 GB | 2–4 GB |
+| 8 GB | 4 GB |
+| 16 GB+ | 4–8 GB (workload dependent) |
+
+Modern systems with ample RAM often require only modest swap space.
+
+---
+
+# What is LVM?
+
+**Logical Volume Manager (LVM)** provides flexible storage management by abstracting physical storage into logical volumes.
+
+Advantages:
+
+- Resize partitions without reinstalling
+- Add new storage easily
+- Create snapshots
+- Simplify storage administration
+
+---
+
+# LVM Architecture
+
+```text
+Physical Disk
+
+↓
+
+Physical Volume (PV)
+
+↓
+
+Volume Group (VG)
+
+↓
+
+Logical Volume (LV)
+
+↓
+
+Filesystem
+```
+
+---
+
+# Benefits of LVM
+
+- Online volume expansion
+- Flexible storage allocation
+- Easier migration
+- Snapshot support
+- Better storage utilization
+
+LVM is widely used in enterprise Linux environments.
+
+---
+
+# Choosing a Filesystem
+
+The filesystem determines how data is stored and retrieved.
+
+Common options:
+
+| Filesystem | Common Use |
+|------------|------------|
+| ext4 | General purpose |
+| XFS | Enterprise servers |
+| Btrfs | Snapshots and advanced features |
+| FAT32 | EFI partition |
+| exFAT | Removable media |
+
+---
+
+# ext4
+
+Features:
+
+- Stable
+- Journaling
+- Excellent compatibility
+- Low maintenance
+
+Best suited for:
+
+- Desktop
+- Servers
+- General-purpose systems
+
+---
+
+# XFS
+
+Features:
+
+- High performance
+- Excellent scalability
+- Supports very large filesystems
+- Online filesystem expansion
+
+Often the default filesystem for enterprise distributions such as Red Hat Enterprise Linux and Rocky Linux.
+
+---
+
+# Btrfs
+
+Features:
+
+- Snapshots
+- Checksums
+- Compression
+- Copy-on-write
+- Advanced volume management
+
+Suitable for systems requiring advanced storage features.
+
+---
+
+# Installation Summary
+
+Before installation begins, the installer typically displays a summary of:
+
+- Language
+- Keyboard
+- Time zone
+- User account
+- Storage layout
+- Filesystem
+- Bootloader location
+
+Review this information carefully before proceeding.
+
+---
+
+# Installing the Operating System
+
+The installer then:
+
+- Formats partitions
+- Copies system files
+- Installs packages
+- Configures services
+- Installs the bootloader
+- Generates initial configuration
+
+Installation time varies based on hardware performance and the selected software.
+
+---
+
+# Reboot
+
+After installation:
+
+```text
+Installation Complete
+
+↓
+
+Restart System
+```
+
+Remove the installation ISO if prompted to prevent booting back into the installer.
+
+---
+
+# First Boot
+
+On the first boot, you should see:
+
+```text
+GRUB
+
+↓
+
+Linux Kernel
+
+↓
+
+Login Screen
+
+↓
+
+Desktop or Terminal
+```
+
+The system is now ready for post-installation configuration.
+
+---
+
+# Business Impact
+
+Proper partitioning and filesystem selection improve:
+
+- Performance
+- Reliability
+- Backup strategies
+- Disaster recovery
+- Security
+- Storage scalability
+
+---
+
+# Enterprise Best Practices
+
+- Use GPT with UEFI on modern hardware.
+- Allocate separate partitions for critical data where appropriate (for example, `/home`, `/var`, or application data).
+- Use LVM for servers that require flexible storage management.
+- Choose a filesystem appropriate for the workload (`ext4` for general use, `XFS` for many enterprise servers).
+- Review installation settings carefully before formatting disks.
+- Remove installation media after the first successful boot.
+- Document partition layouts and storage configurations.
+
+---
+
+# Key Takeaways
+
+- Installing Linux in VirtualBox and VMware follows a similar workflow.
+- Automatic partitioning is suitable for beginners, while manual partitioning offers greater control.
+- GPT and UEFI are the preferred standards for modern systems.
+- LVM provides flexible, enterprise-grade storage management.
+- Selecting the right filesystem and partition layout is critical for performance, maintainability, and scalability.
+
+---
+
