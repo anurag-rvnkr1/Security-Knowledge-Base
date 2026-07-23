@@ -1929,3 +1929,821 @@ Protocol selection depends on scalability, interoperability, operational require
 - **BGP** connects autonomous systems and forms the foundation of Internet routing.
 - Route convergence, redistribution, and protocol selection are critical aspects of enterprise network design.
 
+# 07 - Routing
+
+# Part 4 — Enterprise WAN Architecture, Routing Security, High Availability, Practical Labs, Troubleshooting, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+Enterprise routing extends far beyond forwarding packets between two networks.
+
+Modern organizations must design routing infrastructures that provide:
+
+- High Availability (HA)
+- Redundancy
+- Scalability
+- Security
+- Cloud connectivity
+- Disaster recovery
+- Performance optimization
+
+This section focuses on real-world enterprise routing architectures, routing security, operational troubleshooting, and practical verification.
+
+---
+
+# Enterprise Routing Architecture
+
+Large organizations typically follow a hierarchical design.
+
+```
+                    Internet
+                        │
+                  Edge Routers
+                        │
+                   Firewalls
+                        │
+                  Core Routers
+             ┌─────────┼─────────┐
+             │         │         │
+       Distribution Distribution Distribution
+             │         │         │
+          Access    Access    Access
+```
+
+Benefits include:
+
+- Scalability
+- Easier troubleshooting
+- Better redundancy
+- Simplified policy enforcement
+- Reduced operational complexity
+
+---
+
+# Core Layer
+
+Responsibilities:
+
+- High-speed forwarding
+- Route aggregation
+- Backbone connectivity
+- Minimal packet manipulation
+- High availability
+
+Characteristics:
+
+- Fast
+- Redundant
+- Low latency
+- Highly resilient
+
+---
+
+# Distribution Layer
+
+Responsibilities:
+
+- Inter-VLAN routing
+- Policy enforcement
+- Route summarization
+- Access control
+- QoS implementation
+
+This layer connects the access layer to the network core.
+
+---
+
+# Access Layer
+
+Responsibilities:
+
+- Endpoint connectivity
+- VLAN membership
+- Port security
+- Authentication (802.1X)
+- Initial traffic forwarding
+
+Examples of connected devices:
+
+- User laptops
+- Printers
+- IP phones
+- Wireless access points
+- IoT devices
+
+---
+
+# Enterprise WAN Technologies
+
+Organizations connect geographically separated sites using Wide Area Networks (WANs).
+
+Common technologies include:
+
+- MPLS
+- IPsec VPN
+- SD-WAN
+- Leased lines
+- Metro Ethernet
+- Cloud interconnects
+
+---
+
+# MPLS (Multiprotocol Label Switching)
+
+MPLS forwards packets using **labels** instead of repeated IP route lookups.
+
+Simplified flow:
+
+```
+Packet
+
+↓
+
+Label Applied
+
+↓
+
+Label Switched
+
+↓
+
+Label Removed
+
+↓
+
+Destination
+```
+
+Advantages:
+
+- Traffic engineering
+- Predictable performance
+- VPN support
+- QoS integration
+- High scalability
+
+MPLS remains common in service provider and enterprise WAN environments.
+
+---
+
+# SD-WAN (Software-Defined WAN)
+
+SD-WAN centralizes WAN management and dynamically selects the best path across multiple transport links.
+
+```
+Branch Office
+
+↓
+
+Broadband
+LTE
+MPLS
+
+↓
+
+SD-WAN Controller
+
+↓
+
+Data Center / Cloud
+```
+
+Benefits:
+
+- Centralized management
+- Application-aware routing
+- Lower WAN costs
+- Improved resilience
+- Simplified branch deployment
+
+---
+
+# Hybrid Cloud Routing
+
+Modern enterprises frequently connect on-premises networks to cloud providers.
+
+Example:
+
+```
+Corporate Data Center
+        │
+   VPN / Direct Connect
+        │
+     Cloud VPC/VNet
+        │
+   Application Servers
+```
+
+Examples:
+
+- AWS Direct Connect
+- Azure ExpressRoute
+- Google Cloud Interconnect
+
+These services provide private, high-performance connectivity between enterprise networks and cloud environments.
+
+---
+
+# High Availability (HA)
+
+Routing infrastructures should continue operating during device or link failures.
+
+Common HA strategies:
+
+- Redundant routers
+- Dual ISPs
+- Dynamic routing
+- ECMP
+- First Hop Redundancy Protocols (FHRPs)
+
+---
+
+# First Hop Redundancy Protocols (FHRPs)
+
+Hosts typically have a single default gateway. FHRPs provide gateway redundancy.
+
+Common protocols:
+
+- HSRP (Cisco)
+- VRRP (Open Standard)
+- GLBP (Cisco)
+
+These protocols present a virtual gateway address to hosts.
+
+---
+
+## HSRP (Hot Standby Router Protocol)
+
+```
+Host
+  │
+Virtual Gateway
+  │
+├─────────────┐
+│             │
+Active     Standby
+Router      Router
+```
+
+If the active router fails, the standby router assumes the virtual gateway role.
+
+---
+
+## VRRP (Virtual Router Redundancy Protocol)
+
+VRRP is an open standard that provides gateway redundancy similar to HSRP.
+
+Advantages:
+
+- Vendor interoperability
+- Automatic failover
+- Minimal client configuration
+
+---
+
+## GLBP (Gateway Load Balancing Protocol)
+
+GLBP extends gateway redundancy by also providing load balancing.
+
+Benefits:
+
+- Gateway redundancy
+- Load sharing across multiple routers
+- Improved bandwidth utilization
+
+---
+
+# Routing Security
+
+Attackers may target routing infrastructure to intercept, redirect, or disrupt traffic.
+
+Common threats include:
+
+- Route hijacking
+- Route leaks
+- Spoofed routing updates
+- Routing loops
+- Control plane attacks
+
+Protecting routing infrastructure is a critical aspect of enterprise cybersecurity.
+
+---
+
+# BGP Hijacking
+
+A malicious or misconfigured Autonomous System advertises IP prefixes it does not legitimately own.
+
+Example:
+
+```
+Legitimate Route
+
+↓
+
+AS65001
+
+────────────
+
+Malicious Advertisement
+
+↓
+
+AS65099
+```
+
+Traffic may be redirected, intercepted, or dropped.
+
+Potential impacts:
+
+- Service outages
+- Data interception
+- Man-in-the-middle opportunities
+
+---
+
+# Route Leaks
+
+A route leak occurs when routing information is advertised beyond its intended scope.
+
+Consequences:
+
+- Suboptimal routing
+- Increased latency
+- Congestion
+- Traffic instability
+
+---
+
+# Route Authentication
+
+Many routing protocols support authentication to verify routing updates.
+
+Examples:
+
+- OSPF authentication
+- IS-IS authentication
+- BGP MD5 authentication (legacy deployments)
+- TCP Authentication Option (TCP-AO) on supported platforms
+
+Authentication helps prevent unauthorized devices from participating in routing exchanges.
+
+---
+
+# Reverse Path Forwarding (uRPF)
+
+**Unicast Reverse Path Forwarding (uRPF)** validates that incoming packets arrive on an interface consistent with the router's routing information.
+
+Purpose:
+
+- Mitigate IP spoofing
+- Reduce certain denial-of-service attack vectors
+
+uRPF is commonly deployed at network edges.
+
+---
+
+# RPKI (Resource Public Key Infrastructure)
+
+RPKI enables network operators to validate whether a BGP announcement is authorized by the holder of an IP prefix.
+
+Benefits:
+
+- Reduces accidental route leaks
+- Helps mitigate BGP hijacking
+- Improves routing trust
+
+Many service providers now support RPKI validation.
+
+---
+
+# Enterprise Routing Best Practices
+
+- Use hierarchical network design.
+- Deploy dynamic routing where appropriate.
+- Summarize routes when practical.
+- Document routing policies.
+- Authenticate routing adjacencies.
+- Monitor routing changes.
+- Design for redundancy and failover.
+- Validate configurations before deployment.
+
+---
+
+# Cisco IOS Verification
+
+Display routing table:
+
+```text
+show ip route
+```
+
+Display interface status:
+
+```text
+show ip interface brief
+```
+
+Display OSPF neighbors:
+
+```text
+show ip ospf neighbor
+```
+
+Display OSPF database:
+
+```text
+show ip ospf database
+```
+
+Display BGP summary:
+
+```text
+show ip bgp summary
+```
+
+Display ARP cache:
+
+```text
+show arp
+```
+
+These commands help verify routing operation and neighbor relationships.
+
+---
+
+# Linux Verification
+
+View routing table:
+
+```bash
+ip route
+```
+
+View neighbor table:
+
+```bash
+ip neigh
+```
+
+Trace packet path:
+
+```bash
+traceroute example.com
+```
+
+Display interface configuration:
+
+```bash
+ip addr
+```
+
+---
+
+# Windows Verification
+
+Display routing table:
+
+```cmd
+route print
+```
+
+Display IP configuration:
+
+```cmd
+ipconfig /all
+```
+
+Trace route:
+
+```cmd
+tracert example.com
+```
+
+Display ARP cache:
+
+```cmd
+arp -a
+```
+
+---
+
+# Wireshark Analysis
+
+Useful display filters:
+
+```text
+ospf
+```
+
+```text
+bgp
+```
+
+```text
+icmp
+```
+
+```text
+arp
+```
+
+Observe:
+
+- Hello packets
+- Routing updates
+- Neighbor establishment
+- ICMP Time Exceeded messages
+- ARP requests and replies
+
+Packet captures help validate routing behavior and diagnose protocol issues.
+
+---
+
+# Practical Lab 1 — Static Routing
+
+Topology:
+
+```
+PC1
+
+↓
+
+Router A
+
+↓
+
+Router B
+
+↓
+
+PC2
+```
+
+Tasks:
+
+1. Configure IP addressing.
+2. Add static routes on both routers.
+3. Verify end-to-end connectivity using `ping` and `traceroute`.
+
+---
+
+# Practical Lab 2 — OSPF
+
+Configure three routers.
+
+Tasks:
+
+- Enable OSPF.
+- Place all interfaces in Area 0.
+- Verify neighbor relationships.
+- Confirm routes appear in the routing table.
+- Test connectivity between all networks.
+
+---
+
+# Practical Lab 3 — Route Failure
+
+Scenario:
+
+The primary WAN link fails.
+
+Tasks:
+
+1. Observe routing changes.
+2. Verify convergence.
+3. Confirm traffic uses the backup path.
+4. Measure recovery time.
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A company connects two data centers and three regional offices.
+
+Requirements:
+
+- High availability
+- Fast failover
+- Cloud connectivity
+- Secure branch communication
+
+### Solution
+
+- OSPF within each site
+- BGP at Internet edges
+- SD-WAN for branch connectivity
+- Dual ISPs
+- Route summarization
+- HSRP or VRRP for gateway redundancy
+- IPsec VPN for encrypted traffic
+
+This design improves resilience, scalability, and operational flexibility.
+
+---
+
+# Troubleshooting Methodology
+
+When diagnosing routing problems:
+
+```
+Physical Link
+
+↓
+
+Interface Status
+
+↓
+
+IP Addressing
+
+↓
+
+Neighbor Relationships
+
+↓
+
+Routing Table
+
+↓
+
+Route Selection
+
+↓
+
+Packet Capture
+
+↓
+
+Application Testing
+```
+
+A structured workflow reduces troubleshooting time and avoids unnecessary configuration changes.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is routing?
+
+Routing is the process of forwarding packets between different IP networks based on destination IP addresses and routing information.
+
+---
+
+### What is the difference between static and dynamic routing?
+
+Static routing is manually configured, while dynamic routing protocols automatically discover, advertise, and maintain routes.
+
+---
+
+### What is a default route?
+
+A default route (`0.0.0.0/0`) is used when no more specific route exists for a destination.
+
+---
+
+## Intermediate
+
+### Explain Administrative Distance.
+
+Administrative Distance measures the trustworthiness of a routing source. When multiple routing sources advertise the same destination, the router prefers the route with the lowest Administrative Distance.
+
+---
+
+### What is OSPF?
+
+OSPF is a link-state Interior Gateway Protocol (IGP) that uses the Shortest Path First algorithm to calculate efficient routes within an autonomous system.
+
+---
+
+### What is BGP used for?
+
+BGP exchanges routing information between autonomous systems and forms the foundation of Internet routing.
+
+---
+
+## Advanced
+
+### Explain route summarization.
+
+Route summarization combines contiguous networks into a larger aggregate prefix, reducing routing table size and improving scalability.
+
+---
+
+### How would you secure enterprise routing?
+
+A strong answer should include:
+
+- Routing protocol authentication
+- Prefix filtering
+- Route summarization
+- RPKI validation
+- Monitoring and logging
+- Control plane protection
+- Infrastructure ACLs
+- Redundant routing design
+
+---
+
+### How would you troubleshoot a routing failure?
+
+An effective approach includes:
+
+1. Verify interface status.
+2. Confirm IP addressing.
+3. Check neighbor relationships.
+4. Review routing tables.
+5. Validate route selection.
+6. Test connectivity.
+7. Analyze packet captures if required.
+
+---
+
+# References
+
+## Standards
+
+- RFC 791 — Internet Protocol (IPv4)
+- RFC 2328 — OSPF Version 2
+- RFC 4271 — Border Gateway Protocol 4 (BGP-4)
+- RFC 5880 — Bidirectional Forwarding Detection (BFD)
+- RFC 7454 — BGP Operations and Security
+
+## Organizations
+
+- IETF
+- IANA
+- NIST
+- CIS
+
+---
+
+# Summary
+
+Routing enables communication between networks and forms the backbone of enterprise and Internet connectivity. Static routes offer simplicity, while dynamic routing protocols provide scalability and resilience. Enterprise routing architectures combine hierarchical design, redundancy, secure routing practices, and cloud connectivity to deliver reliable, high-performance networks.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ Routing fundamentals
+
+✔ Router architecture
+
+✔ Packet forwarding process
+
+✔ Routing tables (RIB and FIB)
+
+✔ Longest Prefix Match (LPM)
+
+✔ Administrative Distance (AD)
+
+✔ Routing metrics
+
+✔ Equal-Cost Multi-Path (ECMP)
+
+✔ Static and floating static routes
+
+✔ Dynamic routing protocols (RIP, OSPF, EIGRP, IS-IS, BGP)
+
+✔ Route convergence and redistribution
+
+✔ Enterprise WAN technologies (MPLS and SD-WAN)
+
+✔ High Availability (HSRP, VRRP, GLBP)
+
+✔ Routing security (RPKI, uRPF, route authentication)
+
+✔ Cisco, Linux, and Windows verification commands
+
+✔ Enterprise troubleshooting methodology
+
+✔ Practical routing labs
+
+✔ Interview preparation from beginner to advanced
+
+---
+
+# What's Next?
+
+The next chapter, **`08-Switching.md`**, will cover:
+
+- Layer 2 switching fundamentals
+- MAC address learning
+- CAM table architecture
+- VLANs and VLAN trunking (802.1Q)
+- Inter-VLAN communication
+- Spanning Tree Protocol (STP, RSTP, MSTP)
+- EtherChannel (LACP/PAgP)
+- Port Security
+- Storm Control
+- Layer 2 attacks (MAC flooding, ARP spoofing, VLAN hopping)
+- Enterprise switching design
+- Practical switch configuration and troubleshooting
