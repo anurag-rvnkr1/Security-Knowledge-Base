@@ -660,3 +660,813 @@ Organizations should:
 
 ---
 
+# Part 2 — Routing, Switching, VLAN, DHCP, DNS, Wireless, Firewall, VPN, Cloud, and Enterprise Connectivity Troubleshooting
+
+---
+
+# Introduction
+
+After identifying the affected OSI or TCP/IP layer, engineers must troubleshoot the individual network technologies responsible for connectivity.
+
+Enterprise connectivity depends on many interconnected services:
+
+- Routing
+- Switching
+- VLANs
+- DHCP
+- DNS
+- Firewalls
+- VPNs
+- Wireless Networks
+- Load Balancers
+- Cloud Networking
+- SD-WAN
+
+A failure in any of these services can affect thousands of users.
+
+---
+
+# Enterprise Connectivity Troubleshooting Workflow
+
+```
+User Reports Issue
+
+↓
+
+Identify Affected Service
+
+↓
+
+Verify Physical Connectivity
+
+↓
+
+Verify Layer 2
+
+↓
+
+Verify Layer 3
+
+↓
+
+Verify Security Controls
+
+↓
+
+Verify Application
+
+↓
+
+Validate Resolution
+```
+
+This layered workflow reduces unnecessary troubleshooting.
+
+---
+
+# Routing Troubleshooting
+
+Routing determines how packets travel between different networks.
+
+Common routing issues include:
+
+- Missing routes
+- Incorrect static routes
+- Dynamic routing failures
+- Routing loops
+- Route flapping
+- Asymmetric routing
+- Incorrect default gateway
+
+---
+
+# Routing Verification
+
+Verify:
+
+- Routing table
+- Default route
+- Dynamic routing neighbors
+- Administrative distance
+- Route metrics
+- Network advertisements
+
+```
+Client
+
+↓
+
+Gateway
+
+↓
+
+Router
+
+↓
+
+Core
+
+↓
+
+Destination
+```
+
+Each hop should have a valid route toward the destination.
+
+---
+
+# Common Routing Symptoms
+
+| Symptom | Possible Cause |
+|----------|----------------|
+| Destination unreachable | Missing route |
+| High latency | Suboptimal routing |
+| Intermittent connectivity | Route flapping |
+| One-way traffic | Asymmetric routing |
+| Complete outage | Gateway failure |
+
+---
+
+# Static Route Troubleshooting
+
+Verify:
+
+- Destination network
+- Next-hop address
+- Interface status
+- Route priority
+
+Example workflow:
+
+```
+Static Route
+
+↓
+
+Correct Network?
+
+↓
+
+Correct Next Hop?
+
+↓
+
+Reachable?
+
+↓
+
+Traffic Forwarded
+```
+
+---
+
+# Dynamic Routing Troubleshooting
+
+Review:
+
+- Neighbor relationships
+- Authentication
+- Network advertisements
+- Route convergence
+- Timer configuration
+
+Failures often occur because neighboring routers cannot establish adjacency.
+
+---
+
+# Switching Troubleshooting
+
+Switches forward Ethernet frames within a local network.
+
+Common switching problems include:
+
+- VLAN misconfiguration
+- MAC address issues
+- STP failures
+- Port security
+- Interface errors
+- Duplex mismatch
+- Speed mismatch
+
+---
+
+# Switch Verification
+
+Review:
+
+- Interface status
+- VLAN assignment
+- Trunk configuration
+- MAC address table
+- Port errors
+
+```
+Host
+
+↓
+
+Access Switch
+
+↓
+
+Distribution
+
+↓
+
+Core
+```
+
+---
+
+# MAC Address Table Verification
+
+Switches learn MAC addresses dynamically.
+
+Verify:
+
+- MAC learning
+- Incorrect entries
+- Aging timers
+- Duplicate MAC addresses
+
+Failure to learn MAC addresses often indicates Layer 2 issues.
+
+---
+
+# VLAN Troubleshooting
+
+Common VLAN issues:
+
+- Wrong VLAN assignment
+- Missing VLAN
+- Incorrect trunk
+- Native VLAN mismatch
+- VLAN pruning errors
+
+Symptoms:
+
+- Devices cannot communicate
+- Broadcast isolation failures
+- Intermittent connectivity
+
+---
+
+# VLAN Validation
+
+Verify:
+
+- VLAN exists
+- Access ports
+- Trunk ports
+- Allowed VLAN list
+- Native VLAN
+
+```
+Access Port
+
+↓
+
+Correct VLAN?
+
+↓
+
+Switch Trunk
+
+↓
+
+Destination VLAN
+```
+
+---
+
+# Spanning Tree Troubleshooting
+
+Review:
+
+- Root bridge
+- Blocked ports
+- Port roles
+- Port states
+- Topology changes
+
+Frequent topology changes often indicate loops or unstable links.
+
+---
+
+# DHCP Troubleshooting
+
+DHCP automatically assigns network configuration.
+
+Common problems include:
+
+- No IP address
+- Incorrect subnet
+- Gateway missing
+- DHCP exhaustion
+- Rogue DHCP server
+
+---
+
+# DHCP Process Review
+
+```
+Client
+
+↓
+
+Discover
+
+↓
+
+Offer
+
+↓
+
+Request
+
+↓
+
+Acknowledge
+```
+
+Failure at any stage prevents successful IP assignment.
+
+---
+
+# DHCP Investigation
+
+Verify:
+
+- DHCP server status
+- Scope availability
+- Lease duration
+- Relay agents
+- Network connectivity
+
+---
+
+# DNS Troubleshooting
+
+DNS translates names into IP addresses.
+
+Common DNS issues include:
+
+- Missing records
+- Incorrect records
+- Resolver failures
+- Slow responses
+- Zone replication failures
+- Cache corruption
+
+---
+
+# DNS Verification
+
+Check:
+
+- Resolver configuration
+- Forward lookup
+- Reverse lookup
+- Response time
+- DNS server availability
+
+```
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Resolver
+
+↓
+
+Authoritative Server
+
+↓
+
+IP Address
+```
+
+---
+
+# DNS Symptoms
+
+| Symptom | Possible Cause |
+|----------|----------------|
+| Website unavailable | DNS resolution failure |
+| Slow application | Slow DNS response |
+| Wrong destination | Incorrect DNS record |
+| Intermittent access | Replication issue |
+
+---
+
+# Wireless Troubleshooting
+
+Wireless issues often involve multiple factors.
+
+Common causes:
+
+- Weak signal
+- Interference
+- Channel congestion
+- Authentication failures
+- Roaming issues
+- Controller failures
+
+---
+
+# Wireless Investigation
+
+Review:
+
+- Signal strength
+- Channel utilization
+- Client count
+- Authentication logs
+- Access Point health
+
+```
+Client
+
+↓
+
+Access Point
+
+↓
+
+Wireless Controller
+
+↓
+
+Network
+```
+
+---
+
+# Firewall Troubleshooting
+
+Firewalls enforce security policies.
+
+Common issues:
+
+- Blocked traffic
+- Incorrect rules
+- NAT errors
+- Zone configuration
+- Logging disabled
+
+---
+
+# Firewall Validation
+
+Verify:
+
+- Rule order
+- Source IP
+- Destination IP
+- Ports
+- Protocol
+- NAT
+- Security zones
+
+```
+Traffic
+
+↓
+
+Firewall
+
+↓
+
+Allowed?
+
+↓
+
+Yes → Forward
+
+No → Drop
+```
+
+---
+
+# VPN Troubleshooting
+
+VPNs provide secure remote connectivity.
+
+Common problems include:
+
+- Authentication failures
+- Tunnel instability
+- Encryption mismatch
+- Certificate expiration
+- Routing issues
+- MTU problems
+
+---
+
+# VPN Verification
+
+Review:
+
+- Tunnel status
+- Phase 1 negotiation
+- Phase 2 negotiation
+- Authentication
+- Encryption
+- Routing
+
+---
+
+# Load Balancer Troubleshooting
+
+Common issues:
+
+- Unhealthy backend servers
+- Health check failures
+- SSL certificate problems
+- Session persistence issues
+- Incorrect routing rules
+
+---
+
+# Load Balancer Workflow
+
+```
+Client
+
+↓
+
+Load Balancer
+
+↓
+
+Health Check
+
+↓
+
+Healthy Server
+
+↓
+
+Response
+```
+
+---
+
+# Cloud Connectivity Troubleshooting
+
+Cloud environments introduce additional networking components.
+
+Verify:
+
+- Security Groups
+- Network ACLs
+- Route Tables
+- Internet Gateway
+- NAT Gateway
+- VPN Gateway
+- Cloud Firewall
+- Private Connectivity
+
+---
+
+# Cloud Network Validation
+
+```
+Virtual Machine
+
+↓
+
+Subnet
+
+↓
+
+Route Table
+
+↓
+
+Security Group
+
+↓
+
+Gateway
+
+↓
+
+Internet
+```
+
+Each component must permit the required traffic.
+
+---
+
+# Hybrid Network Troubleshooting
+
+Hybrid networks connect on-premises infrastructure to cloud services.
+
+Investigate:
+
+- VPN status
+- Direct Connect / ExpressRoute
+- BGP sessions
+- Route advertisements
+- DNS
+- Identity services
+
+---
+
+# SD-WAN Troubleshooting
+
+Common issues include:
+
+- Path selection errors
+- Overlay tunnel failures
+- Policy misconfiguration
+- Link degradation
+- Controller communication failures
+
+Monitor:
+
+- Path quality
+- Link latency
+- Packet loss
+- Jitter
+- Tunnel health
+
+---
+
+# Connectivity Testing Tools
+
+Common tools include:
+
+| Tool | Purpose |
+|------|----------|
+| Ping | Connectivity |
+| Traceroute | Path analysis |
+| Nslookup/Dig | DNS verification |
+| Tcpdump | Packet capture |
+| Wireshark | Packet analysis |
+| Netstat | Active connections |
+| SNMP | Device metrics |
+| NetFlow | Traffic analysis |
+
+---
+
+# Linux Verification Commands
+
+Interface Status
+
+```bash
+ip addr
+```
+
+---
+
+Routing Table
+
+```bash
+ip route
+```
+
+---
+
+DNS Lookup
+
+```bash
+dig example.com
+```
+
+---
+
+Connectivity Test
+
+```bash
+ping
+```
+
+---
+
+Network Path
+
+```bash
+traceroute
+```
+
+---
+
+Packet Capture
+
+```bash
+tcpdump -i eth0
+```
+
+---
+
+Socket Information
+
+```bash
+ss -tulnp
+```
+
+---
+
+# Windows Verification Commands
+
+IP Configuration
+
+```text
+ipconfig /all
+```
+
+---
+
+DNS Lookup
+
+```text
+nslookup
+```
+
+---
+
+Connectivity
+
+```text
+ping
+```
+
+---
+
+Trace Route
+
+```text
+tracert
+```
+
+---
+
+Routing Table
+
+```text
+route print
+```
+
+---
+
+ARP Cache
+
+```text
+arp -a
+```
+
+---
+
+Network Connections
+
+```text
+netstat -ano
+```
+
+---
+
+# Business Impact
+
+Efficient connectivity troubleshooting enables organizations to:
+
+- Reduce downtime
+- Restore user productivity
+- Prevent revenue loss
+- Maintain SLA compliance
+- Improve customer satisfaction
+- Strengthen infrastructure resilience
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Validate each network layer before moving to the next.
+- Compare current behavior against historical baselines.
+- Review recent configuration changes before implementing new ones.
+- Use centralized monitoring and logging platforms.
+- Test changes in staging environments when possible.
+- Maintain accurate network diagrams and documentation.
+- Verify cloud and on-premises configurations together in hybrid environments.
+- Record troubleshooting steps for future reference.
+
+---
+
+# Key Takeaways
+
+- Routing and switching form the foundation of enterprise connectivity.
+- DHCP and DNS issues frequently appear as broader network outages.
+- Firewalls and VPNs should always be validated during connectivity investigations.
+- Cloud networking introduces additional security and routing components.
+- Structured troubleshooting reduces Mean Time to Repair (MTTR).
+- Combining monitoring data with systematic verification improves troubleshooting accuracy.
+
+---
+
