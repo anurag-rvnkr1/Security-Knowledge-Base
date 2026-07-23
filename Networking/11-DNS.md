@@ -1589,3 +1589,719 @@ Incorrect DNS records can result in application outages, authentication failures
 - **Split-horizon DNS** allows organizations to provide different answers to internal and external clients.
 - Redundant authoritative servers, recursive resolvers, and well-managed zones are fundamental to enterprise DNS reliability.
 
+# 11 - Domain Name System (DNS)
+
+# Part 3 — DNSSEC, DoH, DoT, Anycast, Load Balancing, Active Directory DNS, Cloud DNS, Kubernetes, and Enterprise Architecture
+
+---
+
+# Overview
+
+Modern DNS has evolved far beyond simple name resolution.
+
+Today's enterprise DNS infrastructures support:
+
+- Security
+- High Availability
+- Cloud computing
+- Hybrid networks
+- Service discovery
+- Zero Trust architectures
+- Global load balancing
+- Kubernetes clusters
+
+Organizations must design DNS to be:
+
+- Secure
+- Highly available
+- Scalable
+- Fast
+- Redundant
+
+This section explores the technologies that make enterprise DNS resilient and secure.
+
+---
+
+# DNS Security Challenges
+
+Traditional DNS was designed without built-in security.
+
+Original DNS provides:
+
+✓ Name resolution
+
+But does **not** provide:
+
+- Authentication
+- Integrity protection
+- Confidentiality
+- Encryption
+
+Attackers may exploit these limitations through:
+
+- DNS spoofing
+- Cache poisoning
+- DNS hijacking
+- Man-in-the-Middle (MITM) attacks
+- Domain impersonation
+
+---
+
+# DNS Security Extensions (DNSSEC)
+
+## What is DNSSEC?
+
+DNSSEC (DNS Security Extensions) adds **authentication and integrity** to DNS responses.
+
+DNSSEC does **not** encrypt DNS traffic.
+
+Instead, it allows clients to verify that DNS records:
+
+- Are authentic
+- Have not been modified
+- Originate from the correct zone
+
+---
+
+# Why DNSSEC Exists
+
+Without DNSSEC:
+
+```
+Resolver
+
+↓
+
+Receives Fake Response
+
+↓
+
+Accepts Record
+```
+
+With DNSSEC:
+
+```
+Resolver
+
+↓
+
+Verify Digital Signature
+
+↓
+
+Valid?
+
+↓
+
+Yes
+
+↓
+
+Accept
+
+──────────────
+
+No
+
+↓
+
+Reject
+```
+
+---
+
+# DNSSEC Components
+
+DNSSEC introduces additional DNS record types.
+
+| Record | Purpose |
+|----------|----------|
+| DNSKEY | Public key |
+| RRSIG | Digital signature |
+| DS | Delegation signer |
+| NSEC | Authenticated denial of existence |
+| NSEC3 | Improved authenticated denial |
+
+These records establish a chain of trust throughout the DNS hierarchy.
+
+---
+
+# Chain of Trust
+
+DNSSEC validation follows a hierarchical trust model.
+
+```
+Root Zone
+
+↓
+
+Signed
+
+↓
+
+TLD
+
+↓
+
+Signed
+
+↓
+
+Domain
+
+↓
+
+Signed
+```
+
+Each level validates the next.
+
+If any link cannot be validated, the response is considered untrusted.
+
+---
+
+# Benefits of DNSSEC
+
+DNSSEC helps protect against:
+
+- Cache poisoning
+- Spoofed DNS responses
+- Domain impersonation
+- Certain MITM attacks
+
+It improves trust in DNS responses but does not hide DNS queries.
+
+---
+
+# Limitations of DNSSEC
+
+DNSSEC does **not** provide:
+
+- Confidentiality
+- Privacy
+- Traffic encryption
+
+Queries remain visible on the network unless additional protocols such as DoH or DoT are used.
+
+---
+
+# DNS over HTTPS (DoH)
+
+## What is DoH?
+
+DNS over HTTPS (DoH) encapsulates DNS queries within HTTPS traffic.
+
+```
+Application
+
+↓
+
+HTTPS
+
+↓
+
+DNS Resolver
+```
+
+Typical port:
+
+```
+TCP 443
+```
+
+---
+
+# Benefits of DoH
+
+- Encrypts DNS queries
+- Improves privacy
+- Protects against passive monitoring
+- Bypasses some restrictive networks (depending on policy)
+
+---
+
+# Considerations for Enterprises
+
+While DoH enhances privacy, unmanaged DoH can bypass enterprise DNS controls such as:
+
+- Content filtering
+- Logging
+- Security monitoring
+- DNS-based policy enforcement
+
+Many organizations manage DoH usage through endpoint configuration and security policies.
+
+---
+
+# DNS over TLS (DoT)
+
+DNS over TLS encrypts DNS traffic using TLS.
+
+```
+Client
+
+↓
+
+TLS
+
+↓
+
+Recursive Resolver
+```
+
+Default port:
+
+```
+TCP 853
+```
+
+---
+
+# DoH vs DoT
+
+| Feature | DoH | DoT |
+|----------|-----|-----|
+| Transport | HTTPS | TLS |
+| Default Port | TCP 443 | TCP 853 |
+| Uses Web Infrastructure | Yes | No |
+| Encrypted | Yes | Yes |
+
+Both protocols improve confidentiality compared to traditional DNS.
+
+---
+
+# Traditional DNS vs DoH vs DoT
+
+| Feature | Traditional DNS | DoH | DoT |
+|----------|----------------|-----|-----|
+| Encryption | No | Yes | Yes |
+| Integrity | No | TLS | TLS |
+| Privacy | Low | High | High |
+| Default Port | UDP/TCP 53 | TCP 443 | TCP 853 |
+
+---
+
+# Anycast DNS
+
+## What is Anycast?
+
+Anycast allows multiple geographically distributed DNS servers to advertise the **same IP address**.
+
+Example:
+
+```
+User
+
+↓
+
+Nearest DNS Server
+
+↓
+
+Same IP Address
+```
+
+Routing protocols direct the client to the closest or most appropriate server.
+
+---
+
+# Benefits of Anycast
+
+- Lower latency
+- High Availability
+- Geographic redundancy
+- Improved resilience
+- DDoS resistance
+
+Many public DNS services and root server instances use Anycast.
+
+---
+
+# DNS Load Balancing
+
+DNS can distribute client requests across multiple servers.
+
+Example:
+
+```
+www.example.com
+
+↓
+
+192.168.10.10
+
+192.168.10.20
+
+192.168.10.30
+```
+
+Clients receive one of several available addresses based on the configured policy.
+
+---
+
+# Round-Robin DNS
+
+One simple load-balancing method is **Round-Robin DNS**.
+
+Example:
+
+```
+Query 1
+
+↓
+
+Server A
+
+──────────────
+
+Query 2
+
+↓
+
+Server B
+
+──────────────
+
+Query 3
+
+↓
+
+Server C
+```
+
+Advantages:
+
+- Simple
+- Easy to configure
+- No additional hardware required
+
+Limitations:
+
+- No health checking
+- Uneven client distribution
+- Does not consider server performance
+
+---
+
+# GeoDNS
+
+GeoDNS returns responses based on the client's geographic location.
+
+Example:
+
+```
+India
+
+↓
+
+Mumbai Server
+
+──────────────
+
+Germany
+
+↓
+
+Frankfurt Server
+
+──────────────
+
+USA
+
+↓
+
+Virginia Server
+```
+
+Benefits:
+
+- Lower latency
+- Regional optimization
+- Improved user experience
+- Compliance with geographic requirements
+
+---
+
+# Active Directory Integrated DNS
+
+Microsoft Active Directory relies heavily on DNS.
+
+Examples:
+
+- Domain Controllers
+- LDAP
+- Kerberos
+- Global Catalog
+- Group Policy
+
+Many Active Directory services use SRV records for service discovery.
+
+---
+
+# Active Directory DNS Workflow
+
+```
+Client
+
+↓
+
+DNS Query
+
+↓
+
+SRV Record
+
+↓
+
+Domain Controller
+
+↓
+
+Authentication
+```
+
+Without functioning DNS, Active Directory authentication and many related services may fail.
+
+---
+
+# Dynamic DNS (DDNS)
+
+Dynamic DNS allows hosts to update their own DNS records automatically.
+
+Example:
+
+```
+Laptop
+
+↓
+
+Receives DHCP Lease
+
+↓
+
+Registers DNS Record
+
+↓
+
+Users Resolve Hostname
+```
+
+Benefits:
+
+- Reduced administrative effort
+- Accurate DNS records
+- Automatic updates for changing addresses
+
+In enterprise Windows environments, DHCP and Active Directory often integrate with Dynamic DNS.
+
+---
+
+# Split-Brain DNS Review
+
+Large organizations commonly maintain:
+
+```
+Internal DNS
+
+↓
+
+Private IP Addresses
+
+──────────────
+
+Public DNS
+
+↓
+
+Public IP Addresses
+```
+
+Internal users receive private resource addresses, while external users receive public-facing addresses for the same hostname.
+
+---
+
+# Cloud DNS
+
+Public cloud providers offer managed DNS services.
+
+Benefits include:
+
+- High Availability
+- Global infrastructure
+- API integration
+- Automation
+- Scalability
+
+---
+
+# AWS Route 53
+
+AWS provides **Amazon Route 53** for:
+
+- Public hosted zones
+- Private hosted zones
+- Health checks
+- Routing policies
+- Domain registration
+
+Common routing policies include:
+
+- Simple
+- Weighted
+- Latency-based
+- Geolocation
+- Failover
+- Multi-value answer
+
+---
+
+# Azure DNS
+
+Azure DNS provides:
+
+- Managed authoritative DNS
+- Private DNS zones
+- Integration with Azure Virtual Networks
+- High Availability
+- Automation through Azure Resource Manager (ARM)
+
+---
+
+# Google Cloud DNS
+
+Google Cloud DNS offers:
+
+- Managed authoritative DNS
+- Private zones
+- Public zones
+- DNSSEC support
+- Global infrastructure
+- API-driven management
+
+---
+
+# Kubernetes DNS
+
+Containers frequently communicate using service names instead of IP addresses.
+
+Example:
+
+```
+Frontend Pod
+
+↓
+
+backend.default.svc.cluster.local
+
+↓
+
+Backend Service
+```
+
+Kubernetes automatically provides internal DNS-based service discovery.
+
+---
+
+# CoreDNS
+
+Most Kubernetes clusters use **CoreDNS**.
+
+Responsibilities:
+
+- Pod name resolution
+- Service discovery
+- Internal cluster DNS
+- Plugin-based architecture
+
+---
+
+# Enterprise Hybrid DNS
+
+Modern organizations often combine:
+
+```
+On-Premises DNS
+
+↓
+
+VPN
+
+↓
+
+Cloud DNS
+
+↓
+
+Multi-Cloud
+
+↓
+
+Remote Offices
+```
+
+Challenges include:
+
+- Synchronization
+- Security
+- Split-horizon design
+- Conditional forwarding
+- Hybrid identity
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Enable DNSSEC where supported.
+- Use redundant DNS servers.
+- Implement Anycast for large deployments.
+- Secure recursive resolvers.
+- Monitor DNS logs.
+- Restrict zone transfers.
+- Separate internal and external DNS.
+- Document zones and records.
+- Audit stale DNS entries.
+- Protect DNS management interfaces.
+
+---
+
+# Common Enterprise Challenges
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Slow DNS responses | Resolver latency |
+| Incorrect records | Zone synchronization issue |
+| Authentication failures | Missing SRV records |
+| Stale records | Dynamic DNS update failure |
+| Public exposure of internal hosts | Split-horizon misconfiguration |
+
+---
+
+# Business Impact
+
+A secure and resilient DNS infrastructure enables:
+
+- Reliable application access
+- Secure identity services
+- High Availability
+- Cloud integration
+- Efficient service discovery
+- Global scalability
+
+Because nearly every enterprise application depends on DNS, outages or compromises can have organization-wide consequences.
+
+---
+
+# Key Takeaways
+
+- **DNSSEC** provides authentication and integrity but does not encrypt DNS traffic.
+- **DoH** and **DoT** encrypt DNS queries, improving privacy and confidentiality.
+- **Anycast DNS** improves performance and resilience through geographically distributed servers sharing the same IP address.
+- **Round-Robin DNS** and **GeoDNS** provide simple load distribution and geographic optimization.
+- **Active Directory** relies extensively on DNS, particularly SRV records, for authentication and service discovery.
+- Managed cloud DNS services such as **Amazon Route 53**, **Azure DNS**, and **Google Cloud DNS** provide scalable, highly available DNS infrastructure.
+- Kubernetes uses **CoreDNS** for internal service discovery.
+- Enterprise DNS should be designed with redundancy, security, monitoring, and clear separation of internal and external namespaces.
+
