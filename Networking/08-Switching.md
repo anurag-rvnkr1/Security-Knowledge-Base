@@ -1881,3 +1881,879 @@ Recommended practice:
 - **BPDUs** allow switches to exchange topology information.
 - **RSTP** provides much faster convergence than classic STP.
 - **MSTP** improves scalability by allowing multiple VLANs to share spanning tree instances.
+
+# 08 - Switching
+
+# Part 4 — EtherChannel, Layer 2 Security, Enterprise Hardening, Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+Enterprise switches are expected to provide much more than basic Layer 2 connectivity.
+
+Modern switching infrastructures must deliver:
+
+- High Availability (HA)
+- Redundancy
+- Scalability
+- High throughput
+- Secure access
+- Protection against Layer 2 attacks
+- Fast convergence
+- Simplified management
+
+This section focuses on enterprise switching technologies and security mechanisms commonly deployed in production environments.
+
+---
+
+# EtherChannel
+
+## What is EtherChannel?
+
+**EtherChannel** is a technology that combines multiple physical Ethernet links into a single logical connection.
+
+Instead of forwarding traffic over one cable, multiple links operate as one logical interface.
+
+```
+      Switch A
+   ┌─────────────┐
+   │             │
+===│=============│===
+===│=============│===
+===│=============│===
+   │             │
+   └─────────────┘
+      Switch B
+
+Multiple Physical Links
+
+↓
+
+One Logical Link
+```
+
+---
+
+## Why EtherChannel?
+
+Benefits include:
+
+- Increased bandwidth
+- Link redundancy
+- Load balancing
+- Faster failover
+- Simplified management
+
+Instead of configuring four individual interfaces, administrators manage one logical interface.
+
+---
+
+# EtherChannel Protocols
+
+There are two primary negotiation protocols.
+
+| Protocol | Standard | Vendor |
+|----------|----------|--------|
+| LACP | IEEE 802.3ad / IEEE 802.1AX | Open Standard |
+| PAgP | Cisco Proprietary | Cisco |
+
+Modern enterprise environments typically prefer **LACP** because it supports multivendor interoperability.
+
+---
+
+# LACP Modes
+
+| Mode | Description |
+|------|-------------|
+| Active | Actively negotiates an EtherChannel |
+| Passive | Waits for negotiation requests |
+
+A successful LACP EtherChannel requires at least one side to operate in **Active** mode.
+
+---
+
+# EtherChannel Requirements
+
+Member interfaces should have matching characteristics:
+
+- Speed
+- Duplex
+- VLAN configuration
+- Trunk or access mode
+- Allowed VLANs (for trunks)
+- Native VLAN (for trunks)
+
+Configuration mismatches can prevent the EtherChannel from forming.
+
+---
+
+# Load Balancing
+
+EtherChannel distributes traffic across member links using a hashing algorithm.
+
+Common hashing inputs include:
+
+- Source MAC
+- Destination MAC
+- Source IP
+- Destination IP
+- Layer 4 ports (platform dependent)
+
+Traffic from an individual flow generally remains on a single member link to preserve packet ordering.
+
+---
+
+# Port Security
+
+## What is Port Security?
+
+Port Security restricts which devices may connect to a switch port by controlling permitted MAC addresses.
+
+Example:
+
+```
+Access Port
+
+↓
+
+Allowed MAC
+
+↓
+
+00:11:22:33:44:55
+```
+
+Unknown devices can be restricted or blocked based on the configured policy.
+
+---
+
+# Port Security Features
+
+Administrators can:
+
+- Limit the number of MAC addresses.
+- Statically configure allowed MAC addresses.
+- Dynamically learn secure MAC addresses.
+- Use sticky MAC learning.
+
+---
+
+# Sticky MAC
+
+Sticky MAC automatically learns MAC addresses and retains them as secure entries.
+
+Benefits:
+
+- Easier deployment
+- Reduced manual configuration
+- Better endpoint control
+
+---
+
+# Port Security Violation Modes
+
+| Mode | Behavior |
+|------|----------|
+| Protect | Drops frames from unauthorized MAC addresses |
+| Restrict | Drops frames and records/logs the violation |
+| Shutdown | Places the port into an error-disabled state |
+
+The appropriate mode depends on operational and security requirements.
+
+---
+
+# BPDU Guard
+
+**BPDU Guard** protects edge (access) ports.
+
+If a switch unexpectedly sends a BPDU to an access port:
+
+```
+Unexpected BPDU
+
+↓
+
+BPDU Guard
+
+↓
+
+Port Disabled
+```
+
+Benefits:
+
+- Prevents unauthorized switches from influencing STP.
+- Helps maintain a stable spanning tree topology.
+
+---
+
+# Root Guard
+
+Root Guard prevents an unauthorized switch from becoming the Root Bridge.
+
+Example:
+
+```
+Access Switch
+
+↓
+
+Attempts Root Election
+
+↓
+
+Root Guard
+
+↓
+
+Blocked
+```
+
+Deploy Root Guard on ports where the current Root Bridge should not change.
+
+---
+
+# Loop Guard
+
+Loop Guard helps prevent certain Layer 2 loops caused by lost BPDUs.
+
+If expected BPDUs stop arriving unexpectedly, Loop Guard places the port into a protected state rather than allowing an unintended forwarding loop.
+
+---
+
+# UDLD (Unidirectional Link Detection)
+
+A fiber or copper link may fail in only one direction.
+
+```
+Switch A
+
+↓
+
+Transmit
+
+↓
+
+×
+
+↓
+
+Receive
+```
+
+UDLD detects unidirectional link failures and helps prevent forwarding inconsistencies.
+
+---
+
+# Storm Control
+
+Storm Control limits excessive:
+
+- Broadcast traffic
+- Multicast traffic
+- Unknown unicast traffic
+
+Benefits:
+
+- Protects bandwidth
+- Reduces CPU utilization
+- Mitigates broadcast storms
+- Improves overall network stability
+
+---
+
+# Layer 2 Security Threats
+
+Common Layer 2 attacks include:
+
+- MAC flooding
+- ARP spoofing
+- VLAN hopping
+- DHCP starvation
+- Rogue DHCP servers
+- STP manipulation
+- CAM table exhaustion
+
+These attacks target switching infrastructure rather than higher-layer services.
+
+---
+
+# MAC Flooding Attack
+
+## Attack Overview
+
+An attacker transmits a large number of frames with spoofed source MAC addresses.
+
+```
+Fake MAC
+
+↓
+
+Fake MAC
+
+↓
+
+Fake MAC
+
+↓
+
+CAM Table Full
+```
+
+The switch's CAM table can become saturated.
+
+---
+
+## Impact
+
+When the CAM table cannot learn new entries, the switch may begin flooding unknown unicast traffic.
+
+Potential consequences:
+
+- Increased visibility of traffic to unauthorized devices.
+- Higher bandwidth consumption.
+- Reduced network performance.
+
+---
+
+## Mitigation
+
+- Port Security
+- MAC address limits
+- Network monitoring
+- Access control policies
+- Physical security
+
+---
+
+# ARP Spoofing (ARP Poisoning)
+
+An attacker sends forged ARP messages to associate their MAC address with another device's IP address.
+
+Example:
+
+```
+Victim
+
+↓
+
+Incorrect ARP Entry
+
+↓
+
+Attacker
+```
+
+Potential consequences:
+
+- Traffic interception
+- Session hijacking
+- Man-in-the-middle attacks
+- Denial of service
+
+---
+
+## Mitigation
+
+- Dynamic ARP Inspection (DAI)
+- DHCP Snooping
+- Static ARP entries (where appropriate)
+- Network segmentation
+- Encryption for sensitive communications
+
+---
+
+# VLAN Hopping
+
+VLAN hopping attempts to access traffic from another VLAN.
+
+Common techniques include:
+
+### 1. Switch Spoofing
+
+The attacker attempts to negotiate a trunk connection.
+
+### 2. Double Tagging
+
+The attacker crafts specially tagged frames in an attempt to cross VLAN boundaries under specific misconfigurations.
+
+---
+
+## Mitigation
+
+- Disable Dynamic Trunking Protocol (DTP) where unnecessary.
+- Manually configure access ports.
+- Change the native VLAN from the default.
+- Restrict VLANs permitted on trunks.
+- Disable unused ports.
+
+---
+
+# DHCP Starvation
+
+An attacker sends numerous DHCP requests using spoofed MAC addresses.
+
+Result:
+
+```
+DHCP Pool
+
+↓
+
+Exhausted
+
+↓
+
+Legitimate Users
+
+↓
+
+No IP Address
+```
+
+---
+
+## Mitigation
+
+- DHCP Snooping
+- Rate limiting
+- Port Security
+- Network Access Control (NAC)
+
+---
+
+# Rogue DHCP Server
+
+An unauthorized DHCP server may assign:
+
+- Incorrect gateways
+- Incorrect DNS servers
+- Malicious network settings
+
+This can redirect or disrupt user traffic.
+
+---
+
+## Mitigation
+
+- DHCP Snooping
+- Trusted DHCP interfaces
+- Switch port restrictions
+- Continuous monitoring
+
+---
+
+# Enterprise Switching Best Practices
+
+- Use dedicated management VLANs.
+- Disable unused ports.
+- Place unused ports into an unused VLAN.
+- Enable Port Security on access ports.
+- Enable BPDU Guard on edge ports.
+- Configure Root Guard where appropriate.
+- Use Storm Control on access interfaces.
+- Authenticate management access.
+- Document VLAN assignments and trunk links.
+- Monitor switch logs and topology changes.
+
+---
+
+# Cisco IOS Verification Commands
+
+Display MAC address table:
+
+```text
+show mac address-table
+```
+
+Display VLANs:
+
+```text
+show vlan brief
+```
+
+Display trunk interfaces:
+
+```text
+show interfaces trunk
+```
+
+Display spanning tree status:
+
+```text
+show spanning-tree
+```
+
+Display EtherChannel summary:
+
+```text
+show etherchannel summary
+```
+
+Display Port Security:
+
+```text
+show port-security
+```
+
+These commands are commonly used to verify Layer 2 operation and security features.
+
+---
+
+# Linux Verification
+
+View neighbor cache:
+
+```bash
+ip neigh
+```
+
+Display interfaces:
+
+```bash
+ip link
+```
+
+Capture Ethernet traffic:
+
+```bash
+tcpdump -i eth0
+```
+
+---
+
+# Windows Verification
+
+Display ARP cache:
+
+```cmd
+arp -a
+```
+
+Display interface information:
+
+```cmd
+ipconfig /all
+```
+
+Display MAC address:
+
+```cmd
+getmac
+```
+
+---
+
+# Wireshark Analysis
+
+Useful display filters:
+
+```text
+arp
+```
+
+```text
+stp
+```
+
+```text
+lldp
+```
+
+```text
+eth
+```
+
+Observe:
+
+- ARP Requests and Replies
+- BPDUs
+- VLAN tags (802.1Q)
+- Ethernet source and destination MAC addresses
+
+Wireshark is invaluable for validating switching behavior and diagnosing Layer 2 issues.
+
+---
+
+# Practical Lab 1 — VLANs and Trunking
+
+Objectives:
+
+1. Create VLANs 10, 20, and 30.
+2. Configure access ports.
+3. Configure an 802.1Q trunk.
+4. Verify communication within each VLAN.
+5. Confirm that devices in different VLANs require Layer 3 routing.
+
+---
+
+# Practical Lab 2 — STP Verification
+
+Tasks:
+
+1. Build a triangle topology with three switches.
+2. Observe Root Bridge election.
+3. Identify blocked ports.
+4. Disconnect an active link.
+5. Observe convergence and path recalculation.
+
+---
+
+# Practical Lab 3 — EtherChannel
+
+Tasks:
+
+1. Connect two switches using four links.
+2. Configure an LACP EtherChannel.
+3. Verify bundle formation.
+4. Generate traffic and observe load distribution.
+
+---
+
+# Practical Lab 4 — Port Security
+
+Tasks:
+
+1. Enable Port Security on an access port.
+2. Limit the number of secure MAC addresses.
+3. Test a violation using a different device.
+4. Observe the configured violation action.
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A financial organization operates:
+
+- Two data centers
+- One headquarters
+- Twenty branch offices
+
+Requirements:
+
+- High availability
+- Department isolation
+- Voice support
+- Guest Wi-Fi
+- Secure Layer 2 infrastructure
+
+### Solution
+
+- VLAN segmentation for departments
+- Layer 3 switching for inter-VLAN routing
+- RSTP for loop prevention
+- LACP EtherChannels for uplinks
+- Port Security on user-facing ports
+- BPDU Guard and Root Guard on access interfaces
+- DHCP Snooping and Dynamic ARP Inspection
+- Dedicated management and voice VLANs
+
+This architecture provides a scalable and resilient campus network while reducing Layer 2 attack exposure.
+
+---
+
+# Troubleshooting Methodology
+
+When diagnosing switching issues:
+
+```
+Physical Connection
+
+↓
+
+Interface Status
+
+↓
+
+Speed and Duplex
+
+↓
+
+VLAN Assignment
+
+↓
+
+Trunk Status
+
+↓
+
+MAC Address Table
+
+↓
+
+STP State
+
+↓
+
+Port Security
+
+↓
+
+Packet Capture
+
+↓
+
+Application Testing
+```
+
+A systematic approach reduces troubleshooting time and helps isolate the root cause.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is a switch?
+
+A switch is a Layer 2 device that forwards Ethernet frames using MAC addresses.
+
+---
+
+### What is a VLAN?
+
+A VLAN is a logical Layer 2 network that creates a separate broadcast domain within a switch.
+
+---
+
+### What is a trunk port?
+
+A trunk port carries traffic for multiple VLANs using IEEE 802.1Q tagging.
+
+---
+
+## Intermediate
+
+### Explain STP.
+
+STP prevents Layer 2 loops by electing a Root Bridge and placing redundant links into a non-forwarding state.
+
+---
+
+### What is EtherChannel?
+
+EtherChannel combines multiple physical links into a single logical interface to improve bandwidth and redundancy.
+
+---
+
+### What is Port Security?
+
+Port Security restricts access to a switch port by limiting or validating connected MAC addresses.
+
+---
+
+## Advanced
+
+### How would you secure an enterprise switching environment?
+
+A strong answer includes:
+
+- VLAN segmentation
+- Port Security
+- BPDU Guard
+- Root Guard
+- Storm Control
+- DHCP Snooping
+- Dynamic ARP Inspection
+- Secure management access
+- Monitoring and logging
+
+---
+
+### How would you troubleshoot an STP issue?
+
+An effective process includes:
+
+1. Verify the Root Bridge.
+2. Check port roles and states.
+3. Review BPDU exchanges.
+4. Confirm trunk configuration.
+5. Identify blocked links.
+6. Validate convergence after topology changes.
+
+---
+
+# References
+
+## IEEE Standards
+
+- IEEE 802.1D — Spanning Tree Protocol
+- IEEE 802.1Q — VLAN Tagging
+- IEEE 802.1w — Rapid Spanning Tree Protocol
+- IEEE 802.1s — Multiple Spanning Tree Protocol
+- IEEE 802.1AX — Link Aggregation (LACP)
+
+## Organizations
+
+- IEEE
+- IETF
+- NIST
+- CIS
+
+---
+
+# Summary
+
+Switching forms the foundation of enterprise LANs by enabling efficient Layer 2 communication. Features such as VLANs, STP, EtherChannel, and Layer 2 security controls allow organizations to build scalable, resilient, and secure campus networks. Proper design, hardening, and operational monitoring are essential to maintain high availability and defend against common Layer 2 threats.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ Layer 2 switching fundamentals
+
+✔ MAC address learning and CAM tables
+
+✔ Ethernet frame forwarding
+
+✔ VLANs and broadcast domains
+
+✔ IEEE 802.1Q trunking
+
+✔ Inter-VLAN routing concepts
+
+✔ Voice and management VLANs
+
+✔ Spanning Tree Protocol (STP), RSTP, and MSTP
+
+✔ Root Bridge election and BPDU operation
+
+✔ EtherChannel with LACP
+
+✔ Port Security and sticky MAC
+
+✔ BPDU Guard, Root Guard, Loop Guard, UDLD, and Storm Control
+
+✔ Common Layer 2 attacks and mitigations
+
+✔ Cisco verification commands
+
+✔ Wireshark Layer 2 analysis
+
+✔ Enterprise troubleshooting methodology
+
+✔ Practical switching labs
+
+✔ Interview preparation from beginner to advanced
+
+---
+
+# What's Next?
+
+The next chapter, **`09-ARP.md`**, will explore:
+
+- Address Resolution Protocol (ARP)
+- Gratuitous ARP
+- Proxy ARP
+- ARP cache behavior
+- ARP request and reply workflow
+- ARP poisoning and spoofing
+- Dynamic ARP Inspection (DAI)
+- Neighbor Discovery Protocol (IPv6 comparison)
+- Packet capture analysis
+- Enterprise troubleshooting and security
