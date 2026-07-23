@@ -650,3 +650,736 @@ Effective troubleshooting helps organizations:
 
 ---
 
+# 24 - Linux Troubleshooting
+
+# Part 2 — Service Troubleshooting, Process Troubleshooting, Performance Analysis, Network Troubleshooting, and DNS Troubleshooting
+
+---
+
+# Introduction
+
+Most production Linux incidents involve one or more of the following:
+
+- Failed services
+- High CPU utilization
+- Memory exhaustion
+- Disk space shortages
+- Network failures
+- DNS issues
+- Resource contention
+- Configuration errors
+
+A systematic troubleshooting approach minimizes downtime and helps identify the true root cause.
+
+---
+
+# Service Troubleshooting
+
+Linux services provide essential functionality such as:
+
+- SSH
+- Web servers
+- Databases
+- DNS
+- Email
+- Monitoring agents
+
+When a service fails, investigate before restarting it.
+
+---
+
+# Service Troubleshooting Workflow
+
+```text
+Service Failure
+
+↓
+
+Check Status
+
+↓
+
+Review Logs
+
+↓
+
+Identify Cause
+
+↓
+
+Apply Fix
+
+↓
+
+Restart Service
+
+↓
+
+Validate
+```
+
+---
+
+# Check Service Status
+
+Display service status:
+
+```bash
+systemctl status service-name
+```
+
+Example:
+
+```bash
+systemctl status ssh
+```
+
+Look for:
+
+- Active state
+- Exit codes
+- Error messages
+- Recent log entries
+
+---
+
+# Review Failed Services
+
+```bash
+systemctl --failed
+```
+
+This lists all units currently in a failed state.
+
+---
+
+# Restart a Service
+
+```bash
+sudo systemctl restart service-name
+```
+
+Restarting may restore service temporarily, but always investigate the underlying cause.
+
+---
+
+# Reload Configuration
+
+Some services support configuration reloads without a full restart:
+
+```bash
+sudo systemctl reload service-name
+```
+
+Use reload when supported to minimize service disruption.
+
+---
+
+# View Service Logs
+
+```bash
+journalctl -u service-name
+```
+
+Recent entries:
+
+```bash
+journalctl -u service-name -n 50
+```
+
+Logs often provide the most direct explanation for service failures.
+
+---
+
+# Validate Configuration
+
+Many services provide syntax validation commands.
+
+Example (SSH):
+
+```bash
+sudo sshd -t
+```
+
+Always validate configuration files before restarting services after changes.
+
+---
+
+# Process Troubleshooting
+
+Processes consume:
+
+- CPU
+- Memory
+- Disk I/O
+- Network resources
+
+Unexpected process behavior can affect overall system performance.
+
+---
+
+# View Running Processes
+
+```bash
+ps aux
+```
+
+Display process tree:
+
+```bash
+ps -ef --forest
+```
+
+---
+
+# Interactive Process Monitoring
+
+```bash
+top
+```
+
+or
+
+```bash
+htop
+```
+
+(if installed)
+
+Monitor:
+
+- CPU usage
+- Memory usage
+- Process state
+- Load averages
+
+---
+
+# Process States
+
+| State | Meaning |
+|--------|---------|
+| R | Running |
+| S | Sleeping |
+| D | Uninterruptible sleep (often I/O) |
+| T | Stopped |
+| Z | Zombie |
+
+Persistent zombie or uninterruptible processes warrant investigation.
+
+---
+
+# Identify Resource-Intensive Processes
+
+Sort by CPU:
+
+```bash
+ps aux --sort=-%cpu | head
+```
+
+Sort by memory:
+
+```bash
+ps aux --sort=-%mem | head
+```
+
+---
+
+# Terminate a Process
+
+Graceful termination:
+
+```bash
+kill PID
+```
+
+Force termination:
+
+```bash
+kill -9 PID
+```
+
+Prefer graceful termination whenever possible to avoid data loss or corruption.
+
+---
+
+# Performance Troubleshooting
+
+Performance issues may be caused by:
+
+- CPU saturation
+- Memory pressure
+- Disk bottlenecks
+- Network latency
+- Misconfigured applications
+- Resource leaks
+
+---
+
+# Performance Analysis Workflow
+
+```text
+Identify Symptoms
+
+↓
+
+Measure Resources
+
+↓
+
+Locate Bottleneck
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+
+↓
+
+Monitor
+```
+
+---
+
+# CPU Analysis
+
+Current CPU load:
+
+```bash
+uptime
+```
+
+Interactive view:
+
+```bash
+top
+```
+
+Review:
+
+- Load average
+- CPU utilization
+- High-CPU processes
+
+---
+
+# Memory Analysis
+
+Display memory usage:
+
+```bash
+free -h
+```
+
+Review:
+
+- Total memory
+- Used memory
+- Available memory
+- Swap utilization
+
+High swap usage may indicate memory pressure.
+
+---
+
+# Storage Analysis
+
+Filesystem utilization:
+
+```bash
+df -h
+```
+
+Directory usage:
+
+```bash
+du -sh *
+```
+
+Look for:
+
+- Nearly full filesystems
+- Rapid storage growth
+- Large log files
+
+---
+
+# Open Files
+
+Display open files:
+
+```bash
+lsof
+```
+
+Useful for:
+
+- Deleted-but-open files
+- Port ownership
+- File lock investigations
+
+---
+
+# Disk I/O Considerations
+
+Symptoms of disk-related issues:
+
+- Slow application response
+- High I/O wait
+- Delayed service startup
+- Slow database operations
+
+Correlate storage observations with application and system logs.
+
+---
+
+# Network Troubleshooting
+
+Common network issues include:
+
+- Connectivity failures
+- Routing problems
+- Firewall restrictions
+- Interface failures
+- MTU mismatches
+- DNS failures
+
+---
+
+# Network Troubleshooting Workflow
+
+```text
+Verify Interface
+
+↓
+
+Check Address
+
+↓
+
+Check Route
+
+↓
+
+Test Connectivity
+
+↓
+
+Review Firewall
+
+↓
+
+Validate
+```
+
+---
+
+# Review Network Interfaces
+
+```bash
+ip addr
+```
+
+Verify:
+
+- Interface state
+- IP address
+- Expected configuration
+
+---
+
+# Review Routing Table
+
+```bash
+ip route
+```
+
+Look for:
+
+- Default route
+- Incorrect routes
+- Missing gateways
+
+---
+
+# Connectivity Testing
+
+Test basic connectivity:
+
+```bash
+ping hostname
+```
+
+or
+
+```bash
+ping IP_ADDRESS
+```
+
+A failed ping does not always indicate failure because ICMP may be intentionally blocked.
+
+---
+
+# Trace Network Path
+
+```bash
+traceroute hostname
+```
+
+or
+
+```bash
+tracepath hostname
+```
+
+(if available)
+
+Useful for identifying routing issues.
+
+---
+
+# Display Listening Ports
+
+```bash
+ss -tulpn
+```
+
+Verify that expected services are listening on the correct interfaces and ports.
+
+---
+
+# DNS Troubleshooting
+
+DNS problems often appear as application connectivity failures.
+
+Typical symptoms:
+
+- Hostnames cannot be resolved
+- Slow connections
+- Intermittent failures
+- Service discovery issues
+
+---
+
+# DNS Resolution Workflow
+
+```text
+Application
+
+↓
+
+DNS Query
+
+↓
+
+Resolver
+
+↓
+
+DNS Server
+
+↓
+
+Response
+
+↓
+
+Connection
+```
+
+---
+
+# Check DNS Configuration
+
+View configured resolvers:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Verify:
+
+- Nameserver entries
+- Search domains
+- Resolver configuration
+
+---
+
+# Query DNS
+
+Using `dig` (if installed):
+
+```bash
+dig example.com
+```
+
+Using `host`:
+
+```bash
+host example.com
+```
+
+Using `nslookup`:
+
+```bash
+nslookup example.com
+```
+
+Compare results if troubleshooting inconsistent resolution.
+
+---
+
+# Verify Hostname Resolution
+
+Display hostname:
+
+```bash
+hostname
+```
+
+Verify local hostname mappings:
+
+```bash
+cat /etc/hosts
+```
+
+Ensure local overrides are intentional and up to date.
+
+---
+
+# Firewall Considerations
+
+A correctly configured firewall may intentionally block traffic.
+
+Before assuming a network failure:
+
+- Verify firewall policy
+- Confirm allowed ports
+- Check recent rule changes
+
+---
+
+# Network Troubleshooting Checklist
+
+| Check | Status |
+|--------|--------|
+| Interface up | ✓ |
+| IP address assigned | ✓ |
+| Default route present | ✓ |
+| DNS configured | ✓ |
+| Firewall reviewed | ✓ |
+| Service listening | ✓ |
+| Logs reviewed | ✓ |
+
+---
+
+# Enterprise Scenario 1
+
+## Web Server Unreachable
+
+Symptoms:
+
+- Users cannot access HTTPS service.
+- SSH access remains available.
+
+Investigation:
+
+1. Verify web service status.
+2. Review service logs.
+3. Confirm listening port.
+4. Check firewall configuration.
+5. Validate TLS configuration.
+6. Test locally before external testing.
+
+---
+
+# Enterprise Scenario 2
+
+## High CPU Usage
+
+Symptoms:
+
+- Slow application response.
+- Elevated system load.
+
+Investigation:
+
+- Review running processes.
+- Identify CPU-intensive workloads.
+- Examine recent deployments.
+- Correlate with application logs.
+- Validate after corrective actions.
+
+---
+
+# Enterprise Scenario 3
+
+## DNS Resolution Failure
+
+Symptoms:
+
+- Hostnames fail to resolve.
+- IP-based connections succeed.
+
+Investigation:
+
+- Verify `/etc/resolv.conf`.
+- Test configured DNS servers.
+- Check local `/etc/hosts`.
+- Review resolver service status.
+- Confirm network connectivity.
+
+---
+
+# Cybersecurity Perspective
+
+Performance degradation and service failures can also indicate security events such as:
+
+- Denial-of-service attacks
+- Unauthorized processes
+- Resource abuse
+- Cryptomining malware
+- Configuration tampering
+
+Always consider security as a potential contributing factor during investigations.
+
+---
+
+# Business Impact
+
+Rapid troubleshooting of services and networks helps organizations:
+
+- Reduce downtime
+- Improve customer experience
+- Maintain service-level agreements (SLAs)
+- Minimize operational costs
+- Improve incident response efficiency
+
+---
+
+# Enterprise Best Practices
+
+- Review logs before restarting services.
+- Validate configuration changes before deployment.
+- Monitor CPU, memory, storage, and network resources continuously.
+- Investigate recurring failures using root cause analysis.
+- Document all troubleshooting steps and outcomes.
+- Correlate system metrics with application logs.
+- Test changes in staging when practical.
+- Preserve evidence if a security incident is suspected.
+
+---
+
+# Key Takeaways
+
+- Service troubleshooting begins with status checks and log analysis.
+- Resource monitoring is essential for diagnosing performance issues.
+- Network troubleshooting follows a structured, layered approach.
+- DNS issues often present as application connectivity problems.
+- Effective troubleshooting combines technical analysis, documentation, and validation.
+
+---
+
