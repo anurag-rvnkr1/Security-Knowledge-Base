@@ -639,3 +639,827 @@ Poor storage design can result in:
 ---
 
 
+# 14 - Linux Storage Management
+
+# Part 2 — Mounting, Unmounting, `/etc/fstab`, LVM, RAID, Swap Space, and Storage Configuration
+
+---
+
+# Introduction
+
+After creating partitions and filesystems, Linux must make them accessible through the directory hierarchy.
+
+This is accomplished by:
+
+- Mounting filesystems
+- Managing persistent mounts
+- Configuring Logical Volume Manager (LVM)
+- Implementing RAID
+- Managing swap space
+- Monitoring storage utilization
+
+These concepts are fundamental in enterprise Linux deployments.
+
+---
+
+# Storage Configuration Workflow
+
+```text
+Physical Disk
+
+↓
+
+Partition
+
+↓
+
+Filesystem
+
+↓
+
+Mount
+
+↓
+
+Persistent Configuration
+
+↓
+
+Applications
+```
+
+---
+
+# What is Mounting?
+
+Mounting is the process of attaching a filesystem to a directory so that users and applications can access its contents.
+
+Without mounting, a filesystem exists on disk but is not part of the active directory tree.
+
+---
+
+# Mount Point
+
+A **mount point** is an existing directory where a filesystem is attached.
+
+Example:
+
+```text
+/
+
+├── home
+
+├── var
+
+├── boot
+
+├── data
+```
+
+If a new disk is mounted at:
+
+```text
+/data
+```
+
+its contents become accessible through:
+
+```text
+/data
+```
+
+---
+
+# Mounting Workflow
+
+```text
+Filesystem
+
+↓
+
+Mount Point
+
+↓
+
+Mounted
+
+↓
+
+Accessible to Users
+```
+
+---
+
+# Viewing Mounted Filesystems
+
+Display mounted filesystems:
+
+```bash
+mount
+```
+
+A more modern alternative:
+
+```bash
+findmnt
+```
+
+Example output:
+
+```text
+TARGET     SOURCE
+
+/          /dev/sda2
+
+/home      /dev/sda3
+```
+
+---
+
+# Viewing Block Devices
+
+```bash
+lsblk
+```
+
+Example:
+
+```text
+NAME
+
+sda
+
+├── sda1
+
+├── sda2
+
+└── sda3
+```
+
+Useful columns include:
+
+- NAME
+- SIZE
+- TYPE
+- MOUNTPOINT
+
+---
+
+# Manually Mounting a Filesystem
+
+Create a mount point:
+
+```bash
+sudo mkdir /data
+```
+
+Mount the filesystem:
+
+```bash
+sudo mount /dev/sdb1 /data
+```
+
+Verify:
+
+```bash
+findmnt
+```
+
+or
+
+```bash
+mount | grep /data
+```
+
+---
+
+# Accessing Mounted Storage
+
+After mounting:
+
+```text
+/dev/sdb1
+
+↓
+
+/data
+
+↓
+
+Files Available
+```
+
+Applications interact with `/data` rather than the underlying block device.
+
+---
+
+# Unmounting a Filesystem
+
+Detach a mounted filesystem:
+
+```bash
+sudo umount /data
+```
+
+Or:
+
+```bash
+sudo umount /dev/sdb1
+```
+
+> The command is `umount` (without the first "n").
+
+---
+
+# Why Unmount?
+
+Unmounting helps ensure:
+
+- Buffered writes are flushed
+- Filesystem consistency
+- Safe device removal
+
+Unmount removable storage before disconnecting it.
+
+---
+
+# Busy Filesystem
+
+If unmounting fails:
+
+```text
+target is busy
+```
+
+Possible causes:
+
+- Open files
+- Current working directory inside the mount
+- Running applications using the filesystem
+
+Identify processes:
+
+```bash
+lsof +D /data
+```
+
+or
+
+```bash
+fuser -vm /data
+```
+
+Resolve the issue before retrying the unmount.
+
+---
+
+# Persistent Mounts
+
+Manual mounts are generally temporary.
+
+To mount automatically during boot, configure:
+
+```text
+/etc/fstab
+```
+
+---
+
+# `/etc/fstab`
+
+The `/etc/fstab` file defines filesystems that should be mounted automatically.
+
+View it:
+
+```bash
+cat /etc/fstab
+```
+
+---
+
+# Example `/etc/fstab` Entry
+
+```text
+UUID=1234-5678
+
+/data
+
+ext4
+
+defaults
+
+0
+
+2
+```
+
+Each field has a specific meaning.
+
+---
+
+# `/etc/fstab` Fields
+
+| Field | Description |
+|--------|-------------|
+| Device or UUID | Storage device identifier |
+| Mount Point | Directory where filesystem is mounted |
+| Filesystem | Filesystem type |
+| Mount Options | Mount behavior |
+| Dump | Backup utility field (usually `0`) |
+| Pass | Filesystem check order during boot |
+
+---
+
+# Why Use UUID?
+
+Device names may change after:
+
+- Hardware replacement
+- Virtual machine migration
+- Storage controller changes
+
+UUIDs uniquely identify filesystems and are generally preferred.
+
+View UUIDs:
+
+```bash
+blkid
+```
+
+---
+
+# Testing `/etc/fstab`
+
+After editing:
+
+```bash
+sudo mount -a
+```
+
+If no errors occur, the configuration is likely valid.
+
+Always test before rebooting.
+
+---
+
+# Common Mount Options
+
+| Option | Purpose |
+|---------|----------|
+| `defaults` | Standard mount options |
+| `ro` | Read-only |
+| `rw` | Read-write |
+| `noexec` | Prevent execution of binaries |
+| `nosuid` | Ignore SUID/SGID bits |
+| `nodev` | Do not interpret device files |
+
+Security-sensitive filesystems often use additional restrictive mount options.
+
+---
+
+# Logical Volume Manager (LVM)
+
+LVM provides flexible storage management beyond traditional partitions.
+
+Benefits include:
+
+- Easier resizing
+- Storage pooling
+- Flexible allocation
+- Simplified expansion
+
+---
+
+# LVM Architecture
+
+```text
+Physical Disk
+
+↓
+
+Physical Volume (PV)
+
+↓
+
+Volume Group (VG)
+
+↓
+
+Logical Volume (LV)
+
+↓
+
+Filesystem
+
+↓
+
+Mount Point
+```
+
+---
+
+# LVM Components
+
+| Component | Description |
+|-----------|-------------|
+| PV | Physical Volume |
+| VG | Volume Group |
+| LV | Logical Volume |
+
+---
+
+# Physical Volume (PV)
+
+A Physical Volume is a disk or partition initialized for LVM.
+
+Create:
+
+```bash
+sudo pvcreate /dev/sdb1
+```
+
+View:
+
+```bash
+pvs
+```
+
+---
+
+# Volume Group (VG)
+
+A Volume Group combines one or more Physical Volumes into a storage pool.
+
+Create:
+
+```bash
+sudo vgcreate data_vg /dev/sdb1
+```
+
+View:
+
+```bash
+vgs
+```
+
+---
+
+# Logical Volume (LV)
+
+Logical Volumes are allocated from a Volume Group.
+
+Create:
+
+```bash
+sudo lvcreate -L 20G -n data_lv data_vg
+```
+
+View:
+
+```bash
+lvs
+```
+
+---
+
+# LVM Workflow
+
+```text
+Disk
+
+↓
+
+PV
+
+↓
+
+VG
+
+↓
+
+LV
+
+↓
+
+Filesystem
+
+↓
+
+Mount
+```
+
+---
+
+# Advantages of LVM
+
+- Online expansion (supported by many filesystems)
+- Flexible storage allocation
+- Multiple disks in one pool
+- Easier capacity management
+- Better support for changing storage requirements
+
+---
+
+# RAID (Redundant Array of Independent Disks)
+
+RAID combines multiple disks for one or more goals:
+
+- Redundancy
+- Performance
+- Capacity
+
+---
+
+# RAID Goals
+
+```text
+Multiple Disks
+
+↓
+
+Redundancy
+
+↓
+
+Performance
+
+↓
+
+Availability
+```
+
+---
+
+# Common RAID Levels
+
+| RAID | Purpose |
+|-------|----------|
+| RAID 0 | Performance |
+| RAID 1 | Mirroring |
+| RAID 5 | Distributed parity |
+| RAID 6 | Double parity |
+| RAID 10 | Performance + redundancy |
+
+---
+
+# RAID 0
+
+```text
+Disk A
+
+Disk B
+
+↓
+
+Striping
+```
+
+Benefits:
+
+- High performance
+- Full combined capacity
+
+Disadvantages:
+
+- No redundancy
+- Failure of one disk results in data loss
+
+---
+
+# RAID 1
+
+```text
+Disk A
+
+↓
+
+Mirror
+
+↓
+
+Disk B
+```
+
+Benefits:
+
+- Redundancy
+- Improved read availability
+
+Trade-off:
+
+- Approximately 50% usable capacity
+
+---
+
+# RAID 5
+
+```text
+Disk A
+
+Disk B
+
+Disk C
+
+↓
+
+Striping + Parity
+```
+
+Benefits:
+
+- Fault tolerance
+- Efficient capacity utilization
+
+Requires at least three disks.
+
+---
+
+# RAID 10
+
+```text
+Mirror
+
+↓
+
+Stripe
+```
+
+Combines:
+
+- High performance
+- High availability
+
+Often used for enterprise databases and virtualization platforms.
+
+---
+
+# Software RAID
+
+Linux commonly manages software RAID using:
+
+```text
+mdadm
+```
+
+Example:
+
+```bash
+sudo mdadm --detail /dev/md0
+```
+
+---
+
+# Swap Space
+
+Swap extends available virtual memory by using disk space when RAM becomes constrained.
+
+It is slower than RAM and should not be considered a substitute for sufficient physical memory.
+
+---
+
+# Swap Workflow
+
+```text
+RAM Full
+
+↓
+
+Inactive Memory Pages
+
+↓
+
+Swap
+
+↓
+
+RAM Available
+```
+
+---
+
+# Viewing Swap
+
+Display active swap:
+
+```bash
+swapon --show
+```
+
+or
+
+```bash
+free -h
+```
+
+---
+
+# Enabling Swap
+
+Example:
+
+```bash
+sudo swapon /swapfile
+```
+
+Disable:
+
+```bash
+sudo swapoff /swapfile
+```
+
+---
+
+# Monitoring Disk Usage
+
+Filesystem usage:
+
+```bash
+df -h
+```
+
+Directory usage:
+
+```bash
+du -sh /var/log
+```
+
+These commands help identify storage consumption.
+
+---
+
+# Enterprise Storage Layout
+
+```text
+OS Disk
+
+├── /
+
+├── /boot
+
+Data Disk
+
+├── /var
+
+├── /home
+
+├── /data
+
+Backup Disk
+
+└── /backup
+```
+
+Separating workloads simplifies administration and improves resilience.
+
+---
+
+# Cybersecurity Perspective
+
+Storage configuration can strengthen security.
+
+Examples include:
+
+- Mounting removable media with restrictive options.
+- Isolating log directories.
+- Protecting sensitive data with encryption.
+- Monitoring available disk space to prevent denial-of-service conditions.
+- Restricting execution on data partitions using `noexec` where appropriate.
+
+---
+
+# Business Impact
+
+Well-managed storage provides:
+
+- Improved uptime
+- Easier maintenance
+- Better scalability
+- Faster recovery
+- Reduced operational risk
+- Predictable capacity planning
+
+---
+
+# Enterprise Best Practices
+
+- Use UUIDs in `/etc/fstab`.
+- Test `/etc/fstab` changes with `mount -a`.
+- Prefer LVM for enterprise servers requiring flexible storage.
+- Select RAID levels based on workload and availability requirements.
+- Monitor disk and filesystem usage regularly.
+- Separate application, log, and user data where appropriate.
+- Document storage layouts and recovery procedures.
+
+---
+
+# Key Takeaways
+
+- Mounting connects filesystems to the Linux directory hierarchy.
+- `/etc/fstab` enables persistent mounts across reboots.
+- LVM provides flexible storage management.
+- RAID improves availability and/or performance depending on the level used.
+- Swap supplements physical memory under memory pressure.
+- Continuous storage monitoring is essential for reliable operations.
+
+---
+
