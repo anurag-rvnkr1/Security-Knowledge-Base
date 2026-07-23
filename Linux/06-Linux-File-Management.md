@@ -704,3 +704,662 @@ Efficient file management enables organizations to:
 
 ---
 
+# Part 2 — Viewing Files, Editing Files, Wildcards, Globbing, File Comparison, Checksums, and File Integrity
+
+---
+
+# Introduction
+
+Creating and organizing files is only one aspect of Linux file management.
+
+Administrators, developers, security analysts, and DevOps engineers spend much of their time:
+
+- Viewing file contents
+- Editing configuration files
+- Comparing different file versions
+- Searching inside files
+- Using wildcard patterns
+- Verifying file integrity
+- Detecting unauthorized modifications
+
+Efficient use of these tools is essential for troubleshooting, automation, security operations, and system administration.
+
+---
+
+# File Viewing Workflow
+
+```text
+Create File
+      │
+      ▼
+Open File
+      │
+      ▼
+View Contents
+      │
+      ▼
+Search Information
+      │
+      ▼
+Edit File
+      │
+      ▼
+Save Changes
+      │
+      ▼
+Verify Integrity
+```
+
+---
+
+# Viewing File Contents
+
+Linux provides several utilities for reading files without modifying them.
+
+Common commands include:
+
+- `cat`
+- `less`
+- `more`
+- `head`
+- `tail`
+- `nl`
+
+Each is suited to different scenarios.
+
+---
+
+# cat Command
+
+Display an entire file:
+
+```bash
+cat notes.txt
+```
+
+Example output:
+
+```text
+Linux Fundamentals
+Linux File Management
+Linux Networking
+```
+
+`cat` is best suited for relatively small files.
+
+---
+
+# Number Lines
+
+Display line numbers:
+
+```bash
+cat -n notes.txt
+```
+
+Example:
+
+```text
+1 Linux Fundamentals
+
+2 Linux File Management
+
+3 Linux Networking
+```
+
+Useful when reviewing configuration files or log excerpts.
+
+---
+
+# less Command
+
+Open a file interactively:
+
+```bash
+less /var/log/syslog
+```
+
+Features:
+
+- Scroll forward and backward
+- Search within the file
+- Handle very large files efficiently
+
+Navigation:
+
+| Key | Action |
+|------|--------|
+| `Space` | Next page |
+| `b` | Previous page |
+| `/` | Search |
+| `q` | Quit |
+
+`less` is generally preferred over `more` because it provides more functionality.
+
+---
+
+# more Command
+
+Example:
+
+```bash
+more notes.txt
+```
+
+Displays file contents one page at a time.
+
+Compared with `less`, navigation capabilities are more limited.
+
+---
+
+# head Command
+
+Display the first lines of a file.
+
+Default:
+
+```bash
+head notes.txt
+```
+
+Show the first five lines:
+
+```bash
+head -n 5 notes.txt
+```
+
+Useful for previewing files without opening them completely.
+
+---
+
+# tail Command
+
+Display the last lines:
+
+```bash
+tail notes.txt
+```
+
+Display the last twenty lines:
+
+```bash
+tail -n 20 notes.txt
+```
+
+This command is commonly used when reviewing logs.
+
+---
+
+# Follow Log Files
+
+Monitor a growing log file:
+
+```bash
+tail -f /var/log/syslog
+```
+
+Typical uses:
+
+- Server monitoring
+- Application debugging
+- Security investigations
+
+Press `Ctrl + C` to stop following the file.
+
+---
+
+# nl Command
+
+Display numbered lines:
+
+```bash
+nl notes.txt
+```
+
+Unlike `cat -n`, `nl` provides additional formatting options for line numbering.
+
+---
+
+# Creating Files with Output Redirection
+
+Create a file:
+
+```bash
+echo "Linux" > file.txt
+```
+
+Append additional content:
+
+```bash
+echo "Security" >> file.txt
+```
+
+Difference:
+
+| Operator | Action |
+|-----------|--------|
+| `>` | Create or overwrite |
+| `>>` | Append |
+
+---
+
+# Editing Files
+
+Common text editors include:
+
+| Editor | Characteristics |
+|---------|-----------------|
+| `nano` | Beginner-friendly |
+| `vim` | Powerful and widely used |
+| `vi` | Traditional Unix editor |
+| `emacs` | Highly extensible |
+
+The choice often depends on administrator preference and environment.
+
+---
+
+# nano Editor
+
+Open a file:
+
+```bash
+nano notes.txt
+```
+
+Basic workflow:
+
+```text
+Open
+
+↓
+
+Edit
+
+↓
+
+Save
+
+↓
+
+Exit
+```
+
+Common shortcuts:
+
+| Shortcut | Action |
+|-----------|--------|
+| `Ctrl + O` | Save |
+| `Ctrl + X` | Exit |
+| `Ctrl + K` | Cut line |
+| `Ctrl + U` | Paste line |
+
+---
+
+# vi / vim Overview
+
+Open:
+
+```bash
+vim notes.txt
+```
+
+Basic modes:
+
+```text
+Normal Mode
+
+↓
+
+Insert Mode
+
+↓
+
+Command Mode
+```
+
+Frequently used commands:
+
+| Command | Purpose |
+|----------|----------|
+| `i` | Insert mode |
+| `Esc` | Return to normal mode |
+| `:w` | Save |
+| `:q` | Quit |
+| `:wq` | Save and quit |
+| `:q!` | Quit without saving |
+
+`vim` is commonly available on enterprise Linux servers.
+
+---
+
+# Wildcards (Globbing)
+
+Wildcards allow commands to operate on multiple files matching a pattern.
+
+Common wildcard characters:
+
+| Wildcard | Meaning |
+|-----------|----------|
+| `*` | Zero or more characters |
+| `?` | Exactly one character |
+| `[]` | Character set or range |
+
+This process is known as **filename expansion (globbing)** and is typically performed by the shell before the command executes.
+
+---
+
+# Asterisk (`*`)
+
+Example:
+
+```bash
+ls *.txt
+```
+
+Matches:
+
+```text
+notes.txt
+
+report.txt
+
+todo.txt
+```
+
+The asterisk is the most frequently used wildcard.
+
+---
+
+# Question Mark (`?`)
+
+Example:
+
+```bash
+ls file?.txt
+```
+
+Matches:
+
+```text
+file1.txt
+
+file2.txt
+```
+
+Does not match:
+
+```text
+file10.txt
+```
+
+Because `?` represents exactly one character.
+
+---
+
+# Character Sets
+
+Example:
+
+```bash
+ls report[12].txt
+```
+
+Matches:
+
+```text
+report1.txt
+
+report2.txt
+```
+
+Character ranges:
+
+```bash
+ls file[a-z].txt
+```
+
+This matches filenames with a single lowercase letter in the specified position.
+
+---
+
+# Brace Expansion
+
+Generate multiple filenames:
+
+```bash
+touch file{1..5}.txt
+```
+
+Creates:
+
+```text
+file1.txt
+
+file2.txt
+
+file3.txt
+
+file4.txt
+
+file5.txt
+```
+
+Brace expansion is performed by the shell and is distinct from wildcard matching.
+
+---
+
+# File Comparison
+
+Linux provides several tools to compare files.
+
+Common commands:
+
+- `diff`
+- `cmp`
+- `comm`
+
+Each presents differences differently.
+
+---
+
+# diff Command
+
+Example:
+
+```bash
+diff old.conf new.conf
+```
+
+Displays line-by-line differences between two text files.
+
+Common use cases:
+
+- Configuration reviews
+- Software development
+- Change verification
+
+---
+
+# cmp Command
+
+Example:
+
+```bash
+cmp file1 file2
+```
+
+Reports the first byte and line where two files differ.
+
+Often used for binary comparisons.
+
+---
+
+# comm Command
+
+Example:
+
+```bash
+comm file1 file2
+```
+
+Compares two **sorted** text files and identifies:
+
+- Lines unique to the first file
+- Lines unique to the second file
+- Lines common to both
+
+---
+
+# File Integrity
+
+Ensuring that files have not been modified unexpectedly is critical for:
+
+- Security
+- Compliance
+- Software distribution
+- Incident response
+
+Integrity verification commonly relies on cryptographic hash functions.
+
+---
+
+# Checksums
+
+A checksum (hash) is a fixed-length value calculated from file contents.
+
+Common algorithms:
+
+| Algorithm | Typical Use |
+|------------|-------------|
+| MD5 | Legacy compatibility (not suitable for security-sensitive integrity verification) |
+| SHA-1 | Legacy compatibility (collision weaknesses) |
+| SHA-256 | Widely recommended |
+| SHA-512 | Strong cryptographic integrity verification |
+
+---
+
+# Generate SHA-256 Checksum
+
+Example:
+
+```bash
+sha256sum file.iso
+```
+
+Example output:
+
+```text
+e3b0c44298fc...
+
+file.iso
+```
+
+The hash uniquely represents the file contents with extremely high probability.
+
+---
+
+# Verify File Integrity
+
+Compare a newly generated checksum with a trusted checksum provided by the software vendor.
+
+Workflow:
+
+```text
+Download File
+
+↓
+
+Generate SHA-256
+
+↓
+
+Compare with Trusted Hash
+
+↓
+
+Match?
+
+↓
+
+Yes → Integrity Verified
+```
+
+A mismatch indicates that the file may be corrupted or altered.
+
+---
+
+# Why Hashes Matter
+
+Hash verification helps detect:
+
+- Corruption during download
+- Accidental modification
+- Unauthorized changes
+- Supply chain attacks
+- Tampered installation media
+
+Hashes verify integrity but do not identify *who* modified a file.
+
+---
+
+# Practical Use Cases
+
+Administrators use hashes to verify:
+
+- Linux ISO images
+- Backup archives
+- Software packages
+- Configuration snapshots
+- Security evidence
+- Digital forensic images
+
+---
+
+# Cybersecurity Perspective
+
+Security professionals routinely:
+
+- Verify downloaded software before installation.
+- Compare hashes during malware analysis.
+- Detect unauthorized file modifications.
+- Validate forensic evidence.
+- Monitor critical system files for integrity changes.
+
+Hash-based integrity verification is a fundamental component of incident response workflows.
+
+---
+
+# Business Impact
+
+Effective file viewing, editing, and integrity verification help organizations:
+
+- Reduce configuration errors.
+- Improve operational efficiency.
+- Strengthen software supply chain security.
+- Detect unauthorized modifications.
+- Support regulatory compliance and auditing.
+
+---
+
+# Enterprise Best Practices
+
+- Use `less` for viewing large files.
+- Limit direct editing of production configuration files without backups or version control.
+- Verify software downloads using vendor-provided SHA-256 or stronger hashes.
+- Store baseline hashes securely.
+- Review configuration differences before deployment.
+- Use wildcard patterns carefully to avoid unintended file operations.
+- Validate changes through testing before applying them in production.
+
+---
+
+# Key Takeaways
+
+- Linux provides multiple tools for viewing and editing files, each suited to different tasks.
+- Wildcards and shell globbing simplify operations on groups of files.
+- `diff`, `cmp`, and `comm` compare files in different ways.
+- Cryptographic hashes provide a practical mechanism for verifying file integrity.
+- Careful file handling and integrity verification are essential for secure and reliable system administration.
+
+---
+
