@@ -1396,3 +1396,651 @@ Understanding filesystem internals enables organizations to:
 ---
 
 
+# Part 3 — Mounting & Unmounting, Virtual Filesystems, ext4, XFS, Btrfs, Journaling, Filesystem Checks, and Enterprise Storage Management
+
+---
+
+# Introduction
+
+A storage device is not immediately usable after it is connected to a Linux system.
+
+Before users or applications can access files stored on a device, Linux must **mount** the filesystem into its unified directory hierarchy.
+
+This chapter explains:
+
+- Mounting and unmounting
+- Mount points
+- Virtual filesystems
+- Common Linux filesystems
+- Journaling
+- Filesystem integrity checking
+- Enterprise storage best practices
+
+Understanding these concepts is essential for Linux administrators, DevOps engineers, cloud engineers, and cybersecurity professionals.
+
+---
+
+# What is Mounting?
+
+**Mounting** is the process of attaching a filesystem to a directory within the Linux filesystem hierarchy.
+
+Unlike operating systems that assign drive letters, Linux integrates every mounted filesystem into a single directory tree.
+
+Example:
+
+```text
+Before Mount
+
+/
+
+├── home
+
+├── var
+
+└── mnt
+
+
+After Mount
+
+/
+
+├── home
+
+├── var
+
+└── mnt
+
+      │
+
+      ▼
+
+ SSD Filesystem
+```
+
+---
+
+# Why Mounting is Required
+
+Linux cannot access data on a storage device until:
+
+- The device is detected.
+- The filesystem is recognized.
+- The filesystem is mounted.
+
+Without mounting, the operating system knows the device exists but cannot use its files.
+
+---
+
+# Mount Point
+
+A **mount point** is an existing directory where another filesystem becomes accessible.
+
+Example:
+
+```text
+/
+
+└── media
+
+      │
+
+      ▼
+
+USB Drive
+```
+
+Everything inside the mounted filesystem appears beneath the mount point.
+
+---
+
+# Mount Workflow
+
+```text
+Storage Device
+
+↓
+
+Filesystem Detected
+
+↓
+
+Mount Command
+
+↓
+
+Mount Point
+
+↓
+
+Filesystem Available
+```
+
+---
+
+# Viewing Mounted Filesystems
+
+Display mounted filesystems:
+
+```bash
+mount
+```
+
+Show disk usage:
+
+```bash
+df -h
+```
+
+Display filesystem types:
+
+```bash
+df -T
+```
+
+---
+
+# Mounting a Filesystem
+
+Example:
+
+```bash
+sudo mount /dev/sdb1 /mnt
+```
+
+Explanation:
+
+| Component | Purpose |
+|-----------|----------|
+| `/dev/sdb1` | Storage device |
+| `/mnt` | Mount point |
+
+After mounting, files become accessible under `/mnt`.
+
+---
+
+# Unmounting a Filesystem
+
+Unmount:
+
+```bash
+sudo umount /mnt
+```
+
+or
+
+```bash
+sudo umount /dev/sdb1
+```
+
+A filesystem should generally be unmounted before removing the storage device to help prevent data loss.
+
+---
+
+# Busy Filesystem
+
+If a filesystem is in use:
+
+```text
+umount: target is busy
+```
+
+Possible reasons:
+
+- Open files
+- Running applications
+- Current working directory inside mount point
+
+Identify open files:
+
+```bash
+lsof +D /mnt
+```
+
+or
+
+```bash
+fuser -vm /mnt
+```
+
+---
+
+# Persistent Mounts
+
+Filesystems that should be mounted automatically at boot are defined in:
+
+```text
+/etc/fstab
+```
+
+Example:
+
+```text
+UUID=xxxx-xxxx  /data  ext4  defaults  0  2
+```
+
+Using UUIDs instead of device names is generally recommended because device names can change between boots.
+
+---
+
+# Understanding `/etc/fstab`
+
+Typical fields:
+
+| Field | Description |
+|--------|-------------|
+| Device | Disk, partition, or UUID |
+| Mount Point | Directory where the filesystem is mounted |
+| Filesystem Type | ext4, xfs, btrfs, etc. |
+| Mount Options | defaults, ro, noexec, etc. |
+| Dump | Backup utility flag |
+| fsck Order | Filesystem check order during boot |
+
+Incorrect entries in `/etc/fstab` can prevent successful boot, so changes should be validated carefully.
+
+---
+
+# Virtual Filesystems
+
+Some Linux filesystems do **not** store persistent data on disk.
+
+Instead, they expose kernel and runtime information.
+
+Examples include:
+
+| Filesystem | Purpose |
+|------------|----------|
+| procfs | Process information |
+| sysfs | Device and kernel information |
+| tmpfs | Memory-backed temporary storage |
+| devtmpfs | Device nodes |
+
+---
+
+# proc Filesystem
+
+Mounted at:
+
+```text
+/proc
+```
+
+Provides runtime information such as:
+
+```text
+/proc/cpuinfo
+
+/proc/meminfo
+
+/proc/uptime
+
+/proc/version
+```
+
+These files are generated dynamically by the kernel.
+
+---
+
+# sysfs
+
+Mounted at:
+
+```text
+/sys
+```
+
+Provides information about:
+
+- Hardware
+- Drivers
+- Kernel objects
+- Devices
+
+Common directories:
+
+```text
+/sys/class
+
+/sys/block
+
+/sys/devices
+```
+
+---
+
+# tmpfs
+
+A **tmpfs** filesystem stores data in memory (RAM) rather than on persistent storage.
+
+Common uses:
+
+- Temporary runtime files
+- Shared memory
+- Fast temporary storage
+
+Typical mount points:
+
+```text
+/run
+
+/dev/shm
+```
+
+Data stored in `tmpfs` is lost after reboot.
+
+---
+
+# Common Linux Filesystems
+
+Linux supports numerous filesystems.
+
+Some of the most common include:
+
+- ext4
+- XFS
+- Btrfs
+- FAT32
+- exFAT
+- NTFS
+- ISO9660
+
+Each filesystem has different characteristics and use cases.
+
+---
+
+# ext4
+
+**Fourth Extended Filesystem (ext4)** is one of the most widely deployed Linux filesystems.
+
+Features:
+
+- Journaling
+- Large filesystem support
+- Extents
+- Delayed allocation
+- Backward compatibility with ext3
+
+Common use cases:
+
+- General-purpose servers
+- Workstations
+- Virtual machines
+
+---
+
+# XFS
+
+XFS is a high-performance filesystem designed for scalability.
+
+Features:
+
+- Excellent performance with large files
+- Online filesystem growth
+- Metadata journaling
+- Parallel I/O optimization
+
+Common use cases:
+
+- Enterprise servers
+- Database systems
+- Large storage arrays
+
+---
+
+# Btrfs
+
+**B-tree Filesystem (Btrfs)** is a modern filesystem with advanced management capabilities.
+
+Features include:
+
+- Copy-on-write (CoW)
+- Snapshots
+- Checksums
+- Compression
+- Integrated RAID features
+- Subvolumes
+
+Btrfs is often used where snapshotting and data integrity are priorities.
+
+---
+
+# FAT32
+
+Characteristics:
+
+- High compatibility
+- No Linux permissions
+- Limited maximum file size (approximately 4 GB)
+- Commonly used on USB drives
+
+---
+
+# NTFS
+
+Primarily associated with Windows systems.
+
+Linux can access NTFS volumes using appropriate kernel support or user-space drivers, depending on the distribution and configuration.
+
+Typical use cases:
+
+- Dual-boot systems
+- External drives
+- Data exchange with Windows
+
+---
+
+# Filesystem Comparison
+
+| Feature | ext4 | XFS | Btrfs |
+|----------|------|-----|--------|
+| Journaling | Yes | Yes | Metadata with CoW architecture |
+| Snapshots | No | No (native) | Yes |
+| Copy-on-Write | No | No | Yes |
+| Scalability | High | Very High | High |
+| Checksums | Limited | Metadata-focused | Extensive |
+| Enterprise Adoption | Very High | Very High | Growing |
+
+The best filesystem depends on workload requirements, recovery objectives, and operational needs.
+
+---
+
+# Journaling
+
+A journal records pending filesystem operations before they are committed.
+
+Simplified workflow:
+
+```text
+Write Request
+
+↓
+
+Journal
+
+↓
+
+Filesystem Update
+
+↓
+
+Journal Cleared
+```
+
+This reduces the likelihood of metadata corruption after unexpected shutdowns.
+
+---
+
+# Benefits of Journaling
+
+- Faster recovery
+- Reduced filesystem corruption
+- Improved consistency
+- Better resilience against power failures
+- Reduced recovery time after crashes
+
+---
+
+# Filesystem Consistency Checks
+
+Linux provides tools to verify filesystem integrity.
+
+Example:
+
+```bash
+sudo fsck /dev/sdb1
+```
+
+`fsck` checks for inconsistencies and, when appropriate, repairs supported filesystems.
+
+**Important:** Run filesystem checks according to vendor and distribution guidance, typically on unmounted filesystems or from recovery environments.
+
+---
+
+# Checking Disk Usage
+
+Filesystem usage:
+
+```bash
+df -h
+```
+
+Directory usage:
+
+```bash
+du -sh /var/log
+```
+
+These commands help identify storage consumption and capacity issues.
+
+---
+
+# Block Device Information
+
+List storage devices:
+
+```bash
+lsblk
+```
+
+Example:
+
+```text
+NAME
+
+sda
+
+├── sda1
+
+├── sda2
+
+nvme0n1
+
+└── nvme0n1p1
+```
+
+This provides a hierarchical view of disks and partitions.
+
+---
+
+# Storage Layout Example
+
+```text
+NVMe SSD
+
+├── EFI Partition
+
+├── Root Filesystem
+
+├── Home
+
+└── Swap
+```
+
+Enterprise systems may include additional partitions or logical volumes for applications, databases, and logs.
+
+---
+
+# Enterprise Storage Design
+
+Large environments often separate data into dedicated filesystems such as:
+
+```text
+/
+
+/boot
+
+/home
+
+/var
+
+/var/log
+
+/tmp
+
+/opt
+
+/data
+
+/backup
+```
+
+Benefits include:
+
+- Easier maintenance
+- Better isolation
+- Improved capacity planning
+- Simplified backups
+- Reduced impact of disk exhaustion
+
+---
+
+# Cybersecurity Perspective
+
+Understanding filesystems assists in:
+
+- Malware investigations
+- Log analysis
+- Persistence detection
+- Filesystem integrity monitoring
+- Incident response
+- Digital forensics
+
+Attackers may abuse writable locations, temporary directories, or misconfigured mount options to gain persistence or execute malicious code.
+
+---
+
+# Business Impact
+
+Well-designed storage architecture helps organizations:
+
+- Improve reliability.
+- Reduce downtime.
+- Simplify backups.
+- Support disaster recovery.
+- Scale storage efficiently.
+- Meet compliance requirements for data management.
+
+---
+
+# Enterprise Best Practices
+
+- Use UUIDs in `/etc/fstab` instead of device names where practical.
+- Choose the filesystem that aligns with workload requirements.
+- Separate operating system, application, and data partitions where appropriate.
+- Monitor filesystem utilization proactively.
+- Validate mount configurations before deployment.
+- Schedule filesystem integrity checks as part of maintenance procedures.
+- Keep adequate free space to maintain performance and stability.
+
+---
+
+# Key Takeaways
+
+- Mounting integrates a filesystem into Linux's unified directory hierarchy.
+- `/etc/fstab` defines persistent filesystem mounts.
+- Virtual filesystems expose kernel and runtime information rather than persistent data.
+- ext4, XFS, and Btrfs each provide different capabilities and trade-offs.
+- Journaling improves filesystem consistency and accelerates recovery after unexpected failures.
+
+---
+
+
