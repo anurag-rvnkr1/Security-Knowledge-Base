@@ -808,3 +808,1070 @@ Failures in TCP connectivity can lead to service outages, transaction failures, 
 
 ---
 
+# Part 2 — TCP Data Transfer, Sliding Window, Flow Control, Congestion Control, and Connection Termination
+
+---
+
+# Introduction
+
+After successfully establishing a TCP connection through the **Three-Way Handshake**, both endpoints are ready to exchange application data.
+
+Unlike UDP, TCP continuously monitors the connection throughout its lifetime to ensure:
+
+- Reliable delivery
+- Ordered delivery
+- Error recovery
+- Network congestion avoidance
+- Receiver protection
+- Graceful session termination
+
+This section explains how TCP manages reliable communication after the connection has been established.
+
+---
+
+# TCP Data Transfer
+
+TCP treats application data as a **continuous stream of bytes** rather than independent messages.
+
+For example:
+
+```
+Application Data
+
+"Hello Enterprise TCP World"
+```
+
+TCP divides this stream into smaller segments before transmission.
+
+```
+Application
+
+↓
+
+Byte Stream
+
+↓
+
+TCP Segments
+
+↓
+
+IP Packets
+
+↓
+
+Ethernet Frames
+
+↓
+
+Network
+```
+
+Each segment is independently acknowledged by the receiver.
+
+---
+
+# Byte-Oriented Communication
+
+Unlike UDP, TCP does not preserve application message boundaries.
+
+Example:
+
+Application sends:
+
+```
+10000 Bytes
+```
+
+TCP may transmit:
+
+```
+Segment 1
+
+1460 Bytes
+
+↓
+
+Segment 2
+
+1460 Bytes
+
+↓
+
+Segment 3
+
+1460 Bytes
+
+↓
+
+...
+
+↓
+
+Final Segment
+```
+
+The receiving TCP stack reconstructs the original byte stream before delivering it to the application.
+
+---
+
+# Segmentation
+
+Segmentation divides large amounts of application data into manageable TCP segments.
+
+Example:
+
+```
+File Size
+
+20 KB
+
+↓
+
+TCP
+
+↓
+
+14 Segments
+
+↓
+
+Transmission
+```
+
+Advantages include:
+
+- Efficient retransmissions
+- Better error recovery
+- Flow control
+- Congestion handling
+
+---
+
+# Reassembly
+
+The receiver reconstructs all incoming segments into the original byte stream.
+
+```
+Segment 1
+
+↓
+
+Segment 2
+
+↓
+
+Segment 3
+
+↓
+
+Segment 4
+
+↓
+
+Application Data
+```
+
+Even if packets arrive out of order, TCP uses sequence numbers to restore the correct order.
+
+---
+
+# Ordered Delivery
+
+Suppose packets arrive as:
+
+```
+3
+
+↓
+
+1
+
+↓
+
+4
+
+↓
+
+2
+```
+
+TCP buffers the out-of-order segments until the missing data arrives.
+
+The application ultimately receives:
+
+```
+1
+
+↓
+
+2
+
+↓
+
+3
+
+↓
+
+4
+```
+
+This guarantees consistent application behavior.
+
+---
+
+# Reliable Delivery
+
+Every transmitted segment requires an acknowledgment (ACK).
+
+```
+Client
+
+Segment 1
+
+↓
+
+Server
+
+ACK
+
+↓
+
+Client
+
+Segment 2
+
+↓
+
+Server
+
+ACK
+```
+
+If an acknowledgment is not received within a specified timeout, TCP retransmits the missing segment.
+
+---
+
+# Retransmission
+
+Example:
+
+```
+Client
+
+Segment 3
+
+↓
+
+Lost
+
+↓
+
+No ACK
+
+↓
+
+Timeout
+
+↓
+
+Retransmit Segment 3
+```
+
+This mechanism ensures reliable delivery despite packet loss.
+
+---
+
+# Duplicate Detection
+
+If duplicate segments arrive due to retransmissions:
+
+```
+Segment 1000
+
+↓
+
+Segment 1000
+
+↓
+
+TCP
+
+↓
+
+Discard Duplicate
+```
+
+Sequence numbers allow TCP to identify and ignore duplicate data.
+
+---
+
+# Sliding Window
+
+The Sliding Window mechanism allows multiple segments to be transmitted before waiting for acknowledgments.
+
+Without Sliding Window:
+
+```
+Send
+
+↓
+
+Wait
+
+↓
+
+ACK
+
+↓
+
+Send
+
+↓
+
+Wait
+```
+
+With Sliding Window:
+
+```
+Segment 1
+
+↓
+
+Segment 2
+
+↓
+
+Segment 3
+
+↓
+
+Segment 4
+
+↓
+
+ACK for All
+```
+
+This significantly improves throughput.
+
+---
+
+# Sliding Window Example
+
+Window Size:
+
+```
+4000 Bytes
+```
+
+Sender:
+
+```
+Byte 1–4000
+
+↓
+
+Transmit
+
+↓
+
+ACK
+
+↓
+
+Window Slides
+
+↓
+
+4001–8000
+```
+
+As acknowledgments arrive, the transmission window advances.
+
+---
+
+# Window Advertisement
+
+The receiver informs the sender how much buffer space is available.
+
+Example:
+
+```
+Receiver
+
+Window = 8192 Bytes
+
+↓
+
+Sender
+
+May Send
+
+8192 Bytes
+```
+
+If the receiver's buffer fills, it advertises a smaller window.
+
+---
+
+# Zero Window
+
+If the receiver cannot accept additional data:
+
+```
+Window = 0
+```
+
+The sender temporarily pauses transmission until the receiver advertises a non-zero window.
+
+This prevents receiver buffer overflow.
+
+---
+
+# Flow Control
+
+Flow Control ensures that a fast sender does not overwhelm a slower receiver.
+
+```
+Fast Server
+
+↓
+
+Large Data
+
+↓
+
+Slow Client
+
+↓
+
+TCP Flow Control
+```
+
+The receiver dynamically adjusts the advertised window size based on available buffer space.
+
+---
+
+# Why Flow Control Matters
+
+Without flow control:
+
+```
+Sender
+
+↓
+
+100 MB/s
+
+↓
+
+Receiver
+
+↓
+
+10 MB/s
+```
+
+The receiver would quickly exhaust its buffers, causing packet loss.
+
+Flow control prevents this by regulating the transmission rate.
+
+---
+
+# Congestion Control
+
+While Flow Control protects the receiver, **Congestion Control protects the network**.
+
+Network congestion occurs when routers become overloaded.
+
+Symptoms include:
+
+- Packet loss
+- High latency
+- Retransmissions
+- Reduced throughput
+
+TCP uses congestion control algorithms to prevent network collapse.
+
+---
+
+# Congestion Window (cwnd)
+
+TCP maintains a **Congestion Window (cwnd)** that limits the amount of data in transit.
+
+The sender can transmit only up to:
+
+```
+Minimum
+
+Receiver Window
+
+AND
+
+Congestion Window
+```
+
+This balances receiver capacity and network conditions.
+
+---
+
+# Slow Start
+
+TCP begins cautiously.
+
+```
+Initial Window
+
+↓
+
+1 MSS
+
+↓
+
+2 MSS
+
+↓
+
+4 MSS
+
+↓
+
+8 MSS
+
+↓
+
+16 MSS
+```
+
+The congestion window doubles every round-trip time (RTT) until a threshold is reached or packet loss occurs.
+
+---
+
+# Slow Start Threshold (ssthresh)
+
+The **Slow Start Threshold (ssthresh)** determines when TCP switches from exponential growth to linear growth.
+
+```
+cwnd
+
+↓
+
+Exponential
+
+↓
+
+ssthresh
+
+↓
+
+Linear Growth
+```
+
+This helps prevent congestion.
+
+---
+
+# Congestion Avoidance
+
+After reaching `ssthresh`, TCP increases the congestion window more gradually.
+
+```
+1
+
+↓
+
+2
+
+↓
+
+3
+
+↓
+
+4
+
+↓
+
+5
+```
+
+Instead of doubling each RTT, the window grows approximately one MSS per RTT.
+
+---
+
+# Packet Loss
+
+TCP interprets packet loss as a sign of congestion.
+
+Possible causes:
+
+- Router buffer overflow
+- Link congestion
+- Wireless interference
+- Network failures
+
+When packet loss is detected, TCP reduces its transmission rate.
+
+---
+
+# Fast Retransmit
+
+If the sender receives **three duplicate ACKs**, it assumes a segment has been lost.
+
+```
+ACK 1000
+
+↓
+
+ACK 1000
+
+↓
+
+ACK 1000
+
+↓
+
+Retransmit
+```
+
+This avoids waiting for the retransmission timeout, improving recovery time.
+
+---
+
+# Fast Recovery
+
+Instead of restarting from one segment, Fast Recovery reduces the congestion window and continues transmitting.
+
+Benefits:
+
+- Faster recovery
+- Higher throughput
+- Reduced latency
+
+---
+
+# Selective Acknowledgment (SACK)
+
+Without SACK:
+
+```
+Segments
+
+1
+
+2
+
+3 Lost
+
+4
+
+5
+
+↓
+
+Retransmit
+
+3
+
+4
+
+5
+```
+
+With SACK:
+
+```
+Retransmit
+
+Only Segment 3
+```
+
+SACK improves efficiency by retransmitting only missing data.
+
+---
+
+# Delayed ACK
+
+To reduce protocol overhead, receivers may delay acknowledgments briefly.
+
+Instead of:
+
+```
+ACK
+
+ACK
+
+ACK
+
+ACK
+```
+
+TCP may send:
+
+```
+Single ACK
+
+For Multiple Segments
+```
+
+This reduces network traffic.
+
+---
+
+# Nagle Algorithm
+
+The Nagle Algorithm combines small packets into larger ones.
+
+Without Nagle:
+
+```
+1 Byte
+
+↓
+
+1 Packet
+
+↓
+
+1 Byte
+
+↓
+
+1 Packet
+```
+
+With Nagle:
+
+```
+Several Small Writes
+
+↓
+
+Single Larger Packet
+```
+
+Advantages:
+
+- Reduced overhead
+- Improved bandwidth efficiency
+
+Disadvantages:
+
+- Increased latency for interactive applications
+
+Applications such as SSH or gaming often disable the Nagle Algorithm.
+
+---
+
+# Keepalive
+
+TCP Keepalive detects inactive or dead connections.
+
+```
+Idle Connection
+
+↓
+
+Keepalive Probe
+
+↓
+
+Response?
+
+↓
+
+Yes → Continue
+
+No → Close Connection
+```
+
+Keepalive helps remove stale sessions.
+
+---
+
+# TCP Connection States
+
+TCP maintains a finite state machine to track each connection.
+
+Common states include:
+
+- LISTEN
+- SYN_SENT
+- SYN_RECEIVED
+- ESTABLISHED
+- FIN_WAIT_1
+- FIN_WAIT_2
+- CLOSE_WAIT
+- LAST_ACK
+- TIME_WAIT
+- CLOSED
+
+Each state represents a different phase of the connection lifecycle.
+
+---
+
+# TCP State Transition
+
+```
+CLOSED
+
+↓
+
+LISTEN
+
+↓
+
+SYN_RECEIVED
+
+↓
+
+ESTABLISHED
+
+↓
+
+FIN_WAIT
+
+↓
+
+TIME_WAIT
+
+↓
+
+CLOSED
+```
+
+Understanding these states is essential for troubleshooting network issues.
+
+---
+
+# Four-Way Handshake
+
+TCP closes connections gracefully using a **Four-Way Handshake**.
+
+```
+Client                     Server
+
+FIN ----------------------->
+
+      <---------------- ACK
+
+      <---------------- FIN
+
+ACK ----------------------->
+```
+
+Each direction of communication is terminated independently.
+
+---
+
+# Step 1 – FIN
+
+The client indicates it has finished sending data.
+
+```
+Client
+
+FIN
+
+↓
+
+Server
+```
+
+---
+
+# Step 2 – ACK
+
+The server acknowledges the FIN.
+
+```
+Server
+
+ACK
+
+↓
+
+Client
+```
+
+The client stops sending data but can still receive data.
+
+---
+
+# Step 3 – FIN
+
+When the server finishes transmitting, it sends its own FIN.
+
+```
+Server
+
+FIN
+
+↓
+
+Client
+```
+
+---
+
+# Step 4 – ACK
+
+The client acknowledges the server's FIN.
+
+```
+Client
+
+ACK
+
+↓
+
+Server
+```
+
+The connection is now closed.
+
+---
+
+# TIME_WAIT
+
+After sending the final ACK, the client enters the **TIME_WAIT** state.
+
+Purpose:
+
+- Ensure delayed packets expire.
+- Prevent old segments from affecting new connections.
+- Allow retransmission of the final ACK if necessary.
+
+TIME_WAIT is a normal and important part of TCP.
+
+---
+
+# CLOSE_WAIT
+
+A connection remains in **CLOSE_WAIT** when the local application has not yet closed the socket after receiving a FIN.
+
+Persistent CLOSE_WAIT states may indicate application issues or resource leaks.
+
+---
+
+# Half-Open Connections
+
+A half-open connection occurs when one endpoint believes the session is active while the other does not.
+
+Possible causes:
+
+- Network interruptions
+- Firewall timeouts
+- Device crashes
+- Power failures
+
+TCP Keepalive mechanisms help identify and remove such connections.
+
+---
+
+# Enterprise Load Balancers
+
+Modern load balancers manage millions of concurrent TCP connections.
+
+Typical workflow:
+
+```
+Client
+
+↓
+
+TCP Connection
+
+↓
+
+Load Balancer
+
+↓
+
+Web Server 1
+
+↓
+
+Web Server 2
+
+↓
+
+Web Server 3
+```
+
+The load balancer distributes connections while preserving TCP session integrity.
+
+---
+
+# High Availability
+
+Enterprise environments deploy redundant TCP-based services.
+
+```
+Client
+
+↓
+
+Primary Server
+
+↓
+
+Failure
+
+↓
+
+Automatic Failover
+
+↓
+
+Secondary Server
+```
+
+This ensures continuous availability during failures.
+
+---
+
+# TCP in Cloud Environments
+
+Cloud providers optimize TCP for distributed workloads.
+
+Examples include:
+
+- Elastic Load Balancers
+- Kubernetes Services
+- Service Meshes
+- Managed Databases
+- API Gateways
+
+Efficient TCP tuning improves scalability and performance in cloud-native architectures.
+
+---
+
+# Business Impact
+
+TCP's data transfer mechanisms enable:
+
+- Reliable financial transactions
+- Database synchronization
+- Secure file transfers
+- Web application availability
+- Cloud service reliability
+- Enterprise messaging
+
+Without these mechanisms, modern business applications could not guarantee data integrity or consistent user experiences.
+
+---
+
+# Key Takeaways
+
+- TCP divides application data into segments and reassembles it at the receiver.
+- Sequence numbers and acknowledgments provide reliable, ordered delivery.
+- Sliding Windows improve throughput by allowing multiple outstanding segments.
+- Flow Control protects receivers, while Congestion Control protects the network.
+- Algorithms such as Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery optimize performance.
+- TCP gracefully terminates connections using the Four-Way Handshake and maintains well-defined connection states.
+
+---
+
