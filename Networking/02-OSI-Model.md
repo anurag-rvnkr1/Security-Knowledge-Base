@@ -2082,3 +2082,536 @@ Without encapsulation, modern computer networks and the Internet would not funct
 - Layer 2 information changes at each network hop, while Layer 3 addresses usually remain constant unless translation mechanisms such as NAT are used.
 - Packet analyzers like Wireshark display encapsulated protocols in a layered hierarchy, making the OSI model an invaluable framework for troubleshooting and cybersecurity analysis.
 
+# 02 - OSI Model
+
+# Part 4 — OSI vs TCP/IP, Layer-Based Troubleshooting, Security Mapping, Practical Lab, and Interview Preparation
+
+---
+
+# Overview
+
+The OSI Model is more than a theoretical framework—it is a practical tool used daily by network engineers, cybersecurity analysts, SOC teams, cloud engineers, and system administrators.
+
+This chapter concludes by showing how the OSI Model is applied in real-world environments for:
+
+- Network design
+- Packet analysis
+- Troubleshooting
+- Security architecture
+- Incident response
+- Threat hunting
+- Enterprise operations
+
+---
+
+# OSI Model vs TCP/IP Model
+
+Although the OSI Model is widely used for learning and troubleshooting, the Internet primarily uses the **TCP/IP Model**.
+
+The TCP/IP Model combines several OSI layers while maintaining the same fundamental communication principles.
+
+---
+
+# OSI Model
+
+```
++----------------------+
+| 7. Application       |
++----------------------+
+| 6. Presentation      |
++----------------------+
+| 5. Session           |
++----------------------+
+| 4. Transport         |
++----------------------+
+| 3. Network           |
++----------------------+
+| 2. Data Link         |
++----------------------+
+| 1. Physical          |
++----------------------+
+```
+
+---
+
+# TCP/IP Model
+
+```
++----------------------+
+| Application          |
++----------------------+
+| Transport            |
++----------------------+
+| Internet             |
++----------------------+
+| Network Access       |
++----------------------+
+```
+
+---
+
+# Layer Mapping
+
+| OSI Layer | TCP/IP Layer |
+|------------|--------------|
+| Application | Application |
+| Presentation | Application |
+| Session | Application |
+| Transport | Transport |
+| Network | Internet |
+| Data Link | Network Access |
+| Physical | Network Access |
+
+---
+
+# Key Differences
+
+| OSI Model | TCP/IP Model |
+|------------|--------------|
+| Seven layers | Four layers |
+| Conceptual reference model | Practical implementation model |
+| Developed by ISO | Developed by DARPA |
+| Protocol-independent | Built around Internet protocols |
+| Used extensively for education and troubleshooting | Used in real-world networking and the Internet |
+
+---
+
+# Devices by OSI Layer
+
+Understanding which devices primarily operate at each layer helps isolate problems and understand traffic flow.
+
+| Layer | Common Devices |
+|--------|----------------|
+| 7. Application | Proxy Server, Web Application Firewall (WAF), API Gateway |
+| 6. Presentation | SSL/TLS Offloader, Encryption Gateway |
+| 5. Session | Session Border Controller, Authentication Server |
+| 4. Transport | Stateful Firewall, Load Balancer |
+| 3. Network | Router, Layer 3 Switch |
+| 2. Data Link | Switch, Bridge, Wireless Access Point |
+| 1. Physical | Hub, Repeater, Cables, Connectors, Transceivers |
+
+> Many modern devices (such as next-generation firewalls and load balancers) inspect traffic across multiple OSI layers.
+
+---
+
+# Troubleshooting Using the OSI Model
+
+One of the greatest advantages of the OSI Model is its structured approach to troubleshooting.
+
+Engineers can isolate problems layer by layer rather than investigating the entire network simultaneously.
+
+---
+
+## Layer 1 — Physical
+
+### Common Issues
+
+- Damaged cables
+- Loose connectors
+- Faulty transceivers
+- Power failures
+- Wireless interference
+
+### Symptoms
+
+- No link light
+- Device offline
+- Frequent disconnections
+
+### Common Tools
+
+- Cable tester
+- Loopback tester
+- Interface status commands
+
+---
+
+## Layer 2 — Data Link
+
+### Common Issues
+
+- VLAN mismatch
+- MAC address table problems
+- ARP failures
+- Port security violations
+- Spanning Tree issues
+
+### Symptoms
+
+- Local devices cannot communicate
+- Duplicate MAC address warnings
+- Broadcast storms
+
+### Common Tools
+
+- `show mac address-table`
+- `arp -a`
+- Wireshark
+- Switch logs
+
+---
+
+## Layer 3 — Network
+
+### Common Issues
+
+- Incorrect IP configuration
+- Routing failures
+- Missing default gateway
+- ACL blocks
+- Subnet mismatch
+
+### Symptoms
+
+- Unable to reach remote networks
+- Ping failures
+- Traceroute stops unexpectedly
+
+### Common Tools
+
+- `ping`
+- `traceroute` / `tracert`
+- `ip route`
+- `show ip route`
+
+---
+
+## Layer 4 — Transport
+
+### Common Issues
+
+- Closed ports
+- Firewall filtering
+- TCP handshake failures
+- Excessive retransmissions
+
+### Symptoms
+
+- Applications time out
+- Connections reset
+- Service unavailable
+
+### Common Tools
+
+- `netstat`
+- `ss`
+- `telnet`
+- `nc` (Netcat)
+- Wireshark
+
+---
+
+## Layer 5 — Session
+
+### Common Issues
+
+- Session timeout
+- Authentication failures
+- Token expiration
+- Session synchronization issues
+
+### Symptoms
+
+- Frequent logouts
+- Interrupted user sessions
+
+---
+
+## Layer 6 — Presentation
+
+### Common Issues
+
+- TLS handshake failures
+- Certificate errors
+- Unsupported cipher suites
+- Encoding mismatches
+
+### Symptoms
+
+- Browser certificate warnings
+- Failed encrypted connections
+
+### Common Tools
+
+- `openssl s_client`
+- Browser developer tools
+- Certificate inspection utilities
+
+---
+
+## Layer 7 — Application
+
+### Common Issues
+
+- Application bugs
+- DNS resolution failures
+- API errors
+- Web server configuration problems
+
+### Symptoms
+
+- HTTP 404 or 500 errors
+- Slow web applications
+- Login failures
+
+### Common Tools
+
+- Browser developer tools
+- API clients
+- Server logs
+- Application monitoring platforms
+
+---
+
+# Security Across the OSI Layers
+
+Security controls should be applied at multiple layers rather than relying on a single defense.
+
+| Layer | Example Threats | Example Security Controls |
+|--------|-----------------|---------------------------|
+| 7. Application | SQL Injection, XSS, SSRF | Secure coding, WAF, Input validation |
+| 6. Presentation | Weak encryption, TLS downgrade | TLS 1.3, PKI, Strong cipher suites |
+| 5. Session | Session hijacking, Replay attacks | Secure cookies, Token rotation, MFA |
+| 4. Transport | SYN Flood, Port scanning | Stateful firewalls, Rate limiting, IDS/IPS |
+| 3. Network | IP spoofing, Route hijacking | ACLs, IPsec, Routing authentication |
+| 2. Data Link | ARP spoofing, VLAN hopping | DAI, Port security, 802.1X |
+| 1. Physical | Cable tampering, Device theft | Physical access control, CCTV, Locks |
+
+This layered defense strategy is commonly referred to as **Defense in Depth**.
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A company's employees report that they cannot access the internal Human Resources portal.
+
+### Investigation
+
+**Layer 1**
+
+- Verify switch and router interfaces.
+- Check cabling and link status.
+
+**Layer 2**
+
+- Confirm VLAN assignments.
+- Verify MAC address learning.
+
+**Layer 3**
+
+- Test IP connectivity using `ping`.
+- Verify routing tables and default gateways.
+
+**Layer 4**
+
+- Confirm that TCP port 443 is reachable.
+- Inspect firewall rules.
+
+**Layer 5**
+
+- Verify user authentication sessions.
+
+**Layer 6**
+
+- Validate the server's TLS certificate.
+- Check cipher suite compatibility.
+
+**Layer 7**
+
+- Review web server logs.
+- Inspect application errors and database connectivity.
+
+### Result
+
+The investigation reveals an expired TLS certificate.
+
+Because the issue was isolated systematically, troubleshooting was completed quickly with minimal downtime.
+
+---
+
+# Practical Lab
+
+## Objective
+
+Observe the OSI Model using a packet capture.
+
+### Requirements
+
+- Wireshark
+- Internet connection
+- Web browser
+
+---
+
+## Steps
+
+1. Start a packet capture in Wireshark.
+2. Open a web browser.
+3. Visit a website that uses HTTPS.
+4. Stop the packet capture.
+5. Locate the HTTPS session.
+6. Expand each protocol layer.
+
+You should observe a structure similar to:
+
+```
+Frame
+
+↓
+
+Ethernet II
+
+↓
+
+Internet Protocol (IPv4 or IPv6)
+
+↓
+
+Transmission Control Protocol (TCP)
+
+↓
+
+Transport Layer Security (TLS)
+
+↓
+
+Hypertext Transfer Protocol (HTTP)
+```
+
+Relate each protocol to its corresponding OSI layer.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is the purpose of the OSI Model?
+
+The OSI Model provides a standardized framework for understanding, designing, and troubleshooting network communication.
+
+---
+
+### Which layer is responsible for routing?
+
+The **Network Layer (Layer 3)** is responsible for logical addressing and routing packets between networks.
+
+---
+
+### Which layer uses MAC addresses?
+
+The **Data Link Layer (Layer 2)** uses MAC addresses for communication within the same local network.
+
+---
+
+## Intermediate
+
+### What is encapsulation?
+
+Encapsulation is the process of adding protocol-specific headers (and sometimes trailers) to data as it moves down the OSI stack before transmission.
+
+---
+
+### Why do MAC addresses change while IP addresses usually remain the same during routing?
+
+MAC addresses identify devices on the local network segment, so routers rebuild Layer 2 frames for each hop. IP addresses identify the end hosts and generally remain unchanged unless translation mechanisms such as NAT are applied.
+
+---
+
+### Which OSI layer is most commonly associated with HTTPS?
+
+HTTPS primarily operates at the **Application Layer (Layer 7)** while relying on **TLS**, which is commonly associated with the **Presentation Layer (Layer 6)** in the OSI conceptual model.
+
+---
+
+## Advanced
+
+### How does the OSI Model improve troubleshooting?
+
+The OSI Model allows engineers to isolate problems by layer, reducing the scope of investigation and enabling a structured troubleshooting methodology.
+
+---
+
+### Why is the OSI Model still relevant even though the Internet uses TCP/IP?
+
+The OSI Model provides a clear conceptual framework for understanding protocols, troubleshooting issues, designing secure architectures, and explaining network communication. The TCP/IP Model is the practical implementation used by the Internet, while the OSI Model remains invaluable for education and analysis.
+
+---
+
+### Explain a complete HTTPS request using the OSI Model.
+
+A strong answer should describe:
+
+1. Application creates the HTTP request.
+2. Presentation encrypts data using TLS.
+3. Session establishes and maintains the communication session.
+4. Transport segments the data using TCP.
+5. Network adds IP addressing and routes the packet.
+6. Data Link frames the packet using MAC addresses.
+7. Physical transmits bits over the communication medium.
+8. The receiving host performs decapsulation in the reverse order.
+
+---
+
+# References
+
+## Standards
+
+- ISO/IEC 7498-1 (Open Systems Interconnection Basic Reference Model)
+- IEEE 802 Series
+- IETF RFC Series
+
+## Security Guidance
+
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+- NIST SP 800-61 (Incident Handling Guide)
+
+## Vendor Documentation
+
+- Cisco Networking Documentation
+- Juniper Documentation
+- Microsoft Networking Documentation
+- Wireshark User Guide
+
+---
+
+# Summary
+
+The OSI Model provides a structured framework for understanding how data moves across computer networks. By dividing communication into seven specialized layers, it simplifies network design, troubleshooting, protocol analysis, and security implementation. Although the Internet is built on the TCP/IP model, the OSI Model remains the industry-standard reference for networking education, enterprise operations, and cybersecurity investigations.
+
+---
+
+# Chapter Review
+
+## Skills Covered
+
+After completing this chapter, you should understand:
+
+✔ Purpose and history of the OSI Model
+
+✔ Responsibilities of all seven layers
+
+✔ Protocol Data Units (PDUs)
+
+✔ Encapsulation and decapsulation
+
+✔ Protocols and devices at each layer
+
+✔ Layer-wise addressing (MAC, IP, Ports)
+
+✔ Enterprise packet flow
+
+✔ OSI vs TCP/IP mapping
+
+✔ Layer-based troubleshooting
+
+✔ Security threats and controls at each layer
+
+✔ Packet analysis using Wireshark
+
+✔ Enterprise case studies
+
+✔ Interview preparation from beginner to advanced levels
