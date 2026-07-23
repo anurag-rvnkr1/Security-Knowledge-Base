@@ -2038,4 +2038,908 @@ Strong wireless security enables organizations to:
 
 ---
 
+# Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, IEEE/RFC References, Summary, and Chapter Review
 
+---
+
+# Introduction
+
+Designing a secure wireless network is only the beginning. Enterprise administrators must continuously monitor, troubleshoot, optimize, and secure wireless infrastructure to maintain high availability and protect business operations.
+
+Unlike wired networks, wireless environments introduce additional variables such as:
+
+- Signal strength
+- RF interference
+- Client roaming
+- Channel utilization
+- Environmental obstacles
+- Client capabilities
+- Authentication latency
+
+A structured operational approach enables organizations to rapidly identify and resolve wireless issues while maintaining security.
+
+---
+
+# Enterprise Wireless Troubleshooting Methodology
+
+A standardized troubleshooting workflow minimizes downtime and improves operational consistency.
+
+```
+Identify Problem
+
+↓
+
+Collect Information
+
+↓
+
+Verify Client Connectivity
+
+↓
+
+Check Access Point Status
+
+↓
+
+Verify Signal Strength
+
+↓
+
+Check Authentication
+
+↓
+
+Verify DHCP
+
+↓
+
+Verify DNS
+
+↓
+
+Review Wireless Controller
+
+↓
+
+Analyze Logs
+
+↓
+
+Capture Packets
+
+↓
+
+Resolve
+
+↓
+
+Monitor
+```
+
+Following a repeatable methodology reduces unnecessary configuration changes and accelerates root cause analysis.
+
+---
+
+# Initial Health Checks
+
+Before investigating client-specific issues, verify the overall health of the wireless infrastructure.
+
+Check:
+
+- Wireless LAN Controller (WLC) status
+- Access Point availability
+- Controller CPU utilization
+- Controller memory utilization
+- High Availability status
+- Authentication server health
+- RADIUS connectivity
+- RF utilization
+- Active client count
+- System logs
+
+---
+
+# Wireless Client Connection Process
+
+Understanding the connection lifecycle simplifies troubleshooting.
+
+```
+Client Detects SSID
+
+↓
+
+Authentication
+
+↓
+
+Association
+
+↓
+
+802.1X / WPA Authentication
+
+↓
+
+DHCP
+
+↓
+
+DNS
+
+↓
+
+Network Access
+```
+
+Failure at any stage prevents successful connectivity.
+
+---
+
+# Wireless Packet Flow
+
+```
+Wireless Client
+
+↓
+
+Access Point
+
+↓
+
+Wireless LAN Controller
+
+↓
+
+Switch
+
+↓
+
+Firewall
+
+↓
+
+Corporate Network
+```
+
+Each component should be verified independently when troubleshooting.
+
+---
+
+# Packet Analysis
+
+Important wireless packet types include:
+
+- Beacon frames
+- Probe requests
+- Probe responses
+- Authentication frames
+- Association requests
+- Association responses
+- Deauthentication frames
+- Disassociation frames
+- Data frames
+
+Analyzing these frames helps determine where communication fails.
+
+---
+
+# Wireshark Analysis
+
+Wireshark is commonly used to troubleshoot wireless environments.
+
+Useful display filters:
+
+Beacon Frames
+
+```text
+wlan.fc.type_subtype == 8
+```
+
+---
+
+Probe Requests
+
+```text
+wlan.fc.type_subtype == 4
+```
+
+---
+
+Probe Responses
+
+```text
+wlan.fc.type_subtype == 5
+```
+
+---
+
+Authentication Frames
+
+```text
+wlan.fc.type_subtype == 11
+```
+
+---
+
+Association Requests
+
+```text
+wlan.fc.type_subtype == 0
+```
+
+---
+
+Association Responses
+
+```text
+wlan.fc.type_subtype == 1
+```
+
+---
+
+Deauthentication Frames
+
+```text
+wlan.fc.type_subtype == 12
+```
+
+---
+
+Disassociation Frames
+
+```text
+wlan.fc.type_subtype == 10
+```
+
+---
+
+Specific SSID
+
+```text
+wlan.ssid == "Corporate-WiFi"
+```
+
+Packet captures should ideally be collected using adapters that support monitor mode to observe management and control frames.
+
+---
+
+# Wireless Log Analysis
+
+Important log fields include:
+
+| Field | Description |
+|--------|-------------|
+| Timestamp | Event time |
+| Username | Authenticated user |
+| Client MAC | Wireless client |
+| Access Point | Associated AP |
+| SSID | Connected network |
+| Authentication Method | WPA2, WPA3, 802.1X |
+| Signal Strength | RSSI |
+| Channel | Operating channel |
+| Roaming Event | AP transition |
+| Event Status | Success or failure |
+
+These logs support troubleshooting and security investigations.
+
+---
+
+# Authentication Verification
+
+Verify:
+
+- Username
+- Password
+- Certificate validity
+- IEEE 802.1X authentication
+- RADIUS communication
+- Multi-Factor Authentication (if applicable)
+- Identity provider availability
+
+Authentication issues often originate from identity services rather than the wireless infrastructure itself.
+
+---
+
+# RADIUS Verification
+
+Verify:
+
+- Reachability
+- Shared secret configuration
+- Authentication logs
+- Accounting records
+- Authorization policies
+- Response latency
+
+Successful RADIUS communication is essential for WPA2/WPA3-Enterprise deployments.
+
+---
+
+# DHCP Verification
+
+After successful authentication, confirm that clients receive:
+
+- IP address
+- Subnet mask
+- Default gateway
+- DNS servers
+- Lease information
+
+Missing DHCP responses are a common cause of connectivity issues.
+
+---
+
+# DNS Verification
+
+Verify:
+
+- Internal DNS servers
+- External DNS resolution
+- Split DNS (if implemented)
+- Name resolution latency
+
+Many reported "Wi-Fi issues" are actually DNS resolution problems.
+
+---
+
+# Roaming Verification
+
+Check:
+
+- Roaming history
+- Signal thresholds
+- Fast roaming (802.11r)
+- Neighbor reports (802.11k)
+- Client steering events
+
+Poor roaming behavior may interrupt voice and video applications.
+
+---
+
+# RF Analysis
+
+Evaluate:
+
+- Signal strength (RSSI)
+- Signal-to-Noise Ratio (SNR)
+- Channel utilization
+- Co-channel interference
+- Adjacent-channel interference
+- Noise floor
+
+RF analysis identifies physical-layer issues that are not visible through IP troubleshooting alone.
+
+---
+
+# Common Wireless Troubleshooting Scenarios
+
+---
+
+## Scenario 1 — Client Cannot Discover the SSID
+
+### Symptoms
+
+- The wireless network does not appear in the list of available networks.
+
+### Investigation
+
+Verify:
+
+- Access Point status
+- SSID broadcast settings
+- RF radio status
+- Channel configuration
+- Regulatory domain settings
+
+---
+
+## Scenario 2 — Authentication Failure
+
+### Symptoms
+
+- The client detects the SSID but cannot connect.
+
+### Investigation
+
+Check:
+
+- Password or credentials
+- IEEE 802.1X configuration
+- Certificate validity
+- RADIUS server status
+- Identity provider availability
+
+---
+
+## Scenario 3 — Connected but No Internet Access
+
+### Symptoms
+
+- Wi-Fi is connected.
+- Internet resources are unavailable.
+
+### Investigation
+
+Verify:
+
+- DHCP
+- DNS
+- Default gateway
+- Firewall policies
+- Internet connectivity
+
+---
+
+## Scenario 4 — Poor Wireless Performance
+
+### Symptoms
+
+- Slow downloads
+- High latency
+- Frequent retransmissions
+
+Investigate:
+
+- RSSI
+- SNR
+- Channel congestion
+- Interference
+- Client capabilities
+- Access Point load
+
+---
+
+## Scenario 5 — Frequent Client Disconnects
+
+### Symptoms
+
+- Users repeatedly lose connectivity.
+
+Possible causes:
+
+- Weak signal
+- RF interference
+- Roaming problems
+- Authentication timeout
+- Power-saving behavior
+- Firmware defects
+
+---
+
+## Scenario 6 — Voice Calls Drop During Roaming
+
+### Symptoms
+
+- VoIP calls disconnect while moving through the building.
+
+Verify:
+
+- 802.11r support
+- Controller configuration
+- AP overlap
+- Roaming thresholds
+- QoS policies
+
+---
+
+# Enterprise Performance Monitoring
+
+Monitor:
+
+- Active clients
+- AP utilization
+- Channel utilization
+- Throughput
+- RSSI
+- SNR
+- Roaming events
+- Authentication success rate
+- DHCP latency
+- RADIUS response time
+
+Trend analysis helps identify performance degradation before users are affected.
+
+---
+
+# Detection Engineering
+
+Wireless telemetry supports numerous detection use cases.
+
+Monitor for:
+
+- Rogue Access Points
+- Evil Twin attacks
+- Deauthentication floods
+- Authentication failures
+- MAC address spoofing
+- New unauthorized devices
+- Excessive roaming
+- Suspicious administrative changes
+
+Detection rules should balance sensitivity with operational noise.
+
+---
+
+# SIEM Correlation Examples
+
+### Rogue Access Point
+
+```
+Unknown BSSID
+
+↓
+
+Corporate SSID
+
+↓
+
+Unauthorized Channel
+
+↓
+
+Critical Alert
+```
+
+---
+
+### Authentication Attack
+
+```
+Single Source
+
+↓
+
+Hundreds of Failed Authentications
+
+↓
+
+Account Lockouts
+
+↓
+
+SOC Alert
+```
+
+---
+
+### Deauthentication Flood
+
+```
+Large Number of
+
+Deauthentication Frames
+
+↓
+
+Multiple Client Disconnects
+
+↓
+
+High Severity Alert
+```
+
+---
+
+### Unauthorized Administrator Login
+
+```
+Wireless Controller Login
+
+↓
+
+Outside Business Hours
+
+↓
+
+Configuration Change
+
+↓
+
+Critical Incident
+```
+
+---
+
+# Zeek Integration
+
+Although Zeek primarily analyzes wired network traffic, it can complement wireless investigations by analyzing traffic after it traverses the wireless infrastructure.
+
+Useful logs include:
+
+- conn.log
+- dns.log
+- http.log
+- ssl.log
+- notice.log
+
+These logs provide visibility into post-authentication network activity.
+
+---
+
+# Suricata Integration
+
+Suricata can inspect traffic originating from wireless clients.
+
+Detection opportunities include:
+
+- Malware communication
+- DNS tunneling
+- Exploit attempts
+- Command-and-Control traffic
+- Web attacks
+- Policy violations
+
+Combined with wireless telemetry, Suricata improves enterprise visibility.
+
+---
+
+# Threat Hunting Ideas
+
+Security teams can proactively investigate:
+
+- Newly observed wireless devices
+- Rare SSIDs
+- Excessive authentication failures
+- Long-duration client sessions
+- High-volume guest network activity
+- Devices connecting from unusual locations
+- Administrative configuration changes
+- Abnormal roaming behavior
+
+Threat hunting complements automated detection by identifying subtle or emerging attack patterns.
+
+---
+
+# Practical Lab 1 — Enterprise Wi-Fi Deployment
+
+Objective:
+
+Deploy a secure enterprise wireless network.
+
+Tasks:
+
+1. Configure a Wireless LAN Controller.
+2. Register multiple Access Points.
+3. Create employee and guest SSIDs.
+4. Verify client connectivity.
+5. Document the deployment.
+
+---
+
+# Practical Lab 2 — WPA2/WPA3 Enterprise Authentication
+
+Tasks:
+
+1. Configure a RADIUS server.
+2. Enable IEEE 802.1X.
+3. Deploy WPA2-Enterprise or WPA3-Enterprise.
+4. Authenticate multiple users.
+5. Review authentication logs.
+
+---
+
+# Practical Lab 3 — Wireless Packet Capture
+
+Tasks:
+
+1. Capture Beacon frames.
+2. Capture Authentication frames.
+3. Capture Association frames.
+4. Identify the complete client connection process.
+5. Analyze RSSI and channel information.
+
+---
+
+# Practical Lab 4 — Rogue Access Point Detection
+
+Tasks:
+
+1. Deploy a rogue AP in a lab environment.
+2. Detect it using WIDS/WIPS.
+3. Document alerts.
+4. Identify the rogue BSSID.
+5. Recommend mitigation steps.
+
+---
+
+# Practical Lab 5 — SIEM Integration
+
+Tasks:
+
+1. Forward wireless controller logs to a SIEM.
+2. Generate authentication failures.
+3. Simulate a rogue AP alert.
+4. Create detection rules.
+5. Verify alert generation and investigation workflow.
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A multinational company receives reports of intermittent wireless connectivity and failed employee logins at one office.
+
+### Investigation
+
+The network team discovers:
+
+- A rogue Access Point broadcasting the corporate SSID.
+- Increased authentication failures due to client confusion.
+- High RF interference on overlapping 2.4 GHz channels.
+- Outdated firmware on several Access Points.
+
+### Resolution
+
+- Remove the rogue Access Point.
+- Optimize channel assignments following an RF survey.
+- Upgrade AP firmware.
+- Enable Protected Management Frames (PMF).
+- Enhance WIDS monitoring and SIEM alerting.
+
+### Outcome
+
+- Improved wireless stability.
+- Reduced authentication failures.
+- Enhanced visibility into wireless threats.
+- Better user experience and stronger security posture.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is the purpose of an Access Point (AP)?
+
+An Access Point connects wireless devices to a wired network by transmitting and receiving Wi-Fi signals.
+
+---
+
+### What is the difference between WPA2 and WPA3?
+
+- **WPA2** uses AES-CCMP and supports PSK or IEEE 802.1X authentication.
+- **WPA3** introduces stronger authentication mechanisms such as SAE (Personal mode), improved resistance to offline password attacks, and enhanced security features.
+
+---
+
+### What is IEEE 802.1X?
+
+IEEE 802.1X is a port-based network access control standard that authenticates users or devices before granting network access.
+
+---
+
+## Intermediate
+
+### What is the role of a RADIUS server?
+
+A RADIUS server provides centralized Authentication, Authorization, and Accounting (AAA) services for enterprise wireless networks.
+
+---
+
+### Why is channel planning important?
+
+Proper channel planning minimizes interference, improves throughput, reduces retransmissions, and enhances overall wireless performance.
+
+---
+
+### What is a Rogue Access Point?
+
+A Rogue Access Point is an unauthorized AP connected to or impersonating part of an organization's network, potentially bypassing security controls.
+
+---
+
+## Advanced
+
+### How would you troubleshoot a client that authenticates successfully but cannot access network resources?
+
+A structured approach includes:
+
+1. Verify DHCP.
+2. Verify DNS.
+3. Check VLAN assignment.
+4. Review firewall policies.
+5. Validate routing.
+6. Analyze controller logs.
+7. Capture packets.
+
+---
+
+### How can a SOC detect wireless attacks?
+
+Indicators include:
+
+- Rogue AP detection
+- Evil Twin attacks
+- Deauthentication floods
+- Authentication failures
+- MAC spoofing
+- Unauthorized controller logins
+- Abnormal roaming patterns
+
+---
+
+### Why should wireless logs be integrated with a SIEM?
+
+SIEM integration enables:
+
+- Centralized monitoring
+- Event correlation
+- Automated alerting
+- Faster incident response
+- Compliance reporting
+- Threat hunting
+- Long-term log retention
+
+---
+
+# IEEE and RFC References
+
+Key standards and documents related to enterprise wireless networking include:
+
+- IEEE 802.11 — Wireless LAN (Wi-Fi) Standards
+- IEEE 802.11r — Fast Basic Service Set Transition
+- IEEE 802.11k — Radio Resource Measurement
+- IEEE 802.11v — Wireless Network Management
+- IEEE 802.11w — Protected Management Frames
+- IEEE 802.1X — Port-Based Network Access Control
+- RFC 3579 — RADIUS Support for EAP
+- RFC 3748 — Extensible Authentication Protocol (EAP)
+- RFC 5216 — EAP-TLS Authentication Protocol
+
+---
+
+# Summary
+
+Enterprise wireless networks provide secure, flexible connectivity for users, devices, and applications. Modern Wi-Fi deployments rely on IEEE 802.11 standards, WPA2/WPA3 security, IEEE 802.1X authentication, centralized identity management, and continuous monitoring. Successful operations require strong RF design, proactive troubleshooting, SIEM integration, and layered security controls to protect against evolving wireless threats.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ Wireless networking fundamentals
+
+✔ IEEE 802.11 standards and Wi-Fi generations
+
+✔ Access Points and Wireless LAN Controllers
+
+✔ Frequency bands and channel planning
+
+✔ WPA2, WPA3, IEEE 802.1X, EAP, and RADIUS
+
+✔ Wireless threats and enterprise hardening
+
+✔ WIDS/WIPS and Zero Trust integration
+
+✔ Enterprise troubleshooting methodology
+
+✔ Detection engineering and SOC integration
+
+✔ Practical wireless security labs
+
+✔ Core IEEE standards and RFCs related to wireless networking
+
+---
+
+# What's Next?
+
+The next chapter, **`19-IPv6.md`**, covers:
+
+- IPv6 fundamentals
+- IPv6 addressing architecture
+- Address types (Global Unicast, Link-Local, Unique Local, Multicast, Anycast)
+- IPv6 header format
+- Neighbor Discovery Protocol (NDP)
+- ICMPv6
+- Stateless Address Autoconfiguration (SLAAC)
+- DHCPv6
+- IPv6 routing
+- IPv6 security
+- Dual-stack deployments
+- IPv6 troubleshooting
+- Detection engineering
+- Practical labs
+- Interview questions
+- RFC references
