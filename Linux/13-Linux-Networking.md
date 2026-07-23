@@ -1606,3 +1606,751 @@ Reliable network configuration enables:
 ---
 
 
+# 13 - Linux Networking
+
+# Part 3 — Essential Linux Networking Commands, Network Troubleshooting, Packet Analysis, and Enterprise Monitoring
+
+---
+
+# Introduction
+
+Every Linux administrator spends a significant amount of time troubleshooting network issues.
+
+Common problems include:
+
+- Network unreachable
+- DNS failures
+- Slow connections
+- Packet loss
+- Firewall blocking traffic
+- Routing problems
+- Service unavailable
+- High network latency
+
+Linux provides powerful command-line tools to diagnose these issues.
+
+---
+
+# Network Troubleshooting Methodology
+
+```text
+Identify Problem
+
+↓
+
+Verify Physical/Virtual Link
+
+↓
+
+Check Interface
+
+↓
+
+Verify IP Address
+
+↓
+
+Verify Gateway
+
+↓
+
+Check Routing
+
+↓
+
+Test DNS
+
+↓
+
+Test Connectivity
+
+↓
+
+Inspect Firewall
+
+↓
+
+Capture Traffic (if needed)
+
+↓
+
+Resolve Issue
+```
+
+---
+
+# Essential Networking Commands
+
+| Command | Purpose |
+|----------|----------|
+| `ip` | Network configuration |
+| `ping` | Connectivity testing |
+| `ss` | Socket statistics |
+| `netstat` (legacy) | Network statistics |
+| `traceroute` | Path discovery |
+| `tracepath` | Route analysis (non-root friendly) |
+| `dig` | DNS queries |
+| `nslookup` | Basic DNS lookup |
+| `host` | DNS information |
+| `tcpdump` | Packet capture |
+| `curl` | HTTP/HTTPS testing |
+| `wget` | Download/testing |
+| `nmcli` | NetworkManager CLI |
+| `ethtool` | Ethernet interface information |
+
+---
+
+# The `ip` Command
+
+The `ip` command is the modern replacement for many legacy networking tools.
+
+---
+
+## Show Interfaces
+
+```bash
+ip link show
+```
+
+Short form:
+
+```bash
+ip link
+```
+
+---
+
+## Show IP Addresses
+
+```bash
+ip addr show
+```
+
+Short form:
+
+```bash
+ip a
+```
+
+Example output:
+
+```text
+2: eth0
+
+inet 192.168.1.25/24
+```
+
+---
+
+## Show Routing Table
+
+```bash
+ip route
+```
+
+Example:
+
+```text
+default via 192.168.1.1
+
+192.168.1.0/24 dev eth0
+```
+
+---
+
+## Show Neighbor (ARP) Cache
+
+```bash
+ip neigh
+```
+
+Example:
+
+```text
+192.168.1.1 dev eth0 lladdr 00:11:22:33:44:55
+```
+
+---
+
+# Testing Connectivity with `ping`
+
+The `ping` command uses **ICMP Echo Requests** to verify reachability.
+
+Example:
+
+```bash
+ping 8.8.8.8
+```
+
+Limit requests:
+
+```bash
+ping -c 4 google.com
+```
+
+---
+
+# Interpreting `ping`
+
+Example output:
+
+```text
+64 bytes from ...
+
+time=12 ms
+```
+
+Useful metrics:
+
+- Packet loss
+- Latency
+- Reachability
+- Jitter (indirectly, by observing varying response times)
+
+---
+
+# Connectivity Testing Flow
+
+```text
+Local Host
+
+↓
+
+Gateway
+
+↓
+
+Internet
+
+↓
+
+Remote Host
+```
+
+If the gateway is unreachable, external communication will fail.
+
+---
+
+# Testing DNS Separately
+
+Test IP connectivity:
+
+```bash
+ping 8.8.8.8
+```
+
+Test hostname resolution:
+
+```bash
+ping google.com
+```
+
+If the IP succeeds but the hostname fails, the issue is likely related to DNS.
+
+---
+
+# The `ss` Command
+
+`ss` displays active sockets and listening services.
+
+Show listening TCP sockets:
+
+```bash
+ss -tln
+```
+
+Show listening UDP sockets:
+
+```bash
+ss -uln
+```
+
+Show all sockets:
+
+```bash
+ss -tuln
+```
+
+---
+
+# Example `ss` Output
+
+```text
+Netid State  Local Address
+
+tcp   LISTEN 0.0.0.0:22
+
+tcp   LISTEN 0.0.0.0:80
+```
+
+This indicates that SSH and HTTP services are listening.
+
+---
+
+# Legacy `netstat`
+
+Although largely replaced by `ss`, many environments still include `netstat`.
+
+Example:
+
+```bash
+netstat -tuln
+```
+
+Understanding it remains useful for legacy systems.
+
+---
+
+# Tracing Network Paths
+
+Install (if required by distribution) and run:
+
+```bash
+traceroute google.com
+```
+
+or
+
+```bash
+tracepath google.com
+```
+
+---
+
+# Traceroute Workflow
+
+```text
+Local Host
+
+↓
+
+Router 1
+
+↓
+
+Router 2
+
+↓
+
+ISP
+
+↓
+
+Destination
+```
+
+Useful for identifying where delays or failures occur.
+
+---
+
+# DNS Lookup with `dig`
+
+Query an A record:
+
+```bash
+dig example.com
+```
+
+Reverse lookup:
+
+```bash
+dig -x 8.8.8.8
+```
+
+Query a specific record type:
+
+```bash
+dig example.com MX
+```
+
+---
+
+# Using `nslookup`
+
+Basic lookup:
+
+```bash
+nslookup example.com
+```
+
+Specify a DNS server:
+
+```bash
+nslookup example.com 8.8.8.8
+```
+
+---
+
+# Using `host`
+
+Forward lookup:
+
+```bash
+host example.com
+```
+
+Reverse lookup:
+
+```bash
+host 8.8.8.8
+```
+
+---
+
+# Comparing DNS Tools
+
+| Tool | Best Use |
+|------|----------|
+| `dig` | Detailed DNS troubleshooting |
+| `nslookup` | Quick lookups |
+| `host` | Simple forward/reverse queries |
+
+---
+
+# Testing HTTP Services with `curl`
+
+Fetch headers only:
+
+```bash
+curl -I https://example.com
+```
+
+Retrieve a webpage:
+
+```bash
+curl https://example.com
+```
+
+Useful for:
+
+- API testing
+- Web server verification
+- SSL/TLS validation (with additional options)
+
+---
+
+# Downloading Files with `wget`
+
+Example:
+
+```bash
+wget https://example.com/file.txt
+```
+
+Useful for:
+
+- Downloading packages
+- Testing file availability
+- Automated scripts
+
+---
+
+# Capturing Packets with `tcpdump`
+
+Capture traffic on an interface:
+
+```bash
+sudo tcpdump -i eth0
+```
+
+Capture only ICMP traffic:
+
+```bash
+sudo tcpdump icmp
+```
+
+Capture packets for TCP port 80:
+
+```bash
+sudo tcpdump port 80
+```
+
+Write to a capture file:
+
+```bash
+sudo tcpdump -i eth0 -w capture.pcap
+```
+
+The resulting `.pcap` file can be analyzed with tools such as Wireshark.
+
+---
+
+# Packet Capture Workflow
+
+```text
+Network Interface
+
+↓
+
+tcpdump
+
+↓
+
+Packet Capture
+
+↓
+
+PCAP File
+
+↓
+
+Analysis
+```
+
+---
+
+# Viewing Interface Details with `ethtool`
+
+Example:
+
+```bash
+sudo ethtool eth0
+```
+
+Displays information such as:
+
+- Link status
+- Speed
+- Duplex mode
+- Driver information
+
+---
+
+# Managing NetworkManager with `nmcli`
+
+Show device status:
+
+```bash
+nmcli device status
+```
+
+Show active connections:
+
+```bash
+nmcli connection show
+```
+
+`nmcli` is commonly used on distributions that use NetworkManager.
+
+---
+
+# Diagnosing Common Problems
+
+## No IP Address
+
+Check:
+
+```bash
+ip addr
+```
+
+Verify:
+
+- DHCP
+- Static configuration
+- Interface state
+
+---
+
+## Default Gateway Missing
+
+Check:
+
+```bash
+ip route
+```
+
+Expected output:
+
+```text
+default via 192.168.1.1
+```
+
+---
+
+## DNS Not Working
+
+Check:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Test:
+
+```bash
+dig example.com
+```
+
+---
+
+## Service Not Listening
+
+Check:
+
+```bash
+ss -tuln
+```
+
+Verify that the expected port is in the `LISTEN` state.
+
+---
+
+## Packet Loss
+
+Test:
+
+```bash
+ping -c 20 gateway_ip
+```
+
+Possible causes:
+
+- Congestion
+- Faulty links
+- Interface errors
+- Firewall filtering
+- Hardware issues
+
+---
+
+# Enterprise Monitoring Workflow
+
+```text
+Network Devices
+
+↓
+
+Servers
+
+↓
+
+Metrics Collection
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerts
+
+↓
+
+Operations Team
+```
+
+Common metrics include:
+
+- Latency
+- Packet loss
+- Bandwidth usage
+- Interface utilization
+- Error rates
+
+---
+
+# Enterprise Case Study
+
+## Users Cannot Access an Internal Web Application
+
+Troubleshooting sequence:
+
+```text
+Verify Interface
+
+↓
+
+Check IP Address
+
+↓
+
+Ping Gateway
+
+↓
+
+Verify Route
+
+↓
+
+Resolve DNS
+
+↓
+
+Test Port 443
+
+↓
+
+Inspect Firewall
+
+↓
+
+Check Web Service
+
+↓
+
+Restore Access
+```
+
+This structured approach minimizes downtime.
+
+---
+
+# Cybersecurity Perspective
+
+Many reconnaissance and attack techniques rely on networking.
+
+Examples include:
+
+- Port scanning
+- Service enumeration
+- Packet sniffing
+- DNS reconnaissance
+- Traffic interception
+- Network mapping
+
+Defensive teams use the same tools to:
+
+- Detect misconfigurations
+- Validate connectivity
+- Investigate incidents
+- Monitor suspicious activity
+
+---
+
+# Business Impact
+
+Effective network troubleshooting helps organizations:
+
+- Reduce downtime
+- Restore services quickly
+- Improve user experience
+- Maintain service-level agreements (SLAs)
+- Reduce operational costs
+- Improve incident response
+
+---
+
+# Enterprise Best Practices
+
+- Prefer modern tools such as `ip` and `ss` over deprecated alternatives where possible.
+- Document network topology and IP addressing.
+- Monitor critical network paths continuously.
+- Capture packets only when necessary and protect capture files.
+- Restrict packet capture permissions to authorized administrators.
+- Validate DNS, routing, and firewall rules before escalating issues.
+- Maintain baseline performance metrics for comparison.
+
+---
+
+# Key Takeaways
+
+- Linux provides a comprehensive set of networking diagnostic tools.
+- `ip` is the primary utility for interface and routing management.
+- `ping`, `traceroute`, and `tracepath` verify connectivity and routing.
+- `ss` is the preferred tool for viewing sockets and listening services.
+- `dig`, `nslookup`, and `host` are essential for DNS troubleshooting.
+- `tcpdump` enables detailed packet-level analysis for advanced troubleshooting.
+
+---
+
