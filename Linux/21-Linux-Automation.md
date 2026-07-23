@@ -1578,3 +1578,801 @@ Well-managed automation:
 
 ---
 
+# 21 - Linux Automation
+
+# Part 3 — Backup Automation, Log Rotation, Monitoring Automation, Security Automation, Enterprise Workflows, and Automation Troubleshooting
+
+---
+
+# Introduction
+
+Automation becomes truly valuable when it manages critical infrastructure tasks without requiring constant administrator intervention.
+
+Enterprise Linux environments automate:
+
+- System backups
+- Database backups
+- Log management
+- Security scans
+- Compliance checks
+- Service monitoring
+- Certificate renewal
+- File synchronization
+- Patch verification
+- Health reporting
+
+Well-designed automation reduces downtime, improves consistency, and allows administrators to focus on higher-value work.
+
+---
+
+# Enterprise Automation Pipeline
+
+```text
+Task
+
+↓
+
+Automation Script
+
+↓
+
+Scheduler
+
+↓
+
+Execution
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Alerting
+
+↓
+
+Administrator
+```
+
+---
+
+# Backup Automation
+
+Backups are among the most common automated Linux tasks.
+
+Typical backup targets include:
+
+- User data
+- Databases
+- Configuration files
+- Web applications
+- Virtual machines
+- Containers
+- System logs
+
+---
+
+# Backup Workflow
+
+```text
+Files
+
+↓
+
+Backup Script
+
+↓
+
+Compression
+
+↓
+
+Checksum
+
+↓
+
+Storage
+
+↓
+
+Verification
+
+↓
+
+Retention
+```
+
+---
+
+# Example Backup Script
+
+```bash
+#!/bin/bash
+
+SOURCE="/home"
+DEST="/backup"
+
+tar -czf "$DEST/home-$(date +%F).tar.gz" "$SOURCE"
+```
+
+Schedule with cron:
+
+```text
+0 2 * * * /usr/local/bin/backup.sh
+```
+
+Runs every day at **02:00**.
+
+---
+
+# Backup Verification
+
+A backup is only useful if it can be restored.
+
+Verification should include:
+
+- File existence
+- Archive integrity
+- Checksum validation
+- Periodic restore testing
+
+---
+
+# Backup Strategy
+
+Enterprise organizations commonly follow the **3-2-1 backup principle**:
+
+```text
+3 Copies
+
+↓
+
+2 Different Storage Media
+
+↓
+
+1 Offsite Copy
+```
+
+This improves resilience against hardware failure, accidental deletion, and ransomware.
+
+---
+
+# Log Rotation
+
+Logs grow continuously.
+
+Without maintenance they may:
+
+- Fill disks
+- Reduce performance
+- Complicate troubleshooting
+
+Automation prevents uncontrolled log growth.
+
+---
+
+# Log Rotation Workflow
+
+```text
+Log File
+
+↓
+
+Size Threshold
+
+↓
+
+Rotate
+
+↓
+
+Compress
+
+↓
+
+Archive
+
+↓
+
+Delete Old Logs
+```
+
+---
+
+# logrotate
+
+Most Linux distributions include:
+
+```text
+logrotate
+```
+
+It automates:
+
+- Rotation
+- Compression
+- Retention
+- Removal of old logs
+
+---
+
+# Common logrotate Configuration
+
+Typical configuration options:
+
+| Option | Purpose |
+|----------|----------|
+| daily | Rotate daily |
+| weekly | Rotate weekly |
+| monthly | Rotate monthly |
+| rotate | Number of archives to retain |
+| compress | Compress archived logs |
+| missingok | Ignore missing files |
+| notifempty | Skip empty logs |
+
+---
+
+# Example Configuration
+
+```text
+/var/log/myapp.log {
+
+    daily
+
+    rotate 7
+
+    compress
+
+    missingok
+
+    notifempty
+}
+```
+
+Meaning:
+
+- Rotate daily
+- Keep seven archives
+- Compress old logs
+
+---
+
+# Monitoring Automation
+
+Monitoring systems automatically collect system information.
+
+Common metrics:
+
+- CPU utilization
+- Memory usage
+- Disk utilization
+- Network traffic
+- Service availability
+- Process health
+
+---
+
+# Monitoring Workflow
+
+```text
+Collect Metrics
+
+↓
+
+Analyze
+
+↓
+
+Threshold
+
+↓
+
+Alert
+
+↓
+
+Administrator
+```
+
+---
+
+# Example Disk Usage Script
+
+```bash
+#!/bin/bash
+
+df -h
+```
+
+Schedule:
+
+```text
+0 */6 * * * /usr/local/bin/check_disk.sh
+```
+
+Runs every six hours.
+
+---
+
+# Example Memory Check
+
+```bash
+free -h
+```
+
+Useful for automated health reports.
+
+---
+
+# Example CPU Monitoring
+
+```bash
+top -b -n 1
+```
+
+or
+
+```bash
+uptime
+```
+
+These commands can be incorporated into scheduled reporting scripts.
+
+---
+
+# Service Monitoring
+
+Critical services should be checked automatically.
+
+Examples:
+
+- SSH
+- Web server
+- Database
+- DNS
+- Mail server
+
+---
+
+# Example Service Check
+
+```bash
+systemctl is-active ssh
+```
+
+or
+
+```bash
+systemctl is-active nginx
+```
+
+A non-active result can trigger notifications through external monitoring or alerting systems.
+
+---
+
+# Security Automation
+
+Security teams automate repetitive defensive tasks.
+
+Examples include:
+
+- Vulnerability scanning
+- File integrity monitoring
+- Malware signature updates
+- Log analysis
+- User account reviews
+- Certificate expiration checks
+
+---
+
+# Security Automation Workflow
+
+```text
+Scheduled Task
+
+↓
+
+Collect Data
+
+↓
+
+Analyze
+
+↓
+
+Detect Issue
+
+↓
+
+Generate Alert
+
+↓
+
+Response
+```
+
+---
+
+# File Integrity Monitoring
+
+Automation can periodically calculate checksums for important files.
+
+Workflow:
+
+```text
+Critical Files
+
+↓
+
+Generate Checksums
+
+↓
+
+Compare
+
+↓
+
+Changes?
+
+↓
+
+Alert
+```
+
+Unexpected changes may indicate unauthorized modification.
+
+---
+
+# Certificate Monitoring
+
+Automated tasks can identify certificates approaching expiration.
+
+Workflow:
+
+```text
+Certificates
+
+↓
+
+Expiration Check
+
+↓
+
+Threshold
+
+↓
+
+Alert
+
+↓
+
+Renew
+```
+
+This helps prevent service outages caused by expired certificates.
+
+---
+
+# User Account Auditing
+
+Automation can review:
+
+- Inactive accounts
+- Locked accounts
+- Expired passwords
+- Unexpected privilege changes
+
+Regular reviews strengthen access control.
+
+---
+
+# File Cleanup Automation
+
+Example:
+
+```bash
+find /tmp -type f -mtime +7 -delete
+```
+
+This removes files older than seven days from `/tmp`.
+
+Use caution and verify commands before scheduling deletion tasks.
+
+---
+
+# Database Maintenance
+
+Automated database tasks commonly include:
+
+- Backups
+- Statistics updates
+- Integrity checks
+- Log cleanup
+
+Schedule maintenance during approved maintenance windows to minimize impact.
+
+---
+
+# File Synchronization
+
+Organizations often automate synchronization between systems.
+
+Typical workflow:
+
+```text
+Source
+
+↓
+
+Synchronization
+
+↓
+
+Destination
+
+↓
+
+Verification
+```
+
+This supports backup, disaster recovery, and distributed deployments.
+
+---
+
+# Health Report Automation
+
+Many administrators generate daily reports containing:
+
+- Hostname
+- Uptime
+- Disk usage
+- Memory usage
+- Running services
+- Network status
+
+These reports help identify trends before they become incidents.
+
+---
+
+# Enterprise Automation Workflow
+
+```text
+Business Requirement
+
+↓
+
+Script Development
+
+↓
+
+Testing
+
+↓
+
+Code Review
+
+↓
+
+Approval
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Automation Failure Handling
+
+A good automation workflow anticipates failures.
+
+```text
+Task
+
+↓
+
+Execute
+
+↓
+
+Success?
+
+├── Yes → Log Success
+│
+└── No
+
+     ↓
+
+ Log Error
+
+     ↓
+
+ Alert
+
+     ↓
+
+ Investigate
+```
+
+---
+
+# Common Automation Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Script not executed | Scheduler not running |
+| Command not found | Incorrect PATH |
+| Permission denied | Insufficient privileges |
+| No output | Incorrect redirection |
+| Unexpected behavior | Relative paths |
+| Partial execution | Missing error handling |
+| High resource usage | Inefficient script |
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Job Failed
+
+↓
+
+Check Scheduler
+
+↓
+
+Review Logs
+
+↓
+
+Run Script Manually
+
+↓
+
+Verify Permissions
+
+↓
+
+Validate Environment
+
+↓
+
+Resolved
+```
+
+---
+
+# Useful Troubleshooting Commands
+
+View current cron jobs:
+
+```bash
+crontab -l
+```
+
+Check scheduler status:
+
+Ubuntu/Debian:
+
+```bash
+systemctl status cron
+```
+
+RHEL-family:
+
+```bash
+systemctl status crond
+```
+
+View timer status:
+
+```bash
+systemctl list-timers
+```
+
+Inspect service logs:
+
+```bash
+journalctl
+```
+
+---
+
+# Automation Security Risks
+
+Improper automation may introduce risks such as:
+
+- Hardcoded credentials
+- Excessive privileges
+- Unauthorized script modification
+- Unvalidated input
+- Poor logging
+- Lack of monitoring
+
+Mitigation includes least privilege, secure credential management, code review, and regular audits.
+
+---
+
+# Enterprise Automation Governance
+
+Organizations should define:
+
+- Script ownership
+- Approval process
+- Version control
+- Testing requirements
+- Change management
+- Documentation standards
+- Review schedule
+
+This reduces operational risk and supports compliance.
+
+---
+
+# Cybersecurity Perspective
+
+Automation enables security teams to perform continuous defensive tasks at scale.
+
+Examples include:
+
+- Scheduled vulnerability assessments
+- Compliance validation
+- Log aggregation
+- Threat intelligence updates
+- Security health reporting
+
+At the same time, automation scripts should be treated as privileged assets and protected accordingly.
+
+---
+
+# Business Impact
+
+Reliable automation:
+
+- Reduces operational costs
+- Improves service availability
+- Minimizes manual errors
+- Accelerates incident response
+- Supports regulatory compliance
+- Increases infrastructure reliability
+
+---
+
+# Enterprise Best Practices
+
+- Test every script before scheduling it.
+- Use meaningful exit codes and logging.
+- Monitor automation failures.
+- Protect scripts from unauthorized modification.
+- Review scheduled jobs periodically.
+- Validate backups through restoration testing.
+- Store automation code in version control.
+- Document purpose, owner, and dependencies for every automated task.
+
+---
+
+# Key Takeaways
+
+- Backup automation is a foundational administrative task.
+- Log rotation prevents uncontrolled disk usage.
+- Monitoring automation improves operational visibility.
+- Security automation supports continuous defense.
+- Robust error handling and monitoring improve automation reliability.
+- Governance and documentation are essential for enterprise-scale automation.
+
+---
+
