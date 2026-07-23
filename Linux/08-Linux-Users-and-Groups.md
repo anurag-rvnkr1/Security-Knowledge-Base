@@ -711,3 +711,690 @@ Proper user management helps organizations:
 ---
 
 
+# Part 2 — User Creation, User Modification, User Deletion, Group Management, Password Management, and Account Administration
+
+---
+
+# Introduction
+
+Creating and managing user accounts is one of the primary responsibilities of a Linux administrator.
+
+In enterprise environments, administrators routinely:
+
+- Create employee accounts
+- Modify user information
+- Assign groups
+- Reset passwords
+- Lock compromised accounts
+- Disable inactive users
+- Remove departing employees
+- Audit account configurations
+
+Proper account lifecycle management is critical for both security and operational efficiency.
+
+---
+
+# User Lifecycle
+
+```text
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Set Password
+
+↓
+
+Configure Access
+
+↓
+
+Monitor Activity
+
+↓
+
+Modify Account
+
+↓
+
+Disable Account
+
+↓
+
+Delete Account
+```
+
+A structured lifecycle ensures that user access aligns with organizational policies.
+
+---
+
+# Creating Users
+
+Linux provides dedicated utilities for user creation.
+
+Common commands:
+
+- `useradd`
+- `adduser` (available on many distributions)
+
+> **Note:** `adduser` is often a higher-level, interactive utility provided by specific distributions, while `useradd` is the standard low-level command available on most Linux systems.
+
+---
+
+# Create a User
+
+Example:
+
+```bash
+sudo useradd alice
+```
+
+This creates a basic user account.
+
+Depending on system defaults, a home directory may not be created automatically.
+
+---
+
+# Create Home Directory
+
+Create a user with a home directory:
+
+```bash
+sudo useradd -m alice
+```
+
+Result:
+
+```text
+/home/alice
+```
+
+The `-m` option creates the user's home directory if it does not already exist.
+
+---
+
+# Specify Login Shell
+
+Example:
+
+```bash
+sudo useradd -m -s /bin/bash alice
+```
+
+Options:
+
+| Option | Purpose |
+|----------|----------|
+| `-m` | Create home directory |
+| `-s` | Specify login shell |
+
+---
+
+# Specify User ID
+
+Example:
+
+```bash
+sudo useradd -u 1050 alice
+```
+
+Useful when migrating systems or maintaining consistent UIDs across servers.
+
+Unique UIDs should be maintained to avoid ownership conflicts.
+
+---
+
+# Specify Primary Group
+
+Example:
+
+```bash
+sudo useradd -g developers alice
+```
+
+The specified group becomes the user's primary group.
+
+---
+
+# Add Supplementary Groups
+
+Example:
+
+```bash
+sudo useradd -G docker,sudo,security alice
+```
+
+The user joins multiple additional groups.
+
+---
+
+# Complete User Creation Example
+
+```bash
+sudo useradd \
+-m \
+-s /bin/bash \
+-g developers \
+-G docker,sudo \
+alice
+```
+
+This creates:
+
+- Home directory
+- Bash shell
+- Primary group
+- Supplementary groups
+
+---
+
+# Set Password
+
+Assign or change a password:
+
+```bash
+sudo passwd alice
+```
+
+The administrator is prompted to enter and confirm the new password.
+
+---
+
+# Password Workflow
+
+```text
+Administrator
+
+↓
+
+passwd
+
+↓
+
+Password Hash
+
+↓
+
+/etc/shadow
+
+↓
+
+Authentication
+```
+
+Passwords are stored as hashes rather than plaintext.
+
+---
+
+# Force Password Change
+
+Require a password change at next login:
+
+```bash
+sudo passwd -e alice
+```
+
+Useful after password resets.
+
+---
+
+# Lock a Password
+
+Disable password authentication:
+
+```bash
+sudo passwd -l alice
+```
+
+The account remains present, but password-based login is prevented.
+
+---
+
+# Unlock a Password
+
+Re-enable password authentication:
+
+```bash
+sudo passwd -u alice
+```
+
+This reverses a previous password lock.
+
+---
+
+# View Password Status
+
+```bash
+sudo passwd -S alice
+```
+
+Example output:
+
+```text
+alice P 07/23/2026 0 99999 7 -1
+```
+
+The exact format may vary by distribution.
+
+---
+
+# Modify User Accounts
+
+Use:
+
+```bash
+sudo usermod
+```
+
+This command updates existing user account settings.
+
+---
+
+# Change Login Shell
+
+Example:
+
+```bash
+sudo usermod -s /bin/zsh alice
+```
+
+The user's default shell becomes:
+
+```text
+/bin/zsh
+```
+
+---
+
+# Change Home Directory
+
+Example:
+
+```bash
+sudo usermod -d /home/newalice alice
+```
+
+To move existing files as well:
+
+```bash
+sudo usermod -d /home/newalice -m alice
+```
+
+The `-m` option moves the contents of the old home directory.
+
+---
+
+# Rename a User
+
+Example:
+
+```bash
+sudo usermod -l alice_new alice
+```
+
+The username changes, while the UID remains unchanged.
+
+Additional updates (such as renaming the home directory) may be required separately.
+
+---
+
+# Add User to a Group
+
+Example:
+
+```bash
+sudo usermod -aG docker alice
+```
+
+Explanation:
+
+| Option | Purpose |
+|----------|----------|
+| `-a` | Append |
+| `-G` | Supplementary groups |
+
+> **Important:** Use `-aG` together. Omitting `-a` replaces the user's existing supplementary group list.
+
+---
+
+# Remove User from Group
+
+Example:
+
+```bash
+sudo gpasswd -d alice docker
+```
+
+The user is removed from the specified supplementary group.
+
+---
+
+# View Group Membership
+
+Display current user's groups:
+
+```bash
+groups
+```
+
+Display another user's groups:
+
+```bash
+groups alice
+```
+
+---
+
+# Create Groups
+
+Create a group:
+
+```bash
+sudo groupadd developers
+```
+
+The system assigns an available GID.
+
+---
+
+# Specify Group ID
+
+Example:
+
+```bash
+sudo groupadd -g 1050 developers
+```
+
+Useful for consistent group IDs across multiple systems.
+
+---
+
+# Modify Group Name
+
+Rename a group:
+
+```bash
+sudo groupmod -n engineers developers
+```
+
+The group's GID remains the same.
+
+---
+
+# Delete Group
+
+Example:
+
+```bash
+sudo groupdel developers
+```
+
+Groups should generally not be deleted while still serving as primary groups for active users.
+
+---
+
+# Delete User
+
+Remove a user account:
+
+```bash
+sudo userdel alice
+```
+
+The account is deleted, but the home directory is typically retained unless additional options are used.
+
+---
+
+# Delete User and Home Directory
+
+Example:
+
+```bash
+sudo userdel -r alice
+```
+
+The `-r` option removes:
+
+- Home directory
+- Mail spool (where applicable)
+
+Exercise caution before deleting user data.
+
+---
+
+# User Account Verification
+
+Confirm account information:
+
+```bash
+id alice
+```
+
+Check home directory:
+
+```bash
+ls -ld /home/alice
+```
+
+Review account entry:
+
+```bash
+grep "^alice:" /etc/passwd
+```
+
+---
+
+# Account Expiration
+
+Set an expiration date:
+
+```bash
+sudo chage -E 2026-12-31 alice
+```
+
+After this date, the account cannot be used for login.
+
+---
+
+# View Password Aging
+
+Display password aging information:
+
+```bash
+sudo chage -l alice
+```
+
+Example output includes:
+
+- Last password change
+- Password expiration
+- Warning period
+- Account expiration
+
+---
+
+# Configure Password Aging
+
+Set maximum password age:
+
+```bash
+sudo chage -M 90 alice
+```
+
+Set minimum password age:
+
+```bash
+sudo chage -m 1 alice
+```
+
+Set warning period:
+
+```bash
+sudo chage -W 7 alice
+```
+
+These settings help enforce organizational password policies.
+
+---
+
+# Disable an Account
+
+Expire the account immediately:
+
+```bash
+sudo chage -E 0 alice
+```
+
+Alternatively, administrators may lock the account and disable login access according to organizational policy.
+
+---
+
+# Verify Logged-In Users
+
+Display active sessions:
+
+```bash
+who
+```
+
+Detailed information:
+
+```bash
+w
+```
+
+These commands assist with user activity monitoring.
+
+---
+
+# Enterprise User Provisioning Workflow
+
+```text
+HR Approval
+
+↓
+
+Create User
+
+↓
+
+Assign UID
+
+↓
+
+Assign Groups
+
+↓
+
+Create Home Directory
+
+↓
+
+Set Password
+
+↓
+
+Apply Security Policies
+
+↓
+
+Provide Access
+```
+
+Automated provisioning is commonly integrated with centralized identity management systems.
+
+---
+
+# Enterprise User Deprovisioning Workflow
+
+```text
+Employee Departure
+
+↓
+
+Disable Account
+
+↓
+
+Lock Password
+
+↓
+
+Archive Data
+
+↓
+
+Remove Access
+
+↓
+
+Delete Account
+
+↓
+
+Audit Completion
+```
+
+Timely deprovisioning reduces the risk of unauthorized access.
+
+---
+
+# Cybersecurity Perspective
+
+Attackers often attempt to:
+
+- Create unauthorized accounts.
+- Add themselves to privileged groups.
+- Reset passwords.
+- Modify login shells.
+- Establish persistent access through service accounts.
+
+Security teams should:
+
+- Audit account changes.
+- Monitor privileged group memberships.
+- Review password policy compliance.
+- Alert on unexpected account creation or modification.
+
+---
+
+# Business Impact
+
+Well-managed user administration enables organizations to:
+
+- Improve operational efficiency.
+- Enforce least privilege.
+- Meet regulatory compliance requirements.
+- Reduce insider threats.
+- Simplify onboarding and offboarding.
+- Strengthen identity governance.
+
+---
+
+# Enterprise Best Practices
+
+- Create individual accounts for every user.
+- Assign the minimum required privileges.
+- Use supplementary groups instead of granting excessive permissions directly.
+- Require password changes after administrative resets.
+- Review inactive accounts regularly.
+- Implement password aging policies appropriate to organizational requirements.
+- Automate provisioning and deprovisioning wherever possible.
+- Maintain audit logs of account administration activities.
+
+---
+
+# Key Takeaways
+
+- `useradd`, `usermod`, and `userdel` manage user accounts.
+- `groupadd`, `groupmod`, and `groupdel` manage groups.
+- `passwd` and `chage` control passwords and password aging.
+- Proper lifecycle management improves security and operational consistency.
+- Auditing user and group changes is essential in enterprise environments.
+
+---
+
