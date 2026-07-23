@@ -3399,18 +3399,3 @@ After completing this chapter, you should understand:
 ✔ Core UDP RFCs
 
 ---
-
-# What's Next?
-
-The next chapter, **`14-ICMP.md`**, covers:
-
-- Internet Control Message Protocol (ICMP)
-- ICMP architecture and message types
-- Echo Request and Echo Reply
-- Destination Unreachable messages
-- Time Exceeded messages
-- Redirect messages
-- Path MTU Discovery (PMTUD)
-- Ping and Traceroute operations
-- ICMPv4 vs ICMPv6
-- ICMP attacks, hardening, packet analysis, troubleshooting, enterprise monitoring, SOC detection, practical labs, interview questions, and RFC references.
