@@ -2677,3 +2677,907 @@ Strong Linux security helps organizations:
 
 ---
 
+# 18 - Linux Security
+
+# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+
+---
+
+# Introduction
+
+Enterprise Linux security is built through continuous practice rather than theory alone.
+
+Security engineers, Linux administrators, DevOps engineers, SOC analysts, cloud engineers, and incident responders spend significant time:
+
+- Hardening systems
+- Monitoring logs
+- Reviewing configurations
+- Investigating incidents
+- Applying security updates
+- Auditing permissions
+- Detecting threats
+- Responding to attacks
+
+This section focuses on practical, enterprise-oriented exercises.
+
+---
+
+# Enterprise Security Lifecycle
+
+```text
+Plan
+
+↓
+
+Build
+
+↓
+
+Harden
+
+↓
+
+Monitor
+
+↓
+
+Detect
+
+↓
+
+Investigate
+
+↓
+
+Respond
+
+↓
+
+Recover
+
+↓
+
+Improve
+```
+
+---
+
+# Practical Lab 1 — System Information Gathering
+
+Display operating system information:
+
+```bash
+hostnamectl
+```
+
+Kernel information:
+
+```bash
+uname -a
+```
+
+Distribution details:
+
+```bash
+cat /etc/os-release
+```
+
+Objectives:
+
+- Identify operating system version
+- Identify kernel version
+- Verify hostname
+- Record system information
+
+---
+
+# Practical Lab 2 — Review User Accounts
+
+List users:
+
+```bash
+cat /etc/passwd
+```
+
+Display human users:
+
+```bash
+awk -F: '$3>=1000 {print $1}' /etc/passwd
+```
+
+Check current user:
+
+```bash
+whoami
+```
+
+Display logged-in users:
+
+```bash
+who
+```
+
+Objectives:
+
+- Review user accounts
+- Identify service accounts
+- Verify active sessions
+
+---
+
+# Practical Lab 3 — Inspect Password Policies
+
+Display password aging:
+
+```bash
+sudo chage -l username
+```
+
+View password settings:
+
+```bash
+sudo grep PASS /etc/login.defs
+```
+
+Objectives:
+
+- Verify password expiration
+- Review password policy
+- Understand password aging
+
+---
+
+# Practical Lab 4 — Check File Permissions
+
+Review sensitive files:
+
+```bash
+ls -l /etc/passwd
+```
+
+```bash
+ls -l /etc/shadow
+```
+
+```bash
+ls -ld ~/.ssh
+```
+
+Objectives:
+
+- Verify ownership
+- Verify permissions
+- Identify insecure permissions
+
+---
+
+# Practical Lab 5 — Find SUID Files
+
+Locate SUID binaries:
+
+```bash
+find / -perm -4000 -type f 2>/dev/null
+```
+
+Questions:
+
+- Which binaries are expected?
+- Are there any unfamiliar programs?
+- Are third-party binaries present?
+
+---
+
+# Practical Lab 6 — Review Running Services
+
+Display services:
+
+```bash
+systemctl list-units --type=service
+```
+
+Running services only:
+
+```bash
+systemctl list-units --type=service --state=running
+```
+
+Objectives:
+
+- Identify unnecessary services
+- Review critical services
+- Document running services
+
+---
+
+# Practical Lab 7 — Inspect Listening Ports
+
+Display listening ports:
+
+```bash
+ss -tulpn
+```
+
+Questions:
+
+- Which ports are exposed?
+- Which services own them?
+- Are all expected?
+
+---
+
+# Practical Lab 8 — Review Firewall Rules
+
+Using nftables:
+
+```bash
+sudo nft list ruleset
+```
+
+If using firewalld:
+
+```bash
+sudo firewall-cmd --list-all
+```
+
+If using UFW:
+
+```bash
+sudo ufw status verbose
+```
+
+Objectives:
+
+- Identify allowed services
+- Review default policy
+- Verify unnecessary ports are not exposed
+
+---
+
+# Practical Lab 9 — Review Authentication Logs
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-based:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+Objectives:
+
+- Identify failed logins
+- Review successful logins
+- Investigate suspicious activity
+
+---
+
+# Practical Lab 10 — Monitor Active Processes
+
+Display processes:
+
+```bash
+ps aux
+```
+
+Interactive view:
+
+```bash
+top
+```
+
+Or:
+
+```bash
+htop
+```
+
+Objectives:
+
+- Identify unusual processes
+- Review CPU usage
+- Review memory usage
+
+---
+
+# Practical Lab 11 — Verify SELinux Status
+
+Check status:
+
+```bash
+getenforce
+```
+
+Detailed status:
+
+```bash
+sestatus
+```
+
+View contexts:
+
+```bash
+ls -Z
+```
+
+Objectives:
+
+- Identify SELinux mode
+- Review security contexts
+
+---
+
+# Practical Lab 12 — Verify AppArmor Status
+
+Ubuntu/Debian:
+
+```bash
+sudo aa-status
+```
+
+Objectives:
+
+- Review loaded profiles
+- Identify protected applications
+
+---
+
+# Practical Lab 13 — Inspect Linux Capabilities
+
+View capabilities:
+
+```bash
+getcap -r / 2>/dev/null
+```
+
+Inspect a binary:
+
+```bash
+getcap /usr/bin/ping
+```
+
+Objectives:
+
+- Understand capabilities
+- Identify privileged binaries
+
+---
+
+# Practical Lab 14 — Review Kernel Modules
+
+Display modules:
+
+```bash
+lsmod
+```
+
+Inspect a module:
+
+```bash
+modinfo module_name
+```
+
+Objectives:
+
+- Review loaded modules
+- Identify unexpected modules
+
+---
+
+# Practical Lab 15 — Verify Security Updates
+
+Debian/Ubuntu:
+
+```bash
+sudo apt update
+sudo apt list --upgradable
+```
+
+RHEL:
+
+```bash
+sudo dnf check-update
+```
+
+Objectives:
+
+- Review available updates
+- Identify security patches
+
+---
+
+# Practical Lab 16 — Security Audit Checklist
+
+Verify:
+
+- SSH configuration
+- Firewall status
+- Password policy
+- User accounts
+- Running services
+- Open ports
+- SELinux/AppArmor
+- System updates
+- Logging
+- Backups
+
+Document findings and remediation actions.
+
+---
+
+# Practical Lab 17 — Build a Basic Hardening Script
+
+Example:
+
+```bash
+#!/usr/bin/env bash
+
+echo "===== Linux Security Check ====="
+
+echo
+echo "Kernel:"
+uname -r
+
+echo
+echo "Running Services:"
+systemctl list-units --type=service --state=running
+
+echo
+echo "Listening Ports:"
+ss -tulpn
+
+echo
+echo "Current Users:"
+who
+
+echo
+echo "SELinux:"
+getenforce 2>/dev/null || echo "SELinux not enabled"
+
+echo
+echo "Disk Usage:"
+df -h
+```
+
+Possible improvements:
+
+- Export results to a report
+- Schedule execution
+- Send reports securely to administrators
+
+---
+
+# Enterprise Case Study 1
+
+# SSH Brute-Force Attack
+
+Timeline:
+
+```text
+Internet
+
+↓
+
+Repeated Failed Logins
+
+↓
+
+Successful Login
+
+↓
+
+Privilege Escalation Attempt
+
+↓
+
+Security Investigation
+```
+
+Investigation Steps:
+
+1. Review authentication logs.
+2. Identify source IP addresses.
+3. Review successful logins.
+4. Reset affected credentials if necessary.
+5. Strengthen authentication controls.
+
+---
+
+# Enterprise Case Study 2
+
+# Accidental Permission Change
+
+Problem:
+
+```text
+/etc/shadow
+
+↓
+
+Incorrect Permissions
+
+↓
+
+Security Risk
+```
+
+Investigation:
+
+```bash
+ls -l /etc/shadow
+```
+
+Resolution:
+
+- Restore appropriate ownership and permissions.
+- Verify no unauthorized access occurred.
+- Review configuration management processes.
+
+---
+
+# Enterprise Case Study 3
+
+# Unauthorized Service Running
+
+Symptoms:
+
+- Unexpected listening port
+- Unknown process
+- High CPU utilization
+
+Workflow:
+
+```text
+ss -tulpn
+
+↓
+
+Identify PID
+
+↓
+
+ps
+
+↓
+
+Investigate Binary
+
+↓
+
+Verify Package
+
+↓
+
+Contain
+
+↓
+
+Remove
+```
+
+---
+
+# Enterprise Case Study 4
+
+# Missed Security Updates
+
+Problem:
+
+Critical vulnerability announced.
+
+Workflow:
+
+```text
+Inventory
+
+↓
+
+Check Updates
+
+↓
+
+Testing
+
+↓
+
+Deploy
+
+↓
+
+Verification
+
+↓
+
+Monitoring
+```
+
+Lesson:
+
+Delaying security updates increases exposure to known vulnerabilities.
+
+---
+
+# Enterprise Case Study 5
+
+# Insider Misuse
+
+Observed Activity:
+
+```text
+Unexpected sudo Usage
+
+↓
+
+Configuration Changes
+
+↓
+
+Log Review
+
+↓
+
+Audit Records
+
+↓
+
+Management Investigation
+```
+
+Evidence:
+
+- Authentication logs
+- Audit logs
+- Configuration history
+- File integrity monitoring alerts
+
+---
+
+# Security Hardening Checklist
+
+| Control | Status |
+|----------|--------|
+| System updated | ✓ |
+| Firewall configured | ✓ |
+| SSH secured | ✓ |
+| Strong password policy | ✓ |
+| Least privilege enforced | ✓ |
+| SELinux/AppArmor enabled | ✓ |
+| Logging configured | ✓ |
+| Regular backups | ✓ |
+| Monitoring enabled | ✓ |
+| Security audits scheduled | ✓ |
+
+---
+
+# Common Linux Security Mistakes
+
+| Mistake | Risk | Better Practice |
+|----------|------|-----------------|
+| Running services as root | Privilege escalation | Use dedicated service accounts |
+| Weak passwords | Credential compromise | Use strong passwords or passphrases and MFA where possible |
+| Ignoring updates | Known vulnerabilities | Regular patch management |
+| Excessive permissions | Data exposure | Apply least privilege |
+| Unused services enabled | Increased attack surface | Disable unnecessary services |
+| No monitoring | Delayed detection | Enable centralized monitoring |
+| Insecure SSH configuration | Remote compromise | Harden SSH and review regularly |
+| No backups | Data loss | Test backup and recovery procedures |
+
+---
+
+# Enterprise Security Dashboard
+
+```text
+Security Dashboard
+
+├── User Activity
+
+├── Authentication Events
+
+├── Failed Logins
+
+├── Firewall Status
+
+├── Running Services
+
+├── Open Ports
+
+├── Critical Alerts
+
+├── Patch Compliance
+
+├── File Integrity
+
+├── Incident Queue
+
+└── System Health
+```
+
+---
+
+# Cybersecurity Perspective
+
+A mature Linux security program combines:
+
+- Secure configuration
+- Strong authentication
+- Mandatory Access Control
+- Vulnerability management
+- Continuous monitoring
+- Logging
+- Incident response
+- Security awareness
+- Regular auditing
+
+Security is a continuous process rather than a one-time configuration.
+
+---
+
+# Business Impact
+
+Strong Linux security helps organizations:
+
+- Protect confidential information
+- Reduce cyber risk
+- Improve operational resilience
+- Support regulatory compliance
+- Minimize downtime
+- Lower incident response costs
+- Preserve customer trust
+
+---
+
+# Enterprise Best Practices
+
+- Standardize secure configurations across systems.
+- Automate security patch deployment after appropriate testing.
+- Review privileged access regularly.
+- Protect administrative credentials.
+- Monitor authentication and security events continuously.
+- Perform periodic vulnerability assessments.
+- Enable centralized logging and alerting.
+- Conduct regular disaster recovery exercises.
+- Document security baselines and change management procedures.
+- Continuously improve defenses based on threat intelligence and lessons learned.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Linux security principles
+- CIA Triad
+- Defense in depth
+- Least privilege
+- Authentication and authorization
+- Password security
+- PAM
+- File and process security
+- Linux capabilities
+- SELinux
+- AppArmor
+- Kernel security
+- System hardening
+- Security monitoring
+- Malware and rootkits
+- Vulnerability management
+- Incident response
+- Compliance
+- Enterprise security best practices
+
+---
+
+# Interview Questions
+
+## Beginner
+
+1. What is the CIA Triad?
+2. What is the principle of least privilege?
+3. What is the purpose of `/etc/shadow`?
+4. What is PAM?
+5. What is SELinux?
+6. What is AppArmor?
+7. What are Linux capabilities?
+8. Why are security updates important?
+9. What is file integrity monitoring?
+10. Why are logs important in security?
+
+---
+
+## Intermediate
+
+1. Compare DAC and MAC.
+2. Explain SELinux modes.
+3. Compare SELinux and AppArmor.
+4. How would you secure an SSH server?
+5. Explain Linux capabilities with examples.
+6. Describe a Linux hardening process.
+7. How would you detect suspicious user activity?
+8. Explain vulnerability management.
+9. What information would you collect during a security incident?
+10. How would you audit a Linux server?
+
+---
+
+## Advanced
+
+1. Design a secure Linux baseline for enterprise servers.
+2. Explain how defense in depth limits attacker success.
+3. Describe an enterprise patch management workflow.
+4. Design an incident response process for a Linux compromise.
+5. Explain how SELinux helps contain compromised services.
+6. How would you investigate privilege escalation?
+7. Describe methods for protecting administrative credentials.
+8. Design a monitoring strategy for 1,000 Linux servers.
+9. Explain how compliance frameworks influence Linux security.
+10. Build a comprehensive Linux hardening checklist for production systems.
+
+---
+
+# Key Takeaways
+
+- Linux security depends on layered defenses rather than any single control.
+- Authentication, authorization, and least privilege form the foundation of secure access.
+- SELinux, AppArmor, and Linux capabilities provide additional protection beyond traditional permissions.
+- Continuous monitoring, vulnerability management, and incident response are essential for enterprise operations.
+- Security hardening and regular audits significantly reduce organizational risk.
+
+---
+
+# References
+
+## Official Documentation
+
+- `man chmod`
+- `man chown`
+- `man chage`
+- `man getcap`
+- `man setcap`
+- `man getfacl`
+- `man setfacl`
+- `man getenforce`
+- `man sestatus`
+- `man aa-status`
+- `man ss`
+- `man ps`
+- `man systemctl`
+
+## Standards & Best Practices
+
+- Linux Foundation Documentation
+- Red Hat Enterprise Linux Security Guide
+- Ubuntu Server Security Documentation
+- SELinux Project Documentation
+- AppArmor Documentation
+- CIS Benchmarks for Linux
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53 (Security and Privacy Controls)
+- MITRE ATT&CK Framework
+- OWASP Cheat Sheet Series
+
+---
+
+# Next Chapter
+
+➡️ **19-Linux-Firewalls.md**
+
+## Topics Covered
+
+- Firewall Fundamentals
+- Packet Filtering
+- Netfilter Architecture
+- iptables
+- nftables
+- firewalld
+- UFW
+- Stateful Firewalls
+- NAT (Network Address Translation)
+- Port Forwarding
+- Firewall Logging
+- Enterprise Firewall Design
+- Practical Labs
+- Interview Questions
+- References
