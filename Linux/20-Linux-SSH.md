@@ -802,3 +802,770 @@ Secure SSH deployment helps organizations:
 
 ---
 
+# 20 - Linux SSH
+
+# Part 2 — SSH Configuration (`sshd_config`), Key Management, SCP, SFTP, SSH Agent, and Client Configuration
+
+---
+
+# Introduction
+
+Installing OpenSSH is only the beginning.
+
+In enterprise environments, SSH servers are carefully configured to:
+
+- Restrict access
+- Improve authentication
+- Reduce attack surface
+- Support automation
+- Meet compliance requirements
+
+Most SSH hardening is performed through the SSH server configuration file.
+
+---
+
+# SSH Configuration Files
+
+There are two primary configuration files.
+
+| File | Purpose |
+|------|----------|
+| `/etc/ssh/sshd_config` | SSH Server Configuration |
+| `~/.ssh/config` | Per-user SSH Client Configuration |
+
+---
+
+# SSH Configuration Architecture
+
+```text
+Administrator
+
+↓
+
+SSH Client
+
+↓
+
+~/.ssh/config
+
+↓
+
+Network
+
+↓
+
+sshd
+
+↓
+
+/etc/ssh/sshd_config
+```
+
+---
+
+# SSH Server Configuration
+
+The SSH daemon reads:
+
+```text
+/etc/ssh/sshd_config
+```
+
+This file controls:
+
+- Authentication
+- Ports
+- User access
+- Logging
+- Cryptographic settings
+- Session limits
+
+---
+
+# Viewing Configuration
+
+```bash
+sudo cat /etc/ssh/sshd_config
+```
+
+Search for active directives:
+
+```bash
+grep -v "^#" /etc/ssh/sshd_config
+```
+
+---
+
+# Testing Configuration
+
+Before restarting SSH, validate the configuration:
+
+```bash
+sudo sshd -t
+```
+
+A successful validation produces no output.
+
+---
+
+# Reloading Configuration
+
+Ubuntu:
+
+```bash
+sudo systemctl reload ssh
+```
+
+RHEL-family:
+
+```bash
+sudo systemctl reload sshd
+```
+
+If reload is unavailable or appropriate for the change:
+
+```bash
+sudo systemctl restart ssh
+```
+
+or
+
+```bash
+sudo systemctl restart sshd
+```
+
+Always ensure an existing administrative session remains open before restarting SSH remotely.
+
+---
+
+# Important Configuration Directives
+
+Some commonly used directives include:
+
+| Directive | Purpose |
+|------------|----------|
+| Port | Listening port |
+| ListenAddress | Network interface |
+| PermitRootLogin | Root login policy |
+| PasswordAuthentication | Enable/disable passwords |
+| PubkeyAuthentication | Enable public keys |
+| AllowUsers | Restrict users |
+| AllowGroups | Restrict groups |
+| ClientAliveInterval | Idle timeout |
+| MaxAuthTries | Login attempt limit |
+| LoginGraceTime | Authentication timeout |
+
+---
+
+# Changing the SSH Port
+
+Default:
+
+```text
+Port 22
+```
+
+Example:
+
+```text
+Port 2222
+```
+
+Changing the port may reduce automated scanning noise, but **it is not a substitute for proper authentication and hardening**.
+
+Remember to update firewall rules if the listening port changes.
+
+---
+
+# ListenAddress
+
+Specify which interface SSH listens on.
+
+Example:
+
+```text
+ListenAddress 192.168.1.10
+```
+
+Benefits:
+
+- Restrict exposure
+- Separate management networks
+- Improve security
+
+---
+
+# PermitRootLogin
+
+Controls direct root login.
+
+Possible values include:
+
+```text
+yes
+
+no
+
+prohibit-password
+```
+
+Many organizations disable direct root logins and require administrators to authenticate as individual users before using privilege escalation tools such as `sudo`.
+
+---
+
+# PasswordAuthentication
+
+Enable:
+
+```text
+PasswordAuthentication yes
+```
+
+Disable:
+
+```text
+PasswordAuthentication no
+```
+
+In environments using key-based authentication, password authentication is often disabled after confirming that administrative access remains available.
+
+---
+
+# PubkeyAuthentication
+
+Enable:
+
+```text
+PubkeyAuthentication yes
+```
+
+Public key authentication should remain enabled when SSH keys are used.
+
+---
+
+# AllowUsers
+
+Restrict login to specific users.
+
+Example:
+
+```text
+AllowUsers admin backup
+```
+
+Only listed users may authenticate.
+
+---
+
+# AllowGroups
+
+Restrict login by group.
+
+Example:
+
+```text
+AllowGroups sshadmins
+```
+
+Useful for enterprise access management.
+
+---
+
+# MaxAuthTries
+
+Limit failed authentication attempts.
+
+Example:
+
+```text
+MaxAuthTries 3
+```
+
+Benefits:
+
+- Reduce brute-force attempts
+- Improve security logging
+
+---
+
+# LoginGraceTime
+
+Authentication timeout.
+
+Example:
+
+```text
+LoginGraceTime 30
+```
+
+Unauthenticated sessions exceeding this period are disconnected.
+
+---
+
+# ClientAliveInterval
+
+Idle session timeout.
+
+Example:
+
+```text
+ClientAliveInterval 300
+```
+
+Helps remove inactive sessions according to organizational policy.
+
+---
+
+# ClientAliveCountMax
+
+Number of unanswered keepalive messages before disconnecting a client.
+
+Example:
+
+```text
+ClientAliveCountMax 2
+```
+
+Combined with `ClientAliveInterval`, this controls idle session behavior.
+
+---
+
+# Authentication Workflow
+
+```text
+Client
+
+↓
+
+Connect
+
+↓
+
+Server Policy
+
+↓
+
+Authentication
+
+↓
+
+Authorized?
+
+↓
+
+Yes
+
+↓
+
+Shell
+```
+
+---
+
+# SSH Key Management
+
+Large organizations manage thousands of SSH keys.
+
+Lifecycle:
+
+```text
+Generate
+
+↓
+
+Deploy
+
+↓
+
+Rotate
+
+↓
+
+Audit
+
+↓
+
+Revoke
+
+↓
+
+Replace
+```
+
+---
+
+# Generating Keys
+
+Ed25519:
+
+```bash
+ssh-keygen -t ed25519
+```
+
+RSA:
+
+```bash
+ssh-keygen -t rsa -b 4096
+```
+
+---
+
+# Copying Public Keys
+
+Using OpenSSH:
+
+```bash
+ssh-copy-id user@server
+```
+
+This appends the public key to the server's:
+
+```text
+~/.ssh/authorized_keys
+```
+
+---
+
+# Manual Key Installation
+
+Display public key:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Append its contents to:
+
+```text
+~/.ssh/authorized_keys
+```
+
+Ensure appropriate permissions are applied to both the `.ssh` directory and the `authorized_keys` file.
+
+---
+
+# SSH File Permissions
+
+Typical permissions:
+
+| Item | Permission |
+|------|------------|
+| `~/.ssh` | `700` |
+| `authorized_keys` | `600` |
+| Private Key | `600` |
+| Public Key | `644` (commonly used) |
+
+Improper permissions may cause SSH to refuse key-based authentication.
+
+---
+
+# SSH Agent
+
+The SSH agent stores decrypted private keys in memory.
+
+Workflow:
+
+```text
+Private Key
+
+↓
+
+ssh-agent
+
+↓
+
+Memory
+
+↓
+
+SSH Authentication
+```
+
+Benefits:
+
+- Avoid repeated passphrase entry
+- Support automation
+- Improve usability
+
+---
+
+# Starting SSH Agent
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+---
+
+# Adding a Key
+
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+
+List loaded keys:
+
+```bash
+ssh-add -l
+```
+
+---
+
+# SSH Client Configuration
+
+Client configuration file:
+
+```text
+~/.ssh/config
+```
+
+This simplifies connections.
+
+Example:
+
+```text
+Host web-prod
+    HostName 203.0.113.10
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+Connect using:
+
+```bash
+ssh web-prod
+```
+
+---
+
+# Useful Client Options
+
+| Option | Purpose |
+|----------|----------|
+| Host | Alias |
+| HostName | Server address |
+| User | Default username |
+| Port | SSH port |
+| IdentityFile | Private key |
+| ForwardAgent | Agent forwarding (use cautiously) |
+| ServerAliveInterval | Keepalive messages |
+| Compression | Enable compression |
+
+---
+
+# SSH File Transfer
+
+SSH also supports secure file transfer.
+
+Common tools:
+
+- SCP
+- SFTP
+
+---
+
+# SCP
+
+Secure Copy Protocol transfers files over SSH.
+
+Copy local file to server:
+
+```bash
+scp report.txt user@server:/home/user/
+```
+
+Copy from server:
+
+```bash
+scp user@server:/home/user/report.txt .
+```
+
+Copy directories recursively:
+
+```bash
+scp -r project/ user@server:/srv/
+```
+
+---
+
+# SFTP
+
+SFTP provides an interactive secure file transfer session.
+
+Connect:
+
+```bash
+sftp user@server
+```
+
+Common commands:
+
+```text
+ls
+pwd
+cd
+lcd
+put
+get
+mkdir
+rm
+bye
+```
+
+---
+
+# SCP vs SFTP
+
+| Feature | SCP | SFTP |
+|----------|-----|------|
+| Interactive | No | Yes |
+| File Browser | No | Yes |
+| Recursive Copy | Yes | Yes |
+| Uses SSH | Yes | Yes |
+| Secure | Yes | Yes |
+
+---
+
+# SSH Compression
+
+Enable compression:
+
+```bash
+ssh -C user@server
+```
+
+Useful on slower links where bandwidth savings outweigh CPU costs.
+
+---
+
+# Executing Remote Commands
+
+Run a single command:
+
+```bash
+ssh user@server "hostname"
+```
+
+Another example:
+
+```bash
+ssh user@server "uptime"
+```
+
+Useful for:
+
+- Automation
+- Monitoring
+- Configuration management
+- Scripts
+
+---
+
+# Batch Administration
+
+Example:
+
+```text
+Administrator
+
+↓
+
+SSH
+
+↓
+
+Server A
+
+Server B
+
+Server C
+
+↓
+
+Collect Results
+```
+
+Many automation frameworks build on SSH for remote execution.
+
+---
+
+# Enterprise SSH Workflow
+
+```text
+Administrator
+
+↓
+
+SSH Key
+
+↓
+
+Bastion Host
+
+↓
+
+Production Server
+
+↓
+
+Audit Logs
+```
+
+This centralizes access and improves traceability.
+
+---
+
+# Cybersecurity Perspective
+
+Misconfigured SSH services often expose organizations to:
+
+- Weak authentication
+- Excessive administrative access
+- Stale SSH keys
+- Poor key management
+- Unauthorized remote access
+
+Strong configuration and disciplined key management significantly reduce these risks.
+
+---
+
+# Business Impact
+
+Well-managed SSH infrastructure:
+
+- Enables secure administration
+- Supports automation
+- Improves operational efficiency
+- Reduces credential risk
+- Supports regulatory compliance
+- Simplifies access auditing
+
+---
+
+# Enterprise Best Practices
+
+- Prefer Ed25519 or other organization-approved key types.
+- Disable password authentication after verifying key-based access where organizational policy permits.
+- Restrict SSH access to authorized users and groups.
+- Avoid direct root logins.
+- Validate configuration changes before restarting the SSH service.
+- Protect private keys with passphrases.
+- Audit authorized keys regularly.
+- Remove unused keys promptly.
+- Use bastion hosts for production environments.
+- Log and monitor SSH authentication events.
+
+---
+
+# Key Takeaways
+
+- `sshd_config` controls SSH server behavior.
+- Public key authentication is preferred for enterprise environments.
+- SSH agents securely cache decrypted keys in memory.
+- SCP and SFTP provide encrypted file transfers.
+- Client configuration files simplify repeated SSH connections.
+- Proper permissions are essential for successful key authentication.
+
+---
+
