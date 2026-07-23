@@ -565,3 +565,682 @@ Even though ARP is simple, failures can disrupt business-critical services.
 - **Gratuitous ARP** is commonly used for duplicate address detection and high-availability updates.
 - **Proxy ARP** allows a router to respond on behalf of another device in specific scenarios.
 - ARP operates only within a Layer 2 broadcast domain and is not routed across networks.
+
+# 09 - Address Resolution Protocol (ARP)
+
+# Part 2 — ARP Cache, ARP Spoofing, ARP Poisoning, Man-in-the-Middle (MITM), Dynamic ARP Inspection (DAI), and Enterprise Security
+
+---
+
+# Overview
+
+Although ARP is a simple protocol, it was designed for trusted local networks and **does not provide authentication**.
+
+This means a device generally accepts ARP replies without verifying whether the sender is legitimate.
+
+Attackers can exploit this behavior to:
+
+- Redirect traffic
+- Intercept communications
+- Launch Man-in-the-Middle (MITM) attacks
+- Cause denial-of-service conditions
+- Steal credentials
+- Capture sensitive information
+
+For this reason, ARP security is a critical topic for enterprise networking and cybersecurity.
+
+---
+
+# ARP Cache Review
+
+Every operating system maintains an **ARP cache**.
+
+Example:
+
+| IP Address | MAC Address | Type |
+|------------|-------------|------|
+| 192.168.10.1 | 00:11:22:33:44:55 | Dynamic |
+| 192.168.10.20 | 00:AA:BB:CC:DD:EE | Dynamic |
+| 192.168.10.50 | 00:99:88:77:66:55 | Static |
+
+Instead of broadcasting every time, the host first checks this table.
+
+---
+
+# ARP Cache Lifecycle
+
+```
+Need MAC Address
+
+↓
+
+Check Cache
+
+↓
+
+Entry Exists?
+
+↓
+
+Yes
+
+↓
+
+Use Cached Entry
+
+──────────────
+
+No
+
+↓
+
+Send ARP Request
+
+↓
+
+Receive Reply
+
+↓
+
+Store Entry
+
+↓
+
+Use Entry
+
+↓
+
+Timer Expires
+
+↓
+
+Entry Removed
+```
+
+This process minimizes unnecessary broadcast traffic.
+
+---
+
+# Cache Aging
+
+Dynamic ARP entries are temporary.
+
+Typical lifecycle:
+
+```
+Learn Entry
+
+↓
+
+Store
+
+↓
+
+Use
+
+↓
+
+Idle
+
+↓
+
+Age Out
+
+↓
+
+Remove
+```
+
+The exact timeout depends on the operating system and device configuration.
+
+---
+
+# Why ARP is Vulnerable
+
+ARP was designed before modern security threats became common.
+
+Key limitations include:
+
+- No authentication
+- No integrity protection
+- No encryption
+- Trust-based design
+
+As a result, hosts generally accept unsolicited ARP replies and update their ARP cache.
+
+---
+
+# What is ARP Spoofing?
+
+**ARP Spoofing** is an attack in which an attacker sends forged ARP replies to associate their MAC address with another device's IP address.
+
+Example:
+
+```
+Gateway IP
+
+↓
+
+Attacker MAC
+```
+
+Victims update their ARP cache with incorrect information.
+
+---
+
+# What is ARP Poisoning?
+
+**ARP Poisoning** is the result of successful ARP spoofing.
+
+The victim's ARP cache contains false IP-to-MAC mappings.
+
+Example:
+
+| IP Address | Correct MAC | Poisoned MAC |
+|------------|-------------|--------------|
+| 192.168.10.1 | 00:11:22:33:44:55 | AA:AA:AA:AA:AA:AA |
+
+Traffic intended for the gateway is now sent to the attacker.
+
+---
+
+# ARP Spoofing Attack Workflow
+
+```
+Victim
+
+↓
+
+Needs Gateway MAC
+
+↓
+
+Attacker Sends Fake ARP Reply
+
+↓
+
+Victim Updates Cache
+
+↓
+
+Traffic Redirected
+
+↓
+
+Attacker
+
+↓
+
+Gateway
+```
+
+The attacker positions themselves between the victim and the legitimate gateway.
+
+---
+
+# Man-in-the-Middle (MITM)
+
+One of the most common outcomes of ARP spoofing is a **Man-in-the-Middle (MITM)** attack.
+
+```
+Victim
+
+↓
+
+Attacker
+
+↓
+
+Gateway
+
+↓
+
+Internet
+```
+
+The attacker can:
+
+- Inspect packets
+- Modify traffic
+- Forward packets
+- Drop packets
+- Record sensitive information
+
+---
+
+# Two-Way ARP Poisoning
+
+To remain invisible, an attacker often poisons both devices.
+
+```
+Victim
+
+↓
+
+Gateway = Attacker MAC
+
+──────────────
+
+Gateway
+
+↓
+
+Victim = Attacker MAC
+```
+
+Now all traffic flows through the attacker.
+
+---
+
+# Potential Attack Consequences
+
+Successful ARP poisoning may lead to:
+
+- Credential theft
+- Session hijacking
+- Packet manipulation
+- Data interception
+- DNS manipulation
+- Service disruption
+- Denial of Service (DoS)
+
+Encrypted protocols such as HTTPS reduce the risk of content disclosure but do not eliminate the networking impact of ARP manipulation.
+
+---
+
+# Example Attack Scenario
+
+```
+Employee Laptop
+
+↓
+
+Access Switch
+
+↓
+
+Attacker Laptop
+
+↓
+
+Default Gateway
+
+↓
+
+Corporate Server
+```
+
+The attacker impersonates the default gateway.
+
+The victim unknowingly forwards all traffic through the attacker's system.
+
+---
+
+# Detecting ARP Spoofing
+
+Indicators include:
+
+- Multiple IP addresses mapped to the same MAC address.
+- Frequent unsolicited ARP replies.
+- Sudden gateway MAC address changes.
+- Unexpected connectivity issues.
+- Duplicate MAC notifications.
+- Increased ARP traffic.
+
+Monitoring tools can help identify these anomalies.
+
+---
+
+# Enterprise Detection Methods
+
+Organizations commonly detect suspicious ARP activity using:
+
+- Network monitoring platforms
+- SIEM solutions
+- IDS/IPS platforms
+- Endpoint detection tools
+- Packet capture analysis
+- Switch security features
+
+Repeated ARP changes should be investigated promptly.
+
+---
+
+# Dynamic ARP Inspection (DAI)
+
+**Dynamic ARP Inspection (DAI)** is a Layer 2 security feature available on many managed switches.
+
+Purpose:
+
+- Validate ARP packets.
+- Block forged ARP messages.
+- Prevent ARP spoofing.
+
+---
+
+# How DAI Works
+
+Simplified process:
+
+```
+ARP Packet
+
+↓
+
+Switch Receives Packet
+
+↓
+
+Validate Against DHCP Snooping Database
+
+↓
+
+Valid?
+
+↓
+
+Yes
+
+↓
+
+Forward
+
+──────────────
+
+No
+
+↓
+
+Drop Packet
+```
+
+Only validated ARP messages are forwarded.
+
+---
+
+# DHCP Snooping Review
+
+DAI depends on **DHCP Snooping** in many enterprise deployments.
+
+DHCP Snooping builds a trusted binding table containing:
+
+- MAC Address
+- IP Address
+- VLAN
+- Switch Port
+
+Example:
+
+| MAC | IP | VLAN | Port |
+|------|----|------|------|
+| 00:11:22:33:44:55 | 192.168.10.20 | 10 | Gi1/0/5 |
+
+DAI compares incoming ARP packets against this trusted information.
+
+---
+
+# Trusted vs Untrusted Ports
+
+Enterprise switches classify interfaces as:
+
+```
+Trusted
+
+↓
+
+Uplink
+
+↓
+
+DHCP Server
+
+──────────────
+
+Untrusted
+
+↓
+
+User Devices
+```
+
+ARP validation is generally performed on untrusted access ports.
+
+---
+
+# Static Hosts and DAI
+
+Some environments contain devices using static IP addresses.
+
+Since these hosts may not appear in the DHCP Snooping database, administrators may need to create static bindings or use supported configuration methods to ensure legitimate traffic is not blocked.
+
+---
+
+# Rate Limiting
+
+Switches can also limit ARP packet rates.
+
+Benefits:
+
+- Reduces flooding attacks.
+- Helps mitigate denial-of-service attempts.
+- Protects switch CPU resources.
+
+---
+
+# ARP Inspection Workflow
+
+```
+Client Sends ARP
+
+↓
+
+Access Switch
+
+↓
+
+DAI Validation
+
+↓
+
+Binding Matches?
+
+↓
+
+Yes
+
+↓
+
+Forward
+
+──────────────
+
+No
+
+↓
+
+Drop
+
+↓
+
+Log Event
+```
+
+---
+
+# Enterprise Security Controls
+
+Recommended controls include:
+
+- Dynamic ARP Inspection
+- DHCP Snooping
+- Port Security
+- VLAN segmentation
+- 802.1X Network Access Control
+- Secure switch management
+- Continuous monitoring
+- SIEM correlation
+
+These controls work together to reduce the risk of Layer 2 attacks.
+
+---
+
+# Wireshark Analysis
+
+Useful display filter:
+
+```text
+arp
+```
+
+Typical observations:
+
+### ARP Request
+
+```
+Who has 192.168.10.1?
+
+Tell 192.168.10.20
+```
+
+### ARP Reply
+
+```
+192.168.10.1
+
+is at
+
+00:11:22:33:44:55
+```
+
+Suspicious indicators include:
+
+- Numerous unsolicited ARP replies.
+- Frequent MAC address changes for the same IP.
+- Excessive ARP traffic.
+
+---
+
+# Linux Verification
+
+Display ARP/neighbor table:
+
+```bash
+ip neigh
+```
+
+Legacy command (if available):
+
+```bash
+arp -n
+```
+
+---
+
+# Windows Verification
+
+Display ARP cache:
+
+```cmd
+arp -a
+```
+
+Clear ARP cache (administrative privileges may be required):
+
+```cmd
+arp -d *
+```
+
+---
+
+# Cisco IOS Verification
+
+Display ARP table:
+
+```text
+show ip arp
+```
+
+Display DHCP Snooping bindings:
+
+```text
+show ip dhcp snooping binding
+```
+
+Display Dynamic ARP Inspection status:
+
+```text
+show ip arp inspection
+```
+
+Display interface trust configuration (platform dependent):
+
+```text
+show ip arp inspection interfaces
+```
+
+---
+
+# Common ARP Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Wrong gateway MAC | ARP spoofing |
+| Duplicate IP alerts | IP conflict |
+| Frequent ARP broadcasts | Cache expiration or unstable network |
+| DAI drops legitimate traffic | Missing DHCP Snooping binding or incorrect configuration |
+| Intermittent connectivity | Poisoned ARP cache |
+
+---
+
+# Enterprise Example
+
+```
+Employee
+
+↓
+
+Access Switch
+
+↓
+
+DAI Enabled
+
+↓
+
+Core Switch
+
+↓
+
+Gateway
+```
+
+Result:
+
+- Forged ARP packets are discarded.
+- Legitimate ARP traffic is forwarded.
+- Network integrity is improved.
+
+---
+
+# Business Impact
+
+Securing ARP helps organizations:
+
+- Protect sensitive communications.
+- Reduce the risk of MITM attacks.
+- Improve network stability.
+- Prevent unauthorized traffic interception.
+- Meet enterprise security and compliance objectives.
+
+---
+
+# Key Takeaways
+
+- ARP lacks built-in authentication, making it susceptible to spoofing.
+- **ARP Spoofing** injects false ARP replies; **ARP Poisoning** is the resulting corruption of the ARP cache.
+- Successful poisoning can enable **Man-in-the-Middle (MITM)** attacks and traffic interception.
+- **Dynamic ARP Inspection (DAI)** validates ARP messages and helps prevent forged ARP traffic.
+- **DHCP Snooping** provides trusted IP-to-MAC bindings that DAI uses for validation.
+- Continuous monitoring, segmentation, and Layer 2 security features are essential for defending enterprise networks against ARP-based attacks.
+
+
