@@ -1165,3 +1165,671 @@ Reliable bootloader configuration and early userspace initialization help organi
 ---
 
 
+# Part 3 — systemd Initialization, Targets, Services, Login Managers, Boot Targets, Startup Sequence, and Service Dependencies
+
+---
+
+# Introduction
+
+After the Linux kernel has initialized the hardware, loaded the required drivers, and mounted the root filesystem, it starts the **first userspace process**.
+
+On nearly all modern Linux distributions, this process is **systemd**.
+
+`systemd` is responsible for initializing the operating system, starting background services, managing dependencies, tracking processes, logging system events, and preparing the system for users.
+
+Understanding `systemd` is essential because almost every Linux server, workstation, cloud instance, and container interacts with it during startup.
+
+---
+
+# What is systemd?
+
+**systemd** is the default **init system** for most modern Linux distributions.
+
+It replaces older init systems such as:
+
+- System V Init (SysVinit)
+- Upstart
+
+systemd provides:
+
+- Faster boot times
+- Parallel service startup
+- Dependency management
+- Service monitoring
+- Logging integration
+- Resource control
+- Timer management
+
+---
+
+# Why systemd Was Introduced
+
+Older initialization systems started services sequentially.
+
+Example:
+
+```text
+Service A
+
+↓
+
+Service B
+
+↓
+
+Service C
+
+↓
+
+Service D
+```
+
+This increased boot time unnecessarily.
+
+systemd starts independent services simultaneously.
+
+```text
+            Service A
+
+           ↙         ↘
+
+Service B             Service C
+
+           ↘         ↙
+
+            Service D
+```
+
+This significantly improves startup performance.
+
+---
+
+# PID 1
+
+The kernel starts **systemd** as **Process ID 1 (PID 1)**.
+
+Example:
+
+```bash
+ps -p 1
+```
+
+Example output:
+
+```text
+PID TTY      TIME CMD
+
+1 ?        00:00:02 systemd
+```
+
+Because PID 1 is the parent of nearly all userspace processes, its stability is critical.
+
+---
+
+# Boot Sequence After Kernel Initialization
+
+```text
+Kernel
+
+↓
+
+systemd (PID 1)
+
+↓
+
+Mount Filesystems
+
+↓
+
+Start Device Manager
+
+↓
+
+Initialize Networking
+
+↓
+
+Start Services
+
+↓
+
+Login Manager
+
+↓
+
+User Login
+```
+
+---
+
+# Responsibilities of systemd
+
+systemd performs numerous initialization tasks.
+
+Major responsibilities include:
+
+- Mount filesystems
+- Start system services
+- Manage dependencies
+- Start networking
+- Launch login services
+- Track processes
+- Restart failed services (when configured)
+- Manage timers
+- Control shutdown and reboot
+
+---
+
+# systemd Architecture
+
+```text
+                    systemd
+
+      ┌─────────────┼─────────────┐
+
+      ▼             ▼             ▼
+
+ Services        Targets       Timers
+
+      ▼             ▼             ▼
+
+ Networking     Multi-user     Scheduled Tasks
+
+      ▼
+
+ Login Services
+```
+
+Each component is managed through **unit files**.
+
+---
+
+# systemd Unit Files
+
+A **unit** is a configuration object understood by systemd.
+
+Common unit types include:
+
+| Unit Type | Purpose |
+|------------|---------|
+| Service | Background service |
+| Target | Group of units |
+| Mount | Mount filesystems |
+| Timer | Scheduled task |
+| Socket | Socket activation |
+| Device | Hardware devices |
+| Path | Monitor filesystem paths |
+| Scope | External processes |
+| Slice | Resource grouping |
+
+---
+
+# Service Units
+
+A service unit controls a background process.
+
+Examples:
+
+```text
+sshd.service
+
+nginx.service
+
+docker.service
+
+NetworkManager.service
+```
+
+Each service is described by a unit file.
+
+---
+
+# Location of Unit Files
+
+Typical locations include:
+
+| Directory | Purpose |
+|------------|---------|
+| `/usr/lib/systemd/system/` | Vendor-supplied units |
+| `/lib/systemd/system/` | Distribution units (varies by distro) |
+| `/etc/systemd/system/` | Administrator overrides and custom units |
+
+Administrator-created units are generally stored in:
+
+```text
+/etc/systemd/system/
+```
+
+---
+
+# Viewing Services
+
+List active services:
+
+```bash
+systemctl list-units --type=service
+```
+
+List all services:
+
+```bash
+systemctl list-unit-files
+```
+
+---
+
+# Managing Services
+
+Start a service:
+
+```bash
+sudo systemctl start nginx
+```
+
+Stop a service:
+
+```bash
+sudo systemctl stop nginx
+```
+
+Restart:
+
+```bash
+sudo systemctl restart nginx
+```
+
+Reload configuration:
+
+```bash
+sudo systemctl reload nginx
+```
+
+---
+
+# Enable and Disable Services
+
+Enable service at boot:
+
+```bash
+sudo systemctl enable ssh
+```
+
+Disable:
+
+```bash
+sudo systemctl disable ssh
+```
+
+Enabled services start automatically during boot.
+
+---
+
+# Check Service Status
+
+Example:
+
+```bash
+systemctl status ssh
+```
+
+Typical output includes:
+
+- Running state
+- Process ID
+- Logs
+- Startup time
+- Exit status
+
+This command is frequently used during troubleshooting.
+
+---
+
+# Boot Targets
+
+A **target** represents a desired system state.
+
+Targets replace the traditional SysV runlevels.
+
+Examples:
+
+| Target | Purpose |
+|----------|----------|
+| `poweroff.target` | Shut down system |
+| `rescue.target` | Single-user recovery |
+| `multi-user.target` | Multi-user command-line environment |
+| `graphical.target` | Graphical desktop environment |
+| `reboot.target` | Restart system |
+
+---
+
+# Traditional Runlevels vs systemd Targets
+
+| SysV Runlevel | systemd Target |
+|---------------|----------------|
+| 0 | poweroff.target |
+| 1 | rescue.target |
+| 3 | multi-user.target |
+| 5 | graphical.target |
+| 6 | reboot.target |
+
+This mapping simplifies migration from older Linux systems.
+
+---
+
+# Default Target
+
+Display the default boot target:
+
+```bash
+systemctl get-default
+```
+
+Example:
+
+```text
+graphical.target
+```
+
+Change default target:
+
+```bash
+sudo systemctl set-default multi-user.target
+```
+
+---
+
+# Boot Target Workflow
+
+```text
+Kernel
+
+↓
+
+systemd
+
+↓
+
+Default Target
+
+↓
+
+Required Services
+
+↓
+
+User Login
+```
+
+---
+
+# Service Dependencies
+
+Some services require others before they can start.
+
+Example:
+
+```text
+Network
+
+↓
+
+Database
+
+↓
+
+Web Server
+
+↓
+
+Application
+```
+
+systemd automatically resolves dependencies using unit metadata.
+
+---
+
+# Dependency Types
+
+Common dependency directives:
+
+| Directive | Purpose |
+|------------|----------|
+| `Requires=` | Strong dependency |
+| `Wants=` | Optional dependency |
+| `Before=` | Start earlier |
+| `After=` | Start later |
+
+Proper dependency configuration ensures predictable startup behavior.
+
+---
+
+# Parallel Startup
+
+systemd analyzes dependencies and starts independent services concurrently.
+
+Example:
+
+```text
+Network
+
+Logging
+
+Cron
+
+SSH
+
+↓
+
+Start Simultaneously
+```
+
+This reduces overall boot time.
+
+---
+
+# Login Managers
+
+Once the system reaches the appropriate target, user login becomes available.
+
+Common login managers:
+
+| Login Manager | Environment |
+|---------------|-------------|
+| GDM | GNOME |
+| SDDM | KDE Plasma |
+| LightDM | Lightweight desktops |
+| Console Login | Server environments |
+
+Server systems often boot directly to a text console.
+
+---
+
+# Login Workflow
+
+```text
+systemd
+
+↓
+
+Login Manager
+
+↓
+
+Authentication
+
+↓
+
+User Shell
+
+↓
+
+Applications
+```
+
+Successful authentication begins the user session.
+
+---
+
+# User Sessions
+
+After login:
+
+```text
+User Login
+
+↓
+
+Shell
+
+↓
+
+Environment Variables
+
+↓
+
+User Processes
+```
+
+Each logged-in user receives an independent session with its own processes and permissions.
+
+---
+
+# Journal Logging
+
+systemd integrates logging through **journald**.
+
+View boot logs:
+
+```bash
+journalctl -b
+```
+
+View previous boot:
+
+```bash
+journalctl -b -1
+```
+
+Follow logs in real time:
+
+```bash
+journalctl -f
+```
+
+These logs are invaluable for diagnosing startup and service issues.
+
+---
+
+# Boot Performance Analysis
+
+Measure total boot time:
+
+```bash
+systemd-analyze
+```
+
+Example:
+
+```text
+Startup finished in:
+
+Firmware
+
+Loader
+
+Kernel
+
+Userspace
+```
+
+---
+
+# Slow Boot Analysis
+
+Identify slow-starting services:
+
+```bash
+systemd-analyze blame
+```
+
+Example output:
+
+```text
+8.5s docker.service
+
+4.3s NetworkManager.service
+
+2.8s mysql.service
+```
+
+This helps administrators optimize startup performance.
+
+---
+
+# Critical Chain Analysis
+
+View dependency timing:
+
+```bash
+systemd-analyze critical-chain
+```
+
+This command highlights services that directly affect boot completion.
+
+---
+
+# Cybersecurity Perspective
+
+Because systemd controls service startup, attackers may attempt to:
+
+- Install malicious services
+- Modify unit files
+- Enable persistence through custom targets
+- Abuse scheduled timers
+- Execute unauthorized programs at boot
+
+Detection strategies include:
+
+- Monitoring `/etc/systemd/system/`
+- Reviewing enabled services
+- Auditing new timers
+- Checking unexpected startup dependencies
+- Monitoring `journalctl` for anomalies
+
+---
+
+# Business Impact
+
+Proper service management enables organizations to:
+
+- Reduce startup failures.
+- Improve system availability.
+- Automate infrastructure initialization.
+- Standardize server deployments.
+- Accelerate recovery after outages.
+
+---
+
+# Enterprise Best Practices
+
+- Enable only required services.
+- Disable unused or unnecessary services.
+- Document custom unit files.
+- Protect unit file permissions.
+- Review startup dependencies regularly.
+- Monitor boot performance over time.
+- Centralize journal logs for enterprise analysis.
+- Test service changes before production deployment.
+
+---
+
+# Key Takeaways
+
+- `systemd` is the default initialization system for most modern Linux distributions.
+- It starts as PID 1 and manages the entire userspace startup process.
+- Services are controlled through unit files and organized using targets.
+- Parallel service startup improves boot speed.
+- `journalctl` and `systemd-analyze` are essential tools for troubleshooting and performance analysis.
+
+---
+
