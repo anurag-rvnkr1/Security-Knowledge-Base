@@ -824,3 +824,757 @@ Effective automation:
 
 ---
 
+# 21 - Linux Automation
+
+# Part 2 — Advanced Cron, System Cron Directories, Environment Variables, Systemd Timers, Automation Scripts, and Enterprise Scheduling
+
+---
+
+# Introduction
+
+Enterprise Linux environments often execute hundreds or thousands of scheduled jobs every day.
+
+Examples include:
+
+- Nightly database backups
+- Log rotation
+- Security scanning
+- Patch deployment
+- Certificate renewal
+- File synchronization
+- Health monitoring
+- Compliance reporting
+
+Managing automation at scale requires understanding advanced scheduling mechanisms beyond basic cron entries.
+
+---
+
+# Enterprise Automation Architecture
+
+```text
+Administrator
+
+↓
+
+Automation Scripts
+
+↓
+
+Scheduler
+
+↓
+
+Execution
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Alerting
+```
+
+---
+
+# Cron Environment
+
+Cron jobs run in a **minimal environment**.
+
+Unlike an interactive shell, cron does **not** automatically inherit all user environment variables.
+
+This means scripts should not assume:
+
+- Current working directory
+- PATH contents
+- Shell aliases
+- Interactive shell settings
+
+---
+
+# Common Environment Variables
+
+Typical variables include:
+
+| Variable | Purpose |
+|----------|----------|
+| PATH | Executable search path |
+| HOME | User home directory |
+| SHELL | Shell used by cron |
+| LOGNAME | Current username |
+| MAILTO | Email destination for job output |
+
+---
+
+# Setting PATH
+
+Example:
+
+```text
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+```
+
+Using an explicit PATH helps ensure commands are found consistently.
+
+---
+
+# Setting SHELL
+
+Example:
+
+```text
+SHELL=/bin/bash
+```
+
+Useful when automation relies on Bash-specific features.
+
+---
+
+# MAILTO
+
+Cron can send job output by email.
+
+Example:
+
+```text
+MAILTO=admin@example.com
+```
+
+To disable email notifications:
+
+```text
+MAILTO=""
+```
+
+---
+
+# Working Directory
+
+Cron does not automatically execute commands from the directory containing your script.
+
+Preferred approach:
+
+```bash
+cd /opt/scripts && ./backup.sh
+```
+
+or use absolute paths throughout the script.
+
+---
+
+# Why Absolute Paths Matter
+
+Avoid:
+
+```bash
+backup.sh
+```
+
+Prefer:
+
+```bash
+/usr/local/bin/backup.sh
+```
+
+Benefits:
+
+- Predictable execution
+- Fewer environment-related failures
+- Easier troubleshooting
+
+---
+
+# Redirecting Output
+
+Capture both standard output and standard error:
+
+```bash
+/usr/local/bin/backup.sh >> /var/log/backup.log 2>&1
+```
+
+This simplifies troubleshooting and auditing.
+
+---
+
+# Logging Strategy
+
+```text
+Cron Job
+
+↓
+
+Execute
+
+↓
+
+Log File
+
+↓
+
+Monitoring
+
+↓
+
+Alert
+```
+
+Good logs answer:
+
+- What ran?
+- When did it run?
+- Was it successful?
+- If not, why?
+
+---
+
+# Useful Redirection Examples
+
+Append output:
+
+```bash
+>> logfile
+```
+
+Overwrite file:
+
+```bash
+> logfile
+```
+
+Capture errors:
+
+```bash
+2> errors.log
+```
+
+Capture everything:
+
+```bash
+> logfile 2>&1
+```
+
+---
+
+# System-Wide Cron
+
+User crontabs are not the only scheduling mechanism.
+
+Linux also provides:
+
+```text
+/etc/crontab
+```
+
+This supports system-wide scheduled jobs.
+
+---
+
+# System Crontab Format
+
+Unlike user crontabs, `/etc/crontab` includes a **user** field.
+
+```text
+Minute Hour Day Month Weekday User Command
+```
+
+Example:
+
+```text
+0 2 * * * root /usr/local/bin/backup.sh
+```
+
+---
+
+# System Cron Directories
+
+Many distributions automatically execute scripts placed in specific directories.
+
+| Directory | Typical Purpose |
+|-----------|-----------------|
+| `/etc/cron.hourly` | Hourly tasks |
+| `/etc/cron.daily` | Daily tasks |
+| `/etc/cron.weekly` | Weekly tasks |
+| `/etc/cron.monthly` | Monthly tasks |
+
+The exact implementation depends on the Linux distribution.
+
+---
+
+# Cron Directory Workflow
+
+```text
+cron
+
+↓
+
+cron.daily
+
+↓
+
+Execute Scripts
+
+↓
+
+Log Results
+```
+
+---
+
+# Viewing Scheduled Jobs
+
+Current user:
+
+```bash
+crontab -l
+```
+
+Specific user (administrative privileges required):
+
+```bash
+sudo crontab -u username -l
+```
+
+---
+
+# Listing System Jobs
+
+View:
+
+```bash
+cat /etc/crontab
+```
+
+Inspect system directories:
+
+```bash
+ls /etc/cron.daily
+```
+
+---
+
+# Cron Permissions
+
+Linux provides access control for cron.
+
+Files commonly used include:
+
+```text
+/etc/cron.allow
+```
+
+and
+
+```text
+/etc/cron.deny
+```
+
+Depending on the distribution:
+
+- `cron.allow` may explicitly permit users.
+- `cron.deny` may restrict users.
+
+Behavior varies across implementations, so consult your platform documentation.
+
+---
+
+# Best Practices for Scripts
+
+Good automation scripts should:
+
+- Validate input
+- Handle errors
+- Log activity
+- Exit with meaningful status codes
+- Avoid interactive prompts
+- Be idempotent where practical
+
+---
+
+# Example Script Structure
+
+```text
+Start
+
+↓
+
+Validate
+
+↓
+
+Execute
+
+↓
+
+Check Result
+
+↓
+
+Log
+
+↓
+
+Exit
+```
+
+---
+
+# Exit Codes
+
+Linux commands return status codes.
+
+| Code | Meaning |
+|-------|----------|
+| 0 | Success |
+| Non-zero | Error or warning condition |
+
+Cron itself can only determine whether the command exited successfully; application-specific meaning depends on the script.
+
+---
+
+# Checking Exit Status
+
+Example:
+
+```bash
+echo $?
+```
+
+Immediately after a command, this displays its exit status.
+
+---
+
+# Error Handling Example
+
+Conceptually:
+
+```bash
+Run Command
+
+↓
+
+Success?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+↓
+
+No
+
+↓
+
+Log Error
+
+↓
+
+Exit
+```
+
+Robust scripts handle unexpected failures gracefully.
+
+---
+
+# systemd Timers
+
+Modern Linux distributions increasingly use **systemd timers** as an alternative to cron.
+
+Advantages include:
+
+- Integration with systemd
+- Better dependency handling
+- Rich logging via `journalctl`
+- Flexible scheduling
+- Missed-job handling in some configurations
+
+---
+
+# systemd Timer Architecture
+
+```text
+Timer Unit
+
+↓
+
+systemd
+
+↓
+
+Service Unit
+
+↓
+
+Task
+```
+
+---
+
+# Components
+
+A timer generally consists of:
+
+| File | Purpose |
+|------|----------|
+| `.timer` | Scheduling information |
+| `.service` | Task to execute |
+
+---
+
+# Example Structure
+
+```text
+backup.timer
+
+↓
+
+backup.service
+
+↓
+
+backup.sh
+```
+
+---
+
+# Viewing Timers
+
+List active timers:
+
+```bash
+systemctl list-timers
+```
+
+List all timers:
+
+```bash
+systemctl list-timers --all
+```
+
+---
+
+# Timer Workflow
+
+```text
+Scheduled Time
+
+↓
+
+systemd Timer
+
+↓
+
+Service
+
+↓
+
+Script
+
+↓
+
+Logs
+```
+
+---
+
+# Cron vs systemd Timers
+
+| Feature | cron | systemd Timer |
+|----------|------|---------------|
+| Traditional | Yes | No |
+| Integrated with systemd | No | Yes |
+| Journal Logging | Limited | Native |
+| Dependency Management | Limited | Strong |
+| Widely Supported | Yes | Yes |
+
+Many modern enterprise Linux systems support both mechanisms.
+
+---
+
+# Automation Script Organization
+
+Recommended layout:
+
+```text
+/opt
+
+└── automation
+
+    ├── backup.sh
+
+    ├── cleanup.sh
+
+    ├── monitor.sh
+
+    ├── reports.sh
+
+    └── logs/
+```
+
+Benefits:
+
+- Easier maintenance
+- Version control integration
+- Consistent organization
+
+---
+
+# Enterprise Scheduling Workflow
+
+```text
+Business Requirement
+
+↓
+
+Automation Script
+
+↓
+
+Testing
+
+↓
+
+Scheduler
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Automation Documentation
+
+Every scheduled task should document:
+
+- Purpose
+- Owner
+- Schedule
+- Dependencies
+- Expected output
+- Failure behavior
+- Recovery procedure
+
+Documentation simplifies maintenance and incident response.
+
+---
+
+# Automation Security
+
+Automation should follow security principles:
+
+- Least privilege
+- Secure credential storage
+- Input validation
+- Restricted file permissions
+- Audit logging
+
+Avoid:
+
+- Hardcoded passwords
+- World-writable scripts
+- Running unnecessary jobs as `root`
+
+---
+
+# Enterprise Monitoring
+
+Monitor scheduled jobs for:
+
+- Success rate
+- Runtime
+- Failures
+- Resource usage
+- Unexpected changes
+
+Typical workflow:
+
+```text
+Job
+
+↓
+
+Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alert
+
+↓
+
+Administrator
+```
+
+---
+
+# Cybersecurity Perspective
+
+Automation is widely used by security teams for:
+
+- Vulnerability scanning
+- Compliance validation
+- Log collection
+- Threat intelligence updates
+- File integrity monitoring
+- Security reporting
+
+However, compromised automation scripts can execute with the permissions of the scheduled account, making secure script management critical.
+
+---
+
+# Business Impact
+
+Well-managed automation:
+
+- Improves operational efficiency
+- Reduces repetitive work
+- Increases consistency
+- Supports compliance
+- Enhances reliability
+- Simplifies large-scale infrastructure management
+
+---
+
+# Enterprise Best Practices
+
+- Use absolute paths in all scheduled jobs.
+- Capture and review job output.
+- Keep scripts under version control.
+- Apply least privilege.
+- Prefer systemd timers where organizational standards recommend them.
+- Document every scheduled task.
+- Periodically review and remove obsolete automation.
+- Monitor automation failures proactively.
+
+---
+
+# Key Takeaways
+
+- Cron jobs run in a limited environment.
+- Absolute paths improve reliability.
+- System-wide cron and cron directories simplify recurring maintenance tasks.
+- Systemd timers provide a modern scheduling alternative.
+- Logging, documentation, and security are essential components of enterprise automation.
+- Reliable automation requires testing, monitoring, and regular review.
+
+---
+
