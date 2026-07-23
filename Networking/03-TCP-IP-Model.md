@@ -1112,3 +1112,844 @@ Each layer provides services to the layer above while relying on the services of
 | Transport | End-to-end communication | Port Number | TCP, UDP | Firewall, Load Balancer |
 | Internet | Logical addressing and routing | IP Address | IPv4, IPv6, ICMP, IPsec | Router, Layer 3 Switch |
 | Network Access | Local network communication | MAC Address | Ethernet, ARP, Wi-Fi | Switch, Bridge, NIC |
+
+# 03 - TCP/IP Model
+
+# Part 3 — End-to-End Communication Workflow, DNS, ARP, TCP Handshake, Routing, NAT, and Packet Journey
+
+---
+
+# Overview
+
+The TCP/IP Model is best understood by following the complete journey of a packet.
+
+When a user opens a website, dozens of networking operations occur within milliseconds.
+
+These operations include:
+
+- DNS Resolution
+- ARP Resolution
+- TCP Three-Way Handshake
+- TLS Handshake
+- HTTP Communication
+- Routing
+- NAT Translation
+- Packet Switching
+- Response Delivery
+
+Understanding this workflow is essential for:
+
+- Network Engineers
+- SOC Analysts
+- Incident Responders
+- Threat Hunters
+- Penetration Testers
+- Cloud Engineers
+- Digital Forensics
+
+---
+
+# Enterprise Communication Scenario
+
+An employee wants to access:
+
+```
+https://portal.company.com
+```
+
+Enterprise Architecture
+
+```
+Employee Laptop
+
+      │
+
+Access Switch
+
+      │
+
+Distribution Switch
+
+      │
+
+Core Router
+
+      │
+
+Next Generation Firewall
+
+      │
+
+ISP
+
+      │
+
+Internet
+
+      │
+
+Cloud Load Balancer
+
+      │
+
+Web Server
+
+      │
+
+Application Server
+
+      │
+
+Database
+```
+
+Let's follow every networking step.
+
+---
+
+# Step 1 — User Types a URL
+
+Example:
+
+```
+https://portal.company.com
+```
+
+At this stage, the browser knows:
+
+- URL
+- Protocol (HTTPS)
+
+It does **not** know:
+
+- Destination IP Address
+- MAC Address
+- Network Path
+
+The browser first needs to determine where the server is located.
+
+---
+
+# Step 2 — DNS Resolution
+
+DNS converts:
+
+```
+portal.company.com
+```
+
+into
+
+```
+203.0.113.25
+```
+
+DNS Resolution Process
+
+```
+Browser
+
+↓
+
+DNS Cache
+
+↓
+
+Operating System Cache
+
+↓
+
+Local DNS Server
+
+↓
+
+Root DNS
+
+↓
+
+TLD Server
+
+↓
+
+Authoritative DNS
+
+↓
+
+IP Address Returned
+```
+
+Example:
+
+```
+portal.company.com
+
+↓
+
+203.0.113.25
+```
+
+Without DNS, users would need to remember IP addresses instead of domain names.
+
+---
+
+# Step 3 — Determine Destination Network
+
+The operating system compares:
+
+```
+My IP
+
+192.168.1.100
+```
+
+with
+
+```
+Destination
+
+203.0.113.25
+```
+
+Question:
+
+```
+Is destination inside my network?
+```
+
+If YES:
+
+```
+Direct Delivery
+```
+
+If NO:
+
+```
+Send to Default Gateway
+```
+
+Since the server is on the Internet:
+
+```
+Destination
+
+↓
+
+Default Gateway
+```
+
+---
+
+# Step 4 — ARP Resolution
+
+The laptop knows:
+
+```
+Gateway IP
+
+192.168.1.1
+```
+
+But it still needs:
+
+```
+Gateway MAC Address
+```
+
+ARP Request
+
+```
+Who has
+
+192.168.1.1
+
+?
+```
+
+ARP Reply
+
+```
+I do.
+
+MAC:
+
+AA:BB:CC:11:22:33
+```
+
+The laptop stores this information in its ARP cache.
+
+---
+
+# Step 5 — TCP Three-Way Handshake
+
+Before sending application data using TCP, a reliable connection must be established.
+
+```
+Client
+
+        SYN
+
+──────────────►
+
+Server
+
+      SYN + ACK
+
+◄──────────────
+
+        ACK
+
+──────────────►
+```
+
+Connection Established
+
+---
+
+## Why Is This Required?
+
+TCP ensures:
+
+- Reliable communication
+- Ordered delivery
+- Error recovery
+- Flow control
+
+Without the handshake, the sender would not know whether the receiver is ready to communicate.
+
+---
+
+# TCP Flags
+
+Common TCP flags include:
+
+| Flag | Purpose |
+|------|----------|
+| SYN | Start a connection |
+| ACK | Acknowledge received data |
+| FIN | Gracefully close a connection |
+| RST | Immediately terminate a connection |
+| PSH | Push data immediately |
+| URG | Urgent data indicator |
+
+---
+
+# Step 6 — TLS Handshake (HTTPS)
+
+Because HTTPS is being used, the client and server establish an encrypted session.
+
+Simplified TLS Workflow
+
+```
+Client
+
+↓
+
+Client Hello
+
+↓
+
+Server Hello
+
+↓
+
+Certificate
+
+↓
+
+Key Exchange
+
+↓
+
+Secure Session Established
+```
+
+After the handshake:
+
+```
+Encrypted Communication
+```
+
+---
+
+# Step 7 — HTTP Request
+
+The browser sends:
+
+```
+GET /
+
+Host:
+
+portal.company.com
+```
+
+Application data is now ready for encapsulation.
+
+---
+
+# Step 8 — Encapsulation
+
+Application Data
+
+↓
+
+TCP Header
+
+↓
+
+IP Header
+
+↓
+
+Ethernet Header
+
+↓
+
+Bits
+
+```
+Application
+
+↓
+
+Transport
+
+↓
+
+Internet
+
+↓
+
+Network Access
+```
+
+Result
+
+```
+Frame
+
+↓
+
+Packet
+
+↓
+
+Segment
+
+↓
+
+Application Data
+```
+
+Each layer adds only the information required for its own responsibilities.
+
+---
+
+# Step 9 — Local Switch Processing
+
+The Ethernet frame reaches the access switch.
+
+The switch examines:
+
+```
+Destination MAC Address
+```
+
+It does **not** inspect:
+
+- IP Address
+- TCP Port
+- HTTP Request
+
+The switch forwards the frame based on its MAC address table.
+
+---
+
+# Step 10 — Router Processing
+
+The router removes the incoming Ethernet frame and examines:
+
+```
+Destination IP Address
+```
+
+It consults its routing table to determine the next hop.
+
+```
+Destination
+
+203.0.113.25
+
+↓
+
+Next Hop
+
+ISP Router
+```
+
+The router then creates a new Layer 2 frame with updated source and destination MAC addresses before forwarding the packet.
+
+---
+
+# Step 11 — Network Address Translation (NAT)
+
+Most enterprise endpoints use private IP addresses.
+
+Example:
+
+```
+Laptop
+
+192.168.1.100
+```
+
+The Internet cannot route private addresses directly.
+
+The firewall or edge router performs NAT:
+
+```
+192.168.1.100
+
+↓
+
+198.51.100.10
+```
+
+The public IP address is then used for Internet communication.
+
+---
+
+# Step 12 — Internet Routing
+
+The packet traverses multiple routers across the Internet.
+
+```
+Enterprise Router
+
+↓
+
+ISP
+
+↓
+
+Regional ISP
+
+↓
+
+Internet Backbone
+
+↓
+
+Cloud Provider
+
+↓
+
+Destination Router
+
+↓
+
+Web Server
+```
+
+Each router makes an independent forwarding decision based on the destination IP address.
+
+---
+
+# Step 13 — Arrival at the Web Server
+
+The server receives:
+
+```
+Ethernet Frame
+
+↓
+
+IP Packet
+
+↓
+
+TCP Segment
+
+↓
+
+HTTPS Data
+```
+
+The server performs decapsulation.
+
+```
+Network Access
+
+↓
+
+Internet
+
+↓
+
+Transport
+
+↓
+
+Application
+```
+
+The web server processes the HTTP request and generates a response.
+
+---
+
+# Step 14 — Response to the Client
+
+The response follows the reverse path.
+
+```
+Web Server
+
+↓
+
+Cloud Network
+
+↓
+
+Internet
+
+↓
+
+ISP
+
+↓
+
+Enterprise Firewall
+
+↓
+
+Router
+
+↓
+
+Switch
+
+↓
+
+Laptop
+```
+
+The client receives the response and renders the requested webpage.
+
+---
+
+# End-to-End Communication Flow
+
+```
+Browser
+
+↓
+
+DNS
+
+↓
+
+ARP
+
+↓
+
+TCP Handshake
+
+↓
+
+TLS Handshake
+
+↓
+
+HTTP Request
+
+↓
+
+Encapsulation
+
+↓
+
+Switch
+
+↓
+
+Router
+
+↓
+
+Firewall
+
+↓
+
+NAT
+
+↓
+
+Internet
+
+↓
+
+Cloud
+
+↓
+
+Server
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+Response
+
+↓
+
+Browser
+```
+
+---
+
+# What Changes During the Journey?
+
+| Component | Changes? |
+|-----------|----------|
+| MAC Address | Yes, at every Layer 2 hop |
+| IP Address | Usually no (except NAT or proxy scenarios) |
+| TCP Ports | Normally remain unchanged |
+| Application Data | Remains unchanged after encryption unless processed by intermediaries such as proxies or application gateways |
+
+---
+
+# Packet Structure
+
+Example Ethernet Frame
+
+```
++----------------------------------------+
+| Ethernet Header                        |
++----------------------------------------+
+| IPv4 Header                            |
++----------------------------------------+
+| TCP Header                             |
++----------------------------------------+
+| TLS Encrypted HTTP Data                |
++----------------------------------------+
+| Ethernet Trailer (FCS)                 |
++----------------------------------------+
+```
+
+---
+
+# IPv4 Packet
+
+```
++--------------------------------------+
+| Version                              |
+| Header Length                        |
+| TTL                                  |
+| Protocol                             |
+| Source IP                            |
+| Destination IP                       |
++--------------------------------------+
+
+TCP Segment
+```
+
+---
+
+# TCP Segment
+
+```
++--------------------------------------+
+| Source Port                          |
+| Destination Port                     |
+| Sequence Number                      |
+| Acknowledgment Number                |
+| Flags                                |
+| Window Size                          |
++--------------------------------------+
+
+Encrypted HTTPS Data
+```
+
+---
+
+# Wireshark Packet View
+
+A typical HTTPS session appears as:
+
+```
+Frame
+
+↓
+
+Ethernet II
+
+↓
+
+Internet Protocol Version 4
+
+↓
+
+Transmission Control Protocol
+
+↓
+
+Transport Layer Security
+
+↓
+
+Hypertext Transfer Protocol
+```
+
+Wireshark displays protocol headers in the same order that they were added during encapsulation.
+
+---
+
+# Common Communication Failures
+
+| Failure | Possible Cause |
+|----------|----------------|
+| DNS lookup fails | DNS server unavailable or misconfigured |
+| ARP fails | Gateway unreachable or ARP cache issue |
+| TCP handshake fails | Firewall filtering or service unavailable |
+| TLS handshake fails | Certificate problem or incompatible cipher suites |
+| HTTP request fails | Web server or application issue |
+| Routing fails | Missing route or incorrect gateway |
+| NAT fails | Translation table exhaustion or configuration error |
+
+Understanding where the failure occurs helps isolate the responsible TCP/IP layer.
+
+---
+
+# Business Impact
+
+The TCP/IP communication workflow enables:
+
+- Reliable Internet access
+- Secure web browsing
+- Cloud computing
+- Enterprise application delivery
+- Remote work
+- API communication
+- Email services
+- Global connectivity
+
+A clear understanding of each step is essential for diagnosing network issues, designing resilient infrastructures, and investigating security incidents.
+
+---
+
+# Key Takeaways
+
+- Every network request follows a structured sequence: DNS → ARP → TCP → TLS → HTTP → Routing → Response.
+- TCP establishes reliable communication through a three-way handshake before application data is exchanged.
+- DNS resolves domain names into IP addresses, while ARP resolves local IP addresses into MAC addresses.
+- Routers forward packets using IP addresses, and switches forward frames using MAC addresses.
+- NAT allows private networks to communicate with the public Internet using routable IP addresses.
+- Packet analyzers such as Wireshark reveal the encapsulated protocol stack, providing valuable insight for troubleshooting and security analysis.
+
