@@ -756,3 +756,887 @@ Efficient text processing enables organizations to:
 ---
 
 
+# Part 2 — grep, egrep, Regular Expressions, sort, uniq, cut, paste, tr, and wc
+
+---
+
+# Introduction
+
+Once text is flowing through pipelines, Linux provides utilities to:
+
+- Search text
+- Filter information
+- Count entries
+- Extract fields
+- Remove duplicates
+- Transform characters
+- Combine files
+- Generate statistics
+
+These commands are used daily by:
+
+- Linux Administrators
+- DevOps Engineers
+- Cloud Engineers
+- SOC Analysts
+- DFIR Analysts
+- Threat Hunters
+- Security Engineers
+
+Mastering these utilities allows administrators to analyze gigabytes of logs using only a few commands.
+
+---
+
+# Linux Text Processing Pipeline
+
+```text
+Raw File
+
+↓
+
+grep
+
+↓
+
+cut
+
+↓
+
+sort
+
+↓
+
+uniq
+
+↓
+
+wc
+
+↓
+
+Report
+```
+
+Each utility performs one focused task, making pipelines modular and reusable.
+
+---
+
+# grep
+
+**grep** (Global Regular Expression Print) searches text for matching patterns.
+
+General syntax:
+
+```bash
+grep "pattern" filename
+```
+
+Example:
+
+```bash
+grep "error" system.log
+```
+
+This displays every line containing the word `error`.
+
+---
+
+# Case-Insensitive Search
+
+Ignore letter case:
+
+```bash
+grep -i "failed" auth.log
+```
+
+Matches:
+
+```text
+FAILED
+
+Failed
+
+failed
+```
+
+---
+
+# Show Line Numbers
+
+```bash
+grep -n "root" passwd
+```
+
+Example output:
+
+```text
+1:root:x:0:0:root:/root:/bin/bash
+```
+
+Useful when reviewing configuration files.
+
+---
+
+# Count Matches
+
+Instead of displaying matching lines:
+
+```bash
+grep -c "ERROR" app.log
+```
+
+Example:
+
+```text
+24
+```
+
+Returns the number of matching lines.
+
+---
+
+# Invert Search
+
+Display lines **not** matching a pattern:
+
+```bash
+grep -v "^#" sshd_config
+```
+
+Common use:
+
+- Ignore comments
+- Display active configuration entries
+
+---
+
+# Recursive Search
+
+Search an entire directory tree:
+
+```bash
+grep -r "password" /etc
+```
+
+Typical applications:
+
+- Configuration audits
+- Source code review
+- Security investigations
+
+---
+
+# Multiple Patterns
+
+Search for several alternatives:
+
+```bash
+grep -E "error|warning|critical" system.log
+```
+
+The `-E` option enables extended regular expressions.
+
+---
+
+# egrep
+
+Historically:
+
+```bash
+egrep
+```
+
+was used for extended regular expressions.
+
+Modern Linux systems generally recommend:
+
+```bash
+grep -E
+```
+
+Both perform equivalent pattern matching in most environments.
+
+---
+
+# What Are Regular Expressions?
+
+A **regular expression (regex)** describes a search pattern rather than literal text.
+
+Instead of searching only for:
+
+```text
+error
+```
+
+Regex allows matching many related strings.
+
+---
+
+# Basic Regular Expression Symbols
+
+| Symbol | Meaning |
+|----------|----------|
+| `.` | Any single character |
+| `*` | Zero or more occurrences |
+| `^` | Beginning of line |
+| `$` | End of line |
+| `[]` | Character class |
+| `[^ ]` | Negated character class |
+| `+` | One or more occurrences (extended regex) |
+| `?` | Zero or one occurrence (extended regex) |
+| `|` | Alternation (OR) |
+
+---
+
+# Beginning of Line
+
+Match lines beginning with `root`:
+
+```bash
+grep "^root" /etc/passwd
+```
+
+Example:
+
+```text
+root:x:0:0:root:/root:/bin/bash
+```
+
+---
+
+# End of Line
+
+Match lines ending with `/bin/bash`:
+
+```bash
+grep "/bin/bash$" /etc/passwd
+```
+
+---
+
+# Wildcard Character
+
+Example:
+
+```bash
+grep "r..t"
+```
+
+Matches:
+
+```text
+root
+
+rust
+
+rAAt
+```
+
+The period (`.`) matches any single character.
+
+---
+
+# Character Classes
+
+Example:
+
+```bash
+grep "[0-9]"
+```
+
+Matches any line containing at least one digit.
+
+Examples:
+
+```text
+user1
+
+eth0
+
+2026
+```
+
+---
+
+# Negated Character Classes
+
+Example:
+
+```bash
+grep "^[^#]"
+```
+
+Matches lines that do **not** begin with `#`.
+
+Commonly used to display active configuration settings.
+
+---
+
+# Practical grep Examples
+
+Find failed SSH logins:
+
+```bash
+grep "Failed password" auth.log
+```
+
+Find successful SSH logins:
+
+```bash
+grep "Accepted password" auth.log
+```
+
+Locate IPv4 addresses (simple example):
+
+```bash
+grep -E "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" access.log
+```
+
+---
+
+# sort
+
+The `sort` command arranges text in a specified order.
+
+Example:
+
+```bash
+sort users.txt
+```
+
+Input:
+
+```text
+Charlie
+
+Alice
+
+Bob
+```
+
+Output:
+
+```text
+Alice
+
+Bob
+
+Charlie
+```
+
+---
+
+# Reverse Sort
+
+```bash
+sort -r users.txt
+```
+
+Output:
+
+```text
+Charlie
+
+Bob
+
+Alice
+```
+
+---
+
+# Numeric Sort
+
+```bash
+sort -n scores.txt
+```
+
+Input:
+
+```text
+20
+
+3
+
+100
+```
+
+Output:
+
+```text
+3
+
+20
+
+100
+```
+
+Without `-n`, values are sorted alphabetically.
+
+---
+
+# Remove Duplicate Lines
+
+Use:
+
+```bash
+sort users.txt | uniq
+```
+
+Since `uniq` compares adjacent lines, sorting first is a common practice.
+
+---
+
+# uniq
+
+The `uniq` command removes consecutive duplicate lines.
+
+Example:
+
+Input:
+
+```text
+Alice
+
+Alice
+
+Bob
+
+Bob
+
+Charlie
+```
+
+Command:
+
+```bash
+uniq names.txt
+```
+
+Output:
+
+```text
+Alice
+
+Bob
+
+Charlie
+```
+
+---
+
+# Count Duplicates
+
+```bash
+uniq -c names.txt
+```
+
+Example:
+
+```text
+2 Alice
+
+2 Bob
+
+1 Charlie
+```
+
+Useful for summarizing repeated values.
+
+---
+
+# Display Only Repeated Lines
+
+```bash
+uniq -d names.txt
+```
+
+Displays only duplicated entries.
+
+---
+
+# cut
+
+The `cut` command extracts selected portions of each line.
+
+Typical uses:
+
+- CSV files
+- Log analysis
+- Delimited text
+- User databases
+
+---
+
+# Extract Characters
+
+```bash
+cut -c1-5 file.txt
+```
+
+Displays characters 1 through 5 from each line.
+
+---
+
+# Extract Fields
+
+Given:
+
+```text
+Alice,HR
+
+Bob,IT
+
+Charlie,Finance
+```
+
+Command:
+
+```bash
+cut -d "," -f1 employees.csv
+```
+
+Output:
+
+```text
+Alice
+
+Bob
+
+Charlie
+```
+
+Explanation:
+
+| Option | Purpose |
+|----------|----------|
+| `-d` | Delimiter |
+| `-f` | Field number |
+
+---
+
+# Extract Multiple Fields
+
+```bash
+cut -d ":" -f1,7 /etc/passwd
+```
+
+Displays:
+
+- Username
+- Login shell
+
+This is useful for reviewing account configurations.
+
+---
+
+# paste
+
+The `paste` command merges lines from multiple files.
+
+Example:
+
+File 1:
+
+```text
+Alice
+
+Bob
+```
+
+File 2:
+
+```text
+HR
+
+IT
+```
+
+Command:
+
+```bash
+paste names.txt departments.txt
+```
+
+Output:
+
+```text
+Alice    HR
+
+Bob      IT
+```
+
+---
+
+# Change Delimiter
+
+Example:
+
+```bash
+paste -d "," file1 file2
+```
+
+Output:
+
+```text
+Alice,HR
+
+Bob,IT
+```
+
+---
+
+# tr
+
+The `tr` command translates or deletes characters.
+
+Common uses:
+
+- Case conversion
+- Character replacement
+- Removing unwanted characters
+
+---
+
+# Convert Lowercase to Uppercase
+
+```bash
+echo "linux" | tr 'a-z' 'A-Z'
+```
+
+Output:
+
+```text
+LINUX
+```
+
+---
+
+# Convert Uppercase to Lowercase
+
+```bash
+echo "SECURITY" | tr 'A-Z' 'a-z'
+```
+
+Output:
+
+```text
+security
+```
+
+---
+
+# Delete Characters
+
+Remove digits:
+
+```bash
+echo "abc123" | tr -d '0-9'
+```
+
+Output:
+
+```text
+abc
+```
+
+---
+
+# Replace Characters
+
+Replace spaces with underscores:
+
+```bash
+echo "Linux Security" | tr ' ' '_'
+```
+
+Output:
+
+```text
+Linux_Security
+```
+
+---
+
+# wc
+
+The `wc` (word count) utility summarizes text.
+
+Example:
+
+```bash
+wc notes.txt
+```
+
+Output:
+
+```text
+15 120 980 notes.txt
+```
+
+Meaning:
+
+| Value | Description |
+|----------|-------------|
+| First | Lines |
+| Second | Words |
+| Third | Bytes |
+
+---
+
+# Count Lines Only
+
+```bash
+wc -l access.log
+```
+
+---
+
+# Count Words
+
+```bash
+wc -w article.txt
+```
+
+---
+
+# Count Characters
+
+```bash
+wc -m notes.txt
+```
+
+---
+
+# Enterprise Example
+
+Count failed SSH logins:
+
+```bash
+grep "Failed password" auth.log | wc -l
+```
+
+Workflow:
+
+```text
+Authentication Log
+
+↓
+
+grep
+
+↓
+
+Failed Entries
+
+↓
+
+wc
+
+↓
+
+Total Failed Logins
+```
+
+This type of pipeline is common in security monitoring.
+
+---
+
+# Combining Multiple Commands
+
+Example:
+
+```bash
+cat access.log \
+| grep "404" \
+| cut -d " " -f1 \
+| sort \
+| uniq -c \
+| sort -nr
+```
+
+Workflow:
+
+```text
+Access Log
+
+↓
+
+grep
+
+↓
+
+cut
+
+↓
+
+sort
+
+↓
+
+uniq
+
+↓
+
+sort
+
+↓
+
+Ranked Report
+```
+
+This identifies the IP addresses generating the most HTTP 404 responses.
+
+---
+
+# Cybersecurity Perspective
+
+Security teams frequently use these tools to:
+
+- Detect repeated authentication failures.
+- Analyze firewall logs.
+- Search indicators of compromise (IOCs).
+- Count suspicious events.
+- Extract IP addresses.
+- Identify unusual activity patterns.
+- Build lightweight detection pipelines.
+
+These commands are foundational for SOC investigations and threat hunting.
+
+---
+
+# Business Impact
+
+Efficient text processing enables organizations to:
+
+- Analyze large log volumes quickly.
+- Improve troubleshooting.
+- Automate reporting.
+- Reduce manual effort.
+- Accelerate incident response.
+- Support compliance and audit activities.
+
+---
+
+# Enterprise Best Practices
+
+- Use `grep -E` instead of legacy `egrep` in new scripts.
+- Prefer pipelines over temporary intermediate files when practical.
+- Sort data before using `uniq` unless the input is already grouped.
+- Validate regular expressions against representative sample data.
+- Document complex command pipelines used in operational procedures.
+- Test text-processing commands on non-production data before running them on critical systems.
+
+---
+
+# Key Takeaways
+
+- `grep` is the primary tool for searching text.
+- Regular expressions provide flexible and powerful pattern matching.
+- `sort` and `uniq` organize and summarize data.
+- `cut`, `paste`, and `tr` extract, combine, and transform text.
+- `wc` generates useful statistics for text files and command output.
+- Combining small tools into pipelines is a core strength of Linux text processing.
+
+---
+
+
