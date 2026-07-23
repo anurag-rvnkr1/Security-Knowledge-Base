@@ -1256,3 +1256,676 @@ The forwarding sequence:
 - **ECMP** allows traffic to be distributed across multiple equal-cost paths.
 - ARP (IPv4) and Neighbor Discovery (IPv6) resolve next-hop Layer 2 addresses before packets are forwarded.
 
+# 07 - Routing
+
+# Part 3 — Static Routing, Dynamic Routing Protocols, OSPF, EIGRP, IS-IS, BGP, and Enterprise Routing Design
+
+---
+
+# Overview
+
+Routers need a way to learn how to reach remote networks.
+
+There are three primary methods:
+
+```
+Connected Routes
+
+↓
+
+Static Routes
+
+↓
+
+Dynamic Routing Protocols
+```
+
+The appropriate method depends on:
+
+- Network size
+- Complexity
+- Scalability requirements
+- Redundancy
+- Administrative overhead
+
+Small networks may rely entirely on static routes, while enterprise networks typically use dynamic routing protocols.
+
+---
+
+# Route Learning Methods
+
+| Method | Learned From | Typical Use |
+|----------|--------------|-------------|
+| Connected | Router Interface | Directly attached networks |
+| Static | Administrator | Small or predictable networks |
+| Dynamic | Routing Protocol | Medium to large enterprise networks |
+
+---
+
+# Connected Routes
+
+Whenever an IP address is assigned to an active router interface, the router automatically installs a connected route.
+
+Example:
+
+```
+Interface:
+
+GigabitEthernet0/0
+
+↓
+
+IP:
+
+192.168.10.1/24
+```
+
+Routing table entry:
+
+```
+192.168.10.0/24
+
+↓
+
+Connected
+```
+
+No manual configuration is required.
+
+---
+
+# Static Routing
+
+A **static route** is manually configured by a network administrator.
+
+Example:
+
+```
+Router A
+
+↓
+
+Router B
+
+↓
+
+10.20.0.0/16
+```
+
+Router A is configured with:
+
+```
+Destination
+
+10.20.0.0/16
+
+↓
+
+Next Hop
+
+192.168.1.2
+```
+
+---
+
+# Advantages of Static Routing
+
+- Simple
+- Predictable
+- Low CPU usage
+- No routing protocol overhead
+- Better control
+- Useful for security-sensitive paths
+
+---
+
+# Disadvantages
+
+- Manual configuration
+- Poor scalability
+- Difficult maintenance
+- No automatic failover (unless configured)
+- Not suitable for rapidly changing topologies
+
+---
+
+# Default Route
+
+Instead of configuring routes to every possible destination, a router can use a **default route**.
+
+Representation:
+
+```
+0.0.0.0/0
+```
+
+Meaning:
+
+```
+Unknown Destination
+
+↓
+
+Forward to Default Gateway
+```
+
+Typical deployment:
+
+```
+Branch Office
+
+↓
+
+Internet Router
+
+↓
+
+ISP
+```
+
+---
+
+# Floating Static Route
+
+A **floating static route** acts as a backup route.
+
+It is configured with a higher **Administrative Distance** than the primary route.
+
+Example:
+
+Primary:
+
+```
+OSPF
+
+AD = 110
+```
+
+Backup:
+
+```
+Static Route
+
+AD = 120
+```
+
+The static route remains inactive until the OSPF route is lost.
+
+---
+
+# Dynamic Routing
+
+Dynamic routing protocols automatically:
+
+- Discover neighbors
+- Exchange routing information
+- Learn new networks
+- Detect failures
+- Recalculate routes
+
+Benefits include:
+
+- Scalability
+- Redundancy
+- Faster convergence
+- Reduced administrative effort
+
+---
+
+# Distance Vector vs Link-State
+
+Routing protocols are commonly categorized as:
+
+| Category | Examples |
+|----------|----------|
+| Distance Vector | RIP |
+| Advanced Distance Vector | EIGRP |
+| Link-State | OSPF, IS-IS |
+| Path Vector | BGP |
+
+Each category uses a different algorithm to determine the best path.
+
+---
+
+# Routing Protocol Comparison
+
+| Protocol | Type | Metric | Typical Scale |
+|----------|------|--------|---------------|
+| RIP | Distance Vector | Hop Count | Small |
+| OSPF | Link-State | Cost | Enterprise |
+| EIGRP | Advanced Distance Vector | Composite Metric | Enterprise (primarily Cisco) |
+| IS-IS | Link-State | Cost | Service Providers |
+| BGP | Path Vector | Path Attributes | Internet / Large Enterprises |
+
+---
+
+# RIP (Routing Information Protocol)
+
+RIP is one of the oldest dynamic routing protocols.
+
+Characteristics:
+
+- Distance Vector
+- Uses hop count
+- Maximum of 15 hops
+- 16 hops = unreachable
+- Periodic updates (typically every 30 seconds)
+
+Example:
+
+```
+Router A
+
+↓
+
+Router B
+
+↓
+
+Router C
+```
+
+Hop count:
+
+```
+2
+```
+
+---
+
+## Advantages of RIP
+
+- Simple configuration
+- Easy to understand
+- Suitable for small networks
+
+---
+
+## Limitations
+
+- Slow convergence
+- Limited scalability
+- Hop-count restriction
+- Less efficient than modern protocols
+
+RIP is rarely deployed in large enterprise environments today.
+
+---
+
+# OSPF (Open Shortest Path First)
+
+OSPF is one of the most widely used enterprise Interior Gateway Protocols (IGPs).
+
+Characteristics:
+
+- Link-State protocol
+- Fast convergence
+- Hierarchical design
+- Uses Dijkstra's Shortest Path First (SPF) algorithm
+- Supports VLSM and CIDR
+- Scales well in large networks
+
+---
+
+# OSPF Areas
+
+Large OSPF deployments divide the network into **areas**.
+
+```
+             Area 0
+          (Backbone Area)
+         /       |       \
+    Area 1   Area 2   Area 3
+```
+
+Area 0 is the backbone and connects all other areas.
+
+Benefits:
+
+- Smaller routing tables
+- Reduced SPF calculations
+- Better scalability
+
+---
+
+# OSPF Router Types
+
+Common OSPF router roles include:
+
+- Internal Router
+- Backbone Router
+- Area Border Router (ABR)
+- Autonomous System Boundary Router (ASBR)
+
+Each role has specific responsibilities for route exchange and area connectivity.
+
+---
+
+# OSPF Neighbor States
+
+Routers establish neighbor relationships before exchanging routes.
+
+Simplified progression:
+
+```
+Down
+
+↓
+
+Init
+
+↓
+
+2-Way
+
+↓
+
+ExStart
+
+↓
+
+Exchange
+
+↓
+
+Loading
+
+↓
+
+Full
+```
+
+Only routers in the **Full** state have synchronized link-state databases.
+
+---
+
+# Designated Router (DR) and Backup Designated Router (BDR)
+
+On multi-access networks (such as Ethernet), OSPF elects:
+
+- Designated Router (DR)
+- Backup Designated Router (BDR)
+
+Purpose:
+
+- Reduce routing update traffic
+- Improve efficiency
+- Minimize adjacency overhead
+
+---
+
+# Link-State Advertisements (LSAs)
+
+OSPF shares topology information using **Link-State Advertisements (LSAs)**.
+
+LSAs describe:
+
+- Networks
+- Routers
+- Links
+- External routes
+- Area information
+
+Routers build a common **Link-State Database (LSDB)** from received LSAs.
+
+---
+
+# Dijkstra's SPF Algorithm
+
+OSPF uses the **Shortest Path First (SPF)** algorithm to calculate the most efficient path.
+
+Simplified process:
+
+```
+Collect LSAs
+
+↓
+
+Build Topology Database
+
+↓
+
+Run SPF Algorithm
+
+↓
+
+Install Best Routes
+```
+
+---
+
+# OSPF Cost
+
+OSPF chooses paths based on **cost**, which is generally derived from interface bandwidth.
+
+Example:
+
+| Link | Cost |
+|------|-----:|
+| 10 Gbps | Lower |
+| 1 Gbps | Moderate |
+| 100 Mbps | Higher |
+
+Lower total cost is preferred.
+
+---
+
+# EIGRP (Enhanced Interior Gateway Routing Protocol)
+
+EIGRP is an advanced distance-vector protocol originally developed by Cisco.
+
+Characteristics:
+
+- Fast convergence
+- Supports unequal-cost load balancing
+- Efficient updates
+- Low bandwidth usage
+
+It uses the **Diffusing Update Algorithm (DUAL)** to calculate loop-free paths.
+
+---
+
+# EIGRP Metric
+
+EIGRP uses a composite metric based primarily on:
+
+- Bandwidth
+- Delay
+
+Additional optional factors include:
+
+- Reliability
+- Load
+- MTU (recorded but not directly used in the default metric)
+
+---
+
+# DUAL Algorithm
+
+DUAL provides:
+
+- Loop-free routing
+- Rapid convergence
+- Backup paths (feasible successors)
+
+This reduces downtime during network failures.
+
+---
+
+# IS-IS (Intermediate System to Intermediate System)
+
+IS-IS is another link-state routing protocol.
+
+Commonly deployed in:
+
+- Service provider networks
+- Large enterprise backbones
+- Carrier infrastructures
+
+Characteristics:
+
+- Highly scalable
+- Fast convergence
+- Efficient flooding
+- Hierarchical design
+
+---
+
+# BGP (Border Gateway Protocol)
+
+BGP is the routing protocol that powers the Internet.
+
+Unlike IGPs, BGP exchanges routing information between **Autonomous Systems (ASes)**.
+
+Example:
+
+```
+Enterprise AS
+
+↓
+
+ISP
+
+↓
+
+Cloud Provider
+
+↓
+
+Another ISP
+```
+
+Each organization advertises reachable networks to its neighbors.
+
+---
+
+# Interior vs Exterior Routing
+
+| Type | Protocols |
+|------|-----------|
+| Interior Gateway Protocol (IGP) | RIP, OSPF, EIGRP, IS-IS |
+| Exterior Gateway Protocol (EGP) | BGP |
+
+IGPs operate **within** an organization.
+
+BGP operates **between** organizations or autonomous systems.
+
+---
+
+# Autonomous System (AS)
+
+An **Autonomous System** is a collection of IP networks managed under a single administrative authority.
+
+Each AS is assigned a unique **Autonomous System Number (ASN)**.
+
+Example:
+
+```
+Enterprise
+
+AS65001
+
+↓
+
+ISP
+
+AS64512
+
+↓
+
+Cloud Provider
+
+AS15169
+```
+
+---
+
+# BGP Path Selection (Simplified)
+
+BGP evaluates multiple attributes to determine the preferred route.
+
+Common attributes include:
+
+- Local Preference
+- AS Path
+- Origin
+- MED (Multi-Exit Discriminator)
+- Next Hop
+
+Unlike IGPs, BGP focuses on routing policy in addition to path efficiency.
+
+---
+
+# Route Convergence
+
+**Convergence** is the time required for routers to agree on the current network topology after a change.
+
+Fast convergence results in:
+
+- Minimal downtime
+- Faster recovery
+- Improved application availability
+
+---
+
+# Route Redistribution
+
+Organizations sometimes run multiple routing protocols.
+
+Example:
+
+```
+OSPF
+
+↓
+
+Redistribution
+
+↓
+
+BGP
+```
+
+Route redistribution exchanges routing information between different routing domains.
+
+Because it can introduce routing loops or suboptimal paths if misconfigured, it should be planned carefully.
+
+---
+
+# Enterprise Routing Protocol Selection
+
+| Environment | Recommended Protocol |
+|-------------|----------------------|
+| Small Office | Static Routing |
+| Small Branch | Static + Default Route |
+| Enterprise Campus | OSPF |
+| Large Service Provider | IS-IS |
+| Internet Edge | BGP |
+| Cisco-Centric Enterprise | OSPF or EIGRP (where appropriate) |
+
+Protocol selection depends on scalability, interoperability, operational requirements, and organizational standards.
+
+---
+
+# Common Routing Protocol Issues
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Neighbor adjacency fails | Authentication mismatch, interface mismatch, area mismatch |
+| Slow convergence | Protocol timers, topology size |
+| Routing loops | Redistribution or configuration errors |
+| Missing routes | Advertisement filters or incorrect network statements |
+| Asymmetric routing | Policy differences or multiple paths |
+
+---
+
+# Key Takeaways
+
+- **Static routing** is simple and predictable but does not scale well.
+- **Dynamic routing protocols** automatically discover and maintain routes.
+- **OSPF** is the most common enterprise IGP due to its scalability and fast convergence.
+- **EIGRP** provides rapid convergence and advanced features, primarily in Cisco environments.
+- **IS-IS** is widely used by service providers and large backbones.
+- **BGP** connects autonomous systems and forms the foundation of Internet routing.
+- Route convergence, redistribution, and protocol selection are critical aspects of enterprise network design.
+
