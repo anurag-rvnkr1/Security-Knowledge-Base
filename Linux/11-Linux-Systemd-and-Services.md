@@ -1385,3 +1385,793 @@ Proper service configuration enables organizations to:
 ---
 
 
+# Part 3 — Creating Custom Services, Timers vs Cron, Service Troubleshooting, Enterprise Operations, and Security Monitoring
+
+---
+
+# Introduction
+
+Enterprise environments rarely rely only on vendor-provided services.
+
+Organizations commonly create custom services for:
+
+- Python applications
+- Java applications
+- Go services
+- Node.js APIs
+- Security monitoring agents
+- Backup utilities
+- Automation scripts
+- Internal business applications
+
+Instead of manually starting these applications after every reboot, administrators register them as **systemd services**.
+
+---
+
+# Enterprise Service Deployment Workflow
+
+```text
+Application Developed
+
+↓
+
+Create Service Account
+
+↓
+
+Deploy Application
+
+↓
+
+Create Unit File
+
+↓
+
+Reload systemd
+
+↓
+
+Enable Service
+
+↓
+
+Start Service
+
+↓
+
+Monitor Logs
+
+↓
+
+Production
+```
+
+---
+
+# Creating a Custom Service
+
+Suppose we have the following application:
+
+```text
+/opt/demo/app.py
+```
+
+Run manually:
+
+```bash
+python3 /opt/demo/app.py
+```
+
+Instead of starting it manually after every reboot, create a systemd service.
+
+---
+
+# Step 1 — Create a Dedicated Service Account
+
+Example:
+
+```bash
+sudo useradd --system --shell /usr/sbin/nologin demoapp
+```
+
+Benefits:
+
+- Least privilege
+- Better accountability
+- Reduced attack surface
+
+---
+
+# Step 2 — Create the Service File
+
+Create:
+
+```text
+/etc/systemd/system/demoapp.service
+```
+
+Example:
+
+```ini
+[Unit]
+Description=Demo Python Application
+After=network.target
+
+[Service]
+Type=simple
+User=demoapp
+Group=demoapp
+WorkingDirectory=/opt/demo
+ExecStart=/usr/bin/python3 /opt/demo/app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+---
+
+# Understanding the Example
+
+| Directive | Purpose |
+|-----------|----------|
+| `Description=` | Service description |
+| `After=` | Start after networking |
+| `Type=` | Startup behavior |
+| `User=` | Service account |
+| `Group=` | Service group |
+| `WorkingDirectory=` | Application directory |
+| `ExecStart=` | Start command |
+| `Restart=` | Automatic restart policy |
+| `WantedBy=` | Boot target |
+
+---
+
+# Step 3 — Reload systemd
+
+```bash
+sudo systemctl daemon-reload
+```
+
+This reloads unit definitions.
+
+---
+
+# Step 4 — Enable the Service
+
+```bash
+sudo systemctl enable demoapp
+```
+
+Starts automatically after reboot.
+
+---
+
+# Step 5 — Start the Service
+
+```bash
+sudo systemctl start demoapp
+```
+
+Verify:
+
+```bash
+systemctl status demoapp
+```
+
+---
+
+# Service Startup Flow
+
+```text
+System Boot
+
+↓
+
+systemd
+
+↓
+
+demoapp.service
+
+↓
+
+Python
+
+↓
+
+Application Running
+```
+
+---
+
+# Service Types
+
+The `Type=` directive tells `systemd` how to determine when a service has started.
+
+Common values:
+
+| Type | Purpose |
+|------|----------|
+| `simple` | Default; process started directly |
+| `exec` | Similar to `simple`, but waits until the executable is successfully invoked |
+| `forking` | Traditional daemons that fork into the background |
+| `oneshot` | Performs a task and exits |
+| `notify` | Service notifies `systemd` when ready |
+| `idle` | Delays execution until other jobs complete |
+
+---
+
+# Example — One-Time Task
+
+```ini
+Type=oneshot
+ExecStart=/usr/local/bin/setup.sh
+```
+
+Runs once and exits successfully.
+
+Suitable for:
+
+- Initialization
+- Configuration
+- Boot preparation
+
+---
+
+# Restart Policies
+
+Example:
+
+```ini
+Restart=always
+```
+
+or
+
+```ini
+Restart=on-failure
+```
+
+Workflow:
+
+```text
+Application Crash
+
+↓
+
+systemd Detects Failure
+
+↓
+
+Restart Policy
+
+↓
+
+Service Restarts
+```
+
+Automatic restart improves service availability.
+
+---
+
+# Restart Delay
+
+Example:
+
+```ini
+RestartSec=5
+```
+
+Waits:
+
+```text
+5 seconds
+```
+
+before restarting.
+
+Useful for avoiding rapid restart loops.
+
+---
+
+# Environment Files
+
+Instead of hardcoding variables:
+
+```ini
+Environment=PORT=8080
+```
+
+Use:
+
+```ini
+EnvironmentFile=/etc/demoapp.env
+```
+
+Example file:
+
+```text
+PORT=8080
+MODE=production
+```
+
+Benefits:
+
+- Easier configuration
+- Cleaner unit files
+- Better separation of code and configuration
+
+---
+
+# Timers
+
+`systemd` timers provide scheduled execution similar to cron.
+
+Relationship:
+
+```text
+Timer
+
+↓
+
+Triggers
+
+↓
+
+Service
+```
+
+Unlike cron, timers are native `systemd` units.
+
+---
+
+# Timer Components
+
+Example:
+
+```text
+backup.timer
+
+↓
+
+Triggers
+
+↓
+
+backup.service
+```
+
+Two unit files work together.
+
+---
+
+# Example Timer Service
+
+```ini
+[Unit]
+Description=Backup Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/backup.sh
+```
+
+---
+
+# Example Timer
+
+```ini
+[Unit]
+Description=Daily Backup
+
+[Timer]
+OnCalendar=daily
+
+[Install]
+WantedBy=timers.target
+```
+
+---
+
+# Enable Timer
+
+```bash
+sudo systemctl enable backup.timer
+```
+
+Start timer:
+
+```bash
+sudo systemctl start backup.timer
+```
+
+---
+
+# View Active Timers
+
+```bash
+systemctl list-timers
+```
+
+Example output:
+
+```text
+NEXT
+
+LEFT
+
+LAST
+
+PASSED
+
+UNIT
+```
+
+---
+
+# Timers vs Cron
+
+| Feature | systemd Timer | cron |
+|----------|---------------|------|
+| Dependency awareness | Yes | No |
+| Integrated logging | Yes (`journalctl`) | Limited by default |
+| Service integration | Yes | No |
+| Persistent scheduling | Supported with appropriate timer options | Not built-in |
+| Unit management | Native | External scheduler |
+
+Both remain widely used in Linux environments.
+
+---
+
+# Service Troubleshooting Workflow
+
+```text
+Service Fails
+
+↓
+
+systemctl status
+
+↓
+
+journalctl
+
+↓
+
+Check Unit File
+
+↓
+
+Verify Dependencies
+
+↓
+
+Verify Permissions
+
+↓
+
+Restart Service
+
+↓
+
+Validate
+```
+
+---
+
+# Step 1 — Check Service Status
+
+```bash
+systemctl status nginx
+```
+
+Look for:
+
+- Active state
+- Exit code
+- Main PID
+- Recent log messages
+
+---
+
+# Step 2 — Review Logs
+
+```bash
+journalctl -u nginx
+```
+
+Common issues include:
+
+- Configuration errors
+- Missing files
+- Permission problems
+- Dependency failures
+
+---
+
+# Step 3 — Verify Unit File
+
+Display:
+
+```bash
+systemctl cat nginx
+```
+
+Confirm:
+
+- `ExecStart`
+- `User`
+- `WorkingDirectory`
+- Dependencies
+
+---
+
+# Step 4 — Validate Configuration
+
+Many services provide a configuration validation command.
+
+Example for NGINX:
+
+```bash
+nginx -t
+```
+
+Always use the validation command appropriate for the specific application.
+
+---
+
+# Step 5 — Reload or Restart
+
+Reload:
+
+```bash
+sudo systemctl reload nginx
+```
+
+Restart:
+
+```bash
+sudo systemctl restart nginx
+```
+
+Choose the least disruptive option supported by the service.
+
+---
+
+# Enterprise Scenario 1
+
+## Web Server Deployment
+
+```text
+systemd
+
+↓
+
+nginx
+
+↓
+
+Gunicorn
+
+↓
+
+Python Application
+
+↓
+
+Database
+```
+
+Benefits:
+
+- Automatic restart
+- Controlled startup order
+- Consistent deployment
+
+---
+
+# Enterprise Scenario 2
+
+## Monitoring Agent
+
+Security monitoring service:
+
+```text
+monitor.service
+```
+
+Requirements:
+
+- Start at boot
+- Restart after failure
+- Run with least privilege
+- Generate logs in the journal
+
+---
+
+# Enterprise Scenario 3
+
+## Nightly Backup
+
+```text
+backup.timer
+
+↓
+
+backup.service
+
+↓
+
+Backup Script
+
+↓
+
+Storage
+```
+
+Advantages:
+
+- Integrated scheduling
+- Centralized logging
+- Managed through `systemctl`
+
+---
+
+# Enterprise Scenario 4
+
+## High Availability
+
+Application:
+
+```text
+inventory.service
+```
+
+Configuration:
+
+```ini
+Restart=on-failure
+RestartSec=10
+```
+
+Result:
+
+```text
+Crash
+
+↓
+
+systemd Restart
+
+↓
+
+Application Restored
+```
+
+This reduces service interruption caused by transient failures.
+
+---
+
+# Security Monitoring
+
+SOC teams monitor:
+
+- Newly created services
+- Modified unit files
+- Unauthorized timers
+- Disabled security agents
+- Unexpected restart loops
+- Services running as `root`
+- Suspicious `ExecStart` commands
+
+Persistence through malicious systemd services is a recognized attacker technique.
+
+---
+
+# Detecting Unauthorized Services
+
+Review enabled services:
+
+```bash
+systemctl list-unit-files --type=service
+```
+
+Review running services:
+
+```bash
+systemctl --type=service
+```
+
+Investigate unfamiliar services before taking action.
+
+---
+
+# Detecting Unauthorized Timers
+
+Display timers:
+
+```bash
+systemctl list-timers
+```
+
+Unexpected scheduled tasks may indicate:
+
+- Persistence
+- Misconfiguration
+- Unauthorized automation
+
+---
+
+# Enterprise Operations Checklist
+
+| Check | Verify |
+|---------|---------|
+| Service running | ✓ |
+| Enabled at boot | ✓ |
+| Correct service account | ✓ |
+| Restart policy | ✓ |
+| Unit file permissions | ✓ |
+| Dependencies | ✓ |
+| Logs reviewed | ✓ |
+| Timer schedule | ✓ |
+| Configuration validated | ✓ |
+| Resource usage monitored | ✓ |
+
+---
+
+# Cybersecurity Perspective
+
+Attackers may attempt to:
+
+- Create malicious services.
+- Replace legitimate unit files.
+- Disable logging agents.
+- Stop EDR software.
+- Install hidden timers.
+- Execute payloads through `ExecStart`.
+
+Security teams should:
+
+- Monitor changes to `/etc/systemd/system/`.
+- Audit newly enabled services.
+- Alert on unexpected timer creation.
+- Protect administrator-managed unit files with appropriate permissions.
+
+---
+
+# Business Impact
+
+Well-managed services provide:
+
+- Faster recovery after failures.
+- Improved uptime.
+- Predictable deployments.
+- Easier troubleshooting.
+- Stronger security controls.
+- Reduced operational overhead.
+
+---
+
+# Enterprise Best Practices
+
+- Run services with dedicated non-privileged accounts.
+- Store configuration outside the unit file when practical.
+- Use restart policies appropriate to the application.
+- Validate configuration before restarting production services.
+- Monitor service health continuously.
+- Review timers periodically.
+- Maintain version control for custom unit files.
+
+---
+
+# Key Takeaways
+
+- Custom services integrate applications into the `systemd` ecosystem.
+- Timers provide a native scheduling alternative to cron.
+- Service troubleshooting begins with `systemctl status` and `journalctl`.
+- Restart policies improve resilience.
+- Regular monitoring helps detect failures and unauthorized persistence.
+
+---
+
