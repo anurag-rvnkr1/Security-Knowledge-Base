@@ -818,3 +818,758 @@ Effective process management helps organizations:
 
 ---
 
+# Part 2 — Foreground & Background Processes, Job Control, Signals, Process Priorities, `kill`, `nice`, `renice`, and Process Management Commands
+
+---
+
+# Introduction
+
+Linux systems often run hundreds or even thousands of processes simultaneously.
+
+A system administrator must be able to:
+
+- Start processes
+- Stop processes
+- Pause processes
+- Resume processes
+- Change priorities
+- Terminate unresponsive applications
+- Monitor resource consumption
+
+Linux provides numerous tools to manage processes efficiently without rebooting the system.
+
+---
+
+# Foreground Process
+
+A **foreground process** runs interactively and occupies the current terminal.
+
+Example:
+
+```bash
+nano notes.txt
+```
+
+While `nano` is running:
+
+- The terminal is dedicated to it.
+- Other commands cannot be entered until the process exits or is suspended.
+
+---
+
+# Foreground Process Flow
+
+```text
+User
+
+↓
+
+Terminal
+
+↓
+
+Foreground Process
+
+↓
+
+Output
+
+↓
+
+Terminal Returned
+```
+
+---
+
+# Background Process
+
+A **background process** runs independently of the terminal prompt.
+
+The shell immediately returns control so additional commands can be executed.
+
+Example:
+
+```bash
+sleep 300 &
+```
+
+Output:
+
+```text
+[1] 4258
+```
+
+Where:
+
+- `1` → Job number
+- `4258` → Process ID (PID)
+
+---
+
+# Background Process Flow
+
+```text
+Terminal
+
+↓
+
+Start Command
+
+↓
+
+Background Process
+
+↓
+
+Prompt Immediately Returns
+```
+
+---
+
+# Running a Command in Background
+
+Example:
+
+```bash
+python backup.py &
+```
+
+or
+
+```bash
+tar -czf backup.tar.gz /home &
+```
+
+These commands continue running while the shell remains usable.
+
+---
+
+# Viewing Background Jobs
+
+Display shell-managed jobs:
+
+```bash
+jobs
+```
+
+Example:
+
+```text
+[1]+ Running sleep 300 &
+```
+
+---
+
+# Job Numbers vs Process IDs
+
+| Job Number | Process ID |
+|------------|------------|
+| Managed by the shell | Managed by the kernel |
+| Starts at 1 for each shell session | Unique system-wide |
+| Used with `fg` and `bg` | Used with `kill`, `ps`, etc. |
+
+Example:
+
+```text
+[2] 5321
+```
+
+Job:
+
+```text
+2
+```
+
+PID:
+
+```text
+5321
+```
+
+---
+
+# Bringing a Job to the Foreground
+
+Syntax:
+
+```bash
+fg %1
+```
+
+Example:
+
+```bash
+fg %2
+```
+
+The selected background job becomes the foreground process.
+
+---
+
+# Sending a Process to the Background
+
+If a foreground process is running:
+
+Suspend it:
+
+```text
+Ctrl + Z
+```
+
+Example output:
+
+```text
+[1]+ Stopped
+```
+
+Resume in background:
+
+```bash
+bg
+```
+
+or
+
+```bash
+bg %1
+```
+
+---
+
+# Job Control Workflow
+
+```text
+Foreground Process
+
+↓
+
+Ctrl + Z
+
+↓
+
+Stopped
+
+↓
+
+bg
+
+↓
+
+Running in Background
+
+↓
+
+fg
+
+↓
+
+Foreground Again
+```
+
+---
+
+# Listing Jobs with Details
+
+```bash
+jobs -l
+```
+
+Example:
+
+```text
+[1]+ 4258 Running sleep 300 &
+```
+
+This displays both the job number and the PID.
+
+---
+
+# Process Monitoring with `ps`
+
+Display current shell processes:
+
+```bash
+ps
+```
+
+Display all processes:
+
+```bash
+ps -ef
+```
+
+Display BSD-style output:
+
+```bash
+ps aux
+```
+
+---
+
+# Searching for a Process
+
+Use `ps` with `grep`:
+
+```bash
+ps -ef | grep nginx
+```
+
+Example:
+
+```text
+root  1423 ... nginx
+```
+
+> **Tip:** `grep` itself may appear in the results. Alternatives such as `pgrep` avoid this.
+
+---
+
+# Using `pgrep`
+
+Search by process name:
+
+```bash
+pgrep nginx
+```
+
+Display names:
+
+```bash
+pgrep -l nginx
+```
+
+Example:
+
+```text
+1423 nginx
+
+1424 nginx
+```
+
+---
+
+# Using `pidof`
+
+Find the PID of a program:
+
+```bash
+pidof sshd
+```
+
+Example:
+
+```text
+1021
+```
+
+---
+
+# Real-Time Process Monitoring
+
+The classic monitoring tool:
+
+```bash
+top
+```
+
+Typical display:
+
+```text
+PID
+
+USER
+
+CPU
+
+MEM
+
+TIME
+
+COMMAND
+```
+
+Refreshes continuously until exited with:
+
+```text
+q
+```
+
+---
+
+# Interactive Controls in `top`
+
+| Key | Function |
+|------|----------|
+| `P` | Sort by CPU usage |
+| `M` | Sort by memory usage |
+| `k` | Kill a process |
+| `r` | Renice a process |
+| `h` | Help |
+| `q` | Quit |
+
+---
+
+# Using `htop`
+
+Many distributions also provide:
+
+```bash
+htop
+```
+
+Features include:
+
+- Colorized interface
+- Tree view
+- Mouse support
+- Easier navigation
+- Interactive process management
+
+Install if necessary using your distribution's package manager.
+
+---
+
+# Process Signals
+
+Linux communicates with processes using **signals**.
+
+Signals notify a process that an event has occurred.
+
+Examples:
+
+- Termination request
+- Interrupt from keyboard
+- Pause execution
+- Continue execution
+- Reload configuration
+
+---
+
+# Signal Flow
+
+```text
+Administrator
+
+↓
+
+Signal
+
+↓
+
+Kernel
+
+↓
+
+Target Process
+
+↓
+
+Action Performed
+```
+
+---
+
+# Common Signals
+
+| Signal | Number | Purpose |
+|----------|--------|----------|
+| SIGTERM | 15 | Graceful termination request |
+| SIGKILL | 9 | Immediate termination (cannot be caught or ignored) |
+| SIGINT | 2 | Interrupt (Ctrl + C) |
+| SIGSTOP | 19* | Stop execution |
+| SIGCONT | 18* | Continue execution |
+| SIGHUP | 1 | Hangup / often used to reload configuration |
+
+> *Signal numbers may vary slightly between Unix-like systems. Signal names are portable.
+
+---
+
+# Viewing Signals
+
+Display available signals:
+
+```bash
+kill -l
+```
+
+---
+
+# Gracefully Terminating a Process
+
+Syntax:
+
+```bash
+kill PID
+```
+
+Example:
+
+```bash
+kill 4258
+```
+
+This sends **SIGTERM (15)** by default.
+
+---
+
+# Forcefully Killing a Process
+
+If the process does not respond:
+
+```bash
+kill -9 4258
+```
+
+Equivalent:
+
+```bash
+kill -SIGKILL 4258
+```
+
+Use only when graceful termination fails.
+
+---
+
+# Killing Multiple Processes
+
+```bash
+kill PID1 PID2 PID3
+```
+
+Example:
+
+```bash
+kill 1200 1201 1202
+```
+
+---
+
+# Killing by Process Name
+
+Use:
+
+```bash
+pkill nginx
+```
+
+Specific signal:
+
+```bash
+pkill -TERM nginx
+```
+
+---
+
+# Using `killall`
+
+Terminate all matching processes:
+
+```bash
+killall firefox
+```
+
+This targets processes by name rather than PID.
+
+---
+
+# Stopping a Process
+
+Suspend execution:
+
+```bash
+kill -STOP PID
+```
+
+Resume:
+
+```bash
+kill -CONT PID
+```
+
+The process remains in memory while stopped.
+
+---
+
+# Keyboard Shortcuts
+
+| Shortcut | Function |
+|-----------|----------|
+| Ctrl + C | Send SIGINT to the foreground process |
+| Ctrl + Z | Suspend the foreground process |
+| Ctrl + D | End input (EOF); may exit the shell or program depending on context |
+
+---
+
+# Process Priorities
+
+Linux assigns each process a scheduling priority.
+
+Higher-priority processes generally receive CPU time sooner than lower-priority processes, according to the scheduler's policy.
+
+---
+
+# Nice Value
+
+Range:
+
+```text
+-20
+
+↓
+
+0
+
+↓
+
+19
+```
+
+| Nice Value | Priority |
+|------------|----------|
+| -20 | Highest priority |
+| 0 | Default |
+| 19 | Lowest priority |
+
+Lower nice values correspond to higher scheduling priority.
+
+---
+
+# Starting with a Nice Value
+
+Example:
+
+```bash
+nice -n 10 tar -czf backup.tar.gz /home
+```
+
+The process starts with a lower CPU scheduling priority than the default.
+
+---
+
+# Viewing Nice Values
+
+```bash
+ps -eo pid,ni,cmd
+```
+
+Example:
+
+```text
+PID NI CMD
+
+1500 0 sshd
+
+2200 10 tar
+```
+
+---
+
+# Changing Priority of a Running Process
+
+Syntax:
+
+```bash
+renice 5 -p 2200
+```
+
+Example output:
+
+```text
+2200 (process ID) old priority 0, new priority 5
+```
+
+Lowering the nice value (raising priority) generally requires elevated privileges.
+
+---
+
+# Enterprise Example
+
+Backup jobs should not significantly impact production services.
+
+Configuration:
+
+```text
+Web Server
+
+↓
+
+Default Priority
+
+Database
+
+↓
+
+High Priority
+
+Nightly Backup
+
+↓
+
+Lower Priority (Higher Nice Value)
+```
+
+This helps maintain application responsiveness during backup operations.
+
+---
+
+# Cybersecurity Perspective
+
+Attackers frequently create:
+
+- Hidden background processes
+- Reverse shells
+- Cryptocurrency miners
+- Persistence services
+- Long-running unauthorized scripts
+
+SOC analysts investigate:
+
+- Unexpected background jobs
+- High CPU usage
+- Suspicious command lines
+- Unknown parent-child relationships
+- Processes with unusual priorities
+- Repeatedly respawning processes
+
+Process monitoring is a fundamental endpoint detection capability.
+
+---
+
+# Business Impact
+
+Effective process management enables organizations to:
+
+- Reduce downtime
+- Improve system responsiveness
+- Optimize resource utilization
+- Detect malicious activity
+- Improve operational stability
+- Troubleshoot production incidents efficiently
+
+---
+
+# Enterprise Best Practices
+
+- Prefer graceful termination (`SIGTERM`) before using `SIGKILL`.
+- Avoid unnecessarily increasing process priority.
+- Monitor CPU-intensive processes during business hours.
+- Use `nice` for long-running batch jobs.
+- Investigate unknown background processes promptly.
+- Review process trees during incident response.
+- Automate monitoring for abnormal process behavior.
+
+---
+
+# Key Takeaways
+
+- Foreground processes occupy the current terminal.
+- Background processes allow continued use of the shell.
+- Job control uses `jobs`, `fg`, and `bg`.
+- Signals control process behavior without restarting the system.
+- `kill`, `pkill`, and `killall` terminate processes in different ways.
+- `nice` and `renice` influence CPU scheduling priority.
+- Process monitoring is essential for both system administration and cybersecurity.
+
+---
+
+
