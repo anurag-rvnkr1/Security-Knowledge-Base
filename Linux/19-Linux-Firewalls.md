@@ -1687,3 +1687,836 @@ Effective firewall management:
 
 ---
 
+# 19 - Linux Firewalls
+
+# Part 3 — NAT, Port Forwarding, Firewall Logging, Enterprise Firewall Architecture, Troubleshooting, and Security Best Practices
+
+---
+
+# Introduction
+
+Modern enterprise networks rarely consist of a single server connected directly to the Internet.
+
+Instead, they include:
+
+- Internal networks
+- DMZs (Demilitarized Zones)
+- Cloud networks
+- VPNs
+- Firewalls
+- Load balancers
+- Reverse proxies
+- Kubernetes clusters
+
+To support these environments, Linux firewalls provide capabilities beyond simple packet filtering, including:
+
+- Network Address Translation (NAT)
+- Port forwarding
+- Connection tracking
+- Firewall logging
+- Traffic troubleshooting
+
+---
+
+# Enterprise Network Architecture
+
+```text
+                Internet
+                    │
+                    ▼
+          Perimeter Firewall
+                    │
+        ┌───────────┴───────────┐
+        ▼                       ▼
+      DMZ                    Internal LAN
+        │                       │
+   Web Servers          Database Servers
+        │                       │
+        └───────────┬───────────┘
+                    ▼
+             Backup Network
+```
+
+---
+
+# Network Address Translation (NAT)
+
+NAT changes IP address information as packets travel through the firewall.
+
+Common reasons:
+
+- Internet access
+- Address conservation (especially IPv4)
+- Internal network protection
+- Network isolation
+- Cloud networking
+
+---
+
+# NAT Workflow
+
+```text
+Private Host
+
+192.168.1.20
+
+↓
+
+Firewall
+
+↓
+
+Public IP
+
+203.0.113.10
+
+↓
+
+Internet
+```
+
+The firewall maintains translation information so that return traffic reaches the correct internal host.
+
+---
+
+# Types of NAT
+
+| Type | Description |
+|------|-------------|
+| SNAT | Source Network Address Translation |
+| DNAT | Destination Network Address Translation |
+| MASQUERADE | Dynamic source NAT, commonly used when the external IP changes |
+| PAT | Port Address Translation (many private hosts share one public IP using different ports) |
+
+---
+
+# Source NAT (SNAT)
+
+Changes the **source** IP address.
+
+```text
+Client
+
+192.168.1.25
+
+↓
+
+Firewall
+
+↓
+
+203.0.113.5
+
+↓
+
+Internet
+```
+
+Used for outbound Internet connectivity.
+
+---
+
+# Destination NAT (DNAT)
+
+Changes the **destination** IP address.
+
+```text
+Internet
+
+↓
+
+203.0.113.5
+
+↓
+
+Firewall
+
+↓
+
+192.168.1.20
+```
+
+Commonly used to publish internal services.
+
+---
+
+# MASQUERADE
+
+MASQUERADE is commonly used when:
+
+- ISP address changes
+- DHCP provides the public address
+- Home routers
+- Small offices
+- Cloud instances with dynamic addresses
+
+Conceptually:
+
+```text
+Private Network
+
+↓
+
+Firewall
+
+↓
+
+Dynamic Public Address
+
+↓
+
+Internet
+```
+
+---
+
+# Port Address Translation (PAT)
+
+Multiple internal hosts share one public address.
+
+```text
+Host A
+
+↓
+
+203.0.113.5:40001
+
+Internet
+
+Host B
+
+↓
+
+203.0.113.5:40002
+```
+
+Different source ports allow simultaneous connections.
+
+---
+
+# NAT Packet Flow
+
+```text
+Packet
+
+↓
+
+PREROUTING
+
+↓
+
+DNAT (Optional)
+
+↓
+
+Routing
+
+↓
+
+FORWARD
+
+↓
+
+POSTROUTING
+
+↓
+
+SNAT / MASQUERADE
+
+↓
+
+Network
+```
+
+---
+
+# Port Forwarding
+
+Port forwarding redirects incoming traffic to another host.
+
+Example:
+
+```text
+Internet
+
+↓
+
+203.0.113.10:443
+
+↓
+
+Firewall
+
+↓
+
+192.168.1.50:443
+```
+
+Common uses:
+
+- Web servers
+- VPN gateways
+- Mail servers
+- Remote administration (where appropriate)
+
+---
+
+# Port Forwarding Workflow
+
+```text
+Client
+
+↓
+
+Firewall
+
+↓
+
+Destination Translation
+
+↓
+
+Internal Server
+```
+
+---
+
+# Typical Published Services
+
+| Port | Service |
+|------|----------|
+| 22 | SSH |
+| 80 | HTTP |
+| 443 | HTTPS |
+| 25 | SMTP |
+| 53 | DNS |
+| 1194 | OpenVPN (default configuration) |
+
+Only expose services that are required by business needs.
+
+---
+
+# DMZ (Demilitarized Zone)
+
+A DMZ separates public-facing services from internal systems.
+
+```text
+Internet
+
+↓
+
+Firewall
+
+↓
+
+DMZ
+
+↓
+
+Web Server
+
+↓
+
+Internal Firewall
+
+↓
+
+Database
+```
+
+Benefits:
+
+- Limits lateral movement
+- Isolates public services
+- Improves security architecture
+
+---
+
+# Firewall Logging
+
+Firewalls can record:
+
+- Allowed traffic (where configured)
+- Blocked packets
+- Invalid packets
+- Port scans
+- Rule matches
+- NAT events (platform dependent)
+
+---
+
+# Firewall Logging Workflow
+
+```text
+Packet
+
+↓
+
+Rule Match
+
+↓
+
+Log Event
+
+↓
+
+Allow / Deny
+
+↓
+
+Log Storage
+
+↓
+
+SIEM
+```
+
+---
+
+# Why Logging Matters
+
+Logging helps administrators:
+
+- Troubleshoot connectivity
+- Detect attacks
+- Verify firewall rules
+- Support incident response
+- Meet compliance requirements
+
+---
+
+# Logging Best Practices
+
+- Log security-relevant events.
+- Avoid excessive logging that impacts storage or performance.
+- Synchronize system time.
+- Protect log integrity.
+- Forward logs to centralized collectors.
+- Review logs regularly.
+
+---
+
+# Connection Tracking
+
+Netfilter tracks active sessions.
+
+```text
+Client
+
+↓
+
+New Connection
+
+↓
+
+Connection Table
+
+↓
+
+Established Session
+
+↓
+
+Return Traffic Allowed
+```
+
+Benefits:
+
+- Fewer rules
+- Improved security
+- Better performance
+- Simplified management
+
+---
+
+# Viewing Connection Tracking
+
+Connection tracking information may be inspected using tools such as:
+
+```bash
+conntrack -L
+```
+
+Availability depends on the installed packages and kernel support.
+
+---
+
+# Firewall Troubleshooting Workflow
+
+```text
+Connectivity Problem
+
+↓
+
+Verify Service
+
+↓
+
+Check Firewall Rules
+
+↓
+
+Review Logs
+
+↓
+
+Test Network
+
+↓
+
+Implement Fix
+
+↓
+
+Verify
+```
+
+---
+
+# Basic Troubleshooting Commands
+
+Check listening ports:
+
+```bash
+ss -tulpn
+```
+
+Test connectivity:
+
+```bash
+ping host
+```
+
+Trace route:
+
+```bash
+traceroute host
+```
+
+Review firewall:
+
+```bash
+sudo nft list ruleset
+```
+
+Or:
+
+```bash
+sudo iptables -L -n -v
+```
+
+Depending on the firewall implementation.
+
+---
+
+# Packet Capture
+
+When firewall rules appear correct but connectivity still fails, packet capture is often useful.
+
+Example:
+
+```bash
+sudo tcpdump -i eth0
+```
+
+Capture specific port:
+
+```bash
+sudo tcpdump port 443
+```
+
+Packet captures help determine:
+
+- Did packets arrive?
+- Were replies sent?
+- Was NAT applied?
+- Was traffic blocked elsewhere?
+
+---
+
+# Enterprise Troubleshooting Example
+
+Scenario:
+
+Users cannot access HTTPS.
+
+Investigation:
+
+```text
+Web Server
+
+↓
+
+Running?
+
+↓
+
+Port 443 Listening?
+
+↓
+
+Firewall Rule Exists?
+
+↓
+
+Routing Correct?
+
+↓
+
+TLS Configuration?
+
+↓
+
+Resolved
+```
+
+---
+
+# Enterprise Firewall Design
+
+A large organization may deploy:
+
+```text
+Internet
+
+↓
+
+Edge Firewall
+
+↓
+
+Web Application Firewall (WAF)
+
+↓
+
+Load Balancer
+
+↓
+
+DMZ
+
+↓
+
+Application Firewall
+
+↓
+
+Application Servers
+
+↓
+
+Internal Firewall
+
+↓
+
+Databases
+```
+
+Each layer protects different assets.
+
+---
+
+# Microsegmentation
+
+Instead of trusting an entire network, workloads are separated into smaller security zones.
+
+```text
+Application A
+
+↓
+
+Firewall Policy
+
+↓
+
+Application B
+
+↓
+
+Firewall Policy
+
+↓
+
+Database
+```
+
+Benefits:
+
+- Reduced lateral movement
+- Better access control
+- Smaller blast radius
+
+---
+
+# High Availability Firewalls
+
+Critical environments deploy redundant firewalls.
+
+```text
+Internet
+
+↓
+
+Primary Firewall
+
+│
+
+└────► Backup Firewall
+
+↓
+
+Servers
+```
+
+Features may include:
+
+- Failover
+- State synchronization
+- Redundant links
+- Health monitoring
+
+---
+
+# Cloud Firewalls
+
+Cloud providers typically offer:
+
+- Security groups
+- Network ACLs
+- Virtual firewalls
+
+These work alongside the Linux host firewall rather than replacing it.
+
+---
+
+# Firewall Performance
+
+Performance depends on:
+
+- Rule count
+- Rule order
+- Hardware resources
+- Connection tracking
+- Logging volume
+- Traffic patterns
+
+Optimize by:
+
+- Removing unused rules
+- Placing frequently matched rules earlier when appropriate
+- Minimizing unnecessary logging
+- Reviewing policies regularly
+
+---
+
+# Common Firewall Mistakes
+
+| Mistake | Impact | Better Practice |
+|----------|--------|-----------------|
+| Allowing all inbound traffic | Large attack surface | Allow only required services |
+| Forgetting IPv6 rules | Unexpected exposure | Secure both IPv4 and IPv6 |
+| Leaving temporary rules | Long-term risk | Remove after maintenance |
+| No logging | Poor visibility | Log security-relevant events |
+| Duplicate rules | Complexity | Review and simplify regularly |
+| No documentation | Operational confusion | Document all changes |
+
+---
+
+# Enterprise Example
+
+## Secure Web Infrastructure
+
+```text
+Internet
+
+↓
+
+Edge Firewall
+
+↓
+
+HTTPS Only
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application Server
+
+↓
+
+Database Firewall
+
+↓
+
+Database
+```
+
+Only required ports are exposed at each layer.
+
+---
+
+# Cybersecurity Perspective
+
+Firewalls play an important role in:
+
+- Attack surface reduction
+- Network segmentation
+- Threat detection
+- Incident response
+- Regulatory compliance
+
+However, they **cannot**:
+
+- Patch vulnerable software
+- Stop phishing attacks
+- Prevent all insider threats
+- Replace endpoint security
+- Replace secure application development
+
+They are one layer of a comprehensive defense strategy.
+
+---
+
+# Business Impact
+
+Proper firewall architecture helps organizations:
+
+- Reduce unauthorized access
+- Protect sensitive systems
+- Improve service availability
+- Support compliance
+- Reduce incident response costs
+- Improve customer confidence
+
+---
+
+# Enterprise Best Practices
+
+- Follow a default-deny strategy for inbound traffic where practical.
+- Expose only necessary services.
+- Separate public and internal systems using network segmentation.
+- Enable centralized firewall logging.
+- Review firewall rules periodically.
+- Test firewall changes in staging before production deployment.
+- Document rule ownership and business justification.
+- Integrate firewall monitoring with SIEM platforms.
+- Review NAT and port-forwarding rules regularly.
+- Include firewall recovery procedures in disaster recovery plans.
+
+---
+
+# Key Takeaways
+
+- NAT enables communication between private and public networks.
+- Port forwarding publishes internal services securely when properly configured.
+- Firewall logging supports troubleshooting and security monitoring.
+- Connection tracking enables efficient stateful firewall operation.
+- Enterprise firewall architecture uses multiple security layers rather than relying on a single firewall.
+- Regular review and testing are essential to maintain an effective firewall configuration.
+
+---
+
+
