@@ -579,3 +579,702 @@ Conversely, network outages can lead to:
 - Devices, communication media, and protocols are the core components of every network.
 - Understanding bandwidth, throughput, latency, jitter, and packet loss is essential for evaluating network performance.
 - A well-designed network emphasizes reliability, scalability, security, and manageability.
+
+# 01 - Networking Fundamentals
+
+# Part 2 — Network Types and Network Topologies
+
+---
+
+# Overview
+
+Computer networks vary in size, purpose, ownership, and geographical coverage.
+
+A small home Wi-Fi network differs significantly from the network of a multinational enterprise with thousands of offices across multiple continents.
+
+Understanding different network types helps engineers:
+
+- Design scalable infrastructures
+- Select appropriate technologies
+- Secure enterprise environments
+- Troubleshoot connectivity problems
+- Build cloud and hybrid architectures
+
+This chapter introduces the most common network classifications and physical/logical topologies used in modern IT environments.
+
+---
+
+# Network Classification
+
+Networks are commonly classified based on:
+
+- Geographic coverage
+- Ownership
+- Communication model
+- Architecture
+- Connectivity technology
+
+```
+Computer Networks
+
+├── By Coverage
+│     ├── PAN
+│     ├── LAN
+│     ├── WLAN
+│     ├── CAN
+│     ├── MAN
+│     ├── WAN
+│     └── GAN
+│
+├── By Architecture
+│     ├── Client-Server
+│     └── Peer-to-Peer
+│
+└── By Topology
+      ├── Bus
+      ├── Star
+      ├── Ring
+      ├── Mesh
+      ├── Tree
+      └── Hybrid
+```
+
+---
+
+# Personal Area Network (PAN)
+
+## Overview
+
+A Personal Area Network (PAN) connects devices within the immediate vicinity of an individual, typically within a few meters.
+
+Examples include:
+
+- Smartphone ↔ Smartwatch
+- Smartphone ↔ Bluetooth Earbuds
+- Laptop ↔ Wireless Mouse
+- Laptop ↔ Keyboard
+
+```
+        Smartphone
+         /   |   \
+        /    |    \
+ Earbuds  Watch  Laptop
+```
+
+### Technologies
+
+- Bluetooth
+- NFC
+- Infrared
+- USB
+
+### Advantages
+
+- Low cost
+- Easy setup
+- Low power consumption
+
+### Limitations
+
+- Short range
+- Limited bandwidth
+- Device count restrictions
+
+---
+
+# Local Area Network (LAN)
+
+## Overview
+
+A LAN connects devices within a limited geographic area such as:
+
+- Home
+- School
+- Office
+- Laboratory
+- Building
+
+```
+          Router
+             │
+      +-------------+
+      |   Switch    |
+      +-------------+
+      │     │     │
+   PC-1   PC-2  Printer
+```
+
+LANs typically offer:
+
+- High speed
+- Low latency
+- Centralized management
+
+### Common Technologies
+
+- Ethernet
+- Fiber
+- Wi-Fi
+
+---
+
+# Wireless Local Area Network (WLAN)
+
+A WLAN is a LAN that uses wireless communication.
+
+```
+        Internet
+             │
+      Wireless Router
+       /     |      \
+ Laptop  Mobile   Tablet
+```
+
+Advantages:
+
+- Mobility
+- Easy deployment
+- Flexible expansion
+
+Challenges:
+
+- Signal interference
+- Lower speeds than wired Ethernet (depending on technology)
+- Wireless security considerations
+
+---
+
+# Campus Area Network (CAN)
+
+A Campus Area Network interconnects multiple LANs across a campus or organization.
+
+Examples:
+
+- University campuses
+- Hospitals
+- Large corporate campuses
+
+```
+Building A
+
+     │
+
+Building B
+
+     │
+
+Building C
+
+     │
+
+Core Network
+```
+
+A CAN provides centralized connectivity while remaining under the control of a single organization.
+
+---
+
+# Metropolitan Area Network (MAN)
+
+A MAN connects networks across a city or metropolitan region.
+
+Examples:
+
+- Government networks
+- City-wide education networks
+- Municipal broadband
+
+```
+Office A
+
+    │
+
+Office B
+
+    │
+
+Office C
+
+    │
+
+Metro Fiber Network
+```
+
+---
+
+# Wide Area Network (WAN)
+
+## Overview
+
+A WAN spans large geographic areas.
+
+Examples include:
+
+- Country-wide networks
+- International enterprise networks
+- The Internet
+
+```
+New York Office
+
+        │
+
+London Office
+
+        │
+
+Singapore Office
+
+        │
+
+Corporate WAN
+```
+
+WANs commonly use leased lines, MPLS, SD-WAN, VPNs, or Internet-based connectivity.
+
+---
+
+# Global Area Network (GAN)
+
+A GAN interconnects networks across multiple countries or continents.
+
+Examples:
+
+- Global cloud providers
+- Multinational corporations
+- International banking networks
+
+```
+USA
+
+ │
+
+Europe
+
+ │
+
+Asia
+
+ │
+
+Australia
+```
+
+Modern cloud platforms effectively operate global-scale networks.
+
+---
+
+# Storage Area Network (SAN)
+
+A SAN is a dedicated high-speed network for storage communication.
+
+```
+Servers
+
+   │
+
+SAN Switch
+
+   │
+
+Storage Array
+```
+
+Benefits:
+
+- Centralized storage
+- High performance
+- Redundancy
+- Simplified backup
+
+---
+
+# Virtual Private Network (VPN)
+
+A VPN creates an encrypted tunnel over an untrusted network.
+
+```
+Employee
+
+↓
+
+Internet
+
+↓
+
+Encrypted Tunnel
+
+↓
+
+Corporate Network
+```
+
+VPNs enable secure remote access to enterprise resources.
+
+---
+
+# Client-Server Architecture
+
+## Overview
+
+Most enterprise applications use the client-server model.
+
+```
+Client
+
+↓
+
+Server
+
+↓
+
+Database
+```
+
+Examples:
+
+- Websites
+- Banking systems
+- Enterprise applications
+- Email servers
+
+### Advantages
+
+- Centralized control
+- Easier security management
+- Better scalability
+- Simplified backups
+
+### Disadvantages
+
+- Server failure affects multiple users
+- Higher infrastructure costs
+
+---
+
+# Peer-to-Peer (P2P)
+
+In a peer-to-peer network, every device can function as both a client and a server.
+
+```
+PC-A
+
+│ \
+
+│  \
+
+PC-B──PC-C
+```
+
+Advantages:
+
+- Low cost
+- Simple setup
+- No dedicated server required
+
+Disadvantages:
+
+- Difficult to manage
+- Limited scalability
+- Weaker centralized security
+
+---
+
+# Physical vs Logical Topology
+
+## Physical Topology
+
+Describes how devices are physically connected.
+
+```
+Switch
+
+│
+
+PC
+```
+
+Focus:
+
+- Cabling
+- Hardware layout
+- Device placement
+
+---
+
+## Logical Topology
+
+Describes how data flows through the network regardless of physical layout.
+
+```
+Device A
+
+↓
+
+Switch
+
+↓
+
+Router
+
+↓
+
+Server
+```
+
+Logical and physical topologies may differ in modern switched networks.
+
+---
+
+# Network Topologies
+
+A topology defines how network devices are interconnected.
+
+---
+
+# Bus Topology
+
+```
+PC──PC──PC──PC──PC
+```
+
+All devices share a single communication cable.
+
+### Advantages
+
+- Simple
+- Low cost
+- Minimal cabling
+
+### Disadvantages
+
+- Single cable failure affects the entire network
+- Difficult troubleshooting
+- Poor scalability
+- Shared bandwidth
+
+This topology is rarely used in modern enterprise environments.
+
+---
+
+# Star Topology
+
+```
+         Switch
+      /   |   |   \
+    PC1  PC2 PC3 Printer
+```
+
+Every device connects to a central switch.
+
+### Advantages
+
+- Easy troubleshooting
+- High performance
+- Simple expansion
+- Failure isolation
+
+### Disadvantages
+
+- Central switch is a single point of failure unless redundancy is implemented.
+
+Star topology is the most common LAN design today.
+
+---
+
+# Ring Topology
+
+```
+PC1 ─ PC2
+│       │
+PC4 ─ PC3
+```
+
+Devices form a closed loop.
+
+Advantages:
+
+- Predictable communication
+
+Disadvantages:
+
+- Link failures can disrupt communication without redundancy.
+
+Ring topologies are uncommon in modern Ethernet networks but have historical significance.
+
+---
+
+# Mesh Topology
+
+Every device has multiple communication paths.
+
+```
+      A
+     /|\
+    / | \
+   B--C--D
+```
+
+Advantages:
+
+- Excellent redundancy
+- High availability
+- Fault tolerance
+
+Disadvantages:
+
+- Expensive
+- Complex cabling
+- Difficult to manage at scale
+
+Mesh concepts are widely used in data centers and wireless networking.
+
+---
+
+# Tree Topology
+
+```
+          Core
+         /    \
+     Switch1 Switch2
+      /  \      / \
+    PC1 PC2  PC3 PC4
+```
+
+A hierarchical topology combining multiple star networks.
+
+Advantages:
+
+- Scalable
+- Structured
+- Enterprise-friendly
+
+Tree topology is common in campus and enterprise environments.
+
+---
+
+# Hybrid Topology
+
+Most enterprise networks combine multiple topologies.
+
+Example:
+
+```
+          Core
+
+        /      \
+
+   Star LAN   Star LAN
+
+        │
+
+     Mesh WAN
+```
+
+Hybrid networks provide flexibility and scalability.
+
+---
+
+# Enterprise Three-Tier Architecture
+
+Traditional enterprise campus networks commonly use three layers.
+
+```
+          Core Layer
+               │
+      ----------------
+      │              │
+ Distribution   Distribution
+      │              │
+ Access Layer   Access Layer
+      │              │
+ End Devices   End Devices
+```
+
+### Core Layer
+
+- High-speed backbone
+- Fast packet forwarding
+- High availability
+
+### Distribution Layer
+
+- Policy enforcement
+- Routing
+- Access control
+- Traffic aggregation
+
+### Access Layer
+
+- User connectivity
+- Device authentication
+- VLAN assignment
+- Edge security
+
+---
+
+# Spine-Leaf Architecture
+
+Modern data centers commonly use Spine-Leaf designs.
+
+```
+        Spine 1
+       / | | | \
+      /  | | |  \
+ Spine 2  | |  Spine 3
+     |\   | |   /|
+     | \  | |  / |
+    Leaf Leaf Leaf
+```
+
+Every Leaf switch connects to every Spine switch.
+
+Benefits:
+
+- Predictable latency
+- High bandwidth
+- Excellent scalability
+- Optimized east-west traffic
+
+Spine-Leaf architectures are widely used in cloud environments.
+
+---
+
+# Comparison of Network Types
+
+| Network | Coverage | Typical Use |
+|----------|----------|-------------|
+| PAN | Personal | Bluetooth devices |
+| LAN | Building | Office network |
+| WLAN | Building | Wireless office |
+| CAN | Campus | University |
+| MAN | City | Municipal network |
+| WAN | Country/Global | Enterprise connectivity |
+| GAN | Worldwide | Global cloud infrastructure |
+| SAN | Data Center | Storage networking |
+
+---
+
+# Business Impact
+
+Selecting the appropriate network type and topology affects:
+
+- Performance
+- Scalability
+- Cost
+- Security
+- Fault tolerance
+- Operational complexity
+
+Poor design can result in bottlenecks, outages, and increased operational risk.
+
+---
+
+# Key Takeaways
+
+- Networks are classified by geographic scope, architecture, and topology.
+- LANs and WLANs dominate local environments, while WANs connect geographically dispersed sites.
+- Client-server architecture is the standard for enterprise applications, whereas peer-to-peer networks suit smaller environments.
+- Star topology is the most common physical topology in modern LANs.
+- Tree and Spine-Leaf architectures support scalable enterprise and data center deployments.
+- Choosing the correct topology requires balancing performance, resilience, cost, and manageability.
