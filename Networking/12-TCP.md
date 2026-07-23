@@ -1875,3 +1875,929 @@ Without these mechanisms, modern business applications could not guarantee data 
 
 ---
 
+# Part 3 — TCP Security, Attack Techniques, Hardening, IDS/IPS, Enterprise Protection, and Best Practices
+
+---
+
+# Introduction
+
+TCP is the backbone of modern enterprise communication. Nearly every critical service—including web applications, email, databases, cloud workloads, VPNs, APIs, and remote administration—depends on TCP.
+
+Because of its widespread adoption, TCP is also one of the most targeted protocols by attackers.
+
+A successful TCP attack can lead to:
+
+- Service disruption
+- Unauthorized access
+- Session hijacking
+- Data theft
+- Denial of Service (DoS)
+- Distributed Denial of Service (DDoS)
+- Network reconnaissance
+- Firewall evasion
+
+Understanding TCP attacks and defensive strategies is essential for Network Engineers, Security Engineers, SOC Analysts, Incident Responders, and Penetration Testers.
+
+---
+
+# TCP Security Objectives
+
+A secure TCP implementation should provide:
+
+- Confidentiality (with TLS/IPsec)
+- Integrity
+- Availability
+- Reliable communication
+- Authentication
+- Session protection
+- Attack detection
+- Resilience against spoofing
+
+---
+
+# Common TCP Threats
+
+Modern enterprise networks commonly encounter:
+
+- SYN Flood
+- ACK Flood
+- RST Attack
+- Session Hijacking
+- TCP Spoofing
+- Sequence Prediction
+- FIN Scan
+- NULL Scan
+- Xmas Scan
+- TCP Fragmentation
+- Port Scanning
+- Reflection Attacks
+- Distributed Denial of Service
+
+Each technique targets different aspects of the TCP protocol.
+
+---
+
+# SYN Flood Attack
+
+## Overview
+
+A SYN Flood is one of the most common TCP-based Denial-of-Service attacks.
+
+The attacker repeatedly initiates TCP connections but never completes the Three-Way Handshake.
+
+```
+Attacker
+
+↓
+
+SYN
+
+↓
+
+Server
+
+↓
+
+SYN-ACK
+
+↓
+
+No ACK
+
+↓
+
+Half-Open Connection
+```
+
+The server allocates resources for each incomplete connection.
+
+Eventually:
+
+```
+Connection Table
+
+↓
+
+Full
+
+↓
+
+Legitimate Clients Rejected
+```
+
+---
+
+# Half-Open Connections
+
+A half-open connection occurs when:
+
+- Server believes connection exists.
+- Client never completes handshake.
+
+```
+Client
+
+SYN
+
+↓
+
+Server
+
+SYN-ACK
+
+↓
+
+No Response
+```
+
+Thousands of these sessions consume memory and CPU resources.
+
+---
+
+# Business Impact
+
+Possible consequences include:
+
+- Website unavailable
+- API failures
+- Banking interruption
+- Cloud outage
+- Lost revenue
+- Customer dissatisfaction
+- SLA violations
+
+---
+
+# Detection
+
+SOC analysts should monitor for:
+
+- Large number of SYN packets
+- Very few ACK packets
+- Many half-open sessions
+- High SYN rate from single IP
+- Numerous unique source ports
+- Increased retransmissions
+
+---
+
+# Mitigation
+
+Recommended controls:
+
+- SYN Cookies
+- Rate limiting
+- Stateful firewalls
+- TCP Intercept
+- Load balancers
+- DDoS protection services
+- Network ACLs
+- Upstream filtering
+
+---
+
+# SYN Cookies
+
+Instead of allocating memory immediately, the server encodes connection state within the SYN-ACK response.
+
+```
+Client
+
+↓
+
+SYN
+
+↓
+
+Server
+
+↓
+
+SYN Cookie
+
+↓
+
+ACK?
+
+↓
+
+Allocate Resources
+```
+
+This prevents attackers from exhausting connection tables.
+
+---
+
+# TCP Session Hijacking
+
+## Overview
+
+TCP Session Hijacking occurs when an attacker takes control of an existing TCP session.
+
+```
+Victim
+
+↓
+
+Authenticated Session
+
+↓
+
+Attacker Injects Packets
+
+↓
+
+Server Accepts Them
+```
+
+If successful, the attacker impersonates the legitimate client.
+
+---
+
+# Requirements
+
+Successful hijacking typically requires:
+
+- Packet sniffing
+- Correct sequence numbers
+- Correct acknowledgment numbers
+- Network positioning (or another method of observing traffic)
+
+Modern encryption (TLS) greatly reduces the usefulness of session hijacking by protecting application data.
+
+---
+
+# Business Impact
+
+Potential consequences:
+
+- Unauthorized transactions
+- Account takeover
+- Data manipulation
+- Information disclosure
+- Financial fraud
+
+---
+
+# Mitigation
+
+Organizations should:
+
+- Use TLS
+- Enable HTTPS everywhere
+- Encrypt internal communications
+- Segment networks
+- Use VPNs
+- Monitor unusual TCP behavior
+
+---
+
+# TCP Reset (RST) Attack
+
+An attacker injects forged TCP Reset packets.
+
+```
+Attacker
+
+↓
+
+RST Packet
+
+↓
+
+Connection Closed
+```
+
+Possible effects:
+
+- VPN disconnects
+- SSH termination
+- Database interruption
+- Service disruption
+
+---
+
+# Detection
+
+Indicators include:
+
+- Unexpected RST packets
+- Frequent session resets
+- Abnormal connection termination
+- User complaints
+
+---
+
+# TCP Spoofing
+
+TCP Spoofing involves forging source IP addresses.
+
+```
+Attacker
+
+↓
+
+Fake Source IP
+
+↓
+
+Server
+
+↓
+
+Trusts Packet
+```
+
+Spoofing is commonly combined with other attacks.
+
+---
+
+# Mitigation
+
+Best practices include:
+
+- Ingress filtering
+- Egress filtering
+- Anti-spoofing ACLs
+- Reverse Path Forwarding (uRPF)
+- Stateful inspection
+
+---
+
+# Sequence Number Prediction
+
+Early TCP implementations generated predictable Initial Sequence Numbers (ISNs).
+
+```
+1000
+
+↓
+
+2000
+
+↓
+
+3000
+```
+
+Attackers could guess future sequence numbers and inject packets.
+
+Modern operating systems use cryptographically strong random sequence numbers.
+
+---
+
+# ACK Flood Attack
+
+Attackers send massive numbers of ACK packets.
+
+```
+Attacker
+
+↓
+
+Millions of ACK Packets
+
+↓
+
+Firewall
+
+↓
+
+CPU Exhaustion
+```
+
+Some devices expend significant resources validating unsolicited ACK traffic.
+
+---
+
+# FIN Scan
+
+FIN Scan sends packets with only the FIN flag set.
+
+```
+FIN
+
+↓
+
+Target
+
+↓
+
+Closed Port → RST
+
+↓
+
+Open Port → No Response
+```
+
+Attackers use this behavior to identify open ports while attempting to evade basic filtering.
+
+---
+
+# NULL Scan
+
+A NULL Scan sends packets with **no TCP flags**.
+
+```
+Flags
+
+000000
+
+↓
+
+Target
+```
+
+Expected behavior:
+
+- Closed port → RST
+- Open port → No response
+
+---
+
+# Xmas Scan
+
+An Xmas Scan sets multiple TCP flags simultaneously.
+
+```
+FIN
+
+PSH
+
+URG
+```
+
+The packet appears "lit up" like a Christmas tree.
+
+It is used for stealthier reconnaissance on systems that follow RFC behavior.
+
+---
+
+# Why FIN/NULL/Xmas Scans Work
+
+RFC-compliant TCP stacks respond differently to open and closed ports.
+
+```
+Closed Port
+
+↓
+
+RST
+
+────────────
+
+Open Port
+
+↓
+
+No Response
+```
+
+Attackers leverage these differences for reconnaissance.
+
+---
+
+# Fragmentation Attacks
+
+Attackers split malicious packets into multiple IP fragments.
+
+```
+Packet
+
+↓
+
+Fragment 1
+
+↓
+
+Fragment 2
+
+↓
+
+Fragment 3
+```
+
+Some security devices may inspect fragments incorrectly, allowing payloads to bypass detection if reassembly is inadequate.
+
+---
+
+# TCP Port Scanning
+
+Port scanning identifies listening services.
+
+Common scan types:
+
+- SYN Scan
+- Connect Scan
+- ACK Scan
+- FIN Scan
+- NULL Scan
+- Xmas Scan
+- Window Scan
+- Maimon Scan
+
+Example:
+
+```
+Attacker
+
+↓
+
+22
+
+↓
+
+80
+
+↓
+
+443
+
+↓
+
+3389
+
+↓
+
+Open Ports Identified
+```
+
+---
+
+# TCP Reflection
+
+Although less common than UDP reflection, TCP can be abused in reflection-style attacks under certain conditions.
+
+Attackers:
+
+```
+Spoof Source
+
+↓
+
+Send Requests
+
+↓
+
+Responses
+
+↓
+
+Victim
+```
+
+Ingress filtering helps mitigate source address spoofing.
+
+---
+
+# Distributed Denial of Service (DDoS)
+
+Thousands of compromised systems generate TCP traffic simultaneously.
+
+```
+Bot 1
+
+↓
+
+Bot 2
+
+↓
+
+Bot 3
+
+↓
+
+Bot 50000
+
+↓
+
+Victim
+```
+
+Large-scale TCP floods can overwhelm:
+
+- Firewalls
+- Load balancers
+- Web servers
+- API gateways
+
+---
+
+# Enterprise Firewall Protection
+
+Modern firewalls perform **Stateful Packet Inspection (SPI)**.
+
+Instead of inspecting packets individually, the firewall tracks every TCP session.
+
+```
+Firewall
+
+↓
+
+Connection Table
+
+↓
+
+Established Sessions
+
+↓
+
+Allow
+
+↓
+
+Unknown Packets
+
+↓
+
+Drop
+```
+
+This prevents many spoofing and session attacks.
+
+---
+
+# Stateful Packet Inspection (SPI)
+
+Example workflow:
+
+```
+Client
+
+↓
+
+SYN
+
+↓
+
+Firewall
+
+↓
+
+Track State
+
+↓
+
+Server
+
+↓
+
+SYN-ACK
+
+↓
+
+Firewall Updates State
+
+↓
+
+ACK
+
+↓
+
+Connection Established
+```
+
+Packets that do not match an existing state are typically dropped.
+
+---
+
+# Intrusion Detection Systems (IDS)
+
+IDS platforms inspect TCP traffic for malicious behavior.
+
+Common detections include:
+
+- SYN Floods
+- Port Scanning
+- Session Hijacking Attempts
+- TCP Resets
+- Abnormal Flags
+- Exploit Signatures
+
+Popular IDS solutions:
+
+- Zeek
+- Suricata
+- Snort
+
+---
+
+# Intrusion Prevention Systems (IPS)
+
+Unlike IDS, IPS can actively block malicious TCP traffic.
+
+Possible actions:
+
+- Drop packets
+- Reset connections
+- Block IP addresses
+- Rate limit connections
+- Generate alerts
+
+---
+
+# Linux TCP Hardening
+
+Common Linux hardening measures:
+
+Enable SYN Cookies:
+
+```bash
+sysctl -w net.ipv4.tcp_syncookies=1
+```
+
+Increase backlog:
+
+```bash
+sysctl -w net.core.somaxconn=4096
+```
+
+Enable reverse path filtering:
+
+```bash
+sysctl -w net.ipv4.conf.all.rp_filter=1
+```
+
+Administrators should also review timeout values, backlog limits, and kernel networking parameters.
+
+---
+
+# Windows TCP Hardening
+
+Recommended practices:
+
+- Enable Windows Defender Firewall.
+- Keep systems patched.
+- Disable unnecessary services.
+- Restrict inbound ports.
+- Use SMB signing where appropriate.
+- Monitor Event Viewer for TCP-related errors.
+
+---
+
+# Cisco TCP Protection
+
+Cisco IOS offers several TCP protection features:
+
+- TCP Intercept
+- Control Plane Policing (CoPP)
+- Access Control Lists (ACLs)
+- Unicast Reverse Path Forwarding (uRPF)
+- Rate limiting
+- Stateful firewall inspection (platform dependent)
+
+---
+
+# TCP Security in Cloud Environments
+
+Cloud providers offer additional protections:
+
+AWS
+
+- Security Groups
+- Network ACLs
+- AWS Shield
+- AWS WAF
+
+Microsoft Azure
+
+- Network Security Groups
+- Azure Firewall
+- Azure DDoS Protection
+
+Google Cloud
+
+- VPC Firewall Rules
+- Cloud Armor
+- Hierarchical Firewall Policies
+
+These services help defend TCP-based workloads from unauthorized access and volumetric attacks.
+
+---
+
+# Enterprise Best Practices
+
+Organizations should:
+
+- Enable SYN Cookies.
+- Use Stateful Firewalls.
+- Deploy IDS/IPS.
+- Patch operating systems regularly.
+- Restrict unnecessary TCP ports.
+- Segment networks.
+- Encrypt traffic using TLS.
+- Monitor connection rates.
+- Enable anti-spoofing protections.
+- Log TCP connection events.
+- Implement DDoS protection.
+- Continuously review firewall policies.
+
+---
+
+# SOC Detection Engineering
+
+SOC teams should monitor:
+
+- SYN Flood indicators
+- Large numbers of half-open connections
+- High RST rates
+- Repeated connection failures
+- Excessive retransmissions
+- Port scanning activity
+- Long-lived idle sessions
+- Unusual TCP flag combinations
+
+Combining TCP telemetry with endpoint, DNS, authentication, and proxy logs improves detection accuracy.
+
+---
+
+# Zeek Monitoring
+
+Zeek provides detailed TCP connection logging through `conn.log`.
+
+Useful fields include:
+
+- Source IP
+- Destination IP
+- Source Port
+- Destination Port
+- Protocol
+- Connection Duration
+- Bytes Sent
+- Bytes Received
+- Connection State
+- Packet Counts
+
+These logs are valuable for threat hunting and incident investigations.
+
+---
+
+# Suricata Monitoring
+
+Suricata can detect:
+
+- SYN Floods
+- Port Scans
+- TCP Flag Anomalies
+- Exploit Attempts
+- Malware Command-and-Control
+- Protocol Violations
+
+Alerts can be forwarded to SIEM platforms for correlation.
+
+---
+
+# Sigma Detection Ideas
+
+Potential detection logic includes:
+
+- Excessive SYN packets from a single host.
+- Multiple failed TCP connections within a short period.
+- High volume of RST packets.
+- FIN/NULL/Xmas scan behavior.
+- Connections to unusual destination ports.
+- Internal hosts scanning multiple systems.
+
+These detections should be tuned to reduce false positives.
+
+---
+
+# MITRE ATT&CK Mapping
+
+| Technique | MITRE ATT&CK |
+|-----------|--------------|
+| Port Scanning | T1046 – Network Service Discovery |
+| Session Hijacking | T1557 – Adversary-in-the-Middle |
+| TCP Tunneling | T1572 – Protocol Tunneling (where applicable) |
+| DDoS / Service Exhaustion | T1498 – Network Denial of Service |
+| Network Reconnaissance | T1018 / T1046 |
+
+---
+
+# Business Impact
+
+Weak TCP security can result in:
+
+- Service outages
+- Data breaches
+- Regulatory violations
+- Revenue loss
+- Customer distrust
+- Increased incident response costs
+
+Securing TCP is therefore a foundational requirement for enterprise resilience.
+
+---
+
+# Key Takeaways
+
+- TCP is frequently targeted because it supports most enterprise applications.
+- SYN Floods exploit the connection establishment process to exhaust server resources.
+- Session hijacking, spoofing, and sequence prediction attempt to manipulate established communications.
+- FIN, NULL, and Xmas scans are reconnaissance techniques that leverage TCP behavior.
+- Stateful firewalls, IDS/IPS, anti-spoofing controls, and SYN Cookies significantly improve TCP security.
+- Continuous monitoring, hardening, and layered defenses are essential for protecting TCP-based services.
+
+---
+
+
