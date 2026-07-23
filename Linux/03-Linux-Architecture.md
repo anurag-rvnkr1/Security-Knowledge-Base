@@ -477,3 +477,594 @@ A strong understanding of Linux architecture enables organizations to:
 
 ---
 
+# Part 2 — System Calls, Process Management, Context Switching, CPU Scheduling, Interrupts, and Inter-Process Communication (IPC)
+
+---
+
+# Introduction
+
+Applications running on Linux cannot directly communicate with hardware or access protected system resources. Instead, they rely on the **Linux kernel** through a well-defined mechanism called **system calls**.
+
+The kernel manages thousands of running processes simultaneously by:
+
+- Allocating CPU time
+- Managing memory
+- Handling hardware interrupts
+- Coordinating communication between processes
+- Enforcing security policies
+
+Understanding these mechanisms is fundamental for Linux administrators, DevOps engineers, cloud architects, and cybersecurity professionals.
+
+---
+
+# System Calls
+
+A **system call** is a controlled interface through which a user-space application requests services from the Linux kernel.
+
+Instead of interacting directly with hardware, applications invoke kernel functions through system calls.
+
+Examples include:
+
+- Opening files
+- Reading data
+- Writing data
+- Creating processes
+- Allocating memory
+- Sending network packets
+
+---
+
+# Why System Calls Exist
+
+System calls provide:
+
+- Hardware abstraction
+- Security enforcement
+- Resource management
+- Standardized programming interfaces
+- Controlled privilege escalation
+
+Without system calls, user applications could compromise system stability and security.
+
+---
+
+# System Call Workflow
+
+```text
+Application
+      │
+      ▼
+System Call
+      │
+      ▼
+Kernel
+      │
+      ▼
+Device Driver
+      │
+      ▼
+Hardware
+```
+
+The kernel validates every request before performing the requested operation.
+
+---
+
+# Common Linux System Calls
+
+| System Call | Purpose |
+|-------------|---------|
+| `open()` | Open a file |
+| `close()` | Close a file |
+| `read()` | Read data |
+| `write()` | Write data |
+| `fork()` | Create a new process |
+| `execve()` | Execute a program |
+| `wait()` | Wait for child process |
+| `kill()` | Send signals |
+| `socket()` | Create network socket |
+| `connect()` | Connect to remote host |
+| `mmap()` | Map memory |
+| `clone()` | Create threads/containers |
+
+---
+
+# Example: Opening a File
+
+When an application executes:
+
+```bash
+cat file.txt
+```
+
+The operating system performs a sequence similar to:
+
+```text
+cat
+
+↓
+
+open()
+
+↓
+
+Kernel validates permissions
+
+↓
+
+Filesystem driver locates file
+
+↓
+
+Disk reads data
+
+↓
+
+Kernel returns file descriptor
+
+↓
+
+read()
+
+↓
+
+Display output
+```
+
+The application never interacts directly with the storage device.
+
+---
+
+# Categories of System Calls
+
+Linux system calls can be grouped into several categories.
+
+| Category | Examples |
+|----------|----------|
+| Process Management | `fork()`, `execve()`, `wait()` |
+| File Operations | `open()`, `read()`, `write()` |
+| Device Management | `ioctl()` |
+| Memory Management | `mmap()`, `brk()` |
+| Networking | `socket()`, `bind()`, `connect()` |
+| Security | `setuid()`, `chmod()` |
+| IPC | `pipe()`, `shmget()`, `msgsnd()` |
+
+---
+
+# What is a Process?
+
+A **process** is an executing instance of a program.
+
+For example:
+
+```bash
+firefox
+```
+
+When launched, Linux creates a process containing:
+
+- Program code
+- Memory
+- CPU registers
+- Process ID
+- Open files
+- Security context
+- Environment variables
+
+Every running application is represented by one or more processes.
+
+---
+
+# Program vs Process
+
+| Program | Process |
+|----------|---------|
+| Static executable file | Running instance of a program |
+| Stored on disk | Stored in memory |
+| Passive | Active |
+| Example: `/usr/bin/vim` | Running `vim` editor |
+
+---
+
+# Process Lifecycle
+
+```text
+New
+ │
+ ▼
+Ready
+ │
+ ▼
+Running
+ │
+ ├──────────────┐
+ ▼              │
+Waiting         │
+ │              │
+ ▼              │
+Ready ◄─────────┘
+ │
+ ▼
+Terminated
+```
+
+A process transitions through several states during its lifetime.
+
+---
+
+# Process States
+
+| State | Description |
+|---------|-------------|
+| New | Process created |
+| Ready | Waiting for CPU |
+| Running | Executing instructions |
+| Waiting | Waiting for an event or I/O |
+| Stopped | Suspended |
+| Zombie | Finished but awaiting parent cleanup |
+| Terminated | Execution completed |
+
+---
+
+# Process Control Block (PCB)
+
+The kernel stores information about each process in a **Process Control Block (PCB)**.
+
+Typical information includes:
+
+- Process ID (PID)
+- Parent PID
+- CPU registers
+- Scheduling information
+- Memory mappings
+- Open files
+- User credentials
+- Process state
+
+The PCB enables the kernel to manage and resume processes efficiently.
+
+---
+
+# Process Hierarchy
+
+Linux processes form a hierarchical tree.
+
+```text
+systemd (PID 1)
+
+├── sshd
+│     └── bash
+│          └── vim
+│
+├── nginx
+│
+├── cron
+│
+└── docker
+```
+
+Every process (except PID 1) has a parent process.
+
+---
+
+# Process IDs (PID)
+
+Every process receives a unique **Process ID (PID)**.
+
+Example:
+
+```bash
+ps
+```
+
+Output:
+
+```text
+PID   COMMAND
+
+1     systemd
+245   sshd
+620   bash
+810   python3
+```
+
+The PID uniquely identifies a running process.
+
+---
+
+# Parent and Child Processes
+
+Most new processes are created using:
+
+```text
+fork()
+
+↓
+
+Child Process
+
+↓
+
+execve()
+```
+
+- `fork()` creates a copy of the current process.
+- `execve()` replaces the copied process with a new program.
+
+This model is fundamental to Unix and Linux process creation.
+
+---
+
+# Process Creation Workflow
+
+```text
+Parent Process
+
+↓
+
+fork()
+
+↓
+
+Child Process
+
+↓
+
+execve()
+
+↓
+
+New Program Runs
+```
+
+This design allows efficient process management and flexible program execution.
+
+---
+
+# Context Switching
+
+A CPU can execute only one process per core at any given instant.
+
+When multiple processes compete for CPU time, the kernel performs **context switching**.
+
+During a context switch, the kernel:
+
+- Saves the current process state.
+- Loads the next process state.
+- Transfers CPU execution.
+
+---
+
+# Context Switching Diagram
+
+```text
+CPU
+
+Running Process A
+
+↓
+
+Save Registers
+
+↓
+
+Load Registers
+
+↓
+
+Running Process B
+```
+
+The PCB stores the information required to resume execution later.
+
+---
+
+# Why Context Switching is Necessary
+
+Without context switching:
+
+- Only one application could run at a time.
+- Multitasking would not exist.
+- Interactive computing would be impossible.
+
+Modern Linux systems perform thousands of context switches every second.
+
+---
+
+# CPU Scheduling
+
+The **scheduler** determines which process receives CPU time.
+
+Its goals include:
+
+- Fairness
+- Responsiveness
+- High throughput
+- Low latency
+- Efficient CPU utilization
+
+---
+
+# Linux Completely Fair Scheduler (CFS)
+
+Modern Linux kernels primarily use the **Completely Fair Scheduler (CFS)**.
+
+Characteristics:
+
+- Fair CPU allocation
+- Dynamic priorities
+- Red-black tree scheduling
+- Low latency
+- Efficient handling of interactive and background workloads
+
+CFS is designed to balance responsiveness with overall system performance.
+
+---
+
+# Scheduling Workflow
+
+```text
+Ready Queue
+
+Process A
+
+Process B
+
+Process C
+
+      │
+      ▼
+
+Linux Scheduler
+
+      │
+      ▼
+
+CPU
+```
+
+The scheduler continually evaluates which process should run next.
+
+---
+
+# CPU-Bound vs I/O-Bound Processes
+
+| CPU-Bound | I/O-Bound |
+|------------|-----------|
+| Heavy computation | Frequent disk/network operations |
+| Uses CPU extensively | Often waits for I/O |
+| Examples: Video encoding, encryption | Examples: Web servers, databases |
+
+The scheduler attempts to balance these different workload types efficiently.
+
+---
+
+# Interrupts
+
+An **interrupt** is a signal that temporarily pauses the CPU's current work so it can respond to an event requiring immediate attention.
+
+Examples:
+
+- Keyboard input
+- Network packet arrival
+- Disk completion
+- Timer events
+
+Interrupts allow hardware devices to notify the CPU asynchronously.
+
+---
+
+# Interrupt Handling
+
+```text
+Hardware Event
+
+↓
+
+Interrupt
+
+↓
+
+CPU Pauses Current Task
+
+↓
+
+Kernel Interrupt Handler
+
+↓
+
+Resume Previous Task
+```
+
+Interrupt handling enables responsive interaction with hardware.
+
+---
+
+# Types of Interrupts
+
+| Type | Description |
+|------|-------------|
+| Hardware Interrupt | Generated by hardware devices |
+| Software Interrupt | Generated by software requests |
+| Timer Interrupt | Used for scheduling and timekeeping |
+| Inter-Processor Interrupt (IPI) | Communication between CPU cores |
+
+---
+
+# Inter-Process Communication (IPC)
+
+Processes often need to exchange data or coordinate actions.
+
+Linux provides several IPC mechanisms.
+
+Common examples:
+
+- Pipes
+- Named Pipes (FIFOs)
+- Message Queues
+- Shared Memory
+- Semaphores
+- UNIX Domain Sockets
+- Signals
+
+Each mechanism is suited to different communication patterns.
+
+---
+
+# IPC Overview
+
+```text
+Process A
+
+↓
+
+IPC Mechanism
+
+↓
+
+Kernel
+
+↓
+
+Process B
+```
+
+The kernel ensures synchronization and controlled data exchange between processes.
+
+---
+
+# Business Impact
+
+Efficient process management and scheduling help organizations:
+
+- Improve application responsiveness.
+- Maximize CPU utilization.
+- Support large numbers of concurrent users.
+- Maintain predictable system performance.
+- Reduce service interruptions.
+
+---
+
+# Enterprise Best Practices
+
+- Monitor process behavior regularly.
+- Avoid unnecessary background services.
+- Keep kernel updates current for scheduler improvements and security fixes.
+- Use appropriate process priorities for critical workloads.
+- Monitor interrupt rates and CPU utilization on production systems.
+- Choose IPC mechanisms appropriate for application design and performance requirements.
+
+---
+
+# Key Takeaways
+
+- System calls provide a secure interface between applications and the kernel.
+- Every running application is represented as a process with its own PCB and PID.
+- Context switching enables multitasking by sharing CPU time among processes.
+- The Linux Completely Fair Scheduler (CFS) balances responsiveness and fairness.
+- Interrupts allow hardware to communicate efficiently with the CPU.
+- IPC mechanisms enable controlled communication between processes.
+
+---
+
+
