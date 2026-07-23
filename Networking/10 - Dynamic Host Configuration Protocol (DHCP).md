@@ -701,3 +701,769 @@ A DHCP outage can prevent new devices from joining the network and disrupt norma
 - Scopes, exclusions, and leases allow administrators to manage address distribution efficiently.
 - DHCP is a foundational service in modern enterprise, campus, data center, and cloud-connected networks.
 
+# 10 - Dynamic Host Configuration Protocol (DHCP)
+
+# Part 2 — DHCP Lease Lifecycle, Renewal Process, Relay Agents, DHCP Options, DHCPv6, High Availability, and Enterprise Architecture
+
+---
+
+# Overview
+
+Receiving an IP address is only the beginning of the DHCP process.
+
+Enterprise DHCP deployments continuously manage:
+
+- Lease renewals
+- Lease expiration
+- Address recycling
+- DHCP relay
+- Multiple DHCP servers
+- High Availability (HA)
+- IPv6 addressing
+- Configuration options
+
+Understanding these mechanisms is essential for designing scalable and resilient enterprise networks.
+
+---
+
+# DHCP Lease Lifecycle
+
+A DHCP lease is **temporary** unless configured as a reservation.
+
+Typical lifecycle:
+
+```
+DHCP ACK
+
+↓
+
+Lease Starts
+
+↓
+
+Client Uses Address
+
+↓
+
+Renew Lease
+
+↓
+
+Continue Using Address
+
+──────────────
+
+OR
+
+↓
+
+Lease Expires
+
+↓
+
+Address Returns to Pool
+```
+
+This allows efficient reuse of available IP addresses.
+
+---
+
+# Lease Timers
+
+A lease contains several important timers.
+
+```
+Lease Start
+
+↓
+
+T1 (50%)
+
+↓
+
+T2 (87.5%)
+
+↓
+
+Lease Expiration
+```
+
+These timers control how and when a client renews its address.
+
+---
+
+# T1 — Renewal Timer
+
+At approximately **50% of the lease duration**, the client attempts to renew its lease with the original DHCP server.
+
+Example:
+
+```
+8 Hour Lease
+
+↓
+
+4 Hours
+
+↓
+
+Renew Request
+```
+
+The renewal is typically sent as a **unicast** message to the server that granted the lease.
+
+---
+
+# T2 — Rebinding Timer
+
+If the original server does not respond, the client waits until approximately **87.5% of the lease duration**.
+
+Example:
+
+```
+8 Hour Lease
+
+↓
+
+7 Hours
+
+↓
+
+Broadcast Renewal Request
+```
+
+At this stage, the client attempts to contact **any available DHCP server**.
+
+---
+
+# Lease Expiration
+
+If renewal attempts fail:
+
+```
+Lease Expires
+
+↓
+
+Client Removes Address
+
+↓
+
+Restart DORA Process
+```
+
+The client can no longer use the expired lease and must request a new configuration.
+
+---
+
+# Lease Renewal Workflow
+
+```
+Client
+
+↓
+
+T1 Reached
+
+↓
+
+Renew Request
+
+↓
+
+DHCP Server
+
+↓
+
+ACK
+
+↓
+
+Lease Extended
+```
+
+If the renewal succeeds, communication continues without interruption.
+
+---
+
+# Lease Rebinding Workflow
+
+```
+Original DHCP Server
+
+↓
+
+Unavailable
+
+↓
+
+Client
+
+↓
+
+Broadcast Renewal
+
+↓
+
+Backup DHCP Server
+
+↓
+
+ACK
+
+↓
+
+Lease Continues
+```
+
+This mechanism improves availability during server failures.
+
+---
+
+# DHCP Release
+
+A client may voluntarily return its address.
+
+```
+Client
+
+↓
+
+DHCP Release
+
+↓
+
+Server
+
+↓
+
+Address Returned
+
+↓
+
+Available Again
+```
+
+This commonly occurs during a graceful shutdown or interface deactivation.
+
+---
+
+# DHCP Decline
+
+Sometimes a client detects that an offered address is already in use.
+
+Example:
+
+```
+Server Offers
+
+↓
+
+192.168.10.120
+
+↓
+
+Client Detects Duplicate
+
+↓
+
+DHCP Decline
+```
+
+The server marks the address as unusable until further validation or administrative action.
+
+---
+
+# DHCP NAK (Negative Acknowledgment)
+
+A server sends a **DHCP NAK** when:
+
+- The requested address is invalid.
+- The client is on the wrong subnet.
+- The lease is no longer valid.
+- The configuration has changed.
+
+Workflow:
+
+```
+Client
+
+↓
+
+DHCP Request
+
+↓
+
+Server
+
+↓
+
+DHCP NAK
+
+↓
+
+Restart DORA
+```
+
+---
+
+# DHCP Inform
+
+Some devices already have an IP address (for example, through static configuration) but still want additional DHCP options.
+
+Example:
+
+```
+Client
+
+↓
+
+Static IP
+
+↓
+
+DHCP Inform
+
+↓
+
+Receive DNS, NTP, Domain Information
+```
+
+The IP address itself is not reassigned.
+
+---
+
+# DHCP Relay Agent
+
+## Why Relay Agents Are Needed
+
+Routers normally **do not forward broadcasts**.
+
+Since a new DHCP client uses broadcast messages, clients on one subnet cannot directly reach a DHCP server on another subnet.
+
+Example:
+
+```
+Client
+
+↓
+
+Broadcast
+
+↓
+
+Router
+
+×
+
+↓
+
+DHCP Server
+```
+
+A relay agent solves this limitation.
+
+---
+
+# Relay Agent Operation
+
+```
+Client
+
+↓
+
+DHCP Discover
+
+↓
+
+Router (Relay Agent)
+
+↓
+
+Unicast
+
+↓
+
+DHCP Server
+```
+
+The relay converts the broadcast into a unicast message destined for the DHCP server.
+
+---
+
+# Cisco Relay Configuration
+
+On Cisco devices, a relay agent is commonly configured using:
+
+```text
+interface GigabitEthernet0/1
+
+ ip helper-address 192.168.100.10
+```
+
+The `ip helper-address` command forwards DHCP requests (and certain other UDP broadcasts) to the specified server.
+
+---
+
+# Enterprise Relay Example
+
+```
+Branch Office
+
+↓
+
+Access Switch
+
+↓
+
+Branch Router
+
+↓
+
+WAN/MPLS/SD-WAN
+
+↓
+
+Central DHCP Cluster
+
+↓
+
+Address Assigned
+```
+
+Organizations often centralize DHCP services while using relay agents in remote offices.
+
+---
+
+# DHCP Options
+
+DHCP provides more than just an IP address.
+
+Additional configuration parameters are delivered using **DHCP Options**.
+
+---
+
+# Common DHCP Options
+
+| Option | Purpose |
+|----------|----------|
+| Option 1 | Subnet Mask |
+| Option 3 | Default Gateway |
+| Option 6 | DNS Server |
+| Option 12 | Host Name |
+| Option 15 | Domain Name |
+| Option 42 | NTP Server |
+| Option 51 | Lease Time |
+| Option 54 | DHCP Server Identifier |
+| Option 66 | TFTP Server Name |
+| Option 67 | Boot File Name |
+
+Additional options exist for specialized enterprise applications.
+
+---
+
+# Example DHCP Configuration
+
+```
+IP Address
+
+↓
+
+192.168.10.120
+
+↓
+
+Gateway
+
+↓
+
+192.168.10.1
+
+↓
+
+DNS
+
+↓
+
+192.168.20.5
+
+↓
+
+Domain
+
+↓
+
+corp.example.local
+```
+
+The client receives all these values automatically during the DHCP exchange.
+
+---
+
+# DHCP Reservations
+
+Critical devices should often receive consistent addresses.
+
+Examples:
+
+- Domain Controllers
+- DNS Servers
+- Printers
+- Firewalls
+- IP Phones
+- Network Management Systems
+
+A reservation binds a specific MAC address to a predefined IP address.
+
+---
+
+# DHCPv6
+
+IPv6 networks use **DHCPv6**, which differs from IPv4 DHCP in several important ways.
+
+DHCPv6 provides configuration such as:
+
+- IPv6 address (stateful mode)
+- DNS servers
+- Domain search list
+- Other network parameters
+
+Neighbor Discovery (ND) replaces ARP in IPv6 environments.
+
+---
+
+# DHCPv6 Message Flow
+
+A simplified DHCPv6 exchange:
+
+```
+Solicit
+
+↓
+
+Advertise
+
+↓
+
+Request
+
+↓
+
+Reply
+```
+
+Although conceptually similar to DORA, DHCPv6 uses different message types.
+
+---
+
+# SLAAC vs DHCPv6
+
+IPv6 hosts can obtain configuration using different approaches.
+
+| Feature | SLAAC | DHCPv6 |
+|----------|--------|---------|
+| Address Assignment | Automatic | Server-controlled |
+| DNS Information | Limited (depends on RA options) | Supported |
+| Central Management | Limited | Extensive |
+| Address Tracking | Minimal | Centralized |
+
+Many enterprise environments use both Router Advertisements (RA) and DHCPv6 together.
+
+---
+
+# Stateful vs Stateless DHCPv6
+
+### Stateful DHCPv6
+
+The DHCPv6 server assigns the IPv6 address and maintains lease information.
+
+```
+Server
+
+↓
+
+Assigns Address
+
+↓
+
+Tracks Lease
+```
+
+---
+
+### Stateless DHCPv6
+
+The client generates its own address (often via SLAAC), while the DHCPv6 server supplies only additional configuration such as DNS servers.
+
+---
+
+# Enterprise DHCP Architecture
+
+Large organizations rarely rely on a single DHCP server.
+
+Typical architecture:
+
+```
+Clients
+
+↓
+
+Access Layer
+
+↓
+
+Distribution Layer
+
+↓
+
+Core Network
+
+↓
+
+Relay Agents
+
+↓
+
+DHCP Cluster
+
+↓
+
+Redundant Database
+```
+
+This design improves scalability and resilience.
+
+---
+
+# High Availability (HA)
+
+DHCP is a critical infrastructure service.
+
+If DHCP becomes unavailable:
+
+- New devices cannot join the network.
+- Expired leases may not renew.
+- User onboarding is disrupted.
+- Operational efficiency declines.
+
+High Availability minimizes these risks.
+
+---
+
+# DHCP Failover
+
+Many enterprise DHCP implementations support failover.
+
+Example:
+
+```
+Primary Server
+
+↓
+
+Synchronizes
+
+↓
+
+Secondary Server
+```
+
+If the primary server fails:
+
+```
+Secondary Server
+
+↓
+
+Continues Lease Management
+```
+
+This helps maintain uninterrupted address assignment.
+
+---
+
+# Load Balancing
+
+Some environments distribute DHCP requests across multiple servers.
+
+Benefits include:
+
+- Increased scalability
+- Reduced server load
+- Improved redundancy
+- Better performance during peak demand
+
+The implementation varies depending on the DHCP platform and vendor.
+
+---
+
+# Enterprise Deployment Example
+
+```
+50 Branch Offices
+
+↓
+
+Relay Agents
+
+↓
+
+MPLS / SD-WAN
+
+↓
+
+Two DHCP Servers
+
+↓
+
+Shared Lease Database
+
+↓
+
+Automatic Failover
+```
+
+This design supports centralized management while ensuring high availability.
+
+---
+
+# Common Enterprise Considerations
+
+Administrators should plan for:
+
+- Appropriate lease durations
+- Sufficient address pool size
+- Scope segmentation
+- Redundant DHCP servers
+- Relay placement
+- Reservation strategy
+- Monitoring and alerting
+
+Careful planning prevents address exhaustion and service disruption.
+
+---
+
+# Business Impact
+
+Reliable DHCP infrastructure enables:
+
+- Rapid endpoint provisioning
+- Automated network onboarding
+- Consistent configuration
+- Reduced administrative effort
+- Business continuity during failures
+- Scalable enterprise growth
+
+A resilient DHCP architecture is essential for modern campus, data center, and hybrid cloud environments.
+
+---
+
+# Key Takeaways
+
+- DHCP leases progress through **renewal (T1)**, **rebinding (T2)**, and **expiration**.
+- Clients can **Release**, **Decline**, or **Inform** the server depending on operational needs.
+- **Relay Agents** enable DHCP communication across routed networks.
+- **DHCP Options** distribute additional network configuration such as gateways, DNS servers, and NTP servers.
+- **DHCPv6** supports IPv6 environments and complements Router Advertisements.
+- Enterprise deployments typically use **redundant DHCP servers**, **relay agents**, and **high-availability designs** to ensure reliable address management.
+
