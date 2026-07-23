@@ -559,3 +559,755 @@ Accurate command usage reduces operational mistakes and preserves evidence.
 
 ---
 
+# 26 - Linux Cheat Sheet
+
+# Part 2 — Users & Groups, Permissions, Processes, Services, System Monitoring, and Package Management
+
+---
+
+# Introduction
+
+This section contains the commands Linux administrators, DevOps engineers, cloud engineers, SOC analysts, and cybersecurity professionals use daily.
+
+Focus areas:
+
+- User management
+- Permissions
+- Process management
+- Services
+- System monitoring
+- Package management
+
+---
+
+# Users & Groups
+
+## Current User
+
+```bash
+whoami
+```
+
+---
+
+## Logged-in Users
+
+```bash
+who
+```
+
+Detailed login information:
+
+```bash
+w
+```
+
+---
+
+## User Identity
+
+```bash
+id username
+```
+
+Example:
+
+```bash
+id alice
+```
+
+Displays:
+
+- UID
+- Primary GID
+- Supplementary groups
+
+---
+
+## Create User
+
+```bash
+sudo useradd username
+```
+
+Create home directory (if required by your distribution):
+
+```bash
+sudo useradd -m username
+```
+
+---
+
+## Set Password
+
+```bash
+sudo passwd username
+```
+
+---
+
+## Delete User
+
+Delete account only:
+
+```bash
+sudo userdel username
+```
+
+Delete account and home directory:
+
+```bash
+sudo userdel -r username
+```
+
+---
+
+## Modify User
+
+Change login shell:
+
+```bash
+sudo usermod -s /bin/bash username
+```
+
+Lock account:
+
+```bash
+sudo usermod -L username
+```
+
+Unlock account:
+
+```bash
+sudo usermod -U username
+```
+
+---
+
+## Groups
+
+Create group:
+
+```bash
+sudo groupadd developers
+```
+
+Delete group:
+
+```bash
+sudo groupdel developers
+```
+
+Add user to group:
+
+```bash
+sudo usermod -aG developers username
+```
+
+Display group membership:
+
+```bash
+groups username
+```
+
+---
+
+# Important User Files
+
+| File | Purpose |
+|------|----------|
+| `/etc/passwd` | User accounts |
+| `/etc/shadow` | Password hashes (restricted access) |
+| `/etc/group` | Group information |
+| `/etc/gshadow` | Group passwords and administration |
+
+---
+
+# Permissions
+
+---
+
+## View Permissions
+
+```bash
+ls -l
+```
+
+Example:
+
+```text
+-rwxr-xr--
+```
+
+---
+
+## Change Permissions
+
+Numeric mode:
+
+```bash
+chmod 755 script.sh
+```
+
+Symbolic mode:
+
+```bash
+chmod u+x script.sh
+```
+
+Remove write permission:
+
+```bash
+chmod go-w file.txt
+```
+
+---
+
+## Change Ownership
+
+Owner:
+
+```bash
+sudo chown alice file.txt
+```
+
+Owner and group:
+
+```bash
+sudo chown alice:developers file.txt
+```
+
+---
+
+## Change Group
+
+```bash
+sudo chgrp developers file.txt
+```
+
+---
+
+## Default Permissions
+
+View current umask:
+
+```bash
+umask
+```
+
+Set temporary umask:
+
+```bash
+umask 022
+```
+
+---
+
+# Special Permissions
+
+SetUID:
+
+```bash
+chmod u+s filename
+```
+
+SetGID:
+
+```bash
+chmod g+s directory
+```
+
+Sticky Bit:
+
+```bash
+chmod +t directory
+```
+
+---
+
+# ACL (Access Control Lists)
+
+View ACL:
+
+```bash
+getfacl file.txt
+```
+
+Grant ACL permission:
+
+```bash
+setfacl -m u:alice:rwx file.txt
+```
+
+Remove ACL:
+
+```bash
+setfacl -b file.txt
+```
+
+---
+
+# Processes
+
+---
+
+## Display Running Processes
+
+```bash
+ps aux
+```
+
+Process tree:
+
+```bash
+ps -ef --forest
+```
+
+---
+
+## Interactive Monitoring
+
+```bash
+top
+```
+
+Alternative:
+
+```bash
+htop
+```
+
+(if installed)
+
+---
+
+## Search for a Process
+
+```bash
+pgrep ssh
+```
+
+or
+
+```bash
+ps aux | grep ssh
+```
+
+---
+
+## Kill Process
+
+Graceful termination:
+
+```bash
+kill PID
+```
+
+Force termination:
+
+```bash
+kill -9 PID
+```
+
+Kill by process name:
+
+```bash
+pkill process_name
+```
+
+---
+
+## Background Jobs
+
+Run in background:
+
+```bash
+command &
+```
+
+View jobs:
+
+```bash
+jobs
+```
+
+Bring job to foreground:
+
+```bash
+fg
+```
+
+Resume in background:
+
+```bash
+bg
+```
+
+---
+
+# Services
+
+---
+
+## Service Status
+
+```bash
+systemctl status ssh
+```
+
+---
+
+## Start Service
+
+```bash
+sudo systemctl start ssh
+```
+
+---
+
+## Stop Service
+
+```bash
+sudo systemctl stop ssh
+```
+
+---
+
+## Restart Service
+
+```bash
+sudo systemctl restart ssh
+```
+
+---
+
+## Reload Configuration
+
+```bash
+sudo systemctl reload ssh
+```
+
+---
+
+## Enable at Boot
+
+```bash
+sudo systemctl enable ssh
+```
+
+Disable:
+
+```bash
+sudo systemctl disable ssh
+```
+
+---
+
+## Failed Services
+
+```bash
+systemctl --failed
+```
+
+---
+
+## List Running Services
+
+```bash
+systemctl list-units --type=service
+```
+
+---
+
+# Logs
+
+View complete journal:
+
+```bash
+journalctl
+```
+
+Current boot:
+
+```bash
+journalctl -b
+```
+
+Previous boot:
+
+```bash
+journalctl -b -1
+```
+
+Follow logs:
+
+```bash
+journalctl -f
+```
+
+Service logs:
+
+```bash
+journalctl -u ssh
+```
+
+---
+
+# System Monitoring
+
+---
+
+## CPU Information
+
+```bash
+lscpu
+```
+
+---
+
+## Memory Usage
+
+```bash
+free -h
+```
+
+---
+
+## Disk Usage
+
+```bash
+df -h
+```
+
+---
+
+## Directory Usage
+
+```bash
+du -sh *
+```
+
+---
+
+## Block Devices
+
+```bash
+lsblk
+```
+
+---
+
+## Mounted Filesystems
+
+```bash
+mount
+```
+
+---
+
+## Filesystem UUIDs
+
+```bash
+blkid
+```
+
+---
+
+## Open Files
+
+```bash
+lsof
+```
+
+---
+
+## System Load
+
+```bash
+uptime
+```
+
+---
+
+## Kernel Messages
+
+```bash
+dmesg
+```
+
+---
+
+## Process Resource Usage
+
+Sort by CPU:
+
+```bash
+ps aux --sort=-%cpu | head
+```
+
+Sort by memory:
+
+```bash
+ps aux --sort=-%mem | head
+```
+
+---
+
+# Package Management
+
+---
+
+## Debian / Ubuntu (APT)
+
+Update package index:
+
+```bash
+sudo apt update
+```
+
+Upgrade installed packages:
+
+```bash
+sudo apt upgrade
+```
+
+Install package:
+
+```bash
+sudo apt install package_name
+```
+
+Remove package:
+
+```bash
+sudo apt remove package_name
+```
+
+Remove package and configuration:
+
+```bash
+sudo apt purge package_name
+```
+
+Search packages:
+
+```bash
+apt search keyword
+```
+
+List installed packages:
+
+```bash
+apt list --installed
+```
+
+---
+
+## RHEL / Rocky / AlmaLinux / Fedora
+
+Install:
+
+```bash
+sudo dnf install package_name
+```
+
+Update:
+
+```bash
+sudo dnf update
+```
+
+Remove:
+
+```bash
+sudo dnf remove package_name
+```
+
+Search:
+
+```bash
+dnf search keyword
+```
+
+List installed:
+
+```bash
+dnf list installed
+```
+
+---
+
+## Verify Installed Package
+
+Debian-based:
+
+```bash
+dpkg -l
+```
+
+RHEL-based:
+
+```bash
+rpm -qa
+```
+
+---
+
+# Quick Command Reference
+
+| Task | Command |
+|------|---------|
+| Current user | `whoami` |
+| User info | `id` |
+| Add user | `useradd` |
+| Change password | `passwd` |
+| Add group | `groupadd` |
+| Change permissions | `chmod` |
+| Change owner | `chown` |
+| Running processes | `ps aux` |
+| Interactive monitor | `top` |
+| Kill process | `kill` |
+| Service status | `systemctl status` |
+| Logs | `journalctl` |
+| Memory | `free -h` |
+| Disk | `df -h` |
+| Packages | `apt`, `dnf` |
+
+---
+
+# Enterprise Best Practices
+
+- Grant users only the permissions they require.
+- Prefer groups over assigning permissions individually.
+- Use `sudo` instead of logging in directly as `root`.
+- Validate service configuration before restarting production services.
+- Monitor CPU, memory, storage, and logs proactively.
+- Keep systems updated using your distribution's package manager.
+- Review failed services after updates or configuration changes.
+
+---
+
+# Cybersecurity Perspective
+
+These commands support:
+
+- User and privilege auditing
+- Incident response
+- Malware investigations
+- Log review
+- Process analysis
+- Service validation
+- Patch management
+- Compliance assessments
+
+---
+
+# Key Takeaways
+
+- User and permission management are fundamental administrative skills.
+- Processes and services should be monitored continuously.
+- Package management keeps systems secure and up to date.
+- Logs and monitoring commands are essential for troubleshooting and incident response.
+
+---
+
