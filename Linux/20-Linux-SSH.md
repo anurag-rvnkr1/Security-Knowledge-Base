@@ -1569,3 +1569,772 @@ Well-managed SSH infrastructure:
 
 ---
 
+# 20 - Linux SSH
+
+# Part 3 — SSH Port Forwarding, SSH Tunneling, Agent Forwarding, Multiplexing, Hardening, Monitoring, and Troubleshooting
+
+---
+
+# Introduction
+
+SSH is much more than a remote login protocol.
+
+Enterprise administrators use SSH for:
+
+- Secure tunneling
+- Port forwarding
+- Remote application access
+- Database administration
+- Secure file transfers
+- DevOps automation
+- Infrastructure management
+- Incident response
+
+Understanding these advanced capabilities is essential for Linux administrators and cybersecurity professionals.
+
+---
+
+# SSH Advanced Features
+
+```text
+SSH
+
+├── Remote Login
+├── File Transfer
+├── Local Port Forwarding
+├── Remote Port Forwarding
+├── Dynamic Port Forwarding
+├── Agent Forwarding
+├── Connection Multiplexing
+├── Command Execution
+└── Secure Tunneling
+```
+
+---
+
+# SSH Tunneling
+
+SSH tunneling securely transports network traffic through an encrypted SSH connection.
+
+```text
+Application
+
+↓
+
+SSH Tunnel
+
+↓
+
+Encrypted Network
+
+↓
+
+Remote Server
+```
+
+Benefits:
+
+- Protects traffic over untrusted networks
+- Encrypts otherwise unencrypted protocols
+- Bypasses insecure intermediate networks
+- Enables secure administrative access
+
+---
+
+# Types of Port Forwarding
+
+SSH supports three primary forwarding methods.
+
+| Type | Purpose |
+|------|----------|
+| Local Port Forwarding | Local machine accesses remote service |
+| Remote Port Forwarding | Remote system accesses local service |
+| Dynamic Port Forwarding | SOCKS proxy |
+
+---
+
+# Local Port Forwarding
+
+Local forwarding redirects a local port to a service on the remote network.
+
+```text
+Browser
+
+↓
+
+localhost:8080
+
+↓
+
+SSH Tunnel
+
+↓
+
+Remote Web Server
+
+↓
+
+Port 80
+```
+
+Example:
+
+```bash
+ssh -L 8080:localhost:80 user@server
+```
+
+After connecting:
+
+```text
+http://localhost:8080
+```
+
+accesses the remote web service securely.
+
+---
+
+# Enterprise Example
+
+Database access:
+
+```text
+Administrator Laptop
+
+↓
+
+SSH Tunnel
+
+↓
+
+Database Server
+
+↓
+
+3306
+```
+
+Instead of exposing the database to the Internet, administrators access it through an encrypted tunnel.
+
+---
+
+# Remote Port Forwarding
+
+Remote forwarding exposes a local service through the remote server.
+
+```text
+Local Service
+
+↓
+
+SSH Tunnel
+
+↓
+
+Remote Server
+
+↓
+
+Accessible Remotely
+```
+
+Example:
+
+```bash
+ssh -R 9090:localhost:8080 user@server
+```
+
+Common use cases:
+
+- Remote support
+- Development
+- Demonstrations
+- Temporary service exposure
+
+Only enable remote forwarding where organizational policy permits.
+
+---
+
+# Dynamic Port Forwarding
+
+Dynamic forwarding creates a SOCKS proxy.
+
+```text
+Browser
+
+↓
+
+SOCKS Proxy
+
+↓
+
+SSH Tunnel
+
+↓
+
+Internet
+```
+
+Example:
+
+```bash
+ssh -D 1080 user@server
+```
+
+Applications configured to use the SOCKS proxy send their traffic through the encrypted tunnel.
+
+---
+
+# Port Forwarding Comparison
+
+| Type | Purpose |
+|------|----------|
+| Local (-L) | Access remote services locally |
+| Remote (-R) | Expose local services remotely |
+| Dynamic (-D) | General-purpose SOCKS proxy |
+
+---
+
+# Secure Tunneling Workflow
+
+```text
+Client
+
+↓
+
+Encrypted Tunnel
+
+↓
+
+SSH Server
+
+↓
+
+Protected Service
+```
+
+---
+
+# Executing Remote Commands
+
+Run a command:
+
+```bash
+ssh user@server "hostname"
+```
+
+Check uptime:
+
+```bash
+ssh user@server "uptime"
+```
+
+Check disk usage:
+
+```bash
+ssh user@server "df -h"
+```
+
+This is commonly used by:
+
+- Automation tools
+- Monitoring systems
+- Configuration management platforms
+
+---
+
+# Running Multiple Commands
+
+Example:
+
+```bash
+ssh user@server "hostname && uptime && who"
+```
+
+Useful for quick diagnostics.
+
+---
+
+# Agent Forwarding
+
+SSH Agent Forwarding allows a remote system to use authentication from the local SSH agent without copying the private key.
+
+```text
+Laptop
+
+↓
+
+SSH Agent
+
+↓
+
+Remote Server
+
+↓
+
+Second Server
+```
+
+Example:
+
+```bash
+ssh -A user@server
+```
+
+---
+
+# Agent Forwarding Considerations
+
+Advantages:
+
+- No private key copied
+- Convenient for jump hosts
+- Supports administrative workflows
+
+Risks:
+
+- If the intermediate host is compromised, forwarded authentication may be abused during the active session.
+
+Best Practice:
+
+Use agent forwarding only when necessary and only through trusted systems.
+
+---
+
+# Connection Multiplexing
+
+SSH can reuse an existing connection.
+
+Benefits:
+
+- Faster subsequent connections
+- Reduced authentication overhead
+- Improved automation performance
+
+---
+
+# Multiplexing Workflow
+
+```text
+First SSH Session
+
+↓
+
+Master Connection
+
+↓
+
+Second Session
+
+↓
+
+Reuse Existing Connection
+```
+
+---
+
+# Example Client Configuration
+
+```text
+Host *
+
+ControlMaster auto
+ControlPersist 10m
+ControlPath ~/.ssh/cm-%r@%h:%p
+```
+
+Benefits:
+
+- Faster repeated connections
+- Reduced login delays
+- Improved scripting performance
+
+---
+
+# Keepalive Messages
+
+Client keepalive:
+
+```text
+ServerAliveInterval 60
+```
+
+Server keepalive:
+
+```text
+ClientAliveInterval 300
+```
+
+These settings help detect broken connections and clean up stale sessions.
+
+---
+
+# SSH Hardening
+
+A secure SSH deployment typically includes:
+
+- Public key authentication
+- Strong cryptographic algorithms
+- Restricted administrative access
+- Firewall protection
+- Monitoring
+- Logging
+- Multi-factor authentication (where supported)
+
+---
+
+# SSH Hardening Workflow
+
+```text
+Install
+
+↓
+
+Configure
+
+↓
+
+Restrict Access
+
+↓
+
+Disable Weak Authentication
+
+↓
+
+Monitor
+
+↓
+
+Audit
+```
+
+---
+
+# Common Hardening Measures
+
+| Measure | Benefit |
+|----------|----------|
+| Disable direct root login | Reduces privileged attack surface |
+| Use public keys | Stronger authentication |
+| Limit users | Reduces unauthorized access |
+| Restrict groups | Simplifies access control |
+| Limit authentication attempts | Mitigates brute-force attacks |
+| Use firewalls | Limits network exposure |
+| Monitor logs | Detects suspicious activity |
+
+---
+
+# SSH Logging
+
+SSH events are typically written to:
+
+Ubuntu/Debian:
+
+```text
+/var/log/auth.log
+```
+
+RHEL-family:
+
+```text
+/var/log/secure
+```
+
+Using `journalctl` on systems with systemd:
+
+```bash
+journalctl -u ssh
+```
+
+or
+
+```bash
+journalctl -u sshd
+```
+
+depending on the distribution.
+
+---
+
+# Monitoring Failed Logins
+
+Ubuntu:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+Look for:
+
+- Repeated failures
+- Unknown usernames
+- Unusual source IP addresses
+- Activity outside normal maintenance windows
+
+---
+
+# Common SSH Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Connection refused | SSH service not running or firewall blocking access |
+| Permission denied | Authentication failure |
+| Host key changed | Server replacement or possible impersonation |
+| Timeout | Network or firewall issue |
+| Key ignored | Incorrect permissions or configuration |
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Cannot Connect
+
+↓
+
+Ping
+
+↓
+
+SSH Service Running?
+
+↓
+
+Port Listening?
+
+↓
+
+Firewall Rules?
+
+↓
+
+Authentication?
+
+↓
+
+Logs
+
+↓
+
+Resolved
+```
+
+---
+
+# Useful Troubleshooting Commands
+
+Check service:
+
+```bash
+systemctl status ssh
+```
+
+or
+
+```bash
+systemctl status sshd
+```
+
+Check listening ports:
+
+```bash
+ss -tulpn | grep ssh
+```
+
+Verbose client output:
+
+```bash
+ssh -vvv user@server
+```
+
+Inspect logs:
+
+```bash
+journalctl -u ssh
+```
+
+or:
+
+```bash
+journalctl -u sshd
+```
+
+---
+
+# Host Key Changes
+
+When connecting, you may receive a warning similar to:
+
+```text
+WARNING:
+REMOTE HOST IDENTIFICATION HAS CHANGED!
+```
+
+Possible reasons:
+
+- Server reinstalled
+- Host keys regenerated
+- DNS points to a different server
+- Possible man-in-the-middle attack
+
+Always verify the new host key through a trusted channel before accepting it.
+
+---
+
+# SSH Security Risks
+
+Attackers commonly target SSH using:
+
+- Brute-force attacks
+- Password spraying
+- Credential theft
+- Compromised private keys
+- Exploitation of weak configurations
+
+Defensive controls include:
+
+- Strong authentication
+- Network restrictions
+- Logging
+- Multi-factor authentication
+- Key rotation
+
+---
+
+# Enterprise SSH Architecture
+
+```text
+Administrator
+
+↓
+
+VPN
+
+↓
+
+Bastion Host
+
+↓
+
+Production SSH Gateway
+
+↓
+
+Application Servers
+
+↓
+
+Database Servers
+```
+
+Benefits:
+
+- Centralized administration
+- Auditability
+- Reduced exposure
+- Easier access control
+
+---
+
+# Secure Administrative Workflow
+
+```text
+Administrator
+
+↓
+
+VPN
+
+↓
+
+SSH Key Authentication
+
+↓
+
+Bastion
+
+↓
+
+Production Server
+
+↓
+
+Audit Logs
+```
+
+---
+
+# DevOps and Automation
+
+SSH is widely used by:
+
+- Ansible
+- Git
+- CI/CD pipelines
+- Backup systems
+- Monitoring platforms
+- Configuration management tools
+
+Automation generally relies on key-based authentication rather than interactive passwords.
+
+---
+
+# Cybersecurity Perspective
+
+SSH is one of the most frequently targeted services on Internet-facing Linux servers.
+
+Proper hardening:
+
+- Limits brute-force attacks
+- Protects administrator credentials
+- Reduces attack surface
+- Supports secure incident response
+- Enables secure automation
+
+---
+
+# Business Impact
+
+Secure SSH administration helps organizations:
+
+- Protect critical infrastructure
+- Enable secure remote operations
+- Reduce credential compromise
+- Improve compliance
+- Support business continuity
+- Simplify operational management
+
+---
+
+# Enterprise Best Practices
+
+- Use public key authentication instead of passwords where organizational policy permits.
+- Restrict SSH access using firewalls and trusted networks.
+- Disable direct root logins.
+- Review authentication logs regularly.
+- Protect private keys with strong passphrases.
+- Rotate SSH keys periodically.
+- Use bastion hosts for production systems.
+- Enable multi-factor authentication where supported.
+- Limit access to authorized users and groups.
+- Audit SSH configurations on a regular schedule.
+
+---
+
+# Key Takeaways
+
+- SSH tunneling securely transports application traffic.
+- Local, remote, and dynamic port forwarding serve different use cases.
+- Agent forwarding should be used carefully and only with trusted hosts.
+- Connection multiplexing improves efficiency for repeated connections.
+- Logging and monitoring are essential for detecting unauthorized access attempts.
+- SSH hardening significantly strengthens enterprise Linux security.
+
+---
+
