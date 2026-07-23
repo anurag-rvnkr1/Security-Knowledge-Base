@@ -1715,3 +1715,965 @@ Strong operating system security:
 
 ---
 
+# 18 - Linux Security
+
+# Part 3 — Security Monitoring, Malware & Rootkits, Vulnerability Management, System Hardening, Incident Response, Enterprise Security Practices, and Compliance
+
+---
+
+# Introduction
+
+Even a properly configured Linux server is **never "finished" from a security perspective**.
+
+New vulnerabilities, configuration drift, software updates, insider threats, and evolving attack techniques require continuous monitoring and improvement.
+
+Enterprise security follows a continuous cycle:
+
+```text
+Protect
+
+↓
+
+Monitor
+
+↓
+
+Detect
+
+↓
+
+Investigate
+
+↓
+
+Respond
+
+↓
+
+Recover
+
+↓
+
+Improve
+```
+
+---
+
+# Security Monitoring
+
+Security monitoring is the continuous observation of systems to identify:
+
+- Unauthorized access
+- Malware activity
+- Suspicious processes
+- Configuration changes
+- Network attacks
+- Privilege escalation
+- Data exfiltration attempts
+
+Monitoring combines:
+
+- Logs
+- Metrics
+- Alerts
+- Threat intelligence
+- Human analysis
+
+---
+
+# Security Monitoring Architecture
+
+```text
+Linux Servers
+
+↓
+
+System Logs
+
+↓
+
+Authentication Logs
+
+↓
+
+Firewall Logs
+
+↓
+
+Application Logs
+
+↓
+
+Central Log Server
+
+↓
+
+SIEM
+
+↓
+
+SOC Analysts
+
+↓
+
+Incident Response
+```
+
+---
+
+# What Should Be Monitored?
+
+Enterprise Linux systems should monitor:
+
+| Category | Examples |
+|-----------|----------|
+| Authentication | Failed logins, root logins |
+| Processes | Unknown processes |
+| Files | Critical configuration changes |
+| Services | Unexpected service starts/stops |
+| Users | Account creation/deletion |
+| Network | New listening ports |
+| Kernel | Panic, hardware issues |
+| Packages | Unauthorized software changes |
+
+---
+
+# Important Security Logs
+
+| Log | Purpose |
+|------|----------|
+| `/var/log/auth.log` | Authentication (Debian/Ubuntu) |
+| `/var/log/secure` | Authentication (RHEL family) |
+| `journalctl` | Systemd journal |
+| `/var/log/syslog` | General system log |
+| `/var/log/messages` | General system log (distribution dependent) |
+| `/var/log/kern.log` | Kernel events (where available) |
+| `/var/log/audit/audit.log` | Linux Audit Framework logs |
+
+---
+
+# Daily Security Review
+
+A security administrator should routinely review:
+
+```text
+Authentication
+
+↓
+
+Privilege Escalation
+
+↓
+
+Service Changes
+
+↓
+
+Configuration Changes
+
+↓
+
+Firewall Events
+
+↓
+
+Critical Errors
+```
+
+---
+
+# Detecting Suspicious Logins
+
+Useful commands:
+
+Current users:
+
+```bash
+who
+```
+
+Login history:
+
+```bash
+last
+```
+
+Failed logins:
+
+```bash
+lastb
+```
+
+Current SSH sessions:
+
+```bash
+ss -tnp | grep ssh
+```
+
+---
+
+# Monitoring Running Processes
+
+List processes:
+
+```bash
+ps aux
+```
+
+Interactive monitoring:
+
+```bash
+top
+```
+
+Or:
+
+```bash
+htop
+```
+
+Look for:
+
+- Unknown binaries
+- Unexpected parent processes
+- High CPU usage
+- High memory usage
+- Processes running as root unexpectedly
+
+---
+
+# Monitoring Open Network Ports
+
+Display listening ports:
+
+```bash
+ss -tuln
+```
+
+Display associated processes:
+
+```bash
+ss -tulpn
+```
+
+Questions to ask:
+
+- Is this service expected?
+- Who started it?
+- Is it publicly exposed?
+- Is encryption enabled where appropriate?
+
+---
+
+# Monitoring File Changes
+
+Critical files include:
+
+```text
+/etc/passwd
+
+/etc/shadow
+
+/etc/group
+
+/etc/sudoers
+
+/etc/ssh/sshd_config
+```
+
+Unexpected modifications should be investigated immediately.
+
+---
+
+# File Integrity Monitoring (FIM)
+
+File Integrity Monitoring detects unauthorized changes.
+
+Workflow:
+
+```text
+Baseline
+
+↓
+
+Monitor
+
+↓
+
+Detect Change
+
+↓
+
+Alert
+
+↓
+
+Investigate
+```
+
+Common uses:
+
+- Compliance
+- Malware detection
+- Insider threat detection
+- Configuration monitoring
+
+---
+
+# Malware on Linux
+
+Although Linux experiences fewer malware infections than some desktop operating systems, it is **not immune**.
+
+Examples include:
+
+- Cryptocurrency miners
+- Web shells
+- Backdoors
+- Remote Access Trojans (RATs)
+- Worms
+- Ransomware
+- Botnet malware
+
+---
+
+# Malware Infection Chain
+
+```text
+Initial Access
+
+↓
+
+Execution
+
+↓
+
+Persistence
+
+↓
+
+Privilege Escalation
+
+↓
+
+Credential Access
+
+↓
+
+Lateral Movement
+
+↓
+
+Impact
+```
+
+---
+
+# Indicators of Malware
+
+Possible indicators include:
+
+- Unexpected CPU usage
+- High network traffic
+- Unknown services
+- New scheduled jobs
+- Suspicious user accounts
+- Disabled security tools
+- Unexpected outbound connections
+
+These indicators require investigation but are not, by themselves, proof of malware.
+
+---
+
+# Rootkits
+
+A rootkit attempts to hide malicious activity by modifying or interfering with the operating system.
+
+Objectives may include:
+
+- Hiding processes
+- Hiding files
+- Hiding network connections
+- Maintaining persistence
+- Avoiding detection
+
+---
+
+# Rootkit Risks
+
+```text
+Attacker
+
+↓
+
+Privilege Escalation
+
+↓
+
+Rootkit Installed
+
+↓
+
+Persistence
+
+↓
+
+Hidden Activity
+```
+
+---
+
+# Detecting Rootkits
+
+Common approaches:
+
+- File integrity monitoring
+- Offline forensic analysis
+- Secure boot verification
+- Kernel module inspection
+- Specialized detection tools
+
+Examples of commonly used tools include:
+
+- `rkhunter`
+- `chkrootkit`
+
+These tools help identify suspicious indicators but should not be considered definitive proof of compromise.
+
+---
+
+# Kernel Module Inspection
+
+Loaded modules:
+
+```bash
+lsmod
+```
+
+Module details:
+
+```bash
+modinfo module_name
+```
+
+Investigate unexpected or unsigned modules according to organizational policy.
+
+---
+
+# Vulnerability Management
+
+Vulnerability management is an ongoing process.
+
+```text
+Discover
+
+↓
+
+Assess
+
+↓
+
+Prioritize
+
+↓
+
+Patch
+
+↓
+
+Verify
+
+↓
+
+Monitor
+```
+
+---
+
+# Types of Vulnerabilities
+
+| Category | Examples |
+|-----------|----------|
+| Kernel | Privilege escalation |
+| Application | Remote code execution |
+| Libraries | Memory corruption |
+| Configuration | Weak permissions |
+| Network | Exposed services |
+| Authentication | Weak credentials |
+
+---
+
+# Vulnerability Assessment
+
+A vulnerability assessment identifies security weaknesses before attackers do.
+
+Typical workflow:
+
+```text
+Asset Inventory
+
+↓
+
+Scan
+
+↓
+
+Validate Findings
+
+↓
+
+Prioritize
+
+↓
+
+Remediate
+
+↓
+
+Rescan
+```
+
+---
+
+# Patch Management
+
+Regular updates reduce exposure to known vulnerabilities.
+
+Typical process:
+
+```text
+Identify Updates
+
+↓
+
+Test
+
+↓
+
+Approve
+
+↓
+
+Deploy
+
+↓
+
+Verify
+
+↓
+
+Document
+```
+
+Testing updates before production deployment helps reduce operational risk.
+
+---
+
+# Security Hardening
+
+Hardening reduces the attack surface of a system.
+
+Examples include:
+
+- Remove unnecessary packages
+- Disable unused services
+- Restrict remote access
+- Enforce strong authentication
+- Configure firewalls
+- Enable Mandatory Access Control
+- Apply security updates
+- Limit administrative access
+
+---
+
+# Hardening Workflow
+
+```text
+Install
+
+↓
+
+Update
+
+↓
+
+Remove Unused Software
+
+↓
+
+Secure Configuration
+
+↓
+
+Enable Monitoring
+
+↓
+
+Regular Audits
+```
+
+---
+
+# Backup Strategy
+
+Security includes recoverability.
+
+Recommended practices:
+
+- Regular backups
+- Encryption where appropriate
+- Off-site or geographically separate copies
+- Backup verification
+- Periodic recovery testing
+
+---
+
+# Incident Response
+
+Incident response is the structured process of handling security events.
+
+Typical phases:
+
+```text
+Preparation
+
+↓
+
+Detection
+
+↓
+
+Analysis
+
+↓
+
+Containment
+
+↓
+
+Eradication
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+```
+
+---
+
+# Example Incident Workflow
+
+```text
+SIEM Alert
+
+↓
+
+SOC Investigation
+
+↓
+
+Collect Evidence
+
+↓
+
+Contain Threat
+
+↓
+
+Remove Malware
+
+↓
+
+Recover System
+
+↓
+
+Review Incident
+```
+
+---
+
+# Digital Forensics
+
+Forensics focuses on preserving and analyzing evidence.
+
+Potential evidence sources:
+
+- Logs
+- Memory captures
+- Disk images
+- Network captures
+- Audit records
+- Authentication history
+
+Evidence handling should follow organizational and legal requirements.
+
+---
+
+# Enterprise Security Architecture
+
+```text
+Users
+
+↓
+
+Authentication
+
+↓
+
+Linux Servers
+
+↓
+
+Logging
+
+↓
+
+SIEM
+
+↓
+
+SOC
+
+↓
+
+Incident Response
+
+↓
+
+Compliance
+```
+
+---
+
+# Compliance
+
+Many organizations must comply with security standards.
+
+Examples include:
+
+| Standard | Purpose |
+|-----------|----------|
+| ISO/IEC 27001 | Information Security Management |
+| PCI DSS | Payment card security |
+| HIPAA | Healthcare data protection (US) |
+| GDPR | Personal data protection (EU) |
+| CIS Benchmarks | Secure configuration guidance |
+| NIST Cybersecurity Framework | Security risk management |
+
+Applicable requirements depend on the organization and jurisdiction.
+
+---
+
+# Security Auditing
+
+Regular audits evaluate:
+
+- User accounts
+- Permissions
+- Services
+- Firewall rules
+- Installed packages
+- Security configurations
+- Logging
+- Patch status
+
+Audits help identify deviations from security policy.
+
+---
+
+# Enterprise Security Dashboard
+
+```text
+Security Dashboard
+
+├── Authentication Events
+
+├── Critical Alerts
+
+├── Vulnerability Status
+
+├── Patch Compliance
+
+├── File Integrity
+
+├── Endpoint Health
+
+├── Firewall Activity
+
+├── Malware Alerts
+
+├── Audit Status
+
+└── Incident Queue
+```
+
+---
+
+# Enterprise Example
+
+## Detecting an Unauthorized Service
+
+```text
+Monitoring Alert
+
+↓
+
+Unexpected Listening Port
+
+↓
+
+Review Process
+
+↓
+
+Identify Binary
+
+↓
+
+Verify Package
+
+↓
+
+Contain
+
+↓
+
+Remove
+
+↓
+
+Review Logs
+```
+
+---
+
+# Enterprise Example
+
+## Investigating a Suspicious Login
+
+```text
+Failed Logins
+
+↓
+
+Successful Login
+
+↓
+
+Privilege Escalation
+
+↓
+
+Configuration Change
+
+↓
+
+Evidence Collection
+
+↓
+
+Incident Response
+```
+
+---
+
+# Enterprise Example
+
+## Responding to Malware
+
+```text
+Detection
+
+↓
+
+Isolate Host
+
+↓
+
+Collect Logs
+
+↓
+
+Acquire Evidence
+
+↓
+
+Remove Malware
+
+↓
+
+Patch System
+
+↓
+
+Restore Services
+
+↓
+
+Monitor Closely
+```
+
+---
+
+# Cybersecurity Perspective
+
+Linux security is built on multiple complementary controls.
+
+A mature security program combines:
+
+- Least privilege
+- Defense in depth
+- Secure configuration
+- Continuous monitoring
+- Vulnerability management
+- Incident response
+- Regular auditing
+- Ongoing improvement
+
+No single control can stop every attack.
+
+---
+
+# Business Impact
+
+Strong Linux security helps organizations:
+
+- Protect critical assets
+- Reduce downtime
+- Meet compliance requirements
+- Lower breach costs
+- Improve customer trust
+- Increase operational resilience
+- Support business continuity
+
+---
+
+# Enterprise Best Practices
+
+- Apply security updates promptly after appropriate testing.
+- Enable centralized logging and monitoring.
+- Enforce least privilege across users and services.
+- Monitor privileged activity continuously.
+- Review critical configuration files regularly.
+- Conduct periodic vulnerability assessments.
+- Maintain tested backups and recovery procedures.
+- Document incident response procedures.
+- Perform routine security audits.
+- Continuously improve security controls based on lessons learned.
+
+---
+
+# Key Takeaways
+
+- Security monitoring enables early detection of threats.
+- Malware and rootkits require layered detection and response.
+- Vulnerability management is a continuous lifecycle.
+- System hardening reduces the attack surface.
+- Incident response and forensics are essential for effective recovery.
+- Compliance frameworks help organizations establish and maintain strong security practices.
+
+---
+
