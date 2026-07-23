@@ -2219,3 +2219,836 @@ Reliable DHCP security contributes directly to enterprise resilience.
 - DHCP Snooping integrates with **Dynamic ARP Inspection (DAI)** and **IP Source Guard** to strengthen Layer 2 security.
 - Modern virtualization platforms and cloud providers automate IP address management, though implementation details differ from traditional on-premises DHCP.
 
+# 10 - Dynamic Host Configuration Protocol (DHCP)
+
+# Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+Deploying DHCP is only one aspect of enterprise network management.
+
+Network engineers and cybersecurity professionals must also be able to:
+
+- Verify DHCP operation
+- Analyze DHCP packets
+- Detect malicious DHCP activity
+- Troubleshoot lease failures
+- Monitor DHCP infrastructure
+- Investigate security incidents
+- Validate enterprise deployments
+
+This section combines operational networking with security monitoring and incident response.
+
+---
+
+# DHCP Packet Analysis
+
+DHCP is based on the BOOTP message format and exchanges several message types between clients and servers.
+
+A typical DHCP packet contains fields such as:
+
+| Field | Description |
+|--------|-------------|
+| Operation (Op) | Boot Request or Boot Reply |
+| Hardware Type | Ethernet (1) |
+| Hardware Address Length | Usually 6 bytes for MAC addresses |
+| Transaction ID (XID) | Identifies the DHCP transaction |
+| Client IP Address (CIADDR) | Existing client address (if any) |
+| Your IP Address (YIADDR) | IP address offered to the client |
+| Server IP Address (SIADDR) | DHCP server address |
+| Gateway IP Address (GIADDR) | Relay agent address |
+| Client Hardware Address (CHADDR) | Client MAC address |
+| DHCP Options | Additional configuration parameters |
+
+---
+
+# DORA Packet Flow
+
+The complete DHCP exchange follows the DORA sequence.
+
+```
+Client
+
+↓
+
+DHCP Discover
+
+↓
+
+DHCP Server
+
+↓
+
+DHCP Offer
+
+↓
+
+Client
+
+↓
+
+DHCP Request
+
+↓
+
+DHCP Server
+
+↓
+
+DHCP ACK
+
+↓
+
+Client Configures Interface
+```
+
+Each stage can be observed using packet capture tools such as Wireshark.
+
+---
+
+# DHCP Discover
+
+Characteristics:
+
+- Broadcast
+- Source IP: `0.0.0.0`
+- Destination IP: `255.255.255.255`
+- Client has no usable IPv4 address yet
+- Requests available DHCP servers
+
+---
+
+# DHCP Offer
+
+The server responds with:
+
+- Proposed IP address
+- Lease duration
+- Default gateway
+- DNS servers
+- Subnet mask
+- Additional DHCP options
+
+If multiple DHCP servers respond, the client selects one offer.
+
+---
+
+# DHCP Request
+
+The client requests the selected lease.
+
+Purpose:
+
+- Accept one DHCP Offer
+- Inform other DHCP servers that their offers are declined
+- Continue the lease process
+
+---
+
+# DHCP ACK
+
+The server confirms:
+
+- Lease assignment
+- Configuration parameters
+- Lease timers
+
+The client then configures its network interface.
+
+---
+
+# Wireshark Analysis
+
+## Display Filter
+
+```text
+dhcp
+```
+
+or
+
+```text
+bootp
+```
+
+(Because DHCP uses the BOOTP protocol format.)
+
+---
+
+# Typical Packet Sequence
+
+```
+Frame 1
+
+DHCP Discover
+
+↓
+
+Frame 2
+
+DHCP Offer
+
+↓
+
+Frame 3
+
+DHCP Request
+
+↓
+
+Frame 4
+
+DHCP ACK
+```
+
+A successful DORA exchange should contain these four messages in order.
+
+---
+
+# Useful Wireshark Fields
+
+During analysis, examine:
+
+- Transaction ID (XID)
+- Client MAC address
+- Offered IP address
+- DHCP Server Identifier
+- Lease Time
+- Option 3 (Default Gateway)
+- Option 6 (DNS Server)
+- Option 15 (Domain Name)
+- Option 51 (Lease Duration)
+- Option 54 (Server Identifier)
+- Option 82 (if used)
+
+---
+
+# Cisco IOS Verification
+
+Display DHCP bindings:
+
+```text
+show ip dhcp binding
+```
+
+Display DHCP pool statistics:
+
+```text
+show ip dhcp pool
+```
+
+Display DHCP conflicts:
+
+```text
+show ip dhcp conflict
+```
+
+Display DHCP server statistics:
+
+```text
+show ip dhcp server statistics
+```
+
+Display relay configuration:
+
+```text
+show running-config | include helper-address
+```
+
+Display DHCP Snooping information:
+
+```text
+show ip dhcp snooping
+```
+
+Display DHCP Snooping bindings:
+
+```text
+show ip dhcp snooping binding
+```
+
+These commands help verify both DHCP services and associated security features.
+
+---
+
+# Linux Verification
+
+Display interface configuration:
+
+```bash
+ip addr
+```
+
+Display routing table:
+
+```bash
+ip route
+```
+
+Display DNS configuration:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Request a new DHCP lease (client implementation dependent):
+
+```bash
+sudo dhclient
+```
+
+Release an existing lease:
+
+```bash
+sudo dhclient -r
+```
+
+Capture DHCP traffic:
+
+```bash
+sudo tcpdump -i eth0 port 67 or port 68
+```
+
+---
+
+# Windows Verification
+
+Display full network configuration:
+
+```cmd
+ipconfig /all
+```
+
+Release the current lease:
+
+```cmd
+ipconfig /release
+```
+
+Request a new lease:
+
+```cmd
+ipconfig /renew
+```
+
+Display DNS cache:
+
+```cmd
+ipconfig /displaydns
+```
+
+Flush DNS cache:
+
+```cmd
+ipconfig /flushdns
+```
+
+---
+
+# Enterprise Troubleshooting Workflow
+
+When a client fails to obtain an IP address:
+
+```
+Verify Physical Connectivity
+
+↓
+
+Verify Switch Port Status
+
+↓
+
+Verify VLAN Assignment
+
+↓
+
+Check DHCP Scope Availability
+
+↓
+
+Verify DHCP Server Health
+
+↓
+
+Verify Relay Agent
+
+↓
+
+Capture DHCP Traffic
+
+↓
+
+Review DHCP Logs
+
+↓
+
+Validate Client Configuration
+
+↓
+
+Test Again
+```
+
+Following a structured process helps isolate issues efficiently.
+
+---
+
+# Troubleshooting Scenario 1
+
+## Symptom
+
+A new laptop receives an **APIPA address (169.254.x.x)**.
+
+### Investigation
+
+Verify:
+
+- DHCP server availability
+- Switch connectivity
+- VLAN membership
+- Relay configuration
+- DHCP scope capacity
+
+Possible causes include:
+
+- DHCP server unavailable
+- Relay misconfiguration
+- Exhausted address pool
+- Broadcast not reaching the server
+
+---
+
+# Troubleshooting Scenario 2
+
+## Symptom
+
+Users receive incorrect DNS server addresses.
+
+Possible causes:
+
+- Incorrect DHCP scope options
+- Rogue DHCP server
+- Configuration changes
+- Scope inheritance issues
+
+Actions:
+
+- Inspect DHCP options.
+- Capture DORA traffic.
+- Verify the DHCP Server Identifier.
+- Review switch logs.
+
+---
+
+# Troubleshooting Scenario 3
+
+## Symptom
+
+Users at a remote branch cannot obtain addresses.
+
+Verify:
+
+- WAN connectivity
+- Relay agent configuration
+- Firewall rules
+- UDP ports 67 and 68
+- DHCP server reachability
+
+---
+
+# Practical Lab 1 — Observe the DORA Process
+
+Topology:
+
+```
+Client
+
+↓
+
+Switch
+
+↓
+
+DHCP Server
+```
+
+Tasks:
+
+1. Start Wireshark.
+2. Release the existing DHCP lease.
+3. Renew the lease.
+4. Capture the DORA sequence.
+5. Identify:
+   - Transaction ID
+   - Offered IP address
+   - Lease duration
+   - Default gateway
+   - DNS server
+
+---
+
+# Practical Lab 2 — Configure DHCP Relay
+
+Topology:
+
+```
+Client
+
+↓
+
+Access Switch
+
+↓
+
+Router
+
+↓
+
+DHCP Server
+```
+
+Tasks:
+
+1. Configure the router as a DHCP relay.
+2. Verify `ip helper-address`.
+3. Renew the client lease.
+4. Confirm successful address assignment.
+
+---
+
+# Practical Lab 3 — DHCP Snooping
+
+Requirements:
+
+- Managed switch
+- DHCP Snooping enabled
+
+Tasks:
+
+1. Configure trusted and untrusted interfaces.
+2. Verify the DHCP Snooping binding table.
+3. Attempt to introduce a rogue DHCP server in a controlled lab.
+4. Confirm that unauthorized DHCP Offers are blocked.
+
+---
+
+# Practical Lab 4 — DHCP Starvation (Controlled Lab)
+
+**Warning:** Perform only in an isolated lab environment.
+
+Tasks:
+
+1. Generate multiple DHCP Discover messages with spoofed MAC addresses.
+2. Observe lease allocation.
+3. Enable DHCP Snooping and rate limiting.
+4. Verify that the attack is mitigated.
+
+The purpose of this lab is to understand defensive controls, not to attack production systems.
+
+---
+
+# SOC Detection Engineering
+
+Security Operations Centers (SOCs) should monitor for:
+
+- DHCP starvation attempts
+- Rogue DHCP servers
+- Unusual lease activity
+- Address pool exhaustion
+- Frequent DHCP Decline messages
+- Unexpected DHCP Server Identifiers
+
+Correlating DHCP events with switch logs and endpoint telemetry improves detection accuracy.
+
+---
+
+# SIEM Detection Ideas
+
+Example 1:
+
+```
+IF
+
+DHCP Server Identifier
+
+↓
+
+Not Approved
+
+↓
+
+Generate High-Severity Alert
+```
+
+Example 2:
+
+```
+IF
+
+Hundreds of DHCP Discover Messages
+
+↓
+
+Single Switch Port
+
+↓
+
+Short Time Window
+
+↓
+
+Generate Starvation Alert
+```
+
+Example 3:
+
+```
+IF
+
+Address Pool Utilization
+
+>
+
+90%
+
+↓
+
+Notify Network Operations
+```
+
+---
+
+# Zeek Monitoring
+
+Zeek can provide visibility into:
+
+- DHCP transactions
+- Assigned IP addresses
+- Client MAC addresses
+- Lease activity
+- Server identifiers
+
+This information can be correlated with authentication, DNS, and endpoint logs for comprehensive investigations.
+
+---
+
+# Suricata Monitoring
+
+Depending on deployment architecture, Suricata can help identify:
+
+- Rogue DHCP servers
+- Abnormal DHCP traffic
+- Broadcast anomalies
+- Policy violations
+
+Alerts should be validated using packet captures and infrastructure logs before concluding that malicious activity has occurred.
+
+---
+
+# Enterprise Best Practices
+
+- Use redundant DHCP servers.
+- Implement DHCP failover where supported.
+- Configure relay agents correctly.
+- Enable DHCP Snooping on access switches.
+- Mark only legitimate infrastructure ports as trusted.
+- Monitor lease utilization.
+- Use reservations for critical infrastructure.
+- Document scopes, exclusions, and options.
+- Integrate DHCP logs with SIEM platforms.
+- Regularly audit DHCP configurations.
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A multinational organization reports that new employees cannot join the corporate network.
+
+### Investigation
+
+Network engineers discover:
+
+- DHCP scope utilization has reached 100%.
+- A compromised endpoint generated thousands of DHCP Discover messages.
+- DHCP Snooping was disabled on one access switch.
+
+### Resolution
+
+- Isolate the compromised endpoint.
+- Reclaim expired leases.
+- Enable DHCP Snooping and rate limiting.
+- Expand the DHCP scope after capacity planning.
+- Review switch security configurations.
+- Monitor for recurring anomalies.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is DHCP?
+
+DHCP (Dynamic Host Configuration Protocol) automatically assigns IP configuration to network devices.
+
+---
+
+### What does DORA stand for?
+
+- Discover
+- Offer
+- Request
+- Acknowledge
+
+---
+
+### Which transport protocol and ports does DHCP use?
+
+DHCP uses **UDP**:
+
+- Server: UDP 67
+- Client: UDP 68
+
+---
+
+## Intermediate
+
+### What is a DHCP lease?
+
+A lease is the temporary assignment of an IP address and related configuration to a client.
+
+---
+
+### What is a DHCP relay agent?
+
+A DHCP relay agent forwards DHCP requests between clients and servers on different IP subnets.
+
+---
+
+### What is DHCP Snooping?
+
+DHCP Snooping is a Layer 2 security feature that prevents rogue DHCP servers and builds trusted IP-to-MAC binding tables.
+
+---
+
+## Advanced
+
+### Explain a DHCP starvation attack.
+
+A DHCP starvation attack exhausts the available address pool by sending numerous DHCP Discover messages with spoofed MAC addresses, preventing legitimate clients from obtaining leases.
+
+---
+
+### How would you troubleshoot a client that receives an APIPA address?
+
+A strong answer should include:
+
+1. Verify physical connectivity.
+2. Check VLAN assignment.
+3. Confirm DHCP server availability.
+4. Validate relay configuration.
+5. Inspect DHCP scope capacity.
+6. Capture DORA traffic.
+7. Review switch and server logs.
+
+---
+
+### How would you secure DHCP in an enterprise?
+
+A comprehensive response should mention:
+
+- DHCP Snooping
+- Rate limiting
+- Trusted/untrusted ports
+- Reservations for critical devices
+- Relay validation
+- High Availability
+- Continuous monitoring
+- SIEM integration
+- Regular audits
+
+---
+
+# References
+
+## RFCs
+
+- RFC 2131 — Dynamic Host Configuration Protocol
+- RFC 2132 — DHCP Options and BOOTP Vendor Extensions
+- RFC 3315 (Obsoleted by RFC 8415) — DHCP for IPv6
+- RFC 8415 — DHCP for IPv6 (Current Specification)
+
+## Organizations
+
+- IETF
+- IEEE
+- NIST
+- CIS
+
+---
+
+# Summary
+
+DHCP is a foundational enterprise service that automates IP address allocation and network configuration. Understanding lease management, relay agents, security mechanisms such as DHCP Snooping, and enterprise troubleshooting techniques enables administrators to deploy scalable, resilient, and secure networks. Continuous monitoring and integration with broader security controls are essential for protecting DHCP infrastructure against operational failures and malicious activity.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ DHCP fundamentals and architecture
+
+✔ DORA process
+
+✔ Lease lifecycle (T1, T2, expiration)
+
+✔ DHCP scopes, exclusions, and reservations
+
+✔ DHCP relay agents
+
+✔ DHCP options
+
+✔ DHCPv6 and SLAAC concepts
+
+✔ High Availability and failover
+
+✔ DHCP starvation and rogue DHCP attacks
+
+✔ DHCP Snooping and Option 82
+
+✔ Virtualization and cloud DHCP concepts
+
+✔ Cisco, Linux, and Windows verification commands
+
+✔ Wireshark DHCP analysis
+
+✔ Enterprise troubleshooting methodology
+
+✔ SOC detection engineering and SIEM use cases
+
+✔ Practical DHCP labs
+
+✔ Interview preparation from beginner to advanced
+
+---
+
+# What's Next?
+
+The next chapter, **`11-DNS.md`**, will cover:
+
+- Domain Name System (DNS) fundamentals
+- DNS hierarchy and namespace
+- Recursive vs iterative queries
+- DNS record types (A, AAAA, CNAME, MX, TXT, NS, PTR, SOA, SRV, CAA)
+- Recursive resolvers and authoritative servers
+- DNS caching and TTL
+- Forward and reverse lookups
+- DNSSEC
+- Split-horizon DNS
+- Enterprise DNS architecture
+- DNS attacks, detection, troubleshooting, packet analysis, and security best practices
