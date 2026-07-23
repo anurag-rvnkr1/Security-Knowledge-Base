@@ -1640,3 +1640,746 @@ Efficient text processing enables organizations to:
 ---
 
 
+# Part 3 — sed, awk, xargs, tee, Advanced Pipelines, Enterprise Log Processing, and Security Use Cases
+
+---
+
+# Introduction
+
+Basic text-processing tools such as `grep`, `sort`, and `cut` are powerful, but enterprise environments often require more advanced capabilities.
+
+Administrators frequently need to:
+
+- Modify files automatically
+- Generate reports
+- Extract structured fields
+- Perform calculations
+- Execute commands on search results
+- Save command output while displaying it
+- Process gigabytes of logs efficiently
+
+Linux provides several specialized utilities for these tasks:
+
+- `sed`
+- `awk`
+- `xargs`
+- `tee`
+
+These commands are fundamental in automation, DevOps, SIEM engineering, and cybersecurity operations.
+
+---
+
+# Advanced Text Processing Workflow
+
+```text
+Raw Log File
+
+↓
+
+grep
+
+↓
+
+sed
+
+↓
+
+awk
+
+↓
+
+sort
+
+↓
+
+uniq
+
+↓
+
+tee
+
+↓
+
+Report
+```
+
+Each utility contributes a specific capability to the overall pipeline.
+
+---
+
+# sed
+
+**sed (Stream Editor)** processes text line by line without opening an interactive editor.
+
+Typical uses include:
+
+- Search and replace
+- Delete lines
+- Insert text
+- Modify configuration files
+- Filter output
+
+`sed` reads from standard input or files and writes the processed result to standard output by default.
+
+---
+
+# Display Specific Lines
+
+Display the first line:
+
+```bash
+sed -n '1p' file.txt
+```
+
+Display lines 5 through 10:
+
+```bash
+sed -n '5,10p' file.txt
+```
+
+Option explanation:
+
+| Option | Purpose |
+|----------|----------|
+| `-n` | Suppress automatic output |
+| `p` | Print selected lines |
+
+---
+
+# Replace Text
+
+Replace the first occurrence of "Linux" with "Ubuntu" on each line:
+
+```bash
+sed 's/Linux/Ubuntu/' notes.txt
+```
+
+Example:
+
+Input:
+
+```text
+Linux Server
+```
+
+Output:
+
+```text
+Ubuntu Server
+```
+
+---
+
+# Replace All Occurrences
+
+```bash
+sed 's/error/warning/g' app.log
+```
+
+The `g` flag replaces every occurrence on each line.
+
+Without `g`, only the first match on each line is replaced.
+
+---
+
+# Edit Files In Place
+
+Modify a file directly:
+
+```bash
+sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+```
+
+> **Best Practice:** Create a backup before using `-i` on important configuration files.
+
+Example with backup:
+
+```bash
+sed -i.bak 's/foo/bar/' file.txt
+```
+
+---
+
+# Delete Lines
+
+Delete blank lines:
+
+```bash
+sed '/^$/d' file.txt
+```
+
+Delete comment lines:
+
+```bash
+sed '/^#/d' sshd_config
+```
+
+This is useful for displaying active configuration settings.
+
+---
+
+# Insert Text
+
+Insert a line before line 1:
+
+```bash
+sed '1i\# Configuration File' config.txt
+```
+
+Append after line 5:
+
+```bash
+sed '5a\New Entry' config.txt
+```
+
+---
+
+# awk
+
+`awk` is a pattern scanning and data-processing language designed for structured text.
+
+It is particularly effective with:
+
+- CSV files
+- Log files
+- Space-delimited data
+- Reports
+- Tables
+
+Unlike `cut`, `awk` can perform calculations and conditional logic.
+
+---
+
+# awk Processing Model
+
+```text
+Input Line
+
+↓
+
+Split into Fields
+
+↓
+
+Process Fields
+
+↓
+
+Generate Output
+```
+
+By default, fields are separated by whitespace.
+
+---
+
+# Print Entire Line
+
+```bash
+awk '{print}' file.txt
+```
+
+Equivalent to displaying each input line.
+
+---
+
+# Print Specific Fields
+
+Example:
+
+```bash
+awk '{print $1}' file.txt
+```
+
+Displays only the first field.
+
+Given:
+
+```text
+Alice HR
+
+Bob IT
+
+Charlie Finance
+```
+
+Output:
+
+```text
+Alice
+
+Bob
+
+Charlie
+```
+
+---
+
+# Multiple Fields
+
+```bash
+awk '{print $1,$3}'
+```
+
+Prints the first and third fields separated by a space.
+
+---
+
+# Using Custom Delimiters
+
+Read `/etc/passwd`:
+
+```bash
+awk -F: '{print $1}' /etc/passwd
+```
+
+Output:
+
+```text
+root
+
+daemon
+
+bin
+```
+
+Option explanation:
+
+| Option | Purpose |
+|----------|----------|
+| `-F:` | Use `:` as field separator |
+
+---
+
+# Print Multiple Fields
+
+Display username and shell:
+
+```bash
+awk -F: '{print $1,$7}' /etc/passwd
+```
+
+Example output:
+
+```text
+root /bin/bash
+
+daemon /usr/sbin/nologin
+```
+
+---
+
+# Perform Calculations
+
+Given:
+
+```text
+100
+
+200
+
+300
+```
+
+Command:
+
+```bash
+awk '{sum += $1} END {print sum}' numbers.txt
+```
+
+Output:
+
+```text
+600
+```
+
+`awk` supports variables and arithmetic operations directly.
+
+---
+
+# Conditional Processing
+
+Display users with UID greater than or equal to 1000:
+
+```bash
+awk -F: '$3 >= 1000 {print $1}' /etc/passwd
+```
+
+Useful for reporting user accounts.
+
+---
+
+# Built-in Variables
+
+Common `awk` variables:
+
+| Variable | Description |
+|-----------|-------------|
+| `NR` | Current record (line) number |
+| `NF` | Number of fields in current record |
+| `$1` | First field |
+| `$2` | Second field |
+| `$0` | Entire line |
+
+Example:
+
+```bash
+awk '{print NR, $0}' file.txt
+```
+
+---
+
+# xargs
+
+`xargs` converts standard input into command-line arguments.
+
+This is particularly useful when one command generates input for another command.
+
+---
+
+# Basic Example
+
+```bash
+echo "file1 file2 file3" | xargs rm
+```
+
+Equivalent to:
+
+```bash
+rm file1 file2 file3
+```
+
+---
+
+# Using find with xargs
+
+Search for log files and display details:
+
+```bash
+find . -name "*.log" | xargs ls -lh
+```
+
+Workflow:
+
+```text
+find
+
+↓
+
+File List
+
+↓
+
+xargs
+
+↓
+
+ls -lh
+```
+
+---
+
+# Safer File Handling
+
+When filenames may contain spaces or special characters:
+
+```bash
+find . -type f -print0 | xargs -0 ls -l
+```
+
+The `-print0` and `-0` options work together to safely process filenames.
+
+---
+
+# tee
+
+The `tee` command writes output to both the terminal and one or more files.
+
+Example:
+
+```bash
+ls -l | tee listing.txt
+```
+
+Workflow:
+
+```text
+ls
+
+↓
+
+tee
+
+├── Terminal
+
+└── listing.txt
+```
+
+---
+
+# Append Using tee
+
+Append instead of overwrite:
+
+```bash
+date | tee -a audit.log
+```
+
+Option:
+
+| Option | Purpose |
+|----------|----------|
+| `-a` | Append to file |
+
+---
+
+# Why tee Is Useful
+
+Typical applications:
+
+- Logging script output
+- Capturing command results
+- Debugging pipelines
+- Recording audit information
+
+---
+
+# Advanced Pipeline Example
+
+Count failed SSH login attempts by username:
+
+```bash
+grep "Failed password" auth.log \
+| awk '{print $(NF-5)}' \
+| sort \
+| uniq -c \
+| sort -nr
+```
+
+Workflow:
+
+```text
+Authentication Log
+
+↓
+
+grep
+
+↓
+
+awk
+
+↓
+
+sort
+
+↓
+
+uniq
+
+↓
+
+sort
+
+↓
+
+Ranked User List
+```
+
+> **Note:** SSH log formats differ between distributions and OpenSSH versions. Adjust field extraction as needed.
+
+---
+
+# Web Server Log Analysis
+
+Display the top client IP addresses:
+
+```bash
+awk '{print $1}' access.log \
+| sort \
+| uniq -c \
+| sort -nr
+```
+
+Output:
+
+```text
+150 192.168.1.20
+
+120 10.0.0.5
+
+85 203.0.113.10
+```
+
+This helps identify the most active clients.
+
+---
+
+# Detect HTTP Errors
+
+Count HTTP 404 responses:
+
+```bash
+grep " 404 " access.log | wc -l
+```
+
+This pipeline reports the number of requests resulting in a 404 status code.
+
+---
+
+# Process CSV Files
+
+Example CSV:
+
+```text
+Name,Department,Salary
+
+Alice,HR,60000
+
+Bob,IT,75000
+```
+
+Extract names:
+
+```bash
+awk -F, 'NR>1 {print $1}' employees.csv
+```
+
+Skip the header using:
+
+```text
+NR > 1
+```
+
+---
+
+# Generate Reports
+
+Average salary:
+
+```bash
+awk -F, 'NR>1 {sum += $3; count++} END {print sum/count}' employees.csv
+```
+
+This demonstrates how `awk` performs calculations directly from structured data.
+
+---
+
+# Enterprise Log Processing Workflow
+
+```text
+Application Logs
+
+↓
+
+Filter
+
+↓
+
+Normalize
+
+↓
+
+Extract Fields
+
+↓
+
+Aggregate
+
+↓
+
+Alert
+
+↓
+
+Dashboard
+```
+
+This workflow closely mirrors centralized logging and SIEM pipelines.
+
+---
+
+# Automation Example
+
+Create a daily summary:
+
+```bash
+grep "ERROR" app.log \
+| tee errors.txt \
+| wc -l
+```
+
+Workflow:
+
+```text
+Application Log
+
+↓
+
+grep
+
+↓
+
+tee
+
+├── errors.txt
+
+└── wc
+
+↓
+
+Error Count
+```
+
+---
+
+# Cybersecurity Perspective
+
+Security analysts frequently use these tools to:
+
+- Extract indicators of compromise (IOCs).
+- Analyze authentication failures.
+- Identify suspicious IP addresses.
+- Parse firewall logs.
+- Generate incident reports.
+- Build lightweight detection rules.
+- Investigate web server activity.
+
+These utilities form the foundation of many SOC workflows before data reaches a SIEM.
+
+---
+
+# Business Impact
+
+Advanced text-processing capabilities enable organizations to:
+
+- Automate repetitive tasks.
+- Improve operational visibility.
+- Reduce troubleshooting time.
+- Analyze large datasets efficiently.
+- Generate compliance and audit reports.
+- Accelerate security investigations.
+
+---
+
+# Enterprise Best Practices
+
+- Test `sed -i` commands on backup copies before modifying production files.
+- Prefer `awk` for structured data instead of complex shell parsing.
+- Use `find ... -print0` with `xargs -0` when handling arbitrary filenames.
+- Document complex pipelines for reuse and maintenance.
+- Validate parsing logic against representative production data.
+- Avoid assumptions about log formats across different applications or Linux distributions.
+
+---
+
+# Key Takeaways
+
+- `sed` performs efficient stream editing and text replacement.
+- `awk` is a powerful language for structured text processing and reporting.
+- `xargs` converts standard input into command arguments.
+- `tee` writes output to both files and the terminal simultaneously.
+- Combining these tools enables powerful automation and log analysis workflows.
+
+---
+
+
