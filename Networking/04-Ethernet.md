@@ -370,3 +370,586 @@ Selecting the Ethernet header reveals fields such as source MAC, destination MAC
 - Ethernet uses frames and MAC addresses for local communication.
 - Modern Ethernet supports speeds ranging from 10 Mbps to hundreds of gigabits per second.
 - Enterprise networks rely on Ethernet for reliable, scalable, and interoperable local connectivity.
+
+# 04 - Ethernet
+
+# Part 2 — Ethernet Frames, MAC Addressing, Frame Processing, MTU, and Wireshark Analysis
+
+---
+
+# Overview
+
+Every Ethernet communication occurs through an **Ethernet Frame**.
+
+Unlike IP packets, which are responsible for communication across networks, Ethernet frames are responsible for communication **within the local Layer 2 network**.
+
+Whenever a computer sends data to another device on the same LAN, the information is encapsulated inside an Ethernet frame before transmission.
+
+Understanding Ethernet frames is essential for:
+
+- Network Engineers
+- SOC Analysts
+- Detection Engineers
+- Incident Responders
+- Digital Forensics Analysts
+- Penetration Testers
+
+---
+
+# What is an Ethernet Frame?
+
+An Ethernet frame is the **Layer 2 Protocol Data Unit (PDU)** used for transmitting data across an Ethernet network.
+
+```
+Application Data
+
+↓
+
+TCP Segment
+
+↓
+
+IP Packet
+
+↓
+
+Ethernet Frame
+
+↓
+
+Bits
+```
+
+The Ethernet frame wraps the IP packet with local addressing information so that switches can deliver it to the correct destination.
+
+---
+
+# Ethernet II Frame Format
+
+The most common Ethernet frame format used today is **Ethernet II**.
+
+```
++----------+----------+-----------+--------------------+-----------+
+| Dest MAC | Src MAC  | EtherType | Payload            | FCS       |
+| 6 Bytes  | 6 Bytes  | 2 Bytes   | 46–1500 Bytes      | 4 Bytes   |
++----------+----------+-----------+--------------------+-----------+
+```
+
+> The **Preamble** and **Start Frame Delimiter (SFD)** are transmitted on the wire by the physical layer but are typically not displayed by packet analyzers such as Wireshark.
+
+---
+
+# Ethernet Frame Components
+
+## 1. Destination MAC Address
+
+Length:
+
+```
+6 Bytes
+```
+
+Purpose:
+
+Specifies the intended recipient on the local network.
+
+Example:
+
+```
+00:1A:2B:3C:4D:5E
+```
+
+The switch uses this address to determine the correct outgoing interface.
+
+---
+
+## 2. Source MAC Address
+
+Length:
+
+```
+6 Bytes
+```
+
+Purpose:
+
+Identifies the sender of the frame.
+
+Example:
+
+```
+F4:92:BF:11:22:33
+```
+
+Switches learn this address and associate it with the incoming port.
+
+---
+
+## 3. EtherType
+
+Length:
+
+```
+2 Bytes
+```
+
+Purpose:
+
+Identifies the protocol encapsulated in the payload.
+
+Common EtherType values:
+
+| EtherType | Protocol |
+|-----------|----------|
+| 0x0800 | IPv4 |
+| 0x0806 | ARP |
+| 0x86DD | IPv6 |
+| 0x8100 | IEEE 802.1Q VLAN Tag |
+| 0x88CC | LLDP |
+
+Example:
+
+```
+EtherType
+
+↓
+
+IPv4
+```
+
+The receiving device uses this field to determine how to interpret the payload.
+
+---
+
+## 4. Payload
+
+Contains the encapsulated Layer 3 packet.
+
+Example:
+
+```
+IPv4 Packet
+
+↓
+
+TCP Segment
+
+↓
+
+HTTPS Request
+```
+
+Payload size:
+
+```
+46–1500 Bytes
+```
+
+If the payload is smaller than 46 bytes, padding is added to satisfy the minimum Ethernet frame size.
+
+---
+
+## 5. Frame Check Sequence (FCS)
+
+Length:
+
+```
+4 Bytes
+```
+
+Purpose:
+
+Detects accidental transmission errors.
+
+The sender computes a **Cyclic Redundancy Check (CRC)** value and places it in the FCS field.
+
+The receiver recalculates the CRC:
+
+- If the values match, the frame is accepted.
+- If they differ, the frame is discarded.
+
+> FCS detects random transmission errors but does **not** provide cryptographic integrity or authentication.
+
+---
+
+# Ethernet Frame Size
+
+| Component | Size |
+|-----------|------|
+| Destination MAC | 6 Bytes |
+| Source MAC | 6 Bytes |
+| EtherType | 2 Bytes |
+| Payload | 46–1500 Bytes |
+| FCS | 4 Bytes |
+
+Typical frame sizes:
+
+| Frame | Size |
+|--------|------|
+| Minimum Ethernet Frame | 64 Bytes |
+| Maximum Standard Frame | 1518 Bytes |
+| Maximum with 802.1Q VLAN Tag | 1522 Bytes |
+
+---
+
+# Jumbo Frames
+
+Some environments support **jumbo frames**, which allow payloads larger than the standard MTU.
+
+Typical values:
+
+```
+9000 Bytes MTU
+```
+
+Benefits:
+
+- Reduced CPU overhead
+- Fewer packets for large transfers
+- Improved storage and virtualization performance
+
+Common use cases:
+
+- Data centers
+- Storage Area Networks (SANs)
+- VMware environments
+- Backup networks
+- High-performance computing
+
+All devices along the communication path must support the configured jumbo frame size.
+
+---
+
+# IEEE 802.3 Frame Format
+
+Historically, IEEE 802.3 used a **Length** field instead of EtherType.
+
+```
++-----------+-----------+---------+---------+---------+
+| Dest MAC  | Src MAC   | Length  | Payload | FCS     |
++-----------+-----------+---------+---------+---------+
+```
+
+Modern enterprise networks predominantly use **Ethernet II**, while IEEE 802.3 with LLC/SNAP headers is encountered less frequently.
+
+---
+
+# MAC Address
+
+A **Media Access Control (MAC) Address** is a Layer 2 hardware identifier assigned to a network interface.
+
+Example:
+
+```
+3C:52:82:9F:10:7A
+```
+
+Characteristics:
+
+- 48 bits
+- 6 bytes
+- Usually represented in hexadecimal
+- Intended to be unique within the global address space
+
+---
+
+# MAC Address Structure
+
+```
+3C:52:82 : 9F:10:7A
+
+↑           ↑
+
+OUI      Device Identifier
+```
+
+The first 24 bits identify the vendor.
+
+The last 24 bits identify the specific interface assigned by that vendor.
+
+---
+
+# Organizationally Unique Identifier (OUI)
+
+The **OUI** identifies the manufacturer of the network interface.
+
+Example:
+
+```
+3C:52:82
+
+↓
+
+Vendor
+```
+
+Examples of vendors include:
+
+- Intel
+- Dell
+- Cisco
+- HPE
+- Lenovo
+
+Wireshark can often resolve the OUI and display the associated vendor name.
+
+---
+
+# Types of MAC Addresses
+
+## Unicast
+
+Communication to a single device.
+
+```
+PC A
+
+↓
+
+PC B
+```
+
+Most Ethernet communication is unicast.
+
+---
+
+## Broadcast
+
+Communication to **every device** within the broadcast domain.
+
+Broadcast MAC:
+
+```
+FF:FF:FF:FF:FF:FF
+```
+
+Examples:
+
+- ARP Requests
+- DHCP Discover
+
+---
+
+## Multicast
+
+Communication to a selected group of devices.
+
+```
+Server
+
+↓
+
+Multiple Subscribers
+```
+
+Examples:
+
+- IPTV
+- Streaming
+- Routing protocols
+- Service discovery
+
+---
+
+# MAC Learning
+
+Ethernet switches build a **MAC Address Table** (also called a CAM table) by observing the source MAC address of incoming frames.
+
+Example:
+
+```
+Port 1
+
+↓
+
+MAC A
+
+Port 2
+
+↓
+
+MAC B
+
+Port 3
+
+↓
+
+MAC C
+```
+
+When a frame arrives:
+
+1. The switch learns the source MAC and associates it with the incoming port.
+2. The switch looks up the destination MAC in its table.
+3. If found, it forwards the frame only to the correct port.
+4. If unknown, it floods the frame to all ports except the incoming port.
+
+This learning process allows efficient forwarding while minimizing unnecessary traffic.
+
+---
+
+# MAC Address Table Example
+
+| MAC Address | Switch Port |
+|-------------|-------------|
+| 00:11:22:33:44:55 | Gi0/1 |
+| 08:AA:BB:CC:DD:EE | Gi0/2 |
+| 3C:52:82:9F:10:7A | Gi0/3 |
+
+The table is continuously updated as devices communicate.
+
+---
+
+# MTU (Maximum Transmission Unit)
+
+The **Maximum Transmission Unit (MTU)** defines the largest Layer 3 packet that can be carried within an Ethernet frame without fragmentation.
+
+Standard Ethernet MTU:
+
+```
+1500 Bytes
+```
+
+If a packet exceeds the MTU:
+
+- IPv4 may fragment the packet (unless fragmentation is prohibited).
+- Many modern networks rely on **Path MTU Discovery (PMTUD)** to avoid fragmentation.
+- IPv6 routers do not fragment packets; fragmentation is handled only by the source host when necessary.
+
+---
+
+# Ethernet Encapsulation
+
+```
+Application Data
+
+↓
+
+TCP Header
+
+↓
+
+IP Header
+
+↓
+
+Ethernet Header
+
+↓
+
+Transmission
+
+↓
+
+Ethernet Trailer (FCS)
+```
+
+This encapsulation enables local delivery while preserving the higher-layer information.
+
+---
+
+# Example Ethernet Frame
+
+```
++------------------------------------------------------+
+| Destination MAC                                      |
++------------------------------------------------------+
+| Source MAC                                           |
++------------------------------------------------------+
+| EtherType = IPv4                                     |
++------------------------------------------------------+
+| IPv4 Header                                          |
++------------------------------------------------------+
+| TCP Header                                           |
++------------------------------------------------------+
+| HTTPS Data                                           |
++------------------------------------------------------+
+| FCS                                                  |
++------------------------------------------------------+
+```
+
+---
+
+# Wireshark Analysis
+
+A captured Ethernet frame typically appears as:
+
+```
+Frame
+
+↓
+
+Ethernet II
+
+↓
+
+Internet Protocol Version 4
+
+↓
+
+Transmission Control Protocol
+
+↓
+
+Transport Layer Security
+
+↓
+
+Hypertext Transfer Protocol
+```
+
+Selecting **Ethernet II** reveals:
+
+- Destination MAC
+- Source MAC
+- EtherType
+
+Selecting **IPv4** reveals:
+
+- Source IP
+- Destination IP
+- TTL
+
+Selecting **TCP** reveals:
+
+- Source Port
+- Destination Port
+- Sequence Number
+- Flags
+
+---
+
+# Common Ethernet Frame Issues
+
+| Issue | Description |
+|--------|-------------|
+| CRC Errors | Corrupted frame detected by FCS |
+| Runts | Frames smaller than the minimum valid size |
+| Giants | Frames larger than the configured maximum size |
+| MTU Mismatch | Devices use incompatible MTU values |
+| Unknown Unicast Flooding | Destination MAC not present in the switch's MAC table |
+| Excessive Broadcast Traffic | Large numbers of broadcast frames reducing network efficiency |
+
+---
+
+# Business Impact
+
+Understanding Ethernet frames enables professionals to:
+
+- Diagnose Layer 2 connectivity issues
+- Investigate packet corruption
+- Analyze packet captures
+- Optimize LAN performance
+- Troubleshoot switching problems
+- Detect abnormal Layer 2 behavior
+- Perform effective network forensics
+
+---
+
+# Key Takeaways
+
+- Ethernet II is the dominant frame format in modern networks.
+- Every Ethernet frame contains destination and source MAC addresses, an EtherType field, payload, and an FCS.
+- MAC addresses identify network interfaces on the local network, while switches use MAC tables to forward frames efficiently.
+- Standard Ethernet MTU is 1500 bytes, while jumbo frames are commonly used in specialized environments.
+- Packet analyzers such as Wireshark expose Ethernet headers, making them invaluable for troubleshooting and cybersecurity investigations.
