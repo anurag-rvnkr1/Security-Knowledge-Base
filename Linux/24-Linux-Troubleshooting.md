@@ -2103,3 +2103,759 @@ Effective troubleshooting of storage, logs, and security events helps organizati
 
 ---
 
+# 24 - Linux Troubleshooting
+
+# Part 4 — Advanced Practical Labs, Enterprise Scenarios, Chapter Summary, Interview Questions, Linux Troubleshooting Cheat Sheet, and References
+
+---
+
+# Introduction
+
+Enterprise Linux troubleshooting requires more than technical knowledge.
+
+Successful administrators and cybersecurity professionals must:
+
+- Follow structured methodologies
+- Minimize downtime
+- Preserve evidence
+- Perform root cause analysis
+- Document findings
+- Prevent recurrence
+
+This final section combines practical exercises with real-world enterprise scenarios and interview preparation.
+
+---
+
+# Enterprise Troubleshooting Lifecycle
+
+```text
+Incident Report
+
+↓
+
+Initial Assessment
+
+↓
+
+Evidence Collection
+
+↓
+
+Diagnosis
+
+↓
+
+Root Cause Analysis
+
+↓
+
+Resolution
+
+↓
+
+Validation
+
+↓
+
+Documentation
+
+↓
+
+Preventive Actions
+```
+
+---
+
+# Practical Lab 1 — Complete System Health Check
+
+Review system information:
+
+```bash
+hostnamectl
+```
+
+```bash
+uptime
+```
+
+```bash
+free -h
+```
+
+```bash
+df -h
+```
+
+```bash
+ps aux
+```
+
+Objectives:
+
+- Assess overall system health
+- Record baseline metrics
+- Identify obvious issues
+
+---
+
+# Practical Lab 2 — Investigate Failed Services
+
+Display failed services:
+
+```bash
+systemctl --failed
+```
+
+Review a specific service:
+
+```bash
+systemctl status service-name
+```
+
+View logs:
+
+```bash
+journalctl -u service-name
+```
+
+Objectives:
+
+- Identify failure causes
+- Correlate service logs with system events
+
+---
+
+# Practical Lab 3 — Network Connectivity Validation
+
+Review interfaces:
+
+```bash
+ip addr
+```
+
+Review routing:
+
+```bash
+ip route
+```
+
+Display listening ports:
+
+```bash
+ss -tulpn
+```
+
+Objectives:
+
+- Verify network configuration
+- Confirm required services are reachable
+
+---
+
+# Practical Lab 4 — DNS Investigation
+
+View resolver configuration:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Query DNS:
+
+```bash
+dig example.com
+```
+
+or
+
+```bash
+host example.com
+```
+
+Objectives:
+
+- Validate DNS configuration
+- Compare hostname resolution results
+
+---
+
+# Practical Lab 5 — Filesystem Investigation
+
+Review mounted filesystems:
+
+```bash
+mount
+```
+
+Filesystem usage:
+
+```bash
+df -h
+```
+
+Directory usage:
+
+```bash
+du -sh /var/*
+```
+
+Objectives:
+
+- Detect storage bottlenecks
+- Identify abnormal disk consumption
+
+---
+
+# Practical Lab 6 — Log Correlation
+
+Review current boot logs:
+
+```bash
+journalctl -b
+```
+
+Follow logs:
+
+```bash
+journalctl -f
+```
+
+Objectives:
+
+- Correlate events with reported issues
+- Identify recurring errors
+
+---
+
+# Practical Lab 7 — Authentication Investigation
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-family:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+Objectives:
+
+- Review failed login attempts
+- Identify unusual authentication activity
+
+---
+
+# Practical Lab 8 — Performance Investigation
+
+Display top resource consumers:
+
+```bash
+top
+```
+
+Sort by CPU:
+
+```bash
+ps aux --sort=-%cpu | head
+```
+
+Sort by memory:
+
+```bash
+ps aux --sort=-%mem | head
+```
+
+Objectives:
+
+- Identify resource-intensive processes
+- Correlate with application behavior
+
+---
+
+# Practical Lab 9 — Storage Investigation
+
+Review block devices:
+
+```bash
+lsblk
+```
+
+Review UUIDs:
+
+```bash
+blkid
+```
+
+Objectives:
+
+- Validate storage configuration
+- Compare with `/etc/fstab`
+
+---
+
+# Practical Lab 10 — Comprehensive Troubleshooting Report
+
+Prepare a report including:
+
+- Incident summary
+- Timeline
+- Symptoms
+- Investigation steps
+- Commands executed
+- Root cause
+- Resolution
+- Validation
+- Preventive recommendations
+
+This mirrors documentation expected in enterprise environments.
+
+---
+
+# Enterprise Scenario 1
+
+## Production Web Server Outage
+
+Symptoms:
+
+- HTTPS unavailable
+- SSH functioning normally
+
+Investigation:
+
+```text
+Service Status
+
+↓
+
+Service Logs
+
+↓
+
+Network Ports
+
+↓
+
+Firewall Rules
+
+↓
+
+Configuration Validation
+
+↓
+
+Recovery
+
+↓
+
+Validation
+```
+
+Root Cause (example):
+
+- Invalid web server configuration introduced during deployment
+
+---
+
+# Enterprise Scenario 2
+
+## Storage Exhaustion
+
+Symptoms:
+
+- Package updates fail
+- Applications cannot write files
+
+Investigation:
+
+- Review filesystem usage
+- Identify large directories
+- Check deleted-but-open files
+- Archive or remove unnecessary data
+- Verify normal application behavior
+
+---
+
+# Enterprise Scenario 3
+
+## Memory Pressure
+
+Symptoms:
+
+- Slow response times
+- Frequent swapping
+
+Investigation:
+
+```text
+Memory Usage
+
+↓
+
+Top Processes
+
+↓
+
+Application Logs
+
+↓
+
+Recent Changes
+
+↓
+
+Resolution
+```
+
+Possible causes include:
+
+- Memory leaks
+- Unexpected workloads
+- Misconfigured applications
+
+---
+
+# Enterprise Scenario 4
+
+## Network Connectivity Failure
+
+Symptoms:
+
+- Internal communication interrupted
+
+Investigation:
+
+- Verify interfaces
+- Review routes
+- Test connectivity
+- Check DNS
+- Review firewall policy
+- Validate service listeners
+
+---
+
+# Enterprise Scenario 5
+
+## Suspected Security Incident
+
+Observed:
+
+- Multiple failed logins
+- New administrative account
+- Configuration changes outside maintenance window
+
+Response:
+
+```text
+Collect Evidence
+
+↓
+
+Preserve Logs
+
+↓
+
+Contain (if required)
+
+↓
+
+Investigate
+
+↓
+
+Recover
+
+↓
+
+Lessons Learned
+```
+
+---
+
+# Enterprise Troubleshooting Checklist
+
+| Area | Verification |
+|------|--------------|
+| Boot completed successfully | ✓ |
+| Services healthy | ✓ |
+| CPU utilization acceptable | ✓ |
+| Memory available | ✓ |
+| Storage sufficient | ✓ |
+| Network operational | ✓ |
+| DNS functioning | ✓ |
+| Firewall verified | ✓ |
+| Logs reviewed | ✓ |
+| Security events assessed | ✓ |
+| Documentation updated | ✓ |
+
+---
+
+# Linux Troubleshooting Cheat Sheet
+
+## System Information
+
+```bash
+hostnamectl
+```
+
+```bash
+uname -a
+```
+
+```bash
+uptime
+```
+
+---
+
+## CPU & Memory
+
+```bash
+top
+```
+
+```bash
+free -h
+```
+
+```bash
+ps aux
+```
+
+---
+
+## Storage
+
+```bash
+df -h
+```
+
+```bash
+du -sh *
+```
+
+```bash
+lsblk
+```
+
+---
+
+## Filesystems
+
+```bash
+mount
+```
+
+```bash
+blkid
+```
+
+---
+
+## Networking
+
+```bash
+ip addr
+```
+
+```bash
+ip route
+```
+
+```bash
+ss -tulpn
+```
+
+---
+
+## DNS
+
+```bash
+cat /etc/resolv.conf
+```
+
+```bash
+dig example.com
+```
+
+---
+
+## Services
+
+```bash
+systemctl status service
+```
+
+```bash
+systemctl --failed
+```
+
+---
+
+## Logs
+
+```bash
+journalctl -b
+```
+
+```bash
+journalctl -xe
+```
+
+```bash
+dmesg
+```
+
+---
+
+## Authentication
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-family:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+---
+
+## Open Files
+
+```bash
+lsof
+```
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Enterprise troubleshooting methodology
+- Root cause analysis
+- Boot troubleshooting
+- Service diagnosis
+- Process troubleshooting
+- Performance analysis
+- Storage and filesystem troubleshooting
+- Network troubleshooting
+- DNS troubleshooting
+- Log analysis
+- Security incident troubleshooting
+- Practical investigation workflows
+- Enterprise troubleshooting scenarios
+
+---
+
+# Interview Questions
+
+## Beginner
+
+1. What is the purpose of Linux troubleshooting?
+2. Why is root cause analysis important?
+3. Which command shows running services?
+4. How do you check available disk space?
+5. What command displays running processes?
+6. How do you view system logs?
+7. What is `journalctl` used for?
+8. How do you check memory usage?
+9. Which file contains DNS resolver configuration?
+10. Why should logs be reviewed before restarting a service?
+
+---
+
+## Intermediate
+
+1. Explain an enterprise troubleshooting methodology.
+2. How would you troubleshoot a service that fails to start?
+3. Describe how to investigate high CPU utilization.
+4. How would you troubleshoot DNS failures?
+5. Explain the purpose of `systemd-analyze`.
+6. How do you identify storage bottlenecks?
+7. Describe a structured approach to network troubleshooting.
+8. How would you investigate repeated authentication failures?
+9. Why is documentation important during incident resolution?
+10. How do you differentiate symptoms from root causes?
+
+---
+
+## Advanced
+
+1. Design a troubleshooting workflow for a production outage.
+2. Explain how you would diagnose intermittent performance issues.
+3. Describe a process for recovering from filesystem corruption.
+4. How would you investigate a suspected Linux security incident?
+5. Explain how centralized logging improves troubleshooting.
+6. Design an enterprise troubleshooting playbook.
+7. How would you correlate logs from multiple systems during an outage?
+8. Explain how configuration drift contributes to recurring issues.
+9. Describe methods for reducing mean time to resolution (MTTR).
+10. How would you validate that an incident has been fully resolved?
+
+---
+
+# Key Takeaways
+
+- Effective troubleshooting is structured, evidence-based, and repeatable.
+- Root cause analysis prevents recurring incidents.
+- Logs are often the most valuable diagnostic resource.
+- Storage, network, service, and performance issues should be investigated systematically.
+- Documentation, validation, and preventive improvements are essential parts of enterprise operations.
+
+---
+
+# References
+
+## Official Documentation
+
+- `man journalctl`
+- `man systemctl`
+- `man ps`
+- `man top`
+- `man free`
+- `man df`
+- `man mount`
+- `man lsblk`
+- `man ip`
+- `man ss`
+- `man dmesg`
+- `man lsof`
+
+## Standards & Best Practices
+
+- Linux Foundation Documentation
+- Red Hat Enterprise Linux Documentation
+- Ubuntu Server Guide
+- NIST SP 800-61 (Computer Security Incident Handling Guide)
+- NIST Cybersecurity Framework (CSF)
+- CIS Benchmarks
+- ISO/IEC 27001
+- SRE Principles (Site Reliability Engineering)
+
+---
+
+# Next Chapter
+
+➡️ **25-Linux-Interview-Questions.md**
+
+## Topics Covered
+
+- Linux Fundamentals Interview Questions
+- File System & Permissions Questions
+- Process & Service Questions
+- Networking Questions
+- Shell Scripting Questions
+- Security Questions
+- Storage Questions
+- Troubleshooting Scenarios
+- HR + Technical Interview Questions
+- Hands-on Practical Questions
+- Scenario-Based Enterprise Questions
+- Fresher to Advanced Interview Preparation
