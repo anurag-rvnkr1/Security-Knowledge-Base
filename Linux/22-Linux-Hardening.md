@@ -1344,3 +1344,717 @@ Strong account and system hardening:
 ---
 
 
+# 22 - Linux Hardening
+
+# Part 3 — Network Hardening, SSH Hardening, Service Hardening, Logging, Auditing, Security Monitoring, and Compliance
+
+---
+
+# Introduction
+
+After securing user accounts, filesystems, and the kernel, the next priority is protecting the system from network-based attacks.
+
+Enterprise environments continuously monitor:
+
+- Network exposure
+- Remote administration
+- Running services
+- Authentication attempts
+- Security events
+- Configuration drift
+
+These controls significantly reduce the likelihood of unauthorized access and improve incident detection.
+
+---
+
+# Network Hardening
+
+Network hardening reduces unnecessary exposure by limiting communication to only required services.
+
+Objectives:
+
+- Reduce attack surface
+- Restrict inbound connections
+- Restrict outbound traffic where appropriate
+- Secure remote administration
+- Improve monitoring
+
+---
+
+# Network Hardening Workflow
+
+```text
+Identify Services
+
+↓
+
+Review Open Ports
+
+↓
+
+Close Unused Ports
+
+↓
+
+Configure Firewall
+
+↓
+
+Monitor
+
+↓
+
+Audit
+```
+
+---
+
+# Review Listening Ports
+
+Display listening ports:
+
+```bash
+ss -tulpn
+```
+
+Alternative:
+
+```bash
+netstat -tulpn
+```
+
+(if available)
+
+Questions:
+
+- Is this service required?
+- Who uses it?
+- Should it be Internet accessible?
+- Is it protected by a firewall?
+
+---
+
+# Verify Open Ports
+
+Example output:
+
+```text
+22/tcp     SSH
+
+80/tcp     HTTP
+
+443/tcp    HTTPS
+```
+
+Unexpected ports should be investigated immediately.
+
+---
+
+# Firewall Strategy
+
+Firewalls should follow a **default deny** philosophy whenever practical.
+
+```text
+Incoming Traffic
+
+↓
+
+Firewall
+
+↓
+
+Allowed?
+
+├── Yes → Forward
+│
+└── No
+
+     ↓
+
+    Block
+```
+
+Only explicitly authorized services should be reachable.
+
+---
+
+# Network Segmentation
+
+Enterprise environments rarely place all systems on one network.
+
+Example:
+
+```text
+Internet
+
+↓
+
+Firewall
+
+↓
+
+DMZ
+
+↓
+
+Application Network
+
+↓
+
+Database Network
+```
+
+Benefits:
+
+- Limits lateral movement
+- Reduces attack impact
+- Improves access control
+- Supports compliance
+
+---
+
+# Restrict Administrative Access
+
+SSH should ideally be accessible only from:
+
+- VPN
+- Bastion hosts
+- Administrative networks
+- Approved management workstations
+
+Avoid exposing administrative services unnecessarily.
+
+---
+
+# Disable Unused Network Services
+
+Examples may include:
+
+- FTP
+- Telnet
+- rlogin
+- rsh
+- Unused RPC services
+
+Replace legacy protocols with secure alternatives such as SSH or SFTP where appropriate.
+
+---
+
+# SSH Hardening
+
+SSH is one of the most frequently targeted Linux services.
+
+Recommended hardening measures include:
+
+- Public key authentication
+- Restrict administrative users
+- Disable direct root login
+- Limit authentication attempts
+- Use modern cryptographic algorithms
+- Monitor authentication logs
+
+---
+
+# SSH Hardening Workflow
+
+```text
+Install
+
+↓
+
+Configure
+
+↓
+
+Key Authentication
+
+↓
+
+Restrict Users
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+---
+
+# Review SSH Configuration
+
+Configuration file:
+
+```text
+/etc/ssh/sshd_config
+```
+
+Validate before applying changes:
+
+```bash
+sudo sshd -t
+```
+
+---
+
+# Recommended SSH Controls
+
+| Control | Benefit |
+|----------|----------|
+| Disable direct root login | Reduces privileged attack surface |
+| Prefer public key authentication | Stronger authentication |
+| Restrict users/groups | Limits access |
+| Limit authentication attempts | Mitigates brute-force attacks |
+| Idle session timeout | Reduces abandoned sessions |
+
+Specific settings should align with organizational security policies.
+
+---
+
+# Service Hardening
+
+Every running service represents a potential attack vector.
+
+Review active services:
+
+```bash
+systemctl list-units --type=service --state=running
+```
+
+Questions:
+
+- Is the service required?
+- Is it updated?
+- Is it monitored?
+- Is it reachable only by authorized systems?
+
+---
+
+# Disable Unused Services
+
+Stop immediately:
+
+```bash
+sudo systemctl stop service-name
+```
+
+Disable at boot:
+
+```bash
+sudo systemctl disable service-name
+```
+
+Confirm that disabling the service will not affect business operations.
+
+---
+
+# Service Hardening Workflow
+
+```text
+Inventory
+
+↓
+
+Risk Review
+
+↓
+
+Disable Unused
+
+↓
+
+Patch
+
+↓
+
+Monitor
+```
+
+---
+
+# Logging
+
+Security logging provides visibility into system activity.
+
+Important log sources include:
+
+- Authentication
+- Kernel
+- Services
+- Firewall
+- Applications
+- Package management
+
+---
+
+# Common Log Locations
+
+| Distribution | Authentication Log |
+|--------------|--------------------|
+| Ubuntu/Debian | `/var/log/auth.log` |
+| RHEL-family | `/var/log/secure` |
+
+Systemd systems also provide centralized logging through:
+
+```bash
+journalctl
+```
+
+---
+
+# Authentication Monitoring
+
+Examples:
+
+Successful logins
+
+```bash
+grep "Accepted" /var/log/auth.log
+```
+
+Failed logins
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+Equivalent log locations vary by distribution.
+
+---
+
+# Audit Logging
+
+Linux systems may use the Linux Audit Framework (`auditd`) for detailed event logging.
+
+Common audit targets include:
+
+- Authentication events
+- File access
+- Privilege escalation
+- System configuration changes
+
+---
+
+# Audit Workflow
+
+```text
+User Action
+
+↓
+
+Kernel
+
+↓
+
+Audit Rules
+
+↓
+
+Audit Log
+
+↓
+
+Analysis
+```
+
+---
+
+# Security Monitoring
+
+Continuous monitoring helps detect:
+
+- Unauthorized logins
+- Configuration changes
+- Suspicious processes
+- Service failures
+- Unexpected network activity
+
+Monitoring should be proactive rather than reactive.
+
+---
+
+# Monitoring Workflow
+
+```text
+Events
+
+↓
+
+Logs
+
+↓
+
+Analysis
+
+↓
+
+Alert
+
+↓
+
+Investigation
+
+↓
+
+Response
+```
+
+---
+
+# File Integrity Monitoring
+
+Critical files can be monitored for unexpected changes.
+
+Typical targets include:
+
+```text
+/etc/passwd
+
+/etc/shadow
+
+/etc/group
+
+/etc/sudoers
+
+SSH configuration
+
+Firewall configuration
+```
+
+Unexpected modifications should trigger investigation.
+
+---
+
+# Configuration Drift
+
+Configuration drift occurs when systems gradually diverge from the approved security baseline.
+
+Causes include:
+
+- Manual changes
+- Emergency fixes
+- Unauthorized modifications
+- Inconsistent deployments
+
+Regular audits help detect and correct drift.
+
+---
+
+# Compliance
+
+Hardening often supports compliance requirements.
+
+Common frameworks include:
+
+| Framework | Focus |
+|-----------|-------|
+| CIS Benchmarks | Secure configuration guidance |
+| NIST Cybersecurity Framework | Risk management |
+| ISO/IEC 27001 | Information security management |
+| PCI DSS | Payment card security |
+| HIPAA | Healthcare information protection |
+
+Specific requirements depend on the organization's regulatory obligations.
+
+---
+
+# Security Baseline Validation
+
+Validation checklist:
+
+```text
+Users
+
+↓
+
+Services
+
+↓
+
+Ports
+
+↓
+
+Packages
+
+↓
+
+Firewall
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Documentation
+```
+
+---
+
+# Change Management
+
+Hardening changes should follow a structured process.
+
+```text
+Request
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Validation
+
+↓
+
+Documentation
+```
+
+Benefits:
+
+- Reduced operational risk
+- Easier rollback
+- Improved accountability
+
+---
+
+# Incident Response Readiness
+
+A hardened system should support rapid incident response through:
+
+- Centralized logs
+- Accurate time synchronization
+- Documented configurations
+- Reliable backups
+- Secure remote access
+
+Preparation before an incident is critical.
+
+---
+
+# Enterprise Hardening Architecture
+
+```text
+Internet
+
+↓
+
+Firewall
+
+↓
+
+VPN
+
+↓
+
+Bastion Host
+
+↓
+
+Application Servers
+
+↓
+
+Database Servers
+
+↓
+
+Central Logging
+
+↓
+
+Security Monitoring
+```
+
+---
+
+# Security Review Checklist
+
+| Control | Status |
+|----------|--------|
+| Firewall configured | ✓ |
+| Unused ports closed | ✓ |
+| SSH hardened | ✓ |
+| Unused services disabled | ✓ |
+| Logging enabled | ✓ |
+| Audit logging configured | ✓ |
+| Monitoring implemented | ✓ |
+| Baseline documented | ✓ |
+| Changes approved | ✓ |
+| Compliance reviewed | ✓ |
+
+---
+
+# Cybersecurity Perspective
+
+Most enterprise attacks rely on multiple weaknesses rather than a single vulnerability.
+
+Examples include:
+
+- Weak authentication
+- Excessive privileges
+- Poor network segmentation
+- Inadequate monitoring
+- Delayed patching
+
+Layered hardening significantly reduces attacker success rates and improves detection capabilities.
+
+---
+
+# Business Impact
+
+Network and service hardening help organizations:
+
+- Reduce unauthorized access
+- Improve service availability
+- Support regulatory compliance
+- Strengthen incident detection
+- Protect business-critical infrastructure
+- Reduce operational risk
+
+---
+
+# Enterprise Best Practices
+
+- Expose only required network services.
+- Restrict administrative access to trusted networks.
+- Harden SSH according to organizational policy.
+- Monitor authentication events continuously.
+- Enable centralized logging where feasible.
+- Detect and remediate configuration drift.
+- Perform periodic security reviews.
+- Integrate hardening with change management processes.
+
+---
+
+# Key Takeaways
+
+- Network hardening reduces exposure to external threats.
+- SSH requires careful configuration and monitoring.
+- Running services should be reviewed and minimized.
+- Logging and auditing provide essential security visibility.
+- Continuous monitoring strengthens incident detection.
+- Compliance and hardening should work together to improve the overall security posture.
+
+---
+
