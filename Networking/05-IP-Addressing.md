@@ -1998,3 +1998,849 @@ Poor IPv6 planning can create hidden attack surfaces, inconsistent connectivity,
 - IPv6 replaces ARP with the Neighbor Discovery Protocol (NDP) and uses ICMPv6 for address resolution and router discovery.
 - SLAAC and DHCPv6 simplify address configuration, while dual-stack deployments allow organizations to migrate gradually from IPv4.
 - Enterprise IPv6 deployments should include dedicated security controls, monitoring, and policy enforcement to protect against IPv6-specific threats.
+
+# 05 - IP Addressing
+
+# Part 4 — Enterprise IP Address Management, NAT, Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
+
+---
+
+# Overview
+
+Designing an enterprise IP addressing scheme involves much more than assigning IP addresses.
+
+A well-designed IP infrastructure should provide:
+
+- Scalability
+- High Availability
+- Security
+- Easy troubleshooting
+- Efficient routing
+- Cloud compatibility
+- Future IPv6 migration
+
+Poor IP planning often results in:
+
+- Duplicate IP addresses
+- Routing failures
+- Broadcast congestion
+- Difficult troubleshooting
+- Network downtime
+- Security policy inconsistencies
+
+This section focuses on enterprise IP management, Network Address Translation (NAT), troubleshooting methodologies, practical labs, and interview preparation.
+
+---
+
+# Enterprise IP Address Planning
+
+Large organizations typically divide networks into logical segments based on business functions.
+
+Example:
+
+```
+                    Corporate Network
+                         10.0.0.0/8
+                              │
+      ┌─────────────┬──────────────┬──────────────┐
+      │             │              │              │
+   HR VLAN      IT VLAN      Finance VLAN    Server VLAN
+ 10.10.10.0/24 10.20.20.0/24 10.30.30.0/24 10.40.40.0/24
+      │             │              │              │
+  Employee PCs  Admin Systems  Accounting PCs  Application Servers
+```
+
+Benefits:
+
+- Easier routing
+- Department isolation
+- Better security policy enforcement
+- Simplified troubleshooting
+- Improved scalability
+
+---
+
+# IP Address Management (IPAM)
+
+**IP Address Management (IPAM)** is the process of planning, tracking, allocating, and monitoring IP address usage.
+
+Enterprise IPAM solutions provide:
+
+- Centralized IP inventory
+- DHCP integration
+- DNS integration
+- Address utilization reports
+- Duplicate IP detection
+- Automated address allocation
+- Historical auditing
+
+Popular enterprise IPAM platforms include:
+
+- Infoblox
+- BlueCat
+- SolarWinds IPAM
+- phpIPAM (open source)
+
+---
+
+# Static vs Dynamic IP Addressing
+
+| Feature | Static IP | Dynamic IP (DHCP) |
+|----------|-----------|-------------------|
+| Assigned By | Administrator | DHCP Server |
+| Changes | Rarely | Can change |
+| Best For | Servers, routers, firewalls | User devices, laptops, phones |
+| Management | Manual | Automated |
+| Scalability | Lower | Higher |
+
+---
+
+# Dynamic Host Configuration Protocol (DHCP)
+
+DHCP automatically assigns network configuration to clients.
+
+Typical information provided:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+- Lease Time
+- Domain Name
+
+---
+
+# DHCP Process (DORA)
+
+```
+Client
+
+↓
+
+DHCP Discover
+
+↓
+
+DHCP Offer
+
+↓
+
+DHCP Request
+
+↓
+
+DHCP Acknowledgment (ACK)
+```
+
+This sequence is commonly known as the **DORA process**.
+
+---
+
+# What is NAT?
+
+**Network Address Translation (NAT)** translates one IP address into another.
+
+It is commonly used to allow multiple private devices to access the Internet using one or more public IP addresses.
+
+Example:
+
+```
+Private Device
+
+10.10.10.25
+
+↓
+
+Firewall / NAT
+
+↓
+
+Public Address
+
+203.0.113.15
+
+↓
+
+Internet
+```
+
+---
+
+# Why NAT is Used
+
+Benefits include:
+
+- Conserves public IPv4 addresses
+- Hides internal addressing
+- Simplifies ISP changes
+- Supports private enterprise networks
+- Adds a layer of network abstraction
+
+> NAT should not be considered a substitute for a firewall or access control policy.
+
+---
+
+# Types of NAT
+
+---
+
+## Static NAT
+
+One private address permanently maps to one public address.
+
+```
+10.10.10.15
+
+↓
+
+203.0.113.20
+```
+
+Typical use:
+
+- Public web servers
+- VPN gateways
+- Mail servers
+
+---
+
+## Dynamic NAT
+
+Private addresses are translated using a pool of available public addresses.
+
+```
+Private Network
+
+↓
+
+Public Address Pool
+
+↓
+
+Internet
+```
+
+If the pool is exhausted, additional clients cannot establish new translations until addresses become available.
+
+---
+
+## PAT (Port Address Translation)
+
+Also called:
+
+```
+NAT Overload
+```
+
+Many private devices share one public IP by using different TCP/UDP port numbers.
+
+Example:
+
+```
+10.10.10.10:52341
+
+↓
+
+203.0.113.10:40001
+
+
+10.10.10.20:54122
+
+↓
+
+203.0.113.10:40002
+```
+
+PAT is the most common NAT implementation in enterprise and home networks.
+
+---
+
+# NAT Comparison
+
+| Feature | Static NAT | Dynamic NAT | PAT |
+|----------|------------|-------------|-----|
+| Mapping | 1:1 | Many-to-Many | Many-to-One |
+| Public IP Usage | High | Moderate | Very Efficient |
+| Internet Access | Yes | Yes | Yes |
+| Typical Use | Servers | Large organizations | Enterprise users |
+
+---
+
+# Public vs Private Network Flow
+
+```
+Employee Laptop
+
+↓
+
+10.20.20.15
+
+↓
+
+Access Switch
+
+↓
+
+Firewall
+
+↓
+
+PAT
+
+↓
+
+198.51.100.25
+
+↓
+
+Internet
+```
+
+The external destination sees only the translated public IP address.
+
+---
+
+# Enterprise IP Allocation Best Practices
+
+- Reserve dedicated ranges for infrastructure devices.
+- Use DHCP for end-user systems.
+- Assign static addresses to critical servers.
+- Document all subnets and gateways.
+- Avoid overlapping address ranges.
+- Use descriptive VLAN and subnet naming.
+- Implement IPAM for centralized management.
+- Plan for future growth and IPv6 adoption.
+
+---
+
+# Layer 3 Troubleshooting Methodology
+
+When troubleshooting IP connectivity, work from the lowest relevant layer upward.
+
+```
+Physical Link
+
+↓
+
+Interface Status
+
+↓
+
+IP Address
+
+↓
+
+Subnet Mask
+
+↓
+
+Default Gateway
+
+↓
+
+ARP / Neighbor Cache
+
+↓
+
+Routing Table
+
+↓
+
+DNS Resolution
+
+↓
+
+Application Connectivity
+```
+
+---
+
+# Common IP Addressing Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Duplicate IP Address | Static conflict or DHCP issue |
+| Incorrect Subnet Mask | Host believes remote devices are local (or vice versa) |
+| Missing Default Gateway | Cannot reach external networks |
+| DNS Failure | Name resolution unavailable |
+| APIPA Address | DHCP server unreachable |
+| Routing Failure | Missing or incorrect route |
+| NAT Failure | Translation misconfiguration |
+
+---
+
+# Essential Troubleshooting Commands
+
+## Windows
+
+Display IP configuration:
+
+```cmd
+ipconfig /all
+```
+
+Release DHCP lease:
+
+```cmd
+ipconfig /release
+```
+
+Renew DHCP lease:
+
+```cmd
+ipconfig /renew
+```
+
+Display routing table:
+
+```cmd
+route print
+```
+
+Display ARP cache:
+
+```cmd
+arp -a
+```
+
+Test connectivity:
+
+```cmd
+ping 8.8.8.8
+```
+
+Trace packet path:
+
+```cmd
+tracert example.com
+```
+
+Resolve DNS:
+
+```cmd
+nslookup example.com
+```
+
+---
+
+## Linux
+
+Display IP configuration:
+
+```bash
+ip addr
+```
+
+Display routes:
+
+```bash
+ip route
+```
+
+Display neighbor cache:
+
+```bash
+ip neigh
+```
+
+Test connectivity:
+
+```bash
+ping 8.8.8.8
+```
+
+Trace route:
+
+```bash
+traceroute example.com
+```
+
+DNS lookup:
+
+```bash
+dig example.com
+```
+
+---
+
+# Wireshark Analysis
+
+Capture traffic while browsing a website.
+
+Observe:
+
+```
+ARP / NDP
+
+↓
+
+DNS Query
+
+↓
+
+TCP Three-Way Handshake
+
+↓
+
+TLS Handshake
+
+↓
+
+HTTP Request
+
+↓
+
+HTTP Response
+```
+
+Inspect:
+
+- Source IP
+- Destination IP
+- TTL (IPv4) / Hop Limit (IPv6)
+- Protocol
+- TCP Ports
+- Packet length
+
+---
+
+# Practical Lab 1 — Verify Network Configuration
+
+**Objective:** Confirm the device has correct network settings.
+
+Steps:
+
+1. Run `ipconfig /all` (Windows) or `ip addr` (Linux).
+2. Verify:
+   - IP address
+   - Subnet mask or prefix
+   - Default gateway
+   - DNS servers
+3. Confirm the address matches the intended subnet.
+
+---
+
+# Practical Lab 2 — Test Connectivity
+
+Perform the following tests in order:
+
+```text
+Ping localhost
+
+↓
+
+Ping default gateway
+
+↓
+
+Ping another host in the subnet
+
+↓
+
+Ping an external IP address
+
+↓
+
+Ping a domain name
+```
+
+This sequence helps isolate whether the issue is local, network-related, Internet-related, or DNS-related.
+
+---
+
+# Practical Lab 3 — Analyze Routing
+
+Display the routing table:
+
+Windows:
+
+```cmd
+route print
+```
+
+Linux:
+
+```bash
+ip route
+```
+
+Identify:
+
+- Default route
+- Connected routes
+- Static routes (if configured)
+
+---
+
+# Practical Lab 4 — Capture Packets
+
+Using Wireshark:
+
+1. Start a packet capture.
+2. Browse to a website.
+3. Apply filters such as:
+
+```text
+ip
+
+dns
+
+tcp
+
+icmp
+```
+
+Observe:
+
+- Source and destination addresses
+- DNS resolution
+- TCP handshake
+- Application traffic
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+Employees report that they cannot access external websites, but they can communicate with internal servers.
+
+### Investigation
+
+**Step 1**
+
+Verify IP configuration.
+
+Result:
+
+Correct IP address and subnet mask.
+
+---
+
+**Step 2**
+
+Ping the default gateway.
+
+Result:
+
+Successful.
+
+---
+
+**Step 3**
+
+Ping an external IP address.
+
+Result:
+
+Successful.
+
+---
+
+**Step 4**
+
+Ping a domain name.
+
+Result:
+
+Failure.
+
+---
+
+### Root Cause
+
+DNS server configuration was incorrect.
+
+---
+
+### Resolution
+
+Update the DNS server settings via DHCP and verify name resolution.
+
+---
+
+# Security Considerations
+
+Attackers may exploit IP-based weaknesses through:
+
+- IP spoofing
+- Rogue DHCP servers
+- Address conflicts
+- Route manipulation
+- Unauthorized static routes
+- Misconfigured NAT policies
+
+Recommended controls:
+
+- DHCP Snooping
+- IP Source Guard
+- Route authentication where applicable
+- Network segmentation
+- Firewall policies
+- Continuous monitoring
+- IPAM auditing
+
+---
+
+# Interview Questions
+
+## Beginner
+
+### What is an IP address?
+
+An IP address is a logical Layer 3 identifier used to uniquely identify a network interface and enable communication across IP networks.
+
+---
+
+### What is the difference between IPv4 and IPv6?
+
+IPv4 uses 32-bit addresses written in dotted-decimal notation, while IPv6 uses 128-bit hexadecimal addresses, providing a vastly larger address space and additional protocol improvements.
+
+---
+
+### What is the purpose of a subnet mask?
+
+A subnet mask identifies which portion of an IP address represents the network and which portion represents the host.
+
+---
+
+## Intermediate
+
+### What is NAT?
+
+NAT translates private IP addresses to public IP addresses (or vice versa), enabling communication between private networks and external networks while conserving public IPv4 addresses.
+
+---
+
+### Explain the DORA process.
+
+The DHCP process consists of:
+
+1. Discover
+2. Offer
+3. Request
+4. Acknowledgment
+
+This allows a client to automatically obtain network configuration.
+
+---
+
+### Why are private IP addresses not routable on the Internet?
+
+Private address ranges defined in RFC 1918 are reserved for internal use. Internet routers do not forward these ranges, so NAT or another translation mechanism is required for Internet access.
+
+---
+
+## Advanced
+
+### How would you troubleshoot a user who cannot access the Internet?
+
+A structured approach includes:
+
+1. Verify physical connectivity.
+2. Check IP configuration.
+3. Confirm subnet mask and default gateway.
+4. Test local and remote connectivity.
+5. Verify DNS resolution.
+6. Inspect routing tables.
+7. Review firewall and NAT policies.
+8. Analyze traffic with packet captures if necessary.
+
+---
+
+### When would you use static IP addressing instead of DHCP?
+
+Static addressing is appropriate for devices that require consistent, predictable addresses, such as routers, firewalls, servers, printers, and infrastructure services.
+
+---
+
+### Why is IPAM important in enterprise environments?
+
+IPAM centralizes address management, reduces conflicts, improves visibility, simplifies auditing, integrates with DHCP and DNS, and supports scalable network operations.
+
+---
+
+# References
+
+## Standards
+
+- RFC 791 — Internet Protocol (IPv4)
+- RFC 8200 — Internet Protocol Version 6 (IPv6)
+- RFC 1918 — Address Allocation for Private Internets
+- RFC 2131 — Dynamic Host Configuration Protocol (DHCP)
+- RFC 3022 — Traditional NAT
+
+## Organizations
+
+- IANA (Internet Assigned Numbers Authority)
+- ICANN
+- Regional Internet Registries (ARIN, RIPE NCC, APNIC, LACNIC, AFRINIC)
+
+## Security Guidance
+
+- NIST SP 800-41
+- NIST SP 800-53
+- CIS Controls
+
+---
+
+# Summary
+
+IP addressing is the foundation of modern networking. IPv4 and IPv6 provide logical addressing that enables communication across local and global networks. Effective address planning, DHCP, NAT, and IP address management ensure scalable, secure, and reliable enterprise environments. A systematic troubleshooting methodology, combined with tools such as Wireshark and operating system networking utilities, allows engineers and security professionals to quickly identify and resolve connectivity issues.
+
+---
+
+# Chapter Review
+
+After completing this chapter, you should understand:
+
+✔ Purpose of logical IP addressing
+
+✔ IPv4 and IPv6 architecture
+
+✔ Binary representation of IPv4
+
+✔ Network ID and Host ID
+
+✔ Classful addressing and CIDR fundamentals
+
+✔ Public, private, and special-purpose addresses
+
+✔ IPv6 address types and Neighbor Discovery
+
+✔ SLAAC and DHCPv6
+
+✔ DHCP DORA process
+
+✔ Static vs dynamic addressing
+
+✔ NAT (Static, Dynamic, and PAT)
+
+✔ Enterprise IP planning and IPAM
+
+✔ Layer 3 troubleshooting methodology
+
+✔ Practical packet analysis
+
+✔ Security considerations for IP addressing
+
+✔ Enterprise interview preparation
+
+---
+
+# What's Next?
+
+The next chapter, **`06-Subnetting.md`**, will build directly on these concepts and cover:
+
+- Binary subnetting fundamentals
+- CIDR notation in depth
+- Subnet masks and wildcard masks
+- Variable Length Subnet Masking (VLSM)
+- Route summarization (supernetting)
+- Network, broadcast, and usable host calculations
+- Fast subnetting techniques for interviews
+- Enterprise subnet design
+- Cloud subnetting (AWS, Azure, GCP)
+- Practical labs using calculators and CLI tools
+- Wireshark subnet analysis
+- Advanced interview scenarios
