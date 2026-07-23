@@ -770,3 +770,824 @@ Effective package management enables organizations to:
 ---
 
 
+# Part 2 — Repository Configuration, Package Installation, Updates, Upgrades, Dependency Resolution, and Package Queries
+
+---
+
+# Introduction
+
+Installing software is only one aspect of package management.
+
+Enterprise Linux administrators must also:
+
+- Configure repositories
+- Install packages safely
+- Update software
+- Upgrade operating systems
+- Resolve dependency issues
+- Query installed packages
+- Audit software inventory
+- Maintain secure and compliant systems
+
+This section focuses on day-to-day package management operations across major Linux distributions.
+
+---
+
+# Enterprise Package Management Workflow
+
+```text
+Repository Configured
+
+↓
+
+Refresh Metadata
+
+↓
+
+Search Package
+
+↓
+
+Verify Package
+
+↓
+
+Install Package
+
+↓
+
+Resolve Dependencies
+
+↓
+
+Verify Installation
+
+↓
+
+Monitor Updates
+
+↓
+
+Maintain Software
+```
+
+---
+
+# Repository Configuration
+
+A **repository** is a trusted source of packages.
+
+Before software can be installed, the package manager must know where repositories are located.
+
+---
+
+# APT Repository Configuration
+
+APT repositories are typically defined in:
+
+```text
+/etc/apt/sources.list
+```
+
+Additional repository definitions may be stored in:
+
+```text
+/etc/apt/sources.list.d/
+```
+
+Example entry:
+
+```text
+deb http://archive.ubuntu.com/ubuntu jammy main restricted
+```
+
+---
+
+# Viewing Configured APT Repositories
+
+Display repository entries:
+
+```bash
+cat /etc/apt/sources.list
+```
+
+or
+
+```bash
+ls /etc/apt/sources.list.d/
+```
+
+---
+
+# DNF Repository Configuration
+
+Repository definitions are commonly stored in:
+
+```text
+/etc/yum.repos.d/
+```
+
+Example:
+
+```text
+example.repo
+```
+
+Typical repository file:
+
+```ini
+[example]
+
+name=Example Repository
+
+baseurl=https://repo.example.com/
+
+enabled=1
+
+gpgcheck=1
+```
+
+---
+
+# Repository File Components
+
+| Directive | Purpose |
+|-----------|----------|
+| `name` | Repository description |
+| `baseurl` | Repository location |
+| `enabled` | Enable or disable repository |
+| `gpgcheck` | Verify package signatures |
+| `gpgkey` | Public key used for verification |
+
+---
+
+# Viewing Enabled Repositories
+
+APT:
+
+```bash
+apt policy
+```
+
+DNF:
+
+```bash
+dnf repolist
+```
+
+Zypper:
+
+```bash
+zypper repos
+```
+
+Pacman:
+
+```bash
+pacman -Sl
+```
+
+---
+
+# Refreshing Repository Metadata
+
+Refreshing metadata downloads the latest package information without installing updates.
+
+APT:
+
+```bash
+sudo apt update
+```
+
+DNF:
+
+```bash
+sudo dnf check-update
+```
+
+Zypper:
+
+```bash
+sudo zypper refresh
+```
+
+Pacman:
+
+```bash
+sudo pacman -Sy
+```
+
+---
+
+# Metadata Refresh Workflow
+
+```text
+Repository
+
+↓
+
+Metadata Download
+
+↓
+
+Local Cache Updated
+
+↓
+
+Latest Package Information Available
+```
+
+---
+
+# Searching for Software
+
+APT:
+
+```bash
+apt search nginx
+```
+
+DNF:
+
+```bash
+dnf search nginx
+```
+
+Zypper:
+
+```bash
+zypper search nginx
+```
+
+Pacman:
+
+```bash
+pacman -Ss nginx
+```
+
+---
+
+# Viewing Package Information
+
+APT:
+
+```bash
+apt show nginx
+```
+
+DNF:
+
+```bash
+dnf info nginx
+```
+
+Zypper:
+
+```bash
+zypper info nginx
+```
+
+Pacman:
+
+```bash
+pacman -Si nginx
+```
+
+Typical information includes:
+
+- Version
+- Description
+- Architecture
+- Dependencies
+- Repository
+- License
+
+---
+
+# Installing Packages
+
+APT:
+
+```bash
+sudo apt install nginx
+```
+
+DNF:
+
+```bash
+sudo dnf install nginx
+```
+
+Zypper:
+
+```bash
+sudo zypper install nginx
+```
+
+Pacman:
+
+```bash
+sudo pacman -S nginx
+```
+
+---
+
+# Installation Process
+
+```text
+Install Request
+
+↓
+
+Repository Lookup
+
+↓
+
+Dependency Resolution
+
+↓
+
+Package Download
+
+↓
+
+Signature Verification
+
+↓
+
+Installation
+
+↓
+
+Package Database Updated
+```
+
+---
+
+# Installing Multiple Packages
+
+APT:
+
+```bash
+sudo apt install git curl vim
+```
+
+DNF:
+
+```bash
+sudo dnf install git curl vim
+```
+
+Package managers install all requested packages while resolving shared dependencies.
+
+---
+
+# Reinstalling Packages
+
+APT:
+
+```bash
+sudo apt install --reinstall nginx
+```
+
+DNF:
+
+```bash
+sudo dnf reinstall nginx
+```
+
+Useful when package files become corrupted.
+
+---
+
+# Removing Packages
+
+APT:
+
+```bash
+sudo apt remove nginx
+```
+
+DNF:
+
+```bash
+sudo dnf remove nginx
+```
+
+Zypper:
+
+```bash
+sudo zypper remove nginx
+```
+
+Pacman:
+
+```bash
+sudo pacman -R nginx
+```
+
+---
+
+# Purging Configuration (APT)
+
+Remove package and system-wide configuration files:
+
+```bash
+sudo apt purge nginx
+```
+
+Useful when performing a clean reinstall.
+
+---
+
+# Automatically Removing Unused Dependencies
+
+APT:
+
+```bash
+sudo apt autoremove
+```
+
+DNF:
+
+```bash
+sudo dnf autoremove
+```
+
+Removes packages that were installed as dependencies but are no longer required.
+
+---
+
+# Cleaning Package Cache
+
+APT:
+
+```bash
+sudo apt clean
+```
+
+Remove obsolete cached packages while retaining current ones:
+
+```bash
+sudo apt autoclean
+```
+
+DNF:
+
+```bash
+sudo dnf clean all
+```
+
+Pacman:
+
+```bash
+sudo pacman -Sc
+```
+
+---
+
+# Cache Management Workflow
+
+```text
+Downloaded Packages
+
+↓
+
+Local Cache
+
+↓
+
+Cache Cleanup
+
+↓
+
+Disk Space Recovered
+```
+
+---
+
+# Updating Installed Packages
+
+APT:
+
+```bash
+sudo apt upgrade
+```
+
+DNF:
+
+```bash
+sudo dnf upgrade
+```
+
+Zypper:
+
+```bash
+sudo zypper update
+```
+
+Pacman:
+
+```bash
+sudo pacman -Su
+```
+
+Updates installed software using the current repository metadata.
+
+---
+
+# Full System Upgrade
+
+APT supports a more comprehensive upgrade operation:
+
+```bash
+sudo apt full-upgrade
+```
+
+This may install or remove packages when required to satisfy dependency changes.
+
+---
+
+# Update vs Upgrade
+
+| Operation | Purpose |
+|-----------|----------|
+| Metadata Refresh | Downloads latest package information |
+| Upgrade | Updates installed packages |
+| Full Upgrade | Allows dependency changes, including package additions or removals if necessary |
+
+Refreshing metadata does **not** update installed software.
+
+---
+
+# Dependency Resolution
+
+Package managers automatically install required dependencies.
+
+Example:
+
+```text
+Install Web Application
+
+↓
+
+Requires OpenSSL
+
+↓
+
+Requires libc
+
+↓
+
+Requires zlib
+
+↓
+
+Install All Packages
+```
+
+This prevents many manual installation errors.
+
+---
+
+# Dependency Conflict Example
+
+```text
+Application A
+
+↓
+
+Library Version 1
+
+Application B
+
+↓
+
+Library Version 2
+```
+
+Package managers attempt to resolve such conflicts while maintaining consistency.
+
+---
+
+# Listing Installed Packages
+
+APT:
+
+```bash
+apt list --installed
+```
+
+DNF:
+
+```bash
+dnf list installed
+```
+
+Pacman:
+
+```bash
+pacman -Q
+```
+
+Useful for:
+
+- Software inventory
+- Compliance
+- Audits
+
+---
+
+# Determining Whether a Package Is Installed
+
+APT:
+
+```bash
+dpkg -l nginx
+```
+
+DNF:
+
+```bash
+rpm -q nginx
+```
+
+Pacman:
+
+```bash
+pacman -Q nginx
+```
+
+---
+
+# Finding the Repository Providing a Package
+
+APT:
+
+```bash
+apt policy nginx
+```
+
+DNF:
+
+```bash
+dnf info nginx
+```
+
+These commands help determine the package source and installed version.
+
+---
+
+# Listing Files Installed by a Package
+
+APT (Debian package database):
+
+```bash
+dpkg -L nginx
+```
+
+RPM-based systems:
+
+```bash
+rpm -ql nginx
+```
+
+Useful for:
+
+- Troubleshooting
+- File verification
+- Configuration discovery
+
+---
+
+# Finding Which Package Owns a File
+
+APT:
+
+```bash
+dpkg -S /usr/bin/ssh
+```
+
+RPM:
+
+```bash
+rpm -qf /usr/bin/ssh
+```
+
+This identifies the package responsible for an installed file.
+
+---
+
+# Enterprise Software Inventory
+
+```text
+Package Database
+
+↓
+
+Installed Packages
+
+↓
+
+Compliance Report
+
+↓
+
+Security Review
+
+↓
+
+Approved Software List
+```
+
+Accurate inventories simplify audits and vulnerability management.
+
+---
+
+# Enterprise Scenario
+
+A vulnerability is announced in a web server package.
+
+Workflow:
+
+```text
+Security Advisory
+
+↓
+
+Identify Installed Version
+
+↓
+
+Refresh Metadata
+
+↓
+
+Install Security Update
+
+↓
+
+Verify Version
+
+↓
+
+Document Completion
+```
+
+Timely patching reduces exposure to known vulnerabilities.
+
+---
+
+# Cybersecurity Perspective
+
+Attackers often exploit:
+
+- Outdated packages
+- Unsupported software
+- Missing security patches
+- Untrusted repositories
+
+Security teams should:
+
+- Maintain current package inventories.
+- Remove unsupported software.
+- Apply vendor security updates promptly.
+- Restrict repository usage to trusted sources.
+- Monitor systems for unauthorized package installations.
+
+---
+
+# Business Impact
+
+Effective update and repository management helps organizations:
+
+- Reduce security risk.
+- Improve system stability.
+- Simplify software maintenance.
+- Support compliance requirements.
+- Standardize environments across fleets of systems.
+
+---
+
+# Enterprise Best Practices
+
+- Refresh repository metadata before installing or upgrading software.
+- Use trusted repositories with signature verification enabled.
+- Remove obsolete packages and unused dependencies.
+- Regularly clean package caches where appropriate.
+- Maintain documented software baselines.
+- Test upgrades in non-production environments before deployment.
+- Automate routine patch management for large environments.
+
+---
+
+# Key Takeaways
+
+- Repository configuration determines where packages are obtained.
+- Metadata refresh and software upgrades are separate operations.
+- Package managers automatically resolve dependencies.
+- Package queries support troubleshooting, audits, and compliance.
+- Secure repository management is fundamental to enterprise Linux administration.
+
+---
+
