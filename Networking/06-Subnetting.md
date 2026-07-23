@@ -646,3 +646,832 @@ Poor subnet design increases operational complexity and can introduce performanc
 - Borrowing host bits creates additional subnets while reducing hosts per subnet.
 - Thoughtful subnet planning is essential for secure, scalable, and manageable enterprise networks.
 
+# 06 - Subnetting
+
+# Part 2 — Manual Subnet Calculations, Magic Number Method, Binary Subnetting, and Interview Techniques
+
+---
+
+# Overview
+
+One of the most frequently tested networking skills in technical interviews is **manual subnet calculation**.
+
+Although subnet calculators exist, network engineers and cybersecurity professionals should understand how subnetting works without relying on tools.
+
+This section explains:
+
+- Binary subnet calculations
+- Network address calculation
+- Broadcast address calculation
+- First and last usable host
+- Block size (Magic Number) method
+- Fast interview techniques
+- Common subnet examples
+
+---
+
+# Steps for Manual Subnetting
+
+Whenever you receive an IP address and subnet mask, answer these questions:
+
+```
+1. What is the Network Address?
+
+↓
+
+2. What is the Broadcast Address?
+
+↓
+
+3. What is the First Host?
+
+↓
+
+4. What is the Last Host?
+
+↓
+
+5. How many Usable Hosts exist?
+```
+
+Following the same process every time helps avoid mistakes.
+
+---
+
+# Example
+
+```
+IP Address
+
+192.168.10.75
+
+Subnet
+
+/26
+```
+
+Our objective is to determine:
+
+- Network
+- Broadcast
+- Host range
+- Number of hosts
+
+---
+
+# CIDR to Subnet Mask
+
+A prefix length represents the number of network bits.
+
+| CIDR | Subnet Mask |
+|------|-------------|
+| /24 | 255.255.255.0 |
+| /25 | 255.255.255.128 |
+| /26 | 255.255.255.192 |
+| /27 | 255.255.255.224 |
+| /28 | 255.255.255.240 |
+| /29 | 255.255.255.248 |
+| /30 | 255.255.255.252 |
+
+Always convert the CIDR prefix into its subnet mask before calculating.
+
+---
+
+# Binary View of /26
+
+Subnet mask:
+
+```
+255.255.255.192
+```
+
+Binary:
+
+```
+11111111
+
+11111111
+
+11111111
+
+11000000
+```
+
+Meaning:
+
+```
+26 Network Bits
+
+↓
+
+6 Host Bits
+```
+
+---
+
+# Host Calculation
+
+Formula:
+
+```
+2^(Host Bits) − 2
+```
+
+For:
+
+```
+/26
+```
+
+Host bits:
+
+```
+6
+```
+
+Calculation:
+
+```
+2⁶ − 2
+
+=
+
+64 − 2
+
+=
+
+62 Hosts
+```
+
+---
+
+# Number of Subnets
+
+Formula:
+
+```
+2^(Borrowed Bits)
+```
+
+Example:
+
+Original network:
+
+```
+/24
+```
+
+Converted to:
+
+```
+/26
+```
+
+Borrowed bits:
+
+```
+2
+```
+
+Calculation:
+
+```
+2²
+
+=
+
+4 Subnets
+```
+
+---
+
+# The Magic Number Method
+
+The **Magic Number** (also called the block size) is the fastest manual subnetting technique.
+
+Formula:
+
+```
+256 − Interesting Octet
+```
+
+For:
+
+```
+255.255.255.192
+```
+
+Interesting octet:
+
+```
+192
+```
+
+Calculation:
+
+```
+256 − 192
+
+=
+
+64
+```
+
+Therefore, subnet boundaries occur every:
+
+```
+64 Addresses
+```
+
+---
+
+# Example — /26
+
+Magic number:
+
+```
+64
+```
+
+Subnet ranges:
+
+```
+0
+
+64
+
+128
+
+192
+```
+
+Resulting networks:
+
+```
+192.168.10.0
+
+192.168.10.64
+
+192.168.10.128
+
+192.168.10.192
+```
+
+---
+
+# Finding the Correct Subnet
+
+Given:
+
+```
+192.168.10.75/26
+```
+
+Subnet boundaries:
+
+```
+0
+
+64
+
+128
+
+192
+```
+
+The address:
+
+```
+75
+```
+
+Falls between:
+
+```
+64
+
+↓
+
+127
+```
+
+Therefore:
+
+Network:
+
+```
+192.168.10.64
+```
+
+---
+
+# Broadcast Address
+
+Broadcast is always:
+
+```
+Next Network
+
+−1
+```
+
+Next network:
+
+```
+192.168.10.128
+```
+
+Broadcast:
+
+```
+192.168.10.127
+```
+
+---
+
+# First Host
+
+```
+Network
+
++
+
+1
+```
+
+Result:
+
+```
+192.168.10.65
+```
+
+---
+
+# Last Host
+
+```
+Broadcast
+
+−1
+```
+
+Result:
+
+```
+192.168.10.126
+```
+
+---
+
+# Final Answer
+
+Given:
+
+```
+192.168.10.75/26
+```
+
+| Item | Value |
+|------|-------|
+| Network | 192.168.10.64 |
+| Broadcast | 192.168.10.127 |
+| First Host | 192.168.10.65 |
+| Last Host | 192.168.10.126 |
+| Hosts | 62 |
+
+---
+
+# Worked Example — /25
+
+Given:
+
+```
+192.168.1.140/25
+```
+
+Subnet mask:
+
+```
+255.255.255.128
+```
+
+Magic number:
+
+```
+256 − 128
+
+=
+
+128
+```
+
+Subnet boundaries:
+
+```
+0
+
+128
+```
+
+Address:
+
+```
+140
+```
+
+Falls in:
+
+```
+128–255
+```
+
+Results:
+
+| Item | Value |
+|------|-------|
+| Network | 192.168.1.128 |
+| Broadcast | 192.168.1.255 |
+| First Host | 192.168.1.129 |
+| Last Host | 192.168.1.254 |
+| Hosts | 126 |
+
+---
+
+# Worked Example — /27
+
+Given:
+
+```
+192.168.5.90/27
+```
+
+Subnet mask:
+
+```
+255.255.255.224
+```
+
+Magic number:
+
+```
+256 − 224
+
+=
+
+32
+```
+
+Subnet boundaries:
+
+```
+0
+
+32
+
+64
+
+96
+
+128
+
+160
+
+192
+
+224
+```
+
+The address:
+
+```
+90
+```
+
+Falls between:
+
+```
+64–95
+```
+
+Results:
+
+| Item | Value |
+|------|-------|
+| Network | 192.168.5.64 |
+| Broadcast | 192.168.5.95 |
+| First Host | 192.168.5.65 |
+| Last Host | 192.168.5.94 |
+| Hosts | 30 |
+
+---
+
+# Worked Example — /28
+
+Given:
+
+```
+10.20.30.150/28
+```
+
+Subnet mask:
+
+```
+255.255.255.240
+```
+
+Magic number:
+
+```
+16
+```
+
+Boundaries:
+
+```
+0
+
+16
+
+32
+
+48
+
+64
+
+80
+
+96
+
+112
+
+128
+
+144
+
+160
+
+...
+```
+
+Address:
+
+```
+150
+```
+
+Falls inside:
+
+```
+144–159
+```
+
+Results:
+
+| Item | Value |
+|------|-------|
+| Network | 10.20.30.144 |
+| Broadcast | 10.20.30.159 |
+| First Host | 10.20.30.145 |
+| Last Host | 10.20.30.158 |
+| Hosts | 14 |
+
+---
+
+# Worked Example — /29
+
+Magic number:
+
+```
+8
+```
+
+Hosts:
+
+```
+6
+```
+
+Example:
+
+```
+192.168.10.203/29
+```
+
+Boundaries:
+
+```
+192
+
+200
+
+208
+```
+
+Results:
+
+| Item | Value |
+|------|-------|
+| Network | 192.168.10.200 |
+| Broadcast | 192.168.10.207 |
+| First Host | 192.168.10.201 |
+| Last Host | 192.168.10.206 |
+
+---
+
+# Worked Example — /30
+
+Subnet mask:
+
+```
+255.255.255.252
+```
+
+Magic number:
+
+```
+4
+```
+
+Hosts:
+
+```
+2
+```
+
+Example:
+
+```
+172.16.1.53/30
+```
+
+Boundaries:
+
+```
+48
+
+52
+
+56
+```
+
+Result:
+
+| Item | Value |
+|------|-------|
+| Network | 172.16.1.52 |
+| Broadcast | 172.16.1.55 |
+| First Host | 172.16.1.53 |
+| Last Host | 172.16.1.54 |
+
+Common use:
+
+- Point-to-point WAN links
+- Router interconnections
+
+---
+
+# Special Prefix — /31
+
+According to **RFC 3021**, `/31` networks can be used for point-to-point links.
+
+Characteristics:
+
+- Two addresses
+- No traditional network/broadcast reservation
+- Efficient use of address space
+
+Example:
+
+```
+10.1.1.0/31
+
+↓
+
+10.1.1.0
+
+10.1.1.1
+```
+
+---
+
+# Special Prefix — /32
+
+A `/32` identifies a **single host**.
+
+Example:
+
+```
+192.168.10.25/32
+```
+
+Common uses:
+
+- Loopback interfaces
+- Firewall rules
+- Routing policies
+- Host-specific routes
+
+---
+
+# Quick Reference Table
+
+| Prefix | Hosts | Block Size |
+|---------|------:|-----------:|
+| /24 | 254 | 256 |
+| /25 | 126 | 128 |
+| /26 | 62 | 64 |
+| /27 | 30 | 32 |
+| /28 | 14 | 16 |
+| /29 | 6 | 8 |
+| /30 | 2 | 4 |
+| /31 | 2 (Point-to-Point) | 2 |
+| /32 | 1 | 1 |
+
+---
+
+# Fast Interview Shortcut
+
+Instead of converting every address to binary:
+
+1. Find the subnet mask.
+2. Calculate the magic number.
+3. List subnet boundaries.
+4. Locate the IP address.
+5. Determine:
+   - Network
+   - Broadcast
+   - First host
+   - Last host
+
+This method is widely used by experienced network engineers and is often sufficient for interview calculations.
+
+---
+
+# Common Interview Mistakes
+
+| Mistake | Result |
+|----------|--------|
+| Using the wrong subnet boundary | Incorrect network address |
+| Forgetting the broadcast address | Incorrect host range |
+| Counting network/broadcast as usable hosts | Wrong host count |
+| Mixing CIDR and subnet masks | Incorrect calculations |
+| Ignoring `/31` behavior | Incorrect point-to-point design |
+
+---
+
+# Practice Questions
+
+### Question 1
+
+```
+192.168.20.170/27
+```
+
+Find:
+
+- Network
+- Broadcast
+- First host
+- Last host
+
+---
+
+### Question 2
+
+```
+10.10.15.90/28
+```
+
+Calculate:
+
+- Network
+- Broadcast
+- Usable hosts
+
+---
+
+### Question 3
+
+```
+172.20.30.101/26
+```
+
+Determine:
+
+- Network
+- Broadcast
+- Host range
+
+> **Tip:** Solve these manually before checking with a calculator to strengthen your understanding.
+
+---
+
+# Key Takeaways
+
+- Manual subnetting follows a repeatable five-step process.
+- The **Magic Number (Block Size)** method is faster than binary conversion for most interview scenarios.
+- Network address = first address in the subnet.
+- Broadcast address = last address in the subnet.
+- First and last usable hosts are immediately after the network address and immediately before the broadcast address.
+- `/31` and `/32` have specialized purposes and are important for enterprise routing and security.
+
