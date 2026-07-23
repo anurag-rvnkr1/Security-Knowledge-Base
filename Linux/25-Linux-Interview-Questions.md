@@ -2053,3 +2053,805 @@ Structure your answers using the **STAR** method:
 
 ---
 
+
+# 25 - Linux Interview Questions
+
+# Part 4 — Hands-on Command Challenges, Rapid-Fire Interview Questions, HR Questions, Mock Interview, Final Revision Sheet, and References
+
+---
+
+# Introduction
+
+This final part focuses on what most companies evaluate during the last technical interview or practical assessment.
+
+You will practice:
+
+- Hands-on Linux commands
+- Troubleshooting challenges
+- Rapid-fire questions
+- HR + Technical interview questions
+- Mock interview
+- Final revision sheet
+
+These questions are suitable for:
+
+- Linux Administrator
+- System Administrator
+- DevOps Engineer
+- Cloud Engineer
+- SOC Analyst
+- Security Analyst
+- VAPT Engineer
+- Cybersecurity Engineer
+
+---
+
+# Section 1 — Hands-on Command Challenges
+
+---
+
+# Challenge 1
+
+## Display the current working directory.
+
+### Solution
+
+```bash
+pwd
+```
+
+---
+
+# Challenge 2
+
+## Display all files including hidden files.
+
+### Solution
+
+```bash
+ls -la
+```
+
+---
+
+# Challenge 3
+
+## Create the following directory structure.
+
+```text
+Projects
+└── Linux
+    └── Notes
+```
+
+### Solution
+
+```bash
+mkdir -p Projects/Linux/Notes
+```
+
+---
+
+# Challenge 4
+
+## Create an empty file named `report.txt`.
+
+### Solution
+
+```bash
+touch report.txt
+```
+
+---
+
+# Challenge 5
+
+## Copy `report.txt` to the backup directory.
+
+### Solution
+
+```bash
+cp report.txt backup/
+```
+
+---
+
+# Challenge 6
+
+## Move a file into another directory.
+
+### Solution
+
+```bash
+mv report.txt Documents/
+```
+
+---
+
+# Challenge 7
+
+## Rename a file.
+
+### Solution
+
+```bash
+mv report.txt final_report.txt
+```
+
+---
+
+# Challenge 8
+
+## Find every `.log` file under `/var`.
+
+### Solution
+
+```bash
+find /var -name "*.log"
+```
+
+---
+
+# Challenge 9
+
+## Search recursively for the word "error".
+
+### Solution
+
+```bash
+grep -R "error" .
+```
+
+---
+
+# Challenge 10
+
+## Display the last 20 lines of a log file.
+
+### Solution
+
+```bash
+tail -20 logfile.log
+```
+
+---
+
+# Challenge 11
+
+## Follow a log file in real time.
+
+### Solution
+
+```bash
+tail -f logfile.log
+```
+
+---
+
+# Challenge 12
+
+## Find the top five CPU-consuming processes.
+
+### Solution
+
+```bash
+ps aux --sort=-%cpu | head -5
+```
+
+---
+
+# Challenge 13
+
+## Display memory usage.
+
+### Solution
+
+```bash
+free -h
+```
+
+---
+
+# Challenge 14
+
+## Display disk usage.
+
+### Solution
+
+```bash
+df -h
+```
+
+---
+
+# Challenge 15
+
+## Display directory sizes.
+
+### Solution
+
+```bash
+du -sh *
+```
+
+---
+
+# Challenge 16
+
+## Check the status of the SSH service.
+
+### Solution
+
+```bash
+systemctl status ssh
+```
+
+---
+
+# Challenge 17
+
+## Display failed services.
+
+### Solution
+
+```bash
+systemctl --failed
+```
+
+---
+
+# Challenge 18
+
+## View logs for a service.
+
+### Solution
+
+```bash
+journalctl -u ssh
+```
+
+---
+
+# Challenge 19
+
+## Display IP addresses.
+
+### Solution
+
+```bash
+ip addr
+```
+
+---
+
+# Challenge 20
+
+## Display the routing table.
+
+### Solution
+
+```bash
+ip route
+```
+
+---
+
+# Section 2 — Rapid-Fire Linux Questions
+
+---
+
+## Q1
+
+What command shows the current directory?
+
+**Answer**
+
+```bash
+pwd
+```
+
+---
+
+## Q2
+
+Which command displays running processes?
+
+**Answer**
+
+```bash
+ps
+```
+
+---
+
+## Q3
+
+Which command displays disk usage?
+
+**Answer**
+
+```bash
+df -h
+```
+
+---
+
+## Q4
+
+Which command changes permissions?
+
+**Answer**
+
+```bash
+chmod
+```
+
+---
+
+## Q5
+
+Which command changes file ownership?
+
+**Answer**
+
+```bash
+chown
+```
+
+---
+
+## Q6
+
+Where is DNS configuration stored?
+
+**Answer**
+
+```text
+/etc/resolv.conf
+```
+
+---
+
+## Q7
+
+Where are system configuration files stored?
+
+**Answer**
+
+```text
+/etc
+```
+
+---
+
+## Q8
+
+What command displays kernel information?
+
+**Answer**
+
+```bash
+uname -a
+```
+
+---
+
+## Q9
+
+Which command displays system uptime?
+
+**Answer**
+
+```bash
+uptime
+```
+
+---
+
+## Q10
+
+Which command displays kernel messages?
+
+**Answer**
+
+```bash
+dmesg
+```
+
+---
+
+## Q11
+
+Which command displays system logs managed by systemd?
+
+**Answer**
+
+```bash
+journalctl
+```
+
+---
+
+## Q12
+
+How do you display listening ports?
+
+**Answer**
+
+```bash
+ss -tulpn
+```
+
+---
+
+## Q13
+
+How do you display mounted filesystems?
+
+**Answer**
+
+```bash
+mount
+```
+
+---
+
+## Q14
+
+Which command lists block devices?
+
+**Answer**
+
+```bash
+lsblk
+```
+
+---
+
+## Q15
+
+Which command displays filesystem UUIDs?
+
+**Answer**
+
+```bash
+blkid
+```
+
+---
+
+# Section 3 — HR + Technical Questions
+
+---
+
+## Tell me about yourself.
+
+### Sample Answer
+
+"I am a Computer Science graduate with strong Linux, networking, and cybersecurity fundamentals. I enjoy solving technical problems, automating routine tasks with shell scripting, and continuously improving my skills in Linux administration, cloud technologies, and information security. I am looking for an opportunity where I can contribute to reliable and secure infrastructure while continuing to grow professionally."
+
+---
+
+## Why Linux?
+
+### Sample Answer
+
+"Linux powers a significant portion of enterprise servers, cloud platforms, and cybersecurity infrastructure. I enjoy working with the command line, understanding how systems operate internally, and using Linux to automate and troubleshoot complex environments."
+
+---
+
+## What is your greatest strength?
+
+Example:
+
+- Quick learner
+- Logical problem-solving
+- Attention to detail
+- Team collaboration
+- Continuous learning
+
+Support your answer with a real example whenever possible.
+
+---
+
+## What is your weakness?
+
+Choose a genuine but manageable area for improvement.
+
+Example:
+
+"I sometimes spend extra time validating my work because I want to ensure accuracy. I have improved by setting clear priorities and balancing thoroughness with deadlines."
+
+---
+
+## How do you handle production incidents?
+
+### Suggested Approach
+
+```text
+Stay Calm
+
+↓
+
+Assess Impact
+
+↓
+
+Collect Evidence
+
+↓
+
+Identify Root Cause
+
+↓
+
+Restore Service
+
+↓
+
+Validate
+
+↓
+
+Document
+
+↓
+
+Prevent Recurrence
+```
+
+---
+
+## How do you prioritize tasks?
+
+Suggested order:
+
+1. Critical production outages
+2. Security incidents
+3. High-priority business issues
+4. Planned maintenance
+5. Routine operational tasks
+
+---
+
+## Why should we hire you?
+
+Example:
+
+"I have strong Linux fundamentals, hands-on experience with system administration concepts, and a structured approach to troubleshooting. I enjoy learning new technologies, work well in teams, and am committed to building secure and reliable systems."
+
+---
+
+# Section 4 — Mock Technical Interview
+
+---
+
+## Interviewer
+
+Explain the Linux boot process.
+
+### Candidate
+
+"The Linux boot process begins with BIOS or UEFI initializing hardware. The bootloader, such as GRUB, loads the Linux kernel and initramfs. The kernel initializes hardware, mounts the root filesystem, and starts `systemd`, which launches system services and presents the login prompt."
+
+---
+
+## Interviewer
+
+How do you troubleshoot a server running slowly?
+
+### Candidate
+
+"I first determine the scope of the issue, then check system load, CPU, memory, storage, and network resources. I review logs, identify resource-intensive processes or configuration changes, determine the root cause, implement a fix, and validate that the issue has been resolved."
+
+---
+
+## Interviewer
+
+A service fails to start after a configuration change. What do you do?
+
+### Candidate
+
+"I review the service status and logs, validate the configuration syntax if supported, compare recent changes with the last known good configuration, correct the issue, restart or reload the service, and verify normal operation."
+
+---
+
+## Interviewer
+
+What is the Principle of Least Privilege?
+
+### Candidate
+
+"It means users and processes should receive only the permissions required to perform their intended tasks. This reduces the attack surface, limits the impact of compromised accounts, and improves security."
+
+---
+
+# Section 5 — Final Linux Revision Sheet
+
+---
+
+## Boot Process
+
+```text
+BIOS / UEFI
+
+↓
+
+GRUB
+
+↓
+
+Kernel
+
+↓
+
+initramfs
+
+↓
+
+systemd
+
+↓
+
+Services
+
+↓
+
+Login
+```
+
+---
+
+## Essential Directories
+
+| Directory | Purpose |
+|-----------|----------|
+| `/` | Root filesystem |
+| `/home` | User home directories |
+| `/etc` | Configuration files |
+| `/var` | Variable data (logs, spool, cache) |
+| `/usr` | User applications and libraries |
+| `/tmp` | Temporary files |
+| `/opt` | Optional software |
+
+---
+
+## Frequently Used Commands
+
+| Task | Command |
+|------|---------|
+| Current directory | `pwd` |
+| List files | `ls -la` |
+| Search files | `find` |
+| Search text | `grep` |
+| Processes | `ps`, `top` |
+| Memory | `free -h` |
+| Disk | `df -h` |
+| Services | `systemctl` |
+| Logs | `journalctl` |
+| Networking | `ip`, `ss` |
+
+---
+
+## Troubleshooting Workflow
+
+```text
+Observe
+
+↓
+
+Collect Information
+
+↓
+
+Analyze
+
+↓
+
+Identify Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+
+↓
+
+Document
+```
+
+---
+
+## Security Best Practices
+
+- Use `sudo` instead of logging in as `root`.
+- Apply the Principle of Least Privilege.
+- Keep systems updated.
+- Monitor logs regularly.
+- Use SSH securely.
+- Remove unnecessary services.
+- Back up critical data.
+- Document configuration changes.
+
+---
+
+# Chapter Summary
+
+This chapter covered:
+
+- Linux fundamentals interview questions
+- Process and service management
+- Networking and storage concepts
+- Shell scripting basics
+- Security interview topics
+- Enterprise troubleshooting scenarios
+- DevOps and cloud concepts
+- Hands-on Linux command challenges
+- HR and behavioral interview questions
+- Mock technical interviews
+- Final revision checklist
+
+---
+
+# References
+
+## Official Documentation
+
+- Linux Foundation Documentation
+- Red Hat Enterprise Linux Documentation
+- Ubuntu Server Guide
+- Debian Administrator's Handbook
+
+## Manual Pages
+
+- `man bash`
+- `man systemctl`
+- `man journalctl`
+- `man ps`
+- `man ip`
+- `man ss`
+- `man grep`
+- `man find`
+- `man chmod`
+- `man chown`
+
+## Best Practices
+
+- NIST Cybersecurity Framework (CSF)
+- CIS Benchmarks for Linux
+- Site Reliability Engineering (SRE) Principles
+- POSIX Standards
+
+---
+
+# Key Takeaways
+
+- Strong Linux interviews test both conceptual understanding and practical skills.
+- Explain your reasoning clearly before discussing commands.
+- Use structured troubleshooting methodologies in scenario-based questions.
+- Demonstrate security awareness alongside administration expertise.
+- Practice common commands regularly to build speed and confidence.
+
+---
+
+# Next Chapter
+
+➡️ **26-Linux-Cheat-Sheet.md**
+
+## Topics Covered
+
+- Essential Linux Commands
+- File & Directory Management
+- Users & Permissions
+- Process & Service Management
+- Networking Commands
+- Storage & Filesystems
+- Package Management
+- Shell Scripting Quick Reference
+- Security Commands
+- Troubleshooting Quick Reference
+- System Administration One-Liners
+- Interview & Exam Revision Cheat Sheet
