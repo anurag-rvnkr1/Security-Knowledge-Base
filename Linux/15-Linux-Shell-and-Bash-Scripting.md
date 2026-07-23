@@ -787,3 +787,858 @@ Organizations relying on automation often use shell scripts as a foundation for 
 ---
 
 
+# 15 - Linux Shell and Bash Scripting
+
+# Part 2 — Input/Output Redirection, Pipes, Variables, User Input, Command Substitution, and Bash Scripting Fundamentals
+
+---
+
+# Introduction
+
+The true power of Bash comes from combining commands, redirecting input and output, using variables, and automating tasks through scripts.
+
+Instead of manually performing repetitive tasks, administrators write Bash scripts to:
+
+- Provision servers
+- Monitor services
+- Rotate logs
+- Deploy applications
+- Perform backups
+- Analyze security events
+- Generate reports
+- Automate incident response
+
+Almost every enterprise Linux environment relies heavily on shell scripting.
+
+---
+
+# Bash Scripting Workflow
+
+```text
+Script
+
+↓
+
+Bash Interpreter
+
+↓
+
+Commands
+
+↓
+
+Kernel
+
+↓
+
+System Resources
+
+↓
+
+Output
+```
+
+---
+
+# Standard Streams
+
+Every Linux process starts with three standard streams.
+
+| Stream | Number | Purpose |
+|---------|--------|----------|
+| Standard Input | 0 | Input to program |
+| Standard Output | 1 | Normal output |
+| Standard Error | 2 | Error messages |
+
+---
+
+# Standard Stream Diagram
+
+```text
+             Keyboard
+                │
+                ▼
+      Standard Input (0)
+                │
+                ▼
+            Program
+          ▲         ▲
+          │         │
+          │         │
+ Std Output(1)  Std Error(2)
+          │         │
+          ▼         ▼
+       Terminal   Terminal
+```
+
+---
+
+# Input Redirection
+
+Input can come from files instead of the keyboard.
+
+Example:
+
+```bash
+sort < names.txt
+```
+
+Workflow:
+
+```text
+File
+
+↓
+
+Program
+
+↓
+
+Output
+```
+
+---
+
+# Output Redirection
+
+Overwrite output:
+
+```bash
+ls > files.txt
+```
+
+The file is created if it does not exist.
+
+If it exists, its previous contents are replaced.
+
+---
+
+# Append Output
+
+Append instead of overwrite:
+
+```bash
+date >> log.txt
+```
+
+Example:
+
+```text
+Run 1
+
+Run 2
+
+Run 3
+```
+
+---
+
+# Redirecting Errors
+
+Redirect only errors:
+
+```bash
+find /root 2> errors.log
+```
+
+Useful when collecting error information separately.
+
+---
+
+# Append Errors
+
+```bash
+find /root 2>> errors.log
+```
+
+---
+
+# Redirect Both Output and Errors
+
+```bash
+command > output.log 2>&1
+```
+
+Modern Bash syntax:
+
+```bash
+command &> output.log
+```
+
+---
+
+# Discard Output
+
+Linux provides a special device:
+
+```text
+/dev/null
+```
+
+Ignore output:
+
+```bash
+command > /dev/null
+```
+
+Ignore errors:
+
+```bash
+command 2> /dev/null
+```
+
+Ignore both:
+
+```bash
+command &> /dev/null
+```
+
+---
+
+# Redirection Summary
+
+| Operator | Meaning |
+|-----------|----------|
+| `>` | Overwrite output |
+| `>>` | Append output |
+| `<` | Read input |
+| `2>` | Redirect errors |
+| `2>>` | Append errors |
+| `&>` | Redirect output and errors |
+| `/dev/null` | Discard data |
+
+---
+
+# Pipes
+
+A pipe (`|`) sends the output of one command directly into another.
+
+Instead of storing intermediate results in a file, data flows between commands.
+
+---
+
+# Pipe Workflow
+
+```text
+Command A
+
+↓
+
+Pipe
+
+↓
+
+Command B
+```
+
+---
+
+# Example
+
+```bash
+ls -l | less
+```
+
+Workflow:
+
+```text
+Directory Listing
+
+↓
+
+less
+
+↓
+
+Scrollable Output
+```
+
+---
+
+# Counting Files
+
+```bash
+ls | wc -l
+```
+
+Meaning:
+
+```text
+List Files
+
+↓
+
+Count Lines
+
+↓
+
+Number of Files
+```
+
+---
+
+# Searching Output
+
+```bash
+ps -ef | grep ssh
+```
+
+Workflow:
+
+```text
+Running Processes
+
+↓
+
+grep ssh
+
+↓
+
+Matching Processes
+```
+
+---
+
+# Multiple Pipes
+
+```bash
+cat access.log | grep ERROR | sort | uniq
+```
+
+Workflow:
+
+```text
+Log File
+
+↓
+
+Filter
+
+↓
+
+Sort
+
+↓
+
+Remove Duplicates
+```
+
+---
+
+# Tee Command
+
+Display output while saving it.
+
+```bash
+ls | tee files.txt
+```
+
+Workflow:
+
+```text
+Program
+
+↓
+
+tee
+
+├── Terminal
+
+└── File
+```
+
+Useful for:
+
+- Logging
+- Debugging
+- Reports
+
+---
+
+# Xargs
+
+Convert standard input into command arguments.
+
+Example:
+
+```bash
+find . -name "*.log" | xargs rm
+```
+
+Safer alternative for filenames containing spaces:
+
+```bash
+find . -name "*.log" -print0 | xargs -0 rm
+```
+
+Always review the results before deleting files, especially in production systems.
+
+---
+
+# Command Substitution
+
+Use the output of one command inside another.
+
+Preferred syntax:
+
+```bash
+echo "Today is $(date)"
+```
+
+Output:
+
+```text
+Today is Tue Jul 21
+```
+
+Nested example:
+
+```bash
+echo "$(whoami) logged in from $(hostname)"
+```
+
+---
+
+# Arithmetic Expansion
+
+```bash
+echo $((25 + 10))
+```
+
+Output:
+
+```text
+35
+```
+
+Additional examples:
+
+```bash
+echo $((20 * 4))
+```
+
+```bash
+echo $((100 / 5))
+```
+
+---
+
+# Creating Bash Scripts
+
+Create a file:
+
+```bash
+nano hello.sh
+```
+
+Example:
+
+```bash
+#!/bin/bash
+
+echo "Hello Linux"
+```
+
+---
+
+# Shebang
+
+Every Bash script usually begins with:
+
+```bash
+#!/bin/bash
+```
+
+or, for improved portability:
+
+```bash
+#!/usr/bin/env bash
+```
+
+The shebang specifies the interpreter used to execute the script.
+
+---
+
+# Making Scripts Executable
+
+Grant execute permission:
+
+```bash
+chmod +x hello.sh
+```
+
+Run:
+
+```bash
+./hello.sh
+```
+
+Or:
+
+```bash
+bash hello.sh
+```
+
+---
+
+# Script Execution Flow
+
+```text
+Script
+
+↓
+
+Bash Interpreter
+
+↓
+
+Execute Commands
+
+↓
+
+Output
+```
+
+---
+
+# Comments
+
+Single-line comment:
+
+```bash
+# This is a comment
+```
+
+Comments improve readability and maintainability.
+
+---
+
+# Variables
+
+Assign a variable:
+
+```bash
+NAME="Anurag"
+```
+
+Display:
+
+```bash
+echo "$NAME"
+```
+
+---
+
+# Variable Rules
+
+Valid:
+
+```bash
+USER_NAME
+```
+
+```bash
+count
+```
+
+```bash
+PORT1
+```
+
+Invalid:
+
+```text
+1NAME
+
+USER-NAME
+
+MY VALUE
+```
+
+---
+
+# Variable Example
+
+```bash
+SERVER="web01"
+
+echo "$SERVER"
+```
+
+Output:
+
+```text
+web01
+```
+
+---
+
+# Read User Input
+
+```bash
+read NAME
+```
+
+Example:
+
+```bash
+echo "Enter your name:"
+
+read NAME
+
+echo "Hello $NAME"
+```
+
+---
+
+# Prompt with `read`
+
+```bash
+read -p "Username: " USER
+```
+
+Example:
+
+```text
+Username:
+```
+
+---
+
+# Hidden Password Input
+
+```bash
+read -s PASSWORD
+```
+
+No characters are displayed while typing.
+
+---
+
+# Positional Parameters
+
+Arguments passed to scripts.
+
+Example:
+
+```bash
+./backup.sh home
+```
+
+Inside the script:
+
+```bash
+echo "$1"
+```
+
+Output:
+
+```text
+home
+```
+
+---
+
+# Common Positional Parameters
+
+| Parameter | Meaning |
+|------------|----------|
+| `$0` | Script name |
+| `$1` | First argument |
+| `$2` | Second argument |
+| `$#` | Number of arguments |
+| `$@` | All arguments (recommended for iteration) |
+| `$*` | All arguments as a single word in some contexts |
+| `$$` | Current shell process ID |
+| `$?` | Exit status of the previous command |
+
+---
+
+# Exit Status
+
+Every command returns an exit code.
+
+```text
+0 = Success
+
+Non-zero = Failure or specific condition
+```
+
+Example:
+
+```bash
+ls
+
+echo $?
+```
+
+---
+
+# Testing Exit Status
+
+```bash
+mkdir project
+
+echo $?
+```
+
+A successful command returns:
+
+```text
+0
+```
+
+Checking exit codes is essential for reliable automation.
+
+---
+
+# Quoting Variables
+
+Recommended:
+
+```bash
+echo "$HOME"
+```
+
+Avoid unquoted variables when they may contain spaces or special characters.
+
+Example:
+
+```bash
+FILE="My Report.txt"
+
+cat "$FILE"
+```
+
+---
+
+# Basic Script Example
+
+```bash
+#!/bin/bash
+
+echo "System Information"
+
+echo "Hostname: $(hostname)"
+
+echo "User: $(whoami)"
+
+echo "Date: $(date)"
+```
+
+---
+
+# Backup Script Example
+
+```bash
+#!/bin/bash
+
+cp report.txt report.bak
+
+echo "Backup Complete"
+```
+
+---
+
+# Enterprise Script Workflow
+
+```text
+Administrator
+
+↓
+
+Run Script
+
+↓
+
+Collect Data
+
+↓
+
+Execute Commands
+
+↓
+
+Generate Report
+
+↓
+
+Log Results
+```
+
+---
+
+# Common Beginner Mistakes
+
+| Mistake | Correct Practice |
+|----------|------------------|
+| Missing shebang | Add a shebang at the top of the script |
+| Forgetting execute permission | Use `chmod +x` |
+| Unquoted variables | Quote variables when appropriate |
+| Ignoring exit codes | Check `$?` or use conditional logic |
+| Overwriting files unintentionally | Use `>>` when appending is intended |
+| Deleting without validation | Review commands before execution |
+
+---
+
+# Cybersecurity Perspective
+
+Bash scripting is widely used in security operations.
+
+Typical use cases include:
+
+- Log collection
+- IOC searches
+- User auditing
+- Network monitoring
+- Malware triage
+- File integrity checks
+- Backup verification
+- Security reporting
+
+Scripts should be reviewed carefully to avoid:
+
+- Command injection
+- Unsafe handling of user input
+- Hard-coded secrets
+- Excessive privileges
+
+---
+
+# Business Impact
+
+Automation with Bash provides:
+
+- Faster operations
+- Consistent system administration
+- Reduced human error
+- Lower operational costs
+- Rapid incident response
+- Improved compliance through repeatable processes
+
+---
+
+# Enterprise Best Practices
+
+- Use meaningful variable names.
+- Prefer `#!/usr/bin/env bash` for portability unless a fixed interpreter path is required.
+- Quote variables unless unquoted expansion is intentional.
+- Validate user input.
+- Log important actions and errors.
+- Test scripts in non-production environments first.
+- Keep scripts modular and well documented.
+- Use version control for production scripts.
+
+---
+
+# Key Takeaways
+
+- Linux programs communicate using standard input, output, and error streams.
+- Redirection and pipes allow commands to be combined into powerful workflows.
+- Variables and positional parameters make scripts reusable.
+- Command substitution and arithmetic expansion simplify automation.
+- Exit codes are fundamental for writing reliable scripts.
+- Bash scripting is an essential enterprise automation skill.
+
+---
+
