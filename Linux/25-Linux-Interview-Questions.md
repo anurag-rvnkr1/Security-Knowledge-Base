@@ -662,4 +662,670 @@ uptime
 
 ---
 
+# 25 - Linux Interview Questions
+
+# Part 2 — Processes, Services, Networking, Storage, Shell Scripting, and Security Interview Questions
+
+---
+
+# Introduction
+
+After verifying Linux fundamentals, interviewers typically assess your ability to manage:
+
+- Processes
+- Services
+- Networking
+- Storage
+- Shell scripting
+- Security
+
+These topics are frequently asked in interviews for:
+
+- Linux Administrator
+- System Administrator
+- DevOps Engineer
+- Cloud Engineer
+- Site Reliability Engineer (SRE)
+- SOC Analyst
+- Security Analyst
+- VAPT / Penetration Tester
+- Cybersecurity Engineer
+
+---
+
+# Section 1 — Process Management
+
+---
+
+# Q31. What is a process?
+
+### Answer
+
+A process is an instance of a running program.
+
+Each process has:
+
+- Process ID (PID)
+- Parent Process ID (PPID)
+- Memory allocation
+- CPU state
+- Open file descriptors
+- Execution context
+
+Example:
+
+```text
+Program (nginx)
+
+↓
+
+Executed
+
+↓
+
+Running Process (PID 1234)
+```
+
+---
+
+# Q32. Difference between a process and a thread?
+
+| Process | Thread |
+|----------|--------|
+| Independent execution unit | Lightweight execution unit within a process |
+| Separate memory space | Shares memory with other threads in the same process |
+| Higher resource usage | Lower resource usage |
+| Better isolation | Faster communication |
+
+---
+
+# Q33. How do you view running processes?
+
+### Answer
+
+```bash
+ps aux
+```
+
+Interactive monitoring:
+
+```bash
+top
+```
+
+or
+
+```bash
+htop
+```
+
+(if installed)
+
+---
+
+# Q34. What is a zombie process?
+
+### Answer
+
+A zombie process has completed execution, but its parent process has not yet collected its exit status.
+
+Characteristics:
+
+- No CPU usage
+- Minimal memory usage
+- Remains in the process table
+- Displayed with the `Z` state
+
+---
+
+# Q35. How do you terminate a process?
+
+Graceful termination:
+
+```bash
+kill PID
+```
+
+Force termination:
+
+```bash
+kill -9 PID
+```
+
+Best practice:
+
+Use `SIGTERM` (`kill`) first and `SIGKILL` (`kill -9`) only when necessary.
+
+---
+
+# Q36. What is the difference between SIGTERM and SIGKILL?
+
+| SIGTERM | SIGKILL |
+|----------|----------|
+| Signal 15 | Signal 9 |
+| Can be handled by the application | Cannot be intercepted or ignored |
+| Allows graceful shutdown | Immediately terminates the process |
+
+---
+
+# Section 2 — Services
+
+---
+
+# Q37. What is a service?
+
+### Answer
+
+A service (daemon) is a background process that provides functionality such as:
+
+- SSH
+- Web servers
+- Databases
+- DNS
+- Monitoring agents
+
+---
+
+# Q38. How do you check service status?
+
+```bash
+systemctl status ssh
+```
+
+---
+
+# Q39. How do you start, stop, and restart a service?
+
+Start:
+
+```bash
+systemctl start service-name
+```
+
+Stop:
+
+```bash
+systemctl stop service-name
+```
+
+Restart:
+
+```bash
+systemctl restart service-name
+```
+
+Reload configuration (when supported):
+
+```bash
+systemctl reload service-name
+```
+
+---
+
+# Q40. How do you enable a service at boot?
+
+```bash
+systemctl enable service-name
+```
+
+Disable:
+
+```bash
+systemctl disable service-name
+```
+
+---
+
+# Q41. How do you list failed services?
+
+```bash
+systemctl --failed
+```
+
+---
+
+# Q42. Where do you check service logs?
+
+```bash
+journalctl -u service-name
+```
+
+---
+
+# Section 3 — Networking
+
+---
+
+# Q43. How do you display IP addresses?
+
+```bash
+ip addr
+```
+
+---
+
+# Q44. How do you display the routing table?
+
+```bash
+ip route
+```
+
+---
+
+# Q45. Difference between TCP and UDP?
+
+| TCP | UDP |
+|------|------|
+| Connection-oriented | Connectionless |
+| Reliable delivery | Best-effort delivery |
+| Ordered packets | No delivery order guarantee |
+| Higher overhead | Lower overhead |
+| Used for SSH, HTTP(S), SMTP | Used for DNS, DHCP, VoIP, streaming |
+
+---
+
+# Q46. How do you test connectivity?
+
+```bash
+ping hostname
+```
+
+---
+
+# Q47. How do you trace the network path?
+
+```bash
+traceroute hostname
+```
+
+or
+
+```bash
+tracepath hostname
+```
+
+---
+
+# Q48. How do you view listening ports?
+
+```bash
+ss -tulpn
+```
+
+---
+
+# Q49. How do you troubleshoot DNS?
+
+Typical steps:
+
+1. Check `/etc/resolv.conf`
+2. Verify network connectivity
+3. Query DNS using `dig`, `host`, or `nslookup`
+4. Review local `/etc/hosts`
+5. Confirm DNS server availability
+
+---
+
+# Q50. Difference between public IP and private IP?
+
+| Public IP | Private IP |
+|------------|------------|
+| Internet routable | Internal network only |
+| Globally unique | Reused in private networks |
+| Assigned by ISP or cloud provider | Assigned locally |
+
+Private IPv4 ranges:
+
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+
+---
+
+# Section 4 — Storage
+
+---
+
+# Q51. How do you check disk usage?
+
+Filesystem usage:
+
+```bash
+df -h
+```
+
+Directory usage:
+
+```bash
+du -sh directory
+```
+
+---
+
+# Q52. What is a mount point?
+
+### Answer
+
+A mount point is a directory where a filesystem is attached to the directory tree.
+
+Example:
+
+```text
+/
+
+↓
+
+/mnt
+
+↓
+
+Mounted Filesystem
+```
+
+---
+
+# Q53. What is `/etc/fstab`?
+
+### Answer
+
+`/etc/fstab` defines filesystems that should be mounted automatically during boot.
+
+It typically includes:
+
+- Device or UUID
+- Mount point
+- Filesystem type
+- Mount options
+- Dump/pass values
+
+---
+
+# Q54. What is an inode?
+
+### Answer
+
+An inode stores metadata about a file, such as:
+
+- Permissions
+- Owner
+- Group
+- File size
+- Timestamps
+- Block locations
+
+---
+
+# Q55. What causes "No space left on device" even when disk space appears available?
+
+Possible causes include:
+
+- Inode exhaustion
+- Deleted-but-open files
+- Reserved filesystem blocks
+- Quotas
+
+Interview tip:
+
+Mention both disk space (`df -h`) and inode usage (`df -i`).
+
+---
+
+# Section 5 — Shell Scripting
+
+---
+
+# Q56. What is a shell script?
+
+### Answer
+
+A shell script is a text file containing shell commands executed sequentially.
+
+Example:
+
+```bash
+#!/bin/bash
+echo "Hello, Linux!"
+```
+
+---
+
+# Q57. How do you make a script executable?
+
+```bash
+chmod +x script.sh
+```
+
+Execute:
+
+```bash
+./script.sh
+```
+
+---
+
+# Q58. Difference between `$0`, `$1`, and `$#`?
+
+| Variable | Meaning |
+|-----------|----------|
+| `$0` | Script name |
+| `$1` | First positional argument |
+| `$#` | Number of arguments |
+
+---
+
+# Q59. How do you use variables?
+
+```bash
+NAME="Anurag"
+
+echo "$NAME"
+```
+
+---
+
+# Q60. What are common control structures in Bash?
+
+Examples:
+
+Conditional:
+
+```bash
+if
+```
+
+Loop:
+
+```bash
+for
+```
+
+Loop:
+
+```bash
+while
+```
+
+Selection:
+
+```bash
+case
+```
+
+---
+
+# Section 6 — Security
+
+---
+
+# Q61. What is the principle of least privilege?
+
+### Answer
+
+Users and processes should receive only the permissions required to perform their tasks.
+
+Benefits:
+
+- Reduces attack surface
+- Limits accidental changes
+- Restricts privilege escalation opportunities
+
+---
+
+# Q62. What is `sudo`?
+
+### Answer
+
+`sudo` allows authorized users to execute commands with elevated privileges according to defined policies.
+
+---
+
+# Q63. Difference between authentication and authorization?
+
+| Authentication | Authorization |
+|----------------|---------------|
+| Verifies identity | Determines permissions |
+| "Who are you?" | "What can you do?" |
+
+---
+
+# Q64. What is SSH?
+
+### Answer
+
+Secure Shell (SSH) provides encrypted remote administration and secure file transfer.
+
+Common uses:
+
+- Remote login
+- Secure command execution
+- File transfer (SCP/SFTP)
+- Port forwarding
+
+---
+
+# Q65. How do you view failed SSH login attempts?
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-family:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+---
+
+# Q66. What is a firewall?
+
+### Answer
+
+A firewall filters network traffic according to defined security rules.
+
+Common Linux firewall frameworks:
+
+- nftables
+- firewalld
+- iptables (legacy)
+
+---
+
+# Q67. Why should you avoid logging in directly as root?
+
+Reasons:
+
+- Reduced accountability
+- Increased risk of accidental system changes
+- Larger impact if credentials are compromised
+
+Preferred approach:
+
+- Log in as a standard user.
+- Use `sudo` when administrative access is required.
+
+---
+
+# Q68. What is log analysis?
+
+### Answer
+
+Log analysis is the process of reviewing system and application logs to identify:
+
+- Errors
+- Performance issues
+- Security events
+- Configuration problems
+- Operational trends
+
+---
+
+# Q69. What is root cause analysis (RCA)?
+
+### Answer
+
+Root cause analysis identifies the underlying cause of an incident rather than only addressing its symptoms.
+
+Typical workflow:
+
+```text
+Problem
+
+↓
+
+Evidence
+
+↓
+
+Analysis
+
+↓
+
+Root Cause
+
+↓
+
+Resolution
+
+↓
+
+Prevention
+```
+
+---
+
+# Q70. Why is documentation important after troubleshooting?
+
+Documentation helps:
+
+- Build organizational knowledge
+- Speed future incident response
+- Support audits and compliance
+- Improve operational consistency
+- Reduce Mean Time to Resolution (MTTR)
+
+---
+
+# Interview Tips
+
+- Explain your reasoning before listing commands.
+- Mention validation steps after making changes.
+- Distinguish between temporary fixes and permanent solutions.
+- Relate answers to production environments and best practices.
+- Demonstrate an understanding of security implications when discussing administration tasks.
+
+---
+
+# Key Takeaways
+
+- Process and service management are foundational Linux administration skills.
+- Networking and storage questions often assess troubleshooting ability.
+- Shell scripting demonstrates automation capabilities.
+- Security questions evaluate operational maturity and safe administration practices.
+- Strong interview answers combine concepts, commands, and real-world context.
+
+---
+
 
