@@ -1329,3 +1329,672 @@ Poor IP planning can lead to downtime, connectivity issues, and operational inef
 - Special-purpose addresses include network, broadcast, loopback, APIPA, and private ranges.
 - Careful IPv4 address planning is essential for secure, scalable, and manageable enterprise networks.
 
+# 05 - IP Addressing
+
+# Part 3 — IPv6 Architecture, Address Types, Neighbor Discovery, SLAAC, DHCPv6, Enterprise Deployment, and Security
+
+---
+
+# Overview
+
+IPv6 (Internet Protocol Version 6) is the successor to IPv4.
+
+It was designed to overcome the limitations of IPv4, particularly the exhaustion of the available address space, while improving scalability, routing efficiency, and support for modern Internet architectures.
+
+IPv6 is now widely deployed across:
+
+- Cloud platforms
+- Internet Service Providers (ISPs)
+- Mobile networks (4G/5G)
+- Enterprise environments
+- Government networks
+- IoT deployments
+- Data centers
+
+Understanding IPv6 is essential because modern operating systems, cloud services, and enterprise infrastructures increasingly operate in dual-stack (IPv4 + IPv6) or IPv6-capable environments.
+
+---
+
+# Why IPv6 Was Developed
+
+IPv4 provides approximately:
+
+```
+2³²
+
+≈ 4.29 Billion Addresses
+```
+
+The rapid growth of:
+
+- Smartphones
+- Cloud computing
+- Virtual machines
+- Containers
+- IoT devices
+- Global Internet adoption
+
+made IPv4 address conservation techniques such as NAT necessary.
+
+IPv6 was developed to provide a vastly larger address space and simplify address management.
+
+---
+
+# IPv6 Address Space
+
+IPv6 uses:
+
+```
+128 Bits
+```
+
+Number of possible addresses:
+
+```
+2¹²⁸
+
+≈ 3.4 × 10³⁸
+```
+
+This provides enough addresses for an enormous number of devices and networks, effectively eliminating the address scarcity that exists with IPv4.
+
+---
+
+# IPv6 Address Format
+
+Example:
+
+```
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+```
+
+Structure:
+
+```
+16 Bits
+
+↓
+
+16 Bits
+
+↓
+
+16 Bits
+
+↓
+
+16 Bits
+
+↓
+
+16 Bits
+
+↓
+
+16 Bits
+
+↓
+
+16 Bits
+
+↓
+
+16 Bits
+```
+
+Each 16-bit section is called a **hextet** and is written in hexadecimal.
+
+---
+
+# Hexadecimal Review
+
+IPv6 uses base-16 notation.
+
+```
+Decimal
+
+0 1 2 3 4 5 6 7 8 9
+
+↓
+
+Hexadecimal
+
+0 1 2 3 4 5 6 7 8 9 A B C D E F
+```
+
+Each hexadecimal digit represents four binary bits.
+
+Example:
+
+```
+A
+
+↓
+
+1010
+```
+
+---
+
+# IPv6 Address Compression
+
+IPv6 supports shortening addresses to improve readability.
+
+---
+
+## Rule 1 — Remove Leading Zeros
+
+Original:
+
+```
+2001:0db8:0001:0000:0000:0000:0000:0025
+```
+
+Compressed:
+
+```
+2001:db8:1:0:0:0:0:25
+```
+
+---
+
+## Rule 2 — Replace One Consecutive Sequence of Zero Hextets
+
+Further compression:
+
+```
+2001:db8:1::25
+```
+
+> The double colon (`::`) may be used **only once** in a valid IPv6 address to avoid ambiguity.
+
+---
+
+# IPv6 Address Structure
+
+A typical global unicast address consists of:
+
+```
+Global Routing Prefix
+
+↓
+
+Subnet ID
+
+↓
+
+Interface Identifier
+```
+
+Example:
+
+```
+2001:db8:100:10::15
+```
+
+```
+2001:db8:100
+
+↓
+
+Global Prefix
+
+10
+
+↓
+
+Subnet
+
+15
+
+↓
+
+Interface
+```
+
+Many enterprise deployments use a **/64** prefix for end-user subnets.
+
+---
+
+# Types of IPv6 Addresses
+
+---
+
+## Global Unicast Address (GUA)
+
+Equivalent to a public IPv4 address.
+
+Prefix:
+
+```
+2000::/3
+```
+
+Example:
+
+```
+2001:db8:100:10::20
+```
+
+Characteristics:
+
+- Globally routable
+- Internet reachable
+- Unique worldwide
+
+Typical use:
+
+- Public servers
+- Enterprise Internet connectivity
+- Cloud infrastructure
+
+---
+
+## Link-Local Address
+
+Automatically generated on every IPv6-enabled interface.
+
+Prefix:
+
+```
+FE80::/10
+```
+
+Example:
+
+```
+FE80::25A:9CFF:FE12:3456
+```
+
+Uses:
+
+- Neighbor Discovery
+- Router communication
+- Local-link communication
+
+Link-local addresses are **not routable** beyond the local network segment.
+
+---
+
+## Unique Local Address (ULA)
+
+Equivalent in concept to private IPv4 addressing.
+
+Prefix:
+
+```
+FC00::/7
+```
+
+Common deployments typically use:
+
+```
+FD00::/8
+```
+
+Example:
+
+```
+FD12:3456:789A::15
+```
+
+Uses:
+
+- Internal enterprise communication
+- Private cloud environments
+- Lab networks
+
+---
+
+## Multicast Address
+
+IPv6 replaces broadcast with multicast.
+
+Prefix:
+
+```
+FF00::/8
+```
+
+Examples:
+
+- Neighbor Discovery
+- Routing protocols
+- Service discovery
+- Streaming applications
+
+---
+
+## Anycast Address
+
+An anycast address is assigned to multiple devices.
+
+Packets are delivered to the **nearest** or most appropriate destination according to the routing topology.
+
+Common uses:
+
+- DNS root servers
+- CDN edge locations
+- Load-balanced services
+
+---
+
+# IPv6 Does Not Use Broadcast
+
+Unlike IPv4:
+
+```
+Broadcast
+
+↓
+
+Every Device
+```
+
+IPv6 uses multicast groups instead.
+
+Benefits:
+
+- Reduced unnecessary traffic
+- Improved efficiency
+- Better scalability
+
+---
+
+# Neighbor Discovery Protocol (NDP)
+
+IPv6 replaces ARP with the **Neighbor Discovery Protocol (NDP)**.
+
+Functions include:
+
+- Neighbor discovery
+- Address resolution
+- Router discovery
+- Duplicate Address Detection (DAD)
+- Prefix discovery
+
+---
+
+# Neighbor Discovery Process
+
+```
+Host
+
+↓
+
+Neighbor Solicitation
+
+↓
+
+Neighbor Advertisement
+
+↓
+
+MAC Address Learned
+```
+
+Unlike ARP, Neighbor Discovery uses ICMPv6 messages.
+
+---
+
+# Duplicate Address Detection (DAD)
+
+Before using an IPv6 address, a host verifies that no other device is already using it.
+
+```
+New Address
+
+↓
+
+Neighbor Solicitation
+
+↓
+
+No Response
+
+↓
+
+Address Assigned
+```
+
+If another host responds, the address is considered a duplicate and is not assigned.
+
+---
+
+# Stateless Address Autoconfiguration (SLAAC)
+
+SLAAC enables hosts to configure IPv6 addresses automatically without a DHCP server.
+
+Process:
+
+```
+Router Advertisement
+
+↓
+
+Prefix Received
+
+↓
+
+Host Generates Interface Identifier
+
+↓
+
+IPv6 Address Created
+```
+
+Benefits:
+
+- Automatic configuration
+- Reduced administrative effort
+- Simplified deployments
+
+---
+
+# DHCPv6
+
+Organizations that require centralized address management may use DHCPv6.
+
+DHCPv6 can provide:
+
+- IPv6 addresses
+- DNS servers
+- Domain search lists
+- Additional configuration parameters
+
+Many enterprise networks use:
+
+- SLAAC for address generation
+- DHCPv6 for supplementary configuration
+
+---
+
+# IPv4 vs IPv6 Header
+
+IPv4 Header (Simplified)
+
+```
+Version
+
+Header Length
+
+TTL
+
+Protocol
+
+Checksum
+
+Source IP
+
+Destination IP
+```
+
+---
+
+IPv6 Header (Simplified)
+
+```
+Version
+
+Traffic Class
+
+Flow Label
+
+Payload Length
+
+Next Header
+
+Hop Limit
+
+Source Address
+
+Destination Address
+```
+
+The IPv6 base header has a fixed size of **40 bytes**, simplifying packet processing.
+
+---
+
+# Enterprise IPv6 Deployment
+
+Many organizations adopt a **dual-stack** architecture.
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+Router
+
+↓
+
+IPv4
+
++
+
+IPv6
+
+↓
+
+Enterprise Network
+```
+
+Benefits:
+
+- Gradual migration
+- Compatibility with legacy systems
+- Support for modern IPv6 services
+
+---
+
+# IPv6 Security Considerations
+
+Common risks include:
+
+- Rogue Router Advertisements
+- Neighbor Discovery spoofing
+- ICMPv6 abuse
+- Misconfigured transition mechanisms
+- Unauthorized IPv6 traffic bypassing IPv4-only security policies
+
+---
+
+# Enterprise Security Controls
+
+Recommended controls include:
+
+- RA Guard
+- DHCPv6 Guard
+- IPv6 ACLs
+- Secure Neighbor Discovery (SEND) where supported
+- IDS/IPS with IPv6 inspection
+- Disable unused IPv6 services only after evaluating application dependencies
+- Comprehensive IPv6 logging and monitoring
+
+---
+
+# Wireshark Observation
+
+Select an IPv6 packet and inspect:
+
+```
+Version
+
+↓
+
+Traffic Class
+
+↓
+
+Flow Label
+
+↓
+
+Payload Length
+
+↓
+
+Next Header
+
+↓
+
+Hop Limit
+
+↓
+
+Source IPv6 Address
+
+↓
+
+Destination IPv6 Address
+```
+
+Neighbor Discovery traffic appears as ICMPv6 packets such as:
+
+- Neighbor Solicitation
+- Neighbor Advertisement
+- Router Solicitation
+- Router Advertisement
+
+---
+
+# Common IPv6 Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| No Global Address | Missing Router Advertisement or DHCPv6 configuration |
+| Duplicate Address | Failed Duplicate Address Detection |
+| Link-Local Only | Router advertisements unavailable |
+| IPv6 Routing Failure | Missing route or incorrect prefix configuration |
+| Rogue Router Advertisement | Unauthorized device advertising itself as a router |
+| Connectivity Issues | Firewall or ACL blocking IPv6 traffic |
+
+---
+
+# Business Impact
+
+Proper IPv6 implementation provides:
+
+- Long-term address scalability
+- Simplified address allocation
+- Improved route aggregation
+- Better support for cloud-native architectures
+- Reduced dependence on NAT
+- Future-ready network infrastructure
+
+Poor IPv6 planning can create hidden attack surfaces, inconsistent connectivity, and operational complexity.
+
+---
+
+# Key Takeaways
+
+- IPv6 uses 128-bit addresses represented in hexadecimal.
+- Leading zeros can be removed, and one consecutive sequence of zero hextets may be compressed using `::`.
+- Common IPv6 address types include Global Unicast, Link-Local, Unique Local, Multicast, and Anycast.
+- IPv6 replaces ARP with the Neighbor Discovery Protocol (NDP) and uses ICMPv6 for address resolution and router discovery.
+- SLAAC and DHCPv6 simplify address configuration, while dual-stack deployments allow organizations to migrate gradually from IPv4.
+- Enterprise IPv6 deployments should include dedicated security controls, monitoring, and policy enforcement to protect against IPv6-specific threats.
