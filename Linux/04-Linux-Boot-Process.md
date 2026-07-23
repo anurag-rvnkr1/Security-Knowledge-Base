@@ -1833,3 +1833,610 @@ Proper service management enables organizations to:
 
 ---
 
+# Part 4 — Boot Troubleshooting, Recovery Mode, Emergency Mode, Kernel Panic, Boot Security, Practical Labs, Chapter Summary, Interview Questions, and References
+
+---
+
+# Introduction
+
+Even well-maintained Linux systems can occasionally fail to boot because of:
+
+- Corrupted bootloader configuration
+- Damaged filesystems
+- Incorrect kernel parameters
+- Failed updates
+- Missing kernel modules
+- Hardware failures
+- Misconfigured services
+
+A Linux administrator must understand how to diagnose and recover from these issues while maintaining system integrity and minimizing downtime.
+
+This section covers common boot failures, recovery techniques, boot security, and enterprise best practices.
+
+---
+
+# Common Boot Failure Stages
+
+Boot problems generally occur in one of the following stages:
+
+```text
+Power On
+    │
+    ▼
+Firmware
+    │
+    ▼
+Bootloader
+    │
+    ▼
+Kernel
+    │
+    ▼
+initramfs
+    │
+    ▼
+systemd
+    │
+    ▼
+Services
+    │
+    ▼
+Login
+```
+
+Identifying the stage where the failure occurs significantly reduces troubleshooting time.
+
+---
+
+# Common Boot Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| No boot device found | Incorrect boot order, failed disk |
+| GRUB rescue prompt | Corrupted GRUB or missing boot partition |
+| Kernel panic | Missing root filesystem, incompatible kernel, driver issue |
+| Filesystem errors | Improper shutdown, disk corruption |
+| Login unavailable | Failed display manager or authentication service |
+| Slow boot | Misconfigured or slow-starting services |
+| Continuous reboot | Kernel crash, hardware issue, watchdog |
+
+---
+
+# Troubleshooting Methodology
+
+Use a structured approach:
+
+```text
+Identify Failure Stage
+        │
+        ▼
+Read Error Messages
+        │
+        ▼
+Review Logs
+        │
+        ▼
+Verify Configuration
+        │
+        ▼
+Apply Minimal Changes
+        │
+        ▼
+Test
+        │
+        ▼
+Document Resolution
+```
+
+Avoid making multiple changes simultaneously, as this complicates root-cause analysis.
+
+---
+
+# Recovery Mode
+
+Most Linux distributions provide a **Recovery Mode** accessible through the GRUB menu.
+
+Typical capabilities:
+
+- Root shell access
+- Filesystem repair
+- Package repair
+- Network access (optional)
+- Boot repair utilities
+
+Recovery mode is intended for maintenance and troubleshooting.
+
+---
+
+# Accessing Recovery Mode
+
+Typical workflow:
+
+```text
+Power On
+
+↓
+
+GRUB Menu
+
+↓
+
+Advanced Options
+
+↓
+
+Recovery Mode
+
+↓
+
+Recovery Menu
+```
+
+Menu names may vary slightly between distributions.
+
+---
+
+# Emergency Mode
+
+`emergency.target` is a minimal boot environment intended for severe system failures.
+
+Characteristics:
+
+- Minimal services
+- Root shell
+- No networking by default
+- Limited filesystem mounting
+
+It allows administrators to perform critical repairs.
+
+---
+
+# Rescue Mode
+
+`rescue.target` provides a single-user environment with more services than emergency mode.
+
+Comparison:
+
+| Feature | Rescue Mode | Emergency Mode |
+|----------|-------------|----------------|
+| Filesystems | Mostly mounted | Minimal |
+| Networking | May be available | Usually unavailable |
+| Services | Limited | Minimal |
+| Intended Use | General maintenance | Critical recovery |
+
+---
+
+# Booting into Rescue Mode
+
+Temporary kernel parameter:
+
+```text
+systemd.unit=rescue.target
+```
+
+Or select the appropriate GRUB recovery option if available.
+
+---
+
+# GRUB Rescue Shell
+
+If GRUB cannot locate its configuration, it may enter the `grub rescue>` prompt.
+
+Example:
+
+```text
+grub rescue>
+```
+
+This indicates that the bootloader has started but cannot continue normally.
+
+Common causes include:
+
+- Deleted `/boot` files
+- Incorrect partition references
+- Damaged filesystem
+- Disk changes
+- Failed bootloader updates
+
+---
+
+# Reinstalling GRUB (Example)
+
+The exact procedure varies by distribution and firmware mode.
+
+Typical steps:
+
+1. Boot from installation or rescue media.
+2. Mount the root filesystem.
+3. Mount the EFI System Partition (UEFI systems) if applicable.
+4. Chroot into the installed system.
+5. Reinstall the bootloader.
+6. Regenerate the GRUB configuration.
+7. Reboot and verify successful startup.
+
+Always follow the official documentation for your distribution.
+
+---
+
+# Kernel Panic
+
+A **kernel panic** occurs when the kernel encounters a fatal error from which it cannot safely recover.
+
+Symptoms may include:
+
+- System halt
+- Panic message
+- Stack trace
+- Automatic reboot (if configured)
+
+Kernel panics require investigation before the system is returned to production.
+
+---
+
+# Common Causes of Kernel Panic
+
+| Cause | Example |
+|--------|----------|
+| Corrupted kernel | Damaged kernel image |
+| Missing root filesystem | Incorrect root device |
+| Faulty kernel module | Incompatible driver |
+| Hardware failure | Defective RAM or storage |
+| Filesystem corruption | Damaged metadata |
+| Unsupported kernel parameters | Incorrect boot configuration |
+
+---
+
+# Filesystem Recovery
+
+If filesystem corruption is suspected:
+
+1. Boot into recovery or rescue mode.
+2. Ensure the affected filesystem is unmounted if required.
+3. Run the appropriate filesystem checking utility.
+4. Review reported issues.
+5. Reboot and verify system integrity.
+
+Perform repairs only after ensuring reliable backups are available.
+
+---
+
+# Boot Log Analysis
+
+Useful commands:
+
+View current boot log:
+
+```bash
+journalctl -b
+```
+
+View previous boot:
+
+```bash
+journalctl -b -1
+```
+
+Display kernel messages:
+
+```bash
+dmesg
+```
+
+These logs often identify failing services, hardware errors, or driver problems.
+
+---
+
+# Investigating Failed Services
+
+Display failed services:
+
+```bash
+systemctl --failed
+```
+
+Inspect a specific service:
+
+```bash
+systemctl status <service>
+```
+
+Review detailed logs:
+
+```bash
+journalctl -u <service>
+```
+
+Replace `<service>` with the actual service name.
+
+---
+
+# Boot Performance Troubleshooting
+
+Measure startup duration:
+
+```bash
+systemd-analyze
+```
+
+Identify slow services:
+
+```bash
+systemd-analyze blame
+```
+
+Review dependency chain:
+
+```bash
+systemd-analyze critical-chain
+```
+
+Use these tools to identify startup bottlenecks.
+
+---
+
+# Safe Mode Practices
+
+During recovery:
+
+- Make one change at a time.
+- Record configuration changes.
+- Preserve logs before rebooting.
+- Verify backups.
+- Test fixes in non-production environments when possible.
+
+---
+
+# Boot Security
+
+Protecting the boot process is critical because compromise at this stage can bypass many operating system security controls.
+
+Recommended protections include:
+
+- Secure Boot
+- Firmware passwords
+- Bootloader protection
+- Trusted installation media
+- Full-disk encryption (where appropriate)
+- Boot component integrity verification
+
+---
+
+# Protecting GRUB
+
+Organizations may choose to restrict unauthorized modification of boot parameters by:
+
+- Limiting physical access.
+- Protecting firmware settings.
+- Restricting administrator privileges.
+- Configuring GRUB authentication where supported.
+
+These controls help reduce the risk of unauthorized boot-time changes.
+
+---
+
+# Firmware Security
+
+Recommended practices:
+
+- Update firmware from trusted vendors.
+- Disable unused boot devices.
+- Enable Secure Boot where supported.
+- Restrict firmware configuration changes.
+- Audit firmware settings periodically.
+
+---
+
+# Enterprise Boot Monitoring
+
+Security teams commonly monitor:
+
+- Bootloader changes
+- Kernel updates
+- EFI System Partition modifications
+- New kernel modules
+- Unexpected boot parameters
+- Failed boot attempts
+- Firmware update events
+
+Monitoring supports early detection of persistence mechanisms and unauthorized changes.
+
+---
+
+# Practical Lab 1 — Examine the Current Boot
+
+Commands:
+
+```bash
+systemd-analyze
+journalctl -b
+```
+
+Objective:
+
+- Review boot duration and startup logs.
+
+---
+
+# Practical Lab 2 — Identify Failed Services
+
+Commands:
+
+```bash
+systemctl --failed
+systemctl status <service>
+```
+
+Objective:
+
+- Identify and investigate services that failed during startup.
+
+---
+
+# Practical Lab 3 — Review Kernel Messages
+
+Command:
+
+```bash
+dmesg
+```
+
+Objective:
+
+- Inspect kernel messages for hardware initialization, driver loading, and warning events.
+
+---
+
+# Practical Lab 4 — Inspect GRUB Configuration
+
+Common locations:
+
+```text
+/etc/default/grub
+/boot/grub/grub.cfg
+```
+
+Objective:
+
+- Understand how GRUB configuration is generated and stored.
+
+> **Note:** On most systems, modify `/etc/default/grub` or `/etc/grub.d/` rather than editing `grub.cfg` directly.
+
+---
+
+# Practical Lab 5 — Analyze Boot Dependencies
+
+Commands:
+
+```bash
+systemd-analyze blame
+systemd-analyze critical-chain
+```
+
+Objective:
+
+- Identify services that significantly influence boot time.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The complete Linux boot process.
+- BIOS and UEFI initialization.
+- POST and boot device selection.
+- Secure Boot concepts.
+- GRUB2 architecture and configuration.
+- EFI System Partition (ESP).
+- Kernel loading and initramfs.
+- Kernel parameters.
+- systemd initialization.
+- Service management and targets.
+- Boot troubleshooting methodology.
+- Recovery mode and emergency mode.
+- Kernel panic fundamentals.
+- Boot security best practices.
+- Enterprise monitoring considerations.
+
+---
+
+# Interview Questions
+
+## Beginner
+
+1. What happens immediately after pressing the power button?
+2. What is the purpose of POST?
+3. What is the difference between BIOS and UEFI?
+4. What is GRUB2?
+5. What is the EFI System Partition?
+6. What is initramfs?
+7. What is `systemd`?
+8. What is a boot target?
+9. What is Secure Boot?
+10. How do you view the current boot log?
+
+---
+
+## Intermediate
+
+1. Explain the Linux boot sequence from firmware to login.
+2. Compare recovery mode and emergency mode.
+3. Why is initramfs required?
+4. How does GRUB pass kernel parameters?
+5. What causes a kernel panic?
+6. How would you investigate failed services after boot?
+7. What tools help analyze boot performance?
+8. How do service dependencies affect startup?
+9. Why should older kernel versions be retained?
+10. Explain the role of the EFI System Partition.
+
+---
+
+## Advanced
+
+1. Describe how you would recover a Linux server stuck at the `grub rescue>` prompt.
+2. How would you troubleshoot a system that panics after a kernel update?
+3. Explain how Secure Boot establishes a chain of trust.
+4. What enterprise controls help secure the Linux boot process?
+5. How would you identify unauthorized persistence in boot components?
+6. Describe a structured methodology for diagnosing boot failures.
+7. How would you optimize startup time on production servers?
+8. Explain the relationship between firmware, GRUB, the kernel, and `systemd`.
+9. What risks arise from unauthorized kernel parameters?
+10. How would you audit the integrity of boot components across an enterprise fleet?
+
+---
+
+# Key Takeaways
+
+- The Linux boot process consists of multiple stages, each with distinct responsibilities.
+- Understanding where a failure occurs is essential for efficient troubleshooting.
+- Recovery and emergency modes provide controlled environments for repairing systems.
+- `journalctl`, `dmesg`, and `systemd-analyze` are indispensable diagnostic tools.
+- Secure Boot, firmware protection, and controlled bootloader configuration strengthen platform security.
+
+---
+
+# References
+
+## Official Documentation
+
+- Linux Kernel Documentation
+- GNU GRUB Manual
+- systemd Documentation
+- Ubuntu Documentation
+- Red Hat Enterprise Linux Documentation
+- Rocky Linux Documentation
+
+## Standards & Best Practices
+
+- UEFI Specification
+- CIS Linux Benchmarks
+- NIST SP 800 Series
+- Filesystem Hierarchy Standard (FHS)
+- Linux Foundation Documentation
+
+---
+
+# Next Chapter
+
+➡️ **05-Linux-File-System.md**
+
+Topics Covered:
+
+- Linux Filesystem Architecture
+- Filesystem Hierarchy Standard (FHS)
+- Inodes
+- Superblocks
+- Directory Structure
+- File Types
+- Hard Links & Symbolic Links
+- Mounting & Unmounting
+- ext4, XFS, Btrfs, FAT32, NTFS
+- Journaling Filesystems
+- Storage Layout
+- Enterprise Filesystem Design
+- Cybersecurity & Filesystem Forensics
+- Practical Labs
+- Interview Questions
+- References
