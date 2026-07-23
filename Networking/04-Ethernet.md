@@ -953,3 +953,703 @@ Understanding Ethernet frames enables professionals to:
 - MAC addresses identify network interfaces on the local network, while switches use MAC tables to forward frames efficiently.
 - Standard Ethernet MTU is 1500 bytes, while jumbo frames are commonly used in specialized environments.
 - Packet analyzers such as Wireshark expose Ethernet headers, making them invaluable for troubleshooting and cybersecurity investigations.
+
+# 04 - Ethernet
+
+# Part 3 — Ethernet Switching, CAM Tables, Frame Forwarding, Collision Domains, Broadcast Domains, Duplex Modes, and Enterprise Layer 2 Communication
+
+---
+
+# Overview
+
+Modern Ethernet networks rely heavily on **switches**.
+
+Unlike early Ethernet networks that used hubs and shared communication media, enterprise networks today use **Layer 2 Ethernet switches** to provide:
+
+- High bandwidth
+- Dedicated communication paths
+- Low latency
+- Collision-free communication
+- Efficient frame forwarding
+- Network segmentation
+
+Understanding how switches operate is essential for:
+
+- Network Engineers
+- SOC Analysts
+- Incident Responders
+- Penetration Testers
+- Detection Engineers
+- Infrastructure Engineers
+
+---
+
+# What is an Ethernet Switch?
+
+An Ethernet switch is a **Layer 2 networking device** that forwards Ethernet frames based on **MAC addresses**.
+
+Unlike routers, switches **do not normally examine IP addresses** when making forwarding decisions.
+
+Instead, they inspect:
+
+```
+Destination MAC Address
+```
+
+and determine which switch port should receive the frame.
+
+---
+
+# Enterprise Example
+
+```
+            Core Switch
+                 │
+      ┌──────────┼──────────┐
+      │          │          │
+   Access      Access     Access
+   Switch      Switch     Switch
+      │          │          │
+   Laptop      Server    Printer
+```
+
+Every switch maintains a MAC address table that allows it to forward frames efficiently.
+
+---
+
+# Switch Components
+
+A managed Ethernet switch typically contains:
+
+- Switching ASIC (Application-Specific Integrated Circuit)
+- CPU (management plane)
+- CAM Table
+- Memory buffers
+- Ethernet interfaces
+- Backplane/Fabric
+- Management interface (CLI/Web/SNMP)
+
+```
++--------------------------------+
+|            Switch              |
+|                                |
+|  CPU                           |
+|  Switching ASIC                |
+|  CAM Table                     |
+|  Buffers                       |
+|                                |
+| Gi0/1 Gi0/2 Gi0/3 Gi0/24       |
++--------------------------------+
+```
+
+---
+
+# What is a CAM Table?
+
+CAM stands for:
+
+```
+Content Addressable Memory
+```
+
+A CAM table stores:
+
+```
+MAC Address
+
+↓
+
+Switch Port
+```
+
+Example
+
+| MAC Address | Port |
+|-------------|------|
+| 00:11:22:33:44:55 | Gi0/1 |
+| 10:AA:BB:CC:DD:EE | Gi0/2 |
+| 3C:52:82:9F:10:7A | Gi0/3 |
+
+The CAM table allows the switch to forward frames directly to the correct destination.
+
+---
+
+# MAC Learning Process
+
+Switches automatically build their CAM table by inspecting the **source MAC address** of every incoming frame.
+
+### Step 1
+
+Frame arrives:
+
+```
+Source MAC
+
+AA:AA:AA:AA:AA:AA
+
+↓
+
+Port Gi0/1
+```
+
+The switch learns:
+
+```
+AA:AA:AA:AA:AA:AA
+
+↓
+
+Gi0/1
+```
+
+### Step 2
+
+Another frame arrives.
+
+```
+Source MAC
+
+BB:BB:BB:BB:BB:BB
+
+↓
+
+Gi0/2
+```
+
+The switch stores:
+
+```
+BB:BB:BB:BB:BB:BB
+
+↓
+
+Gi0/2
+```
+
+Over time the CAM table becomes a map of the local network.
+
+---
+
+# Frame Forwarding Process
+
+Every Ethernet frame follows three basic steps.
+
+## Step 1
+
+Receive frame.
+
+↓
+
+Read
+
+```
+Source MAC
+Destination MAC
+```
+
+---
+
+## Step 2
+
+Learn Source MAC
+
+If new:
+
+```
+Store in CAM Table
+```
+
+If already known:
+
+```
+Refresh timer
+```
+
+---
+
+## Step 3
+
+Lookup Destination MAC
+
+If found:
+
+```
+Forward to one port
+```
+
+If unknown:
+
+```
+Flood
+```
+
+---
+
+# Example Communication
+
+```
+PC A
+
+↓
+
+Switch
+
+↓
+
+PC B
+```
+
+Frame
+
+```
+Destination
+
+BB:BB:BB:BB:BB:BB
+```
+
+Switch checks CAM table.
+
+Found.
+
+↓
+
+Forward only to
+
+```
+Gi0/2
+```
+
+No other devices receive the frame.
+
+---
+
+# Unknown Unicast
+
+Suppose:
+
+```
+Destination MAC
+
+CC:CC:CC:CC:CC:CC
+```
+
+is not present in the CAM table.
+
+The switch performs:
+
+```
+Unknown Unicast Flood
+```
+
+```
+Incoming Port
+
+↓
+
+All Other Ports
+```
+
+Eventually:
+
+```
+Destination Replies
+
+↓
+
+Switch Learns MAC
+```
+
+Future frames become unicast.
+
+---
+
+# Broadcast Frames
+
+Broadcast destination:
+
+```
+FF:FF:FF:FF:FF:FF
+```
+
+Example:
+
+ARP Request
+
+```
+Who has
+
+192.168.1.10
+
+?
+```
+
+Switch forwards broadcast frames to:
+
+```
+Every Port
+
+Except Incoming Port
+```
+
+Broadcasts remain within the broadcast domain unless routed.
+
+---
+
+# Multicast Frames
+
+Multicast traffic targets a selected group of devices.
+
+Example applications:
+
+- IPTV
+- Video conferencing
+- Routing protocols
+- Streaming
+- Service discovery
+
+Without multicast optimization, switches may flood multicast traffic similarly to broadcast traffic.
+
+Enterprise switches often use protocols such as **IGMP Snooping** to forward multicast traffic only to interested receivers.
+
+---
+
+# Unknown vs Broadcast vs Multicast
+
+| Traffic Type | Destination | Forwarding Behavior |
+|--------------|-------------|---------------------|
+| Unicast | One MAC | One port |
+| Unknown Unicast | Unknown MAC | Flood |
+| Broadcast | FF:FF:FF:FF:FF:FF | Flood |
+| Multicast | Multicast MAC | Selected ports (or flooded if unmanaged) |
+
+---
+
+# CAM Table Aging
+
+MAC entries are **not permanent**.
+
+If a device stops communicating:
+
+```
+Timer Expires
+
+↓
+
+Entry Removed
+```
+
+When communication resumes:
+
+```
+Switch Learns Again
+```
+
+This keeps the CAM table current.
+
+---
+
+# Collision Domains
+
+A collision occurs when multiple devices transmit simultaneously on a shared medium.
+
+Older Ethernet networks using hubs experienced frequent collisions.
+
+Modern switches eliminate this problem.
+
+```
+Switch
+
+↓
+
+Each Port
+
+↓
+
+Separate Collision Domain
+```
+
+Example
+
+```
+PC1
+
+↓
+
+Switch
+
+↓
+
+PC2
+
+↓
+
+Switch
+
+↓
+
+Server
+```
+
+Every switch port is its own collision domain.
+
+---
+
+# Broadcast Domains
+
+A broadcast domain is the set of devices that receive Layer 2 broadcast traffic.
+
+Without VLANs:
+
+```
+Entire Switch
+
+↓
+
+One Broadcast Domain
+```
+
+With VLANs:
+
+```
+VLAN 10
+
+↓
+
+Broadcast Domain 1
+
+────────────
+
+VLAN 20
+
+↓
+
+Broadcast Domain 2
+```
+
+Routers and Layer 3 interfaces separate broadcast domains.
+
+---
+
+# Collision Domain vs Broadcast Domain
+
+| Feature | Collision Domain | Broadcast Domain |
+|----------|------------------|------------------|
+| Layer | Physical/Data Link | Data Link |
+| Managed By | Switch Ports | Routers / VLANs |
+| Modern Switch | One per Port | Shared unless segmented |
+| Goal | Prevent collisions | Limit broadcast traffic |
+
+---
+
+# Duplex Communication
+
+Ethernet devices support different transmission modes.
+
+---
+
+## Half Duplex
+
+Only one device transmits at a time.
+
+```
+A
+
+────►
+
+B
+
+(wait)
+
+◄────
+
+B
+```
+
+Characteristics:
+
+- Shared medium
+- Possible collisions
+- Legacy environments
+- Lower performance
+
+---
+
+## Full Duplex
+
+Both devices transmit simultaneously.
+
+```
+A
+
+────►
+
+◄────
+
+B
+```
+
+Characteristics:
+
+- No collisions
+- Higher throughput
+- Lower latency
+- Standard in modern switched Ethernet
+
+---
+
+# Auto-Negotiation
+
+Modern Ethernet interfaces automatically negotiate:
+
+- Speed
+- Duplex mode
+- Link capabilities
+
+Example:
+
+```
+NIC
+
+↓
+
+1 Gbps
+
+↓
+
+Full Duplex
+```
+
+If negotiation fails because of configuration mismatches, performance issues such as retransmissions or poor throughput may occur.
+
+---
+
+# Switching Methods
+
+---
+
+## Store-and-Forward
+
+The switch receives the **entire frame**, verifies the FCS, and forwards only valid frames.
+
+Advantages:
+
+- Detects corrupted frames
+- Most common in enterprise switches
+
+Disadvantages:
+
+- Slightly higher latency
+
+---
+
+## Cut-Through Switching
+
+The switch begins forwarding after reading the destination MAC address.
+
+Advantages:
+
+- Very low latency
+
+Disadvantages:
+
+- May forward corrupted frames because the FCS has not yet been verified.
+
+---
+
+## Fragment-Free Switching
+
+The switch reads the first **64 bytes** before forwarding.
+
+Advantages:
+
+- Avoids forwarding most collision fragments.
+- Lower latency than store-and-forward.
+
+---
+
+# Comparison of Switching Methods
+
+| Method | Error Checking | Latency | Enterprise Usage |
+|----------|---------------|---------|------------------|
+| Store-and-Forward | Yes | Moderate | Very Common |
+| Cut-Through | No | Very Low | Specialized |
+| Fragment-Free | Partial | Low | Less Common |
+
+---
+
+# Enterprise Switching Architecture
+
+```
+              Core Layer
+                   │
+         High-Speed Layer 3 Switches
+                   │
+        ┌──────────┴──────────┐
+        │                     │
+  Distribution Layer     Distribution Layer
+        │                     │
+   Access Switches      Access Switches
+        │                     │
+ End Devices         Servers / Printers / Phones
+```
+
+This hierarchical design improves:
+
+- Scalability
+- Fault isolation
+- Performance
+- Manageability
+
+---
+
+# Wireshark Observation
+
+During a packet capture, you can inspect:
+
+- Source MAC Address
+- Destination MAC Address
+- EtherType
+- VLAN Tag (if present)
+- Payload
+
+Switch forwarding decisions are **not visible** in Wireshark because they occur internally within the switch hardware.
+
+However, the Ethernet headers provide valuable insight into Layer 2 communication.
+
+---
+
+# Common Switching Problems
+
+| Problem | Description |
+|----------|-------------|
+| MAC Table Overflow | CAM table becomes full, potentially causing flooding behavior |
+| Broadcast Storm | Excessive broadcast traffic consumes network bandwidth |
+| Duplex Mismatch | One side uses full duplex while the other uses half duplex, causing performance degradation |
+| MAC Flapping | A MAC address rapidly appears on different ports, often indicating loops or misconfigurations |
+| Unknown Unicast Flooding | Switch does not know the destination MAC and floods the frame |
+| Layer 2 Loop | Redundant paths without loop prevention can create continuous frame circulation |
+
+---
+
+# Business Impact
+
+Efficient Ethernet switching provides:
+
+- High-performance LAN communication
+- Reduced unnecessary traffic
+- Low latency
+- Collision-free operation
+- Improved application performance
+- Scalable enterprise network design
+- Reliable communication for business-critical services
+
+---
+
+# Key Takeaways
+
+- Ethernet switches forward frames using **MAC addresses**.
+- Switches learn device locations dynamically through the **CAM table**.
+- Known unicast traffic is forwarded only to the destination port, while unknown unicast and broadcast traffic may be flooded.
+- Modern switched Ethernet provides one **collision domain per switch port**, while broadcast domains are controlled using **routers or VLANs**.
+- Full-duplex communication eliminates collisions and is the standard for enterprise Ethernet.
+- Store-and-forward switching is the dominant forwarding method because it verifies frame integrity before transmission.
