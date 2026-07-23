@@ -475,3 +475,615 @@ During networking interviews:
 - Interviewers value both conceptual understanding and practical problem-solving skills.
 
 ---
+
+
+# Part 2 — Routing, Switching, VLANs, STP, ARP, DHCP, DNS, TCP, UDP, ICMP, Firewalls, VPNs, Wireless, and Enterprise Networking Interview Questions
+
+---
+
+# Introduction
+
+Enterprise networking interviews typically move beyond basic networking concepts and focus on how networks actually operate in production environments.
+
+Interviewers often expect candidates to explain:
+
+- Packet forwarding
+- Routing decisions
+- Switching operations
+- VLAN segmentation
+- DHCP and DNS workflows
+- Firewall behavior
+- VPN connectivity
+- Wireless networking
+- Enterprise architectures
+- Troubleshooting methodologies
+
+This section contains commonly asked interview questions with concise, technically accurate answers.
+
+---
+
+# Routing
+
+---
+
+## Q41. What is routing?
+
+**Answer:**
+
+Routing is the process of forwarding packets between different networks using routing tables and routing protocols to determine the best available path.
+
+---
+
+## Q42. What is the difference between routing and switching?
+
+| Routing | Switching |
+|----------|-----------|
+| Operates at Layer 3 | Operates at Layer 2 |
+| Uses IP addresses | Uses MAC addresses |
+| Connects different networks | Connects devices within the same LAN |
+| Performed by routers or Layer 3 switches | Performed by switches |
+
+---
+
+## Q43. What is a routing table?
+
+**Answer:**
+
+A routing table contains information about destination networks, next-hop addresses, outgoing interfaces, metrics, and administrative distances used to forward packets.
+
+---
+
+## Q44. What is the default route?
+
+**Answer:**
+
+A default route is used when no more specific route exists for the destination network.
+
+Example:
+
+```
+0.0.0.0/0
+```
+
+---
+
+## Q45. What is the difference between static and dynamic routing?
+
+| Static Routing | Dynamic Routing |
+|----------------|-----------------|
+| Configured manually | Learned automatically |
+| Simple environments | Large enterprise networks |
+| Minimal overhead | Adapts to topology changes |
+| Limited scalability | Highly scalable |
+
+---
+
+## Q46. Name some dynamic routing protocols.
+
+**Answer:**
+
+Common routing protocols include:
+
+- RIP
+- OSPF
+- EIGRP (Cisco proprietary)
+- IS-IS
+- BGP
+
+---
+
+## Q47. Which routing protocol is primarily used on the Internet?
+
+**Answer:**
+
+Border Gateway Protocol (BGP) is the primary routing protocol used to exchange routing information between Autonomous Systems (AS).
+
+---
+
+## Q48. What is route convergence?
+
+**Answer:**
+
+Route convergence is the process by which routers update their routing tables and agree on the current network topology after a topology change.
+
+---
+
+# Switching
+
+---
+
+## Q49. What is a network switch?
+
+**Answer:**
+
+A switch forwards Ethernet frames between devices within the same LAN using MAC address tables.
+
+---
+
+## Q50. How does a switch learn MAC addresses?
+
+**Answer:**
+
+A switch learns MAC addresses by recording the source MAC address of incoming frames and associating it with the receiving interface.
+
+---
+
+## Q51. What happens when the destination MAC address is unknown?
+
+**Answer:**
+
+The switch floods the frame to all ports within the VLAN except the port on which it was received.
+
+---
+
+## Q52. What is a Layer 3 switch?
+
+**Answer:**
+
+A Layer 3 switch combines switching and routing capabilities, allowing high-speed routing between VLANs.
+
+---
+
+# VLANs
+
+---
+
+## Q53. What is a VLAN?
+
+**Answer:**
+
+A Virtual Local Area Network (VLAN) logically separates devices into independent broadcast domains regardless of physical location.
+
+---
+
+## Q54. Why are VLANs used?
+
+**Answer:**
+
+VLANs improve:
+
+- Security
+- Broadcast control
+- Network organization
+- Performance
+- Administrative flexibility
+
+---
+
+## Q55. What is an access port?
+
+**Answer:**
+
+An access port belongs to a single VLAN and connects end devices such as computers, printers, and IP phones.
+
+---
+
+## Q56. What is a trunk port?
+
+**Answer:**
+
+A trunk port carries traffic for multiple VLANs between switches or between a switch and a router using IEEE 802.1Q tagging.
+
+---
+
+## Q57. What is the native VLAN?
+
+**Answer:**
+
+The native VLAN carries untagged traffic on an IEEE 802.1Q trunk link. Both ends of the trunk should use the same native VLAN to avoid communication issues.
+
+---
+
+# Spanning Tree Protocol (STP)
+
+---
+
+## Q58. Why is STP required?
+
+**Answer:**
+
+STP prevents Layer 2 loops by blocking redundant paths while maintaining backup links.
+
+---
+
+## Q59. What happens if STP is disabled in a redundant switched network?
+
+**Answer:**
+
+Disabling STP can lead to:
+
+- Broadcast storms
+- MAC address instability
+- Multiple frame copies
+- Network outages
+
+---
+
+## Q60. What is the root bridge?
+
+**Answer:**
+
+The root bridge is the central reference switch selected by STP. All path calculations are performed relative to the root bridge.
+
+---
+
+# ARP
+
+---
+
+## Q61. What is ARP?
+
+**Answer:**
+
+The Address Resolution Protocol (ARP) maps IPv4 addresses to MAC addresses within a local network.
+
+---
+
+## Q62. How does ARP work?
+
+**Answer:**
+
+1. A host broadcasts an ARP Request asking, "Who has this IP address?"
+2. The device with the matching IP replies with its MAC address.
+3. The sender stores the mapping in its ARP cache.
+
+---
+
+## Q63. What is ARP spoofing?
+
+**Answer:**
+
+ARP spoofing is an attack in which an attacker sends forged ARP replies to associate their MAC address with another device's IP address, enabling traffic interception or manipulation.
+
+---
+
+# DHCP
+
+---
+
+## Q64. What is DHCP?
+
+**Answer:**
+
+Dynamic Host Configuration Protocol (DHCP) automatically assigns IP configuration to network devices, including IP address, subnet mask, default gateway, and DNS servers.
+
+---
+
+## Q65. Explain the DHCP process.
+
+**Answer:**
+
+The DHCP process follows the DORA sequence:
+
+```
+Discover
+
+↓
+
+Offer
+
+↓
+
+Request
+
+↓
+
+Acknowledge
+```
+
+---
+
+## Q66. What is a DHCP relay agent?
+
+**Answer:**
+
+A DHCP relay agent forwards DHCP requests between clients and DHCP servers located on different IP subnets.
+
+---
+
+# DNS
+
+---
+
+## Q67. What is DNS?
+
+**Answer:**
+
+The Domain Name System (DNS) translates human-readable domain names into IP addresses.
+
+---
+
+## Q68. What happens when you type a website into a browser?
+
+**Answer:**
+
+The simplified process is:
+
+```
+User
+
+↓
+
+DNS Lookup
+
+↓
+
+IP Address
+
+↓
+
+TCP Connection
+
+↓
+
+TLS Handshake (HTTPS)
+
+↓
+
+HTTP Request
+
+↓
+
+Web Server Response
+```
+
+---
+
+## Q69. What is the difference between recursive and iterative DNS queries?
+
+| Recursive Query | Iterative Query |
+|-----------------|-----------------|
+| Resolver returns the final answer | Each DNS server returns the best available information |
+| Common for clients | Common between DNS servers |
+
+---
+
+## Q70. What is DNS caching?
+
+**Answer:**
+
+DNS caching stores previously resolved domain names locally to reduce lookup times and decrease DNS server load.
+
+---
+
+# TCP
+
+---
+
+## Q71. What is TCP?
+
+**Answer:**
+
+Transmission Control Protocol (TCP) is a connection-oriented transport protocol that provides reliable, ordered, and error-checked data delivery.
+
+---
+
+## Q72. Explain the TCP three-way handshake.
+
+**Answer:**
+
+```
+Client → SYN
+
+↓
+
+Server → SYN-ACK
+
+↓
+
+Client → ACK
+
+↓
+
+Connection Established
+```
+
+---
+
+## Q73. Why does TCP use acknowledgments?
+
+**Answer:**
+
+Acknowledgments confirm successful packet delivery and enable retransmission if packets are lost.
+
+---
+
+# UDP
+
+---
+
+## Q74. What is UDP?
+
+**Answer:**
+
+User Datagram Protocol (UDP) is a connectionless transport protocol that prioritizes speed over reliability.
+
+---
+
+## Q75. When is UDP preferred?
+
+**Answer:**
+
+UDP is commonly used for:
+
+- DNS
+- VoIP
+- Video streaming
+- Online gaming
+- Live broadcasts
+
+---
+
+## Q76. What is the primary difference between TCP and UDP?
+
+| TCP | UDP |
+|------|-----|
+| Connection-oriented | Connectionless |
+| Reliable | Best effort |
+| Ordered delivery | No delivery guarantee |
+| Higher overhead | Lower overhead |
+
+---
+
+# ICMP
+
+---
+
+## Q77. What is ICMP?
+
+**Answer:**
+
+Internet Control Message Protocol (ICMP) is used for network diagnostics and error reporting.
+
+---
+
+## Q78. Which commands commonly use ICMP?
+
+**Answer:**
+
+- `ping`
+- `traceroute` (or `tracert` on Windows, which may also use ICMP depending on the implementation)
+
+---
+
+## Q79. Why might ICMP be blocked?
+
+**Answer:**
+
+Organizations may restrict ICMP to reduce network reconnaissance opportunities or limit certain denial-of-service attack vectors, while still allowing necessary diagnostic traffic.
+
+---
+
+# Firewalls
+
+---
+
+## Q80. What is a firewall?
+
+**Answer:**
+
+A firewall monitors and controls inbound and outbound network traffic according to predefined security policies.
+
+---
+
+## Q81. What is the difference between a stateful firewall and a stateless firewall?
+
+| Stateless Firewall | Stateful Firewall |
+|--------------------|------------------|
+| Examines individual packets | Tracks connection state |
+| Faster | More secure |
+| Limited context | Context-aware decisions |
+
+---
+
+## Q82. What is NAT?
+
+**Answer:**
+
+Network Address Translation (NAT) translates private IP addresses into public IP addresses or vice versa.
+
+---
+
+## Q83. What is the purpose of a DMZ?
+
+**Answer:**
+
+A Demilitarized Zone (DMZ) isolates public-facing servers from internal networks to reduce the risk of compromise.
+
+---
+
+# VPN
+
+---
+
+## Q84. What is a VPN?
+
+**Answer:**
+
+A Virtual Private Network (VPN) creates an encrypted tunnel across an untrusted network, allowing secure communication between users or sites.
+
+---
+
+## Q85. What are the two common VPN types?
+
+**Answer:**
+
+- Site-to-Site VPN
+- Remote Access VPN
+
+---
+
+## Q86. What is IPsec?
+
+**Answer:**
+
+IPsec is a suite of protocols that provides authentication, integrity, and encryption for IP communications.
+
+---
+
+# Wireless Networking
+
+---
+
+## Q87. What is an SSID?
+
+**Answer:**
+
+The Service Set Identifier (SSID) is the name of a wireless network that clients use to identify and connect to it.
+
+---
+
+## Q88. What are common causes of poor Wi-Fi performance?
+
+**Answer:**
+
+- Weak signal strength
+- RF interference
+- Channel congestion
+- Too many connected clients
+- Physical obstacles
+- Misconfigured access points
+
+---
+
+## Q89. What is WPA3?
+
+**Answer:**
+
+WPA3 is the latest Wi-Fi security standard, providing stronger authentication and improved protection against password guessing attacks compared to WPA2.
+
+---
+
+# Enterprise Networking
+
+---
+
+## Q90. Why is network segmentation important?
+
+**Answer:**
+
+Network segmentation limits broadcast traffic, improves performance, enhances security, reduces lateral movement, and simplifies regulatory compliance.
+
+---
+
+## Quick Interview Tips
+
+For enterprise networking interviews:
+
+- Explain **why** a technology is used, not just **what** it does.
+- Mention operational considerations such as scalability, security, and availability.
+- Use troubleshooting examples where appropriate.
+- Be prepared to compare similar technologies (for example, TCP vs UDP or static vs dynamic routing).
+
+---
+
+# Key Takeaways
+
+- Routing and switching are fundamental to enterprise connectivity.
+- VLANs, STP, DHCP, and DNS are among the most frequently tested networking topics.
+- Understanding TCP, UDP, ICMP, firewalls, VPNs, and wireless networking is essential for infrastructure and cybersecurity roles.
+- Employers value candidates who can connect theoretical knowledge to practical enterprise scenarios.
+
+---
+
+
