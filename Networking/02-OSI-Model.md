@@ -432,3 +432,810 @@ Mapping attacks to layers helps defenders select appropriate security controls.
 - Communication moves from Layer 7 to Layer 1 on the sender and from Layer 1 to Layer 7 on the receiver.
 - Each layer uses a specific Protocol Data Unit (PDU).
 - The OSI Model is widely used in networking education, cybersecurity, packet analysis, and enterprise troubleshooting.
+
+
+# 02 - OSI Model
+
+# Part 2 — The Seven Layers of the OSI Model (In Depth)
+
+---
+
+# Overview
+
+Every layer of the OSI Model performs a specific function in the communication process.
+
+Instead of one large networking process, communication is divided into smaller, independent tasks.
+
+This layered approach provides:
+
+- Better organization
+- Easier troubleshooting
+- Vendor interoperability
+- Modular protocol design
+- Enhanced security implementation
+
+The seven layers work together to move data from one application to another across local and global networks.
+
+---
+
+# Layer 7 — Application Layer
+
+```
++----------------------+
+| Layer 7              |
+| Application Layer    |
++----------------------+
+```
+
+---
+
+## Purpose
+
+The Application Layer is the closest layer to the end user.
+
+It provides network services directly to applications.
+
+> **Important:**  
+> The Application Layer **does not refer to the application itself** (such as Chrome or Outlook). Instead, it provides the networking interface that applications use to communicate over a network.
+
+---
+
+## Responsibilities
+
+- Network services for applications
+- Resource sharing
+- File transfer
+- Email services
+- Name resolution
+- Remote access
+- Web communication
+
+---
+
+## Common Protocols
+
+| Protocol | Purpose |
+|-----------|----------|
+| HTTP | Web communication |
+| HTTPS | Secure web communication |
+| FTP | File transfer |
+| SFTP | Secure file transfer |
+| SMTP | Email sending |
+| POP3 | Email retrieval |
+| IMAP | Email synchronization |
+| DNS | Domain name resolution |
+| DHCP | Automatic IP configuration |
+| SNMP | Network management |
+| NTP | Time synchronization |
+| SSH | Secure remote login |
+| Telnet | Remote login (legacy) |
+
+---
+
+## Data Unit
+
+```
+Data
+```
+
+---
+
+## Address Used
+
+Application-specific identifiers such as:
+
+- URLs
+- Email addresses
+- Domain names
+- Hostnames
+
+---
+
+## Enterprise Example
+
+A user opens:
+
+```
+https://company.com
+```
+
+The browser creates an HTTPS request.
+
+The Application Layer prepares the request before passing it to the Presentation Layer.
+
+---
+
+## Cybersecurity Threats
+
+Common attacks include:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Cross-Site Request Forgery (CSRF)
+- Server-Side Request Forgery (SSRF)
+- XML External Entity (XXE)
+- Command Injection
+- Directory Traversal
+- File Inclusion
+- API Abuse
+- Authentication Bypass
+
+---
+
+## Security Controls
+
+- Web Application Firewall (WAF)
+- Input validation
+- Secure coding practices
+- Multi-Factor Authentication (MFA)
+- API gateways
+- Rate limiting
+- Secure session management
+
+---
+
+## Wireshark Observation
+
+Typical protocols observed:
+
+- HTTP
+- HTTPS
+- DNS
+- SMTP
+- FTP
+
+---
+
+# Layer 6 — Presentation Layer
+
+```
++----------------------+
+| Layer 6              |
+| Presentation Layer   |
++----------------------+
+```
+
+---
+
+## Purpose
+
+The Presentation Layer is responsible for ensuring that data is in a format understandable by both communicating systems.
+
+Think of it as the **translator** of the OSI Model.
+
+---
+
+## Responsibilities
+
+- Data formatting
+- Character encoding
+- Encryption
+- Decryption
+- Compression
+- Decompression
+- Serialization
+
+---
+
+## Examples
+
+Different systems may use different:
+
+- Character sets
+- Image formats
+- File encodings
+
+The Presentation Layer converts them into a common format.
+
+---
+
+## Encryption
+
+This layer commonly handles:
+
+- SSL/TLS encryption
+- Certificate-based encryption
+- Data confidentiality
+
+---
+
+## Compression
+
+Compression reduces the amount of data transmitted.
+
+Examples:
+
+- ZIP
+- JPEG
+- PNG
+- MPEG
+
+---
+
+## Data Unit
+
+```
+Data
+```
+
+---
+
+## Enterprise Example
+
+A browser encrypts data using TLS before it is transmitted to a secure web server.
+
+---
+
+## Cybersecurity Threats
+
+- Weak encryption
+- Deprecated cipher suites
+- Certificate spoofing
+- TLS downgrade attacks
+- Improper certificate validation
+
+---
+
+## Security Controls
+
+- TLS 1.3
+- Strong cipher suites
+- PKI
+- Certificate validation
+- Digital certificates
+- HSTS
+
+---
+
+## Wireshark Observation
+
+Encrypted HTTPS traffic appears unreadable without session keys.
+
+---
+
+# Layer 5 — Session Layer
+
+```
++----------------------+
+| Layer 5              |
+| Session Layer        |
++----------------------+
+```
+
+---
+
+## Purpose
+
+The Session Layer establishes, manages, and terminates communication sessions between applications.
+
+---
+
+## Responsibilities
+
+- Session establishment
+- Session maintenance
+- Authentication support
+- Session synchronization
+- Session termination
+- Checkpointing
+
+---
+
+## Example
+
+During an online banking session:
+
+```
+Login
+
+↓
+
+Authenticated Session
+
+↓
+
+Transactions
+
+↓
+
+Logout
+
+↓
+
+Session Ends
+```
+
+---
+
+## Common Protocols
+
+Examples include:
+
+- NetBIOS
+- RPC
+- SMB Session Services
+
+Modern applications often implement session management within higher-layer protocols.
+
+---
+
+## Data Unit
+
+```
+Data
+```
+
+---
+
+## Cybersecurity Threats
+
+- Session hijacking
+- Session fixation
+- Cookie theft
+- Token replay
+- Authentication bypass
+
+---
+
+## Security Controls
+
+- Secure cookies
+- HttpOnly
+- SameSite
+- Session expiration
+- Token rotation
+- Re-authentication
+
+---
+
+## Wireshark Observation
+
+Session establishment and teardown can often be inferred from application and transport-layer exchanges.
+
+---
+
+# Layer 4 — Transport Layer
+
+```
++----------------------+
+| Layer 4              |
+| Transport Layer      |
++----------------------+
+```
+
+---
+
+## Purpose
+
+The Transport Layer provides **end-to-end communication** between hosts.
+
+It ensures data reaches the correct application reliably or efficiently, depending on the protocol used.
+
+---
+
+## Responsibilities
+
+- Segmentation
+- Reassembly
+- Flow control
+- Error recovery
+- Reliability
+- Multiplexing
+- Port addressing
+
+---
+
+## Protocols
+
+| Protocol | Characteristics |
+|-----------|-----------------|
+| TCP | Reliable, connection-oriented |
+| UDP | Fast, connectionless |
+
+---
+
+## Data Unit
+
+```
+Segment (TCP)
+
+Datagram (UDP)
+```
+
+---
+
+## Address Used
+
+```
+Port Number
+```
+
+Examples:
+
+| Port | Service |
+|------|----------|
+| 20/21 | FTP |
+| 22 | SSH |
+| 25 | SMTP |
+| 53 | DNS |
+| 80 | HTTP |
+| 110 | POP3 |
+| 143 | IMAP |
+| 443 | HTTPS |
+| 3389 | RDP |
+
+---
+
+## Enterprise Example
+
+A browser sends an HTTPS request using:
+
+```
+Destination Port
+
+443
+```
+
+The Transport Layer directs the traffic to the correct service running on the destination server.
+
+---
+
+## Cybersecurity Threats
+
+- TCP SYN Flood
+- Port scanning
+- UDP Flood
+- Session reset attacks
+- Port abuse
+
+---
+
+## Security Controls
+
+- Stateful firewalls
+- TCP SYN cookies
+- Rate limiting
+- IDS/IPS
+- Port filtering
+
+---
+
+## Wireshark Observation
+
+You can observe:
+
+- TCP three-way handshake
+- Sequence numbers
+- Acknowledgments
+- Retransmissions
+- UDP datagrams
+
+---
+
+# Layer 3 — Network Layer
+
+```
++----------------------+
+| Layer 3              |
+| Network Layer        |
++----------------------+
+```
+
+---
+
+## Purpose
+
+The Network Layer is responsible for delivering packets between different networks.
+
+It determines the best path from source to destination.
+
+---
+
+## Responsibilities
+
+- Logical addressing
+- Routing
+- Packet forwarding
+- Path determination
+- Fragmentation (IPv4)
+
+---
+
+## Protocols
+
+- IPv4
+- IPv6
+- ICMP
+- IPsec
+- OSPF
+- BGP
+- RIP
+- EIGRP
+
+---
+
+## Data Unit
+
+```
+Packet
+```
+
+---
+
+## Address Used
+
+```
+IP Address
+```
+
+Examples:
+
+```
+192.168.1.10
+
+10.0.0.5
+
+172.16.1.50
+
+2001:db8::1
+```
+
+---
+
+## Devices
+
+- Routers
+- Layer 3 Switches
+- Firewalls
+
+---
+
+## Enterprise Example
+
+A router forwards packets from a branch office to a cloud-hosted application over a WAN.
+
+---
+
+## Cybersecurity Threats
+
+- IP spoofing
+- Route hijacking
+- ICMP abuse
+- Routing protocol attacks
+- Packet fragmentation attacks
+
+---
+
+## Security Controls
+
+- ACLs
+- Routing authentication
+- IPsec VPNs
+- Anti-spoofing filters
+- Network segmentation
+
+---
+
+## Wireshark Observation
+
+Fields commonly examined include:
+
+- Source IP
+- Destination IP
+- TTL / Hop Limit
+- Protocol
+- Fragmentation flags
+
+---
+
+# Layer 2 — Data Link Layer
+
+```
++----------------------+
+| Layer 2              |
+| Data Link Layer      |
++----------------------+
+```
+
+---
+
+## Purpose
+
+The Data Link Layer provides reliable communication between devices on the **same local network**.
+
+---
+
+## Responsibilities
+
+- Framing
+- MAC addressing
+- Error detection
+- Media access control
+- VLAN tagging
+- Switching
+
+---
+
+## Protocols and Standards
+
+- Ethernet (IEEE 802.3)
+- Wi-Fi (IEEE 802.11)
+- PPP
+- ARP
+- STP
+- VLAN (802.1Q)
+
+---
+
+## Data Unit
+
+```
+Frame
+```
+
+---
+
+## Address Used
+
+```
+MAC Address
+```
+
+Example:
+
+```
+00:1A:2B:3C:4D:5E
+```
+
+---
+
+## Devices
+
+- Switches
+- Bridges
+- Wireless Access Points
+
+---
+
+## Enterprise Example
+
+A switch forwards an Ethernet frame to the correct workstation using its MAC address table.
+
+---
+
+## Cybersecurity Threats
+
+- ARP spoofing
+- MAC flooding
+- VLAN hopping
+- STP manipulation
+
+---
+
+## Security Controls
+
+- Port security
+- Dynamic ARP Inspection (DAI)
+- 802.1X authentication
+- BPDU Guard
+- VLAN segmentation
+
+---
+
+## Wireshark Observation
+
+Typical fields include:
+
+- Source MAC
+- Destination MAC
+- EtherType
+- VLAN ID
+
+---
+
+# Layer 1 — Physical Layer
+
+```
++----------------------+
+| Layer 1              |
+| Physical Layer       |
++----------------------+
+```
+
+---
+
+## Purpose
+
+The Physical Layer is responsible for transmitting raw bits across the communication medium.
+
+It defines the physical characteristics of the network.
+
+---
+
+## Responsibilities
+
+- Bit transmission
+- Electrical signaling
+- Optical signaling
+- Radio signaling
+- Connectors
+- Cabling
+- Pin layouts
+- Voltage levels
+
+---
+
+## Examples of Media
+
+- Copper Ethernet
+- Fiber optic cable
+- Wi-Fi radio waves
+- Bluetooth
+- Cellular networks
+
+---
+
+## Data Unit
+
+```
+Bits
+```
+
+---
+
+## Devices
+
+- Hubs
+- Repeaters
+- Cables
+- Connectors
+- Patch panels
+- Transceivers
+
+---
+
+## Enterprise Example
+
+A fiber optic cable connects two core switches between separate data center buildings.
+
+---
+
+## Cybersecurity Threats
+
+- Cable tampering
+- Device theft
+- Hardware sabotage
+- Electromagnetic interference (EMI)
+- Unauthorized physical access
+
+---
+
+## Security Controls
+
+- Locked server rooms
+- CCTV
+- Physical access control
+- Tamper-evident seals
+- Secure cable routing
+- Environmental monitoring
+
+---
+
+## Wireshark Observation
+
+The Physical Layer itself is **not directly visible** in packet captures because Wireshark analyzes frames after they have been successfully received.
+
+---
+
+# Summary of the Seven Layers
+
+| Layer | PDU | Address | Typical Devices | Example Protocols |
+|--------|-----|----------|-----------------|-------------------|
+| 7. Application | Data | URL, Domain | Proxy, WAF | HTTP, HTTPS, DNS, SMTP |
+| 6. Presentation | Data | — | SSL/TLS Gateway | TLS, SSL |
+| 5. Session | Data | Session ID | Session Broker | RPC, NetBIOS |
+| 4. Transport | Segment / Datagram | Port | Firewall | TCP, UDP |
+| 3. Network | Packet | IP Address | Router | IPv4, IPv6, ICMP |
+| 2. Data Link | Frame | MAC Address | Switch | Ethernet, ARP, VLAN |
+| 1. Physical | Bits | — | Hub, Cable | Ethernet PHY, Fiber |
+
