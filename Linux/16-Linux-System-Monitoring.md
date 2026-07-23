@@ -684,3 +684,803 @@ Without monitoring, performance degradation may remain unnoticed until business 
 ---
 
 
+# 16 - Linux System Monitoring
+
+# Part 2 — Process Monitoring, Disk Monitoring, Network Monitoring, Monitoring Tools, and Performance Analysis
+
+---
+
+# Introduction
+
+Monitoring CPU and memory provides only part of the overall system health.
+
+Enterprise administrators must also monitor:
+
+- Running processes
+- Storage utilization
+- Disk I/O
+- Network performance
+- System bottlenecks
+- Resource contention
+- Application behavior
+
+A holistic monitoring approach enables proactive detection and resolution of operational issues.
+
+---
+
+# Enterprise Monitoring Workflow
+
+```text
+Collect Metrics
+
+↓
+
+Analyze Performance
+
+↓
+
+Identify Bottleneck
+
+↓
+
+Determine Root Cause
+
+↓
+
+Apply Fix
+
+↓
+
+Verify Improvement
+
+↓
+
+Continue Monitoring
+```
+
+---
+
+# Process Monitoring
+
+A **process** is a running instance of a program.
+
+Monitoring processes helps administrators:
+
+- Detect runaway applications
+- Investigate high CPU usage
+- Identify memory leaks
+- Verify service availability
+- Detect suspicious processes
+
+---
+
+# Process States
+
+| State | Meaning |
+|--------|----------|
+| R | Running or runnable |
+| S | Interruptible sleep |
+| D | Uninterruptible sleep (usually I/O) |
+| T | Stopped or traced |
+| Z | Zombie |
+| I | Idle kernel thread (Linux-specific) |
+
+---
+
+# Viewing Processes
+
+Display running processes:
+
+```bash
+ps -ef
+```
+
+BSD-style format:
+
+```bash
+ps aux
+```
+
+Both commands provide:
+
+- PID
+- User
+- CPU usage
+- Memory usage
+- Start time
+- Command
+
+---
+
+# Process Monitoring Workflow
+
+```text
+Application
+
+↓
+
+Process
+
+↓
+
+CPU
+
+↓
+
+Memory
+
+↓
+
+I/O
+
+↓
+
+Administrator
+```
+
+---
+
+# Finding Specific Processes
+
+Example:
+
+```bash
+ps -ef | grep nginx
+```
+
+Or:
+
+```bash
+pgrep nginx
+```
+
+View detailed information:
+
+```bash
+ps -fp <PID>
+```
+
+---
+
+# Interactive Process Monitoring
+
+Launch:
+
+```bash
+top
+```
+
+Common interactive commands:
+
+| Key | Action |
+|------|--------|
+| `P` | Sort by CPU usage |
+| `M` | Sort by memory usage |
+| `T` | Sort by cumulative CPU time |
+| `k` | Kill a process |
+| `r` | Change process priority (renice) |
+| `h` | Help |
+| `q` | Quit |
+
+---
+
+# Using `htop`
+
+`htop` provides an enhanced interactive interface.
+
+Start:
+
+```bash
+htop
+```
+
+Features include:
+
+- Colorized display
+- Tree view
+- Mouse support
+- Easier process management
+- Search and filtering
+
+If unavailable, install it using your distribution's package manager.
+
+---
+
+# Understanding Zombie Processes
+
+Zombie processes have completed execution but still retain an entry in the process table until the parent process collects their exit status.
+
+Example:
+
+```text
+Parent
+
+↓
+
+Child exits
+
+↓
+
+Zombie
+
+↓
+
+Parent reaps child
+
+↓
+
+Removed
+```
+
+A small number of transient zombies is normal. Persistent zombies may indicate issues with the parent process.
+
+---
+
+# Disk Monitoring
+
+Disk monitoring includes:
+
+- Capacity
+- Read/write activity
+- Latency
+- Utilization
+- Error rates
+
+---
+
+# Filesystem Capacity
+
+Display usage:
+
+```bash
+df -h
+```
+
+Example:
+
+```text
+Filesystem
+
+Size
+
+Used
+
+Avail
+
+Use%
+```
+
+---
+
+# Directory Usage
+
+Display directory size:
+
+```bash
+du -sh /var
+```
+
+Analyze subdirectories:
+
+```bash
+du -h --max-depth=1 /var
+```
+
+---
+
+# Block Devices
+
+Display devices:
+
+```bash
+lsblk
+```
+
+Show filesystem information:
+
+```bash
+lsblk -f
+```
+
+---
+
+# Disk I/O Monitoring
+
+View statistics:
+
+```bash
+iostat
+```
+
+Extended statistics:
+
+```bash
+iostat -x
+```
+
+Common metrics:
+
+| Metric | Meaning |
+|---------|----------|
+| r/s | Read operations per second |
+| w/s | Write operations per second |
+| rkB/s or kB_read/s | Read throughput |
+| wkB/s or kB_wrtn/s | Write throughput |
+| await | Average request wait time |
+| %util | Approximate device utilization |
+
+Metric names can vary slightly depending on the `sysstat` version.
+
+---
+
+# Interpreting `iostat`
+
+Example:
+
+```text
+%util
+
+95%
+```
+
+Interpretation:
+
+The storage device is heavily utilized and may be a performance bottleneck.
+
+A high `%util` should be evaluated together with latency (`await`) and workload characteristics.
+
+---
+
+# Monitoring I/O with `vmstat`
+
+Run:
+
+```bash
+vmstat 2
+```
+
+Relevant fields:
+
+| Field | Meaning |
+|--------|----------|
+| bi | Blocks received from block devices |
+| bo | Blocks sent to block devices |
+| wa | CPU waiting for I/O |
+| r | Runnable processes |
+| b | Processes in uninterruptible sleep |
+
+---
+
+# Network Monitoring
+
+Network monitoring includes:
+
+- Bandwidth
+- Connections
+- Latency
+- Errors
+- Packet loss
+- Interface statistics
+
+---
+
+# Interface Statistics
+
+Display interface statistics:
+
+```bash
+ip -s link
+```
+
+View network interfaces:
+
+```bash
+ip addr
+```
+
+---
+
+# Active Connections
+
+Display listening sockets:
+
+```bash
+ss -tuln
+```
+
+Established connections:
+
+```bash
+ss -tan
+```
+
+---
+
+# Network Statistics
+
+View interface counters:
+
+```bash
+cat /proc/net/dev
+```
+
+Example information:
+
+- RX bytes
+- TX bytes
+- Errors
+- Dropped packets
+
+---
+
+# Bandwidth Monitoring
+
+Examples of tools:
+
+- `sar`
+- `iftop`
+- `nload`
+- `bmon`
+
+Availability depends on installed packages and distribution.
+
+---
+
+# System Activity Reporter (`sar`)
+
+Collect CPU statistics:
+
+```bash
+sar -u 5 5
+```
+
+Memory statistics:
+
+```bash
+sar -r 5 5
+```
+
+Disk activity:
+
+```bash
+sar -d 5 5
+```
+
+Network activity:
+
+```bash
+sar -n DEV 5 5
+```
+
+The `sysstat` package and data collection service may need to be enabled.
+
+---
+
+# Process Statistics (`pidstat`)
+
+Monitor CPU:
+
+```bash
+pidstat 2
+```
+
+Memory:
+
+```bash
+pidstat -r
+```
+
+Disk I/O:
+
+```bash
+pidstat -d
+```
+
+Useful for identifying resource-intensive processes.
+
+---
+
+# `dstat`
+
+`dstat` combines multiple system metrics.
+
+Example:
+
+```bash
+dstat
+```
+
+Displays:
+
+- CPU
+- Disk
+- Network
+- Memory
+- System
+
+Note that `dstat` may not be installed by default on modern distributions.
+
+---
+
+# Monitoring Overview
+
+```text
+CPU
+
+↓
+
+Memory
+
+↓
+
+Processes
+
+↓
+
+Disk
+
+↓
+
+Network
+
+↓
+
+Applications
+
+↓
+
+Administrator
+```
+
+---
+
+# Identifying Bottlenecks
+
+| Symptom | Likely Cause |
+|----------|--------------|
+| High CPU | Compute-intensive processes |
+| High load with high I/O wait | Slow storage or blocked I/O |
+| Heavy swap usage | Memory pressure |
+| High disk utilization | Intensive storage workload |
+| High latency | Network congestion or remote issues |
+| Packet drops | Interface errors or congestion |
+
+---
+
+# Performance Troubleshooting Workflow
+
+```text
+User Reports Issue
+
+↓
+
+Review CPU
+
+↓
+
+Review Memory
+
+↓
+
+Review Disk I/O
+
+↓
+
+Review Network
+
+↓
+
+Review Processes
+
+↓
+
+Identify Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Verify
+```
+
+---
+
+# Enterprise Monitoring Example
+
+## Slow Database Server
+
+Investigation:
+
+```text
+CPU
+
+↓
+
+Memory
+
+↓
+
+Disk Latency
+
+↓
+
+Database Processes
+
+↓
+
+Storage Performance
+
+↓
+
+Root Cause
+```
+
+Potential findings:
+
+- High storage latency
+- Insufficient memory
+- Excessive concurrent queries
+- Saturated disks
+
+---
+
+# Enterprise Monitoring Example
+
+## Slow Web Server
+
+Workflow:
+
+```text
+Application
+
+↓
+
+CPU
+
+↓
+
+Memory
+
+↓
+
+Network
+
+↓
+
+Logs
+
+↓
+
+Resolution
+```
+
+Possible causes:
+
+- Traffic spikes
+- Application bugs
+- Backend dependency delays
+- Resource exhaustion
+
+---
+
+# Enterprise Monitoring Example
+
+## High Load Average
+
+Workflow:
+
+```text
+Load Average
+
+↓
+
+CPU Usage
+
+↓
+
+I/O Wait
+
+↓
+
+Processes
+
+↓
+
+Storage
+
+↓
+
+Resolution
+```
+
+Remember that high load is not always caused by CPU saturation; blocked I/O can also increase load average.
+
+---
+
+# Enterprise Dashboard Example
+
+```text
+CPU Usage
+
+Memory Usage
+
+Swap Usage
+
+Disk Usage
+
+Disk I/O
+
+Network Throughput
+
+Running Processes
+
+System Load
+
+Alerts
+
+Service Status
+```
+
+---
+
+# Cybersecurity Perspective
+
+Performance monitoring often reveals security incidents.
+
+Indicators include:
+
+- Sudden CPU spikes from cryptomining malware
+- Unexpected network traffic
+- New long-running processes
+- High disk activity from ransomware
+- Abnormal memory consumption
+- Numerous outbound connections
+
+Security analysts correlate monitoring metrics with:
+
+- System logs
+- Authentication logs
+- Network telemetry
+- Endpoint detection alerts
+
+---
+
+# Business Impact
+
+Effective monitoring enables organizations to:
+
+- Reduce downtime
+- Detect issues before users notice
+- Improve SLA compliance
+- Optimize infrastructure costs
+- Increase service reliability
+- Support informed capacity planning
+
+Poor monitoring can lead to prolonged outages, degraded customer experience, and delayed incident response.
+
+---
+
+# Enterprise Best Practices
+
+- Monitor CPU, memory, storage, network, and processes together.
+- Establish normal performance baselines.
+- Alert on sustained abnormal behavior instead of short-lived spikes.
+- Retain historical metrics for trend analysis.
+- Correlate infrastructure metrics with application logs.
+- Regularly review storage latency and network errors.
+- Validate monitoring after infrastructure changes.
+- Document recurring performance issues and resolutions.
+
+---
+
+# Key Takeaways
+
+- Process, disk, and network monitoring are essential for complete system visibility.
+- Tools such as `top`, `htop`, `ps`, `vmstat`, `iostat`, `sar`, and `pidstat` provide complementary insights.
+- Performance bottlenecks should be diagnosed by correlating multiple metrics.
+- Historical monitoring data improves troubleshooting and capacity planning.
+- Continuous monitoring enhances both operational reliability and cybersecurity.
+
+---
