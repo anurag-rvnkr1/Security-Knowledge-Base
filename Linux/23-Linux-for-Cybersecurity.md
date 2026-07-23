@@ -1124,3 +1124,647 @@ Well-defined cybersecurity workflows help organizations:
 ---
 
 
+# 23 - Linux for Cybersecurity
+
+# Part 3 — SOC Operations, SIEM, Threat Intelligence, Cloud Security, DevSecOps, Practical Labs, and Enterprise Case Studies
+
+---
+
+# Introduction
+
+Modern cybersecurity extends far beyond traditional firewalls and antivirus software.
+
+Enterprise security teams continuously:
+
+- Monitor infrastructure
+- Analyze logs
+- Detect threats
+- Investigate alerts
+- Secure cloud environments
+- Automate security operations
+- Improve defenses through continuous feedback
+
+Linux is the foundation of many of these security platforms.
+
+---
+
+# Security Operations Center (SOC)
+
+A Security Operations Center (SOC) is responsible for continuously monitoring and defending an organization's infrastructure.
+
+Primary objectives:
+
+- Continuous monitoring
+- Threat detection
+- Incident investigation
+- Threat hunting
+- Incident response
+- Security reporting
+- Continuous improvement
+
+---
+
+# SOC Workflow
+
+```text
+Log Collection
+
+↓
+
+SIEM
+
+↓
+
+Alert Generation
+
+↓
+
+SOC Analyst
+
+↓
+
+Investigation
+
+↓
+
+Response
+
+↓
+
+Lessons Learned
+```
+
+---
+
+# SOC Analyst Levels
+
+| Level | Primary Responsibilities |
+|---------|--------------------------|
+| Tier 1 (L1) | Alert monitoring, initial triage, ticket creation |
+| Tier 2 (L2) | Investigation, validation, containment coordination |
+| Tier 3 (L3) | Advanced investigations, threat hunting, malware analysis |
+| SOC Manager | Team management, metrics, reporting, process improvement |
+
+---
+
+# Typical SOC Daily Activities
+
+Examples include:
+
+- Reviewing new alerts
+- Investigating suspicious logins
+- Monitoring authentication failures
+- Analyzing endpoint events
+- Reviewing firewall activity
+- Escalating confirmed incidents
+- Updating incident documentation
+
+---
+
+# Security Information and Event Management (SIEM)
+
+A SIEM platform collects, normalizes, stores, correlates, and analyzes security events from multiple sources.
+
+Common data sources:
+
+- Linux servers
+- Windows systems
+- Firewalls
+- Cloud platforms
+- Network devices
+- Identity providers
+- Applications
+- Endpoint security tools
+
+---
+
+# SIEM Architecture
+
+```text
+Servers
+
+↓
+
+Applications
+
+↓
+
+Firewalls
+
+↓
+
+Cloud
+
+↓
+
+Log Collection
+
+↓
+
+SIEM
+
+↓
+
+Correlation Rules
+
+↓
+
+Alerts
+
+↓
+
+SOC
+```
+
+---
+
+# SIEM Functions
+
+| Function | Purpose |
+|----------|----------|
+| Log Collection | Gather events |
+| Normalization | Standardize formats |
+| Correlation | Link related events |
+| Alerting | Notify analysts |
+| Dashboards | Visualize activity |
+| Reporting | Compliance and operations |
+
+---
+
+# Example Security Events
+
+Examples include:
+
+- Failed authentication attempts
+- Successful privileged logins
+- Service failures
+- Firewall denials
+- Configuration changes
+- New administrative accounts
+- Scheduled task modifications
+- Package installations
+
+---
+
+# Alert Triage
+
+Analysts typically evaluate:
+
+```text
+Alert
+
+↓
+
+Validate
+
+↓
+
+False Positive?
+
+├── Yes → Close
+│
+└── No
+
+↓
+
+Investigate
+
+↓
+
+Escalate if Required
+```
+
+---
+
+# Threat Intelligence
+
+Threat intelligence provides context about current threats and adversary behavior.
+
+Common intelligence categories:
+
+| Type | Description |
+|------|-------------|
+| Strategic | High-level business risk |
+| Operational | Campaign and adversary information |
+| Tactical | Tactics, techniques, and procedures (TTPs) |
+| Technical | Indicators such as IPs, hashes, and domains |
+
+---
+
+# Threat Intelligence Workflow
+
+```text
+Collect
+
+↓
+
+Validate
+
+↓
+
+Analyze
+
+↓
+
+Distribute
+
+↓
+
+Apply
+
+↓
+
+Improve Detection
+```
+
+---
+
+# Indicators
+
+Common technical indicators include:
+
+- File hashes
+- IP addresses
+- Domain names
+- URLs
+- Email addresses
+- Certificates
+
+Indicators should be validated and supplemented with behavioral analysis whenever possible.
+
+---
+
+# Cloud Security
+
+Linux is widely used in public and private cloud environments.
+
+Typical workloads:
+
+- Virtual machines
+- Containers
+- Kubernetes nodes
+- Application servers
+- Databases
+- API services
+
+---
+
+# Cloud Shared Responsibility
+
+```text
+Cloud Provider
+
+↓
+
+Infrastructure Security
+
+↓
+
+Customer
+
+↓
+
+Operating System
+
+↓
+
+Applications
+
+↓
+
+Data
+```
+
+Responsibilities vary depending on the cloud service model (IaaS, PaaS, SaaS).
+
+---
+
+# Cloud Security Best Practices
+
+- Harden Linux instances.
+- Apply security updates promptly.
+- Restrict network access.
+- Use least privilege for identities.
+- Enable logging and monitoring.
+- Encrypt sensitive data.
+- Review security groups and firewall rules regularly.
+
+---
+
+# Container Security
+
+Containers share the host kernel and therefore require secure configuration.
+
+Best practices:
+
+- Use trusted base images.
+- Remove unnecessary packages.
+- Run as non-root where possible.
+- Scan images for vulnerabilities.
+- Keep images updated.
+- Minimize container privileges.
+
+---
+
+# Kubernetes Security
+
+Security considerations include:
+
+- Role-Based Access Control (RBAC)
+- Network policies
+- Secret management
+- Admission controls
+- Audit logging
+- Image verification
+
+---
+
+# DevSecOps
+
+DevSecOps integrates security throughout the software development lifecycle.
+
+```text
+Plan
+
+↓
+
+Develop
+
+↓
+
+Build
+
+↓
+
+Test
+
+↓
+
+Security Validation
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+```
+
+Security becomes a continuous process rather than a final checkpoint.
+
+---
+
+# DevSecOps Objectives
+
+- Shift security left
+- Automate security testing
+- Improve deployment confidence
+- Reduce vulnerabilities
+- Accelerate remediation
+
+---
+
+# Infrastructure as Code (IaC)
+
+Infrastructure can be managed using code to improve consistency and repeatability.
+
+Benefits:
+
+- Version control
+- Standardized deployments
+- Reduced configuration drift
+- Easier audits
+- Faster recovery
+
+---
+
+# Security Automation
+
+Common automation tasks:
+
+- Patch management
+- Configuration validation
+- Compliance checks
+- Log parsing
+- Alert enrichment
+- Report generation
+- Asset inventory updates
+
+Automation allows security teams to focus on higher-value investigations.
+
+---
+
+# Practical Lab 1 — Review Authentication Logs
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-family:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+Objectives:
+
+- Identify repeated failures
+- Review authentication activity
+
+---
+
+# Practical Lab 2 — Review Listening Services
+
+```bash
+ss -tulpn
+```
+
+Objectives:
+
+- Identify exposed services
+- Verify expected network listeners
+
+---
+
+# Practical Lab 3 — Review Running Services
+
+```bash
+systemctl list-units --type=service --state=running
+```
+
+Objectives:
+
+- Identify unnecessary services
+- Compare against the approved baseline
+
+---
+
+# Practical Lab 4 — Review System Logs
+
+```bash
+journalctl -xe
+```
+
+Objectives:
+
+- Identify warnings and errors
+- Review recent system activity
+
+---
+
+# Enterprise Case Study 1
+
+## Suspicious Login Investigation
+
+Observed:
+
+- Multiple failed login attempts
+- Successful login from an unfamiliar location
+- New privileged commands executed shortly afterward
+
+Response:
+
+- Validate activity
+- Notify stakeholders
+- Contain if necessary
+- Preserve logs
+- Investigate root cause
+- Document findings
+
+---
+
+# Enterprise Case Study 2
+
+## Linux Server Hardening
+
+Actions performed:
+
+- Removed unused packages
+- Disabled unnecessary services
+- Hardened SSH
+- Applied updates
+- Enabled centralized logging
+- Verified firewall rules
+
+Results:
+
+- Reduced attack surface
+- Improved compliance
+- Lower operational risk
+
+---
+
+# Enterprise Case Study 3
+
+## SIEM Detection Improvement
+
+Problem:
+
+Repeated authentication failures were generating excessive false positives.
+
+Solution:
+
+- Refine correlation rules
+- Add contextual enrichment
+- Tune thresholds
+- Validate with historical data
+
+Outcome:
+
+- Fewer false positives
+- Faster analyst response
+- Improved detection quality
+
+---
+
+# Enterprise Security Architecture
+
+```text
+Endpoints
+
+↓
+
+Linux Servers
+
+↓
+
+Firewalls
+
+↓
+
+Cloud
+
+↓
+
+Central Logging
+
+↓
+
+SIEM
+
+↓
+
+SOC
+
+↓
+
+Incident Response
+```
+
+---
+
+# Cybersecurity Perspective
+
+Enterprise cybersecurity is a continuous cycle of:
+
+- Prevention
+- Detection
+- Investigation
+- Response
+- Recovery
+- Improvement
+
+Linux plays a critical role across every stage of this lifecycle.
+
+---
+
+# Business Impact
+
+A mature Linux-based cybersecurity program helps organizations:
+
+- Detect threats earlier
+- Reduce incident response time
+- Improve regulatory compliance
+- Protect critical assets
+- Increase operational resilience
+- Lower the cost of security incidents
+
+---
+
+# Enterprise Best Practices
+
+- Centralize security logs.
+- Regularly tune SIEM detection rules.
+- Integrate threat intelligence into monitoring workflows.
+- Secure Linux workloads in cloud environments.
+- Apply DevSecOps practices throughout the development lifecycle.
+- Automate repetitive security tasks.
+- Review security metrics regularly.
+- Continuously improve operational processes.
+
+---
+
+# Key Takeaways
+
+- SOC teams rely heavily on Linux systems and centralized monitoring.
+- SIEM platforms correlate events from multiple sources to improve detection.
+- Threat intelligence adds context to security investigations.
+- Cloud and container security require Linux hardening and continuous monitoring.
+- DevSecOps integrates security into software development.
+- Automation and continuous improvement are essential for modern cybersecurity operations.
+
+---
+
