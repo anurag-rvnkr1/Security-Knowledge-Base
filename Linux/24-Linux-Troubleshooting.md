@@ -1383,3 +1383,723 @@ Rapid troubleshooting of services and networks helps organizations:
 
 ---
 
+# 24 - Linux Troubleshooting
+
+# Part 3 — Storage Troubleshooting, Filesystem Recovery, Log Analysis, Security Incident Troubleshooting, Practical Labs, and Enterprise Case Studies
+
+---
+
+# Introduction
+
+Storage failures and filesystem corruption can cause severe service disruptions.
+
+Common symptoms include:
+
+- Systems becoming read-only
+- Applications failing to write data
+- Boot failures
+- Missing files
+- Disk space exhaustion
+- High disk latency
+
+Administrators must diagnose these problems carefully to prevent data loss.
+
+---
+
+# Storage Troubleshooting Workflow
+
+```text
+Identify Symptoms
+
+↓
+
+Collect Information
+
+↓
+
+Verify Storage
+
+↓
+
+Review Filesystems
+
+↓
+
+Analyze Logs
+
+↓
+
+Repair
+
+↓
+
+Validate
+
+↓
+
+Document
+```
+
+---
+
+# Storage Inventory
+
+Display block devices:
+
+```bash
+lsblk
+```
+
+Display filesystem usage:
+
+```bash
+df -h
+```
+
+Display mounted filesystems:
+
+```bash
+mount
+```
+
+These commands provide an overview of the storage layout.
+
+---
+
+# Filesystem Utilization
+
+Check available storage:
+
+```bash
+df -h
+```
+
+Example output:
+
+```text
+Filesystem      Size  Used Avail Use%
+
+/dev/sda2        80G   72G    8G  90%
+```
+
+High utilization may affect application performance and updates.
+
+---
+
+# Directory Usage
+
+Determine which directories consume space:
+
+```bash
+du -sh /*
+```
+
+Review large directories individually for more detail.
+
+---
+
+# Inode Exhaustion
+
+A filesystem can run out of inodes even when free space remains.
+
+Check inode usage:
+
+```bash
+df -i
+```
+
+High inode usage is common when many small files exist.
+
+---
+
+# Deleted but Open Files
+
+A deleted file may continue consuming disk space while a process keeps it open.
+
+Display open files:
+
+```bash
+lsof
+```
+
+Look for deleted files still referenced by running processes.
+
+---
+
+# Filesystem Integrity
+
+Filesystem corruption may result from:
+
+- Power loss
+- Hardware failure
+- Kernel issues
+- Improper shutdowns
+
+Symptoms include:
+
+- Read-only mounts
+- Mount failures
+- Missing files
+- Input/output errors
+
+---
+
+# Filesystem Recovery
+
+General recovery workflow:
+
+```text
+Identify Problem
+
+↓
+
+Unmount Filesystem (if appropriate)
+
+↓
+
+Run Filesystem Check
+
+↓
+
+Review Results
+
+↓
+
+Mount
+
+↓
+
+Validate
+```
+
+Always ensure backups are available before performing repair operations.
+
+---
+
+# Review Filesystem UUIDs
+
+```bash
+blkid
+```
+
+Useful when troubleshooting:
+
+- `/etc/fstab`
+- Mount failures
+- Incorrect UUID references
+
+---
+
+# Verify Mount Configuration
+
+Display configuration:
+
+```bash
+cat /etc/fstab
+```
+
+Common issues:
+
+- Incorrect UUID
+- Incorrect filesystem type
+- Invalid mount options
+- Missing storage devices
+
+---
+
+# Read-Only Filesystem
+
+Symptoms:
+
+- Applications cannot write files
+- Package updates fail
+- Configuration changes cannot be saved
+
+Investigate:
+
+- Disk health
+- Filesystem state
+- Kernel logs
+- Mount options
+
+---
+
+# Storage Performance
+
+Storage bottlenecks may cause:
+
+- Slow applications
+- Delayed database queries
+- Long boot times
+- High I/O wait
+
+Correlate observations with system metrics and logs.
+
+---
+
+# Log Analysis
+
+Logs are one of the most valuable troubleshooting resources.
+
+Common log categories:
+
+- Authentication
+- Kernel
+- System services
+- Applications
+- Package management
+- Security events
+
+---
+
+# System Journal
+
+View recent entries:
+
+```bash
+journalctl
+```
+
+Current boot:
+
+```bash
+journalctl -b
+```
+
+Previous boot:
+
+```bash
+journalctl -b -1
+```
+
+---
+
+# Follow Logs
+
+View new log entries in real time:
+
+```bash
+journalctl -f
+```
+
+Useful during troubleshooting after applying configuration changes.
+
+---
+
+# Kernel Messages
+
+Display kernel messages:
+
+```bash
+dmesg
+```
+
+Common items include:
+
+- Driver initialization
+- Hardware detection
+- Filesystem errors
+- Network initialization
+
+---
+
+# Search Logs
+
+Example:
+
+```bash
+journalctl | grep error
+```
+
+or
+
+```bash
+grep "error" logfile
+```
+
+Searching logs helps isolate relevant events.
+
+---
+
+# Log Analysis Workflow
+
+```text
+Collect Logs
+
+↓
+
+Filter
+
+↓
+
+Correlate
+
+↓
+
+Identify Pattern
+
+↓
+
+Determine Root Cause
+
+↓
+
+Implement Fix
+```
+
+---
+
+# Security Incident Troubleshooting
+
+Not every outage is purely operational.
+
+Consider security-related causes such as:
+
+- Unauthorized access
+- Malware
+- Configuration tampering
+- Credential misuse
+- Resource abuse
+
+---
+
+# Security Investigation Workflow
+
+```text
+Detect
+
+↓
+
+Collect Evidence
+
+↓
+
+Analyze
+
+↓
+
+Contain (if required)
+
+↓
+
+Recover
+
+↓
+
+Lessons Learned
+```
+
+---
+
+# Authentication Investigation
+
+Review authentication events:
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-family:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+Look for:
+
+- Repeated failures
+- Unusual login times
+- Unexpected accounts
+- Privileged activity
+
+---
+
+# Service Investigation
+
+Review service state:
+
+```bash
+systemctl status service-name
+```
+
+Review logs:
+
+```bash
+journalctl -u service-name
+```
+
+Correlate timestamps with reported issues.
+
+---
+
+# Configuration Drift
+
+Unexpected configuration changes may explain recurring issues.
+
+Review:
+
+- Recent deployments
+- Change management records
+- Version-controlled configuration
+- Audit logs
+
+---
+
+# Enterprise Troubleshooting Checklist
+
+| Area | Verify |
+|------|--------|
+| CPU | Utilization within expected range |
+| Memory | No excessive pressure or swapping |
+| Storage | Sufficient free space and healthy filesystems |
+| Network | Interfaces, routes, DNS, firewall |
+| Services | Running and healthy |
+| Logs | Reviewed for errors |
+| Security | No signs of unauthorized activity |
+| Documentation | Updated with findings |
+
+---
+
+# Practical Lab 1 — Storage Inventory
+
+```bash
+lsblk
+```
+
+```bash
+df -h
+```
+
+Objectives:
+
+- Identify storage devices
+- Review filesystem utilization
+
+---
+
+# Practical Lab 2 — Directory Usage
+
+```bash
+du -sh /var/*
+```
+
+Objectives:
+
+- Identify directories consuming the most space
+- Investigate abnormal growth
+
+---
+
+# Practical Lab 3 — Open Files
+
+```bash
+lsof
+```
+
+Objectives:
+
+- Review open files
+- Identify deleted-but-open files
+
+---
+
+# Practical Lab 4 — Review Mount Configuration
+
+```bash
+cat /etc/fstab
+```
+
+Objectives:
+
+- Verify filesystem configuration
+- Compare UUIDs with `blkid`
+
+---
+
+# Practical Lab 5 — System Journal
+
+```bash
+journalctl -b
+```
+
+Objectives:
+
+- Review boot messages
+- Identify startup warnings or errors
+
+---
+
+# Practical Lab 6 — Kernel Messages
+
+```bash
+dmesg
+```
+
+Objectives:
+
+- Review hardware initialization
+- Identify storage or driver issues
+
+---
+
+# Practical Lab 7 — Service Logs
+
+```bash
+journalctl -u ssh
+```
+
+Replace `ssh` with another service as appropriate.
+
+Objectives:
+
+- Review service-specific events
+- Correlate failures with system activity
+
+---
+
+# Practical Lab 8 — Authentication Logs
+
+Ubuntu/Debian:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+RHEL-family:
+
+```bash
+grep "Failed password" /var/log/secure
+```
+
+Objectives:
+
+- Review authentication failures
+- Identify suspicious patterns
+
+---
+
+# Enterprise Case Study 1
+
+## Disk Full on Production Server
+
+Symptoms:
+
+- Application errors
+- Failed package updates
+- Logging failures
+
+Investigation:
+
+1. Check filesystem usage.
+2. Identify large directories.
+3. Review log growth.
+4. Archive or remove unnecessary data.
+5. Validate free space after remediation.
+
+---
+
+# Enterprise Case Study 2
+
+## Service Failure After Configuration Change
+
+Symptoms:
+
+- Service does not start.
+- Users report outage.
+
+Investigation:
+
+- Validate configuration syntax.
+- Review service logs.
+- Restore previous known-good configuration if required.
+- Test before returning to production.
+
+---
+
+# Enterprise Case Study 3
+
+## Unexpected Authentication Failures
+
+Symptoms:
+
+- Repeated failed logins
+- User unable to authenticate
+
+Investigation:
+
+- Review authentication logs.
+- Verify account status.
+- Confirm password policy.
+- Check recent identity or configuration changes.
+
+---
+
+# Enterprise Case Study 4
+
+## Boot Delay
+
+Symptoms:
+
+- Slow startup after maintenance
+
+Investigation:
+
+- Review `systemd-analyze blame`.
+- Identify slow services.
+- Validate dependencies.
+- Optimize startup configuration where appropriate.
+
+---
+
+# Cybersecurity Perspective
+
+Troubleshooting and security investigations often overlap.
+
+For example:
+
+- High CPU usage may indicate resource abuse.
+- Unexpected network traffic may indicate compromise.
+- Service failures may result from unauthorized changes.
+- Log anomalies may reveal malicious activity.
+
+Maintain evidence integrity if a security incident is suspected.
+
+---
+
+# Business Impact
+
+Effective troubleshooting of storage, logs, and security events helps organizations:
+
+- Reduce downtime
+- Protect critical data
+- Improve operational resilience
+- Meet compliance requirements
+- Accelerate incident resolution
+
+---
+
+# Enterprise Best Practices
+
+- Monitor storage utilization proactively.
+- Review logs regularly, not only during incidents.
+- Preserve evidence before making significant changes.
+- Validate filesystem and configuration integrity.
+- Correlate logs with monitoring data and change records.
+- Document findings and root causes.
+- Test recovery procedures periodically.
+- Incorporate lessons learned into operational processes.
+
+---
+
+# Key Takeaways
+
+- Storage and filesystem issues are common causes of Linux outages.
+- Log analysis is central to effective troubleshooting.
+- Security events should be considered during operational investigations.
+- Practical diagnostics, documentation, and validation improve incident resolution.
+- A structured approach reduces downtime and supports long-term system reliability.
+
+---
+
