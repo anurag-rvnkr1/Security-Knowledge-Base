@@ -1518,4 +1518,781 @@ netdom query fsmo
 
 ---
 
-**Next:** **Part 3 — FSMO Role Transfer, Seizure, Failure Scenarios, Recovery, and Enterprise Operations**
+# 07-FSMO-Roles.md
+
+# Part 3 — FSMO Role Transfer, Role Seizure, Failure Scenarios, Recovery, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand FSMO role transfer.
+- Understand FSMO role seizure.
+- Differentiate between transfer and seizure.
+- Learn FSMO failure scenarios.
+- Perform enterprise recovery planning.
+- Learn PowerShell and NTDSUtil commands.
+- Understand operational best practices.
+
+---
+
+# FSMO Role Lifecycle
+
+Every FSMO role goes through a lifecycle.
+
+```text
+Install Active Directory
+
+↓
+
+FSMO Role Assigned
+
+↓
+
+Normal Operations
+
+↓
+
+Transfer (Optional)
+
+↓
+
+Failure
+
+↓
+
+Recovery
+
+↓
+
+Seizure (If Required)
+
+↓
+
+Validation
+```
+
+---
+
+# Moving FSMO Roles
+
+There are two ways to move FSMO roles.
+
+| Method | Used When |
+|----------|-----------|
+| Transfer | Original FSMO holder is healthy |
+| Seizure | Original FSMO holder is permanently unavailable |
+
+This distinction is extremely important.
+
+---
+
+# FSMO Role Transfer
+
+A **Transfer** is a graceful movement of a FSMO role.
+
+Requirements:
+
+- Original Domain Controller is online.
+- Both Domain Controllers can communicate.
+- Replication is healthy.
+
+Example:
+
+```text
+DC01
+
+Schema Master
+
+↓
+
+Transfer
+
+↓
+
+DC02
+
+Schema Master
+```
+
+No data is lost.
+
+---
+
+# Why Transfer Roles?
+
+Common reasons:
+
+- Planned maintenance
+- Hardware replacement
+- Operating system upgrade
+- Datacenter migration
+- Load balancing
+- Disaster recovery testing
+
+---
+
+# Example
+
+Company wants to upgrade DC01.
+
+Before shutting it down:
+
+```text
+DC01
+
+↓
+
+Transfer FSMO
+
+↓
+
+DC02
+
+↓
+
+Shutdown DC01
+```
+
+Business operations continue normally.
+
+---
+
+# FSMO Role Seizure
+
+A **Seizure** is an emergency operation.
+
+Used when:
+
+```text
+Original FSMO Holder
+
+↓
+
+Destroyed
+
+↓
+
+Never Returning
+```
+
+Example:
+
+```text
+Fire
+
+↓
+
+Server Destroyed
+
+↓
+
+Need FSMO Immediately
+
+↓
+
+Seize Role
+```
+
+---
+
+# Transfer vs Seizure
+
+| Transfer | Seizure |
+|------------|----------|
+| Graceful | Emergency |
+| Original DC Online | Original DC Offline |
+| Preferred | Last Resort |
+| Low Risk | Higher Risk |
+| Normal Administration | Disaster Recovery |
+
+---
+
+# Why Seizure Is Dangerous
+
+Imagine:
+
+```text
+DC01
+
+RID Master
+
+↓
+
+Offline
+
+↓
+
+Role Seized
+
+↓
+
+DC02
+```
+
+Later...
+
+DC01 unexpectedly returns online.
+
+Now:
+
+```text
+DC01
+
+RID Master
+
+AND
+
+DC02
+
+RID Master
+```
+
+This creates an unsupported condition because two Domain Controllers believe they hold the same role.
+
+After a successful seizure, the original role holder should **not** be returned to service without following Microsoft's supported recovery guidance.
+
+---
+
+# Which Roles Can Be Seized?
+
+All five FSMO roles can technically be seized.
+
+However:
+
+| Role | Usually Safe to Seize? |
+|------|------------------------|
+| RID Master | Yes (if permanently lost) |
+| PDC Emulator | Yes |
+| Infrastructure Master | Yes |
+| Domain Naming Master | Yes |
+| Schema Master | Yes, but with extra caution |
+
+Forest-wide roles require additional planning because they affect the entire forest.
+
+---
+
+# Role Transfer Using PowerShell
+
+Move one or more FSMO roles:
+
+```powershell
+Move-ADDirectoryServerOperationMasterRole
+```
+
+Example:
+
+```powershell
+Move-ADDirectoryServerOperationMasterRole `
+-Identity DC02 `
+-OperationMasterRole PDCEmulator
+```
+
+Multiple roles may also be transferred in a single operation.
+
+---
+
+# Viewing FSMO Roles
+
+PowerShell:
+
+```powershell
+Get-ADForest
+```
+
+Displays:
+
+- Schema Master
+- Domain Naming Master
+
+---
+
+PowerShell:
+
+```powershell
+Get-ADDomain
+```
+
+Displays:
+
+- RID Master
+- PDC Emulator
+- Infrastructure Master
+
+---
+
+Command Prompt
+
+```text
+netdom query fsmo
+```
+
+Example output:
+
+```text
+Schema Master
+
+DC01
+
+Domain Naming Master
+
+DC01
+
+RID Master
+
+DC02
+
+PDC Emulator
+
+DC03
+
+Infrastructure Master
+
+DC04
+```
+
+---
+
+# Using NTDSUtil
+
+Microsoft provides:
+
+```text
+ntdsutil
+```
+
+Capabilities include:
+
+- FSMO transfer
+- FSMO seizure
+- Active Directory maintenance
+- Metadata cleanup
+
+---
+
+# Typical NTDSUtil Workflow
+
+```text
+ntdsutil
+
+↓
+
+roles
+
+↓
+
+connections
+
+↓
+
+connect to server
+
+↓
+
+transfer role
+
+OR
+
+seize role
+```
+
+Use NTDSUtil carefully and only with appropriate administrative privileges.
+
+---
+
+# Metadata Cleanup
+
+Sometimes a failed Domain Controller never returns.
+
+Before rebuilding:
+
+```text
+Failed DC
+
+↓
+
+Remove Metadata
+
+↓
+
+Clean Active Directory
+
+↓
+
+Deploy Replacement
+```
+
+Metadata cleanup removes obsolete references to the failed Domain Controller.
+
+---
+
+# Failure Scenario 1
+
+## PDC Emulator Failure
+
+Effects:
+
+- Time synchronization hierarchy affected.
+- Password update forwarding affected.
+- Legacy compatibility unavailable.
+- Existing authentication generally continues.
+
+Recommended response:
+
+- Restore the server if possible.
+- Transfer or seize the role if permanent loss is confirmed.
+
+---
+
+# Failure Scenario 2
+
+## RID Master Failure
+
+Immediate effects:
+
+```text
+Existing Users
+
+↓
+
+Continue Working
+```
+
+Long-term effects:
+
+```text
+RID Pools Exhausted
+
+↓
+
+Cannot Create
+
+Users
+
+Groups
+
+Computers
+```
+
+---
+
+# Failure Scenario 3
+
+## Schema Master Failure
+
+Normal operations:
+
+```text
+Users
+
+↓
+
+Continue Working
+```
+
+Blocked operations:
+
+```text
+Install Application
+
+↓
+
+Requires Schema Extension
+
+↓
+
+Fails
+```
+
+---
+
+# Failure Scenario 4
+
+## Domain Naming Master Failure
+
+Cannot:
+
+- Add new domains.
+- Remove domains.
+- Modify the forest namespace.
+
+Existing domains continue functioning.
+
+---
+
+# Failure Scenario 5
+
+## Infrastructure Master Failure
+
+Possible effects:
+
+- Cross-domain object references become stale.
+- Existing authentication typically continues.
+- Display information for referenced objects may not update until the role is restored.
+
+---
+
+# Disaster Recovery Planning
+
+Enterprise recommendations:
+
+```text
+Regular Backups
+
+↓
+
+Health Monitoring
+
+↓
+
+Document FSMO Placement
+
+↓
+
+Test Recovery
+
+↓
+
+Validate Replication
+```
+
+Preparation reduces downtime during failures.
+
+---
+
+# Recovery Decision Tree
+
+```text
+FSMO Holder Offline
+
+↓
+
+Temporary?
+
+├── Yes
+
+│      ↓
+
+│   Repair
+
+│
+
+└── No
+
+       ↓
+
+Permanent Loss?
+
+       ↓
+
+Yes
+
+↓
+
+Seize FSMO
+
+↓
+
+Metadata Cleanup
+
+↓
+
+Build New Domain Controller
+
+↓
+
+Validate
+```
+
+---
+
+# FSMO Role Validation
+
+After moving or seizing a role:
+
+Verify:
+
+```text
+netdom query fsmo
+```
+
+Then verify:
+
+- Replication health
+- DNS functionality
+- Event Viewer
+- Client authentication
+- Time synchronization (if PDC Emulator)
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 15 Domain Controllers
+- Two data centers
+
+Primary data center experiences hardware failure.
+
+Actions:
+
+```text
+Recover Available DCs
+
+↓
+
+Determine Lost FSMO Roles
+
+↓
+
+Seize Required Roles
+
+↓
+
+Metadata Cleanup
+
+↓
+
+Deploy Replacement Servers
+
+↓
+
+Validate Replication
+
+↓
+
+Resume Operations
+```
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Seizing roles before confirming permanent server loss.
+- Returning a seized FSMO holder to production without proper recovery.
+- Ignoring replication health before transferring roles.
+- Performing FSMO operations without backups.
+- Failing to document role ownership.
+- Skipping post-transfer validation.
+
+---
+
+# Best Practices
+
+- Prefer **transfer** over **seizure** whenever possible.
+- Confirm server health before moving roles.
+- Maintain current backups.
+- Monitor replication continuously.
+- Document every FSMO change.
+- Test disaster recovery procedures regularly.
+- Restrict FSMO administration to authorized personnel.
+
+---
+
+# Cybersecurity Perspective
+
+FSMO roles are privileged infrastructure.
+
+Security recommendations:
+
+- Protect administrative credentials.
+- Use Privileged Access Workstations (PAWs) where available.
+- Audit FSMO transfers and seizures.
+- Monitor unusual administrative activity.
+- Restrict remote access to Domain Controllers.
+- Protect backups and recovery media.
+
+A compromised FSMO role holder can have significant operational impact across the domain or forest.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore FSMO management commands.
+
+### Tasks
+
+1. Identify current FSMO role holders:
+
+```text
+netdom query fsmo
+```
+
+2. Run:
+
+```powershell
+Get-ADForest
+```
+
+3. Run:
+
+```powershell
+Get-ADDomain
+```
+
+4. Launch:
+
+```text
+ntdsutil
+```
+
+5. Explore (do not execute in production):
+
+- roles
+- connections
+- transfer
+- seize
+
+6. Document:
+
+- Current role holders
+- Forest roles
+- Domain roles
+- Recovery considerations
+
+---
+
+# Key Takeaways
+
+- Transfer is the preferred method for moving FSMO roles.
+- Seizure is reserved for permanent failures.
+- Always validate replication after FSMO operations.
+- Metadata cleanup is important after permanent Domain Controller loss.
+- Proper planning minimizes business disruption.
+
+---
+
+# Interview Questions
+
+1. What is the difference between FSMO transfer and seizure?
+2. When should a FSMO role be seized?
+3. Which command displays all FSMO role holders?
+4. What tool can be used to transfer or seize FSMO roles?
+5. Why is metadata cleanup necessary?
+6. What happens if the RID Master is unavailable?
+7. What should be verified after moving a FSMO role?
+8. Why is seizing a Schema Master considered a significant operation?
+9. What risks exist if a seized FSMO holder is brought back online?
+10. Why is disaster recovery planning important for FSMO roles?
+
+---
+
+# References
+
+- Microsoft Learn – Transfer or Seize FSMO Roles
+- Microsoft Learn – NTDSUtil
+- Microsoft Learn – Operations Masters
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — FSMO Security, Monitoring, Best Practices, Common Misconceptions, Final Revision, Chapter Summary, and Interview Revision**
