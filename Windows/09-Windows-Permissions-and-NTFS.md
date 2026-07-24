@@ -836,3 +836,932 @@ Do not modify production permissions.
 
 ---
 
+# 09-Windows-Permissions-and-NTFS.md
+
+# Part 2 — NTFS Permission Inheritance, Effective Permissions, Ownership, Special Permissions, and Permission Evaluation
+
+---
+
+# Introduction
+
+Assigning permissions is only the beginning of Windows authorization.
+
+When a user attempts to access a file or folder, Windows must determine:
+
+- Which permissions apply
+- Which permissions were inherited
+- Whether multiple group memberships affect access
+- Whether explicit permissions override inherited permissions
+- Whether any **Deny** entries exist
+- What the user's **effective permissions** are
+
+Understanding this evaluation process is critical for administrators and cybersecurity professionals because many access-related issues arise from misunderstandings of inheritance and permission evaluation.
+
+---
+
+# Permission Evaluation Workflow
+
+```text
+User Requests Access
+
+↓
+
+Authenticate User
+
+↓
+
+Access Token
+
+↓
+
+Collect User & Group SIDs
+
+↓
+
+Read Security Descriptor
+
+↓
+
+Evaluate DACL
+
+↓
+
+Apply Allow/Deny Rules
+
+↓
+
+Grant or Deny Access
+```
+
+This process occurs automatically whenever Windows protects an NTFS resource.
+
+---
+
+# Permission Inheritance
+
+By default, child objects inherit permissions from their parent folder.
+
+Example:
+
+```text
+Projects
+
+├── Reports
+├── Source
+└── Documentation
+```
+
+If **Projects** grants:
+
+```text
+Engineering → Modify
+```
+
+then the child folders inherit the same permission unless inheritance is changed.
+
+---
+
+# Benefits of Inheritance
+
+Inheritance provides:
+
+- Consistent permissions
+- Easier administration
+- Reduced configuration effort
+- Lower risk of mistakes
+- Scalable enterprise management
+
+Without inheritance, administrators would need to configure permissions on every individual file and folder.
+
+---
+
+# Inheritance Example
+
+```text
+Root Folder
+
+↓
+
+Finance
+
+↓
+
+Payroll
+
+↓
+
+Salary.xlsx
+```
+
+If the **Finance** folder grants:
+
+```text
+Finance Group → Modify
+```
+
+then:
+
+- Payroll
+- Salary.xlsx
+
+inherit those permissions unless inheritance is disabled or overridden.
+
+---
+
+# Explicit Permissions
+
+Explicit permissions are assigned directly to an object.
+
+Example:
+
+```text
+Payroll Folder
+
+↓
+
+HR Group
+
+↓
+
+Modify
+```
+
+These permissions exist only on the Payroll folder unless inherited by child objects.
+
+---
+
+# Inherited Permissions
+
+Inherited permissions come from a parent object.
+
+Example:
+
+```text
+Company
+
+↓
+
+Finance
+
+↓
+
+Payroll
+
+↓
+
+Inherited Permissions
+```
+
+No manual assignment is required on the child object.
+
+---
+
+# Explicit vs Inherited Permissions
+
+| Explicit | Inherited |
+|-----------|-----------|
+| Assigned directly | Received from parent |
+| Higher precedence | Lower precedence |
+| Local to object | Originates from ancestor |
+| Easier to customize | Easier to manage consistently |
+
+Explicit permissions generally take precedence over inherited permissions.
+
+---
+
+# Viewing Inheritance
+
+Graphically:
+
+```text
+Right Click
+
+↓
+
+Properties
+
+↓
+
+Security
+
+↓
+
+Advanced
+```
+
+Windows indicates whether permissions are:
+
+- Explicit
+- Inherited
+
+This helps administrators understand where permissions originate.
+
+---
+
+# Disabling Inheritance
+
+Administrators can disable inheritance on an object.
+
+Workflow:
+
+```text
+Parent Folder
+
+↓
+
+Child Folder
+
+↓
+
+Disable Inheritance
+
+↓
+
+Choose:
+
+• Convert inherited permissions to explicit
+
+or
+
+• Remove inherited permissions
+```
+
+Removing inherited permissions without careful planning can unintentionally deny legitimate access.
+
+---
+
+# Converting Inherited Permissions
+
+When disabling inheritance, administrators often choose:
+
+```text
+Convert
+
+↓
+
+Inherited Permissions
+
+↓
+
+Explicit Permissions
+```
+
+This preserves existing access while allowing independent modification.
+
+---
+
+# Removing Inherited Permissions
+
+Alternative option:
+
+```text
+Disable Inheritance
+
+↓
+
+Remove Inherited Entries
+
+↓
+
+Start with Clean ACL
+```
+
+This approach is useful when creating highly restricted folders but should be used cautiously.
+
+---
+
+# Effective Permissions
+
+A user's **effective permissions** represent the final permissions Windows applies after evaluating:
+
+- User permissions
+- Group memberships
+- Explicit permissions
+- Inherited permissions
+- Allow entries
+- Deny entries
+
+Effective permissions determine whether access is ultimately granted.
+
+---
+
+# Effective Permission Workflow
+
+```text
+User
+
+↓
+
+User SID
+
++
+
+Group SIDs
+
+↓
+
+Permission Evaluation
+
+↓
+
+Effective Permissions
+
+↓
+
+Access Decision
+```
+
+---
+
+# Multiple Group Memberships
+
+Users often belong to multiple groups.
+
+Example:
+
+```text
+Alice
+
+├── Users
+├── Finance
+├── Managers
+└── Remote Desktop Users
+```
+
+Windows combines applicable permissions before making an access decision.
+
+---
+
+# Combining Allow Permissions
+
+Example:
+
+```text
+Finance Group
+
+↓
+
+Read
+
+
+Managers Group
+
+↓
+
+Write
+```
+
+Alice belongs to both groups.
+
+Effective result:
+
+```text
+Read
+
++
+
+Write
+
+↓
+
+Modify Capabilities
+```
+
+Allow permissions generally accumulate unless affected by Deny entries.
+
+---
+
+# Deny Permissions
+
+Windows supports explicit **Deny** permissions.
+
+Example:
+
+```text
+Finance Group
+
+↓
+
+Allow Read
+
+
+Interns
+
+↓
+
+Deny Read
+```
+
+If a user belongs to both groups, the explicit Deny entry generally overrides the Allow entry for that permission.
+
+Because Deny entries can create complexity, they should be used carefully.
+
+---
+
+# Permission Evaluation Order (Simplified)
+
+A simplified view of evaluation is:
+
+```text
+Explicit Deny
+
+↓
+
+Explicit Allow
+
+↓
+
+Inherited Deny
+
+↓
+
+Inherited Allow
+```
+
+Windows performs detailed access checks internally, but this order helps explain many common scenarios.
+
+---
+
+# Example 1
+
+Folder:
+
+```text
+Reports
+```
+
+Permissions:
+
+```text
+Engineering
+
+↓
+
+Modify
+```
+
+Alice belongs to Engineering.
+
+Result:
+
+```text
+Modify Access
+```
+
+---
+
+# Example 2
+
+Permissions:
+
+```text
+Users
+
+↓
+
+Read
+
+
+Managers
+
+↓
+
+Write
+```
+
+Alice belongs to both.
+
+Result:
+
+```text
+Read + Write
+```
+
+Combined permissions allow broader access than either permission alone.
+
+---
+
+# Example 3
+
+Permissions:
+
+```text
+Managers
+
+↓
+
+Allow Modify
+
+
+Interns
+
+↓
+
+Deny Delete
+```
+
+Alice belongs to both groups.
+
+Result:
+
+```text
+Modify
+
+Except
+
+Delete
+```
+
+The Deny entry affects the specific denied operation.
+
+---
+
+# Ownership Review
+
+Every NTFS object has an owner.
+
+Example:
+
+```text
+Create File
+
+↓
+
+Owner Assigned
+
+↓
+
+Owner Can Manage Security
+```
+
+Ownership is separate from ordinary read/write permissions.
+
+---
+
+# Changing Ownership
+
+Administrators (or users with appropriate rights) can change ownership.
+
+Graphical workflow:
+
+```text
+Properties
+
+↓
+
+Security
+
+↓
+
+Advanced
+
+↓
+
+Owner
+
+↓
+
+Change
+```
+
+Ownership changes should follow organizational authorization procedures.
+
+---
+
+# Take Ownership Permission
+
+One special NTFS permission is:
+
+```text
+Take Ownership
+```
+
+This permission allows an authorized user to become the owner of an object.
+
+Because ownership affects security administration, this permission should be tightly controlled.
+
+---
+
+# Change Permissions Permission
+
+Another important special permission is:
+
+```text
+Change Permissions
+```
+
+Users with this permission can modify the object's DACL.
+
+They do **not** automatically become the owner.
+
+---
+
+# Delete vs Delete Subfolders and Files
+
+These special permissions are different.
+
+| Permission | Purpose |
+|------------|----------|
+| Delete | Delete the object itself |
+| Delete Subfolders and Files | Delete child objects within a folder |
+
+Understanding the distinction is important when designing secure folder structures.
+
+---
+
+# Read Permissions
+
+Allows users to:
+
+- View current ACL
+- View security settings
+- Inspect assigned permissions
+
+This permission does not allow modifying the ACL.
+
+---
+
+# Synchronize Permission
+
+The **Synchronize** permission is used internally by Windows for coordinating access to objects.
+
+Administrators rarely modify this permission directly.
+
+---
+
+# Advanced Security Settings
+
+The **Advanced Security Settings** dialog provides:
+
+- Owner information
+- Permission entries
+- Inheritance controls
+- Effective Access (supported Windows versions)
+- Auditing configuration (where available)
+
+It is the primary graphical interface for advanced NTFS security management.
+
+---
+
+# Effective Access Tool
+
+Windows includes an **Effective Access** feature (supported editions).
+
+Workflow:
+
+```text
+Choose User
+
+↓
+
+Analyze Permissions
+
+↓
+
+Effective Access Report
+```
+
+This helps administrators troubleshoot complex permission issues.
+
+---
+
+# Command-Line Permission Tools
+
+Windows provides command-line utilities for managing NTFS permissions.
+
+Common examples include:
+
+| Tool | Purpose |
+|------|----------|
+| `icacls` | Display and modify NTFS permissions |
+| `takeown` | Take ownership of files and folders |
+| `whoami` | Display identity information |
+| `cacls` *(legacy)* | Older ACL utility (superseded) |
+
+PowerShell also provides advanced security management capabilities, covered in a later chapter.
+
+---
+
+# ICACLS Example
+
+Display permissions:
+
+```cmd
+icacls C:\Projects
+```
+
+Typical output includes:
+
+- Users
+- Groups
+- Permission levels
+- Inheritance indicators
+
+`icacls` is the recommended command-line tool for NTFS permission management.
+
+---
+
+# TAKEOWN Example
+
+Take ownership:
+
+```cmd
+takeown /F C:\Projects
+```
+
+Administrative privileges are typically required.
+
+Ownership should only be changed when authorized.
+
+---
+
+# Enterprise Example
+
+A confidential HR folder requires stricter security.
+
+```text
+Company
+
+↓
+
+HR
+
+↓
+
+Disable Inheritance
+
+↓
+
+Convert Existing Entries
+
+↓
+
+Remove Unnecessary Groups
+
+↓
+
+HR Group → Modify
+
+↓
+
+Managers → Read
+
+↓
+
+Auditing Enabled
+```
+
+This approach limits access while preserving required functionality.
+
+---
+
+# Cybersecurity Perspective
+
+Misconfigured NTFS permissions are a common source of privilege escalation.
+
+Examples include:
+
+- Writable application directories
+- Overly permissive shared folders
+- Unauthorized inheritance
+- Incorrect ownership
+- Excessive Full Control assignments
+
+Attackers frequently enumerate:
+
+- Weak ACLs
+- Writable services
+- Startup folders
+- Sensitive configuration files
+
+Regular permission reviews and least-privilege design reduce these risks.
+
+---
+
+# Business Impact
+
+Proper inheritance and permission management provide:
+
+- Consistent access control
+- Easier administration
+- Lower operational costs
+- Better compliance
+- Reduced insider risk
+- Faster troubleshooting
+
+Poorly designed ACLs can expose confidential information or disrupt business operations.
+
+---
+
+# Enterprise Best Practices
+
+- Keep inheritance enabled unless there is a clear business requirement.
+- Assign permissions to groups instead of individual users.
+- Minimize explicit Deny entries.
+- Review ownership of sensitive resources.
+- Document exceptions to inherited permissions.
+- Regularly audit critical file and folder ACLs.
+- Use the Effective Access tool when troubleshooting complex authorization issues.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Observe Inheritance
+
+1. Create a parent folder.
+2. Create two child folders.
+3. Assign permissions to the parent.
+4. Verify that the child folders inherit those permissions.
+
+Document the inherited entries.
+
+---
+
+## Lab 2 — Disable Inheritance
+
+Using a test folder:
+
+1. Open:
+
+```text
+Properties
+
+↓
+
+Security
+
+↓
+
+Advanced
+```
+
+2. Disable inheritance.
+
+3. Compare:
+
+- Convert inherited permissions
+- Remove inherited permissions
+
+Observe how the permission entries change.
+
+---
+
+## Lab 3 — View Permissions Using ICACLS
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+icacls %USERPROFILE%
+```
+
+Identify:
+
+- Users
+- Groups
+- Permission entries
+- Inheritance indicators
+
+Do not modify permissions on production systems.
+
+---
+
+# Key Takeaways
+
+- Inheritance simplifies permission management by propagating permissions from parent objects.
+- Explicit permissions generally take precedence over inherited permissions.
+- Effective permissions are calculated using user, group, allow, deny, and inheritance information.
+- Ownership and permissions are related but independent concepts.
+- `icacls` and `takeown` are important NTFS administration tools.
+- Least privilege and regular ACL reviews improve enterprise security.
+
+---
+
+# Interview Questions
+
+1. What is permission inheritance?
+2. What is the difference between explicit and inherited permissions?
+3. What are effective permissions?
+4. How does Windows combine permissions from multiple groups?
+5. Why should Deny permissions be used carefully?
+6. What is the purpose of the `icacls` command?
+7. What does the `takeown` command do?
+8. What happens when inheritance is disabled?
+9. What is the difference between ownership and Full Control?
+10. Why is the Effective Access tool useful?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft NTFS Security Documentation
+- Microsoft Access Control Documentation
+- Microsoft `icacls` Documentation
+- Microsoft `takeown` Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
