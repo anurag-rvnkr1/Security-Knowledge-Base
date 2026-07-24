@@ -1330,4 +1330,906 @@ Explore Active Directory Sites and replication topology.
 
 ---
 
-**Next:** **Part 3 — Replication Process, Update Sequence Numbers (USN), Invocation IDs, Conflict Resolution, Lingering Objects, and Replication Troubleshooting**
+# 06-Active-Directory-Replication.md
+
+# Part 3 — Replication Process, Update Sequence Numbers (USN), Invocation IDs, Conflict Resolution, Lingering Objects, and Replication Troubleshooting
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how Active Directory replication actually works.
+- Learn about Update Sequence Numbers (USNs).
+- Understand Invocation IDs.
+- Learn replication metadata concepts.
+- Understand conflict detection and conflict resolution.
+- Learn about lingering objects and tombstones.
+- Understand enterprise replication troubleshooting.
+
+---
+
+# How Replication Works
+
+Whenever an object changes:
+
+```text
+Administrator
+
+↓
+
+Modify User
+
+↓
+
+DC01
+
+↓
+
+Change Recorded
+
+↓
+
+Replication Queue
+
+↓
+
+Partner DCs
+
+↓
+
+Directory Updated
+```
+
+Only the changes are replicated—not the entire database.
+
+---
+
+# Change-Based Replication
+
+Active Directory uses **change-based replication**.
+
+Instead of sending the complete database:
+
+```text
+Entire Database
+
+❌
+```
+
+It sends only:
+
+```text
+Changed Attributes
+
+✔
+```
+
+Benefits:
+
+- Lower bandwidth usage
+- Faster synchronization
+- Better scalability
+
+---
+
+# Example
+
+Administrator changes:
+
+```text
+User:
+
+John
+
+↓
+
+Telephone Number
+```
+
+Only:
+
+```text
+Telephone Number
+```
+
+is replicated.
+
+The remaining user attributes remain unchanged.
+
+---
+
+# Replication Metadata
+
+Each Active Directory object contains metadata.
+
+Examples include:
+
+- Last modification time
+- Originating Domain Controller
+- Version number
+- Update Sequence Number
+- Invocation ID
+
+Metadata allows Domain Controllers to determine:
+
+- What changed
+- Where it changed
+- Whether the change has already been replicated
+
+---
+
+# Update Sequence Number (USN)
+
+Each writable Domain Controller maintains its own **Update Sequence Number (USN)** counter.
+
+Every directory modification increases the local USN.
+
+Example:
+
+```text
+DC01
+
+Current USN
+
+1050
+
+↓
+
+User Modified
+
+↓
+
+USN
+
+1051
+```
+
+The USN is unique **only within that Domain Controller**.
+
+---
+
+# USN Characteristics
+
+| Property | Description |
+|----------|-------------|
+| Local to each DC | ✔ |
+| Increases over time | ✔ |
+| Tracks updates | ✔ |
+| Global across the forest | ✖ |
+
+USNs help a Domain Controller identify which updates have already been processed.
+
+---
+
+# Replication Using USNs
+
+Example:
+
+```text
+DC01
+
+USN 1050
+
+↓
+
+User Created
+
+↓
+
+USN 1051
+
+↓
+
+Replication
+
+↓
+
+DC02 Receives Change
+```
+
+DC02 records that it has processed the update from DC01.
+
+---
+
+# High-Watermark
+
+A Domain Controller remembers the highest USN received from each replication partner.
+
+Example:
+
+```text
+DC02
+
+Highest USN Received
+
+↓
+
+1051
+```
+
+During the next replication cycle:
+
+```text
+Send
+
+Only
+
+USN >1051
+```
+
+This prevents retransmitting unchanged data.
+
+---
+
+# Up-to-Dateness Vector (UTDV)
+
+Large environments use an **Up-to-Dateness Vector (UTDV)** to track replication progress across multiple Domain Controllers.
+
+Simplified view:
+
+```text
+DC01
+
+↓
+
+Highest Update Seen
+
+↓
+
+DC02
+
+↓
+
+Highest Update Seen
+
+↓
+
+DC03
+```
+
+Benefits:
+
+- Avoids redundant replication
+- Reduces unnecessary traffic
+- Improves efficiency
+
+---
+
+# Invocation ID
+
+Each Domain Controller has a unique **Invocation ID**.
+
+Purpose:
+
+- Identifies a specific instance of the Active Directory database.
+- Distinguishes a restored database from its previous state.
+
+Example:
+
+```text
+DC01
+
+↓
+
+Database Instance
+
+↓
+
+Invocation ID
+
+↓
+
+Unique Identifier
+```
+
+---
+
+# Why Invocation IDs Matter
+
+Consider:
+
+```text
+Database Restored
+
+↓
+
+Same Server
+
+↓
+
+New Database Instance
+```
+
+A new Invocation ID allows replication partners to recognize that the database instance has changed and prevents incorrect replication assumptions.
+
+---
+
+# Replication Metadata Example
+
+```text
+User Object
+
+│
+
+├── Version Number
+
+├── USN
+
+├── Timestamp
+
+├── Originating DC
+
+└── Invocation ID
+```
+
+This metadata is maintained internally by Active Directory.
+
+---
+
+# Version Numbers
+
+Every replicated attribute maintains a version counter.
+
+Example:
+
+```text
+Telephone
+
+↓
+
+Version 1
+
+↓
+
+Updated
+
+↓
+
+Version 2
+
+↓
+
+Updated
+
+↓
+
+Version 3
+```
+
+Version numbers help determine which change is newer.
+
+---
+
+# Timestamps
+
+Each update records the approximate time of modification.
+
+Example:
+
+```text
+User Updated
+
+↓
+
+24 July
+
+↓
+
+10:15
+
+↓
+
+Timestamp Stored
+```
+
+Timestamps assist with conflict resolution when combined with other metadata.
+
+---
+
+# Originating Domain Controller
+
+Each change records where it originated.
+
+Example:
+
+```text
+User Updated
+
+↓
+
+Originating DC
+
+↓
+
+DC03
+```
+
+This information helps replication partners process updates correctly.
+
+---
+
+# Replication Cycle
+
+```text
+Change Occurs
+
+↓
+
+USN Updated
+
+↓
+
+Metadata Recorded
+
+↓
+
+Replication Queue
+
+↓
+
+Partner Notification
+
+↓
+
+Replication
+
+↓
+
+Database Updated
+```
+
+---
+
+# Conflict Resolution
+
+Sometimes two administrators update the same object on different Domain Controllers before replication completes.
+
+Example:
+
+```text
+Admin A
+
+↓
+
+DC01
+
+↓
+
+Update User
+```
+
+At nearly the same time:
+
+```text
+Admin B
+
+↓
+
+DC02
+
+↓
+
+Update Same User
+```
+
+Active Directory resolves these conflicts automatically using replication metadata.
+
+---
+
+# Simplified Conflict Resolution
+
+Active Directory evaluates information such as:
+
+- Version number
+- Timestamp
+- Originating update metadata
+
+to determine which update should prevail.
+
+This ensures consistent results across Domain Controllers.
+
+---
+
+# Deleted Objects
+
+When an object is deleted:
+
+```text
+User Deleted
+
+↓
+
+Not Immediately Removed
+```
+
+Instead, it becomes a **tombstone**.
+
+---
+
+# Tombstone
+
+A tombstone is a deleted object retained temporarily so that deletion can replicate to all Domain Controllers.
+
+Example:
+
+```text
+User
+
+↓
+
+Deleted
+
+↓
+
+Tombstone
+
+↓
+
+Replicated
+
+↓
+
+Eventually Removed
+```
+
+This prevents deleted objects from reappearing after replication.
+
+---
+
+# Tombstone Lifetime
+
+Simplified lifecycle:
+
+```text
+Object
+
+↓
+
+Deleted
+
+↓
+
+Tombstone
+
+↓
+
+Replicated
+
+↓
+
+Retention Period
+
+↓
+
+Permanent Removal
+```
+
+The exact retention period depends on forest configuration and Windows Server version.
+
+---
+
+# Lingering Objects
+
+A **lingering object** may occur when:
+
+- A Domain Controller is disconnected for an extended period.
+- It misses deletion updates.
+- It later reconnects with outdated objects.
+
+Example:
+
+```text
+DC01
+
+User Deleted
+
+↓
+
+Replication Missed
+
+↓
+
+DC03 Offline
+
+↓
+
+Reconnect
+
+↓
+
+Old User Still Exists
+```
+
+These outdated objects are called lingering objects.
+
+---
+
+# Preventing Lingering Objects
+
+Best practices:
+
+- Monitor replication health.
+- Resolve replication failures promptly.
+- Avoid leaving Domain Controllers offline for extended periods.
+- Follow proper backup and recovery procedures.
+
+---
+
+# Replication Latency
+
+Replication is not instantaneous.
+
+Factors affecting latency:
+
+- WAN bandwidth
+- Site topology
+- Replication schedules
+- Network congestion
+- Number of Domain Controllers
+- Volume of changes
+
+Administrators should understand expected propagation times in their environment.
+
+---
+
+# Replication Queue
+
+When many updates occur:
+
+```text
+Multiple Changes
+
+↓
+
+Replication Queue
+
+↓
+
+Processed
+
+↓
+
+Sent to Partners
+```
+
+Heavy administrative activity may temporarily increase replication queues.
+
+---
+
+# Replication Monitoring
+
+Administrators should monitor:
+
+| Area | Purpose |
+|------|----------|
+| Replication failures | Detect synchronization issues |
+| USN progress | Confirm updates |
+| Replication latency | Measure synchronization time |
+| Event logs | Identify operational problems |
+| Lingering objects | Prevent stale directory data |
+| Site Link health | Verify WAN replication |
+
+---
+
+# Common Replication Problems
+
+Examples:
+
+- Network outages
+- DNS failures
+- Authentication failures
+- Replication backlog
+- Incorrect Site configuration
+- Time synchronization issues
+- Lingering objects
+- Database corruption
+
+---
+
+# Enterprise Example
+
+Organization:
+
+- 40 Domain Controllers
+- Three continents
+- Hundreds of thousands of directory objects
+
+Flow:
+
+```text
+Administrator
+
+↓
+
+Password Reset
+
+↓
+
+DC05
+
+↓
+
+USN Incremented
+
+↓
+
+Metadata Updated
+
+↓
+
+Replication Queue
+
+↓
+
+Bridgehead Server
+
+↓
+
+Remote Sites
+
+↓
+
+Enterprise Updated
+```
+
+The replication system ensures changes propagate efficiently while minimizing unnecessary traffic.
+
+---
+
+# Troubleshooting Tools
+
+Common tools include:
+
+| Tool | Purpose |
+|------|----------|
+| repadmin | Replication diagnostics |
+| dcdiag | Domain Controller health |
+| Event Viewer | Directory and replication events |
+| Active Directory Sites and Services | View topology |
+| PowerShell AD cmdlets | Replication administration |
+| DNS Manager | Verify supporting infrastructure |
+
+---
+
+# Example: Repadmin
+
+```text
+repadmin /replsummary
+```
+
+Provides a summary of replication health across Domain Controllers.
+
+---
+
+# Example: DCDiag
+
+```text
+dcdiag
+```
+
+Checks:
+
+- DNS
+- Replication
+- Services
+- Advertising
+- Connectivity
+- Domain Controller health
+
+---
+
+# Best Practices
+
+- Monitor replication daily.
+- Resolve failures quickly.
+- Verify DNS before troubleshooting replication.
+- Keep accurate time synchronization.
+- Avoid unsupported restore methods.
+- Review replication topology after infrastructure changes.
+- Test disaster recovery procedures.
+
+---
+
+# Cybersecurity Perspective
+
+Replication distributes security-critical updates such as:
+
+- Password resets
+- Account lockouts
+- Group membership changes
+- Administrative delegation
+- Group Policy-related directory information
+
+Potential risks:
+
+- Delayed security updates
+- Replication failures
+- Unauthorized directory modifications
+- Lingering privileged accounts
+
+Continuous monitoring helps ensure that security-related changes propagate throughout the environment.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore replication monitoring.
+
+### Tasks
+
+1. Run:
+
+```text
+repadmin /replsummary
+```
+
+2. Run:
+
+```text
+repadmin /showrepl
+```
+
+3. Run:
+
+```text
+dcdiag
+```
+
+4. Open **Event Viewer** and review:
+
+- Directory Service logs
+- DFS Replication logs
+- DNS logs (if applicable)
+
+5. Document:
+
+- Replication partners
+- Replication status
+- Any reported errors or warnings
+
+---
+
+# Key Takeaways
+
+- Active Directory uses change-based replication.
+- USNs track updates on each writable Domain Controller.
+- High-watermarks and UTDVs prevent unnecessary replication.
+- Invocation IDs identify a specific database instance.
+- Replication metadata enables conflict resolution.
+- Tombstones allow deletions to replicate safely.
+- Lingering objects can occur after prolonged replication failures.
+- Monitoring tools help maintain replication health.
+
+---
+
+# Interview Questions
+
+1. What is an Update Sequence Number (USN)?
+2. Is a USN unique across the forest?
+3. What is an Invocation ID?
+4. Why is replication metadata important?
+5. What is a tombstone?
+6. What is a lingering object?
+7. What causes replication latency?
+8. How does Active Directory resolve conflicting updates?
+9. Which tools are commonly used to troubleshoot replication?
+10. Why is DNS often the first component checked during replication troubleshooting?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Replication Metadata
+- Microsoft Learn – Repadmin Overview
+- Microsoft Learn – DCDiag
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — Replication Security, Best Practices, Monitoring, Common Misconceptions, Final Revision, and Chapter Summary**
