@@ -1472,4 +1472,899 @@ Active Directory Domains and Trusts
 
 ---
 
-**Next:** **Part 3 — Trust Authentication Flow, Kerberos Across Trusts, Name Suffix Routing, Selective Authentication, SID History, and Troubleshooting**
+# 09-Active-Directory-Trusts.md
+
+# Part 3 — Trust Authentication Flow, Kerberos Across Trusts, Name Suffix Routing, Selective Authentication, SID History, and Troubleshooting
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand Kerberos authentication across trusts.
+- Learn referral ticket flow.
+- Understand Name Suffix Routing.
+- Learn Selective Authentication.
+- Understand SID History.
+- Troubleshoot trust-related authentication problems.
+- Apply enterprise security best practices.
+
+---
+
+# Review
+
+Previous parts covered:
+
+- What Active Directory Trusts are
+- Trust directions
+- Trust transitivity
+- Parent-Child Trusts
+- Tree-Root Trusts
+- Shortcut Trusts
+- External Trusts
+- Forest Trusts
+- Realm Trusts
+- SID Filtering
+
+Now we'll see **how authentication actually travels across trust boundaries.**
+
+---
+
+# Cross-Domain Authentication
+
+Suppose:
+
+```text
+Forest
+
+│
+
+├── sales.company.com
+
+└── finance.company.com
+```
+
+User:
+
+```text
+Alice
+
+↓
+
+sales.company.com
+```
+
+Needs access to:
+
+```text
+Payroll Server
+
+↓
+
+finance.company.com
+```
+
+---
+
+# Authentication Flow
+
+```text
+User
+
+↓
+
+Sales Domain Controller
+
+↓
+
+Trust
+
+↓
+
+Finance Domain Controller
+
+↓
+
+Authorization
+
+↓
+
+Payroll Server
+```
+
+The user authenticates in the home domain first.
+
+---
+
+# Authentication Steps
+
+```text
+1. User logs in
+
+↓
+
+2. Home Domain Controller validates credentials
+
+↓
+
+3. Kerberos Ticket Granting Ticket (TGT) issued
+
+↓
+
+4. User requests access to another domain
+
+↓
+
+5. Referral generated
+
+↓
+
+6. Target Domain validates referral
+
+↓
+
+7. Service Ticket issued
+
+↓
+
+8. Resource Access
+```
+
+---
+
+# Kerberos Across Trusts
+
+Kerberos remains the primary authentication protocol.
+
+Example:
+
+```text
+Sales User
+
+↓
+
+Sales KDC
+
+↓
+
+Trust Referral
+
+↓
+
+Finance KDC
+
+↓
+
+Service Ticket
+
+↓
+
+Finance Server
+```
+
+Authentication remains secure because each domain trusts the authentication process—not the user's permissions.
+
+---
+
+# Kerberos Referral
+
+One of Kerberos' strengths is the use of **referrals**.
+
+Example:
+
+```text
+Client
+
+↓
+
+Sales KDC
+
+↓
+
+"Resource belongs to Finance"
+
+↓
+
+Referral Ticket
+
+↓
+
+Finance KDC
+
+↓
+
+Service Ticket
+
+↓
+
+Finance File Server
+```
+
+This allows authentication without sending passwords between domains.
+
+---
+
+# Referral Diagram
+
+```text
+Client
+
+↓
+
+Home Domain
+
+↓
+
+Referral
+
+↓
+
+Trusted Domain
+
+↓
+
+Service Ticket
+
+↓
+
+Target Server
+```
+
+---
+
+# Ticket Flow
+
+```text
+User
+
+↓
+
+TGT
+
+↓
+
+Referral Ticket
+
+↓
+
+Service Ticket
+
+↓
+
+Application
+```
+
+Each ticket has a specific purpose.
+
+---
+
+# Trust Path Example
+
+```text
+Domain A
+
+↓
+
+Domain B
+
+↓
+
+Domain C
+
+↓
+
+Application
+```
+
+If a direct shortcut trust exists:
+
+```text
+Domain A
+
+↓
+
+Domain C
+
+↓
+
+Application
+```
+
+The authentication path becomes shorter.
+
+---
+
+# Name Suffix Routing
+
+Forest Trusts support:
+
+> **Name Suffix Routing**
+
+---
+
+# What is Name Suffix Routing?
+
+Suppose:
+
+```text
+Forest A
+
+↓
+
+company.com
+```
+
+```text
+Forest B
+
+↓
+
+partner.com
+```
+
+When a user attempts to authenticate using:
+
+```text
+user@partner.com
+```
+
+Active Directory determines:
+
+```text
+partner.com
+
+↓
+
+Forest B
+```
+
+and routes authentication appropriately.
+
+---
+
+# Name Suffix Routing Flow
+
+```text
+Authentication Request
+
+↓
+
+UPN Suffix
+
+↓
+
+Routing Table
+
+↓
+
+Correct Forest
+
+↓
+
+Authentication
+```
+
+This allows Forest Trusts to identify which forest should receive the authentication request.
+
+---
+
+# User Principal Name (UPN)
+
+Example:
+
+```text
+alice@company.com
+```
+
+The suffix:
+
+```text
+company.com
+```
+
+is evaluated during routing decisions.
+
+---
+
+# Multiple Name Suffixes
+
+Example:
+
+```text
+company.com
+
+corp.company.com
+
+research.company.com
+
+partner.org
+```
+
+Each suffix can be configured for routing where appropriate.
+
+---
+
+# Selective Authentication
+
+By default, trusted users may authenticate to servers according to the trust configuration and resource permissions.
+
+For environments requiring tighter control, administrators can enable:
+
+> **Selective Authentication**
+
+---
+
+# Why Selective Authentication?
+
+Instead of allowing every authenticated user from a trusted domain to attempt authentication broadly,
+
+administrators specify:
+
+```text
+Allowed Servers
+```
+
+Only approved systems accept authentication from the trusted domain.
+
+---
+
+# Selective Authentication Flow
+
+```text
+Trusted User
+
+↓
+
+Target Server
+
+↓
+
+Allowed to Authenticate?
+
+↓
+
+YES
+
+↓
+
+Continue
+
+OR
+
+↓
+
+NO
+
+↓
+
+Access Denied
+```
+
+This provides an additional authorization gate before service access.
+
+---
+
+# Enterprise Example
+
+Company acquires another organization.
+
+Instead of allowing every employee immediate access:
+
+```text
+Forest Trust
+
+↓
+
+Selective Authentication
+
+↓
+
+Specific Servers Only
+```
+
+This limits exposure during integration.
+
+---
+
+# SID History
+
+During migrations,
+
+users often move between domains.
+
+Example:
+
+```text
+Old Domain
+
+↓
+
+New Domain
+```
+
+Without assistance,
+
+old permissions would stop working.
+
+---
+
+# What is SID History?
+
+SID History stores previous Security Identifiers (SIDs) associated with an object.
+
+This allows existing permissions referencing the old SID to continue working while migration is in progress.
+
+---
+
+# SID History Example
+
+Before migration:
+
+```text
+Old SID
+
+↓
+
+Permissions
+```
+
+After migration:
+
+```text
+New SID
+
++
+
+Old SID History
+
+↓
+
+Access Continues
+```
+
+---
+
+# Why SID History Exists
+
+Benefits:
+
+- Simplifies domain migrations
+- Maintains access during transition
+- Reduces immediate ACL changes
+- Supports phased migrations
+
+---
+
+# SID History and Security
+
+Although useful,
+
+SID History must be protected.
+
+Potential risks include:
+
+- Unauthorized SID History modification
+- Privilege escalation
+- Abuse during migrations
+
+Monitor SID History changes carefully.
+
+---
+
+# Trust Authentication Example
+
+```text
+User
+
+↓
+
+Home Domain
+
+↓
+
+Kerberos TGT
+
+↓
+
+Referral
+
+↓
+
+Trusted Domain
+
+↓
+
+Service Ticket
+
+↓
+
+File Server
+```
+
+---
+
+# Authentication Decision Process
+
+```text
+Identity Verified
+
+↓
+
+Trust Exists?
+
+↓
+
+YES
+
+↓
+
+Authorization
+
+↓
+
+Permissions Exist?
+
+↓
+
+YES
+
+↓
+
+Access Granted
+```
+
+---
+
+# Common Trust Problems
+
+Examples:
+
+- DNS resolution failures
+- Broken trust relationship
+- Incorrect trust direction
+- Time synchronization issues
+- Kerberos failures
+- Firewall restrictions
+- Incorrect Name Suffix Routing
+- Replication issues
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Authentication Failure
+
+↓
+
+Verify DNS
+
+↓
+
+Verify Time Synchronization
+
+↓
+
+Verify Trust
+
+↓
+
+Verify Kerberos
+
+↓
+
+Verify Permissions
+
+↓
+
+Review Logs
+
+↓
+
+Resolve
+```
+
+---
+
+# Useful Administrative Tools
+
+| Tool | Purpose |
+|------|----------|
+| Active Directory Domains and Trusts | Manage trusts |
+| Event Viewer | Authentication events |
+| PowerShell AD Module | Query trust configuration |
+| DCDiag | Domain Controller diagnostics |
+| Repadmin | Replication validation |
+| Klist | View Kerberos tickets |
+| NLTest | Test trust relationships |
+
+---
+
+# Example Commands
+
+Display Kerberos tickets:
+
+```powershell
+klist
+```
+
+List trust relationships:
+
+```powershell
+Get-ADTrust -Filter *
+```
+
+Verify trust:
+
+```text
+nltest /domain_trusts
+```
+
+---
+
+# Enterprise Case Study
+
+Organization:
+
+- 3 Forests
+- 18 Domains
+- 120 Domain Controllers
+
+Configuration:
+
+```text
+Forest Trusts
+
+↓
+
+Selective Authentication
+
+↓
+
+SID Filtering
+
+↓
+
+Tiered Administration
+
+↓
+
+Continuous Monitoring
+```
+
+Benefits:
+
+- Controlled access
+- Secure collaboration
+- Reduced attack surface
+- Improved governance
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Ignoring DNS issues during trust troubleshooting.
+- Assuming a trust grants permissions.
+- Leaving unused trusts enabled.
+- Forgetting to review Name Suffix Routing after organizational changes.
+- Misconfiguring Selective Authentication.
+- Failing to monitor SID History during migrations.
+
+---
+
+# Best Practices
+
+- Use Kerberos wherever possible.
+- Keep clocks synchronized.
+- Monitor trust health regularly.
+- Use Selective Authentication for external organizations when appropriate.
+- Protect SID History.
+- Review trust configurations periodically.
+- Document every trust relationship.
+
+---
+
+# Cybersecurity Perspective
+
+Trusts extend authentication across security boundaries and therefore require strong governance.
+
+Security recommendations:
+
+- Audit trust creation and modification.
+- Monitor cross-domain authentication activity.
+- Enable Selective Authentication where business needs require restricted access.
+- Protect privileged accounts used across trusted environments.
+- Review SID History during migrations.
+- Monitor for unusual Kerberos referral activity.
+- Remove obsolete trusts promptly.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Examine trust authentication and verification.
+
+### Tasks
+
+1. Open:
+
+```text
+Active Directory Domains and Trusts
+```
+
+2. Review:
+
+- Existing trust relationships
+- Trust direction
+- Authentication settings
+
+3. Run:
+
+```powershell
+Get-ADTrust -Filter *
+```
+
+4. Run:
+
+```text
+nltest /domain_trusts
+```
+
+5. View Kerberos tickets:
+
+```text
+klist
+```
+
+6. Document:
+
+- Trust type
+- Authentication method
+- Name Suffix Routing (if applicable)
+- Security recommendations
+
+---
+
+# Key Takeaways
+
+- Kerberos uses referral tickets to authenticate across trusted domains.
+- Name Suffix Routing directs authentication requests between trusted forests.
+- Selective Authentication restricts which servers accept authentication from trusted users.
+- SID History supports domain migrations while preserving access.
+- DNS, time synchronization, and Kerberos are fundamental to successful trust authentication.
+
+---
+
+# Interview Questions
+
+1. How does Kerberos authenticate across trusted domains?
+2. What is a referral ticket?
+3. What is Name Suffix Routing?
+4. When is Selective Authentication useful?
+5. What is SID History?
+6. Why is SID History important during migrations?
+7. Which tool displays Kerberos tickets?
+8. Which PowerShell cmdlet lists trust relationships?
+9. What are common causes of trust failures?
+10. Why is time synchronization critical for trust authentication?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Trust Authentication
+- Microsoft Learn – Forest Trusts
+- Microsoft Learn – Kerberos Authentication
+- Microsoft Learn – SID History
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — Trust Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
