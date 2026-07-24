@@ -658,4 +658,675 @@ Discuss why FAT32, exFAT, or NTFS might have been chosen.
 
 ---
 
+# 05-Windows-File-System.md
+
+# Part 2 — NTFS Architecture, Master File Table (MFT), Metadata, File Records, Directories, Journaling, and NTFS Internals
+
+---
+
+# Introduction
+
+The **New Technology File System (NTFS)** is the default file system for modern Windows operating systems because it provides:
+
+- Reliability
+- Security
+- High performance
+- Fault tolerance
+- Scalability
+- Advanced metadata management
+
+Unlike older file systems such as FAT32, NTFS treats **almost everything as a file**, including metadata describing the file system itself.
+
+Understanding NTFS internals is essential for:
+
+- Windows Administration
+- Digital Forensics
+- Incident Response
+- Malware Analysis
+- Storage Management
+- Cybersecurity
+
+---
+
+# NTFS High-Level Architecture
+
+```text
+Application
+
+↓
+
+Windows API
+
+↓
+
+I/O Manager
+
+↓
+
+NTFS Driver
+
+↓
+
+NTFS Metadata
+
+↓
+
+Storage Driver
+
+↓
+
+Physical Disk
+```
+
+The NTFS driver translates file operations into disk operations while maintaining consistency and security.
+
+---
+
+# NTFS Internal Components
+
+```text
+NTFS Volume
+
+├── Boot Sector
+├── Master File Table (MFT)
+├── MFT Mirror
+├── Log File
+├── Bitmap
+├── Directory Indexes
+├── Security Descriptors
+└── User Data
+```
+
+Each component contributes to reliable storage and fast file access.
+
+---
+
+# NTFS Boot Sector
+
+Every NTFS volume begins with a **boot sector**.
+
+Responsibilities:
+
+- Identify the partition as NTFS
+- Store boot code
+- Store BIOS Parameter Block (BPB)
+- Record volume information
+- Locate critical NTFS structures
+
+---
+
+# Simplified NTFS Layout
+
+```text
++--------------------------------------+
+
+Boot Sector
+
++--------------------------------------+
+
+Master File Table (MFT)
+
++--------------------------------------+
+
+MFT Mirror
+
++--------------------------------------+
+
+Metadata Files
+
++--------------------------------------+
+
+User Files
+
++--------------------------------------+
+
+Free Space
+
++--------------------------------------+
+```
+
+The exact layout varies depending on volume size and usage.
+
+---
+
+# Master File Table (MFT)
+
+The **Master File Table (MFT)** is the heart of NTFS.
+
+Every file and directory on an NTFS volume has at least one corresponding MFT record.
+
+Think of the MFT as a database containing information about everything stored on the volume.
+
+---
+
+# MFT Architecture
+
+```text
+Master File Table
+
+├── File 1
+├── File 2
+├── File 3
+├── Directory
+├── System Metadata
+└── ...
+```
+
+Even the MFT itself is represented as a file.
+
+---
+
+# Why the MFT is Important
+
+The MFT stores information such as:
+
+- File name
+- File size
+- Security information
+- Timestamps
+- Attributes
+- Data location
+- Directory relationships
+
+Without the MFT, Windows would not know how files are organized on the disk.
+
+---
+
+# MFT Record Structure (Simplified)
+
+```text
+MFT Record
+
++---------------------------+
+| Record Header             |
++---------------------------+
+| Standard Information      |
++---------------------------+
+| File Name                 |
++---------------------------+
+| Security Descriptor       |
++---------------------------+
+| Data Attribute            |
++---------------------------+
+| Other Attributes          |
++---------------------------+
+```
+
+A standard MFT record is typically **1024 bytes**, although this may vary depending on formatting options.
+
+---
+
+# File Records
+
+Each file receives a unique MFT record.
+
+Example:
+
+```text
+resume.docx
+
+↓
+
+MFT Entry #3251
+
+↓
+
+Attributes
+
+↓
+
+Actual File Data
+```
+
+Deleting a file generally marks its MFT entry as reusable rather than immediately erasing the underlying data.
+
+---
+
+# Metadata
+
+**Metadata** is "data about data."
+
+Examples include:
+
+| Metadata | Example |
+|-----------|----------|
+| File name | `report.pdf` |
+| Size | 3 MB |
+| Owner | User SID |
+| Created | Timestamp |
+| Modified | Timestamp |
+| Permissions | ACL |
+| Attributes | Read-only, Hidden |
+
+Metadata enables Windows to manage files efficiently.
+
+---
+
+# File Attributes
+
+NTFS stores file properties as **attributes**.
+
+Common attributes include:
+
+| Attribute | Purpose |
+|------------|----------|
+| Standard Information | Basic metadata |
+| File Name | File naming information |
+| Data | Actual file contents |
+| Security Descriptor | Permissions |
+| Index Root | Directory indexing |
+| Bitmap | Allocation tracking |
+| Object ID | Unique file identifier (optional) |
+
+---
+
+# Resident vs Non-Resident Data
+
+Small files may be stored directly within the MFT record.
+
+```text
+MFT Entry
+
+↓
+
+Small File Data
+
+↓
+
+Stored Inside Record
+```
+
+This is known as **resident data**.
+
+---
+
+Large files store their contents outside the MFT.
+
+```text
+MFT Record
+
+↓
+
+Pointer
+
+↓
+
+Disk Clusters
+
+↓
+
+Actual File Contents
+```
+
+This is called **non-resident data**.
+
+---
+
+# Directories in NTFS
+
+Directories are specialized files that maintain indexes of other files and folders.
+
+Example:
+
+```text
+Documents
+
+├── Resume.docx
+├── Notes.txt
+├── Photos
+└── Projects
+```
+
+Internally, directory structures use indexed data for efficient lookups.
+
+---
+
+# Directory Indexing
+
+NTFS indexes directories to improve search performance.
+
+```text
+Directory
+
+↓
+
+Index
+
+↓
+
+Locate File
+
+↓
+
+Open File
+```
+
+Large directories remain performant because Windows does not perform a simple sequential search for every lookup.
+
+---
+
+# NTFS Metadata Files
+
+NTFS reserves several hidden metadata files.
+
+Examples:
+
+| Metadata File | Purpose |
+|---------------|---------|
+| `$MFT` | Master File Table |
+| `$MFTMirr` | Backup of critical MFT records |
+| `$LogFile` | Transaction journal |
+| `$Bitmap` | Cluster allocation map |
+| `$Boot` | Boot information |
+| `$Volume` | Volume metadata |
+| `$BadClus` | Bad cluster tracking |
+| `$Secure` | Security descriptors |
+
+These files are essential to NTFS operation.
+
+---
+
+# MFT Mirror
+
+The **MFT Mirror** stores a copy of critical MFT records.
+
+Purpose:
+
+- Improve recoverability
+- Support recovery from partial corruption
+- Increase resilience against metadata damage
+
+---
+
+# NTFS Bitmap
+
+The Bitmap tracks cluster allocation.
+
+```text
+Bitmap
+
+1 = Used
+
+0 = Free
+```
+
+When creating a file, NTFS consults the bitmap to locate available clusters.
+
+---
+
+# Journaling
+
+NTFS is a **journaling file system**.
+
+Before modifying critical metadata, NTFS records intended changes in the journal.
+
+```text
+Change Requested
+
+↓
+
+Write Journal Entry
+
+↓
+
+Modify Metadata
+
+↓
+
+Operation Complete
+```
+
+This improves recovery after unexpected shutdowns.
+
+---
+
+# Why Journaling Matters
+
+Without journaling:
+
+```text
+Power Loss
+
+↓
+
+Incomplete Write
+
+↓
+
+Corrupted File System
+```
+
+With journaling:
+
+```text
+Power Loss
+
+↓
+
+Journal Replay
+
+↓
+
+Metadata Recovered
+```
+
+Journaling primarily protects **file system metadata**, not necessarily the contents of every user file.
+
+---
+
+# NTFS Transaction Log
+
+The journal is stored in:
+
+```text
+$LogFile
+```
+
+It records metadata transactions such as:
+
+- File creation
+- File deletion
+- File rename
+- Directory updates
+- Allocation changes
+
+---
+
+# NTFS Consistency
+
+NTFS maintains consistency through:
+
+- Journaling
+- Metadata validation
+- Recovery procedures
+- Transaction logging
+- Allocation tracking
+
+These mechanisms reduce the likelihood of corruption after crashes or power failures.
+
+---
+
+# Enterprise Example
+
+An employee saves a spreadsheet.
+
+```text
+Excel
+
+↓
+
+Windows API
+
+↓
+
+NTFS Driver
+
+↓
+
+Update MFT
+
+↓
+
+Journal Transaction
+
+↓
+
+Allocate Clusters
+
+↓
+
+Write Data
+
+↓
+
+Update Metadata
+
+↓
+
+Complete
+```
+
+This process ensures the file system remains consistent even if an interruption occurs during the operation.
+
+---
+
+# Cybersecurity Perspective
+
+NTFS metadata is valuable during investigations.
+
+Analysts examine:
+
+- MFT entries
+- File timestamps
+- Deleted file records
+- Security descriptors
+- Journal information
+- Directory indexes
+
+Malware may attempt to:
+
+- Modify timestamps
+- Hide files
+- Abuse Alternate Data Streams
+- Manipulate metadata
+
+Understanding NTFS internals helps detect these activities.
+
+---
+
+# Business Impact
+
+NTFS internals provide:
+
+- Faster file access
+- Reliable crash recovery
+- Efficient storage management
+- Improved scalability
+- Enhanced security
+- Better forensic capabilities
+
+These features are critical for enterprise desktops, servers, and storage systems.
+
+---
+
+# Enterprise Best Practices
+
+- Use NTFS for Windows operating system volumes.
+- Monitor disk health and event logs.
+- Maintain adequate free disk space.
+- Back up critical systems regularly.
+- Protect storage devices with encryption.
+- Validate storage after unexpected shutdowns.
+- Avoid forcing shutdowns whenever possible.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Identify NTFS Metadata
+
+1. Open **Command Prompt**.
+2. Run:
+
+```cmd
+fsutil fsinfo ntfsinfo C:
+```
+
+Observe information such as:
+
+- Bytes per sector
+- Bytes per cluster
+- MFT record size
+- MFT start location
+
+> Administrative privileges may be required.
+
+---
+
+## Lab 2 — Examine File Properties
+
+1. Create a text file.
+2. Right-click → **Properties**.
+3. Record:
+
+- Size
+- Size on disk
+- Created timestamp
+- Modified timestamp
+- Attributes
+
+Discuss why "Size" and "Size on disk" may differ.
+
+---
+
+## Lab 3 — Observe Directory Growth
+
+1. Create a new folder.
+2. Add several files.
+3. Observe:
+
+- Folder size
+- Number of files
+- Organization
+
+Discuss how NTFS indexes directories for efficient access.
+
+---
+
+# Key Takeaways
+
+- The Master File Table (MFT) is the core database of NTFS.
+- Every file and directory has at least one MFT record.
+- Metadata describes files and their properties.
+- NTFS stores both resident and non-resident data.
+- Journaling improves file system reliability by protecting metadata.
+- Hidden metadata files such as `$MFT`, `$LogFile`, and `$Bitmap` are essential to NTFS operation.
+
+---
+
+# Interview Questions
+
+1. What is the Master File Table (MFT)?
+2. Why is the MFT important?
+3. What is metadata?
+4. What is the difference between resident and non-resident data?
+5. What is the purpose of `$LogFile`?
+6. Why is NTFS considered a journaling file system?
+7. What information is stored in a typical MFT record?
+8. What is the purpose of the NTFS bitmap?
+9. How does the MFT Mirror improve reliability?
+10. Why is NTFS metadata valuable during forensic investigations?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Microsoft NTFS Technical Documentation
+- Microsoft Sysinternals Documentation
+- Carrier, B. *File System Forensic Analysis*
+
+---
+
 
