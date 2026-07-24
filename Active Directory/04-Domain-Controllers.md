@@ -528,4 +528,562 @@ Explore a Domain Controller after installation.
 
 ---
 
-**Next:** **Part 2 — Domain Controller Promotion, Installation Requirements, Database Components, SYSVOL, and Core Services**
+# 04-Domain-Controllers.md
+
+# Part 2 — Domain Controller Promotion, Installation Requirements, Database Components, SYSVOL, and Core Services
+
+---
+
+# Learning Objectives
+
+By the end of this part, you will be able to:
+
+- Understand the prerequisites for deploying a Domain Controller.
+- Learn how Domain Controller promotion works.
+- Understand the files and services installed during promotion.
+- Explore NTDS.DIT, SYSVOL, and supporting database files.
+- Learn about the core Windows services that enable Active Directory.
+- Understand why proper planning is essential before deployment.
+
+---
+
+# Planning Before Deployment
+
+Before promoting a server to a Domain Controller, verify the following:
+
+| Requirement | Why It Matters |
+|-------------|----------------|
+| Windows Server installed | Required platform |
+| Static IP address | Reliable network communication |
+| Correct DNS configuration | Enables service discovery |
+| Accurate system time | Required for Kerberos |
+| Reliable storage | Protects directory database |
+| Backup strategy | Supports disaster recovery |
+| Security baseline | Reduces attack surface |
+
+Skipping these prerequisites can lead to authentication or replication issues later.
+
+---
+
+# Typical Deployment Process
+
+```text
+Install Windows Server
+
+↓
+
+Configure Static IP
+
+↓
+
+Configure DNS
+
+↓
+
+Install AD DS Role
+
+↓
+
+Promote Server
+
+↓
+
+Install Directory Database
+
+↓
+
+Configure SYSVOL
+
+↓
+
+Restart
+
+↓
+
+Server Becomes Domain Controller
+```
+
+---
+
+# Installing the AD DS Role
+
+The **Active Directory Domain Services** role installs the software required to host a directory service.
+
+Installation alone does **not** make the server a Domain Controller.
+
+The server must also be **promoted**.
+
+---
+
+# Promotion to Domain Controller
+
+Promotion configures the server to participate in Active Directory.
+
+Depending on the scenario, promotion may:
+
+- Create a new forest
+- Create a new domain
+- Add a Domain Controller to an existing domain
+
+During promotion, Windows:
+
+- Creates the directory database
+- Configures replication
+- Creates SYSVOL
+- Installs Kerberos services
+- Registers DNS records
+- Configures secure domain communications
+
+---
+
+# Promotion Scenarios
+
+```text
+                  Promote Server
+
+                        │
+
+      ┌─────────────────┼─────────────────┐
+
+      │                 │                 │
+
+ New Forest      New Child Domain   Existing Domain
+                                      (Additional DC)
+```
+
+Each option is selected based on the organization's Active Directory design.
+
+---
+
+# Core Components Created
+
+After promotion:
+
+```text
+Domain Controller
+
+│
+
+├── NTDS.DIT
+
+├── SYSVOL
+
+├── DNS Records
+
+├── Kerberos
+
+├── Netlogon
+
+└── Replication Configuration
+```
+
+These components work together to provide identity services.
+
+---
+
+# Active Directory Database
+
+The primary database file:
+
+```text
+C:\Windows\NTDS\NTDS.DIT
+```
+
+Contains:
+
+- Users
+- Groups
+- Computers
+- Organizational Units
+- Domains
+- Trust metadata
+- Configuration information
+- Replication metadata
+
+It is a writable directory database on standard Domain Controllers.
+
+---
+
+# Supporting Database Files
+
+Active Directory also maintains supporting files.
+
+| File Type | Purpose |
+|-----------|---------|
+| NTDS.DIT | Directory database |
+| Transaction Logs | Record database transactions |
+| Checkpoint File | Assists crash recovery |
+| Temporary Files | Internal database operations |
+
+Transaction logging helps ensure database consistency during unexpected failures.
+
+---
+
+# SYSVOL
+
+The SYSVOL folder stores files that must be available across Domain Controllers.
+
+Default location:
+
+```text
+C:\Windows\SYSVOL
+```
+
+Common contents:
+
+- Group Policy templates
+- Logon scripts
+- Startup scripts
+- Administrative templates
+- Public domain files used by clients
+
+---
+
+# SYSVOL Structure
+
+```text
+SYSVOL
+
+│
+
+├── Policies
+
+├── Scripts
+
+└── Domain Information
+```
+
+SYSVOL is shared with authenticated domain clients so they can retrieve policies and scripts.
+
+---
+
+# Why SYSVOL Is Important
+
+Without SYSVOL:
+
+- Group Policy processing would fail.
+- Logon scripts would not be distributed.
+- Startup scripts would be unavailable.
+- Administrative consistency would be reduced.
+
+SYSVOL is a fundamental component of Active Directory.
+
+---
+
+# Core Windows Services
+
+Several Windows services are essential for Domain Controller operation.
+
+| Service | Purpose |
+|----------|---------|
+| Active Directory Domain Services | Directory service |
+| Kerberos Key Distribution Center (KDC) | Authentication |
+| Netlogon | Secure domain communication |
+| DNS Server* | Name resolution |
+| DFS Replication (DFSR) | SYSVOL replication |
+| Windows Time | Time synchronization |
+
+\* DNS may be hosted on the Domain Controller or on dedicated DNS servers.
+
+---
+
+# Active Directory Service Interaction
+
+```text
+Client
+
+↓
+
+DNS
+
+↓
+
+Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+NTDS.DIT
+
+↓
+
+Security Token
+
+↓
+
+Access Granted
+```
+
+Each service contributes to successful authentication.
+
+---
+
+# Netlogon Service
+
+The **Netlogon** service:
+
+- Maintains secure communication between computers and Domain Controllers.
+- Registers important DNS records.
+- Supports domain logon operations.
+- Maintains secure channels with domain members.
+
+If Netlogon is unavailable, authentication-related problems may occur.
+
+---
+
+# Kerberos Key Distribution Center (KDC)
+
+The KDC:
+
+- Authenticates users and computers.
+- Issues Kerberos tickets.
+- Supports secure single sign-on within the domain.
+
+Simplified flow:
+
+```text
+User
+
+↓
+
+KDC
+
+↓
+
+Ticket Issued
+
+↓
+
+Access Resources
+```
+
+Kerberos will be covered in depth in a later chapter.
+
+---
+
+# DFS Replication (DFSR)
+
+Modern Active Directory environments use **DFS Replication (DFSR)** to replicate SYSVOL contents.
+
+Benefits include:
+
+- Efficient replication
+- Reduced bandwidth usage
+- Automatic synchronization
+- Improved reliability
+
+Older environments historically used **File Replication Service (FRS)**, which has been replaced for SYSVOL replication in modern supported deployments.
+
+---
+
+# DNS Registration
+
+During promotion, the Domain Controller registers important DNS records.
+
+These records allow clients to locate services automatically.
+
+Example:
+
+```text
+Client
+
+↓
+
+DNS Query
+
+↓
+
+SRV Record
+
+↓
+
+Domain Controller Located
+```
+
+Without proper DNS registration, clients may fail to discover available Domain Controllers.
+
+---
+
+# Time Synchronization
+
+Kerberos depends on synchronized clocks.
+
+Typical hierarchy:
+
+```text
+Reliable Time Source
+
+↓
+
+Primary Domain Controller (time hierarchy root)
+
+↓
+
+Other Domain Controllers
+
+↓
+
+Member Servers
+
+↓
+
+Client Computers
+```
+
+Significant time differences can cause authentication failures.
+
+---
+
+# Storage Considerations
+
+Recommendations:
+
+- Use reliable storage for the Active Directory database.
+- Monitor available disk space.
+- Separate operating system and database storage when appropriate for enterprise requirements.
+- Protect backup media.
+- Monitor storage health.
+
+Reliable storage contributes to overall directory stability.
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 5,000 employees
+- Three offices
+- Four Domain Controllers
+
+Deployment:
+
+```text
+DC01
+
+↓
+
+Promotion
+
+↓
+
+NTDS.DIT Created
+
+↓
+
+SYSVOL Created
+
+↓
+
+Replication Configured
+
+↓
+
+Clients Authenticate
+```
+
+The additional Domain Controllers receive replicated directory information after joining the domain.
+
+---
+
+# Common Deployment Mistakes
+
+Avoid:
+
+- Using dynamic IP addresses for Domain Controllers.
+- Incorrect DNS configuration.
+- Ignoring backup planning.
+- Weak administrator passwords.
+- Promoting servers before planning replication.
+- Deploying only one Domain Controller.
+- Poor documentation.
+
+Careful planning reduces operational issues.
+
+---
+
+# Cybersecurity Perspective
+
+The promotion process establishes a server as a trusted identity provider.
+
+Security recommendations:
+
+- Harden the operating system before promotion.
+- Apply security updates.
+- Restrict administrative access.
+- Protect the NTDS directory.
+- Audit administrative activity.
+- Validate backups after deployment.
+- Monitor authentication and directory service events.
+
+A newly promoted Domain Controller should immediately become part of the organization's security monitoring program.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Review the components installed after Domain Controller promotion.
+
+### Tasks
+
+1. Verify the **Active Directory Domain Services** role.
+2. Locate:
+   - `C:\Windows\NTDS`
+   - `C:\Windows\SYSVOL`
+3. Identify the purpose of:
+   - NTDS.DIT
+   - SYSVOL
+   - Netlogon
+   - Kerberos
+4. Open the **Services** console and locate:
+   - Active Directory Domain Services
+   - DFS Replication
+   - Netlogon
+   - Windows Time
+5. Record the purpose of each service.
+
+---
+
+# Key Takeaways
+
+- Installing AD DS is separate from promoting a Domain Controller.
+- Promotion creates the directory database and configures core services.
+- NTDS.DIT stores Active Directory data.
+- SYSVOL stores Group Policy and scripts.
+- DNS, Kerberos, Netlogon, DFSR, and Windows Time are critical dependencies.
+- Proper planning before promotion improves reliability and security.
+
+---
+
+# Interview Questions
+
+1. What is the difference between installing AD DS and promoting a Domain Controller?
+2. What files are created during Domain Controller promotion?
+3. What is the purpose of SYSVOL?
+4. Why is DFS Replication important?
+5. What does the Netlogon service do?
+6. Why is DNS required during promotion?
+7. Why should Domain Controllers use static IP addresses?
+8. Why is accurate system time required?
+9. What information is stored in NTDS.DIT?
+10. What deployment mistakes should administrators avoid?
+
+---
+
+# References
+
+- Microsoft Learn – Deploy Active Directory Domain Services
+- Microsoft Learn – Domain Controller Installation
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+- CIS Microsoft Windows Benchmarks
+
+---
+
+**Next:** **Part 3 — Domain Controller Replication, Authentication Flow, Read-Only Domain Controllers (RODC), and Enterprise Operations**
