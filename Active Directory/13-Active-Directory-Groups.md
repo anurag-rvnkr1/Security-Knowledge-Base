@@ -1605,4 +1605,818 @@ for a multi-domain organization.
 
 ---
 
-**Next:** **Part 3 — Built-in Groups, Administrative Groups, Token Generation, SID History, PowerShell Management, Troubleshooting, and Enterprise Operations**
+# Active-Directory/
+
+# 13-Active-Directory-Groups.md
+
+# Part 3 — Built-in Groups, Administrative Groups, Access Tokens, SID History, PowerShell Management, Troubleshooting, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand built-in Active Directory groups.
+- Learn about administrative groups.
+- Understand Windows access tokens.
+- Learn how SID History works.
+- Manage groups using PowerShell.
+- Troubleshoot group membership issues.
+- Apply enterprise group administration best practices.
+
+---
+
+# Review
+
+In previous parts, we learned:
+
+- Active Directory Groups
+- Security vs Distribution Groups
+- Group Scope
+- Global Groups
+- Universal Groups
+- Domain Local Groups
+- AGDLP
+- AGUDLP
+- Nested Groups
+
+Now we'll focus on **advanced enterprise group management**.
+
+---
+
+# Built-in Groups
+
+When Active Directory is installed, Windows automatically creates several built-in groups.
+
+Examples include:
+
+```text
+Builtin
+
+│
+
+├── Administrators
+
+├── Backup Operators
+
+├── Print Operators
+
+├── Server Operators
+
+├── Account Operators
+
+└── Remote Desktop Users
+```
+
+These groups provide predefined administrative capabilities.
+
+---
+
+# Default Domain Groups
+
+Every domain also contains default groups.
+
+Examples:
+
+```text
+Domain Users
+
+Domain Computers
+
+Domain Controllers
+
+Domain Admins
+
+Domain Guests
+
+Domain Admins
+
+Domain Computers
+```
+
+These groups support standard domain operations.
+
+---
+
+# Enterprise Administrative Groups
+
+Some groups provide very high levels of privilege.
+
+Examples:
+
+```text
+Enterprise Admins
+
+Schema Admins
+
+Domain Admins
+```
+
+These groups should have tightly controlled membership.
+
+---
+
+# Domain Admins
+
+Purpose:
+
+- Full administrative control of the domain.
+
+Typical capabilities:
+
+- Manage users
+- Manage computers
+- Create OUs
+- Manage Group Policy
+- Reset passwords
+- Join computers to the domain
+- Manage servers
+
+Only authorized administrators should belong to this group.
+
+---
+
+# Enterprise Admins
+
+Enterprise Admins have permissions across the forest.
+
+Responsibilities include:
+
+- Forest-wide administration
+- Domain creation
+- Trust management
+- Enterprise-wide configuration
+
+Membership should be kept to an absolute minimum.
+
+---
+
+# Schema Admins
+
+Schema Admins can modify:
+
+```text
+Active Directory Schema
+```
+
+Schema changes affect the entire forest.
+
+Examples:
+
+- Microsoft Exchange installation
+- Identity management products
+- Directory extensions
+
+Schema modifications require careful planning and testing.
+
+---
+
+# Backup Operators
+
+Members can:
+
+- Back up files
+- Restore files
+
+This role exists to support backup operations without granting full administrative rights.
+
+---
+
+# Account Operators
+
+Historically used for managing user and group accounts.
+
+Modern environments often prefer delegated administration over broad membership in this group.
+
+---
+
+# Print Operators
+
+Members can manage:
+
+- Print servers
+- Printers
+- Print queues
+
+Primarily relevant in environments with centralized print services.
+
+---
+
+# Server Operators
+
+Historically used to manage certain server functions.
+
+Many organizations now rely on delegated administration and more granular permissions instead.
+
+---
+
+# Domain Users
+
+All newly created user accounts become members of:
+
+```text
+Domain Users
+```
+
+by default, unless otherwise configured.
+
+This group represents standard authenticated users.
+
+---
+
+# Domain Computers
+
+All domain-joined computers become members of:
+
+```text
+Domain Computers
+```
+
+This group represents authenticated computer accounts.
+
+---
+
+# Domain Controllers
+
+All Domain Controllers belong to:
+
+```text
+Domain Controllers
+```
+
+Special Group Policies and administrative settings commonly target this group.
+
+---
+
+# Protected Administrative Groups
+
+Examples include:
+
+- Domain Admins
+- Enterprise Admins
+- Schema Admins
+- Administrators
+- Account Operators
+- Backup Operators
+- Print Operators
+- Server Operators
+
+These groups require additional monitoring because they can significantly affect the security of the environment.
+
+---
+
+# Access Tokens
+
+When a user successfully logs on, Windows creates an:
+
+```text
+Access Token
+```
+
+The access token represents the user's security context.
+
+---
+
+# Access Token Contents
+
+An access token commonly contains:
+
+- User SID
+- Group SIDs
+- Privileges
+- User rights
+- Integrity level (where applicable)
+
+Applications use this information when making authorization decisions.
+
+---
+
+# Access Token Flow
+
+```text
+User Login
+
+↓
+
+Authentication
+
+↓
+
+Kerberos / NTLM
+
+↓
+
+Access Token Created
+
+↓
+
+User Opens Resource
+
+↓
+
+Permission Evaluation
+```
+
+---
+
+# Why Access Tokens Matter
+
+Example:
+
+```text
+John
+
+↓
+
+Member of
+
+Finance Group
+
+↓
+
+Finance Folder
+
+↓
+
+Access Granted
+```
+
+Windows evaluates the group SIDs contained in the user's access token to determine whether access should be granted.
+
+---
+
+# Group Membership Evaluation
+
+```text
+User
+
+↓
+
+Group
+
+↓
+
+Nested Group
+
+↓
+
+Permission
+
+↓
+
+Access Decision
+```
+
+Nested group memberships are included during token generation where applicable.
+
+---
+
+# Access Token Example
+
+```text
+John
+
+↓
+
+SID
+
+↓
+
+Finance Group SID
+
+↓
+
+VPN Group SID
+
+↓
+
+Remote Desktop Users SID
+
+↓
+
+Access Token
+```
+
+Windows evaluates these SIDs against the resource's Access Control List (ACL).
+
+---
+
+# Token Size
+
+Large organizations sometimes create users with membership in many groups.
+
+Example:
+
+```text
+User
+
+↓
+
+250 Groups
+
+↓
+
+Large Access Token
+```
+
+Excessive group memberships can increase authentication and authorization overhead and may cause operational issues in some applications or protocols.
+
+Administrators should avoid unnecessary group memberships.
+
+---
+
+# SID History
+
+SID History supports migrations between domains.
+
+Example:
+
+```text
+Old Domain
+
+↓
+
+Old SID
+
+↓
+
+Migration
+
+↓
+
+New Domain
+
+↓
+
+New SID
+
+↓
+
+SID History Preserved
+```
+
+This allows continued access to resources that still reference the old SID.
+
+---
+
+# Why SID History Exists
+
+Without SID History:
+
+```text
+Migration
+
+↓
+
+Permissions Lost
+```
+
+With SID History:
+
+```text
+Migration
+
+↓
+
+Old SID Retained
+
+↓
+
+Permissions Continue Working
+```
+
+This simplifies domain migration projects.
+
+---
+
+# SID History Security
+
+Because SID History influences authorization decisions, it must be protected.
+
+Potential risks include:
+
+- Unauthorized SID History modification
+- Privilege escalation
+- Persistence techniques
+
+Security teams should audit SID History during migrations and privileged account reviews.
+
+---
+
+# PowerShell Management
+
+The **ActiveDirectory** PowerShell module simplifies enterprise group administration.
+
+---
+
+# List Groups
+
+```powershell
+Get-ADGroup -Filter *
+```
+
+---
+
+# View Group Members
+
+```powershell
+Get-ADGroupMember `
+-Identity "GG_Finance"
+```
+
+---
+
+# Add Member
+
+```powershell
+Add-ADGroupMember `
+-Identity "GG_Finance" `
+-Members jsmith
+```
+
+---
+
+# Remove Member
+
+```powershell
+Remove-ADGroupMember `
+-Identity "GG_Finance" `
+-Members jsmith
+```
+
+---
+
+# Create Group
+
+```powershell
+New-ADGroup `
+-Name "GG_HR"
+```
+
+---
+
+# Delete Group
+
+```powershell
+Remove-ADGroup `
+-Identity "GG_HR"
+```
+
+Deletion should follow organizational approval and retention policies.
+
+---
+
+# Bulk Membership Management
+
+Enterprise workflow:
+
+```text
+CSV File
+
+↓
+
+PowerShell
+
+↓
+
+Bulk Add
+
+↓
+
+Reporting
+```
+
+Automation improves consistency and reduces manual effort.
+
+---
+
+# Reporting
+
+Common reports include:
+
+- Empty groups
+- Privileged groups
+- Nested groups
+- Inactive groups
+- Group ownership
+- Membership inventory
+
+Regular reporting improves visibility and governance.
+
+---
+
+# Troubleshooting Group Issues
+
+Common issues:
+
+- User missing from group
+- Wrong group scope
+- Incorrect nesting
+- Replication delay
+- Missing permissions
+- Token refresh required after membership changes
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Access Denied
+
+↓
+
+Correct Group?
+
+↓
+
+Correct Membership?
+
+↓
+
+Correct Scope?
+
+↓
+
+Replication Healthy?
+
+↓
+
+User Logged Off / Logged On Again?
+
+↓
+
+Resolved
+```
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 90,000 users
+- 7,500 groups
+
+Administration model:
+
+```text
+HR
+
+↓
+
+Role Groups
+
+↓
+
+Universal Groups
+
+↓
+
+Resource Groups
+
+↓
+
+Permissions
+```
+
+This design simplifies onboarding, offboarding, and auditing.
+
+---
+
+# Best Practices
+
+- Assign permissions through groups.
+- Minimize membership in privileged groups.
+- Use AGDLP or AGUDLP consistently.
+- Review privileged memberships regularly.
+- Remove obsolete groups.
+- Document group ownership.
+- Use automation for bulk administration.
+- Monitor nested group complexity.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Adding users directly to Domain Admins without justification.
+- Assigning permissions directly to user accounts.
+- Creating duplicate groups with overlapping purposes.
+- Ignoring nested group relationships.
+- Leaving unused privileged groups populated.
+- Failing to review group membership periodically.
+
+---
+
+# Cybersecurity Perspective
+
+Groups directly influence authorization.
+
+Security teams should:
+
+- Monitor privileged group changes.
+- Alert on additions to Domain Admins or Enterprise Admins.
+- Audit nested administrative groups.
+- Review SID History during migrations.
+- Detect privilege creep.
+- Integrate group-change monitoring with the organization's SIEM.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Practice advanced group administration.
+
+### Tasks
+
+1. Create:
+
+```text
+GG_IT
+```
+
+2. Add:
+
+- Two users.
+
+3. Create:
+
+```text
+DL_IT_RW
+```
+
+4. Nest:
+
+```text
+GG_IT
+
+↓
+
+DL_IT_RW
+```
+
+5. View:
+
+```powershell
+Get-ADGroupMember `
+-Identity "DL_IT_RW"
+```
+
+6. Generate reports:
+
+- Group membership
+- Privileged groups
+- Empty groups
+
+7. Document:
+
+- Group purpose
+- Scope
+- Members
+- Assigned permissions
+
+---
+
+# Key Takeaways
+
+- Built-in groups provide predefined administrative capabilities.
+- Administrative groups require careful governance.
+- Access tokens determine authorization decisions.
+- SID History supports secure domain migrations.
+- PowerShell enables scalable group administration.
+- Regular auditing improves security and compliance.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of Domain Admins?
+2. What is the difference between Domain Admins and Enterprise Admins?
+3. What is Schema Admins used for?
+4. What is an access token?
+5. What information does an access token contain?
+6. What is SID History?
+7. Why is SID History important during migrations?
+8. Which PowerShell cmdlet lists group members?
+9. Why should privileged group membership be monitored?
+10. How can excessive group memberships affect authentication?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Security Groups
+- Microsoft Learn – Active Directory PowerShell Module
+- Microsoft Learn – Security Identifiers (SIDs)
+- Microsoft Learn – Kerberos Authentication
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — Group Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
