@@ -794,4 +794,827 @@ Observe:
 
 ---
 
-**Next:** **Part 2 — Windows Defender, Microsoft Defender Antivirus, Firewall Integration, SmartScreen, Secure Boot, TPM, BitLocker, and Credential Guard**
+# 18-Windows-Security.md
+
+# Part 2 — Microsoft Defender Antivirus, SmartScreen, Secure Boot, TPM, BitLocker, Windows Hello, and Credential Protection
+
+---
+
+# Introduction
+
+Modern Windows includes multiple built-in security technologies that protect the system before, during, and after startup.
+
+These technologies defend against:
+
+- Malware
+- Ransomware
+- Rootkits
+- Bootkits
+- Credential theft
+- Phishing
+- Unauthorized device access
+- Data theft
+
+Rather than relying on a single security solution, Windows uses several integrated security layers.
+
+---
+
+# Windows Built-in Security Stack
+
+```text
+Applications
+
+↓
+
+Microsoft Defender
+
+↓
+
+SmartScreen
+
+↓
+
+Windows Firewall
+
+↓
+
+Credential Guard
+
+↓
+
+BitLocker
+
+↓
+
+Secure Boot
+
+↓
+
+TPM
+
+↓
+
+Hardware
+```
+
+Each component protects against different attack vectors.
+
+---
+
+# Microsoft Defender Antivirus
+
+Microsoft Defender Antivirus is Windows' built-in anti-malware solution.
+
+Capabilities include:
+
+- Real-time protection
+- Malware detection
+- Virus scanning
+- Cloud-delivered protection
+- Behavior monitoring
+- Automatic remediation
+- Scheduled scans
+
+It is enabled by default on supported Windows editions.
+
+---
+
+# Defender Protection Workflow
+
+```text
+File Created
+
+↓
+
+Real-Time Scan
+
+↓
+
+Threat Detected?
+
+↓
+
+No → Allow
+
+Yes
+
+↓
+
+Quarantine
+
+↓
+
+Administrator Notification
+```
+
+Threats are evaluated using signatures, heuristics, and cloud intelligence.
+
+---
+
+# Types of Defender Scans
+
+| Scan Type | Purpose |
+|------------|----------|
+| Quick Scan | Common malware locations |
+| Full Scan | Entire system |
+| Custom Scan | Selected folders |
+| Offline Scan | Rootkits and persistent malware |
+
+---
+
+# Real-Time Protection
+
+Real-time protection continuously monitors:
+
+- Files
+- Processes
+- Downloads
+- USB devices
+- Memory activity
+- Script execution
+
+Every new file is evaluated before execution whenever possible.
+
+---
+
+# Cloud-Delivered Protection
+
+Cloud protection provides:
+
+- Rapid signature updates
+- Reputation analysis
+- Machine learning detections
+- Emerging threat intelligence
+
+```text
+Unknown File
+
+↓
+
+Cloud Reputation Check
+
+↓
+
+Known Safe
+
+or
+
+Known Malicious
+
+↓
+
+Decision
+```
+
+Cloud intelligence enables faster response to newly discovered threats.
+
+---
+
+# Behavioral Monitoring
+
+Instead of relying only on signatures, Defender also analyzes behavior.
+
+Examples:
+
+- Mass file encryption
+- Suspicious PowerShell execution
+- Memory injection
+- Unauthorized registry modification
+- Credential dumping attempts
+
+Behavioral detection helps identify previously unknown malware.
+
+---
+
+# Quarantine
+
+Detected threats are isolated.
+
+```text
+Malicious File
+
+↓
+
+Quarantine
+
+↓
+
+Cannot Execute
+
+↓
+
+Administrator Review
+```
+
+Administrators can review, restore (if appropriate), or permanently remove quarantined files.
+
+---
+
+# Scheduled Protection
+
+Organizations commonly schedule:
+
+- Daily Quick Scans
+- Weekly Full Scans
+- Automatic signature updates
+- Periodic health verification
+
+Scheduling balances protection with system performance.
+
+---
+
+# Microsoft Defender SmartScreen
+
+SmartScreen protects users from:
+
+- Malicious websites
+- Phishing sites
+- Untrusted downloads
+- Low-reputation applications
+
+It integrates with:
+
+- Microsoft Edge
+- Windows Explorer
+- Microsoft Store
+
+---
+
+# SmartScreen Workflow
+
+```text
+Downloaded File
+
+↓
+
+Reputation Check
+
+↓
+
+Trusted?
+
+↓
+
+Yes → Execute
+
+No
+
+↓
+
+Warning Displayed
+```
+
+Users are warned before running suspicious applications.
+
+---
+
+# Reputation-Based Protection
+
+Windows evaluates:
+
+- File reputation
+- Publisher reputation
+- Digital signatures
+- Download prevalence
+
+Low-reputation files may generate warnings even if they are not confirmed malware.
+
+---
+
+# Potentially Unwanted Applications (PUA)
+
+Microsoft Defender can block:
+
+- Adware
+- Bundled software
+- Browser hijackers
+- Unwanted installers
+
+Although not always malicious, PUAs can reduce security and system stability.
+
+---
+
+# Tamper Protection
+
+Tamper Protection prevents unauthorized changes to Microsoft Defender settings.
+
+Protected features include:
+
+- Real-time protection
+- Cloud protection
+- Virus definitions
+- Security configuration
+
+This helps malware avoid disabling security controls.
+
+---
+
+# Secure Boot
+
+Secure Boot protects the startup process.
+
+It ensures that only trusted boot components are loaded.
+
+```text
+Power On
+
+↓
+
+UEFI Firmware
+
+↓
+
+Verify Digital Signature
+
+↓
+
+Trusted Bootloader
+
+↓
+
+Windows Boot Manager
+```
+
+Unsigned or modified bootloaders are blocked.
+
+---
+
+# Benefits of Secure Boot
+
+Secure Boot helps defend against:
+
+- Bootkits
+- Rootkits
+- Unauthorized bootloaders
+- Boot-time malware
+
+It establishes trust before Windows begins loading.
+
+---
+
+# Trusted Platform Module (TPM)
+
+TPM is a dedicated hardware security processor.
+
+Functions include:
+
+- Secure key storage
+- Platform integrity measurement
+- Device identity
+- Encryption support
+- Secure cryptographic operations
+
+Modern enterprise devices typically include TPM 2.0.
+
+---
+
+# TPM Architecture
+
+```text
+CPU
+
+↓
+
+TPM Chip
+
+↓
+
+Secure Keys
+
+↓
+
+Windows Security Features
+```
+
+Keys stored within the TPM are significantly better protected than software-only storage.
+
+---
+
+# TPM Capabilities
+
+| Capability | Description |
+|------------|-------------|
+| Key Storage | Secure cryptographic keys |
+| Random Number Generation | Cryptographically secure values |
+| Device Integrity | Platform measurements |
+| Encryption Support | BitLocker integration |
+| Identity | Device attestation |
+
+---
+
+# BitLocker Drive Encryption
+
+BitLocker encrypts entire storage volumes.
+
+Benefits include:
+
+- Protects lost or stolen devices
+- Prevents offline data theft
+- Supports TPM integration
+- Enterprise management
+
+BitLocker protects data at rest.
+
+---
+
+# BitLocker Workflow
+
+```text
+Disk
+
+↓
+
+Encrypt
+
+↓
+
+Store Key
+
+↓
+
+TPM Verification
+
+↓
+
+Authorized Boot
+
+↓
+
+Decrypt
+
+↓
+
+Access Data
+```
+
+Encryption occurs transparently after successful authentication.
+
+---
+
+# BitLocker Authentication Methods
+
+Common methods include:
+
+- TPM only
+- TPM + PIN
+- TPM + USB Startup Key
+- Recovery Key
+
+Organizations choose methods based on security requirements.
+
+---
+
+# Recovery Key
+
+A BitLocker Recovery Key allows access when normal authentication fails.
+
+Recovery may be required when:
+
+- TPM measurements change
+- Hardware is replaced
+- Firmware changes occur
+- Boot integrity validation fails
+
+Recovery keys should be securely backed up.
+
+---
+
+# BitLocker Enterprise Management
+
+Organizations commonly store recovery keys in:
+
+- Active Directory
+- Microsoft Entra ID (Azure AD)
+- Enterprise management platforms
+
+Centralized recovery simplifies device support.
+
+---
+
+# Windows Hello
+
+Windows Hello replaces traditional passwords with stronger authentication.
+
+Supported methods include:
+
+- PIN
+- Facial Recognition
+- Fingerprint Recognition
+
+Authentication occurs locally and can integrate with enterprise identity systems.
+
+---
+
+# Windows Hello Workflow
+
+```text
+User
+
+↓
+
+Face / Fingerprint / PIN
+
+↓
+
+Local Verification
+
+↓
+
+Identity Confirmed
+
+↓
+
+Authentication Token
+```
+
+Biometric information remains securely protected on the device.
+
+---
+
+# Windows Hello for Business
+
+Windows Hello for Business supports enterprise authentication using:
+
+- TPM
+- Public Key Cryptography
+- Kerberos
+- Microsoft Entra ID
+
+It significantly reduces password-related attacks.
+
+---
+
+# Credential Theft
+
+Attackers frequently attempt to steal:
+
+- Password hashes
+- Kerberos tickets
+- NTLM hashes
+- Authentication tokens
+- Cached credentials
+
+Windows provides dedicated technologies to reduce this risk.
+
+---
+
+# Credential Guard
+
+Credential Guard isolates sensitive authentication secrets.
+
+Protected information includes:
+
+- NTLM hashes
+- Kerberos Ticket Granting Tickets (TGTs)
+- Credential material
+
+Credential Guard leverages virtualization-based security (VBS).
+
+---
+
+# Credential Guard Architecture
+
+```text
+Applications
+
+↓
+
+LSASS
+
+↓
+
+Credential Guard
+
+↓
+
+Virtual Secure Mode
+
+↓
+
+Protected Credentials
+```
+
+Even highly privileged malware has difficulty accessing isolated credentials.
+
+---
+
+# Benefits of Credential Guard
+
+Credential Guard helps prevent:
+
+- Pass-the-Hash
+- Pass-the-Ticket
+- Credential dumping
+- LSASS memory attacks
+
+It is highly recommended for enterprise endpoints.
+
+---
+
+# Security Health Dashboard
+
+Windows Security provides centralized management for:
+
+- Virus & Threat Protection
+- Account Protection
+- Firewall & Network Protection
+- App & Browser Control
+- Device Security
+- Device Performance
+- Family Options
+
+Administrators can quickly assess overall security status.
+
+---
+
+# Enterprise Security Example
+
+An employee downloads an unknown executable.
+
+Security workflow:
+
+```text
+Download
+
+↓
+
+SmartScreen Reputation Check
+
+↓
+
+Defender Scan
+
+↓
+
+Behavior Analysis
+
+↓
+
+Threat Detected
+
+↓
+
+File Quarantined
+
+↓
+
+SOC Alert Generated
+```
+
+Multiple security layers prevent execution.
+
+---
+
+# Cybersecurity Perspective
+
+Modern attacks frequently target:
+
+- Boot process
+- Credentials
+- Unpatched endpoints
+- User trust
+- Weak authentication
+
+Windows security technologies significantly reduce attack opportunities when correctly configured.
+
+---
+
+# Business Impact
+
+Built-in Windows protections help organizations:
+
+- Reduce ransomware risk
+- Protect sensitive information
+- Improve regulatory compliance
+- Reduce incident response costs
+- Strengthen endpoint security
+- Protect remote workers
+
+Layered security directly supports business continuity.
+
+---
+
+# Enterprise Best Practices
+
+- Enable Microsoft Defender Antivirus.
+- Keep security intelligence updated automatically.
+- Enable SmartScreen for users.
+- Require Secure Boot on supported hardware.
+- Deploy TPM 2.0-enabled devices.
+- Encrypt enterprise devices with BitLocker.
+- Store BitLocker Recovery Keys centrally.
+- Deploy Windows Hello for Business.
+- Enable Credential Guard where supported.
+- Monitor Defender alerts through centralized security platforms.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Verify Microsoft Defender Status
+
+Open:
+
+```text
+Windows Security
+
+↓
+
+Virus & Threat Protection
+```
+
+Review:
+
+- Real-time Protection
+- Cloud Protection
+- Security Intelligence Version
+
+---
+
+## Lab 2 — Verify Secure Boot
+
+Run:
+
+```powershell
+Confirm-SecureBootUEFI
+```
+
+Record whether Secure Boot is enabled.
+
+---
+
+## Lab 3 — Check BitLocker Status
+
+Run:
+
+```powershell
+manage-bde -status
+```
+
+Record:
+
+- Encryption status
+- Protection status
+- Encryption method
+
+---
+
+## Lab 4 — Verify TPM
+
+Run:
+
+```powershell
+Get-Tpm
+```
+
+Record:
+
+- TPM Present
+- TPM Ready
+- Manufacturer
+- Specification Version
+
+---
+
+# Key Takeaways
+
+- Microsoft Defender provides integrated malware protection.
+- SmartScreen protects users from malicious downloads and phishing.
+- Secure Boot verifies trusted boot components before Windows loads.
+- TPM securely stores cryptographic keys and supports multiple Windows security features.
+- BitLocker protects data at rest using full-disk encryption.
+- Windows Hello provides modern authentication without relying solely on passwords.
+- Credential Guard protects authentication secrets using virtualization-based isolation.
+
+---
+
+# Interview Questions
+
+1. What is Microsoft Defender Antivirus?
+2. How does SmartScreen improve security?
+3. What is Secure Boot?
+4. What is the purpose of TPM?
+5. How does BitLocker protect data?
+6. What is a BitLocker Recovery Key?
+7. What advantages does Windows Hello provide?
+8. What attacks does Credential Guard help prevent?
+9. Why is behavioral analysis important in antivirus software?
+10. How do Secure Boot and BitLocker complement each other?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Defender Documentation
+- Microsoft BitLocker Documentation
+- Microsoft TPM Documentation
+- Microsoft Secure Boot Documentation
+- Microsoft Windows Hello for Business Documentation
+- Microsoft Credential Guard Documentation
+- NIST SP 800-63 Digital Identity Guidelines
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 3 — Virtualization-Based Security (VBS), Device Guard, Application Control, AppLocker, Exploit Protection, Windows Sandbox, and Enterprise Endpoint Protection**
