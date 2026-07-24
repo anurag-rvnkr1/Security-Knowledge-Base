@@ -741,4 +741,902 @@ dsa.msc
 
 ---
 
-**Next:** **Part 2 — User Account Management, Computer Account Management, Account Properties, Password Policies, and Enterprise Administration**
+# 12-Active-Directory-Users-and-Computers.md
+
+# Part 2 — User Account Management, Computer Account Management, Account Properties, Password Policies, and Enterprise Administration
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Create and manage user accounts.
+- Create and manage computer accounts.
+- Understand user account properties.
+- Learn account lifecycle management.
+- Understand password-related account settings.
+- Apply enterprise administration best practices.
+
+---
+
+# Review
+
+From Part 1:
+
+We learned:
+
+- ADUC overview
+- Active Directory objects
+- User objects
+- Computer objects
+- SID
+- Distinguished Name
+- Object GUID
+
+Now we'll focus on **day-to-day administration** performed by Active Directory administrators.
+
+---
+
+# User Account Creation
+
+Typical workflow:
+
+```text
+HR
+
+↓
+
+New Employee
+
+↓
+
+IT Receives Request
+
+↓
+
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Set Password
+
+↓
+
+Provide Access
+```
+
+---
+
+# Creating a User in ADUC
+
+Steps:
+
+```text
+Right Click OU
+
+↓
+
+New
+
+↓
+
+User
+
+↓
+
+Enter Details
+
+↓
+
+Set Password
+
+↓
+
+Finish
+```
+
+---
+
+# Required Information
+
+Common fields:
+
+- First Name
+- Last Name
+- Full Name
+- User Logon Name (UPN)
+- sAMAccountName (legacy logon)
+- Initial Password
+
+Example:
+
+```text
+Name
+
+↓
+
+John Smith
+
+↓
+
+UPN
+
+↓
+
+john.smith@company.com
+```
+
+---
+
+# User Properties
+
+Right-click a user:
+
+```text
+Properties
+```
+
+Common tabs include:
+
+- General
+- Address
+- Account
+- Profile
+- Organization
+- Member Of
+- Security (Advanced Features)
+- Attribute Editor (Advanced Features)
+
+---
+
+# General Tab
+
+Contains:
+
+- Display Name
+- Description
+- Office
+- Telephone
+- Email
+- Web Page
+
+Useful for contact information and directory searches.
+
+---
+
+# Organization Tab
+
+Stores business information:
+
+- Job Title
+- Department
+- Company
+- Manager
+
+Example:
+
+```text
+Department
+
+↓
+
+Finance
+```
+
+---
+
+# Member Of Tab
+
+Displays security and distribution group memberships.
+
+Example:
+
+```text
+Domain Users
+
+Finance Users
+
+VPN Users
+```
+
+Group membership determines many of the user's permissions.
+
+---
+
+# Account Tab
+
+One of the most important administrative tabs.
+
+Contains:
+
+- User logon name
+- Logon hours
+- Logon workstations
+- Account options
+- Account expiration
+- Unlock account (when applicable)
+
+---
+
+# Password Options
+
+Common options:
+
+```text
+User Must Change Password
+
+Password Never Expires
+
+Store Password Using Reversible Encryption
+
+Smart Card Required
+
+Account Is Sensitive and Cannot Be Delegated
+```
+
+Not every option should be used routinely; apply settings based on business and security requirements.
+
+---
+
+# Account Expiration
+
+Useful for:
+
+- Contractors
+- Temporary employees
+- Interns
+- Consultants
+
+Example:
+
+```text
+Start
+
+↓
+
+July 1
+
+↓
+
+Expires
+
+↓
+
+December 31
+```
+
+After expiration, the account cannot authenticate until re-enabled or extended.
+
+---
+
+# Disable vs Delete
+
+Disable:
+
+```text
+Account
+
+↓
+
+Cannot Log In
+
+↓
+
+Object Preserved
+```
+
+Delete:
+
+```text
+Object
+
+↓
+
+Removed
+```
+
+Enterprise environments commonly disable accounts first, then delete them according to retention policies.
+
+---
+
+# Unlocking Accounts
+
+If a user exceeds the configured account lockout threshold:
+
+```text
+Account Locked
+
+↓
+
+Administrator
+
+↓
+
+Unlock Account
+
+↓
+
+User Signs In
+```
+
+Always investigate repeated lockouts to determine the root cause.
+
+---
+
+# Password Reset
+
+Workflow:
+
+```text
+Helpdesk
+
+↓
+
+Reset Password
+
+↓
+
+Temporary Password
+
+↓
+
+User Changes Password
+```
+
+This is one of the most common delegated administrative tasks.
+
+---
+
+# User Rename
+
+Example:
+
+```text
+Mary Johnson
+
+↓
+
+Mary Brown
+```
+
+Administrators may update:
+
+- Display Name
+- UPN
+- sAMAccountName (if required)
+- Email address
+
+The SID remains unchanged.
+
+---
+
+# Moving Users
+
+Example:
+
+Before:
+
+```text
+Sales OU
+```
+
+After:
+
+```text
+Marketing OU
+```
+
+Effects:
+
+- Distinguished Name changes.
+- Different delegated administrators may manage the account.
+- Different Group Policies may apply.
+
+---
+
+# Copying Users
+
+ADUC allows administrators to copy an existing user.
+
+Useful because:
+
+- Group memberships
+- Basic properties
+- Organizational settings
+
+can be reused for similar roles.
+
+Example:
+
+```text
+New Finance Employee
+
+↓
+
+Copy Existing Finance User
+
+↓
+
+Modify Name
+
+↓
+
+Complete
+```
+
+---
+
+# User Lifecycle
+
+```text
+Recruitment
+
+↓
+
+Account Creation
+
+↓
+
+Daily Administration
+
+↓
+
+Department Transfer
+
+↓
+
+Promotion
+
+↓
+
+Disable
+
+↓
+
+Delete
+```
+
+Lifecycle management is essential for security and compliance.
+
+---
+
+# Computer Account Management
+
+Computer accounts are administered similarly.
+
+Tasks include:
+
+- Create
+- Move
+- Rename
+- Disable
+- Delete
+- Reset account
+
+---
+
+# Joining a Domain
+
+Workflow:
+
+```text
+Computer
+
+↓
+
+Domain Join
+
+↓
+
+Computer Account Created
+
+↓
+
+Restart
+
+↓
+
+Authentication Ready
+```
+
+A secure channel is established between the computer and the domain.
+
+---
+
+# Reset Computer Account
+
+Sometimes a computer loses its secure channel with the domain.
+
+Example causes:
+
+- Restoring an old virtual machine snapshot
+- Extended offline periods
+- Domain trust issues
+- Improper cloning
+
+Administrator:
+
+```text
+Reset Computer Account
+
+↓
+
+Rejoin Domain (if required)
+
+↓
+
+Authentication Restored
+```
+
+---
+
+# Disable Computer Account
+
+Useful when:
+
+- Device is stolen
+- Device retired
+- Device under investigation
+- Device temporarily removed from service
+
+Disabling prevents the computer from authenticating to the domain.
+
+---
+
+# Delete Computer Account
+
+Delete only after confirming:
+
+- Device is permanently retired.
+- No dependencies remain.
+- Organizational retention requirements are satisfied.
+
+---
+
+# Logon Hours
+
+Administrators can restrict when a user may log on.
+
+Example:
+
+```text
+Monday–Friday
+
+08:00–18:00
+```
+
+Outside these hours:
+
+```text
+Authentication Denied
+```
+
+This feature is useful for specific operational requirements.
+
+---
+
+# Logon Workstations
+
+Administrators can restrict which computers a user may use.
+
+Example:
+
+```text
+Allowed
+
+↓
+
+HR-PC-01
+
+HR-PC-02
+```
+
+Attempting to log on elsewhere is denied.
+
+---
+
+# Enterprise Example
+
+Organization:
+
+```text
+50,000 Users
+
+↓
+
+Automated Provisioning
+
+↓
+
+Correct OU
+
+↓
+
+Correct Groups
+
+↓
+
+Correct Policies
+```
+
+Automation ensures consistency across large environments.
+
+---
+
+# Administrative Workflow
+
+```text
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Move to OU
+
+↓
+
+Apply Policies
+
+↓
+
+Grant Application Access
+
+↓
+
+Audit
+```
+
+---
+
+# PowerShell Management
+
+The **ActiveDirectory** PowerShell module supports automation.
+
+---
+
+# Create User
+
+```powershell
+New-ADUser `
+-Name "John Smith" `
+-SamAccountName "jsmith" `
+-UserPrincipalName "john.smith@company.com"
+```
+
+---
+
+# Get User
+
+```powershell
+Get-ADUser `
+-Identity jsmith
+```
+
+---
+
+# Disable User
+
+```powershell
+Disable-ADAccount `
+-Identity jsmith
+```
+
+---
+
+# Enable User
+
+```powershell
+Enable-ADAccount `
+-Identity jsmith
+```
+
+---
+
+# Unlock User
+
+```powershell
+Unlock-ADAccount `
+-Identity jsmith
+```
+
+---
+
+# Reset Password
+
+```powershell
+Set-ADAccountPassword
+```
+
+Typically used with a secure string containing the new password.
+
+---
+
+# Create Computer
+
+```powershell
+New-ADComputer `
+-Name "BLR-PC-101"
+```
+
+---
+
+# Disable Computer
+
+```powershell
+Disable-ADAccount `
+-Identity "BLR-PC-101$"
+```
+
+---
+
+# Troubleshooting User Issues
+
+Common issues:
+
+- Incorrect password
+- Locked account
+- Disabled account
+- Expired account
+- Missing group membership
+- Wrong OU
+- Replication delays
+
+---
+
+# Troubleshooting Workflow
+
+```text
+User Cannot Log In
+
+↓
+
+Account Enabled?
+
+↓
+
+Password Correct?
+
+↓
+
+Locked?
+
+↓
+
+Expired?
+
+↓
+
+Correct Group Membership?
+
+↓
+
+Resolved
+```
+
+---
+
+# Enterprise Best Practices
+
+- Use standardized account naming.
+- Populate business attributes.
+- Assign access through groups rather than directly.
+- Review inactive accounts regularly.
+- Disable accounts promptly when users leave.
+- Automate provisioning wherever possible.
+- Audit administrative actions.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Deleting accounts immediately after employee departure.
+- Granting permissions directly to users instead of groups.
+- Leaving inactive accounts enabled.
+- Using generic shared user accounts.
+- Forgetting to update attributes after departmental changes.
+- Ignoring account lockout investigations.
+
+---
+
+# Cybersecurity Perspective
+
+Identity is a primary security boundary.
+
+Recommendations:
+
+- Enforce strong authentication policies.
+- Review privileged accounts frequently.
+- Monitor account creation and deletion.
+- Audit password resets.
+- Remove unnecessary privileges.
+- Disable dormant accounts.
+- Investigate repeated authentication failures.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Manage user and computer accounts.
+
+### Tasks
+
+1. Open:
+
+```text
+Active Directory Users and Computers
+```
+
+2. Create:
+
+- One user
+- One computer account
+
+3. Configure:
+
+- Department
+- Manager
+- Group memberships
+- Account expiration
+
+4. Disable and re-enable the user.
+
+5. Unlock a test account (if available).
+
+6. Document:
+
+- User properties
+- Computer properties
+- Lifecycle actions
+- Security observations
+
+---
+
+# Key Takeaways
+
+- ADUC is the primary tool for user and computer administration.
+- User properties store identity, business, and security information.
+- Group membership is central to authorization.
+- Computer accounts authenticate just like user accounts.
+- Proper lifecycle management improves security and compliance.
+
+---
+
+# Interview Questions
+
+1. How do you create a user account in ADUC?
+2. What information is stored on the Account tab?
+3. What is the purpose of the Member Of tab?
+4. What is the difference between disabling and deleting an account?
+5. Why would you configure account expiration?
+6. What happens when a computer joins a domain?
+7. When should a computer account be reset?
+8. Which PowerShell cmdlet creates a user?
+9. Which cmdlet unlocks a locked account?
+10. Why should permissions be assigned through groups instead of directly to users?
+
+---
+
+# References
+
+- Microsoft Learn – Manage User Accounts
+- Microsoft Learn – Manage Computer Accounts
+- Microsoft Learn – ActiveDirectory PowerShell Module
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 3 — Advanced Object Management, Attribute Editor, Saved Queries, PowerShell Automation, Troubleshooting, and Enterprise Operations**
