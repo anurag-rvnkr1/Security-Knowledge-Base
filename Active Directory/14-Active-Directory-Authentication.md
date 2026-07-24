@@ -2399,4 +2399,782 @@ Review authentication-related logs.
 
 ---
 
-**Next:** **Part 4 — Authentication Security, Monitoring, Kerberos Attacks Overview, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
+# Active-Directory/
+
+# 14-Active-Directory-Authentication.md
+
+# Part 4 — Authentication Security, Monitoring, Kerberos Attack Overview, Best Practices, Final Revision, Chapter Summary, and Interview Preparation
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Secure Active Directory authentication in enterprise environments.
+- Monitor authentication events.
+- Understand common Kerberos and NTLM attacks at a high level.
+- Apply authentication security best practices.
+- Review the complete Active Directory Authentication chapter.
+- Prepare for Windows Server and Cybersecurity interviews.
+
+> **Note:** This section provides defensive, administrator-focused overviews of common attack techniques. Detailed offensive methodologies are covered in dedicated security chapters with appropriate defensive context.
+
+---
+
+# Why Authentication Security Matters
+
+Authentication is the gateway to every enterprise resource.
+
+If authentication is compromised, attackers may gain access to:
+
+- File Servers
+- Domain Controllers
+- Email
+- Databases
+- VPN
+- Cloud Applications
+- Administrative Consoles
+
+Therefore, protecting authentication systems is one of the highest priorities for security teams.
+
+---
+
+# Enterprise Authentication Architecture
+
+```text
+                Users
+                   │
+                   ▼
+          Domain-Joined Computer
+                   │
+                   ▼
+                  DNS
+                   │
+                   ▼
+           Domain Controller
+             (KDC + AD DS)
+                   │
+                   ▼
+            Kerberos / NTLM
+                   │
+                   ▼
+            Access Token Created
+                   │
+                   ▼
+             Enterprise Resources
+```
+
+---
+
+# Authentication Security Layers
+
+```text
+Identity
+
+↓
+
+Strong Passwords
+
+↓
+
+Kerberos
+
+↓
+
+MFA
+
+↓
+
+Authorization
+
+↓
+
+Monitoring
+
+↓
+
+Incident Response
+```
+
+Each layer contributes to overall security.
+
+---
+
+# Password Security
+
+Recommended practices:
+
+- Long passwords or passphrases
+- Unique passwords
+- Password history enforcement
+- Minimum password age (where appropriate)
+- Account lockout policies
+- Elimination of default passwords
+
+Avoid:
+
+- Dictionary words
+- Company names
+- Personal information
+- Shared administrator passwords
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+MFA strengthens authentication by requiring more than one factor.
+
+Example:
+
+```text
+Password
+
++
+
+Authenticator App
+
+↓
+
+Authentication
+```
+
+Benefits include:
+
+- Protection against stolen passwords
+- Reduced risk from phishing (when paired with phishing-resistant methods)
+- Improved identity assurance
+
+---
+
+# Windows Hello for Business
+
+Windows Hello for Business provides a modern authentication experience using:
+
+- PIN
+- Biometrics
+- Hardware-backed credentials (where supported)
+
+Benefits:
+
+- Reduced reliance on passwords
+- Strong cryptographic authentication
+- Improved user experience
+
+---
+
+# Smart Card Authentication
+
+Many organizations use smart cards for privileged users.
+
+Example:
+
+```text
+Smart Card
+
+↓
+
+PIN
+
+↓
+
+Kerberos Authentication
+```
+
+Advantages:
+
+- Strong identity verification
+- Hardware-backed credentials
+- Reduced password exposure
+
+---
+
+# Authentication Logging
+
+Authentication activity should be logged and monitored.
+
+Examples:
+
+- Successful logons
+- Failed logons
+- Account lockouts
+- Kerberos events
+- NTLM usage
+- Privileged account logons
+
+These logs are valuable for both operations and security investigations.
+
+---
+
+# Security Event Sources
+
+Common log sources:
+
+```text
+Domain Controller
+
+↓
+
+Security Event Logs
+
+↓
+
+SIEM
+
+↓
+
+SOC
+
+↓
+
+Alerts
+```
+
+Centralized logging enables faster detection of suspicious activity.
+
+---
+
+# Monitoring Strategy
+
+Security teams commonly monitor:
+
+- Repeated failed logons
+- Logons outside normal working hours
+- Logons from unexpected locations
+- Administrative account usage
+- Authentication protocol usage
+- Sudden spikes in account lockouts
+
+---
+
+# Authentication Event Flow
+
+```text
+User Login
+
+↓
+
+Domain Controller
+
+↓
+
+Security Log
+
+↓
+
+SIEM
+
+↓
+
+Alert
+
+↓
+
+SOC Investigation
+```
+
+---
+
+# Account Lockout
+
+Account lockout policies help reduce the effectiveness of password guessing attacks.
+
+Example:
+
+```text
+Multiple Failed Logons
+
+↓
+
+Account Locked
+
+↓
+
+Administrator or Policy Unlock
+```
+
+Policies should balance security and operational needs.
+
+---
+
+# Kerberos Security Features
+
+Kerberos provides:
+
+- Mutual authentication
+- Ticket-based authentication
+- Limited ticket lifetime
+- Single Sign-On
+- Reduced password exposure
+
+These features improve security compared to repeatedly transmitting credentials.
+
+---
+
+# High-Level Kerberos Threat Overview
+
+Administrators should be aware of attacks that target Kerberos.
+
+Examples include:
+
+- Kerberoasting
+- AS-REP Roasting
+- Golden Ticket
+- Silver Ticket
+- Pass-the-Ticket
+
+These attacks abuse authentication or ticket mechanisms rather than exploiting weaknesses in the Kerberos protocol itself.
+
+---
+
+# Kerberoasting (Overview)
+
+Concept:
+
+```text
+Service Account
+
+↓
+
+Service Ticket Requested
+
+↓
+
+Offline Password Cracking Attempt
+```
+
+Mitigation:
+
+- Strong service account passwords
+- Managed Service Accounts (where appropriate)
+- Regular password rotation
+- Monitoring for unusual service ticket requests
+
+---
+
+# AS-REP Roasting (Overview)
+
+Concept:
+
+```text
+Account
+
+↓
+
+Preauthentication Disabled
+
+↓
+
+Authentication Data Exposed
+
+↓
+
+Offline Password Cracking Attempt
+```
+
+Mitigation:
+
+- Require Kerberos preauthentication for user accounts unless there is a documented exception.
+- Audit accounts with preauthentication disabled.
+
+---
+
+# Golden Ticket (Overview)
+
+Concept:
+
+```text
+Compromised KRBTGT Secret
+
+↓
+
+Forged TGT
+
+↓
+
+Potential Unauthorized Access
+```
+
+Mitigation:
+
+- Protect Domain Controllers.
+- Limit privileged access.
+- Rotate the KRBTGT account password following Microsoft's guidance after compromise.
+- Monitor for suspicious Kerberos activity.
+
+---
+
+# Silver Ticket (Overview)
+
+Concept:
+
+```text
+Compromised Service Account Secret
+
+↓
+
+Forged Service Ticket
+
+↓
+
+Targeted Service Access
+```
+
+Mitigation:
+
+- Protect service account credentials.
+- Use Managed Service Accounts or Group Managed Service Accounts where appropriate.
+- Rotate service account secrets regularly.
+
+---
+
+# Pass-the-Hash (Overview)
+
+Concept:
+
+```text
+Compromised Password Hash
+
+↓
+
+Authentication Attempt
+
+↓
+
+Unauthorized Access
+```
+
+Mitigation:
+
+- Protect credentials.
+- Enable credential protection technologies where supported.
+- Limit local administrator reuse.
+- Apply least privilege.
+
+---
+
+# Pass-the-Ticket (Overview)
+
+Concept:
+
+```text
+Stolen Kerberos Ticket
+
+↓
+
+Authentication Attempt
+
+↓
+
+Unauthorized Access
+```
+
+Mitigation:
+
+- Protect endpoints.
+- Monitor for abnormal Kerberos activity.
+- Reduce privileged session exposure.
+- Sign out of privileged sessions when work is complete.
+
+---
+
+# NTLM Risks
+
+Because NTLM is maintained primarily for compatibility, organizations should:
+
+- Identify NTLM usage.
+- Replace legacy applications where possible.
+- Prefer Kerberos.
+- Audit NTLM authentication.
+
+Reducing NTLM dependency improves security.
+
+---
+
+# Protecting Domain Controllers
+
+Recommended controls:
+
+- Dedicated administration
+- Restricted interactive logons
+- Frequent patching
+- Strong physical security
+- Secure backups
+- Continuous monitoring
+- Limited privileged access
+
+Domain Controllers are among the most critical systems in an Active Directory environment.
+
+---
+
+# Authentication Hardening Checklist
+
+| Control | Recommended |
+|----------|-------------|
+| Kerberos Preferred | ✔ |
+| Reduce NTLM Usage | ✔ |
+| MFA | ✔ |
+| Windows Hello for Business | ✔ |
+| Strong Password Policy | ✔ |
+| Time Synchronization | ✔ |
+| DNS Health | ✔ |
+| Privileged Access Controls | ✔ |
+| Centralized Logging | ✔ |
+| Regular Auditing | ✔ |
+
+---
+
+# Enterprise Authentication Lifecycle
+
+```text
+HR Creates Employee
+
+↓
+
+Identity Created
+
+↓
+
+Group Membership Assigned
+
+↓
+
+Authentication Enabled
+
+↓
+
+User Accesses Resources
+
+↓
+
+Access Reviewed
+
+↓
+
+Employment Ends
+
+↓
+
+Account Disabled
+
+↓
+
+Account Removed
+```
+
+Identity lifecycle management is an essential part of enterprise security.
+
+---
+
+# Common Authentication Issues
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Cannot Log In | Incorrect password, expired account, account disabled |
+| Kerberos Failure | DNS, time synchronization, SPN issue |
+| Account Lockout | Repeated failed sign-in attempts |
+| NTLM Fallback | Kerberos unavailable or incompatible application |
+| Access Denied | Authorization or group membership issue |
+
+---
+
+# Enterprise Best Practices
+
+- Use Kerberos whenever possible.
+- Deploy MFA for privileged and remote access.
+- Minimize NTLM usage.
+- Monitor authentication logs continuously.
+- Protect privileged accounts.
+- Use strong password policies.
+- Keep Domain Controllers secure.
+- Maintain healthy DNS and time synchronization.
+- Regularly review authentication policies.
+- Test disaster recovery procedures.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Ignoring failed authentication events.
+- Allowing excessive privileged accounts.
+- Disabling security controls without justification.
+- Misconfiguring DNS.
+- Allowing inaccurate system time.
+- Leaving obsolete service accounts enabled.
+- Failing to rotate privileged credentials.
+
+---
+
+# Cybersecurity Perspective
+
+Modern Security Operations Centers (SOCs) monitor authentication activity continuously.
+
+Typical detections include:
+
+- Excessive failed logons
+- Unusual Kerberos activity
+- Privileged account usage
+- Account lockouts
+- Geographic anomalies
+- Authentication outside business hours
+- Authentication from unexpected devices
+
+Authentication telemetry is one of the most valuable data sources for detecting compromise.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Review authentication behavior in a domain environment.
+
+### Tasks
+
+1. Sign in to a domain-joined computer.
+
+2. Run:
+
+```powershell
+whoami
+```
+
+3. Display:
+
+```powershell
+klist
+```
+
+4. Open:
+
+```text
+Event Viewer
+```
+
+Review authentication-related events.
+
+5. Verify:
+
+- DNS configuration
+- Time synchronization
+- Domain membership
+
+6. Document:
+
+- Authentication protocol observed
+- Kerberos tickets
+- Current group memberships
+- Authentication-related events
+
+---
+
+# Complete Chapter Summary
+
+This chapter covered:
+
+- Authentication fundamentals
+- Authentication vs Authorization
+- Domain Controllers
+- DNS and authentication
+- Secure Channel
+- Kerberos
+- NTLM
+- KDC
+- Authentication Service (AS)
+- Ticket Granting Service (TGS)
+- Ticket Granting Ticket (TGT)
+- Service Tickets
+- Service Principal Names (SPNs)
+- Privilege Attribute Certificate (PAC)
+- Access Tokens
+- Logon Process
+- Cross-domain authentication
+- PowerShell tools
+- Authentication security
+- Monitoring
+- Enterprise best practices
+
+---
+
+# Final Revision Table
+
+| Topic | Key Point |
+|--------|-----------|
+| Authentication | Verifies identity |
+| Authorization | Determines permissions |
+| Kerberos | Default AD authentication protocol |
+| NTLM | Legacy compatibility protocol |
+| KDC | Issues Kerberos tickets |
+| TGT | Used to request service tickets |
+| Service Ticket | Grants access to a specific service |
+| SPN | Identifies a Kerberos-enabled service |
+| PAC | Contains authorization data |
+| Access Token | Security context used for authorization |
+| Secure Channel | Trusted communication between computer and domain |
+| MFA | Improves authentication security |
+
+---
+
+# Interview Questions
+
+## Basic
+
+1. What is authentication?
+2. What is the difference between authentication and authorization?
+3. What is Kerberos?
+4. What is NTLM?
+5. What is the KDC?
+
+## Intermediate
+
+6. What is a TGT?
+7. What is a Service Ticket?
+8. What is the PAC?
+9. What is an SPN?
+10. Why is DNS important for authentication?
+
+## Advanced
+
+11. How does Kerberos enable Single Sign-On?
+12. What is the role of LSASS during authentication?
+13. How would you troubleshoot Kerberos authentication failures?
+14. Why should NTLM usage be minimized?
+15. How would you design authentication monitoring for a large enterprise?
+
+---
+
+# References
+
+- Microsoft Learn – Windows Authentication
+- Microsoft Learn – Kerberos Authentication
+- Microsoft Learn – Active Directory Domain Services
+- Microsoft Learn – Windows Hello for Business
+- Microsoft Learn – Microsoft Defender for Identity
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+- CIS Microsoft Windows Benchmarks
+- NIST SP 800-63 Digital Identity Guidelines
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 14 – Active Directory Authentication**.
+
+You now understand:
+
+- How authentication works in Active Directory.
+- The differences between Kerberos and NTLM.
+- The roles of the KDC, TGT, and Service Tickets.
+- How access tokens and the PAC support authorization.
+- How authentication works across trusted domains.
+- Authentication monitoring and enterprise security best practices.
+- Common authentication risks and defensive mitigations.
+
+These concepts form the foundation for understanding enterprise identity systems and are essential for Windows Administrators, Active Directory Engineers, SOC Analysts, Incident Responders, Identity Administrators, and Cybersecurity Professionals.
+
+---
+
