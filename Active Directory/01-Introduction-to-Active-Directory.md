@@ -1818,4 +1818,571 @@ Understand LDAP and directory queries conceptually.
 
 ---
 
-**Next:** **Part 4 — Active Directory Editions, Deployment Models, Enterprise Planning, Best Practices, Common Misconceptions, Chapter Summary, and Final Revision**
+# 01-Introduction-to-Active-Directory.md
+
+# Part 4 — Active Directory Editions, Deployment Models, Enterprise Planning, Best Practices, Common Misconceptions, Chapter Summary, and Final Revision
+
+---
+
+# Learning Objectives
+
+After completing this chapter, you will be able to:
+
+- Understand where Active Directory can be deployed.
+- Compare on-premises, cloud, and hybrid identity models.
+- Learn enterprise planning considerations before deploying AD.
+- Understand Active Directory best practices.
+- Recognize common misconceptions.
+- Review the complete chapter through summary tables and interview questions.
+
+---
+
+# Active Directory Deployment Models
+
+Modern organizations generally use one of three identity models.
+
+```text
+               Identity Models
+
+                      │
+      ┌───────────────┼───────────────┐
+      │               │               │
+ On-Premises       Hybrid        Cloud Identity
+ Active Directory   Identity      (Microsoft Entra ID)
+```
+
+Each model has different operational and security considerations.
+
+---
+
+# 1. On-Premises Active Directory
+
+Traditional deployment hosted entirely within the organization's own infrastructure.
+
+```text
+Users
+
+↓
+
+Corporate Network
+
+↓
+
+Domain Controllers
+
+↓
+
+Servers
+
+↓
+
+Shared Resources
+```
+
+### Advantages
+
+- Full administrative control
+- Local authentication
+- Mature ecosystem
+- Works without Internet connectivity for internal authentication
+- Supports legacy applications
+
+### Challenges
+
+- Hardware management
+- Infrastructure maintenance
+- Backup responsibility
+- Disaster recovery planning
+- Physical security
+
+---
+
+# 2. Cloud Identity
+
+Cloud-native identity managed through **Microsoft Entra ID**.
+
+```text
+Users
+
+↓
+
+Internet
+
+↓
+
+Microsoft Entra ID
+
+↓
+
+Microsoft 365
+
+↓
+
+Cloud Applications
+```
+
+### Advantages
+
+- Reduced infrastructure management
+- Global availability
+- Built-in cloud integrations
+- Supports modern authentication
+- Simplified SaaS access
+
+### Challenges
+
+- Internet dependency for many services
+- Legacy application compatibility
+- Different administration model than traditional AD
+
+---
+
+# 3. Hybrid Identity
+
+Many enterprises combine Active Directory with Microsoft Entra ID.
+
+```text
+          On-Premises
+
+        Active Directory
+
+               │
+
+     Directory Synchronization
+
+               │
+
+      Microsoft Entra ID
+
+               │
+
+ Cloud Applications
+```
+
+Benefits include:
+
+- Existing investments are preserved.
+- Users access both on-premises and cloud resources.
+- Supports phased cloud migration.
+
+Hybrid identity is common in medium and large organizations.
+
+---
+
+# Active Directory Editions and Requirements
+
+Active Directory Domain Services (AD DS) is a **Windows Server role**.
+
+Common Windows Server editions include:
+
+| Edition | Typical Use |
+|----------|-------------|
+| Standard | Small to medium environments |
+| Datacenter | Large-scale virtualization and enterprise deployments |
+
+Client operating systems (Windows 10/11) can join an Active Directory domain but do not host AD DS.
+
+---
+
+# Core Infrastructure Requirements
+
+Before deploying Active Directory, ensure the following components are planned:
+
+| Component | Why It Matters |
+|-----------|----------------|
+| Reliable DNS | Required for locating domain services |
+| Time synchronization | Essential for Kerberos authentication |
+| Static IP addresses for Domain Controllers | Ensures consistent service availability |
+| Secure network | Protects authentication traffic |
+| Backup strategy | Supports recovery after failures |
+| Administrative model | Defines delegated responsibilities |
+
+---
+
+# Enterprise Planning Checklist
+
+Before implementing Active Directory, answer questions such as:
+
+- How many users will the environment support?
+- How many locations are involved?
+- What is the expected growth over five years?
+- What naming convention will be used?
+- How many Domain Controllers are required?
+- What is the disaster recovery strategy?
+- Which teams require delegated administration?
+- Which compliance requirements apply?
+
+Planning reduces future restructuring efforts.
+
+---
+
+# Naming Conventions
+
+Consistent naming improves administration.
+
+Example:
+
+Users
+
+```text
+firstname.lastname
+```
+
+Computers
+
+```text
+HR-LT-001
+IT-WS-025
+FIN-SRV-001
+```
+
+Groups
+
+```text
+GG_HR_Read
+GG_IT_Admin
+DL_Finance_Printers
+```
+
+Organizational Units
+
+```text
+Finance
+
+Human Resources
+
+Information Technology
+
+Sales
+
+Marketing
+```
+
+Good naming conventions simplify automation, reporting, and troubleshooting.
+
+---
+
+# Administrative Roles
+
+Separate administrative responsibilities whenever possible.
+
+Example:
+
+| Team | Responsibilities |
+|------|------------------|
+| Help Desk | Password resets, account unlocks |
+| Desktop Support | Computer management |
+| Server Team | Server administration |
+| Identity Team | Active Directory administration |
+| Security Team | Monitoring, auditing, incident response |
+
+Avoid assigning unnecessary enterprise-wide privileges.
+
+---
+
+# High Availability
+
+A resilient Active Directory environment should include:
+
+- Multiple Domain Controllers
+- Redundant DNS
+- Regular backups
+- Tested recovery procedures
+- Geographic redundancy where appropriate
+
+Example:
+
+```text
+             Head Office
+
+          ┌───────────────┐
+          │     DC01      │
+          └───────────────┘
+
+                 │
+          Replication
+                 │
+
+          ┌───────────────┐
+          │     DC02      │
+          └───────────────┘
+
+                 │
+
+          Branch Office
+
+          ┌───────────────┐
+          │     DC03      │
+          └───────────────┘
+```
+
+---
+
+# Backup and Recovery
+
+Backups should include:
+
+- System State
+- Active Directory database
+- SYSVOL
+- DNS (if integrated)
+- Critical configuration documentation
+
+Backups should be **tested**, not merely created.
+
+---
+
+# Monitoring Recommendations
+
+Monitor:
+
+- Authentication failures
+- Privileged group membership changes
+- Account lockouts
+- Replication health
+- DNS health
+- Domain Controller performance
+- Time synchronization
+- Security events
+
+Early detection helps prevent operational and security incidents.
+
+---
+
+# Active Directory Best Practices
+
+### Identity
+
+- Use unique accounts.
+- Disable inactive accounts.
+- Remove unnecessary privileges.
+- Review memberships regularly.
+
+---
+
+### Security
+
+- Enforce strong password policies.
+- Enable multi-factor authentication where applicable.
+- Protect privileged accounts.
+- Audit administrative activity.
+- Use secure protocols.
+
+---
+
+### Administration
+
+- Delegate permissions instead of sharing administrator accounts.
+- Follow documented change management.
+- Test changes before production deployment.
+- Maintain an inventory of critical systems.
+
+---
+
+### Infrastructure
+
+- Deploy multiple Domain Controllers.
+- Keep systems patched.
+- Synchronize time reliably.
+- Monitor replication.
+- Validate backups.
+
+---
+
+# Common Misconceptions
+
+## Myth 1
+
+> Active Directory is only for authentication.
+
+Reality:
+
+AD also manages authorization, policies, devices, groups, trusts, replication, and directory services.
+
+---
+
+## Myth 2
+
+> Every administrator should be a Domain Admin.
+
+Reality:
+
+Only a small number of trusted administrators should have Domain Admin privileges.
+
+---
+
+## Myth 3
+
+> DNS is optional.
+
+Reality:
+
+DNS is fundamental to Active Directory functionality.
+
+---
+
+## Myth 4
+
+> One Domain Controller is sufficient.
+
+Reality:
+
+Multiple Domain Controllers improve availability and resilience.
+
+---
+
+## Myth 5
+
+> Backups are enough.
+
+Reality:
+
+Recovery procedures must also be tested.
+
+---
+
+# Enterprise Scenario
+
+A multinational organization has:
+
+- 18,000 employees
+- 22 offices
+- 1 Active Directory forest
+- 6 domains
+- 40 Domain Controllers
+- Hybrid identity with Microsoft Entra ID
+
+Requirements:
+
+- Centralized authentication
+- Secure delegation
+- Consistent Group Policy
+- High availability
+- Disaster recovery
+- Compliance auditing
+
+Active Directory enables these capabilities through centralized identity and policy management.
+
+---
+
+# Cybersecurity Perspective
+
+Active Directory is often considered the "keys to the kingdom" in Windows environments.
+
+Compromising Active Directory may allow attackers to:
+
+- Escalate privileges
+- Access sensitive systems
+- Move laterally
+- Persist in the environment
+- Control enterprise resources
+
+Defensive priorities include:
+
+- Protecting privileged accounts
+- Monitoring authentication
+- Hardening Domain Controllers
+- Applying least privilege
+- Regular auditing
+- Incident response planning
+
+---
+
+# Complete Chapter Summary
+
+This chapter introduced:
+
+- Active Directory fundamentals
+- History and evolution
+- Directory services
+- Authentication
+- Authorization
+- Active Directory objects
+- Attributes
+- Distinguished Names
+- GUIDs
+- Security Identifiers
+- Active Directory Schema
+- NTDS.DIT
+- Directory partitions
+- LDAP
+- X.500
+- Identity management
+- Deployment models
+- Enterprise planning
+- Best practices
+- Common misconceptions
+
+These concepts form the foundation for all subsequent Active Directory topics.
+
+---
+
+# Final Revision Table
+
+| Topic | Key Point |
+|------|-----------|
+| Active Directory | Centralized directory service |
+| Directory Service | Stores and manages identities and resources |
+| Authentication | Verifies identity |
+| Authorization | Determines access rights |
+| LDAP | Protocol for accessing directory services |
+| X.500 | Foundation for modern directory concepts |
+| Schema | Defines object types and attributes |
+| NTDS.DIT | Active Directory database |
+| SID | Security identifier used for permissions |
+| GUID | Permanent unique object identifier |
+| DN | Unique object path |
+| OU | Logical organization of objects |
+| Domain | Administrative boundary |
+| Forest | Highest logical boundary |
+| Hybrid Identity | Combines AD and Microsoft Entra ID |
+
+---
+
+# Interview Questions
+
+1. Compare on-premises, cloud, and hybrid identity.
+2. Why is DNS essential for Active Directory?
+3. Why should Domain Admin privileges be limited?
+4. What information is stored in NTDS.DIT?
+5. What is the purpose of the Active Directory Schema?
+6. Explain the difference between a SID and a GUID.
+7. Why are multiple Domain Controllers recommended?
+8. What planning considerations are important before deploying Active Directory?
+9. What are common Active Directory best practices?
+10. Why is Active Directory considered a high-value target in cybersecurity?
+
+---
+
+# Practical Exercises
+
+1. Draw a simple Active Directory hierarchy for a fictional company.
+2. Create a naming convention for users, computers, and groups.
+3. List five Active Directory objects and five attributes for each.
+4. Compare local accounts with domain accounts.
+5. Explain how authentication differs from authorization using a real-world example.
+6. Research how your organization (or a lab environment) manages identities.
+7. Document a basic disaster recovery checklist for Domain Controllers.
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Domain Services
+- Microsoft Windows Server Documentation
+- Microsoft Identity Documentation
+- Windows Internals
+- NIST Digital Identity Guidelines
+- CIS Microsoft Windows Benchmarks
+- RFC 4511 – Lightweight Directory Access Protocol (LDAP)
+
+---
+
+# Congratulations!
+
+You have completed **Chapter 01 – Introduction to Active Directory**.
+
+You now have a solid conceptual understanding of Active Directory, its history, architecture, identity concepts, directory services, deployment models, and enterprise design principles. This foundation prepares you for deeper exploration of Active Directory architecture and administration.
+
+---
+
