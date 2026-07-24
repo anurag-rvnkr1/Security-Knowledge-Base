@@ -1846,4 +1846,915 @@ gpresult /r
 
 ---
 
-**Next:** **Part 3 — Group Policy Management, Administrative Templates, Preferences, PowerShell, Troubleshooting, and Enterprise Operations**
+# 11-Group-Policy.md
+
+# Part 3 — Group Policy Management, Administrative Templates, Group Policy Preferences, PowerShell, Troubleshooting, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Create and manage Group Policy Objects (GPOs).
+- Understand Administrative Templates.
+- Learn the difference between Policies and Preferences.
+- Manage GPOs using PowerShell.
+- Understand Group Policy troubleshooting.
+- Apply enterprise operational best practices.
+
+---
+
+# Review
+
+In previous parts, we learned:
+
+- Group Policy fundamentals
+- GPC and GPT
+- SYSVOL
+- LSDOU processing
+- Inheritance
+- Enforced
+- Block Inheritance
+- Security Filtering
+- WMI Filtering
+- Loopback Processing
+
+Now we'll focus on **managing Group Policy in real enterprise environments.**
+
+---
+
+# Group Policy Management Console (GPMC)
+
+The primary management tool is:
+
+```text
+Group Policy Management
+
+(gpmc.msc)
+```
+
+Using GPMC, administrators can:
+
+- Create GPOs
+- Edit GPOs
+- Link GPOs
+- Remove GPOs
+- Backup GPOs
+- Restore GPOs
+- Import and export settings
+- View Resultant Set of Policy (RSoP)
+
+---
+
+# GPMC Overview
+
+```text
+Forest
+
+↓
+
+Domains
+
+↓
+
+Group Policy Objects
+
+↓
+
+Sites
+
+↓
+
+OUs
+
+↓
+
+Linked GPOs
+```
+
+---
+
+# Creating a New GPO
+
+Steps:
+
+```text
+Right Click
+
+↓
+
+Group Policy Objects
+
+↓
+
+New
+
+↓
+
+Enter Name
+
+↓
+
+Create
+```
+
+Example:
+
+```text
+Windows Security Baseline
+```
+
+---
+
+# Linking a GPO
+
+Creating a GPO does **not** apply it automatically.
+
+It must be linked to:
+
+```text
+Site
+
+Domain
+
+OU
+```
+
+Example:
+
+```text
+Finance OU
+
+↓
+
+Finance Security GPO
+```
+
+---
+
+# Editing a GPO
+
+Open:
+
+```text
+Edit
+```
+
+You'll see two main sections:
+
+```text
+Computer Configuration
+
+User Configuration
+```
+
+---
+
+# Computer Configuration
+
+Applies to:
+
+```text
+Computer
+
+↓
+
+Regardless of User
+```
+
+Examples:
+
+- Windows Defender
+- BitLocker
+- Firewall
+- Windows Update
+- Device Restrictions
+- Audit Policy
+- Services
+
+---
+
+# User Configuration
+
+Applies to:
+
+```text
+User
+
+↓
+
+Regardless of Computer
+```
+
+Examples:
+
+- Desktop wallpaper
+- Start Menu
+- Control Panel
+- Microsoft Edge
+- Folder Redirection
+- Drive Mappings
+- Logon Scripts
+
+---
+
+# GPO Structure
+
+```text
+Group Policy
+
+│
+
+├── Computer Configuration
+
+│
+
+└── User Configuration
+```
+
+Each section contains:
+
+- Policies
+- Preferences
+- Windows Settings
+- Administrative Templates
+
+---
+
+# Administrative Templates
+
+Administrative Templates provide thousands of configurable Windows settings.
+
+Most Administrative Template settings write values to the Windows Registry.
+
+---
+
+# Administrative Templates Hierarchy
+
+```text
+Administrative Templates
+
+│
+
+├── Control Panel
+
+├── Desktop
+
+├── Network
+
+├── Printers
+
+├── Start Menu
+
+├── System
+
+├── Windows Components
+
+└── Microsoft Edge
+```
+
+---
+
+# Example Administrative Template
+
+```text
+Windows Components
+
+↓
+
+Microsoft Edge
+
+↓
+
+Disable Password Manager
+```
+
+Administrator:
+
+```text
+Enabled
+```
+
+All targeted systems receive the configuration.
+
+---
+
+# Registry-Based Policies
+
+Many Administrative Template settings update registry values under policy-specific locations such as:
+
+```text
+HKLM
+
+↓
+
+Policies
+```
+
+or
+
+```text
+HKCU
+
+↓
+
+Policies
+```
+
+Administrators should use Group Policy rather than editing these registry values manually whenever possible.
+
+---
+
+# Group Policy Preferences (GPP)
+
+Policies and Preferences are different.
+
+Policies:
+
+```text
+Enforced Configuration
+```
+
+Preferences:
+
+```text
+Administrative Convenience
+
+↓
+
+Initial Configuration
+
+↓
+
+Can Often Be Changed Later
+```
+
+---
+
+# Policy vs Preference
+
+| Policies | Preferences |
+|-----------|-------------|
+| Designed for enforcement | Designed for configuration |
+| Often restrict user changes | Usually allow later user modification |
+| Managed by policy engine | Managed by Group Policy Preferences |
+| Common for security | Common for operational tasks |
+
+---
+
+# Examples of Preferences
+
+Preferences can configure:
+
+- Drive mappings
+- Scheduled Tasks
+- Printers
+- Local Users and Groups
+- Registry values
+- Environment variables
+- Files
+- Shortcuts
+- Network drives
+
+---
+
+# Example
+
+```text
+Finance OU
+
+↓
+
+Map Drive
+
+↓
+
+Z:
+
+↓
+
+Finance Share
+```
+
+No manual mapping required.
+
+---
+
+# Folder Redirection
+
+Administrators can redirect user folders.
+
+Example:
+
+```text
+Documents
+
+↓
+
+File Server
+```
+
+Benefits:
+
+- Central storage
+- Backup
+- Roaming users
+- Easier recovery
+
+---
+
+# Scripts
+
+Group Policy supports:
+
+```text
+Computer
+
+↓
+
+Startup
+
+Shutdown
+```
+
+and
+
+```text
+User
+
+↓
+
+Logon
+
+Logoff
+```
+
+scripts.
+
+Common uses:
+
+- Mapping drives
+- Configuring applications
+- Running maintenance tasks
+- Inventory collection
+
+---
+
+# Software Deployment
+
+Group Policy can deploy certain Windows Installer (MSI) packages.
+
+Example:
+
+```text
+Accounting Software
+
+↓
+
+Finance OU
+
+↓
+
+Installed Automatically
+```
+
+Modern enterprises may also use solutions such as Microsoft Intune or Microsoft Configuration Manager for broader application lifecycle management.
+
+---
+
+# Starter GPOs
+
+Starter GPOs provide reusable templates containing Administrative Template settings.
+
+Example:
+
+```text
+Starter GPO
+
+↓
+
+Security Baseline
+
+↓
+
+New GPO Created
+
+↓
+
+Baseline Included
+```
+
+They help standardize GPO creation.
+
+---
+
+# Backup and Restore
+
+GPMC supports:
+
+```text
+Backup
+
+↓
+
+Restore
+```
+
+This protects against accidental changes or deletion.
+
+---
+
+# Import and Copy
+
+Administrators can:
+
+```text
+Existing GPO
+
+↓
+
+Backup
+
+↓
+
+Import
+
+↓
+
+Another GPO
+```
+
+or copy GPOs between domains and forests where appropriate.
+
+Migration tables may be required when environment-specific references differ.
+
+---
+
+# PowerShell Management
+
+The **GroupPolicy** PowerShell module simplifies automation.
+
+---
+
+# List GPOs
+
+```powershell
+Get-GPO -All
+```
+
+---
+
+# Create GPO
+
+```powershell
+New-GPO `
+-Name "Security Baseline"
+```
+
+---
+
+# Link GPO
+
+```powershell
+New-GPLink `
+-Name "Security Baseline" `
+-Target "OU=IT,DC=company,DC=com"
+```
+
+---
+
+# Backup GPO
+
+```powershell
+Backup-GPO `
+-Name "Security Baseline" `
+-Path "C:\GPOBackups"
+```
+
+---
+
+# Restore GPO
+
+```powershell
+Restore-GPO
+```
+
+Restore operations should be tested in non-production environments whenever possible.
+
+---
+
+# Reporting
+
+Generate reports:
+
+```powershell
+Get-GPOReport
+```
+
+Formats include:
+
+- HTML
+- XML
+
+These reports assist with documentation and auditing.
+
+---
+
+# Enterprise Automation
+
+Example:
+
+```text
+PowerShell
+
+↓
+
+Create GPO
+
+↓
+
+Link GPO
+
+↓
+
+Backup
+
+↓
+
+Generate Report
+
+↓
+
+Complete
+```
+
+Automation reduces repetitive administrative work.
+
+---
+
+# Troubleshooting GPOs
+
+Common issues:
+
+- Incorrect link
+- Wrong OU
+- Disabled GPO
+- Disabled GPO section
+- Security Filtering
+- WMI Filtering
+- Replication delays
+- SYSVOL issues
+- DNS problems
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Policy Missing
+
+↓
+
+Correct Link?
+
+↓
+
+Enabled?
+
+↓
+
+Correct Scope?
+
+↓
+
+Filtering?
+
+↓
+
+Replication Healthy?
+
+↓
+
+gpresult
+
+↓
+
+Resolved
+```
+
+---
+
+# Useful Commands
+
+Refresh policies:
+
+```text
+gpupdate /force
+```
+
+View applied policies:
+
+```text
+gpresult /r
+```
+
+Generate HTML report:
+
+```text
+gpresult /h report.html
+```
+
+---
+
+# Event Viewer
+
+Useful logs include:
+
+```text
+Applications and Services Logs
+
+↓
+
+Microsoft
+
+↓
+
+Windows
+
+↓
+
+GroupPolicy
+```
+
+These logs provide detailed processing information.
+
+---
+
+# Enterprise Example
+
+Global organization:
+
+- 120,000 users
+- 70 offices
+- Hundreds of GPOs
+
+Administration:
+
+```text
+Standard GPOs
+
+↓
+
+Security Baselines
+
+↓
+
+Department GPOs
+
+↓
+
+Location GPOs
+
+↓
+
+Auditing
+```
+
+Benefits:
+
+- Consistent security
+- Simplified administration
+- Reduced support effort
+- Faster deployment
+
+---
+
+# Best Practices
+
+- Use descriptive GPO names.
+- Organize GPOs by purpose.
+- Minimize unnecessary settings in a single GPO.
+- Backup GPOs regularly.
+- Test changes before production deployment.
+- Document every GPO.
+- Remove obsolete GPOs.
+- Review links and filtering periodically.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Editing the wrong GPO.
+- Linking a GPO to the wrong OU.
+- Combining unrelated settings into one GPO.
+- Forgetting to back up before major changes.
+- Ignoring replication status.
+- Troubleshooting without checking `gpresult`.
+
+---
+
+# Cybersecurity Perspective
+
+Group Policy is central to Windows security.
+
+Security teams commonly use GPOs to:
+
+- Enforce password policies.
+- Configure Microsoft Defender.
+- Enable BitLocker.
+- Configure Windows Firewall.
+- Enable auditing.
+- Restrict removable storage.
+- Apply browser hardening.
+- Enforce security baselines.
+
+Unauthorized modification of GPOs can affect thousands of systems, making privileged access control and auditing essential.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Create and manage a GPO.
+
+### Tasks
+
+1. Open:
+
+```text
+Group Policy Management
+```
+
+2. Create:
+
+```text
+Lab Security GPO
+```
+
+3. Configure:
+
+- Desktop wallpaper
+- Password-related setting (where applicable)
+- Windows Defender setting
+- Drive mapping using Preferences
+
+4. Link the GPO to a test OU.
+
+5. Run:
+
+```text
+gpupdate /force
+```
+
+6. Verify:
+
+```text
+gpresult /h report.html
+```
+
+7. Backup the GPO.
+
+---
+
+# Key Takeaways
+
+- GPMC is the primary tool for managing Group Policy.
+- Administrative Templates provide thousands of registry-based settings.
+- Policies enforce configuration; Preferences simplify configuration tasks.
+- PowerShell enables large-scale GPO automation.
+- Backup, documentation, and testing are essential for enterprise administration.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of the Group Policy Management Console?
+2. What is the difference between Computer Configuration and User Configuration?
+3. What are Administrative Templates?
+4. How do Policies differ from Preferences?
+5. What is Folder Redirection?
+6. Which PowerShell cmdlet creates a new GPO?
+7. Which cmdlet links a GPO to an OU?
+8. How do you generate a GPO report?
+9. What are common causes of GPO failures?
+10. Why should GPOs be backed up regularly?
+
+---
+
+# References
+
+- Microsoft Learn – Group Policy Management Console
+- Microsoft Learn – Administrative Templates
+- Microsoft Learn – Group Policy Preferences
+- Microsoft Learn – GroupPolicy PowerShell Module
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — Group Policy Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
