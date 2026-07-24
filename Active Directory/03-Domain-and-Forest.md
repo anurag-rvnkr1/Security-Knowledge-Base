@@ -1171,4 +1171,587 @@ Compare different Active Directory design models.
 
 ---
 
-**Next:** **Part 3 — Forest-Wide Components, Global Catalog Placement, Domain Boundaries, Administrative Models, and Enterprise Architecture**
+# 03-Domain-and-Forest.md
+
+# Part 3 — Forest-Wide Components, Global Catalog Placement, Domain Boundaries, Administrative Models, and Enterprise Architecture
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand forest-wide Active Directory components.
+- Learn how domains interact inside a forest.
+- Understand Global Catalog placement strategies.
+- Compare administrative models.
+- Learn enterprise domain design principles.
+- Understand forest boundaries from both operational and cybersecurity perspectives.
+
+---
+
+# Forest-Wide Components
+
+Certain Active Directory components are shared across the entire forest.
+
+These include:
+
+- Active Directory Schema
+- Configuration Partition
+- Global Catalog
+- Trust Infrastructure
+- Forest Functional Level
+- Enterprise Administrative Groups
+- Forest-wide replication of schema and configuration data
+
+These shared components allow domains to operate as a unified directory service.
+
+---
+
+# Forest Architecture
+
+```text
+                    Forest
+
+        ┌────────────┼────────────┐
+
+        │            │            │
+
+   Schema      Configuration   Global Catalog
+
+        │            │            │
+
+        └────────────┼────────────┘
+
+                Domains
+
+        ┌────────┼────────┐
+
+        │        │        │
+
+     Domain A Domain B Domain C
+```
+
+---
+
+# Schema Sharing
+
+Every domain inside a forest uses the **same Active Directory Schema**.
+
+Example:
+
+```text
+Forest
+
+│
+
+Schema
+
+│
+
+├── Domain A
+
+├── Domain B
+
+└── Domain C
+```
+
+Advantages:
+
+- Consistent object definitions
+- Standardized attributes
+- Simplified application integration
+
+Because the schema is shared, schema modifications affect the entire forest and should be carefully planned.
+
+---
+
+# Configuration Partition
+
+The Configuration Partition stores forest-wide information such as:
+
+- Active Directory Sites
+- Site Links
+- Services
+- Replication topology
+- Forest configuration
+
+Example:
+
+```text
+Configuration
+
+│
+
+├── Sites
+
+├── Services
+
+├── Subnets
+
+└── Site Links
+```
+
+All Domain Controllers within the forest receive this partition through replication.
+
+---
+
+# Global Catalog Placement
+
+The Global Catalog (GC) improves search efficiency and supports certain authentication scenarios.
+
+Example:
+
+```text
+Forest
+
+│
+
+├── Domain A
+
+│      └── GC01
+
+│
+
+├── Domain B
+
+│      └── GC02
+
+│
+
+└── Domain C
+
+       └── GC03
+```
+
+---
+
+# Why Place Multiple Global Catalog Servers?
+
+Benefits include:
+
+- Faster directory searches
+- Reduced authentication latency
+- Improved redundancy
+- Better performance for distributed environments
+- Higher availability
+
+Large organizations typically deploy multiple Global Catalog servers across major locations.
+
+---
+
+# Choosing Global Catalog Locations
+
+Factors to consider:
+
+- Number of users
+- Number of sites
+- WAN bandwidth
+- Authentication requirements
+- Disaster recovery
+- Business-critical applications
+
+Avoid placing all Global Catalog servers in a single location.
+
+---
+
+# Administrative Boundaries
+
+Domains provide administrative boundaries that allow organizations to:
+
+- Delegate management
+- Separate operational responsibilities
+- Organize identities
+- Manage Group Policies
+- Apply security controls
+
+However, enterprise governance should remain consistent across the forest where appropriate.
+
+---
+
+# Administrative Models
+
+Several administration models are commonly used.
+
+---
+
+## Centralized Administration
+
+```text
+Corporate IT
+
+│
+
+├── Domain A
+
+├── Domain B
+
+└── Domain C
+```
+
+Characteristics:
+
+- Single IT team
+- Standardized policies
+- Simplified governance
+- Consistent security
+
+---
+
+## Delegated Administration
+
+```text
+Corporate IT
+
+│
+
+├── Region A Admins
+
+├── Region B Admins
+
+└── Region C Admins
+```
+
+Characteristics:
+
+- Regional management
+- Local operational control
+- Reduced central workload
+- Requires clearly defined delegation
+
+---
+
+## Hybrid Administration
+
+```text
+Corporate IT
+
+│
+
+├── Security
+
+├── Infrastructure
+
+├── Regional IT
+
+└── Help Desk
+```
+
+Responsibilities are shared between central and regional teams.
+
+This model is common in large enterprises.
+
+---
+
+# Administrative Delegation
+
+Instead of granting Domain Admin privileges broadly:
+
+Use delegation.
+
+Example:
+
+| Team | Delegated Permissions |
+|------|-----------------------|
+| Help Desk | Reset passwords |
+| Desktop Team | Manage computer accounts |
+| HR IT | Create user accounts |
+| Server Team | Manage servers |
+| Security Team | Audit privileged activity |
+
+Delegation follows the principle of least privilege.
+
+---
+
+# Domain Boundaries
+
+Each domain has its own:
+
+- Domain partition
+- Domain Controllers
+- Authentication database copy
+- Administrative scope
+- Group Policy hierarchy
+
+Forest-wide components remain shared.
+
+---
+
+# Example Enterprise Structure
+
+```text
+Forest
+
+│
+
+├── company.com
+
+│
+
+├── europe.company.com
+
+│
+
+├── asia.company.com
+
+│
+
+└── americas.company.com
+```
+
+Each domain can have:
+
+- Regional administrators
+- Local Domain Controllers
+- Regional Organizational Units
+- Local Group Policies
+
+All share the same forest infrastructure.
+
+---
+
+# Enterprise Identity Flow
+
+```text
+User
+
+↓
+
+Regional Domain
+
+↓
+
+Forest Services
+
+↓
+
+Global Catalog
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Enterprise Resources
+```
+
+---
+
+# Resource Access Across Domains
+
+Example:
+
+```text
+User
+
+↓
+
+HR Domain
+
+↓
+
+Trust Relationship
+
+↓
+
+Finance Domain
+
+↓
+
+ACL Evaluation
+
+↓
+
+Access Granted
+```
+
+Even though authentication can cross domains, permissions must still be explicitly granted.
+
+---
+
+# Forest Growth
+
+As organizations expand, forests may include:
+
+- Additional domains
+- New geographic regions
+- New business units
+- Acquired organizations
+- Additional Domain Controllers
+- Additional Sites
+
+Growth should be planned rather than reactive.
+
+---
+
+# Designing for Scalability
+
+Consider:
+
+- Expected user growth
+- Office expansion
+- Cloud integration
+- Identity lifecycle management
+- Disaster recovery
+- WAN connectivity
+- Replication traffic
+- Administrative workload
+
+A scalable design minimizes future restructuring.
+
+---
+
+# Operational Best Practices
+
+- Standardize naming conventions.
+- Document domain ownership.
+- Review delegated permissions regularly.
+- Monitor replication health.
+- Deploy redundant Domain Controllers.
+- Validate Global Catalog placement.
+- Test disaster recovery plans.
+- Keep architecture documentation current.
+
+---
+
+# Common Design Mistakes
+
+Avoid:
+
+- Creating unnecessary child domains
+- Excessive administrative privileges
+- Poor OU planning
+- Weak documentation
+- Ignoring future growth
+- Poor Global Catalog placement
+- Insufficient Domain Controllers
+- Inconsistent naming standards
+
+Simple, well-governed designs are usually easier to secure and maintain.
+
+---
+
+# Enterprise Case Study
+
+Organization:
+
+- 45,000 employees
+- 25 countries
+- 40 Domain Controllers
+- 8 Global Catalog servers
+- Hybrid identity
+- Regional IT teams
+
+Design:
+
+```text
+Forest
+
+│
+
+└── company.com
+
+       ├── americas.company.com
+
+       ├── europe.company.com
+
+       ├── asia.company.com
+
+       └── middleeast.company.com
+```
+
+Benefits:
+
+- Regional administration
+- Shared schema
+- Consistent governance
+- Efficient authentication
+- Simplified enterprise search
+
+---
+
+# Cybersecurity Perspective
+
+The forest is the highest level of trust within Active Directory.
+
+Security priorities include:
+
+- Protecting Enterprise Admin accounts
+- Limiting forest-wide administrative privileges
+- Monitoring trust relationships
+- Auditing Global Catalog servers
+- Restricting interactive logon to Domain Controllers
+- Securing replication traffic
+- Maintaining accurate documentation
+
+Compromise of forest-level administrative accounts can have organization-wide consequences.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Design a scalable forest architecture.
+
+### Scenario
+
+Organization:
+
+- 12,000 users
+- Four geographic regions
+- One central IT team
+- Regional help desk staff
+
+### Tasks
+
+1. Design the forest hierarchy.
+2. Decide whether multiple domains are required.
+3. Determine Global Catalog placement.
+4. Define delegated administrative roles.
+5. Explain your design decisions.
+
+---
+
+# Key Takeaways
+
+- The Schema and Configuration partitions are shared across the forest.
+- The Global Catalog enables forest-wide searches and supports authentication.
+- Administrative delegation reduces the need for highly privileged accounts.
+- Domain boundaries organize administration while the forest provides shared infrastructure.
+- Good planning improves scalability, availability, and security.
+
+---
+
+# Interview Questions
+
+1. Which components are shared across an Active Directory forest?
+2. Why is the Schema considered a forest-wide component?
+3. What information is stored in the Configuration Partition?
+4. Why are Global Catalog servers important?
+5. How should Global Catalog placement be planned?
+6. What is administrative delegation?
+7. Why should Domain Admin privileges be minimized?
+8. What are the advantages of centralized versus delegated administration?
+9. How does a forest support enterprise scalability?
+10. Why is the forest considered a critical security boundary?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Forest Design
+- Microsoft Windows Server Documentation
+- Microsoft Identity Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+- CIS Microsoft Windows Benchmarks
+
+---
+
+**Next:** **Part 4 — Forest Design Best Practices, Domain Lifecycle, Common Misconceptions, Architecture Review, Final Revision, and Chapter Summary**
