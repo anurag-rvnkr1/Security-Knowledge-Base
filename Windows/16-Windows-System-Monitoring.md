@@ -1570,4 +1570,758 @@ Identify:
 
 ---
 
-**Next:** **Part 3 — Windows Event Monitoring, Resource Analysis, PowerShell Monitoring, Automation, and Enterprise Operations**
+# 16-Windows-System-Monitoring.md
+
+# Part 3 — Windows Event Monitoring, Resource Analysis, PowerShell Monitoring, Automation, and Enterprise Operations
+
+---
+
+# Introduction
+
+Monitoring resource utilization alone is insufficient in enterprise environments.
+
+Administrators and security teams must also monitor:
+
+- Windows Events
+- Services
+- Processes
+- Scheduled Tasks
+- Startup Applications
+- Hardware Health
+- User Activity
+- PowerShell Activity
+- System Availability
+
+Combining performance metrics with event monitoring provides a complete picture of system health.
+
+---
+
+# Enterprise Monitoring Architecture
+
+```text
+Windows Endpoint
+
+↓
+
+Performance Metrics
+
+↓
+
+Windows Events
+
+↓
+
+PowerShell Logs
+
+↓
+
+Central Monitoring Platform
+
+↓
+
+Correlation Engine
+
+↓
+
+SOC / IT Operations
+
+↓
+
+Incident Response
+```
+
+Enterprise monitoring platforms correlate multiple data sources to identify operational and security issues.
+
+---
+
+# Windows Event Monitoring
+
+Windows records events for nearly every significant operating system activity.
+
+Examples include:
+
+- User logons
+- Application crashes
+- Driver failures
+- Service starts
+- Software installation
+- Security events
+- Hardware errors
+
+These events are stored in Event Logs.
+
+---
+
+# Windows Event Logs
+
+Major log categories include:
+
+| Log | Purpose |
+|------|----------|
+| Application | Application events |
+| Security | Authentication and security events |
+| System | Operating system events |
+| Setup | Installation events |
+| Forwarded Events | Events collected from remote systems |
+
+Administrators regularly review these logs during troubleshooting.
+
+---
+
+# Event Severity Levels
+
+Windows classifies events by severity.
+
+| Level | Meaning |
+|--------|----------|
+| Information | Normal operation |
+| Warning | Potential issue |
+| Error | Failure occurred |
+| Critical | Severe failure |
+| Verbose | Detailed diagnostic information |
+
+Severity helps prioritize investigation.
+
+---
+
+# Event ID
+
+Each Windows event has a unique Event ID.
+
+Example:
+
+```text
+Event ID
+
+4624
+
+↓
+
+Successful Logon
+```
+
+Event IDs allow administrators to identify specific system activities quickly.
+
+---
+
+# Event Correlation
+
+Single events rarely tell the complete story.
+
+Example:
+
+```text
+High CPU
+
++
+
+Repeated Service Failures
+
++
+
+Disk Errors
+
+↓
+
+Application Outage
+```
+
+Correlating multiple events improves diagnostic accuracy.
+
+---
+
+# Monitoring Services
+
+Critical services should be monitored continuously.
+
+Examples:
+
+- Windows Event Log
+- WinRM
+- DNS Client
+- DHCP Client
+- Windows Time
+- Remote Procedure Call (RPC)
+
+Unexpected service failures may indicate configuration issues or security incidents.
+
+---
+
+# Service Monitoring Workflow
+
+```text
+Service
+
+↓
+
+Running?
+
+↓
+
+Yes
+
+↓
+
+Continue Monitoring
+
+No
+
+↓
+
+Generate Alert
+
+↓
+
+Administrator Investigation
+```
+
+Automated monitoring reduces recovery time.
+
+---
+
+# Process Monitoring
+
+Administrators monitor processes for:
+
+- Excessive CPU usage
+- High memory consumption
+- Unexpected execution
+- Frequent crashes
+- Long execution times
+
+Monitoring helps identify both operational and security issues.
+
+---
+
+# Important Process Metrics
+
+| Metric | Description |
+|----------|-------------|
+| CPU | Processor utilization |
+| Memory | RAM usage |
+| Handles | Open operating system objects |
+| Threads | Number of active threads |
+| Runtime | Process lifetime |
+
+Unexpected changes may require investigation.
+
+---
+
+# Startup Application Monitoring
+
+Applications configured to start automatically affect:
+
+- Boot performance
+- User experience
+- Resource utilization
+
+Common startup locations include:
+
+- Startup Folder
+- Registry Run Keys
+- Scheduled Tasks
+- Services
+
+Administrators should review startup entries periodically.
+
+---
+
+# Scheduled Task Monitoring
+
+Organizations rely heavily on scheduled tasks.
+
+Examples:
+
+- Backups
+- Maintenance
+- Software updates
+- Compliance reports
+- Inventory collection
+
+Failed scheduled tasks should generate alerts.
+
+---
+
+# Hardware Monitoring
+
+Hardware health directly affects system availability.
+
+Important components:
+
+- CPU temperature
+- Fan status
+- Storage health
+- Power supply
+- Memory errors
+
+Enterprise hardware often provides dedicated monitoring interfaces.
+
+---
+
+# SMART Monitoring
+
+Many storage devices support **SMART (Self-Monitoring, Analysis and Reporting Technology).**
+
+SMART monitors:
+
+- Reallocated sectors
+- Temperature
+- Read errors
+- Power-on hours
+- Health indicators
+
+Administrators should replace failing disks proactively.
+
+---
+
+# Resource Contention
+
+Multiple applications may compete for limited resources.
+
+Example:
+
+```text
+Application A
+
+↓
+
+CPU
+
+↑
+
+↓
+
+Application B
+
+↓
+
+Performance Degradation
+```
+
+Monitoring identifies resource contention before it impacts users.
+
+---
+
+# Bottleneck Identification
+
+Common bottlenecks include:
+
+- CPU saturation
+- Memory pressure
+- Storage latency
+- Network congestion
+
+The slowest component often limits overall system performance.
+
+---
+
+# PowerShell Monitoring
+
+PowerShell provides extensive monitoring capabilities.
+
+Examples:
+
+```powershell
+Get-Process
+
+Get-Service
+
+Get-Counter
+
+Get-WinEvent
+
+Get-CimInstance
+```
+
+PowerShell enables administrators to automate routine monitoring tasks.
+
+---
+
+# Get-Counter
+
+Retrieve performance counter data.
+
+Example:
+
+```powershell
+Get-Counter "\Processor(_Total)\% Processor Time"
+```
+
+This cmdlet is useful for automated performance collection.
+
+---
+
+# Get-Process
+
+Example:
+
+```powershell
+Get-Process |
+Sort-Object CPU -Descending
+```
+
+Displays processes consuming the most CPU time.
+
+---
+
+# Get-Service
+
+View running services.
+
+```powershell
+Get-Service
+```
+
+Display only stopped services.
+
+```powershell
+Get-Service |
+Where-Object Status -eq Stopped
+```
+
+---
+
+# Get-CimInstance
+
+Collect system information.
+
+Example:
+
+```powershell
+Get-CimInstance Win32_OperatingSystem
+```
+
+Useful properties include:
+
+- Version
+- Build Number
+- Last Boot Time
+
+---
+
+# Get-WinEvent
+
+Retrieve recent system events.
+
+```powershell
+Get-WinEvent `
+-LogName System `
+-MaxEvents 20
+```
+
+PowerShell enables advanced event filtering and automation.
+
+---
+
+# Automating Monitoring
+
+Typical automation workflow:
+
+```text
+Run Script
+
+↓
+
+Collect Metrics
+
+↓
+
+Analyze Thresholds
+
+↓
+
+Generate Report
+
+↓
+
+Email Results
+
+↓
+
+Store Logs
+```
+
+Automation reduces manual effort and ensures consistent monitoring.
+
+---
+
+# Health Check Script
+
+Enterprise health check scripts commonly verify:
+
+- CPU utilization
+- Available memory
+- Disk space
+- Running services
+- Event log errors
+- Windows updates
+- System uptime
+
+Health checks are often scheduled daily.
+
+---
+
+# Monitoring Reports
+
+Common report formats include:
+
+- CSV
+- HTML
+- JSON
+- XML
+- PDF (generated by external tooling)
+
+Reports are distributed to operations teams and management.
+
+---
+
+# Enterprise Dashboards
+
+Dashboards consolidate metrics from multiple systems.
+
+Example:
+
+```text
+Servers
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboard
+
+↓
+
+Alerts
+
+↓
+
+Operations Team
+```
+
+Dashboards improve situational awareness.
+
+---
+
+# SLA Monitoring
+
+Service Level Agreements (SLAs) define expected service quality.
+
+Example metrics:
+
+- Uptime
+- Response time
+- Recovery time
+- Availability
+- Incident resolution
+
+Monitoring verifies compliance with SLA commitments.
+
+---
+
+# Capacity Monitoring
+
+Administrators monitor long-term growth.
+
+Resources include:
+
+- Storage
+- CPU
+- Memory
+- Network bandwidth
+
+Capacity reports support budgeting and infrastructure planning.
+
+---
+
+# Enterprise Operations Center
+
+Typical workflow:
+
+```text
+Infrastructure
+
+↓
+
+Monitoring Platform
+
+↓
+
+Operations Dashboard
+
+↓
+
+Alert
+
+↓
+
+Engineer
+
+↓
+
+Incident Resolution
+```
+
+Continuous monitoring enables rapid operational response.
+
+---
+
+# Enterprise Example
+
+A file server begins responding slowly.
+
+Monitoring data shows:
+
+- CPU utilization remains below 20%.
+- Memory utilization remains stable.
+- Disk queue length increases sharply.
+- SMART reports declining disk health.
+
+The operations team replaces the failing storage device before complete failure, preventing an extended outage.
+
+---
+
+# Cybersecurity Perspective
+
+Monitoring supports security operations by detecting:
+
+- Unauthorized PowerShell execution
+- Unexpected service creation
+- Suspicious scheduled tasks
+- Privilege escalation attempts
+- Malware resource consumption
+- Unauthorized software installation
+- Persistence mechanisms
+
+Security analysts often correlate monitoring data with endpoint detection and SIEM platforms.
+
+---
+
+# Business Impact
+
+Comprehensive monitoring enables organizations to:
+
+- Reduce downtime
+- Improve system reliability
+- Increase customer satisfaction
+- Meet compliance requirements
+- Detect problems early
+- Improve operational efficiency
+
+Monitoring is a critical investment in business continuity.
+
+---
+
+# Enterprise Best Practices
+
+- Monitor business-critical services continuously.
+- Collect performance and event data centrally.
+- Automate routine health checks.
+- Review SMART health information regularly.
+- Correlate performance metrics with Windows Events.
+- Validate scheduled task execution.
+- Review dashboards daily.
+- Document recurring operational issues.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Monitor CPU with PowerShell
+
+Run:
+
+```powershell
+Get-Counter "\Processor(_Total)\% Processor Time"
+```
+
+Observe CPU utilization over several executions.
+
+---
+
+## Lab 2 — Review Stopped Services
+
+Run:
+
+```powershell
+Get-Service |
+Where-Object Status -eq Stopped
+```
+
+Identify which stopped services are expected and which require investigation.
+
+---
+
+## Lab 3 — Retrieve Recent System Events
+
+Run:
+
+```powershell
+Get-WinEvent `
+-LogName System `
+-MaxEvents 25
+```
+
+Review:
+
+- Event ID
+- Severity
+- Source
+- Timestamp
+
+---
+
+## Lab 4 — Create a Basic Health Report
+
+Create a PowerShell script that collects:
+
+- Computer name
+- System uptime
+- Available memory
+- Free disk space
+- Top five CPU-consuming processes
+
+Export the results to a CSV file.
+
+---
+
+# Key Takeaways
+
+- Windows Event Logs provide detailed operational and security information.
+- Monitoring services, processes, and scheduled tasks improves system reliability.
+- SMART data helps predict storage failures.
+- PowerShell enables powerful monitoring automation.
+- Enterprise dashboards centralize operational visibility.
+- Capacity monitoring supports long-term infrastructure planning.
+
+---
+
+# Interview Questions
+
+1. What are the primary Windows Event Logs?
+2. What is an Event ID?
+3. Why should organizations monitor Windows services?
+4. What is SMART, and why is it important?
+5. How can PowerShell be used for system monitoring?
+6. What does `Get-Counter` do?
+7. Why are dashboards valuable in enterprise monitoring?
+8. What is resource contention?
+9. Why is capacity monitoring important?
+10. How does monitoring contribute to cybersecurity?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Performance Monitor Documentation
+- Microsoft Event Viewer Documentation
+- Microsoft PowerShell Documentation
+- Microsoft Windows Admin Center Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Enterprise Monitoring Strategy, Troubleshooting, Best Practices, Chapter Summary, and Interview Preparation**
