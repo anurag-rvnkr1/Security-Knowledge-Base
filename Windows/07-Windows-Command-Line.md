@@ -2937,3 +2937,744 @@ Do not stop or modify production services unless authorized.
 
 ---
 
+# 07-Windows-Command-Line.md
+
+# Part 4 — Advanced CMD Administration, Security, Enterprise Automation, Best Practices, Chapter Review, and Interview Preparation
+
+---
+
+# Introduction
+
+Windows Command Prompt (CMD) remains one of the most valuable administrative tools in Windows.
+
+Although PowerShell has become Microsoft's primary automation platform, CMD continues to be used for:
+
+- Legacy application support
+- Enterprise deployment scripts
+- Operating system recovery
+- Windows Preinstallation Environment (WinPE)
+- Startup troubleshooting
+- Software installation
+- Incident response
+- Digital forensics
+- Security investigations
+
+Understanding how CMD fits into modern enterprise administration helps professionals choose the appropriate tool for each task.
+
+---
+
+# Enterprise Command-Line Workflow
+
+```text
+Administrator
+
+↓
+
+Command Prompt
+
+↓
+
+Built-in Windows Utilities
+
+↓
+
+Operating System
+
+↓
+
+Logs
+
+↓
+
+Monitoring
+
+↓
+
+Enterprise SIEM
+```
+
+Every administrative action should be documented, monitored, and performed using the principle of least privilege.
+
+---
+
+# CMD in Enterprise Administration
+
+CMD is commonly used for:
+
+| Administrative Task | Example Tool |
+|---------------------|--------------|
+| User Management | `net user` |
+| Service Management | `sc` |
+| Network Troubleshooting | `ipconfig`, `ping`, `netstat` |
+| File Management | `copy`, `robocopy`, `dir` |
+| Disk Maintenance | `chkdsk` |
+| System Repair | `sfc`, `DISM` |
+| Event Collection | `wevtutil` |
+| Scheduled Automation | `schtasks` |
+
+---
+
+# Windows Recovery Environment (WinRE)
+
+Command Prompt is available within **Windows Recovery Environment (WinRE)**.
+
+Typical uses include:
+
+- Repairing boot issues
+- Running `bootrec`
+- Running `bcdedit`
+- Repairing system files
+- Accessing offline files
+- Copying important data
+- Troubleshooting startup failures
+
+Example workflow:
+
+```text
+Boot Failure
+
+↓
+
+WinRE
+
+↓
+
+Command Prompt
+
+↓
+
+Repair Commands
+
+↓
+
+Successful Boot
+```
+
+---
+
+# Windows PE (WinPE)
+
+Windows Preinstallation Environment (WinPE) is a lightweight Windows environment used for:
+
+- Operating system deployment
+- Disk partitioning
+- Image deployment
+- Recovery
+- Hardware diagnostics
+
+CMD is the primary interface in many WinPE scenarios.
+
+---
+
+# Safe Mode with Command Prompt
+
+Windows can boot into:
+
+```text
+Safe Mode
+
+↓
+
+Command Prompt
+
+↓
+
+Minimal Drivers
+
+↓
+
+Troubleshooting
+```
+
+This mode is useful when graphical components fail to load correctly.
+
+---
+
+# Administrative Automation
+
+Many organizations automate routine maintenance using CMD scripts.
+
+Example workflow:
+
+```text
+Nightly Task
+
+↓
+
+Batch Script
+
+↓
+
+Robocopy
+
+↓
+
+Cleanup
+
+↓
+
+Log Generation
+
+↓
+
+Email Notification
+```
+
+Automation reduces repetitive manual work and improves consistency.
+
+---
+
+# Logging Administrative Activity
+
+Administrative scripts should generate logs whenever possible.
+
+Typical log contents include:
+
+- Script name
+- Start time
+- End time
+- User account
+- Computer name
+- Commands executed
+- Successes
+- Errors
+- Exit code
+
+Example:
+
+```text
+Backup Started
+
+↓
+
+Files Copied
+
+↓
+
+Verification Completed
+
+↓
+
+Backup Successful
+```
+
+Logs simplify troubleshooting and auditing.
+
+---
+
+# Exit Codes
+
+Most Windows commands return an **exit code** indicating success or failure.
+
+Common values:
+
+| Exit Code | Meaning |
+|-----------|---------|
+| `0` | Success |
+| Non-zero | Warning or error (depends on the command) |
+
+Batch scripts often evaluate `%ERRORLEVEL%`.
+
+Example:
+
+```cmd
+echo %ERRORLEVEL%
+```
+
+---
+
+# Using ERRORLEVEL
+
+Example:
+
+```bat
+copy report.txt D:\Backup
+
+IF ERRORLEVEL 1 (
+    echo Copy Failed
+) ELSE (
+    echo Copy Successful
+)
+```
+
+Checking exit codes improves the reliability of automation.
+
+---
+
+# Batch Script Structure
+
+Example:
+
+```bat
+@echo off
+
+REM Initialize
+
+echo Starting Backup
+
+robocopy C:\Data D:\Backup
+
+echo Backup Complete
+
+pause
+```
+
+A well-structured script is easier to maintain and troubleshoot.
+
+---
+
+# Defensive Scripting Practices
+
+Administrators should:
+
+- Validate input
+- Check exit codes
+- Log important actions
+- Avoid hard-coded credentials
+- Use absolute paths where practical
+- Test scripts before deployment
+- Document script behavior
+
+---
+
+# Common Administrative Mistakes
+
+Examples include:
+
+- Running commands without elevation when required
+- Deleting incorrect directories
+- Misusing wildcard characters
+- Executing unverified scripts
+- Ignoring command output
+- Failing to check exit codes
+- Running destructive commands in the wrong directory
+
+Careful verification reduces operational risk.
+
+---
+
+# CMD Security Considerations
+
+Because CMD can execute powerful system commands, organizations should protect administrative access.
+
+Recommended controls:
+
+- Least privilege
+- Multi-factor authentication (where applicable)
+- Administrative approval processes
+- Endpoint monitoring
+- Application control
+- Command-line auditing
+
+---
+
+# Living Off the Land (LotL)
+
+Many legitimate Windows executables can be used for both administration and malicious purposes.
+
+Examples include:
+
+| Utility | Legitimate Use | Potential Abuse |
+|----------|----------------|-----------------|
+| `cmd.exe` | Administration | Script execution |
+| `certutil.exe` | Certificate management | File download/encoding |
+| `bitsadmin.exe` *(legacy)* | Background transfers | Payload transfer |
+| `reg.exe` | Registry management | Persistence changes |
+| `schtasks.exe` | Scheduled automation | Persistence |
+| `sc.exe` | Service management | Malicious service creation |
+| `wevtutil.exe` | Event log management | Log clearing or export |
+
+The presence of these tools alone is **not** an indicator of malicious activity. Security analysts evaluate how, when, and by whom they are used.
+
+---
+
+# Command-Line Logging
+
+Enterprise security solutions often record:
+
+- Executed commands
+- Parent process
+- Child process
+- User account
+- Timestamp
+- Device name
+- Process ID
+- Command-line arguments
+
+These records support incident response and threat hunting.
+
+---
+
+# Example Investigation
+
+SOC analysts observe the following sequence:
+
+```text
+powershell.exe
+
+↓
+
+cmd.exe
+
+↓
+
+whoami
+
+↓
+
+net user
+
+↓
+
+ipconfig /all
+
+↓
+
+netstat -ano
+```
+
+Possible interpretation:
+
+- System enumeration
+- Network discovery
+- User discovery
+
+This activity may be legitimate administration or part of attacker reconnaissance. Analysts correlate additional telemetry before reaching conclusions.
+
+---
+
+# Enterprise Automation Example
+
+Nightly maintenance script:
+
+```text
+Verify Free Space
+
+↓
+
+Robocopy
+
+↓
+
+Delete Temporary Files
+
+↓
+
+Generate Log
+
+↓
+
+Check ERRORLEVEL
+
+↓
+
+Notify Administrator
+```
+
+This approach minimizes manual intervention while maintaining accountability.
+
+---
+
+# Incident Response Example
+
+A workstation reports suspicious activity.
+
+Administrator collects:
+
+```cmd
+hostname
+
+whoami
+
+systeminfo
+
+tasklist
+
+netstat -ano
+
+driverquery
+
+wevtutil epl System System.evtx
+```
+
+The collected information is preserved for further investigation.
+
+---
+
+# Disaster Recovery Example
+
+A Windows server fails to boot.
+
+Recovery steps:
+
+```text
+WinRE
+
+↓
+
+Command Prompt
+
+↓
+
+bootrec
+
+↓
+
+bcdedit
+
+↓
+
+chkdsk
+
+↓
+
+sfc
+
+↓
+
+DISM
+
+↓
+
+Successful Recovery
+```
+
+The exact repair sequence depends on the root cause of the failure.
+
+---
+
+# CMD vs PowerShell
+
+| Feature | CMD | PowerShell |
+|----------|-----|------------|
+| Primary Interface | Text-based | Object-based |
+| Legacy Support | Excellent | Excellent |
+| Automation | Basic | Advanced |
+| Pipeline | Text | .NET Objects |
+| Scripting | Batch | PowerShell |
+| Enterprise Administration | Supported | Preferred |
+| Modern Microsoft Management | Limited | Extensive |
+
+PowerShell is generally recommended for new automation projects, while CMD remains valuable for compatibility and troubleshooting.
+
+---
+
+# Enterprise Example
+
+A financial institution automates nightly log collection.
+
+```text
+Scheduled Task
+
+↓
+
+Batch Script
+
+↓
+
+Collect Event Logs
+
+↓
+
+Compress Files
+
+↓
+
+Copy to Secure Server
+
+↓
+
+Verify Success
+
+↓
+
+Generate Audit Log
+```
+
+The process runs unattended and produces a detailed execution log.
+
+---
+
+# Cybersecurity Perspective
+
+Command-line activity is a high-value source of security telemetry.
+
+Security teams monitor for:
+
+- Suspicious script execution
+- Unexpected administrative tools
+- Privilege escalation attempts
+- Unauthorized scheduled tasks
+- Registry modifications
+- Service creation
+- Network reconnaissance
+- Large-scale file operations
+
+Context is essential. Many commands used by attackers are also used daily by system administrators.
+
+---
+
+# Business Impact
+
+Effective command-line administration enables organizations to:
+
+- Automate repetitive tasks
+- Improve operational efficiency
+- Reduce downtime
+- Standardize maintenance
+- Support disaster recovery
+- Accelerate incident response
+- Lower administrative costs
+
+---
+
+# Enterprise Best Practices
+
+- Prefer PowerShell for new automation while maintaining CMD compatibility where required.
+- Execute administrative commands using least privilege.
+- Store scripts in version-controlled repositories.
+- Digitally sign scripts when organizational policy requires.
+- Test scripts in development or staging environments before production use.
+- Enable centralized logging and monitoring of administrative activities.
+- Review scheduled tasks, services, and startup scripts regularly.
+- Document recovery procedures for common operational issues.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Collect System Information
+
+Open **Command Prompt** and run:
+
+```cmd
+hostname
+
+whoami
+
+systeminfo > systeminfo.txt
+
+ipconfig /all > network.txt
+```
+
+Review the generated reports.
+
+---
+
+## Lab 2 — Create a Simple Batch Script
+
+Create a file named:
+
+```text
+maintenance.bat
+```
+
+Contents:
+
+```bat
+@echo off
+echo Starting Maintenance...
+hostname
+whoami
+systeminfo
+echo Maintenance Complete.
+pause
+```
+
+Run the script and observe the output.
+
+---
+
+## Lab 3 — Check Exit Codes
+
+Execute:
+
+```cmd
+dir C:\Windows
+
+echo %ERRORLEVEL%
+
+dir C:\FolderThatDoesNotExist
+
+echo %ERRORLEVEL%
+```
+
+Compare the exit codes after a successful and unsuccessful command.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Windows Command Prompt architecture
+- Command syntax
+- Internal and external commands
+- Navigation commands
+- File and directory management
+- Environment variables
+- Process management
+- Networking utilities
+- Batch scripting
+- Redirection
+- Pipes
+- Command chaining
+- Disk utilities
+- Service management
+- User management
+- Registry commands
+- Scheduled tasks
+- System repair utilities
+- Enterprise automation
+- Security monitoring
+- Best practices for administrative scripting
+
+These skills provide a strong foundation for Windows administration, troubleshooting, enterprise operations, and cybersecurity.
+
+---
+
+# Key Takeaways
+
+- CMD remains an essential Windows administration tool despite the growth of PowerShell.
+- Batch scripts automate repetitive administrative tasks.
+- Exit codes improve script reliability.
+- Enterprise automation should include logging, validation, and error handling.
+- Command-line activity is valuable for both system administration and security monitoring.
+- Administrative commands should be executed responsibly and audited where appropriate.
+
+---
+
+# Interview Questions
+
+1. What is `%ERRORLEVEL%`, and why is it important?
+2. When would you use CMD instead of PowerShell?
+3. What is the purpose of WinRE?
+4. How does WinPE differ from WinRE?
+5. Why should scripts generate logs?
+6. What is the principle of least privilege, and how does it apply to CMD?
+7. Explain the difference between text-based pipelines in CMD and object-based pipelines in PowerShell.
+8. What is "Living Off the Land" (LotL), and why is it important in cybersecurity?
+9. Why should administrators validate exit codes in automation scripts?
+10. What types of command-line activity should security teams monitor?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Command Reference
+- Microsoft Windows Recovery Environment Documentation
+- Microsoft Windows PE Documentation
+- Microsoft PowerShell Documentation
+- Microsoft Sysinternals Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 7 – Windows Command Line**.
+
+You now understand how to use Command Prompt for navigation, administration, troubleshooting, automation, networking, system repair, and enterprise operations. These skills provide a solid foundation for more advanced Windows management topics, including user administration, security, and PowerShell scripting.
+
+---
