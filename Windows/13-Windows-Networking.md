@@ -1684,3 +1684,864 @@ Compare the routing table with your network configuration.
 
 ---
 
+# 13-Windows-Networking.md
+
+# Part 3 — Windows Networking Tools, SMB, Remote Connectivity, Network Troubleshooting, and Enterprise Monitoring
+
+---
+
+# Introduction
+
+Understanding networking protocols alone is not enough for Windows administration.
+
+Administrators and cybersecurity professionals must also know how to:
+
+- Diagnose connectivity problems
+- Monitor network activity
+- Access remote systems
+- Share files securely
+- Analyze network performance
+- Investigate suspicious communications
+
+Windows provides numerous built-in networking tools that support administration, troubleshooting, and incident response.
+
+---
+
+# Windows Networking Tools
+
+Common networking tools include:
+
+| Tool | Purpose |
+|------|----------|
+| ping | Test connectivity |
+| tracert | Display packet path |
+| pathping | Combined latency and packet loss analysis |
+| nslookup | Query DNS |
+| ipconfig | Display IP configuration |
+| arp | View ARP cache |
+| route | View routing table |
+| netstat | Display network connections |
+| hostname | Display computer name |
+| net | Network administration |
+| PowerShell networking cmdlets | Advanced administration |
+
+These tools form the foundation of Windows network troubleshooting.
+
+---
+
+# Ping
+
+`ping` tests network connectivity using **ICMP Echo Request** and **Echo Reply** messages.
+
+Example:
+
+```cmd
+ping 8.8.8.8
+```
+
+Workflow:
+
+```text
+Computer
+
+↓
+
+ICMP Echo Request
+
+↓
+
+Destination
+
+↓
+
+ICMP Echo Reply
+```
+
+Successful replies indicate that the destination is reachable over the network.
+
+---
+
+# Ping Results
+
+Typical output includes:
+
+- Reply status
+- Round-trip time (latency)
+- Time To Live (TTL)
+- Packet statistics
+
+Example:
+
+```text
+Packets:
+
+Sent = 4
+
+Received = 4
+
+Lost = 0
+```
+
+Packet loss may indicate network congestion or connectivity issues.
+
+---
+
+# Tracert
+
+`tracert` displays the path packets take to reach a destination.
+
+Example:
+
+```cmd
+tracert www.microsoft.com
+```
+
+Conceptually:
+
+```text
+Computer
+
+↓
+
+Router 1
+
+↓
+
+Router 2
+
+↓
+
+Router 3
+
+↓
+
+Destination
+```
+
+Each router is called a **hop**.
+
+---
+
+# PathPing
+
+`pathping` combines the functionality of `ping` and `tracert`.
+
+It provides:
+
+- Route information
+- Packet loss statistics
+- Latency measurements
+
+Example:
+
+```cmd
+pathping 8.8.8.8
+```
+
+This is particularly useful for identifying where packet loss occurs.
+
+---
+
+# Nslookup
+
+`nslookup` queries DNS servers.
+
+Example:
+
+```cmd
+nslookup www.microsoft.com
+```
+
+Workflow:
+
+```text
+User
+
+↓
+
+DNS Query
+
+↓
+
+DNS Server
+
+↓
+
+IP Address Returned
+```
+
+Administrators use `nslookup` to verify DNS resolution.
+
+---
+
+# Netstat
+
+`netstat` displays:
+
+- Active connections
+- Listening ports
+- Protocol information
+- Routing information (with certain options)
+
+Example:
+
+```cmd
+netstat -ano
+```
+
+Useful columns include:
+
+- Local Address
+- Foreign Address
+- State
+- PID (Process ID)
+
+---
+
+# Common Netstat Options
+
+| Command | Purpose |
+|----------|----------|
+| `netstat -a` | Show all connections and listening ports |
+| `netstat -n` | Display numeric addresses |
+| `netstat -o` | Display process IDs |
+| `netstat -ano` | Combine all of the above |
+
+Administrators often correlate PIDs with Task Manager or PowerShell.
+
+---
+
+# Hostname
+
+Display the computer name:
+
+```cmd
+hostname
+```
+
+Example output:
+
+```text
+FINANCE-PC01
+```
+
+The hostname helps identify systems on a network.
+
+---
+
+# Network Interface Information
+
+PowerShell provides detailed network information.
+
+Example:
+
+```powershell
+Get-NetAdapter
+```
+
+Displays:
+
+- Adapter name
+- Status
+- Link speed
+- MAC address
+
+PowerShell is commonly used for enterprise automation.
+
+---
+
+# IP Configuration with PowerShell
+
+Example:
+
+```powershell
+Get-NetIPAddress
+```
+
+Administrators can view:
+
+- IPv4 addresses
+- IPv6 addresses
+- Prefix lengths
+- Interface information
+
+---
+
+# SMB (Server Message Block)
+
+SMB is the primary Windows protocol for:
+
+- File sharing
+- Printer sharing
+- Named pipes
+- Network resource access
+
+Conceptually:
+
+```text
+Client
+
+↓
+
+SMB
+
+↓
+
+File Server
+
+↓
+
+Shared Folder
+```
+
+SMB is fundamental to Windows enterprise environments.
+
+---
+
+# SMB Shares
+
+Example:
+
+```text
+\\FILESERVER\Finance
+```
+
+Authorized users can access shared resources based on permissions.
+
+---
+
+# SMB Permissions
+
+Access depends on:
+
+- Share permissions
+- NTFS permissions
+
+Effective access is determined by evaluating both permission sets.
+
+---
+
+# Administrative Shares
+
+Windows automatically creates hidden administrative shares such as:
+
+```text
+C$
+
+ADMIN$
+
+IPC$
+```
+
+These are primarily intended for administrative use and require appropriate credentials.
+
+---
+
+# Network Discovery
+
+Windows can discover nearby devices on trusted networks.
+
+Examples:
+
+- Computers
+- Printers
+- Network storage
+
+This feature is generally enabled only on trusted network profiles.
+
+---
+
+# Remote Desktop Protocol (RDP)
+
+RDP allows graphical remote administration.
+
+Workflow:
+
+```text
+Administrator
+
+↓
+
+Remote Desktop
+
+↓
+
+Windows Computer
+
+↓
+
+Desktop Session
+```
+
+Default TCP port:
+
+```text
+3389
+```
+
+Restrict access using firewalls, strong authentication, and least privilege.
+
+---
+
+# Remote Assistance
+
+Windows Remote Assistance enables one user to assist another user remotely.
+
+Typical workflow:
+
+```text
+User Requests Help
+
+↓
+
+Administrator Connects
+
+↓
+
+Troubleshoot
+
+↓
+
+Session Ends
+```
+
+This differs from Remote Desktop because it is designed for interactive support.
+
+---
+
+# Windows Network Profiles
+
+Windows classifies networks as:
+
+| Profile | Characteristics |
+|----------|-----------------|
+| Domain | Managed by Active Directory |
+| Private | Trusted network |
+| Public | Untrusted network |
+
+Firewall rules and sharing settings vary based on the selected profile.
+
+---
+
+# Windows Firewall Interaction
+
+Network communication is evaluated against Windows Firewall rules.
+
+Simplified process:
+
+```text
+Incoming Packet
+
+↓
+
+Windows Firewall
+
+↓
+
+Rule Evaluation
+
+↓
+
+Allow or Block
+```
+
+Firewall configuration is covered in detail in a later chapter.
+
+---
+
+# Network Troubleshooting Methodology
+
+A structured approach improves efficiency.
+
+```text
+Identify Problem
+
+↓
+
+Collect Information
+
+↓
+
+Verify Configuration
+
+↓
+
+Test Connectivity
+
+↓
+
+Analyze Results
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+```
+
+Avoid changing multiple settings simultaneously during troubleshooting.
+
+---
+
+# Connectivity Troubleshooting
+
+Example workflow:
+
+```text
+Cannot Reach Server
+
+↓
+
+Check Cable/Wi-Fi
+
+↓
+
+Verify IP Address
+
+↓
+
+Ping Gateway
+
+↓
+
+Ping Destination
+
+↓
+
+Verify DNS
+
+↓
+
+Check Firewall
+
+↓
+
+Resolve Issue
+```
+
+Working methodically helps isolate the root cause.
+
+---
+
+# DNS Troubleshooting
+
+Steps:
+
+1. Verify IP configuration.
+2. Check DNS server addresses.
+3. Test with `nslookup`.
+4. Flush DNS cache if appropriate.
+5. Test using the destination IP address.
+6. Compare results.
+
+If IP connectivity works but name resolution fails, the issue often involves DNS configuration.
+
+---
+
+# DHCP Troubleshooting
+
+Common checks:
+
+- DHCP service availability
+- Lease status
+- APIPA addresses
+- Network connectivity
+- DHCP scope availability
+
+Commands:
+
+```cmd
+ipconfig /release
+
+ipconfig /renew
+```
+
+An address in the `169.254.0.0/16` range often indicates that a DHCP lease was not obtained.
+
+---
+
+# Network Performance Monitoring
+
+Administrators monitor:
+
+- Bandwidth utilization
+- Latency
+- Packet loss
+- Error rates
+- Throughput
+- Availability
+
+Monitoring helps detect performance degradation before users report issues.
+
+---
+
+# Enterprise Monitoring
+
+Typical monitoring workflow:
+
+```text
+Endpoints
+
+↓
+
+Network Devices
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerts
+
+↓
+
+Operations Team
+
+↓
+
+Resolution
+```
+
+Centralized monitoring improves visibility across enterprise environments.
+
+---
+
+# PowerShell Networking
+
+Useful cmdlets include:
+
+```powershell
+Get-NetAdapter
+
+Get-NetIPAddress
+
+Get-NetRoute
+
+Test-NetConnection
+
+Resolve-DnsName
+```
+
+PowerShell enables automation and remote management of networking tasks.
+
+---
+
+# Test-NetConnection
+
+Example:
+
+```powershell
+Test-NetConnection www.microsoft.com
+```
+
+This cmdlet can verify:
+
+- Name resolution
+- TCP connectivity
+- Remote port availability
+
+It is a powerful troubleshooting tool.
+
+---
+
+# Enterprise Example
+
+An employee cannot access a file server.
+
+Investigation:
+
+```text
+Verify IP Configuration
+
+↓
+
+Ping Gateway
+
+↓
+
+Resolve Server Name
+
+↓
+
+Test SMB Connectivity
+
+↓
+
+Check Firewall
+
+↓
+
+Review Share Permissions
+
+↓
+
+Restore Access
+```
+
+Using a structured process reduces troubleshooting time.
+
+---
+
+# Cybersecurity Perspective
+
+Network tools are valuable during:
+
+- Threat hunting
+- Incident response
+- Malware investigations
+- Network reconnaissance detection
+- Endpoint investigations
+
+Security teams monitor:
+
+- Unexpected listening ports
+- Unusual outbound connections
+- Unauthorized SMB activity
+- Excessive failed connection attempts
+- DNS anomalies
+
+These observations should be correlated with process execution, authentication events, and endpoint telemetry.
+
+---
+
+# Business Impact
+
+Effective network administration provides:
+
+- Reliable business communication
+- Faster issue resolution
+- Reduced downtime
+- Improved user experience
+- Secure remote administration
+- Better operational visibility
+
+Poor network troubleshooting practices can increase recovery times and business disruption.
+
+---
+
+# Enterprise Best Practices
+
+- Follow a documented troubleshooting methodology.
+- Restrict SMB access to authorized users and systems.
+- Limit Remote Desktop exposure.
+- Monitor critical network services continuously.
+- Use PowerShell for repeatable administrative tasks.
+- Document network changes through change management.
+- Correlate network events with system and security logs.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Test Connectivity
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+ping 8.8.8.8
+```
+
+Record:
+
+- Round-trip time
+- Packet loss
+- TTL
+
+---
+
+## Lab 2 — Trace a Route
+
+Run:
+
+```cmd
+tracert www.microsoft.com
+```
+
+Observe:
+
+- Number of hops
+- Latency
+- Timeouts (if any)
+
+---
+
+## Lab 3 — Display Active Connections
+
+Run:
+
+```cmd
+netstat -ano
+```
+
+Identify:
+
+- Listening ports
+- Established connections
+- Associated Process IDs (PIDs)
+
+---
+
+## Lab 4 — Test DNS Resolution with PowerShell
+
+Open **PowerShell**.
+
+Run:
+
+```powershell
+Resolve-DnsName www.microsoft.com
+```
+
+Compare the results with:
+
+```cmd
+nslookup www.microsoft.com
+```
+
+Observe similarities and differences in the returned information.
+
+---
+
+# Key Takeaways
+
+- Windows includes built-in tools for diagnosing network connectivity and performance.
+- `ping`, `tracert`, `pathping`, and `nslookup` are core troubleshooting utilities.
+- `netstat` helps identify active connections and listening ports.
+- SMB enables Windows file and printer sharing.
+- Remote Desktop provides graphical remote administration and should be secured appropriately.
+- PowerShell networking cmdlets support enterprise automation and diagnostics.
+- A structured troubleshooting process improves efficiency and reduces downtime.
+
+---
+
+# Interview Questions
+
+1. What does `ping` test?
+2. What is the difference between `ping` and `tracert`?
+3. What information does `netstat -ano` provide?
+4. What is the purpose of SMB?
+5. What are administrative shares?
+6. What is the default TCP port for Remote Desktop?
+7. How does `Test-NetConnection` differ from `ping`?
+8. What steps would you follow when troubleshooting a DNS issue?
+9. Why is PowerShell preferred for enterprise network administration?
+10. Why should SMB access be restricted?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Networking Documentation
+- Microsoft PowerShell Networking Documentation
+- Microsoft SMB Documentation
+- RFC 792 (ICMP)
+- RFC 9293 (TCP)
+- *TCP/IP Illustrated* (W. Richard Stevens)
+
+---
+
