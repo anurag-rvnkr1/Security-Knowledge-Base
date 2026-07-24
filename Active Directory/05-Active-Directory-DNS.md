@@ -1346,4 +1346,882 @@ Explore DNS zones and resource records.
 
 ---
 
-**Next:** **Part 3 — DNS Query Process, Name Resolution, Zone Replication, Forwarders, Conditional Forwarders, Root Hints, and Enterprise DNS Operations**
+# 05-Active-Directory-DNS.md
+
+# Part 3 — DNS Query Process, Name Resolution, Zone Replication, Forwarders, Conditional Forwarders, Root Hints, and Enterprise DNS Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how DNS resolves names.
+- Learn recursive and iterative queries.
+- Understand DNS caching and Time To Live (TTL).
+- Learn zone replication mechanisms.
+- Understand forwarders, conditional forwarders, and root hints.
+- Learn enterprise DNS architecture.
+- Understand DNS troubleshooting fundamentals.
+
+---
+
+# DNS Name Resolution
+
+When a client needs to communicate with another computer, it first needs an IP address.
+
+Example:
+
+```text
+User enters:
+
+fileserver.company.com
+```
+
+The computer asks DNS:
+
+```text
+"What is the IP address for fileserver.company.com?"
+```
+
+DNS returns:
+
+```text
+10.10.15.25
+```
+
+The client then connects directly to the server.
+
+---
+
+# Complete Name Resolution Process
+
+```text
+User
+
+↓
+
+fileserver.company.com
+
+↓
+
+DNS Client
+
+↓
+
+Configured DNS Server
+
+↓
+
+DNS Record Found
+
+↓
+
+10.10.15.25
+
+↓
+
+Connection Established
+```
+
+---
+
+# DNS Query Types
+
+There are two primary DNS query types.
+
+| Query Type | Description |
+|------------|-------------|
+| Recursive Query | DNS server must return an answer or an error |
+| Iterative Query | DNS server returns the best information it has |
+
+---
+
+# Recursive Query
+
+A recursive query requires the DNS server to provide a final answer.
+
+Example:
+
+```text
+Laptop
+
+↓
+
+DNS Server
+
+↓
+
+Find dc01.company.com
+
+↓
+
+Answer Returned
+```
+
+The client expects the DNS server to complete the lookup.
+
+---
+
+# Recursive Query Flow
+
+```text
+Client
+
+↓
+
+Corporate DNS
+
+↓
+
+Internet/Other DNS (if needed)
+
+↓
+
+Final Answer
+
+↓
+
+Returned to Client
+```
+
+The client does not contact other DNS servers directly.
+
+---
+
+# Iterative Query
+
+An iterative query returns the best available information.
+
+Example:
+
+```text
+DNS Server
+
+↓
+
+"I don't know the answer,
+
+but ask this DNS server."
+```
+
+The requesting DNS server continues the lookup process.
+
+---
+
+# Recursive vs Iterative Queries
+
+| Recursive | Iterative |
+|------------|-----------|
+| Complete answer required | Best available answer returned |
+| Client expects final result | DNS servers cooperate |
+| Most common between client and DNS server | Common between DNS servers |
+
+---
+
+# DNS Cache
+
+DNS uses caching to improve performance.
+
+Example:
+
+```text
+Laptop
+
+↓
+
+DNS Query
+
+↓
+
+DNS Server
+
+↓
+
+Answer Cached
+
+↓
+
+Future Requests Faster
+```
+
+Benefits:
+
+- Faster responses
+- Reduced network traffic
+- Lower DNS server workload
+
+---
+
+# Time To Live (TTL)
+
+Each DNS record includes a **Time To Live (TTL)** value.
+
+Example:
+
+```text
+A Record
+
+↓
+
+TTL = 3600 Seconds
+```
+
+Meaning:
+
+The record may remain in cache for one hour before it expires.
+
+---
+
+# Why TTL Matters
+
+A shorter TTL:
+
+Advantages:
+
+- Faster propagation of changes.
+
+Disadvantages:
+
+- Increased DNS traffic.
+
+A longer TTL:
+
+Advantages:
+
+- Better performance.
+- Reduced DNS load.
+
+Disadvantages:
+
+- Slower propagation after record changes.
+
+Administrators should choose TTL values appropriate for operational requirements.
+
+---
+
+# DNS Zone Replication
+
+In Active Directory-integrated DNS, zone information is replicated automatically.
+
+```text
+DC01
+
+↓
+
+Replication
+
+↓
+
+DC02
+
+↓
+
+Replication
+
+↓
+
+DC03
+
+↓
+
+Replication
+
+↓
+
+DC04
+```
+
+This keeps DNS information consistent across Domain Controllers hosting the zone.
+
+---
+
+# Traditional Zone Transfer
+
+For non-AD-integrated zones, replication occurs using **zone transfers**.
+
+```text
+Primary DNS
+
+↓
+
+Zone Transfer
+
+↓
+
+Secondary DNS
+```
+
+Two common transfer types:
+
+- Full Zone Transfer (AXFR)
+- Incremental Zone Transfer (IXFR)
+
+---
+
+# Full Zone Transfer (AXFR)
+
+AXFR transfers the **entire zone**.
+
+```text
+Primary Zone
+
+↓
+
+Entire Database
+
+↓
+
+Secondary Zone
+```
+
+Useful for initial synchronization but consumes more bandwidth.
+
+---
+
+# Incremental Zone Transfer (IXFR)
+
+IXFR transfers **only the changes** since the last successful synchronization.
+
+```text
+Primary Zone
+
+↓
+
+Changed Records
+
+↓
+
+Secondary Zone
+```
+
+Benefits:
+
+- Reduced bandwidth usage
+- Faster synchronization
+- More efficient updates
+
+---
+
+# Forwarders
+
+A **Forwarder** is a DNS server that receives queries your DNS server cannot resolve locally.
+
+Example:
+
+```text
+Client
+
+↓
+
+Corporate DNS
+
+↓
+
+Forwarder
+
+↓
+
+Internet DNS
+
+↓
+
+Answer Returned
+```
+
+Forwarders centralize external name resolution.
+
+---
+
+# Why Use Forwarders?
+
+Benefits:
+
+- Reduced internet DNS traffic.
+- Better caching efficiency.
+- Improved performance.
+- Centralized security policies.
+- Easier monitoring.
+
+---
+
+# Conditional Forwarders
+
+A **Conditional Forwarder** forwards queries only for specific domains.
+
+Example:
+
+```text
+Query:
+
+partner-company.com
+
+↓
+
+Forward to
+
+Partner DNS Server
+```
+
+All other queries follow the standard resolution path.
+
+---
+
+# Conditional Forwarder Example
+
+Company A:
+
+```text
+companyA.com
+```
+
+Company B:
+
+```text
+companyB.com
+```
+
+Configuration:
+
+```text
+companyA DNS
+
+↓
+
+Queries for companyB.com
+
+↓
+
+Forward to companyB DNS
+```
+
+This is commonly used between trusted organizations or separate forests.
+
+---
+
+# Root Hints
+
+If no local record or forwarder can answer a query, the DNS server may use **Root Hints**.
+
+```text
+Corporate DNS
+
+↓
+
+Root DNS Server
+
+↓
+
+Top-Level Domain
+
+↓
+
+Authoritative Server
+
+↓
+
+Final Answer
+```
+
+Root hints provide a starting point for resolving external names.
+
+---
+
+# Root Hint Resolution
+
+```text
+www.example.com
+
+↓
+
+Root (.)
+
+↓
+
+.com
+
+↓
+
+example.com
+
+↓
+
+Authoritative DNS
+
+↓
+
+Answer Returned
+```
+
+---
+
+# Enterprise DNS Resolution
+
+```text
+Employee
+
+↓
+
+Laptop
+
+↓
+
+Corporate DNS
+
+↓
+
+Local Zone?
+
+↓
+
+Yes → Answer
+
+↓
+
+No
+
+↓
+
+Forwarder
+
+↓
+
+Internet
+
+↓
+
+Answer
+```
+
+The DNS server decides the appropriate resolution path.
+
+---
+
+# DNS Resolution Order
+
+A simplified resolution sequence:
+
+```text
+Application
+
+↓
+
+Local Hosts File
+
+↓
+
+DNS Client Cache
+
+↓
+
+Configured DNS Server
+
+↓
+
+Forwarder (if configured)
+
+↓
+
+Root Hints
+
+↓
+
+Authoritative DNS Server
+```
+
+---
+
+# Hosts File
+
+Before querying DNS, Windows checks the local **Hosts** file.
+
+Default location:
+
+```text
+C:\Windows\System32\drivers\etc\hosts
+```
+
+Example:
+
+```text
+10.10.10.15
+
+dc01.company.com
+```
+
+Hosts file entries override DNS responses for matching names on that computer.
+
+---
+
+# Enterprise DNS Architecture
+
+```text
+Employees
+
+↓
+
+Regional DNS Servers
+
+↓
+
+Central DNS Servers
+
+↓
+
+Active Directory
+
+↓
+
+Forwarders
+
+↓
+
+Internet
+```
+
+This design improves scalability and resilience.
+
+---
+
+# DNS Monitoring
+
+Administrators should monitor:
+
+| Area | Reason |
+|------|--------|
+| Query failures | Detect name resolution issues |
+| Response time | Measure performance |
+| Zone replication | Verify consistency |
+| DNS service availability | Prevent outages |
+| Dynamic updates | Validate registrations |
+| SRV records | Ensure AD service discovery |
+| Event logs | Detect operational issues |
+
+---
+
+# DNS Troubleshooting Tools
+
+Common Windows tools:
+
+| Tool | Purpose |
+|------|----------|
+| nslookup | Query DNS records |
+| Resolve-DnsName | PowerShell DNS queries |
+| ipconfig /displaydns | View local DNS cache |
+| ipconfig /flushdns | Clear DNS cache |
+| ping | Basic name resolution test |
+| tracert | Path troubleshooting |
+| Test-NetConnection | Connectivity testing |
+
+---
+
+# Example: Using nslookup
+
+```text
+nslookup dc01.company.com
+```
+
+Possible output:
+
+```text
+Name:
+
+dc01.company.com
+
+Address:
+
+10.10.10.5
+```
+
+This confirms successful name resolution.
+
+---
+
+# Common DNS Problems
+
+Examples include:
+
+- Incorrect DNS server configuration
+- Missing SRV records
+- Stale DNS records
+- Replication failures
+- Zone transfer failures
+- Incorrect forwarders
+- DNS service stopped
+- Firewall blocking DNS traffic
+- Incorrect client DNS settings
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 25,000 employees
+- Six Domain Controllers
+- Two dedicated DNS servers
+- Active Directory-integrated zones
+
+Flow:
+
+```text
+Laptop
+
+↓
+
+Corporate DNS
+
+↓
+
+Local Zone
+
+↓
+
+SRV Record
+
+↓
+
+Domain Controller
+
+↓
+
+Authentication
+```
+
+External queries:
+
+```text
+Corporate DNS
+
+↓
+
+Forwarder
+
+↓
+
+Internet DNS
+
+↓
+
+Website Located
+```
+
+---
+
+# Best Practices
+
+- Deploy multiple DNS servers.
+- Use AD-integrated zones for Active Directory.
+- Configure forwarders for internet resolution.
+- Monitor SRV record registration.
+- Review TTL values before major migrations.
+- Protect zone transfer configuration.
+- Regularly audit DNS logs.
+- Test name resolution after infrastructure changes.
+
+---
+
+# Cybersecurity Perspective
+
+DNS is a frequent target for attackers because it underpins authentication and service discovery.
+
+Potential attacks:
+
+- DNS cache poisoning
+- DNS tunneling
+- DNS amplification attacks
+- Unauthorized zone transfers
+- Rogue DNS servers
+
+Defensive recommendations:
+
+- Restrict zone transfers.
+- Enable secure dynamic updates.
+- Monitor unusual DNS queries.
+- Review DNS logs with SIEM solutions.
+- Protect administrative access.
+- Validate DNS server configurations regularly.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore DNS resolution and troubleshooting.
+
+### Tasks
+
+1. Open Command Prompt.
+2. Run:
+
+```text
+ipconfig /displaydns
+```
+
+3. Flush the DNS cache:
+
+```text
+ipconfig /flushdns
+```
+
+4. Query a Domain Controller:
+
+```text
+nslookup dc01.company.com
+```
+
+5. Query an external website.
+
+6. Document:
+
+- DNS server used
+- Returned IP address
+- Query success
+- TTL (if displayed)
+- Whether the response came from cache or a fresh lookup
+
+---
+
+# Key Takeaways
+
+- DNS clients primarily use recursive queries.
+- DNS servers may perform iterative queries to locate answers.
+- TTL controls cache duration.
+- AD-integrated DNS replicates automatically with Active Directory.
+- Forwarders optimize external name resolution.
+- Conditional forwarders simplify cross-domain and partner communication.
+- Root hints provide a fallback mechanism.
+- Regular monitoring and troubleshooting are essential for reliable DNS operations.
+
+---
+
+# Interview Questions
+
+1. What is the difference between recursive and iterative DNS queries?
+2. What is the purpose of TTL?
+3. What is the difference between AXFR and IXFR?
+4. What is a DNS forwarder?
+5. When would you use a conditional forwarder?
+6. What are root hints?
+7. In what order does Windows resolve a hostname?
+8. Why should zone transfers be protected?
+9. Which tools are commonly used to troubleshoot DNS?
+10. Why is DNS monitoring important in an enterprise?
+
+---
+
+# References
+
+- Microsoft Learn – DNS Name Resolution
+- Microsoft Learn – Configure DNS Forwarders
+- Microsoft Learn – DNS Zone Transfers
+- Microsoft Windows Server DNS Documentation
+- RFC 1034 – Domain Names: Concepts and Facilities
+- RFC 1035 – Domain Names: Implementation and Specification
+- RFC 1995 – Incremental Zone Transfer (IXFR)
+- RFC 5936 – DNS Zone Transfer (AXFR)
+
+---
+
+**Next:** **Part 4 — DNS Security, Best Practices, Hardening, Common Misconceptions, Final Revision, and Chapter Summary**
