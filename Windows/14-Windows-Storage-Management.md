@@ -1479,4 +1479,916 @@ to leave DiskPart.
 
 ---
 
-**Next:** **Part 3 — Storage Spaces, RAID, Disk Quotas, Encryption, Storage Optimization, and Monitoring**
+# 14-Windows-Storage-Management.md
+
+# Part 3 — Storage Spaces, RAID, Disk Quotas, Encryption, Storage Optimization, Monitoring, and Enterprise Storage Administration
+
+---
+
+# Introduction
+
+Modern Windows storage management extends far beyond creating partitions and assigning drive letters.
+
+Enterprise environments require storage solutions that provide:
+
+- High availability
+- Fault tolerance
+- Scalability
+- Performance
+- Data protection
+- Monitoring
+- Encryption
+- Capacity management
+
+Windows includes numerous technologies that help administrators build reliable and resilient storage infrastructures.
+
+---
+
+# Storage Spaces
+
+**Storage Spaces** is a Windows storage virtualization technology.
+
+Instead of managing disks individually, Storage Spaces combines multiple physical disks into a **storage pool**.
+
+```text
+Disk 1
+
+Disk 2
+
+Disk 3
+
+Disk 4
+
+      │
+
+      ▼
+
+Storage Pool
+
+      │
+
+      ▼
+
+Virtual Disk
+
+      │
+
+      ▼
+
+NTFS / ReFS Volume
+```
+
+Applications see a single logical storage device while Windows manages the underlying disks.
+
+---
+
+# Benefits of Storage Spaces
+
+Advantages include:
+
+- Combine multiple disks
+- Simplified storage expansion
+- Fault tolerance
+- Flexible storage allocation
+- Thin provisioning support
+- Enterprise scalability
+
+Storage Spaces is commonly used in Windows Server and advanced Windows deployments.
+
+---
+
+# Storage Pool
+
+A **Storage Pool** is a collection of physical disks.
+
+Example:
+
+```text
+Pool A
+
+├── Disk 0
+
+├── Disk 1
+
+├── Disk 2
+
+└── Disk 3
+```
+
+Administrators can add additional disks to the pool as storage requirements grow.
+
+---
+
+# Virtual Disk
+
+A **Virtual Disk** is created from a storage pool.
+
+```text
+Storage Pool
+
+↓
+
+Virtual Disk
+
+↓
+
+Volume
+
+↓
+
+Drive Letter
+```
+
+The virtual disk appears to Windows like a standard disk.
+
+---
+
+# Storage Spaces Resiliency Types
+
+Windows supports multiple resiliency options.
+
+| Type | Fault Tolerance | Performance |
+|--------|----------------|-------------|
+| Simple | None | Highest |
+| Mirror | High | High |
+| Parity | Moderate | Moderate |
+
+The appropriate option depends on workload requirements.
+
+---
+
+# Simple Space
+
+A **Simple Space** stores data across disks without redundancy.
+
+```text
+Disk A
+
+↓
+
+Data
+
+Disk B
+
+↓
+
+More Data
+```
+
+Advantages:
+
+- Maximum usable capacity
+- High performance
+
+Disadvantages:
+
+- No fault tolerance
+- Disk failure may result in data loss
+
+Suitable only for non-critical workloads.
+
+---
+
+# Mirror Space
+
+Mirror Spaces duplicate data across multiple disks.
+
+```text
+Disk 1
+
+↓
+
+Data
+
+Disk 2
+
+↓
+
+Copy of Data
+```
+
+Benefits:
+
+- High availability
+- Fast recovery
+- Improved resilience
+
+Common for business-critical workloads.
+
+---
+
+# Parity Space
+
+Parity Spaces store parity information that can be used to recover data after certain disk failures.
+
+Simplified concept:
+
+```text
+Disk A
+
+↓
+
+Data
+
+Disk B
+
+↓
+
+Data
+
+Disk C
+
+↓
+
+Parity
+```
+
+Advantages:
+
+- Better storage efficiency than mirroring
+- Fault tolerance
+
+Often used for archival and backup workloads.
+
+---
+
+# Thin Provisioning
+
+Thin provisioning allows Windows to allocate storage on demand.
+
+Example:
+
+```text
+Virtual Disk Size
+
+↓
+
+10 TB
+
+Physical Storage
+
+↓
+
+2 TB Initially
+```
+
+Additional physical storage is added as utilization increases.
+
+---
+
+# RAID
+
+**RAID (Redundant Array of Independent Disks)** combines multiple disks for:
+
+- Performance
+- Redundancy
+- Capacity
+- Fault tolerance
+
+RAID can be implemented through:
+
+- Hardware RAID controllers
+- Software RAID
+- Windows Storage Spaces (similar resiliency concepts)
+
+---
+
+# RAID Levels
+
+Common RAID levels include:
+
+| RAID | Description |
+|--------|-------------|
+| RAID 0 | Striping |
+| RAID 1 | Mirroring |
+| RAID 5 | Striping with parity |
+| RAID 6 | Dual parity |
+| RAID 10 | Mirror + Striping |
+
+---
+
+# RAID 0 (Striping)
+
+```text
+Disk 1
+
+Block A
+
+Block C
+
+Block E
+
+Disk 2
+
+Block B
+
+Block D
+
+Block F
+```
+
+Advantages:
+
+- High performance
+- Full storage utilization
+
+Disadvantages:
+
+- No redundancy
+- Any disk failure causes data loss
+
+---
+
+# RAID 1 (Mirroring)
+
+```text
+Disk 1
+
+↓
+
+Complete Data
+
+Disk 2
+
+↓
+
+Complete Copy
+```
+
+Advantages:
+
+- Excellent fault tolerance
+- Simple recovery
+
+Disadvantages:
+
+- Reduced usable capacity
+
+---
+
+# RAID 5
+
+RAID 5 distributes parity across disks.
+
+Example:
+
+```text
+Disk 1
+
+Data
+
+Disk 2
+
+Data
+
+Disk 3
+
+Parity
+```
+
+Advantages:
+
+- Good storage efficiency
+- Fault tolerance
+
+Disadvantages:
+
+- Slower write performance
+- Requires multiple disks
+
+---
+
+# RAID 10
+
+RAID 10 combines mirroring and striping.
+
+```text
+Mirror Set
+
+↓
+
+Striped Together
+```
+
+Advantages:
+
+- High performance
+- Excellent redundancy
+
+Common in:
+
+- Database servers
+- Virtualization hosts
+- Enterprise storage systems
+
+---
+
+# Windows Disk Quotas
+
+Disk Quotas allow administrators to limit storage usage.
+
+Typical controls include:
+
+- Maximum storage
+- Warning thresholds
+- Usage reporting
+
+Quotas help prevent individual users from consuming excessive disk space.
+
+---
+
+# Quota Example
+
+```text
+User A
+
+Maximum
+
+100 GB
+
+Currently Used
+
+72 GB
+```
+
+When limits are reached, administrators can warn users or prevent additional storage consumption.
+
+---
+
+# Enable Disk Quotas
+
+Typical workflow:
+
+```text
+Drive Properties
+
+↓
+
+Quota
+
+↓
+
+Enable Quota Management
+```
+
+Quota settings are available only on supported file systems such as NTFS.
+
+---
+
+# Compression
+
+Windows supports file and folder compression.
+
+Benefits:
+
+- Reduced disk usage
+- Transparent operation
+- Useful for infrequently accessed files
+
+Trade-off:
+
+- Additional CPU utilization during compression and decompression.
+
+---
+
+# NTFS Compression
+
+Characteristics:
+
+- File-level compression
+- Folder-level compression
+- Automatic decompression during access
+
+Not all workloads benefit from compression, particularly those already compressed.
+
+---
+
+# Encrypting File System (EFS)
+
+EFS encrypts files stored on NTFS volumes.
+
+```text
+User
+
+↓
+
+Encryption
+
+↓
+
+Encrypted File
+
+↓
+
+Authorized User
+```
+
+Advantages:
+
+- Transparent encryption
+- User-based access
+
+Limitations:
+
+- Available only on supported Windows editions
+- Protects individual files rather than the entire disk
+
+---
+
+# BitLocker
+
+BitLocker provides **full-volume encryption**.
+
+Benefits:
+
+- Entire drive encrypted
+- Protects data if a device is lost or stolen
+- Supports TPM integration
+- Recovery key support
+
+BitLocker is recommended for laptops and many enterprise endpoints.
+
+---
+
+# BitLocker Workflow
+
+```text
+Disk
+
+↓
+
+Encryption
+
+↓
+
+Protected Storage
+
+↓
+
+Authorized Startup
+
+↓
+
+Windows Boots
+```
+
+Unauthorized users cannot easily access encrypted data by removing the drive.
+
+---
+
+# Storage Optimization
+
+Windows automatically performs storage optimization tasks.
+
+Examples include:
+
+- SSD optimization
+- TRIM operations
+- Disk cleanup
+- Temporary file removal
+
+Optimization helps maintain storage performance over time.
+
+---
+
+# TRIM
+
+TRIM allows the operating system to inform SSDs about unused blocks.
+
+```text
+Delete File
+
+↓
+
+TRIM Command
+
+↓
+
+SSD Frees Blocks
+
+↓
+
+Improved Performance
+```
+
+TRIM contributes to long-term SSD performance and lifespan.
+
+---
+
+# Disk Cleanup
+
+Windows can reclaim storage by removing unnecessary files.
+
+Examples:
+
+- Temporary files
+- Windows Update cleanup
+- Recycle Bin contents
+- Cached data
+
+Storage Sense can automate many cleanup tasks.
+
+---
+
+# Storage Sense
+
+Storage Sense automatically frees disk space.
+
+Typical tasks:
+
+- Delete temporary files
+- Empty Recycle Bin
+- Remove old Downloads (optional)
+- Clean cloud-synced files based on configuration
+
+Administrators can configure Storage Sense through Settings or enterprise management tools.
+
+---
+
+# Monitoring Disk Usage
+
+Administrators should monitor:
+
+- Free space
+- Capacity growth
+- Disk health
+- Storage performance
+- File growth
+- Backup utilization
+
+Regular monitoring helps prevent unexpected outages due to full disks.
+
+---
+
+# Performance Monitor
+
+Windows Performance Monitor can monitor storage metrics.
+
+Examples:
+
+- Disk Queue Length
+- Disk Reads/sec
+- Disk Writes/sec
+- Avg. Disk sec/Read
+- Avg. Disk sec/Write
+- Disk Utilization
+
+These counters assist in diagnosing storage bottlenecks.
+
+---
+
+# Resource Monitor
+
+Resource Monitor provides real-time visibility into storage activity.
+
+Information includes:
+
+- Active disk processes
+- Read/write activity
+- File access
+- Response times
+
+Useful during performance troubleshooting.
+
+---
+
+# Enterprise Storage Monitoring
+
+Typical monitoring workflow:
+
+```text
+Servers
+
+↓
+
+Storage Metrics
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alert
+
+↓
+
+Administrator
+
+↓
+
+Corrective Action
+```
+
+Monitoring platforms help identify issues before users experience service degradation.
+
+---
+
+# Enterprise Example
+
+An organization deploys a new file server.
+
+Storage design:
+
+```text
+Operating System
+
+↓
+
+NVMe SSD
+
+-------------------
+
+User Shares
+
+↓
+
+RAID 10
+
+-------------------
+
+Backups
+
+↓
+
+Parity Storage
+
+-------------------
+
+BitLocker Enabled
+
+↓
+
+Protected Data
+```
+
+This design balances performance, resilience, and security.
+
+---
+
+# Cybersecurity Perspective
+
+Storage technologies play an important role in cybersecurity.
+
+Security teams should:
+
+- Enable BitLocker on portable devices
+- Restrict access to removable media
+- Monitor abnormal storage usage
+- Protect backup repositories
+- Use NTFS permissions
+- Audit storage access
+- Encrypt sensitive information
+
+Storage security is a critical component of defense-in-depth.
+
+---
+
+# Business Impact
+
+Effective storage administration provides:
+
+- Better application performance
+- Reduced downtime
+- Improved disaster recovery
+- Lower operational risk
+- Higher data availability
+- Better regulatory compliance
+
+Poor storage planning can result in data loss, service outages, and increased recovery costs.
+
+---
+
+# Enterprise Best Practices
+
+- Use Storage Spaces for scalable storage deployments where appropriate.
+- Prefer RAID levels that match workload and availability requirements.
+- Enable BitLocker on enterprise endpoints.
+- Use disk quotas to manage shared storage.
+- Monitor free space proactively.
+- Implement regular backup strategies.
+- Document storage architecture and recovery procedures.
+- Test recovery processes periodically.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review BitLocker Status
+
+Open:
+
+```text
+Control Panel
+
+↓
+
+BitLocker Drive Encryption
+```
+
+Identify:
+
+- Whether BitLocker is enabled
+- Recovery key options
+- Protected drives
+
+---
+
+## Lab 2 — Review Disk Quotas
+
+Right-click an NTFS volume.
+
+Open:
+
+```text
+Properties
+
+↓
+
+Quota
+```
+
+Review available quota settings without making changes.
+
+---
+
+## Lab 3 — Open Performance Monitor
+
+Run:
+
+```text
+perfmon
+```
+
+Navigate to:
+
+```text
+Performance Monitor
+```
+
+Add disk-related counters and observe activity during file transfers.
+
+---
+
+## Lab 4 — Review Storage Sense
+
+Open:
+
+```text
+Settings
+
+↓
+
+System
+
+↓
+
+Storage
+
+↓
+
+Storage Sense
+```
+
+Review available cleanup options and automation settings.
+
+---
+
+# Key Takeaways
+
+- Storage Spaces enables flexible, resilient storage pools and virtual disks.
+- RAID improves performance and/or fault tolerance depending on the selected level.
+- Disk quotas help control storage consumption.
+- BitLocker provides full-volume encryption, while EFS encrypts individual files.
+- Windows includes built-in storage optimization and monitoring tools.
+- Enterprise storage administration emphasizes resilience, monitoring, security, and documentation.
+
+---
+
+# Interview Questions
+
+1. What is Storage Spaces?
+2. What is the difference between a storage pool and a virtual disk?
+3. Compare RAID 0, RAID 1, RAID 5, and RAID 10.
+4. What is thin provisioning?
+5. What is the purpose of disk quotas?
+6. What is the difference between BitLocker and EFS?
+7. What does the TRIM command do?
+8. How does Storage Sense help administrators?
+9. Which tools can monitor disk performance?
+10. Why is BitLocker recommended for enterprise laptops?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Storage Spaces Documentation
+- Microsoft BitLocker Documentation
+- Microsoft Performance Monitor Documentation
+- Microsoft Storage Sense Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Enterprise Storage Best Practices, Backup, Recovery, Troubleshooting, Chapter Summary, and Interview Preparation**
