@@ -1429,4 +1429,755 @@ Create a troubleshooting checklist covering:
 
 ---
 
-**Next:** **Part 3 — Active Directory, Group Policy, Security, Application, and Enterprise Troubleshooting**
+# 26-Windows-Troubleshooting.md
+
+# Part 3 — Active Directory, Group Policy, Security, Application, and Enterprise Troubleshooting
+
+---
+
+# Introduction
+
+In enterprise environments, many Windows issues extend beyond a single computer.
+
+Problems may originate from:
+
+- Active Directory
+- Group Policy
+- DNS
+- Authentication
+- Security controls
+- Enterprise applications
+- File servers
+- Cloud identity services
+
+Enterprise troubleshooting requires understanding how these technologies interact.
+
+---
+
+# Enterprise Troubleshooting Workflow
+
+```text
+Problem Reported
+
+↓
+
+Determine Scope
+
+↓
+
+Identify Affected Systems
+
+↓
+
+Collect Logs
+
+↓
+
+Analyze Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+
+↓
+
+Document
+
+↓
+
+Review
+```
+
+A repeatable methodology minimizes downtime and improves consistency.
+
+---
+
+# Active Directory Troubleshooting
+
+Common Active Directory (AD) issues include:
+
+- Logon failures
+- Replication problems
+- DNS issues
+- Trust relationship failures
+- Group membership problems
+- Authentication delays
+
+Most AD issues involve multiple infrastructure components.
+
+---
+
+# Active Directory Authentication Workflow
+
+```text
+User
+
+↓
+
+DNS Lookup
+
+↓
+
+Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+Authentication
+
+↓
+
+Group Policy
+
+↓
+
+Desktop
+```
+
+A failure at any stage can prevent successful logon.
+
+---
+
+# Common Active Directory Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Cannot log in | DNS, DC unavailable, account issue |
+| Slow logon | Group Policy, network latency |
+| Access denied | Group membership, permissions |
+| Trust failure | Computer account mismatch |
+| Replication failure | Network or replication issue |
+| Missing GPO | Replication or linking problem |
+
+---
+
+# DNS Troubleshooting in Active Directory
+
+DNS is a foundational dependency for AD.
+
+Verify:
+
+- Correct DNS server
+- Domain records
+- SRV records
+- Forward lookup zones
+- Reverse lookup zones
+
+Incorrect DNS configuration is a frequent cause of authentication problems.
+
+---
+
+# Domain Controller Health
+
+Administrators should verify:
+
+- Replication status
+- Time synchronization
+- DNS health
+- SYSVOL availability
+- Authentication services
+- Event logs
+
+Healthy Domain Controllers are essential for reliable enterprise operations.
+
+---
+
+# Time Synchronization
+
+Kerberos relies on accurate system time.
+
+```text
+Client
+
+↓
+
+Domain Controller
+
+↓
+
+Time Difference
+
+↓
+
+Authentication
+```
+
+Excessive clock skew may cause authentication failures.
+
+---
+
+# Group Policy Troubleshooting
+
+Common issues include:
+
+- GPO not applying
+- Slow logon
+- Incorrect settings
+- Missing drive mappings
+- Missing printers
+- Script failures
+
+Review policy processing before making configuration changes.
+
+---
+
+# Group Policy Troubleshooting Workflow
+
+```text
+Problem
+
+↓
+
+Verify OU
+
+↓
+
+Verify Link
+
+↓
+
+Security Filtering
+
+↓
+
+WMI Filter
+
+↓
+
+GPResult
+
+↓
+
+Event Viewer
+
+↓
+
+Resolution
+```
+
+---
+
+# GPResult
+
+Useful commands:
+
+```cmd
+gpresult /r
+```
+
+```cmd
+gpresult /h report.html
+```
+
+These reports display applied and denied Group Policy Objects.
+
+---
+
+# Resultant Set of Policy (RSoP)
+
+RSoP displays the effective policy applied to a user or computer.
+
+Benefits:
+
+- Identifies winning policies
+- Simplifies troubleshooting
+- Shows applied settings
+- Highlights conflicts
+
+---
+
+# Event Viewer for Group Policy
+
+Useful logs:
+
+```text
+Applications and Services Logs
+
+↓
+
+Microsoft
+
+↓
+
+Windows
+
+↓
+
+GroupPolicy
+
+↓
+
+Operational
+```
+
+This log provides detailed Group Policy processing information.
+
+---
+
+# Authentication Troubleshooting
+
+Common symptoms:
+
+- Invalid credentials
+- Account lockouts
+- Kerberos failures
+- NTLM fallback
+- MFA failures
+
+Investigation should include identity systems and infrastructure dependencies.
+
+---
+
+# Account Lockout Investigation
+
+Possible causes:
+
+- Incorrect saved password
+- Mobile device synchronization
+- Service account password mismatch
+- Scheduled Task credentials
+- Multiple failed logon attempts
+
+Review security logs to identify the source.
+
+---
+
+# Kerberos Troubleshooting
+
+Verify:
+
+- DNS resolution
+- Domain Controller connectivity
+- Time synchronization
+- Service Principal Names (SPNs)
+- Ticket issuance
+
+Kerberos depends on several supporting services functioning correctly.
+
+---
+
+# Windows Security Troubleshooting
+
+Security-related issues may involve:
+
+- Microsoft Defender
+- Windows Firewall
+- BitLocker
+- AppLocker
+- Credential Guard
+- SmartScreen
+
+Investigations should determine whether controls are functioning as intended or blocking legitimate activity.
+
+---
+
+# Windows Defender
+
+Common issues:
+
+- Protection disabled
+- Signature update failure
+- Scheduled scan failure
+- Exclusions misconfigured
+- Performance impact
+
+Verify policy settings before making changes.
+
+---
+
+# Firewall Troubleshooting
+
+Review:
+
+- Active profile
+- Inbound rules
+- Outbound rules
+- Application rules
+- Logging
+
+Avoid disabling the firewall except in controlled troubleshooting scenarios with appropriate approval.
+
+---
+
+# BitLocker Recovery
+
+Recovery may be required when:
+
+- TPM changes
+- Motherboard replacement
+- Boot configuration changes
+- Firmware updates
+
+Recovery keys should be stored securely according to organizational policy.
+
+---
+
+# Application Troubleshooting
+
+Common application problems:
+
+- Application crashes
+- Missing DLLs
+- Permission errors
+- Configuration corruption
+- Licensing failures
+- Compatibility issues
+
+Begin with application logs and Windows Event Logs.
+
+---
+
+# Application Troubleshooting Workflow
+
+```text
+Application Error
+
+↓
+
+Review Logs
+
+↓
+
+Verify Dependencies
+
+↓
+
+Check Permissions
+
+↓
+
+Test Configuration
+
+↓
+
+Repair
+
+↓
+
+Validate
+```
+
+---
+
+# Compatibility Issues
+
+Some applications require:
+
+- Specific .NET versions
+- Visual C++ Redistributables
+- Administrative privileges
+- Legacy compatibility settings
+
+Verify prerequisites before reinstalling applications.
+
+---
+
+# File Permission Issues
+
+Common symptoms:
+
+- Access denied
+- Cannot save files
+- Cannot modify folders
+- Read-only behavior
+
+Review:
+
+- NTFS permissions
+- Share permissions
+- Group membership
+- Ownership
+
+---
+
+# Printer Troubleshooting
+
+Common problems:
+
+- Printer offline
+- Driver mismatch
+- Print spooler failure
+- Incorrect permissions
+- Network connectivity
+
+Useful service:
+
+```text
+Print Spooler
+```
+
+---
+
+# Remote Desktop Troubleshooting
+
+Verify:
+
+- Remote Desktop enabled
+- Firewall rules
+- User permissions
+- Network connectivity
+- Licensing (where applicable)
+
+Review Security and Terminal Services logs for authentication failures.
+
+---
+
+# File Share Troubleshooting
+
+Checklist:
+
+- Network connectivity
+- DNS
+- Share permissions
+- NTFS permissions
+- SMB availability
+- Authentication
+
+Both share and NTFS permissions affect access.
+
+---
+
+# Microsoft Services Troubleshooting
+
+Examples:
+
+- IIS
+- SQL Server
+- Hyper-V
+- File Services
+- Remote Desktop Services
+
+Investigations should include:
+
+- Service status
+- Event Logs
+- Dependencies
+- Resource utilization
+
+---
+
+# Enterprise Monitoring
+
+Organizations commonly monitor:
+
+- CPU
+- Memory
+- Disk
+- Network
+- Services
+- Authentication
+- Security events
+- Replication
+
+Continuous monitoring enables early detection of problems.
+
+---
+
+# Enterprise Incident Workflow
+
+```text
+Alert
+
+↓
+
+Investigation
+
+↓
+
+Diagnosis
+
+↓
+
+Containment
+
+↓
+
+Resolution
+
+↓
+
+Validation
+
+↓
+
+Documentation
+
+↓
+
+Lessons Learned
+```
+
+This workflow aligns with operational and security best practices.
+
+---
+
+# Enterprise Example
+
+Following a password policy update, multiple users report they cannot access file shares.
+
+Investigation identifies:
+
+- Password changes completed
+- Cached credentials still in use
+- Scheduled Tasks using outdated credentials
+- Service account password mismatch
+
+Resolution:
+
+- Update stored credentials
+- Restart affected services
+- Validate access
+- Document findings
+
+---
+
+# Cybersecurity Perspective
+
+Attackers may intentionally create symptoms resembling operational failures.
+
+Examples:
+
+- Disabled services
+- Deleted logs
+- Unauthorized GPO changes
+- Credential abuse
+- DNS manipulation
+
+Administrators should consider malicious activity when troubleshooting unexplained issues.
+
+---
+
+# Business Impact
+
+Efficient enterprise troubleshooting helps:
+
+- Restore business services quickly
+- Reduce operational disruption
+- Maintain user productivity
+- Meet compliance obligations
+- Improve customer confidence
+
+---
+
+# Enterprise Best Practices
+
+- Standardize troubleshooting procedures.
+- Verify DNS before investigating Active Directory.
+- Document every configuration change.
+- Preserve evidence during security investigations.
+- Maintain updated recovery documentation.
+- Monitor Domain Controller health.
+- Review authentication logs regularly.
+- Validate Group Policy deployments after changes.
+- Separate operational issues from potential security incidents.
+- Maintain a searchable knowledge base.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Group Policy Investigation
+
+A Finance department desktop policy is not applying.
+
+Investigate:
+
+- OU placement
+- Security Filtering
+- WMI Filter
+- GPResult
+- Event Viewer
+
+Document the root cause.
+
+---
+
+## Lab 2 — Active Directory Authentication
+
+A user cannot log in to the domain.
+
+Create a troubleshooting checklist covering:
+
+- DNS
+- Domain Controller connectivity
+- Time synchronization
+- Account status
+- Event Logs
+
+---
+
+## Lab 3 — File Share Access
+
+A user receives "Access Denied" when opening a shared folder.
+
+Investigate:
+
+- Share permissions
+- NTFS permissions
+- Group membership
+- Ownership
+
+Recommend corrective actions.
+
+---
+
+## Lab 4 — Enterprise Incident
+
+A department reports:
+
+- Printer failures
+- Missing drive mappings
+- Slow logons
+
+Develop a structured investigation plan to determine whether the issue is related to Group Policy, network connectivity, authentication, or another infrastructure component.
+
+---
+
+# Key Takeaways
+
+- Enterprise troubleshooting requires understanding dependencies between Windows services and infrastructure.
+- DNS is critical to Active Directory functionality.
+- GPResult and RSoP simplify Group Policy investigations.
+- Authentication issues often involve DNS, time synchronization, and Domain Controllers.
+- Application issues should be investigated systematically using logs and dependency analysis.
+- Security incidents can resemble operational failures and should be considered during investigations.
+
+---
+
+# Interview Questions
+
+1. Why is DNS critical for Active Directory?
+2. What information does GPResult provide?
+3. How would you troubleshoot a Group Policy that is not applying?
+4. Why is time synchronization important for Kerberos?
+5. How would you investigate an account lockout?
+6. What is the difference between share permissions and NTFS permissions?
+7. How do you troubleshoot a Remote Desktop connection failure?
+8. What logs are useful for Group Policy troubleshooting?
+9. How do you investigate application crashes?
+10. Why should administrators consider security incidents during troubleshooting?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Active Directory Documentation
+- Microsoft Group Policy Documentation
+- Microsoft Windows Security Documentation
+- Microsoft Windows Event Viewer Documentation
+- Microsoft Sysinternals Documentation
+- NIST SP 800-61
+- CIS Microsoft Windows Benchmarks
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Advanced Troubleshooting Scenarios, Sysinternals, Disaster Recovery, Enterprise Operations, and Chapter Summary**
