@@ -695,3 +695,742 @@ Observe:
 - Microsoft Sysinternals Documentation
 
 ---
+
+# 04-Windows-Boot-Process.md
+
+# Part 2 — Kernel Initialization, Session Manager, Winlogon, LSASS, Service Startup, User Logon, and Desktop Initialization
+
+---
+
+# Introduction
+
+After the Windows Boot Loader (`winload.efi`) loads the operating system into memory, control is transferred to the **Windows Kernel**. From this point onward, Windows initializes its internal components, starts essential system processes and services, authenticates users, and prepares the desktop.
+
+Understanding these stages is critical for:
+
+- Windows Administration
+- Active Directory Administration
+- System Troubleshooting
+- Digital Forensics
+- Incident Response
+- Malware Analysis
+- Threat Hunting
+
+---
+
+# Boot Process Overview
+
+The complete startup sequence now looks like this:
+
+```text
+Power On
+
+↓
+
+Firmware (UEFI)
+
+↓
+
+Windows Boot Manager
+
+↓
+
+Windows Boot Loader
+
+↓
+
+Windows Kernel
+
+↓
+
+Executive Initialization
+
+↓
+
+Session Manager
+
+↓
+
+Wininit
+
+↓
+
+Services
+
+↓
+
+LSASS
+
+↓
+
+Winlogon
+
+↓
+
+User Authentication
+
+↓
+
+Explorer Desktop
+```
+
+---
+
+# Windows Kernel Initialization
+
+The Windows Kernel (`ntoskrnl.exe`) is the first major operating system component to execute.
+
+Responsibilities include:
+
+- Initialize CPU scheduling
+- Initialize memory management
+- Initialize interrupt handling
+- Initialize synchronization
+- Start Executive subsystems
+- Initialize kernel objects
+
+---
+
+# Kernel Initialization Workflow
+
+```text
+Windows Boot Loader
+
+↓
+
+Load ntoskrnl.exe
+
+↓
+
+Initialize Kernel
+
+↓
+
+Initialize Executive
+
+↓
+
+Load Boot Drivers
+
+↓
+
+Start Session Manager
+```
+
+---
+
+# Components Initialized by the Kernel
+
+During initialization, Windows prepares:
+
+| Component | Purpose |
+|-----------|---------|
+| Scheduler | CPU scheduling |
+| Memory Manager | Memory allocation |
+| Object Manager | Windows objects |
+| I/O Manager | Device communication |
+| Security Reference Monitor | Access control |
+| Cache Manager | File caching |
+| Configuration Manager | Registry management |
+
+These components become available before user logon.
+
+---
+
+# Loading Boot Drivers
+
+The kernel loads **boot-start drivers** required for operating system startup.
+
+Examples:
+
+- Disk controller drivers
+- File system drivers
+- Storage drivers
+- Encryption drivers
+- Bus drivers
+
+Without these drivers, Windows may not be able to access the system disk.
+
+---
+
+# Driver Loading Sequence
+
+```text
+Kernel
+
+↓
+
+Storage Drivers
+
+↓
+
+File System Drivers
+
+↓
+
+Hardware Drivers
+
+↓
+
+System Ready
+```
+
+---
+
+# Windows Executive Initialization
+
+Once the kernel is operational, the Windows Executive initializes its subsystems.
+
+```text
+Executive
+
+├── Memory Manager
+├── Process Manager
+├── Object Manager
+├── I/O Manager
+├── Configuration Manager
+├── Cache Manager
+├── Security Reference Monitor
+└── Power Manager
+```
+
+At this stage, core operating system services become available.
+
+---
+
+# Session Manager (smss.exe)
+
+The **Session Manager Subsystem** (`smss.exe`) is the first user-mode process created by the kernel.
+
+Responsibilities include:
+
+- Creating system sessions
+- Initializing environment variables
+- Creating paging files
+- Starting system processes
+- Launching Wininit
+- Launching Client/Server Runtime Subsystem (CSRSS)
+
+---
+
+# Session Manager Workflow
+
+```text
+Kernel
+
+↓
+
+smss.exe
+
+↓
+
+Initialize Session
+
+↓
+
+Start CSRSS
+
+↓
+
+Start Wininit
+
+↓
+
+Continue Startup
+```
+
+---
+
+# Client/Server Runtime Subsystem (csrss.exe)
+
+`csrss.exe` is responsible for critical user-mode functionality.
+
+Responsibilities:
+
+- Console windows
+- Thread creation support
+- Shutdown handling
+- Portions of the Win32 subsystem
+
+Although named "Client/Server Runtime," it is an essential Windows process and should not normally be terminated.
+
+---
+
+# Wininit (wininit.exe)
+
+`wininit.exe` initializes essential system services.
+
+It starts:
+
+- Service Control Manager
+- Local Security Authority
+- Local Session Manager
+
+Workflow:
+
+```text
+Wininit
+
+├── Services.exe
+├── LSASS.exe
+└── LSM.exe
+```
+
+---
+
+# Service Control Manager (services.exe)
+
+The **Service Control Manager (SCM)** manages Windows services.
+
+Responsibilities:
+
+- Start automatic services
+- Stop services
+- Restart failed services
+- Track service dependencies
+- Manage service configuration
+
+---
+
+# Windows Services
+
+Windows services run in the background without user interaction.
+
+Examples:
+
+| Service | Purpose |
+|----------|---------|
+| Windows Update | System updates |
+| DHCP Client | Network configuration |
+| DNS Client | Name resolution |
+| Print Spooler | Printing |
+| Windows Defender | Antivirus protection |
+| Task Scheduler | Automated tasks |
+
+---
+
+# Service Startup Types
+
+| Startup Type | Description |
+|--------------|-------------|
+| Automatic | Starts during boot |
+| Automatic (Delayed Start) | Starts shortly after boot |
+| Manual | Starts only when needed |
+| Disabled | Cannot start until enabled |
+
+---
+
+# Local Security Authority (lsass.exe)
+
+The **Local Security Authority Subsystem Service (LSASS)** is responsible for Windows security.
+
+Responsibilities include:
+
+- User authentication
+- Password verification
+- Security policy enforcement
+- Access token creation
+- Audit logging
+
+LSASS is one of the most security-sensitive processes in Windows.
+
+---
+
+# Authentication Workflow
+
+```text
+User Enters Password
+
+↓
+
+Winlogon
+
+↓
+
+LSASS
+
+↓
+
+Authentication Package
+
+↓
+
+Credentials Verified
+
+↓
+
+Security Token Created
+
+↓
+
+Desktop Loaded
+```
+
+---
+
+# Security Tokens
+
+After successful authentication, Windows creates a **security token**.
+
+A token contains:
+
+- User SID
+- Group memberships
+- Assigned privileges
+- Integrity level
+- Logon session information
+
+The token is attached to processes started by the user.
+
+---
+
+# Winlogon (winlogon.exe)
+
+`winlogon.exe` manages the interactive logon process.
+
+Responsibilities:
+
+- Display sign-in screen
+- Process Ctrl + Alt + Delete (where applicable)
+- Start user shell
+- Lock workstation
+- Handle logoff operations
+
+---
+
+# User Logon Sequence
+
+```text
+Winlogon
+
+↓
+
+Credentials Entered
+
+↓
+
+LSASS Authentication
+
+↓
+
+Security Token
+
+↓
+
+User Profile Loaded
+
+↓
+
+Explorer Started
+```
+
+---
+
+# User Profile Loading
+
+After authentication:
+
+Windows loads:
+
+- Desktop settings
+- Registry profile (NTUSER.DAT)
+- Documents
+- Environment variables
+- Start Menu configuration
+- Application preferences
+
+This creates the user's personalized environment.
+
+---
+
+# Explorer (explorer.exe)
+
+`explorer.exe` is the Windows shell.
+
+Responsibilities:
+
+- Desktop
+- Taskbar
+- Start Menu
+- File Explorer
+- Notification area
+
+Workflow:
+
+```text
+User Login
+
+↓
+
+Explorer Starts
+
+↓
+
+Desktop Displayed
+```
+
+---
+
+# Startup Applications
+
+After Explorer starts, Windows launches configured startup applications.
+
+Sources include:
+
+- Startup folder
+- Registry Run keys
+- Scheduled Tasks
+- Startup Apps configuration
+- Enterprise management policies
+
+Administrators should review startup applications to minimize boot delays and reduce the attack surface.
+
+---
+
+# Complete Startup Sequence
+
+```text
+Power On
+
+↓
+
+UEFI
+
+↓
+
+Windows Boot Manager
+
+↓
+
+Windows Boot Loader
+
+↓
+
+Kernel
+
+↓
+
+Executive
+
+↓
+
+SMSS
+
+↓
+
+CSRSS
+
+↓
+
+Wininit
+
+↓
+
+Services
+
+↓
+
+LSASS
+
+↓
+
+Winlogon
+
+↓
+
+User Profile
+
+↓
+
+Explorer
+
+↓
+
+Desktop Ready
+```
+
+---
+
+# Enterprise Logon Example
+
+```text
+Employee
+
+↓
+
+Windows Login Screen
+
+↓
+
+Credentials Entered
+
+↓
+
+Active Directory Authentication
+
+↓
+
+Group Policies Applied
+
+↓
+
+Mapped Network Drives
+
+↓
+
+Enterprise Applications
+
+↓
+
+Desktop Ready
+```
+
+In domain environments, additional processing such as Group Policy application occurs during logon.
+
+---
+
+# Cybersecurity Perspective
+
+Many attacks target the startup and logon sequence.
+
+Examples include:
+
+- Credential theft targeting LSASS
+- Malicious services
+- Startup persistence
+- Registry Run key abuse
+- Scheduled task persistence
+- Logon script abuse
+
+Security teams monitor:
+
+- LSASS access attempts
+- New service creation
+- Startup application changes
+- Authentication events
+- Privilege assignments
+
+---
+
+# Business Impact
+
+A healthy startup process provides:
+
+- Faster user logon
+- Reliable authentication
+- Stable application startup
+- Reduced help desk calls
+- Improved endpoint security
+
+Startup failures or authentication issues can prevent employees from accessing business resources.
+
+---
+
+# Enterprise Best Practices
+
+- Protect LSASS using supported Windows security features.
+- Minimize unnecessary startup applications.
+- Audit service configurations regularly.
+- Monitor authentication failures.
+- Apply security updates promptly.
+- Restrict administrative privileges.
+- Use centrally managed identity solutions.
+
+---
+
+# Practical Labs
+
+## Lab 1 — View Running System Processes
+
+1. Open **Task Manager**.
+2. Select the **Details** tab.
+3. Locate:
+
+- `smss.exe`
+- `csrss.exe`
+- `wininit.exe`
+- `services.exe`
+- `lsass.exe`
+- `winlogon.exe`
+- `explorer.exe`
+
+Record each process and its purpose.
+
+---
+
+## Lab 2 — Review Startup Applications
+
+1. Open **Task Manager**.
+2. Select the **Startup apps** tab.
+3. Identify:
+
+- Enabled applications
+- Disabled applications
+- Startup impact
+
+Discuss which applications are essential.
+
+---
+
+## Lab 3 — Review Services
+
+1. Press:
+
+```text
+Windows + R
+```
+
+2. Run:
+
+```text
+services.msc
+```
+
+Observe:
+
+- Automatic services
+- Manual services
+- Disabled services
+
+Do not modify production services without authorization.
+
+---
+
+# Key Takeaways
+
+- The Windows Kernel initializes core operating system functionality.
+- `smss.exe` is the first user-mode process.
+- `wininit.exe` starts critical system services.
+- `services.exe` manages Windows services.
+- `lsass.exe` authenticates users and creates security tokens.
+- `winlogon.exe` manages interactive logon.
+- `explorer.exe` provides the Windows desktop environment.
+
+---
+
+# Interview Questions
+
+1. What is the first user-mode process started by Windows?
+2. What is the role of `smss.exe`?
+3. What does `services.exe` manage?
+4. Why is `lsass.exe` considered security-critical?
+5. What information is stored in a security token?
+6. What is the role of `winlogon.exe`?
+7. What starts the Windows desktop?
+8. Why are Windows services important?
+9. What happens after successful authentication?
+10. Which processes are essential during Windows startup?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Microsoft Windows Startup Documentation
+- Microsoft Sysinternals Documentation
+- Microsoft Security Documentation
+
+---
+
+
