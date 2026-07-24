@@ -2180,4 +2180,755 @@ Develop a structured investigation plan to determine whether the issue is relate
 
 ---
 
-**Next:** **Part 4 — Advanced Troubleshooting Scenarios, Sysinternals, Disaster Recovery, Enterprise Operations, and Chapter Summary**
+# 26-Windows-Troubleshooting.md
+
+# Part 4 — Advanced Troubleshooting Scenarios, Sysinternals, Disaster Recovery, Enterprise Operations, and Chapter Summary
+
+---
+
+# Introduction
+
+Enterprise troubleshooting extends beyond fixing individual Windows systems.
+
+Senior administrators and security engineers must be able to:
+
+- Diagnose complex multi-system failures
+- Use advanced diagnostic tools
+- Recover from infrastructure outages
+- Restore business services
+- Perform post-incident analysis
+- Improve operational processes
+
+The objective is not only to restore functionality, but also to strengthen the overall reliability and resilience of the environment.
+
+---
+
+# Advanced Troubleshooting Methodology
+
+A mature troubleshooting workflow emphasizes structured analysis and verification.
+
+```text
+Alert Received
+
+↓
+
+Confirm Issue
+
+↓
+
+Determine Scope
+
+↓
+
+Collect Evidence
+
+↓
+
+Identify Dependencies
+
+↓
+
+Develop Hypothesis
+
+↓
+
+Test Safely
+
+↓
+
+Implement Resolution
+
+↓
+
+Validate
+
+↓
+
+Perform Root Cause Analysis
+
+↓
+
+Document
+
+↓
+
+Improve Process
+```
+
+---
+
+# Evidence Collection
+
+Before making significant changes, collect relevant evidence.
+
+Examples include:
+
+- Event Logs
+- Memory dumps
+- Performance logs
+- Registry exports
+- Network captures
+- Application logs
+- Configuration snapshots
+- Group Policy reports
+
+Preserving evidence is particularly important if malicious activity is suspected.
+
+---
+
+# Advanced Troubleshooting Tools
+
+| Tool | Purpose |
+|------|----------|
+| Event Viewer | System and application logs |
+| Performance Monitor | Performance analysis |
+| Resource Monitor | Resource utilization |
+| Reliability Monitor | Stability history |
+| PowerShell | Automation and diagnostics |
+| Windows Recovery Environment | Recovery and repair |
+| Sysinternals Suite | Advanced diagnostics |
+
+---
+
+# Microsoft Sysinternals Suite
+
+The Sysinternals Suite is a collection of advanced troubleshooting and diagnostic tools developed by Microsoft.
+
+Common utilities include:
+
+| Tool | Purpose |
+|------|----------|
+| Process Explorer | Advanced process analysis |
+| Process Monitor | File, Registry, and process activity |
+| Autoruns | Startup entry analysis |
+| TCPView | Active TCP/UDP connections |
+| Handle | Open file handles |
+| PsExec | Remote process execution |
+| PsList | Process information |
+| PsKill | Process termination |
+| RAMMap | Memory analysis |
+| WinObj | Windows Object Manager viewer |
+
+These tools are widely used by Windows administrators, incident responders, and security professionals.
+
+---
+
+# Process Explorer
+
+Process Explorer expands upon Task Manager by providing:
+
+- Parent-child process relationships
+- Digital signature verification
+- Loaded DLLs
+- Process handles
+- CPU history
+- Memory usage
+- Process threads
+
+It is valuable for identifying suspicious or resource-intensive processes.
+
+---
+
+# Process Monitor
+
+Process Monitor (ProcMon) captures real-time activity related to:
+
+```text
+Processes
+
+↓
+
+File System
+
+↓
+
+Registry
+
+↓
+
+Network (limited metadata)
+
+↓
+
+Thread Activity
+```
+
+It is particularly useful when diagnosing application failures or configuration issues.
+
+---
+
+# Autoruns
+
+Autoruns identifies programs configured to start automatically.
+
+Categories include:
+
+- Logon entries
+- Services
+- Drivers
+- Scheduled Tasks
+- Explorer extensions
+- Browser helper objects
+- AppInit DLLs
+
+Reviewing startup entries can reveal misconfigurations or unauthorized persistence mechanisms.
+
+---
+
+# TCPView
+
+TCPView displays:
+
+- Active TCP connections
+- Listening ports
+- Process associations
+- Remote endpoints
+- Connection states
+
+Unexpected connections should be investigated before taking action.
+
+---
+
+# RAMMap
+
+RAMMap provides detailed memory usage information.
+
+Examples:
+
+- Active memory
+- Standby memory
+- Driver allocations
+- File cache
+- Physical memory usage
+
+It helps identify unusual memory consumption patterns.
+
+---
+
+# Advanced Performance Investigation
+
+A structured workflow:
+
+```text
+Slow System
+
+↓
+
+Identify Resource Bottleneck
+
+↓
+
+Collect Metrics
+
+↓
+
+Analyze Trends
+
+↓
+
+Implement Optimization
+
+↓
+
+Measure Improvement
+```
+
+Changes should be validated against established performance baselines.
+
+---
+
+# Application Dependency Analysis
+
+Many enterprise applications depend on:
+
+- DNS
+- Active Directory
+- SQL Server
+- IIS
+- Certificates
+- Network connectivity
+- File shares
+
+Dependency mapping helps isolate the true source of failures.
+
+---
+
+# Disaster Recovery
+
+Disaster Recovery (DR) focuses on restoring business operations after significant disruptions.
+
+Examples include:
+
+- Hardware failure
+- Ransomware
+- Natural disasters
+- Data corruption
+- Data center outages
+
+Recovery planning should be documented and tested regularly.
+
+---
+
+# Backup Strategy
+
+A comprehensive backup strategy should include:
+
+- System state
+- Critical data
+- Application configuration
+- Virtual machines
+- Active Directory (where applicable)
+
+Organizations commonly follow the **3-2-1** backup principle:
+
+- 3 copies of data
+- 2 different storage media
+- 1 off-site or offline copy
+
+---
+
+# Recovery Objectives
+
+Two important business metrics:
+
+| Metric | Description |
+|----------|-------------|
+| RPO (Recovery Point Objective) | Maximum acceptable data loss |
+| RTO (Recovery Time Objective) | Maximum acceptable downtime |
+
+Recovery strategies should align with business requirements.
+
+---
+
+# Business Continuity vs Disaster Recovery
+
+| Business Continuity | Disaster Recovery |
+|---------------------|------------------|
+| Keeps business operating | Restores systems after disruption |
+| Focuses on operations | Focuses on technology recovery |
+| Includes people and processes | Primarily infrastructure and data |
+
+Both are essential components of enterprise resilience.
+
+---
+
+# Change Management
+
+Many incidents result from configuration changes.
+
+Recommended process:
+
+```text
+Request
+
+↓
+
+Review
+
+↓
+
+Risk Assessment
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Validation
+
+↓
+
+Documentation
+```
+
+Controlled changes reduce operational risk.
+
+---
+
+# Knowledge Management
+
+Every resolved issue should contribute to organizational knowledge.
+
+Documentation should include:
+
+- Symptoms
+- Root cause
+- Resolution
+- Validation
+- Lessons learned
+- Related systems
+
+A searchable knowledge base accelerates future troubleshooting.
+
+---
+
+# Escalation
+
+Escalation should occur when:
+
+- Business impact increases
+- Required expertise is unavailable
+- Vendor support is needed
+- Security incidents are suspected
+- Recovery exceeds established SLAs
+
+Timely escalation minimizes operational impact.
+
+---
+
+# Major Incident Management
+
+For high-impact outages:
+
+```text
+Incident Declared
+
+↓
+
+Incident Manager Assigned
+
+↓
+
+Technical Teams Engaged
+
+↓
+
+Communication
+
+↓
+
+Containment
+
+↓
+
+Resolution
+
+↓
+
+Recovery
+
+↓
+
+Post-Incident Review
+```
+
+Coordination is as important as technical expertise.
+
+---
+
+# Advanced Troubleshooting Scenario 1
+
+## Problem
+
+Several branch offices cannot authenticate to the domain.
+
+### Investigation
+
+Review:
+
+- WAN connectivity
+- DNS
+- Domain Controller availability
+- Time synchronization
+- Replication health
+
+### Resolution
+
+Restore connectivity, verify replication, and validate user authentication.
+
+---
+
+# Advanced Troubleshooting Scenario 2
+
+## Problem
+
+Users experience intermittent access to an internal web application.
+
+### Investigation
+
+Evaluate:
+
+- IIS health
+- Application logs
+- SQL connectivity
+- Certificates
+- Network latency
+- Firewall rules
+
+Identify the dependency causing service disruption.
+
+---
+
+# Advanced Troubleshooting Scenario 3
+
+## Problem
+
+Following a software deployment, multiple systems experience high CPU utilization.
+
+### Investigation
+
+Collect:
+
+- Performance Monitor data
+- Process Explorer information
+- Event Viewer logs
+- Application telemetry
+
+Determine whether the issue is caused by software defects, configuration, or environmental factors.
+
+---
+
+# Advanced Troubleshooting Scenario 4
+
+## Problem
+
+An EDR alert indicates unusual PowerShell activity on several workstations.
+
+### Investigation
+
+Perform:
+
+- Event Log review
+- PowerShell log analysis
+- Process analysis
+- Network connection review
+- Persistence checks
+
+Coordinate with the security team to determine whether the activity is authorized or malicious.
+
+---
+
+# Enterprise Operations
+
+Operational excellence requires:
+
+- Continuous monitoring
+- Configuration management
+- Patch management
+- Capacity planning
+- Security monitoring
+- Regular maintenance
+- Documentation
+- Automation
+
+Proactive operations reduce the frequency and severity of incidents.
+
+---
+
+# Enterprise Monitoring Dashboard
+
+Typical enterprise dashboards monitor:
+
+- CPU utilization
+- Memory utilization
+- Disk capacity
+- Service availability
+- Authentication failures
+- Windows Update compliance
+- Backup success
+- Security alerts
+
+Centralized dashboards improve operational awareness.
+
+---
+
+# Automation
+
+PowerShell automation can simplify repetitive troubleshooting tasks.
+
+Examples:
+
+- Service status checks
+- Event Log collection
+- System inventory
+- Health checks
+- Scheduled reporting
+
+Automation should include logging and error handling.
+
+---
+
+# Cybersecurity Perspective
+
+Operational troubleshooting and cybersecurity are closely related.
+
+Security teams should monitor for:
+
+- Unauthorized configuration changes
+- Unexpected service creation
+- Privilege escalation
+- Log tampering
+- Persistence mechanisms
+- Suspicious PowerShell activity
+
+Investigations should balance system recovery with evidence preservation.
+
+---
+
+# Business Impact
+
+Advanced troubleshooting capabilities help organizations:
+
+- Reduce Mean Time to Detect (MTTD)
+- Reduce Mean Time to Respond (MTTR)
+- Improve service availability
+- Protect revenue
+- Maintain customer trust
+- Meet compliance requirements
+
+---
+
+# Enterprise Best Practices
+
+- Maintain current documentation.
+- Standardize troubleshooting procedures.
+- Establish performance baselines.
+- Preserve evidence during investigations.
+- Use Sysinternals tools responsibly.
+- Test backups regularly.
+- Practice disaster recovery exercises.
+- Conduct post-incident reviews.
+- Automate routine diagnostics where appropriate.
+- Continuously improve operational processes.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Process Explorer
+
+Use Process Explorer to identify:
+
+- Parent-child relationships
+- High CPU processes
+- Loaded DLLs
+- Digital signatures
+
+Document your observations.
+
+---
+
+## Lab 2 — Autoruns Review
+
+Review startup entries using Autoruns.
+
+Categorize each as:
+
+- Required
+- Optional
+- Unknown
+
+Explain how you would investigate unknown entries.
+
+---
+
+## Lab 3 — Disaster Recovery Planning
+
+Create a disaster recovery plan for a Windows enterprise.
+
+Include:
+
+- Backup strategy
+- Recovery priorities
+- RPO
+- RTO
+- Validation
+- Communication
+
+---
+
+## Lab 4 — Major Incident Exercise
+
+A Domain Controller fails during business hours.
+
+Develop a response plan covering:
+
+- Initial assessment
+- Stakeholder communication
+- Recovery actions
+- Validation
+- Post-incident review
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Structured troubleshooting methodology
+- Root Cause Analysis
+- Windows Recovery Environment
+- Safe Mode
+- Performance troubleshooting
+- Memory, CPU, disk, and network diagnostics
+- Active Directory troubleshooting
+- Group Policy troubleshooting
+- Application troubleshooting
+- Sysinternals tools
+- Disaster Recovery
+- Enterprise operations
+- Knowledge management
+- Automation
+
+These skills are essential for Windows administrators, system engineers, and cybersecurity professionals responsible for maintaining reliable enterprise environments.
+
+---
+
+# Key Takeaways
+
+- Effective troubleshooting follows a repeatable methodology.
+- Root Cause Analysis prevents recurring issues.
+- Sysinternals tools provide deep visibility into Windows internals.
+- Enterprise troubleshooting requires understanding system dependencies.
+- Disaster recovery planning is a critical operational capability.
+- Continuous documentation and process improvement strengthen organizational resilience.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of Process Explorer?
+2. How does Process Monitor differ from Event Viewer?
+3. What information does Autoruns provide?
+4. Explain the difference between RPO and RTO.
+5. What is the 3-2-1 backup strategy?
+6. Why is Root Cause Analysis important?
+7. When should an incident be escalated?
+8. What is the role of change management in troubleshooting?
+9. Why is evidence preservation important during investigations?
+10. How can automation improve enterprise troubleshooting?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Sysinternals Documentation
+- Microsoft Windows Recovery Documentation
+- Microsoft Performance Monitor Documentation
+- Microsoft Windows Security Documentation
+- NIST SP 800-61
+- NIST Cybersecurity Framework (CSF)
+- CIS Microsoft Windows Benchmarks
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 26 – Windows Troubleshooting**.
+
+You now understand structured troubleshooting methodologies, startup recovery, performance diagnostics, Active Directory and Group Policy troubleshooting, enterprise operations, Sysinternals tools, disaster recovery, and advanced troubleshooting practices expected in enterprise Windows environments.
+
+---
+
+**Next Chapter:** **27-Windows-Interview-Questions.md
