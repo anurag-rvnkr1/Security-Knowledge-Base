@@ -1589,4 +1589,760 @@ Create a comparison table covering:
 
 ---
 
-**Next:** **Part 3 — Active Directory Administration, Users, Groups, Organizational Units, Group Scope, Delegation, and Administrative Best Practices**
+# 23-Active-Directory.md
+
+# Part 3 — Active Directory Administration, Users, Groups, Organizational Units, Group Scope, Delegation, and Administrative Best Practices
+
+---
+
+# Introduction
+
+After deploying Active Directory, administrators spend most of their time managing:
+
+- Users
+- Groups
+- Computers
+- Organizational Units (OUs)
+- Group memberships
+- Delegated permissions
+- Administrative roles
+
+Proper administration ensures that users have the correct access while maintaining security, scalability, and operational efficiency.
+
+---
+
+# Active Directory Administrative Tools
+
+Common administration tools include:
+
+| Tool | Purpose |
+|------|----------|
+| Active Directory Users and Computers (ADUC) | Manage users, groups, computers, and OUs |
+| Active Directory Administrative Center (ADAC) | Modern administrative interface |
+| Active Directory Sites and Services | Manage replication and sites |
+| Active Directory Domains and Trusts | Manage domains and trust relationships |
+| Group Policy Management Console (GPMC) | Manage Group Policy Objects |
+| PowerShell Active Directory Module | Automation and bulk administration |
+
+Each tool serves a specific administrative purpose.
+
+---
+
+# Active Directory Users
+
+A user object represents an identity that can authenticate and access enterprise resources.
+
+User accounts typically include:
+
+- Username (sAMAccountName)
+- User Principal Name (UPN)
+- Display Name
+- Email Address
+- Department
+- Job Title
+- Manager
+- Phone Number
+- Security Identifier (SID)
+
+---
+
+# User Account Lifecycle
+
+```text
+Request
+
+↓
+
+Create Account
+
+↓
+
+Assign Groups
+
+↓
+
+Apply Policies
+
+↓
+
+Employee Uses Account
+
+↓
+
+Role Change
+
+↓
+
+Disable Account
+
+↓
+
+Delete or Archive
+```
+
+The lifecycle should align with organizational HR and security processes.
+
+---
+
+# Creating User Accounts
+
+Information commonly required:
+
+- Full name
+- Username
+- Department
+- Password
+- Organizational Unit
+- Group memberships
+
+Accounts should follow standardized naming conventions.
+
+---
+
+# User Naming Standards
+
+Example:
+
+| Attribute | Example |
+|------------|----------|
+| Display Name | John Smith |
+| Username | jsmith |
+| UPN | jsmith@company.com |
+| Email | john.smith@company.com |
+
+Consistent naming simplifies administration and auditing.
+
+---
+
+# User Account States
+
+| State | Description |
+|---------|-------------|
+| Enabled | User can authenticate |
+| Disabled | Authentication blocked |
+| Locked Out | Temporarily blocked after failed logons |
+| Expired | Account validity ended |
+
+Inactive accounts should be reviewed regularly.
+
+---
+
+# Password Management
+
+Administrators should:
+
+- Reset passwords securely
+- Verify user identity before reset
+- Enforce password policies
+- Require password change when appropriate
+- Monitor repeated password resets
+
+Password reset procedures should follow organizational security policies.
+
+---
+
+# Computer Objects
+
+Each domain-joined computer has a computer object.
+
+The object stores:
+
+- Computer name
+- SID
+- Group memberships
+- Operating system
+- Authentication information
+
+Computer accounts authenticate to the domain similarly to user accounts.
+
+---
+
+# Organizational Units (OUs)
+
+Organizational Units organize objects logically.
+
+Example:
+
+```text
+Company
+
+├── IT
+
+├── Finance
+
+├── HR
+
+├── Sales
+
+└── Servers
+```
+
+Benefits include:
+
+- Simplified administration
+- Group Policy targeting
+- Delegation of control
+- Logical organization
+
+---
+
+# Designing OU Structures
+
+Common approaches:
+
+### Department-Based
+
+```text
+Company
+
+↓
+
+Finance
+
+↓
+
+HR
+
+↓
+
+IT
+```
+
+### Location-Based
+
+```text
+Company
+
+↓
+
+India
+
+↓
+
+USA
+
+↓
+
+Germany
+```
+
+### Function-Based
+
+```text
+Company
+
+↓
+
+Workstations
+
+↓
+
+Servers
+
+↓
+
+Service Accounts
+```
+
+The design should reflect administrative requirements rather than the organizational chart alone.
+
+---
+
+# Groups
+
+Groups simplify permission management.
+
+Instead of assigning permissions directly to individual users:
+
+```text
+Users
+
+↓
+
+Security Group
+
+↓
+
+Resource
+```
+
+This approach is easier to manage and audit.
+
+---
+
+# Types of Groups
+
+| Group Type | Purpose |
+|-------------|----------|
+| Security Group | Access control |
+| Distribution Group | Email distribution |
+
+Only Security Groups can be used for permission assignments.
+
+---
+
+# Group Scope
+
+There are three primary security group scopes.
+
+| Scope | Typical Use |
+|---------|-------------|
+| Domain Local | Resource permissions within a domain |
+| Global | Users with similar job roles |
+| Universal | Cross-domain membership in a forest |
+
+Choosing the appropriate scope improves scalability and replication efficiency.
+
+---
+
+# Group Scope Overview
+
+```text
+Global Groups
+
+↓
+
+Universal Groups
+
+↓
+
+Domain Local Groups
+
+↓
+
+Permissions
+```
+
+A commonly recommended approach is to assign users to Global Groups, nest those into Universal Groups when necessary, and grant permissions to Domain Local Groups.
+
+---
+
+# AGDLP Model
+
+A widely used permission model is **AGDLP**:
+
+```text
+Accounts
+
+↓
+
+Global Groups
+
+↓
+
+Domain Local Groups
+
+↓
+
+Permissions
+```
+
+Benefits:
+
+- Simplified administration
+- Reduced permission sprawl
+- Easier auditing
+- Better scalability
+
+---
+
+# AGUDLP Model
+
+In multi-domain environments, the **AGUDLP** model is often used:
+
+```text
+Accounts
+
+↓
+
+Global Groups
+
+↓
+
+Universal Groups
+
+↓
+
+Domain Local Groups
+
+↓
+
+Permissions
+```
+
+Universal Groups facilitate access across domains within the same forest.
+
+---
+
+# Nested Groups
+
+Groups may contain other groups.
+
+Example:
+
+```text
+Finance Users
+
+↓
+
+Finance Managers
+
+↓
+
+Payroll Access
+```
+
+Nested groups simplify permission management but should be documented to avoid unnecessary complexity.
+
+---
+
+# Delegation of Administration
+
+Delegation allows administrative responsibilities to be assigned without granting full Domain Administrator privileges.
+
+Example:
+
+```text
+Domain Admin
+
+↓
+
+Delegate Password Resets
+
+↓
+
+Help Desk
+```
+
+This follows the principle of least privilege.
+
+---
+
+# Common Delegated Tasks
+
+Examples:
+
+- Reset passwords
+- Unlock user accounts
+- Create users
+- Create computer accounts
+- Join computers to the domain
+- Manage specific OUs
+- Modify group membership
+
+Delegation reduces operational risk.
+
+---
+
+# Administrative Roles
+
+Examples:
+
+| Role | Responsibilities |
+|------|------------------|
+| Domain Administrator | Full domain administration |
+| Enterprise Administrator | Forest-wide administration |
+| Schema Administrator | Schema modifications |
+| Account Operator | Limited account management |
+| Backup Operator | Backup and restore operations |
+
+Highly privileged groups should contain only approved personnel.
+
+---
+
+# Built-in Administrative Groups
+
+Common built-in groups include:
+
+- Domain Admins
+- Enterprise Admins
+- Schema Admins
+- Administrators
+- Account Operators
+- Backup Operators
+- Server Operators
+- Print Operators
+
+Membership should be reviewed regularly.
+
+---
+
+# Service Accounts
+
+Applications often require dedicated accounts.
+
+Best practices:
+
+- Least privilege
+- No interactive logon
+- Strong credential management
+- Prefer Managed Service Accounts (MSA/gMSA)
+- Monitor account usage
+
+Service accounts should not be shared between unrelated applications.
+
+---
+
+# Bulk Administration
+
+PowerShell simplifies repetitive tasks.
+
+Examples:
+
+- Create users
+- Disable inactive accounts
+- Update attributes
+- Export reports
+- Manage group membership
+
+Automation reduces manual effort and improves consistency.
+
+---
+
+# User Provisioning Workflow
+
+```text
+HR Request
+
+↓
+
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Apply Group Policy
+
+↓
+
+Issue Device
+
+↓
+
+User Ready
+```
+
+Standardized provisioning improves security and operational efficiency.
+
+---
+
+# User Deprovisioning Workflow
+
+```text
+Termination Notice
+
+↓
+
+Disable Account
+
+↓
+
+Remove Group Membership
+
+↓
+
+Disable Access
+
+↓
+
+Archive Data
+
+↓
+
+Delete Account (According to Policy)
+```
+
+Prompt deprovisioning reduces the risk of unauthorized access.
+
+---
+
+# Auditing Administrative Changes
+
+Monitor events such as:
+
+- User creation
+- User deletion
+- Password resets
+- Group membership changes
+- OU modifications
+- Privileged account changes
+
+Auditing supports investigations and compliance.
+
+---
+
+# Enterprise Example
+
+A company with 8,000 employees organizes its directory as follows:
+
+```text
+Company
+
+├── Users
+
+├── Workstations
+
+├── Servers
+
+├── Service Accounts
+
+├── IT
+
+├── HR
+
+└── Finance
+```
+
+Permissions are assigned using the AGDLP model.
+
+Help Desk staff are delegated authority to:
+
+- Reset passwords
+- Unlock accounts
+- Manage user objects within designated OUs
+
+Domain Administrator access is reserved for a small number of senior administrators.
+
+---
+
+# Cybersecurity Perspective
+
+Improper administration may result in:
+
+- Excessive privileges
+- Privilege escalation
+- Orphaned accounts
+- Shared administrator credentials
+- Unauthorized access
+- Difficult auditing
+
+Applying least privilege and proper delegation significantly reduces these risks.
+
+---
+
+# Business Impact
+
+Effective administration provides:
+
+- Faster onboarding
+- Faster offboarding
+- Improved security
+- Simplified permission management
+- Better compliance
+- Lower administrative overhead
+- Easier audits
+
+---
+
+# Enterprise Best Practices
+
+- Use standardized naming conventions.
+- Design OUs around administrative needs.
+- Assign permissions to groups rather than individual users.
+- Follow the AGDLP or AGUDLP model.
+- Delegate routine administration instead of granting Domain Admin rights.
+- Review privileged group membership regularly.
+- Automate repetitive administrative tasks with PowerShell.
+- Disable inactive accounts promptly.
+- Audit administrative changes.
+- Document directory structure and delegation.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Create an OU Structure
+
+Design an OU hierarchy for an organization with:
+
+- IT
+- HR
+- Finance
+- Sales
+- Servers
+- Workstations
+
+Explain your design decisions.
+
+---
+
+## Lab 2 — Design a Group Strategy
+
+Using the AGDLP model, create:
+
+- Three Global Groups
+- Three Domain Local Groups
+- Two shared resources
+
+Map users to resources through groups.
+
+---
+
+## Lab 3 — Delegation Exercise
+
+Design a delegation model allowing Help Desk staff to:
+
+- Reset passwords
+- Unlock accounts
+- Manage user objects in the HR OU
+
+Explain why Domain Administrator privileges are unnecessary.
+
+---
+
+## Lab 4 — User Lifecycle
+
+Document the complete lifecycle for:
+
+- New employee onboarding
+- Department transfer
+- Employee termination
+
+Include security controls at each stage.
+
+---
+
+# Key Takeaways
+
+- Active Directory administration centers on users, groups, computers, and OUs.
+- Organizational Units simplify management and Group Policy application.
+- Groups should be used to assign permissions instead of individual users.
+- AGDLP and AGUDLP provide scalable permission management models.
+- Delegation enables secure administration using least privilege.
+- Regular auditing of privileged accounts and administrative changes is essential.
+
+---
+
+# Interview Questions
+
+1. What is an Organizational Unit (OU)?
+2. What is the difference between Security Groups and Distribution Groups?
+3. Explain the AGDLP model.
+4. When should Universal Groups be used?
+5. Why is delegation preferred over granting Domain Administrator access?
+6. What information is stored in a user object?
+7. Why should permissions be assigned to groups rather than users?
+8. What are Managed Service Accounts (MSAs)?
+9. Describe the lifecycle of a user account.
+10. Why should privileged group membership be reviewed regularly?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Active Directory Documentation
+- Microsoft Windows Server Documentation
+- Microsoft PowerShell Active Directory Module Documentation
+- Microsoft Group Management Documentation
+- NIST SP 800-53
+- CIS Microsoft Windows Server Benchmarks
+- *Mastering Active Directory* (Dishan Francis)
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Active Directory Security, Attacks, Hardening, Monitoring, Troubleshooting, and Enterprise Best Practices**
