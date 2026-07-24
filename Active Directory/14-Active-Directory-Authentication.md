@@ -1608,4 +1608,795 @@ again and compare newly acquired service tickets.
 
 ---
 
-**Next:** **Part 3 — Kerberos Internals, Access Tokens, PAC, Logon Process, Trust Authentication, PowerShell, Troubleshooting, and Enterprise Operations**
+# Active-Directory/
+
+# 14-Active-Directory-Authentication.md
+
+# Part 3 — Kerberos Internals, Privilege Attribute Certificate (PAC), Access Tokens, Logon Process, Trust Authentication, PowerShell, Troubleshooting, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand Kerberos authentication internals.
+- Learn the complete Windows logon process.
+- Understand the Privilege Attribute Certificate (PAC).
+- Learn how Windows creates access tokens.
+- Understand cross-domain authentication using trusts.
+- Troubleshoot authentication issues.
+- Perform authentication-related administration using PowerShell.
+
+---
+
+# Review
+
+In Part 2, we learned:
+
+- Kerberos
+- Key Distribution Center (KDC)
+- Authentication Service (AS)
+- Ticket Granting Service (TGS)
+- Ticket Granting Ticket (TGT)
+- Service Tickets
+- Service Principal Names (SPNs)
+- NTLM comparison
+
+Now we'll dive deeper into how Windows processes authentication internally.
+
+---
+
+# Complete Windows Logon Process
+
+The simplified Windows domain logon process is:
+
+```text
+Computer Starts
+
+↓
+
+Computer Authenticates
+
+↓
+
+User Enters Credentials
+
+↓
+
+Credential Verification
+
+↓
+
+TGT Issued
+
+↓
+
+Access Token Created
+
+↓
+
+Desktop Loaded
+```
+
+Several Windows components participate in this process.
+
+---
+
+# Windows Authentication Components
+
+Common components include:
+
+| Component | Purpose |
+|-----------|----------|
+| Winlogon | Manages interactive sign-in |
+| LSASS | Local Security Authority Subsystem Service |
+| Netlogon | Secure communication with the Domain Controller |
+| KDC | Kerberos authentication service |
+| Active Directory | Identity store |
+| DNS | Domain Controller location |
+
+---
+
+# Winlogon
+
+**Winlogon** manages the interactive sign-in experience.
+
+Responsibilities include:
+
+- Secure attention sequence (Ctrl + Alt + Del where applicable)
+- User sign-in
+- User logoff
+- Session management
+
+Winlogon passes credentials to the appropriate authentication components.
+
+---
+
+# LSASS
+
+The **Local Security Authority Subsystem Service (LSASS)** is one of the most important Windows security processes.
+
+Responsibilities include:
+
+- Authentication
+- Creating logon sessions
+- Creating access tokens
+- Managing local security policy
+- Processing Kerberos and NTLM authentication
+
+Process name:
+
+```text
+lsass.exe
+```
+
+---
+
+# Netlogon Service
+
+Netlogon helps establish and maintain the secure channel between a domain-joined computer and a Domain Controller.
+
+Responsibilities:
+
+- Domain logon support
+- Secure channel maintenance
+- Domain Controller discovery
+- Authentication assistance
+
+---
+
+# DNS During Authentication
+
+Authentication begins with locating a Domain Controller.
+
+```text
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Domain Controller Located
+
+↓
+
+Kerberos Begins
+```
+
+Incorrect DNS configuration is one of the most common causes of authentication failures.
+
+---
+
+# Kerberos Authentication Flow (Detailed)
+
+```text
+User
+
+↓
+
+Winlogon
+
+↓
+
+LSASS
+
+↓
+
+KDC
+
+↓
+
+Authentication Service
+
+↓
+
+TGT
+
+↓
+
+Ticket Granting Service
+
+↓
+
+Service Ticket
+
+↓
+
+Application
+```
+
+---
+
+# Privilege Attribute Certificate (PAC)
+
+The **Privilege Attribute Certificate (PAC)** is additional authorization data included in Kerberos tickets within Active Directory environments.
+
+The PAC commonly contains:
+
+- User SID
+- Group SIDs
+- User privileges
+- Logon information
+
+The PAC enables services to make authorization decisions without independently querying Active Directory for every request.
+
+---
+
+# PAC Overview
+
+```text
+Kerberos Ticket
+
+│
+
+├── Authentication Data
+
+└── PAC
+
+     ├── User SID
+
+     ├── Group Membership
+
+     ├── Privileges
+
+     └── Logon Information
+```
+
+---
+
+# Why the PAC Matters
+
+Suppose:
+
+```text
+John
+
+↓
+
+Finance Group
+
+↓
+
+VPN Group
+
+↓
+
+Remote Desktop Users
+```
+
+The PAC contains information about these memberships, allowing servers to evaluate access efficiently.
+
+---
+
+# Access Token Creation
+
+After successful authentication:
+
+```text
+Authentication Successful
+
+↓
+
+LSASS
+
+↓
+
+Access Token Created
+```
+
+The access token represents the user's security context for the session.
+
+---
+
+# Access Token Contents
+
+An access token commonly includes:
+
+- User SID
+- Group SIDs
+- Privileges
+- User rights
+- Logon session information
+- Integrity level (where applicable)
+
+Applications consult the access token during authorization.
+
+---
+
+# Access Token Flow
+
+```text
+Authentication
+
+↓
+
+PAC
+
+↓
+
+LSASS
+
+↓
+
+Access Token
+
+↓
+
+Application Access
+```
+
+---
+
+# Access Decision
+
+When accessing a resource:
+
+```text
+User
+
+↓
+
+Access Token
+
+↓
+
+ACL
+
+↓
+
+Allow / Deny
+```
+
+The operating system compares the SIDs in the access token against the Access Control List (ACL).
+
+---
+
+# Logon Session
+
+Each successful authentication creates a logon session.
+
+Example:
+
+```text
+User Login
+
+↓
+
+Logon Session
+
+↓
+
+Desktop
+
+↓
+
+Applications
+```
+
+The logon session persists until the user signs out or the session ends.
+
+---
+
+# Credential Caching
+
+Windows can cache domain credentials locally to support certain scenarios where a Domain Controller is temporarily unavailable.
+
+Example:
+
+```text
+Laptop
+
+↓
+
+Offline
+
+↓
+
+Cached Credentials
+
+↓
+
+User Signs In
+```
+
+Policies control the number of cached logons and should align with organizational security requirements.
+
+---
+
+# Computer Authentication
+
+Computers authenticate using their own accounts.
+
+```text
+Computer Account
+
+↓
+
+Kerberos
+
+↓
+
+Secure Channel
+
+↓
+
+Authentication
+```
+
+This occurs independently of user authentication.
+
+---
+
+# Cross-Domain Authentication
+
+Suppose:
+
+```text
+User
+
+↓
+
+Domain A
+```
+
+needs access to:
+
+```text
+Server
+
+↓
+
+Domain B
+```
+
+If an appropriate trust exists, Kerberos can authenticate the user across domains.
+
+---
+
+# Trust Authentication
+
+Example:
+
+```text
+Domain A
+
+⇄ Trust ⇄
+
+Domain B
+```
+
+Workflow:
+
+```text
+User
+
+↓
+
+Home Domain
+
+↓
+
+Trust
+
+↓
+
+Resource Domain
+
+↓
+
+Service Ticket
+
+↓
+
+Access
+```
+
+The user's home domain authenticates the identity, while the resource domain authorizes access based on the relevant permissions.
+
+---
+
+# Cross-Forest Authentication
+
+Example:
+
+```text
+Forest A
+
+⇄ Trust ⇄
+
+Forest B
+```
+
+Trusts allow authentication across forests when properly configured and authorized.
+
+---
+
+# Enterprise Authentication Example
+
+Company:
+
+- 12 domains
+- 3 forests
+
+Workflow:
+
+```text
+User
+
+↓
+
+Home Domain
+
+↓
+
+Kerberos
+
+↓
+
+Trust
+
+↓
+
+Resource Forest
+
+↓
+
+Application
+```
+
+This design enables centralized identity with distributed resources.
+
+---
+
+# PowerShell
+
+Useful authentication-related commands include:
+
+---
+
+# Current User
+
+```powershell
+whoami
+```
+
+---
+
+# Current Groups
+
+```powershell
+whoami /groups
+```
+
+---
+
+# Current Privileges
+
+```powershell
+whoami /priv
+```
+
+---
+
+# View Kerberos Tickets
+
+```powershell
+klist
+```
+
+---
+
+# Purge Kerberos Tickets
+
+```powershell
+klist purge
+```
+
+This removes cached Kerberos tickets for the current logon session. New tickets are obtained when required.
+
+---
+
+# Check Computer Secure Channel
+
+```powershell
+Test-ComputerSecureChannel
+```
+
+This command helps verify the relationship between the workstation and the domain.
+
+---
+
+# Authentication Troubleshooting
+
+Common issues:
+
+- Incorrect password
+- Locked account
+- Expired password
+- DNS issues
+- Time synchronization problems
+- Secure channel failures
+- Missing or duplicate SPNs
+- Trust issues
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Authentication Failed
+
+↓
+
+DNS Working?
+
+↓
+
+Time Correct?
+
+↓
+
+Domain Reachable?
+
+↓
+
+Secure Channel Healthy?
+
+↓
+
+Kerberos Tickets Valid?
+
+↓
+
+Resolved
+```
+
+---
+
+# Useful Diagnostic Tools
+
+| Tool | Purpose |
+|------|----------|
+| Event Viewer | Authentication events |
+| klist | Kerberos tickets |
+| whoami | Identity information |
+| Test-ComputerSecureChannel | Secure channel validation |
+| nltest | Domain and trust diagnostics |
+| dcdiag | Domain Controller diagnostics |
+
+---
+
+# Enterprise Best Practices
+
+- Use Kerberos as the primary authentication protocol.
+- Maintain accurate DNS configuration.
+- Synchronize system clocks.
+- Monitor Domain Controller health.
+- Audit authentication failures.
+- Protect privileged accounts.
+- Limit NTLM where feasible.
+- Monitor trust relationships.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Configuring clients to use incorrect DNS servers.
+- Ignoring system time synchronization.
+- Registering duplicate SPNs.
+- Leaving broken secure channels unresolved.
+- Creating unnecessary trust relationships.
+- Ignoring repeated authentication failures.
+
+---
+
+# Cybersecurity Perspective
+
+Authentication infrastructure is a high-value target.
+
+Security teams should monitor:
+
+- Unusual authentication patterns.
+- Failed logons.
+- Kerberos ticket anomalies.
+- Privileged account usage.
+- Trust relationship changes.
+- Domain Controller security events.
+
+Compromised authentication systems can affect the entire enterprise.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Kerberos internals.
+
+### Tasks
+
+1. Run:
+
+```powershell
+whoami
+```
+
+2. View:
+
+```powershell
+whoami /groups
+```
+
+3. Display Kerberos tickets:
+
+```powershell
+klist
+```
+
+4. Verify:
+
+```powershell
+Test-ComputerSecureChannel
+```
+
+5. Open:
+
+```text
+Event Viewer
+```
+
+Review authentication-related logs.
+
+6. Document:
+
+- Current user
+- Current groups
+- Kerberos tickets
+- Secure channel status
+
+---
+
+# Key Takeaways
+
+- LSASS creates access tokens after successful authentication.
+- The PAC carries authorization information within Kerberos tickets.
+- Access tokens contain SIDs and privileges used during authorization.
+- Trusts enable cross-domain and cross-forest authentication.
+- PowerShell and built-in diagnostic tools assist with authentication troubleshooting.
+
+---
+
+# Interview Questions
+
+1. What is LSASS?
+2. What is the purpose of the PAC?
+3. How is an access token created?
+4. What information does an access token contain?
+5. What is a logon session?
+6. What is credential caching?
+7. How does cross-domain authentication work?
+8. Which command displays Kerberos tickets?
+9. Which command checks the secure channel?
+10. What are common causes of Kerberos authentication failures?
+
+---
+
+# References
+
+- Microsoft Learn – Kerberos Authentication
+- Microsoft Learn – LSASS
+- Microsoft Learn – Kerberos PAC
+- Microsoft Learn – Test-ComputerSecureChannel
+- Microsoft Learn – Active Directory Trusts
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — Authentication Security, Monitoring, Kerberos Attacks Overview, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
