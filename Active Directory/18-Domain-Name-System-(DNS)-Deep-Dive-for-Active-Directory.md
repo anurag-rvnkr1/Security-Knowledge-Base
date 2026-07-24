@@ -861,4 +861,932 @@ DNS Manager
 
 ---
 
-**Next:** **Part 2**
+# Active-Directory/
+
+# 18-Domain-Name-System-(DNS)-Deep-Dive-for-Active-Directory.md
+
+# Part 2 — DNS Name Resolution, Recursive & Iterative Queries, Zone Transfers, Dynamic DNS (DDNS), SRV Records, and Active Directory Registration
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand the DNS name resolution process.
+- Learn Recursive and Iterative queries.
+- Understand DNS caching.
+- Learn Time To Live (TTL).
+- Understand Zone Transfers.
+- Learn Dynamic DNS (DDNS).
+- Understand SRV records in Active Directory.
+- Learn how Domain Controllers register DNS records.
+- Understand enterprise DNS workflows.
+
+---
+
+# Review
+
+In Part 1, you learned:
+
+- DNS Fundamentals
+- DNS Architecture
+- DNS Hierarchy
+- DNS Zones
+- DNS Records
+- Active Directory Integration
+- Active Directory-Integrated Zones
+
+Now let's examine how DNS actually resolves names and supports Active Directory operations.
+
+---
+
+# DNS Name Resolution
+
+Whenever an application needs to contact another computer, it usually knows only the hostname.
+
+Example:
+
+```text
+server01.contoso.com
+```
+
+The operating system must determine the IP address.
+
+Workflow:
+
+```text
+Application
+
+↓
+
+DNS Client
+
+↓
+
+DNS Resolver
+
+↓
+
+DNS Server
+
+↓
+
+IP Address
+
+↓
+
+Connection Established
+```
+
+---
+
+# Complete DNS Resolution Flow
+
+```text
+User
+
+↓
+
+www.contoso.com
+
+↓
+
+DNS Client Cache
+
+↓
+
+Local Hosts File
+
+↓
+
+Configured DNS Server
+
+↓
+
+Authoritative DNS Server
+
+↓
+
+IP Address Returned
+
+↓
+
+Cache Result
+
+↓
+
+Application Connects
+```
+
+---
+
+# Step-by-Step Resolution
+
+Example:
+
+User opens:
+
+```text
+intranet.contoso.com
+```
+
+Steps:
+
+1. Application requests hostname resolution.
+2. Windows DNS Client checks local cache.
+3. Windows checks the HOSTS file.
+4. Query is sent to configured DNS server.
+5. DNS server resolves the request.
+6. IP address is returned.
+7. Client caches the result.
+8. Connection begins.
+
+---
+
+# DNS Client Cache
+
+Windows stores previously resolved names.
+
+Example:
+
+```text
+server01
+
+↓
+
+192.168.10.20
+```
+
+Future requests:
+
+```text
+Cache
+
+↓
+
+Immediate Response
+```
+
+Benefits:
+
+- Faster responses
+- Reduced network traffic
+- Lower DNS server load
+
+---
+
+# Cache Workflow
+
+```text
+First Request
+
+↓
+
+DNS Server
+
+↓
+
+IP Returned
+
+↓
+
+Stored in Cache
+
+↓
+
+Second Request
+
+↓
+
+Cache Used
+
+↓
+
+No DNS Query Needed
+```
+
+---
+
+# Time To Live (TTL)
+
+Every DNS record has a TTL value.
+
+TTL determines:
+
+```text
+How Long
+
+↓
+
+Record Remains Cached
+```
+
+Example:
+
+```text
+TTL = 3600 seconds
+```
+
+After expiration:
+
+```text
+Client
+
+↓
+
+New DNS Query
+```
+
+---
+
+# Why TTL Matters
+
+Smaller TTL:
+
+Advantages
+
+- Faster updates
+- Better during migrations
+
+Disadvantages
+
+- More DNS traffic
+
+Larger TTL:
+
+Advantages
+
+- Better performance
+- Fewer DNS queries
+
+Disadvantages
+
+- Changes take longer to propagate
+
+---
+
+# Recursive Query
+
+In a recursive query:
+
+```text
+Client
+
+↓
+
+DNS Server
+
+↓
+
+Complete Answer Required
+```
+
+The DNS server must either:
+
+- Return the requested answer.
+- Return an error.
+
+The client expects the DNS server to complete the resolution process.
+
+---
+
+# Recursive Query Diagram
+
+```text
+Client
+
+↓
+
+Recursive Query
+
+↓
+
+DNS Server
+
+↓
+
+Root Server
+
+↓
+
+TLD Server
+
+↓
+
+Authoritative Server
+
+↓
+
+Answer
+
+↓
+
+Client
+```
+
+---
+
+# Iterative Query
+
+In an iterative query:
+
+```text
+DNS Server
+
+↓
+
+Another DNS Server
+
+↓
+
+Referral
+
+↓
+
+Next Server
+
+↓
+
+Referral
+
+↓
+
+Authoritative Server
+
+↓
+
+Answer
+```
+
+Each server provides the best information it has, often referring the requester to another server.
+
+---
+
+# Recursive vs Iterative
+
+| Recursive | Iterative |
+|------------|-----------|
+| Client expects final answer | Server may return referral |
+| More work for resolver | Shared resolution process |
+| Common between client and resolver | Common between DNS servers |
+
+---
+
+# Root DNS Servers
+
+At the top of the DNS hierarchy are the Root DNS Servers.
+
+```text
+.
+
+↓
+
+Root Servers
+
+↓
+
+TLD
+
+↓
+
+Domain
+
+↓
+
+Host
+```
+
+Root servers direct queries toward the correct Top-Level Domain (TLD).
+
+---
+
+# Top-Level Domains (TLD)
+
+Examples:
+
+```text
+.com
+
+.org
+
+.net
+
+.edu
+
+.gov
+```
+
+Example:
+
+```text
+www.contoso.com
+
+↓
+
+TLD
+
+↓
+
+.com
+```
+
+---
+
+# Authoritative DNS Server
+
+An authoritative server stores the official DNS records for its zone.
+
+Example:
+
+```text
+contoso.com
+
+↓
+
+Authoritative DNS Server
+
+↓
+
+Returns Official Record
+```
+
+---
+
+# Name Resolution Example
+
+User requests:
+
+```text
+portal.contoso.com
+```
+
+Workflow:
+
+```text
+Client
+
+↓
+
+DNS Resolver
+
+↓
+
+Root
+
+↓
+
+.com
+
+↓
+
+contoso.com
+
+↓
+
+Authoritative DNS
+
+↓
+
+IP Address
+
+↓
+
+Client Connects
+```
+
+---
+
+# Zone Transfer
+
+DNS servers replicate zone information through **Zone Transfers**.
+
+Purpose:
+
+```text
+Primary DNS
+
+↓
+
+Secondary DNS
+
+↓
+
+Updated Zone
+```
+
+---
+
+# Types of Zone Transfer
+
+## Full Zone Transfer (AXFR)
+
+Copies the entire zone.
+
+```text
+Entire Zone
+
+↓
+
+Transferred
+```
+
+---
+
+## Incremental Zone Transfer (IXFR)
+
+Copies only changes.
+
+```text
+Changed Records
+
+↓
+
+Transferred
+```
+
+Benefits:
+
+- Lower bandwidth
+- Faster synchronization
+
+---
+
+# Zone Transfer Security
+
+Best practices:
+
+- Restrict transfers to authorized DNS servers.
+- Use Active Directory-Integrated Zones where possible.
+- Monitor transfer activity.
+- Avoid exposing zone information unnecessarily.
+
+---
+
+# Dynamic DNS (DDNS)
+
+Dynamic DNS allows systems to update DNS records automatically.
+
+Example:
+
+```text
+Computer Boots
+
+↓
+
+Gets IP Address
+
+↓
+
+Registers DNS Record
+
+↓
+
+Clients Can Locate Computer
+```
+
+---
+
+# Why Active Directory Uses DDNS
+
+Without Dynamic DNS:
+
+Administrators would need to manually create records.
+
+With DDNS:
+
+```text
+Computer
+
+↓
+
+Registers Host Record
+
+↓
+
+Domain Controller
+
+↓
+
+Updates DNS
+```
+
+This greatly reduces administrative effort.
+
+---
+
+# Secure Dynamic Updates
+
+Active Directory commonly supports **Secure Dynamic Updates**.
+
+Benefits:
+
+- Authenticated updates.
+- Prevents unauthorized DNS modifications.
+- Uses Active Directory security permissions.
+
+Recommended for AD-integrated zones.
+
+---
+
+# Domain Controller Registration
+
+When a Domain Controller starts:
+
+```text
+Domain Controller
+
+↓
+
+Netlogon Service
+
+↓
+
+Registers DNS Records
+
+↓
+
+Clients Discover Services
+```
+
+If these records are missing, clients may fail to locate authentication services.
+
+---
+
+# Important Active Directory Records
+
+Examples include:
+
+- Host (A/AAAA) records
+- SRV records
+- NS records
+- CNAME records (where applicable)
+
+Among these, **SRV records are especially important for service discovery**.
+
+---
+
+# SRV Record Overview
+
+Unlike an A record, which identifies a host, an SRV record identifies **a service provided by a host**.
+
+Example:
+
+```text
+LDAP Service
+
+↓
+
+Domain Controller
+```
+
+---
+
+# SRV Record Structure
+
+General format:
+
+```text
+_Service._Protocol.Domain
+```
+
+Example:
+
+```text
+_ldap._tcp.contoso.com
+```
+
+This record tells clients which servers provide LDAP services.
+
+---
+
+# Common Active Directory SRV Records
+
+| SRV Record | Purpose |
+|------------|----------|
+| `_ldap._tcp` | LDAP service |
+| `_kerberos._tcp` | Kerberos authentication |
+| `_gc._tcp` | Global Catalog |
+| `_kpasswd._tcp` | Password change service |
+
+These records are automatically maintained by Domain Controllers.
+
+---
+
+# Active Directory Logon Workflow
+
+```text
+User
+
+↓
+
+Logon
+
+↓
+
+DNS Query
+
+↓
+
+SRV Record
+
+↓
+
+Nearest Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+Authentication
+```
+
+DNS enables clients to locate appropriate authentication services.
+
+---
+
+# Domain Join Workflow
+
+```text
+Computer
+
+↓
+
+DNS Query
+
+↓
+
+Locate Domain Controller
+
+↓
+
+LDAP
+
+↓
+
+Kerberos
+
+↓
+
+Join Domain
+
+↓
+
+Register DNS Records
+```
+
+DNS plays a critical role throughout the domain join process.
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 30 offices
+- 80 Domain Controllers
+- AD-Integrated DNS
+
+Employee logs in:
+
+```text
+Laptop
+
+↓
+
+DNS Query
+
+↓
+
+SRV Record
+
+↓
+
+Nearest Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+Group Policy
+
+↓
+
+Desktop Loaded
+```
+
+---
+
+# Common DNS Problems
+
+Examples:
+
+- Incorrect DNS server configuration
+- Missing SRV records
+- Expired cached records
+- Duplicate host records
+- Failed Dynamic DNS registration
+- Zone replication delays
+- Incorrect forwarders
+- Broken delegation
+
+---
+
+# Cybersecurity Perspective
+
+DNS infrastructure should be protected because it supports identity and authentication services.
+
+Organizations should:
+
+- Restrict zone transfers.
+- Enable Secure Dynamic Updates.
+- Monitor unauthorized record changes.
+- Protect DNS administrators.
+- Audit DNS configuration changes.
+- Keep DNS servers patched.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Active Directory DNS registration.
+
+### Tasks
+
+1. Open:
+
+```text
+DNS Manager
+```
+
+2. Browse:
+
+- Forward Lookup Zone
+- `_msdcs`
+- `_tcp`
+- `_udp`
+
+3. Locate:
+
+- SRV records
+- A records
+- NS records
+
+4. Restart the **Netlogon** service (in a lab environment).
+
+5. Observe newly registered DNS records.
+
+6. Record:
+
+- Domain Controller hostname
+- LDAP SRV records
+- Kerberos SRV records
+- Global Catalog SRV records
+
+---
+
+# Key Takeaways
+
+- DNS resolution follows a structured hierarchical process.
+- Recursive queries require a complete answer from the resolver.
+- Iterative queries provide referrals between DNS servers.
+- TTL controls how long records remain cached.
+- Dynamic DNS automates record registration.
+- Domain Controllers automatically register critical DNS records.
+- SRV records allow clients to locate Active Directory services.
+
+---
+
+# Interview Questions
+
+1. What is DNS name resolution?
+2. What is the difference between recursive and iterative queries?
+3. What is TTL?
+4. What is Dynamic DNS (DDNS)?
+5. What is Secure Dynamic Update?
+6. What is a Zone Transfer?
+7. What is the difference between AXFR and IXFR?
+8. Why are SRV records important in Active Directory?
+9. Which service registers DNS records for Domain Controllers?
+10. Why would missing SRV records prevent user logon?
+
+---
+
+# References
+
+- RFC 1034 – Domain Concepts and Facilities
+- RFC 1035 – Domain Names: Implementation and Specification
+- RFC 2136 – Dynamic Updates in the Domain Name System
+- Microsoft Learn – DNS Dynamic Update
+- Microsoft Learn – DNS Records Used by Active Directory
+- Microsoft Windows Server Documentation
+
+---
+
+**Next:** **Part 3**
