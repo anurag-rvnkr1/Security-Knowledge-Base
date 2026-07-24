@@ -1465,4 +1465,727 @@ Determine whether Merge or Replace mode is more appropriate and justify your dec
 
 ---
 
-**Next:** **Part 3 — Group Policy Security, Software Deployment, Scripts, Folder Redirection, Windows Update, Troubleshooting, and Enterprise Best Practices**
+# 24-Group-Policy.md
+
+# Part 3 — Group Policy Security, Software Deployment, Scripts, Folder Redirection, Windows Update, Troubleshooting, and Enterprise Best Practices
+
+---
+
+# Introduction
+
+Beyond basic configuration management, Group Policy is a powerful platform for:
+
+- Security enforcement
+- Software deployment
+- User environment management
+- Operating system configuration
+- Compliance
+- Automation
+
+Most enterprise Windows environments rely on Group Policy to ensure every managed computer follows organizational security standards.
+
+---
+
+# Security Policies
+
+Group Policy can enforce security across the enterprise.
+
+Common security configurations include:
+
+- Password policies
+- Account lockout policies
+- User rights assignment
+- Audit policies
+- Security options
+- Network security settings
+- Microsoft Defender configuration
+- Windows Firewall
+
+Centralized security enforcement reduces configuration drift and strengthens compliance.
+
+---
+
+# Password Policy
+
+A strong password policy reduces the risk of unauthorized access.
+
+Typical settings include:
+
+| Setting | Purpose |
+|----------|----------|
+| Minimum password length | Increase password complexity |
+| Password history | Prevent password reuse |
+| Maximum password age | Require periodic changes |
+| Minimum password age | Prevent immediate reuse |
+| Complexity requirements | Enforce stronger passwords |
+
+Password policies should align with organizational security standards.
+
+---
+
+# Account Lockout Policy
+
+Account lockout helps mitigate password guessing attacks.
+
+Common settings:
+
+| Setting | Description |
+|----------|-------------|
+| Lockout threshold | Number of failed attempts |
+| Lockout duration | Time account remains locked |
+| Reset counter | Time before failed attempts reset |
+
+Organizations should balance security with user experience.
+
+---
+
+# User Rights Assignment
+
+User Rights Assignment controls privileged operations.
+
+Examples:
+
+- Log on locally
+- Log on as a service
+- Back up files
+- Shut down the system
+- Debug programs
+- Access the computer from the network
+
+Only authorized users should receive elevated rights.
+
+---
+
+# Security Options
+
+Examples include:
+
+- Disable anonymous enumeration
+- Restrict removable media
+- SMB security settings
+- Network authentication requirements
+- Interactive logon messages
+- UAC configuration
+
+These settings improve the overall security posture.
+
+---
+
+# Advanced Audit Policy
+
+Advanced auditing provides detailed security visibility.
+
+Categories include:
+
+- Logon
+- Account Management
+- Policy Change
+- Object Access
+- Privilege Use
+- Process Creation
+- Directory Service Changes
+
+Audit data supports incident response and compliance.
+
+---
+
+# Windows Defender Policies
+
+Administrators can centrally configure:
+
+- Real-time protection
+- Cloud-delivered protection
+- Scheduled scans
+- Exclusions
+- Tamper protection (where applicable)
+- Behavior monitoring
+
+Centralized Defender configuration ensures consistent endpoint protection.
+
+---
+
+# Windows Firewall Policies
+
+Group Policy can configure:
+
+- Firewall profiles
+- Inbound rules
+- Outbound rules
+- Logging
+- IPsec settings
+- Allowed applications
+
+Standardized firewall settings improve network security.
+
+---
+
+# BitLocker Policies
+
+BitLocker settings can be managed centrally.
+
+Examples:
+
+- Encryption method
+- Recovery key backup
+- TPM requirements
+- Startup authentication
+- Recovery options
+
+BitLocker helps protect data if devices are lost or stolen.
+
+---
+
+# Software Installation
+
+Group Policy supports software deployment using Windows Installer packages.
+
+Deployment methods:
+
+- Assigned
+- Published (user-based)
+
+This capability is primarily intended for MSI-based software.
+
+---
+
+# Assigned vs Published
+
+| Assigned | Published |
+|-----------|-----------|
+| Installed automatically | Available for user installation |
+| Computer or user | User only |
+| Managed by administrators | Optional for users |
+
+Many organizations now complement or replace GPO software deployment with modern endpoint management platforms, but GPO remains useful in many environments.
+
+---
+
+# Startup Scripts
+
+Startup scripts execute before user logon.
+
+Common uses:
+
+- Configure settings
+- Map resources
+- Verify security
+- Run maintenance tasks
+
+Typical scripting languages:
+
+- PowerShell
+- Batch
+- VBScript
+
+---
+
+# Shutdown Scripts
+
+Shutdown scripts may be used for:
+
+- Cleanup
+- Log collection
+- Cache removal
+- Secure shutdown tasks
+
+Scripts should be efficient to avoid delaying shutdown.
+
+---
+
+# Logon Scripts
+
+Executed after successful authentication.
+
+Examples:
+
+- Map network drives
+- Configure printers
+- Set environment variables
+- Launch required applications
+
+Logon scripts should complete quickly to minimize user wait times.
+
+---
+
+# Logoff Scripts
+
+Common uses:
+
+- Clear temporary files
+- Disconnect mapped drives
+- Archive logs
+- Remove temporary resources
+
+Long-running scripts can negatively impact the user experience.
+
+---
+
+# Folder Redirection
+
+Folder Redirection stores user folders on network locations.
+
+Common folders:
+
+- Desktop
+- Documents
+- Pictures
+- Downloads (when appropriate)
+- Favorites
+
+Benefits:
+
+- Centralized storage
+- Easier backup
+- Roaming user experience
+- Improved disaster recovery
+
+---
+
+# Folder Redirection Workflow
+
+```text
+User Logs In
+
+↓
+
+Folder Redirected
+
+↓
+
+Network Storage
+
+↓
+
+Automatic Access
+```
+
+Users continue working normally while files are stored centrally.
+
+---
+
+# Offline Files
+
+Offline Files allow redirected folders to remain available when disconnected from the network.
+
+Benefits:
+
+- Continued productivity
+- Automatic synchronization
+- Reduced user disruption
+
+Synchronization occurs when connectivity is restored.
+
+---
+
+# Drive Mapping
+
+Administrators commonly map shared drives using Group Policy Preferences.
+
+Example:
+
+```text
+Finance
+
+↓
+
+Mapped Drive
+
+↓
+
+F:
+```
+
+Drive mappings can be targeted by department, security group, or other conditions.
+
+---
+
+# Printer Deployment
+
+Printers can be deployed automatically.
+
+Example:
+
+```text
+Finance Users
+
+↓
+
+Finance Printer
+
+↓
+
+Automatically Available
+```
+
+This reduces manual configuration and support requests.
+
+---
+
+# Registry Configuration
+
+Group Policy Preferences can manage registry values.
+
+Typical use cases:
+
+- Application settings
+- Custom configurations
+- Feature toggles
+
+Registry changes should be tested carefully before deployment.
+
+---
+
+# Environment Variables
+
+Administrators can centrally define:
+
+- PATH additions
+- Custom variables
+- Application variables
+
+Consistent environment variables simplify application deployment and scripting.
+
+---
+
+# Scheduled Tasks
+
+Group Policy Preferences can create and manage scheduled tasks.
+
+Examples:
+
+- Log cleanup
+- Security scans
+- Maintenance scripts
+- Inventory collection
+
+Tasks should follow the principle of least privilege.
+
+---
+
+# Windows Update Policies
+
+Group Policy provides centralized Windows Update management.
+
+Configurable settings include:
+
+- Update source
+- Automatic updates
+- Active hours
+- Restart behavior
+- Maintenance windows
+- Deferral options
+
+Centralized update management reduces security risk.
+
+---
+
+# WSUS Integration
+
+Organizations may integrate Group Policy with:
+
+**Windows Server Update Services (WSUS)**
+
+Workflow:
+
+```text
+Administrator
+
+↓
+
+WSUS
+
+↓
+
+Approved Updates
+
+↓
+
+Client Computers
+```
+
+Updates are tested before deployment to production systems.
+
+---
+
+# Microsoft Update vs WSUS
+
+| Microsoft Update | WSUS |
+|------------------|------|
+| Internet-based | Organization-managed |
+| Direct downloads | Administrator approval |
+| Limited enterprise control | Centralized deployment |
+| Suitable for small environments | Suitable for enterprise environments |
+
+---
+
+# Power Management Policies
+
+Examples:
+
+- Sleep timeout
+- Display timeout
+- Hibernate settings
+- Wake timers
+
+Power policies help balance energy efficiency and operational requirements.
+
+---
+
+# Device Control
+
+Group Policy can restrict:
+
+- USB storage
+- CD/DVD drives
+- Removable media
+- Portable devices
+
+These settings help reduce the risk of malware and unauthorized data transfer.
+
+---
+
+# Application Restrictions
+
+Administrators may use Group Policy with technologies such as:
+
+- Software Restriction Policies (SRP)
+- AppLocker (supported editions)
+- Windows Defender Application Control (WDAC, where applicable)
+
+These technologies help control which applications may execute.
+
+---
+
+# Troubleshooting Group Policy
+
+General troubleshooting process:
+
+```text
+Problem Reported
+
+↓
+
+Run GPResult
+
+↓
+
+Check Event Logs
+
+↓
+
+Verify GPO Link
+
+↓
+
+Verify Filtering
+
+↓
+
+Verify Replication
+
+↓
+
+Resolve Issue
+```
+
+---
+
+# Useful Commands
+
+Refresh policies:
+
+```cmd
+gpupdate /force
+```
+
+Generate HTML report:
+
+```cmd
+gpresult /h report.html
+```
+
+Display summary:
+
+```cmd
+gpresult /r
+```
+
+These tools are fundamental for Group Policy diagnostics.
+
+---
+
+# Common Group Policy Problems
+
+| Problem | Possible Cause | Resolution |
+|----------|----------------|------------|
+| GPO not applied | Incorrect link | Verify GPO linkage |
+| Incorrect settings | Higher-precedence GPO | Review LSDOU processing |
+| Slow logon | Large scripts or complex processing | Optimize scripts and review policies |
+| Software not installed | MSI or deployment issue | Verify package and permissions |
+| Folder redirection failure | Network share unavailable | Verify connectivity and permissions |
+| Printer not mapped | Preference targeting issue | Review item-level targeting |
+
+---
+
+# Enterprise Example
+
+A multinational company deploys:
+
+- Password Policy
+- BitLocker
+- Windows Defender
+- Windows Firewall
+- Windows Update
+- Printer deployment
+- Drive mapping
+- Folder Redirection
+- AppLocker
+- Logon scripts
+
+Results:
+
+- Consistent security
+- Automated workstation configuration
+- Reduced support effort
+- Improved compliance
+
+---
+
+# Cybersecurity Perspective
+
+Group Policy is a foundational security enforcement mechanism.
+
+Administrators can centrally deploy:
+
+- Firewall rules
+- Defender settings
+- Audit policies
+- BitLocker
+- Application control
+- Device restrictions
+
+Properly managed GPOs significantly reduce the attack surface.
+
+---
+
+# Business Impact
+
+Group Policy enables:
+
+- Standardized endpoint configuration
+- Faster onboarding
+- Lower support costs
+- Improved regulatory compliance
+- Consistent security posture
+- Simplified operations
+
+---
+
+# Enterprise Best Practices
+
+- Separate security and configuration GPOs.
+- Test all policies before production deployment.
+- Keep startup and logon scripts lightweight.
+- Use Folder Redirection where appropriate.
+- Manage Windows Updates centrally.
+- Restrict removable media based on business requirements.
+- Deploy application control for high-risk systems.
+- Document all software deployment policies.
+- Review GPOs regularly for obsolete settings.
+- Monitor policy application and update success.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Password Policy
+
+Create a password policy with:
+
+- Minimum length
+- Complexity enabled
+- Password history
+- Lockout threshold
+
+Document the expected user experience.
+
+---
+
+## Lab 2 — Folder Redirection
+
+Design a Folder Redirection solution for:
+
+- Desktop
+- Documents
+
+Explain storage, backup, and recovery considerations.
+
+---
+
+## Lab 3 — Windows Update Strategy
+
+Create a deployment plan using WSUS for:
+
+- Pilot group
+- IT department
+- General users
+- Critical servers
+
+Explain the rollout sequence.
+
+---
+
+## Lab 4 — Troubleshooting Exercise
+
+A Finance user reports:
+
+- Printer not deployed
+- Drive not mapped
+- Folder Redirection not working
+
+Outline a step-by-step troubleshooting process using GPResult, Event Viewer, GPMC, and network verification.
+
+---
+
+# Key Takeaways
+
+- Group Policy centralizes Windows security and configuration management.
+- Password, firewall, Defender, and BitLocker settings should be managed centrally.
+- Scripts, Folder Redirection, and Preferences automate user environment configuration.
+- WSUS enables controlled Windows Update deployment.
+- Application control and device restrictions improve endpoint security.
+- GPResult and Event Viewer are essential troubleshooting tools.
+
+---
+
+# Interview Questions
+
+1. How can Group Policy enforce password policies?
+2. What is the difference between Assigned and Published software?
+3. What are common uses for startup and logon scripts?
+4. What are the benefits of Folder Redirection?
+5. How does WSUS differ from Microsoft Update?
+6. What are Group Policy Preferences used for?
+7. How would you troubleshoot a GPO that is not applying?
+8. Why should startup scripts remain lightweight?
+9. How can Group Policy improve endpoint security?
+10. What technologies can restrict application execution?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Group Policy Documentation
+- Microsoft Windows Server Documentation
+- Microsoft WSUS Documentation
+- Microsoft Defender Documentation
+- Microsoft AppLocker Documentation
+- Microsoft BitLocker Documentation
+- NIST SP 800-53
+- CIS Microsoft Windows Server Benchmarks
+- *Group Policy: Fundamentals, Security, and the Managed Desktop* (Jeremy Moskowitz)
+
+---
+
+**Next:** **Part 4 — Group Policy Security Hardening, Monitoring, Advanced Troubleshooting, Design Strategies, and Enterprise Best Practices**
