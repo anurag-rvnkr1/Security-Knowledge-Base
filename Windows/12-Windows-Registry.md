@@ -854,3 +854,831 @@ Record the value names and data types.
 
 ---
 
+# 12-Windows-Registry.md
+
+# Part 2 — Registry Files, Registry Loading, Registry Operations, Registry Tools, Backups, and Recovery
+
+---
+
+# Introduction
+
+In Part 1, you learned about:
+
+- Registry architecture
+- Hives
+- Keys
+- Values
+- Data types
+- Registry hierarchy
+- Registry Editor
+
+In this section, we will examine:
+
+- Where Registry data is stored
+- How Windows loads the Registry during startup
+- Registry operations
+- Command-line Registry tools
+- Registry backup and restoration
+- Registry recovery
+
+Understanding these concepts is essential for Windows administrators, cybersecurity professionals, and incident responders.
+
+---
+
+# How the Registry is Stored
+
+Although the Registry appears to be one large database, it is actually stored as multiple files called **Registry hive files**.
+
+Simplified representation:
+
+```text
+Windows Registry
+
+↓
+
+Multiple Hive Files
+
+↓
+
+Loaded into Memory
+
+↓
+
+Available to Windows
+```
+
+Windows loads these files during system startup.
+
+---
+
+# Registry Hive Files
+
+Most Registry hives are stored on disk.
+
+Examples include:
+
+| Hive | Typical Purpose |
+|------|-----------------|
+| SYSTEM | Operating system configuration |
+| SOFTWARE | Installed applications |
+| SAM | Local account database |
+| SECURITY | Local security policy |
+| DEFAULT | Default user profile |
+
+These files are managed by Windows and should not be edited directly.
+
+---
+
+# Typical Hive File Location
+
+Many system hive files are located in:
+
+```text
+C:\Windows\System32\Config
+```
+
+Example:
+
+```text
+Config
+
+├── SYSTEM
+├── SOFTWARE
+├── SAM
+├── SECURITY
+└── DEFAULT
+```
+
+User profile hives are stored separately.
+
+---
+
+# User Registry Hive
+
+Each user has an individual Registry hive.
+
+Typical location:
+
+```text
+C:\Users\<Username>\NTUSER.DAT
+```
+
+This file stores most settings associated with that user's **HKEY_CURRENT_USER (HKCU)** profile.
+
+---
+
+# Registry Loading Process
+
+During startup:
+
+```text
+Computer Boots
+
+↓
+
+Windows Loader
+
+↓
+
+Load Registry Hive Files
+
+↓
+
+Create Registry Structure
+
+↓
+
+Operating System Starts
+```
+
+Once loaded, Windows and applications access the Registry through system APIs rather than directly manipulating hive files.
+
+---
+
+# Registry in Memory
+
+Windows maintains Registry information in memory for efficient access.
+
+```text
+Registry Hive File
+
+↓
+
+Loaded
+
+↓
+
+Memory
+
+↓
+
+Applications Access Registry
+```
+
+This approach improves performance compared to reading configuration directly from disk for every operation.
+
+---
+
+# Registry Operations
+
+Applications commonly perform four basic operations:
+
+```text
+Create
+
+↓
+
+Read
+
+↓
+
+Modify
+
+↓
+
+Delete
+```
+
+These operations are often abbreviated as **CRUD** (Create, Read, Update, Delete).
+
+---
+
+# Reading the Registry
+
+Example:
+
+```text
+Application Starts
+
+↓
+
+Read Registry
+
+↓
+
+Load Configuration
+
+↓
+
+Continue Execution
+```
+
+Many applications read Registry settings during startup.
+
+---
+
+# Writing to the Registry
+
+Example:
+
+```text
+User Changes Setting
+
+↓
+
+Application Updates Registry
+
+↓
+
+Configuration Saved
+```
+
+Applications generally update the Registry only when configuration changes occur.
+
+---
+
+# Registry API
+
+Applications interact with the Registry using the Windows Registry API.
+
+Simplified workflow:
+
+```text
+Application
+
+↓
+
+Windows API
+
+↓
+
+Registry
+
+↓
+
+Configuration Retrieved
+```
+
+Using the API helps maintain consistency and security.
+
+---
+
+# Registry Virtualization (Overview)
+
+Some older applications expected unrestricted access to protected Registry locations.
+
+To improve compatibility, Windows introduced **Registry Virtualization** for certain legacy applications.
+
+Conceptually:
+
+```text
+Legacy Application
+
+↓
+
+Protected Registry Location
+
+↓
+
+Virtualized Location
+
+↓
+
+Application Continues
+```
+
+Modern applications should not rely on Registry Virtualization.
+
+---
+
+# Registry Reflection (Historical)
+
+Older 64-bit versions of Windows supported **Registry Reflection** to synchronize certain Registry information between 32-bit and 64-bit views.
+
+Modern Windows versions rely primarily on **Registry Redirection**, making Registry Reflection far less significant.
+
+---
+
+# Registry Redirection
+
+On 64-bit Windows:
+
+```text
+64-bit Application
+
+↓
+
+64-bit Registry View
+
+-------------------------
+
+32-bit Application
+
+↓
+
+32-bit Registry View
+```
+
+This separation improves compatibility between 32-bit and 64-bit applications.
+
+---
+
+# WOW6432Node
+
+A common Registry location for 32-bit application settings on 64-bit Windows is:
+
+```text
+HKLM
+
+↓
+
+SOFTWARE
+
+↓
+
+WOW6432Node
+```
+
+Many enterprise applications use this location automatically when installed as 32-bit software.
+
+---
+
+# Registry Permissions
+
+Registry keys have security descriptors similar to files.
+
+Permissions may include:
+
+- Read
+- Write
+- Create Subkey
+- Delete
+- Change Permissions
+- Take Ownership
+
+Registry permissions help protect system configuration.
+
+---
+
+# Registry Ownership
+
+Every Registry key has an owner.
+
+The owner may:
+
+- Modify permissions
+- Delegate access
+- Manage security
+
+Ownership follows principles similar to NTFS ownership.
+
+---
+
+# Registry Inheritance
+
+Registry permissions can inherit from parent keys.
+
+Example:
+
+```text
+Parent Key
+
+↓
+
+Inherited Permissions
+
+↓
+
+Child Key
+```
+
+Inheritance simplifies administration across large Registry trees.
+
+---
+
+# Registry Editor (Regedit)
+
+`regedit.exe` is the primary graphical Registry management tool.
+
+Capabilities include:
+
+- Browse keys
+- Create keys
+- Rename keys
+- Modify values
+- Delete values
+- Export
+- Import
+- Search
+
+Administrators should use caution when editing production systems.
+
+---
+
+# Registry Search
+
+Registry Editor supports searching for:
+
+- Keys
+- Values
+- Data
+
+Example:
+
+```text
+Search
+
+↓
+
+Value Name
+
+↓
+
+Locate Configuration
+```
+
+Searching is useful when troubleshooting application settings.
+
+---
+
+# Exporting Registry Data
+
+Registry data can be exported to a `.reg` file.
+
+Workflow:
+
+```text
+Registry Key
+
+↓
+
+Export
+
+↓
+
+.reg File
+```
+
+Exporting provides a simple backup of selected Registry information.
+
+---
+
+# Importing Registry Data
+
+Previously exported Registry settings can be imported.
+
+```text
+.reg File
+
+↓
+
+Import
+
+↓
+
+Registry Updated
+```
+
+Imported data may overwrite existing values.
+
+Always verify the source of `.reg` files before importing them.
+
+---
+
+# REG Command-Line Utility
+
+Windows includes the `reg` command-line tool.
+
+Examples:
+
+Display help:
+
+```cmd
+reg /?
+```
+
+Query a key:
+
+```cmd
+reg query HKLM\SOFTWARE
+```
+
+The `reg` utility is useful for scripting and automation.
+
+---
+
+# Common REG Commands
+
+| Command | Purpose |
+|----------|----------|
+| `reg query` | Read Registry data |
+| `reg add` | Create or modify values |
+| `reg delete` | Remove keys or values |
+| `reg copy` | Copy Registry data |
+| `reg export` | Export Registry data |
+| `reg import` | Import Registry data |
+| `reg save` | Save a hive |
+| `reg restore` | Restore a hive |
+
+Many of these operations require administrative privileges.
+
+---
+
+# PowerShell Registry Provider
+
+PowerShell treats Registry hives similarly to file system drives.
+
+Examples:
+
+```powershell
+Get-ChildItem HKLM:\Software
+```
+
+Retrieve a property:
+
+```powershell
+Get-ItemProperty HKLM:\Software
+```
+
+PowerShell enables powerful Registry automation, which will be covered in a later chapter.
+
+---
+
+# Registry Backup
+
+Before making significant changes:
+
+```text
+Registry
+
+↓
+
+Backup
+
+↓
+
+Modify
+
+↓
+
+Verify
+
+↓
+
+Restore if Needed
+```
+
+Backups reduce the risk of accidental configuration loss.
+
+---
+
+# Registry Backup Methods
+
+Common approaches include:
+
+- Export selected keys
+- Create a System Restore Point (where available and enabled)
+- Perform a System State backup on supported Windows editions
+- Use enterprise backup solutions
+
+The appropriate method depends on the system and organizational requirements.
+
+---
+
+# Registry Restore
+
+Recovery process:
+
+```text
+Backup
+
+↓
+
+Restore
+
+↓
+
+Restart if Required
+
+↓
+
+Configuration Restored
+```
+
+Some Registry changes require a reboot or application restart before they take effect.
+
+---
+
+# System Restore (Overview)
+
+System Restore can revert certain system configuration changes.
+
+It may restore:
+
+- Registry settings
+- System files
+- Drivers
+
+It does **not** replace a comprehensive backup strategy and is not available or enabled in all environments.
+
+---
+
+# Registry Corruption
+
+Registry corruption may occur because of:
+
+- Disk failures
+- Improper shutdowns
+- Software defects
+- Hardware problems
+- File system corruption
+
+Modern Windows includes mechanisms to improve Registry resilience, but backups remain essential.
+
+---
+
+# Registry Recovery Workflow
+
+```text
+Configuration Problem
+
+↓
+
+Identify Issue
+
+↓
+
+Locate Backup
+
+↓
+
+Restore Registry
+
+↓
+
+Validate System
+
+↓
+
+Resume Operations
+```
+
+---
+
+# Enterprise Example
+
+An administrator must deploy a configuration change to multiple systems.
+
+Workflow:
+
+```text
+Test Registry Change
+
+↓
+
+Validate
+
+↓
+
+Backup Existing Configuration
+
+↓
+
+Deploy Through Enterprise Management
+
+↓
+
+Verify Successful Deployment
+```
+
+Testing and staged deployment reduce operational risk.
+
+---
+
+# Cybersecurity Perspective
+
+Registry modifications are important indicators during investigations.
+
+Security teams monitor for:
+
+- New startup entries
+- Unauthorized security configuration changes
+- Service configuration modifications
+- Policy changes
+- Unexpected Registry value creation
+
+Registry activity is often correlated with process, file, and authentication events.
+
+---
+
+# Business Impact
+
+Proper Registry management provides:
+
+- Reliable application configuration
+- Faster troubleshooting
+- Consistent enterprise deployments
+- Improved disaster recovery
+- Better security governance
+
+Improper Registry changes can disrupt business applications and operating system functionality.
+
+---
+
+# Enterprise Best Practices
+
+- Back up Registry data before significant modifications.
+- Use Group Policy or enterprise management tools for large-scale Registry changes.
+- Restrict Registry editing to authorized administrators.
+- Validate Registry changes in a testing environment.
+- Monitor critical Registry locations.
+- Document configuration changes through formal change management.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Export a Registry Key
+
+Open:
+
+```text
+regedit
+```
+
+Choose a non-critical key.
+
+Use:
+
+```text
+File
+
+↓
+
+Export
+```
+
+Save the `.reg` file to a lab location.
+
+---
+
+## Lab 2 — Query the Registry
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+reg query HKLM\SOFTWARE
+```
+
+Observe:
+
+- Keys
+- Values
+- Registry structure
+
+---
+
+## Lab 3 — Browse the Registry with PowerShell
+
+Open **PowerShell**.
+
+Run:
+
+```powershell
+Get-ChildItem HKLM:\SOFTWARE
+```
+
+Observe the hierarchy and compare it with Registry Editor.
+
+---
+
+# Key Takeaways
+
+- The Registry is stored as multiple hive files on disk.
+- Windows loads Registry hives into memory during startup.
+- Applications access the Registry through Windows APIs.
+- `regedit` provides graphical Registry management.
+- The `reg` command supports command-line Registry administration.
+- PowerShell includes a Registry provider for scripting and automation.
+- Registry backups are essential before making significant changes.
+
+---
+
+# Interview Questions
+
+1. Where are system Registry hive files typically stored?
+2. What is `NTUSER.DAT`?
+3. What is Registry Virtualization?
+4. What is the purpose of `WOW6432Node`?
+5. Which command-line utility manages the Registry?
+6. How can Registry data be exported?
+7. Why should Registry backups be created before modifications?
+8. How does PowerShell access the Registry?
+9. What permissions can be applied to Registry keys?
+10. Why is Registry monitoring important in cybersecurity?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Registry Documentation
+- Microsoft Registry API Documentation
+- Microsoft PowerShell Documentation
+- Microsoft Windows Administration Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
