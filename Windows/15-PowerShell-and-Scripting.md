@@ -1782,4 +1782,859 @@ Use `try/catch` to display a friendly error message instead of terminating unexp
 
 ---
 
-**Next:** **Part 3 — PowerShell Remoting, CIM/WMI, Jobs, Modules, Security, Automation, and Enterprise Administration**
+# 15-Windows-PowerShell-and-Scripting.md
+
+# Part 3 — PowerShell Remoting, CIM/WMI, Jobs, Modules, Security, Automation, and Enterprise Administration
+
+---
+
+# Introduction
+
+One of PowerShell's greatest strengths is its ability to manage systems remotely and automate administration across hundreds or thousands of computers.
+
+Instead of logging into every server individually, administrators can execute a single command that performs tasks across an entire enterprise.
+
+PowerShell remoting and automation are fundamental technologies for:
+
+- Enterprise IT
+- Cloud Administration
+- DevOps
+- Active Directory Administration
+- Incident Response
+- SOC Operations
+- Infrastructure Automation
+
+---
+
+# Enterprise Automation
+
+Traditional administration:
+
+```text
+Administrator
+
+↓
+
+Server 1
+
+↓
+
+Server 2
+
+↓
+
+Server 3
+
+↓
+
+Server 100
+```
+
+PowerShell automation:
+
+```text
+Administrator
+
+↓
+
+PowerShell
+
+↓
+
+100 Servers
+
+↓
+
+Results
+```
+
+Automation significantly reduces administrative effort.
+
+---
+
+# PowerShell Remoting
+
+PowerShell Remoting allows administrators to execute commands on remote computers.
+
+Example:
+
+```text
+Administrator
+
+↓
+
+PowerShell
+
+↓
+
+Remote Computer
+
+↓
+
+Command Executes
+
+↓
+
+Results Returned
+```
+
+PowerShell Remoting is built on the **WS-Management (WSMan)** protocol by default.
+
+---
+
+# Requirements for Remoting
+
+Typical requirements include:
+
+- Network connectivity
+- Administrative privileges
+- PowerShell Remoting enabled
+- Windows Remote Management (WinRM) service
+- Appropriate firewall rules
+
+Authentication and authorization must also be configured correctly.
+
+---
+
+# Enable PowerShell Remoting
+
+Run PowerShell as Administrator.
+
+```powershell
+Enable-PSRemoting
+```
+
+This command typically:
+
+- Starts the WinRM service
+- Configures listeners
+- Creates firewall exceptions
+- Enables remoting
+
+---
+
+# Verify WinRM
+
+Check WinRM service status:
+
+```powershell
+Get-Service WinRM
+```
+
+Expected status:
+
+```text
+Running
+```
+
+WinRM is the communication service used by PowerShell Remoting.
+
+---
+
+# Test Remote Connectivity
+
+```powershell
+Test-WSMan Server01
+```
+
+Successful output indicates that the remote computer is responding to WSMan requests.
+
+---
+
+# Enter-PSSession
+
+Start an interactive remote session.
+
+```powershell
+Enter-PSSession Server01
+```
+
+Workflow:
+
+```text
+Administrator
+
+↓
+
+Remote Session
+
+↓
+
+Execute Commands
+
+↓
+
+Exit Session
+```
+
+Leave the session:
+
+```powershell
+Exit-PSSession
+```
+
+---
+
+# Invoke-Command
+
+Execute commands remotely without opening an interactive session.
+
+Example:
+
+```powershell
+Invoke-Command -ComputerName Server01 -ScriptBlock {
+Get-Service
+}
+```
+
+This is commonly used for enterprise automation.
+
+---
+
+# Multiple Remote Computers
+
+Example:
+
+```powershell
+Invoke-Command `
+-ComputerName Server01,Server02 `
+-ScriptBlock {
+Get-Process
+}
+```
+
+One command can manage multiple systems simultaneously.
+
+---
+
+# PowerShell Sessions
+
+Persistent remote sessions improve efficiency.
+
+Create:
+
+```powershell
+$Session = New-PSSession Server01
+```
+
+Use:
+
+```powershell
+Invoke-Command `
+-Session $Session `
+-ScriptBlock {
+hostname
+}
+```
+
+Remove:
+
+```powershell
+Remove-PSSession $Session
+```
+
+Persistent sessions avoid repeatedly creating new connections.
+
+---
+
+# Copy Files to Remote Systems
+
+Example:
+
+```powershell
+Copy-Item `
+-Path C:\Report.txt `
+-Destination C:\Temp `
+-ToSession $Session
+```
+
+This simplifies administrative file distribution.
+
+---
+
+# Background Jobs
+
+Jobs allow commands to run in the background.
+
+Create:
+
+```powershell
+Start-Job {
+Get-Process
+}
+```
+
+Jobs free the console for additional work.
+
+---
+
+# Managing Jobs
+
+View jobs:
+
+```powershell
+Get-Job
+```
+
+Receive results:
+
+```powershell
+Receive-Job 1
+```
+
+Remove jobs:
+
+```powershell
+Remove-Job 1
+```
+
+Jobs are useful for long-running operations.
+
+---
+
+# Scheduled Tasks with PowerShell
+
+PowerShell can create and manage scheduled tasks.
+
+Examples:
+
+- Daily reports
+- Log cleanup
+- Backup automation
+- Health monitoring
+
+Example:
+
+```powershell
+Get-ScheduledTask
+```
+
+Task automation reduces repetitive administrative work.
+
+---
+
+# WMI
+
+**Windows Management Instrumentation (WMI)** provides management information about Windows systems.
+
+Examples include:
+
+- Hardware
+- Operating System
+- BIOS
+- Network Adapters
+- Processes
+- Services
+
+Historically, WMI has been widely used in Windows administration.
+
+---
+
+# CIM
+
+The **Common Information Model (CIM)** is the modern management interface used by PowerShell.
+
+Preferred command:
+
+```powershell
+Get-CimInstance
+```
+
+Older command:
+
+```powershell
+Get-WmiObject
+```
+
+`Get-CimInstance` is recommended for new scripts.
+
+---
+
+# Get Computer Information
+
+Example:
+
+```powershell
+Get-CimInstance Win32_ComputerSystem
+```
+
+Information returned includes:
+
+- Manufacturer
+- Model
+- Total Physical Memory
+- Domain Membership
+
+---
+
+# Operating System Information
+
+```powershell
+Get-CimInstance Win32_OperatingSystem
+```
+
+Example properties:
+
+- Caption
+- Version
+- Build Number
+- Install Date
+- Last Boot Time
+
+---
+
+# BIOS Information
+
+```powershell
+Get-CimInstance Win32_BIOS
+```
+
+Useful information:
+
+- BIOS Version
+- Manufacturer
+- Serial Number
+
+---
+
+# Logical Disks
+
+```powershell
+Get-CimInstance Win32_LogicalDisk
+```
+
+Example output:
+
+- Drive Letter
+- Size
+- Free Space
+- File System
+
+Useful for storage monitoring.
+
+---
+
+# Installed Software
+
+One method:
+
+```powershell
+Get-Package
+```
+
+Depending on the environment, administrators may also query registry locations or enterprise management tools for software inventory.
+
+---
+
+# Event Logs
+
+Retrieve system events:
+
+```powershell
+Get-WinEvent `
+-LogName System
+```
+
+Retrieve recent events:
+
+```powershell
+Get-WinEvent `
+-MaxEvents 20
+```
+
+PowerShell provides powerful event log filtering capabilities.
+
+---
+
+# Managing Services
+
+View services:
+
+```powershell
+Get-Service
+```
+
+Restart a service:
+
+```powershell
+Restart-Service Spooler
+```
+
+Stop a service:
+
+```powershell
+Stop-Service Spooler
+```
+
+Start a service:
+
+```powershell
+Start-Service Spooler
+```
+
+---
+
+# Managing Processes
+
+View processes:
+
+```powershell
+Get-Process
+```
+
+Stop a process:
+
+```powershell
+Stop-Process -Id 1234
+```
+
+Always verify the target process before terminating it.
+
+---
+
+# Managing Files
+
+Copy:
+
+```powershell
+Copy-Item
+```
+
+Move:
+
+```powershell
+Move-Item
+```
+
+Delete:
+
+```powershell
+Remove-Item
+```
+
+Rename:
+
+```powershell
+Rename-Item
+```
+
+These cmdlets support automation across file systems.
+
+---
+
+# PowerShell Modules
+
+List loaded modules:
+
+```powershell
+Get-Module
+```
+
+List available modules:
+
+```powershell
+Get-Module -ListAvailable
+```
+
+Import a module:
+
+```powershell
+Import-Module ModuleName
+```
+
+Modules organize related cmdlets into reusable components.
+
+---
+
+# PowerShell Gallery
+
+The PowerShell Gallery is Microsoft's online repository for modules and scripts.
+
+Example:
+
+```powershell
+Find-Module
+```
+
+Install:
+
+```powershell
+Install-Module ModuleName
+```
+
+Only install trusted modules from reputable publishers.
+
+---
+
+# Script Signing
+
+PowerShell supports digitally signed scripts.
+
+Benefits:
+
+- Verify authenticity
+- Detect tampering
+- Improve trust
+
+Signed scripts are especially valuable in enterprise environments.
+
+---
+
+# Logging
+
+Organizations often enable PowerShell logging for:
+
+- Auditing
+- Incident response
+- Threat hunting
+- Compliance
+
+Common logging features include:
+
+- Module Logging
+- Script Block Logging
+- Transcription
+- Protected Event Logging
+
+These capabilities improve visibility into PowerShell activity.
+
+---
+
+# PowerShell Security
+
+Administrators should:
+
+- Use least privilege
+- Sign scripts where appropriate
+- Enable logging
+- Restrict execution policies appropriately
+- Review privileged scripts regularly
+- Store credentials securely
+
+PowerShell itself is a legitimate administration tool; misuse should be detected through monitoring rather than disabled indiscriminately.
+
+---
+
+# Desired State Configuration (DSC)
+
+PowerShell Desired State Configuration (DSC) helps ensure systems remain in a defined configuration.
+
+Concept:
+
+```text
+Desired Configuration
+
+↓
+
+Apply Configuration
+
+↓
+
+Verify Compliance
+
+↓
+
+Correct Drift
+```
+
+DSC supports infrastructure consistency and configuration management.
+
+---
+
+# Enterprise Example
+
+An administrator needs to collect disk space information from 250 servers.
+
+Workflow:
+
+```text
+Read Server List
+
+↓
+
+Create Remote Sessions
+
+↓
+
+Execute CIM Queries
+
+↓
+
+Collect Results
+
+↓
+
+Generate CSV Report
+
+↓
+
+Email Operations Team
+```
+
+PowerShell performs the task in minutes instead of hours.
+
+---
+
+# Cybersecurity Perspective
+
+PowerShell is widely used during security operations.
+
+Legitimate uses:
+
+- Collect event logs
+- Audit users
+- Inventory software
+- Check firewall configuration
+- Verify security settings
+- Collect forensic evidence
+
+Potential attacker abuse includes:
+
+- Remote execution
+- Fileless techniques
+- Downloading payloads
+- System reconnaissance
+
+Security teams should monitor PowerShell activity using logging, endpoint detection, and behavioral analytics.
+
+---
+
+# Business Impact
+
+Enterprise PowerShell automation provides:
+
+- Faster administration
+- Consistent configurations
+- Reduced operational costs
+- Improved compliance
+- Standardized deployments
+- Better reporting
+
+Automation enables IT teams to manage large infrastructures efficiently.
+
+---
+
+# Enterprise Best Practices
+
+- Use CIM cmdlets instead of legacy WMI cmdlets for new scripts.
+- Limit remoting access to authorized administrators.
+- Enable PowerShell logging.
+- Sign production scripts when appropriate.
+- Store automation scripts in version control.
+- Use secure credential management.
+- Validate remote execution results.
+- Test automation before deployment.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Query System Information
+
+Run:
+
+```powershell
+Get-CimInstance Win32_ComputerSystem
+```
+
+Record:
+
+- Manufacturer
+- Model
+- Total Physical Memory
+
+---
+
+## Lab 2 — Retrieve Operating System Details
+
+Run:
+
+```powershell
+Get-CimInstance Win32_OperatingSystem
+```
+
+Identify:
+
+- Version
+- Build Number
+- Last Boot Time
+
+---
+
+## Lab 3 — Create a Background Job
+
+Run:
+
+```powershell
+Start-Job {
+Get-Process
+}
+```
+
+Then:
+
+```powershell
+Get-Job
+
+Receive-Job 1
+```
+
+Observe how jobs execute independently of the interactive console.
+
+---
+
+## Lab 4 — Explore Available Modules
+
+Run:
+
+```powershell
+Get-Module -ListAvailable
+```
+
+Choose one module and review its exported commands using:
+
+```powershell
+Get-Command -Module <ModuleName>
+```
+
+---
+
+# Key Takeaways
+
+- PowerShell Remoting enables centralized administration of remote systems.
+- WinRM provides the communication framework for remoting.
+- CIM is the preferred interface for querying Windows management information.
+- Background jobs allow long-running commands to execute asynchronously.
+- Modules organize reusable functionality.
+- Logging and script signing improve enterprise security.
+- PowerShell automation significantly reduces manual administrative effort.
+
+---
+
+# Interview Questions
+
+1. What is PowerShell Remoting?
+2. What service does PowerShell Remoting use by default?
+3. What is the difference between `Enter-PSSession` and `Invoke-Command`?
+4. Why is `Get-CimInstance` preferred over `Get-WmiObject`?
+5. What are PowerShell background jobs?
+6. What is the purpose of the PowerShell Gallery?
+7. Why should production scripts be digitally signed?
+8. What PowerShell logging features are commonly enabled in enterprise environments?
+9. What is Desired State Configuration (DSC)?
+10. Why should remoting be restricted to authorized administrators?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft PowerShell Documentation
+- Microsoft PowerShell Remoting Documentation
+- Microsoft Desired State Configuration Documentation
+- PowerShell Gallery Documentation
+- *Learn PowerShell Toolmaking in a Month of Lunches* (Don Jones & Jeff Hicks)
+
+---
+
+**Next:** **Part 4 — Enterprise Automation, Best Practices, Debugging, Troubleshooting, Chapter Summary, and Interview Preparation**
