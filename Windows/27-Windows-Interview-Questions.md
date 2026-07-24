@@ -1177,4 +1177,621 @@ DISM /Online /Cleanup-Image /RestoreHealth
 
 ---
 
-**Next:** **Part 3 — Windows Troubleshooting, PowerShell, Services, Registry, Sysinternals, Cybersecurity, and Advanced Scenario-Based Interview Questions**
+# 27-Windows-Interview-Questions.md
+
+# Part 3 — Windows Troubleshooting, PowerShell, Services, Registry, Sysinternals, Cybersecurity, and Advanced Scenario-Based Interview Questions
+
+---
+
+# Introduction
+
+Intermediate and advanced Windows interviews focus less on memorization and more on your ability to troubleshoot, automate, secure, and explain your decision-making process.
+
+Interviewers often present:
+
+- Production incidents
+- Security scenarios
+- Performance problems
+- Automation tasks
+- Active Directory issues
+- Registry and service failures
+- Cybersecurity incidents
+
+The questions below emphasize practical enterprise experience.
+
+---
+
+# Windows Troubleshooting
+
+---
+
+## 101. A Windows system is running very slowly. How would you troubleshoot it?
+
+**Answer**
+
+I would follow a structured process:
+
+1. Confirm the issue and identify affected users.
+2. Check CPU, memory, disk, and network utilization using Task Manager or Resource Monitor.
+3. Review startup applications.
+4. Examine Event Viewer and Reliability Monitor.
+5. Verify Windows Update and antivirus activity.
+6. Identify recent software or hardware changes.
+7. Compare current performance with known baselines.
+8. Implement corrective actions and validate improvements.
+
+---
+
+## 102. A user reports that Windows does not boot after an update. What would you do?
+
+**Answer**
+
+- Attempt normal restart.
+- Enter Windows Recovery Environment (WinRE).
+- Run Startup Repair.
+- Boot into Safe Mode if possible.
+- Review recent updates.
+- Uninstall problematic updates if appropriate.
+- Restore from System Restore or backup if necessary.
+- Document the root cause.
+
+---
+
+## 103. How would you troubleshoot high CPU utilization?
+
+**Answer**
+
+I would:
+
+- Identify the process consuming CPU.
+- Determine whether it is expected.
+- Review associated services.
+- Check scheduled tasks.
+- Examine Event Viewer.
+- Scan for malware if suspicious.
+- Validate performance after remediation.
+
+---
+
+## 104. How would you troubleshoot high disk usage?
+
+**Answer**
+
+Possible causes include:
+
+- Windows Update
+- Antivirus scanning
+- Paging
+- Storage failure
+- Background indexing
+- Backup operations
+
+I would use Resource Monitor and Performance Monitor to identify the process responsible.
+
+---
+
+## 105. What tools would you use for Windows troubleshooting?
+
+**Answer**
+
+Common tools include:
+
+- Event Viewer
+- Task Manager
+- Resource Monitor
+- Performance Monitor
+- Reliability Monitor
+- Device Manager
+- PowerShell
+- WinRE
+- Sysinternals Suite
+
+---
+
+# Windows Services
+
+---
+
+## 106. What is a Windows Service?
+
+**Answer**
+
+A Windows Service is a background process that starts automatically or manually and performs system or application functions without requiring user interaction.
+
+---
+
+## 107. What startup types are available for Windows Services?
+
+**Answer**
+
+- Automatic
+- Automatic (Delayed Start)
+- Manual
+- Disabled
+
+Startup type should be selected based on operational requirements.
+
+---
+
+## 108. What should you check if a service fails to start?
+
+**Answer**
+
+- Event Viewer
+- Service dependencies
+- Service account permissions
+- Configuration changes
+- Resource availability
+- Application logs
+
+---
+
+## 109. Why should you avoid disabling services unnecessarily?
+
+**Answer**
+
+Disabling services may affect applications, security features, or operating system functionality. Always understand service dependencies before making changes.
+
+---
+
+## 110. How can you restart a service?
+
+**Answer**
+
+Examples:
+
+```cmd
+net stop ServiceName
+net start ServiceName
+```
+
+or
+
+```powershell
+Restart-Service ServiceName
+```
+
+---
+
+# Windows Registry
+
+---
+
+## 111. What is the Windows Registry?
+
+**Answer**
+
+The Windows Registry is a hierarchical database storing operating system, application, user, and hardware configuration settings.
+
+---
+
+## 112. What precautions should be taken before editing the Registry?
+
+**Answer**
+
+- Create a backup.
+- Export affected keys.
+- Document planned changes.
+- Test changes in non-production environments when possible.
+
+---
+
+## 113. Which tool edits the Registry?
+
+**Answer**
+
+```text
+regedit.exe
+```
+
+---
+
+## 114. Why is the Registry important?
+
+**Answer**
+
+Many Windows and application settings are stored in the Registry. Incorrect modifications can affect system stability or security.
+
+---
+
+## 115. Can Registry corruption prevent Windows from booting?
+
+**Answer**
+
+Yes. Corrupted Registry hives may prevent successful startup or cause application failures.
+
+---
+
+# PowerShell
+
+---
+
+## 116. Why is PowerShell preferred over CMD for administration?
+
+**Answer**
+
+PowerShell provides:
+
+- Object-based output
+- Advanced scripting
+- Remote administration
+- Automation
+- Integration with Windows management technologies
+
+---
+
+## 117. How do you display running processes in PowerShell?
+
+**Answer**
+
+```powershell
+Get-Process
+```
+
+---
+
+## 118. How do you list Windows services?
+
+**Answer**
+
+```powershell
+Get-Service
+```
+
+---
+
+## 119. How do you retrieve event logs?
+
+**Answer**
+
+Example:
+
+```powershell
+Get-WinEvent
+```
+
+---
+
+## 120. Why is PowerShell important in enterprise environments?
+
+**Answer**
+
+PowerShell enables automation, configuration management, reporting, remote administration, and repeatable operational tasks.
+
+---
+
+# Sysinternals
+
+---
+
+## 121. What is Process Explorer?
+
+**Answer**
+
+Process Explorer is an advanced process analysis tool that displays parent-child relationships, loaded modules, digital signatures, handles, and resource usage.
+
+---
+
+## 122. What is Process Monitor?
+
+**Answer**
+
+Process Monitor captures real-time file system, Registry, process, and thread activity for troubleshooting complex issues.
+
+---
+
+## 123. What is Autoruns?
+
+**Answer**
+
+Autoruns displays applications and components configured to start automatically, making it useful for troubleshooting and security investigations.
+
+---
+
+## 124. What is TCPView?
+
+**Answer**
+
+TCPView displays active TCP and UDP connections along with the associated processes.
+
+---
+
+## 125. Why are Sysinternals tools widely used?
+
+**Answer**
+
+They provide deeper visibility into Windows internals than many built-in administrative tools.
+
+---
+
+# Windows Security
+
+---
+
+## 126. What would you investigate if multiple failed logon attempts appear in Event Viewer?
+
+**Answer**
+
+I would review:
+
+- Source IP addresses
+- User accounts
+- Authentication method
+- Time pattern
+- Account lockout events
+- Related security alerts
+
+This helps determine whether the activity is accidental or malicious.
+
+---
+
+## 127. What is the principle of defense in depth?
+
+**Answer**
+
+Defense in depth uses multiple complementary security controls so that the failure of one control does not expose the entire environment.
+
+---
+
+## 128. What is privilege escalation?
+
+**Answer**
+
+Privilege escalation occurs when a user or process gains permissions beyond those originally assigned.
+
+---
+
+## 129. Why should administrators regularly review security logs?
+
+**Answer**
+
+Security logs help identify:
+
+- Failed logons
+- Privilege changes
+- Policy modifications
+- Service creation
+- Suspicious activity
+
+---
+
+## 130. What is the difference between authentication and authorization?
+
+| Authentication | Authorization |
+|---------------|---------------|
+| Verifies identity | Determines permitted actions |
+| "Who are you?" | "What are you allowed to do?" |
+
+---
+
+# Advanced Scenario Questions
+
+---
+
+## 131. A user cannot access a shared folder. How would you troubleshoot?
+
+**Answer**
+
+I would verify:
+
+- Network connectivity
+- DNS resolution
+- Share permissions
+- NTFS permissions
+- Group membership
+- File server availability
+- Event Viewer logs
+
+---
+
+## 132. Group Policy is not applying. What would you check?
+
+**Answer**
+
+- OU placement
+- Security filtering
+- WMI filters
+- Domain Controller health
+- Replication
+- DNS
+- `gpresult /r`
+- Group Policy Operational logs
+
+---
+
+## 133. A Domain Controller becomes unavailable. What is the impact?
+
+**Answer**
+
+Potential impacts include:
+
+- Authentication failures
+- Group Policy processing delays
+- DNS issues (if hosted)
+- Administrative limitations
+
+If redundant Domain Controllers exist, the impact is often reduced.
+
+---
+
+## 134. A system repeatedly experiences BSODs. What is your approach?
+
+**Answer**
+
+I would:
+
+- Review stop codes.
+- Examine Event Viewer.
+- Analyze memory dumps.
+- Verify drivers.
+- Check hardware health.
+- Test memory.
+- Validate corrective actions.
+
+---
+
+## 135. Users report slow logon times after a new GPO deployment. What would you investigate?
+
+**Answer**
+
+Possible causes:
+
+- Large scripts
+- Drive mappings
+- Network latency
+- WMI filters
+- Slow Domain Controller response
+- Policy processing errors
+
+---
+
+## 136. A workstation repeatedly locks user accounts. What might cause this?
+
+**Answer**
+
+Potential causes:
+
+- Cached passwords
+- Mobile devices
+- Scheduled Tasks
+- Services using old credentials
+- Mapped drives with outdated authentication
+
+---
+
+## 137. An application suddenly stops working after a Windows update. What should you do?
+
+**Answer**
+
+- Confirm compatibility.
+- Review update history.
+- Check application logs.
+- Verify dependencies.
+- Test in a controlled environment.
+- Roll back updates if appropriate and approved.
+
+---
+
+## 138. How would you prioritize multiple simultaneous incidents?
+
+**Answer**
+
+Prioritization should consider:
+
+- Business impact
+- Number of affected users
+- Critical services
+- Security implications
+- SLA commitments
+
+---
+
+## 139. A server's disk is nearly full. What actions would you take?
+
+**Answer**
+
+- Identify large files.
+- Review log growth.
+- Remove unnecessary temporary files.
+- Archive or move data according to policy.
+- Expand storage if required.
+- Monitor ongoing disk usage.
+
+---
+
+## 140. What is Root Cause Analysis (RCA)?
+
+**Answer**
+
+Root Cause Analysis identifies the underlying cause of an issue so that corrective actions prevent recurrence rather than only addressing symptoms.
+
+---
+
+# HR + Technical Combined Questions
+
+---
+
+## 141. Why do you want to work as a Windows Administrator?
+
+**Sample Answer**
+
+"I enjoy solving technical problems, improving system reliability, and supporting business operations. Windows administration combines infrastructure, security, automation, and troubleshooting, allowing me to continuously learn while contributing to a stable and secure enterprise environment."
+
+---
+
+## 142. Describe a challenging technical issue you solved.
+
+**Sample Answer**
+
+Describe the situation using the STAR method:
+
+- **Situation:** Brief background.
+- **Task:** Your responsibility.
+- **Action:** Technical steps taken.
+- **Result:** Positive outcome and lessons learned.
+
+---
+
+## 143. How do you keep your Windows knowledge current?
+
+**Sample Answer**
+
+"I regularly study Microsoft Learn, review Windows documentation, practice in virtual labs, follow security advisories, and build hands-on projects using Windows Server, PowerShell, and virtualization technologies."
+
+---
+
+## 144. How do you handle pressure during major incidents?
+
+**Sample Answer**
+
+"I stay calm, gather facts, prioritize based on business impact, communicate clearly with stakeholders, follow established procedures, document actions, and validate recovery before closing the incident."
+
+---
+
+## 145. Why should we hire you?
+
+**Sample Answer**
+
+"I combine strong troubleshooting skills, a security-focused mindset, hands-on Windows administration knowledge, and a willingness to learn. I work methodically, communicate effectively, and focus on delivering reliable solutions."
+
+---
+
+# Quick Revision Table
+
+| Topic | Remember |
+|--------|----------|
+| WinRE | Recovery environment |
+| Event Viewer | Log analysis |
+| PowerShell | Automation |
+| Process Explorer | Advanced process analysis |
+| ProcMon | File and Registry monitoring |
+| Autoruns | Startup analysis |
+| Services | Background processes |
+| Registry | Configuration database |
+| RCA | Find the underlying cause |
+| Defense in Depth | Multiple security layers |
+
+---
+
+# Key Takeaways
+
+- Scenario-based questions assess analytical thinking.
+- PowerShell knowledge is expected in modern Windows administration.
+- Sysinternals tools are valuable for advanced troubleshooting.
+- Security awareness is increasingly important in Windows interviews.
+- Clear communication and structured problem-solving often matter as much as technical knowledge.
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Sysinternals Documentation
+- Microsoft PowerShell Documentation
+- Microsoft Windows Security Documentation
+- Microsoft Event Viewer Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Expert Windows Interview Questions, Rapid-Fire Round, Hands-on Tasks, HR Scenarios, Final Revision, and Chapter Summary**
