@@ -810,3 +810,806 @@ Observe:
 
 ---
 
+# 08-Windows-Users-and-Groups.md
+
+# Part 2 — Windows Groups, Built-in Security Groups, Privileges, User Rights, Account Management, and Local Security Policies
+
+---
+
+# Introduction
+
+Managing hundreds or thousands of individual user permissions quickly becomes difficult and error-prone.
+
+Instead of assigning permissions directly to every user, Windows uses **groups**.
+
+A group is a collection of user accounts that share common permissions and privileges.
+
+Example:
+
+```text
+Without Groups
+
+Alice  ─┐
+Bob    ─┼──> Assign Permissions Individually
+John   ─┘
+
+
+With Groups
+
+Alice ─┐
+Bob   ─┼──> Finance Group ──> Shared Permissions
+John  ─┘
+```
+
+Groups simplify administration, improve security, and make enterprise management scalable.
+
+---
+
+# Learning Objectives
+
+By the end of this section, you will understand:
+
+- Windows groups
+- Local groups
+- Security groups
+- Built-in groups
+- Administrative groups
+- User rights
+- Privileges
+- Group membership
+- Local Security Policy
+- Account management tools
+
+---
+
+# What is a Group?
+
+A **group** is a security principal that contains multiple users.
+
+Instead of assigning permissions individually:
+
+```text
+User
+
+↓
+
+Group
+
+↓
+
+Permission
+
+↓
+
+Resource
+```
+
+Windows evaluates permissions based on the user's group memberships.
+
+---
+
+# Advantages of Groups
+
+Using groups provides:
+
+- Easier administration
+- Reduced configuration errors
+- Simplified permission management
+- Centralized access control
+- Improved scalability
+- Better auditing
+
+---
+
+# Types of Windows Groups
+
+Windows supports multiple types of groups.
+
+```text
+Windows Groups
+
+├── Local Groups
+├── Domain Local Groups
+├── Global Groups
+├── Universal Groups
+├── Built-in Groups
+└── Special Identity Groups
+```
+
+This chapter primarily focuses on **local groups**.
+
+Active Directory group scopes are covered later.
+
+---
+
+# Local Groups
+
+Local groups exist only on a single Windows computer.
+
+Characteristics:
+
+- Stored locally
+- Manage access to local resources
+- Managed using Local Users and Groups
+- Not replicated across computers
+
+Example:
+
+```text
+PC01
+
+↓
+
+Administrators
+
+↓
+
+Local Users
+```
+
+---
+
+# Security Groups
+
+Security groups are used to assign permissions.
+
+Example:
+
+```text
+Finance Group
+
+↓
+
+Read
+
+↓
+
+Write
+
+↓
+
+Finance Folder
+```
+
+Adding a new employee simply requires adding the user to the group.
+
+---
+
+# Distribution Groups
+
+Distribution groups are used primarily for email systems.
+
+Characteristics:
+
+- Not used for Windows authorization
+- Used by messaging platforms
+- Simplify email distribution
+
+Examples include departmental mailing lists.
+
+---
+
+# Group Membership
+
+A user can belong to multiple groups.
+
+Example:
+
+```text
+Alice
+
+├── Users
+├── Finance
+├── Remote Desktop Users
+└── Backup Operators
+```
+
+Windows combines permissions from all applicable group memberships.
+
+---
+
+# Built-in Windows Groups
+
+Windows automatically creates several built-in groups.
+
+Common examples include:
+
+| Group | Purpose |
+|--------|----------|
+| Administrators | Full system administration |
+| Users | Standard users |
+| Guests | Limited access |
+| Backup Operators | Backup and restore operations |
+| Remote Desktop Users | Remote Desktop access |
+| Network Configuration Operators | Network configuration tasks |
+| Performance Monitor Users | Performance monitoring |
+| Event Log Readers | Read Windows Event Logs |
+| Hyper-V Administrators | Manage Hyper-V |
+
+---
+
+# Administrators Group
+
+Members of the **Administrators** group can perform tasks such as:
+
+- Install software
+- Create users
+- Modify system settings
+- Install drivers
+- Manage services
+- Change security policies
+- Access protected resources
+
+Because of these powerful capabilities, administrator membership should be tightly controlled.
+
+---
+
+# Users Group
+
+Most users belong to the **Users** group.
+
+Capabilities include:
+
+- Run applications
+- Create personal files
+- Change personal settings
+- Use installed software
+
+Restrictions include:
+
+- Cannot install many system-wide applications
+- Cannot modify protected operating system settings
+- Cannot manage other users without elevation
+
+---
+
+# Guests Group
+
+The **Guests** group provides highly restricted access.
+
+Modern Windows installations typically disable the Guest account by default for security reasons.
+
+---
+
+# Backup Operators
+
+Members of this group can:
+
+- Perform backup operations
+- Restore files
+- Access files during backup processes
+
+These permissions are intended for backup-related tasks and should be assigned carefully.
+
+---
+
+# Remote Desktop Users
+
+Members can log on using Remote Desktop (subject to other policies and configuration).
+
+Example:
+
+```text
+Remote User
+
+↓
+
+Remote Desktop Users
+
+↓
+
+RDP Login
+
+↓
+
+Desktop Session
+```
+
+---
+
+# Event Log Readers
+
+Allows users to read Windows Event Logs without granting full administrative rights.
+
+Useful for:
+
+- SOC Analysts
+- Auditors
+- Security Teams
+- Help Desk Personnel
+
+---
+
+# Special Identity Groups
+
+Windows also defines dynamic identities that cannot typically be managed manually.
+
+Examples:
+
+| Special Identity | Description |
+|------------------|-------------|
+| Everyone | Broad identity representing applicable users |
+| Authenticated Users | Successfully authenticated identities |
+| Interactive | Users logged on locally |
+| Network | Users accessing over the network |
+| Anonymous Logon | Unauthenticated connections (limited scenarios) |
+| SYSTEM | Operating system identity |
+
+These identities are evaluated dynamically by Windows.
+
+---
+
+# Nested Groups
+
+In Active Directory environments, groups can contain other groups.
+
+Example:
+
+```text
+Finance Users
+
+↓
+
+Accounting Group
+
+↓
+
+Finance Share
+```
+
+Nested groups simplify large-scale administration.
+
+This topic is explored further in the Active Directory chapter.
+
+---
+
+# Group Membership Evaluation
+
+When a user logs in:
+
+```text
+Authenticate User
+
+↓
+
+Collect Group Memberships
+
+↓
+
+Create Access Token
+
+↓
+
+Apply Permissions
+```
+
+The resulting access token contains the user's security identifiers (SIDs) and group memberships.
+
+---
+
+# User Rights vs Permissions
+
+These terms are different.
+
+| User Rights | Permissions |
+|-------------|-------------|
+| Allow system-level actions | Control access to resources |
+| Managed through security policy | Applied to files, folders, registry, etc. |
+| Example: Log on locally | Example: Read a file |
+
+---
+
+# Examples of User Rights
+
+Examples include:
+
+- Log on locally
+- Log on through Remote Desktop Services
+- Shut down the system
+- Back up files
+- Restore files
+- Change the system time
+- Load device drivers
+- Debug programs
+
+These are assigned through Local Security Policy or Group Policy.
+
+---
+
+# Privileges
+
+Privileges are special capabilities granted to users or groups.
+
+Examples:
+
+- Backup privilege
+- Restore privilege
+- Debug privilege
+- Shutdown privilege
+- Take ownership privilege
+
+Many privileges are exercised only when required and subject to Windows security mechanisms such as User Account Control (UAC).
+
+---
+
+# Local Security Policy
+
+Windows includes **Local Security Policy** for configuring security settings on standalone systems.
+
+Launch:
+
+```text
+secpol.msc
+```
+
+Categories include:
+
+- Account Policies
+- Local Policies
+- Audit Policies
+- User Rights Assignment
+- Security Options
+
+---
+
+# User Rights Assignment
+
+Location:
+
+```text
+Local Security Policy
+
+↓
+
+Local Policies
+
+↓
+
+User Rights Assignment
+```
+
+Examples:
+
+- Allow log on locally
+- Deny log on locally
+- Back up files
+- Restore files
+- Shut down the system
+
+These settings determine which users or groups can perform specific system actions.
+
+---
+
+# Account Policies
+
+Account Policies include:
+
+- Password Policy
+- Account Lockout Policy
+- Kerberos Policy (domain environments)
+
+Typical password settings:
+
+- Minimum password length
+- Password complexity
+- Password history
+- Maximum password age
+- Minimum password age
+
+---
+
+# Account Lockout Policy
+
+Example:
+
+```text
+5 Failed Logons
+
+↓
+
+Account Locked
+
+↓
+
+Administrator Unlock
+
+or
+
+Automatic Unlock After Policy Interval
+```
+
+Proper lockout settings reduce brute-force attacks while minimizing disruption to legitimate users.
+
+---
+
+# Local Users and Groups Console
+
+Administrative console:
+
+```text
+lusrmgr.msc
+```
+
+Provides graphical management for:
+
+- Users
+- Groups
+- Membership
+- Account properties
+
+Available on supported Windows editions (not typically included in Windows Home editions).
+
+---
+
+# NET USER
+
+Display users.
+
+```cmd
+net user
+```
+
+View user details.
+
+```cmd
+net user Alice
+```
+
+Create a user.
+
+```cmd
+net user Alice Password123! /add
+```
+
+Disable a user.
+
+```cmd
+net user Alice /active:no
+```
+
+Enable a user.
+
+```cmd
+net user Alice /active:yes
+```
+
+Delete a user.
+
+```cmd
+net user Alice /delete
+```
+
+---
+
+# NET LOCALGROUP
+
+Display local groups.
+
+```cmd
+net localgroup
+```
+
+View members.
+
+```cmd
+net localgroup Administrators
+```
+
+Add a member.
+
+```cmd
+net localgroup Administrators Alice /add
+```
+
+Remove a member.
+
+```cmd
+net localgroup Administrators Alice /delete
+```
+
+---
+
+# Computer Management
+
+Another management interface:
+
+```text
+compmgmt.msc
+
+↓
+
+Local Users and Groups
+
+↓
+
+Users
+
+↓
+
+Groups
+```
+
+Computer Management centralizes several administrative tools into a single console.
+
+---
+
+# Enterprise Example
+
+A new Finance employee joins the company.
+
+Instead of assigning permissions individually:
+
+```text
+Create User
+
+↓
+
+Finance Group
+
+↓
+
+Remote Desktop Users
+
+↓
+
+File Access
+
+↓
+
+Printer Access
+
+↓
+
+Application Access
+```
+
+Adding the user to the appropriate groups automatically grants the required access.
+
+---
+
+# Cybersecurity Perspective
+
+Improper group management is a common cause of privilege escalation.
+
+Examples include:
+
+- Too many local administrators
+- Orphaned administrative accounts
+- Excessive group nesting
+- Unused privileged groups
+- Unauthorized group membership changes
+
+Security teams should monitor:
+
+- New administrator accounts
+- Group membership modifications
+- Privileged group changes
+- Disabled security groups
+- Unexpected account activation
+
+Privileged group membership changes are high-value events in enterprise monitoring.
+
+---
+
+# Business Impact
+
+Effective group management enables organizations to:
+
+- Reduce administrative effort
+- Improve scalability
+- Enforce least privilege
+- Meet compliance requirements
+- Simplify onboarding and offboarding
+- Improve auditability
+
+Poorly managed groups increase operational risk and the likelihood of unauthorized access.
+
+---
+
+# Enterprise Best Practices
+
+- Assign permissions to groups rather than individual users whenever practical.
+- Follow the Principle of Least Privilege (PoLP).
+- Minimize membership in the Administrators group.
+- Review privileged groups regularly.
+- Remove inactive accounts promptly.
+- Document administrative group membership.
+- Audit changes to privileged groups.
+- Use role-based access control (RBAC) principles where appropriate.
+
+---
+
+# Practical Labs
+
+## Lab 1 — View Local Groups
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+net localgroup
+```
+
+Identify the built-in groups available on your system.
+
+---
+
+## Lab 2 — View User Details
+
+Run:
+
+```cmd
+net user
+
+net user <YourUserName>
+```
+
+Observe:
+
+- Local group memberships
+- Password settings
+- Account status
+
+---
+
+## Lab 3 — Explore Local Security Policy
+
+If available on your edition of Windows:
+
+1. Launch:
+
+```text
+secpol.msc
+```
+
+2. Navigate to:
+
+```text
+Local Policies
+
+↓
+
+User Rights Assignment
+```
+
+Review the configured rights without making changes.
+
+---
+
+# Key Takeaways
+
+- Groups simplify permission management.
+- Built-in groups provide predefined administrative roles.
+- User rights differ from resource permissions.
+- Local Security Policy manages security settings on standalone systems.
+- Group memberships become part of the user's access token during logon.
+- Privileged groups should be carefully monitored and audited.
+
+---
+
+# Interview Questions
+
+1. Why are groups preferred over assigning permissions directly to users?
+2. What is the difference between a local group and a domain group?
+3. What is the purpose of the Administrators group?
+4. What is the difference between user rights and permissions?
+5. What is `lusrmgr.msc` used for?
+6. What does `net localgroup` do?
+7. Why should administrator membership be minimized?
+8. What are Special Identity Groups?
+9. What is the purpose of Local Security Policy?
+10. How does group membership affect a user's access token?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Security Documentation
+- Microsoft Local Users and Groups Documentation
+- Microsoft Local Security Policy Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
