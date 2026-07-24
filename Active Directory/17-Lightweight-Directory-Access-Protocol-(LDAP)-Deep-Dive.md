@@ -670,4 +670,867 @@ Explore Active Directory objects using LDAP-aware tools.
 
 ---
 
-**Next:** **Part 2 — LDAP Operations, Bind Process, Search Filters, Queries, Authentication Methods, and Enterprise LDAP Workflow**
+# Active-Directory/
+
+# 17-Lightweight-Directory-Access-Protocol-(LDAP)-Deep-Dive.md
+
+# Part 2 — LDAP Operations, Bind Process, Search Filters, Queries, Authentication Methods, and Enterprise LDAP Workflow
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand LDAP communication workflow.
+- Learn every LDAP operation.
+- Understand LDAP Bind and authentication.
+- Learn LDAP search filters.
+- Understand LDAP queries.
+- Learn LDAP authentication methods.
+- Explore enterprise LDAP communication.
+
+---
+
+# Review
+
+In Part 1, you learned:
+
+- LDAP history
+- Directory Services
+- Directory Information Tree (DIT)
+- Objects
+- Attributes
+- Distinguished Names (DN)
+- Schema
+- LDAP architecture
+
+Now we'll explore how clients communicate with an LDAP server.
+
+---
+
+# LDAP Communication Workflow
+
+A typical LDAP session follows this sequence:
+
+```text
+Client
+
+↓
+
+TCP Connection
+
+↓
+
+Bind
+
+↓
+
+LDAP Operations
+
+↓
+
+Server Response
+
+↓
+
+Unbind
+
+↓
+
+Connection Closed
+```
+
+---
+
+# LDAP Operations Overview
+
+LDAP defines several standard operations.
+
+```text
+LDAP Operations
+
+│
+
+├── Bind
+
+├── Search
+
+├── Compare
+
+├── Add
+
+├── Modify
+
+├── Delete
+
+├── Modify DN
+
+├── Unbind
+
+└── Extended Operations
+```
+
+Each operation serves a specific purpose when interacting with the directory.
+
+---
+
+# Bind Operation
+
+The **Bind** operation establishes the client's identity with the LDAP server.
+
+```text
+Client
+
+↓
+
+Bind Request
+
+↓
+
+LDAP Server
+
+↓
+
+Authentication
+
+↓
+
+Bind Response
+```
+
+A successful Bind allows the client to perform authorized LDAP operations.
+
+---
+
+# Why Bind is Required
+
+Before performing most directory operations:
+
+```text
+Search
+
+Add
+
+Modify
+
+Delete
+```
+
+the LDAP server must know **who** is making the request.
+
+The Bind operation provides that identity.
+
+---
+
+# Authentication Methods
+
+LDAP supports several authentication methods.
+
+Common examples include:
+
+| Method | Description |
+|---------|-------------|
+| Anonymous Bind | No credentials supplied |
+| Simple Bind | Username and password |
+| SASL Bind | Uses a supported authentication mechanism such as Kerberos |
+
+Modern Active Directory environments commonly use SASL with Kerberos for domain authentication.
+
+---
+
+# Anonymous Bind
+
+```text
+Client
+
+↓
+
+No Credentials
+
+↓
+
+LDAP Server
+```
+
+Characteristics:
+
+- Limited or no access in most enterprise environments.
+- Often disabled for security reasons.
+- May be permitted for specific read-only scenarios depending on organizational policy.
+
+---
+
+# Simple Bind
+
+```text
+Username
+
++
+
+Password
+
+↓
+
+LDAP Server
+```
+
+Important:
+
+If Simple Bind is used without transport encryption, credentials can be exposed on the network.
+
+For this reason, organizations typically combine Simple Bind with **TLS/SSL (LDAPS)**.
+
+---
+
+# SASL Bind
+
+SASL stands for:
+
+```text
+Simple Authentication and Security Layer
+```
+
+SASL provides a framework that allows LDAP to use stronger authentication mechanisms.
+
+In Active Directory, SASL commonly works with:
+
+- Kerberos
+- NTLM (for compatibility scenarios)
+
+---
+
+# Bind Sequence
+
+```text
+Client
+
+↓
+
+Bind Request
+
+↓
+
+LDAP Server
+
+↓
+
+Validate Credentials
+
+↓
+
+Bind Response
+
+↓
+
+Authenticated Session
+```
+
+---
+
+# Search Operation
+
+The **Search** operation is the most frequently used LDAP operation.
+
+Purpose:
+
+- Find objects
+- Read attributes
+- Retrieve directory information
+
+Examples:
+
+- Find a user
+- Locate a computer
+- Retrieve group membership
+
+---
+
+# Search Workflow
+
+```text
+Client
+
+↓
+
+Search Request
+
+↓
+
+LDAP Server
+
+↓
+
+Directory Search
+
+↓
+
+Matching Objects
+
+↓
+
+Search Response
+```
+
+---
+
+# Search Components
+
+A search request generally includes:
+
+- Search Base
+- Scope
+- Filter
+- Requested Attributes
+
+---
+
+# Search Base
+
+The **Search Base** defines where the search begins.
+
+Example:
+
+```text
+DC=contoso,DC=com
+```
+
+or
+
+```text
+OU=Users,DC=contoso,DC=com
+```
+
+---
+
+# Search Scope
+
+LDAP supports different search scopes.
+
+| Scope | Description |
+|---------|-------------|
+| Base | Search only the specified object |
+| One-Level | Search immediate child objects |
+| Subtree | Search the object and all descendants |
+
+---
+
+# Search Scope Diagram
+
+```text
+DC=contoso,DC=com
+
+│
+
+├── OU=Users
+
+│     ├── Alice
+
+│     └── Bob
+
+│
+
+└── OU=Servers
+
+      ├── Server01
+
+      └── Server02
+```
+
+Examples:
+
+- **Base:** Only `DC=contoso,DC=com`
+- **One-Level:** `OU=Users` and `OU=Servers`
+- **Subtree:** Entire hierarchy beneath the base
+
+---
+
+# LDAP Filters
+
+Filters determine which objects match a search.
+
+Example:
+
+```text
+Department = IT
+```
+
+Only matching objects are returned.
+
+---
+
+# Common LDAP Filters
+
+| Filter | Meaning |
+|----------|----------|
+| `(cn=Alice)` | Common Name equals Alice |
+| `(sn=Smith)` | Surname equals Smith |
+| `(objectClass=user)` | User objects |
+| `(department=IT)` | Department equals IT |
+| `(mail=*)` | Objects with an email attribute |
+
+---
+
+# Wildcards
+
+Example:
+
+```text
+(cn=John*)
+```
+
+Matches entries whose Common Name begins with **John**.
+
+Example:
+
+```text
+(mail=*)
+```
+
+Matches objects where the mail attribute is present.
+
+---
+
+# Logical Operators
+
+LDAP filters support logical operations.
+
+AND
+
+```text
+(&
+(objectClass=user)
+(department=IT)
+)
+```
+
+OR
+
+```text
+(|
+(department=HR)
+(department=Finance)
+)
+```
+
+NOT
+
+```text
+(!(department=HR))
+```
+
+These can be combined to create more precise searches.
+
+---
+
+# Search Example
+
+Objective:
+
+Find all users in the IT department.
+
+Conceptually:
+
+```text
+LDAP Client
+
+↓
+
+Search Filter
+
+↓
+
+(objectClass=user)
+
+AND
+
+(department=IT)
+
+↓
+
+LDAP Server
+
+↓
+
+Matching Users
+```
+
+---
+
+# Compare Operation
+
+Purpose:
+
+Determine whether an object contains a specified attribute value.
+
+```text
+Object
+
+↓
+
+Attribute
+
+↓
+
+Compare
+
+↓
+
+True / False
+```
+
+This operation returns whether the comparison matches.
+
+---
+
+# Add Operation
+
+Purpose:
+
+Create a new directory object.
+
+Example:
+
+```text
+New Employee
+
+↓
+
+LDAP Add
+
+↓
+
+Active Directory
+
+↓
+
+User Created
+```
+
+Appropriate permissions are required.
+
+---
+
+# Modify Operation
+
+Purpose:
+
+Update attributes of an existing object.
+
+Example:
+
+```text
+Department
+
+↓
+
+Marketing
+
+↓
+
+IT
+```
+
+The LDAP Modify operation updates the attribute.
+
+---
+
+# Delete Operation
+
+Purpose:
+
+Remove an object from the directory.
+
+Example:
+
+```text
+Computer Object
+
+↓
+
+Delete
+
+↓
+
+Removed
+```
+
+Deletion requires appropriate permissions.
+
+---
+
+# Modify DN Operation
+
+Purpose:
+
+Rename or move an object.
+
+Example:
+
+```text
+OU=Temporary
+
+↓
+
+OU=Employees
+```
+
+or
+
+```text
+CN=John Smith
+
+↓
+
+CN=John Williams
+```
+
+---
+
+# Unbind Operation
+
+Purpose:
+
+Terminate the LDAP session.
+
+```text
+Client
+
+↓
+
+Unbind
+
+↓
+
+Connection Closed
+```
+
+Unlike Bind, Unbind does not expect a server response.
+
+---
+
+# Extended Operations
+
+LDAP also supports extended operations defined by standards or vendors.
+
+Examples include:
+
+- Password-related operations
+- StartTLS
+- Server-specific administrative functions
+
+Support depends on the LDAP implementation.
+
+---
+
+# LDAP Communication Diagram
+
+```text
+Client
+
+↓
+
+TCP Connection
+
+↓
+
+Bind
+
+↓
+
+Search
+
+↓
+
+Modify
+
+↓
+
+Compare
+
+↓
+
+Unbind
+
+↓
+
+Disconnect
+```
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 90,000 employees
+- HR Management System
+
+Workflow:
+
+```text
+Employee Login
+
+↓
+
+LDAP Bind
+
+↓
+
+Search User
+
+↓
+
+Retrieve Attributes
+
+↓
+
+Display Employee Profile
+```
+
+---
+
+# LDAP Authentication Flow
+
+```text
+Application
+
+↓
+
+LDAP Bind
+
+↓
+
+Domain Controller
+
+↓
+
+Authentication
+
+↓
+
+Authorized
+
+↓
+
+Directory Queries
+```
+
+---
+
+# Common LDAP Errors
+
+Examples include:
+
+- Invalid credentials
+- Insufficient permissions
+- Object not found
+- Invalid Distinguished Name
+- Invalid search filter
+- Server unavailable
+- Referral required
+
+---
+
+# Best Practices
+
+- Prefer LDAPS or LDAP with TLS.
+- Use Kerberos-based SASL where appropriate.
+- Restrict anonymous binds.
+- Apply least privilege.
+- Validate LDAP filters carefully.
+- Monitor directory changes.
+- Protect Domain Controllers.
+
+---
+
+# Cybersecurity Perspective
+
+LDAP contains sensitive identity information.
+
+Security teams should:
+
+- Audit Bind activity.
+- Monitor privileged LDAP queries.
+- Review object modifications.
+- Secure directory communications.
+- Protect service accounts used for LDAP access.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore LDAP searches in Active Directory.
+
+### Tasks
+
+1. Open:
+
+- Active Directory Users and Computers
+
+2. Locate:
+
+- Users
+- Groups
+- Organizational Units
+
+3. Search for:
+
+- A user
+- A computer
+- A group
+
+4. Record:
+
+- Distinguished Name
+- Object Class
+- Attributes
+
+5. Identify:
+
+- Search Base
+- Scope
+- Returned attributes
+
+---
+
+# Key Takeaways
+
+- LDAP sessions typically begin with a Bind operation.
+- Search is the most commonly used LDAP operation.
+- Filters determine which objects are returned.
+- Add, Modify, Delete, and Modify DN manage directory objects.
+- Unbind cleanly closes the LDAP session.
+- Secure authentication and encrypted transport are recommended.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of the LDAP Bind operation?
+2. What is the difference between Anonymous, Simple, and SASL Bind?
+3. What is a Search Base?
+4. What are the three LDAP search scopes?
+5. How do LDAP filters work?
+6. What is the purpose of the Compare operation?
+7. What does Modify DN do?
+8. Why should LDAPS be preferred over unencrypted LDAP?
+9. Why is the Search operation the most common LDAP operation?
+10. What security controls should be applied to LDAP?
+
+---
+
+# References
+
+- RFC 4511 – Lightweight Directory Access Protocol (LDAP)
+- RFC 4513 – LDAP Authentication Methods and Security Mechanisms
+- Microsoft Learn – Active Directory Domain Services
+- Microsoft Learn – LDAP and Active Directory
+- OpenLDAP Documentation
+- Microsoft Windows Server Documentation
+
+---
+
+**Next:** **Part 3 — LDAP Internals, Replication, Global Catalog Integration, PowerShell, Troubleshooting, and Enterprise Operations**
