@@ -545,3 +545,767 @@ These advantages are essential for enterprise productivity and operational resil
 ---
 
 
+# 03-Windows-Architecture.md
+
+# Part 2 — Windows Executive, Kernel Internals, Object Manager, Memory Manager, I/O Manager, Process Manager, and Security Reference Monitor
+
+---
+
+# Introduction
+
+In Part 1, we explored the high-level architecture of Windows. This section dives into the **Windows Executive**, which is responsible for most of the operating system's core services.
+
+The Windows Executive works closely with the Windows Kernel to provide:
+
+- Process management
+- Memory management
+- File system services
+- Device communication
+- Security
+- Object management
+- Power management
+
+Understanding these components is essential for:
+
+- Windows Administration
+- Active Directory Administration
+- Digital Forensics
+- Malware Analysis
+- Incident Response
+- Threat Hunting
+- SIEM Engineering
+- Windows Security
+
+---
+
+# Windows Executive Overview
+
+The Windows Executive is a collection of kernel-mode components that implement the majority of Windows operating system services.
+
+High-level architecture:
+
+```text
+                 User Applications
+                         │
+                         ▼
+                  Windows API
+                         │
+                         ▼
+                 System Call Interface
+                         │
+                         ▼
+        +-----------------------------------+
+        |       Windows Executive           |
+        |-----------------------------------|
+        | Object Manager                    |
+        | Memory Manager                    |
+        | Process Manager                   |
+        | I/O Manager                       |
+        | Cache Manager                     |
+        | Configuration Manager             |
+        | Plug and Play Manager             |
+        | Power Manager                     |
+        | Security Reference Monitor        |
+        +-----------------------------------+
+                         │
+                         ▼
+                   Windows Kernel
+                         │
+                         ▼
+                        HAL
+                         │
+                         ▼
+                     Hardware
+```
+
+---
+
+# Responsibilities of the Windows Executive
+
+The Executive is responsible for:
+
+- Managing system objects
+- Allocating memory
+- Creating processes
+- Scheduling I/O operations
+- Managing security
+- Handling registry operations
+- Managing power states
+- Coordinating device drivers
+
+---
+
+# Windows Executive Components
+
+| Component | Primary Responsibility |
+|-----------|------------------------|
+| Object Manager | Manages Windows objects |
+| Memory Manager | Virtual and physical memory |
+| Process Manager | Process and thread lifecycle |
+| I/O Manager | Input and Output operations |
+| Cache Manager | File system caching |
+| Configuration Manager | Windows Registry |
+| Plug and Play Manager | Hardware detection |
+| Power Manager | Power state management |
+| Security Reference Monitor | Access control |
+
+---
+
+# Object Manager
+
+## What is the Object Manager?
+
+Windows treats many resources as **objects**.
+
+Examples include:
+
+- Files
+- Processes
+- Threads
+- Events
+- Mutexes
+- Semaphores
+- Registry Keys
+- Tokens
+- Sections
+
+Instead of handling every resource differently, Windows provides a unified object model.
+
+---
+
+# Object-Based Architecture
+
+```text
+Windows Resources
+
+├── File Object
+├── Process Object
+├── Thread Object
+├── Device Object
+├── Event Object
+├── Registry Object
+└── Security Token
+```
+
+Every object contains:
+
+- Metadata
+- Security descriptor
+- Access permissions
+- Object type
+- Handle information
+
+---
+
+# Object Handles
+
+Applications do not directly manipulate kernel objects.
+
+Instead:
+
+```text
+Application
+
+↓
+
+Open File
+
+↓
+
+Object Manager
+
+↓
+
+Returns Handle
+
+↓
+
+Application Uses Handle
+```
+
+A **handle** is a reference that allows controlled access to an operating system object.
+
+---
+
+# Benefits of Object Management
+
+- Consistent resource management
+- Centralized security
+- Resource tracking
+- Simplified programming
+- Better access control
+
+---
+
+# Memory Manager
+
+The Memory Manager is responsible for allocating and managing system memory.
+
+Responsibilities include:
+
+- Virtual memory
+- Physical memory
+- Paging
+- Memory protection
+- Shared memory
+- Page tables
+- Address translation
+
+---
+
+# Physical vs Virtual Memory
+
+```text
+Application
+
+↓
+
+Virtual Address
+
+↓
+
+Memory Manager
+
+↓
+
+Physical RAM
+
+↓
+
+Disk (Page File if Needed)
+```
+
+Applications use virtual addresses, while the Memory Manager maps them to physical memory.
+
+---
+
+# Virtual Memory
+
+Each process receives its own isolated virtual address space.
+
+Advantages:
+
+- Process isolation
+- Improved security
+- Larger usable address space
+- Efficient multitasking
+
+---
+
+# Paging
+
+When physical memory becomes limited:
+
+```text
+RAM Full
+
+↓
+
+Memory Manager
+
+↓
+
+Move Inactive Pages
+
+↓
+
+Page File
+
+↓
+
+Free RAM
+```
+
+This process is known as **paging**.
+
+---
+
+# Memory Protection
+
+The Memory Manager enforces permissions such as:
+
+| Permission | Purpose |
+|------------|----------|
+| Read | View memory |
+| Write | Modify memory |
+| Execute | Run instructions |
+| Read/Write | Read and modify |
+| Read/Execute | Execute program code |
+
+These protections help prevent unauthorized memory access.
+
+---
+
+# Process Manager
+
+The Process Manager creates and manages:
+
+- Processes
+- Threads
+- Process identifiers (PIDs)
+- Thread identifiers (TIDs)
+- Process termination
+- Resource allocation
+
+---
+
+# Process Lifecycle
+
+```text
+Executable
+
+↓
+
+Process Created
+
+↓
+
+Memory Allocated
+
+↓
+
+Threads Created
+
+↓
+
+Running
+
+↓
+
+Waiting
+
+↓
+
+Terminated
+```
+
+---
+
+# Process Structure
+
+A Windows process generally contains:
+
+```text
+Process
+
+├── Virtual Memory
+├── Threads
+├── Handles
+├── Security Token
+├── Environment Variables
+└── Loaded DLLs
+```
+
+---
+
+# Thread Management
+
+Threads are the smallest units of execution.
+
+```text
+Process
+
+├── Thread 1
+├── Thread 2
+├── Thread 3
+└── Thread 4
+```
+
+Advantages:
+
+- Parallel execution
+- Improved responsiveness
+- Better CPU utilization
+
+---
+
+# I/O Manager
+
+The I/O Manager coordinates communication between applications and hardware devices.
+
+Communication flow:
+
+```text
+Application
+
+↓
+
+Read File
+
+↓
+
+I/O Manager
+
+↓
+
+File System Driver
+
+↓
+
+Storage Driver
+
+↓
+
+SSD
+
+↓
+
+Data Returned
+```
+
+---
+
+# Responsibilities of the I/O Manager
+
+- File operations
+- Device communication
+- Driver coordination
+- Request routing
+- Buffer management
+- Asynchronous I/O support
+
+---
+
+# I/O Request Packet (IRP)
+
+Windows represents many I/O operations using an **I/O Request Packet (IRP)**.
+
+```text
+Application
+
+↓
+
+I/O Request
+
+↓
+
+IRP Created
+
+↓
+
+Driver Stack
+
+↓
+
+Hardware
+
+↓
+
+Completion Status
+```
+
+IRPs provide a standardized mechanism for communication between the operating system and drivers.
+
+---
+
+# Cache Manager
+
+The Cache Manager improves performance by storing frequently accessed file data in memory.
+
+Example:
+
+```text
+First File Access
+
+↓
+
+Disk Read
+
+↓
+
+Cache
+
+↓
+
+Second File Access
+
+↓
+
+Memory Read
+```
+
+Benefits:
+
+- Faster file access
+- Reduced disk operations
+- Improved system performance
+
+---
+
+# Configuration Manager
+
+The Configuration Manager manages the **Windows Registry**.
+
+Responsibilities:
+
+- Registry access
+- Configuration storage
+- System settings
+- Driver configuration
+- Software configuration
+
+The Registry will be covered in detail in a later chapter.
+
+---
+
+# Plug and Play (PnP) Manager
+
+Responsibilities:
+
+- Detect new hardware
+- Load appropriate drivers
+- Allocate hardware resources
+- Configure devices automatically
+
+Example:
+
+```text
+USB Device Connected
+
+↓
+
+PnP Detects Device
+
+↓
+
+Driver Loaded
+
+↓
+
+Device Ready
+```
+
+---
+
+# Power Manager
+
+The Power Manager controls system power usage.
+
+Responsibilities include:
+
+- Sleep
+- Hibernate
+- Shutdown
+- Restart
+- Power plans
+- Battery management
+
+Enterprise devices use these features to reduce energy consumption while maintaining productivity.
+
+---
+
+# Security Reference Monitor (SRM)
+
+The Security Reference Monitor is one of Windows' most important security components.
+
+Responsibilities:
+
+- Verify access permissions
+- Evaluate security tokens
+- Enforce access control
+- Perform privilege checks
+- Generate audit events
+
+---
+
+# Access Check Workflow
+
+```text
+Application
+
+↓
+
+Requests File Access
+
+↓
+
+Security Token
+
+↓
+
+Security Descriptor
+
+↓
+
+Security Reference Monitor
+
+↓
+
+Allow / Deny
+```
+
+If permission is denied, Windows prevents the requested operation.
+
+---
+
+# Enterprise Example
+
+A user attempts to open a confidential HR document.
+
+```text
+Employee
+
+↓
+
+Explorer.exe
+
+↓
+
+Object Manager
+
+↓
+
+SRM Checks Permissions
+
+↓
+
+NTFS Security
+
+↓
+
+Allowed?
+
+↓
+
+Yes → Open File
+
+No → Access Denied
+```
+
+Multiple Executive components cooperate to complete a single file access request.
+
+---
+
+# Cybersecurity Perspective
+
+Many advanced attacks attempt to interfere with Executive components.
+
+Examples include:
+
+- Token theft
+- Process injection
+- Handle duplication
+- Memory corruption
+- Driver exploitation
+- Unauthorized object access
+- Kernel privilege escalation
+
+Security teams monitor these behaviors using:
+
+- Microsoft Defender for Endpoint
+- Sysmon
+- Event Viewer
+- Windows Security Logs
+- EDR platforms
+
+---
+
+# Business Impact
+
+The Windows Executive enables:
+
+- Stable multitasking
+- Secure access control
+- Reliable hardware communication
+- Efficient memory utilization
+- High application compatibility
+- Enterprise-scale endpoint management
+
+Failures in these components can lead to application instability, performance degradation, or security incidents.
+
+---
+
+# Enterprise Best Practices
+
+- Keep Windows fully patched.
+- Deploy only trusted, signed drivers.
+- Monitor process creation and privilege changes.
+- Enable auditing for sensitive resources.
+- Restrict administrative privileges.
+- Review system logs regularly.
+- Use endpoint protection capable of detecting process and memory abuse.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Observe Process Information
+
+1. Open **Task Manager**.
+2. Select **Details**.
+3. Record:
+
+- Process Name
+- PID
+- Memory Usage
+
+Identify at least five system processes.
+
+---
+
+## Lab 2 — Explore Device Manager
+
+1. Open **Device Manager**.
+2. Expand:
+
+- Display Adapters
+- Disk Drives
+- Network Adapters
+
+Observe how Windows organizes hardware through drivers.
+
+---
+
+## Lab 3 — View Running Services
+
+1. Press:
+
+```text
+Windows + R
+```
+
+2. Run:
+
+```text
+services.msc
+```
+
+Observe services that interact with Executive components such as networking, storage, and security.
+
+---
+
+# Key Takeaways
+
+- The Windows Executive provides most high-level operating system services.
+- The Object Manager standardizes access to Windows resources.
+- The Memory Manager handles virtual memory, paging, and memory protection.
+- The Process Manager controls process and thread lifecycles.
+- The I/O Manager coordinates communication between applications and hardware.
+- The Security Reference Monitor enforces Windows access control decisions.
+
+---
+
+# Interview Questions
+
+1. What is the Windows Executive?
+2. What is the purpose of the Object Manager?
+3. Explain virtual memory.
+4. What is paging?
+5. What is an I/O Request Packet (IRP)?
+6. What does the Cache Manager do?
+7. What is the role of the Configuration Manager?
+8. How does the Plug and Play Manager work?
+9. What is the Security Reference Monitor?
+10. How do Executive components contribute to Windows security?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Microsoft Windows Architecture Documentation
+- Microsoft Sysinternals Documentation
+
+---
+
