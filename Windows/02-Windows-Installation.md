@@ -612,3 +612,693 @@ Volumes
 
 ---
 
+# 02-Windows-Installation.md
+
+# Part 2 — Creating Installation Media, Boot Process, Windows Setup, Disk Partitioning, and Installation Walkthrough
+
+---
+
+# Introduction
+
+After understanding the hardware requirements and firmware concepts, the next step is preparing installation media and performing a Windows installation.
+
+This section covers:
+
+- Downloading Windows
+- Creating bootable installation media
+- Boot sequence
+- Windows Setup
+- Disk partitioning
+- Installation options
+- Enterprise deployment considerations
+
+---
+
+# Windows Installation Workflow
+
+```text
+Download Windows
+
+↓
+
+Create Bootable USB
+
+↓
+
+Configure BIOS/UEFI
+
+↓
+
+Boot from USB
+
+↓
+
+Windows Setup
+
+↓
+
+Partition Disk
+
+↓
+
+Install Windows
+
+↓
+
+First Boot (OOBE)
+
+↓
+
+User Configuration
+
+↓
+
+Desktop Ready
+```
+
+---
+
+# Obtaining Windows Installation Media
+
+Microsoft provides official installation media through:
+
+- Windows ISO images
+- Media Creation Tool (supported Windows editions)
+- Volume Licensing Service Center (for eligible organizations)
+- Visual Studio Subscriptions (where applicable)
+
+Always use official Microsoft sources for installation media.
+
+---
+
+# Creating a Bootable USB
+
+Requirements:
+
+| Requirement | Description |
+|------------|-------------|
+| USB Drive | 8 GB or larger |
+| Windows ISO | Official Microsoft image |
+| Stable Internet | For downloading installation files |
+| Administrative Access | Required for media creation |
+
+---
+
+# Media Creation Tool
+
+The Media Creation Tool automates:
+
+- Downloading Windows
+- Verifying installation files
+- Creating a bootable USB
+- Preparing installation media
+
+Benefits:
+
+- Simple workflow
+- Official files
+- Automatic compatibility checks
+- Supports the latest releases
+
+---
+
+# Alternative USB Creation Tools
+
+Common tools include:
+
+| Tool | Typical Use |
+|------|-------------|
+| Rufus | Advanced bootable USB creation |
+| Ventoy | Multi-ISO boot USB |
+| balenaEtcher | Cross-platform flashing |
+| DiskPart (Windows) | Manual preparation (advanced) |
+
+---
+
+# Choosing the Correct Architecture
+
+Modern Windows installations are generally:
+
+```text
+64-bit (x64)
+```
+
+Older systems may use:
+
+```text
+32-bit (x86)
+```
+
+Enterprise deployments should standardize on 64-bit unless a legacy application specifically requires otherwise.
+
+---
+
+# Configuring Boot Order
+
+The system firmware determines which device boots first.
+
+Example order:
+
+```text
+1. USB Drive
+
+↓
+
+2. Internal SSD
+
+↓
+
+3. Network (PXE)
+
+↓
+
+4. DVD
+```
+
+Temporary boot menus are often available through vendor-specific keys during startup.
+
+---
+
+# Windows Setup Environment
+
+After booting from the installation media:
+
+```text
+Windows Setup
+
+↓
+
+Language Selection
+
+↓
+
+Keyboard Layout
+
+↓
+
+Install Now
+
+↓
+
+License Agreement
+
+↓
+
+Installation Type
+
+↓
+
+Disk Selection
+
+↓
+
+File Copy
+
+↓
+
+Restart
+
+↓
+
+Out-of-Box Experience (OOBE)
+```
+
+---
+
+# Language Selection
+
+Choose:
+
+- Language
+- Time and currency format
+- Keyboard layout
+
+These settings can typically be modified after installation if needed.
+
+---
+
+# Install Now
+
+Selecting **Install Now** starts the installation process.
+
+Setup performs:
+
+- Hardware detection
+- Storage detection
+- Compatibility checks
+- Preparation for installation
+
+---
+
+# Product Key
+
+Windows Setup may prompt for:
+
+```text
+Product Key
+```
+
+Options include:
+
+- Enter a valid key
+- Skip (if digital entitlement or later activation is planned)
+
+Enterprise environments often activate Windows automatically through centralized licensing.
+
+---
+
+# Windows Edition Selection
+
+Choose the edition matching your license.
+
+Example:
+
+```text
+Windows Home
+
+Windows Pro
+
+Windows Enterprise
+
+Windows Education
+```
+
+Installing the incorrect edition may prevent successful activation.
+
+---
+
+# License Agreement
+
+Read and accept the Microsoft Software License Terms before proceeding.
+
+---
+
+# Installation Types
+
+Windows offers two primary installation types.
+
+---
+
+## Upgrade Installation
+
+```text
+Existing Windows
+
+↓
+
+Upgrade
+
+↓
+
+Applications Retained
+
+↓
+
+Personal Files Retained
+
+↓
+
+Settings Retained
+```
+
+Advantages:
+
+- Faster migration
+- Preserves applications
+- Retains user data
+
+Limitations:
+
+- Existing issues may carry over
+- Less suitable for major environment rebuilds
+
+---
+
+## Custom Installation (Clean Install)
+
+```text
+Empty Disk
+
+↓
+
+Partition Creation
+
+↓
+
+Fresh Windows Installation
+
+↓
+
+Clean System
+```
+
+Advantages:
+
+- Better performance
+- Removes previous configuration issues
+- Preferred for enterprise imaging
+- Cleaner environment
+
+---
+
+# Upgrade vs Clean Installation
+
+| Upgrade | Clean Install |
+|----------|---------------|
+| Retains applications | Removes existing applications |
+| Keeps user files | Starts fresh |
+| Faster migration | Best long-term stability |
+| Suitable for supported upgrades | Preferred for new deployments |
+
+---
+
+# Disk Selection
+
+Windows displays available storage devices.
+
+Example:
+
+```text
+Disk 0
+
+↓
+
+Partition 1
+
+Partition 2
+
+Unallocated Space
+```
+
+Select the appropriate destination for installation.
+
+---
+
+# Partition Concepts
+
+A partition divides physical storage into logical sections.
+
+Common partitions include:
+
+```text
+EFI System Partition
+
+↓
+
+Microsoft Reserved (MSR)
+
+↓
+
+Windows Partition (C:)
+
+↓
+
+Recovery Partition
+```
+
+Modern Windows installations automatically create required partitions on unallocated GPT disks.
+
+---
+
+# Typical GPT Layout
+
+```text
+Disk
+
+├── EFI System Partition
+├── Microsoft Reserved (MSR)
+├── Windows (C:)
+└── Recovery Partition
+```
+
+Each partition serves a specific purpose during boot, operation, and recovery.
+
+---
+
+# Formatting Partitions
+
+During a clean installation, Setup allows formatting of existing partitions.
+
+Formatting:
+
+- Removes existing file system structures
+- Deletes stored data
+- Prepares the partition for a new installation
+
+> **Warning:** Formatting permanently removes data from the selected partition.
+
+---
+
+# File Copy Phase
+
+Windows Setup copies:
+
+- Operating system files
+- Boot files
+- Drivers
+- Recovery environment
+- Default applications
+
+Progress includes:
+
+```text
+Copy Files
+
+↓
+
+Install Features
+
+↓
+
+Install Updates (if applicable)
+
+↓
+
+Finalize Installation
+```
+
+---
+
+# Automatic Restart
+
+After installation files are copied:
+
+```text
+Windows Restarts
+
+↓
+
+Boots from Internal Drive
+
+↓
+
+Continues Installation
+```
+
+Avoid booting from the USB again unless reinstalling.
+
+---
+
+# Out-of-Box Experience (OOBE)
+
+OOBE completes the initial configuration.
+
+Typical tasks:
+
+- Region selection
+- Keyboard layout
+- Network connection
+- Microsoft account or local account setup
+- Device naming (in some scenarios)
+- Privacy preferences
+
+---
+
+# Creating User Accounts
+
+Options may include:
+
+- Microsoft account
+- Local account (availability depends on edition and setup scenario)
+- Organizational account (enterprise-managed devices)
+
+Enterprise devices are commonly joined to organizational identity services after or during provisioning.
+
+---
+
+# Device Naming
+
+Meaningful naming conventions improve management.
+
+Example:
+
+```text
+HR-LAP-001
+
+FIN-WS-015
+
+ENG-DESKTOP-022
+```
+
+Benefits:
+
+- Easier inventory
+- Faster troubleshooting
+- Simplified asset management
+
+---
+
+# Enterprise Deployment Considerations
+
+Large organizations automate installation using:
+
+```text
+Reference Image
+
+↓
+
+Deployment Server
+
+↓
+
+Network Deployment
+
+↓
+
+Automated Configuration
+
+↓
+
+Domain or Cloud Join
+
+↓
+
+Policies Applied
+
+↓
+
+Applications Installed
+```
+
+Automation reduces manual effort and improves consistency.
+
+---
+
+# Cybersecurity Perspective
+
+Installation decisions directly affect security.
+
+Recommendations:
+
+- Install from trusted media only.
+- Delete unknown partitions before reimaging managed devices (after verifying backups).
+- Use Secure Boot and TPM.
+- Apply the latest updates immediately after installation.
+- Enable BitLocker where organizational policy requires it.
+- Avoid unnecessary administrator accounts.
+
+---
+
+# Business Impact
+
+A standardized installation process provides:
+
+- Faster onboarding
+- Reduced configuration errors
+- Improved compliance
+- Consistent security posture
+- Lower support costs
+- Better asset management
+
+---
+
+# Enterprise Best Practices
+
+- Maintain standardized installation images.
+- Validate hardware compatibility before deployment.
+- Use consistent partitioning schemes.
+- Record device asset information during provisioning.
+- Verify activation and update status after installation.
+- Document deployment procedures and recovery steps.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Identify Existing Partitions
+
+### Objective
+
+Examine the partition structure of a Windows system.
+
+Steps:
+
+1. Open:
+
+```text
+Disk Management
+```
+
+2. Identify:
+
+- EFI System Partition
+- Recovery Partition
+- Windows (C:)
+- Any additional data partitions
+
+3. Record the partition sizes and purposes.
+
+---
+
+## Lab 2 — Observe Windows Setup (Virtual Machine)
+
+Create a virtual machine and boot from a Windows ISO.
+
+During Setup, identify:
+
+- Language selection
+- Edition selection
+- Installation type
+- Partition selection
+- OOBE screens
+
+> Use a virtual machine to practice safely without affecting your primary computer.
+
+---
+
+# Key Takeaways
+
+- Bootable USB media is the standard installation method for most systems.
+- Clean installations provide the most consistent deployment experience.
+- GPT-based installations automatically create required system partitions.
+- OOBE completes device and user configuration after installation.
+- Enterprise deployments rely heavily on automation and standardized images.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of the Media Creation Tool?
+2. Compare upgrade and clean installations.
+3. What partitions are typically created on a GPT Windows installation?
+4. What happens during the Out-of-Box Experience (OOBE)?
+5. Why should organizations standardize device names?
+6. Why is a clean installation often preferred for enterprise deployments?
+7. What precautions should be taken before formatting a partition?
+8. Why is activation important after installation?
+9. What are the benefits of automated Windows deployments?
+10. Why should installation media come only from trusted sources?
+
+---
+
+# References
+
+- Microsoft Learn
+- Windows Setup Documentation
+- Windows Deployment Documentation
+- Microsoft Security Guidance
+- Windows Hardware Compatibility Documentation
+
+---
+
+
