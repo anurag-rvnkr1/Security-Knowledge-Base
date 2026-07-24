@@ -623,4 +623,727 @@ Explore DNS fundamentals in a Windows environment.
 
 ---
 
-**Next:** **Part 2 — DNS Zones, Resource Records, SRV Records, Active Directory Integration, and Dynamic Updates**
+
+# 05-Active-Directory-DNS.md
+
+# Part 2 — DNS Zones, Resource Records, SRV Records, Active Directory Integration, and Dynamic Updates
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand DNS zones and zone types.
+- Learn every important DNS resource record used in Active Directory.
+- Understand Service (SRV) records and why they are critical.
+- Learn Active Directory-integrated DNS.
+- Understand Dynamic DNS (DDNS).
+- Understand secure dynamic updates.
+- Prepare for DNS replication and troubleshooting.
+
+---
+
+# What is a DNS Zone?
+
+A **DNS Zone** is an administrative portion of the DNS namespace that stores DNS records.
+
+Think of a DNS Zone as a database containing DNS information for a specific domain.
+
+Example:
+
+```text
+company.com
+
+↓
+
+DNS Zone
+
+↓
+
+A Records
+
+SRV Records
+
+CNAME Records
+
+MX Records
+
+NS Records
+```
+
+---
+
+# DNS Namespace vs DNS Zone
+
+Many beginners confuse these terms.
+
+| DNS Namespace | DNS Zone |
+|---------------|----------|
+| Logical naming hierarchy | Administrative database |
+| Entire DNS tree | Portion managed by one DNS server |
+| Global concept | Server-specific data storage |
+
+---
+
+# Types of DNS Zones
+
+Windows Server supports several zone types.
+
+| Zone Type | Purpose |
+|------------|---------|
+| Primary Zone | Read/write copy of the zone |
+| Secondary Zone | Read-only copy received through zone transfer |
+| Stub Zone | Contains only essential records for another zone |
+| Active Directory-Integrated Zone | Zone stored inside Active Directory |
+
+---
+
+# Primary Zone
+
+A Primary Zone contains:
+
+- Writable DNS records
+- Administrative updates
+- Source data for replication or transfers (depending on configuration)
+
+Example:
+
+```text
+DNS Server
+
+↓
+
+Primary Zone
+
+↓
+
+company.com
+
+↓
+
+All DNS Records
+```
+
+---
+
+# Secondary Zone
+
+A Secondary Zone is a read-only copy of another DNS zone.
+
+Purpose:
+
+- Redundancy
+- Load balancing
+- Improved availability
+- Faster local queries
+
+Example:
+
+```text
+Primary DNS
+
+↓
+
+Zone Transfer
+
+↓
+
+Secondary DNS
+
+↓
+
+Read-Only Zone
+```
+
+---
+
+# Stub Zone
+
+A Stub Zone stores only enough information to locate authoritative DNS servers.
+
+Typically includes:
+
+- NS records
+- SOA record
+- Required glue records (A/AAAA records for the authoritative servers)
+
+Purpose:
+
+- Efficient namespace delegation
+- Cross-domain name resolution
+- Reduced administrative effort
+
+---
+
+# Active Directory-Integrated Zone
+
+This is the recommended deployment for Active Directory environments.
+
+Instead of storing zone data only in local files:
+
+```text
+DNS Database
+
+↓
+
+Active Directory Database
+
+↓
+
+Replication
+
+↓
+
+All Domain Controllers
+```
+
+Benefits include:
+
+- Multi-master updates
+- Secure replication
+- Automatic synchronization
+- Simplified administration
+- High availability
+
+---
+
+# Why AD-Integrated DNS?
+
+Traditional DNS:
+
+```text
+Primary DNS
+
+↓
+
+Secondary DNS
+```
+
+Active Directory-integrated DNS:
+
+```text
+DC01
+
+↓
+
+Replication
+
+↓
+
+DC02
+
+↓
+
+Replication
+
+↓
+
+DC03
+
+↓
+
+Replication
+
+↓
+
+DC04
+```
+
+Each Domain Controller hosting the zone can accept updates.
+
+---
+
+# DNS Resource Records
+
+DNS information is stored as **resource records (RRs).**
+
+Common record types:
+
+| Record | Purpose |
+|----------|----------|
+| A | Hostname → IPv4 |
+| AAAA | Hostname → IPv6 |
+| PTR | Reverse lookup |
+| CNAME | Alias |
+| MX | Mail server |
+| NS | Authoritative DNS server |
+| SOA | Start of Authority |
+| SRV | Service location |
+| TXT | Text information |
+
+---
+
+# A Record
+
+Maps:
+
+```text
+Hostname
+
+↓
+
+IPv4 Address
+```
+
+Example:
+
+```text
+dc01.company.com
+
+↓
+
+10.10.10.5
+```
+
+The A record is the most frequently used DNS record.
+
+---
+
+# AAAA Record
+
+Used for IPv6.
+
+Example:
+
+```text
+dc01.company.com
+
+↓
+
+2001:db8::10
+```
+
+Purpose:
+
+Hostname → IPv6 address
+
+---
+
+# PTR Record
+
+Used for reverse lookups.
+
+Example:
+
+```text
+10.10.10.5
+
+↓
+
+dc01.company.com
+```
+
+Frequently used by:
+
+- Security tools
+- Logging systems
+- Troubleshooting utilities
+
+---
+
+# CNAME Record
+
+Creates an alias.
+
+Example:
+
+```text
+portal.company.com
+
+↓
+
+web01.company.com
+```
+
+Users connect to:
+
+```text
+portal.company.com
+```
+
+Even if the actual server name changes.
+
+---
+
+# MX Record
+
+Specifies mail servers.
+
+Example:
+
+```text
+company.com
+
+↓
+
+mail.company.com
+```
+
+Email systems rely on MX records to deliver messages.
+
+---
+
+# NS Record
+
+Identifies authoritative DNS servers.
+
+Example:
+
+```text
+company.com
+
+↓
+
+ns1.company.com
+
+↓
+
+ns2.company.com
+```
+
+---
+
+# SOA Record
+
+Every DNS zone contains exactly one **Start of Authority (SOA)** record.
+
+Contains information such as:
+
+- Primary DNS server
+- Administrative contact
+- Serial number
+- Refresh interval
+- Retry interval
+- Expiration values
+
+Used for synchronization and zone management.
+
+---
+
+# SRV Record
+
+The **Service (SRV) record** is the most important DNS record in Active Directory.
+
+It allows clients to locate services automatically.
+
+Instead of asking:
+
+```text
+Where is DC01?
+```
+
+Clients ask:
+
+```text
+Where is the LDAP service?
+
+Where is Kerberos?
+
+Where is the Global Catalog?
+```
+
+DNS responds using SRV records.
+
+---
+
+# Service Discovery
+
+```text
+Computer
+
+↓
+
+DNS Query
+
+↓
+
+LDAP Service?
+
+↓
+
+SRV Record
+
+↓
+
+DC02
+
+↓
+
+Authentication
+```
+
+The client requests a service, not a specific server.
+
+---
+
+# Why SRV Records Matter
+
+Without SRV records:
+
+- Clients cannot reliably locate Domain Controllers.
+- Kerberos authentication fails.
+- Group Policy processing may fail.
+- Replication can be disrupted.
+- Domain joins can fail.
+
+SRV records are essential for Active Directory operations.
+
+---
+
+# Common Active Directory SRV Records
+
+| Service | Purpose |
+|----------|----------|
+| LDAP | Locate Domain Controllers |
+| Kerberos | Locate authentication service |
+| Global Catalog | Locate Global Catalog servers |
+| Kpasswd | Password change service |
+
+These records are automatically registered by Domain Controllers.
+
+---
+
+# Dynamic DNS (DDNS)
+
+Traditionally:
+
+Administrator manually creates records.
+
+With Dynamic DNS:
+
+Clients and servers automatically register DNS records.
+
+Example:
+
+```text
+Computer Joins Domain
+
+↓
+
+Registers Hostname
+
+↓
+
+DNS Updated Automatically
+```
+
+---
+
+# Secure Dynamic Updates
+
+In Active Directory environments, secure dynamic updates are recommended.
+
+Benefits:
+
+- Prevent unauthorized updates.
+- Reduce spoofing risks.
+- Restrict modifications to authenticated systems.
+- Improve DNS integrity.
+
+---
+
+# Dynamic Registration Example
+
+```text
+Laptop
+
+↓
+
+Gets IP Address
+
+↓
+
+Contacts DNS
+
+↓
+
+Registers
+
+↓
+
+laptop25.company.com
+```
+
+No manual intervention is required.
+
+---
+
+# DNS Aging and Scavenging
+
+Over time, stale DNS records accumulate.
+
+Example:
+
+Old laptop removed
+
+↓
+
+Old DNS record remains
+
+↓
+
+Incorrect name resolution
+
+Windows provides:
+
+- Aging
+- Scavenging
+
+to remove outdated records automatically.
+
+Benefits:
+
+- Cleaner DNS database
+- Reduced administrative effort
+- More accurate name resolution
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 15,000 users
+- Six Domain Controllers
+- AD-integrated DNS
+
+Flow:
+
+```text
+Client
+
+↓
+
+DNS
+
+↓
+
+SRV Record
+
+↓
+
+Nearest Domain Controller
+
+↓
+
+Kerberos Authentication
+```
+
+The DNS infrastructure automatically supports service discovery across the enterprise.
+
+---
+
+# Best Practices
+
+- Use Active Directory-integrated zones where appropriate.
+- Enable secure dynamic updates.
+- Monitor stale records.
+- Use multiple DNS servers.
+- Protect DNS administration.
+- Regularly back up DNS configuration.
+- Review SRV record registration.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Manual modification of critical SRV records.
+- Using external DNS servers for internal AD name resolution.
+- Disabling secure dynamic updates without understanding the implications.
+- Ignoring stale DNS records.
+- Running a single DNS server in production.
+- Incorrect zone replication configuration.
+
+---
+
+# Cybersecurity Perspective
+
+DNS is a common target during cyberattacks.
+
+Potential threats include:
+
+- Unauthorized DNS updates
+- DNS spoofing
+- Cache poisoning
+- Service disruption
+- Rogue DNS servers
+
+Security recommendations:
+
+- Use secure dynamic updates.
+- Restrict DNS administrative permissions.
+- Audit DNS changes.
+- Monitor SRV record integrity.
+- Protect Domain Controllers hosting DNS.
+- Review DNS logs regularly.
+
+A compromised DNS service can significantly affect authentication and network operations.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore DNS zones and resource records.
+
+### Tasks
+
+1. Open **DNS Manager**.
+2. Locate:
+   - Forward Lookup Zones
+   - Reverse Lookup Zones
+3. Identify:
+   - A records
+   - AAAA records (if present)
+   - PTR records
+   - SRV records
+   - NS records
+4. Verify whether the zone is **Active Directory-Integrated**.
+5. Check if **Secure Dynamic Updates** are enabled.
+6. Record the purpose of each record type.
+
+---
+
+# Key Takeaways
+
+- DNS zones store resource records.
+- Active Directory-integrated zones support multi-master updates.
+- SRV records enable clients to locate directory services.
+- Dynamic DNS automates record registration.
+- Secure dynamic updates help protect DNS integrity.
+- Aging and scavenging remove stale records.
+
+---
+
+# Interview Questions
+
+1. What is a DNS zone?
+2. What is the difference between a Primary Zone and an AD-integrated Zone?
+3. What is the purpose of an SRV record?
+4. Why is DNS critical for Active Directory?
+5. What is Dynamic DNS?
+6. What are secure dynamic updates?
+7. What is the function of an SOA record?
+8. What is the difference between an A record and a CNAME record?
+9. Why are stale DNS records a problem?
+10. Why are Active Directory-integrated zones recommended?
+
+---
+
+# References
+
+- Microsoft Learn – DNS Zones
+- Microsoft Learn – Active Directory-Integrated DNS
+- Microsoft Learn – Dynamic DNS
+- Microsoft Windows Server DNS Documentation
+- RFC 1034 – Domain Names: Concepts and Facilities
+- RFC 1035 – Domain Names: Implementation and Specification
+- RFC 2782 – DNS SRV Resource Records
+
+---
+
+**Next:** **Part 3 — DNS Query Process, Name Resolution, Zone Replication, Forwarders, Conditional Forwarders, Root Hints, and Enterprise DNS Operations**
