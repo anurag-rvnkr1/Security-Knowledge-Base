@@ -681,4 +681,787 @@ Design a task that:
 
 ---
 
-**Next:** **Part 2 — Advanced PowerShell Scripting, Desired State Configuration (DSC), Background Jobs, Workflow Automation, and Enterprise Script Development**
+# 21-Windows-Automation.md
+
+# Part 2 — Advanced PowerShell Scripting, Desired State Configuration (DSC), Background Jobs, Workflow Automation, and Enterprise Script Development
+
+---
+
+# Introduction
+
+As organizations grow, simple scripts are no longer sufficient.
+
+Enterprise automation requires:
+
+- Modular scripts
+- Configuration management
+- Parallel execution
+- Error recovery
+- Reporting
+- Security controls
+- Version control
+- Testing
+- Documentation
+
+Modern Windows automation emphasizes **maintainability**, **idempotency**, **repeatability**, and **security**.
+
+---
+
+# Enterprise Automation Principles
+
+High-quality automation should be:
+
+| Principle | Description |
+|-----------|-------------|
+| Repeatable | Produces consistent results |
+| Idempotent | Safe to run multiple times |
+| Secure | Uses least privilege |
+| Modular | Reusable components |
+| Documented | Easy to maintain |
+| Observable | Generates logs and reports |
+| Tested | Validated before deployment |
+
+---
+
+# Modular Script Design
+
+Large scripts should be divided into reusable modules.
+
+Instead of:
+
+```text
+One Huge Script
+
+↓
+
+1000+ Lines
+
+↓
+
+Hard to Maintain
+```
+
+Use:
+
+```text
+Main Script
+
+↓
+
+Functions
+
+↓
+
+Modules
+
+↓
+
+Reusable Components
+```
+
+---
+
+# Script Structure
+
+A professional PowerShell script often follows this layout:
+
+```text
+Parameters
+
+↓
+
+Variables
+
+↓
+
+Functions
+
+↓
+
+Main Logic
+
+↓
+
+Logging
+
+↓
+
+Cleanup
+```
+
+This structure improves readability and maintenance.
+
+---
+
+# Parameters
+
+Scripts should accept parameters rather than hard-coded values.
+
+Example:
+
+```powershell
+param(
+    [string]$ComputerName
+)
+
+Get-Service `
+-ComputerName $ComputerName
+```
+
+Benefits:
+
+- Reusability
+- Flexibility
+- Easier automation
+
+---
+
+# Advanced Functions
+
+PowerShell functions can behave like built-in cmdlets.
+
+Example:
+
+```powershell
+function Get-SystemInfo
+{
+    [CmdletBinding()]
+
+    param(
+        [string]$ComputerName
+    )
+
+    Get-ComputerInfo `
+    -ComputerName $ComputerName
+}
+```
+
+Advanced functions support:
+
+- Parameters
+- Help
+- Validation
+- Pipeline input
+
+---
+
+# Parameter Validation
+
+Example:
+
+```powershell
+param(
+    [ValidateNotNullOrEmpty()]
+    [string]$Server
+)
+```
+
+Validation prevents invalid input from causing runtime failures.
+
+---
+
+# Comment-Based Help
+
+Professional scripts include built-in documentation.
+
+Example:
+
+```powershell
+<#
+.SYNOPSIS
+Retrieves service information.
+
+.DESCRIPTION
+Returns the current status of a Windows service.
+
+.PARAMETER Name
+Service name.
+
+.EXAMPLE
+Get-ServiceStatus -Name Spooler
+#>
+```
+
+Users can access this help with:
+
+```powershell
+Get-Help
+```
+
+---
+
+# Error Handling Best Practices
+
+Use structured exception handling.
+
+```powershell
+try
+{
+    Restart-Service Spooler
+}
+catch
+{
+    Write-Error $_
+}
+finally
+{
+    Write-Host "Completed."
+}
+```
+
+Benefits:
+
+- Predictable execution
+- Better diagnostics
+- Resource cleanup
+
+---
+
+# Logging Best Practices
+
+Logs should capture:
+
+- Start time
+- End time
+- User
+- Target system
+- Success/failure
+- Errors
+- Execution duration
+
+Example:
+
+```text
+Script Started
+
+↓
+
+Perform Task
+
+↓
+
+Record Status
+
+↓
+
+Write Log
+
+↓
+
+Finish
+```
+
+---
+
+# Desired State Configuration (DSC)
+
+Desired State Configuration (DSC) is PowerShell's configuration management platform.
+
+Instead of manually configuring systems, administrators define the desired configuration.
+
+Example:
+
+```text
+Desired State
+
+↓
+
+DSC Configuration
+
+↓
+
+Node Evaluation
+
+↓
+
+Correct Configuration Applied
+```
+
+---
+
+# Benefits of DSC
+
+DSC provides:
+
+- Configuration consistency
+- Automatic remediation
+- Compliance
+- Standardization
+- Scalability
+
+---
+
+# DSC Components
+
+| Component | Purpose |
+|-----------|----------|
+| Configuration | Desired system state |
+| Node | Target computer |
+| Resource | Managed component |
+| Local Configuration Manager (LCM) | Applies configuration |
+
+---
+
+# Local Configuration Manager (LCM)
+
+Every DSC-enabled node includes the **Local Configuration Manager**.
+
+Responsibilities:
+
+- Apply configurations
+- Monitor compliance
+- Correct drift
+- Generate status
+
+---
+
+# DSC Workflow
+
+```text
+Administrator
+
+↓
+
+Configuration Script
+
+↓
+
+Compile MOF
+
+↓
+
+Deploy
+
+↓
+
+Local Configuration Manager
+
+↓
+
+Desired State Maintained
+```
+
+---
+
+# Example DSC Resource
+
+```powershell
+Service Spooler
+{
+    Name  = "Spooler"
+    State = "Running"
+}
+```
+
+If the service stops unexpectedly, DSC can restore it automatically.
+
+---
+
+# Configuration Drift
+
+Configuration drift occurs when systems no longer match approved configurations.
+
+Example:
+
+```text
+Approved Configuration
+
+↓
+
+Manual Change
+
+↓
+
+Configuration Drift
+
+↓
+
+DSC Detects
+
+↓
+
+DSC Corrects
+```
+
+Preventing drift improves consistency and compliance.
+
+---
+
+# Background Jobs
+
+PowerShell supports asynchronous execution through background jobs.
+
+Create a job:
+
+```powershell
+Start-Job `
+-ScriptBlock {
+    Get-Process
+}
+```
+
+The console remains available while the job runs.
+
+---
+
+# Job Management
+
+Useful cmdlets:
+
+| Cmdlet | Purpose |
+|---------|----------|
+| Start-Job | Create job |
+| Get-Job | View jobs |
+| Receive-Job | Retrieve output |
+| Stop-Job | Stop job |
+| Remove-Job | Delete job |
+
+---
+
+# Background Job Workflow
+
+```text
+Administrator
+
+↓
+
+Start Job
+
+↓
+
+Background Execution
+
+↓
+
+Retrieve Results
+
+↓
+
+Remove Job
+```
+
+---
+
+# Scheduled Automation with PowerShell
+
+Task Scheduler and PowerShell are commonly combined.
+
+Example:
+
+```text
+Task Scheduler
+
+↓
+
+PowerShell Script
+
+↓
+
+Collect Logs
+
+↓
+
+Compress Files
+
+↓
+
+Upload Archive
+
+↓
+
+Notify Administrator
+```
+
+---
+
+# Script Signing
+
+Production scripts should be digitally signed.
+
+Advantages:
+
+- Verify publisher
+- Detect tampering
+- Improve trust
+- Support execution policy enforcement
+
+Unsigned production scripts increase operational risk.
+
+---
+
+# Source Control
+
+Automation code should be stored in version control systems such as Git.
+
+Benefits:
+
+- History
+- Rollback
+- Collaboration
+- Code reviews
+- Change tracking
+
+Typical workflow:
+
+```text
+Developer
+
+↓
+
+Git Repository
+
+↓
+
+Review
+
+↓
+
+Testing
+
+↓
+
+Production
+```
+
+---
+
+# Script Testing
+
+Before deployment:
+
+- Validate syntax
+- Test functionality
+- Test edge cases
+- Test permissions
+- Test failure scenarios
+- Verify logging
+- Confirm rollback procedures
+
+Testing reduces production failures.
+
+---
+
+# Enterprise Workflow Automation
+
+Example:
+
+```text
+New Employee
+
+↓
+
+HR System
+
+↓
+
+Automation
+
+↓
+
+Create AD Account
+
+↓
+
+Assign Groups
+
+↓
+
+Provision Mailbox
+
+↓
+
+Generate Report
+```
+
+Automation reduces onboarding time and improves consistency.
+
+---
+
+# Automation Security
+
+Automation accounts should:
+
+- Use least privilege
+- Rotate credentials
+- Avoid interactive logon
+- Use managed identities where supported
+- Be monitored
+- Have clearly defined responsibilities
+
+Protecting automation credentials is essential.
+
+---
+
+# Enterprise Example
+
+A company must verify disk space across 2,500 Windows servers.
+
+Automation workflow:
+
+```text
+PowerShell
+
+↓
+
+WinRM
+
+↓
+
+Collect Disk Usage
+
+↓
+
+Identify Low Space
+
+↓
+
+Generate Report
+
+↓
+
+Open ITSM Ticket
+
+↓
+
+Notify Operations Team
+```
+
+The process completes in minutes instead of requiring manual inspection.
+
+---
+
+# Cybersecurity Perspective
+
+Automation supports cybersecurity by:
+
+- Collecting forensic artifacts
+- Detecting insecure configurations
+- Verifying compliance
+- Performing IOC searches
+- Executing incident response playbooks
+- Standardizing system hardening
+
+Attackers also automate their operations, making defensive automation increasingly important.
+
+---
+
+# Business Impact
+
+Enterprise automation provides:
+
+- Faster service delivery
+- Lower operational costs
+- Reduced configuration errors
+- Consistent deployments
+- Improved compliance
+- Better reporting
+- Increased administrator productivity
+
+---
+
+# Enterprise Best Practices
+
+- Design automation to be idempotent.
+- Separate reusable functions into modules.
+- Validate all user input.
+- Use structured error handling.
+- Digitally sign production scripts.
+- Store scripts in version control.
+- Review automation through peer review.
+- Monitor automation execution.
+- Protect automation credentials.
+- Periodically test disaster recovery procedures.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Create an Advanced Function
+
+Write a function that accepts a computer name as a parameter and retrieves:
+
+- Computer name
+- Operating system
+- Memory
+- Uptime
+
+---
+
+## Lab 2 — Create a Background Job
+
+Run:
+
+```powershell
+Start-Job `
+-ScriptBlock {
+Get-Service
+}
+```
+
+Retrieve and review the output.
+
+---
+
+## Lab 3 — Design a DSC Configuration
+
+Create a DSC design that ensures:
+
+- Windows Firewall is enabled.
+- Print Spooler service is running.
+- Remote Desktop remains disabled.
+
+Explain how DSC maintains compliance.
+
+---
+
+## Lab 4 — Automation Review
+
+Review an existing PowerShell script and identify:
+
+- Hard-coded values
+- Missing error handling
+- Missing logging
+- Missing input validation
+- Security improvements
+
+---
+
+# Key Takeaways
+
+- Enterprise scripts should be modular and reusable.
+- DSC enforces desired configuration states across systems.
+- Background jobs enable asynchronous execution.
+- Version control is essential for automation projects.
+- Input validation and error handling improve reliability.
+- Secure automation requires credential protection and script signing.
+
+---
+
+# Interview Questions
+
+1. What is Desired State Configuration (DSC)?
+2. What is the role of the Local Configuration Manager (LCM)?
+3. Explain configuration drift.
+4. Why should PowerShell scripts use parameters?
+5. What are PowerShell background jobs?
+6. Why is script signing important?
+7. What are the benefits of version control for automation?
+8. How does DSC improve compliance?
+9. What information should automation logs contain?
+10. What principles define enterprise-grade automation?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft PowerShell Documentation
+- Microsoft Desired State Configuration Documentation
+- Microsoft Task Scheduler Documentation
+- NIST SP 800-53
+- CIS Controls v8
+- *PowerShell in Action* (Bruce Payette)
+
+---
+
+**Next:** **Part 3 — PowerShell Remoting Automation, Scheduled Jobs, Event-Driven Automation, Security Automation, and Incident Response Automation**
