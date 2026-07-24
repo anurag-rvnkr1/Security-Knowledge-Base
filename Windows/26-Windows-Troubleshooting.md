@@ -659,4 +659,774 @@ Use a structured troubleshooting methodology to:
 
 ---
 
-**Next:** **Part 2 — Performance Troubleshooting, Memory, CPU, Disk, Network, Windows Update, and Driver Issues**
+
+# 26-Windows-Troubleshooting.md
+
+# Part 2 — Performance Troubleshooting, Memory, CPU, Disk, Network, Windows Update, and Driver Issues
+
+---
+
+# Introduction
+
+Performance problems are among the most common Windows issues encountered in enterprise environments.
+
+Symptoms may include:
+
+- Slow boot times
+- Long application launch times
+- High CPU utilization
+- Excessive memory consumption
+- Disk bottlenecks
+- Network latency
+- Windows Update failures
+- Driver conflicts
+
+Effective troubleshooting requires identifying the actual bottleneck rather than treating symptoms.
+
+---
+
+# Performance Troubleshooting Methodology
+
+```text
+Identify Symptoms
+
+↓
+
+Collect Performance Data
+
+↓
+
+Identify Bottleneck
+
+↓
+
+Verify Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Validate Performance
+
+↓
+
+Document Findings
+```
+
+Performance optimization should always be based on measurable data.
+
+---
+
+# Common Performance Bottlenecks
+
+| Component | Typical Symptoms |
+|------------|------------------|
+| CPU | High utilization, sluggish response |
+| Memory | Frequent paging, application freezes |
+| Disk | Slow file access, long boot times |
+| Network | High latency, slow downloads |
+| GPU | Poor graphics performance |
+| Drivers | Random slowdowns or crashes |
+| Services | Delayed startup |
+| Updates | Performance degradation after installation |
+
+---
+
+# Task Manager
+
+Task Manager provides real-time visibility into:
+
+- CPU usage
+- Memory usage
+- Disk activity
+- Network utilization
+- GPU utilization
+- Running processes
+- Startup applications
+
+Shortcut:
+
+```text
+Ctrl + Shift + Esc
+```
+
+Task Manager is often the first tool used during performance investigations.
+
+---
+
+# Task Manager Tabs
+
+| Tab | Purpose |
+|------|----------|
+| Processes | Running applications and resource usage |
+| Performance | Hardware utilization |
+| App History | Resource history |
+| Startup | Startup applications |
+| Users | Active users |
+| Details | Process-level information |
+| Services | Windows services |
+
+---
+
+# Resource Monitor
+
+Resource Monitor provides more detailed information than Task Manager.
+
+Categories include:
+
+- CPU
+- Memory
+- Disk
+- Network
+
+It is useful for identifying which process is consuming specific resources.
+
+Launch command:
+
+```text
+resmon
+```
+
+---
+
+# Performance Monitor
+
+Performance Monitor (PerfMon) collects detailed performance metrics.
+
+Capabilities include:
+
+- Real-time monitoring
+- Historical logging
+- Performance counters
+- Data Collector Sets
+- Alerting
+
+Launch command:
+
+```text
+perfmon
+```
+
+---
+
+# Common Performance Counters
+
+| Counter | Description |
+|----------|-------------|
+| Processor % Processor Time | CPU utilization |
+| Available MBytes | Free memory |
+| Disk Queue Length | Disk bottleneck indicator |
+| Disk Transfers/sec | Disk activity |
+| Network Interface Bytes/sec | Network throughput |
+| Pages/sec | Paging activity |
+
+Performance counters should be interpreted together rather than individually.
+
+---
+
+# CPU Troubleshooting
+
+Symptoms:
+
+- High processor usage
+- Slow response
+- Fan noise
+- System lag
+
+Possible causes:
+
+- Runaway processes
+- Malware
+- Infinite loops
+- Background updates
+- Poorly optimized applications
+
+---
+
+# CPU Investigation Workflow
+
+```text
+High CPU
+
+↓
+
+Task Manager
+
+↓
+
+Identify Process
+
+↓
+
+Check Services
+
+↓
+
+Review Event Logs
+
+↓
+
+Resolve
+
+↓
+
+Validate
+```
+
+Avoid terminating critical Windows processes unless their function is understood.
+
+---
+
+# Memory Troubleshooting
+
+Memory issues often present as:
+
+- Slow application switching
+- Frequent disk activity
+- "Out of Memory" errors
+- System freezes
+
+Possible causes:
+
+- Memory leaks
+- Too many running applications
+- Insufficient RAM
+- Excessive virtual memory usage
+
+---
+
+# Virtual Memory
+
+Windows uses virtual memory when physical RAM is insufficient.
+
+```text
+RAM Full
+
+↓
+
+Page File Used
+
+↓
+
+Disk Access
+
+↓
+
+Performance Degrades
+```
+
+Heavy paging usually indicates a memory bottleneck.
+
+---
+
+# Memory Diagnostics
+
+Windows Memory Diagnostic can identify some hardware memory problems.
+
+Launch:
+
+```text
+mdsched.exe
+```
+
+Options:
+
+- Restart immediately
+- Schedule next reboot
+
+Hardware faults may require vendor-specific diagnostics for confirmation.
+
+---
+
+# Disk Troubleshooting
+
+Symptoms:
+
+- Slow file access
+- Long boot time
+- Application delays
+- High disk utilization
+
+Possible causes:
+
+- Disk fragmentation (HDD)
+- Failing storage
+- Antivirus scanning
+- Large file transfers
+- Paging
+
+---
+
+# Check Disk (CHKDSK)
+
+CHKDSK checks file system integrity.
+
+Example:
+
+```cmd
+chkdsk C: /f
+```
+
+Common options:
+
+| Option | Purpose |
+|----------|----------|
+| /f | Fix logical errors |
+| /r | Locate bad sectors and recover readable data |
+| /x | Dismount volume before checking |
+
+CHKDSK may require a reboot for the system drive.
+
+---
+
+# Storage Health
+
+Administrators should monitor:
+
+- SMART status
+- Available disk space
+- File system health
+- Storage latency
+- Error logs
+
+Proactive monitoring reduces unexpected failures.
+
+---
+
+# Network Troubleshooting
+
+Common symptoms:
+
+- Cannot access websites
+- Slow network
+- Packet loss
+- DNS failures
+- Authentication issues
+- File share access problems
+
+---
+
+# Network Troubleshooting Workflow
+
+```text
+Verify Physical Connection
+
+↓
+
+Check IP Address
+
+↓
+
+Test Gateway
+
+↓
+
+Test DNS
+
+↓
+
+Test Internet
+
+↓
+
+Review Firewall
+
+↓
+
+Review Logs
+```
+
+Always verify basic connectivity before investigating complex issues.
+
+---
+
+# Useful Network Commands
+
+| Command | Purpose |
+|----------|----------|
+| ipconfig | IP configuration |
+| ping | Connectivity test |
+| tracert | Route analysis |
+| pathping | Combined latency analysis |
+| nslookup | DNS queries |
+| netstat | Active connections |
+| arp | Address Resolution Protocol cache |
+| route | Routing table |
+
+---
+
+# DNS Troubleshooting
+
+Common issues:
+
+- Incorrect DNS server
+- Stale cache
+- Missing records
+- Zone replication problems
+- Split DNS configuration
+
+Useful command:
+
+```cmd
+ipconfig /flushdns
+```
+
+Flushing the DNS cache resolves some name resolution issues.
+
+---
+
+# Windows Firewall
+
+Firewall misconfiguration may cause:
+
+- Blocked applications
+- Failed remote access
+- Service communication failures
+
+Verify:
+
+- Firewall profile
+- Rules
+- Allowed applications
+- Logs
+
+Do not disable the firewall as a troubleshooting shortcut without proper authorization.
+
+---
+
+# Driver Troubleshooting
+
+Driver problems can cause:
+
+- BSOD
+- Hardware malfunction
+- Device instability
+- Performance degradation
+
+Review:
+
+- Device Manager
+- Driver versions
+- Digital signatures
+- Recent updates
+
+---
+
+# Device Manager
+
+Common indicators:
+
+| Icon | Meaning |
+|------|----------|
+| Yellow Warning | Driver issue |
+| Red X (older versions) | Disabled device |
+| Unknown Device | Missing driver |
+
+Driver updates should come from trusted sources.
+
+---
+
+# Driver Rollback
+
+If a recently installed driver causes problems:
+
+```text
+Device Manager
+
+↓
+
+Properties
+
+↓
+
+Driver
+
+↓
+
+Roll Back Driver
+```
+
+Rollback restores the previously installed driver when available.
+
+---
+
+# Windows Update Troubleshooting
+
+Common problems:
+
+- Failed installation
+- Download errors
+- Endless restart loop
+- Update rollback
+- Slow installation
+
+Investigate:
+
+- Windows Update logs
+- Event Viewer
+- Disk space
+- Internet connectivity
+- WSUS configuration (enterprise)
+
+---
+
+# Windows Update Workflow
+
+```text
+Update Failure
+
+↓
+
+Review Error
+
+↓
+
+Check Connectivity
+
+↓
+
+Check Disk Space
+
+↓
+
+Restart Services
+
+↓
+
+Retry
+
+↓
+
+Validate
+```
+
+Escalate persistent issues according to organizational procedures.
+
+---
+
+# Windows Update Services
+
+Important services include:
+
+- Windows Update
+- Background Intelligent Transfer Service (BITS)
+- Cryptographic Services
+
+These services should be running unless intentionally managed otherwise.
+
+---
+
+# Startup Applications
+
+Too many startup programs increase boot time.
+
+Review:
+
+```text
+Task Manager
+
+↓
+
+Startup
+
+↓
+
+Disable Unnecessary Items
+```
+
+Only disable applications that are not required for business operations.
+
+---
+
+# Service Troubleshooting
+
+Common issues:
+
+- Service fails to start
+- Dependency failures
+- Incorrect account permissions
+- Startup type misconfiguration
+
+Useful tool:
+
+```text
+services.msc
+```
+
+Review dependencies before changing service configurations.
+
+---
+
+# Performance Baselines
+
+A baseline provides expected system behavior.
+
+Monitor:
+
+- CPU utilization
+- Memory usage
+- Disk latency
+- Network throughput
+- Boot time
+- Login duration
+
+Comparing current performance to a baseline helps identify anomalies.
+
+---
+
+# Enterprise Example
+
+A help desk receives reports that Windows laptops have become slow after Patch Tuesday.
+
+Investigation reveals:
+
+- Windows Update completed successfully
+- Antivirus scan scheduled simultaneously
+- High disk utilization during indexing
+
+Actions taken:
+
+- Reschedule scans
+- Adjust indexing schedule
+- Validate performance
+- Update operational procedures
+
+---
+
+# Cybersecurity Perspective
+
+Performance degradation may indicate:
+
+- Malware
+- Cryptomining software
+- Unauthorized scheduled tasks
+- Excessive logging
+- Denial-of-Service conditions
+
+Security investigations should be considered when no legitimate cause is found.
+
+---
+
+# Business Impact
+
+Resolving performance issues quickly helps organizations:
+
+- Improve employee productivity
+- Meet SLAs
+- Reduce support costs
+- Increase application availability
+- Improve customer satisfaction
+
+---
+
+# Enterprise Best Practices
+
+- Establish performance baselines.
+- Monitor systems continuously.
+- Keep drivers updated through approved channels.
+- Review startup applications regularly.
+- Monitor storage capacity.
+- Investigate recurring performance issues.
+- Deploy updates through controlled processes.
+- Document performance investigations.
+- Automate health monitoring where possible.
+- Review trends rather than isolated metrics.
+
+---
+
+# Practical Labs
+
+## Lab 1 — CPU Investigation
+
+Identify the top five CPU-consuming processes.
+
+Document:
+
+- Process name
+- CPU utilization
+- Business purpose
+- Whether optimization is recommended
+
+---
+
+## Lab 2 — Memory Analysis
+
+Using Task Manager and Resource Monitor:
+
+- Measure RAM usage
+- Identify largest memory consumers
+- Explain paging activity
+
+---
+
+## Lab 3 — Network Troubleshooting
+
+Perform:
+
+- `ipconfig`
+- `ping`
+- `tracert`
+- `nslookup`
+
+Document results and explain each command.
+
+---
+
+## Lab 4 — Windows Update Investigation
+
+A workstation repeatedly fails to install updates.
+
+Create a troubleshooting checklist covering:
+
+- Services
+- Disk space
+- Connectivity
+- Event Viewer
+- WSUS (if applicable)
+- Validation
+
+---
+
+# Key Takeaways
+
+- Performance troubleshooting should be data-driven.
+- Task Manager, Resource Monitor, and Performance Monitor are essential diagnostic tools.
+- CPU, memory, disk, and network issues require different investigative approaches.
+- Driver and Windows Update problems are common enterprise support cases.
+- Performance baselines simplify anomaly detection.
+- Consider security-related causes when legitimate explanations are absent.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of Resource Monitor?
+2. How does Performance Monitor differ from Task Manager?
+3. What causes high disk utilization?
+4. What is virtual memory?
+5. When should CHKDSK be used?
+6. Which commands help troubleshoot DNS?
+7. How do you investigate Windows Update failures?
+8. What are common causes of high CPU usage?
+9. Why are performance baselines important?
+10. How would you troubleshoot a slow Windows workstation?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Performance Monitor Documentation
+- Microsoft Windows Update Documentation
+- Microsoft Networking Documentation
+- Microsoft Sysinternals Documentation
+- Microsoft Driver Documentation
+- NIST SP 800-61
+- CIS Microsoft Windows Benchmarks
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 3 — Active Directory, Group Policy, Security, Application, and Enterprise Troubleshooting**
