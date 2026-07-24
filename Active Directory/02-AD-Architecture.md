@@ -596,4 +596,653 @@ Explore Active Directory management tools in a lab environment.
 
 ---
 
-**Next:** **Part 2 — Active Directory Database (NTDS.DIT), Schema, Naming Contexts, Global Catalog Architecture, and Data Storage**
+# 02-AD-Architecture.md
+
+# Part 2 — Active Directory Database (NTDS.DIT), Schema, Naming Contexts, Global Catalog Architecture, and Data Storage
+
+---
+
+# Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- Understand how Active Directory stores data.
+- Explain the purpose of the NTDS.DIT database.
+- Understand the Extensible Storage Engine (ESE).
+- Learn how the Active Directory Schema defines objects.
+- Understand naming contexts (directory partitions).
+- Learn the purpose of the Global Catalog.
+- Understand how directory information is queried in enterprise environments.
+
+---
+
+# Active Directory Database Overview
+
+Every Active Directory Domain Controller stores its directory information in a database.
+
+This database is called:
+
+```text
+NTDS.DIT
+```
+
+It is the heart of Active Directory Domain Services.
+
+The database contains:
+
+- Users
+- Groups
+- Computers
+- Organizational Units
+- Domains
+- Trust information
+- Group Policy references
+- Security descriptors
+- Replication metadata
+- Configuration information
+
+---
+
+# Database Architecture
+
+```text
+                Active Directory
+
+                       │
+
+                Domain Controller
+
+                       │
+
+                  NTDS.DIT Database
+
+        ┌──────────────┼──────────────┐
+
+        │              │              │
+
+      Users         Groups       Computers
+
+        │              │              │
+
+        └──────────────┼──────────────┘
+
+               Other Directory Objects
+```
+
+---
+
+# Location of NTDS.DIT
+
+The default location is:
+
+```text
+C:\Windows\NTDS\NTDS.DIT
+```
+
+Although administrators can specify a different location during installation, the default path is widely used.
+
+Access to this file is restricted because it contains sensitive directory information.
+
+---
+
+# What Does NTDS.DIT Store?
+
+| Category | Examples |
+|----------|----------|
+| Users | Employee accounts, service accounts |
+| Groups | Security groups, distribution groups |
+| Computers | Domain-joined devices |
+| Organizational Units | Administrative containers |
+| Domains | Domain configuration |
+| Trusts | Trust relationships |
+| Replication metadata | Change tracking information |
+| Security information | SIDs, ACL-related data |
+| Configuration | Forest-wide settings |
+
+> **Note:** Passwords are **not stored in plain text**. Active Directory stores password-related data using secure one-way hashing mechanisms and related authentication material.
+
+---
+
+# Extensible Storage Engine (ESE)
+
+Active Directory uses Microsoft's **Extensible Storage Engine (ESE)**, also known as **JET Blue**, as its database engine.
+
+ESE provides:
+
+- High-performance indexing
+- Transaction logging
+- Crash recovery
+- Efficient searches
+- Reliable updates
+
+It is optimized for directory workloads rather than general-purpose relational data.
+
+---
+
+# Simplified Storage Flow
+
+```text
+Administrator
+
+↓
+
+Create User
+
+↓
+
+Domain Controller
+
+↓
+
+ESE Database Engine
+
+↓
+
+NTDS.DIT Updated
+
+↓
+
+Replication
+
+↓
+
+Other Domain Controllers
+```
+
+---
+
+# Supporting Database Files
+
+In addition to `NTDS.DIT`, Active Directory uses log and checkpoint files.
+
+| File Type | Purpose |
+|-----------|---------|
+| Database (`NTDS.DIT`) | Directory information |
+| Transaction logs | Record pending and completed database changes |
+| Checkpoint file | Tracks committed transactions to support recovery |
+
+These files help maintain database consistency after unexpected shutdowns.
+
+---
+
+# Active Directory Schema
+
+The **Schema** defines:
+
+- Which object classes exist.
+- Which attributes those objects can contain.
+- The data types of attributes.
+- Validation rules.
+
+Think of the schema as the blueprint for the directory.
+
+---
+
+# Schema Architecture
+
+```text
+Schema
+
+│
+
+├── Object Classes
+
+│      ├── User
+
+│      ├── Computer
+
+│      ├── Group
+
+│      └── Printer
+
+│
+
+└── Attributes
+
+       ├── Name
+
+       ├── Department
+
+       ├── Email
+
+       ├── Phone
+
+       └── Description
+```
+
+---
+
+# Object Classes
+
+An object class defines what type of object can exist.
+
+Examples:
+
+| Object Class | Description |
+|--------------|-------------|
+| User | Human or service identity |
+| Computer | Domain-joined device |
+| Group | Collection of security principals |
+| Contact | Directory-only contact |
+| Printer | Shared printer |
+| Organizational Unit | Logical administrative container |
+
+---
+
+# Attributes
+
+Attributes describe properties of an object.
+
+Example:
+
+```text
+User
+
+↓
+
+Name
+
+↓
+
+Department
+
+↓
+
+Manager
+
+↓
+
+Email
+
+↓
+
+Office
+
+↓
+
+Telephone Number
+```
+
+Each attribute has a defined data type and behavior.
+
+---
+
+# Mandatory vs Optional Attributes
+
+| Type | Description |
+|------|-------------|
+| Mandatory | Required when creating the object |
+| Optional | May be added if needed |
+
+Example:
+
+User:
+
+Mandatory:
+
+- Common Name (CN)
+
+Optional:
+
+- Mobile number
+- Department
+- Office location
+- Manager
+
+The exact set of required attributes depends on the object class and schema definitions.
+
+---
+
+# Schema Extension
+
+Applications can extend the Active Directory Schema.
+
+Examples include:
+
+- Microsoft Exchange Server
+- Microsoft Configuration Manager
+- Identity management platforms
+- Third-party enterprise software
+
+Schema extensions affect the **entire forest** and should be carefully planned, tested, and documented.
+
+---
+
+# Naming Contexts (Directory Partitions)
+
+The Active Directory database is divided into logical partitions called **Naming Contexts**.
+
+```text
+Active Directory
+
+│
+
+├── Schema Partition
+
+├── Configuration Partition
+
+├── Domain Partition
+
+└── Application Partition
+```
+
+This design improves scalability and replication efficiency.
+
+---
+
+# 1. Schema Partition
+
+Contains:
+
+- Object classes
+- Attributes
+- Schema rules
+
+Characteristics:
+
+- Shared across the forest.
+- Changes infrequently.
+- Replicated to every Domain Controller in the forest.
+
+---
+
+# 2. Configuration Partition
+
+Contains:
+
+- Site information
+- Services
+- Replication topology
+- Forest-wide configuration
+
+Also replicated to every Domain Controller in the forest.
+
+---
+
+# 3. Domain Partition
+
+Contains:
+
+- Users
+- Groups
+- Computers
+- Organizational Units
+- Domain-specific objects
+
+Replicated only to Domain Controllers within the same domain.
+
+---
+
+# 4. Application Partition
+
+Stores application-specific information.
+
+Common example:
+
+- Active Directory-integrated DNS zones
+
+Replication scope is configurable depending on the application.
+
+---
+
+# Partition Replication
+
+```text
+                Forest
+
+                  │
+
+        ┌─────────┼─────────┐
+
+        │                   │
+
+ Schema Partition   Configuration Partition
+
+        │                   │
+
+   All Domain Controllers in the Forest
+
+                  │
+
+           Domain Partition
+
+                  │
+
+ Domain Controllers in That Domain
+
+                  │
+
+        Application Partition
+
+       (Application-defined Scope)
+```
+
+---
+
+# Why Partitions?
+
+Benefits include:
+
+- Improved scalability
+- Reduced replication traffic
+- Better performance
+- Logical separation of data
+- Flexible application storage
+
+---
+
+# Global Catalog (GC)
+
+The **Global Catalog** is a specialized role provided by selected Domain Controllers.
+
+It stores:
+
+- A complete copy of objects in its own domain.
+- A partial, searchable copy of objects from every other domain in the forest.
+
+This enables efficient searches across the entire forest.
+
+---
+
+# Global Catalog Architecture
+
+```text
+              Forest
+
+      ┌───────────────┐
+
+      │ company.com   │
+
+      └──────┬────────┘
+
+             │
+
+      Global Catalog
+
+             │
+
+     ┌───────┼────────┐
+
+     │       │        │
+
+ Domain A Domain B Domain C
+```
+
+---
+
+# Why Use a Global Catalog?
+
+Without a Global Catalog:
+
+- Searches would need to query multiple domains individually.
+
+With a Global Catalog:
+
+- One query can locate objects across the forest.
+
+This improves:
+
+- User searches
+- Application performance
+- Authentication scenarios involving universal groups
+
+---
+
+# Partial Attribute Set (PAS)
+
+The Global Catalog does **not** store every attribute for every object outside its own domain.
+
+Instead, it stores a **Partial Attribute Set (PAS)**.
+
+Example:
+
+Stored in the GC:
+
+- Name
+- Email
+- Department
+- Office
+
+Not necessarily stored:
+
+- Every application-specific attribute
+- Large or infrequently used attributes
+
+This reduces storage and replication overhead.
+
+---
+
+# Query Flow
+
+```text
+Administrator
+
+↓
+
+LDAP Search
+
+↓
+
+Global Catalog
+
+↓
+
+Locate Object
+
+↓
+
+Return Matching Results
+```
+
+The GC enables forest-wide object discovery without querying every domain individually.
+
+---
+
+# Read vs Write Operations
+
+| Operation | Behavior |
+|-----------|----------|
+| Read | Query object information |
+| Write | Create or modify objects |
+| Delete | Remove objects |
+| Search | Locate objects based on attributes |
+
+Read operations are significantly more frequent than write operations in most enterprise environments.
+
+---
+
+# Enterprise Example
+
+Organization:
+
+- 8 domains
+- 40 Domain Controllers
+- 6 Global Catalog servers
+
+A user searches for:
+
+```text
+Alice Johnson
+```
+
+Instead of searching each domain individually, the Global Catalog returns matching objects across the forest, greatly reducing search complexity and improving responsiveness.
+
+---
+
+# Cybersecurity Perspective
+
+From a security perspective, directory data is highly sensitive.
+
+Protect:
+
+- Domain Controllers
+- NTDS.DIT
+- Transaction logs
+- Schema modifications
+- Global Catalog servers
+
+Attackers often attempt to obtain directory database information because it can reveal:
+
+- User accounts
+- Group memberships
+- Organizational structure
+- Privileged identities
+
+Restrict administrative access, monitor changes, and follow least-privilege principles.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Active Directory Schema and Global Catalog concepts.
+
+### Steps
+
+1. Open **Active Directory Users and Computers** (`dsa.msc`).
+2. Examine user object properties and identify common attributes.
+3. If available, explore **Active Directory Sites and Services** and identify Global Catalog servers.
+4. Research the purpose of the Partial Attribute Set (PAS).
+5. Document the four naming contexts and what each stores.
+
+---
+
+# Key Takeaways
+
+- NTDS.DIT is the Active Directory database.
+- The Extensible Storage Engine (ESE) manages directory storage.
+- The Schema defines object classes and attributes.
+- Naming contexts separate directory information into logical partitions.
+- The Global Catalog enables efficient forest-wide searches.
+- The Partial Attribute Set minimizes unnecessary replication.
+- Protecting directory data is a critical security responsibility.
+
+---
+
+# Interview Questions
+
+1. What is NTDS.DIT?
+2. What database engine does Active Directory use?
+3. What is the purpose of the Active Directory Schema?
+4. What is the difference between an object class and an attribute?
+5. Name the four Active Directory naming contexts.
+6. Why are directory partitions important?
+7. What is the Global Catalog?
+8. What is the Partial Attribute Set (PAS)?
+9. Why is the Global Catalog important in large forests?
+10. Why should access to NTDS.DIT be tightly controlled?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Database and Schema
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Identity Documentation
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 3 — Domain Controllers, SYSVOL, Authentication Architecture, Replication Fundamentals, and Active Directory Service Dependencies**
