@@ -1613,3 +1613,853 @@ Review the configured rights without making changes.
 
 ---
 
+# 08-Windows-Users-and-Groups.md
+
+# Part 3 — User Account Control (UAC), Access Tokens, Credential Management, Authentication Process, Logon Types, and Enterprise Identity Security
+
+---
+
+# Introduction
+
+Creating users and assigning them to groups is only one part of Windows identity management.
+
+Every time a user signs in, Windows must:
+
+- Verify the user's identity
+- Create a secure session
+- Determine available privileges
+- Build an access token
+- Protect stored credentials
+- Control privilege elevation
+
+These mechanisms work together to ensure users can perform authorized tasks while preventing unauthorized access.
+
+Understanding these concepts is essential for:
+
+- Windows Administrators
+- SOC Analysts
+- Blue Team Engineers
+- Penetration Testers
+- Incident Responders
+- Digital Forensic Investigators
+
+---
+
+# Authentication Workflow
+
+A simplified Windows authentication process:
+
+```text
+User
+
+↓
+
+Username + Credential
+
+↓
+
+Credential Validation
+
+↓
+
+Authentication Successful
+
+↓
+
+Create Access Token
+
+↓
+
+Load User Profile
+
+↓
+
+Desktop Session
+```
+
+If authentication fails, Windows denies access and records the attempt in the Security Event Log (subject to audit policy).
+
+---
+
+# Authentication vs Authorization Review
+
+```text
+Authentication
+
+↓
+
+"Who are you?"
+
+↓
+
+Authorization
+
+↓
+
+"What are you allowed to do?"
+```
+
+Both are required before a protected resource can be accessed.
+
+---
+
+# Windows Logon Components
+
+Several Windows components participate during sign-in.
+
+```text
+User
+
+↓
+
+Windows Logon Interface
+
+↓
+
+Credential Processing
+
+↓
+
+Authentication Package
+
+↓
+
+Local Security Authority (LSA)
+
+↓
+
+Access Token
+
+↓
+
+Windows Session
+```
+
+Each component has a defined responsibility in the authentication process.
+
+---
+
+# Local Security Authority (LSA)
+
+The **Local Security Authority (LSA)** is responsible for enforcing the local security policy.
+
+Responsibilities include:
+
+- Authentication support
+- Access token generation
+- Security policy enforcement
+- Audit generation
+- Credential-related operations
+
+The LSA is a core Windows security component.
+
+---
+
+# Security Accounts Manager (SAM)
+
+The **Security Accounts Manager (SAM)** stores information about local user accounts.
+
+Contents include:
+
+- Local usernames
+- Account information
+- Password-related data (stored securely)
+- Group membership references
+
+SAM is used for **local authentication**.
+
+Domain authentication is handled differently through Active Directory.
+
+---
+
+# Authentication Methods
+
+Windows supports multiple authentication methods.
+
+Examples include:
+
+| Method | Typical Usage |
+|----------|---------------|
+| Password | Traditional authentication |
+| PIN | Windows Hello |
+| Biometrics | Fingerprint, facial recognition |
+| Smart Card | Enterprise authentication |
+| Security Key | FIDO-compatible devices |
+| Certificate-based | Enterprise environments |
+
+Organizations often combine these with Multi-Factor Authentication (MFA).
+
+---
+
+# Windows Hello
+
+Windows Hello provides modern authentication using:
+
+- PIN
+- Fingerprint
+- Facial recognition
+
+Advantages include:
+
+- Faster sign-in
+- Reduced reliance on passwords
+- Integration with supported enterprise identity solutions
+
+The exact implementation varies depending on device capabilities and organizational policies.
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+Authentication factors fall into three broad categories:
+
+```text
+Something You Know
+
+↓
+
+Password / PIN
+
++
+
+Something You Have
+
+↓
+
+Security Key / Smart Card / Mobile Device
+
++
+
+Something You Are
+
+↓
+
+Fingerprint / Face
+```
+
+MFA significantly improves account security by requiring more than one factor.
+
+---
+
+# What is an Access Token?
+
+An **Access Token** is created after successful authentication.
+
+It contains the security context of the user.
+
+Windows uses the access token whenever the user attempts to access protected resources.
+
+---
+
+# Access Token Workflow
+
+```text
+Authenticate User
+
+↓
+
+Determine Groups
+
+↓
+
+Determine Privileges
+
+↓
+
+Create Access Token
+
+↓
+
+Launch User Session
+```
+
+The access token remains associated with processes started by that user unless a different security context is used.
+
+---
+
+# Access Token Contents
+
+Typical contents include:
+
+- User SID
+- Group SIDs
+- User privileges
+- Integrity level
+- Logon session information
+- Security attributes
+
+Windows compares this information with security descriptors when making authorization decisions.
+
+---
+
+# Access Check
+
+Whenever a user accesses a resource:
+
+```text
+Access Token
+
+↓
+
+Compare with ACL
+
+↓
+
+Permission Evaluation
+
+↓
+
+Allow
+
+or
+
+Deny
+```
+
+This process is transparent to the user and occurs repeatedly during normal system operation.
+
+---
+
+# Standard User Token
+
+A standard user receives an access token containing:
+
+- Standard user groups
+- Standard user privileges
+- No administrative privileges
+
+The user cannot perform administrative tasks without elevation.
+
+---
+
+# Administrator Token
+
+Administrative users have administrative capabilities, but modern Windows protects these using **User Account Control (UAC)**.
+
+This reduces unnecessary use of elevated privileges during everyday activities.
+
+---
+
+# User Account Control (UAC)
+
+**User Account Control (UAC)** helps prevent unauthorized system changes.
+
+Instead of granting full administrative privileges to every application automatically, Windows requires explicit approval for many administrative actions.
+
+---
+
+# UAC Workflow
+
+```text
+Administrator Starts Program
+
+↓
+
+Administrative Operation Requested
+
+↓
+
+UAC Prompt
+
+↓
+
+Approve
+
+↓
+
+Elevated Process
+
+or
+
+Cancel
+```
+
+Only the approved process is elevated—not every running application.
+
+---
+
+# Why UAC Exists
+
+Without UAC:
+
+```text
+Administrator
+
+↓
+
+Every Program
+
+↓
+
+Full Administrative Rights
+```
+
+With UAC:
+
+```text
+Administrator
+
+↓
+
+Standard Privileges
+
+↓
+
+Elevation Required
+
+↓
+
+Administrative Task
+```
+
+This reduces the impact of accidental or malicious actions.
+
+---
+
+# UAC Prompt Types
+
+Common prompts include:
+
+| Situation | Prompt |
+|------------|--------|
+| Administrator account | Consent prompt |
+| Standard user account | Credential prompt |
+| Trusted Windows component | May proceed automatically depending on policy |
+
+Behavior can vary according to local or domain security policy.
+
+---
+
+# Integrity Levels
+
+Windows assigns integrity levels to processes.
+
+Common levels include:
+
+```text
+Low
+
+↓
+
+Medium
+
+↓
+
+High
+
+↓
+
+System
+```
+
+Higher-integrity processes have greater authority than lower-integrity processes.
+
+---
+
+# Integrity Level Example
+
+```text
+Web Browser
+
+↓
+
+Medium Integrity
+
+↓
+
+Cannot Modify
+
+↓
+
+High Integrity Administrative Process
+```
+
+Integrity levels help isolate applications and reduce unintended interactions.
+
+---
+
+# Credential Manager
+
+Windows stores certain credentials using **Credential Manager**.
+
+Examples include:
+
+- Saved network credentials
+- Remote Desktop credentials
+- Web credentials (depending on application support)
+- Generic credentials
+
+Credential Manager simplifies repeated authentication to trusted resources.
+
+---
+
+# Credential Types
+
+Windows supports several credential categories.
+
+```text
+Credentials
+
+├── Windows Credentials
+├── Web Credentials
+└── Generic Credentials
+```
+
+Stored credentials should be reviewed periodically.
+
+---
+
+# Secure Credential Practices
+
+Organizations should:
+
+- Avoid unnecessary saved credentials.
+- Remove obsolete entries.
+- Use MFA where possible.
+- Prefer enterprise identity solutions.
+- Protect devices with disk encryption and strong authentication.
+
+---
+
+# Logon Types
+
+Windows supports multiple logon scenarios.
+
+| Logon Type | Example |
+|-------------|----------|
+| Interactive | User signs in locally |
+| Network | Access shared folders |
+| Remote Interactive | Remote Desktop |
+| Service | Windows service |
+| Batch | Scheduled task |
+| Unlock | Unlocking a workstation |
+
+Each logon type is recorded differently in Windows security logs.
+
+---
+
+# Interactive Logon
+
+```text
+Keyboard
+
+↓
+
+Username
+
+↓
+
+Password
+
+↓
+
+Desktop Session
+```
+
+This is the most common logon type for end users.
+
+---
+
+# Network Logon
+
+Example:
+
+```text
+User
+
+↓
+
+File Server
+
+↓
+
+Authentication
+
+↓
+
+Access Shared Folder
+```
+
+The user may not receive a full desktop session.
+
+---
+
+# Remote Interactive Logon
+
+Example:
+
+```text
+Remote Desktop Client
+
+↓
+
+Authentication
+
+↓
+
+Remote Desktop Session
+```
+
+Used by administrators, help desk staff, and remote workers.
+
+---
+
+# Service Logon
+
+```text
+Windows Service
+
+↓
+
+Service Account
+
+↓
+
+Authentication
+
+↓
+
+Service Starts
+```
+
+Applications often use service logons to operate in the background.
+
+---
+
+# Batch Logon
+
+Scheduled tasks frequently use batch logons.
+
+```text
+Task Scheduler
+
+↓
+
+Stored Credentials
+
+↓
+
+Authentication
+
+↓
+
+Script Executes
+```
+
+Proper credential protection is essential for scheduled automation.
+
+---
+
+# Account Disable vs Delete
+
+| Disable | Delete |
+|----------|---------|
+| Prevents sign-in | Removes account |
+| Preserves profile | May require profile cleanup |
+| Suitable for temporary inactivity | Suitable when account is no longer needed |
+
+Many organizations disable accounts before permanently removing them.
+
+---
+
+# Account Lifecycle Review
+
+```text
+Create
+
+↓
+
+Configure
+
+↓
+
+Assign Groups
+
+↓
+
+Use
+
+↓
+
+Review
+
+↓
+
+Disable
+
+↓
+
+Delete
+```
+
+Regular reviews help identify unused or excessive privileges.
+
+---
+
+# Enterprise Example
+
+A new administrator receives two accounts.
+
+```text
+Normal User Account
+
+↓
+
+Daily Work
+
+
+Separate Administrative Account
+
+↓
+
+Administrative Tasks
+```
+
+This reduces exposure of privileged credentials during routine activities.
+
+---
+
+# Cybersecurity Perspective
+
+Identity attacks remain among the most common enterprise threats.
+
+Examples include:
+
+- Password spraying
+- Credential stuffing
+- Phishing
+- Token theft
+- Privilege escalation
+- Unauthorized privilege assignment
+- Session hijacking
+
+Security teams should monitor:
+
+- Failed authentication attempts
+- New privileged accounts
+- Unusual logon types
+- Unexpected elevation events
+- Credential-related policy changes
+
+No single event should be interpreted in isolation; analysts should correlate identity activity with endpoint, network, and application telemetry.
+
+---
+
+# Business Impact
+
+Strong identity management provides:
+
+- Better security
+- Reduced risk of unauthorized access
+- Regulatory compliance
+- Improved auditing
+- Faster incident investigations
+- More reliable access control
+
+Weak authentication practices increase the likelihood of compromise and operational disruption.
+
+---
+
+# Enterprise Best Practices
+
+- Implement Multi-Factor Authentication (MFA).
+- Use separate accounts for administration.
+- Apply the Principle of Least Privilege (PoLP).
+- Review privileged access regularly.
+- Disable inactive accounts promptly.
+- Minimize stored credentials.
+- Monitor authentication and elevation events.
+- Protect endpoints with encryption and endpoint security solutions.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Identify Your Security Context
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+whoami
+
+whoami /groups
+
+whoami /priv
+```
+
+Observe:
+
+- Current user
+- Group memberships
+- Available privileges
+
+---
+
+## Lab 2 — Review Credential Manager
+
+Open:
+
+```text
+Control Panel
+
+↓
+
+Credential Manager
+```
+
+Review the credential categories available on your system.
+
+Do not modify production credentials unless authorized.
+
+---
+
+## Lab 3 — Observe UAC
+
+Attempt to launch an application that requires administrative privileges.
+
+Observe:
+
+- UAC prompt behavior
+- Whether consent or credentials are requested
+- The difference between standard and elevated execution
+
+---
+
+# Key Takeaways
+
+- Authentication verifies identity; authorization determines access.
+- LSA and SAM are fundamental Windows security components.
+- Windows creates an access token after successful authentication.
+- UAC helps reduce unnecessary administrative privilege use.
+- Integrity levels provide additional isolation between processes.
+- Credential management and MFA strengthen enterprise identity security.
+
+---
+
+# Interview Questions
+
+1. What is an access token?
+2. What information does an access token contain?
+3. What is the purpose of User Account Control (UAC)?
+4. What is the role of the Local Security Authority (LSA)?
+5. What is the Security Accounts Manager (SAM)?
+6. What are the common Windows logon types?
+7. Why should administrators use separate privileged accounts?
+8. What are Windows integrity levels?
+9. What is Credential Manager used for?
+10. How does Multi-Factor Authentication improve security?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Security Documentation
+- Microsoft Windows Hello Documentation
+- Microsoft Identity Platform Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
