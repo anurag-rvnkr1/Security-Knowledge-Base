@@ -769,4 +769,782 @@ Provide a brief justification for each classification.
 
 ---
 
-**Next:** **Part 2 — Windows Authentication, Credential Security, Privilege Escalation, Credential Theft, and Identity Protection**
+# 25-Windows-for-Cybersecurity.md
+
+# Part 2 — Windows Authentication, Credential Security, Privilege Escalation, Credential Theft, and Identity Protection
+
+---
+
+# Introduction
+
+Authentication is the foundation of Windows security.
+
+Before users can access:
+
+- Computers
+- Servers
+- File shares
+- Applications
+- Active Directory
+- Cloud services
+
+their identity must first be verified.
+
+Because authentication controls access to nearly every enterprise resource, attackers frequently target credentials instead of exploiting software vulnerabilities.
+
+Understanding Windows authentication and credential protection is essential for security professionals.
+
+---
+
+# Windows Authentication Overview
+
+Authentication verifies identity.
+
+Windows supports multiple authentication mechanisms depending on the environment.
+
+Examples include:
+
+- Kerberos
+- NTLM
+- Local Authentication
+- Certificate-Based Authentication
+- Smart Cards
+- Windows Hello for Business
+
+---
+
+# Authentication Workflow
+
+```text
+User
+
+↓
+
+Enter Credentials
+
+↓
+
+Authentication Service
+
+↓
+
+Identity Verified
+
+↓
+
+Authorization
+
+↓
+
+Access Granted
+```
+
+Authentication determines **who** the user is.
+
+Authorization determines **what** the user can access.
+
+---
+
+# Windows Logon Process
+
+A simplified domain logon process:
+
+```text
+Ctrl + Alt + Delete
+
+↓
+
+Credential Provider
+
+↓
+
+LSASS
+
+↓
+
+Kerberos
+
+↓
+
+Domain Controller
+
+↓
+
+Access Token Created
+
+↓
+
+Desktop Loaded
+```
+
+Several Windows components participate in authentication before the user receives access.
+
+---
+
+# Authentication Components
+
+| Component | Purpose |
+|------------|----------|
+| Credential Provider | Collect user credentials |
+| LSASS | Performs authentication and security functions |
+| Kerberos | Domain authentication |
+| NTLM | Legacy authentication |
+| Active Directory | Identity store |
+| Security Accounts Manager (SAM) | Local account database |
+
+---
+
+# Local Authentication
+
+Local accounts authenticate using the local Security Accounts Manager (SAM).
+
+```text
+User
+
+↓
+
+SAM Database
+
+↓
+
+Authentication
+
+↓
+
+Local Access
+```
+
+Characteristics:
+
+- Does not require Active Directory
+- Valid only on the local system
+- Suitable for standalone computers
+- Limited centralized management
+
+---
+
+# Domain Authentication
+
+Domain authentication relies on Active Directory.
+
+```text
+User
+
+↓
+
+Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+Access Token
+
+↓
+
+Enterprise Resources
+```
+
+Benefits:
+
+- Centralized authentication
+- Single Sign-On (SSO)
+- Centralized policy management
+- Enterprise scalability
+
+---
+
+# Security Accounts Manager (SAM)
+
+The SAM database stores local account information.
+
+Contains:
+
+- Usernames
+- Password hashes
+- Local group membership
+- Account attributes
+
+The SAM database is protected by Windows and is not intended for direct access by standard users.
+
+---
+
+# Local Security Authority Subsystem Service (LSASS)
+
+LSASS is responsible for:
+
+- Authentication
+- Access token generation
+- Password policy enforcement
+- Credential handling
+- Security auditing
+
+LSASS is one of the most security-critical Windows processes.
+
+---
+
+# Access Tokens
+
+After successful authentication, Windows creates an access token.
+
+An access token contains:
+
+- User SID
+- Group SIDs
+- Privileges
+- Integrity level
+- User rights
+
+Applications use the access token when requesting access to resources.
+
+---
+
+# Access Token Workflow
+
+```text
+Authentication
+
+↓
+
+Access Token Created
+
+↓
+
+Application Requests Resource
+
+↓
+
+ACL Evaluation
+
+↓
+
+Allow or Deny
+```
+
+The access token remains associated with the user's processes until logoff.
+
+---
+
+# Windows Security Identifiers (SIDs)
+
+Every security principal receives a unique Security Identifier (SID).
+
+Examples:
+
+- User
+- Group
+- Computer
+- Service account
+
+Windows uses SIDs internally rather than display names for access control.
+
+---
+
+# Credential Storage
+
+Windows stores credentials differently depending on the authentication method.
+
+Examples:
+
+- Kerberos tickets
+- NTLM credential data
+- Cached domain credentials
+- Windows Vault
+- Certificate stores
+
+Sensitive credential material should be protected using built-in security features.
+
+---
+
+# Cached Credentials
+
+Domain users may authenticate while disconnected from the network if cached credentials are available.
+
+Benefits:
+
+- Offline logon
+- Improved mobility
+- Better user experience
+
+Risks:
+
+- Cached credentials represent sensitive information and should be protected.
+
+---
+
+# Windows Credential Manager
+
+Credential Manager securely stores credentials for:
+
+- Network shares
+- Remote Desktop
+- Web resources
+- Enterprise applications
+
+Administrators should periodically review stored credentials.
+
+---
+
+# Windows Hello for Business
+
+Windows Hello for Business provides modern authentication using:
+
+- PIN
+- Biometrics
+- Trusted Platform Module (TPM)
+- Public key cryptography
+
+Benefits include:
+
+- Reduced password dependence
+- Improved phishing resistance
+- Better user experience
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+MFA requires more than one authentication factor.
+
+Examples:
+
+| Factor | Example |
+|----------|----------|
+| Knowledge | Password |
+| Possession | Security key |
+| Inherence | Fingerprint |
+
+Combining factors significantly reduces the risk of unauthorized access.
+
+---
+
+# Least Privilege
+
+Users should receive only the permissions required for their job responsibilities.
+
+Benefits:
+
+- Reduced attack surface
+- Limited malware impact
+- Lower privilege escalation risk
+- Easier auditing
+
+Least privilege is a foundational security principle.
+
+---
+
+# User Account Control (UAC)
+
+User Account Control helps reduce unnecessary administrative access.
+
+Workflow:
+
+```text
+Standard User
+
+↓
+
+Administrative Action
+
+↓
+
+UAC Prompt
+
+↓
+
+Approval
+
+↓
+
+Elevated Process
+```
+
+UAC encourages users to operate without administrative privileges during routine activities.
+
+---
+
+# Administrative Accounts
+
+Organizations should separate:
+
+```text
+Daily User Account
+
+↓
+
+Email
+
+↓
+
+Office Applications
+
+↓
+
+Web Browsing
+
+-------------------
+
+Administrative Account
+
+↓
+
+Server Administration
+
+↓
+
+Domain Administration
+
+↓
+
+Security Tasks
+```
+
+Administrative accounts should be used only for privileged operations.
+
+---
+
+# Privilege Escalation
+
+Privilege escalation occurs when a user or process gains permissions beyond those originally intended.
+
+Types:
+
+| Type | Description |
+|-------|-------------|
+| Vertical | Standard user becomes administrator |
+| Horizontal | Access another user's privileges without increasing privilege level |
+
+Understanding privilege escalation helps defenders identify and mitigate potential attack paths.
+
+---
+
+# Common Privilege Escalation Causes
+
+Examples:
+
+- Unpatched vulnerabilities
+- Weak permissions
+- Misconfigured services
+- Insecure scheduled tasks
+- Excessive administrative rights
+- Weak service account permissions
+
+Proper system hardening reduces these opportunities.
+
+---
+
+# Credential Theft
+
+Attackers frequently attempt to obtain credentials instead of exploiting software vulnerabilities.
+
+Targets include:
+
+- Passwords
+- Password hashes
+- Kerberos tickets
+- Browser credentials
+- Stored application credentials
+- Authentication tokens
+
+Credential theft often precedes lateral movement.
+
+---
+
+# Credential Theft Workflow
+
+```text
+Compromised User
+
+↓
+
+Obtain Credentials
+
+↓
+
+Authenticate as Victim
+
+↓
+
+Access Additional Systems
+
+↓
+
+Expand Access
+```
+
+Protecting credentials limits an attacker's ability to move through the environment.
+
+---
+
+# Credential Access Techniques
+
+Common techniques include:
+
+- Password guessing
+- Password spraying
+- Credential phishing
+- Keylogging
+- Token theft
+- Session hijacking
+- Browser credential theft
+
+Organizations should implement layered defenses against these techniques.
+
+---
+
+# Pass-the-Hash
+
+Pass-the-Hash (PtH) is a technique where attackers attempt to authenticate using an NTLM password hash instead of the plaintext password.
+
+Mitigation strategies include:
+
+- Least privilege
+- Credential Guard
+- Administrative account separation
+- Restricting NTLM usage where feasible
+
+---
+
+# Pass-the-Ticket
+
+In Pass-the-Ticket (PtT), attackers attempt to reuse stolen Kerberos tickets to access resources.
+
+Mitigations include:
+
+- Protecting privileged credentials
+- Monitoring Kerberos activity
+- Limiting ticket exposure
+- Detecting unusual authentication patterns
+
+---
+
+# Credential Guard
+
+Credential Guard uses virtualization-based security (VBS) to help isolate sensitive credential material from the rest of the operating system.
+
+Benefits:
+
+- Protects credential secrets
+- Helps reduce credential theft
+- Makes certain credential extraction techniques more difficult
+
+Credential Guard is recommended for supported enterprise systems.
+
+---
+
+# Windows Defender Credential Protection
+
+Modern Windows security includes protections such as:
+
+- Credential Guard
+- Windows Hello for Business
+- LSASS protection
+- Virtualization-Based Security (VBS)
+
+These technologies work together to strengthen identity protection.
+
+---
+
+# Protected LSASS
+
+Organizations can configure LSASS to run as a protected process where supported.
+
+Benefits:
+
+- Increased resistance to unauthorized access
+- Improved credential protection
+- Reduced attack opportunities
+
+Compatibility testing should be performed before deployment.
+
+---
+
+# Identity Protection Strategy
+
+```text
+Strong Passwords
+
+↓
+
+MFA
+
+↓
+
+Least Privilege
+
+↓
+
+Credential Guard
+
+↓
+
+Monitoring
+
+↓
+
+Rapid Response
+```
+
+Layered identity protection reduces the likelihood of successful credential compromise.
+
+---
+
+# Enterprise Example
+
+A multinational enterprise implements:
+
+- Active Directory
+- Kerberos
+- Windows Hello for Business
+- MFA
+- Credential Guard
+- BitLocker
+- Dedicated administrative accounts
+- Protected administrative workstations
+- Continuous authentication monitoring
+
+These controls help reduce credential theft and unauthorized privilege escalation.
+
+---
+
+# Cybersecurity Perspective
+
+Identity is one of the most valuable assets in Windows environments.
+
+Attackers often prioritize:
+
+- Domain administrator credentials
+- Service account credentials
+- Kerberos tickets
+- Cached credentials
+- Administrative sessions
+
+Defenders should focus on protecting identities as rigorously as they protect systems and data.
+
+---
+
+# Business Impact
+
+Strong identity protection provides:
+
+- Reduced account compromise
+- Lower fraud risk
+- Improved regulatory compliance
+- Better operational continuity
+- Increased user trust
+
+Weak credential security can lead to widespread compromise across the enterprise.
+
+---
+
+# Enterprise Best Practices
+
+- Enforce MFA for privileged accounts.
+- Prefer Kerberos over NTLM where possible.
+- Deploy Credential Guard on supported devices.
+- Separate administrative and standard user accounts.
+- Enforce least privilege.
+- Use Windows Hello for Business where appropriate.
+- Monitor authentication logs continuously.
+- Limit credential caching where business requirements permit.
+- Review privileged accounts regularly.
+- Protect LSASS using supported security features.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review Access Tokens
+
+Use Windows tools to identify:
+
+- Current user SID
+- Group memberships
+- Privileges
+
+Explain how access tokens influence authorization.
+
+---
+
+## Lab 2 — Authentication Comparison
+
+Create a comparison table covering:
+
+- Local Authentication
+- Domain Authentication
+- Kerberos
+- NTLM
+
+Compare security, scalability, and enterprise use cases.
+
+---
+
+## Lab 3 — Identity Protection Design
+
+Design an authentication architecture using:
+
+- Active Directory
+- MFA
+- Windows Hello for Business
+- Credential Guard
+- Least Privilege
+
+Explain how each control contributes to defense in depth.
+
+---
+
+## Lab 4 — Privilege Review
+
+Review a hypothetical environment with:
+
+- Shared administrator accounts
+- Excessive local administrators
+- Weak password policy
+
+Recommend improvements based on least privilege and identity security principles.
+
+---
+
+# Key Takeaways
+
+- Authentication verifies identity, while authorization determines access.
+- LSASS and Active Directory are central to Windows authentication.
+- Access tokens determine what authenticated users can do.
+- Credential theft is a major objective for attackers.
+- Credential Guard and Windows Hello for Business strengthen identity protection.
+- Least privilege and MFA are essential enterprise security practices.
+
+---
+
+# Interview Questions
+
+1. What is LSASS and why is it important?
+2. What is the difference between local and domain authentication?
+3. What information does an access token contain?
+4. Explain the purpose of the SAM database.
+5. What is Credential Guard?
+6. What is Pass-the-Hash?
+7. Why should administrative accounts be separated from daily user accounts?
+8. What are the benefits of Windows Hello for Business?
+9. How does MFA improve Windows security?
+10. Why is least privilege important in enterprise environments?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Security Documentation
+- Microsoft Credential Guard Documentation
+- Microsoft Windows Hello for Business Documentation
+- Microsoft Active Directory Documentation
+- MITRE ATT&CK Framework
+- NIST SP 800-53
+- CIS Microsoft Windows Benchmarks
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 3 — Windows Malware, Persistence, Lateral Movement, Incident Response, Logging, Threat Hunting, and Security Monitoring**
