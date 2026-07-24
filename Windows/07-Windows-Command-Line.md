@@ -872,3 +872,1065 @@ Identify the values for your current system.
 
 ---
 
+# 07-Windows-Command-Line.md
+
+# Part 2 — Advanced CMD Commands, File Operations, Process Management, Networking Utilities, Batch Files, Redirection, Pipes, and Command Chaining
+
+---
+
+# Introduction
+
+After learning the fundamentals of Command Prompt (CMD), the next step is understanding how administrators automate work, troubleshoot systems, manage processes, and perform network diagnostics.
+
+In enterprise environments, CMD is commonly used for:
+
+- System troubleshooting
+- File management
+- Network diagnostics
+- Process management
+- Software deployment
+- Batch automation
+- Log collection
+- Remote administration
+
+Although PowerShell has become Microsoft's primary automation platform, many Windows utilities still rely on CMD syntax and batch scripts.
+
+---
+
+# Advanced Command Categories
+
+```text
+Windows CMD
+
+├── File Management
+├── Directory Management
+├── Process Management
+├── System Information
+├── Network Diagnostics
+├── Environment Variables
+├── Batch Automation
+├── Redirection
+├── Pipes
+└── Command Chaining
+```
+
+---
+
+# Copy Command
+
+Copies one or more files.
+
+Syntax
+
+```cmd
+copy Source Destination
+```
+
+Example
+
+```cmd
+copy report.txt D:\Backup\
+```
+
+Result
+
+```text
+report.txt
+
+↓
+
+Copied
+
+↓
+
+D:\Backup\
+```
+
+---
+
+# XCOPY
+
+`xcopy` is an enhanced version of the `copy` command.
+
+Example
+
+```cmd
+xcopy C:\Projects D:\Backup /E
+```
+
+Common options
+
+| Option | Description |
+|---------|-------------|
+| `/E` | Copy all subdirectories including empty ones |
+| `/H` | Copy hidden and system files |
+| `/Y` | Suppress overwrite confirmation |
+| `/D` | Copy newer files only |
+
+Although still available, **Robocopy** is generally recommended for enterprise-scale operations.
+
+---
+
+# ROBOCOPY
+
+Robocopy (Robust File Copy) is Microsoft's enterprise file-copy utility.
+
+Example
+
+```cmd
+robocopy C:\Projects D:\Backup /MIR
+```
+
+Common features
+
+- Resume interrupted copies
+- Preserve permissions
+- Retry failed transfers
+- Logging
+- Mirror directories
+- Copy large datasets efficiently
+
+---
+
+# Move Command
+
+Moves files or folders.
+
+Example
+
+```cmd
+move report.docx D:\Archive\
+```
+
+Workflow
+
+```text
+Original Location
+
+↓
+
+Move
+
+↓
+
+Destination
+
+↓
+
+File Relocated
+```
+
+---
+
+# Rename Command
+
+Rename files or folders.
+
+Example
+
+```cmd
+ren draft.docx final.docx
+```
+
+Only the name changes.
+
+The file contents remain unchanged.
+
+---
+
+# Delete Files
+
+Delete a file
+
+```cmd
+del report.txt
+```
+
+Delete all text files
+
+```cmd
+del *.txt
+```
+
+Delete confirmation
+
+```cmd
+del /P report.txt
+```
+
+Always verify wildcard usage before execution.
+
+---
+
+# Remove Directories
+
+Delete an empty folder
+
+```cmd
+rd Test
+```
+
+Delete a folder and its contents
+
+```cmd
+rd /S Test
+```
+
+Quiet mode
+
+```cmd
+rd /S /Q Test
+```
+
+Be cautious when using `/S` and `/Q` because they can remove large directory trees.
+
+---
+
+# Wildcards
+
+CMD supports wildcard characters.
+
+| Wildcard | Meaning |
+|-----------|----------|
+| `*` | Multiple characters |
+| `?` | Single character |
+
+Examples
+
+```cmd
+dir *.txt
+```
+
+```cmd
+copy *.pdf D:\PDF\
+```
+
+---
+
+# Tree Command
+
+Display directory hierarchy.
+
+```cmd
+tree
+```
+
+Example
+
+```text
+Projects
+
+├── Reports
+
+├── Images
+
+└── Source
+```
+
+Useful for documentation and troubleshooting.
+
+---
+
+# Finding Files
+
+Locate files using:
+
+```cmd
+dir report.docx /S
+```
+
+Search recursively
+
+```cmd
+dir *.log /S
+```
+
+---
+
+# File Comparison
+
+Compare two files.
+
+```cmd
+fc file1.txt file2.txt
+```
+
+Useful for:
+
+- Configuration comparison
+- Script verification
+- Log analysis
+
+---
+
+# Display Text Files
+
+```cmd
+type notes.txt
+```
+
+Display multiple files
+
+```cmd
+type *.txt
+```
+
+---
+
+# More Command
+
+Large output can be paged.
+
+Example
+
+```cmd
+type logfile.txt | more
+```
+
+Instead of scrolling rapidly, output pauses one screen at a time.
+
+---
+
+# Sort Command
+
+Sort text alphabetically.
+
+Example
+
+```cmd
+sort names.txt
+```
+
+Combined example
+
+```cmd
+type users.txt | sort
+```
+
+---
+
+# Find Command
+
+Search for text.
+
+Example
+
+```cmd
+find "Administrator" users.txt
+```
+
+Returns matching lines.
+
+---
+
+# Findstr Command
+
+`findstr` is more powerful than `find`.
+
+Example
+
+```cmd
+findstr ERROR server.log
+```
+
+Supports:
+
+- Pattern matching
+- Multiple search terms
+- Case-insensitive searches
+- Regular-expression style searches
+
+Widely used in log analysis.
+
+---
+
+# System Information
+
+Display detailed system information.
+
+```cmd
+systeminfo
+```
+
+Information includes:
+
+- Windows version
+- Build number
+- Installed RAM
+- Processor
+- Domain membership
+- Boot time
+- Hotfixes
+
+---
+
+# Hostname
+
+Display computer name.
+
+```cmd
+hostname
+```
+
+Example
+
+```text
+HR-LAPTOP-021
+```
+
+---
+
+# Who Am I
+
+Display current user.
+
+```cmd
+whoami
+```
+
+Example
+
+```text
+CORP\Alice
+```
+
+Additional information
+
+```cmd
+whoami /groups
+```
+
+```cmd
+whoami /priv
+```
+
+These commands are valuable during privilege analysis.
+
+---
+
+# Tasklist
+
+Display running processes.
+
+```cmd
+tasklist
+```
+
+Example
+
+```text
+explorer.exe
+
+chrome.exe
+
+notepad.exe
+```
+
+---
+
+# Taskkill
+
+Terminate a process.
+
+Example
+
+```cmd
+taskkill /PID 4256
+```
+
+Terminate by image name
+
+```cmd
+taskkill /IM notepad.exe
+```
+
+Force termination
+
+```cmd
+taskkill /F /IM notepad.exe
+```
+
+Use force termination carefully because unsaved work may be lost.
+
+---
+
+# Shutdown Command
+
+Shutdown system
+
+```cmd
+shutdown /s
+```
+
+Restart
+
+```cmd
+shutdown /r
+```
+
+Cancel pending shutdown
+
+```cmd
+shutdown /a
+```
+
+Schedule restart after 60 seconds
+
+```cmd
+shutdown /r /t 60
+```
+
+---
+
+# Networking Utilities
+
+Common networking commands include:
+
+| Command | Purpose |
+|----------|----------|
+| `ipconfig` | Display IP configuration |
+| `ping` | Connectivity testing |
+| `tracert` | Trace packet path |
+| `pathping` | Route and packet-loss analysis |
+| `arp` | View ARP cache |
+| `netstat` | Network connections |
+| `nslookup` | DNS queries |
+| `route` | Routing table |
+| `net` | Network administration |
+
+These commands are covered in greater detail in the Windows Networking chapter.
+
+---
+
+# IPCONFIG
+
+Display IP configuration.
+
+```cmd
+ipconfig
+```
+
+Detailed output
+
+```cmd
+ipconfig /all
+```
+
+Release DHCP lease
+
+```cmd
+ipconfig /release
+```
+
+Renew lease
+
+```cmd
+ipconfig /renew
+```
+
+Flush DNS cache
+
+```cmd
+ipconfig /flushdns
+```
+
+---
+
+# PING
+
+Test connectivity.
+
+```cmd
+ping google.com
+```
+
+Example workflow
+
+```text
+Host
+
+↓
+
+ICMP Echo Request
+
+↓
+
+Reply
+
+↓
+
+Latency Displayed
+```
+
+---
+
+# NETSTAT
+
+View active connections.
+
+```cmd
+netstat
+```
+
+Display listening ports
+
+```cmd
+netstat -an
+```
+
+Display executable names (requires elevation)
+
+```cmd
+netstat -ab
+```
+
+---
+
+# NSLOOKUP
+
+Query DNS.
+
+```cmd
+nslookup openai.com
+```
+
+Useful for:
+
+- DNS troubleshooting
+- Name resolution verification
+- Server diagnostics
+
+---
+
+# Batch Files
+
+Batch files automate CMD commands.
+
+Extension
+
+```text
+.bat
+
+or
+
+.cmd
+```
+
+Example
+
+```bat
+@echo off
+echo Hello World
+pause
+```
+
+---
+
+# Echo Command
+
+Display text.
+
+```cmd
+echo Hello
+```
+
+Display environment variable
+
+```cmd
+echo %USERNAME%
+```
+
+---
+
+# Pause
+
+Wait for user input.
+
+```cmd
+pause
+```
+
+Example output
+
+```text
+Press any key to continue . . .
+```
+
+---
+
+# Comments
+
+Batch comments
+
+```bat
+REM Backup Script
+```
+
+Alternative
+
+```bat
+:: Backup Script
+```
+
+---
+
+# Variables
+
+Create variable
+
+```bat
+set NAME=Alice
+```
+
+Use variable
+
+```bat
+echo %NAME%
+```
+
+---
+
+# Input
+
+Prompt the user.
+
+```bat
+set /P USER=Enter username:
+```
+
+---
+
+# IF Statement
+
+Example
+
+```bat
+IF EXIST report.txt echo Found
+```
+
+Conditional execution is fundamental to batch scripting.
+
+---
+
+# FOR Loop
+
+Example
+
+```bat
+FOR %%F IN (*.txt) DO echo %%F
+```
+
+Useful for processing multiple files.
+
+---
+
+# GOTO
+
+Jump to another section.
+
+```bat
+goto END
+
+:END
+echo Finished
+```
+
+---
+
+# Redirection
+
+Redirect output.
+
+Overwrite
+
+```cmd
+dir > files.txt
+```
+
+Append
+
+```cmd
+dir >> files.txt
+```
+
+Workflow
+
+```text
+Command
+
+↓
+
+Output
+
+↓
+
+Text File
+```
+
+---
+
+# Input Redirection
+
+```cmd
+sort < names.txt
+```
+
+The command reads input from a file instead of the keyboard.
+
+---
+
+# Error Redirection
+
+Redirect errors.
+
+```cmd
+dir MissingFolder 2> errors.txt
+```
+
+Redirect standard output and errors
+
+```cmd
+dir C:\ 1>output.txt 2>errors.txt
+```
+
+---
+
+# Pipes
+
+A pipe passes output from one command directly into another.
+
+Syntax
+
+```cmd
+Command1 | Command2
+```
+
+Example
+
+```cmd
+tasklist | find "chrome"
+```
+
+Workflow
+
+```text
+Command Output
+
+↓
+
+Pipe
+
+↓
+
+Second Command
+
+↓
+
+Filtered Result
+```
+
+---
+
+# Command Chaining
+
+Execute multiple commands.
+
+Run second command only if the first succeeds
+
+```cmd
+mkdir Logs && cd Logs
+```
+
+Run second command only if the first fails
+
+```cmd
+mkdir Logs || echo Failed
+```
+
+Run commands regardless of success
+
+```cmd
+echo Start & dir & echo Finished
+```
+
+---
+
+# Enterprise Example
+
+A help desk engineer collects diagnostic information.
+
+```text
+systeminfo
+
+↓
+
+ipconfig /all
+
+↓
+
+tasklist
+
+↓
+
+netstat -an
+
+↓
+
+Redirect Results
+
+↓
+
+diagnostics.txt
+```
+
+The collected information is attached to a support ticket for troubleshooting.
+
+---
+
+# Cybersecurity Perspective
+
+Attackers frequently use built-in CMD utilities because they are trusted Windows components.
+
+Examples include:
+
+- System enumeration (`systeminfo`, `whoami`)
+- Process discovery (`tasklist`)
+- Network discovery (`ipconfig`, `arp`, `netstat`)
+- File searching (`dir`, `findstr`)
+- Batch script execution
+- Command chaining for automation
+
+Security teams should monitor:
+
+- Suspicious command execution
+- Privileged batch scripts
+- Unexpected process termination
+- Mass file operations
+- Network enumeration
+- Unusual command-line arguments
+
+Monitoring command-line activity is an important component of Endpoint Detection and Response (EDR).
+
+---
+
+# Business Impact
+
+CMD enables organizations to:
+
+- Automate repetitive tasks
+- Standardize administrative procedures
+- Reduce troubleshooting time
+- Improve operational consistency
+- Support remote administration
+- Simplify diagnostics
+
+Well-designed automation reduces operational costs and human error.
+
+---
+
+# Enterprise Best Practices
+
+- Test batch scripts in non-production environments.
+- Use descriptive script names and comments.
+- Validate user input before processing.
+- Log important administrative actions.
+- Review scripts regularly for security and accuracy.
+- Restrict execution of unauthorized scripts using organizational security policies.
+
+---
+
+# Practical Labs
+
+## Lab 1 — File Operations
+
+Create a test folder and perform:
+
+```cmd
+mkdir Demo
+
+copy file.txt Demo
+
+move file.txt Backup
+
+dir
+```
+
+Observe the changes after each command.
+
+---
+
+## Lab 2 — Process Management
+
+Run:
+
+```cmd
+tasklist
+
+whoami
+
+hostname
+
+systeminfo
+```
+
+Identify:
+
+- Current user
+- Computer name
+- Operating system version
+- Running processes
+
+---
+
+## Lab 3 — Redirection and Pipes
+
+Execute:
+
+```cmd
+systeminfo > system.txt
+
+tasklist | find "explorer"
+
+ipconfig /all > network.txt
+```
+
+Review the generated files and filtered output.
+
+---
+
+# Key Takeaways
+
+- CMD provides powerful administrative capabilities beyond basic navigation.
+- Built-in utilities support process, file, and network management.
+- Batch files automate repetitive administrative tasks.
+- Redirection and pipes enable flexible command processing.
+- Command chaining simplifies complex workflows.
+- Proper monitoring of command-line activity strengthens enterprise security.
+
+---
+
+# Interview Questions
+
+1. What is the difference between `copy`, `xcopy`, and `robocopy`?
+2. What does the `tasklist` command display?
+3. How do `find` and `findstr` differ?
+4. What is the purpose of `systeminfo`?
+5. Explain output redirection using `>`.
+6. What is a pipe (`|`) in CMD?
+7. What is the difference between `&&`, `||`, and `&`?
+8. How do batch files automate administration?
+9. Why is `whoami /priv` useful during security investigations?
+10. Why do attackers frequently use built-in Windows command-line utilities?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Command Reference
+- Microsoft Robocopy Documentation
+- Microsoft Sysinternals Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
