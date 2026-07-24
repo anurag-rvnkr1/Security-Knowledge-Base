@@ -1245,4 +1245,617 @@ Explore Active Directory Schema and Global Catalog concepts.
 
 ---
 
-**Next:** **Part 3 — Domain Controllers, SYSVOL, Authentication Architecture, Replication Fundamentals, and Active Directory Service Dependencies**
+# 02-AD-Architecture.md
+
+# Part 3 — Domain Controllers, SYSVOL, Authentication Architecture, Replication Fundamentals, and Active Directory Service Dependencies
+
+---
+
+# Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- Understand the role of Domain Controllers (DCs).
+- Explain how authentication flows through Active Directory.
+- Understand the purpose of SYSVOL.
+- Learn the fundamentals of Active Directory replication.
+- Identify critical services that AD depends upon.
+- Understand why high availability is essential in enterprise environments.
+- Build a foundation for future chapters on replication, FSMO roles, DNS, and Group Policy.
+
+---
+
+# What is a Domain Controller?
+
+A **Domain Controller (DC)** is a Windows Server that hosts the **Active Directory Domain Services (AD DS)** role.
+
+A Domain Controller is responsible for:
+
+- Authenticating users
+- Authorizing access
+- Storing a copy of the Active Directory database
+- Replicating directory changes
+- Applying Group Policy
+- Locating directory resources
+- Supporting domain operations
+
+Think of the Domain Controller as the **central authority** for a Windows domain.
+
+---
+
+# Domain Controller Architecture
+
+```text
+              Domain Controller
+
+                    │
+
+     ┌──────────────┼──────────────┐
+
+     │              │              │
+
+ Authentication   NTDS.DIT     SYSVOL
+
+     │              │              │
+
+     └──────────────┼──────────────┘
+
+            Replication Services
+```
+
+---
+
+# Responsibilities of a Domain Controller
+
+| Responsibility | Description |
+|---------------|-------------|
+| Authentication | Verify user and computer identities |
+| Authorization | Determine access permissions |
+| Directory Storage | Maintain a writable copy of the directory database |
+| Replication | Synchronize directory changes |
+| Group Policy | Distribute policy information |
+| DNS Integration | Support domain service discovery |
+| Time Services | Participate in secure time synchronization |
+| Security Auditing | Record authentication and administrative events |
+
+---
+
+# Why Multiple Domain Controllers?
+
+Enterprise environments rarely deploy a single Domain Controller.
+
+Benefits include:
+
+- High availability
+- Fault tolerance
+- Load balancing of authentication requests
+- Faster logon at remote sites
+- Disaster recovery
+- Maintenance without service interruption
+
+---
+
+# Example Enterprise Deployment
+
+```text
+              Head Office
+
+      ┌────────────┐   ┌────────────┐
+
+      │   DC01     │   │   DC02     │
+
+      └─────┬──────┘   └─────┬──────┘
+
+            │ Replication    │
+
+            └──────┬─────────┘
+
+                   │
+
+          Branch Office A
+
+             ┌──────────┐
+
+             │  DC03    │
+
+             └──────────┘
+
+                   │
+
+          Branch Office B
+
+             ┌──────────┐
+
+             │  DC04    │
+
+             └──────────┘
+```
+
+If DC01 becomes unavailable, authentication continues through other Domain Controllers.
+
+---
+
+# Read/Write Domain Controllers
+
+Standard Domain Controllers are writable.
+
+They can:
+
+- Create users
+- Delete users
+- Modify passwords
+- Update group memberships
+- Receive replicated changes
+- Replicate changes to peers
+
+A later chapter will discuss **Read-Only Domain Controllers (RODCs)** in detail.
+
+---
+
+# Active Directory Authentication Flow
+
+A simplified authentication sequence is shown below.
+
+```text
+User
+
+↓
+
+Username & Password
+
+↓
+
+Domain-Joined Computer
+
+↓
+
+DNS Locates Domain Controller
+
+↓
+
+Domain Controller
+
+↓
+
+Kerberos Authentication
+
+↓
+
+Security Token Issued
+
+↓
+
+Access Granted
+```
+
+Every stage depends on multiple AD services functioning correctly.
+
+---
+
+# Authentication Components
+
+| Component | Purpose |
+|----------|---------|
+| User | Initiates authentication |
+| Workstation | Sends authentication request |
+| DNS | Locates a Domain Controller |
+| Domain Controller | Processes authentication |
+| Kerberos | Issues tickets |
+| Active Directory | Stores identity information |
+| Security Token | Represents authenticated identity |
+
+---
+
+# Authorization Flow
+
+Authentication confirms identity.
+
+Authorization determines access.
+
+```text
+Authenticated User
+
+↓
+
+Security Token
+
+↓
+
+Group Memberships
+
+↓
+
+Access Control Lists (ACLs)
+
+↓
+
+Permission Decision
+
+↓
+
+Access Granted or Denied
+```
+
+---
+
+# Security Token
+
+After successful authentication, Windows creates a **security token**.
+
+The token contains information such as:
+
+- User SID
+- Group SIDs
+- Privileges
+- Logon session details
+
+Applications use this token to determine access to resources.
+
+---
+
+# SYSVOL
+
+Every Domain Controller contains a special shared folder named:
+
+```text
+SYSVOL
+```
+
+Default location:
+
+```text
+C:\Windows\SYSVOL
+```
+
+---
+
+# Purpose of SYSVOL
+
+SYSVOL stores information that must be consistent across all Domain Controllers.
+
+Examples:
+
+- Group Policy templates
+- Logon scripts
+- Startup scripts
+- Administrative templates
+- Other replicated public domain files
+
+---
+
+# SYSVOL Architecture
+
+```text
+Domain Controller
+
+│
+
+├── NTDS.DIT
+
+│
+
+└── SYSVOL
+
+      │
+
+      ├── Group Policies
+
+      ├── Logon Scripts
+
+      └── Startup Scripts
+```
+
+---
+
+# Why SYSVOL Matters
+
+Without SYSVOL:
+
+- Group Policy would not function correctly.
+- Logon scripts would not be distributed consistently.
+- Clients could receive different policy versions.
+
+SYSVOL consistency is essential for predictable administration.
+
+---
+
+# Group Policy and SYSVOL
+
+```text
+Administrator
+
+↓
+
+Creates Group Policy
+
+↓
+
+SYSVOL Updated
+
+↓
+
+Replication
+
+↓
+
+Other Domain Controllers
+
+↓
+
+Clients Download Updated Policy
+```
+
+---
+
+# Replication Fundamentals
+
+Every writable Domain Controller maintains a copy of the directory database.
+
+When changes occur:
+
+- The update is committed locally.
+- Replication propagates the change to other Domain Controllers.
+
+This keeps the directory synchronized.
+
+---
+
+# Replication Overview
+
+```text
+DC01
+
+↓
+
+User Created
+
+↓
+
+Replication
+
+↓
+
+DC02
+
+↓
+
+Replication
+
+↓
+
+DC03
+
+↓
+
+Replication
+
+↓
+
+DC04
+```
+
+Replication is **multi-master**, meaning changes can originate from any writable Domain Controller.
+
+---
+
+# What Replicates?
+
+Examples include:
+
+- New users
+- Password changes
+- Group membership changes
+- Computer objects
+- Organizational Units
+- Schema updates
+- Configuration changes
+- Group Policy data (through SYSVOL mechanisms)
+
+---
+
+# Replication Benefits
+
+| Benefit | Description |
+|----------|-------------|
+| High Availability | Multiple copies of directory data |
+| Fault Tolerance | Survives individual server failures |
+| Faster Authentication | Local Domain Controllers authenticate users |
+| Disaster Recovery | Data redundancy |
+| Scalability | Supports large enterprises |
+
+---
+
+# Active Directory Service Dependencies
+
+Active Directory relies on several Windows services.
+
+| Service | Purpose |
+|----------|---------|
+| Active Directory Domain Services | Directory functionality |
+| DNS Server* | Name resolution (when hosted on the DC) |
+| Kerberos Key Distribution Center (KDC) | Kerberos ticket issuance |
+| Netlogon | Secure channel and domain logon support |
+| Windows Time (W32Time) | Time synchronization |
+| DFS Replication (DFSR)** | SYSVOL replication in modern domains |
+
+\* DNS may run on the Domain Controller or on dedicated DNS servers, depending on the environment.  
+\** Modern domains typically use DFS Replication for SYSVOL; older environments may have used File Replication Service (FRS).
+
+---
+
+# Why DNS Is Critical
+
+Active Directory clients do **not** normally connect to Domain Controllers by manually configured IP addresses.
+
+Instead, they query DNS to locate available Domain Controllers.
+
+Simplified flow:
+
+```text
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Domain Controller Located
+
+↓
+
+Authentication Begins
+```
+
+Without functioning DNS, many AD operations fail.
+
+---
+
+# Time Synchronization
+
+Kerberos depends on accurate system time.
+
+If clocks differ significantly, authentication may fail.
+
+Typical enterprise design:
+
+```text
+Reliable Time Source
+
+↓
+
+Primary Domain Controller (time hierarchy root)
+
+↓
+
+Other Domain Controllers
+
+↓
+
+Member Servers
+
+↓
+
+Client Computers
+```
+
+---
+
+# Enterprise Architecture Example
+
+```text
+Users
+
+↓
+
+Workstations
+
+↓
+
+DNS
+
+↓
+
+Domain Controller
+
+↓
+
+NTDS.DIT
+
+↓
+
+SYSVOL
+
+↓
+
+Replication
+
+↓
+
+Other Domain Controllers
+```
+
+Every component contributes to authentication, authorization, and centralized management.
+
+---
+
+# Cybersecurity Perspective
+
+Domain Controllers are among the most critical assets in a Windows environment.
+
+Attackers commonly target them because they contain:
+
+- Directory database
+- Authentication services
+- Privileged account information
+- Group Policy
+- Replication capabilities
+
+Security recommendations:
+
+- Restrict interactive logon.
+- Use dedicated administrative workstations.
+- Monitor authentication events.
+- Audit privileged group changes.
+- Patch promptly.
+- Limit administrative access.
+- Protect backups of Active Directory.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore core Domain Controller components in a lab environment.
+
+### Steps
+
+1. Log on to a Windows Server configured as a Domain Controller.
+2. Open **Server Manager** and verify the AD DS role.
+3. Locate the default `C:\Windows\SYSVOL` directory.
+4. Identify the Group Policy folders within SYSVOL.
+5. Review the Event Viewer logs related to Active Directory and DNS.
+6. Document which Windows services are required for successful authentication.
+
+---
+
+# Key Takeaways
+
+- Domain Controllers host Active Directory Domain Services.
+- Multiple Domain Controllers provide redundancy and scalability.
+- SYSVOL stores Group Policy and logon-related files.
+- Replication keeps directory information synchronized.
+- DNS is essential for locating Domain Controllers.
+- Accurate time synchronization is required for Kerberos.
+- Protecting Domain Controllers is a top security priority.
+
+---
+
+# Interview Questions
+
+1. What is a Domain Controller?
+2. Why should organizations deploy multiple Domain Controllers?
+3. What is SYSVOL?
+4. What types of data are stored in SYSVOL?
+5. What is multi-master replication?
+6. Which Windows services are essential for Active Directory?
+7. Why is DNS required for Active Directory?
+8. Why is time synchronization important?
+9. What information does a security token contain?
+10. Why are Domain Controllers high-value targets?
+
+---
+
+# References
+
+- Microsoft Learn – Domain Controllers
+- Microsoft Windows Server Documentation
+- Microsoft Identity Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+- CIS Microsoft Windows Benchmarks
+
+---
+
+**Next:** **Part 4 — Active Directory Communication Flow, Service Discovery, LDAP Architecture, Enterprise Best Practices, Architecture Summary, and Final Revision**
