@@ -710,4 +710,766 @@ Trusts
 
 ---
 
-**Next:** **Part 2 — Trust Types, External Trusts, Forest Trusts, Realm Trusts, Shortcut Trusts, SID Filtering, and Enterprise Design**
+# 09-Active-Directory-Trusts.md
+
+# Part 2 — Trust Types, External Trusts, Forest Trusts, Realm Trusts, Shortcut Trusts, SID Filtering, and Enterprise Design
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand every major Active Directory trust type.
+- Learn when each trust should be used.
+- Differentiate internal and external trust relationships.
+- Understand SID filtering and why it is important.
+- Design enterprise trust architectures.
+- Apply security best practices for trust management.
+
+---
+
+# Review
+
+From Part 1:
+
+A trust provides:
+
+```text
+Authentication
+
+Across
+
+Security Boundaries
+```
+
+A trust **does not** provide:
+
+```text
+Permissions
+```
+
+Permissions are still required for resource access.
+
+---
+
+# Active Directory Trust Types
+
+Microsoft Active Directory supports several trust types.
+
+```text
+Trusts
+
+│
+
+├── Parent-Child Trust
+
+├── Tree-Root Trust
+
+├── Shortcut Trust
+
+├── External Trust
+
+├── Forest Trust
+
+└── Realm Trust
+```
+
+Each trust serves a different business requirement.
+
+---
+
+# Parent-Child Trust
+
+Created automatically when:
+
+```text
+Parent Domain
+
+↓
+
+Child Domain Created
+```
+
+Example:
+
+```text
+company.com
+
+↓
+
+sales.company.com
+```
+
+Characteristics:
+
+- Automatic
+- Two-way
+- Transitive
+
+---
+
+# Parent-Child Authentication
+
+```text
+Sales User
+
+↓
+
+sales.company.com
+
+↓
+
+Parent Trust
+
+↓
+
+company.com
+
+↓
+
+Resource Access
+```
+
+---
+
+# Tree-Root Trust
+
+Created automatically when a new tree is added to an existing forest.
+
+Example:
+
+```text
+Forest
+
+│
+
+├── company.com
+
+└── engineering.net
+```
+
+Characteristics:
+
+- Automatic
+- Two-way
+- Transitive
+
+---
+
+# Tree Example
+
+```text
+Forest
+
+│
+
+├── company.com
+
+│      └── sales.company.com
+
+│
+
+└── engineering.net
+
+       └── dev.engineering.net
+```
+
+Tree-root trusts enable authentication between trees within the same forest.
+
+---
+
+# Shortcut Trust
+
+As organizations grow, authentication paths may become long.
+
+Example:
+
+```text
+Domain A
+
+↓
+
+Domain B
+
+↓
+
+Domain C
+
+↓
+
+Domain D
+```
+
+Without a shortcut:
+
+```text
+Authentication
+
+↓
+
+A
+
+↓
+
+B
+
+↓
+
+C
+
+↓
+
+D
+```
+
+---
+
+# Shortcut Trust Solution
+
+Create:
+
+```text
+Domain A
+
+──────────────
+
+Domain D
+```
+
+Authentication path becomes:
+
+```text
+A
+
+↓
+
+D
+```
+
+Benefits:
+
+- Reduced authentication hops
+- Lower latency
+- Improved user experience
+- Reduced Domain Controller workload
+
+---
+
+# Shortcut Trust Characteristics
+
+| Property | Value |
+|----------|-------|
+| Automatic | No |
+| Manual | Yes |
+| Scope | Within the same forest |
+| Transitive | Yes |
+| Direction | One-way or Two-way |
+
+---
+
+# External Trust
+
+An External Trust connects:
+
+```text
+Active Directory Domain
+
+↓
+
+Another Active Directory Domain
+
+↓
+
+Different Forest
+
+OR
+
+Standalone Domain
+```
+
+It does **not** create forest-wide authentication.
+
+---
+
+# External Trust Example
+
+```text
+Company A
+
+────────────
+
+Company B
+```
+
+Only the explicitly trusted domains participate.
+
+Characteristics:
+
+- Manual
+- Non-transitive
+- One-way or Two-way
+
+---
+
+# External Trust Authentication
+
+```text
+User
+
+↓
+
+Company A
+
+↓
+
+External Trust
+
+↓
+
+Company B
+
+↓
+
+Resource
+```
+
+Authentication does not automatically extend beyond the trusted domain.
+
+---
+
+# Forest Trust
+
+A Forest Trust connects:
+
+```text
+Entire Forest A
+
+↓
+
+Entire Forest B
+```
+
+Example:
+
+```text
+Forest A
+
+↓
+
+company.com
+```
+
+```text
+Forest B
+
+↓
+
+partner.com
+```
+
+One trust can support authentication between domains in both forests, subject to trust configuration and permissions.
+
+---
+
+# Forest Trust Characteristics
+
+| Property | Value |
+|----------|-------|
+| Manual | Yes |
+| Transitive | Yes (between the two forests) |
+| Scope | Entire Forest |
+| Direction | One-way or Two-way |
+
+---
+
+# Forest Trust Example
+
+```text
+Forest A
+
+│
+
+├── Sales
+
+├── Finance
+
+└── HR
+
+      │
+
+      │ Forest Trust
+
+      ▼
+
+Forest B
+
+│
+
+├── IT
+
+├── Research
+
+└── Support
+```
+
+---
+
+# Realm Trust
+
+A Realm Trust connects:
+
+```text
+Active Directory
+
+↓
+
+Kerberos Realm
+```
+
+Historically, this was commonly used to interoperate with non-Windows Kerberos implementations (for example, certain UNIX or MIT Kerberos environments).
+
+Characteristics may vary depending on the Kerberos implementation and trust configuration.
+
+---
+
+# Realm Trust Example
+
+```text
+Active Directory
+
+↓
+
+Kerberos Trust
+
+↓
+
+UNIX Kerberos Realm
+```
+
+---
+
+# Trust Comparison
+
+| Trust Type | Automatic | Transitive | Typical Scope |
+|------------|-----------|------------|---------------|
+| Parent-Child | ✔ | ✔ | Same Forest |
+| Tree-Root | ✔ | ✔ | Same Forest |
+| Shortcut | ✘ | ✔ | Same Forest |
+| External | ✘ | ✘ | Specific Domains |
+| Forest | ✘ | ✔ | Two Forests |
+| Realm | ✘ | Depends on configuration | AD ↔ Kerberos Realm |
+
+---
+
+# Enterprise Example
+
+Company acquires another organization.
+
+Before acquisition:
+
+```text
+Company A
+
+Separate
+
+Company B
+```
+
+Instead of migrating users immediately:
+
+```text
+Forest Trust
+
+↓
+
+Shared Authentication
+
+↓
+
+Business Continues
+```
+
+This allows collaboration while longer-term integration plans are developed.
+
+---
+
+# Authentication Path Comparison
+
+Without Shortcut Trust:
+
+```text
+A
+
+↓
+
+B
+
+↓
+
+C
+
+↓
+
+D
+```
+
+With Shortcut Trust:
+
+```text
+A
+
+↓
+
+D
+```
+
+Fewer hops generally improve efficiency.
+
+---
+
+# Security Boundary
+
+A trust **does not remove** security boundaries.
+
+Each domain or forest continues to manage:
+
+- Users
+- Groups
+- Policies
+- Administrative authority
+
+Trusts only allow authentication to cross those boundaries.
+
+---
+
+# SID Filtering
+
+One of the most important security protections for trusts is:
+
+> **SID Filtering**
+
+---
+
+# Why SID Filtering Exists
+
+Suppose an attacker attempts to modify authorization information by adding unauthorized SIDs to a security token.
+
+Without protection:
+
+```text
+Compromised Domain
+
+↓
+
+Forged SID
+
+↓
+
+Trusted Domain
+```
+
+This could increase risk if accepted.
+
+SID Filtering helps reduce this risk by restricting which SIDs from a trusted source are honored across certain trust boundaries.
+
+---
+
+# Simplified SID Filtering Flow
+
+```text
+Authentication
+
+↓
+
+Trusted Domain
+
+↓
+
+SID Filtering
+
+↓
+
+Invalid SIDs Removed
+
+↓
+
+Resource Domain
+```
+
+---
+
+# SID Filtering Benefits
+
+- Helps prevent SID history abuse across applicable trusts.
+- Reduces certain privilege escalation risks.
+- Strengthens trust boundary security.
+- Supports enterprise defense-in-depth.
+
+---
+
+# Enterprise Trust Design
+
+Example:
+
+```text
+Corporate Forest
+
+↓
+
+Forest Trust
+
+↓
+
+Partner Forest
+```
+
+Internally:
+
+```text
+Parent-Child Trusts
+
+↓
+
+Shortcut Trusts
+
+↓
+
+Fast Authentication
+```
+
+This combines operational efficiency with controlled external collaboration.
+
+---
+
+# Design Considerations
+
+| Requirement | Recommendation |
+|-------------|----------------|
+| Same Forest | Parent-Child or Tree-Root Trust |
+| Long Authentication Paths | Shortcut Trust |
+| Specific External Domain | External Trust |
+| Two Organizations | Forest Trust |
+| AD with Non-Windows Kerberos | Realm Trust |
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Creating unnecessary trusts.
+- Forgetting to review trust direction.
+- Assuming every trust is transitive.
+- Assuming authentication automatically grants permissions.
+- Disabling security protections without understanding the implications.
+- Leaving obsolete trusts in place after organizational changes.
+
+---
+
+# Best Practices
+
+- Create only required trusts.
+- Document every trust relationship.
+- Review trust configurations regularly.
+- Use the narrowest trust scope that satisfies business needs.
+- Apply least privilege to resource permissions.
+- Monitor authentication across trust boundaries.
+- Review security settings, including SID filtering where applicable.
+
+---
+
+# Cybersecurity Perspective
+
+Trusts increase connectivity between environments.
+
+Potential risks include:
+
+- Credential compromise
+- Misconfigured trusts
+- Excessive permissions
+- Trust abuse
+- Cross-boundary lateral movement
+
+Defensive recommendations:
+
+- Audit trust relationships regularly.
+- Limit administrative access.
+- Monitor cross-forest authentication.
+- Review privileged group membership.
+- Remove unused trusts promptly.
+- Protect Domain Controllers and Global Catalog servers.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore trust types.
+
+### Tasks
+
+1. Open:
+
+```text
+Active Directory Domains and Trusts
+```
+
+2. Review:
+
+- Parent-child trusts
+- Tree-root trusts
+- External trusts
+- Forest trusts (if available)
+
+3. Document:
+
+- Trust type
+- Direction
+- Transitivity
+- Business purpose
+
+4. Explain when a Shortcut Trust would improve authentication.
+
+---
+
+# Key Takeaways
+
+- Active Directory supports multiple trust types for different scenarios.
+- Parent-child and tree-root trusts are created automatically within a forest.
+- Shortcut trusts reduce authentication path length.
+- External trusts connect specific domains.
+- Forest trusts connect two forests.
+- SID filtering helps protect trust boundaries.
+
+---
+
+# Interview Questions
+
+1. What is the difference between an External Trust and a Forest Trust?
+2. When should a Shortcut Trust be created?
+3. Which trust types are automatically created?
+4. Which trust type is non-transitive?
+5. What is a Realm Trust?
+6. Why is SID filtering important?
+7. Can a Forest Trust connect individual domains only?
+8. Does a trust remove security boundaries?
+9. Why should unnecessary trusts be removed?
+10. How does a Shortcut Trust improve authentication?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Trusts
+- Microsoft Learn – Forest Trusts
+- Microsoft Learn – External Trusts
+- Microsoft Learn – Kerberos Authentication
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 3 — Trust Authentication Flow, Kerberos Across Trusts, Name Suffix Routing, Selective Authentication, SID History, and Troubleshooting**
