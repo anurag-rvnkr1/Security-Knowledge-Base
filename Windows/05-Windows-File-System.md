@@ -1329,4 +1329,640 @@ Discuss how NTFS indexes directories for efficient access.
 
 ---
 
+# 05-Windows-File-System.md
+
+# Part 3 — NTFS Security, Alternate Data Streams (ADS), Compression, Encryption (EFS), Hard Links, Symbolic Links, Quotas, and Advanced NTFS Features
+
+---
+
+# Introduction
+
+Beyond storing files efficiently, **NTFS** provides powerful enterprise features that improve:
+
+- Security
+- Data protection
+- Storage efficiency
+- Access control
+- Administrative flexibility
+
+These capabilities distinguish NTFS from older file systems such as FAT32 and exFAT.
+
+Understanding these advanced features is essential for:
+
+- Windows Administrators
+- Cybersecurity Engineers
+- SOC Analysts
+- Incident Responders
+- Digital Forensic Investigators
+- Enterprise IT Teams
+
+---
+
+# Advanced NTFS Features
+
+Modern NTFS supports numerous enterprise capabilities.
+
+```text
+NTFS
+
+├── Access Control Lists (ACLs)
+├── Alternate Data Streams (ADS)
+├── Encrypting File System (EFS)
+├── NTFS Compression
+├── Disk Quotas
+├── Hard Links
+├── Symbolic Links
+├── Junction Points
+├── Sparse Files
+└── Reparse Points
+```
+
+---
+
+# NTFS Security Model
+
+NTFS secures files using **Access Control Lists (ACLs)**.
+
+```text
+User Requests File
+
+↓
+
+Security Token
+
+↓
+
+ACL Evaluation
+
+↓
+
+Access Granted?
+
+↓
+
+Yes → Open File
+
+No → Access Denied
+```
+
+This access check is performed by Windows before a file is opened.
+
+---
+
+# Access Control Lists (ACLs)
+
+Each NTFS object can contain an ACL that specifies who is allowed or denied access.
+
+An ACL is composed of multiple **Access Control Entries (ACEs)**.
+
+```text
+ACL
+
+├── ACE 1
+├── ACE 2
+├── ACE 3
+└── ACE 4
+```
+
+Each ACE defines permissions for a user or group.
+
+---
+
+# Common NTFS Permissions
+
+| Permission | Description |
+|------------|-------------|
+| Full Control | Complete management of the file or folder |
+| Modify | Read, write, delete, and modify |
+| Read & Execute | View and execute files |
+| Read | View file contents |
+| Write | Create or modify files |
+| List Folder Contents | View directory contents (folders) |
+
+These permissions can be inherited by child objects.
+
+---
+
+# Permission Inheritance
+
+Inheritance simplifies administration.
+
+```text
+Parent Folder
+
+↓
+
+Permissions
+
+↓
+
+Child Folder
+
+↓
+
+Child Files
+```
+
+By default, new files and folders inherit permissions from their parent unless inheritance is disabled.
+
+---
+
+# Effective Permissions
+
+A user's actual access depends on:
+
+- Direct permissions
+- Group memberships
+- Inherited permissions
+- Explicit deny entries
+
+Administrators should evaluate **effective permissions** rather than only reviewing individual ACL entries.
+
+---
+
+# Alternate Data Streams (ADS)
+
+NTFS supports **Alternate Data Streams (ADS)**.
+
+An ADS allows additional data to be associated with a file without changing its primary contents.
+
+Example:
+
+```text
+Report.docx
+
+├── Main Data Stream
+└── Hidden Stream
+```
+
+The main file appears unchanged in File Explorer.
+
+---
+
+# ADS Concept
+
+```text
+File
+
+↓
+
+Primary Stream
+
+↓
+
+Alternate Stream
+
+↓
+
+Additional Data
+```
+
+Applications typically access only the primary data stream unless explicitly instructed otherwise.
+
+---
+
+# Legitimate Uses of ADS
+
+Microsoft uses ADS for several purposes.
+
+Examples include:
+
+- Zone.Identifier (Mark of the Web)
+- Application metadata
+- Compatibility information
+
+Not every ADS indicates malicious activity.
+
+---
+
+# Cybersecurity Perspective: ADS
+
+Attackers have historically abused ADS to:
+
+- Hide scripts
+- Conceal malicious payloads
+- Store configuration data
+- Evade casual inspection
+
+Modern security products often inspect ADS, but analysts should still consider them during investigations.
+
+---
+
+# Encrypting File System (EFS)
+
+EFS provides file-level encryption on NTFS volumes.
+
+Workflow:
+
+```text
+User Saves File
+
+↓
+
+EFS Encrypts File
+
+↓
+
+Encrypted on Disk
+
+↓
+
+Authorized User Opens File
+
+↓
+
+Automatically Decrypted
+```
+
+Encryption and decryption are generally transparent to the authorized user.
+
+---
+
+# EFS Characteristics
+
+Benefits:
+
+- File-level encryption
+- User-specific protection
+- Integrated with Windows
+- Transparent operation
+
+Limitations:
+
+- Requires NTFS
+- Not available on all Windows editions
+- Different from BitLocker (volume-level encryption)
+
+---
+
+# EFS vs BitLocker
+
+| EFS | BitLocker |
+|------|-----------|
+| File-level encryption | Volume-level encryption |
+| Protects selected files | Protects entire drive |
+| User-based access | Device-based protection |
+| Requires NTFS | Works with supported Windows volumes |
+
+Organizations often deploy BitLocker for full-disk protection and EFS only where file-level encryption is specifically required.
+
+---
+
+# NTFS Compression
+
+NTFS can compress files and folders to reduce storage consumption.
+
+```text
+Original File
+
+↓
+
+NTFS Compression
+
+↓
+
+Compressed on Disk
+
+↓
+
+Automatic Decompression During Access
+```
+
+Compression occurs transparently.
+
+---
+
+# Compression Benefits
+
+Advantages:
+
+- Reduced disk usage
+- Transparent operation
+- Easy management
+
+Potential trade-offs:
+
+- Additional CPU usage during compression/decompression
+- May not significantly reduce already compressed files (e.g., ZIP, JPEG, MP4)
+
+---
+
+# Sparse Files
+
+A **sparse file** reserves logical space without physically allocating every byte.
+
+Example:
+
+```text
+Logical File
+
+100 GB
+
+↓
+
+Actual Disk Usage
+
+5 GB
+```
+
+Sparse files are commonly used by:
+
+- Virtual machines
+- Databases
+- Backup applications
+
+---
+
+# Hard Links
+
+A **hard link** creates another directory entry pointing to the same file data.
+
+```text
+File A
+
+↓
+
+Shared Data
+
+↑
+
+File B
+```
+
+Characteristics:
+
+- Same data
+- Same NTFS volume
+- Multiple names
+- Data remains until the last hard link is removed
+
+---
+
+# Symbolic Links
+
+A **symbolic link** is a special file that references another file or directory.
+
+```text
+Shortcut
+
+↓
+
+Target File
+```
+
+Unlike hard links, symbolic links can point to objects on different volumes.
+
+---
+
+# Hard Links vs Symbolic Links
+
+| Hard Link | Symbolic Link |
+|------------|---------------|
+| Points directly to file data | Points to another path |
+| Same volume only | Can span volumes |
+| File remains while links exist | Target may become unavailable |
+| More transparent to applications | Behaves like a reference |
+
+---
+
+# Junction Points
+
+A **junction point** links one directory to another directory.
+
+Example:
+
+```text
+Folder A
+
+↓
+
+Junction
+
+↓
+
+Folder B
+```
+
+Administrators use junctions to maintain compatibility with legacy software and directory layouts.
+
+---
+
+# Reparse Points
+
+A **reparse point** stores special information used by the file system to redirect processing.
+
+Used by:
+
+- Symbolic links
+- Junctions
+- Mount points
+- Cloud storage integrations
+
+---
+
+# Disk Quotas
+
+NTFS supports disk quotas for user storage management.
+
+Example:
+
+```text
+User Storage
+
+↓
+
+Quota Limit
+
+↓
+
+Warning Threshold
+
+↓
+
+Limit Reached
+```
+
+Administrators can prevent excessive disk consumption.
+
+---
+
+# Quota Example
+
+| User | Quota | Used |
+|------|--------|------|
+| Alice | 20 GB | 12 GB |
+| Bob | 20 GB | 19 GB |
+| Charlie | 50 GB | 34 GB |
+
+Quotas are especially useful on shared file servers.
+
+---
+
+# File Attributes
+
+Common NTFS attributes include:
+
+| Attribute | Purpose |
+|-----------|----------|
+| Read-only | Prevent accidental modification |
+| Hidden | Hide from normal directory listings |
+| System | Identify system files |
+| Archive | Backup indicator |
+| Compressed | NTFS compression enabled |
+| Encrypted | EFS enabled |
+
+---
+
+# Enterprise Example
+
+A finance department stores confidential payroll files.
+
+```text
+Payroll Folder
+
+↓
+
+NTFS ACL
+
+↓
+
+Only HR Group
+
+↓
+
+EFS Encryption
+
+↓
+
+Daily Backup
+
+↓
+
+Audit Logging
+```
+
+This layered approach provides confidentiality and accountability.
+
+---
+
+# Cybersecurity Perspective
+
+Security analysts frequently investigate:
+
+- Unauthorized ACL changes
+- Suspicious ADS usage
+- Symbolic link abuse
+- Junction manipulation
+- Quota abuse
+- Unexpected encryption
+- Hidden files
+
+Threat actors may leverage advanced NTFS features to evade detection or establish persistence.
+
+---
+
+# Business Impact
+
+Advanced NTFS capabilities help organizations:
+
+- Protect sensitive data
+- Reduce storage costs
+- Improve regulatory compliance
+- Simplify storage management
+- Enhance operational security
+- Support enterprise-scale file sharing
+
+---
+
+# Enterprise Best Practices
+
+- Apply the principle of least privilege using NTFS permissions.
+- Review ACLs regularly.
+- Limit the use of EFS to approved scenarios.
+- Use BitLocker for endpoint disk protection.
+- Enable quotas on shared file servers where appropriate.
+- Monitor for suspicious ADS and reparse point activity.
+- Document and audit symbolic links and junctions on critical systems.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review NTFS Permissions
+
+1. Create a test folder.
+2. Right-click → **Properties** → **Security**.
+3. Observe:
+
+- Users
+- Groups
+- Assigned permissions
+- Inheritance status
+
+Do not modify permissions on production folders.
+
+---
+
+## Lab 2 — Enable NTFS Compression
+
+1. Create a test folder.
+2. Open **Properties**.
+3. Select **Advanced**.
+4. Observe the **Compress contents to save disk space** option.
+
+Do not enable compression on production data without evaluating performance implications.
+
+---
+
+## Lab 3 — Review Disk Quota Settings
+
+1. Open the **Properties** of an NTFS volume.
+2. Navigate to the **Quota** tab (if available).
+3. Review:
+
+- Quota status
+- Default limits
+- Warning thresholds
+
+Discuss enterprise use cases for quotas.
+
+---
+
+# Key Takeaways
+
+- NTFS provides advanced enterprise security and storage features.
+- ACLs control access to files and folders.
+- EFS encrypts individual files, while BitLocker protects entire volumes.
+- Alternate Data Streams store additional information associated with files.
+- Hard links, symbolic links, and junctions provide flexible file system references.
+- Disk quotas help administrators manage storage usage.
+
+---
+
+# Interview Questions
+
+1. What is an Access Control List (ACL)?
+2. What is the difference between an ACL and an ACE?
+3. What are Alternate Data Streams (ADS)?
+4. How does EFS differ from BitLocker?
+5. What are the advantages of NTFS compression?
+6. What is a sparse file?
+7. Compare hard links and symbolic links.
+8. What are junction points?
+9. What are reparse points?
+10. Why are NTFS quotas useful in enterprise environments?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Microsoft NTFS Documentation
+- Microsoft EFS Documentation
+- Microsoft BitLocker Documentation
+- Microsoft Sysinternals Documentation
+
+---
+
 
