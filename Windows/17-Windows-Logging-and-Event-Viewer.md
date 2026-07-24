@@ -1491,4 +1491,823 @@ Determine which account received elevated privileges.
 
 ---
 
-**Next:** **Part 3 — Event Filtering, XML Queries, PowerShell Log Analysis, Event Correlation, Threat Hunting, and Incident Investigation**
+# 17-Windows-Logging-and-Event-Viewer.md
+
+# Part 3 — Event Filtering, XML Queries, PowerShell Log Analysis, Event Correlation, Threat Hunting, and Incident Investigation
+
+---
+
+# Introduction
+
+Modern enterprise environments generate **millions of Windows Events every day**.
+
+Simply viewing logs manually is insufficient.
+
+Security teams must be able to:
+
+- Filter events
+- Search efficiently
+- Query logs using XML
+- Automate analysis with PowerShell
+- Correlate events
+- Build attack timelines
+- Hunt for threats
+- Investigate incidents
+
+These skills are fundamental for SOC Analysts, Threat Hunters, DFIR teams, and Windows Administrators.
+
+---
+
+# Event Analysis Workflow
+
+```text
+Collect Logs
+
+↓
+
+Filter Events
+
+↓
+
+Search Relevant Data
+
+↓
+
+Correlate Events
+
+↓
+
+Build Timeline
+
+↓
+
+Identify Root Cause
+
+↓
+
+Respond
+
+↓
+
+Document Findings
+```
+
+A structured workflow reduces investigation time and improves accuracy.
+
+---
+
+# Filtering Events
+
+Event Viewer allows administrators to reduce noise by filtering events.
+
+Common filter criteria include:
+
+- Event ID
+- Event Level
+- Event Source
+- Keywords
+- User
+- Computer
+- Date and Time
+- Event Log
+
+Filtering helps isolate relevant information during troubleshooting or incident response.
+
+---
+
+# Filter Example
+
+```text
+Security Log
+
+↓
+
+Event ID = 4625
+
+↓
+
+Last 24 Hours
+
+↓
+
+Warning + Error
+
+↓
+
+Filtered Results
+```
+
+Instead of reviewing thousands of events, investigators focus only on those relevant to the investigation.
+
+---
+
+# Creating Custom Views
+
+Custom Views combine multiple filters into reusable dashboards.
+
+Example:
+
+```text
+Critical Events
+
++
+
+Errors
+
++
+
+Security Log
+
++
+
+Last 7 Days
+```
+
+Benefits include:
+
+- Faster investigations
+- Consistent analysis
+- Reduced manual effort
+
+---
+
+# Searching Logs
+
+Event Viewer supports keyword searching.
+
+Examples:
+
+```text
+powershell
+
+cmd.exe
+
+Administrator
+
+SQL Server
+
+Disk
+```
+
+Search is useful when Event IDs are unknown.
+
+---
+
+# XML Event Queries
+
+Windows stores events as XML internally.
+
+Example structure:
+
+```xml
+<Event>
+  <System>
+    <EventID>4624</EventID>
+    <Provider Name="Microsoft-Windows-Security-Auditing"/>
+  </System>
+</Event>
+```
+
+XML enables advanced filtering beyond the standard Event Viewer interface.
+
+---
+
+# Advantages of XML Queries
+
+XML queries allow filtering by:
+
+- Event ID
+- Provider
+- Time range
+- Keywords
+- User SID
+- Logon Type
+- Process Name
+- Custom conditions
+
+This provides much greater flexibility than basic filters.
+
+---
+
+# Event Viewer XML Filter
+
+Workflow:
+
+```text
+Create Filter
+
+↓
+
+XML Tab
+
+↓
+
+Custom Query
+
+↓
+
+Matching Events
+```
+
+XML filtering is commonly used in enterprise troubleshooting and digital forensics.
+
+---
+
+# PowerShell Event Analysis
+
+PowerShell provides extensive log analysis capabilities.
+
+Important cmdlets include:
+
+```powershell
+Get-WinEvent
+
+Get-EventLog
+
+Select-Object
+
+Where-Object
+
+Group-Object
+
+Sort-Object
+```
+
+PowerShell is significantly more powerful than manually browsing Event Viewer.
+
+---
+
+# Get-WinEvent
+
+Retrieve events from a log.
+
+```powershell
+Get-WinEvent `
+-LogName Security `
+-MaxEvents 20
+```
+
+Displays the most recent 20 Security events.
+
+---
+
+# Filter by Event ID
+
+Retrieve successful logons.
+
+```powershell
+Get-WinEvent `
+-FilterHashtable @{
+    LogName='Security'
+    Id=4624
+}
+```
+
+Using `-FilterHashtable` is more efficient than retrieving all events and filtering afterward.
+
+---
+
+# Retrieve Failed Logons
+
+```powershell
+Get-WinEvent `
+-FilterHashtable @{
+    LogName='Security'
+    Id=4625
+}
+```
+
+Useful during brute-force investigations.
+
+---
+
+# Search by Time
+
+Example:
+
+```powershell
+Get-WinEvent `
+-FilterHashtable @{
+    LogName='System'
+    StartTime=(Get-Date).AddHours(-24)
+}
+```
+
+Displays events from the previous 24 hours.
+
+---
+
+# Search by Provider
+
+```powershell
+Get-WinEvent `
+-FilterHashtable @{
+    ProviderName='Service Control Manager'
+}
+```
+
+Useful when investigating service-related issues.
+
+---
+
+# Export Events
+
+PowerShell can export results.
+
+Example:
+
+```powershell
+Get-WinEvent `
+-LogName Security `
+-MaxEvents 500 |
+Export-Csv SecurityEvents.csv
+```
+
+Exported data can be analyzed in spreadsheets or SIEM platforms.
+
+---
+
+# Grouping Events
+
+Example:
+
+```powershell
+Get-WinEvent `
+-LogName Security |
+Group-Object Id
+```
+
+Shows the number of occurrences for each Event ID.
+
+---
+
+# Counting Failed Logons
+
+```powershell
+Get-WinEvent `
+-FilterHashtable @{
+    LogName='Security'
+    Id=4625
+} |
+Measure-Object
+```
+
+Useful for identifying authentication attacks.
+
+---
+
+# Event Correlation
+
+Single events rarely indicate an attack.
+
+Security analysts correlate multiple events.
+
+Example:
+
+```text
+4625
+
+↓
+
+4625
+
+↓
+
+4625
+
+↓
+
+4624
+
+↓
+
+4672
+
+↓
+
+Potential Compromise
+```
+
+Correlation provides context.
+
+---
+
+# Timeline Analysis
+
+Investigations often require chronological reconstruction.
+
+```text
+08:00
+
+User Login
+
+↓
+
+08:05
+
+PowerShell Started
+
+↓
+
+08:07
+
+Service Installed
+
+↓
+
+08:10
+
+Remote Connection
+```
+
+Timelines help investigators understand attacker behavior.
+
+---
+
+# Indicators of Compromise (IOCs)
+
+Common Windows IOCs include:
+
+- Repeated failed logons
+- Unexpected administrative logons
+- New services
+- Suspicious PowerShell commands
+- Account creation
+- Group membership changes
+- Unusual scheduled tasks
+
+Multiple IOCs together increase confidence in malicious activity.
+
+---
+
+# Threat Hunting
+
+Threat hunting is the proactive search for malicious activity.
+
+Unlike traditional monitoring:
+
+```text
+Monitoring
+
+↓
+
+Alert
+
+↓
+
+Investigation
+```
+
+Threat Hunting:
+
+```text
+Hypothesis
+
+↓
+
+Search Logs
+
+↓
+
+Correlate Events
+
+↓
+
+Identify Threat
+
+↓
+
+Respond
+```
+
+Threat hunting assumes attackers may already be present.
+
+---
+
+# Example Threat Hunting Scenario
+
+Hypothesis:
+
+> "An attacker used PowerShell for persistence."
+
+Search for:
+
+- Event ID 4688
+- PowerShell execution
+- Encoded commands
+- New scheduled tasks
+- Service creation
+
+Correlate results to determine whether malicious activity occurred.
+
+---
+
+# Brute-Force Investigation
+
+Indicators:
+
+```text
+4625
+
+↓
+
+Hundreds of Failures
+
+↓
+
+4740
+
+↓
+
+4624
+
+↓
+
+Administrative Logon
+```
+
+This pattern may indicate successful password guessing or password spraying.
+
+---
+
+# Privilege Escalation Investigation
+
+Possible sequence:
+
+```text
+4624
+
+↓
+
+4672
+
+↓
+
+4732
+
+↓
+
+4688
+
+↓
+
+4697
+```
+
+Interpretation:
+
+- User logs in.
+- Administrative privileges assigned.
+- Added to privileged group.
+- New process launched.
+- Service installed.
+
+Such a sequence warrants immediate investigation.
+
+---
+
+# Ransomware Investigation
+
+Possible indicators:
+
+- Large numbers of file access events
+- High CPU utilization
+- Service termination
+- Windows Defender disabled
+- Volume Shadow Copy deletion
+- Unexpected process creation
+
+Correlating performance data with event logs improves detection.
+
+---
+
+# Lateral Movement Investigation
+
+Indicators include:
+
+- Remote logons
+- Administrative shares
+- Kerberos ticket activity
+- NTLM authentication
+- Service creation
+- Remote PowerShell execution
+
+Multiple related events often reveal attacker movement between systems.
+
+---
+
+# Event Noise Reduction
+
+Large environments generate significant event volume.
+
+Best practices:
+
+- Filter by severity.
+- Focus on high-value Event IDs.
+- Exclude known benign events.
+- Use centralized correlation.
+- Suppress duplicate alerts.
+
+Reducing noise allows analysts to focus on meaningful activity.
+
+---
+
+# Enterprise Log Analysis Workflow
+
+```text
+Endpoints
+
+↓
+
+Event Collection
+
+↓
+
+WEF
+
+↓
+
+SIEM
+
+↓
+
+Normalization
+
+↓
+
+Correlation
+
+↓
+
+Detection Rules
+
+↓
+
+SOC Analyst
+```
+
+This workflow forms the foundation of modern enterprise monitoring.
+
+---
+
+# Enterprise Example
+
+A SOC receives an alert indicating multiple failed logons.
+
+Investigation reveals:
+
+- 850 instances of Event ID 4625
+- One successful Event ID 4624
+- Event ID 4672 immediately afterward
+- Event ID 4688 launching `powershell.exe`
+- Event ID 4697 installing a new service
+
+The correlation strongly suggests a successful compromise followed by persistence.
+
+---
+
+# Cybersecurity Perspective
+
+Windows Event Logs enable detection of:
+
+- Credential attacks
+- Insider threats
+- Malware execution
+- Persistence
+- Lateral movement
+- Privilege escalation
+- Defense evasion
+- Unauthorized administrative activity
+
+Event correlation is one of the most effective methods for identifying sophisticated attacks.
+
+---
+
+# Business Impact
+
+Advanced log analysis enables organizations to:
+
+- Reduce Mean Time to Detect (MTTD)
+- Reduce Mean Time to Respond (MTTR)
+- Improve regulatory compliance
+- Strengthen forensic investigations
+- Minimize operational disruption
+- Enhance overall security posture
+
+---
+
+# Enterprise Best Practices
+
+- Use `Get-WinEvent` instead of the legacy `Get-EventLog` where possible.
+- Correlate multiple events rather than relying on a single Event ID.
+- Build investigation timelines during incident response.
+- Retain logs long enough to support forensic investigations.
+- Automate recurring searches with PowerShell.
+- Continuously tune detection rules to reduce false positives.
+- Integrate Windows logs with SIEM and EDR platforms.
+- Validate alerts through multiple data sources.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Retrieve Failed Logons
+
+Run:
+
+```powershell
+Get-WinEvent `
+-FilterHashtable @{
+    LogName='Security'
+    Id=4625
+}
+```
+
+Record:
+
+- Username
+- Time
+- Computer
+
+---
+
+## Lab 2 — Count Event IDs
+
+Run:
+
+```powershell
+Get-WinEvent `
+-LogName Security |
+Group-Object Id |
+Sort-Object Count -Descending
+```
+
+Identify the five most common Event IDs.
+
+---
+
+## Lab 3 — Search Recent System Events
+
+Run:
+
+```powershell
+Get-WinEvent `
+-FilterHashtable @{
+    LogName='System'
+    StartTime=(Get-Date).AddHours(-12)
+}
+```
+
+Review recent warnings and errors.
+
+---
+
+## Lab 4 — Build an Investigation Timeline
+
+Using Event Viewer or PowerShell:
+
+1. Locate a successful logon.
+2. Identify processes started afterward.
+3. Note any service changes.
+4. Arrange events chronologically.
+
+---
+
+# Key Takeaways
+
+- Event filtering significantly reduces investigation time.
+- XML queries provide advanced filtering capabilities.
+- `Get-WinEvent` is the preferred PowerShell cmdlet for Windows event analysis.
+- Event correlation provides context that individual events cannot.
+- Threat hunting relies on hypotheses, log analysis, and correlation.
+- Building timelines is essential for digital forensics and incident response.
+
+---
+
+# Interview Questions
+
+1. Why is event filtering important?
+2. What advantages do XML queries provide?
+3. Why is `Get-WinEvent` preferred over `Get-EventLog`?
+4. How do you retrieve Event ID 4625 using PowerShell?
+5. What is event correlation?
+6. Why are investigation timelines important?
+7. What is threat hunting?
+8. Name several indicators of compromise visible in Windows Event Logs.
+9. How can PowerShell automate log analysis?
+10. Why should organizations reduce event noise?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Event Viewer Documentation
+- Microsoft PowerShell Documentation
+- Microsoft Security Auditing Documentation
+- MITRE ATT&CK Framework
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Enterprise Logging Best Practices, Troubleshooting, Compliance, Digital Forensics, Chapter Summary, and Interview Preparation**
