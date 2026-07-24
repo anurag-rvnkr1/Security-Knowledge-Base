@@ -1534,4 +1534,803 @@ Protect Object from Accidental Deletion
 
 ---
 
-**Next:** **Part 3 — Group Policy Integration, OU Administration, PowerShell Management, Troubleshooting, and Enterprise Operations**
+# 10-Organizational-Units-and-Delegation.md
+
+# Part 3 — Group Policy Integration, OU Administration, PowerShell Management, Troubleshooting, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how Organizational Units (OUs) interact with Group Policy.
+- Manage OUs using graphical tools and PowerShell.
+- Learn enterprise OU administration.
+- Troubleshoot OU-related problems.
+- Apply automation and operational best practices.
+
+---
+
+# Review
+
+From previous parts:
+
+Organizational Units provide:
+
+- Logical organization
+- Delegated administration
+- Group Policy targeting
+- Simplified management
+
+Remember:
+
+```text
+OU
+
+≠
+
+Security Boundary
+```
+
+---
+
+# OUs and Group Policy
+
+One of the biggest advantages of OUs is the ability to link:
+
+> **Group Policy Objects (GPOs)**
+
+Example:
+
+```text
+Sales OU
+
+↓
+
+Sales GPO
+
+↓
+
+Sales Computers
+```
+
+---
+
+# Why Link GPOs to OUs?
+
+Instead of applying one policy to every computer:
+
+```text
+Entire Domain
+
+↓
+
+Same Policy
+
+↓
+
+Everyone
+```
+
+Administrators can target:
+
+```text
+Finance OU
+
+↓
+
+Finance Policy
+
+↓
+
+Finance Users
+```
+
+This improves flexibility.
+
+---
+
+# Example
+
+```text
+Company
+
+│
+
+├── HR OU
+
+├── Finance OU
+
+├── Sales OU
+
+└── IT OU
+```
+
+Policies:
+
+```text
+HR Policy
+
+↓
+
+HR OU
+```
+
+```text
+Sales Policy
+
+↓
+
+Sales OU
+```
+
+Each department receives only the required configuration.
+
+---
+
+# GPO Processing Overview
+
+Simplified order:
+
+```text
+Local Policy
+
+↓
+
+Site
+
+↓
+
+Domain
+
+↓
+
+OU
+
+↓
+
+Child OU
+```
+
+This is commonly remembered as:
+
+```text
+L
+
+↓
+
+S
+
+↓
+
+D
+
+↓
+
+OU
+```
+
+(LSDOU)
+
+More specific policies are typically processed later in the sequence, subject to inheritance and precedence rules.
+
+---
+
+# Example Hierarchy
+
+```text
+Company
+
+↓
+
+India
+
+↓
+
+Bangalore
+
+↓
+
+IT
+
+↓
+
+Developers
+```
+
+Possible GPOs:
+
+```text
+Domain Policy
+
+↓
+
+India Policy
+
+↓
+
+IT Policy
+
+↓
+
+Developer Policy
+```
+
+Policies combine according to Group Policy processing rules.
+
+---
+
+# OU Administration
+
+Daily administrative tasks include:
+
+- Creating OUs
+- Renaming OUs
+- Moving objects
+- Deleting OUs
+- Delegating administration
+- Linking GPOs
+- Reviewing permissions
+
+---
+
+# Creating an OU
+
+Graphical method:
+
+```text
+Active Directory Users and Computers
+
+↓
+
+Right Click
+
+↓
+
+New
+
+↓
+
+Organizational Unit
+```
+
+---
+
+# Moving Objects
+
+Example:
+
+```text
+New Employee
+
+↓
+
+Default Location
+
+↓
+
+Move
+
+↓
+
+Sales OU
+```
+
+Proper placement ensures the correct delegated administration and Group Policies apply.
+
+---
+
+# Renaming an OU
+
+Example:
+
+```text
+IT
+
+↓
+
+Information Technology
+```
+
+Changing the OU name does not change the identities (SIDs) of the objects contained within it.
+
+Applications that reference Distinguished Names (DNs) rather than object GUIDs may require validation after structural changes.
+
+---
+
+# Moving an OU
+
+Example:
+
+Before:
+
+```text
+Departments
+
+↓
+
+Sales
+```
+
+After:
+
+```text
+Locations
+
+↓
+
+India
+
+↓
+
+Sales
+```
+
+Moving an OU changes its Distinguished Name because its parent container changes.
+
+Review scripts, applications, and integrations that reference the OU path.
+
+---
+
+# OU Deletion
+
+If:
+
+```text
+Protect from Accidental Deletion
+
+↓
+
+Enabled
+```
+
+Deletion is blocked until the protection setting is removed.
+
+This reduces accidental administrative errors.
+
+---
+
+# PowerShell Management
+
+PowerShell simplifies large-scale administration.
+
+---
+
+# Create OU
+
+```powershell
+New-ADOrganizationalUnit `
+-Name "Sales" `
+-Path "DC=company,DC=com"
+```
+
+---
+
+# Get OU
+
+```powershell
+Get-ADOrganizationalUnit -Filter *
+```
+
+---
+
+# Find Specific OU
+
+```powershell
+Get-ADOrganizationalUnit `
+-Filter 'Name -eq "Sales"'
+```
+
+---
+
+# Remove OU
+
+```powershell
+Remove-ADOrganizationalUnit `
+-Identity "OU=Sales,DC=company,DC=com"
+```
+
+Deletion succeeds only if protection is removed (when enabled) and the administrator has sufficient permissions.
+
+---
+
+# Modify OU
+
+Example:
+
+```powershell
+Set-ADOrganizationalUnit
+```
+
+Typical uses include:
+
+- Updating descriptions
+- Changing managed-by information
+- Adjusting attributes
+- Configuring accidental deletion protection
+
+---
+
+# PowerShell Workflow
+
+```text
+Create OU
+
+↓
+
+Create Users
+
+↓
+
+Move Users
+
+↓
+
+Delegate Permissions
+
+↓
+
+Apply GPO
+
+↓
+
+Automation Complete
+```
+
+---
+
+# Automation Example
+
+Large enterprise:
+
+```text
+500 New Employees
+
+↓
+
+CSV File
+
+↓
+
+PowerShell
+
+↓
+
+Correct OUs
+
+↓
+
+Correct Policies
+```
+
+Automation reduces manual effort and improves consistency.
+
+---
+
+# Enterprise OU Administration
+
+Organization:
+
+- 100,000 employees
+- 40 offices
+- 12 IT teams
+
+Structure:
+
+```text
+Locations
+
+↓
+
+Departments
+
+↓
+
+Teams
+
+↓
+
+Users
+```
+
+Automation manages:
+
+- User provisioning
+- Computer placement
+- Delegation
+- Reporting
+
+---
+
+# Troubleshooting OU Problems
+
+Common issues:
+
+- Wrong OU
+- Incorrect GPO
+- Delegation problems
+- Missing permissions
+- Accidental deletion protection
+- Replication delays
+- Incorrect Distinguished Name
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Problem
+
+↓
+
+Correct OU?
+
+↓
+
+Correct GPO?
+
+↓
+
+Correct Permissions?
+
+↓
+
+Replication Healthy?
+
+↓
+
+Resolved
+```
+
+---
+
+# Example Issue
+
+User:
+
+```text
+Cannot Print
+```
+
+Investigation:
+
+```text
+Wrong OU
+
+↓
+
+Wrong GPO
+
+↓
+
+Printer Policy Missing
+```
+
+Move user or computer to the correct OU (or correct the policy scope), then refresh Group Policy if appropriate.
+
+---
+
+# Useful Administrative Tools
+
+| Tool | Purpose |
+|------|----------|
+| Active Directory Users and Computers | OU management |
+| Group Policy Management | GPO administration |
+| PowerShell | Automation |
+| Event Viewer | Troubleshooting |
+| RSOP | Resultant Set of Policy analysis |
+| GPResult | Verify applied policies |
+
+---
+
+# GPResult Example
+
+```text
+gpresult /r
+```
+
+Displays:
+
+- Applied GPOs
+- Security groups
+- User policies
+- Computer policies
+
+Useful when troubleshooting policy application.
+
+---
+
+# RSOP
+
+Resultant Set of Policy (RSOP) helps administrators determine:
+
+```text
+Which Policies
+
+↓
+
+Actually Apply
+
+↓
+
+To User
+
+Or
+
+Computer
+```
+
+---
+
+# Enterprise Example
+
+Global company:
+
+- 18 countries
+- 80 OUs
+- Hundreds of GPOs
+
+Administration:
+
+```text
+OU
+
+↓
+
+Delegation
+
+↓
+
+Automation
+
+↓
+
+Monitoring
+
+↓
+
+Compliance
+```
+
+Benefits:
+
+- Consistent administration
+- Reduced manual work
+- Easier auditing
+- Faster provisioning
+
+---
+
+# Best Practices
+
+- Keep the OU hierarchy simple.
+- Use descriptive OU names.
+- Document OU purposes.
+- Delegate using groups.
+- Automate repetitive administrative tasks.
+- Review OU structure periodically.
+- Validate Group Policy scope after structural changes.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Moving objects into incorrect OUs.
+- Excessive OU nesting.
+- Applying unnecessary GPOs.
+- Forgetting to document delegation.
+- Renaming or moving OUs without considering dependent scripts or applications.
+- Performing bulk OU operations without testing.
+
+---
+
+# Cybersecurity Perspective
+
+Well-designed OU administration supports security by:
+
+- Enforcing least privilege.
+- Supporting targeted Group Policy deployment.
+- Limiting delegated administrative scope.
+- Simplifying auditing.
+- Improving operational consistency.
+
+Poor OU administration can lead to:
+
+- Misapplied security policies.
+- Excessive administrative permissions.
+- Configuration drift.
+- Compliance issues.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Manage OUs using both graphical tools and PowerShell.
+
+### Tasks
+
+1. Create:
+
+```powershell
+New-ADOrganizationalUnit -Name "Lab"
+```
+
+2. Create child OUs:
+
+```text
+Users
+
+Computers
+
+Servers
+```
+
+3. Move a test user into:
+
+```text
+Users OU
+```
+
+4. Verify:
+
+```text
+gpresult /r
+```
+
+5. List all OUs:
+
+```powershell
+Get-ADOrganizationalUnit -Filter *
+```
+
+6. Document:
+
+- OU hierarchy
+- Applied policies
+- Delegated administration
+- Automation opportunities
+
+---
+
+# Key Takeaways
+
+- OUs are the primary targets for Group Policy deployment.
+- PowerShell simplifies enterprise OU management.
+- Automation improves consistency and scalability.
+- Troubleshooting often begins with verifying OU placement and policy scope.
+- Simple, well-documented OU structures are easier to manage.
+
+---
+
+# Interview Questions
+
+1. Why are OUs commonly used with Group Policy?
+2. What is LSDOU?
+3. How do you create an OU using PowerShell?
+4. Which command lists all OUs?
+5. What happens when an OU is moved?
+6. Why might an incorrectly placed object receive the wrong policy?
+7. What tools help troubleshoot Group Policy applied through OUs?
+8. What is RSOP?
+9. Why is automation valuable for OU administration?
+10. What are common OU management mistakes?
+
+---
+
+# References
+
+- Microsoft Learn – Organizational Units
+- Microsoft Learn – Active Directory PowerShell Module
+- Microsoft Learn – Group Policy Fundamentals
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — OU Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
