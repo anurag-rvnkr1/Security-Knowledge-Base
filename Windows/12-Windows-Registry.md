@@ -1682,3 +1682,742 @@ Observe the hierarchy and compare it with Registry Editor.
 
 ---
 
+# 12-Windows-Registry.md
+
+# Part 3 — Registry Startup Locations, Persistence Mechanisms, Security, Monitoring, and Troubleshooting
+
+---
+
+# Introduction
+
+The Windows Registry is far more than a configuration database.
+
+It also plays a critical role in:
+
+- System startup
+- User logon
+- Application execution
+- Security policy enforcement
+- Device configuration
+- Software installation
+- Enterprise management
+
+For cybersecurity professionals, the Registry is one of the most valuable sources of forensic evidence because it records configuration changes, startup mechanisms, and many aspects of system behavior.
+
+---
+
+# Registry During System Startup
+
+During the Windows boot process:
+
+```text
+Power On
+
+↓
+
+Windows Boot Manager
+
+↓
+
+Windows Loader
+
+↓
+
+Load SYSTEM Hive
+
+↓
+
+Initialize Drivers
+
+↓
+
+Initialize Services
+
+↓
+
+User Logon
+```
+
+The **SYSTEM** hive is particularly important because it contains information required to start Windows.
+
+---
+
+# Registry During User Logon
+
+When a user signs in:
+
+```text
+User Authentication
+
+↓
+
+Load User Profile
+
+↓
+
+Load NTUSER.DAT
+
+↓
+
+Create HKCU
+
+↓
+
+Desktop Appears
+```
+
+This is why each user can have different desktop settings, application preferences, and personalization options.
+
+---
+
+# Startup Locations in the Registry
+
+Windows checks several Registry locations during startup and user logon.
+
+Examples include:
+
+- Machine-wide startup entries
+- User-specific startup entries
+- Service configuration
+- Driver configuration
+- Scheduled task configuration (stored primarily outside the Registry but referenced by system components)
+
+Some of these locations are commonly reviewed during incident response.
+
+---
+
+# Run Keys
+
+One well-known startup location is the **Run** key.
+
+Conceptually:
+
+```text
+User Logs On
+
+↓
+
+Registry Run Key
+
+↓
+
+Application Starts
+```
+
+Applications may register themselves here to start automatically when a user signs in.
+
+---
+
+# Common Run Key Locations
+
+Examples:
+
+```text
+HKCU
+
+↓
+
+Software
+
+↓
+
+Microsoft
+
+↓
+
+Windows
+
+↓
+
+CurrentVersion
+
+↓
+
+Run
+```
+
+and
+
+```text
+HKLM
+
+↓
+
+Software
+
+↓
+
+Microsoft
+
+↓
+
+Windows
+
+↓
+
+CurrentVersion
+
+↓
+
+Run
+```
+
+- **HKCU** affects the current user.
+- **HKLM** affects all users on the computer.
+
+---
+
+# RunOnce Keys
+
+Windows also supports **RunOnce** entries.
+
+Workflow:
+
+```text
+Registry
+
+↓
+
+RunOnce
+
+↓
+
+Application Executes
+
+↓
+
+Entry Removed
+```
+
+These are often used by installers to complete setup after a reboot.
+
+---
+
+# Startup Comparison
+
+| Registry Location | Typical Behavior |
+|-------------------|------------------|
+| Run | Starts at every logon |
+| RunOnce | Starts once, then removes itself |
+| Services | Starts according to startup type |
+| Drivers | Loads during system startup |
+
+---
+
+# File Associations
+
+The Registry stores file associations.
+
+Example:
+
+```text
+.pdf
+
+↓
+
+Associated Application
+
+↓
+
+Open File
+```
+
+Changing file associations changes which application opens a particular file type.
+
+---
+
+# COM Registration (Overview)
+
+Windows uses the Registry to store information about **COM (Component Object Model)** components.
+
+Conceptually:
+
+```text
+Application
+
+↓
+
+Registry Lookup
+
+↓
+
+COM Component
+
+↓
+
+Load Component
+```
+
+COM is used extensively by Windows and many enterprise applications.
+
+---
+
+# Installed Software Information
+
+Many installers record information such as:
+
+- Application name
+- Version
+- Publisher
+- Installation path
+- Uninstall information
+
+Example:
+
+```text
+Install Application
+
+↓
+
+Registry Updated
+
+↓
+
+Software Inventory
+```
+
+Enterprise asset management tools often use this information.
+
+---
+
+# Hardware Configuration
+
+The Registry stores information about:
+
+- Connected devices
+- Drivers
+- Hardware profiles
+- Configuration parameters
+
+Windows references this information during startup and device initialization.
+
+---
+
+# Driver Configuration
+
+Drivers rely on Registry settings for:
+
+- Startup behavior
+- Configuration options
+- Device parameters
+- Operational settings
+
+Improper modifications can affect hardware functionality.
+
+---
+
+# Service Configuration Review
+
+Service information stored in the Registry may include:
+
+- Startup type
+- Executable path
+- Dependencies
+- Service account
+- Failure actions (where applicable)
+
+The Service Control Manager reads this information during system startup.
+
+---
+
+# Registry Persistence (Overview)
+
+Attackers sometimes attempt to establish persistence by modifying Registry startup locations.
+
+Conceptually:
+
+```text
+Unauthorized Program
+
+↓
+
+Registry Startup Entry
+
+↓
+
+System Restart
+
+↓
+
+Program Executes
+```
+
+Security teams monitor startup locations to detect unauthorized changes.
+
+---
+
+# Registry Persistence Indicators
+
+Potential indicators include:
+
+- New startup entries
+- Unexpected Run key values
+- Unrecognized software
+- Recently modified startup locations
+- Unexpected service configuration changes
+
+These indicators should always be evaluated in context.
+
+---
+
+# Registry Security
+
+Registry security is based on access control.
+
+Registry keys have:
+
+- Owners
+- Access Control Lists (ACLs)
+- Inheritance
+- Permissions
+
+These concepts are similar to NTFS permissions.
+
+---
+
+# Registry Permissions
+
+Typical Registry permissions include:
+
+| Permission | Description |
+|------------|-------------|
+| Read | View Registry data |
+| Set Value | Modify values |
+| Create Subkey | Create child keys |
+| Delete | Remove keys |
+| Read Permissions | View security settings |
+| Change Permissions | Modify ACLs |
+| Take Ownership | Become the owner |
+
+Only authorized users should have permission to modify critical Registry areas.
+
+---
+
+# Registry Integrity
+
+Protecting Registry integrity involves:
+
+```text
+Authorized Change
+
+↓
+
+Validation
+
+↓
+
+Monitoring
+
+↓
+
+Audit
+
+↓
+
+Recovery (if needed)
+```
+
+Strong change management helps prevent unauthorized configuration changes.
+
+---
+
+# Registry Monitoring
+
+Enterprise security solutions monitor:
+
+- Key creation
+- Key deletion
+- Value creation
+- Value modification
+- Permission changes
+- Startup location modifications
+
+Monitoring helps detect suspicious activity quickly.
+
+---
+
+# Registry Event Monitoring
+
+Monitoring workflow:
+
+```text
+Registry Change
+
+↓
+
+Windows Logging
+
+↓
+
+EDR Agent
+
+↓
+
+SIEM
+
+↓
+
+SOC Investigation
+```
+
+Correlating Registry events with other telemetry improves detection quality.
+
+---
+
+# Troubleshooting Registry Problems
+
+When an application behaves unexpectedly:
+
+```text
+Application Error
+
+↓
+
+Review Configuration
+
+↓
+
+Verify Registry Values
+
+↓
+
+Compare Baseline
+
+↓
+
+Correct Configuration
+
+↓
+
+Retest
+```
+
+Registry troubleshooting should always follow a documented process.
+
+---
+
+# Common Registry Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Application fails to start | Incorrect configuration value |
+| Startup issue | Invalid startup entry |
+| Missing settings | Deleted Registry key |
+| Permission error | Insufficient Registry permissions |
+| Unexpected behavior | Corrupted or incorrect values |
+
+Always verify before making changes.
+
+---
+
+# Registry Comparison
+
+Administrators sometimes compare:
+
+```text
+Known Good Configuration
+
+↓
+
+Current Configuration
+
+↓
+
+Identify Differences
+
+↓
+
+Investigate
+```
+
+Configuration comparison helps identify accidental or unauthorized changes.
+
+---
+
+# Registry Baselines
+
+Organizations often maintain baseline Registry configurations for:
+
+- Domain controllers
+- File servers
+- Database servers
+- Workstations
+- Application servers
+
+Baselines support compliance, troubleshooting, and security investigations.
+
+---
+
+# Enterprise Example
+
+A business application fails after an update.
+
+Investigation:
+
+```text
+Review Event Logs
+
+↓
+
+Verify Registry Settings
+
+↓
+
+Compare With Baseline
+
+↓
+
+Restore Correct Values
+
+↓
+
+Application Functions Normally
+```
+
+Documented baselines simplify root cause analysis.
+
+---
+
+# Cybersecurity Perspective
+
+Registry analysis is fundamental during:
+
+- Malware investigations
+- Incident response
+- Digital forensics
+- Threat hunting
+- Endpoint compromise analysis
+
+Analysts often review:
+
+- Startup locations
+- Service configuration
+- Installed software
+- Security policy settings
+- Recently modified keys
+
+Registry information should always be correlated with process, file, and network activity.
+
+---
+
+# Business Impact
+
+Proper Registry management helps organizations:
+
+- Maintain application stability
+- Improve endpoint security
+- Detect unauthorized configuration changes
+- Simplify software deployment
+- Support compliance requirements
+- Reduce troubleshooting time
+
+---
+
+# Enterprise Best Practices
+
+- Restrict write access to critical Registry locations.
+- Monitor startup-related Registry keys.
+- Review Registry modifications through change management.
+- Maintain baseline configurations.
+- Back up critical Registry data before changes.
+- Investigate unexpected Registry modifications promptly.
+- Use centralized configuration management for enterprise deployments.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Explore Startup Keys
+
+Using **Registry Editor**, browse to a startup-related key such as:
+
+```text
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+```
+
+Observe existing values.
+
+Do **not** modify production systems.
+
+---
+
+## Lab 2 — Compare HKLM and HKCU
+
+Locate similar configuration areas under:
+
+```text
+HKLM
+```
+
+and
+
+```text
+HKCU
+```
+
+Compare:
+
+- Scope
+- Configuration differences
+- User-specific versus system-wide settings
+
+---
+
+## Lab 3 — Search the Registry
+
+Open:
+
+```text
+regedit
+```
+
+Use:
+
+```text
+Edit
+
+↓
+
+Find
+```
+
+Search for a known application name and observe where configuration information is stored.
+
+---
+
+# Key Takeaways
+
+- The Registry plays a central role during Windows startup and user logon.
+- Run and RunOnce keys are common automatic startup locations.
+- The Registry stores software, hardware, service, and file association information.
+- Registry permissions protect critical configuration.
+- Monitoring Registry changes is valuable for both troubleshooting and cybersecurity.
+- Registry analysis should be combined with process, service, and event log analysis during investigations.
+
+---
+
+# Interview Questions
+
+1. What happens to the Registry during user logon?
+2. What is the purpose of the Run Registry key?
+3. What is the difference between Run and RunOnce?
+4. Where is software installation information commonly stored?
+5. Why are Registry startup locations important during incident response?
+6. What permissions can be applied to Registry keys?
+7. How do enterprises monitor Registry changes?
+8. Why are Registry baselines useful?
+9. What information can the Registry provide during malware investigations?
+10. Why should Registry analysis be correlated with other system telemetry?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Registry Documentation
+- Microsoft Windows Administration Documentation
+- Microsoft Security Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
