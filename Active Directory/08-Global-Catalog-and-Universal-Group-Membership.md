@@ -751,4 +751,797 @@ Global Catalog
 
 ---
 
-**Next:** **Part 2 — Global Catalog Replication, Universal Group Membership Caching, PAS, GC Placement, and Enterprise Design**
+# 08-Global-Catalog-and-Universal-Group-Membership.md
+
+# Part 2 — Global Catalog Replication, Universal Group Membership Caching, Partial Attribute Set (PAS), GC Placement, and Enterprise Design
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how Global Catalog replication works.
+- Learn Universal Group Membership Caching (UGMC).
+- Understand the Partial Attribute Set (PAS) in detail.
+- Learn Global Catalog placement strategies.
+- Design enterprise Global Catalog deployments.
+- Understand replication and authentication optimization.
+
+---
+
+# Review
+
+From Part 1:
+
+A Global Catalog (GC) stores:
+
+```text
+Own Domain
+
+↓
+
+Complete Copy
+```
+
+Plus:
+
+```text
+Other Domains
+
+↓
+
+Partial Attribute Set (PAS)
+```
+
+This allows:
+
+- Forest-wide searches
+- Universal Group membership lookup
+- Efficient authentication
+
+---
+
+# Global Catalog Replication
+
+Unlike a normal Domain Controller:
+
+```text
+DC
+
+↓
+
+Only Own Domain
+```
+
+A Global Catalog additionally receives:
+
+```text
+Other Domains
+
+↓
+
+Partial Attributes
+```
+
+This information is replicated throughout the forest.
+
+---
+
+# Replication Overview
+
+```text
+Forest
+
+│
+
+├── Domain A
+
+├── Domain B
+
+├── Domain C
+
+└── Domain D
+
+        │
+
+        ▼
+
+Global Catalog Servers
+
+↓
+
+Receive
+
+↓
+
+Partial Attribute Set
+```
+
+---
+
+# Why Partial Replication?
+
+Imagine:
+
+```text
+Forest
+
+↓
+
+10 Domains
+
+↓
+
+100,000 Users
+
+↓
+
+200 Attributes Each
+```
+
+Replicating every attribute to every GC would:
+
+- Increase storage requirements
+- Consume more WAN bandwidth
+- Slow replication
+- Reduce scalability
+
+Instead:
+
+```text
+Important Attributes
+
+↓
+
+Replicated
+
+↓
+
+Global Catalog
+```
+
+---
+
+# Partial Attribute Set (PAS)
+
+The PAS is defined in the Active Directory Schema.
+
+Only selected attributes are included.
+
+Example:
+
+| Attribute | Included in PAS? |
+|-----------|------------------|
+| Display Name | ✔ |
+| Email Address | ✔ |
+| Object GUID | ✔ |
+| Distinguished Name | ✔ |
+| Office Location | Depends on schema configuration |
+| Custom Application Attribute | Only if configured |
+
+The PAS can be extended by administrators with appropriate privileges, but schema changes should follow formal change-management processes.
+
+---
+
+# How PAS Works
+
+Suppose:
+
+```text
+User
+
+↓
+
+100 Attributes
+```
+
+Global Catalog receives:
+
+```text
+25 Important Attributes
+```
+
+(The exact number depends on the Active Directory schema.)
+
+Result:
+
+```text
+Faster Searches
+
+Lower Replication
+
+Lower Storage
+```
+
+---
+
+# Global Catalog Search Process
+
+Example:
+
+Administrator searches:
+
+```text
+John Smith
+```
+
+Process:
+
+```text
+Search
+
+↓
+
+Global Catalog
+
+↓
+
+PAS Search
+
+↓
+
+Object Found
+
+↓
+
+Return Distinguished Name
+
+↓
+
+Open Complete Object
+```
+
+The GC locates the object quickly without storing every attribute from every domain.
+
+---
+
+# Global Catalog Replication Flow
+
+```text
+Domain Controller
+
+↓
+
+Object Updated
+
+↓
+
+Schema Determines PAS
+
+↓
+
+Selected Attributes
+
+↓
+
+Replicated
+
+↓
+
+Global Catalog Servers
+```
+
+---
+
+# Authentication Using the Global Catalog
+
+User:
+
+```text
+finance.company.com
+```
+
+Logs into:
+
+```text
+research.company.com
+```
+
+Flow:
+
+```text
+Client
+
+↓
+
+Domain Controller
+
+↓
+
+Global Catalog
+
+↓
+
+Universal Groups
+
+↓
+
+Access Token
+
+↓
+
+Authentication
+```
+
+---
+
+# Universal Group Membership
+
+Universal Groups may contain members from:
+
+- Domain A
+- Domain B
+- Domain C
+
+Example:
+
+```text
+Finance Universal Group
+
+↓
+
+Alice
+
+↓
+
+Domain A
+
+↓
+
+Bob
+
+↓
+
+Domain B
+
+↓
+
+Charlie
+
+↓
+
+Domain C
+```
+
+The Global Catalog provides information required to resolve Universal Group membership during many authentication scenarios.
+
+---
+
+# Universal Group Membership Caching (UGMC)
+
+Some branch offices may not have a local Global Catalog server.
+
+Instead of contacting a remote GC during every logon, Active Directory supports:
+
+> **Universal Group Membership Caching (UGMC)**
+
+---
+
+# Why UGMC Exists
+
+Scenario:
+
+```text
+Branch Office
+
+↓
+
+Slow WAN
+
+↓
+
+No Local GC
+```
+
+Without UGMC:
+
+```text
+Every Logon
+
+↓
+
+Remote GC
+
+↓
+
+WAN Delay
+```
+
+With UGMC:
+
+```text
+First Successful Logon
+
+↓
+
+Membership Cached
+
+↓
+
+Future Logons
+
+↓
+
+Local Cache
+```
+
+This reduces WAN dependency while still supporting Universal Group membership.
+
+---
+
+# UGMC Workflow
+
+```text
+User Logon
+
+↓
+
+Contact Global Catalog
+
+↓
+
+Universal Groups Retrieved
+
+↓
+
+Membership Cached
+
+↓
+
+Subsequent Logons
+
+↓
+
+Use Cached Membership
+```
+
+The cache is refreshed periodically to ensure that membership information remains reasonably current.
+
+---
+
+# When Should UGMC Be Used?
+
+Suitable scenarios:
+
+- Small branch offices
+- Slow WAN links
+- Limited infrastructure
+- No local Global Catalog
+
+Not typically required when a reliable local Global Catalog server is available.
+
+---
+
+# Global Catalog Placement
+
+A common enterprise goal is to ensure that users can authenticate efficiently while minimizing unnecessary replication traffic.
+
+General considerations include:
+
+- Number of users
+- Number of sites
+- WAN bandwidth
+- Authentication requirements
+- High availability
+- Disaster recovery
+
+---
+
+# Example 1 — Single Site
+
+```text
+Site
+
+↓
+
+DC01 (GC)
+
+DC02
+```
+
+One GC may be sufficient if availability requirements are modest.
+
+---
+
+# Example 2 — Two Sites
+
+```text
+Site A
+
+↓
+
+DC01 (GC)
+
+DC02
+```
+
+```text
+Site B
+
+↓
+
+DC03 (GC)
+
+DC04
+```
+
+Each site has a local Global Catalog.
+
+---
+
+# Example 3 — Large Enterprise
+
+```text
+Head Office
+
+↓
+
+Multiple GC Servers
+```
+
+```text
+Regional Sites
+
+↓
+
+At Least One GC
+```
+
+```text
+Remote Offices
+
+↓
+
+UGMC
+
+OR
+
+Local GC
+
+Depending on Business Requirements
+```
+
+---
+
+# High Availability
+
+Avoid:
+
+```text
+One GC
+
+↓
+
+Entire Forest
+```
+
+Preferred:
+
+```text
+Multiple Global Catalog Servers
+
+↓
+
+Multiple Sites
+
+↓
+
+Redundancy
+```
+
+This reduces the impact of individual server failures.
+
+---
+
+# Global Catalog Failure
+
+Suppose:
+
+```text
+Site
+
+↓
+
+One GC
+
+↓
+
+Server Failure
+```
+
+Possible effects:
+
+- Slower searches
+- Authentication delays in some cross-domain scenarios
+- WAN dependency if another GC is available remotely
+
+If another reachable GC exists, many operations continue successfully.
+
+---
+
+# Enterprise Architecture
+
+```text
+                 Forest
+
+                    │
+
+     ┌──────────────┴──────────────┐
+
+     │                             │
+
+  Site A                        Site B
+
+     │                             │
+
+GC01  DC02                   GC02  DC04
+
+     │                             │
+
+    Replication Between GC Servers
+```
+
+---
+
+# Replication Optimization
+
+Global Catalog replication is optimized by:
+
+- Partial Attribute Set
+- Site topology
+- Site Links
+- KCC-generated replication topology
+- Efficient scheduling
+
+These mechanisms help balance performance and bandwidth usage.
+
+---
+
+# Design Considerations
+
+| Consideration | Recommendation |
+|---------------|----------------|
+| Large Site | At least one highly available GC |
+| Remote Site | Evaluate GC vs UGMC |
+| High Availability | Multiple GCs where appropriate |
+| WAN Constraints | Use Sites and Site Links effectively |
+| Authentication | Ensure GC accessibility |
+| Disaster Recovery | Include GC servers in recovery planning |
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Having no accessible Global Catalog for authentication scenarios that require it.
+- Deploying only one GC in a large enterprise without redundancy.
+- Ignoring WAN bandwidth when planning GC placement.
+- Extending the PAS without understanding replication impact.
+- Poor documentation of GC locations.
+
+---
+
+# Enterprise Case Study
+
+Company:
+
+- 250,000 users
+- 20 domains
+- 50 sites
+
+Deployment:
+
+```text
+Every Major Site
+
+↓
+
+Two Global Catalog Servers
+```
+
+Small branches:
+
+```text
+Universal Group Membership Caching
+
+↓
+
+Reduced WAN Traffic
+```
+
+Benefits:
+
+- Faster authentication
+- Forest-wide searches
+- High availability
+- Improved resilience
+
+---
+
+# Cybersecurity Perspective
+
+Global Catalog servers contain information about objects across the forest.
+
+Security recommendations:
+
+- Treat GC servers as Tier 0 assets.
+- Monitor replication health.
+- Protect privileged administrative access.
+- Audit schema changes that affect the PAS.
+- Monitor authentication failures.
+- Secure physical and virtual infrastructure hosting GC servers.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Global Catalog placement and Universal Group Membership Caching.
+
+### Tasks
+
+1. Open:
+
+```text
+Active Directory Sites and Services
+```
+
+2. Identify:
+
+- Global Catalog servers
+- Sites
+- Site Links
+
+3. Determine:
+
+- Which sites contain a GC
+- Which remote sites may benefit from UGMC
+
+4. Document:
+
+- GC placement
+- Authentication path
+- Replication considerations
+
+---
+
+# Key Takeaways
+
+- Global Catalog servers replicate a Partial Attribute Set from other domains.
+- The PAS reduces replication traffic while enabling efficient searches.
+- Universal Group Membership Caching reduces WAN dependency in branch offices.
+- GC placement should consider authentication, availability, and network topology.
+- Redundant Global Catalog servers improve resilience.
+
+---
+
+# Interview Questions
+
+1. Why doesn't a Global Catalog replicate every attribute from every domain?
+2. What is the Partial Attribute Set?
+3. What is Universal Group Membership Caching?
+4. When should UGMC be used?
+5. How does a Global Catalog support authentication?
+6. What happens if the only Global Catalog in a site fails?
+7. How should Global Catalog servers be placed in a large enterprise?
+8. Can the PAS be modified?
+9. Why is GC placement important for WAN optimization?
+10. Why are Global Catalog servers considered Tier 0 infrastructure?
+
+---
+
+# References
+
+- Microsoft Learn – Global Catalog
+- Microsoft Learn – Universal Group Membership Caching
+- Microsoft Learn – Active Directory Replication
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 3 — Global Catalog Queries, LDAP Searches, Authentication Process, Infrastructure Master Relationship, and Troubleshooting**
