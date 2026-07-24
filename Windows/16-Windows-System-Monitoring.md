@@ -790,3 +790,784 @@ Review:
 
 ---
 
+# 16-Windows-System-Monitoring.md
+
+# Part 2 — Performance Counters, Event Tracing, Data Collection, Alerts, Baselines, and Advanced Monitoring
+
+---
+
+# Introduction
+
+Collecting system metrics is only the first step in monitoring.
+
+Enterprise administrators must also:
+
+- Understand performance counters
+- Establish performance baselines
+- Configure automated alerts
+- Collect long-term performance data
+- Analyze trends
+- Detect anomalies
+- Perform root cause analysis
+
+Modern monitoring is proactive rather than reactive.
+
+---
+
+# Monitoring Lifecycle
+
+```text
+Collect Metrics
+
+↓
+
+Store Data
+
+↓
+
+Analyze Trends
+
+↓
+
+Detect Issues
+
+↓
+
+Generate Alerts
+
+↓
+
+Investigate
+
+↓
+
+Resolve
+
+↓
+
+Verify
+
+↓
+
+Document
+```
+
+A structured monitoring lifecycle improves operational efficiency.
+
+---
+
+# Performance Counters
+
+Performance Counters measure specific aspects of Windows performance.
+
+They are organized into:
+
+- Objects
+- Counters
+- Instances
+
+Example:
+
+```text
+Object
+
+↓
+
+Processor
+
+↓
+
+Counter
+
+↓
+
+% Processor Time
+
+↓
+
+Instance
+
+↓
+
+_CPU0
+```
+
+Performance counters provide precise measurements of system activity.
+
+---
+
+# Performance Counter Components
+
+| Component | Description |
+|-----------|-------------|
+| Object | Resource category |
+| Counter | Specific metric |
+| Instance | Individual resource |
+
+Example:
+
+```text
+Memory
+
+↓
+
+Available MBytes
+
+↓
+
+System
+```
+
+---
+
+# Common Performance Objects
+
+Windows exposes many performance objects.
+
+Examples:
+
+| Object | Purpose |
+|---------|----------|
+| Processor | CPU performance |
+| Memory | RAM usage |
+| PhysicalDisk | Physical storage |
+| LogicalDisk | Logical volumes |
+| Network Interface | Network utilization |
+| Process | Process activity |
+| Thread | Thread activity |
+| System | Overall system metrics |
+
+---
+
+# Processor Counters
+
+Common CPU counters include:
+
+| Counter | Description |
+|----------|-------------|
+| % Processor Time | CPU utilization |
+| Interrupts/sec | Hardware interrupts |
+| Processor Queue Length | Waiting threads |
+| % Privileged Time | Kernel processing |
+| % User Time | User application processing |
+
+High values should be interpreted in context rather than isolation.
+
+---
+
+# Memory Counters
+
+Important memory counters:
+
+| Counter | Purpose |
+|----------|----------|
+| Available MBytes | Free memory |
+| Pages/sec | Paging activity |
+| Cache Bytes | File system cache |
+| Committed Bytes | Allocated virtual memory |
+
+Sudden changes may indicate memory pressure.
+
+---
+
+# Disk Counters
+
+Important storage counters:
+
+| Counter | Description |
+|----------|-------------|
+| Avg. Disk Queue Length | Waiting disk requests |
+| Disk Reads/sec | Read operations |
+| Disk Writes/sec | Write operations |
+| Disk Transfers/sec | Total I/O operations |
+| % Disk Time | Disk utilization |
+
+Disk counters help identify storage bottlenecks.
+
+---
+
+# Network Counters
+
+Common network counters:
+
+| Counter | Description |
+|----------|-------------|
+| Bytes Total/sec | Network throughput |
+| Packets/sec | Traffic rate |
+| Output Queue Length | Network congestion |
+| Packets Received Errors | Receive errors |
+
+Monitoring network activity is essential for distributed systems.
+
+---
+
+# Process Counters
+
+Administrators often monitor:
+
+- CPU usage
+- Private bytes
+- Working set
+- Thread count
+- Handle count
+- Process ID
+
+These counters help identify resource-intensive applications.
+
+---
+
+# Viewing Performance Counters
+
+Open:
+
+```text
+Performance Monitor
+
+↓
+
+Performance Monitor
+
+↓
+
+Add Counters
+```
+
+Administrators can monitor hundreds of counters simultaneously.
+
+---
+
+# Data Collector Sets
+
+A Data Collector Set automatically records performance information.
+
+Workflow:
+
+```text
+Create Data Collector Set
+
+↓
+
+Select Counters
+
+↓
+
+Choose Interval
+
+↓
+
+Store Results
+
+↓
+
+Analyze
+```
+
+Data can be collected over hours, days, or weeks.
+
+---
+
+# Types of Data Collector Sets
+
+| Type | Purpose |
+|------|----------|
+| Performance Counter | Resource metrics |
+| Event Trace | Kernel and application tracing |
+| System Configuration | Hardware and software inventory |
+
+---
+
+# Configuring Data Collection
+
+Typical configuration includes:
+
+- Collection interval
+- Storage location
+- File format
+- Duration
+- User account
+- Scheduling
+
+Thoughtful configuration minimizes system overhead while capturing useful data.
+
+---
+
+# Performance Logs
+
+Collected performance data is stored in log files.
+
+Common uses:
+
+- Historical analysis
+- Capacity planning
+- Incident investigation
+- Trend reporting
+
+Long-term logs provide context that real-time monitoring cannot.
+
+---
+
+# Performance Baselines
+
+A baseline represents normal system behavior.
+
+Example:
+
+```text
+CPU
+
+Average 20%
+
+Memory
+
+55%
+
+Disk
+
+30%
+
+Network
+
+15 MB/s
+```
+
+Future measurements are compared against this baseline.
+
+---
+
+# Why Baselines Matter
+
+Without a baseline:
+
+- High utilization may be normal.
+- Low utilization may indicate failures.
+- Capacity planning becomes difficult.
+
+Baselines provide context for interpreting performance data.
+
+---
+
+# Establishing Baselines
+
+Recommended approach:
+
+```text
+Monitor
+
+↓
+
+Collect Data
+
+↓
+
+Analyze Normal Operation
+
+↓
+
+Document Values
+
+↓
+
+Review Periodically
+```
+
+Collect data during typical business operations rather than during outages.
+
+---
+
+# Thresholds
+
+Thresholds define acceptable operating limits.
+
+Example:
+
+| Metric | Threshold |
+|---------|-----------|
+| CPU | 85% |
+| Memory | 90% |
+| Disk Free Space | 15% |
+| Disk Queue | 2 |
+| Network Errors | 0 |
+
+Thresholds should reflect workload characteristics.
+
+---
+
+# Alerts
+
+Monitoring platforms generate alerts when thresholds are exceeded.
+
+Example:
+
+```text
+CPU > 90%
+
+↓
+
+Alert
+
+↓
+
+Administrator
+
+↓
+
+Investigation
+```
+
+Alerts should be meaningful and actionable.
+
+---
+
+# Alert Severity
+
+Typical alert levels:
+
+| Severity | Meaning |
+|-----------|---------|
+| Information | Normal event |
+| Warning | Attention required |
+| Critical | Immediate action |
+
+Proper classification helps prioritize incidents.
+
+---
+
+# Alert Fatigue
+
+Excessive alerts reduce effectiveness.
+
+Causes include:
+
+- Poor thresholds
+- Duplicate alerts
+- Temporary spikes
+- Non-actionable events
+
+Organizations should tune monitoring rules regularly.
+
+---
+
+# Event Tracing for Windows (ETW)
+
+Event Tracing for Windows (ETW) is a high-performance tracing framework built into Windows.
+
+ETW captures detailed information from:
+
+- Kernel
+- Drivers
+- Applications
+- Services
+
+It is widely used for diagnostics and performance analysis.
+
+---
+
+# ETW Architecture
+
+```text
+Application
+
+↓
+
+ETW Provider
+
+↓
+
+ETW Session
+
+↓
+
+Trace File
+
+↓
+
+Analysis
+```
+
+ETW introduces minimal overhead compared to many traditional logging mechanisms.
+
+---
+
+# ETW Providers
+
+Examples of providers include:
+
+- Kernel
+- Networking
+- Storage
+- File System
+- Security Components
+- Microsoft Applications
+
+Providers emit structured diagnostic events.
+
+---
+
+# Real-Time Monitoring
+
+Real-time monitoring provides immediate visibility into:
+
+- CPU spikes
+- Memory exhaustion
+- Service failures
+- Disk activity
+- Network congestion
+
+Administrators can respond before users are significantly affected.
+
+---
+
+# Historical Monitoring
+
+Historical monitoring supports:
+
+- Trend analysis
+- Capacity planning
+- SLA reporting
+- Root cause analysis
+- Compliance reporting
+
+Historical data often reveals patterns invisible in real-time views.
+
+---
+
+# Capacity Planning
+
+Capacity planning estimates future resource requirements.
+
+Example:
+
+```text
+Current Storage
+
+↓
+
+5 TB
+
+↓
+
+Growth Rate
+
+↓
+
+15% per Month
+
+↓
+
+Expansion Required
+```
+
+Planning ahead avoids unexpected outages caused by exhausted resources.
+
+---
+
+# Trend Analysis
+
+Trend analysis compares metrics over time.
+
+```text
+Week 1
+
+↓
+
+Week 2
+
+↓
+
+Week 3
+
+↓
+
+Week 4
+```
+
+Steady increases in utilization may indicate the need for hardware upgrades or workload optimization.
+
+---
+
+# Root Cause Analysis (RCA)
+
+Monitoring data assists in Root Cause Analysis.
+
+Typical workflow:
+
+```text
+Incident
+
+↓
+
+Collect Metrics
+
+↓
+
+Review Logs
+
+↓
+
+Identify Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+```
+
+RCA helps prevent recurring issues.
+
+---
+
+# Enterprise Monitoring Example
+
+A database server experiences intermittent slowdowns.
+
+Monitoring reveals:
+
+- CPU remains normal.
+- Memory remains stable.
+- Disk latency increases significantly during backups.
+
+The organization reschedules backups outside business hours, eliminating user complaints.
+
+---
+
+# Cybersecurity Perspective
+
+Security teams use monitoring data to identify:
+
+- Cryptocurrency mining malware
+- Memory-intensive attacks
+- Unexpected process creation
+- Resource exhaustion attacks
+- Lateral movement indicators
+- Suspicious network activity
+
+Performance anomalies can provide early indicators of compromise.
+
+---
+
+# Business Impact
+
+Advanced monitoring enables organizations to:
+
+- Improve system availability
+- Reduce downtime
+- Optimize infrastructure investments
+- Meet SLA commitments
+- Improve user experience
+- Support compliance initiatives
+
+Reliable monitoring contributes directly to business continuity.
+
+---
+
+# Enterprise Best Practices
+
+- Establish documented performance baselines.
+- Review thresholds regularly.
+- Collect historical performance data.
+- Minimize unnecessary alerts.
+- Monitor business-critical systems continuously.
+- Investigate recurring performance deviations.
+- Correlate performance metrics with application and event logs.
+- Periodically validate monitoring configurations.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Add Performance Counters
+
+Open:
+
+```text
+perfmon
+```
+
+Add counters for:
+
+- Processor
+- Memory
+- LogicalDisk
+
+Observe changes while running applications.
+
+---
+
+## Lab 2 — Create a Data Collector Set
+
+Create a custom Data Collector Set that records:
+
+- Processor utilization
+- Available memory
+- Disk queue length
+
+Run it for at least 15 minutes and review the collected data.
+
+---
+
+## Lab 3 — Establish a Baseline
+
+Record the following metrics during normal operation:
+
+- CPU usage
+- Available memory
+- Disk utilization
+- Network throughput
+
+Save the values for future comparison.
+
+---
+
+## Lab 4 — Analyze Trend Data
+
+Collect performance metrics over several days.
+
+Identify:
+
+- Peak utilization periods
+- Average resource usage
+- Growth trends
+- Potential capacity concerns
+
+---
+
+# Key Takeaways
+
+- Performance counters provide detailed measurements of Windows resources.
+- Data Collector Sets automate long-term performance collection.
+- Baselines define normal system behavior.
+- Thresholds and alerts enable proactive monitoring.
+- ETW provides high-performance diagnostic tracing.
+- Historical monitoring supports capacity planning and root cause analysis.
+
+---
+
+# Interview Questions
+
+1. What are Windows Performance Counters?
+2. Explain the relationship between objects, counters, and instances.
+3. What is a Data Collector Set?
+4. Why are performance baselines important?
+5. What is the purpose of ETW?
+6. How do thresholds differ from baselines?
+7. What causes alert fatigue?
+8. Why is historical monitoring valuable?
+9. How does monitoring assist with root cause analysis?
+10. Why should organizations perform capacity planning?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Performance Monitor Documentation
+- Microsoft Event Tracing for Windows Documentation
+- Microsoft Windows Performance Toolkit Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 3 — Windows Event Monitoring, Resource Analysis, PowerShell Monitoring, Automation, and Enterprise Operations**
