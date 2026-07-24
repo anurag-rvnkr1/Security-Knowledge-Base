@@ -818,4 +818,1032 @@ Group Policy Objects
 
 ---
 
-**Next:** **Part 2 — Group Policy Processing, LSDOU Order, Inheritance, Enforcement, Blocking, Filtering, and Loopback Processing**
+# 11-Group-Policy.md
+
+# Part 2 — Group Policy Processing, LSDOU Order, Inheritance, Enforcement, Blocking, Filtering, and Loopback Processing
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how Group Policy is processed.
+- Learn the LSDOU processing order.
+- Understand Group Policy inheritance.
+- Learn GPO precedence.
+- Understand Enforced and Block Inheritance.
+- Learn Security Filtering.
+- Understand WMI Filtering.
+- Learn Loopback Processing.
+- Design enterprise Group Policy deployments.
+
+---
+
+# Review
+
+From Part 1:
+
+We learned:
+
+- What Group Policy is
+- GPO architecture
+- GPC
+- GPT
+- SYSVOL
+- Local vs Domain Policy
+- Where GPOs are linked
+
+Now we'll understand:
+
+> **How Windows decides which policies actually apply.**
+
+---
+
+# Group Policy Processing
+
+When a user logs in or a computer starts:
+
+```text
+Windows
+
+↓
+
+Reads Active Directory
+
+↓
+
+Finds Applicable GPOs
+
+↓
+
+Processes Policies
+
+↓
+
+Configures Computer
+```
+
+Policy processing follows a predictable order.
+
+---
+
+# Processing Order
+
+The standard processing sequence is:
+
+```text
+Local
+
+↓
+
+Site
+
+↓
+
+Domain
+
+↓
+
+Organizational Unit
+```
+
+This is commonly remembered as:
+
+```text
+L
+
+↓
+
+S
+
+↓
+
+D
+
+↓
+
+OU
+```
+
+or
+
+> **LSDOU**
+
+---
+
+# LSDOU Diagram
+
+```text
+Computer
+
+↓
+
+Local Policy
+
+↓
+
+Site Policy
+
+↓
+
+Domain Policy
+
+↓
+
+Parent OU
+
+↓
+
+Child OU
+
+↓
+
+User Logs In
+```
+
+Policies processed later generally have higher precedence when conflicts occur.
+
+---
+
+# Enterprise Example
+
+Structure:
+
+```text
+Company
+
+↓
+
+Domain
+
+↓
+
+India
+
+↓
+
+Bangalore
+
+↓
+
+IT
+
+↓
+
+Developers
+```
+
+Policies:
+
+```text
+Local Policy
+
+↓
+
+Domain Policy
+
+↓
+
+India Policy
+
+↓
+
+IT Policy
+
+↓
+
+Developer Policy
+```
+
+The most specific applicable OU policy is processed last.
+
+---
+
+# Policy Inheritance
+
+Child OUs inherit applicable GPOs from:
+
+- Domain
+- Parent OUs
+
+Example:
+
+```text
+Domain
+
+↓
+
+IT OU
+
+↓
+
+Security OU
+
+↓
+
+Developers
+```
+
+Policies linked higher in the hierarchy are inherited unless inheritance behavior is modified.
+
+---
+
+# Inheritance Example
+
+```text
+Domain Policy
+
+↓
+
+Password Policy
+
+↓
+
+IT OU
+
+↓
+
+Inherited
+
+↓
+
+Developers OU
+
+↓
+
+Inherited
+```
+
+---
+
+# Multiple GPOs
+
+Suppose:
+
+```text
+Domain
+
+↓
+
+Security GPO
+
+↓
+
+IT OU
+
+↓
+
+IT GPO
+
+↓
+
+Developers OU
+
+↓
+
+Developer GPO
+```
+
+The computer receives settings from all applicable GPOs.
+
+---
+
+# GPO Precedence
+
+When two GPOs configure the same setting differently:
+
+```text
+Earlier Policy
+
+↓
+
+Later Policy
+
+↓
+
+Later Setting Wins
+```
+
+In general:
+
+```text
+Child OU
+
+Overrides
+
+Parent OU
+```
+
+unless special options such as **Enforced** are configured.
+
+---
+
+# Example
+
+Domain GPO:
+
+```text
+Wallpaper
+
+↓
+
+Blue
+```
+
+Developer OU:
+
+```text
+Wallpaper
+
+↓
+
+Black
+```
+
+Result:
+
+```text
+Developer OU
+
+↓
+
+Black Wallpaper
+```
+
+because the more specific applicable GPO is processed later.
+
+---
+
+# GPO Link Order
+
+Multiple GPOs can be linked to the same Site, Domain, or OU.
+
+Example:
+
+```text
+Sales OU
+
+│
+
+├── Security GPO
+
+├── Printer GPO
+
+└── Browser GPO
+```
+
+The **link order** determines the order in which linked GPOs are processed within that container.
+
+---
+
+# Link Order Example
+
+```text
+Sales OU
+
+↓
+
+GPO 3
+
+↓
+
+GPO 2
+
+↓
+
+GPO 1
+```
+
+The GPO with the **highest precedence** is processed last.
+
+Administrators should verify link order using the Group Policy Management Console (GPMC).
+
+---
+
+# Enforced (No Override)
+
+Sometimes a policy must apply regardless of lower-level configurations.
+
+Example:
+
+```text
+Domain
+
+↓
+
+Password Policy
+
+↓
+
+Enforced
+```
+
+Even if a child OU attempts to configure conflicting settings, the enforced GPO retains precedence for applicable settings.
+
+---
+
+# Enforced Diagram
+
+```text
+Domain
+
+↓
+
+Security Policy
+
+↓
+
+Enforced
+
+↓
+
+Child OU
+
+↓
+
+Cannot Override
+```
+
+Use enforcement carefully because it affects the normal inheritance model.
+
+---
+
+# Block Inheritance
+
+Sometimes administrators want an OU to stop inheriting GPOs from higher levels.
+
+Example:
+
+```text
+Domain
+
+↓
+
+Policies
+
+↓
+
+Blocked
+
+↓
+
+Research OU
+```
+
+With **Block Inheritance**, inherited GPOs from parent containers are generally ignored.
+
+---
+
+# Block Inheritance Diagram
+
+```text
+Domain
+
+↓
+
+Policy
+
+↓
+
+Research OU
+
+↓
+
+Block Inheritance
+
+↓
+
+Parent Policies Ignored
+```
+
+---
+
+# Enforced vs Block Inheritance
+
+If:
+
+```text
+Domain Policy
+
+↓
+
+Enforced
+```
+
+and
+
+```text
+Research OU
+
+↓
+
+Block Inheritance
+```
+
+Result:
+
+```text
+Enforced Policy
+
+Still Applies
+```
+
+Enforced GPOs take precedence over Block Inheritance.
+
+---
+
+# Comparison
+
+| Feature | Enforced | Block Inheritance |
+|----------|----------|------------------|
+| Configured On | GPO Link | Site, Domain, or OU |
+| Prevents Lower-Level Override | ✔ | ✘ |
+| Stops Parent GPOs | ✘ | ✔ (except Enforced GPOs) |
+| Enterprise Usage | Critical baseline policies | Isolated administrative scenarios |
+
+---
+
+# Security Filtering
+
+Not every linked GPO must apply to every object.
+
+Security Filtering allows administrators to control **who** receives a GPO.
+
+Example:
+
+```text
+Sales OU
+
+↓
+
+Sales GPO
+
+↓
+
+Only Sales Managers
+```
+
+---
+
+# How Security Filtering Works
+
+A GPO is applied only if the security principal has:
+
+- Read permission
+- Apply Group Policy permission
+
+on that GPO.
+
+---
+
+# Security Filtering Diagram
+
+```text
+GPO
+
+↓
+
+Security Group
+
+↓
+
+Allowed Users
+
+↓
+
+Policy Applied
+```
+
+---
+
+# Example
+
+```text
+Finance GPO
+
+↓
+
+Finance Managers Group
+
+↓
+
+Finance Managers Receive Policy
+```
+
+Other users in the OU who do not satisfy the filter do not process that GPO.
+
+---
+
+# WMI Filtering
+
+Sometimes policies should apply only to certain computers based on system characteristics.
+
+Example:
+
+```text
+Windows 11
+
+↓
+
+Apply Policy
+```
+
+```text
+Windows Server
+
+↓
+
+Do Not Apply
+```
+
+This is achieved using a **WMI Filter**.
+
+---
+
+# WMI Filtering Diagram
+
+```text
+Computer
+
+↓
+
+Evaluate WMI Query
+
+↓
+
+True?
+
+↓
+
+YES
+
+↓
+
+Apply GPO
+
+OR
+
+↓
+
+NO
+
+↓
+
+Skip GPO
+```
+
+---
+
+# Common WMI Filter Examples
+
+Examples include:
+
+- Operating System version
+- Laptop vs Desktop (where distinguishable)
+- Amount of RAM
+- Domain role
+- Installed hardware
+- Disk configuration
+
+Use WMI filtering carefully because complex queries can slow policy processing.
+
+---
+
+# Security Filtering vs WMI Filtering
+
+| Security Filtering | WMI Filtering |
+|--------------------|---------------|
+| Uses security permissions | Uses system characteristics |
+| Targets users/groups/computers | Targets computers meeting query conditions |
+| Permission based | Hardware/OS based |
+
+---
+
+# Loopback Processing
+
+Normally:
+
+```text
+User Policy
+
+↓
+
+User Location
+```
+
+However, certain computers (such as kiosks or Remote Desktop Session Hosts) require user settings based on the **computer's** location.
+
+This is accomplished using:
+
+> **Loopback Processing**
+
+---
+
+# Normal Processing
+
+```text
+User
+
+↓
+
+HR OU
+
+↓
+
+HR User Policies
+```
+
+---
+
+# Loopback Processing
+
+```text
+User
+
+↓
+
+Logs Into
+
+↓
+
+Kiosk Computer
+
+↓
+
+Computer OU
+
+↓
+
+Kiosk Policies
+```
+
+The computer influences which **user** policies are applied.
+
+---
+
+# Loopback Modes
+
+Two modes exist:
+
+| Mode | Behavior |
+|------|----------|
+| Merge | Computer OU user policies are added after normal user policies. Conflicts favor the computer's policies. |
+| Replace | User's normal user policies are ignored and replaced by the computer OU's user policies. |
+
+---
+
+# Loopback Example
+
+Employee:
+
+```text
+HR User
+```
+
+Logs into:
+
+```text
+Training Room PC
+```
+
+With Loopback Replace enabled:
+
+```text
+Training Room Policies
+
+↓
+
+Applied
+```
+
+instead of the standard HR user policies.
+
+---
+
+# Enterprise Scenario
+
+Hospital:
+
+```text
+Doctors
+
+↓
+
+Any Clinical Workstation
+
+↓
+
+Standard Clinical Desktop
+```
+
+Loopback ensures every clinical workstation provides the same controlled environment regardless of who logs in.
+
+---
+
+# Policy Refresh
+
+Policies are not processed only at logon or startup.
+
+They also refresh periodically.
+
+Typical behavior:
+
+- Computer policies refresh automatically.
+- User policies refresh automatically.
+- Certain settings require logoff, restart, or both before taking effect.
+
+Administrators can manually trigger a refresh when testing.
+
+---
+
+# Manual Refresh
+
+```text
+gpupdate
+```
+
+Force immediate processing:
+
+```text
+gpupdate /force
+```
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Policy Not Applied
+
+↓
+
+Correct OU?
+
+↓
+
+Correct Link?
+
+↓
+
+Security Filtering?
+
+↓
+
+WMI Filter?
+
+↓
+
+Block Inheritance?
+
+↓
+
+Enforced?
+
+↓
+
+gpresult
+
+↓
+
+Resolved
+```
+
+---
+
+# Useful Administrative Tools
+
+| Tool | Purpose |
+|------|----------|
+| Group Policy Management Console | GPO administration |
+| GPResult | Shows applied policies |
+| RSOP | Displays effective policy |
+| Event Viewer | Group Policy events |
+| PowerShell | GPO automation |
+| gpupdate | Refresh policies |
+
+---
+
+# Enterprise Best Practices
+
+- Keep GPOs organized by purpose.
+- Avoid unnecessary use of Enforced.
+- Use Block Inheritance sparingly.
+- Prefer Security Filtering over creating duplicate GPOs.
+- Keep WMI filters simple and well-documented.
+- Test Loopback Processing before production deployment.
+- Document GPO precedence and link order.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Assuming later-created GPOs automatically have higher precedence.
+- Overusing Enforced.
+- Blocking inheritance without understanding the impact.
+- Applying complex WMI filters everywhere.
+- Forgetting Security Filtering when troubleshooting.
+- Not documenting Loopback configurations.
+
+---
+
+# Cybersecurity Perspective
+
+Proper GPO processing ensures consistent enforcement of enterprise security controls.
+
+Security teams commonly use processing features to:
+
+- Apply baseline security settings.
+- Restrict privileged workstations.
+- Harden kiosk systems.
+- Secure Remote Desktop Session Hosts.
+- Apply role-specific configurations.
+- Maintain compliance while minimizing administrative complexity.
+
+Misconfigured inheritance or filtering can unintentionally weaken security or leave systems unprotected.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Observe GPO processing behavior.
+
+### Tasks
+
+1. Open:
+
+```text
+Group Policy Management
+```
+
+2. Create a test OU.
+
+3. Link two test GPOs.
+
+4. Change the link order.
+
+5. Configure:
+
+- Security Filtering
+- WMI Filtering (optional)
+- Block Inheritance (test environment only)
+
+6. Enable Loopback Processing on a lab computer OU.
+
+7. Run:
+
+```text
+gpupdate /force
+```
+
+8. Verify results:
+
+```text
+gpresult /r
+```
+
+---
+
+# Key Takeaways
+
+- Group Policy follows the LSDOU processing order.
+- Child OU policies generally have higher precedence than parent policies.
+- Enforced overrides Block Inheritance.
+- Security Filtering controls *who* receives a GPO.
+- WMI Filtering controls *which computers* receive a GPO.
+- Loopback Processing applies user policies based on the computer's OU.
+
+---
+
+# Interview Questions
+
+1. What does LSDOU stand for?
+2. What is Group Policy inheritance?
+3. What is GPO precedence?
+4. What is the purpose of Enforced?
+5. What is Block Inheritance?
+6. What is Security Filtering?
+7. What is WMI Filtering?
+8. What is Loopback Processing?
+9. What is the difference between Merge and Replace loopback modes?
+10. Which commands help troubleshoot Group Policy processing?
+
+---
+
+# References
+
+- Microsoft Learn – Group Policy Processing
+- Microsoft Learn – Group Policy Inheritance
+- Microsoft Learn – Loopback Processing
+- Microsoft Learn – Security Filtering
+- Microsoft Learn – WMI Filters
+- Microsoft Windows Server Documentation
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 3 — Group Policy Management, Administrative Templates, Preferences, PowerShell, Troubleshooting, and Enterprise Operations**
