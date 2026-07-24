@@ -761,3 +761,807 @@ Exit-PSSession
 
 ---
 
+# 20-Windows-Remote-Management.md
+
+# Part 3 — Just Enough Administration (JEA), Just-In-Time (JIT) Administration, PowerShell Security, Remote Management Hardening, Monitoring, and Incident Response
+
+---
+
+# Introduction
+
+Remote administration provides powerful capabilities for enterprise management, but it also presents attractive opportunities for attackers.
+
+Compromised administrative credentials can allow adversaries to:
+
+- Execute remote commands
+- Install malware
+- Create user accounts
+- Disable security controls
+- Move laterally
+- Access sensitive data
+
+To reduce these risks, Microsoft recommends implementing **least privilege**, **Just Enough Administration (JEA)**, **Just-In-Time (JIT) Administration**, strong authentication, and comprehensive monitoring.
+
+---
+
+# Securing Remote Administration
+
+A secure remote administration strategy should include:
+
+- Least privilege
+- Multi-Factor Authentication (MFA)
+- Role-Based Access Control (RBAC)
+- Network segmentation
+- PowerShell logging
+- Session auditing
+- Endpoint monitoring
+- Credential protection
+
+Security should be integrated into every administrative workflow.
+
+---
+
+# Principle of Least Privilege
+
+Administrators should receive only the permissions required to perform their responsibilities.
+
+Instead of:
+
+```text
+Administrator
+
+↓
+
+Full Domain Admin
+```
+
+Use:
+
+```text
+Administrator
+
+↓
+
+Limited Administrative Role
+
+↓
+
+Specific Task
+```
+
+This reduces the impact of compromised credentials.
+
+---
+
+# Just Enough Administration (JEA)
+
+JEA is a PowerShell security technology that limits what administrators can do during remote sessions.
+
+Rather than granting unrestricted administrative access, JEA exposes only the commands required for a specific role.
+
+Example:
+
+```text
+Help Desk
+
+↓
+
+PowerShell Session
+
+↓
+
+Restart-Service
+
+Get-Service
+
+Get-EventLog
+
+↓
+
+Nothing Else
+```
+
+---
+
+# Benefits of JEA
+
+JEA provides:
+
+- Least privilege
+- Command restrictions
+- Session isolation
+- Reduced attack surface
+- Administrative accountability
+
+Even if credentials are compromised, attackers have limited capabilities.
+
+---
+
+# JEA Architecture
+
+```text
+Administrator
+
+↓
+
+PowerShell Remoting
+
+↓
+
+JEA Endpoint
+
+↓
+
+Role Capability
+
+↓
+
+Allowed Cmdlets
+
+↓
+
+Windows System
+```
+
+Each role is associated with a predefined set of capabilities.
+
+---
+
+# Role Capability Files
+
+JEA uses **Role Capability Files** (`.psrc`) to define what users can access.
+
+They specify:
+
+- Allowed cmdlets
+- Functions
+- Aliases
+- External commands
+- Visible providers
+
+Example capabilities:
+
+```text
+Restart-Service
+
+Get-Service
+
+Get-Process
+```
+
+Any command not explicitly permitted is unavailable.
+
+---
+
+# Session Configuration Files
+
+Session Configuration Files (`.pssc`) define:
+
+- Authentication options
+- Language mode
+- User roles
+- Startup scripts
+- Security settings
+
+These files create controlled PowerShell endpoints.
+
+---
+
+# JEA Workflow
+
+```text
+Administrator
+
+↓
+
+Authenticate
+
+↓
+
+JEA Endpoint
+
+↓
+
+Role Validation
+
+↓
+
+Approved Commands
+
+↓
+
+Remote Execution
+```
+
+---
+
+# Just-In-Time (JIT) Administration
+
+JIT Administration provides administrative privileges only when required and only for a limited time.
+
+Instead of:
+
+```text
+Permanent Administrator
+```
+
+Use:
+
+```text
+Request Access
+
+↓
+
+Approval
+
+↓
+
+Temporary Elevation
+
+↓
+
+Access Expires
+```
+
+---
+
+# Benefits of JIT
+
+JIT reduces:
+
+- Standing privileges
+- Credential exposure
+- Insider threats
+- Administrative misuse
+- Attack opportunities
+
+Temporary access significantly limits attacker persistence.
+
+---
+
+# JIT Workflow
+
+```text
+Administrator
+
+↓
+
+Request Privilege
+
+↓
+
+Approval
+
+↓
+
+Time-Limited Access
+
+↓
+
+Task Completed
+
+↓
+
+Privileges Removed
+```
+
+---
+
+# Privileged Access Workstations (PAWs)
+
+Highly privileged administrators should use dedicated management systems.
+
+Characteristics:
+
+- Hardened operating system
+- Restricted internet access
+- Administrative tools only
+- Enhanced monitoring
+- MFA required
+
+PAWs reduce exposure to phishing and malware.
+
+---
+
+# Credential Protection
+
+Administrative credentials should be protected using:
+
+- Windows Hello for Business
+- Credential Guard
+- TPM
+- MFA
+- Password managers
+- Privileged Identity Management (PIM)
+
+Credential theft is one of the most common attack objectives.
+
+---
+
+# PowerShell Security
+
+PowerShell is an essential administration tool but is also frequently abused by attackers.
+
+Security features include:
+
+- Execution Policies
+- Script Signing
+- Constrained Language Mode
+- AMSI integration
+- Logging
+- Transcription
+
+These features improve visibility and reduce abuse.
+
+---
+
+# PowerShell Execution Policies
+
+Execution policies control how scripts are executed.
+
+| Policy | Description |
+|----------|-------------|
+| Restricted | No scripts allowed |
+| AllSigned | Every script must be signed |
+| RemoteSigned | Downloaded scripts require signatures |
+| Unrestricted | Minimal restrictions |
+| Bypass | No policy enforcement |
+
+Execution policies are not security boundaries but help prevent accidental script execution.
+
+---
+
+# View Execution Policy
+
+```powershell
+Get-ExecutionPolicy
+```
+
+---
+
+# View All Scopes
+
+```powershell
+Get-ExecutionPolicy -List
+```
+
+---
+
+# Script Signing
+
+Digitally signed scripts provide:
+
+- Integrity
+- Publisher verification
+- Reduced tampering risk
+
+Workflow:
+
+```text
+Script
+
+↓
+
+Digital Signature
+
+↓
+
+Validation
+
+↓
+
+Execute
+```
+
+---
+
+# Antimalware Scan Interface (AMSI)
+
+AMSI allows security software to inspect scripts before execution.
+
+```text
+PowerShell Script
+
+↓
+
+AMSI
+
+↓
+
+Microsoft Defender
+
+↓
+
+Safe?
+
+↓
+
+Execute or Block
+```
+
+AMSI helps detect obfuscated and malicious scripts.
+
+---
+
+# Constrained Language Mode
+
+Constrained Language Mode restricts PowerShell functionality.
+
+Capabilities that may be limited include:
+
+- .NET access
+- COM object creation
+- Reflection
+- Advanced scripting features
+
+This reduces opportunities for post-exploitation.
+
+---
+
+# PowerShell Logging
+
+Enable:
+
+- Module Logging
+- Script Block Logging
+- Transcription
+- Protected Event Logging
+
+These logs support:
+
+- Auditing
+- Threat hunting
+- Incident response
+
+---
+
+# PowerShell Script Block Logging
+
+Script Block Logging records executed PowerShell code.
+
+Benefits:
+
+- Detect obfuscation
+- Identify malicious commands
+- Investigate incidents
+
+Frequently monitored in enterprise SOC environments.
+
+---
+
+# PowerShell Transcription
+
+Transcription records PowerShell sessions.
+
+Example:
+
+```text
+Administrator
+
+↓
+
+PowerShell Session
+
+↓
+
+Transcript File
+
+↓
+
+Audit Repository
+```
+
+Transcripts help reconstruct administrative activity.
+
+---
+
+# Remote Management Hardening
+
+Recommended controls:
+
+- Disable unused remote services.
+- Require HTTPS for WinRM.
+- Enable Network Level Authentication.
+- Restrict RDP access.
+- Use JEA endpoints.
+- Enable firewall logging.
+- Require MFA.
+- Monitor PowerShell activity.
+- Remove local administrator rights where possible.
+
+---
+
+# Network Segmentation
+
+Restrict remote administration to management networks.
+
+Example:
+
+```text
+Administrator VLAN
+
+↓
+
+Firewall
+
+↓
+
+Management Servers
+
+↓
+
+Production Servers
+```
+
+Workstations should not directly administer production systems.
+
+---
+
+# Monitoring Remote Administration
+
+Monitor:
+
+- WinRM sessions
+- PowerShell Remoting
+- RDP logons
+- WMI execution
+- PsExec activity
+- Remote service creation
+- Scheduled task creation
+
+These events often indicate legitimate administration—or attacker activity.
+
+---
+
+# Common Windows Security Events
+
+| Event ID | Description |
+|-----------|-------------|
+| 4624 | Successful logon |
+| 4625 | Failed logon |
+| 4648 | Logon using explicit credentials |
+| 4672 | Special privileges assigned |
+| 4688 | Process creation |
+| 4697 | Service installation |
+| 7045 | New Windows service installed |
+| 4103 | PowerShell Module Logging |
+| 4104 | PowerShell Script Block Logging |
+
+Correlating these events improves detection accuracy.
+
+---
+
+# Detecting Lateral Movement
+
+Potential indicators:
+
+- WinRM connections from unusual hosts
+- PsExec execution
+- Remote service creation
+- Multiple RDP logons
+- WMI remote execution
+- Administrative SMB connections
+
+These activities should be investigated within the broader context of user behavior and change management.
+
+---
+
+# Incident Response Workflow
+
+```text
+Alert
+
+↓
+
+Collect Logs
+
+↓
+
+Review Authentication
+
+↓
+
+Analyze Remote Sessions
+
+↓
+
+Identify Compromised Account
+
+↓
+
+Contain
+
+↓
+
+Recover
+
+↓
+
+Lessons Learned
+```
+
+---
+
+# Enterprise Example
+
+A SOC detects:
+
+- Event ID 4624 from an administrator account
+- PowerShell Script Block Logging (4104)
+- WinRM activity to multiple servers
+- New service installation (7045)
+
+Investigation reveals compromised credentials being used for lateral movement.
+
+The organization:
+
+- Disables the account
+- Isolates affected systems
+- Revokes privileged sessions
+- Resets credentials
+- Reviews administrative logs
+- Updates detection rules
+
+Early monitoring limits the scope of the compromise.
+
+---
+
+# Cybersecurity Perspective
+
+Remote administration tools are routinely abused by attackers after initial compromise.
+
+Common attacker objectives:
+
+- Credential theft
+- Privilege escalation
+- Lateral movement
+- Persistence
+- Data exfiltration
+
+Strong authentication, least privilege, logging, and segmentation reduce these risks.
+
+---
+
+# Business Impact
+
+Secure remote administration enables:
+
+- Faster operations
+- Reduced administrative overhead
+- Improved compliance
+- Better auditability
+- Lower incident response costs
+- Reduced likelihood of privilege abuse
+
+---
+
+# Enterprise Best Practices
+
+- Deploy JEA for administrative roles.
+- Implement JIT administration for privileged access.
+- Enable Script Block Logging and PowerShell Transcription.
+- Require MFA for all remote administration.
+- Use Privileged Access Workstations.
+- Restrict WinRM and RDP to management networks.
+- Monitor PowerShell and WinRM events within the SIEM.
+- Periodically review privileged access assignments.
+- Disable legacy remote management technologies where unnecessary.
+- Conduct regular tabletop exercises for compromised administrator scenarios.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review Execution Policies
+
+Run:
+
+```powershell
+Get-ExecutionPolicy -List
+```
+
+Document execution policies at each scope.
+
+---
+
+## Lab 2 — Review WinRM Configuration
+
+Run:
+
+```powershell
+winrm get winrm/config
+```
+
+Review:
+
+- Service configuration
+- Listener configuration
+- Authentication settings
+
+---
+
+## Lab 3 — Review PowerShell Operational Logs
+
+Open:
+
+```text
+Event Viewer
+
+↓
+
+Applications and Services Logs
+
+↓
+
+Microsoft
+
+↓
+
+Windows
+
+↓
+
+PowerShell
+
+↓
+
+Operational
+```
+
+Identify recent administrative activity.
+
+---
+
+## Lab 4 — Design a JEA Role
+
+Create a design (no implementation required) for a Help Desk role that allows only:
+
+- Get-Service
+- Restart-Service
+- Get-EventLog
+- Get-Process
+
+Explain why additional cmdlets should remain unavailable.
+
+---
+
+# Key Takeaways
+
+- JEA limits administrative capabilities to approved commands.
+- JIT provides temporary administrative privileges.
+- PowerShell security features improve visibility and reduce abuse.
+- AMSI inspects scripts before execution.
+- PowerShell logging is critical for threat hunting and investigations.
+- Remote administration should be isolated, monitored, and protected with MFA.
+
+---
+
+# Interview Questions
+
+1. What is Just Enough Administration (JEA)?
+2. How does JIT Administration improve security?
+3. What is AMSI and why is it important?
+4. What is Script Block Logging?
+5. What is Constrained Language Mode?
+6. Why are Privileged Access Workstations recommended?
+7. Which Event ID records PowerShell Script Block Logging?
+8. How can organizations detect lateral movement using remote administration logs?
+9. Why should WinRM use HTTPS where practical?
+10. Explain the difference between JEA and traditional administrator access.
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft PowerShell Documentation
+- Microsoft JEA Documentation
+- Microsoft WinRM Documentation
+- Microsoft AMSI Documentation
+- MITRE ATT&CK Framework
+- NIST SP 800-53
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Enterprise Remote Management Strategy, Compliance, Troubleshooting, Chapter Summary, and Interview Preparation**
