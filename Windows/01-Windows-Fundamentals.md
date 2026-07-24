@@ -1086,3 +1086,662 @@ Control Panel
 
 ---
 
+# 01-Windows-Fundamentals.md
+
+# Part 3 — Windows Architecture Overview, Kernel, User Mode vs Kernel Mode, System Components, Windows Processes, and Memory Fundamentals
+
+---
+
+# Introduction
+
+Understanding Windows architecture is essential for:
+
+- Windows System Administration
+- Active Directory Administration
+- Cloud Engineering
+- DevOps
+- Malware Analysis
+- Digital Forensics
+- Incident Response
+- Threat Hunting
+- Endpoint Security
+- Driver Development
+
+Windows is designed using a layered architecture that separates user applications from the operating system core, improving stability, security, and reliability.
+
+---
+
+# Windows Architecture Overview
+
+A simplified view of the Windows architecture:
+
+```text
++------------------------------------------------------+
+|                User Applications                     |
+| Chrome | Edge | Office | VS Code | PowerShell        |
++------------------------------------------------------+
+|              Win32 / .NET / UWP APIs                 |
++------------------------------------------------------+
+|                  User Mode Services                  |
+| Explorer | LSASS | Winlogon | Services | DWM         |
++------------------------------------------------------+
+|---------------- User Mode Boundary ------------------|
+|                 Windows Executive                    |
+| Object Manager | Memory | I/O | Security | Process   |
++------------------------------------------------------+
+|                 Windows Kernel                       |
+| Scheduler | Interrupts | Synchronization             |
++------------------------------------------------------+
+|         Hardware Abstraction Layer (HAL)             |
++------------------------------------------------------+
+| CPU | RAM | Disk | Network | GPU | USB Devices       |
++------------------------------------------------------+
+```
+
+---
+
+# Why Windows Uses Layers
+
+Each layer has a specific responsibility.
+
+Benefits include:
+
+- Better security
+- Hardware independence
+- Improved reliability
+- Easier maintenance
+- Driver portability
+- Fault isolation
+- Scalability
+
+---
+
+# User Mode
+
+User Mode is where normal applications execute.
+
+Examples:
+
+- Microsoft Word
+- Google Chrome
+- Visual Studio Code
+- PowerShell
+- Notepad
+- Microsoft Edge
+
+Characteristics:
+
+- Limited privileges
+- Cannot directly access hardware
+- Uses system APIs
+- Memory isolation between applications
+- Crashes usually do not stop the operating system
+
+---
+
+# Examples of User Mode Processes
+
+| Process | Purpose |
+|----------|---------|
+| `explorer.exe` | Windows desktop and File Explorer |
+| `notepad.exe` | Text editor |
+| `chrome.exe` | Web browser |
+| `powershell.exe` | PowerShell shell |
+| `cmd.exe` | Command Prompt |
+| `msedge.exe` | Microsoft Edge |
+
+---
+
+# Kernel Mode
+
+Kernel Mode is the most privileged execution mode in Windows.
+
+Responsibilities include:
+
+- CPU scheduling
+- Memory management
+- Device communication
+- Interrupt handling
+- Security enforcement
+- Process management
+- Thread scheduling
+- Hardware access
+
+Only trusted operating system components and drivers execute here.
+
+---
+
+# User Mode vs Kernel Mode
+
+| User Mode | Kernel Mode |
+|------------|-------------|
+| Limited privileges | Full system privileges |
+| Runs applications | Runs operating system core |
+| Cannot access hardware directly | Direct hardware access |
+| Process crashes are usually isolated | Kernel failures can stop the entire system |
+| Protected memory | Access to system memory |
+
+---
+
+# Why This Separation Matters
+
+Without privilege separation:
+
+```text
+Application Bug
+
+↓
+
+Direct Hardware Access
+
+↓
+
+Kernel Corruption
+
+↓
+
+Entire System Crash
+```
+
+With User Mode:
+
+```text
+Application Crash
+
+↓
+
+Process Terminates
+
+↓
+
+Operating System Continues Running
+```
+
+This design significantly improves operating system stability.
+
+---
+
+# Hardware Abstraction Layer (HAL)
+
+The Hardware Abstraction Layer (HAL) provides a consistent interface between Windows and physical hardware.
+
+```text
+Applications
+
+↓
+
+Windows Kernel
+
+↓
+
+HAL
+
+↓
+
+Hardware
+```
+
+The HAL hides hardware-specific implementation details, allowing Windows to run on a wide variety of hardware platforms.
+
+---
+
+# Benefits of HAL
+
+- Hardware independence
+- Simplified driver development
+- Improved portability
+- Consistent hardware interfaces
+- Easier operating system maintenance
+
+---
+
+# Windows Executive
+
+The Windows Executive provides core operating system services.
+
+Major components include:
+
+```text
+Windows Executive
+
+├── Object Manager
+├── Memory Manager
+├── Process Manager
+├── I/O Manager
+├── Cache Manager
+├── Configuration Manager
+├── Plug and Play Manager
+├── Power Manager
+└── Security Reference Monitor
+```
+
+---
+
+# Object Manager
+
+The Object Manager maintains operating system objects.
+
+Examples:
+
+- Files
+- Processes
+- Threads
+- Events
+- Mutexes
+- Semaphores
+- Registry keys
+
+Benefits:
+
+- Standardized object handling
+- Security integration
+- Resource tracking
+
+---
+
+# Memory Manager
+
+Responsibilities:
+
+- Virtual memory
+- Physical memory allocation
+- Paging
+- Address translation
+- Memory protection
+- Shared memory
+
+Benefits:
+
+- Efficient RAM utilization
+- Process isolation
+- Stable multitasking
+
+---
+
+# I/O Manager
+
+Handles communication between:
+
+```text
+Applications
+
+↓
+
+I/O Manager
+
+↓
+
+Device Drivers
+
+↓
+
+Hardware
+```
+
+Examples:
+
+- Disk access
+- USB devices
+- Keyboards
+- Network adapters
+- Printers
+
+---
+
+# Process Manager
+
+Responsible for:
+
+- Process creation
+- Process termination
+- Thread creation
+- Scheduling support
+- Resource allocation
+
+---
+
+# Security Reference Monitor (SRM)
+
+One of the most important security components.
+
+Responsibilities:
+
+- Access checks
+- Security tokens
+- Privilege verification
+- Object permissions
+- Auditing integration
+
+Whenever a process attempts to access a protected resource, the SRM evaluates whether the action is permitted.
+
+---
+
+# Windows Processes
+
+A process is a running instance of a program.
+
+Example:
+
+```text
+Word.exe
+
+↓
+
+Process Created
+
+↓
+
+Memory Allocated
+
+↓
+
+Threads Created
+
+↓
+
+Execution Begins
+```
+
+Each process has:
+
+- Process ID (PID)
+- Virtual memory
+- Threads
+- Handles
+- Security token
+- Environment variables
+
+---
+
+# Threads
+
+A thread is the smallest unit of execution within a process.
+
+```text
+Process
+
+├── Thread 1
+├── Thread 2
+├── Thread 3
+└── Thread 4
+```
+
+Advantages of multiple threads:
+
+- Better responsiveness
+- Parallel execution
+- Improved resource utilization
+
+---
+
+# Process vs Thread
+
+| Process | Thread |
+|----------|---------|
+| Independent execution environment | Executes within a process |
+| Own virtual memory space | Shares process memory |
+| Higher resource overhead | Lightweight |
+| Can contain multiple threads | Cannot exist without a process |
+
+---
+
+# Virtual Memory
+
+Windows uses virtual memory to allow processes to operate as though they have large, continuous memory spaces.
+
+```text
+Application
+
+↓
+
+Virtual Memory
+
+↓
+
+RAM
+
+↓
+
+Page File (Disk, if required)
+```
+
+Benefits:
+
+- Larger address space
+- Memory isolation
+- Improved multitasking
+- Better application compatibility
+
+---
+
+# Paging
+
+When RAM becomes limited:
+
+```text
+RAM Full
+
+↓
+
+Less-used Memory Pages
+
+↓
+
+Page File
+
+↓
+
+RAM Freed
+```
+
+This mechanism allows Windows to continue running applications even when physical memory is heavily utilized, though excessive paging can reduce performance.
+
+---
+
+# System Calls
+
+Applications cannot directly manipulate kernel resources.
+
+Instead:
+
+```text
+Application
+
+↓
+
+Windows API
+
+↓
+
+System Call
+
+↓
+
+Kernel
+
+↓
+
+Hardware
+```
+
+This controlled interface enhances security and stability.
+
+---
+
+# Enterprise Example
+
+An employee launches Microsoft Excel.
+
+```text
+User Clicks Excel
+
+↓
+
+Explorer.exe
+
+↓
+
+Create Process
+
+↓
+
+Memory Allocated
+
+↓
+
+Threads Created
+
+↓
+
+Excel Starts
+
+↓
+
+Security Token Applied
+
+↓
+
+Files Accessed Through NTFS
+
+↓
+
+Network Resources Accessed (if required)
+```
+
+Multiple Windows subsystems collaborate to complete this seemingly simple action.
+
+---
+
+# Cybersecurity Perspective
+
+Understanding Windows architecture is critical because attackers often target:
+
+- Kernel drivers
+- Processes
+- Threads
+- Memory
+- Security tokens
+- System calls
+- Windows APIs
+- Device drivers
+
+Security analysts frequently investigate:
+
+- Suspicious processes
+- DLL injection
+- Process hollowing
+- Privilege escalation
+- Unauthorized driver loading
+- Memory-resident malware
+
+A strong understanding of architecture helps distinguish legitimate system behavior from malicious activity.
+
+---
+
+# Business Impact
+
+A well-designed architecture provides:
+
+- High system stability
+- Better performance
+- Strong security boundaries
+- Reliable multitasking
+- Efficient hardware utilization
+- Simplified enterprise management
+
+These characteristics reduce downtime and support mission-critical business operations.
+
+---
+
+# Enterprise Best Practices
+
+- Keep device drivers updated from trusted sources.
+- Avoid installing unnecessary kernel-mode software.
+- Monitor system processes for anomalies.
+- Use Endpoint Detection and Response (EDR) tools to detect malicious process behavior.
+- Enable virtualization-based security (where supported).
+- Regularly review system performance and memory usage.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Explore Running Processes
+
+1. Press:
+
+```text
+Ctrl + Shift + Esc
+```
+
+2. Open **Task Manager**.
+
+3. Observe:
+
+- Running applications
+- Background processes
+- Windows processes
+- CPU usage
+- Memory usage
+- Process IDs (enable the PID column if needed)
+
+---
+
+## Lab 2 — View System Information
+
+1. Press:
+
+```text
+Windows + R
+```
+
+2. Run:
+
+```text
+msinfo32
+```
+
+3. Review:
+
+- Processor
+- Installed RAM
+- BIOS/UEFI version
+- Secure Boot status
+- Hardware resources
+
+---
+
+# Key Takeaways
+
+- Windows uses a layered architecture to separate applications from the operating system core.
+- User Mode and Kernel Mode provide stability and security through privilege separation.
+- The Windows Executive manages critical services such as memory, processes, I/O, and security.
+- Processes contain one or more threads, which execute application code.
+- Virtual memory allows efficient multitasking and memory management.
+
+---
+
+# Interview Questions
+
+1. What is Windows architecture?
+2. Explain the difference between User Mode and Kernel Mode.
+3. What is the role of the Hardware Abstraction Layer (HAL)?
+4. What are the major components of the Windows Executive?
+5. What does the Security Reference Monitor do?
+6. Differentiate a process and a thread.
+7. Why does Windows use virtual memory?
+8. What is a system call?
+9. Why is privilege separation important in modern operating systems?
+10. Why is understanding Windows architecture valuable in cybersecurity?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Microsoft Windows Architecture Documentation
+- Microsoft Sysinternals Documentation
+
+---
+
