@@ -1980,3 +1980,758 @@ Record their roles in the operating system.
 
 ---
 
+# 03-Windows-Architecture.md
+
+# Part 4 — Windows Processes, Memory Architecture, Session Architecture, WOW64, Enterprise Architecture, Final Labs, and Chapter Review
+
+---
+
+# Introduction
+
+This final part of the **Windows Architecture** chapter combines the concepts learned so far and explains how they work together in a complete Windows system.
+
+We will explore:
+
+- Process architecture
+- Thread architecture
+- Virtual memory architecture
+- Session architecture
+- WOW64 subsystem
+- Enterprise architecture considerations
+- Performance considerations
+- Security architecture
+- Practical labs
+- Chapter summary
+
+---
+
+# Bringing Everything Together
+
+Every operation performed in Windows involves multiple architectural components.
+
+Example:
+
+```text
+User Opens Microsoft Word
+
+↓
+
+explorer.exe
+
+↓
+
+Win32 API
+
+↓
+
+System Call
+
+↓
+
+Windows Executive
+
+↓
+
+Kernel
+
+↓
+
+HAL
+
+↓
+
+SSD
+
+↓
+
+Document Opens
+```
+
+A simple user action may involve dozens of operating system components working together.
+
+---
+
+# Windows Process Architecture
+
+Every running application executes inside a **process**.
+
+A process provides:
+
+- Memory space
+- Security context
+- Resource management
+- Thread container
+- Handle table
+- Environment variables
+
+Example:
+
+```text
+Microsoft Word
+
+↓
+
+word.exe Process
+
+↓
+
+Memory
+
+Threads
+
+Handles
+
+DLLs
+```
+
+---
+
+# Process Components
+
+```text
+Process
+
+├── Virtual Memory
+├── Threads
+├── Loaded DLLs
+├── Handles
+├── Security Token
+├── Environment Variables
+└── Process Heap
+```
+
+Each process is isolated from other processes, improving system stability and security.
+
+---
+
+# Process Isolation
+
+Windows isolates processes using virtual memory.
+
+```text
+Process A
+
+Memory Space A
+
+──────────────
+
+Process B
+
+Memory Space B
+
+──────────────
+
+Process C
+
+Memory Space C
+```
+
+Benefits:
+
+- Improved stability
+- Better security
+- Reduced application interference
+
+---
+
+# Thread Architecture
+
+Each process contains one or more threads.
+
+```text
+Process
+
+├── Main Thread
+├── Worker Thread
+├── Background Thread
+└── I/O Thread
+```
+
+Threads share:
+
+- Process memory
+- Handles
+- Security token
+- Open files
+
+But each thread has its own:
+
+- Stack
+- CPU registers
+- Execution state
+- Program counter
+
+---
+
+# Dynamic Link Libraries (DLLs)
+
+Windows applications often share code through **Dynamic Link Libraries (DLLs)**.
+
+Example:
+
+```text
+Application
+
+↓
+
+kernel32.dll
+
+↓
+
+user32.dll
+
+↓
+
+ntdll.dll
+```
+
+Advantages:
+
+- Reduced memory usage
+- Shared functionality
+- Easier software maintenance
+- Smaller application size
+
+---
+
+# DLL Loading
+
+```text
+Application Starts
+
+↓
+
+Windows Loader
+
+↓
+
+Required DLLs Located
+
+↓
+
+Memory Mapped
+
+↓
+
+Application Executes
+```
+
+If a required DLL is missing or incompatible, the application may fail to start.
+
+---
+
+# Virtual Memory Architecture
+
+Each process receives its own virtual address space.
+
+```text
+Application
+
+↓
+
+Virtual Address
+
+↓
+
+Memory Manager
+
+↓
+
+Physical RAM
+
+↓
+
+Page File (If Required)
+```
+
+Applications are generally unaware of physical memory locations.
+
+---
+
+# Memory Layout (Simplified)
+
+```text
+High Memory
++----------------------+
+| System DLLs          |
++----------------------+
+| Heap                 |
++----------------------+
+| Memory-Mapped Files  |
++----------------------+
+| Shared Libraries     |
++----------------------+
+| Stack                |
++----------------------+
+| Executable Code      |
++----------------------+
+Low Memory
+```
+
+The exact layout varies depending on system architecture and security features such as Address Space Layout Randomization (ASLR).
+
+---
+
+# Address Space Layout Randomization (ASLR)
+
+ASLR randomly arranges memory locations used by applications.
+
+Benefits:
+
+- Makes exploitation more difficult
+- Reduces reliability of memory corruption attacks
+- Protects against certain code reuse techniques
+
+---
+
+# Data Execution Prevention (DEP)
+
+DEP prevents execution of code from memory regions intended only for data.
+
+```text
+Memory Page
+
+↓
+
+Executable?
+
+↓
+
+Yes → Run
+
+No → Block Execution
+```
+
+DEP helps mitigate many buffer overflow attacks.
+
+---
+
+# Session Architecture
+
+A Windows **session** represents a logical user environment.
+
+Example:
+
+```text
+Windows
+
+├── Session 0
+├── Session 1
+├── Session 2
+└── Session N
+```
+
+---
+
+# Session 0 Isolation
+
+Modern Windows isolates system services from interactive users.
+
+```text
+Session 0
+
+↓
+
+Windows Services
+
+No Interactive User
+
+
+
+Session 1
+
+↓
+
+User Desktop
+```
+
+Benefits:
+
+- Improved security
+- Reduced privilege escalation opportunities
+- Better service isolation
+
+---
+
+# Desktop Architecture
+
+Each user session contains:
+
+```text
+Session
+
+├── Window Station
+│
+├── Desktop
+│
+├── Explorer
+│
+├── Applications
+│
+└── User Objects
+```
+
+This separation allows multiple users to have independent desktop environments.
+
+---
+
+# WOW64 (Windows-on-Windows 64)
+
+WOW64 enables 32-bit applications to run on 64-bit Windows systems.
+
+```text
+32-bit Application
+
+↓
+
+WOW64 Layer
+
+↓
+
+64-bit Windows
+
+↓
+
+Hardware
+```
+
+Benefits:
+
+- Legacy application compatibility
+- Simplified migration to 64-bit systems
+- Reduced software replacement costs
+
+Limitations:
+
+- Cannot run 64-bit applications on a 32-bit operating system.
+- Some legacy software may still require updates or replacement.
+
+---
+
+# Enterprise Architecture
+
+A typical enterprise Windows environment includes multiple integrated components.
+
+```text
+User
+
+↓
+
+Windows Workstation
+
+↓
+
+Active Directory
+
+↓
+
+DNS
+
+↓
+
+File Server
+
+↓
+
+Print Server
+
+↓
+
+Microsoft 365
+
+↓
+
+Azure / Microsoft Entra ID
+
+↓
+
+Enterprise Applications
+```
+
+Each workstation becomes part of a centrally managed ecosystem.
+
+---
+
+# Performance Considerations
+
+Windows architecture supports performance through:
+
+- Multithreading
+- Virtual memory
+- Processor scheduling
+- File caching
+- Asynchronous I/O
+- Multiprocessor support
+
+Administrators monitor these resources using:
+
+- Task Manager
+- Resource Monitor
+- Performance Monitor
+- Windows Performance Recorder (WPR)
+- Windows Performance Analyzer (WPA)
+
+---
+
+# Security Architecture
+
+Windows security is implemented across multiple layers.
+
+```text
+Applications
+
+↓
+
+User Mode
+
+↓
+
+Windows Security APIs
+
+↓
+
+Security Reference Monitor
+
+↓
+
+Kernel Security
+
+↓
+
+Secure Boot
+
+↓
+
+TPM
+
+↓
+
+Hardware
+```
+
+This layered approach helps defend against attacks targeting different parts of the operating system.
+
+---
+
+# Enterprise Example
+
+A user accesses a confidential financial report.
+
+```text
+User Login
+
+↓
+
+LSASS Authenticates User
+
+↓
+
+Explorer Opens File
+
+↓
+
+Object Manager
+
+↓
+
+Security Reference Monitor
+
+↓
+
+NTFS Permission Check
+
+↓
+
+Storage Driver
+
+↓
+
+SSD
+
+↓
+
+File Displayed
+```
+
+Several architecture components work together to ensure only authorized users gain access.
+
+---
+
+# Cybersecurity Perspective
+
+Understanding Windows architecture is essential for:
+
+- Malware analysis
+- Memory forensics
+- Incident response
+- Threat hunting
+- Endpoint detection
+- Privilege escalation analysis
+- Rootkit detection
+- Driver security
+
+Security analysts commonly investigate:
+
+- Suspicious processes
+- DLL injection
+- Process hollowing
+- Memory tampering
+- Unauthorized drivers
+- Abnormal thread creation
+
+---
+
+# Business Impact
+
+A well-designed Windows architecture provides:
+
+- High availability
+- Stable application execution
+- Secure user isolation
+- Efficient hardware utilization
+- Enterprise scalability
+- Easier maintenance
+
+These capabilities reduce downtime and improve organizational productivity.
+
+---
+
+# Enterprise Best Practices
+
+- Standardize on 64-bit Windows deployments.
+- Enable DEP, ASLR, Secure Boot, and VBS where supported.
+- Restrict installation of unsigned or unnecessary drivers.
+- Monitor process creation and memory usage with EDR solutions.
+- Keep operating systems and firmware updated.
+- Implement least privilege for user accounts.
+- Regularly audit system configuration and security logs.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Observe Process Memory
+
+1. Open **Task Manager**.
+2. Go to the **Details** tab.
+3. Enable memory-related columns if necessary.
+4. Compare memory usage of several applications.
+
+Questions:
+
+- Which process uses the most memory?
+- Which processes are system processes?
+
+---
+
+## Lab 2 — Identify 32-bit and 64-bit Applications
+
+1. Launch several applications.
+2. Open **Task Manager**.
+3. Identify which applications are 32-bit (if any) and which are 64-bit.
+
+Discuss how WOW64 supports legacy applications.
+
+---
+
+## Lab 3 — Explore Resource Monitor
+
+1. Press:
+
+```text
+Windows + R
+```
+
+2. Run:
+
+```text
+resmon
+```
+
+Observe:
+
+- CPU
+- Memory
+- Disk
+- Network
+
+Identify one process actively using each resource.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Windows layered architecture
+- User Mode and Kernel Mode
+- Windows Executive
+- Windows Kernel
+- Hardware Abstraction Layer (HAL)
+- Object Manager
+- Memory Manager
+- Process Manager
+- I/O Manager
+- Cache Manager
+- Configuration Manager
+- Plug and Play Manager
+- Security Reference Monitor
+- Thread scheduling
+- Interrupts
+- Context switching
+- Virtual memory
+- Process architecture
+- Session architecture
+- WOW64 compatibility
+- Enterprise architecture
+- Windows security architecture
+
+These concepts form the technical foundation for understanding Windows internals, administration, performance tuning, and cybersecurity.
+
+---
+
+# Key Takeaways
+
+- Windows uses a layered architecture that separates applications from privileged operating system components.
+- Processes provide isolation, while threads enable concurrent execution.
+- Virtual memory improves security, stability, and scalability.
+- Session isolation protects services and user environments.
+- WOW64 enables many legacy 32-bit applications to run on modern 64-bit Windows.
+- Windows security relies on multiple architectural layers working together.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of process isolation?
+2. What resources are shared among threads in the same process?
+3. What are Dynamic Link Libraries (DLLs)?
+4. What is WOW64?
+5. Explain Session 0 Isolation.
+6. How does virtual memory improve system stability?
+7. What are ASLR and DEP?
+8. Why are system services isolated from user sessions?
+9. How does Windows architecture improve enterprise security?
+10. Which Windows components are commonly targeted by advanced malware?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Windows Driver Kit (WDK) Documentation
+- Microsoft Sysinternals Documentation
+- Microsoft Security Documentation
+- Windows Performance Toolkit Documentation
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 3 – Windows Architecture**.
+
+You now understand how Windows is structured internally, how its major components interact, and why this architecture is fundamental to administration, troubleshooting, performance optimization, and cybersecurity.
+
+---
+
