@@ -1934,3 +1934,1006 @@ Review the generated files and filtered output.
 
 ---
 
+# 07-Windows-Command-Line.md
+
+# Part 3 — Windows Networking Commands, Disk Utilities, System Administration Commands, Scheduling, Services, Registry Tools, and Troubleshooting
+
+---
+
+# Introduction
+
+The Windows Command Line provides numerous built-in utilities that enable administrators to manage networking, storage, services, scheduled tasks, user accounts, the Windows Registry, and system troubleshooting.
+
+In enterprise environments, these tools are essential for:
+
+- Network diagnostics
+- Storage management
+- User administration
+- Service management
+- Scheduled automation
+- System maintenance
+- Incident response
+- Digital forensics
+- Security investigations
+
+Many of these commands require **administrative privileges** because they modify critical operating system components.
+
+---
+
+# Windows Administrative Command Categories
+
+```text
+Windows CMD
+
+├── Network Commands
+├── Disk Utilities
+├── Service Management
+├── User Management
+├── Scheduled Tasks
+├── Registry Tools
+├── Driver Management
+├── System Maintenance
+├── Event Log Utilities
+└── Troubleshooting Tools
+```
+
+---
+
+# Network Configuration Commands
+
+Windows includes several networking utilities.
+
+| Command | Purpose |
+|----------|----------|
+| `ipconfig` | IP configuration |
+| `ping` | Connectivity testing |
+| `tracert` | Route tracing |
+| `pathping` | Packet loss analysis |
+| `netstat` | Active connections |
+| `arp` | ARP cache |
+| `route` | Routing table |
+| `nslookup` | DNS lookup |
+| `hostname` | Computer name |
+| `net` | Network administration |
+
+---
+
+# IPCONFIG Review
+
+Display IP configuration.
+
+```cmd
+ipconfig
+```
+
+Detailed configuration.
+
+```cmd
+ipconfig /all
+```
+
+Release DHCP lease.
+
+```cmd
+ipconfig /release
+```
+
+Renew DHCP lease.
+
+```cmd
+ipconfig /renew
+```
+
+Flush DNS cache.
+
+```cmd
+ipconfig /flushdns
+```
+
+Display DNS cache.
+
+```cmd
+ipconfig /displaydns
+```
+
+---
+
+# PING
+
+Tests network connectivity using ICMP Echo Requests.
+
+```cmd
+ping 8.8.8.8
+```
+
+or
+
+```cmd
+ping microsoft.com
+```
+
+Typical output:
+
+```text
+Reply from ...
+
+Time=14ms
+
+TTL=127
+```
+
+---
+
+# TRACERT
+
+Displays the path packets take to a destination.
+
+```cmd
+tracert google.com
+```
+
+Example workflow:
+
+```text
+Computer
+
+↓
+
+Router
+
+↓
+
+ISP
+
+↓
+
+Internet
+
+↓
+
+Destination
+```
+
+Useful for identifying routing issues.
+
+---
+
+# PATHPING
+
+Combines the functionality of `ping` and `tracert`.
+
+```cmd
+pathping google.com
+```
+
+Provides:
+
+- Route information
+- Packet loss statistics
+- Latency measurements
+
+---
+
+# ARP
+
+Displays the Address Resolution Protocol cache.
+
+```cmd
+arp -a
+```
+
+Example output:
+
+```text
+IP Address
+
+↓
+
+MAC Address
+```
+
+Useful during network troubleshooting and incident investigations.
+
+---
+
+# NETSTAT
+
+Displays network statistics.
+
+```cmd
+netstat -an
+```
+
+Common options:
+
+| Option | Purpose |
+|---------|----------|
+| `-a` | All connections |
+| `-n` | Numeric addresses |
+| `-o` | Include Process ID (PID) |
+| `-b` | Show executable (requires admin) |
+
+---
+
+# Example NETSTAT Output
+
+```text
+Local Address
+
+↓
+
+Foreign Address
+
+↓
+
+State
+
+↓
+
+PID
+```
+
+Administrators often correlate the PID with `tasklist` during investigations.
+
+---
+
+# ROUTE
+
+View routing table.
+
+```cmd
+route print
+```
+
+Example:
+
+```text
+Network
+
+↓
+
+Gateway
+
+↓
+
+Interface
+
+↓
+
+Metric
+```
+
+Improper routes can prevent communication between networks.
+
+---
+
+# NSLOOKUP
+
+DNS query utility.
+
+```cmd
+nslookup openai.com
+```
+
+Specify DNS server:
+
+```cmd
+nslookup openai.com 8.8.8.8
+```
+
+Useful for diagnosing DNS resolution issues.
+
+---
+
+# NET Command
+
+The `net` command manages numerous Windows networking functions.
+
+Examples:
+
+```cmd
+net user
+```
+
+```cmd
+net localgroup
+```
+
+```cmd
+net share
+```
+
+```cmd
+net use
+```
+
+Each subcommand serves a different administrative purpose.
+
+---
+
+# NET USER
+
+List local users.
+
+```cmd
+net user
+```
+
+View a user.
+
+```cmd
+net user Alice
+```
+
+Create a user.
+
+```cmd
+net user Alice Password123! /add
+```
+
+Delete a user.
+
+```cmd
+net user Alice /delete
+```
+
+Administrative privileges are required for account management.
+
+---
+
+# NET LOCALGROUP
+
+Display local groups.
+
+```cmd
+net localgroup
+```
+
+Add a user to Administrators.
+
+```cmd
+net localgroup Administrators Alice /add
+```
+
+Membership changes should follow organizational approval processes.
+
+---
+
+# NET SHARE
+
+Display shared folders.
+
+```cmd
+net share
+```
+
+Create a share.
+
+```cmd
+net share Public=C:\Public
+```
+
+Improperly configured shares can expose sensitive information.
+
+---
+
+# NET USE
+
+Connect to a network share.
+
+```cmd
+net use Z: \\FileServer\Finance
+```
+
+Disconnect.
+
+```cmd
+net use Z: /delete
+```
+
+---
+
+# Task Scheduler
+
+Windows schedules tasks using:
+
+```text
+Task Scheduler
+```
+
+CMD interface:
+
+```cmd
+schtasks
+```
+
+---
+
+# SCHTASKS
+
+Display scheduled tasks.
+
+```cmd
+schtasks
+```
+
+Query a task.
+
+```cmd
+schtasks /query
+```
+
+Create a task.
+
+```cmd
+schtasks /create ...
+```
+
+Run a task immediately.
+
+```cmd
+schtasks /run /tn "TaskName"
+```
+
+Scheduled tasks are commonly used for automation and maintenance.
+
+---
+
+# Service Management
+
+Windows services can be managed from CMD.
+
+Utilities include:
+
+- `sc`
+- `net start`
+- `net stop`
+
+---
+
+# NET START
+
+Display running services.
+
+```cmd
+net start
+```
+
+Start a service.
+
+```cmd
+net start Spooler
+```
+
+---
+
+# NET STOP
+
+Stop a service.
+
+```cmd
+net stop Spooler
+```
+
+Stopping critical services may affect system functionality.
+
+---
+
+# SC Command
+
+Service Controller utility.
+
+Query service.
+
+```cmd
+sc query
+```
+
+Query specific service.
+
+```cmd
+sc query WinDefend
+```
+
+Start service.
+
+```cmd
+sc start WinDefend
+```
+
+Stop service.
+
+```cmd
+sc stop WinDefend
+```
+
+Display configuration.
+
+```cmd
+sc qc WinDefend
+```
+
+---
+
+# Driver Query
+
+Display installed drivers.
+
+```cmd
+driverquery
+```
+
+Verbose output.
+
+```cmd
+driverquery /v
+```
+
+CSV export.
+
+```cmd
+driverquery /fo csv
+```
+
+Useful during troubleshooting and forensic investigations.
+
+---
+
+# Driver Signing
+
+Windows can display information about signed drivers.
+
+Administrators use:
+
+```cmd
+sigverif
+```
+
+This launches the File Signature Verification utility.
+
+---
+
+# Registry Command
+
+The Windows Registry can be managed using:
+
+```cmd
+reg
+```
+
+Examples:
+
+```cmd
+reg query
+```
+
+```cmd
+reg add
+```
+
+```cmd
+reg delete
+```
+
+```cmd
+reg export
+```
+
+```cmd
+reg import
+```
+
+Always back up the Registry before making changes.
+
+---
+
+# Registry Query Example
+
+```cmd
+reg query HKLM\Software
+```
+
+Output:
+
+```text
+Registry Keys
+
+↓
+
+Values
+
+↓
+
+Data
+```
+
+---
+
+# Event Log Utility
+
+Windows includes:
+
+```cmd
+wevtutil
+```
+
+Examples:
+
+List logs.
+
+```cmd
+wevtutil el
+```
+
+Query a log.
+
+```cmd
+wevtutil qe System
+```
+
+Export a log.
+
+```cmd
+wevtutil epl System System.evtx
+```
+
+Useful during incident response and troubleshooting.
+
+---
+
+# System File Checker
+
+Verify protected Windows system files.
+
+```cmd
+sfc /scannow
+```
+
+Workflow:
+
+```text
+Scan System Files
+
+↓
+
+Verify Integrity
+
+↓
+
+Repair if Possible
+
+↓
+
+Generate Results
+```
+
+---
+
+# DISM
+
+Deployment Image Servicing and Management.
+
+Check image health.
+
+```cmd
+DISM /Online /Cleanup-Image /CheckHealth
+```
+
+Scan image.
+
+```cmd
+DISM /Online /Cleanup-Image /ScanHealth
+```
+
+Restore health.
+
+```cmd
+DISM /Online /Cleanup-Image /RestoreHealth
+```
+
+DISM is commonly used before or alongside `sfc` when repairing Windows installations.
+
+---
+
+# CHKDSK
+
+Check disk integrity.
+
+```cmd
+chkdsk C:
+```
+
+Repair file system.
+
+```cmd
+chkdsk C: /F
+```
+
+Locate bad sectors.
+
+```cmd
+chkdsk C: /R
+```
+
+Some operations require a reboot because the system volume is in use.
+
+---
+
+# FSUTIL
+
+Advanced file system management.
+
+Examples:
+
+```cmd
+fsutil fsinfo drives
+```
+
+```cmd
+fsutil fsinfo ntfsinfo C:
+```
+
+`fsutil` is intended primarily for advanced administrative tasks.
+
+---
+
+# Shutdown Utility
+
+Shutdown.
+
+```cmd
+shutdown /s
+```
+
+Restart.
+
+```cmd
+shutdown /r
+```
+
+Log off.
+
+```cmd
+shutdown /l
+```
+
+Abort pending shutdown.
+
+```cmd
+shutdown /a
+```
+
+---
+
+# System Diagnostics Workflow
+
+```text
+Problem Report
+
+↓
+
+systeminfo
+
+↓
+
+driverquery
+
+↓
+
+ipconfig
+
+↓
+
+netstat
+
+↓
+
+Event Logs
+
+↓
+
+SFC
+
+↓
+
+DISM
+
+↓
+
+Resolution
+```
+
+---
+
+# Enterprise Example
+
+A workstation cannot reach a file server.
+
+The administrator performs:
+
+```text
+ping
+
+↓
+
+tracert
+
+↓
+
+nslookup
+
+↓
+
+route print
+
+↓
+
+net use
+
+↓
+
+Resolution
+```
+
+If connectivity exists but authentication fails, the administrator continues with user, share, and permission troubleshooting.
+
+---
+
+# Cybersecurity Perspective
+
+Security analysts frequently use CMD during investigations.
+
+Common commands include:
+
+| Command | Investigation Purpose |
+|----------|-----------------------|
+| `whoami` | Identify current user |
+| `hostname` | Identify system |
+| `systeminfo` | Collect system details |
+| `ipconfig /all` | Network configuration |
+| `arp -a` | Local network mapping |
+| `netstat -ano` | Active connections and PIDs |
+| `tasklist` | Running processes |
+| `driverquery` | Installed drivers |
+| `wevtutil` | Collect event logs |
+| `reg query` | Inspect Registry |
+| `schtasks` | Review scheduled tasks |
+| `sc query` | Review running services |
+
+Attackers also use many of these utilities because they are legitimate Windows binaries ("living off the land"). Security teams should correlate command execution with user context, process ancestry, and endpoint telemetry.
+
+---
+
+# Business Impact
+
+These command-line utilities enable organizations to:
+
+- Diagnose network failures
+- Automate maintenance
+- Repair operating systems
+- Manage users and services
+- Collect forensic evidence
+- Improve operational efficiency
+- Reduce downtime
+
+---
+
+# Enterprise Best Practices
+
+- Use administrative privileges only when necessary.
+- Export Registry data before modifying it.
+- Review scheduled tasks periodically.
+- Audit local administrator membership.
+- Monitor service creation and modification.
+- Log administrative command execution.
+- Test repair commands in accordance with organizational change management procedures.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Network Diagnostics
+
+Run:
+
+```cmd
+hostname
+
+ipconfig /all
+
+ping localhost
+
+nslookup microsoft.com
+
+route print
+```
+
+Record:
+
+- Computer name
+- IPv4 address
+- Default gateway
+- DNS server
+- Route summary
+
+---
+
+## Lab 2 — System Health
+
+Execute:
+
+```cmd
+systeminfo
+
+driverquery
+
+sfc /scannow
+```
+
+Observe:
+
+- Operating system information
+- Installed drivers
+- System File Checker results
+
+---
+
+## Lab 3 — Services and Tasks
+
+Run:
+
+```cmd
+sc query
+
+net start
+
+schtasks /query
+```
+
+Identify:
+
+- Running services
+- Scheduled tasks
+- Service states
+
+Do not stop or modify production services unless authorized.
+
+---
+
+# Key Takeaways
+
+- Windows provides extensive command-line tools for networking, storage, services, and troubleshooting.
+- `net`, `sc`, and `schtasks` are core administrative utilities.
+- `sfc` and `DISM` help repair Windows system files and images.
+- `wevtutil` enables command-line event log management.
+- Administrative commands should be used carefully and audited in enterprise environments.
+
+---
+
+# Interview Questions
+
+1. What is the difference between `ping`, `tracert`, and `pathping`?
+2. What information does `netstat -ano` provide?
+3. How do you list local user accounts using CMD?
+4. What is the purpose of the `sc` command?
+5. How do `sfc` and `DISM` differ?
+6. What is the purpose of `driverquery`?
+7. How do you export Windows Event Logs using `wevtutil`?
+8. Why should the Windows Registry be backed up before modification?
+9. What is the purpose of `schtasks`?
+10. Why are built-in Windows administrative tools important in cybersecurity investigations?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Command Reference
+- Microsoft Task Scheduler Documentation
+- Microsoft DISM Documentation
+- Microsoft SFC Documentation
+- Microsoft Sysinternals Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
