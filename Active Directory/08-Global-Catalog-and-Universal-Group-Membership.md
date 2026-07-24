@@ -1544,4 +1544,814 @@ Active Directory Sites and Services
 
 ---
 
-**Next:** **Part 3 — Global Catalog Queries, LDAP Searches, Authentication Process, Infrastructure Master Relationship, and Troubleshooting**
+# 08-Global-Catalog-and-Universal-Group-Membership.md
+
+# Part 3 — Global Catalog Queries, LDAP Searches, Authentication Process, Infrastructure Master Relationship, and Troubleshooting
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how the Global Catalog handles LDAP queries.
+- Learn how forest-wide searches work.
+- Understand the role of the Global Catalog during authentication.
+- Learn the relationship between the Global Catalog and the Infrastructure Master.
+- Troubleshoot common Global Catalog issues.
+- Monitor Global Catalog health in enterprise environments.
+
+---
+
+# Review
+
+From the previous parts:
+
+A Global Catalog stores:
+
+```text
+Own Domain
+
+↓
+
+Complete Directory Information
+```
+
+Plus:
+
+```text
+Other Domains
+
+↓
+
+Partial Attribute Set (PAS)
+```
+
+This enables:
+
+- Forest-wide searches
+- Universal Group membership resolution
+- Efficient authentication
+
+---
+
+# LDAP and the Global Catalog
+
+The **Lightweight Directory Access Protocol (LDAP)** is the standard protocol used to query and manage Active Directory.
+
+Applications use LDAP to:
+
+- Search for users
+- Locate groups
+- Find computers
+- Retrieve directory information
+
+The Global Catalog provides an efficient way to perform **forest-wide LDAP searches**.
+
+---
+
+# LDAP Query Flow
+
+```text
+Application
+
+↓
+
+LDAP Query
+
+↓
+
+Global Catalog
+
+↓
+
+Search PAS
+
+↓
+
+Return Matching Objects
+```
+
+---
+
+# Why LDAP Uses the Global Catalog
+
+Without a GC:
+
+```text
+Application
+
+↓
+
+Domain A
+
+↓
+
+Not Found
+
+↓
+
+Domain B
+
+↓
+
+Not Found
+
+↓
+
+Domain C
+
+↓
+
+Found
+```
+
+With a GC:
+
+```text
+Application
+
+↓
+
+Global Catalog
+
+↓
+
+Forest Search
+
+↓
+
+Result
+```
+
+Only one search is required.
+
+---
+
+# Example Search
+
+Administrator searches:
+
+```text
+Employee ID
+
+123456
+```
+
+Process:
+
+```text
+LDAP Search
+
+↓
+
+Global Catalog
+
+↓
+
+PAS
+
+↓
+
+Matching User
+
+↓
+
+Distinguished Name Returned
+```
+
+If additional attributes not stored in the PAS are needed, the application can query the appropriate Domain Controller.
+
+---
+
+# Forest-Wide Search
+
+Example:
+
+Forest:
+
+```text
+company.com
+
+finance.company.com
+
+sales.company.com
+
+hr.company.com
+```
+
+Administrator searches:
+
+```text
+Sarah Johnson
+```
+
+The GC determines:
+
+```text
+User Located
+
+↓
+
+sales.company.com
+```
+
+without manually searching each domain.
+
+---
+
+# Authentication Overview
+
+Authentication consists of two major activities:
+
+```text
+Identity Verification
+
++
+
+Authorization
+```
+
+The Global Catalog contributes primarily to **authorization** by helping resolve Universal Group membership.
+
+---
+
+# Simplified Authentication Flow
+
+```text
+User
+
+↓
+
+Username & Password
+
+↓
+
+Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+Global Catalog
+
+↓
+
+Universal Groups
+
+↓
+
+Access Token
+
+↓
+
+Access Granted
+```
+
+---
+
+# Access Token Creation
+
+After successful authentication, Windows creates an **access token**.
+
+The token contains:
+
+- User SID
+- Group SIDs
+- Universal Group membership
+- Security privileges
+
+Example:
+
+```text
+User
+
+↓
+
+Authentication
+
+↓
+
+Access Token
+
+↓
+
+Application Access
+```
+
+---
+
+# Universal Group Resolution
+
+Suppose:
+
+```text
+Universal Group
+
+↓
+
+Finance-All
+```
+
+Members:
+
+```text
+Domain A
+
+↓
+
+Alice
+```
+
+```text
+Domain B
+
+↓
+
+Bob
+```
+
+```text
+Domain C
+
+↓
+
+Charlie
+```
+
+During authentication:
+
+```text
+User
+
+↓
+
+Global Catalog
+
+↓
+
+Universal Groups
+
+↓
+
+Access Token
+```
+
+---
+
+# Cross-Domain Authentication Example
+
+User:
+
+```text
+finance.company.com
+```
+
+Accesses:
+
+```text
+research.company.com
+```
+
+Flow:
+
+```text
+Client
+
+↓
+
+Local Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+Global Catalog
+
+↓
+
+Universal Group Lookup
+
+↓
+
+Authorization
+
+↓
+
+Application
+```
+
+The GC allows authorization decisions without performing separate searches in every domain.
+
+---
+
+# Global Catalog and LDAP Ports
+
+A standard Domain Controller and a Global Catalog use different LDAP endpoints for different purposes.
+
+| Service | Default TCP Port |
+|----------|------------------|
+| LDAP | 389 |
+| LDAP over SSL/TLS (LDAPS) | 636 |
+| Global Catalog LDAP | 3268 |
+| Global Catalog over SSL/TLS | 3269 |
+
+> **Note:** Firewalls should allow only the ports required by your organization's design and security policies.
+
+---
+
+# Infrastructure Master Relationship
+
+One of the most frequently discussed interview topics is the relationship between:
+
+- Infrastructure Master
+- Global Catalog
+
+---
+
+# Infrastructure Master Review
+
+The Infrastructure Master updates references to objects located in other domains.
+
+Example:
+
+```text
+Domain A
+
+↓
+
+Group
+
+↓
+
+Contains User
+
+↓
+
+Domain B
+```
+
+If the user changes:
+
+- Name
+- Distinguished Name
+- Other referenced information
+
+the Infrastructure Master updates the reference.
+
+---
+
+# Traditional Design Consideration
+
+Historically, in **multi-domain forests**, administrators generally avoided placing the **Infrastructure Master** on a Global Catalog server **unless every Domain Controller in the domain was also a Global Catalog server**.
+
+Reason:
+
+A Global Catalog already contains partial information about objects from other domains. In older designs, this could prevent the Infrastructure Master from detecting certain cross-domain reference updates because it already had the information locally.
+
+---
+
+# Modern Enterprise Reality
+
+Today, many organizations configure **all Domain Controllers as Global Catalog servers**, especially in single-domain forests and many modern multi-domain environments.
+
+When **every Domain Controller is a Global Catalog**, hosting the Infrastructure Master on a GC is **not** a problem because every Domain Controller has the same visibility into cross-domain objects.
+
+Always evaluate role placement based on your forest design and current Microsoft guidance.
+
+---
+
+# Relationship Diagram
+
+```text
+Multi-Domain Forest
+
+↓
+
+Infrastructure Master
+
+↓
+
+Cross-Domain References
+
+↓
+
+Global Catalog
+
+↓
+
+Partial Object Information
+```
+
+---
+
+# Global Catalog Failure
+
+Suppose:
+
+```text
+Site
+
+↓
+
+Only GC
+
+↓
+
+Offline
+```
+
+Possible consequences:
+
+- Forest-wide searches may fail locally.
+- Universal Group membership resolution may require a remote GC.
+- Authentication across slow WAN links may experience delays.
+
+If another reachable Global Catalog exists elsewhere in the forest, many operations continue.
+
+---
+
+# Common Global Catalog Problems
+
+Examples:
+
+- GC unavailable
+- Replication failures
+- DNS misconfiguration
+- Incorrect Site/Subnet mapping
+- Firewall blocking GC ports
+- Authentication delays
+- Stale replication data
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Authentication Issue
+
+↓
+
+Verify DNS
+
+↓
+
+Verify GC Availability
+
+↓
+
+Verify Replication
+
+↓
+
+Verify Site Configuration
+
+↓
+
+Review Event Logs
+
+↓
+
+Validate Resolution
+```
+
+---
+
+# Monitoring Global Catalog
+
+Administrators should monitor:
+
+| Area | Purpose |
+|------|----------|
+| Replication | Verify PAS synchronization |
+| DNS | Ensure clients locate GCs |
+| Event Viewer | Detect GC-related issues |
+| Authentication | Identify login problems |
+| Site topology | Optimize client referrals |
+| Service availability | Maintain high availability |
+
+---
+
+# Useful Administrative Tools
+
+| Tool | Purpose |
+|------|----------|
+| Active Directory Sites and Services | View GC placement |
+| Active Directory Users and Computers | Directory administration |
+| Event Viewer | Error investigation |
+| PowerShell Active Directory Module | Query AD configuration |
+| Repadmin | Replication diagnostics |
+| DCDiag | Domain Controller health |
+
+---
+
+# Example PowerShell
+
+List all Global Catalog servers in the forest:
+
+```powershell
+Get-ADForest | Select-Object GlobalCatalogs
+```
+
+Example output:
+
+```text
+GC01.company.com
+
+GC02.company.com
+```
+
+---
+
+# Repadmin Example
+
+Check replication summary:
+
+```text
+repadmin /replsummary
+```
+
+Useful for identifying replication problems that may affect Global Catalog data.
+
+---
+
+# DCDiag Example
+
+Run:
+
+```text
+dcdiag
+```
+
+Checks include:
+
+- DNS
+- Replication
+- Advertising
+- Domain Controller services
+- Connectivity
+
+---
+
+# Enterprise Case Study
+
+Company:
+
+- 18 domains
+- 80 Domain Controllers
+- 25 Global Catalog servers
+- 40 offices
+
+Design:
+
+```text
+Regional Sites
+
+↓
+
+Local Global Catalog
+
+↓
+
+Fast Authentication
+
+↓
+
+Forest Searches
+
+↓
+
+High Availability
+```
+
+Benefits:
+
+- Reduced WAN traffic
+- Faster logons
+- Efficient directory searches
+- Improved resilience
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Deploying too few Global Catalog servers.
+- Ignoring replication health.
+- Blocking GC ports through firewalls.
+- Misconfiguring Sites and Subnets.
+- Assuming every authentication issue is caused by the Global Catalog.
+- Changing PAS attributes without evaluating replication impact.
+
+---
+
+# Best Practices
+
+- Deploy Global Catalog servers based on authentication and availability requirements.
+- Monitor replication continuously.
+- Verify DNS configuration before troubleshooting GC issues.
+- Review Site topology after network changes.
+- Keep Domain Controllers updated and secured.
+- Document Global Catalog placement.
+
+---
+
+# Cybersecurity Perspective
+
+Because Global Catalog servers participate in authentication and contain searchable information about the forest, they are valuable infrastructure.
+
+Recommendations:
+
+- Treat GC servers as Tier 0 assets.
+- Monitor privileged logons.
+- Audit directory changes.
+- Protect LDAP and GC communication.
+- Monitor replication failures.
+- Restrict administrative access.
+- Regularly review authentication events for anomalies.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Validate Global Catalog configuration and authentication support.
+
+### Tasks
+
+1. Open:
+
+```text
+Active Directory Sites and Services
+```
+
+2. Identify:
+
+- Global Catalog servers
+- Site topology
+- Replication partners
+
+3. Run:
+
+```powershell
+Get-ADForest | Select-Object GlobalCatalogs
+```
+
+4. Run:
+
+```text
+repadmin /replsummary
+```
+
+5. Document:
+
+- GC locations
+- Replication status
+- Authentication considerations
+- Infrastructure Master placement
+
+---
+
+# Key Takeaways
+
+- The Global Catalog supports forest-wide LDAP searches.
+- Universal Group membership information contributes to access token creation.
+- Standard LDAP and Global Catalog LDAP use different ports.
+- Infrastructure Master placement depends on the overall forest design.
+- Healthy DNS and replication are essential for reliable Global Catalog operation.
+
+---
+
+# Interview Questions
+
+1. What protocol is commonly used to query Active Directory?
+2. Which TCP port is used for Global Catalog LDAP?
+3. What information does the Global Catalog contribute during authentication?
+4. Why are forest-wide searches faster using a Global Catalog?
+5. What is the relationship between the Infrastructure Master and the Global Catalog?
+6. What happens if a site's only Global Catalog server fails?
+7. Which tools can be used to troubleshoot Global Catalog issues?
+8. Why is replication important for Global Catalog servers?
+9. How can you list Global Catalog servers using PowerShell?
+10. Why should Global Catalog servers be considered Tier 0 assets?
+
+---
+
+# References
+
+- Microsoft Learn – Global Catalog
+- Microsoft Learn – LDAP and Active Directory
+- Microsoft Learn – Active Directory Replication
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — Global Catalog Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
