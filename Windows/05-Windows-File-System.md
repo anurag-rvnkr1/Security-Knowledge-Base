@@ -1965,4 +1965,651 @@ Discuss enterprise use cases for quotas.
 
 ---
 
+# 05-Windows-File-System.md
+
+# Part 4 — File System Forensics, NTFS Timestamps, File Recovery, ReFS, Enterprise Storage Best Practices, Chapter Summary, and Review
+
+---
+
+# Introduction
+
+Modern Windows file systems are not only designed to store data efficiently—they also preserve valuable metadata that can be used for:
+
+- Digital Forensics
+- Incident Response
+- Malware Analysis
+- Insider Threat Investigations
+- Compliance Auditing
+- Data Recovery
+
+Understanding how Windows records file activity helps administrators and security professionals reconstruct events after an incident.
+
+---
+
+# File System Forensics
+
+**File system forensics** is the process of analyzing storage devices to determine:
+
+- What files existed
+- When files were created
+- Who accessed them
+- Whether they were modified
+- Whether they were deleted
+- Whether hidden artifacts remain
+
+Forensic investigators rely heavily on NTFS metadata because it often survives long after normal file deletion.
+
+---
+
+# Digital Evidence Sources
+
+```text
+NTFS Volume
+
+├── Master File Table (MFT)
+├── $LogFile
+├── $Bitmap
+├── USN Change Journal
+├── File Metadata
+├── Security Descriptors
+├── Slack Space
+├── Unallocated Space
+└── Windows Event Logs
+```
+
+Each source provides different pieces of evidence.
+
+---
+
+# NTFS Timestamps
+
+Every NTFS file contains multiple timestamps.
+
+The four primary timestamps are commonly referred to as **MACB**:
+
+| Timestamp | Description |
+|-----------|-------------|
+| Modified (M) | File contents last changed |
+| Accessed (A) | File last accessed |
+| Changed (C) | Metadata last changed |
+| Birth/Created (B) | File created |
+
+These timestamps help investigators build timelines.
+
+---
+
+# MACB Timeline
+
+```text
+File Created
+
+↓
+
+Modified
+
+↓
+
+Metadata Updated
+
+↓
+
+Accessed
+```
+
+Investigators compare these values to reconstruct user activity.
+
+---
+
+# Timestamp Analysis Example
+
+| Event | Time |
+|--------|------|
+| Created | 09:00 |
+| Modified | 09:20 |
+| Metadata Changed | 09:22 |
+| Accessed | 10:10 |
+
+Possible interpretation:
+
+- File created at 09:00
+- Contents edited at 09:20
+- Permissions or attributes changed shortly afterward
+- File opened again later
+
+---
+
+# Security Information in NTFS
+
+NTFS stores security metadata such as:
+
+- Owner SID
+- Primary Group
+- Discretionary ACL (DACL)
+- System ACL (SACL)
+
+This information helps determine:
+
+- Who owned a file
+- Who could access it
+- Whether auditing was configured
+
+---
+
+# Deleted Files
+
+Deleting a file does **not** immediately erase its contents.
+
+Typical process:
+
+```text
+Delete File
+
+↓
+
+Directory Entry Removed
+
+↓
+
+MFT Record Marked Available
+
+↓
+
+Clusters Marked Free
+
+↓
+
+Data Remains Until Overwritten
+```
+
+This behavior allows recovery tools to restore deleted files if the data has not been overwritten.
+
+---
+
+# File Recovery
+
+Successful recovery depends on factors such as:
+
+- Time since deletion
+- Disk activity
+- Overwritten clusters
+- File fragmentation
+
+The longer a system continues to write data after deletion, the lower the probability of successful recovery.
+
+---
+
+# Unallocated Space
+
+When a file is deleted, its clusters often become **unallocated**.
+
+```text
+Disk
+
++----------------------+
+
+Allocated Data
+
+###########
+
+Unallocated
+
+...........
+
++----------------------+
+```
+
+Unallocated space may contain:
+
+- Deleted documents
+- Images
+- Executables
+- Fragments of previous files
+
+---
+
+# Slack Space Review
+
+Slack space exists because Windows allocates storage in clusters.
+
+```text
+Cluster
+
+################
+
+Unused Area
+
+............
+```
+
+Slack space may contain remnants of previously stored information and is therefore valuable during forensic investigations.
+
+---
+
+# USN Change Journal
+
+The **Update Sequence Number (USN) Change Journal** records changes to files on NTFS volumes.
+
+It can record events such as:
+
+- File creation
+- File deletion
+- Rename operations
+- Security changes
+- Data modification
+
+The journal assists administrators and forensic analysts in identifying file activity.
+
+---
+
+# NTFS Log File
+
+Previously introduced as:
+
+```text
+$LogFile
+```
+
+It records metadata transactions that help NTFS recover after unexpected shutdowns.
+
+From a forensic perspective, it may also provide insight into recent file system operations.
+
+---
+
+# Alternate Data Streams Review
+
+Investigators should verify whether files contain:
+
+```text
+Main File
+
+↓
+
+Alternate Data Stream
+
+↓
+
+Hidden Information
+```
+
+Although ADS has legitimate uses, unexpected streams warrant investigation.
+
+---
+
+# File Integrity
+
+Organizations verify file integrity using cryptographic hashes.
+
+Common algorithms:
+
+| Algorithm | Typical Use |
+|-----------|-------------|
+| SHA-256 | Integrity verification |
+| SHA-384 | High-security integrity checks |
+| SHA-512 | Long-term integrity validation |
+
+Hash values change whenever file contents change.
+
+---
+
+# Integrity Verification Workflow
+
+```text
+Original File
+
+↓
+
+SHA-256 Hash
+
+↓
+
+Store Hash
+
+↓
+
+Later Verification
+
+↓
+
+Match?
+
+↓
+
+Yes → File Unchanged
+
+No → File Modified
+```
+
+---
+
+# ReFS (Resilient File System)
+
+**ReFS** was introduced for high-availability enterprise workloads.
+
+Primary goals:
+
+- Data integrity
+- Scalability
+- Fault resilience
+- Automatic corruption detection
+
+ReFS is commonly used in certain Windows Server and enterprise storage scenarios rather than as the default client operating system volume.
+
+---
+
+# ReFS Features
+
+Advantages include:
+
+- Integrity streams
+- Metadata resilience
+- Large volume support
+- Automatic corruption detection
+- Improved resiliency with supported storage technologies
+
+---
+
+# NTFS vs ReFS
+
+| Feature | NTFS | ReFS |
+|----------|------|------|
+| Default Windows client file system | Yes | No |
+| ACL support | Yes | Yes |
+| EFS | Yes | No |
+| Bootable client system volume | Yes | Limited/Scenario dependent |
+| Integrity streams | Limited | Yes |
+| Enterprise storage focus | Good | Excellent |
+
+The exact capabilities of ReFS depend on the Windows edition and version.
+
+---
+
+# Enterprise Storage Architecture
+
+Example:
+
+```text
+Windows Workstation
+
+↓
+
+NTFS System Drive
+
+↓
+
+BitLocker
+
+↓
+
+Network Storage
+
+↓
+
+Windows Server
+
+↓
+
+ReFS Storage Pool
+
+↓
+
+Enterprise Backup
+```
+
+Organizations often combine NTFS endpoints with resilient centralized storage.
+
+---
+
+# Backup Strategy
+
+A common enterprise backup approach follows the **3-2-1 principle**:
+
+- **3** copies of important data
+- **2** different storage media
+- **1** copy stored offsite or offline
+
+This improves resilience against hardware failures, ransomware, and accidental deletion.
+
+---
+
+# File System Monitoring
+
+Administrators commonly monitor:
+
+- Disk utilization
+- File integrity
+- Permission changes
+- File creation
+- File deletion
+- Storage health
+- Unexpected encryption
+- Access failures
+
+Monitoring tools may include:
+
+- Event Viewer
+- Microsoft Defender for Endpoint
+- Microsoft Sentinel
+- SIEM platforms
+- Enterprise endpoint monitoring tools
+
+---
+
+# Enterprise Example
+
+A ransomware attack begins encrypting user documents.
+
+```text
+User Files
+
+↓
+
+Rapid File Modifications
+
+↓
+
+EDR Detects Behavior
+
+↓
+
+SOC Alert
+
+↓
+
+Endpoint Isolated
+
+↓
+
+Backup Restored
+
+↓
+
+Business Operations Resume
+```
+
+The file system plays a central role in both detection and recovery.
+
+---
+
+# Cybersecurity Perspective
+
+File systems are common targets for attackers.
+
+Threats include:
+
+- Ransomware
+- Data theft
+- Timestamp manipulation
+- Hidden data in ADS
+- Unauthorized permission changes
+- File wiping
+- Metadata tampering
+
+Defensive measures include:
+
+- Least privilege
+- File integrity monitoring
+- Endpoint detection and response (EDR)
+- Centralized logging
+- Frequent backups
+- Encryption
+
+---
+
+# Business Impact
+
+A secure and well-managed file system provides:
+
+- Reliable data storage
+- Regulatory compliance
+- Faster investigations
+- Reduced downtime
+- Improved disaster recovery
+- Better operational resilience
+
+Poor file system management can result in data loss, security breaches, and costly outages.
+
+---
+
+# Enterprise Best Practices
+
+- Use NTFS for Windows operating system volumes.
+- Enable BitLocker for endpoint protection.
+- Monitor changes to critical files.
+- Regularly review NTFS permissions.
+- Maintain tested backup and recovery procedures.
+- Validate storage integrity after unexpected shutdowns.
+- Use cryptographic hashes to verify important files.
+- Monitor for unauthorized Alternate Data Streams and suspicious file activity.
+
+---
+
+# Practical Labs
+
+## Lab 1 — View File Hash
+
+Open **PowerShell** and run:
+
+```powershell
+Get-FileHash "C:\Path\To\File.txt" -Algorithm SHA256
+```
+
+Record:
+
+- File name
+- SHA-256 hash
+- Algorithm used
+
+---
+
+## Lab 2 — Compare File Timestamps
+
+1. Create a new text file.
+2. Edit it several times.
+3. View **Properties**.
+
+Record:
+
+- Created
+- Modified
+- Accessed
+
+Discuss how the timestamps changed.
+
+---
+
+## Lab 3 — Review NTFS Permissions
+
+Select a sensitive folder.
+
+Review:
+
+- Owner
+- Security entries
+- Inheritance
+- Effective access
+
+Discuss how these permissions support enterprise security.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Windows file system fundamentals
+- Physical and logical storage
+- Sectors and clusters
+- FAT32
+- exFAT
+- NTFS architecture
+- Master File Table (MFT)
+- Metadata
+- Resident and non-resident data
+- Journaling
+- Access Control Lists (ACLs)
+- Alternate Data Streams (ADS)
+- Encrypting File System (EFS)
+- NTFS Compression
+- Hard links
+- Symbolic links
+- Junction points
+- Reparse points
+- Disk quotas
+- NTFS timestamps
+- File recovery concepts
+- USN Change Journal
+- ReFS
+- Enterprise storage best practices
+
+These concepts provide the foundation for Windows storage management, digital forensics, cybersecurity, and enterprise administration.
+
+---
+
+# Key Takeaways
+
+- NTFS is the primary Windows file system because of its security, reliability, and scalability.
+- The Master File Table (MFT) stores metadata for every file and directory.
+- NTFS security relies on ACLs, security descriptors, and Windows access tokens.
+- Journaling helps maintain metadata consistency after unexpected failures.
+- Deleted files often remain recoverable until overwritten.
+- File system metadata is invaluable for forensic investigations.
+- ReFS is designed for resilient enterprise storage workloads.
+
+---
+
+# Interview Questions
+
+1. What information does the Master File Table (MFT) store?
+2. What are the four primary NTFS timestamps (MACB)?
+3. What is the purpose of the USN Change Journal?
+4. Why are deleted files often recoverable?
+5. What is slack space?
+6. How does ReFS differ from NTFS?
+7. What is the purpose of file integrity monitoring?
+8. Why are cryptographic hashes important in digital forensics?
+9. What are common indicators of ransomware activity at the file system level?
+10. Why is NTFS preferred over FAT32 for enterprise systems?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Carrier, B. *File System Forensic Analysis*
+- Microsoft Learn
+- Microsoft NTFS Documentation
+- Microsoft ReFS Documentation
+- Microsoft Defender Documentation
+- Microsoft Sysinternals Documentation
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 5 – Windows File System**.
+
+You now understand how Windows organizes, secures, stores, protects, and recovers data using NTFS and related technologies. These concepts form the foundation for Windows administration, storage management, digital forensics, and cybersecurity.
+
+---
+
 
