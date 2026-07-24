@@ -596,4 +596,585 @@ Key qualities include:
 
 ---
 
-**Next:** **Part 2 — Users, Permissions, Active Directory, Group Policy, Networking, Security, and System Administration Interview Questions**
+
+# 27-Windows-Interview-Questions.md
+
+# Part 2 — Users, Permissions, Active Directory, Group Policy, Networking, Security, and System Administration Interview Questions
+
+---
+
+# Introduction
+
+Enterprise Windows interviews frequently focus on identity management, security, networking, and administration because these areas directly affect business operations.
+
+Interviewers often ask:
+
+- Scenario-based questions
+- Troubleshooting questions
+- Security questions
+- Active Directory questions
+- Networking fundamentals
+- Windows administration concepts
+
+The answers below are concise, technically accurate, and suitable for interviews ranging from Help Desk to System Administrator and SOC Analyst roles.
+
+---
+
+# Users and Groups
+
+---
+
+## 46. What is the difference between a local user account and a domain user account?
+
+**Answer**
+
+| Local Account | Domain Account |
+|--------------|----------------|
+| Exists only on one computer | Managed centrally in Active Directory |
+| Authentication occurs locally | Authentication occurs through a Domain Controller |
+| Limited to one machine | Can access enterprise resources across the domain |
+
+---
+
+## 47. What is Active Directory?
+
+**Answer**
+
+Active Directory (AD) is Microsoft's centralized directory service that manages users, computers, groups, authentication, authorization, and policies within a Windows domain.
+
+---
+
+## 48. What is a Domain Controller (DC)?
+
+**Answer**
+
+A Domain Controller is a Windows Server that hosts Active Directory Domain Services (AD DS) and authenticates users and computers within a domain.
+
+---
+
+## 49. What is the difference between a workgroup and a domain?
+
+| Workgroup | Domain |
+|------------|--------|
+| Peer-to-peer management | Centralized management |
+| Local authentication | Domain authentication |
+| Suitable for small environments | Designed for enterprise environments |
+
+---
+
+## 50. What is an Organizational Unit (OU)?
+
+**Answer**
+
+An Organizational Unit (OU) is a logical container in Active Directory used to organize users, computers, and groups for administration and Group Policy application.
+
+---
+
+## 51. What is a Security Group?
+
+**Answer**
+
+A Security Group is used to assign permissions to multiple users collectively, simplifying access management.
+
+---
+
+## 52. What is a Distribution Group?
+
+**Answer**
+
+A Distribution Group is primarily used for email distribution and cannot be used to assign security permissions.
+
+---
+
+## 53. What is the principle of least privilege?
+
+**Answer**
+
+The principle of least privilege states that users and services should receive only the minimum permissions necessary to perform their tasks.
+
+---
+
+## 54. Why should users avoid using administrator accounts for daily work?
+
+**Answer**
+
+Using standard user accounts reduces the risk of malware execution, accidental system changes, and privilege abuse.
+
+---
+
+## 55. What is User Account Control (UAC)?
+
+**Answer**
+
+User Account Control helps prevent unauthorized changes by prompting for approval or administrator credentials before privileged actions are performed.
+
+---
+
+# NTFS Permissions
+
+---
+
+## 56. What are NTFS permissions?
+
+**Answer**
+
+NTFS permissions control access to files and folders by defining which users or groups can read, modify, execute, or control resources.
+
+---
+
+## 57. What is the difference between Share Permissions and NTFS Permissions?
+
+| Share Permissions | NTFS Permissions |
+|-------------------|------------------|
+| Apply over network shares | Apply locally and over network |
+| Simpler permission model | Granular permission model |
+| Evaluated with NTFS permissions for network access | Always evaluated on NTFS volumes |
+
+---
+
+## 58. Which permission is usually considered the most powerful?
+
+**Answer**
+
+**Full Control** allows users to read, modify, delete, change permissions, and take ownership.
+
+---
+
+## 59. What is permission inheritance?
+
+**Answer**
+
+Inheritance allows child objects to automatically receive permissions from their parent folder unless inheritance is disabled.
+
+---
+
+## 60. What is file ownership?
+
+**Answer**
+
+Ownership determines who has authority to modify permissions on an object, even if they do not currently have Full Control.
+
+---
+
+# Active Directory
+
+---
+
+## 61. What services does Active Directory provide?
+
+**Answer**
+
+Active Directory provides:
+
+- Authentication
+- Authorization
+- Centralized management
+- Group Policy
+- Directory services
+- Organizational management
+
+---
+
+## 62. Why is DNS critical for Active Directory?
+
+**Answer**
+
+Active Directory depends on DNS to locate Domain Controllers and other directory services. Incorrect DNS configuration commonly causes authentication failures.
+
+---
+
+## 63. What is Kerberos?
+
+**Answer**
+
+Kerberos is the default authentication protocol used by Active Directory to provide secure, ticket-based authentication.
+
+---
+
+## 64. What is NTLM?
+
+**Answer**
+
+NTLM is an older authentication protocol retained for compatibility with legacy systems.
+
+---
+
+## 65. What causes account lockouts?
+
+**Answer**
+
+Common causes include:
+
+- Incorrect passwords
+- Cached credentials
+- Scheduled Tasks
+- Services using outdated passwords
+- Repeated failed logon attempts
+
+---
+
+## 66. What is replication?
+
+**Answer**
+
+Replication synchronizes Active Directory information between Domain Controllers.
+
+---
+
+## 67. Why is time synchronization important?
+
+**Answer**
+
+Kerberos requires accurate time synchronization. Significant clock differences can prevent successful authentication.
+
+---
+
+## 68. What command displays applied Group Policies?
+
+**Answer**
+
+```cmd
+gpresult /r
+```
+
+---
+
+## 69. What is RSoP?
+
+**Answer**
+
+Resultant Set of Policy (RSoP) displays the effective Group Policy settings applied to users and computers.
+
+---
+
+## 70. Why would a Group Policy fail to apply?
+
+**Answer**
+
+Possible reasons:
+
+- Incorrect OU placement
+- Security filtering
+- WMI filter mismatch
+- Replication delay
+- DNS issues
+- Domain Controller availability
+
+---
+
+# Networking
+
+---
+
+## 71. What command displays IP configuration?
+
+**Answer**
+
+```cmd
+ipconfig
+```
+
+---
+
+## 72. What does `ipconfig /all` display?
+
+**Answer**
+
+Detailed network configuration including:
+
+- IP address
+- MAC address
+- DNS servers
+- DHCP status
+- Default gateway
+- Lease information
+
+---
+
+## 73. What does the `ping` command do?
+
+**Answer**
+
+It tests network connectivity using ICMP Echo Request and Echo Reply packets.
+
+---
+
+## 74. What is `tracert`?
+
+**Answer**
+
+`tracert` identifies the path packets take to reach a destination and helps identify routing issues.
+
+---
+
+## 75. What is `nslookup`?
+
+**Answer**
+
+`nslookup` queries DNS servers to verify name resolution.
+
+---
+
+## 76. What is DHCP?
+
+**Answer**
+
+Dynamic Host Configuration Protocol automatically assigns IP configuration information to network devices.
+
+---
+
+## 77. What is DNS?
+
+**Answer**
+
+Domain Name System translates human-readable domain names into IP addresses.
+
+---
+
+## 78. What is the purpose of the default gateway?
+
+**Answer**
+
+The default gateway forwards traffic destined for networks outside the local subnet.
+
+---
+
+## 79. How would you troubleshoot a user who cannot access the internet?
+
+**Answer**
+
+I would verify:
+
+1. Physical connectivity
+2. IP configuration
+3. Gateway connectivity
+4. DNS resolution
+5. Firewall settings
+6. Proxy configuration (if applicable)
+
+---
+
+## 80. What command displays active network connections?
+
+**Answer**
+
+```cmd
+netstat
+```
+
+---
+
+# Windows Security
+
+---
+
+## 81. What is Microsoft Defender?
+
+**Answer**
+
+Microsoft Defender is Microsoft's built-in endpoint protection solution that provides antivirus, malware detection, and security features.
+
+---
+
+## 82. What is BitLocker?
+
+**Answer**
+
+BitLocker encrypts storage volumes to protect data if a device is lost or stolen.
+
+---
+
+## 83. What is Windows Firewall?
+
+**Answer**
+
+Windows Firewall filters inbound and outbound network traffic according to configured security rules.
+
+---
+
+## 84. Why should administrators avoid disabling Windows Firewall?
+
+**Answer**
+
+Disabling the firewall increases attack surface and removes an important layer of network protection.
+
+---
+
+## 85. What is Secure Boot?
+
+**Answer**
+
+Secure Boot verifies trusted boot components before Windows starts, helping prevent boot-level malware.
+
+---
+
+## 86. What is Credential Guard?
+
+**Answer**
+
+Credential Guard protects authentication secrets using virtualization-based security.
+
+---
+
+## 87. What is Windows Hello?
+
+**Answer**
+
+Windows Hello provides modern authentication methods such as biometrics and PIN-based sign-in.
+
+---
+
+## 88. What is Event Viewer?
+
+**Answer**
+
+Event Viewer displays Windows logs for applications, security, system events, and services, making it an essential troubleshooting tool.
+
+---
+
+## 89. What is Windows Recovery Environment (WinRE)?
+
+**Answer**
+
+WinRE provides recovery tools such as Startup Repair, System Restore, Command Prompt, and recovery options when Windows fails to boot normally.
+
+---
+
+## 90. What is Safe Mode?
+
+**Answer**
+
+Safe Mode starts Windows with only essential drivers and services, allowing administrators to troubleshoot software and driver issues.
+
+---
+
+# Windows Administration
+
+---
+
+## 91. What is Task Manager used for?
+
+**Answer**
+
+Task Manager monitors running processes, resource utilization, startup applications, users, services, and performance metrics.
+
+---
+
+## 92. What is Performance Monitor?
+
+**Answer**
+
+Performance Monitor collects and analyzes detailed performance counters over time.
+
+---
+
+## 93. What is Resource Monitor?
+
+**Answer**
+
+Resource Monitor provides detailed real-time information about CPU, memory, disk, and network usage.
+
+---
+
+## 94. What is Reliability Monitor?
+
+**Answer**
+
+Reliability Monitor provides a timeline of application failures, Windows updates, driver installations, and stability events.
+
+---
+
+## 95. What is Device Manager?
+
+**Answer**
+
+Device Manager manages hardware devices, drivers, and hardware configuration while identifying driver-related problems.
+
+---
+
+## 96. What is Windows Update?
+
+**Answer**
+
+Windows Update installs security patches, feature updates, quality updates, and driver updates for supported Windows systems.
+
+---
+
+## 97. Why is patch management important?
+
+**Answer**
+
+Patch management reduces security vulnerabilities, improves stability, fixes bugs, and ensures compliance with organizational policies.
+
+---
+
+## 98. What is CHKDSK?
+
+**Answer**
+
+CHKDSK checks and repairs logical file system errors and can identify bad sectors on storage devices.
+
+---
+
+## 99. What is SFC?
+
+**Answer**
+
+System File Checker (`sfc /scannow`) verifies and repairs protected Windows system files.
+
+---
+
+## 100. What is DISM?
+
+**Answer**
+
+Deployment Image Servicing and Management (DISM) repairs Windows images and can restore component store corruption.
+
+Example:
+
+```cmd
+DISM /Online /Cleanup-Image /RestoreHealth
+```
+
+---
+
+# Quick Revision Table
+
+| Topic | Key Point |
+|--------|-----------|
+| Active Directory | Centralized identity management |
+| Domain Controller | Authenticates users and computers |
+| Kerberos | Default AD authentication protocol |
+| DNS | Required for AD functionality |
+| NTFS Permissions | Secure file access |
+| BitLocker | Full disk encryption |
+| Defender | Endpoint protection |
+| Task Manager | Resource monitoring |
+| Event Viewer | System logs |
+| DISM | Windows image repair |
+
+---
+
+# Key Takeaways
+
+- Active Directory and DNS are tightly integrated.
+- Group Policy management is a common interview topic.
+- Understanding Windows security features is essential.
+- Networking fundamentals are frequently tested.
+- Administrative tools such as Event Viewer, Task Manager, SFC, and DISM should be well understood.
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Active Directory Documentation
+- Microsoft Group Policy Documentation
+- Microsoft Windows Security Documentation
+- Microsoft Networking Documentation
+- Microsoft Sysinternals Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 3 — Windows Troubleshooting, PowerShell, Services, Registry, Sysinternals, Cybersecurity, and Advanced Scenario-Based Interview Questions**
