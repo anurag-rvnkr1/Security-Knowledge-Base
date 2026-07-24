@@ -774,4 +774,721 @@ Observe the available `.evtx` files without modifying them.
 
 ---
 
-**Next:** **Part 2 — Security Logs, Audit Policies, Event IDs, Windows Event Forwarding, and Enterprise Log Management**
+# 17-Windows-Logging-and-Event-Viewer.md
+
+# Part 2 — Security Logs, Audit Policies, Event IDs, Windows Event Forwarding, and Enterprise Log Management
+
+---
+
+# Introduction
+
+The **Security Log** is one of the most valuable Windows logs for cybersecurity professionals.
+
+Unlike the Application or System logs, the Security log records **auditable security-related activities**, allowing organizations to:
+
+- Monitor user authentication
+- Detect unauthorized access
+- Investigate attacks
+- Perform compliance audits
+- Conduct forensic investigations
+
+Modern SOCs rely heavily on Windows Security Events for threat detection.
+
+---
+
+# Windows Security Logging
+
+Security events are generated when Windows auditing is enabled.
+
+Examples include:
+
+- Successful logons
+- Failed logons
+- Account lockouts
+- Password changes
+- Privilege assignments
+- Object access
+- Process creation
+- Group membership changes
+
+---
+
+# Security Logging Architecture
+
+```text
+User Action
+
+↓
+
+Windows Security Subsystem
+
+↓
+
+Audit Policy
+
+↓
+
+Windows Event Log Service
+
+↓
+
+Security.evtx
+
+↓
+
+Event Viewer / SIEM
+```
+
+Only activities configured by audit policies are recorded.
+
+---
+
+# Audit Policy
+
+An **Audit Policy** determines which security events Windows records.
+
+Without auditing:
+
+```text
+User Activity
+
+↓
+
+No Audit Rule
+
+↓
+
+No Security Event
+```
+
+With auditing enabled:
+
+```text
+User Activity
+
+↓
+
+Audit Policy
+
+↓
+
+Security Event Generated
+```
+
+---
+
+# Types of Auditing
+
+Windows supports two primary audit outcomes.
+
+| Type | Description |
+|------|-------------|
+| Success | Records successful activity |
+| Failure | Records unsuccessful activity |
+
+Example:
+
+| Activity | Success | Failure |
+|----------|----------|----------|
+| Logon | ✔ | ✔ |
+| File Access | ✔ | ✔ |
+| Policy Change | ✔ | ✔ |
+
+---
+
+# Advanced Audit Policy
+
+Modern Windows versions support granular auditing.
+
+Major categories include:
+
+- Account Logon
+- Account Management
+- Detailed Tracking
+- DS Access
+- Logon/Logoff
+- Object Access
+- Policy Change
+- Privilege Use
+- System
+- Account Lockout
+
+These provide significantly more control than legacy audit policies.
+
+---
+
+# Viewing Audit Policies
+
+Administrators can use:
+
+```text
+Local Security Policy
+
+↓
+
+Security Settings
+
+↓
+
+Advanced Audit Policy Configuration
+```
+
+or
+
+```powershell
+auditpol /get /category:*
+```
+
+---
+
+# Configuring Audit Policies
+
+Example:
+
+```powershell
+auditpol /set `
+/subcategory:"Logon" `
+/success:enable `
+/failure:enable
+```
+
+This enables logging of successful and failed logon events.
+
+---
+
+# Security Event Categories
+
+```text
+Security Log
+
+├── Authentication
+
+├── Authorization
+
+├── Account Management
+
+├── Privilege Usage
+
+├── Object Access
+
+├── Process Activity
+
+└── System Changes
+```
+
+These categories provide visibility into security-related activity.
+
+---
+
+# Important Windows Security Event IDs
+
+Some Event IDs are encountered frequently during investigations.
+
+| Event ID | Description |
+|----------|-------------|
+| 4624 | Successful logon |
+| 4625 | Failed logon |
+| 4634 | Logoff |
+| 4648 | Explicit credential logon |
+| 4672 | Special privileges assigned |
+| 4688 | Process created |
+| 4689 | Process terminated |
+| 4697 | Service installed |
+| 4720 | User account created |
+| 4722 | User account enabled |
+| 4723 | Password change attempt |
+| 4724 | Password reset |
+| 4725 | User account disabled |
+| 4726 | User account deleted |
+| 4732 | User added to local group |
+| 4733 | User removed from local group |
+| 4740 | Account locked out |
+| 4768 | Kerberos TGT requested |
+| 4769 | Kerberos service ticket requested |
+| 4771 | Kerberos pre-authentication failed |
+| 4776 | NTLM authentication |
+| 5140 | Network share accessed |
+
+These events are foundational for Windows threat detection.
+
+---
+
+# Successful Logon (4624)
+
+Records successful authentication.
+
+Typical fields include:
+
+- Username
+- Domain
+- Logon Type
+- Source IP
+- Workstation
+- Authentication Package
+- Logon Process
+
+This is one of the most analyzed security events.
+
+---
+
+# Failed Logon (4625)
+
+Generated whenever authentication fails.
+
+Common causes:
+
+- Incorrect password
+- Unknown username
+- Disabled account
+- Locked account
+- Expired password
+
+Repeated failures may indicate brute-force attacks.
+
+---
+
+# Account Lockout (4740)
+
+Generated when an account becomes locked.
+
+Useful fields:
+
+- Target account
+- Caller computer
+- Time
+- Domain controller
+
+SOC analysts frequently correlate Event 4740 with Event 4625.
+
+---
+
+# Privileged Logon (4672)
+
+Indicates a user received special administrative privileges.
+
+Common privileged accounts:
+
+- Domain Admins
+- Enterprise Admins
+- Local Administrator
+- SYSTEM
+
+Unexpected Event 4672 occurrences deserve investigation.
+
+---
+
+# Process Creation (4688)
+
+One of the most valuable security events.
+
+Example:
+
+```text
+cmd.exe
+
+↓
+
+powershell.exe
+
+↓
+
+certutil.exe
+
+↓
+
+Suspicious Activity
+```
+
+Many EDR and SIEM detection rules depend on Event 4688.
+
+---
+
+# Service Installation (4697)
+
+Generated when a new Windows service is installed.
+
+Possible reasons:
+
+- Legitimate software installation
+- Administrative maintenance
+- Malware persistence
+
+Unexpected service creation is a common persistence technique.
+
+---
+
+# User Account Creation (4720)
+
+Generated whenever a new local or domain account is created.
+
+Administrators should verify:
+
+- Who created it?
+- Why?
+- Is it authorized?
+
+---
+
+# Group Membership Changes
+
+Examples:
+
+| Event | Meaning |
+|--------|----------|
+| 4732 | User added to group |
+| 4733 | User removed from group |
+
+Unauthorized privilege changes are high-priority security events.
+
+---
+
+# Object Access Auditing
+
+Windows can audit access to objects.
+
+Examples:
+
+- Files
+- Folders
+- Registry keys
+- Printers
+- Shared resources
+
+Object auditing must be enabled explicitly.
+
+---
+
+# Process Command Line Auditing
+
+Modern Windows versions can log command-line arguments.
+
+Example:
+
+```text
+powershell.exe
+
+-EncodedCommand
+```
+
+Capturing command-line parameters significantly improves threat detection.
+
+---
+
+# Windows Event Forwarding (WEF)
+
+Windows Event Forwarding centralizes logs without requiring third-party agents.
+
+Architecture:
+
+```text
+Windows Client
+
+↓
+
+Windows Event Forwarding
+
+↓
+
+Collector Server
+
+↓
+
+Forwarded Events
+
+↓
+
+SIEM
+```
+
+WEF is widely used in enterprise environments.
+
+---
+
+# Components of WEF
+
+| Component | Purpose |
+|-----------|----------|
+| Source Computer | Generates events |
+| Collector | Receives forwarded events |
+| Subscription | Defines forwarding rules |
+| WinRM | Secure transport mechanism |
+
+---
+
+# Subscription Types
+
+Two subscription models exist.
+
+### Source-Initiated
+
+```text
+Client
+
+↓
+
+Collector
+```
+
+Clients automatically send logs.
+
+---
+
+### Collector-Initiated
+
+```text
+Collector
+
+↓
+
+Specific Clients
+```
+
+The collector requests logs from selected systems.
+
+---
+
+# Advantages of WEF
+
+- Native Windows feature
+- Agentless deployment
+- Centralized log collection
+- Reduced administration
+- Secure communication using WinRM
+- Integration with SIEM solutions
+
+---
+
+# Enterprise Log Collection
+
+Large organizations typically collect logs from:
+
+- Domain Controllers
+- Workstations
+- File Servers
+- Web Servers
+- SQL Servers
+- Active Directory
+- Hyper-V Hosts
+
+All logs are centralized for correlation and analysis.
+
+---
+
+# SIEM Integration
+
+```text
+Windows Systems
+
+↓
+
+WEF
+
+↓
+
+SIEM
+
+↓
+
+Correlation Rules
+
+↓
+
+Alert
+
+↓
+
+SOC Analyst
+```
+
+SIEM platforms correlate Windows events with logs from firewalls, cloud services, and security tools.
+
+---
+
+# Log Retention
+
+Organizations define retention based on:
+
+- Compliance
+- Storage capacity
+- Business requirements
+- Regulatory mandates
+
+Example:
+
+| Log Type | Typical Retention |
+|----------|-------------------|
+| Security | 1–7 years |
+| System | 90–365 days |
+| Application | 90–365 days |
+
+Retention requirements vary by industry and jurisdiction.
+
+---
+
+# Log Integrity
+
+Log integrity is critical during investigations.
+
+Best practices include:
+
+- Restrict administrative access
+- Centralize logs
+- Synchronize system time
+- Monitor log clearing
+- Back up critical logs
+
+Compromised logs may invalidate forensic evidence.
+
+---
+
+# Enterprise Example
+
+An organization notices repeated Event ID **4625** from multiple systems followed by a successful **4624** from the same source IP.
+
+The SIEM correlates these events and generates a high-severity alert for a potential password-spraying attack, allowing the SOC to respond before additional accounts are compromised.
+
+---
+
+# Cybersecurity Perspective
+
+Windows Security Logs enable detection of:
+
+- Brute-force attacks
+- Password spraying
+- Privilege escalation
+- Persistence
+- Lateral movement
+- Unauthorized account creation
+- Credential abuse
+- Suspicious PowerShell activity
+
+These logs are foundational to modern detection engineering.
+
+---
+
+# Business Impact
+
+Effective security logging provides:
+
+- Improved audit readiness
+- Faster incident response
+- Better regulatory compliance
+- Enhanced forensic capability
+- Reduced security risk
+- Greater visibility into user activity
+
+---
+
+# Enterprise Best Practices
+
+- Enable Advanced Audit Policies.
+- Forward logs to centralized collectors.
+- Protect Security logs from unauthorized access.
+- Enable process creation auditing with command-line logging.
+- Review high-value Event IDs regularly.
+- Synchronize all systems using reliable time sources.
+- Monitor for log clearing events.
+- Regularly test audit configurations.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review Security Events
+
+Open:
+
+```text
+Event Viewer
+
+↓
+
+Windows Logs
+
+↓
+
+Security
+```
+
+Locate:
+
+- Event ID 4624
+- Event ID 4625
+- Event ID 4740 (if available)
+
+---
+
+## Lab 2 — View Audit Policies
+
+Run:
+
+```powershell
+auditpol /get /category:*
+```
+
+Record enabled audit categories.
+
+---
+
+## Lab 3 — Filter by Event ID
+
+Create a filter for:
+
+```text
+4624
+```
+
+Review recent successful logons.
+
+---
+
+## Lab 4 — Identify Administrative Logons
+
+Locate Event ID:
+
+```text
+4672
+```
+
+Determine which account received elevated privileges.
+
+---
+
+# Key Takeaways
+
+- Audit Policies determine which security events Windows records.
+- Event IDs provide standardized identifiers for security activity.
+- Event IDs 4624, 4625, 4688, 4672, and 4740 are among the most important for investigations.
+- Windows Event Forwarding centralizes log collection using native Windows capabilities.
+- Centralized logging enables effective SIEM correlation and enterprise threat detection.
+- Protecting log integrity is essential for auditing and digital forensics.
+
+---
+
+# Interview Questions
+
+1. What is an Audit Policy?
+2. What is the difference between Success and Failure auditing?
+3. What does Event ID 4624 represent?
+4. What does Event ID 4625 indicate?
+5. Why is Event ID 4688 important?
+6. What is Windows Event Forwarding?
+7. What is the difference between Source-Initiated and Collector-Initiated subscriptions?
+8. Why is centralized log collection important?
+9. How can organizations protect log integrity?
+10. Why is Event ID 4672 considered high value?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Advanced Audit Policy Documentation
+- Microsoft Windows Event Forwarding Documentation
+- Microsoft Security Auditing Documentation
+- MITRE ATT&CK Framework
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 3 — Event Filtering, XML Queries, PowerShell Log Analysis, Event Correlation, Threat Hunting, and Incident Investigation**
