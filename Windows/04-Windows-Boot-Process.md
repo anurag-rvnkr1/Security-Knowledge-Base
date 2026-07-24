@@ -1434,3 +1434,633 @@ Do not modify production services without authorization.
 ---
 
 
+# 04-Windows-Boot-Process.md
+
+# Part 3 — Boot Configuration Data (BCD), Windows Recovery Environment (WinRE), Safe Mode, Boot Troubleshooting, Startup Repair, and Advanced Boot Options
+
+---
+
+# Introduction
+
+Even with a well-designed boot process, systems can fail to start due to:
+
+- Corrupted boot files
+- Misconfigured Boot Configuration Data (BCD)
+- Faulty drivers
+- Damaged file systems
+- Hardware failures
+- Malware
+- Failed updates
+
+Windows includes several recovery technologies that allow administrators to diagnose and repair startup problems.
+
+Understanding these tools is essential for:
+
+- Windows Administration
+- Technical Support
+- Digital Forensics
+- Incident Response
+- Enterprise IT Operations
+- Cybersecurity
+
+---
+
+# Windows Boot Recovery Overview
+
+```text
+Boot Failure
+
+↓
+
+Windows Recovery Environment (WinRE)
+
+↓
+
+Diagnostics
+
+↓
+
+Repair
+
+↓
+
+System Recovery
+
+↓
+
+Successful Boot
+```
+
+---
+
+# Boot Configuration Data (BCD)
+
+The **Boot Configuration Data (BCD)** store contains startup configuration information used by Windows Boot Manager.
+
+It stores:
+
+- Installed operating systems
+- Default operating system
+- Boot timeout
+- Recovery settings
+- Debugging options
+- Boot parameters
+
+---
+
+# BCD Architecture
+
+```text
+Windows Boot Manager
+
+↓
+
+Read BCD Store
+
+↓
+
+Locate Windows Installation
+
+↓
+
+Load Boot Loader
+
+↓
+
+Kernel Starts
+```
+
+Without a valid BCD configuration, Windows cannot determine how to start the operating system.
+
+---
+
+# BCD Store Components
+
+```text
+BCD Store
+
+├── Boot Manager
+├── Windows Boot Loader
+├── Recovery Settings
+├── Boot Applications
+└── Boot Parameters
+```
+
+---
+
+# Viewing the BCD
+
+Open an elevated Command Prompt and run:
+
+```cmd
+bcdedit
+```
+
+Example output includes:
+
+- Boot Manager
+- Default boot entry
+- Device path
+- Boot identifier
+- Timeout
+
+> **Warning:** Avoid modifying BCD settings on production systems unless you fully understand the changes.
+
+---
+
+# Common BCDEdit Commands
+
+| Command | Purpose |
+|----------|---------|
+| `bcdedit` | Display boot configuration |
+| `bcdedit /enum` | List all entries |
+| `bcdedit /timeout 10` | Set boot menu timeout |
+| `bcdedit /default {identifier}` | Set default boot entry |
+
+Administrative privileges are required to use BCDEdit.
+
+---
+
+# Windows Recovery Environment (WinRE)
+
+WinRE is a dedicated recovery platform that helps repair systems that fail to boot normally.
+
+Capabilities include:
+
+- Startup Repair
+- Command Prompt
+- System Restore
+- Reset this PC
+- Uninstall Updates
+- System Image Recovery
+- Startup Settings
+
+---
+
+# Accessing WinRE
+
+Common methods:
+
+```text
+Settings
+
+↓
+
+System
+
+↓
+
+Recovery
+
+↓
+
+Advanced Startup
+```
+
+Other methods:
+
+- Installation USB
+- Recovery drive
+- Automatic recovery after repeated boot failures
+
+---
+
+# WinRE Structure
+
+```text
+Windows Recovery Environment
+
+├── Continue
+├── Use a Device
+├── Troubleshoot
+│
+│   ├── Reset this PC
+│   ├── Startup Repair
+│   ├── Startup Settings
+│   ├── Command Prompt
+│   ├── System Restore
+│   └── Uninstall Updates
+│
+└── Turn Off PC
+```
+
+---
+
+# Startup Repair
+
+Startup Repair automatically scans for common boot problems.
+
+It can repair:
+
+- Missing boot files
+- Corrupted BCD
+- Damaged startup configuration
+- Certain registry issues
+- Bootloader problems
+
+---
+
+# Startup Repair Workflow
+
+```text
+Boot Failure
+
+↓
+
+Startup Repair
+
+↓
+
+Diagnostics
+
+↓
+
+Repair Attempt
+
+↓
+
+Restart
+
+↓
+
+Windows Boots Successfully
+```
+
+---
+
+# System Restore
+
+System Restore reverts Windows system files and configuration to a previous restore point.
+
+It can recover from:
+
+- Faulty drivers
+- Software installation issues
+- Registry changes
+- Configuration errors
+
+It generally does **not** remove personal documents.
+
+---
+
+# Uninstall Updates
+
+If a recent update causes startup problems, WinRE allows administrators to remove:
+
+- Latest Quality Update
+- Latest Feature Update
+
+This helps recover systems after problematic patches.
+
+---
+
+# Reset This PC
+
+Reset options include:
+
+```text
+Reset This PC
+
+├── Keep My Files
+└── Remove Everything
+```
+
+Benefits:
+
+- Reinstalls Windows
+- Repairs many software-related problems
+- Useful when traditional repair methods fail
+
+---
+
+# Safe Mode
+
+Safe Mode starts Windows using only essential drivers and services.
+
+Purpose:
+
+- Troubleshooting
+- Driver removal
+- Malware cleanup
+- Startup diagnostics
+
+---
+
+# Safe Mode Variants
+
+| Mode | Purpose |
+|------|----------|
+| Safe Mode | Minimal drivers |
+| Safe Mode with Networking | Adds network support |
+| Safe Mode with Command Prompt | Uses Command Prompt instead of Explorer |
+
+---
+
+# Safe Mode Startup
+
+```text
+Windows
+
+↓
+
+Minimal Drivers
+
+↓
+
+Essential Services
+
+↓
+
+Troubleshooting Environment
+```
+
+This reduced environment helps isolate software and driver issues.
+
+---
+
+# Startup Settings
+
+Startup Settings provides additional troubleshooting options.
+
+Examples:
+
+- Enable Safe Mode
+- Enable boot logging
+- Disable automatic restart on system failure
+- Disable driver signature enforcement (temporary)
+- Enable low-resolution video
+
+These options are intended primarily for troubleshooting.
+
+---
+
+# Boot Logging
+
+Boot logging records loaded drivers during startup.
+
+The log file is typically stored as:
+
+```text
+C:\Windows\ntbtlog.txt
+```
+
+Administrators use boot logs to identify:
+
+- Driver load failures
+- Missing drivers
+- Driver startup order
+
+---
+
+# Advanced Boot Options
+
+Common advanced options include:
+
+```text
+Advanced Startup
+
+├── Startup Repair
+├── Startup Settings
+├── Command Prompt
+├── System Restore
+├── Uninstall Updates
+├── UEFI Firmware Settings
+└── System Image Recovery
+```
+
+---
+
+# Command Prompt in WinRE
+
+Command Prompt provides advanced troubleshooting capabilities.
+
+Common commands:
+
+| Command | Purpose |
+|----------|---------|
+| `diskpart` | Disk management |
+| `chkdsk` | Check disk integrity |
+| `sfc /scannow`* | System file verification (typically from a running OS) |
+| `bootrec` | Repair boot records |
+| `bcdedit` | View boot configuration |
+
+> Some commands require offline syntax when run from WinRE.
+
+---
+
+# Bootrec Utility
+
+`bootrec` repairs boot-related problems.
+
+Common commands:
+
+```cmd
+bootrec /fixmbr
+
+bootrec /fixboot
+
+bootrec /scanos
+
+bootrec /rebuildbcd
+```
+
+Typical uses:
+
+- Rebuild BCD
+- Repair boot sector
+- Detect installed Windows systems
+
+> Command behavior may vary depending on BIOS/UEFI configuration and Windows version.
+
+---
+
+# Typical Boot Failure Scenarios
+
+| Symptom | Possible Cause |
+|---------|----------------|
+| "Operating System Not Found" | Boot device or bootloader problem |
+| Blue Screen during startup | Driver or hardware issue |
+| Infinite restart loop | Corrupted update or driver |
+| Automatic Repair loop | Startup corruption |
+| Missing Boot Manager | Corrupted EFI or BCD |
+| Black screen after login | Explorer or graphics issue |
+
+---
+
+# Enterprise Recovery Workflow
+
+```text
+User Reports Boot Failure
+
+↓
+
+Help Desk
+
+↓
+
+Remote Diagnosis (if available)
+
+↓
+
+WinRE
+
+↓
+
+Startup Repair
+
+↓
+
+Restore or Repair
+
+↓
+
+Updates Verified
+
+↓
+
+Device Returned to User
+```
+
+---
+
+# Cybersecurity Perspective
+
+Attackers sometimes target startup components to gain persistence.
+
+Examples include:
+
+- BCD modification
+- Bootloader replacement
+- Bootkits
+- EFI malware
+- Startup script abuse
+
+Security recommendations:
+
+- Enable Secure Boot.
+- Protect firmware with strong administrative controls.
+- Monitor BCD changes.
+- Restrict physical access to enterprise devices.
+- Use endpoint detection tools capable of identifying boot-time tampering.
+
+---
+
+# Business Impact
+
+Reliable recovery mechanisms help organizations:
+
+- Reduce downtime
+- Improve employee productivity
+- Lower support costs
+- Recover systems quickly
+- Minimize operational disruption
+
+---
+
+# Enterprise Best Practices
+
+- Enable System Restore where organizational policy permits.
+- Maintain verified backups before major updates.
+- Keep recovery media available.
+- Test recovery procedures periodically.
+- Document boot recovery workflows.
+- Restrict changes to boot configuration.
+- Monitor startup failures through centralized logging.
+
+---
+
+# Practical Labs
+
+## Lab 1 — View Boot Configuration
+
+Open an elevated Command Prompt.
+
+Run:
+
+```cmd
+bcdedit
+```
+
+Record:
+
+- Boot Manager identifier
+- Default operating system
+- Timeout value
+
+Do not modify the configuration.
+
+---
+
+## Lab 2 — Explore Recovery Options
+
+Navigate to:
+
+```text
+Settings
+
+↓
+
+System
+
+↓
+
+Recovery
+```
+
+Review:
+
+- Reset this PC
+- Advanced Startup
+- Recovery recommendations (if available)
+
+Do not initiate recovery on a production device.
+
+---
+
+## Lab 3 — Review Boot Log Location
+
+Locate the default boot log path:
+
+```text
+C:\Windows\ntbtlog.txt
+```
+
+If present, review the entries to understand how driver loading is recorded.
+
+---
+
+# Key Takeaways
+
+- BCD stores Windows startup configuration.
+- WinRE provides powerful recovery and troubleshooting tools.
+- Safe Mode starts Windows with minimal drivers and services.
+- Startup Repair can automatically fix many common boot issues.
+- Boot logging and BCDEdit assist administrators in diagnosing startup problems.
+
+---
+
+# Interview Questions
+
+1. What is the Boot Configuration Data (BCD)?
+2. What is the purpose of BCDEdit?
+3. What is Windows Recovery Environment (WinRE)?
+4. When should Startup Repair be used?
+5. What is the difference between Safe Mode and Safe Mode with Networking?
+6. What does `bootrec /rebuildbcd` do?
+7. Why is boot logging useful?
+8. What causes an Automatic Repair loop?
+9. Why should administrators protect the BCD?
+10. How does Secure Boot improve startup security?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Microsoft Windows Recovery Documentation
+- Microsoft BCDEdit Documentation
+- Microsoft Sysinternals Documentation
+
+---
+
