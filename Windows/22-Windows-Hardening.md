@@ -1280,4 +1280,745 @@ Explain how each recommendation reduces organizational risk.
 
 ---
 
-**Next:** **Part 3 — Service Hardening, Network Hardening, Application Control, Patch Management, Logging, Monitoring, and Security Auditing**
+# 22-Windows-Hardening.md
+
+# Part 3 — Service Hardening, Network Hardening, Application Control, Patch Management, Logging, Monitoring, and Security Auditing
+
+---
+
+# Introduction
+
+After securing identities and credentials, organizations must harden the operating environment itself.
+
+This includes:
+
+- Windows services
+- Network configuration
+- Application execution
+- Patch management
+- Logging
+- Auditing
+- Continuous monitoring
+
+These controls significantly reduce the likelihood of successful exploitation while improving visibility into security events.
+
+---
+
+# Service Hardening
+
+Every running service represents a potential attack surface.
+
+Objectives include:
+
+- Disable unnecessary services
+- Restrict service permissions
+- Use least-privileged service accounts
+- Monitor service changes
+- Remove obsolete software
+
+Only required services should run in production.
+
+---
+
+# Service Hardening Workflow
+
+```text
+Identify Services
+
+↓
+
+Determine Business Need
+
+↓
+
+Disable Unused Services
+
+↓
+
+Restrict Permissions
+
+↓
+
+Monitor Changes
+
+↓
+
+Review Periodically
+```
+
+---
+
+# Review Running Services
+
+PowerShell:
+
+```powershell
+Get-Service
+```
+
+Command Prompt:
+
+```cmd
+sc query
+```
+
+Review:
+
+- Startup type
+- Running status
+- Business requirement
+- Service account
+
+---
+
+# Service Startup Types
+
+| Startup Type | Description |
+|--------------|-------------|
+| Automatic | Starts during boot |
+| Automatic (Delayed Start) | Starts shortly after boot |
+| Manual | Starts only when required |
+| Disabled | Cannot start until re-enabled |
+
+Use the least permissive startup type that supports operational requirements.
+
+---
+
+# Service Accounts
+
+Services should avoid running with excessive privileges.
+
+Preferred options include:
+
+- Local Service
+- Network Service
+- Virtual Service Accounts
+- Managed Service Accounts (MSA/gMSA)
+
+Avoid using Domain Administrator accounts for services.
+
+---
+
+# Disable Unnecessary Services
+
+Examples that may not be required depending on organizational needs:
+
+- Remote Registry
+- Fax
+- Print Spooler (on systems without printing requirements)
+- Bluetooth services (where unused)
+- Consumer-oriented features
+
+Always validate business impact before disabling services.
+
+---
+
+# Network Hardening
+
+Network hardening reduces exposure to unauthorized communication.
+
+Key objectives:
+
+- Restrict inbound traffic
+- Restrict unnecessary outbound traffic
+- Secure remote management
+- Reduce exposed protocols
+- Monitor network activity
+
+---
+
+# Windows Defender Firewall
+
+Windows Defender Firewall should remain enabled for:
+
+- Domain Profile
+- Private Profile
+- Public Profile
+
+Firewall policies should follow least privilege.
+
+---
+
+# Restrict Open Ports
+
+Only required ports should be accessible.
+
+Example:
+
+| Service | Typical Port | Recommendation |
+|----------|--------------|----------------|
+| RDP | 3389 | Restrict to management networks |
+| SMB | 445 | Internal only |
+| WinRM HTTPS | 5986 | Management systems only |
+| WinRM HTTP | 5985 | Disable if HTTPS is deployed |
+| SSH | 22 | Authorized administrators only |
+
+Port exposure should be minimized.
+
+---
+
+# Disable Legacy Protocols
+
+Legacy protocols often present unnecessary risk.
+
+Examples:
+
+- SMBv1
+- Telnet
+- LLMNR (where organizationally appropriate)
+- NetBIOS over TCP/IP (where not required)
+
+Disabling legacy protocols should be tested to ensure application compatibility.
+
+---
+
+# SMB Hardening
+
+Recommendations:
+
+- Disable SMBv1
+- Require SMB signing where appropriate
+- Restrict anonymous access
+- Monitor SMB authentication
+- Limit file sharing
+
+SMB is frequently targeted during lateral movement.
+
+---
+
+# DNS Hardening
+
+Recommendations:
+
+- Use trusted DNS servers
+- Enable DNS logging where appropriate
+- Monitor unusual DNS requests
+- Restrict unauthorized DNS changes
+- Validate DNSSEC support if applicable
+
+DNS activity provides valuable threat detection opportunities.
+
+---
+
+# Remote Management Hardening
+
+Secure remote administration by:
+
+- Requiring HTTPS for WinRM
+- Restricting RDP access
+- Enabling Network Level Authentication (NLA)
+- Using Jump Servers
+- Deploying Just Enough Administration (JEA)
+- Enforcing MFA
+
+Remote administration should be available only to authorized administrators.
+
+---
+
+# Application Hardening
+
+Applications should be reviewed regularly.
+
+Recommendations:
+
+- Remove unused software
+- Update applications promptly
+- Disable unnecessary plugins
+- Restrict macro execution
+- Validate software publishers
+
+Applications are common initial access vectors.
+
+---
+
+# Application Control
+
+Application control limits which software may execute.
+
+Common approaches:
+
+- Windows Defender Application Control (WDAC)
+- AppLocker
+- Code signing
+- Publisher rules
+- Path rules
+- Hash rules
+
+Allowlisting generally provides stronger security than broad blocklisting.
+
+---
+
+# Windows Defender Application Control (WDAC)
+
+WDAC allows organizations to define trusted software.
+
+Workflow:
+
+```text
+Approved Applications
+
+↓
+
+WDAC Policy
+
+↓
+
+Execution Request
+
+↓
+
+Allow or Block
+```
+
+Only software matching policy is permitted to run.
+
+---
+
+# AppLocker
+
+AppLocker controls application execution based on rules.
+
+Supported rule types:
+
+| Rule Type | Description |
+|------------|-------------|
+| Publisher | Digital signature |
+| Path | File location |
+| Hash | File hash |
+| Packaged App | Microsoft Store applications |
+
+AppLocker is commonly used to reduce unauthorized software execution.
+
+---
+
+# Macro Security
+
+Office macros are a common malware delivery mechanism.
+
+Recommendations:
+
+- Disable unsigned macros
+- Allow trusted publishers only
+- Block macros from untrusted sources
+- Educate users about phishing
+
+Macro policies should be centrally managed.
+
+---
+
+# Patch Management
+
+Keeping systems updated is one of the most effective security controls.
+
+Patch management includes:
+
+- Operating system updates
+- Driver updates
+- Security patches
+- Firmware updates
+- Application updates
+
+Timely patching reduces exposure to known vulnerabilities.
+
+---
+
+# Patch Management Lifecycle
+
+```text
+Vendor Releases Update
+
+↓
+
+Risk Assessment
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Verification
+
+↓
+
+Reporting
+```
+
+Updates should be validated before production deployment.
+
+---
+
+# Windows Update for Business
+
+Windows Update for Business enables organizations to:
+
+- Control deployment timing
+- Defer updates
+- Create deployment rings
+- Manage feature updates
+- Manage quality updates
+
+Controlled rollout reduces operational risk.
+
+---
+
+# Patch Deployment Rings
+
+Example:
+
+```text
+IT Team
+
+↓
+
+Pilot Devices
+
+↓
+
+Department Representatives
+
+↓
+
+Entire Organization
+```
+
+Staged deployment helps identify compatibility issues early.
+
+---
+
+# Vulnerability Management
+
+Patching should be integrated with vulnerability management.
+
+Workflow:
+
+```text
+Scan Systems
+
+↓
+
+Identify Vulnerabilities
+
+↓
+
+Prioritize Risk
+
+↓
+
+Deploy Updates
+
+↓
+
+Verify Remediation
+
+↓
+
+Rescan
+```
+
+Not all vulnerabilities can be remediated immediately; prioritize based on risk and business impact.
+
+---
+
+# Logging
+
+Comprehensive logging supports:
+
+- Troubleshooting
+- Auditing
+- Threat detection
+- Incident response
+- Compliance
+
+Important log sources:
+
+- Security
+- System
+- Application
+- PowerShell
+- Windows Defender
+- Firewall
+
+---
+
+# Advanced Audit Policy
+
+Advanced auditing provides granular visibility.
+
+Examples:
+
+- Logon events
+- Object access
+- Policy changes
+- Process creation
+- Privilege use
+- Account management
+
+Organizations should balance logging depth with storage and performance considerations.
+
+---
+
+# Monitoring
+
+Monitor for:
+
+- Service creation
+- Service failures
+- New scheduled tasks
+- Firewall changes
+- Account modifications
+- Driver installation
+- Unauthorized application execution
+
+Monitoring enables rapid identification of suspicious activity.
+
+---
+
+# Windows Event Forwarding (WEF)
+
+WEF centralizes Windows event logs.
+
+Architecture:
+
+```text
+Windows Endpoints
+
+↓
+
+Windows Event Forwarding
+
+↓
+
+Collector
+
+↓
+
+SIEM
+
+↓
+
+SOC
+```
+
+Centralization improves enterprise visibility.
+
+---
+
+# Security Auditing
+
+Periodic audits should review:
+
+- Local Administrators group
+- Firewall configuration
+- BitLocker status
+- Defender status
+- Patch compliance
+- Running services
+- Installed applications
+- Scheduled tasks
+
+Regular audits identify configuration drift.
+
+---
+
+# Compliance Validation
+
+Example validation checklist:
+
+| Control | Status |
+|----------|--------|
+| BitLocker Enabled | ✓ |
+| Firewall Enabled | ✓ |
+| Defender Enabled | ✓ |
+| Secure Boot Enabled | ✓ |
+| Automatic Updates | ✓ |
+| PowerShell Logging | ✓ |
+
+Compliance should be measured continuously rather than only during formal audits.
+
+---
+
+# Enterprise Example
+
+A multinational organization performs a weekly automated compliance scan.
+
+The workflow:
+
+```text
+PowerShell Automation
+
+↓
+
+Collect Security Settings
+
+↓
+
+Compare with Baseline
+
+↓
+
+Generate Compliance Report
+
+↓
+
+Create Tickets
+
+↓
+
+Remediate Exceptions
+```
+
+This process improves consistency and reduces manual effort.
+
+---
+
+# Cybersecurity Perspective
+
+Attackers commonly exploit:
+
+- Unpatched software
+- Legacy protocols
+- Weak service configurations
+- Unauthorized applications
+- Disabled security controls
+
+Continuous hardening and monitoring reduce opportunities for exploitation.
+
+---
+
+# Business Impact
+
+Comprehensive hardening provides:
+
+- Reduced attack surface
+- Improved regulatory compliance
+- Lower remediation costs
+- Better operational stability
+- Faster incident detection
+- Greater customer confidence
+
+---
+
+# Enterprise Best Practices
+
+- Disable unnecessary services after testing.
+- Keep Windows and applications updated.
+- Use WDAC or AppLocker where appropriate.
+- Restrict network exposure to required services.
+- Enable centralized logging.
+- Review firewall rules regularly.
+- Deploy updates using staged rollout rings.
+- Monitor configuration drift continuously.
+- Perform recurring security audits.
+- Align hardening activities with organizational risk management.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review Running Services
+
+Run:
+
+```powershell
+Get-Service
+```
+
+Identify services that could potentially be disabled in a non-production environment after proper testing.
+
+---
+
+## Lab 2 — Review Firewall Configuration
+
+Run:
+
+```powershell
+Get-NetFirewallProfile
+```
+
+Verify that all required firewall profiles are enabled.
+
+---
+
+## Lab 3 — Review Installed Updates
+
+Run:
+
+```powershell
+Get-HotFix
+```
+
+Document:
+
+- Recent updates
+- Installation dates
+- Missing baseline updates (if known)
+
+---
+
+## Lab 4 — Create a Hardening Audit Checklist
+
+Develop a checklist covering:
+
+- Services
+- Firewall
+- Defender
+- BitLocker
+- Logging
+- Patch compliance
+- Application control
+- Local administrator review
+
+Explain how each item contributes to endpoint security.
+
+---
+
+# Key Takeaways
+
+- Service and network hardening reduce attack surface.
+- Application control limits unauthorized software execution.
+- Patch management is essential for reducing exposure to known vulnerabilities.
+- Centralized logging improves detection and investigations.
+- Regular auditing helps identify configuration drift.
+- Continuous monitoring is a core component of enterprise hardening.
+
+---
+
+# Interview Questions
+
+1. Why should unnecessary Windows services be disabled?
+2. What is the purpose of WDAC?
+3. Compare AppLocker and WDAC.
+4. Why is SMBv1 considered insecure?
+5. Explain a staged patch deployment strategy.
+6. What is Windows Event Forwarding (WEF)?
+7. Why is centralized logging important?
+8. What should be included in a Windows security audit?
+9. How does application allowlisting improve security?
+10. Why should organizations continuously monitor configuration drift?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Defender Documentation
+- Microsoft WDAC Documentation
+- Microsoft AppLocker Documentation
+- Microsoft Windows Update Documentation
+- Microsoft Windows Event Forwarding Documentation
+- NIST SP 800-53
+- CIS Microsoft Windows Benchmarks
+- CIS Controls v8
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
