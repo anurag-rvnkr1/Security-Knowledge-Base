@@ -1600,3 +1600,794 @@ Document your observations.
 
 ---
 
+# 11-Windows-Services.md
+
+# Part 3 — Windows Service Internals, Service Hosting, svchost.exe, Service Security Monitoring, and Troubleshooting
+
+---
+
+# Introduction
+
+In the previous sections, you learned:
+
+- What Windows Services are
+- How the Service Control Manager (SCM) manages them
+- Startup types
+- Service accounts
+- Recovery options
+- Service management tools
+
+This section explores how services actually execute inside Windows, how they are hosted, monitored, and secured, and how administrators troubleshoot service-related problems in enterprise environments.
+
+Understanding service internals is valuable for:
+
+- Windows Administrators
+- SOC Analysts
+- Malware Analysts
+- Incident Responders
+- Digital Forensics
+- System Engineers
+
+---
+
+# Windows Service Internals
+
+A Windows Service is an executable program that communicates with the **Service Control Manager (SCM)** through a defined interface.
+
+Simplified architecture:
+
+```text
+Application
+
+↓
+
+Windows API
+
+↓
+
+Service Control Manager
+
+↓
+
+Windows Service
+
+↓
+
+Operating System Resources
+```
+
+The SCM controls the service lifecycle while the service performs its assigned tasks.
+
+---
+
+# Service Process Model
+
+Services do not all execute in the same way.
+
+A service may run:
+
+- In its own dedicated process
+- Inside a shared service host process
+- As part of another application (less common)
+
+Example:
+
+```text
+Service A
+
+↓
+
+Dedicated Process
+
+------------------------
+
+Service B
+
+↓
+
+Shared Host Process
+```
+
+---
+
+# What is svchost.exe?
+
+Many Windows services run inside a process called:
+
+```text
+svchost.exe
+```
+
+**svchost.exe** stands for **Service Host**.
+
+It allows multiple services to share a common process instead of each requiring its own executable process.
+
+---
+
+# Why Service Host Exists
+
+Without a shared host:
+
+```text
+100 Services
+
+↓
+
+100 Processes
+```
+
+With Service Host:
+
+```text
+100 Services
+
+↓
+
+Several svchost.exe Processes
+```
+
+This approach improves resource utilization while maintaining service organization.
+
+---
+
+# Modern Service Hosting
+
+Older versions of Windows often grouped many services into a small number of `svchost.exe` processes.
+
+Modern versions of Windows (especially on systems with sufficient memory) frequently isolate more services into separate Service Host processes.
+
+Benefits include:
+
+- Improved stability
+- Better fault isolation
+- Easier troubleshooting
+- Enhanced security
+
+---
+
+# Service Hosting Example
+
+```text
+svchost.exe
+
+├── DHCP Client
+├── DNS Client
+├── Windows Time
+
+-------------------------
+
+svchost.exe
+
+├── Event Log
+├── Task Scheduler
+```
+
+Each Service Host instance may contain one or more related services.
+
+---
+
+# Dedicated Service Processes
+
+Some applications install services that execute in dedicated processes.
+
+Example:
+
+```text
+SQL Server
+
+↓
+
+sqlservr.exe
+
+↓
+
+Dedicated Service Process
+```
+
+This simplifies isolation and troubleshooting.
+
+---
+
+# Service Registration
+
+When a service is installed:
+
+```text
+Installer
+
+↓
+
+Registers Service
+
+↓
+
+Registry Updated
+
+↓
+
+SCM Detects Service
+
+↓
+
+Service Available
+```
+
+The Service Control Manager reads service configuration during startup.
+
+---
+
+# Service Executable Path
+
+Every service specifies an executable.
+
+Example:
+
+```text
+Service
+
+↓
+
+Executable Path
+
+↓
+
+C:\Program Files\App\Service.exe
+```
+
+Security teams often verify executable paths during investigations.
+
+---
+
+# Service Start Sequence
+
+Simplified startup sequence:
+
+```text
+SCM
+
+↓
+
+Read Configuration
+
+↓
+
+Locate Executable
+
+↓
+
+Create Process
+
+↓
+
+Initialize Service
+
+↓
+
+Running
+```
+
+Initialization failures may prevent the service from reaching the Running state.
+
+---
+
+# Service Control Requests
+
+The SCM communicates with services using control requests.
+
+Common requests include:
+
+| Control | Purpose |
+|----------|----------|
+| Start | Begin execution |
+| Stop | Terminate service |
+| Pause | Temporarily suspend |
+| Continue | Resume execution |
+| Shutdown | Prepare for system shutdown |
+
+Not every service supports every control request.
+
+---
+
+# Service Status Reporting
+
+Services periodically report their status to the SCM.
+
+Example:
+
+```text
+Starting
+
+↓
+
+Running
+
+↓
+
+Stopping
+
+↓
+
+Stopped
+```
+
+If a service becomes unresponsive during startup or shutdown, Windows may log an error.
+
+---
+
+# Viewing Hosted Services
+
+Using **Task Manager** or **Process Explorer**, administrators can determine:
+
+```text
+svchost.exe
+
+↓
+
+Hosted Services
+
+↓
+
+Running Components
+```
+
+This assists in troubleshooting shared service processes.
+
+---
+
+# Viewing Services from Command Line
+
+Display running services:
+
+```cmd
+sc query
+```
+
+List services and drivers:
+
+```cmd
+sc query type= service
+```
+
+Display detailed configuration:
+
+```cmd
+sc qc wuauserv
+```
+
+---
+
+# Using TASKLIST
+
+Windows can display which services are hosted inside a process.
+
+Example:
+
+```cmd
+tasklist /svc
+```
+
+Sample output (simplified):
+
+```text
+Image Name       PID     Services
+
+svchost.exe      1024    Dnscache, Dhcp
+
+svchost.exe      1456    EventLog
+```
+
+This is useful during troubleshooting and incident response.
+
+---
+
+# Service Logging
+
+Many services generate information through:
+
+- Windows Event Log
+- Application-specific logs
+- Diagnostic logs
+- Performance counters
+
+Administrators should review logs before restarting or reinstalling services.
+
+---
+
+# Common Service Problems
+
+Examples include:
+
+- Service fails to start
+- Startup timeout
+- Missing dependencies
+- Incorrect service account
+- Missing executable
+- Permission issues
+- Corrupted configuration
+
+A structured troubleshooting approach helps identify the root cause.
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Service Fails
+
+↓
+
+Check Status
+
+↓
+
+Review Dependencies
+
+↓
+
+Review Event Logs
+
+↓
+
+Verify Service Account
+
+↓
+
+Verify Executable
+
+↓
+
+Restart Service
+
+↓
+
+Escalate if Needed
+```
+
+---
+
+# Dependency Failure
+
+Example:
+
+```text
+Database Service
+
+↓
+
+Depends On
+
+↓
+
+Network Service
+
+↓
+
+Network Service Fails
+
+↓
+
+Database Service Cannot Start
+```
+
+Always verify dependencies before modifying or restarting services.
+
+---
+
+# Startup Timeout
+
+Some services require additional time during initialization.
+
+Workflow:
+
+```text
+SCM Starts Service
+
+↓
+
+Initialization Too Slow
+
+↓
+
+Timeout
+
+↓
+
+Failure Logged
+```
+
+Repeated startup failures may indicate application or configuration problems.
+
+---
+
+# Service Permissions Review
+
+Administrators should verify:
+
+- Who can start the service
+- Who can stop the service
+- Who can modify configuration
+- Which account the service uses
+- Whether the executable location is protected
+
+Improper permissions can increase security risk.
+
+---
+
+# Service Executable Security
+
+Protect service executables using:
+
+- NTFS permissions
+- Trusted installation paths
+- File integrity monitoring
+- Digital signatures
+
+Replacing a legitimate service executable could allow unauthorized code to execute.
+
+---
+
+# Monitoring Services
+
+Enterprise monitoring platforms commonly track:
+
+- Service creation
+- Service deletion
+- Service startup
+- Service shutdown
+- Startup type changes
+- Service failures
+- Recovery actions
+
+Monitoring helps detect both operational issues and potential security incidents.
+
+---
+
+# Service Monitoring Workflow
+
+```text
+Service Event
+
+↓
+
+Windows Event Log
+
+↓
+
+EDR Agent
+
+↓
+
+SIEM
+
+↓
+
+SOC Analyst
+
+↓
+
+Investigation
+```
+
+This centralized approach supports rapid detection across enterprise environments.
+
+---
+
+# Performance Monitoring
+
+Administrators may monitor:
+
+- CPU utilization
+- Memory usage
+- Service uptime
+- Failure frequency
+- Restart count
+- Resource consumption
+
+Performance trends help identify degraded services before outages occur.
+
+---
+
+# Service Hardening
+
+Service hardening reduces risk by limiting what services can access.
+
+Common practices include:
+
+- Running services with minimal privileges
+- Restricting file permissions
+- Restricting registry permissions
+- Removing unnecessary services
+- Keeping software updated
+
+These measures reduce the potential impact of service compromise.
+
+---
+
+# Enterprise Example
+
+A monitoring platform detects that a critical backup service has stopped.
+
+Investigation:
+
+```text
+Monitoring Alert
+
+↓
+
+SOC Notification
+
+↓
+
+Check Service Status
+
+↓
+
+Review Event Logs
+
+↓
+
+Restart Service
+
+↓
+
+Confirm Successful Backup
+
+↓
+
+Document Incident
+```
+
+A documented response process minimizes downtime.
+
+---
+
+# Cybersecurity Perspective
+
+Attackers may attempt to abuse services for:
+
+- Persistence
+- Privilege escalation
+- Defense evasion
+- Execution at startup
+
+Security teams investigate:
+
+- Unexpected service creation
+- Modified executable paths
+- Startup type changes
+- Unauthorized service account changes
+- Repeated service failures
+
+Monitoring service behavior helps identify suspicious activity early.
+
+---
+
+# Business Impact
+
+Reliable service management provides:
+
+- Higher availability
+- Faster recovery
+- Improved operational stability
+- Better compliance
+- Stronger endpoint security
+- Reduced business disruption
+
+Critical enterprise applications often depend on properly functioning Windows services.
+
+---
+
+# Enterprise Best Practices
+
+- Monitor critical service availability.
+- Investigate repeated service failures.
+- Verify dependencies before making changes.
+- Protect service executables with appropriate NTFS permissions.
+- Review service account assignments periodically.
+- Use digital signatures where available.
+- Include service monitoring in centralized SIEM and EDR solutions.
+
+---
+
+# Practical Labs
+
+## Lab 1 — View Hosted Services
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+tasklist /svc
+```
+
+Observe:
+
+- Process names
+- PIDs
+- Hosted services
+
+Identify a `svchost.exe` instance hosting multiple services.
+
+---
+
+## Lab 2 — Review Service Configuration
+
+Run:
+
+```cmd
+sc qc wuauserv
+```
+
+Review:
+
+- Binary path
+- Startup type
+- Service account
+- Dependencies
+
+Document the configuration.
+
+---
+
+## Lab 3 — Examine Service Logs
+
+Open:
+
+```text
+Event Viewer
+
+↓
+
+Windows Logs
+
+↓
+
+System
+```
+
+Look for:
+
+- Service start events
+- Service stop events
+- Service failure events
+
+Record the Event ID and description for one service-related event.
+
+---
+
+# Key Takeaways
+
+- Many Windows services execute inside `svchost.exe`, while others use dedicated processes.
+- The Service Control Manager communicates with services through control requests.
+- Service executable paths, accounts, and permissions are important security considerations.
+- Monitoring service status and logs helps identify operational and security issues.
+- Enterprise environments benefit from centralized service monitoring and documented recovery procedures.
+
+---
+
+# Interview Questions
+
+1. What is `svchost.exe`?
+2. Why do multiple services sometimes share the same process?
+3. How can you determine which services are running inside `svchost.exe`?
+4. What command displays service configuration information?
+5. Why are service dependencies important during troubleshooting?
+6. What information does `tasklist /svc` provide?
+7. How can administrators protect service executables?
+8. Why is service monitoring important for cybersecurity?
+9. What are common causes of service startup failures?
+10. How does the Service Control Manager communicate with services?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Services Documentation
+- Microsoft Service Control Manager Documentation
+- Microsoft Sysinternals Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
