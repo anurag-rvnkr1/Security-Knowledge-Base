@@ -1309,3 +1309,674 @@ Observe services that interact with Executive components such as networking, sto
 
 ---
 
+# 03-Windows-Architecture.md
+
+# Part 3 — Windows Kernel Internals, CPU Scheduling, Interrupts, HAL, Boot Architecture, System Processes, and Architecture Security
+
+---
+
+# Introduction
+
+While the **Windows Executive** provides most operating system services, the **Windows Kernel** is responsible for the lowest-level operating system operations that directly interact with the processor.
+
+The Kernel ensures that:
+
+- CPU time is fairly distributed
+- Hardware interrupts are processed
+- Threads are scheduled efficiently
+- Synchronization is maintained
+- Exceptions are handled
+- Multiprocessor systems operate correctly
+
+For cybersecurity professionals, understanding the Kernel is essential because many advanced attacks attempt to exploit privileged kernel functionality.
+
+---
+
+# Windows Kernel Overview
+
+The Windows Kernel sits below the Executive and above the Hardware Abstraction Layer (HAL).
+
+```text
+Applications
+      │
+      ▼
+Windows API
+      │
+      ▼
+Windows Executive
+      │
+      ▼
+Windows Kernel
+      │
+      ▼
+HAL
+      │
+      ▼
+Hardware
+```
+
+Unlike the Executive, which manages operating system services, the Kernel focuses on CPU and hardware execution.
+
+---
+
+# Responsibilities of the Windows Kernel
+
+The Kernel performs:
+
+- Thread scheduling
+- Interrupt handling
+- Exception handling
+- Context switching
+- Synchronization
+- Deferred procedure execution
+- Multiprocessor coordination
+- Timer management
+
+---
+
+# Windows Kernel Components
+
+```text
+Windows Kernel
+
+├── Scheduler
+├── Dispatcher
+├── Interrupt Manager
+├── Exception Handler
+├── Synchronization Objects
+├── Timer Manager
+└── DPC Manager
+```
+
+---
+
+# Thread Scheduling
+
+Windows schedules **threads**, not processes.
+
+A process may contain multiple threads.
+
+Example:
+
+```text
+Chrome.exe
+
+├── Thread 1
+├── Thread 2
+├── Thread 3
+└── Thread 4
+```
+
+The scheduler determines which thread executes on the CPU.
+
+---
+
+# Why Threads Are Scheduled
+
+Scheduling threads instead of processes allows:
+
+- Better responsiveness
+- Parallel execution
+- Improved multitasking
+- Efficient CPU utilization
+
+---
+
+# Scheduler Workflow
+
+```text
+Ready Thread
+
+↓
+
+Priority Evaluation
+
+↓
+
+CPU Assigned
+
+↓
+
+Running
+
+↓
+
+Waiting
+
+↓
+
+Ready Queue
+```
+
+This cycle repeats continuously while Windows is running.
+
+---
+
+# Thread States
+
+| State | Description |
+|--------|-------------|
+| Initialized | Thread created but not scheduled |
+| Ready | Waiting for CPU time |
+| Running | Executing instructions |
+| Waiting | Waiting for an event or resource |
+| Standby | Selected to run next on a processor |
+| Terminated | Execution completed |
+
+---
+
+# Thread Priorities
+
+Windows uses priority-based scheduling.
+
+Simplified priority flow:
+
+```text
+High Priority
+
+↓
+
+Medium Priority
+
+↓
+
+Low Priority
+```
+
+Higher-priority threads generally receive CPU time before lower-priority threads.
+
+---
+
+# Dynamic Priority
+
+Windows dynamically adjusts thread priorities to improve responsiveness.
+
+Examples:
+
+- Foreground applications may receive temporary priority boosts.
+- I/O-bound threads can receive boosts after completing I/O.
+- Long-running CPU-intensive threads may have their dynamic priority adjusted.
+
+This behavior helps maintain a responsive user experience.
+
+---
+
+# Context Switching
+
+When Windows switches from one thread to another, it performs a **context switch**.
+
+```text
+Thread A Running
+
+↓
+
+Save CPU Registers
+
+↓
+
+Load Thread B Registers
+
+↓
+
+Thread B Running
+```
+
+Saved information includes:
+
+- CPU registers
+- Instruction pointer
+- Stack pointer
+- Processor state
+
+---
+
+# Context Switch Overhead
+
+Frequent context switches increase:
+
+- CPU overhead
+- Cache misses
+- Scheduling complexity
+
+Enterprise servers aim to balance responsiveness with efficient CPU utilization.
+
+---
+
+# Interrupts
+
+An interrupt signals the processor that immediate attention is required.
+
+Examples:
+
+- Keyboard input
+- Mouse movement
+- Network packet arrival
+- Disk I/O completion
+- Hardware timer
+
+---
+
+# Interrupt Workflow
+
+```text
+Hardware Event
+
+↓
+
+Interrupt Generated
+
+↓
+
+CPU Suspends Current Thread
+
+↓
+
+Interrupt Service Routine (ISR)
+
+↓
+
+Resume Normal Execution
+```
+
+Interrupts allow Windows to respond quickly to hardware events.
+
+---
+
+# Interrupt Service Routine (ISR)
+
+An ISR is a short routine that executes immediately after an interrupt occurs.
+
+Responsibilities:
+
+- Identify the interrupt source
+- Perform minimal processing
+- Schedule additional work if needed
+- Return control quickly
+
+ISRs should execute as quickly as possible to avoid delaying other interrupts.
+
+---
+
+# Deferred Procedure Calls (DPCs)
+
+Some interrupt processing is postponed using **Deferred Procedure Calls (DPCs)**.
+
+Workflow:
+
+```text
+Interrupt
+
+↓
+
+ISR
+
+↓
+
+Queue DPC
+
+↓
+
+Later Execution
+
+↓
+
+Normal Thread Scheduling
+```
+
+Benefits:
+
+- Shorter interrupt latency
+- Better system responsiveness
+- Reduced CPU blocking
+
+---
+
+# Exceptions
+
+Exceptions occur when unexpected processor events happen.
+
+Examples:
+
+- Divide by zero
+- Invalid memory access
+- Illegal instruction
+- Page fault
+
+Windows handles exceptions to maintain system stability whenever possible.
+
+---
+
+# Exception Handling Workflow
+
+```text
+Instruction Executed
+
+↓
+
+Exception Occurs
+
+↓
+
+Exception Handler
+
+↓
+
+Handled?
+
+↓
+
+Yes → Continue
+
+No → Application Crash
+```
+
+---
+
+# Synchronization
+
+Multiple threads often access shared resources.
+
+Synchronization prevents:
+
+- Data corruption
+- Race conditions
+- Deadlocks (when designed correctly)
+- Inconsistent system state
+
+---
+
+# Synchronization Objects
+
+Windows provides several synchronization mechanisms.
+
+| Object | Purpose |
+|---------|----------|
+| Mutex | Exclusive access to a resource |
+| Semaphore | Limit concurrent access |
+| Event | Signal between threads |
+| Critical Section | Synchronize threads within a process |
+| SRW Lock | Lightweight reader/writer synchronization |
+
+---
+
+# Hardware Abstraction Layer (HAL)
+
+The HAL isolates Windows from hardware-specific implementation details.
+
+```text
+Windows Kernel
+
+↓
+
+HAL
+
+↓
+
+CPU
+
+RAM
+
+SSD
+
+GPU
+
+NIC
+
+USB
+```
+
+Without the HAL, Windows would require significant changes for each hardware platform.
+
+---
+
+# Responsibilities of the HAL
+
+- Abstract hardware differences
+- Provide standardized hardware interfaces
+- Coordinate interrupt controllers
+- Manage timers
+- Support multiprocessor systems
+
+---
+
+# Multiprocessor Support
+
+Modern computers typically contain multiple CPU cores.
+
+Example:
+
+```text
+CPU
+
+├── Core 1
+├── Core 2
+├── Core 3
+└── Core 4
+```
+
+The Windows scheduler distributes runnable threads across available processors to maximize performance.
+
+---
+
+# Boot Architecture Overview
+
+Kernel initialization begins after the Windows Boot Manager loads the operating system.
+
+Simplified sequence:
+
+```text
+Power On
+
+↓
+
+UEFI
+
+↓
+
+Windows Boot Manager
+
+↓
+
+Windows Loader
+
+↓
+
+Kernel Loaded
+
+↓
+
+Executive Initialized
+
+↓
+
+Drivers Loaded
+
+↓
+
+Session Manager
+
+↓
+
+Winlogon
+
+↓
+
+Desktop
+```
+
+Later chapters cover the boot process in greater detail.
+
+---
+
+# Critical Windows System Processes
+
+Several core processes participate in system startup.
+
+| Process | Purpose |
+|----------|----------|
+| System | Kernel-mode execution context |
+| `smss.exe` | Session Manager |
+| `csrss.exe` | Client/Server Runtime Subsystem |
+| `wininit.exe` | Initializes system services |
+| `services.exe` | Service Control Manager |
+| `lsass.exe` | Local Security Authority |
+| `winlogon.exe` | User logon management |
+| `explorer.exe` | User shell |
+
+These processes are essential for normal system operation.
+
+---
+
+# Kernel Security
+
+Modern Windows includes multiple kernel protections.
+
+Examples:
+
+- Kernel-mode code signing
+- Driver signature enforcement
+- PatchGuard (Kernel Patch Protection)
+- Secure Boot
+- Virtualization-Based Security (VBS)
+- Hypervisor-Protected Code Integrity (HVCI)
+
+These technologies make unauthorized kernel modification significantly more difficult.
+
+---
+
+# Cybersecurity Perspective
+
+Many sophisticated attacks target the kernel because it has the highest level of privilege.
+
+Examples include:
+
+- Kernel rootkits
+- Malicious drivers
+- Bring Your Own Vulnerable Driver (BYOVD)
+- Privilege escalation exploits
+- Kernel memory corruption
+- Interrupt hooking
+
+Security teams monitor:
+
+- Driver loading
+- Kernel crashes
+- Suspicious privilege changes
+- Unexpected system call behavior
+- Code integrity violations
+
+---
+
+# Business Impact
+
+A secure and efficient kernel provides:
+
+- Stable enterprise systems
+- Reliable multitasking
+- Strong endpoint protection
+- Better application compatibility
+- Improved hardware utilization
+- Reduced downtime
+
+Kernel failures can affect every application running on a system, making kernel reliability critical for business continuity.
+
+---
+
+# Enterprise Best Practices
+
+- Deploy only digitally signed drivers.
+- Remove unsupported or legacy drivers.
+- Enable Secure Boot and VBS where supported.
+- Keep firmware and operating systems updated.
+- Monitor kernel events using EDR and SIEM platforms.
+- Restrict administrative access to trusted personnel.
+- Validate drivers before enterprise-wide deployment.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Observe Thread Activity
+
+1. Open **Task Manager**.
+2. Select **Details**.
+3. Right-click a process and choose **Go to details** (or use **Resource Monitor** for deeper inspection).
+4. Observe CPU utilization across multiple applications.
+
+---
+
+## Lab 2 — Review Processor Information
+
+1. Press:
+
+```text
+Windows + R
+```
+
+2. Run:
+
+```text
+msinfo32
+```
+
+3. Record:
+
+- Processor model
+- Number of logical processors
+- Installed memory
+
+Discuss how multiple cores improve multitasking.
+
+---
+
+## Lab 3 — Identify Critical Processes
+
+Using **Task Manager**, locate:
+
+- `smss.exe`
+- `csrss.exe`
+- `services.exe`
+- `lsass.exe`
+- `winlogon.exe`
+- `explorer.exe`
+
+Record their roles in the operating system.
+
+---
+
+# Key Takeaways
+
+- The Windows Kernel manages low-level CPU and hardware operations.
+- Windows schedules threads rather than processes.
+- Interrupts allow hardware to notify the operating system of important events.
+- Context switching enables multitasking by moving CPU execution between threads.
+- The HAL provides hardware independence.
+- Modern Windows includes multiple kernel-level security protections.
+
+---
+
+# Interview Questions
+
+1. What is the primary responsibility of the Windows Kernel?
+2. Why does Windows schedule threads instead of processes?
+3. What is a context switch?
+4. What is an interrupt?
+5. What is an Interrupt Service Routine (ISR)?
+6. What are Deferred Procedure Calls (DPCs)?
+7. What is the purpose of the HAL?
+8. Name four synchronization objects in Windows.
+9. Why are digitally signed drivers important?
+10. How does the Windows Kernel contribute to system security?
+
+---
+
+# References
+
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- Microsoft Learn
+- Microsoft Sysinternals Documentation
+- Windows Driver Kit (WDK) Documentation
+- Microsoft Security Documentation
+
+---
+
