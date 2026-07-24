@@ -1639,4 +1639,772 @@ Active Directory Users and Computers
 
 ---
 
-**Next:** **Part 3 — Advanced Object Management, Attribute Editor, Saved Queries, PowerShell Automation, Troubleshooting, and Enterprise Operations**
+# 12-Active-Directory-Users-and-Computers.md
+
+# Part 3 — Advanced Object Management, Attribute Editor, Saved Queries, PowerShell Automation, Troubleshooting, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Perform advanced object management in ADUC.
+- Understand the Attribute Editor.
+- Use Saved Queries.
+- Automate administration with PowerShell.
+- Troubleshoot user and computer object issues.
+- Apply enterprise operational best practices.
+
+---
+
+# Review
+
+From previous parts:
+
+We learned:
+
+- ADUC fundamentals
+- Active Directory objects
+- User management
+- Computer management
+- Account lifecycle
+- PowerShell basics
+
+Now we'll focus on **advanced administration** performed in enterprise Active Directory environments.
+
+---
+
+# Advanced Features
+
+Many administrative options are hidden by default.
+
+Enable them:
+
+```text
+View
+
+↓
+
+Advanced Features
+```
+
+This exposes additional containers, tabs, and object properties.
+
+---
+
+# Benefits of Advanced Features
+
+Enabling Advanced Features allows administrators to:
+
+- View System containers
+- Access Security tabs
+- Open Attribute Editor
+- View advanced object properties
+- Perform detailed troubleshooting
+
+---
+
+# Attribute Editor
+
+One of the most important administrative tools.
+
+Found under:
+
+```text
+User Properties
+
+↓
+
+Attribute Editor
+```
+
+This tab displays nearly every LDAP attribute associated with an object.
+
+---
+
+# What are Attributes?
+
+Every Active Directory object consists of attributes.
+
+Example:
+
+```text
+User
+
+↓
+
+Display Name
+
+↓
+
+Department
+
+↓
+
+Manager
+
+↓
+
+Telephone
+
+↓
+
+SID
+
+↓
+
+ObjectGUID
+
+↓
+
+mail
+
+↓
+
+memberOf
+```
+
+---
+
+# Common User Attributes
+
+| LDAP Attribute | Description |
+|---------------|-------------|
+| cn | Common Name |
+| displayName | Display Name |
+| givenName | First Name |
+| sn | Surname |
+| mail | Email |
+| department | Department |
+| company | Company |
+| title | Job Title |
+| manager | Manager |
+| telephoneNumber | Phone Number |
+
+---
+
+# Security Attributes
+
+Important security-related attributes include:
+
+| Attribute | Purpose |
+|-----------|----------|
+| objectSID | Security Identifier |
+| objectGUID | Permanent Object Identifier |
+| userAccountControl | Account behavior flags |
+| memberOf | Group membership |
+| primaryGroupID | Primary group |
+| lastLogonTimestamp | Approximate last logon replication attribute |
+
+---
+
+# UserAccountControl
+
+The **userAccountControl** attribute stores account configuration using a bitmask.
+
+Examples of account characteristics include:
+
+- Account disabled
+- Password not required
+- Smart card required
+- Password never expires
+- Trusted for delegation
+
+Administrators typically manage these settings through ADUC rather than editing the value directly.
+
+---
+
+# Distinguished Name Attribute
+
+Example:
+
+```text
+CN=John Smith
+
+OU=Finance
+
+DC=company
+
+DC=com
+```
+
+This attribute identifies the object's location within the directory hierarchy.
+
+---
+
+# Viewing Hidden Attributes
+
+Attribute Editor exposes values not normally visible through standard property tabs.
+
+Examples:
+
+```text
+lastLogonTimestamp
+
+pwdLastSet
+
+whenCreated
+
+whenChanged
+
+objectGUID
+```
+
+These are frequently used during troubleshooting and audits.
+
+---
+
+# Saved Queries
+
+Large enterprises may contain:
+
+- 200,000 users
+- 50,000 computers
+- Thousands of groups
+
+Finding objects manually is inefficient.
+
+ADUC provides:
+
+> **Saved Queries**
+
+---
+
+# Saved Query Purpose
+
+Saved Queries allow administrators to repeatedly search for objects matching specified criteria.
+
+Examples:
+
+- Disabled users
+- Locked users
+- Expired accounts
+- Computers
+- Service accounts
+
+---
+
+# Saved Query Example
+
+```text
+Users
+
+↓
+
+Department = Finance
+```
+
+Result:
+
+```text
+Only Finance Users
+```
+
+---
+
+# Example Queries
+
+```text
+Disabled Accounts
+```
+
+```text
+Locked Accounts
+```
+
+```text
+Password Never Expires
+```
+
+```text
+Inactive Computers
+```
+
+These queries simplify routine administrative tasks.
+
+---
+
+# Object Search
+
+ADUC supports searching by:
+
+- Name
+- Description
+- Email
+- UPN
+- Computer name
+- Custom LDAP attributes (through advanced search capabilities)
+
+---
+
+# Find Feature
+
+```text
+Right Click Domain
+
+↓
+
+Find
+```
+
+Useful when locating:
+
+- Users
+- Computers
+- Groups
+- Contacts
+
+---
+
+# Object Movement
+
+Objects can be moved between OUs.
+
+Example:
+
+Before:
+
+```text
+Sales OU
+```
+
+After:
+
+```text
+Marketing OU
+```
+
+Effects:
+
+- Distinguished Name changes.
+- Different Group Policies may apply.
+- Delegated administration may change.
+
+---
+
+# Object Protection
+
+Administrators can protect important objects from accidental deletion.
+
+Example:
+
+```text
+Properties
+
+↓
+
+Object
+
+↓
+
+Protect Object from Accidental Deletion
+```
+
+This is commonly enabled for critical OUs and important administrative objects.
+
+---
+
+# Bulk Administration
+
+Enterprise administrators rarely create accounts one at a time.
+
+Typical workflow:
+
+```text
+HR System
+
+↓
+
+CSV File
+
+↓
+
+PowerShell
+
+↓
+
+Bulk User Creation
+```
+
+Automation reduces manual effort and configuration errors.
+
+---
+
+# PowerShell Automation
+
+PowerShell provides powerful management capabilities.
+
+---
+
+# Find Users
+
+```powershell
+Get-ADUser `
+-Filter *
+```
+
+---
+
+# Find Computers
+
+```powershell
+Get-ADComputer `
+-Filter *
+```
+
+---
+
+# Find Disabled Users
+
+```powershell
+Search-ADAccount `
+-AccountDisabled
+```
+
+---
+
+# Find Locked Accounts
+
+```powershell
+Search-ADAccount `
+-LockedOut
+```
+
+---
+
+# Find Inactive Accounts
+
+```powershell
+Search-ADAccount `
+-AccountInactive
+```
+
+---
+
+# Move Object
+
+```powershell
+Move-ADObject
+```
+
+Used to move users, computers, groups, and other directory objects.
+
+---
+
+# Rename Object
+
+```powershell
+Rename-ADObject
+```
+
+Allows administrators to rename objects without recreating them.
+
+---
+
+# Remove Object
+
+```powershell
+Remove-ADUser
+```
+
+or
+
+```powershell
+Remove-ADComputer
+```
+
+Deletion should follow organizational retention and approval processes.
+
+---
+
+# Reporting
+
+PowerShell can generate reports such as:
+
+- Disabled users
+- Expired accounts
+- Password expiration status
+- Group memberships
+- Inactive computers
+- Organizational summaries
+
+---
+
+# Enterprise Example
+
+Organization:
+
+- 180,000 employees
+- 95,000 computers
+
+Automation:
+
+```text
+PowerShell
+
+↓
+
+HR Import
+
+↓
+
+Account Creation
+
+↓
+
+Group Assignment
+
+↓
+
+OU Placement
+
+↓
+
+Reporting
+```
+
+Benefits:
+
+- Consistency
+- Speed
+- Reduced administrative effort
+
+---
+
+# Troubleshooting User Objects
+
+Common issues:
+
+- Missing attributes
+- Incorrect department
+- Wrong manager
+- Missing email
+- Incorrect group membership
+- Wrong OU
+- Replication delay
+
+---
+
+# Troubleshooting Computer Objects
+
+Common issues:
+
+- Secure channel problems
+- Incorrect OU
+- Missing Group Policy
+- Disabled account
+- Duplicate computer names
+- Replication issues
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Problem
+
+↓
+
+Object Exists?
+
+↓
+
+Correct OU?
+
+↓
+
+Correct Attributes?
+
+↓
+
+Correct Groups?
+
+↓
+
+Replication Healthy?
+
+↓
+
+Resolved
+```
+
+---
+
+# Useful Administrative Tools
+
+| Tool | Purpose |
+|------|----------|
+| ADUC | Object administration |
+| PowerShell | Automation |
+| Event Viewer | Event analysis |
+| Active Directory Administrative Center (ADAC) | Modern administration |
+| ADSI Edit | Advanced directory editing |
+| LDP | LDAP troubleshooting |
+
+---
+
+# ADSI Edit
+
+**ADSI Edit** provides low-level access to directory objects.
+
+It allows administrators to:
+
+- View attributes
+- Edit directory objects
+- Access naming contexts
+- Troubleshoot advanced issues
+
+Use ADSI Edit with caution because changes bypass many of the safeguards provided by ADUC.
+
+---
+
+# Active Directory Administrative Center (ADAC)
+
+ADAC is a newer management interface that supports:
+
+- Modern administration
+- PowerShell integration
+- Fine-Grained Password Policies
+- Recycle Bin management
+- Enhanced object management
+
+Many enterprises use both ADUC and ADAC depending on the task.
+
+---
+
+# Best Practices
+
+- Enable Advanced Features when performing advanced administration.
+- Populate important user attributes consistently.
+- Use Saved Queries for repetitive searches.
+- Automate repetitive tasks with PowerShell.
+- Protect critical objects from accidental deletion.
+- Review inactive accounts regularly.
+- Document administrative procedures.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Editing advanced attributes without understanding their purpose.
+- Using ADSI Edit for routine administration.
+- Ignoring missing business attributes.
+- Performing large bulk changes without testing.
+- Deleting objects instead of disabling them first.
+- Leaving stale computer accounts in the directory.
+
+---
+
+# Cybersecurity Perspective
+
+Directory objects are valuable security assets.
+
+Security teams should:
+
+- Audit object modifications.
+- Review privileged accounts regularly.
+- Monitor changes to critical attributes.
+- Detect inactive accounts.
+- Remove obsolete computer objects.
+- Review delegated permissions.
+- Protect administrative accounts from unauthorized modification.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Practice advanced object management.
+
+### Tasks
+
+1. Enable:
+
+```text
+View
+
+↓
+
+Advanced Features
+```
+
+2. Open:
+
+```text
+Attribute Editor
+```
+
+3. Record:
+
+- objectGUID
+- objectSID
+- Distinguished Name
+- lastLogonTimestamp
+- userAccountControl
+
+4. Create:
+
+```text
+Saved Query
+
+↓
+
+Disabled Users
+```
+
+5. Run:
+
+```powershell
+Search-ADAccount -LockedOut
+```
+
+6. Generate:
+
+- Disabled user report
+- Computer inventory
+- OU summary
+
+---
+
+# Key Takeaways
+
+- Attribute Editor exposes detailed LDAP attributes.
+- Saved Queries simplify enterprise administration.
+- PowerShell enables large-scale automation.
+- ADAC and ADSI Edit complement ADUC for advanced administration.
+- Proper object management improves security and operational efficiency.
+
+---
+
+# Interview Questions
+
+1. What does the Attribute Editor display?
+2. What is the purpose of userAccountControl?
+3. What are Saved Queries?
+4. Which PowerShell cmdlet finds locked accounts?
+5. What is ADSI Edit used for?
+6. What is Active Directory Administrative Center (ADAC)?
+7. Why should ADSI Edit be used carefully?
+8. Which attribute uniquely identifies an object permanently?
+9. Why is object protection important?
+10. How does PowerShell improve enterprise administration?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Users and Computers
+- Microsoft Learn – Active Directory Administrative Center
+- Microsoft Learn – ActiveDirectory PowerShell Module
+- Microsoft Learn – ADSI Edit
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — ADUC Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
