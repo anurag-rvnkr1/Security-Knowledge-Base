@@ -2407,4 +2407,771 @@ Search-ADAccount -LockedOut
 
 ---
 
-**Next:** **Part 4 — ADUC Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
+# Active-Directory/
+
+# 12-Active-Directory-Users-and-Computers.md
+
+# Part 4 — ADUC Security, Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Secure Active Directory Users and Computers (ADUC).
+- Monitor user and computer objects effectively.
+- Understand enterprise identity lifecycle management.
+- Apply Active Directory administrative best practices.
+- Review the complete ADUC chapter.
+- Prepare for enterprise and cybersecurity interviews.
+
+---
+
+# Why ADUC Security is Critical
+
+Active Directory is often called the **Identity Provider** of a Windows enterprise.
+
+If attackers compromise Active Directory, they may gain access to:
+
+- User accounts
+- Administrator accounts
+- Servers
+- Domain Controllers
+- Business applications
+- File servers
+- Databases
+- Cloud-integrated services
+
+Therefore, securing ADUC administration is a fundamental cybersecurity responsibility.
+
+---
+
+# Identity Lifecycle Management
+
+Every identity follows a lifecycle.
+
+```text
+Request
+
+↓
+
+Approval
+
+↓
+
+Provision
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Monitoring
+
+↓
+
+Modification
+
+↓
+
+Disable
+
+↓
+
+Archive
+
+↓
+
+Delete
+```
+
+This process helps ensure that access is granted, maintained, and removed appropriately throughout a user's or device's lifecycle.
+
+---
+
+# Joiner, Mover, Leaver (JML) Process
+
+Most enterprises follow the **Joiner-Mover-Leaver (JML)** model.
+
+## Joiner
+
+New employee joins.
+
+```text
+HR
+
+↓
+
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Provide Access
+
+↓
+
+First Login
+```
+
+---
+
+## Mover
+
+Employee changes department or role.
+
+```text
+Marketing
+
+↓
+
+Finance
+
+↓
+
+Update Groups
+
+↓
+
+Move OU
+
+↓
+
+Apply New GPOs
+
+↓
+
+Remove Old Access
+```
+
+---
+
+## Leaver
+
+Employee leaves the organization.
+
+```text
+Disable Account
+
+↓
+
+Reset Password
+
+↓
+
+Revoke Sessions
+
+↓
+
+Remove Group Membership
+
+↓
+
+Archive Data
+
+↓
+
+Delete (per retention policy)
+```
+
+Timely deprovisioning reduces the risk of unauthorized access.
+
+---
+
+# Principle of Least Privilege (PoLP)
+
+Users should receive **only the permissions necessary** to perform their job.
+
+Instead of:
+
+```text
+Everyone
+
+↓
+
+Local Admin
+```
+
+Use:
+
+```text
+Users
+
+↓
+
+Role-Based Groups
+
+↓
+
+Required Permissions Only
+```
+
+This minimizes the impact of compromised accounts.
+
+---
+
+# Role-Based Access Control (RBAC)
+
+Permissions should generally be assigned through groups representing business roles.
+
+```text
+User
+
+↓
+
+Finance Group
+
+↓
+
+Finance Share
+
+↓
+
+Finance Application
+```
+
+Benefits:
+
+- Simplified administration
+- Easier audits
+- Consistent permissions
+- Reduced configuration errors
+
+---
+
+# Delegated Administration
+
+Large organizations distribute administrative responsibilities.
+
+Example:
+
+```text
+Enterprise Admin
+
+↓
+
+Domain Admin
+
+↓
+
+OU Administrator
+
+↓
+
+Helpdesk
+
+↓
+
+Department Admin
+```
+
+Examples of delegated tasks:
+
+- Password resets
+- Unlocking accounts
+- Creating users
+- Managing groups
+- Updating contact information
+
+---
+
+# Protecting Privileged Accounts
+
+Accounts such as:
+
+- Domain Admins
+- Enterprise Admins
+- Schema Admins
+- Backup Operators
+- Service Administrators
+
+should receive additional protection.
+
+Recommendations:
+
+- Use separate administrative accounts.
+- Avoid daily work with privileged accounts.
+- Require strong authentication.
+- Review memberships regularly.
+- Monitor privileged logons.
+
+---
+
+# Service Accounts
+
+Applications and services often require dedicated accounts.
+
+Examples:
+
+```text
+SQL Server
+
+↓
+
+Service Account
+```
+
+```text
+Web Application
+
+↓
+
+Application Pool Identity
+```
+
+Recommendations:
+
+- Do not use personal accounts.
+- Grant only required permissions.
+- Rotate credentials according to organizational policy.
+- Prefer **Managed Service Accounts (MSAs/gMSAs)** where supported.
+
+---
+
+# Stale Accounts
+
+Inactive accounts present unnecessary risk.
+
+Examples:
+
+- Former employees
+- Retired servers
+- Unused service accounts
+- Test accounts
+- Dormant contractors
+
+Routine reviews should identify and remediate these accounts.
+
+---
+
+# Account Auditing
+
+Administrators should monitor:
+
+- Account creation
+- Account deletion
+- Password resets
+- Account lockouts
+- Group membership changes
+- Privileged account usage
+- Computer account creation
+- OU modifications
+
+---
+
+# Enterprise Monitoring
+
+```text
+Domain Controllers
+
+↓
+
+Security Logs
+
+↓
+
+SIEM
+
+↓
+
+SOC Monitoring
+
+↓
+
+Alerts
+
+↓
+
+Investigation
+```
+
+Security teams often forward domain controller events to a centralized SIEM for correlation and analysis.
+
+---
+
+# Important Event Categories
+
+Administrators should monitor events related to:
+
+| Category | Purpose |
+|----------|----------|
+| Account Management | User and group changes |
+| Logon Events | Authentication activity |
+| Directory Service Changes | AD object modifications |
+| Account Lockouts | Brute-force detection |
+| Privileged Group Changes | High-risk administrative actions |
+
+Specific Event IDs vary by Windows version and audit policy configuration.
+
+---
+
+# Account Lockout Investigation
+
+Example workflow:
+
+```text
+User Locked
+
+↓
+
+Review Security Logs
+
+↓
+
+Identify Source Device
+
+↓
+
+Determine Cause
+
+↓
+
+Reset if Required
+
+↓
+
+Resolve Root Cause
+```
+
+Possible causes:
+
+- Incorrect saved passwords
+- Mobile devices
+- Scheduled tasks
+- Services
+- Brute-force attempts
+
+---
+
+# Administrative Checklist
+
+Daily:
+
+- Review failed logons.
+- Review account lockouts.
+- Check privileged account activity.
+- Verify provisioning requests.
+
+Weekly:
+
+- Review inactive accounts.
+- Review privileged groups.
+- Audit delegated permissions.
+- Verify backups.
+
+Monthly:
+
+- Review OU structure.
+- Review service accounts.
+- Validate documentation.
+- Perform access recertification where required.
+
+---
+
+# Enterprise Automation
+
+Modern organizations integrate:
+
+```text
+HR System
+
+↓
+
+Identity Management
+
+↓
+
+Active Directory
+
+↓
+
+Microsoft 365
+
+↓
+
+Business Applications
+```
+
+This reduces manual provisioning and improves consistency.
+
+---
+
+# Compliance
+
+Proper ADUC administration supports:
+
+- ISO/IEC 27001
+- CIS Controls
+- Microsoft Security Baselines
+- NIST Cybersecurity Framework
+- Internal audit requirements
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Creating shared user accounts.
+- Leaving former employee accounts enabled.
+- Granting direct permissions instead of using groups.
+- Ignoring account expiration.
+- Leaving privileged accounts unused but active.
+- Creating users in incorrect OUs.
+- Using administrator accounts for everyday work.
+
+---
+
+# Enterprise Best Practices
+
+- Use standardized naming conventions.
+- Populate important user attributes.
+- Follow the JML process.
+- Implement RBAC.
+- Delegate administration carefully.
+- Audit privileged accounts.
+- Review stale accounts regularly.
+- Protect administrative credentials.
+- Automate repetitive administrative tasks.
+- Document operational procedures.
+
+---
+
+# Security Checklist
+
+| Control | Recommended |
+|----------|-------------|
+| Least Privilege | ✔ |
+| RBAC | ✔ |
+| Separate Admin Accounts | ✔ |
+| Account Auditing | ✔ |
+| Group-Based Permissions | ✔ |
+| Regular Inactive Account Review | ✔ |
+| Delegated Administration | ✔ |
+| Identity Lifecycle Management | ✔ |
+| Tested Backups | ✔ |
+| Documentation | ✔ |
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A multinational company has:
+
+- 120,000 employees
+- 65 regional offices
+- 95,000 workstations
+- 6,000 servers
+
+### Identity Strategy
+
+```text
+HR
+
+↓
+
+Identity Platform
+
+↓
+
+Active Directory
+
+↓
+
+Microsoft 365
+
+↓
+
+VPN
+
+↓
+
+ERP
+
+↓
+
+Security Monitoring
+```
+
+### Administrative Controls
+
+- Automated onboarding
+- Automated deprovisioning
+- Role-based groups
+- Centralized password policies
+- Delegated administration
+- SIEM monitoring
+- Quarterly access reviews
+
+### Benefits
+
+- Reduced manual effort
+- Faster onboarding
+- Consistent access control
+- Improved compliance
+- Better incident response
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Active Directory Users and Computers (ADUC)
+- User objects
+- Computer objects
+- Distinguished Name (DN)
+- Relative Distinguished Name (RDN)
+- SID
+- Object GUID
+- User properties
+- Computer account management
+- Password-related settings
+- Group memberships
+- Attribute Editor
+- Saved Queries
+- PowerShell automation
+- Delegated administration
+- Identity lifecycle management
+- Security monitoring
+- Enterprise best practices
+
+---
+
+# Final Revision Table
+
+| Topic | Key Point |
+|--------|-----------|
+| ADUC | Primary GUI for Active Directory administration |
+| User Object | Represents a user identity |
+| Computer Object | Represents a domain-joined device |
+| SID | Permanent security identifier |
+| Object GUID | Globally unique object identifier |
+| Distinguished Name | Identifies object location in AD |
+| Attribute Editor | Displays LDAP attributes |
+| Saved Queries | Reusable object searches |
+| RBAC | Permissions assigned through roles/groups |
+| JML | Joiner-Mover-Leaver identity lifecycle |
+| Delegation | Controlled distribution of administrative tasks |
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Perform common enterprise ADUC administrative tasks.
+
+### Tasks
+
+1. Create:
+
+- User account
+- Computer account
+
+2. Configure:
+
+- Department
+- Manager
+- Account expiration
+- Group membership
+
+3. Move the user to another OU.
+
+4. Protect an OU from accidental deletion.
+
+5. Create a Saved Query for:
+
+- Disabled users
+
+6. Generate reports using:
+
+```powershell
+Get-ADUser -Filter *
+```
+
+7. Identify:
+
+- Inactive accounts
+- Privileged accounts
+- Stale computer accounts
+
+8. Prepare an administrative report including:
+
+- User inventory
+- Computer inventory
+- Group membership summary
+- Security observations
+- Improvement recommendations
+
+---
+
+# Interview Questions
+
+### Basic
+
+1. What is ADUC?
+2. What is the purpose of a User Object?
+3. What is a Computer Object?
+4. What is a SID?
+5. What is an Object GUID?
+
+### Intermediate
+
+6. What is the purpose of the Attribute Editor?
+7. What are Saved Queries?
+8. Why should permissions be assigned through groups?
+9. What is delegated administration?
+10. What is the JML process?
+
+### Advanced
+
+11. How would you investigate repeated account lockouts?
+12. How would you securely offboard an employee?
+13. What are the risks of stale accounts?
+14. How would you design OU administration for a global enterprise?
+15. How would you automate user provisioning in Active Directory?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Users and Computers
+- Microsoft Learn – Active Directory PowerShell Module
+- Microsoft Learn – Active Directory Administrative Center
+- Microsoft Learn – Managed Service Accounts
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+- CIS Microsoft Windows Benchmarks
+- NIST Digital Identity Guidelines (SP 800-63)
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 12 – Active Directory Users and Computers**.
+
+You now understand:
+
+- How Active Directory stores and manages user and computer identities.
+- How administrators provision, modify, and retire directory objects.
+- How to use ADUC, Attribute Editor, Saved Queries, and PowerShell for enterprise administration.
+- How identity lifecycle management, RBAC, and delegated administration improve operational efficiency.
+- How to apply security best practices for protecting Active Directory identities in enterprise environments.
+
+These concepts form the foundation for advanced topics such as **Groups**, **Access Control**, **Delegation**, **Authentication**, and **Enterprise Identity Security**.
+
+---
+
