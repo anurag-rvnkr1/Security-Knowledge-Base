@@ -1502,4 +1502,926 @@ again and observe additional service tickets.
 
 ---
 
-**Next:** **Part 3 — Kerberos Internals, Ticket Lifecycle, Delegation, Constrained Delegation, Cross-Realm Authentication, PowerShell, Troubleshooting, and Enterprise Operations**
+# Active-Directory/
+
+# 15-Kerberos-Protocol-Deep-Dive.md
+
+# Part 3 — Kerberos Internals, Ticket Lifecycle, Delegation, Constrained Delegation, Cross-Realm Authentication, PowerShell, Troubleshooting, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand the Kerberos ticket lifecycle.
+- Learn how ticket caching works.
+- Understand Kerberos delegation.
+- Differentiate Unconstrained, Constrained, and Resource-Based Constrained Delegation (RBCD).
+- Learn cross-domain and cross-forest Kerberos authentication.
+- Troubleshoot Kerberos authentication problems.
+- Use PowerShell and Windows tools for Kerberos diagnostics.
+
+---
+
+# Review
+
+In Part 2, we covered:
+
+- AS-REQ
+- AS-REP
+- TGS-REQ
+- TGS-REP
+- AP-REQ
+- AP-REP
+- Ticket structure
+- PAC
+- Encryption
+- Session Keys
+
+Now we'll explore the internal behavior of Kerberos after authentication.
+
+---
+
+# Kerberos Ticket Lifecycle
+
+Every Kerberos ticket follows a lifecycle.
+
+```text
+Created
+
+↓
+
+Cached
+
+↓
+
+Used
+
+↓
+
+Expires
+
+↓
+
+Renewed (if allowed)
+
+↓
+
+Destroyed
+```
+
+Unlike passwords, tickets are temporary.
+
+---
+
+# Ticket Cache
+
+After authentication, Kerberos stores tickets in a local ticket cache.
+
+```text
+User Login
+
+↓
+
+TGT
+
+↓
+
+Ticket Cache
+
+↓
+
+Service Requests
+```
+
+When another service is accessed, Windows retrieves the TGT from the cache instead of prompting for credentials again.
+
+---
+
+# Viewing the Ticket Cache
+
+The built-in command:
+
+```powershell
+klist
+```
+
+displays:
+
+- Ticket Granting Ticket (TGT)
+- Service Tickets
+- Encryption type
+- Validity period
+- Service Principal Name (SPN)
+
+Example:
+
+```text
+Current Logon Session
+
+↓
+
+Cached Tickets
+
+↓
+
+krbtgt/CONTOSO.COM
+
+↓
+
+cifs/fileserver.contoso.com
+
+↓
+
+HTTP/intranet.contoso.com
+```
+
+---
+
+# Ticket Expiration
+
+Kerberos tickets contain:
+
+- Start Time
+- End Time
+- Renew Until
+
+Example:
+
+```text
+Issued
+
+09:00
+
+↓
+
+Expires
+
+19:00
+
+↓
+
+Renew Until
+
+Next Day
+```
+
+These values are determined by Kerberos policy.
+
+---
+
+# Ticket Renewal
+
+If renewal is permitted:
+
+```text
+Valid TGT
+
+↓
+
+Renew Request
+
+↓
+
+New TGT
+
+↓
+
+Continue Session
+```
+
+Renewal avoids requiring the user to fully authenticate again during long sessions.
+
+---
+
+# Ticket Purging
+
+Administrators may clear cached Kerberos tickets.
+
+Command:
+
+```powershell
+klist purge
+```
+
+After purging:
+
+```text
+Ticket Cache
+
+↓
+
+Empty
+
+↓
+
+Next Resource Access
+
+↓
+
+New Tickets Requested
+```
+
+This is useful during troubleshooting.
+
+---
+
+# Service Principal Name (SPN)
+
+Every Kerberos-enabled service has an SPN.
+
+Examples:
+
+```text
+HOST/server01.contoso.com
+```
+
+```text
+HTTP/web01.contoso.com
+```
+
+```text
+MSSQLSvc/sql01.contoso.com:1433
+```
+
+SPNs uniquely identify services within the Kerberos realm.
+
+---
+
+# Why SPNs Are Important
+
+Without a valid SPN:
+
+```text
+Client
+
+↓
+
+Cannot Obtain Correct Service Ticket
+
+↓
+
+Authentication Failure
+```
+
+Improper SPN registration is a common enterprise issue.
+
+---
+
+# Duplicate SPNs
+
+Example:
+
+```text
+Server A
+
+↓
+
+HTTP/app.contoso.com
+```
+
+```text
+Server B
+
+↓
+
+HTTP/app.contoso.com
+```
+
+Duplicate SPNs create ambiguity because the KDC cannot uniquely identify the intended service.
+
+Administrators should ensure SPNs are unique.
+
+---
+
+# Missing SPNs
+
+Example:
+
+```text
+Web Application
+
+↓
+
+No SPN
+
+↓
+
+Kerberos Cannot Authenticate Service
+```
+
+Depending on configuration, the client may experience authentication failure or negotiate a different authentication method.
+
+---
+
+# Delegation
+
+Delegation allows one service to act on behalf of a user when accessing another service.
+
+Example:
+
+```text
+User
+
+↓
+
+Web Server
+
+↓
+
+SQL Server
+```
+
+The web server needs delegated credentials to access SQL Server as the user.
+
+---
+
+# Delegation Scenario
+
+```text
+User
+
+↓
+
+IIS
+
+↓
+
+Backend API
+
+↓
+
+SQL Server
+
+↓
+
+Database
+```
+
+Without delegation:
+
+```text
+IIS
+
+↓
+
+Cannot Authenticate User
+
+↓
+
+SQL Access Fails
+```
+
+---
+
+# Types of Delegation
+
+Active Directory supports:
+
+```text
+Delegation
+
+│
+
+├── Unconstrained
+
+├── Constrained
+
+└── Resource-Based Constrained Delegation (RBCD)
+```
+
+---
+
+# Unconstrained Delegation
+
+With unconstrained delegation:
+
+```text
+User
+
+↓
+
+Server
+
+↓
+
+Can Request Services
+
+↓
+
+On User's Behalf
+```
+
+Characteristics:
+
+- Broad delegation capability.
+- Historically common.
+- Generally avoided in modern enterprise environments due to security risk.
+
+---
+
+# Constrained Delegation
+
+Constrained Delegation limits which services a server can access on behalf of a user.
+
+Example:
+
+```text
+Web Server
+
+↓
+
+Only SQL Server
+
+↓
+
+Delegation Allowed
+```
+
+This follows the principle of least privilege.
+
+---
+
+# Resource-Based Constrained Delegation (RBCD)
+
+RBCD shifts control to the **target resource**.
+
+```text
+Target Server
+
+↓
+
+Defines
+
+↓
+
+Which Servers May Delegate
+```
+
+Advantages:
+
+- More flexible administration.
+- Better suited for modern environments.
+- Reduces dependence on domain-wide administrative changes.
+
+---
+
+# Delegation Comparison
+
+| Type | Scope | Security |
+|------|-------|----------|
+| Unconstrained | Broad | Lowest |
+| Constrained | Limited to specified services | Higher |
+| Resource-Based Constrained | Controlled by target resource | Highest flexibility |
+
+---
+
+# Double-Hop Problem
+
+Example:
+
+```text
+Administrator
+
+↓
+
+Remote Server
+
+↓
+
+SQL Server
+```
+
+Without appropriate delegation:
+
+```text
+Second Authentication
+
+↓
+
+Fails
+```
+
+This common issue is often referred to as the **double-hop problem**.
+
+---
+
+# Cross-Domain Authentication
+
+Example:
+
+```text
+Domain A
+
+↓
+
+Trust
+
+↓
+
+Domain B
+
+↓
+
+Application
+```
+
+Kerberos supports authentication across trusted domains.
+
+---
+
+# Cross-Forest Authentication
+
+```text
+Forest A
+
+⇄ Trust ⇄
+
+Forest B
+```
+
+The user authenticates in the home forest and can access authorized resources in the trusted forest.
+
+---
+
+# Cross-Realm Authentication
+
+In Kerberos terminology, a **realm** is an administrative boundary.
+
+In Active Directory:
+
+```text
+Realm
+
+≈
+
+Domain
+```
+
+Trusted realms exchange authentication information.
+
+---
+
+# Cross-Realm Flow
+
+```text
+Client
+
+↓
+
+Home Realm
+
+↓
+
+Referral
+
+↓
+
+Trusted Realm
+
+↓
+
+Service Ticket
+
+↓
+
+Application
+```
+
+The client receives referrals until it reaches the realm that hosts the requested service.
+
+---
+
+# Referral Tickets
+
+Rather than immediately issuing the final service ticket, the KDC may issue a **referral ticket** directing the client to another KDC.
+
+Example:
+
+```text
+Domain A
+
+↓
+
+Referral
+
+↓
+
+Domain B
+
+↓
+
+Service Ticket
+```
+
+Referral tickets enable scalable authentication across multiple trusted domains.
+
+---
+
+# Enterprise Example
+
+Global organization:
+
+- 20 domains
+- 4 forests
+- 300,000 users
+
+Workflow:
+
+```text
+User
+
+↓
+
+Home Domain
+
+↓
+
+Referral
+
+↓
+
+Resource Domain
+
+↓
+
+Service Ticket
+
+↓
+
+File Server
+```
+
+---
+
+# Kerberos PowerShell and Windows Tools
+
+Useful commands:
+
+---
+
+## View Cached Tickets
+
+```powershell
+klist
+```
+
+---
+
+## Purge Cached Tickets
+
+```powershell
+klist purge
+```
+
+---
+
+## Display Current User
+
+```powershell
+whoami
+```
+
+---
+
+## Display Group Membership
+
+```powershell
+whoami /groups
+```
+
+---
+
+## Verify Secure Channel
+
+```powershell
+Test-ComputerSecureChannel
+```
+
+---
+
+## View SPNs
+
+```powershell
+setspn -L <AccountName>
+```
+
+Example:
+
+```powershell
+setspn -L SQLSvc
+```
+
+---
+
+## Find Duplicate SPNs
+
+```powershell
+setspn -X
+```
+
+This helps identify duplicate SPNs that can interfere with Kerberos.
+
+---
+
+# Event Viewer
+
+Authentication-related logs are commonly found in:
+
+```text
+Event Viewer
+
+↓
+
+Windows Logs
+
+↓
+
+Security
+```
+
+Additional Kerberos-related events may appear in application-specific logs depending on the role.
+
+---
+
+# Common Kerberos Problems
+
+Examples:
+
+- DNS resolution failure
+- Time synchronization issues
+- Missing SPN
+- Duplicate SPN
+- Expired tickets
+- Broken secure channel
+- Trust failures
+- Incorrect delegation configuration
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Authentication Failed
+
+↓
+
+DNS Correct?
+
+↓
+
+Time Correct?
+
+↓
+
+SPN Valid?
+
+↓
+
+Ticket Valid?
+
+↓
+
+Trust Healthy?
+
+↓
+
+Delegation Configured?
+
+↓
+
+Resolved
+```
+
+---
+
+# Best Practices
+
+- Prefer Kerberos over NTLM.
+- Register SPNs correctly.
+- Monitor duplicate SPNs.
+- Use Constrained Delegation or RBCD instead of Unconstrained Delegation whenever possible.
+- Synchronize system clocks.
+- Review Kerberos event logs.
+- Protect Domain Controllers.
+- Audit delegation settings regularly.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Using Unconstrained Delegation unnecessarily.
+- Ignoring duplicate SPNs.
+- Creating incorrect SPNs.
+- Forgetting to configure delegation for multi-tier applications.
+- Disabling time synchronization.
+- Ignoring authentication logs.
+
+---
+
+# Cybersecurity Perspective
+
+Delegation and SPN configuration are security-sensitive.
+
+Security teams should:
+
+- Inventory delegated servers.
+- Review accounts trusted for delegation.
+- Audit SPN changes.
+- Detect unusual ticket activity.
+- Monitor privileged authentication.
+- Protect service accounts.
+
+Misconfigured delegation can significantly expand the impact of a compromised server.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Kerberos ticket management and SPNs.
+
+### Tasks
+
+1. Display cached tickets:
+
+```powershell
+klist
+```
+
+2. Purge cached tickets:
+
+```powershell
+klist purge
+```
+
+3. Display SPNs for a service account:
+
+```powershell
+setspn -L <AccountName>
+```
+
+4. Search for duplicate SPNs:
+
+```powershell
+setspn -X
+```
+
+5. Verify:
+
+- Domain membership
+- DNS configuration
+- Time synchronization
+
+6. Document:
+
+- Cached tickets
+- SPNs
+- Delegation configuration (if available)
+
+---
+
+# Key Takeaways
+
+- Kerberos tickets follow a defined lifecycle.
+- Tickets are cached locally to enable Single Sign-On.
+- SPNs uniquely identify services.
+- Delegation allows services to act on behalf of users.
+- Constrained Delegation and RBCD provide stronger security than Unconstrained Delegation.
+- Referral tickets enable authentication across trusted domains and forests.
+
+---
+
+# Interview Questions
+
+1. What is the Kerberos ticket cache?
+2. Which command displays cached Kerberos tickets?
+3. What is an SPN?
+4. Why are duplicate SPNs a problem?
+5. What is delegation?
+6. What is the difference between Unconstrained and Constrained Delegation?
+7. What is Resource-Based Constrained Delegation?
+8. What is the double-hop problem?
+9. What is a referral ticket?
+10. How does Kerberos authenticate across trusted domains?
+
+---
+
+# References
+
+- RFC 4120 – The Kerberos Network Authentication Service (V5)
+- Microsoft Learn – Kerberos Authentication
+- Microsoft Learn – Kerberos Constrained Delegation
+- Microsoft Learn – Resource-Based Constrained Delegation
+- Microsoft Learn – Service Principal Names
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 4 — Kerberos Security, Defensive Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
