@@ -720,3 +720,763 @@ Record their capacities and purpose.
 
 ---
 
+# 14-Windows-Storage-Management.md
+
+# Part 2 — Disk Initialization, MBR vs GPT, Basic Disks, Dynamic Disks, Disk Management, and Storage Configuration
+
+---
+
+# Introduction
+
+Before Windows can store data on a new disk, the disk must be prepared.
+
+The typical workflow is:
+
+```text
+Install Disk
+
+↓
+
+Initialize Disk
+
+↓
+
+Create Partition
+
+↓
+
+Format Volume
+
+↓
+
+Assign Drive Letter
+
+↓
+
+Ready for Use
+```
+
+Understanding these steps is essential for:
+
+- Windows Administrators
+- Server Administrators
+- Cloud Engineers
+- Virtualization Engineers
+- Storage Administrators
+- Cybersecurity Professionals
+
+---
+
+# Storage Provisioning Workflow
+
+A new storage device usually follows this sequence:
+
+```text
+Physical Disk
+
+↓
+
+Initialize
+
+↓
+
+Partition
+
+↓
+
+Format
+
+↓
+
+Mount
+
+↓
+
+Store Data
+```
+
+Each step prepares the storage for normal operation.
+
+---
+
+# Disk Initialization
+
+A newly installed disk appears as **Unknown** and **Not Initialized** in Disk Management.
+
+Initialization prepares the disk by writing partition table metadata.
+
+After initialization, Windows can create partitions on the disk.
+
+---
+
+# Why Initialize a Disk?
+
+Initialization enables Windows to:
+
+- Recognize the disk
+- Store partition information
+- Create volumes
+- Assign drive letters
+- Support operating system features
+
+Without initialization, Windows cannot use the disk for normal storage.
+
+---
+
+# Partition Styles
+
+Windows supports two primary partition styles:
+
+| Partition Style | Description |
+|-----------------|-------------|
+| MBR | Master Boot Record |
+| GPT | GUID Partition Table |
+
+The appropriate choice depends on hardware, firmware, and storage requirements.
+
+---
+
+# Master Boot Record (MBR)
+
+MBR is the traditional partitioning scheme.
+
+Characteristics:
+
+- Supports disks up to approximately **2 TB**
+- Supports up to **4 primary partitions**
+- Compatible with older BIOS systems
+- Stores partition information in the first sector of the disk
+
+MBR remains compatible with legacy systems but has several limitations.
+
+---
+
+# MBR Structure
+
+Simplified layout:
+
+```text
+Disk
+
+├── Master Boot Record
+
+├── Partition Table
+
+└── Partitions
+```
+
+Damage to the MBR can affect system bootability.
+
+---
+
+# GUID Partition Table (GPT)
+
+GPT is the modern partitioning standard.
+
+Advantages include:
+
+- Supports disks larger than 2 TB
+- Supports many more partitions than MBR
+- Redundant partition metadata
+- Improved reliability
+- Better integration with UEFI firmware
+
+GPT is recommended for most modern Windows installations.
+
+---
+
+# GPT Structure
+
+Simplified representation:
+
+```text
+Protective MBR
+
+↓
+
+Primary GPT Header
+
+↓
+
+Partition Entries
+
+↓
+
+User Data
+
+↓
+
+Backup Partition Entries
+
+↓
+
+Backup GPT Header
+```
+
+The backup header improves resilience against metadata corruption.
+
+---
+
+# MBR vs GPT
+
+| Feature | MBR | GPT |
+|----------|-----|-----|
+| Maximum Disk Size | ~2 TB | Greater than 2 TB |
+| Primary Partitions | 4 | Typically up to 128 in Windows |
+| Firmware | BIOS | UEFI (recommended) |
+| Metadata Redundancy | No | Yes |
+| Reliability | Lower | Higher |
+
+For new deployments, GPT is generally the preferred choice.
+
+---
+
+# BIOS vs UEFI
+
+Partition style is closely related to system firmware.
+
+| BIOS | UEFI |
+|------|------|
+| Legacy firmware | Modern firmware |
+| Typically uses MBR | Typically uses GPT |
+| Limited functionality | Enhanced security and features |
+| Older hardware | Modern hardware |
+
+Many modern Windows systems use UEFI with GPT.
+
+---
+
+# Basic Disks
+
+A **Basic Disk** is the default storage type in Windows.
+
+Features:
+
+- Uses standard partitions
+- Widely supported
+- Simple administration
+- Suitable for most desktops and servers
+
+Most Windows installations use Basic Disks.
+
+---
+
+# Basic Disk Structure
+
+```text
+Disk
+
+├── Partition
+
+├── Partition
+
+└── Partition
+```
+
+Each partition can contain one formatted volume.
+
+---
+
+# Dynamic Disks
+
+Dynamic Disks provide advanced storage capabilities.
+
+Examples include:
+
+- Spanned volumes
+- Striped volumes
+- Mirrored volumes
+- RAID-5 volumes (supported Windows Server scenarios)
+
+Dynamic Disks are intended for specialized use cases and have compatibility considerations.
+
+---
+
+# Basic vs Dynamic Disks
+
+| Feature | Basic | Dynamic |
+|----------|--------|----------|
+| Simplicity | High | Moderate |
+| Standard Partitions | Yes | No (uses dynamic volumes) |
+| Advanced Volume Types | Limited | Yes |
+| Compatibility | Broad | More limited |
+
+Basic Disks are sufficient for most environments.
+
+---
+
+# Reserved Partitions
+
+Windows may automatically create small reserved partitions during installation.
+
+Examples include:
+
+- EFI System Partition (ESP)
+- Microsoft Reserved Partition (MSR)
+- Recovery Partition
+
+These partitions support boot, recovery, and system management functions.
+
+---
+
+# EFI System Partition (ESP)
+
+On UEFI systems, the EFI System Partition stores boot-related files.
+
+Simplified workflow:
+
+```text
+UEFI Firmware
+
+↓
+
+EFI System Partition
+
+↓
+
+Windows Boot Manager
+
+↓
+
+Operating System
+```
+
+The ESP is critical for system startup.
+
+---
+
+# Recovery Partition
+
+Windows often creates a recovery partition containing recovery tools.
+
+Uses include:
+
+- Startup Repair
+- Reset this PC
+- Advanced Recovery Environment
+
+The recovery partition assists with system recovery after failures.
+
+---
+
+# Formatting a Volume
+
+Formatting prepares a partition with a file system.
+
+Common options:
+
+- NTFS
+- FAT32
+- exFAT
+- ReFS (supported editions)
+
+Formatting also creates the file system metadata required to store files.
+
+---
+
+# Quick Format vs Full Format
+
+| Quick Format | Full Format |
+|--------------|-------------|
+| Creates file system structures | Creates file system structures |
+| Faster | Slower |
+| Does not perform a full surface scan | Performs additional checks for bad sectors (behavior varies by Windows version) |
+
+A full format typically takes longer than a quick format.
+
+---
+
+# Drive Letter Assignment
+
+After formatting, Windows usually assigns a drive letter automatically.
+
+Example:
+
+```text
+New Volume
+
+↓
+
+Assign Drive Letter
+
+↓
+
+E:
+```
+
+Administrators can modify drive letter assignments if necessary.
+
+---
+
+# Mounting Without a Drive Letter
+
+Instead of:
+
+```text
+D:
+```
+
+Windows can mount storage as:
+
+```text
+C:\Archive
+```
+
+This approach is common on servers hosting many volumes.
+
+---
+
+# Disk Management
+
+Windows includes the **Disk Management** console.
+
+Launch using:
+
+```text
+diskmgmt.msc
+```
+
+Common tasks include:
+
+- Initialize disks
+- Create partitions
+- Format volumes
+- Assign drive letters
+- Extend volumes
+- Shrink volumes
+- View storage status
+
+Disk Management provides a graphical interface for storage administration.
+
+---
+
+# Disk Management Interface
+
+Typical information displayed:
+
+- Disk number
+- Capacity
+- Partition layout
+- File system
+- Health status
+- Drive letter
+
+This information assists with planning and troubleshooting.
+
+---
+
+# DiskPart
+
+`diskpart` is a powerful command-line storage management utility.
+
+Start DiskPart:
+
+```cmd
+diskpart
+```
+
+List disks:
+
+```cmd
+list disk
+```
+
+List volumes:
+
+```cmd
+list volume
+```
+
+DiskPart should be used carefully because many operations take effect immediately.
+
+---
+
+# Selecting a Disk
+
+Example:
+
+```cmd
+select disk 1
+```
+
+Subsequent DiskPart commands apply to the selected disk.
+
+Always verify the selected disk before making changes.
+
+---
+
+# Viewing Volumes
+
+Within DiskPart:
+
+```cmd
+list volume
+```
+
+Example output (simplified):
+
+```text
+Volume 0   C:
+
+Volume 1   D:
+
+Volume 2   E:
+```
+
+This helps identify available storage before performing administrative tasks.
+
+---
+
+# Extending a Volume
+
+If adjacent unallocated space exists, Windows may allow a volume to be extended.
+
+Workflow:
+
+```text
+Existing Volume
+
+↓
+
+Unallocated Space
+
+↓
+
+Extend Volume
+
+↓
+
+Larger Volume
+```
+
+Not all layouts support online extension.
+
+---
+
+# Shrinking a Volume
+
+Windows can reduce the size of certain volumes.
+
+Example:
+
+```text
+100 GB Volume
+
+↓
+
+Shrink
+
+↓
+
+70 GB Volume
+
++
+
+30 GB Unallocated Space
+```
+
+The amount of shrinkable space depends on file placement and other factors.
+
+---
+
+# Unallocated Space
+
+Unallocated space is disk capacity that is not assigned to any partition.
+
+```text
+Disk
+
+├── Volume C:
+
+└── Unallocated Space
+```
+
+Unallocated space can be used to create new partitions or extend eligible volumes.
+
+---
+
+# Enterprise Example
+
+A file server receives an additional 4 TB disk.
+
+Workflow:
+
+```text
+Install Disk
+
+↓
+
+Initialize as GPT
+
+↓
+
+Create Partition
+
+↓
+
+Format NTFS
+
+↓
+
+Assign Mount Point
+
+↓
+
+Ready for Production
+```
+
+This approach supports large storage capacities and modern firmware.
+
+---
+
+# Cybersecurity Perspective
+
+Storage configuration affects security.
+
+Administrators should:
+
+- Protect system partitions
+- Limit access to administrative tools
+- Monitor removable storage
+- Use appropriate file systems
+- Enable encryption where required
+
+Improper disk configuration may expose sensitive data or reduce system resilience.
+
+---
+
+# Business Impact
+
+Correct storage provisioning provides:
+
+- Reliable data storage
+- Faster deployment
+- Better scalability
+- Simplified maintenance
+- Reduced downtime
+
+Improper partitioning or formatting can delay deployments and complicate recovery.
+
+---
+
+# Enterprise Best Practices
+
+- Use GPT for modern Windows installations.
+- Prefer UEFI firmware on supported hardware.
+- Keep recovery and EFI partitions intact.
+- Use NTFS for most Windows workloads.
+- Verify the target disk before using DiskPart.
+- Document storage layouts and partition schemes.
+- Test storage changes in non-production environments.
+
+---
+
+# Practical Labs
+
+## Lab 1 — View Partition Style
+
+Open:
+
+```text
+Disk Management
+```
+
+Right-click a disk.
+
+Open:
+
+```text
+Properties
+
+↓
+
+Volumes
+```
+
+Identify whether the disk uses:
+
+- MBR
+- GPT
+
+---
+
+## Lab 2 — Review Reserved Partitions
+
+Using **Disk Management**, identify:
+
+- EFI System Partition (if present)
+- Recovery Partition
+- Primary Windows partition
+
+Document their approximate sizes and purposes.
+
+---
+
+## Lab 3 — Explore DiskPart
+
+Open **Command Prompt** as Administrator.
+
+Run:
+
+```cmd
+diskpart
+```
+
+Then:
+
+```cmd
+list disk
+
+list volume
+```
+
+Review the output without making changes.
+
+Type:
+
+```cmd
+exit
+```
+
+to leave DiskPart.
+
+---
+
+# Key Takeaways
+
+- New disks must be initialized before use.
+- Windows supports MBR and GPT partition styles, with GPT recommended for modern systems.
+- Basic Disks are suitable for most environments, while Dynamic Disks support advanced volume configurations.
+- Disk Management and DiskPart are the primary Windows storage administration tools.
+- Reserved partitions such as the EFI System Partition and Recovery Partition support boot and recovery operations.
+- Proper planning and documentation improve storage reliability and maintainability.
+
+---
+
+# Interview Questions
+
+1. What is disk initialization?
+2. What is the difference between MBR and GPT?
+3. Why is GPT recommended for modern Windows systems?
+4. What is the EFI System Partition?
+5. What is the purpose of the Recovery Partition?
+6. What is the difference between a Basic Disk and a Dynamic Disk?
+7. What does Disk Management allow administrators to do?
+8. What is DiskPart, and when is it used?
+9. What is unallocated space?
+10. What is the difference between a quick format and a full format?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Storage Documentation
+- Microsoft DiskPart Documentation
+- Microsoft Disk Management Documentation
+- Microsoft UEFI Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 3 — Storage Spaces, RAID, Disk Quotas, Encryption, Storage Optimization, and Monitoring**
