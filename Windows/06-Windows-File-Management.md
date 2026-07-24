@@ -1452,3 +1452,723 @@ Compare the original folder with the resulting archive.
 
 ---
 
+# 06-Windows-File-Management.md
+
+# Part 3 — File Ownership, File Permissions, Recycle Bin, File Recovery, Version History, OneDrive, Offline Files, and Enterprise File Governance
+
+---
+
+# Introduction
+
+Managing files in an enterprise environment involves much more than creating and deleting documents.
+
+Administrators must ensure that files are:
+
+- Accessible only to authorized users
+- Recoverable after accidental deletion
+- Available during network outages
+- Properly synchronized
+- Protected against unauthorized modification
+- Governed according to organizational policies
+
+This part explores the administrative and security aspects of Windows file management.
+
+---
+
+# File Ownership
+
+Every file and folder on an NTFS volume has an **owner**.
+
+The owner is typically:
+
+- The user who created the file
+- An administrator who has taken ownership
+- A service account (in some enterprise scenarios)
+
+Ownership determines who can modify permissions on an object.
+
+---
+
+# Ownership Architecture
+
+```text
+File
+
+↓
+
+Owner
+
+↓
+
+Permission Management
+
+↓
+
+Access Control
+```
+
+The owner is stored as part of the file's security descriptor.
+
+---
+
+# Viewing File Ownership
+
+To view ownership:
+
+```text
+Right-click File
+
+↓
+
+Properties
+
+↓
+
+Security
+
+↓
+
+Advanced
+
+↓
+
+Owner
+```
+
+Administrators can review ownership when troubleshooting permission issues.
+
+---
+
+# Changing Ownership
+
+Authorized administrators can change ownership when necessary.
+
+Common scenarios include:
+
+- Employee leaves the organization
+- Data recovery
+- Orphaned user profiles
+- Migration projects
+
+Changing ownership should follow organizational policies and auditing requirements.
+
+---
+
+# Ownership vs Permissions
+
+| Ownership | Permissions |
+|------------|-------------|
+| Identifies who controls the object | Defines who can access the object |
+| One primary owner | Multiple users/groups may have permissions |
+| Can modify permissions | Determines allowed operations |
+
+Ownership and permissions are related but serve different purposes.
+
+---
+
+# File Permissions Review
+
+Windows evaluates permissions whenever a user attempts to access a file.
+
+```text
+User
+
+↓
+
+Security Token
+
+↓
+
+ACL Evaluation
+
+↓
+
+Allow / Deny
+
+↓
+
+Access Decision
+```
+
+Permissions are discussed in detail in the dedicated NTFS Permissions chapter.
+
+---
+
+# Effective Access
+
+A user's actual permissions depend on:
+
+- Direct assignments
+- Group memberships
+- Inherited permissions
+- Explicit deny entries
+
+Example:
+
+```text
+User
+
+↓
+
+Member of HR Group
+
+↓
+
+HR Folder
+
+↓
+
+Modify Permission
+
+↓
+
+Access Granted
+```
+
+Administrators should verify **effective access**, especially in complex environments.
+
+---
+
+# Recycle Bin
+
+The Recycle Bin provides a temporary recovery location for many deleted files.
+
+Typical workflow:
+
+```text
+Delete File
+
+↓
+
+Recycle Bin
+
+↓
+
+Restore
+
+↓
+
+Original Location
+```
+
+This helps users recover accidentally deleted files.
+
+---
+
+# When the Recycle Bin Is Bypassed
+
+The Recycle Bin is typically bypassed when:
+
+- Using **Shift + Delete**
+- Deleting from certain removable drives
+- Deleting from many network shares
+- The file exceeds the configured Recycle Bin capacity
+
+In these cases, the file is not placed in the Recycle Bin.
+
+---
+
+# Emptying the Recycle Bin
+
+```text
+Recycle Bin
+
+↓
+
+Empty
+
+↓
+
+Disk Space Released
+```
+
+After the Recycle Bin is emptied, the file data may still remain recoverable until overwritten, depending on disk activity.
+
+---
+
+# File Recovery
+
+Recovery success depends on:
+
+- Time since deletion
+- Disk usage
+- File fragmentation
+- Overwritten clusters
+
+The sooner recovery is attempted, the greater the chance of success.
+
+---
+
+# Enterprise Recovery Methods
+
+Organizations commonly recover files using:
+
+- Recycle Bin
+- Version History
+- Backup systems
+- Volume Shadow Copy Service (VSS)
+- Enterprise backup solutions
+
+---
+
+# Version History
+
+Windows can preserve previous versions of files in supported scenarios.
+
+Example workflow:
+
+```text
+Edit File
+
+↓
+
+Save
+
+↓
+
+Older Version Retained
+
+↓
+
+Restore Previous Version
+```
+
+Version History helps recover from accidental changes or corruption.
+
+---
+
+# Previous Versions
+
+Users can access previous versions by:
+
+```text
+Properties
+
+↓
+
+Previous Versions
+```
+
+Availability depends on:
+
+- File History
+- Volume Shadow Copy
+- Backup configuration
+- Organizational policies
+
+---
+
+# File History
+
+File History automatically backs up selected user folders.
+
+Common protected folders include:
+
+- Documents
+- Pictures
+- Desktop
+- Videos
+- Music
+
+Workflow:
+
+```text
+User Files
+
+↓
+
+Automatic Backup
+
+↓
+
+External Drive
+
+or
+
+Network Location
+```
+
+---
+
+# OneDrive Integration
+
+Modern Windows integrates with Microsoft OneDrive.
+
+Benefits include:
+
+- Cloud synchronization
+- Automatic backup
+- Multi-device access
+- Version history
+- File sharing
+- Recovery capabilities
+
+---
+
+# OneDrive Synchronization
+
+```text
+Local File
+
+↓
+
+OneDrive Client
+
+↓
+
+Cloud Storage
+
+↓
+
+Other Devices
+```
+
+Synchronization occurs automatically when connectivity is available.
+
+---
+
+# OneDrive Status Icons
+
+Common synchronization indicators include:
+
+| Icon | Meaning |
+|------|---------|
+| Cloud | Online-only |
+| Green Check | Available locally |
+| Solid Green Circle | Always available offline |
+| Sync Arrows | Synchronization in progress |
+| Red X | Synchronization error |
+
+The exact appearance may vary slightly by Windows version.
+
+---
+
+# Offline Files
+
+Offline Files allow users to continue working with selected network files while disconnected.
+
+Workflow:
+
+```text
+Network Share
+
+↓
+
+Cached Locally
+
+↓
+
+Offline Work
+
+↓
+
+Reconnect
+
+↓
+
+Synchronization
+```
+
+This feature is useful for laptops used outside the corporate network.
+
+---
+
+# Synchronization Conflicts
+
+Occasionally, multiple users modify the same file.
+
+```text
+User A
+
+↓
+
+Edit File
+
+↓
+
+User B
+
+↓
+
+Edit Same File
+
+↓
+
+Conflict
+
+↓
+
+Resolution Required
+```
+
+Organizations often use document management systems with version control to reduce such conflicts.
+
+---
+
+# File Locking
+
+Windows may temporarily lock files to prevent conflicting modifications.
+
+Example:
+
+```text
+User Opens File
+
+↓
+
+Exclusive Lock
+
+↓
+
+Other User
+
+↓
+
+Read Only or Wait
+```
+
+Some applications implement additional collaboration features beyond basic file locking.
+
+---
+
+# Enterprise File Governance
+
+Organizations establish governance policies to manage information throughout its lifecycle.
+
+Typical policies address:
+
+- Naming standards
+- Storage locations
+- Data classification
+- Access permissions
+- Retention periods
+- Secure deletion
+- Archiving
+
+---
+
+# Data Classification
+
+Example classification model:
+
+```text
+Public
+
+↓
+
+Internal
+
+↓
+
+Confidential
+
+↓
+
+Highly Confidential
+```
+
+Classification determines how files should be handled and protected.
+
+---
+
+# File Retention
+
+Retention policies specify how long files must be preserved.
+
+Examples:
+
+| File Type | Example Retention |
+|-----------|-------------------|
+| Financial Records | Multiple years (per regulations) |
+| HR Records | Organization-specific |
+| Security Logs | Defined by compliance requirements |
+| Project Documents | Business policy |
+
+Actual retention periods depend on legal, regulatory, and organizational requirements.
+
+---
+
+# Secure File Deletion
+
+Simply deleting a file does not necessarily erase its contents.
+
+Secure deletion methods may include:
+
+- Cryptographic erasure (where applicable)
+- Secure overwrite utilities
+- Full-disk encryption combined with key destruction
+- Enterprise media sanitization procedures
+
+Organizations should follow recognized standards for media sanitization.
+
+---
+
+# Enterprise Example
+
+A legal department manages confidential contracts.
+
+```text
+Contracts
+
+↓
+
+NTFS Permissions
+
+↓
+
+OneDrive Synchronization
+
+↓
+
+Version History
+
+↓
+
+Enterprise Backup
+
+↓
+
+Retention Policy
+
+↓
+
+Archive
+```
+
+This layered approach supports security, compliance, and business continuity.
+
+---
+
+# Cybersecurity Perspective
+
+Improper file management can expose organizations to risks such as:
+
+- Data leakage
+- Unauthorized access
+- Accidental deletion
+- Ransomware
+- Insider threats
+- Compliance violations
+
+Security teams monitor:
+
+- File ownership changes
+- Permission modifications
+- Large-scale file deletions
+- Synchronization anomalies
+- Sensitive file access
+- Data exfiltration attempts
+
+---
+
+# Business Impact
+
+Strong file governance provides:
+
+- Improved collaboration
+- Faster recovery
+- Better compliance
+- Reduced data loss
+- Higher employee productivity
+- Stronger information security
+
+---
+
+# Enterprise Best Practices
+
+- Assign ownership for critical business data.
+- Review permissions regularly.
+- Enable backup and versioning for important files.
+- Use approved cloud storage services.
+- Classify sensitive information.
+- Implement retention and archival policies.
+- Audit file access and ownership changes.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review File Ownership
+
+1. Right-click a test file.
+2. Open:
+
+```text
+Properties
+
+↓
+
+Security
+
+↓
+
+Advanced
+```
+
+Record:
+
+- Owner
+- Permission inheritance status
+
+---
+
+## Lab 2 — Restore a Deleted File
+
+1. Create a test file.
+2. Delete it normally.
+3. Open the **Recycle Bin**.
+4. Restore the file.
+
+Observe that it returns to its original location.
+
+---
+
+## Lab 3 — Review OneDrive Status
+
+If OneDrive is configured:
+
+1. Open the OneDrive folder.
+2. Identify synchronization icons.
+3. Record the status of several files.
+
+Discuss the differences between online-only and locally available files.
+
+---
+
+# Key Takeaways
+
+- Every NTFS object has an owner.
+- Ownership and permissions are separate concepts.
+- The Recycle Bin provides a first level of recovery for many deleted files.
+- Version History and File History improve recoverability.
+- OneDrive provides cloud synchronization and versioning.
+- Enterprise file governance combines permissions, retention, classification, and auditing.
+
+---
+
+# Interview Questions
+
+1. What is file ownership?
+2. What is the difference between ownership and permissions?
+3. When is the Recycle Bin bypassed?
+4. What is File History?
+5. What is the purpose of Version History?
+6. How do Offline Files work?
+7. What causes synchronization conflicts?
+8. What is data classification?
+9. Why are retention policies important?
+10. Why should organizations audit ownership and permission changes?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft OneDrive Documentation
+- Microsoft File History Documentation
+- Microsoft Volume Shadow Copy Documentation
+- Microsoft NTFS Documentation
+- Microsoft Sysinternals Documentation
+
+---
+
