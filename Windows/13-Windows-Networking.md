@@ -868,3 +868,819 @@ Locate the **Physical Address** for your active network adapter.
 
 ---
 
+# 13-Windows-Networking.md
+
+# Part 2 — TCP, UDP, DNS, DHCP, ARP, Routing, NAT, and Windows Network Configuration
+
+---
+
+# Introduction
+
+In Part 1, you learned the fundamentals of Windows networking, including:
+
+- Network types
+- OSI model
+- TCP/IP model
+- IPv4 and IPv6
+- MAC addresses
+- Network adapters
+
+This section explains how Windows devices actually communicate across local networks and the Internet by exploring the most important networking protocols and configuration mechanisms.
+
+These concepts are essential for:
+
+- Windows Administrators
+- Network Engineers
+- SOC Analysts
+- Incident Responders
+- Penetration Testers
+- Cloud Engineers
+
+---
+
+# Transport Layer Protocols
+
+The Transport Layer is responsible for communication between applications.
+
+The two primary protocols are:
+
+- TCP (Transmission Control Protocol)
+- UDP (User Datagram Protocol)
+
+Both operate above IP but provide different communication characteristics.
+
+---
+
+# TCP (Transmission Control Protocol)
+
+TCP is a **connection-oriented** protocol that emphasizes reliable data delivery.
+
+Features include:
+
+- Reliable delivery
+- Ordered packets
+- Error detection
+- Flow control
+- Congestion control
+- Retransmission of lost packets
+
+Typical uses:
+
+- Web browsing (HTTP/HTTPS)
+- Email
+- File transfers
+- Remote administration
+
+---
+
+# TCP Three-Way Handshake
+
+Before transmitting data, TCP establishes a connection.
+
+```text
+Client                     Server
+
+SYN  --------------------->
+
+      <-------------------  SYN-ACK
+
+ACK  --------------------->
+```
+
+After the handshake completes, both systems begin exchanging application data.
+
+---
+
+# TCP Session
+
+Simplified workflow:
+
+```text
+Connection Established
+
+↓
+
+Data Transfer
+
+↓
+
+Acknowledgments
+
+↓
+
+Connection Closed
+```
+
+TCP ensures data reaches the destination in the correct order.
+
+---
+
+# TCP Connection Termination
+
+TCP normally closes a connection gracefully.
+
+```text
+FIN
+
+↓
+
+ACK
+
+↓
+
+FIN
+
+↓
+
+ACK
+```
+
+This allows both systems to complete outstanding communication before ending the session.
+
+---
+
+# Advantages of TCP
+
+- Reliable communication
+- Packet ordering
+- Automatic retransmission
+- Error recovery
+- Widely supported
+
+Trade-off:
+
+- Additional overhead and latency compared to UDP.
+
+---
+
+# UDP (User Datagram Protocol)
+
+UDP is a **connectionless** protocol.
+
+Characteristics:
+
+- No connection setup
+- Lower overhead
+- Faster transmission
+- No guaranteed delivery
+- No packet ordering
+- No retransmission
+
+Typical uses:
+
+- DNS queries
+- Streaming media
+- Voice over IP (VoIP)
+- Online gaming
+- DHCP
+
+---
+
+# TCP vs UDP
+
+| Feature | TCP | UDP |
+|----------|-----|-----|
+| Connection | Yes | No |
+| Reliable | Yes | No |
+| Ordered Delivery | Yes | No |
+| Retransmission | Yes | No |
+| Speed | Moderate | Fast |
+| Typical Use | Web, Email, File Transfer | DNS, Streaming, VoIP |
+
+Choosing TCP or UDP depends on application requirements.
+
+---
+
+# Ports
+
+A **port** identifies a specific application or service on a computer.
+
+Communication uses:
+
+```text
+IP Address
+
++
+
+Port Number
+
+↓
+
+Application
+```
+
+Ports range from:
+
+```text
+0 – 65535
+```
+
+---
+
+# Port Categories
+
+| Range | Description |
+|--------|-------------|
+| 0–1023 | Well-known ports |
+| 1024–49151 | Registered ports |
+| 49152–65535 | Dynamic/Ephemeral ports |
+
+Windows typically assigns ephemeral ports automatically for outbound client connections.
+
+---
+
+# Common Network Ports
+
+| Port | Protocol | Typical Service |
+|------|----------|-----------------|
+| 20/21 | TCP | FTP |
+| 22 | TCP | SSH |
+| 25 | TCP | SMTP |
+| 53 | TCP/UDP | DNS |
+| 67/68 | UDP | DHCP |
+| 80 | TCP | HTTP |
+| 110 | TCP | POP3 |
+| 123 | UDP | NTP |
+| 143 | TCP | IMAP |
+| 161 | UDP | SNMP |
+| 389 | TCP/UDP | LDAP |
+| 443 | TCP | HTTPS |
+| 445 | TCP | SMB |
+| 3389 | TCP | Remote Desktop (RDP) |
+
+Administrators should understand which ports are required for business applications and restrict unnecessary exposure.
+
+---
+
+# DNS (Domain Name System)
+
+Humans prefer names.
+
+Computers communicate using IP addresses.
+
+DNS translates names into IP addresses.
+
+Example:
+
+```text
+www.example.com
+
+↓
+
+DNS Server
+
+↓
+
+203.0.113.20
+```
+
+Without DNS, users would need to remember numeric IP addresses.
+
+---
+
+# DNS Resolution Process
+
+```text
+User
+
+↓
+
+Browser
+
+↓
+
+DNS Resolver
+
+↓
+
+DNS Server
+
+↓
+
+IP Address Returned
+
+↓
+
+Connection Established
+```
+
+Windows caches many DNS responses to improve performance.
+
+---
+
+# DNS Records
+
+Common DNS record types include:
+
+| Record | Purpose |
+|---------|----------|
+| A | IPv4 address |
+| AAAA | IPv6 address |
+| CNAME | Alias |
+| MX | Mail server |
+| NS | Name server |
+| TXT | Text information |
+| PTR | Reverse lookup |
+
+Enterprise DNS environments often contain many additional record types.
+
+---
+
+# DHCP (Dynamic Host Configuration Protocol)
+
+DHCP automatically assigns network configuration.
+
+Typical information provided:
+
+- IP address
+- Subnet mask
+- Default gateway
+- DNS servers
+- Lease duration
+
+Without DHCP, administrators would manually configure every device.
+
+---
+
+# DHCP Process (DORA)
+
+The DHCP process is commonly summarized as **DORA**.
+
+```text
+Client
+
+↓
+
+Discover
+
+↓
+
+Offer
+
+↓
+
+Request
+
+↓
+
+Acknowledgment
+```
+
+This process automatically provides a usable network configuration.
+
+---
+
+# DHCP Lease
+
+Assigned addresses are leased for a limited period.
+
+```text
+DHCP Server
+
+↓
+
+Assign Address
+
+↓
+
+Lease
+
+↓
+
+Renew
+
+↓
+
+Continue Communication
+```
+
+Windows attempts renewal before the lease expires.
+
+---
+
+# Automatic Private IP Addressing (APIPA)
+
+If a DHCP server cannot be reached, Windows may assign an APIPA address.
+
+Typical range:
+
+```text
+169.254.0.0/16
+```
+
+An APIPA address usually indicates that DHCP configuration was unsuccessful.
+
+---
+
+# Address Resolution Protocol (ARP)
+
+ARP maps an IPv4 address to a MAC address.
+
+Example:
+
+```text
+IP Address
+
+↓
+
+ARP Request
+
+↓
+
+MAC Address
+
+↓
+
+Frame Delivered
+```
+
+ARP operates only within the local network segment.
+
+---
+
+# ARP Workflow
+
+```text
+Host A
+
+↓
+
+Who Has 192.168.1.20?
+
+↓
+
+Host B
+
+↓
+
+My MAC Is
+00-11-22-33-44-55
+```
+
+Windows stores recently learned mappings in the ARP cache.
+
+---
+
+# ARP Cache
+
+Display the ARP cache:
+
+```cmd
+arp -a
+```
+
+Example output (simplified):
+
+```text
+Internet Address     Physical Address
+
+192.168.1.1          00-11-22-33-44-55
+```
+
+The cache reduces repeated ARP requests.
+
+---
+
+# Default Gateway
+
+A **default gateway** forwards traffic destined for other networks.
+
+```text
+PC
+
+↓
+
+Default Gateway
+
+↓
+
+Internet
+
+↓
+
+Remote Server
+```
+
+Without a valid gateway, communication outside the local network is generally not possible.
+
+---
+
+# Router
+
+A router connects multiple networks.
+
+Responsibilities include:
+
+- Routing packets
+- Selecting paths
+- Connecting LANs to WANs
+- Forwarding Internet traffic
+
+Routers primarily operate at **OSI Layer 3 (Network Layer)**.
+
+---
+
+# Routing
+
+Routing determines the path packets take to reach their destination.
+
+```text
+Host
+
+↓
+
+Router
+
+↓
+
+Router
+
+↓
+
+Destination
+```
+
+Windows maintains a routing table to determine where packets should be sent.
+
+---
+
+# Routing Table
+
+View the routing table:
+
+```cmd
+route print
+```
+
+The routing table contains:
+
+- Destination network
+- Netmask
+- Gateway
+- Interface
+- Metric
+
+Windows consults this table before transmitting IP packets.
+
+---
+
+# Network Address Translation (NAT)
+
+NAT allows multiple private devices to share one or more public IP addresses.
+
+```text
+Private Network
+
+↓
+
+Router (NAT)
+
+↓
+
+Public Internet
+```
+
+Benefits include:
+
+- Conserving public IPv4 addresses
+- Hiding internal addressing
+- Simplifying Internet connectivity
+
+NAT does **not** replace a firewall and should not be considered a security control by itself.
+
+---
+
+# Windows Network Configuration
+
+Administrators can configure networking using:
+
+- Settings
+- Control Panel
+- Command Prompt
+- PowerShell
+- Windows Admin Center (where deployed)
+
+The choice depends on administrative requirements and environment size.
+
+---
+
+# IPConfig Utility
+
+Display basic configuration:
+
+```cmd
+ipconfig
+```
+
+Display detailed information:
+
+```cmd
+ipconfig /all
+```
+
+Release a DHCP lease:
+
+```cmd
+ipconfig /release
+```
+
+Renew a DHCP lease:
+
+```cmd
+ipconfig /renew
+```
+
+Flush the DNS resolver cache:
+
+```cmd
+ipconfig /flushdns
+```
+
+These commands are frequently used during troubleshooting.
+
+---
+
+# Windows Network Profile
+
+Windows categorizes networks into profiles.
+
+Common profiles:
+
+| Profile | Typical Use |
+|----------|-------------|
+| Domain | Managed enterprise network |
+| Private | Trusted home or office network |
+| Public | Untrusted public network |
+
+The selected profile influences Windows Firewall behavior and sharing settings.
+
+---
+
+# Enterprise Example
+
+A new employee connects a laptop to the corporate network.
+
+```text
+Laptop Starts
+
+↓
+
+DHCP Assigns Address
+
+↓
+
+DNS Resolves Server Names
+
+↓
+
+Default Gateway Routes Traffic
+
+↓
+
+Employee Accesses Business Applications
+```
+
+Each protocol contributes to successful connectivity.
+
+---
+
+# Cybersecurity Perspective
+
+Security professionals frequently analyze:
+
+- DNS queries
+- DHCP activity
+- TCP sessions
+- UDP traffic
+- ARP behavior
+- Routing changes
+
+Unexpected activity in these protocols may indicate configuration issues or malicious behavior.
+
+---
+
+# Business Impact
+
+Reliable network configuration provides:
+
+- Consistent connectivity
+- Faster troubleshooting
+- Secure application access
+- Improved user productivity
+- Stable enterprise operations
+
+Misconfigured DNS, DHCP, or routing can disrupt critical business services.
+
+---
+
+# Enterprise Best Practices
+
+- Use DHCP for centralized IP address management.
+- Protect DNS infrastructure and monitor unusual queries.
+- Document IP addressing and subnet assignments.
+- Restrict unnecessary open ports.
+- Review routing tables during connectivity issues.
+- Monitor ARP anomalies as part of network security.
+- Regularly audit network configurations across endpoints.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Display IP Configuration
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+ipconfig /all
+```
+
+Record:
+
+- Host name
+- IPv4 address
+- Subnet mask
+- Default gateway
+- DNS servers
+
+---
+
+## Lab 2 — View the ARP Cache
+
+Run:
+
+```cmd
+arp -a
+```
+
+Identify:
+
+- IP addresses
+- Corresponding MAC addresses
+
+Observe how local devices are represented.
+
+---
+
+## Lab 3 — Display the Routing Table
+
+Run:
+
+```cmd
+route print
+```
+
+Locate:
+
+- Default route
+- Local network routes
+- Interface information
+
+Compare the routing table with your network configuration.
+
+---
+
+# Key Takeaways
+
+- TCP provides reliable, connection-oriented communication, while UDP prioritizes speed with lower overhead.
+- Ports identify the destination application on a host.
+- DNS translates hostnames into IP addresses.
+- DHCP automates network configuration through the DORA process.
+- ARP resolves IPv4 addresses to MAC addresses on the local network.
+- Routers and routing tables determine how packets reach remote networks.
+- NAT enables private networks to access the Internet using public IP addresses.
+- Windows provides built-in tools such as `ipconfig`, `arp`, and `route` for network administration.
+
+---
+
+# Interview Questions
+
+1. What is the difference between TCP and UDP?
+2. Explain the TCP three-way handshake.
+3. What is the purpose of DNS?
+4. Describe the DHCP DORA process.
+5. What does ARP do?
+6. What is APIPA, and when is it used?
+7. What is the purpose of a default gateway?
+8. What command displays the Windows routing table?
+9. What is NAT?
+10. Which command flushes the DNS resolver cache?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Networking Documentation
+- Microsoft TCP/IP Documentation
+- RFC 793 (TCP)
+- RFC 768 (UDP)
+- RFC 826 (ARP)
+- RFC 2131 (DHCP)
+- RFC 1034/1035 (DNS)
+- *TCP/IP Illustrated* (W. Richard Stevens)
+
+---
+
