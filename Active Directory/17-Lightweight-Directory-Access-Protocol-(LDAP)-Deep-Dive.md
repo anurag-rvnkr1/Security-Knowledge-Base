@@ -1533,4 +1533,760 @@ Explore LDAP searches in Active Directory.
 
 ---
 
-**Next:** **Part 3 — LDAP Internals, Replication, Global Catalog Integration, PowerShell, Troubleshooting, and Enterprise Operations**
+# Active-Directory/
+
+# 17-Lightweight-Directory-Access-Protocol-(LDAP)-Deep-Dive.md
+
+# Part 3 — LDAP Internals, Replication, Global Catalog Integration, PowerShell, Troubleshooting, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how LDAP interacts with Active Directory internally.
+- Learn how LDAP works with Domain Controllers and the Global Catalog.
+- Understand LDAP referrals.
+- Learn LDAP replication concepts.
+- Use PowerShell and Windows tools for LDAP administration.
+- Troubleshoot common LDAP issues.
+- Understand enterprise LDAP operations.
+
+---
+
+# Review
+
+In Part 2, you learned:
+
+- LDAP Bind
+- Search
+- Compare
+- Add
+- Modify
+- Delete
+- Modify DN
+- Unbind
+- Search Filters
+- Authentication Methods
+
+Now we'll examine LDAP from an enterprise administration perspective.
+
+---
+
+# LDAP Inside Active Directory
+
+LDAP is one of several protocols used by Active Directory.
+
+```text
+Application
+
+↓
+
+LDAP
+
+↓
+
+Domain Controller
+
+↓
+
+NTDS Database
+```
+
+The Domain Controller processes LDAP requests and retrieves or updates information in the Active Directory database.
+
+---
+
+# Active Directory Database
+
+The Active Directory database is stored in:
+
+```text
+NTDS.dit
+```
+
+LDAP does **not** store data itself.
+
+Instead:
+
+```text
+LDAP
+
+↓
+
+Reads
+
+↓
+
+NTDS.dit
+
+↓
+
+Returns Results
+```
+
+---
+
+# Domain Controller Responsibilities
+
+A Domain Controller provides:
+
+- LDAP services
+- Kerberos authentication
+- DNS integration
+- Active Directory replication
+- Global Catalog (when configured)
+
+LDAP is therefore one service among several hosted by a Domain Controller.
+
+---
+
+# LDAP Read Operations
+
+Examples include:
+
+- User lookup
+- Group lookup
+- Computer lookup
+- Organizational Unit lookup
+- Contact lookup
+
+These operations retrieve information without modifying the directory.
+
+---
+
+# LDAP Write Operations
+
+Examples include:
+
+- Create user
+- Modify group membership
+- Update phone number
+- Reset selected attributes (subject to permissions)
+- Delete objects
+
+Write operations require appropriate permissions.
+
+---
+
+# Read vs Write Operations
+
+| Read | Write |
+|------|-------|
+| Search | Add |
+| Compare | Modify |
+| Retrieve Attributes | Delete |
+| Browse Objects | Modify DN |
+
+---
+
+# LDAP Referrals
+
+Large environments may contain multiple domains or directory partitions.
+
+If the requested object is not located on the current server:
+
+```text
+Client
+
+↓
+
+Domain Controller A
+
+↓
+
+Referral
+
+↓
+
+Domain Controller B
+
+↓
+
+Object Returned
+```
+
+The client follows the referral to the appropriate LDAP server.
+
+---
+
+# Referral Example
+
+Company:
+
+```text
+contoso.com
+
+↓
+
+child.contoso.com
+```
+
+A search beginning in the parent domain may receive a referral directing the client to the child domain.
+
+---
+
+# Global Catalog
+
+The **Global Catalog (GC)** stores a partial, searchable copy of objects from every domain in the forest.
+
+Benefits:
+
+- Forest-wide searches
+- Universal Group Membership lookups
+- Faster object discovery
+
+---
+
+# LDAP with the Global Catalog
+
+```text
+LDAP Client
+
+↓
+
+Global Catalog
+
+↓
+
+Search Entire Forest
+
+↓
+
+Results
+```
+
+The Global Catalog does **not** contain every attribute of every object.
+
+It stores a **Partial Attribute Set (PAS)** to optimize forest-wide searches.
+
+---
+
+# LDAP Ports
+
+| Service | Port |
+|----------|------|
+| LDAP | TCP/UDP 389 |
+| LDAPS | TCP 636 |
+| Global Catalog | TCP 3268 |
+| Global Catalog (TLS/SSL) | TCP 3269 |
+
+---
+
+# Partial Attribute Set (PAS)
+
+The Global Catalog stores selected attributes that are useful for forest-wide searches.
+
+Example:
+
+```text
+User
+
+↓
+
+Name
+
+Email
+
+UPN
+
+Group Membership
+
+↓
+
+Global Catalog
+```
+
+Additional attributes may require contacting a Domain Controller in the object's home domain.
+
+---
+
+# LDAP Replication Relationship
+
+LDAP itself is **not** the replication protocol.
+
+Instead:
+
+```text
+Administrator
+
+↓
+
+LDAP Modify
+
+↓
+
+Domain Controller
+
+↓
+
+Active Directory Replication
+
+↓
+
+Other Domain Controllers
+```
+
+LDAP performs the update.
+
+Active Directory replication distributes the change.
+
+---
+
+# Replication Example
+
+Administrator changes:
+
+```text
+Department
+
+↓
+
+Finance
+
+↓
+
+Engineering
+```
+
+Workflow:
+
+```text
+LDAP Modify
+
+↓
+
+Domain Controller
+
+↓
+
+NTDS Database Updated
+
+↓
+
+Replication
+
+↓
+
+Other Domain Controllers Updated
+```
+
+---
+
+# Multi-Master Environment
+
+Because Active Directory supports multi-master replication:
+
+```text
+DC1
+
+⇄
+
+DC2
+
+⇄
+
+DC3
+```
+
+LDAP modifications can be accepted by any writable Domain Controller, after which replication synchronizes the changes.
+
+---
+
+# LDAP Security
+
+Recommended practices:
+
+- Use LDAPS or LDAP with TLS where appropriate.
+- Restrict anonymous access.
+- Apply least privilege.
+- Audit directory modifications.
+- Protect Domain Controllers.
+- Review service account permissions.
+
+---
+
+# LDAP Query Optimization
+
+Large organizations should:
+
+- Use precise search filters.
+- Limit requested attributes.
+- Choose the correct search scope.
+- Avoid unnecessarily broad subtree searches.
+- Query the Global Catalog for forest-wide lookups when appropriate.
+
+Efficient queries reduce load on Domain Controllers.
+
+---
+
+# Example Search Optimization
+
+Less efficient:
+
+```text
+Search Entire Forest
+
+↓
+
+Every Object
+
+↓
+
+Every Attribute
+```
+
+More efficient:
+
+```text
+Search Base
+
+↓
+
+Specific Filter
+
+↓
+
+Required Attributes Only
+```
+
+---
+
+# LDAP PowerShell Module
+
+Windows provides the **Active Directory PowerShell module** for LDAP-backed directory administration.
+
+Common cmdlets include:
+
+- Get-ADUser
+- Get-ADComputer
+- Get-ADGroup
+- New-ADUser
+- Set-ADUser
+- Remove-ADUser
+
+These cmdlets communicate with Active Directory using supported Windows APIs rather than requiring administrators to manually construct LDAP protocol messages.
+
+---
+
+# Display a User
+
+```powershell
+Get-ADUser Alice
+```
+
+---
+
+# Display User Properties
+
+```powershell
+Get-ADUser Alice -Properties *
+```
+
+---
+
+# Search Users
+
+```powershell
+Get-ADUser -Filter *
+```
+
+---
+
+# Search Computers
+
+```powershell
+Get-ADComputer -Filter *
+```
+
+---
+
+# Search Groups
+
+```powershell
+Get-ADGroup -Filter *
+```
+
+---
+
+# Organizational Units
+
+```powershell
+Get-ADOrganizationalUnit -Filter *
+```
+
+---
+
+# Find a Domain Controller
+
+```powershell
+Get-ADDomainController -Filter *
+```
+
+---
+
+# Domain Information
+
+```powershell
+Get-ADDomain
+```
+
+---
+
+# Forest Information
+
+```powershell
+Get-ADForest
+```
+
+---
+
+# LDAP Troubleshooting
+
+Common issues include:
+
+- Invalid credentials
+- Incorrect Distinguished Name
+- Invalid search filter
+- Missing permissions
+- Referral failures
+- DNS problems
+- Domain Controller unavailable
+- Expired certificates (LDAPS)
+
+---
+
+# Troubleshooting Workflow
+
+```text
+LDAP Failure
+
+↓
+
+DNS Working?
+
+↓
+
+Domain Controller Reachable?
+
+↓
+
+Credentials Valid?
+
+↓
+
+DN Correct?
+
+↓
+
+Filter Correct?
+
+↓
+
+Permissions Sufficient?
+
+↓
+
+LDAP Successful
+```
+
+---
+
+# Event Viewer
+
+Useful logs:
+
+```text
+Event Viewer
+
+↓
+
+Windows Logs
+
+↓
+
+Security
+```
+
+Also review:
+
+```text
+Applications and Services Logs
+```
+
+for directory-related events when applicable.
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 150,000 users
+- 18 domains
+- 3 forests
+
+Workflow:
+
+```text
+HR Application
+
+↓
+
+LDAP Bind
+
+↓
+
+Global Catalog
+
+↓
+
+User Search
+
+↓
+
+Retrieve Basic Attributes
+
+↓
+
+If Needed
+
+↓
+
+Home Domain Controller
+
+↓
+
+Retrieve Additional Attributes
+```
+
+This minimizes search time while providing complete information when necessary.
+
+---
+
+# Enterprise Best Practices
+
+- Prefer LDAPS or StartTLS where supported.
+- Use the Global Catalog for forest-wide searches.
+- Keep LDAP filters efficient.
+- Limit attribute retrieval.
+- Monitor directory modifications.
+- Audit privileged accounts.
+- Protect Domain Controllers.
+- Test applications before schema changes.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Broad subtree searches without necessity.
+- Anonymous LDAP access.
+- Over-privileged service accounts.
+- Ignoring referral behavior.
+- Querying unnecessary attributes.
+- Performing large directory updates during peak business hours without planning.
+
+---
+
+# Cybersecurity Perspective
+
+LDAP contains highly valuable identity information.
+
+Security teams should:
+
+- Monitor directory modifications.
+- Audit privileged LDAP operations.
+- Secure LDAP communications.
+- Protect service accounts.
+- Review schema changes.
+- Detect unusual search activity.
+- Monitor access to sensitive organizational units.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore LDAP-backed Active Directory administration.
+
+### Tasks
+
+1. Install the Active Directory PowerShell module (if appropriate for your lab environment).
+
+2. Execute:
+
+```powershell
+Get-ADDomain
+```
+
+3. Execute:
+
+```powershell
+Get-ADForest
+```
+
+4. Display:
+
+```powershell
+Get-ADUser -Filter *
+```
+
+5. Display:
+
+```powershell
+Get-ADGroup -Filter *
+```
+
+6. Document:
+
+- Domain information
+- Forest information
+- Organizational Units
+- Users
+- Groups
+
+---
+
+# Key Takeaways
+
+- LDAP accesses data stored in the Active Directory database.
+- LDAP updates are replicated through Active Directory replication.
+- The Global Catalog enables efficient forest-wide searches.
+- Efficient search filters improve performance.
+- PowerShell provides powerful LDAP-backed administration.
+- LDAPS and least privilege improve directory security.
+
+---
+
+# Interview Questions
+
+1. Where is Active Directory data stored?
+2. What is the relationship between LDAP and NTDS.dit?
+3. What is an LDAP referral?
+4. What is the Global Catalog?
+5. What is the Partial Attribute Set (PAS)?
+6. Does LDAP perform replication?
+7. Why should LDAP queries be optimized?
+8. Which PowerShell cmdlet retrieves user objects?
+9. Why should LDAPS be preferred?
+10. How would you troubleshoot an LDAP search failure?
+
+---
+
+# References
+
+- RFC 4511 – Lightweight Directory Access Protocol (LDAP)
+- RFC 4513 – LDAP Authentication Methods and Security Mechanisms
+- Microsoft Learn – Active Directory Domain Services
+- Microsoft Learn – Active Directory PowerShell Module
+- Microsoft Learn – Global Catalog
+- Microsoft Windows Server Documentation
+- OpenLDAP Documentation
+
+---
+
+**Next:** **Part 4 — LDAP Security, LDAPS, Defensive Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
