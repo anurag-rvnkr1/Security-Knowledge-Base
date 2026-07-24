@@ -1615,4 +1615,702 @@ Verify that the backup file is created.
 
 ---
 
-**Next:** **Part 3 — Firewall Troubleshooting, Security Monitoring, Enterprise Hardening, Incident Response, and Best Practices**
+# 19-Windows-Firewall.md
+
+# Part 3 — Firewall Troubleshooting, Security Monitoring, Enterprise Hardening, Incident Response, and Best Practices
+
+---
+
+# Introduction
+
+Deploying Windows Defender Firewall is only the beginning of securing an enterprise environment.
+
+Administrators and Security Operations Centers (SOCs) must continuously:
+
+- Monitor firewall activity
+- Troubleshoot connectivity issues
+- Investigate blocked connections
+- Detect malicious traffic
+- Review firewall policies
+- Harden firewall configurations
+- Integrate firewall telemetry into SIEM platforms
+
+A properly monitored firewall becomes both a preventive and detective security control.
+
+---
+
+# Firewall Troubleshooting Methodology
+
+A structured troubleshooting approach reduces downtime and avoids unnecessary configuration changes.
+
+```text
+Identify Problem
+
+↓
+
+Collect Information
+
+↓
+
+Verify Network Connectivity
+
+↓
+
+Review Firewall Rules
+
+↓
+
+Inspect Logs
+
+↓
+
+Test Configuration
+
+↓
+
+Resolve Issue
+
+↓
+
+Document Findings
+```
+
+---
+
+# Common Firewall Issues
+
+| Issue | Possible Cause |
+|---------|----------------|
+| Application cannot connect | Firewall rule missing |
+| Remote Desktop unavailable | Port 3389 blocked |
+| File sharing not working | SMB rules disabled |
+| Printer inaccessible | Print service or firewall rules |
+| VPN failure | IPsec configuration issue |
+| Slow network communication | Incorrect filtering policies |
+| Random connection failures | Profile mismatch |
+
+---
+
+# Step 1 — Verify Network Connectivity
+
+Before investigating the firewall, verify basic connectivity.
+
+Useful commands:
+
+```powershell
+ping
+
+Test-NetConnection
+
+tracert
+
+ipconfig
+
+route print
+```
+
+Example:
+
+```powershell
+Test-NetConnection server01 -Port 443
+```
+
+Expected output includes:
+
+- DNS Resolution
+- Ping status
+- TCP connectivity
+- Remote port status
+
+---
+
+# Step 2 — Verify Active Firewall Profile
+
+Determine which firewall profile is active.
+
+```powershell
+Get-NetConnectionProfile
+```
+
+Example output:
+
+```text
+Network Name : CorporateLAN
+
+Profile : DomainAuthenticated
+```
+
+If the wrong profile is selected, unexpected firewall behavior may occur.
+
+---
+
+# Step 3 — Verify Firewall Status
+
+```powershell
+Get-NetFirewallProfile
+```
+
+Review:
+
+- Enabled
+- Default inbound action
+- Default outbound action
+- Logging configuration
+
+---
+
+# Step 4 — Search Firewall Rules
+
+Example:
+
+```powershell
+Get-NetFirewallRule `
+-DisplayName "*RDP*"
+```
+
+Check:
+
+- Enabled
+- Direction
+- Action
+- Profile
+- Program
+- Local Port
+
+---
+
+# Step 5 — Verify Port Accessibility
+
+Example:
+
+```powershell
+Test-NetConnection `
+server01 `
+-Port 3389
+```
+
+Possible outcomes:
+
+```text
+TCP Test Succeeded : True
+```
+
+or
+
+```text
+TCP Test Succeeded : False
+```
+
+A failed result indicates that traffic is being blocked somewhere along the communication path.
+
+---
+
+# Step 6 — Review Firewall Logs
+
+Firewall logs help determine:
+
+- Blocked packets
+- Allowed packets
+- Source addresses
+- Destination addresses
+- Protocols
+
+Default location:
+
+```text
+%SystemRoot%\System32\LogFiles\Firewall\pfirewall.log
+```
+
+---
+
+# Example Firewall Log
+
+```text
+2026-07-15
+
+DROP
+
+TCP
+
+192.168.10.50
+
+10.0.5.25
+
+49825
+
+3389
+```
+
+Interpretation:
+
+- Source attempted RDP
+- Destination rejected traffic
+- Firewall blocked packet
+
+---
+
+# Troubleshooting Workflow
+
+```text
+User Reports Problem
+
+↓
+
+Verify Connectivity
+
+↓
+
+Verify DNS
+
+↓
+
+Verify Firewall Profile
+
+↓
+
+Verify Firewall Rule
+
+↓
+
+Review Logs
+
+↓
+
+Test Again
+
+↓
+
+Resolve
+```
+
+---
+
+# Firewall Monitoring
+
+Continuous monitoring should include:
+
+- Dropped packets
+- Excessive outbound connections
+- New listening services
+- Unauthorized applications
+- High-volume connection attempts
+- Port scanning activity
+
+Firewall monitoring is a valuable source of threat intelligence.
+
+---
+
+# Indicators of Suspicious Firewall Activity
+
+Potential indicators include:
+
+- Numerous blocked inbound connections
+- Unexpected outbound traffic
+- Connections to unfamiliar countries
+- Repeated denied RDP attempts
+- Multiple SMB connection failures
+- Frequent PowerShell network activity
+- New applications creating network connections
+
+These indicators require further investigation and correlation with other telemetry.
+
+---
+
+# Detecting Port Scanning
+
+Example pattern:
+
+```text
+Source IP
+
+↓
+
+22
+
+↓
+
+80
+
+↓
+
+135
+
+↓
+
+139
+
+↓
+
+445
+
+↓
+
+3389
+```
+
+Sequential probing of multiple ports is a common reconnaissance technique.
+
+---
+
+# Detecting Brute-Force Attempts
+
+Indicators include:
+
+- Numerous failed authentication attempts
+- Repeated RDP connection attempts
+- Multiple SMB logon failures
+- Firewall logs combined with Security Event ID 4625
+
+Correlation improves detection accuracy.
+
+---
+
+# Detecting Malware Communication
+
+Suspicious indicators:
+
+- Unknown executable initiating outbound traffic
+- Communication with known malicious IP addresses
+- Frequent beaconing intervals
+- Unusual DNS requests
+- Connections outside normal business hours
+
+Firewall logs should be correlated with endpoint telemetry.
+
+---
+
+# Firewall and SIEM Integration
+
+Typical architecture:
+
+```text
+Windows Endpoint
+
+↓
+
+Firewall Logs
+
+↓
+
+Windows Event Logs
+
+↓
+
+Collector
+
+↓
+
+SIEM
+
+↓
+
+Correlation Rules
+
+↓
+
+SOC Alert
+```
+
+Centralized analysis enables enterprise-wide visibility.
+
+---
+
+# Common SIEM Correlation Example
+
+```text
+Firewall
+
+↓
+
+Blocked RDP
+
++
+
+Security Log
+
+↓
+
+4625
+
++
+
+PowerShell
+
+↓
+
+4688
+
+↓
+
+High Severity Alert
+```
+
+Multiple related events provide stronger evidence than isolated logs.
+
+---
+
+# Firewall Hardening
+
+Security hardening recommendations:
+
+- Enable all firewall profiles.
+- Block unnecessary inbound ports.
+- Restrict outbound traffic where appropriate.
+- Disable unused services.
+- Remove obsolete firewall rules.
+- Require IPsec for sensitive systems.
+- Enable logging.
+- Review exceptions regularly.
+
+Hardening reduces the attack surface.
+
+---
+
+# Administrative Access Protection
+
+Restrict administrative protocols:
+
+| Protocol | Recommendation |
+|----------|----------------|
+| RDP | IT network only |
+| WinRM | Administrators only |
+| SMB | Internal file servers only |
+| SSH | Authorized administrators only |
+
+Administrative services should never be broadly exposed.
+
+---
+
+# Firewall Rule Review
+
+Questions to ask during reviews:
+
+- Is the rule still required?
+- Who requested it?
+- Is documentation available?
+- Is the application still installed?
+- Is there a more restrictive alternative?
+
+Periodic reviews improve security posture.
+
+---
+
+# Incident Response Using Firewall Data
+
+Firewall logs help investigators determine:
+
+- Initial access
+- Attacker IP address
+- Lateral movement
+- Data exfiltration
+- Command-and-control communication
+
+Firewall telemetry is often one of the first evidence sources examined.
+
+---
+
+# Firewall Incident Response Workflow
+
+```text
+Alert
+
+↓
+
+Collect Firewall Logs
+
+↓
+
+Collect Windows Events
+
+↓
+
+Correlate Evidence
+
+↓
+
+Identify Threat
+
+↓
+
+Contain
+
+↓
+
+Eradicate
+
+↓
+
+Recover
+```
+
+---
+
+# Enterprise Security Example
+
+A SOC receives alerts showing:
+
+- Repeated inbound RDP attempts
+- Security Event ID 4625
+- PowerShell process creation
+- Outbound HTTPS traffic to an unknown server
+
+Investigation reveals an attempted credential attack followed by malware execution.
+
+Because Windows Defender Firewall restricted inbound access and Defender quarantined the malicious payload, the compromise was contained before sensitive systems were affected.
+
+---
+
+# Cybersecurity Perspective
+
+Windows Defender Firewall is valuable for detecting:
+
+- Reconnaissance
+- Initial access attempts
+- Malware communication
+- Lateral movement
+- Data exfiltration
+- Insider misuse
+
+Combined with endpoint telemetry, firewall events significantly improve detection capabilities.
+
+---
+
+# Business Impact
+
+Effective firewall monitoring provides:
+
+- Faster incident detection
+- Reduced attack surface
+- Improved regulatory compliance
+- Better visibility into network activity
+- Reduced operational downtime
+- Lower incident response costs
+
+Firewall telemetry supports both operational troubleshooting and cybersecurity investigations.
+
+---
+
+# Enterprise Best Practices
+
+- Keep firewall logging enabled.
+- Integrate firewall events with SIEM.
+- Monitor blocked administrative ports.
+- Review firewall exceptions quarterly.
+- Restrict outbound communication for sensitive systems.
+- Test firewall policies before deployment.
+- Document every firewall exception.
+- Remove obsolete firewall rules promptly.
+- Perform periodic firewall audits.
+- Include firewall reviews in security assessments.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Test Connectivity
+
+Run:
+
+```powershell
+Test-NetConnection `
+server01 `
+-Port 443
+```
+
+Document:
+
+- DNS resolution
+- Ping status
+- TCP success
+
+---
+
+## Lab 2 — Review Active Firewall Profile
+
+Run:
+
+```powershell
+Get-NetConnectionProfile
+```
+
+Identify:
+
+- Active profile
+- Network category
+
+---
+
+## Lab 3 — Examine Firewall Logs
+
+Locate:
+
+```text
+%SystemRoot%\System32\LogFiles\Firewall\
+```
+
+Identify:
+
+- Blocked packets
+- Allowed packets
+- Source IP addresses
+- Destination ports
+
+---
+
+## Lab 4 — Audit Firewall Rules
+
+Run:
+
+```powershell
+Get-NetFirewallRule
+```
+
+Review:
+
+- Disabled rules
+- Duplicate rules
+- Obsolete rules
+- Broad "Allow Any" rules
+
+Document recommended improvements.
+
+---
+
+# Key Takeaways
+
+- Troubleshooting should follow a structured methodology.
+- Firewall logs provide valuable operational and security visibility.
+- SIEM correlation strengthens threat detection.
+- Administrative services should be tightly restricted.
+- Regular rule reviews reduce unnecessary exposure.
+- Firewall data is an important source of forensic evidence.
+
+---
+
+# Interview Questions
+
+1. How would you troubleshoot an application blocked by Windows Firewall?
+2. Which PowerShell command tests TCP connectivity?
+3. Where are Windows Firewall logs stored?
+4. What indicators suggest a port scan?
+5. How can firewall logs assist incident response?
+6. Why should firewall events be forwarded to a SIEM?
+7. What are common causes of firewall-related connectivity issues?
+8. Why should firewall rules be audited regularly?
+9. How can outbound filtering improve security?
+10. What information is contained in `pfirewall.log`?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Defender Firewall Documentation
+- Microsoft NetSecurity PowerShell Documentation
+- Microsoft Windows Filtering Platform Documentation
+- NIST SP 800-41 Rev.1 (Guidelines on Firewalls and Firewall Policy)
+- MITRE ATT&CK Framework
+
+---
+
+**Next:** **Part 4 — Enterprise Firewall Architecture, Compliance, Best Practices, Chapter Summary, and Interview Preparation**
