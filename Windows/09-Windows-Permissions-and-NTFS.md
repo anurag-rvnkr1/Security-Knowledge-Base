@@ -1765,3 +1765,829 @@ Do not modify permissions on production systems.
 
 ---
 
+# 09-Windows-Permissions-and-NTFS.md
+
+# Part 3 — NTFS Advanced Permissions, Sharing Permissions, Encrypting File System (EFS), Auditing, Access-Based Enumeration, and Enterprise File Security
+
+---
+
+# Introduction
+
+NTFS permissions provide fine-grained access control for local file systems, but enterprise environments require additional security capabilities.
+
+Organizations often need to:
+
+- Share folders across the network
+- Encrypt sensitive files
+- Audit access attempts
+- Hide confidential resources
+- Monitor unauthorized activity
+- Protect data from insider threats
+
+Windows combines NTFS with additional technologies to provide layered file security.
+
+---
+
+# Enterprise File Security Model
+
+```text
+User
+
+↓
+
+Authentication
+
+↓
+
+Access Token
+
+↓
+
+Share Permissions (Network Access)
+
+↓
+
+NTFS Permissions
+
+↓
+
+Auditing
+
+↓
+
+Protected Resource
+```
+
+For network access, both **Share Permissions** and **NTFS Permissions** participate in authorization.
+
+---
+
+# NTFS Permissions vs Share Permissions
+
+These permission systems serve different purposes.
+
+| NTFS Permissions | Share Permissions |
+|------------------|-------------------|
+| Apply locally and over the network | Apply only to network access |
+| Configured on Security tab | Configured on Sharing tab |
+| More granular | Simpler permission model |
+| Stored in NTFS | Stored as share configuration |
+
+A user accessing a shared folder over the network must satisfy **both** permission sets.
+
+---
+
+# Share Permissions
+
+Windows provides three standard share permissions.
+
+| Permission | Capabilities |
+|------------|--------------|
+| Read | View files and folders |
+| Change | Read, create, modify, delete |
+| Full Control | Change permissions and manage sharing settings (subject to ownership and administrative rights) |
+
+Share permissions are evaluated only for network access.
+
+---
+
+# Share Permission Workflow
+
+```text
+Remote User
+
+↓
+
+Network Share
+
+↓
+
+Share Permission Check
+
+↓
+
+NTFS Permission Check
+
+↓
+
+Access Granted or Denied
+```
+
+Both permission systems must allow the requested operation.
+
+---
+
+# Combined Permission Evaluation
+
+Consider:
+
+```text
+Share Permission
+
+↓
+
+Read
+
+
+NTFS Permission
+
+↓
+
+Modify
+```
+
+Effective network access:
+
+```text
+Read
+```
+
+The **most restrictive effective result** applies across the combined share and NTFS evaluation.
+
+---
+
+# Example 1
+
+Share:
+
+```text
+Read
+```
+
+NTFS:
+
+```text
+Full Control
+```
+
+Result:
+
+```text
+Read
+```
+
+---
+
+# Example 2
+
+Share:
+
+```text
+Full Control
+```
+
+NTFS:
+
+```text
+Modify
+```
+
+Result:
+
+```text
+Modify
+```
+
+---
+
+# Example 3
+
+Share:
+
+```text
+Change
+```
+
+NTFS:
+
+```text
+Read
+```
+
+Result:
+
+```text
+Read
+```
+
+---
+
+# Recommended Enterprise Practice
+
+Many organizations configure:
+
+```text
+Share
+
+↓
+
+Everyone
+
+↓
+
+Full Control
+
+
+↓
+
+Control Access Using NTFS
+```
+
+This approach centralizes detailed authorization in NTFS permissions, reducing administrative complexity.
+
+Note: Modern organizations often replace broad **Everyone** access with authenticated or role-based groups depending on security requirements.
+
+---
+
+# Hidden Shares
+
+Windows supports hidden administrative-style shares.
+
+Example:
+
+```text
+Finance$
+```
+
+The trailing:
+
+```text
+$
+```
+
+prevents casual browsing of the share name.
+
+Users who know the share path and have appropriate permissions can still access it.
+
+---
+
+# Administrative Shares
+
+Windows automatically creates administrative shares such as:
+
+| Share | Purpose |
+|--------|----------|
+| `C$` | System drive administration |
+| `ADMIN$` | Windows directory administration |
+| `IPC$` | Inter-process communication |
+
+These shares are intended for administrative use and should be protected appropriately.
+
+---
+
+# Encrypting File System (EFS)
+
+**Encrypting File System (EFS)** provides file-level encryption on NTFS volumes.
+
+Workflow:
+
+```text
+File
+
+↓
+
+Encrypt
+
+↓
+
+Encryption Key
+
+↓
+
+Encrypted Data
+```
+
+Only authorized users with the appropriate encryption keys can decrypt the data.
+
+---
+
+# EFS Characteristics
+
+EFS provides:
+
+- File-level encryption
+- Folder-level encryption
+- Transparent operation after authentication
+- Integration with NTFS
+
+Unlike full-disk encryption, EFS protects selected files and folders.
+
+---
+
+# EFS Example
+
+```text
+Payroll.xlsx
+
+↓
+
+Encrypt
+
+↓
+
+Encrypted on Disk
+
+↓
+
+Authorized User Opens File
+
+↓
+
+Automatic Decryption
+```
+
+Encryption and decryption occur transparently for authorized users.
+
+---
+
+# EFS vs BitLocker
+
+| EFS | BitLocker |
+|------|-----------|
+| File-level protection | Volume-level protection |
+| Selective encryption | Entire drive encryption |
+| User-based | Device/volume-based |
+| Protects individual files | Protects offline storage |
+
+Many enterprise environments use BitLocker for device protection and EFS only where file-level encryption is specifically required.
+
+---
+
+# Data Recovery Agent (DRA)
+
+Organizations may configure **Data Recovery Agents (DRAs)** for EFS.
+
+Purpose:
+
+```text
+Encrypted File
+
+↓
+
+Recovery Certificate
+
+↓
+
+Authorized Recovery
+
+↓
+
+Business Continuity
+```
+
+DRAs help organizations recover encrypted data under approved procedures.
+
+---
+
+# File Auditing
+
+Windows can audit file access using **SACLs**.
+
+Examples:
+
+- Read attempts
+- Write attempts
+- Delete attempts
+- Permission changes
+- Ownership changes
+
+Auditing helps detect unauthorized access and supports forensic investigations.
+
+---
+
+# Auditing Workflow
+
+```text
+User Accesses File
+
+↓
+
+SACL Evaluation
+
+↓
+
+Audit Rule Matches
+
+↓
+
+Security Event Generated
+
+↓
+
+Event Log
+```
+
+Audit generation depends on both SACL configuration and system audit policy.
+
+---
+
+# Audit Policies
+
+Administrators configure auditing through:
+
+```text
+Local Security Policy
+
+↓
+
+Advanced Audit Policy
+
+↓
+
+Object Access
+
+↓
+
+File System
+```
+
+Audit policies determine whether configured SACLs generate events.
+
+---
+
+# Common Audit Events
+
+Organizations commonly audit:
+
+- Failed access attempts
+- Successful access to sensitive files
+- Permission modifications
+- Ownership changes
+- Deletion of critical data
+
+Not every file requires auditing; excessive auditing may increase log volume.
+
+---
+
+# Access-Based Enumeration (ABE)
+
+**Access-Based Enumeration (ABE)** hides folders that users cannot access.
+
+Without ABE:
+
+```text
+Finance
+
+HR
+
+Legal
+
+Engineering
+```
+
+Every folder may be visible.
+
+With ABE:
+
+```text
+Finance User
+
+↓
+
+Finance
+```
+
+Only authorized folders appear.
+
+This improves usability and reduces unnecessary information disclosure.
+
+---
+
+# Access-Based Enumeration Workflow
+
+```text
+User
+
+↓
+
+Permission Check
+
+↓
+
+Visible Resources
+
+↓
+
+Hidden Unauthorized Folders
+```
+
+ABE does **not** replace NTFS permissions; it complements them.
+
+---
+
+# Offline Files
+
+Windows supports cached copies of network files.
+
+Workflow:
+
+```text
+File Server
+
+↓
+
+Offline Cache
+
+↓
+
+User Works Offline
+
+↓
+
+Reconnect
+
+↓
+
+Synchronization
+```
+
+Offline Files improve availability for mobile users.
+
+---
+
+# File Synchronization Conflicts
+
+Synchronization may produce conflicts when:
+
+```text
+User A
+
+↓
+
+Edit File
+
+↑
+
+↓
+
+File Server
+
+↑
+
+↓
+
+User B
+
+↓
+
+Edit Same File
+```
+
+Administrators should establish version control and collaboration procedures to minimize conflicts.
+
+---
+
+# Sensitive Data Protection
+
+Examples of sensitive enterprise data include:
+
+- Payroll
+- HR records
+- Customer information
+- Intellectual property
+- Legal documents
+- Financial reports
+
+These resources often require:
+
+- Restricted NTFS permissions
+- Encryption
+- Auditing
+- Backup
+- Monitoring
+
+---
+
+# Data Classification
+
+Organizations commonly classify data.
+
+Example:
+
+```text
+Public
+
+↓
+
+Internal
+
+↓
+
+Confidential
+
+↓
+
+Highly Confidential
+```
+
+Higher classifications typically require stronger security controls.
+
+---
+
+# Information Barriers
+
+Sensitive departments often require isolation.
+
+Example:
+
+```text
+HR
+
+↓
+
+HR Group Only
+
+--------------------
+
+Finance
+
+↓
+
+Finance Group Only
+```
+
+Proper permission design supports confidentiality.
+
+---
+
+# Enterprise Example
+
+A Human Resources department stores employee records.
+
+Security configuration:
+
+```text
+HR Share
+
+↓
+
+NTFS
+
+↓
+
+HR Group → Modify
+
+Managers → Read
+
+Auditing Enabled
+
+EFS Applied to Sensitive Files
+
+ABE Enabled
+```
+
+This layered approach combines authorization, encryption, and auditing.
+
+---
+
+# Cybersecurity Perspective
+
+Misconfigured shares are a common attack vector.
+
+Examples include:
+
+- World-readable shares
+- Writable shared folders
+- Excessive administrative shares
+- Missing auditing
+- Weak encryption practices
+
+Attackers frequently enumerate:
+
+- Shared folders
+- Administrative shares
+- Writable locations
+- Sensitive documents
+
+Security teams should regularly review both share and NTFS permissions.
+
+---
+
+# Business Impact
+
+Enterprise file security provides:
+
+- Data confidentiality
+- Regulatory compliance
+- Reduced insider risk
+- Improved forensic visibility
+- Business continuity
+- Better protection of intellectual property
+
+Weak file security can expose confidential data and increase operational and legal risk.
+
+---
+
+# Enterprise Best Practices
+
+- Use NTFS permissions as the primary authorization mechanism.
+- Apply the Principle of Least Privilege (PoLP).
+- Enable auditing only where business requirements justify it.
+- Encrypt highly sensitive data.
+- Review shared folders regularly.
+- Restrict administrative share access.
+- Implement Access-Based Enumeration where appropriate.
+- Classify sensitive data and align permissions with classification.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Compare Share and NTFS Permissions
+
+Create a test shared folder.
+
+Configure:
+
+- Share permissions
+- NTFS permissions
+
+Access the share from another authorized device (where available) and compare the effective permissions.
+
+---
+
+## Lab 2 — Review Administrative Shares
+
+Open **Command Prompt**.
+
+Run:
+
+```cmd
+net share
+```
+
+Identify:
+
+- Administrative shares
+- User-created shares
+- Share names ending with `$`
+
+Do not modify production shares without authorization.
+
+---
+
+## Lab 3 — Explore Advanced Security
+
+Open:
+
+```text
+Properties
+
+↓
+
+Security
+
+↓
+
+Advanced
+```
+
+Review:
+
+- Permission entries
+- Inheritance
+- Owner
+- Auditing (if available)
+
+Document the security configuration of a test folder.
+
+---
+
+# Key Takeaways
+
+- Share permissions apply only to network access.
+- NTFS permissions apply locally and across the network.
+- Effective network access depends on both share and NTFS permissions.
+- EFS provides file-level encryption for NTFS volumes.
+- SACLs enable auditing of file access.
+- Access-Based Enumeration hides resources users cannot access.
+- Layered security improves enterprise data protection.
+
+---
+
+# Interview Questions
+
+1. What is the difference between NTFS permissions and share permissions?
+2. Which permission set determines effective access over a network?
+3. What is Encrypting File System (EFS)?
+4. How does EFS differ from BitLocker?
+5. What is the purpose of a Data Recovery Agent (DRA)?
+6. What is a SACL?
+7. What is Access-Based Enumeration (ABE)?
+8. Why are hidden shares identified with a `$` suffix?
+9. Why should sensitive files be audited?
+10. Why do organizations classify data?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft NTFS Documentation
+- Microsoft EFS Documentation
+- Microsoft Windows File Services Documentation
+- Microsoft Access-Based Enumeration Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
