@@ -2345,4 +2345,689 @@ Include security controls at each stage.
 
 ---
 
-**Next:** **Part 4 — Active Directory Security, Attacks, Hardening, Monitoring, Troubleshooting, and Enterprise Best Practices**
+# 23-Active-Directory.md
+
+# Part 4 — Active Directory Security, Attacks, Hardening, Monitoring, Troubleshooting, and Enterprise Best Practices
+
+---
+
+# Introduction
+
+Active Directory is one of the most valuable assets in a Windows enterprise.
+
+Because it controls:
+
+- User identities
+- Authentication
+- Authorization
+- Group Policy
+- Administrative privileges
+- Enterprise resources
+
+it is a primary target for attackers.
+
+A compromised Active Directory environment can allow attackers to control large portions of an organization's infrastructure.
+
+This section focuses on securing Active Directory through hardening, monitoring, auditing, and operational best practices.
+
+---
+
+# Active Directory Threat Landscape
+
+Common attack objectives include:
+
+- Credential theft
+- Privilege escalation
+- Lateral movement
+- Persistence
+- Domain dominance
+- Data exfiltration
+
+Attackers frequently attempt to compromise AD because it provides centralized control over enterprise resources.
+
+---
+
+# Common Attack Path
+
+```text
+Phishing
+
+↓
+
+Compromised Workstation
+
+↓
+
+Credential Theft
+
+↓
+
+Privilege Escalation
+
+↓
+
+Lateral Movement
+
+↓
+
+Domain Controller
+
+↓
+
+Domain Compromise
+```
+
+Breaking the attack chain at any stage reduces overall risk.
+
+---
+
+# Privileged Accounts
+
+Privileged accounts require enhanced protection.
+
+Examples:
+
+- Domain Admins
+- Enterprise Admins
+- Schema Admins
+- Backup Operators
+- Service Accounts with elevated permissions
+
+Recommendations:
+
+- Limit membership
+- Require MFA where supported
+- Use separate administrative accounts
+- Monitor logons
+- Review membership regularly
+
+---
+
+# Tiered Administration
+
+Separate administrative activities into security tiers.
+
+Example:
+
+```text
+Tier 0
+
+↓
+
+Domain Controllers
+
+↓
+
+Enterprise Admins
+
+----------------
+
+Tier 1
+
+↓
+
+Servers
+
+↓
+
+Server Administrators
+
+----------------
+
+Tier 2
+
+↓
+
+Workstations
+
+↓
+
+Help Desk
+```
+
+Tiered administration reduces opportunities for credential theft and privilege escalation.
+
+---
+
+# Securing Domain Controllers
+
+Domain Controllers should receive the highest level of protection.
+
+Recommendations:
+
+- Physically secure servers
+- Restrict interactive logon
+- Enable BitLocker
+- Apply security baselines
+- Enable advanced auditing
+- Patch promptly
+- Restrict internet access
+- Monitor continuously
+
+Only authorized administrators should manage Domain Controllers.
+
+---
+
+# Protecting Administrative Credentials
+
+Administrative credentials should never be used for:
+
+- Email
+- Web browsing
+- Routine office work
+- Untrusted applications
+
+Recommended approach:
+
+```text
+Daily Account
+
+↓
+
+Normal Work
+
+----------------
+
+Administrative Account
+
+↓
+
+Administrative Tasks Only
+```
+
+Separate accounts reduce exposure.
+
+---
+
+# Active Directory Hardening
+
+Key hardening measures include:
+
+- Least privilege
+- Secure OU design
+- Strong password policies
+- MFA
+- Windows LAPS
+- Credential Guard
+- Secure administrative workstations
+- Restricted service accounts
+
+Hardening should be continuously reviewed and updated.
+
+---
+
+# Secure Administrative Workstations (SAWs)
+
+Administrative tasks should be performed from dedicated systems.
+
+Benefits:
+
+- Reduced malware exposure
+- Controlled software installation
+- Stronger monitoring
+- Improved credential protection
+
+Administrative workstations should not be used for general productivity tasks.
+
+---
+
+# Group Policy Security
+
+Use Group Policy to enforce:
+
+- Password policies
+- Account lockout policies
+- Firewall configuration
+- Audit policies
+- PowerShell logging
+- BitLocker settings
+- Defender configuration
+
+Group Policy enables consistent enforcement across the domain.
+
+---
+
+# Monitoring Active Directory
+
+Monitor for:
+
+- Failed logons
+- Privileged logons
+- Group membership changes
+- Account lockouts
+- New administrator accounts
+- Domain Controller changes
+- Replication failures
+- GPO modifications
+
+Continuous monitoring improves detection of suspicious activity.
+
+---
+
+# Important Security Events
+
+Examples of Windows Security Event IDs:
+
+| Event ID | Description |
+|-----------|-------------|
+| 4624 | Successful logon |
+| 4625 | Failed logon |
+| 4720 | User account created |
+| 4722 | User account enabled |
+| 4725 | User account disabled |
+| 4726 | User account deleted |
+| 4728 | Added to a security-enabled global group |
+| 4732 | Added to a security-enabled local group |
+| 4738 | User account changed |
+| 4740 | Account locked out |
+| 4768 | Kerberos TGT requested |
+| 4769 | Kerberos service ticket requested |
+| 5136 | Directory object modified |
+
+These events should be forwarded to a centralized logging or SIEM platform for analysis.
+
+---
+
+# Auditing Active Directory
+
+Audit regularly:
+
+- Privileged groups
+- OU permissions
+- Service accounts
+- GPO changes
+- Trust relationships
+- Replication health
+- FSMO role holders
+- Inactive accounts
+
+Routine audits improve security posture and compliance.
+
+---
+
+# Active Directory Backup
+
+Backups should include:
+
+- System State
+- Active Directory database
+- SYSVOL
+- Group Policy Objects
+- DNS (if integrated)
+
+Backups should be encrypted, tested, and stored securely.
+
+---
+
+# Disaster Recovery
+
+Recovery planning should address:
+
+- Domain Controller failure
+- Accidental object deletion
+- Database corruption
+- Site failure
+- Ransomware incidents
+
+Organizations should regularly test recovery procedures.
+
+---
+
+# Active Directory Recycle Bin
+
+The Active Directory Recycle Bin allows recovery of deleted directory objects without requiring an authoritative restore.
+
+Benefits:
+
+- Faster recovery
+- Preserved object attributes
+- Reduced downtime
+
+The feature should be enabled early in the lifecycle of a new forest after validating organizational requirements.
+
+---
+
+# Replication Health Monitoring
+
+Monitor for:
+
+- Replication latency
+- Failed replication
+- Lingering objects
+- Site connectivity issues
+
+Useful tools include:
+
+- `repadmin`
+- Event Viewer
+- Active Directory Sites and Services
+
+Healthy replication is essential for consistent authentication.
+
+---
+
+# Time Synchronization
+
+Incorrect system time can cause:
+
+- Kerberos failures
+- Authentication errors
+- Replication issues
+- Inaccurate audit logs
+
+Time should be synchronized using a reliable enterprise time source.
+
+---
+
+# Common Active Directory Attacks
+
+Administrators should understand common attack techniques, including:
+
+| Attack | Description |
+|----------|-------------|
+| Password Spraying | Trying common passwords across many accounts |
+| Kerberoasting | Requesting service tickets to attempt offline password cracking |
+| Pass-the-Hash | Reusing NTLM password hashes |
+| Golden Ticket | Forging Kerberos TGTs using the KRBTGT account key |
+| Silver Ticket | Forging Kerberos service tickets for a specific service |
+| NTLM Relay | Relaying NTLM authentication to another service |
+| DCSync | Abusing replication permissions to request password data from a Domain Controller |
+
+Understanding these attacks helps defenders detect suspicious activity and implement appropriate mitigations.
+
+---
+
+# Defensive Measures
+
+Recommended protections include:
+
+- Enforce MFA for privileged users where supported
+- Limit Domain Admin membership
+- Enable Credential Guard
+- Deploy Windows LAPS
+- Disable legacy protocols where possible
+- Monitor privileged group changes
+- Secure Domain Controllers
+- Regularly patch servers
+- Enable advanced auditing
+- Use secure administrative workstations
+
+Defense should rely on multiple complementary controls.
+
+---
+
+# Active Directory Health Checks
+
+Perform regular health checks for:
+
+- DNS
+- Replication
+- FSMO roles
+- Group Policy
+- Time synchronization
+- Domain Controller availability
+- SYSVOL replication
+- Backup status
+
+Routine validation helps identify problems before they affect users.
+
+---
+
+# Troubleshooting Active Directory
+
+General troubleshooting workflow:
+
+```text
+Identify Problem
+
+↓
+
+Collect Logs
+
+↓
+
+Verify DNS
+
+↓
+
+Check Domain Controller
+
+↓
+
+Review Replication
+
+↓
+
+Test Authentication
+
+↓
+
+Resolve Issue
+
+↓
+
+Document Findings
+```
+
+Structured troubleshooting reduces downtime.
+
+---
+
+# Common Issues
+
+| Problem | Possible Cause | Resolution |
+|----------|----------------|------------|
+| Logon failure | DNS issue | Verify DNS configuration |
+| Replication failure | Network connectivity | Check site links and replication status |
+| Group Policy not applied | GPO scope or replication | Verify GPO linkage and replication |
+| Authentication delay | Domain Controller unavailable | Check DC health and connectivity |
+| Account lockouts | Repeated failed authentication | Investigate source and review logs |
+| Kerberos errors | Time synchronization | Verify system time across the domain |
+
+Always determine the root cause before applying corrective actions.
+
+---
+
+# Enterprise Example
+
+A multinational enterprise operates:
+
+- 25 Domain Controllers
+- 8 Active Directory Sites
+- 60,000 users
+
+Security measures include:
+
+- Tiered administration
+- Windows LAPS
+- Credential Guard
+- BitLocker
+- Microsoft Defender
+- Dedicated administrative workstations
+- Centralized SIEM monitoring
+- Quarterly privileged access reviews
+- Automated replication health monitoring
+
+The organization significantly reduces the likelihood of unauthorized privilege escalation while improving operational resilience.
+
+---
+
+# Cybersecurity Perspective
+
+Active Directory often represents the "crown jewels" of a Windows enterprise.
+
+Security priorities include:
+
+- Protecting privileged identities
+- Monitoring authentication
+- Detecting abnormal administrative activity
+- Preventing credential theft
+- Maintaining replication integrity
+- Ensuring rapid recovery
+
+A layered security strategy provides the strongest protection.
+
+---
+
+# Business Impact
+
+A secure Active Directory environment provides:
+
+- Reliable authentication
+- Stronger access control
+- Faster user provisioning
+- Simplified compliance
+- Reduced security incidents
+- Improved business continuity
+- Lower operational costs
+
+Compromise of Active Directory can disrupt nearly every business function, making proactive protection essential.
+
+---
+
+# Enterprise Best Practices
+
+- Minimize privileged account membership.
+- Use dedicated administrative accounts.
+- Implement tiered administration.
+- Secure Domain Controllers physically and logically.
+- Enable advanced auditing and centralized logging.
+- Review privileged groups regularly.
+- Monitor replication and DNS health.
+- Test backups and disaster recovery procedures.
+- Automate security and health checks where possible.
+- Review Active Directory architecture periodically.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Review Privileged Groups
+
+Using **Active Directory Users and Computers**:
+
+Review membership of:
+
+- Domain Admins
+- Enterprise Admins
+- Schema Admins
+
+Identify whether all members require their assigned privileges.
+
+---
+
+## Lab 2 — Design a Tiered Administration Model
+
+Create a three-tier administrative model for:
+
+- Domain Controllers
+- Member Servers
+- Workstations
+
+Assign appropriate administrative roles to each tier.
+
+---
+
+## Lab 3 — Active Directory Health Checklist
+
+Develop a weekly checklist covering:
+
+- DNS
+- Replication
+- Backups
+- FSMO roles
+- Event logs
+- Privileged group review
+
+Explain how each check contributes to security and availability.
+
+---
+
+## Lab 4 — Incident Response Scenario
+
+Assume an administrator account has been added unexpectedly to the **Domain Admins** group.
+
+Document the response process, including:
+
+- Detection
+- Verification
+- Containment
+- Investigation
+- Recovery
+- Lessons learned
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Active Directory architecture
+- Forests, trees, domains, and OUs
+- Domain Controllers
+- LDAP and DNS integration
+- Kerberos and NTLM authentication
+- FSMO roles
+- Replication
+- Trust relationships
+- User and group administration
+- Delegation
+- Active Directory security
+- Hardening
+- Monitoring
+- Disaster recovery
+- Troubleshooting
+
+These concepts form the foundation of enterprise identity and access management in Windows environments.
+
+---
+
+# Key Takeaways
+
+- Active Directory centralizes authentication and authorization.
+- Kerberos is the preferred authentication protocol.
+- DNS is critical for Active Directory functionality.
+- Least privilege and delegated administration improve security.
+- Domain Controllers require the highest level of protection.
+- Continuous monitoring and auditing strengthen Active Directory security.
+- Regular backups and tested recovery procedures are essential for resilience.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of Active Directory?
+2. Explain the difference between a forest, tree, and domain.
+3. What are the five FSMO roles?
+4. How does Kerberos authentication work?
+5. Why is DNS required for Active Directory?
+6. What is the AGDLP model?
+7. What is tiered administration?
+8. Why are Domain Controllers considered critical assets?
+9. What is the Active Directory Recycle Bin?
+10. Name several common attacks targeting Active Directory and explain how they can be mitigated.
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Active Directory Documentation
+- Microsoft Windows Server Documentation
+- Microsoft Kerberos Documentation
+- Microsoft Group Policy Documentation
+- Microsoft Security Baselines
+- NIST SP 800-53
+- CIS Microsoft Windows Server Benchmarks
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+- *Mastering Active Directory* (Dishan Francis)
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 23 – Active Directory**.
+
+You now understand Active Directory architecture, authentication, administration, replication, security, monitoring, and enterprise best practices. These concepts are fundamental for Windows administrators, SOC analysts, incident responders, penetration testers, security engineers, and enterprise infrastructure professionals.
+
+---
