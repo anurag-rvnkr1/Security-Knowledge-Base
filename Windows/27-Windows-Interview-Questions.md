@@ -1794,4 +1794,509 @@ Describe the situation using the STAR method:
 
 ---
 
-**Next:** **Part 4 — Expert Windows Interview Questions, Rapid-Fire Round, Hands-on Tasks, HR Scenarios, Final Revision, and Chapter Summary**
+# 27-Windows-Interview-Questions.md
+
+# Part 4 — Expert Windows Interview Questions, Rapid-Fire Round, Hands-on Tasks, HR Scenarios, Final Revision, and Chapter Summary
+
+---
+
+# Introduction
+
+Senior-level Windows interviews evaluate more than technical knowledge. Interviewers assess:
+
+- Structured problem-solving
+- Communication
+- Security awareness
+- Enterprise best practices
+- Automation skills
+- Decision-making under pressure
+- Ability to explain technical concepts clearly
+
+This section provides advanced questions, practical tasks, and revision material commonly encountered in enterprise interviews.
+
+---
+
+# Expert-Level Technical Questions
+
+---
+
+## 146. Explain the Windows boot process in detail.
+
+**Sample Answer**
+
+The Windows boot process begins when the system firmware (UEFI or BIOS) initializes hardware. Control passes to Windows Boot Manager, which reads the Boot Configuration Data (BCD). The Windows loader (Winload) loads the kernel, Hardware Abstraction Layer (HAL), and boot-start drivers. The kernel initializes core subsystems, starts the Session Manager, launches the Service Control Manager (SCM), starts configured services, and finally presents the logon screen.
+
+---
+
+## 147. Explain the difference between a process and a thread.
+
+**Answer**
+
+| Process | Thread |
+|----------|---------|
+| Independent execution environment | Smallest execution unit |
+| Own virtual address space | Shares process memory |
+| Higher resource overhead | Lower resource overhead |
+| Can contain multiple threads | Executes instructions within a process |
+
+---
+
+## 148. Explain virtual memory.
+
+**Answer**
+
+Virtual memory extends physical RAM by using disk storage (page file) when memory demand exceeds available RAM. This allows applications to continue operating, although performance may decrease because disk access is slower than RAM.
+
+---
+
+## 149. Explain the relationship between Active Directory, DNS, and Kerberos.
+
+**Answer**
+
+- DNS locates Domain Controllers.
+- Active Directory stores directory information.
+- Kerberos authenticates users using ticket-based authentication.
+
+Without properly functioning DNS, Kerberos authentication and Active Directory services may fail.
+
+---
+
+## 150. Explain why Group Policy processing depends on Active Directory.
+
+**Answer**
+
+Group Policy Objects (GPOs) are stored and linked through Active Directory. During logon and startup, clients locate Domain Controllers, retrieve applicable policies, and process them based on scope, filtering, inheritance, and precedence.
+
+---
+
+# Practical Hands-on Interview Tasks
+
+---
+
+## Task 1 — Troubleshoot High CPU Usage
+
+**Scenario**
+
+A user's computer is consistently using 100% CPU.
+
+**Expected Approach**
+
+1. Open Task Manager.
+2. Identify the responsible process.
+3. Verify whether the process is legitimate.
+4. Review related services.
+5. Check Event Viewer.
+6. Verify scheduled tasks.
+7. Investigate security concerns if activity appears abnormal.
+8. Validate performance after remediation.
+
+---
+
+## Task 2 — Resolve "Access Denied"
+
+**Scenario**
+
+A user cannot modify files in a shared folder.
+
+**Expected Investigation**
+
+- Verify NTFS permissions.
+- Verify share permissions.
+- Check group membership.
+- Review inheritance.
+- Confirm ownership.
+- Validate effective permissions.
+
+---
+
+## Task 3 — Group Policy Failure
+
+**Scenario**
+
+A mapped drive policy is not applied.
+
+**Expected Investigation**
+
+- OU placement
+- Security filtering
+- WMI filter
+- `gpresult /r`
+- Event Viewer
+- Replication status
+- Domain Controller availability
+
+---
+
+## Task 4 — Boot Failure
+
+**Scenario**
+
+Windows displays "Preparing Automatic Repair."
+
+**Expected Actions**
+
+- Enter WinRE.
+- Run Startup Repair.
+- Boot into Safe Mode if possible.
+- Review recent updates or drivers.
+- Use System Restore if appropriate.
+- Repair boot configuration if necessary.
+- Validate successful startup.
+
+---
+
+## Task 5 — Network Connectivity
+
+**Scenario**
+
+A workstation cannot reach internal servers.
+
+**Expected Troubleshooting**
+
+```text
+Check Physical Link
+
+↓
+
+Verify IP Configuration
+
+↓
+
+Ping Gateway
+
+↓
+
+Check DNS
+
+↓
+
+Ping Server
+
+↓
+
+Review Firewall
+
+↓
+
+Review Routing
+
+↓
+
+Validate Resolution
+```
+
+---
+
+# Rapid-Fire Interview Round
+
+Provide concise answers.
+
+---
+
+### 151. What command displays running processes in PowerShell?
+
+```powershell
+Get-Process
+```
+
+---
+
+### 152. Which command lists services?
+
+```powershell
+Get-Service
+```
+
+---
+
+### 153. Which command repairs protected Windows system files?
+
+```cmd
+sfc /scannow
+```
+
+---
+
+### 154. Which command repairs the Windows image?
+
+```cmd
+DISM /Online /Cleanup-Image /RestoreHealth
+```
+
+---
+
+### 155. Which command displays detailed network configuration?
+
+```cmd
+ipconfig /all
+```
+
+---
+
+### 156. Which tool edits the Registry?
+
+```
+regedit
+```
+
+---
+
+### 157. Which tool displays hardware devices?
+
+```
+Device Manager
+```
+
+---
+
+### 158. Which tool displays event logs?
+
+```
+Event Viewer
+```
+
+---
+
+### 159. Which service manages Windows services?
+
+```
+Service Control Manager (SCM)
+```
+
+---
+
+### 160. Which authentication protocol does Active Directory use by default?
+
+```
+Kerberos
+```
+
+---
+
+### 161. What does BCD stand for?
+
+```
+Boot Configuration Data
+```
+
+---
+
+### 162. Which file system supports ACLs?
+
+```
+NTFS
+```
+
+---
+
+### 163. Which built-in encryption technology protects Windows drives?
+
+```
+BitLocker
+```
+
+---
+
+### 164. What is the default command-line interpreter?
+
+```
+cmd.exe
+```
+
+---
+
+### 165. Which Windows feature protects credentials using virtualization?
+
+```
+Credential Guard
+```
+
+---
+
+# HR + Behavioral Questions
+
+---
+
+## 166. Describe a time you solved a difficult technical issue.
+
+**Recommended Approach**
+
+Use the STAR method:
+
+- Situation
+- Task
+- Action
+- Result
+
+Emphasize structured troubleshooting, communication, and measurable outcomes.
+
+---
+
+## 167. How do you prioritize support tickets?
+
+**Sample Answer**
+
+"I prioritize tickets based on business impact, number of affected users, service criticality, security implications, and SLA requirements while communicating status updates throughout the incident."
+
+---
+
+## 168. What would you do if you did not know the answer?
+
+**Sample Answer**
+
+"I would acknowledge the limitation, gather relevant information, consult trusted documentation or senior team members if appropriate, test safely, and ensure the issue is resolved accurately."
+
+---
+
+## 169. How do you communicate with non-technical users?
+
+**Sample Answer**
+
+"I avoid technical jargon, explain issues using simple language, set clear expectations, provide progress updates, and confirm the user understands the resolution."
+
+---
+
+## 170. How do you handle conflicting priorities?
+
+**Sample Answer**
+
+"I assess urgency and business impact, coordinate with stakeholders, communicate trade-offs, and focus first on incidents affecting critical services or security."
+
+---
+
+# Common Interview Mistakes
+
+Avoid:
+
+- Guessing without explaining reasoning.
+- Making unsupported assumptions.
+- Skipping troubleshooting steps.
+- Ignoring security implications.
+- Speaking negatively about previous employers.
+- Overstating experience.
+- Forgetting to validate solutions.
+- Failing to document actions.
+
+---
+
+# Enterprise Best Practices to Mention
+
+Interviewers appreciate candidates who discuss:
+
+- Least privilege
+- Change management
+- Root Cause Analysis
+- Documentation
+- Automation
+- Monitoring
+- Backup validation
+- Disaster recovery planning
+- Security-first thinking
+- Continuous improvement
+
+---
+
+# Final Revision Cheat Sheet
+
+| Area | Remember |
+|------|----------|
+| Boot Process | UEFI → Boot Manager → Winload → Kernel |
+| Registry | Configuration database |
+| NTFS | Permissions, ACLs, encryption |
+| Active Directory | Centralized identity management |
+| DNS | Required for AD |
+| Kerberos | Default authentication |
+| Group Policy | Centralized configuration |
+| Event Viewer | Logs |
+| PowerShell | Automation |
+| Task Manager | Process monitoring |
+| Performance Monitor | Performance counters |
+| Resource Monitor | Resource utilization |
+| Device Manager | Hardware and drivers |
+| WinRE | Recovery environment |
+| Safe Mode | Minimal startup |
+| Defender | Endpoint protection |
+| BitLocker | Full-disk encryption |
+| Windows Firewall | Network filtering |
+| SFC | Repair protected system files |
+| DISM | Repair Windows image |
+| Sysinternals | Advanced diagnostics |
+
+---
+
+# 30-Second Self-Introduction (Windows Administrator)
+
+> "I am a Windows and cybersecurity professional with strong knowledge of Windows administration, Active Directory, Group Policy, PowerShell, networking, troubleshooting, and endpoint security. I enjoy solving technical problems using a structured approach, automating repetitive tasks, and maintaining secure, reliable enterprise environments. I continuously improve my skills through hands-on labs, Microsoft documentation, and practical projects."
+
+---
+
+# One-Minute Interview Summary
+
+If asked to summarize your strengths:
+
+> "My strengths include systematic troubleshooting, Windows administration, security awareness, PowerShell automation, and effective communication. I focus on identifying root causes rather than temporary fixes, document my work carefully, and prioritize solutions that improve reliability, security, and operational efficiency."
+
+---
+
+# Chapter Summary
+
+This chapter covered:
+
+- Windows fundamentals
+- Architecture
+- Installation
+- Boot process
+- File systems
+- Command-line tools
+- Active Directory
+- Group Policy
+- Networking
+- Windows security
+- Troubleshooting
+- PowerShell
+- Registry
+- Services
+- Sysinternals
+- Enterprise administration
+- Behavioral interview preparation
+- Scenario-based questions
+- Rapid-fire technical revision
+
+Together, these topics provide a strong foundation for Windows support, administration, infrastructure, and security interviews.
+
+---
+
+# Key Takeaways
+
+- Explain concepts clearly instead of memorizing definitions.
+- Follow structured troubleshooting methodologies.
+- Highlight enterprise best practices during interviews.
+- Demonstrate security awareness in every technical discussion.
+- Use practical examples from labs or projects whenever possible.
+- Communicate confidently, logically, and professionally.
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Documentation
+- Microsoft Active Directory Documentation
+- Microsoft PowerShell Documentation
+- Microsoft Sysinternals Documentation
+- Microsoft Security Documentation
+- NIST Cybersecurity Framework (CSF)
+- CIS Microsoft Windows Benchmarks
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 27 – Windows Interview Questions**.
+
+You now have a comprehensive collection of interview questions, practical scenarios, rapid-fire revision, and behavioral guidance covering Windows administration, enterprise operations, troubleshooting, networking, Active Directory, PowerShell, and security.
+
+---
+
+
