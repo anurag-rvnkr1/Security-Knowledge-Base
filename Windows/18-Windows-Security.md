@@ -1617,4 +1617,770 @@ Record:
 
 ---
 
-**Next:** **Part 3 — Virtualization-Based Security (VBS), Device Guard, Application Control, AppLocker, Exploit Protection, Windows Sandbox, and Enterprise Endpoint Protection**
+# 18-Windows-Security.md
+
+# Part 3 — Virtualization-Based Security (VBS), Device Guard, Windows Defender Application Control (WDAC), AppLocker, Exploit Protection, Windows Sandbox, and Enterprise Endpoint Protection
+
+---
+
+# Introduction
+
+Modern cyberattacks frequently bypass traditional antivirus solutions by exploiting:
+
+- Zero-day vulnerabilities
+- Credential theft
+- Living-off-the-Land Binaries (LOLBins)
+- Memory corruption
+- Malicious scripts
+- Unsigned applications
+- Kernel exploits
+
+To defend against these attacks, Windows provides advanced security technologies built on hardware-assisted isolation, application control, exploit mitigation, and virtualization.
+
+---
+
+# Modern Windows Security Layers
+
+```text
+User
+
+↓
+
+Authentication
+
+↓
+
+Application Control
+
+↓
+
+Exploit Protection
+
+↓
+
+Credential Protection
+
+↓
+
+Operating System
+
+↓
+
+Virtualization Security
+
+↓
+
+Hardware Security
+```
+
+Each layer independently reduces attack opportunities.
+
+---
+
+# Virtualization-Based Security (VBS)
+
+Virtualization-Based Security (VBS) uses the Windows Hypervisor to create isolated memory regions that are inaccessible to normal operating system processes.
+
+Instead of trusting the operating system alone, Windows creates a protected execution environment.
+
+---
+
+# VBS Architecture
+
+```text
+Applications
+
+↓
+
+Windows Kernel
+
+↓
+
+Hypervisor
+
+↓
+
+Virtual Secure Mode (VSM)
+
+↓
+
+Protected Security Services
+```
+
+Security-sensitive components execute inside the isolated environment.
+
+---
+
+# Benefits of VBS
+
+VBS helps protect against:
+
+- Kernel exploits
+- Credential theft
+- Memory attacks
+- Unauthorized code execution
+- Privilege escalation
+
+It establishes stronger isolation between security components and the operating system.
+
+---
+
+# Virtual Secure Mode (VSM)
+
+Virtual Secure Mode is the isolated environment created by VBS.
+
+Protected components include:
+
+- Credential Guard
+- Hypervisor-Protected Code Integrity (HVCI)
+- Secure Kernel
+
+Attackers executing within the normal operating system cannot directly access memory protected by VSM.
+
+---
+
+# Secure Kernel
+
+The Secure Kernel operates alongside the Windows kernel.
+
+Responsibilities include:
+
+- Security policy enforcement
+- Memory isolation
+- Trust verification
+- Protected service execution
+
+It communicates with the normal Windows kernel through controlled interfaces.
+
+---
+
+# Hypervisor-Protected Code Integrity (HVCI)
+
+HVCI enforces kernel-mode code integrity using virtualization.
+
+Objectives:
+
+- Prevent unsigned kernel drivers
+- Block modified kernel code
+- Reduce kernel-level malware
+
+Only trusted and verified kernel code is allowed to execute.
+
+---
+
+# HVCI Workflow
+
+```text
+Driver Loads
+
+↓
+
+Digital Signature Validation
+
+↓
+
+Integrity Check
+
+↓
+
+Trusted?
+
+↓
+
+Yes → Execute
+
+No → Block
+```
+
+---
+
+# Device Guard
+
+Historically, Device Guard referred to a collection of enterprise technologies including:
+
+- Virtualization-Based Security
+- Code Integrity
+- Application Control
+
+In current Windows versions, its capabilities are primarily delivered through **Windows Defender Application Control (WDAC)** and VBS.
+
+---
+
+# Windows Defender Application Control (WDAC)
+
+WDAC controls which applications are allowed to execute.
+
+Policy decisions may be based on:
+
+- Digital signatures
+- Publisher
+- File hash
+- File path
+- Managed installer
+- Intelligent Security Graph reputation
+
+Anything not explicitly permitted can be blocked.
+
+---
+
+# WDAC Workflow
+
+```text
+Application Launch
+
+↓
+
+Evaluate Policy
+
+↓
+
+Trusted?
+
+↓
+
+Yes → Execute
+
+No → Block
+```
+
+Application allowlisting significantly reduces malware execution.
+
+---
+
+# Advantages of WDAC
+
+Benefits include:
+
+- Prevents unauthorized software
+- Blocks unknown executables
+- Reduces ransomware risk
+- Supports enterprise compliance
+- Limits attack surface
+
+WDAC is considerably stronger than traditional blacklist-based approaches.
+
+---
+
+# Application Allowlisting
+
+Traditional antivirus:
+
+```text
+Known Malware
+
+↓
+
+Block
+```
+
+Application Control:
+
+```text
+Unknown Application
+
+↓
+
+Not Approved
+
+↓
+
+Block
+```
+
+Allowlisting assumes software is untrusted unless explicitly approved.
+
+---
+
+# AppLocker
+
+AppLocker is a Windows feature that restricts application execution using configurable rules.
+
+Administrators can create policies based on:
+
+- Executable files
+- Windows Installer packages
+- Scripts
+- DLLs
+- Packaged applications
+
+AppLocker is commonly deployed through Group Policy.
+
+---
+
+# AppLocker Rule Types
+
+| Rule Type | Example |
+|-----------|----------|
+| Publisher | Microsoft Corporation |
+| Path | C:\Program Files |
+| File Hash | SHA-256 hash |
+| Packaged App | Microsoft Store application |
+
+---
+
+# AppLocker Architecture
+
+```text
+Application
+
+↓
+
+AppLocker Policy
+
+↓
+
+Allowed?
+
+↓
+
+Yes → Execute
+
+No → Block
+```
+
+Policies should be tested in audit mode before enforcement.
+
+---
+
+# WDAC vs AppLocker
+
+| WDAC | AppLocker |
+|------|-----------|
+| Kernel-level enforcement | User-mode enforcement |
+| Stronger protection | Easier administration |
+| Enterprise-scale deployments | Department or workstation policies |
+| Supports modern code integrity | Supports executable restrictions |
+
+Many enterprises deploy WDAC for highly secure systems and AppLocker for administrative flexibility.
+
+---
+
+# Exploit Protection
+
+Exploit Protection reduces the effectiveness of software vulnerabilities.
+
+It provides mitigations against:
+
+- Buffer overflows
+- Memory corruption
+- Return-Oriented Programming (ROP)
+- Code injection
+
+Many protections operate automatically.
+
+---
+
+# Common Exploit Mitigations
+
+Examples include:
+
+- Data Execution Prevention (DEP)
+- Address Space Layout Randomization (ASLR)
+- Control Flow Guard (CFG)
+- Structured Exception Handler Overwrite Protection (SEHOP)
+- Arbitrary Code Guard (ACG)
+
+Together they significantly increase attack complexity.
+
+---
+
+# Data Execution Prevention (DEP)
+
+DEP prevents execution of code stored in memory regions intended only for data.
+
+```text
+Data Memory
+
+↓
+
+Attempted Execution
+
+↓
+
+Blocked
+```
+
+DEP helps stop many memory-based exploits.
+
+---
+
+# Address Space Layout Randomization (ASLR)
+
+ASLR randomizes memory locations used by applications.
+
+Without ASLR:
+
+```text
+Program
+
+↓
+
+Fixed Address
+
+↓
+
+Predictable
+```
+
+With ASLR:
+
+```text
+Program
+
+↓
+
+Random Memory Address
+
+↓
+
+Harder to Exploit
+```
+
+Randomization reduces the reliability of memory corruption attacks.
+
+---
+
+# Control Flow Guard (CFG)
+
+CFG validates indirect function calls.
+
+```text
+Application
+
+↓
+
+Indirect Call
+
+↓
+
+Valid Target?
+
+↓
+
+Yes → Continue
+
+No → Terminate
+```
+
+CFG disrupts many exploit chains that attempt to redirect execution flow.
+
+---
+
+# Windows Sandbox
+
+Windows Sandbox provides a disposable virtual Windows environment.
+
+Characteristics:
+
+- Isolated
+- Temporary
+- Secure
+- Lightweight
+
+Closing the Sandbox permanently removes all changes.
+
+---
+
+# Windows Sandbox Workflow
+
+```text
+Host Windows
+
+↓
+
+Launch Sandbox
+
+↓
+
+Run Untrusted Software
+
+↓
+
+Close Sandbox
+
+↓
+
+Environment Destroyed
+```
+
+Sandbox is useful for testing unknown applications safely.
+
+---
+
+# Attack Surface Reduction (ASR)
+
+Microsoft Defender includes Attack Surface Reduction rules.
+
+Examples include blocking:
+
+- Office applications launching child processes
+- Credential stealing
+- Executables from email
+- Executables from USB devices
+- Obfuscated scripts
+
+ASR reduces opportunities for common attack techniques.
+
+---
+
+# Controlled Folder Access
+
+Controlled Folder Access protects important directories from ransomware.
+
+Protected folders include:
+
+- Documents
+- Pictures
+- Desktop
+
+Untrusted applications attempting to modify protected files are blocked unless explicitly allowed.
+
+---
+
+# Enterprise Endpoint Protection
+
+Enterprise endpoint protection combines:
+
+- Microsoft Defender Antivirus
+- Defender for Endpoint
+- Firewall
+- WDAC
+- Credential Guard
+- BitLocker
+- SmartScreen
+- Exploit Protection
+- VBS
+
+Together they create a layered endpoint defense strategy.
+
+---
+
+# Endpoint Security Workflow
+
+```text
+User Action
+
+↓
+
+Application Control
+
+↓
+
+Malware Scan
+
+↓
+
+Behavior Analysis
+
+↓
+
+Exploit Protection
+
+↓
+
+Credential Protection
+
+↓
+
+Endpoint Monitoring
+
+↓
+
+SOC Alert (if required)
+```
+
+Multiple security layers work together to reduce risk.
+
+---
+
+# Enterprise Security Example
+
+A user downloads an unsigned executable.
+
+Sequence:
+
+```text
+Download
+
+↓
+
+SmartScreen Warning
+
+↓
+
+WDAC Evaluation
+
+↓
+
+Application Blocked
+
+↓
+
+Defender Records Event
+
+↓
+
+SOC Receives Alert
+```
+
+The attack is prevented before execution.
+
+---
+
+# Cybersecurity Perspective
+
+Advanced attackers frequently attempt:
+
+- Driver abuse
+- Kernel exploitation
+- Unsigned code execution
+- Credential theft
+- Script-based attacks
+- Living-off-the-Land techniques
+
+Windows security technologies reduce these attack opportunities by enforcing trusted execution and hardware-assisted isolation.
+
+---
+
+# Business Impact
+
+Advanced endpoint protections help organizations:
+
+- Reduce malware infections
+- Prevent ransomware execution
+- Protect intellectual property
+- Improve regulatory compliance
+- Reduce recovery costs
+- Strengthen Zero Trust initiatives
+
+Layered endpoint protection is essential for modern enterprise environments.
+
+---
+
+# Enterprise Best Practices
+
+- Enable Virtualization-Based Security on supported hardware.
+- Deploy Hypervisor-Protected Code Integrity (HVCI).
+- Implement Windows Defender Application Control for critical systems.
+- Use AppLocker where flexible application control is required.
+- Enable Attack Surface Reduction rules.
+- Protect sensitive folders with Controlled Folder Access.
+- Keep exploit protection settings enabled unless compatibility issues require adjustments.
+- Test application control policies in audit mode before enforcement.
+- Regularly review blocked application events.
+- Integrate endpoint protection alerts with SIEM and EDR platforms.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Verify VBS Status
+
+Run:
+
+```powershell
+Get-CimInstance Win32_DeviceGuard
+```
+
+Record:
+
+- Virtualization-Based Security status
+- Configured security services
+- Running security services
+
+---
+
+## Lab 2 — Review Exploit Protection
+
+Open:
+
+```text
+Windows Security
+
+↓
+
+App & Browser Control
+
+↓
+
+Exploit Protection
+```
+
+Review system-wide exploit mitigation settings.
+
+---
+
+## Lab 3 — Launch Windows Sandbox
+
+If available:
+
+1. Enable Windows Sandbox.
+2. Start the Sandbox.
+3. Execute a test application.
+4. Close the Sandbox and verify that changes are discarded.
+
+---
+
+## Lab 4 — Review Controlled Folder Access
+
+Navigate to:
+
+```text
+Windows Security
+
+↓
+
+Virus & Threat Protection
+
+↓
+
+Manage Ransomware Protection
+```
+
+Review Controlled Folder Access configuration.
+
+---
+
+# Key Takeaways
+
+- Virtualization-Based Security isolates critical security components using the Windows Hypervisor.
+- Virtual Secure Mode protects sensitive operating system services.
+- HVCI enforces kernel-mode code integrity.
+- WDAC implements enterprise application allowlisting.
+- AppLocker controls application execution using configurable rules.
+- Exploit Protection mitigates memory corruption attacks.
+- Windows Sandbox provides an isolated environment for testing untrusted software.
+- Attack Surface Reduction rules help prevent common malware techniques.
+
+---
+
+# Interview Questions
+
+1. What is Virtualization-Based Security (VBS)?
+2. What is Virtual Secure Mode (VSM)?
+3. How does HVCI improve security?
+4. What is Windows Defender Application Control (WDAC)?
+5. Compare WDAC and AppLocker.
+6. What is the purpose of Windows Sandbox?
+7. How does ASLR reduce exploitation risk?
+8. What does Data Execution Prevention (DEP) do?
+9. What are Attack Surface Reduction (ASR) rules?
+10. Why is application allowlisting considered more secure than blocklisting?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Defender Application Control Documentation
+- Microsoft AppLocker Documentation
+- Microsoft Virtualization-Based Security Documentation
+- Microsoft Exploit Protection Documentation
+- Microsoft Windows Sandbox Documentation
+- MITRE ATT&CK Framework
+- NIST SP 800-53 Security and Privacy Controls
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
+**Next:** **Part 4 — Enterprise Windows Security Strategy, Security Hardening, Incident Response, Best Practices, Chapter Summary, and Interview Preparation**
