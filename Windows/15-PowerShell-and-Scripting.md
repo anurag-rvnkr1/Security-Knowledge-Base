@@ -876,4 +876,910 @@ Study the provided examples and experiment with one in a test environment.
 
 ---
 
-**Next:** **Part 2 — Variables, Data Types, Operators, Control Flow, Functions, Error Handling, and Advanced Scripting**
+# 15-Windows-PowerShell-and-Scripting.md
+
+# Part 2 — Variables, Data Types, Operators, Control Flow, Functions, Error Handling, and Advanced Scripting
+
+---
+
+# Introduction
+
+PowerShell becomes truly powerful when commands are combined into reusable scripts.
+
+Instead of manually executing hundreds of commands, administrators can write scripts that:
+
+- Automate repetitive tasks
+- Configure systems
+- Generate reports
+- Monitor infrastructure
+- Manage Active Directory
+- Collect logs
+- Perform security audits
+
+This section introduces the core scripting concepts required to build reliable PowerShell automation.
+
+---
+
+# Script Execution Flow
+
+A PowerShell script generally follows this workflow.
+
+```text
+Start
+
+↓
+
+Read Input
+
+↓
+
+Process Data
+
+↓
+
+Decision Making
+
+↓
+
+Execute Commands
+
+↓
+
+Display or Save Results
+
+↓
+
+End
+```
+
+Understanding this flow helps in designing readable and maintainable scripts.
+
+---
+
+# Variables
+
+Variables store values in memory.
+
+Syntax:
+
+```powershell
+$VariableName = Value
+```
+
+Examples:
+
+```powershell
+$Name = "John"
+
+$Age = 25
+
+$Enabled = $true
+```
+
+Variables can hold almost any .NET object.
+
+---
+
+# Variable Naming
+
+Good naming conventions improve readability.
+
+Good examples:
+
+```powershell
+$ComputerName
+
+$ServiceStatus
+
+$IPAddress
+
+$LogPath
+```
+
+Poor examples:
+
+```powershell
+$x
+
+$a
+
+$temp1
+
+$abc
+```
+
+Meaningful names make scripts easier to maintain.
+
+---
+
+# Displaying Variables
+
+```powershell
+$User = "Alice"
+
+Write-Output $User
+```
+
+Output:
+
+```text
+Alice
+```
+
+Variables can also be embedded within strings.
+
+```powershell
+"Current User: $User"
+```
+
+---
+
+# Variable Scope
+
+Variables exist within different scopes.
+
+| Scope | Description |
+|--------|-------------|
+| Local | Current function or script |
+| Script | Entire script |
+| Global | Current PowerShell session |
+| Private | Accessible only within the current scope |
+
+Example:
+
+```powershell
+$Global:Company = "Contoso"
+```
+
+Use broader scopes only when necessary.
+
+---
+
+# Built-in Variables
+
+Common automatic variables include:
+
+| Variable | Description |
+|----------|-------------|
+| `$PSVersionTable` | PowerShell version information |
+| `$HOME` | User profile directory |
+| `$PWD` | Current working directory |
+| `$Error` | Error collection |
+| `$True` | Boolean true |
+| `$False` | Boolean false |
+| `$Null` | Null value |
+
+Example:
+
+```powershell
+$PSVersionTable
+```
+
+---
+
+# Data Types
+
+PowerShell supports many data types.
+
+Common examples:
+
+| Type | Example |
+|------|----------|
+| String | `"Windows"` |
+| Integer | `100` |
+| Double | `10.25` |
+| Boolean | `$true` |
+| DateTime | `Get-Date` |
+| Array | `@(1,2,3)` |
+| Hashtable | `@{}` |
+
+PowerShell automatically converts types when appropriate.
+
+---
+
+# Strings
+
+```powershell
+$Message = "Hello World"
+```
+
+Access length:
+
+```powershell
+$Message.Length
+```
+
+Concatenate strings:
+
+```powershell
+$First = "Windows"
+
+$Second = "PowerShell"
+
+"$First $Second"
+```
+
+---
+
+# Numbers
+
+```powershell
+$A = 10
+
+$B = 5
+```
+
+Arithmetic:
+
+```powershell
+$A + $B
+
+$A - $B
+
+$A * $B
+
+$A / $B
+```
+
+---
+
+# Arrays
+
+Arrays store multiple values.
+
+```powershell
+$Servers = @(
+"DC01",
+"WEB01",
+"SQL01"
+)
+```
+
+Access an element:
+
+```powershell
+$Servers[0]
+```
+
+Count elements:
+
+```powershell
+$Servers.Count
+```
+
+---
+
+# Hashtables
+
+Hashtables store key-value pairs.
+
+```powershell
+$Employee = @{
+Name = "Alice"
+Department = "Finance"
+City = "Bangalore"
+}
+```
+
+Retrieve a value:
+
+```powershell
+$Employee.Name
+```
+
+Hashtables are frequently used for configuration data.
+
+---
+
+# Operators
+
+PowerShell supports several categories of operators.
+
+| Category | Examples |
+|-----------|----------|
+| Arithmetic | `+ - * / %` |
+| Assignment | `=` `+=` |
+| Comparison | `-eq` `-ne` |
+| Logical | `-and` `-or` |
+| Matching | `-like` `-match` |
+
+---
+
+# Comparison Operators
+
+| Operator | Meaning |
+|----------|---------|
+| `-eq` | Equal |
+| `-ne` | Not Equal |
+| `-gt` | Greater Than |
+| `-lt` | Less Than |
+| `-ge` | Greater Than or Equal |
+| `-le` | Less Than or Equal |
+
+Example:
+
+```powershell
+5 -gt 3
+```
+
+Returns:
+
+```text
+True
+```
+
+---
+
+# Logical Operators
+
+Examples:
+
+```powershell
+$true -and $true
+
+$true -or $false
+
+-not $false
+```
+
+Logical operators combine multiple conditions.
+
+---
+
+# If Statement
+
+Basic syntax:
+
+```powershell
+if ($Condition)
+{
+    Commands
+}
+```
+
+Example:
+
+```powershell
+$Age = 20
+
+if ($Age -ge 18)
+{
+    "Adult"
+}
+```
+
+---
+
+# If-Else Statement
+
+```powershell
+if ($Status -eq "Running")
+{
+    "Service is running"
+}
+else
+{
+    "Service is stopped"
+}
+```
+
+This allows scripts to take different actions based on conditions.
+
+---
+
+# ElseIf
+
+```powershell
+if ($Score -ge 90)
+{
+    "Grade A"
+}
+elseif ($Score -ge 75)
+{
+    "Grade B"
+}
+else
+{
+    "Grade C"
+}
+```
+
+Useful when multiple conditions must be evaluated.
+
+---
+
+# Switch Statement
+
+`switch` simplifies evaluation of multiple possible values.
+
+Example:
+
+```powershell
+switch ($Day)
+{
+    "Monday" { "Start of Week" }
+    "Friday" { "Weekend Soon" }
+    Default  { "Regular Day" }
+}
+```
+
+---
+
+# Loops
+
+PowerShell supports several loop types.
+
+| Loop | Purpose |
+|------|----------|
+| For | Known number of iterations |
+| Foreach | Iterate through a collection |
+| While | Repeat while condition is true |
+| Do-While | Execute at least once |
+
+---
+
+# For Loop
+
+```powershell
+for ($i = 1; $i -le 5; $i++)
+{
+    $i
+}
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+---
+
+# Foreach Loop
+
+```powershell
+$Servers = @("DC01","WEB01","SQL01")
+
+foreach ($Server in $Servers)
+{
+    $Server
+}
+```
+
+`foreach` is one of the most frequently used loops in administrative scripts.
+
+---
+
+# While Loop
+
+```powershell
+$i = 1
+
+while ($i -le 5)
+{
+    $i
+    $i++
+}
+```
+
+The condition is checked before each iteration.
+
+---
+
+# Do-While Loop
+
+```powershell
+$i = 1
+
+do
+{
+    $i
+    $i++
+}
+while ($i -le 5)
+```
+
+The loop executes at least once, regardless of the condition.
+
+---
+
+# Functions
+
+Functions package reusable code.
+
+Basic syntax:
+
+```powershell
+function Get-Greeting
+{
+    "Hello"
+}
+```
+
+Call the function:
+
+```powershell
+Get-Greeting
+```
+
+---
+
+# Function Parameters
+
+```powershell
+function Get-Welcome
+{
+    param(
+        $Name
+    )
+
+    "Welcome $Name"
+}
+```
+
+Usage:
+
+```powershell
+Get-Welcome "Alice"
+```
+
+Parameters make functions flexible and reusable.
+
+---
+
+# Returning Values
+
+```powershell
+function Get-Square
+{
+    param($Number)
+
+    return ($Number * $Number)
+}
+```
+
+Example:
+
+```powershell
+Get-Square 5
+```
+
+Returns:
+
+```text
+25
+```
+
+---
+
+# Script Parameters
+
+Scripts can also accept parameters.
+
+Example:
+
+```powershell
+param(
+    $ComputerName
+)
+
+Get-Service -ComputerName $ComputerName
+```
+
+Execute:
+
+```powershell
+.\ServiceCheck.ps1 -ComputerName DC01
+```
+
+---
+
+# Error Handling
+
+Unexpected errors occur in automation.
+
+Examples:
+
+- Missing files
+- Permission issues
+- Offline computers
+- Invalid user input
+- Network failures
+
+Proper error handling makes scripts more reliable.
+
+---
+
+# Try-Catch
+
+```powershell
+try
+{
+    Get-Content "C:\Data\File.txt"
+}
+catch
+{
+    "An error occurred."
+}
+```
+
+`try` contains code that may fail.
+
+`catch` handles exceptions gracefully.
+
+---
+
+# Finally Block
+
+```powershell
+try
+{
+    Commands
+}
+catch
+{
+    Error Handling
+}
+finally
+{
+    Cleanup
+}
+```
+
+The `finally` block executes whether an error occurs or not.
+
+---
+
+# Throw
+
+Generate a custom error.
+
+```powershell
+throw "Invalid Input"
+```
+
+Useful for validating user input and enforcing business logic.
+
+---
+
+# Error Variable
+
+View recent errors:
+
+```powershell
+$Error
+```
+
+Most recent error:
+
+```powershell
+$Error[0]
+```
+
+The `$Error` collection helps troubleshoot script failures.
+
+---
+
+# Reading User Input
+
+```powershell
+$Name = Read-Host "Enter Name"
+```
+
+Example:
+
+```text
+Enter Name:
+```
+
+The entered value is stored in `$Name`.
+
+---
+
+# Writing Output
+
+Display information:
+
+```powershell
+Write-Output "Completed"
+```
+
+Display informational messages:
+
+```powershell
+Write-Host "Starting..."
+```
+
+For scripts intended to be reused or piped into other commands, prefer `Write-Output` over `Write-Host`.
+
+---
+
+# Reading Files
+
+Read a text file:
+
+```powershell
+Get-Content C:\Logs\App.log
+```
+
+Each line becomes an object in the output collection.
+
+---
+
+# Writing Files
+
+Write content:
+
+```powershell
+Set-Content Report.txt "Completed"
+```
+
+Append content:
+
+```powershell
+Add-Content Report.txt "Finished Successfully"
+```
+
+---
+
+# Enterprise Example
+
+A systems administrator needs to verify disk space on multiple servers.
+
+Workflow:
+
+```text
+Read Server List
+
+↓
+
+Loop Through Servers
+
+↓
+
+Collect Disk Usage
+
+↓
+
+Handle Errors
+
+↓
+
+Generate Report
+
+↓
+
+Save Results
+```
+
+This approach automates a repetitive operational task.
+
+---
+
+# Cybersecurity Perspective
+
+PowerShell scripts are frequently used to:
+
+- Collect forensic artifacts
+- Audit local users
+- Review running services
+- Enumerate installed software
+- Check security configurations
+- Generate compliance reports
+
+Security teams should ensure scripts include proper validation, logging, and error handling.
+
+---
+
+# Business Impact
+
+Well-written PowerShell scripts provide:
+
+- Consistent administration
+- Reduced operational effort
+- Faster deployments
+- Improved reporting
+- Lower risk of manual errors
+- Better scalability
+
+Reusable automation contributes to operational efficiency across the enterprise.
+
+---
+
+# Enterprise Best Practices
+
+- Use descriptive variable names.
+- Modularize scripts using functions.
+- Validate input before processing.
+- Implement `try/catch` for expected failures.
+- Avoid hard-coded values where possible.
+- Store configuration separately from code.
+- Include comments and documentation.
+- Test scripts in a non-production environment.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Create Variables
+
+Write a script that stores:
+
+- Computer name
+- Current date
+- Logged-on username
+
+Display all values.
+
+---
+
+## Lab 2 — Practice Loops
+
+Create an array containing five server names.
+
+Use a `foreach` loop to display each name.
+
+---
+
+## Lab 3 — Build a Function
+
+Create a function that accepts a username and displays:
+
+```text
+Welcome <username>
+```
+
+Test it with multiple values.
+
+---
+
+## Lab 4 — Handle Errors
+
+Write a script that attempts to read a file that does not exist.
+
+Use `try/catch` to display a friendly error message instead of terminating unexpectedly.
+
+---
+
+# Key Takeaways
+
+- Variables store data and objects.
+- Arrays and hashtables organize collections of information.
+- Conditional statements control script execution.
+- Loops automate repetitive tasks.
+- Functions promote code reuse and readability.
+- Error handling improves script reliability.
+- Input validation and modular design are essential for enterprise automation.
+
+---
+
+# Interview Questions
+
+1. What is the difference between an array and a hashtable?
+2. What are PowerShell automatic variables?
+3. Explain the purpose of `foreach`.
+4. When would you use a `switch` statement instead of multiple `if` statements?
+5. What is the purpose of a function?
+6. How do script parameters improve reusability?
+7. Explain `try`, `catch`, and `finally`.
+8. What does `throw` do?
+9. What is the difference between `Write-Host` and `Write-Output`?
+10. Why should enterprise scripts validate user input?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft PowerShell Documentation
+- PowerShell Language Specification
+- *PowerShell in Action* (Bruce Payette)
+- *Learn PowerShell Scripting in a Month of Lunches* (Don Jones & Jeff Hicks)
+
+---
+
+**Next:** **Part 3 — PowerShell Remoting, CIM/WMI, Jobs, Modules, Security, Automation, and Enterprise Administration**
