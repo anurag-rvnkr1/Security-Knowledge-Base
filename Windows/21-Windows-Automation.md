@@ -1464,4 +1464,741 @@ Review an existing PowerShell script and identify:
 
 ---
 
-**Next:** **Part 3 — PowerShell Remoting Automation, Scheduled Jobs, Event-Driven Automation, Security Automation, and Incident Response Automation**
+# 21-Windows-Automation.md
+
+# Part 3 — PowerShell Remoting Automation, Scheduled Jobs, Event-Driven Automation, Security Automation, and Incident Response Automation
+
+---
+
+# Introduction
+
+Enterprise automation extends beyond executing local scripts.
+
+Modern Windows environments automate:
+
+- Remote administration
+- Security monitoring
+- Patch management
+- Compliance validation
+- Incident response
+- Threat hunting
+- Log collection
+- System health monitoring
+
+PowerShell Remoting, scheduled jobs, and event-driven automation enable organizations to respond rapidly to operational and security events with minimal manual intervention.
+
+---
+
+# Remote Automation with PowerShell
+
+PowerShell Remoting enables administrators to execute automation across one or many systems simultaneously.
+
+Example architecture:
+
+```text
+Automation Server
+
+↓
+
+PowerShell
+
+↓
+
+WinRM
+
+↓
+
+Windows Endpoints
+
+↓
+
+Execution Results
+
+↓
+
+Central Report
+```
+
+This approach eliminates the need to log on to each computer individually.
+
+---
+
+# Executing Commands on Multiple Computers
+
+Example:
+
+```powershell
+$Servers = @(
+    "Server01",
+    "Server02",
+    "Server03"
+)
+
+Invoke-Command `
+-ComputerName $Servers `
+-ScriptBlock {
+    Get-Service
+}
+```
+
+PowerShell distributes the command to each target and returns structured objects.
+
+---
+
+# Persistent Remote Sessions
+
+Creating persistent sessions improves efficiency when executing multiple commands.
+
+```powershell
+$Session = New-PSSession `
+-ComputerName Server01
+```
+
+Execute commands:
+
+```powershell
+Invoke-Command `
+-Session $Session `
+-ScriptBlock {
+    Get-ComputerInfo
+}
+```
+
+Close the session:
+
+```powershell
+Remove-PSSession $Session
+```
+
+Persistent sessions reduce authentication overhead.
+
+---
+
+# Fan-Out Automation
+
+A single administrator can automate tasks across many systems.
+
+```text
+Administrator
+
+↓
+
+Automation Script
+
+↓
+
+100 Servers
+
+↓
+
+Execute Commands
+
+↓
+
+Collect Results
+
+↓
+
+Generate Report
+```
+
+This pattern is commonly called **fan-out administration**.
+
+---
+
+# Parallel Processing
+
+Long-running automation can benefit from parallel execution.
+
+Conceptually:
+
+```text
+Task A ─────► Server01
+
+Task B ─────► Server02
+
+Task C ─────► Server03
+
+Task D ─────► Server04
+```
+
+Parallel execution reduces total processing time for large-scale administrative tasks.
+
+---
+
+# Collecting Remote Results
+
+Automation should centralize results.
+
+Example:
+
+```text
+Remote Servers
+
+↓
+
+PowerShell Objects
+
+↓
+
+CSV
+
+↓
+
+Dashboard
+
+↓
+
+SIEM
+```
+
+Structured data simplifies reporting and analysis.
+
+---
+
+# Scheduled Jobs
+
+PowerShell Scheduled Jobs combine PowerShell with Task Scheduler.
+
+Advantages include:
+
+- Native PowerShell integration
+- Scheduled execution
+- Job history
+- Result retrieval
+- Error reporting
+
+---
+
+# Scheduled Job Workflow
+
+```text
+Trigger
+
+↓
+
+PowerShell Job
+
+↓
+
+Execute Script
+
+↓
+
+Store Output
+
+↓
+
+Review Results
+```
+
+---
+
+# Event-Driven Automation
+
+Rather than executing scripts on a schedule, event-driven automation responds immediately to specific system events.
+
+Example:
+
+```text
+Security Event
+
+↓
+
+Trigger
+
+↓
+
+PowerShell Script
+
+↓
+
+Response
+
+↓
+
+Notification
+```
+
+This reduces response time compared to periodic checks.
+
+---
+
+# Event Sources
+
+Common automation triggers include:
+
+| Source | Example |
+|---------|----------|
+| Windows Event Log | Failed logons |
+| Service Events | Service stopped |
+| Task Scheduler | Scheduled execution |
+| File System | File created |
+| Registry | Configuration changed |
+| Performance Counters | CPU threshold exceeded |
+
+---
+
+# Example Security Workflow
+
+```text
+Multiple Failed Logons
+
+↓
+
+Event ID 4625
+
+↓
+
+Automation Trigger
+
+↓
+
+Collect Logs
+
+↓
+
+Notify SOC
+
+↓
+
+Open Incident
+```
+
+Automation assists analysts by collecting context before manual investigation begins.
+
+---
+
+# Log Collection Automation
+
+Routine log collection supports:
+
+- Auditing
+- Troubleshooting
+- Compliance
+- Incident response
+
+Typical workflow:
+
+```text
+Windows Logs
+
+↓
+
+PowerShell
+
+↓
+
+Central Repository
+
+↓
+
+SIEM
+```
+
+Centralized collection improves visibility across the enterprise.
+
+---
+
+# Compliance Automation
+
+Automation can verify:
+
+- Firewall status
+- BitLocker configuration
+- Antivirus status
+- Password policy
+- Local Administrators group
+- Patch levels
+- Audit policy
+
+Example output:
+
+```text
+Compliant
+
+or
+
+Non-Compliant
+```
+
+Automated compliance checks reduce manual audit effort.
+
+---
+
+# Patch Verification Automation
+
+Example workflow:
+
+```text
+Automation
+
+↓
+
+Query Installed Updates
+
+↓
+
+Compare Baseline
+
+↓
+
+Identify Missing Updates
+
+↓
+
+Generate Report
+```
+
+Automation helps maintain a consistent patch posture.
+
+---
+
+# Security Baseline Validation
+
+Organizations can automate validation of baseline settings.
+
+Example checks:
+
+- Windows Defender enabled
+- Firewall enabled
+- SMBv1 disabled
+- PowerShell logging enabled
+- Secure Boot enabled
+- BitLocker enabled
+
+These checks support security hardening and compliance.
+
+---
+
+# Threat Hunting Automation
+
+Automation can search systems for indicators such as:
+
+- Suspicious processes
+- Unexpected services
+- Unauthorized scheduled tasks
+- Unknown startup programs
+- Suspicious registry keys
+- Known malicious hashes
+
+Automation accelerates enterprise-wide investigations.
+
+---
+
+# Automated IOC Collection
+
+Example workflow:
+
+```text
+Indicator Received
+
+↓
+
+PowerShell
+
+↓
+
+Search Endpoints
+
+↓
+
+Identify Matches
+
+↓
+
+Generate Report
+
+↓
+
+Contain Systems
+```
+
+Indicators of Compromise (IOCs) should be validated and reviewed before containment actions are taken.
+
+---
+
+# Automated Incident Response
+
+Automation assists—not replaces—incident responders.
+
+Typical workflow:
+
+```text
+Security Alert
+
+↓
+
+Collect Evidence
+
+↓
+
+Gather Logs
+
+↓
+
+Identify Host
+
+↓
+
+Notify Analysts
+
+↓
+
+Containment Decision
+
+↓
+
+Response
+```
+
+Human approval should remain part of high-impact response actions.
+
+---
+
+# Automation in a SOC
+
+Security Operations Centers commonly automate:
+
+- IOC collection
+- Log retrieval
+- Host inventory
+- Malware hash lookup
+- Alert enrichment
+- Report generation
+- Case creation
+- Notification workflows
+
+Automation reduces repetitive work, allowing analysts to focus on investigation.
+
+---
+
+# Safe Automation
+
+Before automating any action:
+
+Verify:
+
+- Scope
+- Permissions
+- Target systems
+- Rollback procedures
+- Logging
+- Error handling
+- Approval requirements
+
+Production automation should avoid destructive actions without appropriate safeguards.
+
+---
+
+# Automation Approval Model
+
+```text
+Automation Request
+
+↓
+
+Risk Review
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Production
+
+↓
+
+Monitoring
+```
+
+This governance process reduces operational risk.
+
+---
+
+# Enterprise Example
+
+A financial institution detects repeated failed RDP logons.
+
+Automation performs the following:
+
+```text
+Event ID 4625
+
+↓
+
+Collect Security Logs
+
+↓
+
+Identify Source IP
+
+↓
+
+Collect Firewall Logs
+
+↓
+
+Enrich with Asset Information
+
+↓
+
+Notify SOC
+
+↓
+
+Create Incident Ticket
+```
+
+Analysts receive contextual information immediately, reducing investigation time.
+
+---
+
+# Cybersecurity Perspective
+
+Automation supports defensive security by:
+
+- Reducing Mean Time to Detect (MTTD)
+- Reducing Mean Time to Respond (MTTR)
+- Standardizing investigations
+- Eliminating repetitive manual tasks
+- Improving consistency
+- Enhancing evidence collection
+
+Automation should complement human decision-making rather than replace it.
+
+---
+
+# Business Impact
+
+Security automation provides:
+
+- Faster investigations
+- Reduced operational workload
+- Improved consistency
+- Better compliance
+- Increased visibility
+- More efficient use of skilled personnel
+
+Organizations benefit from faster response and improved operational resilience.
+
+---
+
+# Enterprise Best Practices
+
+- Automate repetitive administrative tasks first.
+- Validate all automation in a test environment.
+- Log every automated action.
+- Require approvals for high-impact operations.
+- Protect automation credentials.
+- Store automation scripts in version control.
+- Monitor automation failures.
+- Review automation regularly for continued relevance.
+- Document rollback procedures.
+- Integrate automation with centralized monitoring.
+
+---
+
+# Practical Labs
+
+## Lab 1 — Execute a Remote Command
+
+Using PowerShell Remoting, retrieve:
+
+```powershell
+Get-Service
+```
+
+from a remote computer.
+
+Document:
+
+- Connection method
+- Returned data
+- Any errors encountered
+
+---
+
+## Lab 2 — Design an Event-Driven Workflow
+
+Create a workflow that responds to repeated failed logon events by:
+
+- Collecting related event logs
+- Recording the source computer
+- Sending a notification to administrators
+
+Describe each step and the required Windows components.
+
+---
+
+## Lab 3 — Compliance Validation Script
+
+Design a PowerShell script that verifies:
+
+- Firewall status
+- Windows Defender status
+- BitLocker status
+- Windows Update service
+
+Generate a report indicating compliance for each item.
+
+---
+
+## Lab 4 — Threat Hunting Plan
+
+Design an automation workflow that searches all Windows endpoints for:
+
+- A specific process name
+- A suspicious scheduled task
+- An unexpected local administrator account
+
+Describe how results should be centralized and reviewed.
+
+---
+
+# Key Takeaways
+
+- PowerShell Remoting enables enterprise-scale automation.
+- Scheduled and event-driven automation support proactive operations.
+- Compliance validation can be automated consistently.
+- Automation accelerates threat hunting and evidence collection.
+- High-impact actions should include appropriate approval and safeguards.
+- Centralized reporting improves visibility across large environments.
+
+---
+
+# Interview Questions
+
+1. What is the benefit of PowerShell Remoting for automation?
+2. What is event-driven automation?
+3. How does automation improve incident response?
+4. Why should automation results be centralized?
+5. What security checks can be automated?
+6. What is fan-out administration?
+7. Why should destructive automation require approval?
+8. How can automation support threat hunting?
+9. What are common sources for event-driven automation?
+10. How does automation reduce MTTD and MTTR?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft PowerShell Documentation
+- Microsoft Task Scheduler Documentation
+- Microsoft WinRM Documentation
+- Microsoft Defender Documentation
+- MITRE ATT&CK Framework
+- NIST SP 800-53
+- CIS Controls v8
+- *PowerShell in Action* (Bruce Payette)
+
+---
+
+**Next:** **Part 4 — Enterprise Automation Strategy, Governance, Troubleshooting, Chapter Summary, and Interview Preparation**
