@@ -1086,4 +1086,587 @@ Review the components installed after Domain Controller promotion.
 
 ---
 
-**Next:** **Part 3 — Domain Controller Replication, Authentication Flow, Read-Only Domain Controllers (RODC), and Enterprise Operations**
+# 04-Domain-Controllers.md
+
+# Part 3 — Domain Controller Replication, Authentication Flow, Read-Only Domain Controllers (RODC), and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how Domain Controllers replicate directory information.
+- Explain authentication flow involving Domain Controllers.
+- Learn the purpose of Read-Only Domain Controllers (RODCs).
+- Understand branch office deployment strategies.
+- Learn enterprise operational practices for Domain Controllers.
+- Build a foundation for upcoming chapters on replication and FSMO roles.
+
+---
+
+# Why Replication Is Necessary
+
+Every writable Domain Controller maintains a copy of the Active Directory database.
+
+When an administrator performs an operation such as:
+
+- Creating a user
+- Resetting a password
+- Creating a group
+- Modifying permissions
+- Updating an Organizational Unit
+
+The changes must eventually become available on the other Domain Controllers in the same domain.
+
+Replication provides this consistency.
+
+---
+
+# Replication Overview
+
+```text
+Administrator
+
+↓
+
+DC01
+
+↓
+
+Directory Updated
+
+↓
+
+Replication
+
+↓
+
+DC02
+
+↓
+
+Replication
+
+↓
+
+DC03
+
+↓
+
+Replication
+
+↓
+
+DC04
+```
+
+Each writable Domain Controller participates in maintaining a consistent directory.
+
+---
+
+# Multi-Master Replication
+
+Active Directory uses a **multi-master replication** model.
+
+This means:
+
+- Multiple writable Domain Controllers can accept directory updates.
+- Changes are replicated to peers.
+- No single writable Domain Controller is required for routine directory modifications.
+
+Certain specialized operations (covered in the FSMO chapter) are exceptions to this general model.
+
+---
+
+# Replication Benefits
+
+| Benefit | Description |
+|----------|-------------|
+| High Availability | Multiple copies of directory data |
+| Redundancy | No dependency on a single server |
+| Faster Authentication | Local Domain Controllers serve nearby users |
+| Disaster Recovery | Data exists on multiple Domain Controllers |
+| Scalability | Supports enterprise growth |
+
+---
+
+# Simplified Replication Flow
+
+```text
+Password Changed
+
+↓
+
+DC01
+
+↓
+
+Replication Queue
+
+↓
+
+DC02
+
+↓
+
+DC03
+
+↓
+
+DC04
+```
+
+Replication occurs automatically according to the configured topology and schedules.
+
+---
+
+# Authentication Flow
+
+A Domain Controller participates in every domain logon.
+
+```text
+User
+
+↓
+
+Username & Password
+
+↓
+
+Client Computer
+
+↓
+
+DNS
+
+↓
+
+Nearest Domain Controller
+
+↓
+
+Kerberos Authentication
+
+↓
+
+Security Token
+
+↓
+
+Desktop Loaded
+```
+
+---
+
+# Detailed Authentication Architecture
+
+```text
+User
+
+↓
+
+Workstation
+
+↓
+
+DNS Lookup
+
+↓
+
+Domain Controller
+
+↓
+
+NTDS.DIT
+
+↓
+
+Kerberos KDC
+
+↓
+
+Security Token
+
+↓
+
+Resource Access
+```
+
+Every stage depends on healthy Domain Controller services.
+
+---
+
+# Authentication Services
+
+During authentication, the Domain Controller provides:
+
+- Identity verification
+- Password validation
+- Kerberos ticket issuance
+- Group membership evaluation
+- Security token creation
+
+These functions allow users to securely access enterprise resources.
+
+---
+
+# Security Token Creation
+
+After successful authentication, Windows creates a security token containing information such as:
+
+- User SID
+- Group SIDs
+- Privileges
+- Logon session information
+
+Applications use this token to determine whether access should be granted.
+
+---
+
+# Resource Access
+
+After authentication:
+
+```text
+Security Token
+
+↓
+
+File Server
+
+↓
+
+Access Control List (ACL)
+
+↓
+
+Permission Evaluation
+
+↓
+
+Access Granted or Denied
+```
+
+Authentication identifies the user.
+
+Authorization determines access.
+
+---
+
+# Read-Only Domain Controllers (RODC)
+
+An **RODC** stores a read-only copy of the Active Directory database.
+
+Characteristics:
+
+- Read-only directory information
+- Cannot perform standard writable directory updates
+- Commonly deployed in remote or physically less secure locations
+- Supports local authentication for approved accounts
+
+---
+
+# RODC Architecture
+
+```text
+Head Office
+
+│
+
+├── Writable DC
+
+│
+
+└───────────────WAN───────────────┐
+
+                                  │
+
+                          Branch Office
+
+                                  │
+
+                              RODC
+```
+
+The writable Domain Controller remains authoritative for directory modifications.
+
+---
+
+# Why Deploy an RODC?
+
+Common scenarios:
+
+- Small branch offices
+- Limited physical security
+- Limited local IT staff
+- Reduced administrative risk
+- WAN optimization for authentication
+
+---
+
+# Password Replication Policy (PRP)
+
+An RODC does **not** automatically cache every user's password.
+
+Administrators control password caching through the **Password Replication Policy (PRP)**.
+
+Examples:
+
+Allowed:
+
+- Branch office employees
+
+Denied:
+
+- Domain Admins
+- Enterprise Admins
+- Service accounts requiring stronger protection
+
+This reduces the impact of an RODC compromise.
+
+---
+
+# Writable DC vs RODC
+
+| Feature | Writable DC | RODC |
+|----------|-------------|------|
+| Directory Updates | Yes | No (read-only) |
+| Accepts Object Changes | Yes | No |
+| Stores Writable Database | Yes | No |
+| Password Caching | Standard domain behavior | Controlled by PRP |
+| Typical Location | Data center or secure site | Branch office |
+
+---
+
+# Branch Office Deployment Example
+
+Organization:
+
+- Headquarters
+- 50 remote users
+- Limited physical security
+
+Architecture:
+
+```text
+Headquarters
+
+├── DC01
+
+├── DC02
+
+│
+
+──────────── WAN ────────────
+
+│
+
+Branch Office
+
+└── RODC01
+```
+
+Benefits:
+
+- Local logon performance
+- Reduced WAN dependency for cached credentials
+- Lower risk if the server is stolen or compromised
+
+---
+
+# Enterprise Operations
+
+Daily operational activities include:
+
+- Creating users
+- Resetting passwords
+- Unlocking accounts
+- Reviewing event logs
+- Monitoring replication
+- Checking DNS health
+- Verifying backups
+- Applying security updates
+
+Routine maintenance is essential for a healthy directory.
+
+---
+
+# Monitoring Domain Controllers
+
+Administrators should monitor:
+
+| Area | Purpose |
+|------|----------|
+| Authentication failures | Detect login issues or attacks |
+| Replication status | Ensure directory consistency |
+| SYSVOL health | Verify Group Policy availability |
+| DNS | Ensure service discovery |
+| Disk space | Prevent database issues |
+| CPU and memory | Maintain performance |
+| Windows Time | Support Kerberos |
+| Security events | Detect suspicious activity |
+
+---
+
+# Backup Strategy
+
+Recommended backups include:
+
+- System State
+- Active Directory database
+- SYSVOL
+- DNS configuration (where applicable)
+- Administrative documentation
+
+Backups should be:
+
+- Scheduled
+- Encrypted where appropriate
+- Tested through recovery exercises
+
+---
+
+# Maintenance Best Practices
+
+- Apply security updates regularly.
+- Review event logs.
+- Validate replication.
+- Monitor service health.
+- Review privileged group membership.
+- Remove unused accounts.
+- Test disaster recovery procedures.
+- Maintain documentation.
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 20,000 employees
+- Six regional offices
+- Ten writable Domain Controllers
+- Eight branch offices with RODCs
+
+Architecture:
+
+```text
+Primary Data Centers
+
+├── Writable DCs
+
+│
+
+────────── WAN ──────────
+
+│
+
+Regional Offices
+
+├── Writable DCs
+
+│
+
+────────── WAN ──────────
+
+│
+
+Small Branches
+
+└── RODCs
+```
+
+This design balances performance, availability, and security.
+
+---
+
+# Common Operational Mistakes
+
+Avoid:
+
+- Deploying a single Domain Controller.
+- Ignoring replication errors.
+- Allowing excessive privileged access.
+- Failing to monitor SYSVOL.
+- Ignoring backup validation.
+- Deploying RODCs without reviewing PRP.
+- Delaying operating system updates.
+- Poor documentation.
+
+---
+
+# Cybersecurity Perspective
+
+Domain Controllers are frequent targets during cyberattacks because they provide centralized identity services.
+
+Security recommendations:
+
+- Restrict privileged logons.
+- Enable auditing.
+- Monitor authentication anomalies.
+- Protect backup media.
+- Secure remote branch offices.
+- Use RODCs where appropriate.
+- Monitor password replication policies.
+- Limit administrative access.
+
+Compromise of a writable Domain Controller generally has a greater impact than compromise of an RODC.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Domain Controller operational tasks.
+
+### Tasks
+
+1. Review the **DFS Replication** service status.
+2. Verify SYSVOL is shared.
+3. Examine Windows Event Viewer for Directory Service logs.
+4. Identify whether a lab environment contains writable DCs or RODCs.
+5. Document the differences between the two deployment types.
+6. Create a monitoring checklist for a production Domain Controller.
+
+---
+
+# Key Takeaways
+
+- Active Directory uses multi-master replication for writable Domain Controllers.
+- Authentication relies on healthy DNS, Kerberos, and Domain Controller services.
+- RODCs provide a secure option for branch offices.
+- Password Replication Policy controls credential caching on RODCs.
+- Monitoring, backups, and maintenance are essential operational responsibilities.
+- Protecting Domain Controllers is critical to enterprise security.
+
+---
+
+# Interview Questions
+
+1. What is multi-master replication?
+2. Why does Active Directory replicate data?
+3. What is the purpose of an RODC?
+4. What is the Password Replication Policy (PRP)?
+5. What is the difference between authentication and authorization?
+6. What information is contained in a security token?
+7. Why are RODCs commonly deployed in branch offices?
+8. What operational tasks should administrators perform regularly?
+9. What should be included in a Domain Controller backup strategy?
+10. Why are writable Domain Controllers more sensitive than RODCs?
+
+---
+
+# References
+
+- Microsoft Learn – Read-Only Domain Controllers
+- Microsoft Learn – Active Directory Replication Concepts
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+- CIS Microsoft Windows Benchmarks
+
+---
+
+**Next:** **Part 4 — Domain Controller Hardening, Best Practices, Common Misconceptions, Architecture Review, Final Revision, and Chapter Summary**
