@@ -773,4 +773,765 @@ Helpdesk
 
 ---
 
-**Next:** **Part 2 — OU Design Strategies, Delegation of Control Wizard, Inheritance, Protection, and Enterprise Administration**
+# 10-Organizational-Units-and-Delegation.md
+
+# Part 2 — OU Design Strategies, Delegation of Control Wizard, Inheritance, Protection, and Enterprise Administration
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Design scalable OU structures.
+- Understand administrative delegation.
+- Use the Delegation of Control Wizard.
+- Understand permission inheritance.
+- Learn OU protection mechanisms.
+- Apply enterprise OU design best practices.
+
+---
+
+# Review
+
+From Part 1:
+
+Organizational Units provide:
+
+- Logical organization
+- Delegated administration
+- Group Policy targeting
+- Simplified management
+
+Remember:
+
+> OUs are **not** security boundaries.
+
+---
+
+# Enterprise OU Design
+
+There is no universal OU structure.
+
+The design should support:
+
+- Administration
+- Automation
+- Group Policy
+- Growth
+- Security
+- Business requirements
+
+---
+
+# Common OU Design Models
+
+```text
+OU Design
+
+│
+
+├── Department-Based
+
+├── Location-Based
+
+├── Function-Based
+
+├── Administrative
+
+└── Hybrid
+```
+
+---
+
+# Department-Based Design
+
+Example:
+
+```text
+company.com
+
+│
+
+├── HR
+
+├── Finance
+
+├── Sales
+
+├── IT
+
+└── Marketing
+```
+
+Advantages:
+
+- Easy delegation
+- Department-specific policies
+- Simple administration
+
+---
+
+# Location-Based Design
+
+Example:
+
+```text
+company.com
+
+│
+
+├── India
+
+├── USA
+
+├── Germany
+
+└── Japan
+```
+
+Useful when:
+
+- Offices have independent IT teams
+- Different regional policies apply
+- Local administrators manage resources
+
+---
+
+# Function-Based Design
+
+Example:
+
+```text
+company.com
+
+│
+
+├── Users
+
+├── Workstations
+
+├── Servers
+
+├── Service Accounts
+
+└── Groups
+```
+
+Advantages:
+
+- Easier automation
+- Clear object separation
+- Simpler lifecycle management
+
+---
+
+# Hybrid Design
+
+Many enterprises combine multiple approaches.
+
+Example:
+
+```text
+company.com
+
+↓
+
+Locations
+
+↓
+
+India
+
+↓
+
+Bangalore
+
+↓
+
+Departments
+
+↓
+
+IT
+
+↓
+
+Users
+```
+
+This balances administrative flexibility with organizational clarity.
+
+---
+
+# Good OU Design Principles
+
+A well-designed OU structure should:
+
+- Reflect administrative responsibilities.
+- Minimize unnecessary nesting.
+- Support Group Policy.
+- Scale as the organization grows.
+- Be easy to understand.
+- Avoid unnecessary complexity.
+
+---
+
+# Poor OU Design Example
+
+```text
+Company
+
+↓
+
+Region
+
+↓
+
+Country
+
+↓
+
+State
+
+↓
+
+City
+
+↓
+
+Building
+
+↓
+
+Floor
+
+↓
+
+Department
+
+↓
+
+Team
+
+↓
+
+Users
+```
+
+Problems:
+
+- Excessive nesting
+- Difficult administration
+- Complex Group Policy inheritance
+- Harder troubleshooting
+
+---
+
+# Better Design
+
+```text
+Company
+
+↓
+
+Locations
+
+↓
+
+Departments
+
+↓
+
+Users
+```
+
+Simple structures are generally easier to manage.
+
+---
+
+# Delegation of Control
+
+Delegation allows selected administrators to manage only the resources they are responsible for.
+
+Example:
+
+```text
+IT Manager
+
+↓
+
+Delegates
+
+↓
+
+Helpdesk
+
+↓
+
+Password Reset
+
+↓
+
+Sales OU
+```
+
+---
+
+# Delegation of Control Wizard
+
+Active Directory provides a graphical wizard for assigning common administrative tasks.
+
+Typical workflow:
+
+```text
+Right Click OU
+
+↓
+
+Delegate Control
+
+↓
+
+Select Users or Groups
+
+↓
+
+Choose Administrative Tasks
+
+↓
+
+Finish
+```
+
+---
+
+# Common Delegated Tasks
+
+Examples include:
+
+- Reset user passwords
+- Unlock user accounts
+- Create users
+- Delete users
+- Manage groups
+- Join computers to the domain
+- Read object information
+- Modify selected properties
+
+---
+
+# Delegation Example
+
+```text
+OU
+
+↓
+
+Finance
+
+↓
+
+Delegated Group
+
+↓
+
+Finance Helpdesk
+
+↓
+
+Reset Passwords
+```
+
+Finance Helpdesk administrators cannot automatically manage other OUs.
+
+---
+
+# Permission Inheritance
+
+Permissions normally inherit from parent containers.
+
+Example:
+
+```text
+Company
+
+↓
+
+IT
+
+↓
+
+Helpdesk
+
+↓
+
+Users
+```
+
+If permissions are assigned at:
+
+```text
+IT
+```
+
+they may be inherited by:
+
+```text
+Helpdesk
+
+↓
+
+Users
+```
+
+depending on inheritance settings.
+
+---
+
+# Inheritance Diagram
+
+```text
+Parent OU
+
+↓
+
+Permissions
+
+↓
+
+Child OU
+
+↓
+
+Inherited Permissions
+```
+
+---
+
+# Blocking Inheritance?
+
+Permission inheritance and Group Policy inheritance are **different concepts**.
+
+This section focuses on **Active Directory object permissions**.
+
+Permissions can be configured through security descriptors and inheritance settings.
+
+Group Policy inheritance will be discussed in the Group Policy chapter.
+
+---
+
+# Explicit vs Inherited Permissions
+
+| Permission Type | Description |
+|-----------------|-------------|
+| Explicit | Directly assigned |
+| Inherited | Received from parent object |
+
+Explicit permissions are generally easier to identify during troubleshooting.
+
+---
+
+# Effective Permissions
+
+A user's effective permissions depend on:
+
+- Group memberships
+- Explicit permissions
+- Inherited permissions
+- Allow entries
+- Deny entries
+
+Administrators should evaluate all applicable permissions when troubleshooting access.
+
+---
+
+# Protecting OUs
+
+Active Directory provides an option:
+
+> **Protect object from accidental deletion**
+
+---
+
+# Why Protection Matters
+
+Imagine:
+
+```text
+Administrator
+
+↓
+
+Accidentally Deletes
+
+↓
+
+Entire Finance OU
+```
+
+Result:
+
+- User accounts removed
+- Computers removed
+- Groups removed
+- Service disruption
+
+Protection helps prevent accidental deletion.
+
+---
+
+# Protection Workflow
+
+```text
+OU
+
+↓
+
+Properties
+
+↓
+
+Protect from Accidental Deletion
+
+↓
+
+Enabled
+```
+
+---
+
+# Administrative Boundaries
+
+Example:
+
+```text
+Company
+
+│
+
+├── Finance OU
+
+├── HR OU
+
+├── IT OU
+
+└── Sales OU
+```
+
+Each department has its own delegated administrators.
+
+This supports separation of duties.
+
+---
+
+# Enterprise Delegation Model
+
+```text
+Domain Admins
+
+↓
+
+Regional Admins
+
+↓
+
+Department Admins
+
+↓
+
+Helpdesk
+
+↓
+
+Users
+```
+
+Each level receives only the permissions required for its responsibilities.
+
+---
+
+# Delegation Best Practices
+
+- Delegate to groups rather than individual user accounts.
+- Follow the principle of least privilege.
+- Document delegated permissions.
+- Review delegated access periodically.
+- Remove obsolete delegations.
+- Use role-based administration where practical.
+
+---
+
+# Enterprise Example
+
+Organization:
+
+- 60,000 employees
+- 25 offices
+- 12 IT teams
+
+Structure:
+
+```text
+Locations
+
+↓
+
+Regional OUs
+
+↓
+
+Department OUs
+
+↓
+
+Delegated Administration
+
+↓
+
+Local Helpdesk
+```
+
+Benefits:
+
+- Reduced administrative overhead
+- Faster support
+- Clear responsibility
+- Improved scalability
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Excessive OU nesting.
+- Delegating Domain Admin privileges unnecessarily.
+- Delegating directly to user accounts instead of groups.
+- Ignoring inherited permissions.
+- Leaving unused delegated permissions in place.
+- Failing to protect important OUs from accidental deletion.
+
+---
+
+# Security Considerations
+
+Delegation should always be carefully controlled.
+
+Recommendations:
+
+- Grant only required permissions.
+- Separate administrative duties.
+- Audit delegated administrative activity.
+- Regularly review delegated groups.
+- Protect privileged OUs.
+- Monitor changes to permissions.
+
+---
+
+# Cybersecurity Perspective
+
+Delegation reduces the need to grant broad administrative rights.
+
+A secure delegation model:
+
+- Limits privilege escalation opportunities.
+- Reduces insider risk.
+- Improves accountability.
+- Supports compliance requirements.
+- Simplifies auditing.
+
+Poor delegation can unintentionally create excessive privileges across the directory.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Practice OU delegation.
+
+### Tasks
+
+1. Create:
+
+```text
+OU
+
+↓
+
+Sales
+```
+
+2. Create:
+
+```text
+Security Group
+
+↓
+
+Sales Helpdesk
+```
+
+3. Open:
+
+```text
+Delegate Control Wizard
+```
+
+4. Delegate:
+
+- Password reset
+- Unlock account
+
+5. Enable:
+
+```text
+Protect Object from Accidental Deletion
+```
+
+6. Document:
+
+- Delegated permissions
+- Administrative scope
+- Security considerations
+
+---
+
+# Key Takeaways
+
+- OU design should support administration rather than mirror every business detail.
+- Delegate administrative tasks using groups whenever possible.
+- Permission inheritance simplifies administration but requires careful planning.
+- Protect critical OUs from accidental deletion.
+- Least privilege is the foundation of secure delegation.
+
+---
+
+# Interview Questions
+
+1. What are common OU design strategies?
+2. Why should enterprises avoid deep OU hierarchies?
+3. What is the Delegation of Control Wizard?
+4. Why should delegation be assigned to groups?
+5. What is permission inheritance?
+6. What is the difference between explicit and inherited permissions?
+7. Why should important OUs be protected from accidental deletion?
+8. What is effective permission?
+9. Why is least privilege important in delegation?
+10. What are common OU administration mistakes?
+
+---
+
+# References
+
+- Microsoft Learn – Organizational Units
+- Microsoft Learn – Delegation of Control Wizard
+- Microsoft Learn – Active Directory Security Descriptors
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+
+---
+
+**Next:** **Part 3 — Group Policy Integration, OU Administration, PowerShell Management, Troubleshooting, and Enterprise Operations**
