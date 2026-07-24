@@ -814,3 +814,789 @@ Document the dependency relationships.
 
 ---
 
+# 11-Windows-Services.md
+
+# Part 2 — Service Accounts, Service Management Tools, Recovery Options, Windows Service Security, and Service Configuration
+
+---
+
+# Introduction
+
+In Part 1, you learned what Windows Services are, how the **Service Control Manager (SCM)** manages them, and how startup types and dependencies influence service operation.
+
+In enterprise environments, administrators must also understand:
+
+- Which account a service runs under
+- How to manage services using graphical and command-line tools
+- How Windows automatically recovers failed services
+- How service permissions protect critical operating system components
+- How to securely configure services
+
+These concepts are essential for Windows administration, server management, cybersecurity, and incident response.
+
+---
+
+# Service Accounts
+
+Every Windows service runs under a **security context** known as a **service account**.
+
+The service account determines:
+
+- Identity
+- Permissions
+- Network access
+- Local privileges
+- Access to files, registry keys, and other resources
+
+Simplified workflow:
+
+```text
+Service
+
+↓
+
+Service Account
+
+↓
+
+Security Token
+
+↓
+
+Access Windows Resources
+```
+
+---
+
+# Why Service Accounts Matter
+
+Without a service account:
+
+```text
+Service
+
+↓
+
+No Identity
+
+↓
+
+Cannot Access Protected Resources
+```
+
+With a service account:
+
+```text
+Service
+
+↓
+
+Identity Assigned
+
+↓
+
+Access Granted According to Permissions
+```
+
+Following the Principle of Least Privilege helps reduce the impact of compromised services.
+
+---
+
+# Common Built-in Service Accounts
+
+Windows provides several built-in accounts specifically for services.
+
+| Account | Typical Privilege Level | Network Identity |
+|----------|-------------------------|------------------|
+| Local System | Very High | Computer account |
+| Local Service | Low | Anonymous or limited network identity |
+| Network Service | Low locally | Computer credentials for network access |
+
+Each account is designed for different operational requirements.
+
+---
+
+# Local System Account
+
+The **Local System** account has extensive privileges on the local computer.
+
+Characteristics:
+
+- High local privileges
+- Access to most operating system resources
+- Commonly used by critical Windows services
+
+Because of its privileges, administrators should avoid using Local System unless necessary.
+
+---
+
+# Local Service Account
+
+The **Local Service** account is designed for services requiring minimal local privileges.
+
+Characteristics:
+
+- Limited permissions
+- Reduced attack surface
+- Suitable for low-privilege services
+
+This account helps improve system security.
+
+---
+
+# Network Service Account
+
+The **Network Service** account:
+
+- Has limited local privileges
+- Can authenticate to network resources using the computer's identity
+
+Example:
+
+```text
+Service
+
+↓
+
+Network Service
+
+↓
+
+Remote Server
+
+↓
+
+Computer Account Authentication
+```
+
+---
+
+# Domain Service Accounts
+
+In enterprise environments, services may run under dedicated **domain accounts**.
+
+Example:
+
+```text
+SQL Service
+
+↓
+
+Dedicated Domain Account
+
+↓
+
+Database Resources
+```
+
+Benefits include:
+
+- Granular permissions
+- Easier auditing
+- Better separation of duties
+
+Administrators should avoid using standard user accounts for services whenever possible.
+
+---
+
+# Managed Service Accounts (Overview)
+
+Modern Windows environments support managed service accounts.
+
+Advantages include:
+
+- Automatic password management
+- Reduced administrative effort
+- Improved security
+- Simplified credential rotation
+
+A deeper discussion appears in the Active Directory chapter.
+
+---
+
+# Service Log On Configuration
+
+Each service includes a **Log On** configuration.
+
+```text
+Service Properties
+
+↓
+
+Log On Tab
+
+↓
+
+Select Account
+
+↓
+
+Apply Credentials
+```
+
+Changing a service account may require restarting the service.
+
+---
+
+# Service Management Tools
+
+Windows offers several methods for managing services.
+
+| Tool | Interface |
+|------|-----------|
+| Services Console (`services.msc`) | GUI |
+| Task Manager | GUI |
+| Computer Management | GUI |
+| `sc.exe` | Command Line |
+| PowerShell | Command Line |
+| Windows Admin Center | Web-based (where deployed) |
+
+Administrators often combine multiple tools depending on the task.
+
+---
+
+# Using Services Console
+
+The Services console supports:
+
+- Start
+- Stop
+- Restart
+- Pause
+- Resume
+- Configure startup type
+- View dependencies
+- Configure recovery actions
+
+It is the standard graphical management interface.
+
+---
+
+# Using SC.EXE
+
+`sc.exe` (Service Controller) is a command-line utility for managing services.
+
+Display service information:
+
+```cmd
+sc query
+```
+
+View a specific service:
+
+```cmd
+sc query wuauserv
+```
+
+---
+
+# Starting a Service
+
+Example:
+
+```cmd
+sc start wuauserv
+```
+
+Workflow:
+
+```text
+Administrator
+
+↓
+
+SC Command
+
+↓
+
+Service Control Manager
+
+↓
+
+Service Started
+```
+
+---
+
+# Stopping a Service
+
+Example:
+
+```cmd
+sc stop wuauserv
+```
+
+Stopping critical services may interrupt system functionality or business applications.
+
+---
+
+# Creating a Service (Conceptual)
+
+Applications can register services with Windows.
+
+Simplified workflow:
+
+```text
+Install Application
+
+↓
+
+Register Service
+
+↓
+
+SCM Stores Configuration
+
+↓
+
+Service Available
+```
+
+Creating services generally requires administrative privileges.
+
+---
+
+# Deleting a Service
+
+A service can be removed after it is no longer required.
+
+Conceptually:
+
+```text
+Service
+
+↓
+
+Unregister
+
+↓
+
+Configuration Removed
+```
+
+Deleting essential Windows services can make the operating system unstable.
+
+---
+
+# PowerShell Service Management
+
+PowerShell provides powerful service management cmdlets.
+
+List services:
+
+```powershell
+Get-Service
+```
+
+View one service:
+
+```powershell
+Get-Service -Name wuauserv
+```
+
+Start a service:
+
+```powershell
+Start-Service -Name wuauserv
+```
+
+Stop a service:
+
+```powershell
+Stop-Service -Name wuauserv
+```
+
+PowerShell automation is covered in detail in a later chapter.
+
+---
+
+# Viewing Service Status
+
+Common service statuses include:
+
+| Status | Meaning |
+|---------|----------|
+| Running | Service is operational |
+| Stopped | Service is inactive |
+| Starting | Initialization underway |
+| Stopping | Shutdown in progress |
+| Paused | Execution temporarily suspended |
+
+---
+
+# Service Recovery
+
+Windows can automatically recover failed services.
+
+Recovery actions include:
+
+- Restart the service
+- Restart the computer
+- Run a recovery program
+- Take no action
+
+These settings help improve system availability.
+
+---
+
+# Recovery Workflow
+
+```text
+Service Failure
+
+↓
+
+SCM Detects Failure
+
+↓
+
+Recovery Policy
+
+↓
+
+Restart Service
+
+↓
+
+Normal Operation Restored
+```
+
+---
+
+# Recovery Options
+
+Administrators may configure different actions for:
+
+- First failure
+- Second failure
+- Subsequent failures
+
+Example:
+
+```text
+1st Failure
+
+↓
+
+Restart Service
+
+----------------------
+
+2nd Failure
+
+↓
+
+Restart Service
+
+----------------------
+
+Later Failures
+
+↓
+
+Restart Computer
+```
+
+Recovery strategies should match business requirements.
+
+---
+
+# Service Failure Example
+
+A backup service unexpectedly terminates.
+
+```text
+Backup Service
+
+↓
+
+Crash
+
+↓
+
+SCM Detects Failure
+
+↓
+
+Automatic Restart
+
+↓
+
+Backup Operations Continue
+```
+
+Automatic recovery reduces operational disruption.
+
+---
+
+# Service Security
+
+Windows protects services using security descriptors and access control.
+
+Administrators can control who may:
+
+- Start services
+- Stop services
+- Change configuration
+- Modify security settings
+- Delete services
+
+Only authorized users should have administrative control over services.
+
+---
+
+# Service Permissions
+
+Like files and registry keys, services have permissions.
+
+Possible operations include:
+
+| Permission | Purpose |
+|------------|----------|
+| Query Status | View service state |
+| Start | Start service |
+| Stop | Stop service |
+| Pause | Pause service |
+| Change Configuration | Modify service settings |
+| Delete | Remove service |
+| Read Security | View permissions |
+| Change Security | Modify permissions |
+
+---
+
+# Principle of Least Privilege
+
+Service accounts should receive only the permissions required.
+
+```text
+Required Access
+
+↓
+
+Grant Minimum Permissions
+
+↓
+
+Reduce Attack Surface
+```
+
+Avoid granting administrative privileges without a documented business need.
+
+---
+
+# Service Configuration
+
+Administrators commonly configure:
+
+- Startup type
+- Recovery actions
+- Service account
+- Dependencies
+- Description
+- Failure behavior
+
+Changes should follow organizational change management procedures.
+
+---
+
+# Service Dependencies Review
+
+Before changing a service:
+
+```text
+Review Dependencies
+
+↓
+
+Identify Impact
+
+↓
+
+Approve Change
+
+↓
+
+Implement
+
+↓
+
+Validate
+```
+
+Failure to review dependencies may disrupt multiple applications.
+
+---
+
+# Enterprise Example
+
+A monitoring agent runs as a Windows service.
+
+Configuration:
+
+```text
+Monitoring Service
+
+↓
+
+Automatic Startup
+
+↓
+
+Dedicated Service Account
+
+↓
+
+Automatic Restart
+
+↓
+
+Continuous Monitoring
+```
+
+This configuration improves reliability while limiting privileges.
+
+---
+
+# Cybersecurity Perspective
+
+Attackers sometimes attempt to:
+
+- Install unauthorized services
+- Modify startup types
+- Replace service executables
+- Change service accounts
+- Disable security software services
+
+Security teams should monitor for unexpected service creation and configuration changes.
+
+---
+
+# Business Impact
+
+Proper service configuration provides:
+
+- Higher availability
+- Faster recovery
+- Better security
+- Easier administration
+- Reduced downtime
+- Improved compliance
+
+Poorly configured services can interrupt critical business functions.
+
+---
+
+# Enterprise Best Practices
+
+- Use the least-privileged service account that satisfies operational requirements.
+- Prefer dedicated service accounts for enterprise applications.
+- Configure recovery actions for critical services.
+- Review service dependencies before making changes.
+- Restrict administrative access to service configuration.
+- Monitor service creation and startup type changes.
+- Test configuration changes in a non-production environment.
+
+---
+
+# Practical Labs
+
+## Lab 1 — View Service Account
+
+Open:
+
+```text
+services.msc
+```
+
+Select a service.
+
+Review:
+
+```text
+Log On
+```
+
+Identify the account used by the service.
+
+---
+
+## Lab 2 — Manage a Service with PowerShell
+
+Open **Windows PowerShell** as Administrator.
+
+Run:
+
+```powershell
+Get-Service
+```
+
+Choose a non-critical service in a lab environment and observe its status.
+
+Do not stop essential production services.
+
+---
+
+## Lab 3 — Review Recovery Settings
+
+Open:
+
+```text
+services.msc
+```
+
+Open a service's properties.
+
+Navigate to:
+
+```text
+Recovery
+```
+
+Review the configured actions for:
+
+- First failure
+- Second failure
+- Subsequent failures
+
+Document your observations.
+
+---
+
+# Key Takeaways
+
+- Every Windows service runs under a service account.
+- Local System has extensive privileges and should be used carefully.
+- Local Service and Network Service provide lower-privilege alternatives.
+- Services can be managed using graphical tools, `sc.exe`, or PowerShell.
+- Recovery options improve service availability after failures.
+- Service permissions help protect critical operating system components.
+- Least privilege is a fundamental principle when configuring services.
+
+---
+
+# Interview Questions
+
+1. What is a service account?
+2. What is the difference between Local System and Local Service?
+3. When would Network Service be appropriate?
+4. What is `sc.exe` used for?
+5. How can PowerShell manage services?
+6. What recovery options are available for Windows services?
+7. Why are service permissions important?
+8. What is the Principle of Least Privilege?
+9. Why should administrators review service dependencies before making changes?
+10. Why are dedicated service accounts recommended for enterprise applications?
+
+---
+
+# References
+
+- Microsoft Learn
+- Microsoft Windows Services Documentation
+- Microsoft Service Accounts Documentation
+- Microsoft PowerShell Documentation
+- Microsoft Service Control Documentation
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
+
+---
+
