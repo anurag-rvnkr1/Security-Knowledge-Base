@@ -1348,4 +1348,629 @@ Review authentication-related logs.
 
 ---
 
-**Next:** **Part 3 — NTLM Internals, Security Considerations, PowerShell, Troubleshooting, Enterprise Operations, and Migration to Kerberos**
+# Active-Directory/
+
+# 16-NTLM-Protocol-Deep-Dive.md
+
+# Part 3 — NTLM Internals, Security Considerations, PowerShell, Troubleshooting, Enterprise Operations, and Migration to Kerberos
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand where NTLM is used in enterprise environments.
+- Learn how Windows chooses between Kerberos and NTLM.
+- Identify common NTLM authentication issues.
+- Use Windows and PowerShell tools to troubleshoot authentication.
+- Understand enterprise migration strategies from NTLM to Kerberos.
+- Apply defensive best practices for NTLM management.
+
+---
+
+# Review
+
+In Part 2, you learned:
+
+- NEGOTIATE
+- CHALLENGE
+- AUTHENTICATE
+- Session security
+- Signing
+- Sealing
+- Access tokens
+- NTLMv2 improvements
+
+This section focuses on administration, troubleshooting, and enterprise operations.
+
+---
+
+# How Windows Chooses Kerberos or NTLM
+
+Windows does not always use NTLM.
+
+Authentication typically follows this decision process:
+
+```text
+User Requests Resource
+
+↓
+
+Active Directory Available?
+
+↓
+
+Yes
+
+↓
+
+Kerberos Possible?
+
+↓
+
+Yes
+
+↓
+
+Kerberos
+
+↓
+
+No
+
+↓
+
+NTLM
+
+↓
+
+Authentication
+```
+
+Windows attempts Kerberos first whenever possible.
+
+---
+
+# Common Reasons NTLM Is Used
+
+Examples include:
+
+- Workgroup authentication
+- Legacy applications
+- Legacy operating systems
+- Missing or incorrect SPNs
+- Kerberos negotiation failure
+- Local account authentication
+- Certain cross-platform compatibility scenarios
+
+---
+
+# Enterprise Authentication Example
+
+```text
+Employee
+
+↓
+
+Windows Client
+
+↓
+
+File Server
+
+↓
+
+Kerberos
+```
+
+Legacy application:
+
+```text
+Employee
+
+↓
+
+Legacy Application
+
+↓
+
+NTLMv2
+```
+
+Mixed environments commonly contain both authentication methods.
+
+---
+
+# Local vs Domain Authentication
+
+| Feature | Local Account | Domain Account |
+|----------|---------------|----------------|
+| Database | SAM | Active Directory |
+| Domain Controller Required | No | Yes |
+| Kerberos Available | No | Usually Yes |
+| NTLM Available | Yes | Yes (fallback or compatibility) |
+
+---
+
+# NTLM Authentication Path
+
+```text
+Client
+
+↓
+
+Server
+
+↓
+
+Authentication Package
+
+↓
+
+Local SAM
+
+or
+
+↓
+
+Domain Controller
+
+↓
+
+Authentication Result
+```
+
+---
+
+# Security Support Provider Interface (SSPI)
+
+Windows applications typically do not implement NTLM directly.
+
+Instead, they use the:
+
+```text
+Security Support Provider Interface
+
+(SSPI)
+```
+
+SSPI selects the appropriate authentication package (such as Kerberos or NTLM) based on the environment and application requirements.
+
+---
+
+# Authentication Providers
+
+```text
+Windows Application
+
+↓
+
+SSPI
+
+↓
+
+Authentication Provider
+
+├── Kerberos
+
+└── NTLM
+```
+
+This abstraction allows applications to use Windows authentication without managing protocol details.
+
+---
+
+# Credential Handling
+
+Windows protects authentication credentials using operating system security mechanisms.
+
+General recommendations:
+
+- Use strong passwords.
+- Avoid unnecessary administrative logons.
+- Protect administrator workstations.
+- Keep systems updated.
+
+---
+
+# Cached Credentials
+
+Windows can cache domain logon information.
+
+Benefits:
+
+- Supports offline sign-in.
+- Improves user experience when a Domain Controller is temporarily unavailable.
+
+Limitations:
+
+- Does not replace Domain Controller authentication for network resources.
+- Cached credentials should be protected because they relate to user authentication.
+
+---
+
+# NTLM Auditing
+
+Organizations should identify where NTLM is still used.
+
+Questions to answer:
+
+- Which servers receive NTLM authentication?
+- Which applications require NTLM?
+- Which users rely on NTLM?
+- Can these systems migrate to Kerberos?
+
+---
+
+# Enterprise Migration Strategy
+
+A phased migration reduces operational risk.
+
+```text
+Inventory
+
+↓
+
+Identify Legacy Systems
+
+↓
+
+Test Kerberos
+
+↓
+
+Pilot Migration
+
+↓
+
+Production Rollout
+
+↓
+
+Monitor
+
+↓
+
+Reduce NTLM Usage
+```
+
+---
+
+# Migration Checklist
+
+| Task | Status |
+|------|---------|
+| Inventory Applications | ✔ |
+| Identify NTLM Dependencies | ✔ |
+| Validate DNS | ✔ |
+| Validate SPNs | ✔ |
+| Test Kerberos | ✔ |
+| Monitor Authentication | ✔ |
+| Migrate in Phases | ✔ |
+
+---
+
+# Common NTLM Problems
+
+Examples include:
+
+- Incorrect password
+- Locked account
+- Disabled account
+- Domain Controller unavailable
+- Legacy application incompatibility
+- Missing DNS records affecting Kerberos negotiation
+- Incorrect SPN configuration leading to Kerberos fallback
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Authentication Failure
+
+↓
+
+User Exists?
+
+↓
+
+Account Enabled?
+
+↓
+
+Password Correct?
+
+↓
+
+Application Uses NTLM?
+
+↓
+
+Kerberos Available?
+
+↓
+
+Authentication Successful
+```
+
+---
+
+# Windows Commands
+
+---
+
+## Display Current User
+
+```powershell
+whoami
+```
+
+---
+
+## Display User Groups
+
+```powershell
+whoami /groups
+```
+
+---
+
+## Display Current Privileges
+
+```powershell
+whoami /priv
+```
+
+---
+
+## Display Kerberos Tickets
+
+```powershell
+klist
+```
+
+Although `klist` is primarily associated with Kerberos, it helps determine whether Kerberos is being used instead of NTLM.
+
+---
+
+## Verify Secure Channel
+
+```powershell
+Test-ComputerSecureChannel
+```
+
+Useful when diagnosing domain trust issues.
+
+---
+
+## Network Configuration
+
+```powershell
+ipconfig /all
+```
+
+Verify:
+
+- DNS servers
+- Domain membership
+- Network configuration
+
+---
+
+## Test Domain Controller Reachability
+
+```powershell
+nltest /dsgetdc:<DomainName>
+```
+
+Example:
+
+```powershell
+nltest /dsgetdc:contoso.com
+```
+
+This identifies a Domain Controller for the specified domain.
+
+---
+
+# Event Viewer
+
+Authentication-related events can be reviewed in:
+
+```text
+Event Viewer
+
+↓
+
+Windows Logs
+
+↓
+
+Security
+```
+
+Administrators should correlate authentication events with application and system logs when troubleshooting.
+
+---
+
+# NTLM Logging
+
+Organizations may enable auditing to understand NTLM usage.
+
+Typical goals include:
+
+- Identify applications using NTLM.
+- Detect legacy dependencies.
+- Support migration planning.
+- Investigate authentication anomalies.
+
+---
+
+# Enterprise Operations
+
+Large organizations often have:
+
+- Thousands of workstations
+- Hundreds of servers
+- Hybrid authentication environments
+- Legacy business applications
+
+A controlled reduction of NTLM usage is generally more practical than abrupt removal.
+
+---
+
+# Hybrid Example
+
+```text
+Modern Web App
+
+↓
+
+Kerberos
+```
+
+```text
+Legacy Manufacturing App
+
+↓
+
+NTLMv2
+```
+
+```text
+Cloud Identity
+
+↓
+
+Federated Authentication
+```
+
+Many enterprises operate all three simultaneously during transition periods.
+
+---
+
+# Best Practices
+
+- Prefer Kerberos whenever available.
+- Use NTLMv2 if NTLM is required.
+- Eliminate LM authentication.
+- Inventory NTLM-dependent applications.
+- Monitor authentication logs.
+- Protect administrative credentials.
+- Review authentication policies regularly.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Assuming NTLM can be disabled immediately.
+- Ignoring legacy application requirements.
+- Failing to document authentication methods.
+- Neglecting DNS and SPN configuration.
+- Leaving obsolete systems unmanaged.
+
+---
+
+# Cybersecurity Perspective
+
+Security teams should:
+
+- Track NTLM authentication trends.
+- Identify unexpected NTLM usage.
+- Reduce unnecessary legacy authentication.
+- Monitor privileged authentication.
+- Investigate repeated authentication failures.
+- Include NTLM usage in regular security reviews.
+
+Reducing NTLM usage generally improves an organization's security posture and aligns with modern Windows authentication practices.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Inventory NTLM usage in a Windows environment.
+
+### Tasks
+
+1. Identify:
+
+- Domain-joined computers
+- Workgroup computers
+
+2. Review:
+
+- Legacy applications
+- Authentication configuration
+
+3. Execute:
+
+```powershell
+whoami
+```
+
+```powershell
+whoami /groups
+```
+
+```powershell
+ipconfig /all
+```
+
+```powershell
+nltest /dsgetdc:<DomainName>
+```
+
+4. Record:
+
+- Systems using Kerberos
+- Systems using NTLM
+- Legacy dependencies
+- Potential migration candidates
+
+---
+
+# Key Takeaways
+
+- Windows prefers Kerberos and uses NTLM primarily for compatibility.
+- SSPI abstracts authentication protocol selection for applications.
+- Inventorying NTLM usage is essential before migration.
+- Proper DNS and SPN configuration helps reduce unnecessary NTLM fallback.
+- Migration should be phased and carefully monitored.
+
+---
+
+# Interview Questions
+
+1. How does Windows decide between Kerberos and NTLM?
+2. What is SSPI?
+3. Why is NTLM still used in enterprises?
+4. What tools can help troubleshoot Windows authentication?
+5. Why should organizations inventory NTLM usage?
+6. What role does DNS play in Kerberos fallback?
+7. Why is SPN configuration important?
+8. How would you plan an NTLM migration?
+9. What is the difference between local and domain authentication?
+10. Why should NTLM usage be monitored?
+
+---
+
+# References
+
+- Microsoft Learn – NTLM Overview
+- Microsoft Learn – Windows Authentication
+- Microsoft Learn – Security Support Provider Interface (SSPI)
+- Microsoft Learn – Active Directory Authentication
+- Microsoft Windows Server Documentation
+- Windows Internals
+- Microsoft Security Best Practices
+- CIS Microsoft Windows Benchmarks
+
+---
+
+**Next:** **Part 4 — NTLM Security, Defensive Monitoring, Best Practices, Final Revision, Chapter Summary, and Interview Preparation**
