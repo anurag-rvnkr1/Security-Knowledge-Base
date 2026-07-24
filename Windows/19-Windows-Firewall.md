@@ -1,183 +1,474 @@
 # 19-Windows-Firewall.md
 
-# Part 2 — Advanced Firewall Rules, Connection Security Rules, IPsec, PowerShell Firewall Management, Logging, and Enterprise Deployment
+# Part 1 — Windows Defender Firewall Fundamentals, Architecture, Profiles, Rule Processing, and Windows Filtering Platform (WFP)
 
 ---
 
 # Introduction
 
-Enterprise environments require firewall policies that go beyond simply allowing or blocking ports.
+A firewall is one of the most important security controls in any operating system.
 
-Modern Windows Firewall supports:
+**Windows Defender Firewall** is the built-in host-based firewall included with modern Windows operating systems. It monitors, filters, and controls inbound and outbound network traffic based on administrator-defined security rules.
 
-- Granular application filtering
-- User and computer-based rules
-- Interface-specific rules
-- IPsec integration
-- Authentication-based communication
-- PowerShell automation
-- Centralized deployment
-- Comprehensive logging and monitoring
-
-These capabilities allow organizations to build highly secure endpoint communication policies.
+Unlike perimeter firewalls that protect an entire network, Windows Defender Firewall protects **each individual endpoint**, making it a critical component of enterprise endpoint security.
 
 ---
 
-# Advanced Firewall Rules
+# Learning Objectives
 
-A firewall rule can contain multiple conditions.
+By the end of this section, you will understand:
 
-A rule may specify:
+- Firewall fundamentals
+- Host-based firewalls
+- Windows Defender Firewall architecture
+- Firewall profiles
+- Inbound and outbound filtering
+- Rule processing
+- Windows Filtering Platform (WFP)
+- Firewall management tools
+- Enterprise deployment concepts
 
-- Program
-- Service
-- Protocol
-- Local Port
-- Remote Port
-- Local IP Address
-- Remote IP Address
-- Network Profile
-- User
-- Computer
-- Interface Type
+---
 
-Example:
+# What is a Firewall?
+
+A firewall is a security mechanism that monitors network traffic and decides whether to allow or block communication based on predefined rules.
+
+Its primary objectives are:
+
+- Prevent unauthorized access
+- Restrict unnecessary network traffic
+- Reduce attack surface
+- Protect applications and services
+- Support compliance requirements
+
+---
+
+# Why Windows Firewall is Important
+
+Without a firewall:
 
 ```text
-Allow
+Internet
 
-Program:
-C:\Program Files\App\App.exe
+↓
 
-Protocol:
-TCP
+Computer
 
-Local Port:
-443
+↓
 
-Remote IP:
-10.20.0.0/16
-
-Profile:
-Domain
+All Traffic Allowed
 ```
+
+With Windows Defender Firewall:
+
+```text
+Internet
+
+↓
+
+Firewall
+
+↓
+
+Rule Evaluation
+
+↓
+
+Allow or Block
+
+↓
+
+Computer
+```
+
+The firewall acts as a security checkpoint for every network connection.
 
 ---
 
-# Rule Components
+# Host-Based Firewall
+
+Windows Defender Firewall is a **host-based firewall**.
+
+Unlike a network firewall:
+
+| Host Firewall | Network Firewall |
+|--------------|------------------|
+| Protects one computer | Protects many devices |
+| Installed on endpoint | Installed at network perimeter |
+| User/application aware | Network aware |
+| Granular application rules | Primarily network rules |
+
+Both are commonly used together in enterprise environments.
+
+---
+
+# Windows Defender Firewall
+
+Windows Defender Firewall provides:
+
+- Stateful packet inspection
+- Inbound filtering
+- Outbound filtering
+- Application-based rules
+- Port-based rules
+- Protocol filtering
+- Logging
+- IPsec integration
+- Group Policy management
+
+It is enabled by default in supported Windows installations.
+
+---
+
+# Windows Firewall Architecture
+
+```text
+Applications
+
+↓
+
+Windows Filtering Platform (WFP)
+
+↓
+
+Windows Defender Firewall
+
+↓
+
+Network Stack
+
+↓
+
+Network Adapter
+
+↓
+
+Network
+```
+
+Windows Filtering Platform performs packet inspection before traffic reaches applications.
+
+---
+
+# Firewall Components
+
+Major components include:
 
 | Component | Purpose |
 |-----------|----------|
-| Program | Executable path |
-| Service | Windows service |
-| Protocol | TCP, UDP, ICMP |
-| Ports | Local/Remote |
-| IP Address | Local/Remote filtering |
-| Profile | Domain, Private, Public |
-| Interface | LAN, Wi-Fi, VPN |
-| Users | Specific users |
-| Computers | Authenticated computers |
+| Windows Defender Firewall | Rule enforcement |
+| Windows Filtering Platform | Packet filtering framework |
+| Base Filtering Engine (BFE) | Filtering engine |
+| Windows Firewall Service | Firewall management |
+| Group Policy | Enterprise configuration |
 
 ---
 
-# Application-Based Filtering
+# Base Filtering Engine (BFE)
 
-Application rules identify traffic by executable rather than port.
+The **Base Filtering Engine (BFE)** is the core service responsible for:
+
+- Rule evaluation
+- Packet inspection
+- Filter management
+- Policy enforcement
+
+If the BFE service is unavailable, Windows Firewall cannot function correctly.
+
+---
+
+# Windows Firewall Service
+
+Service name:
+
+```text
+MpsSvc
+```
+
+Responsibilities:
+
+- Manage firewall rules
+- Apply firewall policies
+- Support profile switching
+- Coordinate with WFP
+
+The service should remain enabled at all times.
+
+---
+
+# Windows Filtering Platform (WFP)
+
+WFP is the underlying packet-processing framework used by Windows networking components.
+
+It enables:
+
+- Packet inspection
+- Connection filtering
+- Application filtering
+- IPsec processing
+- Security product integration
+
+Many security products integrate directly with WFP.
+
+---
+
+# WFP Architecture
+
+```text
+Network Packet
+
+↓
+
+Filtering Layers
+
+↓
+
+Callout Drivers
+
+↓
+
+Policy Engine
+
+↓
+
+Allow or Block
+```
+
+Filtering occurs at multiple stages of packet processing.
+
+---
+
+# WFP Layers
+
+Examples include:
+
+- Application Layer
+- Transport Layer
+- Network Layer
+- MAC Layer
+- Stream Layer
+- IPsec Layer
+
+Each layer provides different filtering capabilities.
+
+---
+
+# Stateful Packet Inspection (SPI)
+
+Windows Defender Firewall uses **Stateful Packet Inspection**.
+
+Instead of evaluating packets independently:
+
+```text
+Packet
+
+↓
+
+Connection State
+
+↓
+
+Rule Evaluation
+
+↓
+
+Decision
+```
+
+The firewall understands the state of network connections.
+
+---
+
+# Stateless vs Stateful
+
+| Stateless | Stateful |
+|-----------|-----------|
+| Evaluates each packet separately | Tracks connection state |
+| Limited context | Full connection awareness |
+| Simpler | More secure |
+
+Stateful inspection improves security while maintaining performance.
+
+---
+
+# Firewall Profiles
+
+Windows Firewall supports three profiles.
+
+```text
+Firewall
+
+├── Domain
+
+├── Private
+
+└── Public
+```
+
+Each profile has independent firewall rules.
+
+---
+
+# Domain Profile
+
+Used when:
+
+- Computer is joined to Active Directory
+- Connected to corporate network
+- Domain Controller is reachable
+
+Enterprise environments primarily use the Domain profile.
+
+---
+
+# Private Profile
+
+Designed for trusted networks.
+
+Examples:
+
+- Home network
+- Small office
+- Personal laboratory
+
+Allows more permissive communication than the Public profile.
+
+---
+
+# Public Profile
+
+Designed for untrusted networks.
+
+Examples:
+
+- Airport Wi-Fi
+- Hotel networks
+- Coffee shops
+- Public hotspots
+
+This profile applies the most restrictive firewall configuration.
+
+---
+
+# Profile Selection
+
+```text
+Network Detected
+
+↓
+
+Domain?
+
+↓
+
+Yes
+
+↓
+
+Domain Profile
+
+No
+
+↓
+
+Private or Public
+```
+
+Windows automatically selects the appropriate profile.
+
+---
+
+# Firewall Rule Types
+
+Common rule types include:
+
+- Program Rules
+- Port Rules
+- Protocol Rules
+- Service Rules
+- ICMP Rules
+- IP Address Rules
+- Custom Rules
+
+Rules can be combined for granular control.
+
+---
+
+# Program Rules
 
 Example:
 
 ```text
-Allow
-
 chrome.exe
 
 ↓
 
-TCP 443
-```
-
-Benefits:
-
-- More granular
-- Prevents unauthorized applications from using allowed ports
-- Easier auditing
-
----
-
-# Service-Based Filtering
-
-Instead of allowing every application:
-
-```text
-Windows Service
-
-↓
-
-Specific Service
-
-↓
-
-Firewall Rule
-```
-
-Example:
-
-- DHCP Client
-- DNS Client
-- Print Spooler
-
-This reduces unnecessary exposure.
-
----
-
-# IP Address Filtering
-
-Firewall rules may restrict communication based on:
-
-- Local IP
-- Remote IP
-- Subnet
-- IP Range
-
-Example:
-
-```text
 Allow
 
-Remote IP
+↓
 
-10.10.50.0/24
+Internet Access
 ```
 
-Only systems from the approved subnet may connect.
+Program rules identify applications by executable path.
 
 ---
 
-# Interface Types
-
-Rules may apply only to:
-
-- Ethernet
-- Wireless
-- Remote Access (VPN)
+# Port Rules
 
 Example:
 
 ```text
-Allow SMB
+TCP 3389
 
 ↓
 
-Ethernet Only
+Allow
+
+↓
+
+Remote Desktop
 ```
 
-This prevents SMB exposure on public Wi-Fi.
+Port-based filtering controls communication regardless of application.
 
 ---
 
-# Edge Traversal
+# Protocol Rules
 
-Edge Traversal determines whether traffic can pass through NAT devices.
+Examples:
+
+- TCP
+- UDP
+- ICMP
+- GRE
+
+Protocols define how network communication occurs.
+
+---
+
+# Service Rules
+
+Rules may apply to Windows services.
+
+Example:
+
+```text
+Print Spooler
+
+↓
+
+Allow Network Access
+```
+
+Service-specific rules reduce unnecessary exposure.
+
+---
+
+# Inbound Rules
+
+Inbound rules control traffic entering the computer.
 
 Example:
 
@@ -186,585 +477,347 @@ Internet
 
 ↓
 
-NAT
+Firewall
 
 ↓
 
-Edge Traversal
+Inbound Rule
 
 ↓
 
-Windows Firewall
+Allow SSH
 ```
 
-Enable only when explicitly required.
+Unsolicited inbound traffic is blocked by default unless permitted.
 
 ---
 
-# Authentication-Based Firewall Rules
+# Outbound Rules
 
-Firewall rules may require authenticated users or computers.
+Outbound rules control traffic leaving the computer.
 
 Example:
 
 ```text
-User
+Application
 
 ↓
 
-Kerberos Authentication
+Outbound Rule
 
 ↓
 
-Firewall Rule
+Internet
+```
+
+Organizations may restrict outbound communication to approved destinations.
+
+---
+
+# Firewall Rule Processing
+
+Windows evaluates firewall rules using policy precedence.
+
+Simplified workflow:
+
+```text
+Packet Arrives
 
 ↓
 
+Matching Rule?
+
+↓
+
+Yes
+
+↓
+
+Allow or Block
+
+No
+
+↓
+
+Default Action
+```
+
+The most specific applicable rule is used.
+
+---
+
+# Default Firewall Behavior
+
+Typical defaults:
+
+| Traffic | Default |
+|----------|----------|
+| Inbound | Block unless allowed |
+| Outbound | Allow unless blocked |
+
+Organizations often customize outbound policies for higher security.
+
+---
+
+# Allow Rules
+
+Allow rules explicitly permit traffic.
+
+Example:
+
+```text
 Allow
-```
 
-This prevents anonymous connections.
+TCP 443
 
----
+Program
 
-# Connection Security Rules
-
-Unlike firewall rules, Connection Security Rules do **not** directly allow or block traffic.
-
-They define how connections should be authenticated and protected.
-
-Common uses:
-
-- IPsec authentication
-- Encryption
-- Secure server communication
-
----
-
-# Connection Security Rule Types
-
-Windows supports:
-
-| Rule Type | Purpose |
-|-----------|----------|
-| Isolation | Secure communication between domain members |
-| Authentication Exemption | Exclude selected devices |
-| Server-to-Server | Secure specific servers |
-| Tunnel | Site-to-site IPsec tunnels |
-| Custom | Advanced scenarios |
-
----
-
-# IPsec Overview
-
-Internet Protocol Security (IPsec) secures IP communication.
-
-Provides:
-
-- Authentication
-- Integrity
-- Encryption
-
----
-
-# IPsec Security Services
-
-```text
-Computer A
-
-↓
-
-Authenticate
-
-↓
-
-Encrypt
-
-↓
-
-Secure Communication
-
-↓
-
-Computer B
+chrome.exe
 ```
 
 ---
 
-# IPsec Modes
+# Block Rules
 
-| Mode | Purpose |
-|------|----------|
-| Transport Mode | Protects packet payload |
-| Tunnel Mode | Protects entire IP packet |
-
----
-
-# Transport Mode
-
-```text
-Original Header
-
-↓
-
-Encrypted Payload
-```
-
-Typically used between hosts.
-
----
-
-# Tunnel Mode
-
-```text
-Entire Packet
-
-↓
-
-Encrypted
-
-↓
-
-New Header Added
-```
-
-Commonly used for VPNs and gateway-to-gateway communication.
-
----
-
-# Authentication Methods
-
-Supported methods include:
-
-- Kerberos
-- Computer Certificates
-- Pre-Shared Keys (testing only)
-
-Enterprise deployments generally prefer Kerberos or certificates.
-
----
-
-# Firewall and IPsec Integration
-
-Workflow:
-
-```text
-Packet
-
-↓
-
-Firewall Rule
-
-↓
-
-Connection Security Rule
-
-↓
-
-Authentication
-
-↓
-
-Encryption
-
-↓
-
-Transmission
-```
-
----
-
-# PowerShell Firewall Management
-
-PowerShell provides comprehensive firewall administration.
-
-Primary module:
-
-```powershell
-NetSecurity
-```
-
----
-
-# View Firewall Profiles
-
-```powershell
-Get-NetFirewallProfile
-```
-
-Displays:
-
-- Enabled status
-- Default actions
-- Logging settings
-
----
-
-# Enable Firewall
-
-```powershell
-Set-NetFirewallProfile `
--Profile Domain,Private,Public `
--Enabled True
-```
-
----
-
-# Disable Firewall (Testing Only)
-
-```powershell
-Set-NetFirewallProfile `
--Profile Public `
--Enabled False
-```
-
-Disabling the firewall should be avoided on production systems.
-
----
-
-# View Firewall Rules
-
-```powershell
-Get-NetFirewallRule
-```
-
----
-
-# Search for a Rule
-
-```powershell
-Get-NetFirewallRule `
--DisplayName "*Remote Desktop*"
-```
-
----
-
-# Create a Firewall Rule
+Block rules explicitly deny traffic.
 
 Example:
 
-```powershell
-New-NetFirewallRule `
--DisplayName "Allow HTTPS" `
--Direction Inbound `
--Protocol TCP `
--LocalPort 443 `
--Action Allow
+```text
+Block
+
+TCP 23
+
+All Programs
 ```
 
----
-
-# Remove a Rule
-
-```powershell
-Remove-NetFirewallRule `
--DisplayName "Allow HTTPS"
-```
-
----
-
-# Disable a Rule
-
-```powershell
-Disable-NetFirewallRule `
--DisplayName "Allow HTTPS"
-```
-
----
-
-# Enable a Rule
-
-```powershell
-Enable-NetFirewallRule `
--DisplayName "Allow HTTPS"
-```
-
----
-
-# Export Firewall Policy
-
-Example:
-
-```powershell
-netsh advfirewall export C:\FirewallPolicy.wfw
-```
-
-Useful before major configuration changes.
-
----
-
-# Import Firewall Policy
-
-```powershell
-netsh advfirewall import C:\FirewallPolicy.wfw
-```
+Blocking unnecessary services reduces attack surface.
 
 ---
 
 # Firewall Logging
 
-Windows Firewall can record:
+Windows Firewall can log:
 
 - Dropped packets
 - Successful connections
 - Rule activity
 
-Logging supports:
-
-- Troubleshooting
-- Incident response
-- Compliance
-- Threat hunting
+Logs assist with troubleshooting and security investigations.
 
 ---
 
-# Firewall Log Location
+# Firewall Management Tools
 
-Default location:
+Administrators manage the firewall using:
 
-```text
-%SystemRoot%\System32\LogFiles\Firewall\pfirewall.log
-```
-
----
-
-# Firewall Log Fields
-
-Typical entries include:
-
-- Date
-- Time
-- Source IP
-- Destination IP
-- Protocol
-- Port
-- Action
-
-Example:
-
-```text
-ALLOW TCP 192.168.1.25 10.0.0.10 51542 443
-```
-
----
-
-# Monitoring Firewall Activity
-
-Administrators should monitor:
-
-- Unexpected outbound traffic
-- Blocked administrative ports
-- Excessive connection attempts
-- Suspicious external IP addresses
-- Port scanning behavior
-
----
-
-# Enterprise Firewall Deployment
-
-Large organizations commonly deploy firewall policies using:
-
+- Windows Security
+- Windows Defender Firewall with Advanced Security (WFAS)
+- PowerShell
 - Group Policy
-- Microsoft Intune
-- Microsoft Configuration Manager
-- Mobile Device Management (MDM)
+- Command-line tools
 
-Centralized management ensures consistent security across endpoints.
+Enterprise environments typically automate configuration.
 
 ---
 
-# Group Policy Deployment
+# Windows Defender Firewall with Advanced Security
+
+Launch:
 
 ```text
-Administrator
-
-↓
-
-Group Policy
-
-↓
-
-Domain Controllers
-
-↓
-
-Windows Endpoints
-
-↓
-
-Firewall Updated
+wf.msc
 ```
+
+WFAS provides:
+
+- Advanced rule management
+- Profile configuration
+- Monitoring
+- Connection Security Rules
+
+It is the primary graphical administration tool.
 
 ---
 
-# Firewall Policy Lifecycle
+# Enterprise Firewall Architecture
 
 ```text
-Design
+Application
 
 ↓
 
-Test
+Windows Defender Firewall
 
 ↓
 
-Approve
+Windows Filtering Platform
 
 ↓
 
-Deploy
+Network
 
 ↓
 
-Monitor
+Enterprise Firewall
 
 ↓
 
-Review
-
-↓
-
-Update
+Internet
 ```
+
+Host-based and network firewalls complement one another.
 
 ---
 
 # Enterprise Example
 
-A financial institution deploys firewall policies that:
+A company deploys Windows Defender Firewall across 5,000 laptops.
 
-- Allow HTTPS outbound
-- Restrict RDP to IT administrators
-- Block SMB across workstation VLANs
-- Require IPsec authentication between application servers
-- Log all dropped inbound connections
+Configuration:
 
-These controls reduce lateral movement and improve auditability.
+- Domain profile enabled
+- Public profile highly restrictive
+- RDP allowed only from IT subnet
+- SMB restricted to file servers
+- Firewall rules managed via Group Policy
+
+This significantly reduces unauthorized network access.
 
 ---
 
 # Cybersecurity Perspective
 
-Proper firewall configuration helps mitigate:
+Windows Defender Firewall helps defend against:
 
-- Network reconnaissance
 - Unauthorized remote access
-- Malware command-and-control communication
 - Worm propagation
+- Port scanning
 - Lateral movement
-- Data exfiltration
+- Exploitation of exposed services
+- Malware communication
 
-Firewall logs are also valuable during incident investigations.
+Combined with endpoint detection, it forms an important defensive layer.
 
 ---
 
 # Business Impact
 
-Advanced firewall management provides:
+A properly configured firewall provides:
 
-- Improved endpoint security
-- Better regulatory compliance
 - Reduced attack surface
+- Improved regulatory compliance
+- Better endpoint security
 - Lower incident response costs
-- Consistent enterprise policy enforcement
-- Enhanced visibility into network activity
+- Reduced malware spread
+- Improved operational resilience
+
+Firewall policies directly contribute to organizational security.
 
 ---
 
 # Enterprise Best Practices
 
-- Use application-based rules whenever possible.
-- Restrict administrative ports to trusted networks.
-- Require IPsec authentication for sensitive communications.
-- Enable firewall logging on enterprise endpoints.
-- Review firewall policies regularly.
-- Remove obsolete rules.
-- Automate deployment using Group Policy or MDM.
-- Test rule changes before production rollout.
-- Document exceptions and business justifications.
-- Monitor firewall logs within the SIEM.
+- Keep Windows Defender Firewall enabled.
+- Enable all three firewall profiles.
+- Follow the principle of least privilege for network access.
+- Block unnecessary inbound ports.
+- Restrict administrative protocols.
+- Monitor firewall logs regularly.
+- Manage rules centrally using Group Policy.
+- Periodically review unused firewall rules.
+- Test firewall changes before enterprise deployment.
+- Document firewall exceptions.
 
 ---
 
 # Practical Labs
 
-## Lab 1 — List Firewall Profiles
+## Lab 1 — Open Windows Defender Firewall
 
-Run:
-
-```powershell
-Get-NetFirewallProfile
-```
-
-Record:
-
-- Enabled status
-- Default inbound action
-- Default outbound action
-
----
-
-## Lab 2 — Create a Test Rule
-
-Create an inbound rule allowing TCP port 8443.
-
-Verify that the rule appears in:
-
-```powershell
-Get-NetFirewallRule
-```
-
----
-
-## Lab 3 — Review Firewall Logs
-
-Locate:
+Launch:
 
 ```text
-%SystemRoot%\System32\LogFiles\Firewall\
+wf.msc
 ```
 
-Review recent entries and identify:
+Review:
 
-- Allowed connections
-- Blocked connections
+- Inbound Rules
+- Outbound Rules
+- Monitoring
 
 ---
 
-## Lab 4 — Export Firewall Configuration
+## Lab 2 — Review Firewall Profiles
+
+Open:
+
+```text
+Windows Defender Firewall
+
+↓
+
+Properties
+```
+
+Document:
+
+- Domain Profile
+- Private Profile
+- Public Profile
+
+---
+
+## Lab 3 — Review Existing Rules
+
+Identify:
+
+- Remote Desktop
+- File and Printer Sharing
+- Windows Management Instrumentation (WMI)
+
+Record whether they are enabled.
+
+---
+
+## Lab 4 — Verify Firewall Service
 
 Run:
 
 ```powershell
-netsh advfirewall export C:\FirewallBackup.wfw
+Get-Service MpsSvc
 ```
 
-Verify that the backup file is created.
+Confirm the service is running.
 
 ---
 
 # Key Takeaways
 
-- Advanced firewall rules support granular filtering based on applications, services, users, IP addresses, and interfaces.
-- Connection Security Rules configure IPsec authentication and encryption rather than directly allowing or blocking traffic.
-- PowerShell provides complete firewall administration through the NetSecurity module.
-- Firewall logging is essential for troubleshooting, auditing, and security investigations.
-- Centralized policy deployment ensures consistent enterprise firewall configurations.
+- Windows Defender Firewall is a host-based firewall.
+- Windows Filtering Platform performs packet filtering.
+- Base Filtering Engine evaluates firewall policies.
+- Windows supports Domain, Private, and Public firewall profiles.
+- Inbound traffic is blocked by default unless explicitly permitted.
+- Firewall rules can target applications, ports, services, and protocols.
+- Stateful packet inspection improves security by tracking connection state.
+- Enterprise organizations centrally manage firewall policies using Group Policy.
 
 ---
 
 # Interview Questions
 
-1. What is the difference between a Firewall Rule and a Connection Security Rule?
-2. What is IPsec and why is it used?
-3. Compare IPsec Transport Mode and Tunnel Mode.
-4. What PowerShell module manages Windows Firewall?
-5. How do you create a firewall rule using PowerShell?
-6. Where are Windows Firewall logs stored?
-7. Why are application-based rules generally preferred?
-8. How are firewall policies deployed across enterprise environments?
-9. What information is recorded in `pfirewall.log`?
-10. Why should firewall rules be reviewed periodically?
+1. What is Windows Defender Firewall?
+2. Explain the difference between host-based and network firewalls.
+3. What is Windows Filtering Platform (WFP)?
+4. What is the purpose of the Base Filtering Engine?
+5. Compare Domain, Private, and Public firewall profiles.
+6. What is Stateful Packet Inspection?
+7. How are inbound and outbound rules different?
+8. Why are application-based firewall rules preferred over port-only rules in many cases?
+9. What is the purpose of `wf.msc`?
+10. Why should organizations keep Windows Firewall enabled even when using a perimeter firewall?
 
 ---
 
@@ -772,11 +825,12 @@ Verify that the backup file is created.
 
 - Microsoft Learn
 - Microsoft Windows Defender Firewall Documentation
-- Microsoft NetSecurity PowerShell Module Documentation
-- Microsoft IPsec Documentation
 - Microsoft Windows Filtering Platform Documentation
+- Microsoft Base Filtering Engine Documentation
+- Microsoft Windows Security Documentation
 - NIST SP 800-41 Rev.1 (Guidelines on Firewalls and Firewall Policy)
+- *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 
 ---
 
-**Next:** **Part 3 — Firewall Troubleshooting, Security Monitoring, Enterprise Hardening, Incident Response, and Best Practices**
+**Next:** **Part 2 — Advanced Firewall Rules, Connection Security Rules, IPsec, PowerShell Firewall Management, Logging, and Enterprise Deployment**
