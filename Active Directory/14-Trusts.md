@@ -1474,4 +1474,814 @@ Discuss where a Shortcut Trust could improve authentication efficiency.
 
 ---
 
-**Next:** Part 3
+# 14-Trusts.md
+
+# Part 3 — Trust Authentication, SID History, Name Suffix Routing, Selective Authentication and Security
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Cross-Domain Authentication
+- Cross-Forest Authentication
+- SID History
+- Name Suffix Routing
+- Selective Authentication
+- SID Filtering
+- UPN Routing
+- Authentication Flow
+- Enterprise Security Considerations
+- Administrative Best Practices
+
+---
+
+# Introduction
+
+In the previous parts, we learned:
+
+- Trust Fundamentals
+- Trust Direction
+- Trust Types
+- Authentication Paths
+
+Now we will study how authentication actually works across trusts and how enterprises secure these trust relationships.
+
+---
+
+# Authentication Across a Trust
+
+Suppose we have two trusted domains:
+
+```
+Domain A
+
+⇄
+
+Domain B
+```
+
+A user from Domain A wants to access a file server in Domain B.
+
+Authentication process:
+
+```
+User
+
+↓
+
+Local Domain Controller
+
+↓
+
+Trust
+
+↓
+
+Remote Domain Controller
+
+↓
+
+Identity Verified
+
+↓
+
+Resource Server
+
+↓
+
+Authorization
+
+↓
+
+Access Granted
+```
+
+Notice that the user authenticates in their home domain first.
+
+---
+
+# Authentication Sequence
+
+The complete sequence is:
+
+```
+User Login
+
+↓
+
+Local Domain Controller
+
+↓
+
+Kerberos Ticket
+
+↓
+
+Trust Validation
+
+↓
+
+Target Domain Controller
+
+↓
+
+Resource Server
+
+↓
+
+Permission Check
+
+↓
+
+Access Decision
+```
+
+The resource server never relies solely on the trust.
+
+It also checks permissions.
+
+---
+
+# Authentication vs Resource Authorization
+
+Consider this example:
+
+```
+Trust Exists
+
+✓
+```
+
+But:
+
+```
+User
+
+↓
+
+No NTFS Permission
+
+↓
+
+Access Denied
+```
+
+A trust enables identity verification.
+
+Permissions determine what the authenticated user may access.
+
+---
+
+# Cross-Forest Authentication
+
+Example:
+
+```
+Forest A
+
+⇄
+
+Forest B
+```
+
+User:
+
+```
+Forest A
+```
+
+Resource:
+
+```
+Forest B
+```
+
+Authentication Flow:
+
+```
+User
+
+↓
+
+Forest A DC
+
+↓
+
+Forest Trust
+
+↓
+
+Forest B DC
+
+↓
+
+File Server
+
+↓
+
+Authorization
+
+↓
+
+Access Granted
+```
+
+---
+
+# Enterprise Example
+
+Company merger:
+
+```
+Alpha Corporation
+
++
+
+Beta Corporation
+```
+
+Both companies continue operating independently.
+
+```
+Alpha Forest
+
+⇄
+
+Beta Forest
+```
+
+Employees authenticate using their existing accounts while accessing approved shared resources.
+
+---
+
+# Security Identifier (SID)
+
+Every security principal receives a unique:
+
+```
+SID
+```
+
+Example:
+
+```
+User
+
+↓
+
+SID
+
+↓
+
+S-1-5-21-...
+```
+
+Windows uses the SID—not the username—to determine permissions.
+
+---
+
+# Why SID Matters
+
+Two users may have identical names:
+
+```
+John Smith
+
+Domain A
+```
+
+```
+John Smith
+
+Domain B
+```
+
+Their SIDs remain different.
+
+```
+SID A
+
+≠
+
+SID B
+```
+
+This guarantees unique identity within Windows security.
+
+---
+
+# What is SID History?
+
+During migrations,
+
+users may move from one domain to another.
+
+Instead of losing access,
+
+Windows can preserve previous SIDs.
+
+Example:
+
+```
+Old Domain SID
+
+↓
+
+Stored
+
+↓
+
+SID History
+
+↓
+
+New Domain Account
+```
+
+This allows access to resources that still reference the old SID.
+
+---
+
+# Migration Example
+
+Before migration:
+
+```
+Domain A
+
+↓
+
+Alice
+
+↓
+
+SID A
+```
+
+After migration:
+
+```
+Domain B
+
+↓
+
+Alice
+
+↓
+
+SID B
+
++
+
+SID History (SID A)
+```
+
+Resources that still grant permissions to SID A remain accessible.
+
+---
+
+# Benefits of SID History
+
+- Simplifies domain migrations
+- Reduces permission changes
+- Minimizes downtime
+- Preserves access during transition
+- Supports phased migration projects
+
+---
+
+# SID History Risks
+
+Although useful,
+
+SID History can also increase security risk if abused.
+
+Potential concerns include:
+
+- Unauthorized privilege inheritance
+- Retention of obsolete permissions
+- Migration errors
+- Poor cleanup after migration
+
+Organizations should periodically review and remove unnecessary SID History entries.
+
+---
+
+# SID Filtering
+
+To reduce trust-related risks,
+
+Windows supports:
+
+```
+SID Filtering
+```
+
+Purpose:
+
+Prevent unauthorized or unexpected SIDs from crossing trust boundaries.
+
+```
+Incoming Authentication
+
+↓
+
+SID Validation
+
+↓
+
+Unexpected SID?
+
+↓
+
+Reject
+```
+
+SID Filtering is especially important for trusts with external organizations.
+
+---
+
+# Name Suffix Routing
+
+In Forest Trusts,
+
+users may log on using:
+
+```
+user@company.com
+```
+
+instead of:
+
+```
+DOMAIN\User
+```
+
+The suffix:
+
+```
+@company.com
+```
+
+must be routed to the correct forest.
+
+This is called:
+
+**Name Suffix Routing**
+
+---
+
+# Example
+
+```
+Forest A
+
+corp.example.com
+```
+
+User:
+
+```
+alice@corp.example.com
+```
+
+The trusting forest recognizes the suffix and forwards authentication appropriately.
+
+---
+
+# User Principal Name (UPN)
+
+A User Principal Name is a user-friendly logon name.
+
+Example:
+
+```
+alice@corp.example.com
+```
+
+instead of:
+
+```
+CORP\alice
+```
+
+Benefits:
+
+- Easier to remember
+- Similar to an email address
+- Common in Microsoft 365 and hybrid identity environments
+
+---
+
+# Selective Authentication
+
+By default,
+
+trusted users may authenticate to eligible resources according to permissions.
+
+For stronger security,
+
+administrators can configure:
+
+```
+Selective Authentication
+```
+
+Instead of allowing authentication everywhere,
+
+each server explicitly controls which trusted users may authenticate.
+
+---
+
+# Standard Authentication
+
+```
+Trusted Domain
+
+↓
+
+Any Eligible Server
+
+↓
+
+Authentication Allowed
+```
+
+---
+
+# Selective Authentication
+
+```
+Trusted Domain
+
+↓
+
+Server A
+
+✓ Allowed
+
+Server B
+
+✗ Not Allowed
+
+Server C
+
+✓ Allowed
+```
+
+Only designated servers accept authentication from trusted users.
+
+---
+
+# Advantages of Selective Authentication
+
+- Better security
+- Reduced attack surface
+- Greater administrative control
+- Suitable for partner organizations
+- Supports least privilege
+
+---
+
+# Enterprise Scenario
+
+A company partners with an external vendor.
+
+```
+Vendor Forest
+
+⇄
+
+Corporate Forest
+```
+
+The vendor should access only:
+
+```
+Project Portal
+```
+
+Not:
+
+- HR Systems
+- Finance Servers
+- Domain Controllers
+- Administrative Workstations
+
+Selective Authentication enforces this restriction.
+
+---
+
+# Cross-Trust Authentication Diagram
+
+```
+User
+
+↓
+
+Home Domain
+
+↓
+
+Kerberos Ticket
+
+↓
+
+Trust Validation
+
+↓
+
+Target Domain
+
+↓
+
+Server
+
+↓
+
+Authorization
+
+↓
+
+Resource Access
+```
+
+---
+
+# Enterprise Trust Architecture
+
+```
+                    Forest A
+
+         ┌────────────┼────────────┐
+
+         ▼            ▼            ▼
+
+     Domain A1    Domain A2    Domain A3
+
+               │
+
+               │ Forest Trust
+
+               ▼
+
+                    Forest B
+
+         ┌────────────┼────────────┐
+
+         ▼            ▼            ▼
+
+     Domain B1    Domain B2    Domain B3
+```
+
+Authentication occurs only through established trust relationships.
+
+---
+
+# Cybersecurity Perspective
+
+Trusts are powerful but introduce security considerations.
+
+Security teams should:
+
+- Review trust relationships regularly.
+- Remove unnecessary trusts.
+- Enable SID Filtering where appropriate.
+- Limit SID History after migration projects.
+- Use Selective Authentication for external organizations.
+- Monitor cross-domain authentication activity.
+- Audit privileged accounts across trust boundaries.
+
+Proper trust management helps reduce opportunities for unauthorized lateral movement.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore trust security concepts.
+
+### Step 1
+
+Open:
+
+```
+Active Directory Domains and Trusts
+```
+
+---
+
+### Step 2
+
+Select an existing trust.
+
+Review:
+
+- Direction
+- Transitivity
+- Authentication settings
+
+---
+
+### Step 3
+
+Document:
+
+- Trust type
+- Authentication scope
+- Administrative purpose
+
+---
+
+### Step 4
+
+Research:
+
+- SID History
+- SID Filtering
+- Selective Authentication
+
+Discuss where each would be appropriate in your environment.
+
+---
+
+### Step 5
+
+Draw the authentication flow between two trusted domains.
+
+---
+
+# Interview Questions
+
+### Q1: What is SID History?
+
+**Answer:** SID History stores previous SIDs on a migrated account so it can continue accessing resources that still reference the old SID.
+
+---
+
+### Q2: Why is SID History useful?
+
+**Answer:** It simplifies domain migrations by preserving access to existing resources during transition.
+
+---
+
+### Q3: What is SID Filtering?
+
+**Answer:** SID Filtering helps prevent unexpected or unauthorized SIDs from being accepted across trust boundaries.
+
+---
+
+### Q4: What is Selective Authentication?
+
+**Answer:** A trust configuration that allows administrators to explicitly choose which servers trusted users may authenticate to.
+
+---
+
+### Q5: What is a UPN?
+
+**Answer:** A User Principal Name is a user-friendly logon name in the format `user@domain`.
+
+---
+
+### Q6: Does a trust automatically provide authorization?
+
+**Answer:** No. Trusts provide authentication. Authorization is still determined by permissions on the target resource.
+
+---
+
+# Best Practices
+
+- Enable Selective Authentication for external partner forests where appropriate.
+- Review SID History after migration projects.
+- Enable SID Filtering on applicable trusts.
+- Document all trust relationships and their business purpose.
+- Monitor cross-forest authentication events.
+- Remove obsolete trusts after acquisitions or migrations.
+
+---
+
+# Common Mistakes
+
+- Assuming trust equals unrestricted access.
+- Leaving SID History indefinitely after migrations.
+- Forgetting to enable SID Filtering where appropriate.
+- Creating permanent trusts for temporary business projects.
+- Failing to audit trust configurations regularly.
+
+---
+
+# Key Takeaways
+
+- Trusts allow authentication across domains and forests.
+- SIDs uniquely identify security principals.
+- SID History supports domain migrations.
+- SID Filtering strengthens trust security.
+- Selective Authentication restricts authentication to approved servers.
+- Proper trust management is essential for secure enterprise Active Directory environments.
+
+---
+
+**Next:** Part 4
