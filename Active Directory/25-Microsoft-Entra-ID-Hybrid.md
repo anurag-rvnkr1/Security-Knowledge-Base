@@ -1124,4 +1124,605 @@ Create a governance checklist for reviewing synchronization health, user provisi
 
 ---
 
-**Next:** Part 3
+# 25-Microsoft-Entra-ID-Hybrid.md
+
+# Part 3 — Conditional Access, Multi-Factor Authentication, Device Identity, Identity Governance, Monitoring and Enterprise Security
+
+> **Important Note**
+>
+> This section focuses on the **security capabilities** of Microsoft Entra ID in hybrid environments. It explains how organizations strengthen identity security using Conditional Access, Multi-Factor Authentication (MFA), device identity, identity governance, monitoring, and Zero Trust principles. It does **not** include offensive procedures or exploitation guidance.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Conditional Access
+- Multi-Factor Authentication (MFA)
+- Device Identity
+- Hybrid Device Management
+- Identity Governance
+- Privileged Identity Protection
+- Identity Monitoring
+- Zero Trust
+- Enterprise Best Practices
+
+---
+
+# Identity as the New Security Perimeter
+
+Traditional security focused primarily on protecting networks.
+
+Modern enterprises focus on protecting:
+
+```
+Identity
+
+↓
+
+Authentication
+
+↓
+
+Device
+
+↓
+
+Application
+
+↓
+
+Data
+```
+
+Identity has become the primary control point for enterprise security.
+
+---
+
+# Zero Trust Identity Model
+
+Zero Trust assumes that no user, device, or application is automatically trusted.
+
+```
+Access Request
+
+↓
+
+Verify Identity
+
+↓
+
+Verify Device
+
+↓
+
+Evaluate Policies
+
+↓
+
+Assess Risk
+
+↓
+
+Grant or Deny Access
+```
+
+Verification occurs every time access is requested.
+
+---
+
+# Conditional Access
+
+Conditional Access evaluates multiple factors before making an access decision.
+
+Examples include:
+
+- User identity
+- Device compliance
+- Geographic location
+- Application being accessed
+- Sign-in risk
+- Organizational policies
+
+Access decisions are based on predefined organizational rules.
+
+---
+
+# High-Level Conditional Access Flow
+
+```
+User Requests Access
+
+↓
+
+Authentication
+
+↓
+
+Policy Evaluation
+
+↓
+
+Conditions Satisfied?
+
+│
+
+├── Yes
+
+│      ↓
+
+│ Grant Access
+
+│
+
+└── No
+
+       ↓
+
+Additional Verification or Access Denied
+```
+
+Conditional Access helps organizations balance usability with security.
+
+---
+
+# Common Conditional Access Scenarios
+
+Organizations commonly require additional verification when:
+
+- Accessing sensitive applications
+- Signing in from unfamiliar locations
+- Using unmanaged devices
+- Performing administrative activities
+- Accessing business-critical resources
+
+Policies should align with business and risk requirements.
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+MFA strengthens authentication by requiring more than one factor.
+
+Common authentication factors include:
+
+| Factor Type | Example |
+|-------------|----------|
+| Something you know | Password or PIN |
+| Something you have | Authenticator app or security key |
+| Something you are | Fingerprint or facial recognition |
+
+Combining factors significantly improves authentication security.
+
+---
+
+# MFA Workflow
+
+```
+User Sign-In
+
+↓
+
+Password Verification
+
+↓
+
+Additional Authentication Factor
+
+↓
+
+Identity Verified
+
+↓
+
+Access Granted
+```
+
+MFA helps reduce the risk of unauthorized access resulting from compromised passwords.
+
+---
+
+# Device Identity
+
+Modern security also evaluates the device requesting access.
+
+```
+Managed Device
+
+↓
+
+Compliance Evaluation
+
+↓
+
+Identity Verified
+
+↓
+
+Access Decision
+```
+
+Organizations can define policies that consider device status during authentication.
+
+---
+
+# Device States (Conceptual)
+
+Examples include:
+
+- Organization-managed devices
+- Personally owned devices (where permitted)
+- Hybrid-joined devices
+- Cloud-joined devices
+
+Device management policies vary according to organizational requirements.
+
+---
+
+# Hybrid Device Integration
+
+```
+Windows Device
+
+↓
+
+Active Directory
+
+↓
+
+Microsoft Entra ID
+
+↓
+
+Management Policies
+
+↓
+
+Enterprise Applications
+```
+
+Hybrid device identity provides a consistent management experience across environments.
+
+---
+
+# Identity Governance
+
+Identity governance ensures users have appropriate access throughout their lifecycle.
+
+Governance activities include:
+
+- User provisioning
+- Access reviews
+- Group membership reviews
+- Administrative approval workflows
+- Role validation
+- Deprovisioning
+
+Governance supports least privilege and regulatory compliance.
+
+---
+
+# Identity Lifecycle Governance
+
+```
+Hire
+
+↓
+
+Provision Identity
+
+↓
+
+Assign Access
+
+↓
+
+Periodic Review
+
+↓
+
+Role Changes
+
+↓
+
+Access Updated
+
+↓
+
+Departure
+
+↓
+
+Access Removed
+```
+
+Identity should evolve with the user's role in the organization.
+
+---
+
+# Privileged Identity Protection
+
+Administrative accounts require additional oversight.
+
+Recommended practices include:
+
+- Separate administrative accounts
+- Least privilege
+- MFA for administrators
+- Regular access reviews
+- Strong auditing
+- Time-limited administrative access (where supported)
+
+Protecting privileged identities significantly reduces enterprise risk.
+
+---
+
+# Identity Monitoring
+
+Organizations should monitor:
+
+- Sign-in activity
+- Authentication failures
+- Administrative changes
+- Identity lifecycle events
+- Policy modifications
+- Device compliance
+
+Monitoring improves visibility and supports timely incident response.
+
+---
+
+# Security Dashboard
+
+Example identity dashboard:
+
+```
+Identity Security
+
+↓
+
+Authentication Activity
+
+↓
+
+Conditional Access
+
+↓
+
+MFA Adoption
+
+↓
+
+Device Compliance
+
+↓
+
+Administrative Changes
+
+↓
+
+Governance Reviews
+```
+
+Dashboards help operational teams measure identity security posture.
+
+---
+
+# Enterprise Security Workflow
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Conditional Access
+
+↓
+
+MFA
+
+↓
+
+Device Evaluation
+
+↓
+
+Identity Governance
+
+↓
+
+Application Access
+```
+
+Multiple security controls work together to protect enterprise resources.
+
+---
+
+# Enterprise Example
+
+## Company
+
+```
+Adventure Works Insurance
+```
+
+Environment:
+
+- 40,000 Employees
+- Hybrid Active Directory
+- Microsoft Entra ID
+- Microsoft 365
+- Remote Workforce
+
+Security Improvements:
+
+- Organization-wide MFA
+- Conditional Access policies
+- Device compliance checks
+- Quarterly access reviews
+- Privileged account governance
+- Centralized identity monitoring
+
+Results:
+
+- Improved authentication security
+- Better visibility into identity activity
+- Stronger governance
+- Reduced administrative risk
+- Enhanced compliance readiness
+
+---
+
+# Cybersecurity Perspective
+
+Modern identity security extends beyond passwords.
+
+Organizations should combine:
+
+- Conditional Access
+- Multi-Factor Authentication
+- Device compliance
+- Identity governance
+- Continuous monitoring
+- Least privilege
+- Zero Trust principles
+
+Together, these controls create a layered defense that protects both users and enterprise resources.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Design a secure hybrid identity architecture using Microsoft Entra ID.
+
+### Step 1
+
+Identify:
+
+- Users
+- Devices
+- Applications
+- Administrators
+- Cloud services
+
+---
+
+### Step 2
+
+Design Conditional Access policies for:
+
+- Standard users
+- Administrators
+- Remote workers
+- High-value applications
+
+---
+
+### Step 3
+
+Create an MFA rollout plan for all employees.
+
+---
+
+### Step 4
+
+Design an identity governance process covering:
+
+- User onboarding
+- Access reviews
+- Role changes
+- Employee departures
+
+---
+
+### Step 5
+
+Develop a monitoring dashboard with metrics for:
+
+- Authentication activity
+- MFA adoption
+- Device compliance
+- Identity governance
+- Administrative actions
+
+---
+
+# Interview Questions
+
+### Q1: What is Conditional Access?
+
+**Answer:** Conditional Access is a policy-based capability that evaluates factors such as user identity, device status, location, and risk before granting or denying access to resources.
+
+---
+
+### Q2: Why is MFA important?
+
+**Answer:** MFA requires multiple authentication factors, significantly reducing the risk of unauthorized access if a password is compromised.
+
+---
+
+### Q3: Why does device identity matter?
+
+**Answer:** Device identity allows organizations to evaluate the security and compliance status of devices before permitting access to enterprise resources.
+
+---
+
+### Q4: What is identity governance?
+
+**Answer:** Identity governance is the process of managing user identities, permissions, access reviews, and lifecycle events to ensure appropriate access throughout a user's employment.
+
+---
+
+### Q5: Why should privileged accounts receive additional protection?
+
+**Answer:** Privileged accounts have elevated permissions, making them high-value targets that require stronger authentication, governance, and monitoring.
+
+---
+
+### Q6: How does Zero Trust improve identity security?
+
+**Answer:** Zero Trust continuously verifies users, devices, and policies before granting access instead of assuming trust based on network location or prior authentication.
+
+---
+
+# Best Practices
+
+- Require MFA for all privileged accounts.
+- Implement Conditional Access based on organizational risk.
+- Monitor authentication activity continuously.
+- Perform periodic access reviews.
+- Apply least privilege to all identities.
+- Enforce device compliance policies.
+- Document identity governance processes.
+- Regularly review administrative permissions.
+
+---
+
+# Common Mistakes
+
+- Relying solely on passwords.
+- Applying identical policies to all users regardless of risk.
+- Ignoring device compliance.
+- Delaying access removal after employee departures.
+- Neglecting administrative account reviews.
+- Treating identity governance as an annual activity instead of a continuous process.
+
+---
+
+# Key Takeaways
+
+- Identity is the primary security perimeter in modern enterprises.
+- Conditional Access and MFA significantly strengthen authentication security.
+- Device identity and governance improve trust decisions.
+- Continuous monitoring and Zero Trust principles enhance the security of hybrid identity environments.
+
+---
+
+**Next:** Part 4
