@@ -1,0 +1,654 @@
+# 12-Active-Directory-Trusts.md
+
+# Part 1 — Introduction to Active Directory Trusts, Authentication Across Domains, Trust Architecture, and Enterprise Fundamentals
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand what an Active Directory Trust is.
+- Learn why trusts are required.
+- Understand authentication across domains.
+- Learn trust terminology.
+- Understand trust architecture.
+- Differentiate authentication from authorization.
+- Prepare for advanced trust concepts.
+
+---
+
+# Introduction
+
+Large organizations often have multiple:
+
+- Domains
+- Forests
+- Business units
+- Geographic regions
+
+Example:
+
+```text
+Company Forest
+
+│
+
+├── india.company.com
+
+├── europe.company.com
+
+├── usa.company.com
+
+└── japan.company.com
+```
+
+Even though these domains belong to the same organization, users frequently need access to resources located outside their own domain.
+
+Active Directory solves this problem using **Trust Relationships**.
+
+---
+
+# What is an Active Directory Trust?
+
+An **Active Directory Trust** is a secure relationship between two domains or forests that allows authentication requests to be accepted across administrative boundaries.
+
+A trust does **not** automatically grant access to resources.
+
+Instead, it allows one domain to **recognize and validate** identities from another trusted domain.
+
+---
+
+# Simple Example
+
+Suppose:
+
+```text
+Domain A
+
+↓
+
+Alice
+```
+
+Needs access to:
+
+```text
+Domain B
+
+↓
+
+File Server
+```
+
+Without a trust:
+
+```text
+Alice
+
+↓
+
+Authentication Request
+
+↓
+
+Rejected
+```
+
+With a trust:
+
+```text
+Alice
+
+↓
+
+Authentication Request
+
+↓
+
+Domain B
+
+↓
+
+Trusts Domain A
+
+↓
+
+Authentication Accepted
+```
+
+---
+
+# Real-World Analogy
+
+Imagine two companies.
+
+Company A issues employee ID cards.
+
+Company B decides:
+
+> "We trust Company A's identity verification process."
+
+Employees from Company A can now enter Company B's office after verification.
+
+However, they still need permission to enter specific rooms.
+
+Trust verifies **identity**, not **permission**.
+
+---
+
+# Authentication vs Authorization
+
+One of the most misunderstood Active Directory concepts is the difference between authentication and authorization.
+
+Authentication answers:
+
+> Who are you?
+
+Authorization answers:
+
+> What are you allowed to access?
+
+---
+
+# Example
+
+User:
+
+```text
+Rahul
+```
+
+Authentication:
+
+```text
+Username
+
+↓
+
+Password
+
+↓
+
+Verified
+```
+
+Authorization:
+
+```text
+Can Rahul Access
+
+Finance Share?
+
+↓
+
+Yes / No
+```
+
+Trusts participate in **authentication**, while permissions and Access Control Lists (ACLs) determine **authorization**.
+
+---
+
+# Why Trusts Are Needed
+
+Without trusts:
+
+```text
+India Domain
+
+↓
+
+Cannot Validate
+
+Europe User
+```
+
+Every domain would require:
+
+- Separate accounts
+- Duplicate administration
+- Duplicate passwords
+- Duplicate permissions
+
+This quickly becomes difficult to manage.
+
+---
+
+# With Trusts
+
+```text
+India Domain
+
+↓
+
+Trust
+
+↓
+
+Europe Domain
+
+↓
+
+Authentication Works
+```
+
+Users maintain a single identity while accessing authorized resources across trusted domains.
+
+---
+
+# Enterprise Example
+
+Organization:
+
+```text
+GlobalTech
+
+│
+
+├── india.globaltech.com
+
+├── europe.globaltech.com
+
+├── usa.globaltech.com
+
+└── japan.globaltech.com
+```
+
+Employee:
+
+```text
+Emma
+
+↓
+
+Europe Domain
+```
+
+Needs access to:
+
+```text
+Engineering Wiki
+
+↓
+
+India Domain
+```
+
+Instead of creating another account:
+
+```text
+Trust
+
+↓
+
+Authentication
+
+↓
+
+ACL Verification
+
+↓
+
+Access Granted
+```
+
+---
+
+# Trust Architecture
+
+```text
+Domain A
+
+←──── Trust ────→
+
+Domain B
+```
+
+The trust relationship enables authentication requests to travel securely between domains.
+
+---
+
+# What Happens During Authentication?
+
+Example:
+
+```text
+User
+
+↓
+
+Logs Into
+
+Domain A
+```
+
+Later:
+
+```text
+Access Resource
+
+↓
+
+Domain B
+```
+
+Workflow:
+
+```text
+Domain B
+
+↓
+
+Trusts Domain A
+
+↓
+
+Authentication Verified
+
+↓
+
+Authorization Checked
+
+↓
+
+Resource Access
+```
+
+---
+
+# Identity Remains in the Home Domain
+
+The user's account always belongs to its original domain.
+
+Example:
+
+```text
+User
+
+↓
+
+india.company.com
+```
+
+Accessing:
+
+```text
+europe.company.com
+```
+
+The account is **not copied** into Europe.
+
+Instead:
+
+```text
+Europe Domain
+
+↓
+
+Trusts
+
+↓
+
+India Domain
+
+↓
+
+Identity Verified
+```
+
+---
+
+# Trust Does Not Mean Full Access
+
+A common misconception:
+
+```text
+Trust Exists
+
+↓
+
+Everything Accessible
+```
+
+Incorrect.
+
+Actual workflow:
+
+```text
+Trust
+
+↓
+
+Authentication
+
+↓
+
+ACL Evaluation
+
+↓
+
+Access Decision
+```
+
+Permissions are still enforced.
+
+---
+
+# Benefits of Trusts
+
+Trusts provide:
+
+- Centralized identity
+- Reduced administrative overhead
+- Single user account
+- Cross-domain authentication
+- Improved scalability
+- Better resource sharing
+- Simplified administration
+
+---
+
+# Common Scenarios
+
+Trusts are commonly used for:
+
+- Multi-domain forests
+- Company mergers
+- Acquisitions
+- Business partnerships
+- Resource forests
+- Enterprise application access
+
+---
+
+# Trust Components
+
+Every trust relationship involves:
+
+- Trusting domain
+- Trusted domain
+- Authentication path
+- Security boundary
+- Access control
+
+Together, these define how identities are validated across domains.
+
+---
+
+# Example Authentication Flow
+
+```text
+User
+
+↓
+
+Home Domain
+
+↓
+
+Requests File
+
+↓
+
+Remote Domain
+
+↓
+
+Trust Verification
+
+↓
+
+Permission Check
+
+↓
+
+Access Granted
+```
+
+---
+
+# Forest Example
+
+```text
+Forest
+
+│
+
+├── HR Domain
+
+├── Finance Domain
+
+├── IT Domain
+
+└── Sales Domain
+```
+
+An HR employee can access an IT application only if:
+
+- Authentication succeeds through trust.
+- Authorization permits access.
+
+---
+
+# Why Trusts Improve Security
+
+Without trusts:
+
+Organizations often create duplicate accounts.
+
+Problems include:
+
+- Password inconsistencies
+- Forgotten accounts
+- Excessive permissions
+- Increased attack surface
+
+Trusts help reduce unnecessary identity duplication.
+
+---
+
+# Enterprise Benefits
+
+Large organizations gain:
+
+- Easier identity management
+- Lower administrative costs
+- Better user experience
+- Centralized authentication
+- Improved scalability
+- Consistent security model
+
+---
+
+# Cybersecurity Perspective
+
+Trust relationships are security-sensitive because they extend authentication between security boundaries.
+
+Security teams should:
+
+- Regularly review trust relationships.
+- Remove unused trusts.
+- Monitor authentication across trusts.
+- Audit privileged access.
+- Document trust architecture.
+- Apply least privilege.
+
+Poorly managed trusts can expand the impact of a compromised account.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Confusing authentication with authorization.
+- Assuming trusts automatically grant permissions.
+- Creating unnecessary trusts.
+- Forgetting to document trust relationships.
+- Ignoring trust security during mergers or acquisitions.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore trust relationships.
+
+### Tasks
+
+1. Open:
+
+```text
+Active Directory Domains and Trusts
+```
+
+2. Select your domain.
+
+3. Open:
+
+```text
+Properties
+
+↓
+
+Trusts Tab
+```
+
+4. Record:
+
+- Existing trusts
+- Trust direction
+- Trust type
+- Trusted domains
+
+5. Draw a simple trust diagram for your environment.
+
+---
+
+# Interview Questions
+
+1. What is an Active Directory Trust?
+2. Why are trusts required?
+3. What is the difference between authentication and authorization?
+4. Does a trust automatically grant access?
+5. What happens when a user accesses a resource in another trusted domain?
+6. Why are duplicate user accounts discouraged?
+7. What are common enterprise use cases for trusts?
+8. Which Microsoft console is commonly used to manage trusts?
+9. Why are trust relationships considered security-sensitive?
+10. What information should administrators document about trusts?
+
+---
+
+# Key Takeaways
+
+- Active Directory Trusts allow domains or forests to recognize and authenticate identities across security boundaries.
+- Trusts enable authentication but do **not** automatically grant authorization to resources.
+- Users retain a single identity in their home domain while accessing authorized resources in trusted domains.
+- Properly designed trusts simplify administration and improve scalability in multi-domain and multi-forest environments.
+- Trust relationships should be carefully planned, documented, monitored, and secured.
+
+---
+
+**Next:** Part 2
