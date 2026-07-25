@@ -1213,4 +1213,643 @@ Prepare a prioritized remediation plan to strengthen identity protection.
 
 ---
 
-**Next:** Part 3
+# 20-AD-Defense-and-Hardening.md
+
+# Part 3 — Domain Controller Hardening, Network Security, Monitoring, Patch Management, Backup Strategy and Enterprise Defensive Operations
+
+> **Important Note**
+>
+> This section focuses on **enterprise defensive practices** for protecting Active Directory infrastructure. All recommendations are intended for securing production environments and improving operational resilience.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Domain Controller Hardening
+- Network Segmentation
+- Secure DNS Configuration
+- Time Synchronization Security
+- Patch and Vulnerability Management
+- Security Monitoring
+- SIEM Integration
+- Backup and Recovery Strategy
+- Enterprise Defensive Operations
+
+---
+
+# Introduction
+
+Domain Controllers are the **most critical systems** in an Active Directory environment.
+
+They perform:
+
+- Authentication
+- Authorization
+- Directory Services
+- Group Policy Distribution
+- Kerberos Services
+- LDAP Services
+- Replication
+- DNS (commonly)
+
+Because every user and computer depends on Domain Controllers, they must receive the strongest security protections.
+
+---
+
+# Domain Controller Security Model
+
+```
+                 Domain Controller
+
+                        │
+
+        ┌───────────────┼────────────────┐
+
+        ▼               ▼                ▼
+
+Authentication     Directory Data      DNS
+
+        ▼               ▼                ▼
+
+Kerberos          NTDS Database     Replication
+
+                        │
+
+                        ▼
+
+              Enterprise Identity
+```
+
+---
+
+# Domain Controller Hardening
+
+Recommended practices include:
+
+- Install only required server roles.
+- Remove unnecessary software.
+- Apply security baselines.
+- Restrict interactive logons.
+- Enable Windows Firewall.
+- Enable advanced auditing.
+- Restrict Remote Desktop access.
+- Monitor privileged activity.
+
+Domain Controllers should perform only functions required for directory services.
+
+---
+
+# Administrative Access Protection
+
+Only authorized administrators should manage Domain Controllers.
+
+```
+Administrator
+
+↓
+
+Dedicated Admin Account
+
+↓
+
+Privileged Access Workstation
+
+↓
+
+Domain Controller
+
+↓
+
+Administrative Session
+```
+
+Routine productivity activities should never occur on Domain Controllers.
+
+---
+
+# Domain Controller Security Checklist
+
+```
+✓ Latest Security Updates
+
+✓ Windows Firewall Enabled
+
+✓ Advanced Auditing Enabled
+
+✓ Time Synchronization Verified
+
+✓ Security Baseline Applied
+
+✓ Administrative Access Restricted
+
+✓ Antivirus / EDR Enabled
+
+✓ Backups Verified
+
+✓ Logging Operational
+```
+
+---
+
+# Network Segmentation
+
+Identity infrastructure should be separated from general-purpose networks.
+
+```
+Users
+
+↓
+
+Corporate LAN
+
+↓
+
+Administrative Network
+
+↓
+
+Tier-0 Network
+
+↓
+
+Domain Controllers
+```
+
+Benefits include:
+
+- Reduced lateral movement opportunities
+- Improved monitoring
+- Stronger access control
+- Better isolation of critical assets
+
+---
+
+# Secure DNS
+
+DNS is essential for Active Directory functionality.
+
+Recommended controls:
+
+- Restrict DNS administration.
+- Enable secure dynamic updates where appropriate.
+- Monitor DNS configuration changes.
+- Back up DNS zones regularly.
+- Audit administrative changes.
+
+Improper DNS configuration can disrupt authentication and directory operations.
+
+---
+
+# Time Synchronization
+
+Kerberos requires accurate time synchronization.
+
+```
+Authoritative Time Source
+
+↓
+
+PDC Emulator
+
+↓
+
+Other Domain Controllers
+
+↓
+
+Member Servers
+
+↓
+
+Client Computers
+```
+
+Monitor for:
+
+- Time drift
+- Synchronization failures
+- Misconfigured time sources
+
+---
+
+# Patch Management
+
+Keeping systems updated is a fundamental defensive practice.
+
+Patch management lifecycle:
+
+```
+Identify Updates
+
+↓
+
+Risk Assessment
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Verification
+
+↓
+
+Documentation
+```
+
+Organizations should balance timely patching with operational stability through appropriate testing and change management.
+
+---
+
+# Vulnerability Management
+
+Vulnerability management is an ongoing process.
+
+```
+Asset Inventory
+
+↓
+
+Scan
+
+↓
+
+Risk Prioritization
+
+↓
+
+Remediation
+
+↓
+
+Validation
+
+↓
+
+Continuous Monitoring
+```
+
+Not all vulnerabilities carry the same level of risk; prioritize remediation based on business impact and exploitability.
+
+---
+
+# Security Monitoring
+
+Continuous monitoring provides visibility into Active Directory health and security.
+
+Monitor for:
+
+- Administrative logons
+- Group membership changes
+- Authentication failures
+- Domain Controller health
+- Replication status
+- DNS changes
+- GPO modifications
+- Service failures
+
+---
+
+# Enterprise Monitoring Architecture
+
+```
+Domain Controllers
+
+↓
+
+Windows Event Logs
+
+↓
+
+Windows Event Forwarding
+
+↓
+
+SIEM Platform
+
+↓
+
+Correlation Rules
+
+↓
+
+SOC Analysts
+
+↓
+
+Incident Response
+```
+
+Centralized monitoring improves detection and investigation capabilities.
+
+---
+
+# Logging Strategy
+
+Critical log categories include:
+
+| Log Category | Example Purpose |
+|--------------|-----------------|
+| Security | Authentication and authorization |
+| System | Service health |
+| Directory Service | AD operations |
+| DNS Server | Name resolution |
+| Group Policy | Policy processing |
+| Application | Server-specific events |
+
+Logs should be retained according to organizational policy and regulatory requirements.
+
+---
+
+# Backup Strategy
+
+A reliable backup strategy is essential for recovery.
+
+Critical components:
+
+- System State
+- NTDS Database
+- SYSVOL
+- DNS Configuration
+- Group Policy Objects
+- Certificate Services (if deployed)
+
+```
+Domain Controller
+
+↓
+
+System State Backup
+
+↓
+
+Secure Storage
+
+↓
+
+Integrity Verification
+
+↓
+
+Recovery Testing
+```
+
+---
+
+# Recovery Readiness
+
+Organizations should periodically validate:
+
+- Backup integrity
+- Restore procedures
+- Recovery documentation
+- Administrative contacts
+- Disaster recovery plans
+
+Testing ensures recovery procedures remain effective.
+
+---
+
+# Security Baseline Validation
+
+```
+Approved Baseline
+
+↓
+
+Configuration Review
+
+↓
+
+Compliance Check
+
+↓
+
+Deviation Detected?
+
+      │
+
+      ├── No → Continue Monitoring
+
+      │
+
+      └── Yes → Remediation
+```
+
+Configuration drift should be investigated and corrected.
+
+---
+
+# Enterprise Operational Security
+
+Operational security activities include:
+
+- Daily monitoring
+- Weekly log review
+- Monthly configuration review
+- Quarterly privilege review
+- Semiannual recovery testing
+- Annual security assessment
+
+A structured schedule promotes continuous improvement.
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Fabrikam Global Services
+```
+
+Infrastructure:
+
+- 220,000 Users
+- 96 Domain Controllers
+- Multiple Forests
+- Hybrid Identity
+
+Operational Controls:
+
+- Automated patch management
+- Tier-0 network segmentation
+- Dedicated administrative workstations
+- Central SIEM
+- Security baseline validation
+- Quarterly recovery testing
+
+Benefits:
+
+- Improved operational resilience
+- Reduced configuration drift
+- Faster security investigations
+- Better compliance reporting
+
+---
+
+# Cybersecurity Perspective
+
+Protecting Domain Controllers requires both technical and operational controls.
+
+Security teams should:
+
+- Keep systems fully supported.
+- Apply updates through controlled processes.
+- Restrict administrative access.
+- Monitor continuously.
+- Validate backups regularly.
+- Review configuration compliance.
+- Practice recovery procedures.
+
+A resilient identity infrastructure depends on consistent operational discipline.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Evaluate Domain Controller security and operational readiness.
+
+### Step 1
+
+Review:
+
+- Installed roles
+- Running services
+- Firewall configuration
+
+Document any unnecessary components.
+
+---
+
+### Step 2
+
+Verify:
+
+- Windows Event Forwarding (if deployed)
+- SIEM connectivity
+- Log retention configuration
+
+---
+
+### Step 3
+
+Review backup procedures.
+
+Confirm:
+
+- System State backups exist.
+- Backup schedule is current.
+- Recovery documentation is available.
+
+---
+
+### Step 4
+
+Review network segmentation.
+
+Identify:
+
+- Tier-0 systems
+- Administrative networks
+- Access restrictions
+
+---
+
+### Step 5
+
+Create a quarterly operational review checklist covering:
+
+- Patch compliance
+- Backup validation
+- Privileged access review
+- Baseline validation
+- Monitoring health
+
+---
+
+# Interview Questions
+
+### Q1: Why should Domain Controllers perform only essential roles?
+
+**Answer:** Limiting installed roles and software reduces the attack surface, simplifies maintenance, and lowers the likelihood of security issues.
+
+---
+
+### Q2: Why is network segmentation important for Active Directory?
+
+**Answer:** Segmentation isolates critical identity infrastructure, limits unnecessary communication paths, and helps reduce the impact of potential compromises.
+
+---
+
+### Q3: Why is time synchronization critical?
+
+**Answer:** Kerberos authentication depends on accurate system time. Significant clock differences can prevent successful authentication.
+
+---
+
+### Q4: What is the purpose of vulnerability management?
+
+**Answer:** Vulnerability management identifies, prioritizes, remediates, and validates security weaknesses on an ongoing basis.
+
+---
+
+### Q5: Why should backups be tested?
+
+**Answer:** Testing verifies that backups can be successfully restored and that recovery procedures are effective when needed.
+
+---
+
+### Q6: Why is centralized logging valuable?
+
+**Answer:** It provides enterprise-wide visibility, enables event correlation, and improves incident detection and investigation.
+
+---
+
+# Best Practices
+
+- Harden Domain Controllers according to approved baselines.
+- Segment Tier-0 infrastructure from general networks.
+- Apply security updates through a structured process.
+- Monitor authentication and administrative activity continuously.
+- Validate backup and recovery procedures regularly.
+- Maintain centralized logging and SIEM integration.
+- Review configuration compliance periodically.
+- Document operational procedures thoroughly.
+
+---
+
+# Common Mistakes
+
+- Installing unnecessary applications on Domain Controllers.
+- Delaying security updates without risk assessment.
+- Ignoring configuration drift.
+- Not validating backup restorations.
+- Allowing unrestricted administrative network access.
+- Failing to monitor replication and DNS health.
+
+---
+
+# Key Takeaways
+
+- Domain Controllers require the highest level of operational and technical protection.
+- Network segmentation, patch management, monitoring, and backups are core components of enterprise defense.
+- Continuous validation of configurations and recovery capabilities improves resilience.
+- Operational discipline is essential for maintaining a secure Active Directory environment.
+
+---
+
+**Next:** Part 4
