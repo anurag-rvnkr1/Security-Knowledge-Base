@@ -1453,4 +1453,706 @@ Practice managing users, computers, and groups.
 
 ---
 
-**Next:** Part 3
+# 07-Users-Groups-and-Computers.md
+
+# Part 3 — Service Accounts, Managed Service Accounts, Group Nesting, User & Computer Lifecycle, Administration, and Enterprise Best Practices
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand Service Accounts and their purpose.
+- Learn about Managed Service Accounts (MSA) and Group Managed Service Accounts (gMSA).
+- Understand group nesting.
+- Learn enterprise user and computer lifecycle management.
+- Understand account maintenance.
+- Apply Microsoft best practices for identity administration.
+
+---
+
+# Service Accounts
+
+A **Service Account** is an account used by an application or Windows service rather than by a person.
+
+Examples include:
+
+- Microsoft SQL Server
+- IIS Web Server
+- Backup Software
+- Monitoring Tools
+- Identity Synchronization Services
+- Enterprise Applications
+
+Unlike standard user accounts, service accounts allow applications to authenticate to network resources.
+
+---
+
+# Why Not Use Administrator Accounts?
+
+Poor Practice:
+
+```text
+SQL Server
+
+↓
+
+Domain Administrator
+
+↓
+
+Runs Database
+```
+
+Problems:
+
+- Excessive privileges
+- Increased attack surface
+- Difficult auditing
+- Higher risk of credential theft
+
+---
+
+Better Practice:
+
+```text
+SQL Server
+
+↓
+
+Dedicated Service Account
+
+↓
+
+Only Required Permissions
+```
+
+This follows the **Principle of Least Privilege**.
+
+---
+
+# Characteristics of Service Accounts
+
+Service accounts generally:
+
+- Are dedicated to applications.
+- Should not be used for interactive logon.
+- Have limited permissions.
+- Are carefully monitored.
+- Require strong password management.
+- Should be documented.
+
+---
+
+# Traditional Service Account Challenges
+
+Historically, administrators faced problems such as:
+
+- Manual password changes
+- Password expiration
+- Hardcoded credentials
+- Forgotten password updates
+- Service outages after password changes
+
+Example:
+
+```text
+Password Changed
+
+↓
+
+SQL Service
+
+↓
+
+Cannot Authenticate
+
+↓
+
+Production Outage
+```
+
+---
+
+# Managed Service Accounts (MSA)
+
+Microsoft introduced **Managed Service Accounts (MSA)** to reduce administrative overhead.
+
+MSAs provide:
+
+- Automatic password management
+- Automatic SPN management
+- Reduced password exposure
+- Simplified administration
+
+---
+
+# Managed Service Account Workflow
+
+```text
+Domain Controller
+
+↓
+
+Generates Password
+
+↓
+
+Stores Securely
+
+↓
+
+Application Uses Account
+
+↓
+
+Automatic Password Rotation
+```
+
+Administrators do not manually rotate passwords under normal operation.
+
+---
+
+# Group Managed Service Accounts (gMSA)
+
+A **Group Managed Service Account (gMSA)** extends the MSA concept.
+
+Unlike a standard MSA, a gMSA can be used by **multiple authorized computers**.
+
+Example:
+
+```text
+Load Balancer
+
+│
+
+├── Web Server 1
+
+├── Web Server 2
+
+├── Web Server 3
+
+└── Web Server 4
+
+↓
+
+gMSA
+```
+
+This is useful for:
+
+- IIS farms
+- SQL clusters
+- Scheduled tasks
+- Enterprise applications
+- High Availability services
+
+---
+
+# MSA vs gMSA
+
+| Feature | MSA | gMSA |
+|----------|-----|-------|
+| Single Computer | Yes | No |
+| Multiple Computers | No | Yes |
+| Automatic Password Rotation | Yes | Yes |
+| Automatic SPN Management | Yes | Yes |
+| Enterprise Deployments | Limited | Preferred |
+
+---
+
+# Service Principal Names (SPNs)
+
+Many services require **Service Principal Names (SPNs)**.
+
+SPNs allow Kerberos clients to identify the correct service.
+
+Example:
+
+```text
+Client
+
+↓
+
+HTTP/web.company.com
+
+↓
+
+Kerberos
+
+↓
+
+Correct Service Account
+```
+
+Incorrect SPNs can lead to authentication failures.
+
+A dedicated chapter on Kerberos will explore SPNs in depth.
+
+---
+
+# Group Membership
+
+Users rarely receive permissions directly.
+
+Instead:
+
+```text
+User
+
+↓
+
+Group
+
+↓
+
+Permission
+
+↓
+
+Application
+```
+
+Groups simplify access management and reduce administrative effort.
+
+---
+
+# Group Nesting
+
+Groups can contain other groups.
+
+Example:
+
+```text
+Finance Users
+
+↓
+
+Finance Global Group
+
+↓
+
+Finance Department Group
+
+↓
+
+Finance Resource Group
+
+↓
+
+Shared Folder
+```
+
+This approach reduces repetitive permission assignments.
+
+---
+
+# Advantages of Group Nesting
+
+Benefits include:
+
+- Simplified administration
+- Easier auditing
+- Centralized permission management
+- Better scalability
+- Reduced configuration errors
+
+---
+
+# Example
+
+Without nesting:
+
+```text
+100 Users
+
+↓
+
+10 Resources
+
+↓
+
+1000 Permission Assignments
+```
+
+With nesting:
+
+```text
+100 Users
+
+↓
+
+Finance Group
+
+↓
+
+Department Group
+
+↓
+
+Resource Group
+
+↓
+
+10 Resources
+```
+
+Significantly fewer direct permission assignments are required.
+
+---
+
+# Nested Group Example
+
+```text
+Alice
+
+Bob
+
+Charlie
+
+↓
+
+Finance Users
+
+↓
+
+Corporate Finance
+
+↓
+
+Accounting Resources
+
+↓
+
+Accounting Server
+```
+
+Administrators manage group membership instead of modifying resource permissions for every user.
+
+---
+
+# User Lifecycle Management
+
+Enterprise identity management follows a structured lifecycle.
+
+```text
+Recruitment
+
+↓
+
+Identity Creation
+
+↓
+
+Group Assignment
+
+↓
+
+Application Provisioning
+
+↓
+
+Role Changes
+
+↓
+
+Department Transfer
+
+↓
+
+Termination
+
+↓
+
+Disable
+
+↓
+
+Deletion
+```
+
+Each stage should follow documented procedures.
+
+---
+
+# Joiner-Mover-Leaver (JML) Process
+
+A common identity governance model is the **Joiner-Mover-Leaver (JML)** process.
+
+### Joiner
+
+- Create account
+- Assign groups
+- Issue devices
+- Enable applications
+
+---
+
+### Mover
+
+- Update department
+- Modify group memberships
+- Remove obsolete access
+- Grant new permissions
+
+---
+
+### Leaver
+
+- Disable account
+- Recover assets
+- Archive data
+- Remove unnecessary access
+- Delete account after retention requirements are met
+
+---
+
+# Computer Lifecycle
+
+Enterprise computers also follow a lifecycle.
+
+```text
+Purchase
+
+↓
+
+Asset Registration
+
+↓
+
+Imaging
+
+↓
+
+Domain Join
+
+↓
+
+Production
+
+↓
+
+Maintenance
+
+↓
+
+Replacement
+
+↓
+
+Retirement
+
+↓
+
+Deletion
+```
+
+Computer accounts should be removed when devices are permanently retired.
+
+---
+
+# Stale Computer Accounts
+
+A stale computer account belongs to a device that:
+
+- No longer exists
+- Has been replaced
+- Has not authenticated for an extended period
+
+Risks include:
+
+- Directory clutter
+- Confusion during administration
+- Potential security issues
+- Compliance concerns
+
+Periodic cleanup is recommended.
+
+---
+
+# User Account Maintenance
+
+Administrators should regularly review:
+
+- Disabled accounts
+- Locked accounts
+- Expired accounts
+- Inactive accounts
+- Password policies
+- Group memberships
+- Privileged users
+
+Routine reviews improve security and operational efficiency.
+
+---
+
+# Naming Standards
+
+Example naming convention:
+
+Users:
+
+```text
+firstname.lastname
+```
+
+Administrative accounts:
+
+```text
+firstname.lastname-admin
+```
+
+Service Accounts:
+
+```text
+svc_SQL
+
+svc_Backup
+
+svc_Web
+
+svc_Monitor
+```
+
+Computers:
+
+```text
+HR-PC-101
+
+FIN-LT-205
+
+WEB-SRV-01
+
+SQL-SRV-02
+```
+
+Consistent naming simplifies administration and reporting.
+
+---
+
+# Enterprise Identity Governance
+
+Modern organizations typically integrate identity governance with:
+
+- HR systems
+- Ticketing systems
+- Identity lifecycle workflows
+- Access reviews
+- Compliance reporting
+- Security monitoring
+
+Automation reduces manual errors and improves consistency.
+
+---
+
+# Cybersecurity Perspective
+
+Identity is one of the primary attack targets.
+
+Common weaknesses include:
+
+- Shared accounts
+- Dormant users
+- Over-privileged groups
+- Weak service account management
+- Stale computer accounts
+- Excessive nested groups
+- Unnecessary administrative privileges
+
+Recommended controls:
+
+- Multi-Factor Authentication (where supported)
+- Least privilege
+- Privileged access management
+- Regular access reviews
+- Strong password policies
+- Monitoring of privileged accounts
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Using service accounts for interactive logon.
+- Running services as Domain Administrator.
+- Creating unnecessary nested groups.
+- Ignoring stale accounts.
+- Keeping terminated employees active.
+- Reusing service accounts across unrelated applications.
+- Using inconsistent naming conventions.
+
+---
+
+# Best Practices Checklist
+
+✔ Use dedicated service accounts.
+
+✔ Prefer gMSAs for supported enterprise services.
+
+✔ Review group memberships regularly.
+
+✔ Remove stale computer accounts.
+
+✔ Disable accounts immediately after employee departure.
+
+✔ Document naming standards.
+
+✔ Use the Joiner-Mover-Leaver process.
+
+✔ Audit privileged accounts regularly.
+
+✔ Minimize group nesting complexity.
+
+✔ Automate lifecycle management where practical.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Practice managing identities and service accounts.
+
+### Tasks
+
+1. Create a Global Security Group named `IT-Users`.
+2. Create a second Global Security Group named `Infrastructure-Team`.
+3. Add `IT-Users` as a member of `Infrastructure-Team`.
+4. Review the resulting group memberships.
+5. Create a test service account following your naming convention.
+6. Identify a domain-joined computer account and review:
+   - Last Logon
+   - Operating System
+   - Distinguished Name
+7. Disable the test service account when the exercise is complete.
+
+---
+
+# Interview Questions
+
+1. What is a service account?
+2. Why should services not run as Domain Administrator?
+3. What is the difference between an MSA and a gMSA?
+4. What is an SPN?
+5. What are the benefits of group nesting?
+6. Explain the Joiner-Mover-Leaver process.
+7. What is a stale computer account?
+8. Why are naming conventions important?
+9. What identity governance activities should be performed regularly?
+10. Why is lifecycle management important in Active Directory?
+
+---
+
+# Key Takeaways
+
+- Service accounts enable applications to authenticate securely and should follow the principle of least privilege.
+- Managed Service Accounts (MSAs) and Group Managed Service Accounts (gMSAs) simplify password and SPN management.
+- Group nesting improves scalability and reduces administrative overhead when used appropriately.
+- Structured Joiner-Mover-Leaver processes help maintain accurate identities and permissions throughout the account lifecycle.
+- Regular reviews of users, groups, service accounts, and computer accounts improve security, compliance, and operational efficiency.
+
+---
+
+**Next:** Part 4
