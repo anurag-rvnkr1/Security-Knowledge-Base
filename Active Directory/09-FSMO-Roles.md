@@ -1429,4 +1429,779 @@ netdom query fsmo
 
 ---
 
-**Next:** Part 3
+# 09-FSMO-Roles.md
+
+# Part 3 — FSMO Role Management, Transfer, Seizure, Placement, Monitoring, Troubleshooting, and Disaster Recovery
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand FSMO role transfer.
+- Learn when to seize FSMO roles.
+- Understand role placement strategies.
+- Learn how to identify FSMO role holders.
+- Monitor FSMO health.
+- Troubleshoot common FSMO issues.
+- Prepare for enterprise disaster recovery.
+
+---
+
+# Managing FSMO Roles
+
+FSMO roles are not permanently assigned to a Domain Controller.
+
+Administrators can:
+
+- View role holders
+- Transfer roles
+- Seize roles (emergency)
+- Verify role ownership
+- Plan role placement
+- Monitor role health
+
+---
+
+# Identifying FSMO Role Holders
+
+The quickest method is:
+
+```powershell
+netdom query fsmo
+```
+
+Example output:
+
+```text
+Schema Master               DC01.company.com
+Domain Naming Master        DC01.company.com
+PDC                         DC02.company.com
+RID Pool Manager            DC02.company.com
+Infrastructure Master       DC02.company.com
+```
+
+This command displays the current role owners.
+
+---
+
+# PowerShell Method
+
+Modern environments commonly use the Active Directory PowerShell module.
+
+Forest-wide roles:
+
+```powershell
+Get-ADForest
+```
+
+Domain-wide roles:
+
+```powershell
+Get-ADDomain
+```
+
+These commands provide detailed information about the current FSMO role holders.
+
+---
+
+# Viewing FSMO Roles Graphically
+
+Several Microsoft administrative tools can display FSMO roles.
+
+Examples include:
+
+- Active Directory Users and Computers
+- Active Directory Domains and Trusts
+- Active Directory Schema (MMC snap-in)
+- Group Policy Management (indirectly through connected Domain Controllers)
+
+Each tool is responsible for viewing or managing specific roles.
+
+---
+
+# FSMO Role Transfer
+
+A **transfer** is a planned movement of a role from one healthy Domain Controller to another.
+
+Typical reasons include:
+
+- Hardware replacement
+- Operating system upgrade
+- Maintenance
+- Data center migration
+- Load redistribution
+
+---
+
+# Transfer Workflow
+
+```text
+Healthy DC
+
+↓
+
+Administrator Initiates Transfer
+
+↓
+
+New DC Receives Role
+
+↓
+
+Replication
+
+↓
+
+Operation Complete
+```
+
+The original role holder is online and cooperates during the transfer.
+
+---
+
+# Example
+
+Current:
+
+```text
+DC01
+
+↓
+
+PDC Emulator
+```
+
+After maintenance:
+
+```text
+DC02
+
+↓
+
+PDC Emulator
+```
+
+No directory inconsistency occurs because the transfer is coordinated.
+
+---
+
+# FSMO Role Seizure
+
+A **seizure** is an emergency operation.
+
+It should be used only when:
+
+- The original Domain Controller has permanently failed.
+- The role holder cannot be recovered in a reasonable time.
+- Business operations require immediate restoration.
+
+---
+
+# Seizure Workflow
+
+```text
+DC01
+
+↓
+
+Permanent Failure
+
+↓
+
+Administrator
+
+↓
+
+Seize FSMO Role
+
+↓
+
+DC02
+
+↓
+
+New Role Holder
+```
+
+Unlike a transfer, the failed server is unavailable.
+
+---
+
+# Transfer vs Seizure
+
+| Transfer | Seizure |
+|-----------|----------|
+| Planned | Emergency |
+| Original DC online | Original DC unavailable |
+| Safe and preferred | Last resort |
+| Coordinated | Forced |
+| Minimal risk | Requires careful recovery planning |
+
+Always choose **transfer** when possible.
+
+---
+
+# Important Warning
+
+After a role has been **seized**, the failed Domain Controller **must not** simply be brought back online if it still believes it owns that FSMO role.
+
+Doing so can create directory inconsistencies.
+
+Recommended approach:
+
+```text
+Permanent Failure
+
+↓
+
+Seize Role
+
+↓
+
+Rebuild Failed Server
+
+↓
+
+Rejoin Domain
+```
+
+---
+
+# Which Roles Are Commonly Seized?
+
+Possible scenarios:
+
+Schema Master
+
+```text
+Schema upgrade required
+
+↓
+
+Original server permanently lost
+```
+
+RID Master
+
+```text
+RID pools exhausted
+
+↓
+
+Role unavailable
+
+↓
+
+Emergency seizure
+```
+
+PDC Emulator
+
+```text
+Authentication issues
+
+↓
+
+Time synchronization problems
+
+↓
+
+Emergency recovery
+```
+
+The decision depends on business requirements and recovery objectives.
+
+---
+
+# FSMO Role Placement
+
+## Small Environment
+
+Example:
+
+```text
+DC01
+
+↓
+
+All Five FSMO Roles
+```
+
+Advantages:
+
+- Simple administration
+- Easy management
+- Suitable for small businesses
+
+---
+
+# Medium Environment
+
+Example:
+
+```text
+DC01
+
+↓
+
+Schema Master
+
+↓
+
+Domain Naming Master
+
+↓
+
+PDC Emulator
+```
+
+```text
+DC02
+
+↓
+
+RID Master
+
+↓
+
+Infrastructure Master
+```
+
+Provides better redundancy during maintenance.
+
+---
+
+# Large Enterprise
+
+Example:
+
+```text
+Region A
+
+↓
+
+DC01
+
+Forest Roles
+```
+
+```text
+Region A
+
+↓
+
+DC02
+
+PDC Emulator
+```
+
+```text
+Region B
+
+↓
+
+DC03
+
+RID Master
+```
+
+```text
+Region C
+
+↓
+
+DC04
+
+Infrastructure Master
+```
+
+Placement depends on:
+
+- Network topology
+- Administrative model
+- Disaster recovery requirements
+- Replication design
+
+---
+
+# Infrastructure Master Consideration
+
+Historically, Microsoft recommended that the Infrastructure Master should **not** reside on a Global Catalog server in a multi-domain forest unless every Domain Controller is also a Global Catalog.
+
+Modern environments commonly make every Domain Controller a Global Catalog, which removes this concern.
+
+Always evaluate your forest design before deciding role placement.
+
+---
+
+# FSMO Role Monitoring
+
+Administrators should regularly monitor:
+
+- Role availability
+- Replication health
+- Event logs
+- Time synchronization
+- RID pool consumption
+- Domain Controller health
+- DNS health
+
+Proactive monitoring helps prevent outages.
+
+---
+
+# Monitoring Workflow
+
+```text
+Monitoring System
+
+↓
+
+Domain Controllers
+
+↓
+
+Replication
+
+↓
+
+FSMO Health
+
+↓
+
+Alerts
+
+↓
+
+Administrator
+```
+
+---
+
+# Event Logs
+
+Useful log sources include:
+
+- Directory Service
+- System
+- DNS Server
+- DFS Replication
+- Security
+
+These logs often contain events related to replication, authentication, and FSMO operations.
+
+---
+
+# Replication Health
+
+FSMO roles depend on healthy replication.
+
+Example:
+
+```text
+DC01
+
+↓
+
+Replication
+
+↓
+
+DC02
+
+↓
+
+Replication
+
+↓
+
+DC03
+```
+
+If replication fails:
+
+- Password changes may be delayed.
+- RID allocation issues may arise.
+- Directory consistency can degrade.
+
+---
+
+# Time Synchronization Monitoring
+
+The PDC Emulator should maintain accurate time.
+
+Hierarchy:
+
+```text
+Reliable External Time Source
+
+↓
+
+Forest Root PDC Emulator
+
+↓
+
+Other Domain Controllers
+
+↓
+
+Clients
+```
+
+Incorrect time can disrupt Kerberos authentication across the domain.
+
+---
+
+# Backup Strategy
+
+Every FSMO role holder should be included in:
+
+- System State backups
+- Disaster recovery planning
+- Regular health checks
+- Configuration documentation
+
+Backups simplify recovery after failures.
+
+---
+
+# Disaster Recovery Planning
+
+Organizations should document:
+
+- Current role holders
+- Recovery procedures
+- Transfer procedures
+- Seizure procedures
+- Administrative contacts
+- Backup schedules
+
+Regular testing ensures procedures remain effective.
+
+---
+
+# Common FSMO Problems
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Cannot create users | RID pool exhausted |
+| Password changes delayed | PDC Emulator unavailable or replication issues |
+| Cannot create new domain | Domain Naming Master unavailable |
+| Schema update fails | Schema Master unavailable |
+| Cross-domain references stale | Infrastructure Master unavailable |
+| Authentication inconsistencies | Replication or time synchronization problems |
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Problem Reported
+
+↓
+
+Identify FSMO Role
+
+↓
+
+Verify Role Holder
+
+↓
+
+Check Replication
+
+↓
+
+Review Event Logs
+
+↓
+
+Verify DNS
+
+↓
+
+Verify Time
+
+↓
+
+Resolve Issue
+```
+
+This structured approach helps isolate the root cause.
+
+---
+
+# Enterprise Case Study
+
+Organization:
+
+- 120,000 users
+- 40 Domain Controllers
+- 5 domains
+- Multiple geographic regions
+
+Deployment:
+
+```text
+Forest Root
+
+↓
+
+Schema Master
+
+↓
+
+Domain Naming Master
+```
+
+Each domain:
+
+```text
+Dedicated PDC Emulator
+
+↓
+
+RID Master
+
+↓
+
+Infrastructure Master
+```
+
+Operational practices:
+
+- Regular health monitoring
+- Quarterly disaster recovery exercises
+- Documented transfer procedures
+- Scheduled backup verification
+
+Results:
+
+- Improved resilience
+- Predictable maintenance
+- Faster recovery from failures
+- Reduced operational risk
+
+---
+
+# Cybersecurity Perspective
+
+FSMO role holders are attractive targets because of their importance.
+
+Security recommendations:
+
+- Restrict interactive logons.
+- Use dedicated administrative accounts.
+- Enable advanced auditing.
+- Monitor privileged group changes.
+- Protect backup media.
+- Review security logs regularly.
+- Patch Domain Controllers promptly.
+- Limit physical and remote access.
+
+Compromising an FSMO role holder can affect the entire domain or forest depending on the role.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Seizing roles when a transfer is possible.
+- Bringing a seized Domain Controller back online without proper recovery.
+- Ignoring replication failures.
+- Failing to document current role holders.
+- Neglecting backup and disaster recovery testing.
+- Overlooking time synchronization problems.
+
+---
+
+# Best Practices Checklist
+
+✔ Keep Domain Controllers healthy.
+
+✔ Monitor replication regularly.
+
+✔ Document FSMO role holders.
+
+✔ Transfer roles before planned maintenance.
+
+✔ Seize roles only when necessary.
+
+✔ Maintain tested System State backups.
+
+✔ Monitor the PDC Emulator's time source.
+
+✔ Review Event Logs regularly.
+
+✔ Include FSMO recovery in disaster recovery planning.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Practice identifying and planning FSMO management.
+
+### Tasks
+
+1. Run:
+
+```powershell
+netdom query fsmo
+```
+
+2. Record all FSMO role holders.
+3. Use:
+
+```powershell
+Get-ADForest
+```
+
+to identify forest-wide roles.
+
+4. Use:
+
+```powershell
+Get-ADDomain
+```
+
+to identify domain-wide roles.
+
+5. Create a disaster recovery document that includes:
+   - Current role holders
+   - Backup schedule
+   - Transfer procedure
+   - Emergency seizure criteria
+
+---
+
+# Interview Questions
+
+1. What is the difference between transferring and seizing an FSMO role?
+2. When should an FSMO role be seized?
+3. Why is transferring preferred over seizing?
+4. Which PowerShell cmdlets display FSMO role holders?
+5. Why is replication important for FSMO operations?
+6. What happens if a seized Domain Controller is brought back online without proper recovery?
+7. Why is the PDC Emulator important for time synchronization?
+8. What should be included in an FSMO disaster recovery plan?
+9. Why are System State backups important for Domain Controllers?
+10. How should enterprises monitor FSMO role health?
+
+---
+
+# Key Takeaways
+
+- FSMO roles can be transferred during planned maintenance or seized during unrecoverable failures.
+- Transfers are coordinated and preferred; seizures are emergency operations.
+- Healthy replication, DNS, and time synchronization are essential for reliable FSMO operations.
+- Proper documentation, monitoring, backups, and disaster recovery planning reduce operational risk.
+- Administrators should understand not only the purpose of each FSMO role but also how to manage and recover them safely.
+
+---
+
+**Next:** Part 4
