@@ -1565,4 +1565,697 @@ klist
 
 ---
 
-**Next:** Part 3
+# 12-Kerberos-and-NTLM.md
+
+# Part 3 — NTLM Authentication, NTLM Authentication Flow, Comparison with Kerberos, and Authentication Fallback
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- What NTLM is
+- History of NTLM
+- NTLM architecture
+- NTLM challenge-response authentication
+- NTLMv1 vs NTLMv2
+- Authentication workflow
+- NTLM fallback scenarios
+- Kerberos vs NTLM comparison
+- Authentication negotiation
+- Enterprise use cases
+- Security considerations
+- Best practices
+
+---
+
+# Introduction
+
+Before Active Directory adopted Kerberos, Microsoft Windows primarily used **NTLM (NT LAN Manager)** for authentication.
+
+Although Kerberos is now the preferred authentication protocol, NTLM still exists because many organizations continue to use:
+
+- Legacy applications
+- Older operating systems
+- Standalone computers
+- Cross-forest scenarios without Kerberos support
+- Workgroup environments
+- Certain local authentication scenarios
+
+Understanding NTLM is essential because security professionals frequently encounter it during enterprise assessments and troubleshooting.
+
+---
+
+# What is NTLM?
+
+NTLM (NT LAN Manager) is Microsoft's legacy authentication protocol.
+
+Unlike Kerberos, NTLM does **not** use tickets.
+
+Instead, it uses a **challenge-response** mechanism to verify a user's identity without transmitting the password in plaintext.
+
+---
+
+# Evolution of NTLM
+
+```
+LAN Manager (LM)
+
+        │
+
+        ▼
+
+NTLM
+
+        │
+
+        ▼
+
+NTLMv2
+
+        │
+
+        ▼
+
+Kerberos Preferred
+```
+
+Modern Windows environments primarily use NTLMv2 where NTLM is required.
+
+---
+
+# Why Was NTLM Created?
+
+In early Windows networks:
+
+- There was no Active Directory.
+- There was no Kerberos.
+- Centralized authentication was limited.
+
+Microsoft developed NTLM to provide:
+
+- Password protection
+- Network authentication
+- Authentication without transmitting plaintext passwords
+
+---
+
+# Basic NTLM Components
+
+```
+User
+
+↓
+
+Client Computer
+
+↓
+
+Server
+
+↓
+
+Domain Controller
+```
+
+Unlike Kerberos, there is no Key Distribution Center (KDC) or ticketing system.
+
+---
+
+# NTLM Authentication Principle
+
+NTLM works using three main steps:
+
+1. Negotiate
+2. Challenge
+3. Authenticate
+
+This is commonly called the **NTLM Challenge-Response Process**.
+
+---
+
+# High-Level NTLM Flow
+
+```
+Client
+
+↓
+
+Negotiate
+
+↓
+
+Server
+
+↓
+
+Challenge
+
+↓
+
+Client
+
+↓
+
+Challenge Response
+
+↓
+
+Server
+
+↓
+
+Domain Controller
+
+↓
+
+Validate Response
+
+↓
+
+Authentication Result
+```
+
+---
+
+# Step 1 — Negotiate
+
+The client contacts the server.
+
+```
+Client
+
+↓
+
+"I want to authenticate."
+```
+
+The negotiation message includes:
+
+- Supported NTLM version
+- Security capabilities
+- Authentication options
+
+---
+
+# Step 2 — Challenge
+
+The server generates a random number.
+
+Example:
+
+```
+8F4A91D2...
+```
+
+This random value is called the **Challenge** (or Nonce).
+
+The server sends it to the client.
+
+```
+Server
+
+↓
+
+Random Challenge
+
+↓
+
+Client
+```
+
+---
+
+# Why Use a Challenge?
+
+Without a random challenge:
+
+An attacker could simply replay an old authentication exchange.
+
+The random challenge ensures that every authentication attempt is unique.
+
+---
+
+# Step 3 — Response
+
+The client:
+
+- Uses the user's password hash.
+- Combines it with the server's challenge.
+- Computes a cryptographic response.
+
+The client sends:
+
+```
+Challenge Response
+
+↓
+
+Server
+```
+
+Importantly:
+
+The user's actual password is **never transmitted**.
+
+---
+
+# Validation
+
+The server forwards the response to the Domain Controller.
+
+The Domain Controller:
+
+- Retrieves the stored password hash.
+- Performs the same calculation.
+- Compares the expected response with the received response.
+
+If they match:
+
+```
+Authentication Successful
+```
+
+Otherwise:
+
+```
+Authentication Failed
+```
+
+---
+
+# Complete NTLM Authentication Flow
+
+```
+        Client
+
+          │
+
+   Negotiate Message
+
+          ▼
+
+        Server
+
+          │
+
+ Random Challenge
+
+          ▼
+
+        Client
+
+          │
+
+ Generate Response
+
+          ▼
+
+        Server
+
+          │
+
+ Forward Response
+
+          ▼
+
+  Domain Controller
+
+          │
+
+ Validate Hash
+
+          ▼
+
+ Authentication Result
+```
+
+---
+
+# NTLM Password Storage
+
+Windows does **not** store user passwords in plaintext.
+
+Instead, it stores:
+
+```
+Password
+
+↓
+
+One-Way Hash
+
+↓
+
+Stored Securely
+```
+
+During authentication, Windows compares cryptographic values rather than passwords.
+
+---
+
+# NTLMv1 vs NTLMv2
+
+| Feature | NTLMv1 | NTLMv2 |
+|----------|---------|---------|
+| Security | Weak | Stronger |
+| Challenge Protection | Basic | Improved |
+| Cryptography | Older algorithms | Stronger algorithms |
+| Replay Protection | Limited | Improved |
+| Recommended | No | Yes (if NTLM must be used) |
+
+Modern enterprise environments should disable NTLMv1 whenever possible.
+
+---
+
+# Kerberos vs NTLM
+
+| Feature | Kerberos | NTLM |
+|----------|-----------|------|
+| Authentication Method | Ticket-based | Challenge-Response |
+| Default in AD | Yes | Fallback |
+| Mutual Authentication | Yes | No |
+| Single Sign-On | Yes | Limited |
+| KDC Required | Yes | No |
+| Delegation Support | Yes | Limited |
+| Performance | Better | Lower |
+| Security | Higher | Lower |
+
+---
+
+# Authentication Negotiation
+
+When a Windows client accesses a domain resource:
+
+```
+Attempt Kerberos
+
+        │
+
+Available?
+
+   Yes ─────► Use Kerberos
+
+   No
+
+        ▼
+
+Use NTLM
+```
+
+This automatic selection process is handled by Windows.
+
+---
+
+# When Does Windows Use NTLM?
+
+Windows may use NTLM when:
+
+- Kerberos cannot be used.
+- The server is not joined to the domain.
+- A local account is used.
+- The application supports only NTLM.
+- The required SPN cannot be located.
+- Certain legacy compatibility scenarios exist.
+
+---
+
+# Example 1 — Local Login
+
+```
+User
+
+↓
+
+Local Administrator
+
+↓
+
+Standalone Computer
+
+↓
+
+NTLM Authentication
+```
+
+No Active Directory is involved.
+
+---
+
+# Example 2 — Legacy File Server
+
+```
+Domain User
+
+↓
+
+Legacy NAS Device
+
+↓
+
+NTLM Authentication
+```
+
+Because the device does not support Kerberos.
+
+---
+
+# Example 3 — Workgroup Computer
+
+```
+PC A
+
+↓
+
+Workgroup
+
+↓
+
+PC B
+
+↓
+
+NTLM
+```
+
+Since there is no Domain Controller or KDC, Kerberos cannot be used.
+
+---
+
+# Example 4 — SPN Problem
+
+```
+Client
+
+↓
+
+Cannot Locate SPN
+
+↓
+
+Kerberos Fails
+
+↓
+
+Fallback
+
+↓
+
+NTLM
+```
+
+This is a common troubleshooting scenario.
+
+---
+
+# NTLM Authentication in an Enterprise
+
+Consider an organization with:
+
+- Windows Server 2025
+- Active Directory
+- Legacy payroll application
+
+Modern services:
+
+```
+Exchange
+
+↓
+
+Kerberos
+```
+
+```
+SQL Server
+
+↓
+
+Kerberos
+```
+
+Legacy payroll system:
+
+```
+Payroll Application
+
+↓
+
+NTLM
+```
+
+The organization continues using NTLM until the application is upgraded.
+
+---
+
+# Advantages of NTLM
+
+- Simple protocol
+- Works without Kerberos
+- Supports workgroup environments
+- Compatible with legacy applications
+- Does not require a KDC
+
+---
+
+# Limitations of NTLM
+
+- No ticketing system
+- Limited Single Sign-On
+- No mutual authentication
+- Less efficient
+- Legacy design
+- Weaker overall security than Kerberos
+
+---
+
+# Cybersecurity Perspective
+
+From a defensive standpoint:
+
+Organizations should:
+
+- Prefer Kerberos.
+- Disable NTLMv1.
+- Audit NTLM usage.
+- Identify applications still requiring NTLM.
+- Migrate legacy systems where possible.
+
+NTLM itself is not inherently malicious, but reducing unnecessary NTLM usage decreases the attack surface and aligns with modern security best practices.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Identify whether Kerberos or NTLM is being used.
+
+### Step 1
+
+Join a Windows client to a domain.
+
+### Step 2
+
+Access a domain file share.
+
+### Step 3
+
+Run:
+
+```
+klist
+```
+
+If a Service Ticket appears, Kerberos is likely being used.
+
+### Step 4
+
+Review the Security log in Event Viewer on the server to determine the authentication package used for recent logon events.
+
+### Step 5
+
+Document:
+
+- Authentication protocol
+- Target service
+- Logon type
+- Observations
+
+---
+
+# Interview Questions
+
+### Q1: What does NTLM stand for?
+
+**Answer:** NT LAN Manager.
+
+---
+
+### Q2: Does NTLM use tickets?
+
+**Answer:** No. NTLM uses a challenge-response authentication mechanism.
+
+---
+
+### Q3: What are the three phases of NTLM authentication?
+
+**Answer:**
+
+1. Negotiate
+2. Challenge
+3. Authenticate (Response and Validation)
+
+---
+
+### Q4: Which is more secure: Kerberos or NTLM?
+
+**Answer:** Kerberos.
+
+---
+
+### Q5: Why might Windows fall back to NTLM?
+
+**Answer:** Kerberos may be unavailable due to local accounts, workgroup systems, missing SPNs, unsupported applications, or other compatibility scenarios.
+
+---
+
+### Q6: Should NTLMv1 be used today?
+
+**Answer:** No. Organizations should disable NTLMv1 and use NTLMv2 only when NTLM is absolutely necessary.
+
+---
+
+# Best Practices
+
+- Use Kerberos as the primary authentication protocol.
+- Disable NTLMv1 across the enterprise.
+- Monitor NTLM authentication events.
+- Upgrade legacy applications that require NTLM.
+- Review SPN configuration to avoid unnecessary Kerberos fallback.
+- Regularly assess authentication methods during security reviews.
+
+---
+
+# Common Mistakes
+
+- Assuming all Windows authentication uses Kerberos.
+- Believing NTLM transmits plaintext passwords.
+- Leaving NTLMv1 enabled for compatibility without evaluating the risk.
+- Ignoring frequent Kerberos-to-NTLM fallback events.
+- Confusing password hashes with plaintext passwords.
+
+---
+
+# Key Takeaways
+
+- NTLM is Microsoft's legacy challenge-response authentication protocol.
+- Kerberos is the preferred authentication protocol in Active Directory.
+- NTLM does not use tickets or a Key Distribution Center.
+- Windows automatically falls back to NTLM when Kerberos cannot be used.
+- Modern enterprises should minimize NTLM usage and migrate toward Kerberos-based authentication wherever possible.
+
+---
+
+**Next:** Part 4
