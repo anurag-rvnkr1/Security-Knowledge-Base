@@ -745,4 +745,733 @@ Draw the trust topology for your environment.
 
 ---
 
-**Next:** Part 2
+# 14-Trusts.md
+
+# Part 2 — Types of Active Directory Trusts, Trust Paths and Cross-Forest Authentication
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Parent-Child Trust
+- Tree-Root Trust
+- Shortcut Trust
+- External Trust
+- Forest Trust
+- Realm Trust
+- Trust Paths
+- Cross-Domain Authentication
+- Cross-Forest Authentication
+- Enterprise Trust Design
+
+---
+
+# Introduction
+
+In Part 1, we learned:
+
+- What Trusts are
+- Trust Direction
+- Trust Transitivity
+- Authentication across Domains
+
+Now we will study the different **types of Active Directory Trusts** used in enterprise environments and understand when each should be implemented.
+
+---
+
+# Types of Active Directory Trusts
+
+Active Directory supports several trust types.
+
+| Trust Type | Typical Purpose |
+|------------|-----------------|
+| Parent-Child Trust | Connect parent and child domains |
+| Tree-Root Trust | Connect separate domain trees within the same forest |
+| Shortcut Trust | Reduce authentication path length |
+| External Trust | Connect to a specific external domain |
+| Forest Trust | Connect two separate forests |
+| Realm Trust | Connect Active Directory with a Kerberos realm |
+
+Each trust type solves a different business requirement.
+
+---
+
+# Parent-Child Trust
+
+A Parent-Child Trust is automatically created when a new child domain is added.
+
+Example:
+
+```
+corp.example.com
+
+        │
+
+        ▼
+
+india.corp.example.com
+```
+
+Windows automatically establishes:
+
+```
+corp.example.com
+
+⇄
+
+india.corp.example.com
+```
+
+Characteristics:
+
+- Automatically created
+- Two-way by default
+- Transitive
+- No manual configuration required
+
+---
+
+# Parent-Child Authentication
+
+```
+User
+
+↓
+
+india.corp.example.com
+
+↓
+
+Trust
+
+↓
+
+corp.example.com
+
+↓
+
+File Server
+```
+
+The user authenticates using the existing trust relationship.
+
+---
+
+# Tree-Root Trust
+
+A forest may contain multiple domain trees.
+
+Example:
+
+```
+Forest
+
+│
+
+├── corp.example.com
+
+└── fabrikam.net
+```
+
+Although the DNS namespaces differ,
+
+both belong to the same forest.
+
+A Tree-Root Trust is automatically created between the root domains.
+
+---
+
+# Tree-Root Characteristics
+
+- Automatic
+- Two-way
+- Transitive
+- Connects multiple trees within one forest
+
+---
+
+# Example
+
+```
+Forest
+
+│
+
+├── corp.example.com
+
+│
+
+└── research.local
+```
+
+Users can authenticate across both trees using the trust relationship.
+
+---
+
+# Shortcut Trust
+
+Large enterprises may contain many domains.
+
+Authentication may otherwise travel through several intermediate domains.
+
+Example:
+
+Without shortcut:
+
+```
+Domain A
+
+↓
+
+Domain B
+
+↓
+
+Domain C
+
+↓
+
+Domain D
+```
+
+Authentication must traverse each trust.
+
+---
+
+# Shortcut Trust Solution
+
+Instead of:
+
+```
+A
+
+↓
+
+B
+
+↓
+
+C
+
+↓
+
+D
+```
+
+Create:
+
+```
+A
+
+────────────►
+
+D
+```
+
+Authentication becomes shorter and more efficient.
+
+---
+
+# Benefits of Shortcut Trusts
+
+- Faster authentication
+- Reduced authentication traffic
+- Improved logon performance
+- Better scalability in large forests
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+GlobalCorp
+```
+
+Domains:
+
+```
+HQ
+
+↓
+
+Europe
+
+↓
+
+Germany
+
+↓
+
+Berlin
+```
+
+Employees in Berlin frequently access resources in HQ.
+
+Instead of traversing multiple domains,
+
+a shortcut trust connects:
+
+```
+Berlin
+
+⇄
+
+HQ
+```
+
+This reduces authentication latency.
+
+---
+
+# External Trust
+
+An External Trust connects Active Directory to a domain **outside the current forest**.
+
+Example:
+
+```
+Forest A
+
+↓
+
+External Trust
+
+↓
+
+Legacy Domain
+```
+
+Characteristics:
+
+- Usually non-transitive
+- Manual configuration
+- Connects individual domains
+- Often used during migrations or coexistence
+
+---
+
+# Example Scenario
+
+A company acquires another organization that has its own independent Active Directory domain.
+
+Instead of merging immediately,
+
+an External Trust enables controlled authentication between the two domains.
+
+---
+
+# Forest Trust
+
+A Forest Trust connects two separate Active Directory forests.
+
+Example:
+
+```
+Forest A
+
+⇄
+
+Forest B
+```
+
+Each forest maintains:
+
+- Its own schema
+- Its own configuration
+- Its own administrators
+- Its own Domain Controllers
+
+Forest Trusts allow authentication between them.
+
+---
+
+# Forest Trust Example
+
+```
+Contoso Forest
+
+⇄
+
+Fabrikam Forest
+```
+
+Employees can authenticate across forests if permissions allow.
+
+---
+
+# Forest Trust Characteristics
+
+- Connects forests
+- Typically transitive between the two forests
+- Supports enterprise collaboration
+- Frequently used after mergers or long-term partnerships
+
+---
+
+# Realm Trust
+
+A Realm Trust connects Active Directory with a non-Windows Kerberos realm.
+
+Example:
+
+```
+Active Directory
+
+⇄
+
+MIT Kerberos Realm
+```
+
+Common scenarios include:
+
+- UNIX/Linux environments
+- Academic institutions
+- Research organizations
+- Mixed operating system environments
+
+---
+
+# Trust Type Comparison
+
+| Trust Type | Automatic | Transitive | Typical Use |
+|-------------|-----------|------------|-------------|
+| Parent-Child | Yes | Yes | Child domains |
+| Tree-Root | Yes | Yes | Multiple trees |
+| Shortcut | No | Yes | Faster authentication |
+| External | No | No | Specific external domain |
+| Forest | No | Yes | Separate forests |
+| Realm | No | Depends on configuration | Kerberos interoperability |
+
+---
+
+# Authentication Path
+
+Without a shortcut:
+
+```
+User
+
+↓
+
+Domain A
+
+↓
+
+Domain B
+
+↓
+
+Domain C
+
+↓
+
+Resource
+```
+
+Authentication crosses every trust.
+
+---
+
+# Optimized Authentication
+
+With a shortcut trust:
+
+```
+User
+
+↓
+
+Domain A
+
+────────────►
+
+Domain C
+
+↓
+
+Resource
+```
+
+The authentication path is significantly shorter.
+
+---
+
+# Trust Path
+
+The **Trust Path** is the sequence of trust relationships followed during authentication.
+
+Example:
+
+```
+Domain A
+
+↓
+
+Domain B
+
+↓
+
+Domain C
+
+↓
+
+Domain D
+```
+
+Authentication travels through the trust path until the target domain is reached.
+
+---
+
+# Enterprise Authentication Example
+
+Company:
+
+```
+Global Manufacturing
+```
+
+Infrastructure:
+
+```
+Forest
+
+│
+
+├── Americas
+
+├── Europe
+
+├── Asia
+
+└── Australia
+```
+
+Employee:
+
+```
+Asia Domain
+```
+
+Needs access to:
+
+```
+Europe SQL Server
+```
+
+Authentication Flow:
+
+```
+User
+
+↓
+
+Asia Domain Controller
+
+↓
+
+Trust Path
+
+↓
+
+Europe Domain Controller
+
+↓
+
+Identity Verified
+
+↓
+
+SQL Server
+
+↓
+
+Authorization Check
+
+↓
+
+Access Granted
+```
+
+---
+
+# Enterprise Design Considerations
+
+When designing trust relationships:
+
+Consider:
+
+- Business requirements
+- Administrative boundaries
+- Authentication traffic
+- Geographic locations
+- Security requirements
+- Organizational growth
+- Disaster recovery planning
+
+Avoid creating unnecessary trust relationships simply for convenience.
+
+---
+
+# Cybersecurity Perspective
+
+Trusts increase connectivity between security boundaries.
+
+Potential risks include:
+
+- Unauthorized lateral movement if permissions are poorly managed.
+- Increased complexity in monitoring authentication.
+- Legacy trusts remaining after mergers or migrations.
+- Overly broad permissions granted to trusted users.
+
+Security recommendations:
+
+- Periodically audit all trust relationships.
+- Remove unused trusts.
+- Use selective authentication where appropriate.
+- Monitor cross-domain authentication events.
+- Limit administrative privileges across trust boundaries.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore trust types in an Active Directory lab.
+
+### Step 1
+
+Open:
+
+```
+Active Directory Domains and Trusts
+```
+
+---
+
+### Step 2
+
+Review existing trust relationships.
+
+Identify whether each trust is:
+
+- Parent-Child
+- Tree-Root
+- External
+- Forest
+- Shortcut
+
+---
+
+### Step 3
+
+Draw the trust topology.
+
+Example:
+
+```
+Forest
+
+│
+
+├── Domain A
+
+├── Domain B
+
+└── Domain C
+```
+
+---
+
+### Step 4
+
+Identify:
+
+- Trust direction
+- Trust type
+- Transitivity
+- Authentication path
+
+---
+
+### Step 5
+
+Discuss where a Shortcut Trust could improve authentication efficiency.
+
+---
+
+# Interview Questions
+
+### Q1: What is a Parent-Child Trust?
+
+**Answer:** An automatically created, two-way, transitive trust between a parent domain and a newly created child domain.
+
+---
+
+### Q2: What is the purpose of a Shortcut Trust?
+
+**Answer:** To shorten authentication paths and improve performance in large Active Directory forests.
+
+---
+
+### Q3: What is an External Trust?
+
+**Answer:** A manually created, typically non-transitive trust between a domain in one forest and a domain outside that forest.
+
+---
+
+### Q4: What is a Forest Trust?
+
+**Answer:** A trust relationship that allows authentication between two separate Active Directory forests.
+
+---
+
+### Q5: When would you use a Realm Trust?
+
+**Answer:** To integrate Active Directory with a non-Windows Kerberos realm, such as an MIT Kerberos environment.
+
+---
+
+### Q6: What is a Trust Path?
+
+**Answer:** The sequence of trust relationships that authentication follows to reach the target domain.
+
+---
+
+# Best Practices
+
+- Use automatic trusts where appropriate.
+- Deploy Shortcut Trusts only when authentication paths become unnecessarily long.
+- Prefer Forest Trusts for long-term collaboration between organizations.
+- Remove temporary External Trusts after migration projects are complete.
+- Regularly review and document all trust relationships.
+- Monitor authentication across trust boundaries.
+
+---
+
+# Common Mistakes
+
+- Creating unnecessary trust relationships.
+- Forgetting to remove obsolete trusts.
+- Assuming all trusts are transitive.
+- Using External Trusts when a Forest Trust better fits the business requirement.
+- Ignoring authentication path optimization in large forests.
+
+---
+
+# Key Takeaways
+
+- Active Directory supports multiple trust types for different enterprise scenarios.
+- Parent-Child and Tree-Root Trusts are automatically created within a forest.
+- Shortcut Trusts improve authentication efficiency.
+- External Trusts connect individual domains outside the forest.
+- Forest Trusts enable collaboration between separate forests.
+- Proper trust design balances scalability, performance, and security.
+
+---
+
+**Next:** Part 3
