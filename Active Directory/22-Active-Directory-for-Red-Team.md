@@ -473,4 +473,524 @@ Conduct a lessons-learned meeting to discuss how future assessments could be imp
 
 ---
 
-**Next:** Part 2
+# 22-Active-Directory-for-Red-Team.md
+
+# Part 2 — Active Directory Assessment Methodology, Reconnaissance Planning, Security Validation and Defensive Gap Analysis
+
+> **Important Note**
+>
+> This section explains how professional Red Teams **plan and conduct authorized Active Directory security assessments** from a high level. The emphasis is on methodology, documentation, risk assessment, and collaboration with defenders. It does **not** provide unauthorized attack procedures or exploitation guidance.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Enterprise Assessment Methodology
+- Reconnaissance Planning
+- Asset Prioritization
+- Threat Modeling
+- Attack Surface Analysis
+- Security Control Validation
+- Defensive Gap Analysis
+- Risk Assessment
+- Assessment Documentation
+
+---
+
+# Introduction
+
+Professional Red Teams do not begin with technical testing.
+
+Instead, they begin by understanding:
+
+- Business objectives
+- Identity architecture
+- Critical assets
+- Existing security controls
+- Organizational constraints
+
+Planning ensures assessments are realistic, measurable, and safe.
+
+---
+
+# Enterprise Assessment Methodology
+
+```
+Planning
+
+↓
+
+Information Gathering
+
+↓
+
+Environment Analysis
+
+↓
+
+Security Validation
+
+↓
+
+Evidence Collection
+
+↓
+
+Risk Analysis
+
+↓
+
+Reporting
+
+↓
+
+Remediation Review
+```
+
+Every phase produces information that supports the next.
+
+---
+
+# Assessment Planning
+
+Before technical work begins, the team should determine:
+
+- Business objectives
+- Assessment scope
+- Critical systems
+- Expected deliverables
+- Success criteria
+- Risk tolerance
+- Communication channels
+
+---
+
+# Enterprise Asset Identification
+
+Typical Active Directory assets include:
+
+```
+Enterprise Identity
+
+│
+
+├── Domain Controllers
+
+├── DNS Servers
+
+├── Certificate Services
+
+├── Administrative Workstations
+
+├── File Servers
+
+├── Application Servers
+
+├── User Workstations
+
+└── Cloud Identity Services
+```
+
+Understanding asset relationships helps prioritize assessment activities.
+
+---
+
+# Critical Asset Classification
+
+Example classification:
+
+| Asset | Criticality |
+|--------|-------------|
+| Domain Controllers | Critical |
+| PKI Infrastructure | Critical |
+| Identity Management Systems | Critical |
+| Administrative Workstations | High |
+| File Servers | High |
+| Standard User Devices | Medium |
+| Test Systems | Low |
+
+Higher criticality generally requires stronger security controls and more detailed review.
+
+---
+
+# Threat Modeling
+
+Threat modeling helps identify where security controls should be evaluated.
+
+```
+Business Asset
+
+↓
+
+Potential Threat
+
+↓
+
+Security Control
+
+↓
+
+Validation
+
+↓
+
+Risk Assessment
+```
+
+Threat modeling supports risk-based assessments rather than checklist-driven reviews.
+
+---
+
+# Identity Trust Analysis
+
+Professional assessments review trust relationships such as:
+
+- Domain trust configuration
+- Forest trust relationships
+- Administrative delegation
+- Identity synchronization
+- Hybrid identity integration
+
+The objective is to verify that trust boundaries align with business requirements.
+
+---
+
+# Security Control Validation
+
+Typical control categories include:
+
+```
+Identity Controls
+
+↓
+
+Authentication Controls
+
+↓
+
+Authorization Controls
+
+↓
+
+Monitoring Controls
+
+↓
+
+Recovery Controls
+```
+
+Each control should be evaluated for effectiveness rather than simply confirming that it exists.
+
+---
+
+# Administrative Security Review
+
+Areas commonly reviewed include:
+
+- Administrative account separation
+- Tier-0 protections
+- Least privilege implementation
+- Privileged Access Workstations
+- Password policies
+- Identity governance
+
+---
+
+# Configuration Review
+
+Configuration reviews focus on:
+
+- Security baselines
+- Group Policy consistency
+- Domain Controller configuration
+- Logging configuration
+- Time synchronization
+- Backup configuration
+
+Configuration consistency often reflects operational maturity.
+
+---
+
+# Defensive Gap Analysis
+
+Gap analysis compares:
+
+```
+Expected Security State
+
+↓
+
+Current Security State
+
+↓
+
+Gap Identified
+
+↓
+
+Risk Evaluation
+
+↓
+
+Recommendation
+```
+
+The goal is to improve defensive capabilities rather than simply identify deficiencies.
+
+---
+
+# Risk Assessment Matrix
+
+Example framework:
+
+| Likelihood | Impact | Priority |
+|------------|--------|----------|
+| Low | Low | Low |
+| Low | High | Medium |
+| Medium | Medium | Medium |
+| High | Medium | High |
+| High | High | Critical |
+
+Organizations should use their own approved risk methodology where applicable.
+
+---
+
+# Evidence Collection
+
+Evidence should include:
+
+- Screenshots (where permitted)
+- Configuration documentation
+- Log references
+- System information
+- Assessment notes
+- Validation records
+
+Evidence should be securely stored and protected from unauthorized access.
+
+---
+
+# Findings Documentation
+
+Each finding should include:
+
+- Title
+- Description
+- Business impact
+- Risk rating
+- Supporting evidence
+- Recommendation
+- Remediation priority
+
+Good documentation improves remediation success.
+
+---
+
+# Assessment Workflow
+
+```
+Identify Asset
+
+↓
+
+Review Configuration
+
+↓
+
+Validate Controls
+
+↓
+
+Document Findings
+
+↓
+
+Assess Risk
+
+↓
+
+Recommend Improvements
+```
+
+---
+
+# Stakeholder Communication
+
+Throughout the engagement, maintain communication with:
+
+- Security leadership
+- Identity administrators
+- IT operations
+- Project sponsors
+- Incident response teams (if applicable)
+
+Regular updates reduce misunderstandings and support coordinated remediation.
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Northwind Retail
+```
+
+Infrastructure:
+
+- 140,000 Users
+- Three Forests
+- Hybrid Identity
+- Global Security Operations Center
+
+Assessment Focus:
+
+- Identity governance
+- Administrative privilege review
+- Tier-0 protections
+- Security monitoring
+- Configuration consistency
+
+Assessment Outcomes:
+
+- Improved privileged access governance
+- Enhanced monitoring coverage
+- Standardized security baselines
+- Prioritized remediation roadmap
+
+---
+
+# Cybersecurity Perspective
+
+Effective Red Team assessments emphasize:
+
+- Understanding the environment
+- Measuring defensive effectiveness
+- Providing actionable recommendations
+- Supporting long-term security improvement
+
+Technical findings are most valuable when paired with business context and practical remediation guidance.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Perform a high-level security review of a fictional Active Directory environment.
+
+### Step 1
+
+Create an inventory of:
+
+- Domain Controllers
+- Administrative accounts
+- Critical identity services
+- Tier-0 assets
+
+---
+
+### Step 2
+
+Classify each asset by business criticality.
+
+---
+
+### Step 3
+
+Review documented security controls for:
+
+- Authentication
+- Authorization
+- Monitoring
+- Backup
+- Governance
+
+---
+
+### Step 4
+
+Create a gap analysis table comparing expected controls to observed controls.
+
+---
+
+### Step 5
+
+Write three prioritized recommendations for improving the organization's Active Directory security posture.
+
+---
+
+# Interview Questions
+
+### Q1: Why is assessment planning important?
+
+**Answer:** Planning ensures the assessment aligns with business objectives, minimizes operational risk, and defines clear success criteria.
+
+---
+
+### Q2: What is threat modeling?
+
+**Answer:** Threat modeling is the process of identifying important assets, potential threats, and the security controls that should protect them.
+
+---
+
+### Q3: Why should assets be classified by criticality?
+
+**Answer:** Classification helps prioritize security efforts and remediation based on business impact.
+
+---
+
+### Q4: What is defensive gap analysis?
+
+**Answer:** It compares current security controls against expected security objectives to identify opportunities for improvement.
+
+---
+
+### Q5: Why should findings include business impact?
+
+**Answer:** Business impact helps decision-makers prioritize remediation according to organizational risk.
+
+---
+
+### Q6: Why is evidence collection important?
+
+**Answer:** Evidence supports findings, enables verification, and provides a reliable foundation for remediation planning.
+
+---
+
+# Best Practices
+
+- Begin every assessment with clear planning.
+- Prioritize critical identity assets.
+- Use risk-based methodologies.
+- Validate security controls systematically.
+- Document findings with supporting evidence.
+- Communicate regularly with stakeholders.
+- Focus on practical remediation guidance.
+- Reassess after remediation is complete.
+
+---
+
+# Common Mistakes
+
+- Starting technical work without understanding business objectives.
+- Treating all assets as equally important.
+- Documenting findings without evidence.
+- Ignoring governance and operational controls.
+- Failing to prioritize recommendations.
+- Not validating remediation efforts.
+
+---
+
+# Key Takeaways
+
+- Successful Red Team engagements begin with planning, asset understanding, and risk assessment.
+- Security validation should measure the effectiveness of defensive controls rather than simply confirming their existence.
+- Gap analysis and structured reporting help organizations prioritize meaningful security improvements.
+- Clear documentation and stakeholder communication are essential for long-term defensive success.
+
+---
+
+**Next:** Part 3
