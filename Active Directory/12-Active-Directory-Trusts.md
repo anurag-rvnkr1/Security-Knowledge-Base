@@ -1382,4 +1382,782 @@ Active Directory Domains and Trusts
 
 ---
 
-**Next:** Part 3
+# 12-Active-Directory-Trusts.md
+
+# Part 3 — Trust Authentication Flow, SID Filtering, Selective Authentication, Name Suffix Routing, Security Boundaries, and Enterprise Trust Design
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how authentication works across trusts.
+- Learn Kerberos referral authentication.
+- Understand Security Identifiers (SIDs) in trusts.
+- Learn SID History and SID Filtering.
+- Understand Selective Authentication.
+- Learn Name Suffix Routing.
+- Design secure enterprise trust architectures.
+
+---
+
+# Cross-Domain Authentication Overview
+
+When a user accesses a resource in another trusted domain, the user's credentials are **not copied** to the remote domain.
+
+Instead, authentication is performed using trust relationships and Kerberos referrals.
+
+Example:
+
+```text
+User
+
+↓
+
+Home Domain
+
+↓
+
+Trusted Domain
+
+↓
+
+Target Resource
+```
+
+---
+
+# Authentication Flow
+
+Suppose:
+
+User:
+
+```text
+Alice
+```
+
+Home Domain:
+
+```text
+india.company.com
+```
+
+Target Resource:
+
+```text
+finance.company.com
+```
+
+Authentication process:
+
+```text
+Alice
+
+↓
+
+Logs Into
+
+india.company.com
+
+↓
+
+Requests Resource
+
+↓
+
+finance.company.com
+
+↓
+
+Trust Verified
+
+↓
+
+Permission Checked
+
+↓
+
+Access Granted
+```
+
+---
+
+# Authentication Does Not Mean Authorization
+
+Even after successful authentication:
+
+```text
+User Authenticated
+
+↓
+
+ACL Evaluated
+
+↓
+
+Access Decision
+```
+
+Possible outcomes:
+
+```text
+Authenticated
+
+↓
+
+Access Granted
+```
+
+or
+
+```text
+Authenticated
+
+↓
+
+Access Denied
+```
+
+Authentication proves identity.
+
+Authorization determines permissions.
+
+---
+
+# Kerberos Referral Authentication
+
+In a trusted environment, Kerberos uses **referrals** instead of repeatedly requesting passwords.
+
+Simplified process:
+
+```text
+User
+
+↓
+
+Home KDC
+
+↓
+
+Referral Ticket
+
+↓
+
+Target Domain KDC
+
+↓
+
+Service Ticket
+
+↓
+
+Resource
+```
+
+This allows secure cross-domain authentication without exposing passwords.
+
+---
+
+# Kerberos Referral Example
+
+```text
+India Domain
+
+↓
+
+Issues Referral
+
+↓
+
+Finance Domain
+
+↓
+
+Issues Service Ticket
+
+↓
+
+Finance File Server
+```
+
+The user's password never travels between domains.
+
+---
+
+# Authentication Across Multiple Domains
+
+Example:
+
+```text
+User
+
+↓
+
+Domain A
+
+↓
+
+Trust
+
+↓
+
+Domain B
+
+↓
+
+Trust
+
+↓
+
+Domain C
+
+↓
+
+Application
+```
+
+With transitive trusts, authentication can move through multiple trusted domains.
+
+---
+
+# Trust Path
+
+The sequence of trusted domains followed during authentication is called the **trust path**.
+
+Example:
+
+```text
+A
+
+↓
+
+B
+
+↓
+
+C
+
+↓
+
+D
+```
+
+Authentication follows this path until it reaches the target domain.
+
+Longer trust paths can increase authentication latency.
+
+---
+
+# Security Identifier (SID)
+
+Every security principal receives a unique **Security Identifier (SID)**.
+
+Examples:
+
+- User
+- Group
+- Computer
+
+Windows uses SIDs—not usernames—to make authorization decisions.
+
+Example:
+
+```text
+Username
+
+↓
+
+Alice
+```
+
+Internally:
+
+```text
+SID
+
+↓
+
+S-1-5-21-...
+```
+
+---
+
+# SID in Cross-Domain Authentication
+
+During authorization:
+
+```text
+User
+
+↓
+
+SID
+
+↓
+
+ACL Comparison
+
+↓
+
+Access Granted / Denied
+```
+
+Even if usernames are identical, different SIDs represent different security principals.
+
+---
+
+# SID History
+
+During migrations, users may receive new SIDs.
+
+To preserve access:
+
+```text
+Old SID
+
+↓
+
+SID History
+
+↓
+
+New Account
+```
+
+Applications and resources that still reference the old SID continue to function.
+
+---
+
+# Migration Example
+
+Before migration:
+
+```text
+Legacy Forest
+
+↓
+
+Alice
+
+↓
+
+SID A
+```
+
+After migration:
+
+```text
+New Forest
+
+↓
+
+Alice
+
+↓
+
+SID B
+
+↓
+
+SID History
+
+↓
+
+SID A
+```
+
+The user can continue accessing resources that reference the old SID.
+
+---
+
+# Security Risk of SID History
+
+If improperly controlled:
+
+```text
+Attacker
+
+↓
+
+Injects Fake SID
+
+↓
+
+Attempts Elevated Access
+```
+
+This is why organizations should carefully protect and monitor SID-related features.
+
+---
+
+# SID Filtering
+
+**SID Filtering** protects trusting domains from accepting unauthorized SIDs supplied through a trust.
+
+Without SID Filtering:
+
+```text
+Compromised Domain
+
+↓
+
+Fake SID
+
+↓
+
+Trusted Domain
+```
+
+Potential risk:
+
+Unauthorized privilege escalation.
+
+---
+
+# SID Filtering Workflow
+
+```text
+Incoming Authentication
+
+↓
+
+Validate SID
+
+↓
+
+Filter Unauthorized SIDs
+
+↓
+
+Continue Authentication
+```
+
+Only valid security identifiers are accepted.
+
+---
+
+# Benefits of SID Filtering
+
+Advantages:
+
+- Prevents SID spoofing
+- Limits privilege escalation
+- Protects trusting domains
+- Improves trust security
+- Especially important for external and forest trusts
+
+---
+
+# Selective Authentication
+
+Normally, authenticated users from a trusted domain may attempt to authenticate to systems in the trusting domain (authorization still applies).
+
+With **Selective Authentication**, administrators explicitly choose which servers accept authentication from trusted users.
+
+---
+
+# Standard Authentication
+
+```text
+Trusted User
+
+↓
+
+Any Server
+
+↓
+
+Authentication Allowed
+```
+
+(Subject to trust configuration and permissions.)
+
+---
+
+# Selective Authentication
+
+```text
+Trusted User
+
+↓
+
+Server A
+
+↓
+
+Allowed
+```
+
+```text
+Trusted User
+
+↓
+
+Server B
+
+↓
+
+Denied
+```
+
+Unless administrators explicitly grant the required permission.
+
+---
+
+# Enterprise Use Case
+
+Company acquires another business.
+
+Requirement:
+
+- Limited collaboration
+- Only two applications shared
+
+Configuration:
+
+```text
+Forest Trust
+
+↓
+
+Selective Authentication
+
+↓
+
+Only Approved Servers
+```
+
+This minimizes unnecessary exposure.
+
+---
+
+# Name Suffix Routing
+
+Large organizations may have multiple User Principal Name (UPN) suffixes.
+
+Example:
+
+```text
+alice@company.com
+
+bob@global.company.com
+
+charlie@corp.company.com
+```
+
+Name Suffix Routing tells a forest trust which UPN suffixes should be recognized and routed.
+
+---
+
+# Name Suffix Routing Example
+
+```text
+Forest A
+
+↓
+
+company.com
+```
+
+```text
+Forest B
+
+↓
+
+partner.com
+```
+
+Authentication requests are routed according to configured suffixes.
+
+---
+
+# Trust Boundary
+
+Every Active Directory domain is a security boundary for administrative control.
+
+Trusts allow authentication to cross that boundary—but they do **not** remove it.
+
+Example:
+
+```text
+Domain A
+
+│ Security Boundary │
+
+↓
+
+Trust
+
+↓
+
+Domain B
+```
+
+Administrative rights do not automatically cross trust boundaries.
+
+---
+
+# Enterprise Trust Design
+
+Large organizations often implement:
+
+```text
+Forest A
+
+↓
+
+Forest Trust
+
+↓
+
+Forest B
+
+↓
+
+Selective Authentication
+
+↓
+
+Critical Servers
+```
+
+Features include:
+
+- Least privilege
+- Documented trust relationships
+- Limited cross-forest administration
+- Continuous auditing
+- SID Filtering enabled where appropriate
+
+---
+
+# Enterprise Case Study
+
+Organization:
+
+- 2 Forests
+- 18 Domains
+- 120 Domain Controllers
+- 150,000 users
+
+Requirements:
+
+- Shared HR application
+- Separate administration
+- Minimal authentication exposure
+
+Solution:
+
+```text
+Forest Trust
+
+↓
+
+Selective Authentication
+
+↓
+
+SID Filtering
+
+↓
+
+Least Privilege
+
+↓
+
+Continuous Monitoring
+```
+
+Benefits:
+
+- Secure collaboration
+- Reduced attack surface
+- Controlled authentication paths
+
+---
+
+# Cybersecurity Perspective
+
+Trust relationships are attractive targets because they can expand an attacker's reach.
+
+Security recommendations:
+
+- Enable SID Filtering where applicable.
+- Use Selective Authentication for partner or acquired environments.
+- Audit cross-forest authentication.
+- Remove obsolete SID History after migrations when appropriate.
+- Monitor privileged groups across trusted domains.
+- Regularly review trust configurations.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Assuming authentication automatically grants authorization.
+- Leaving unnecessary SID History indefinitely after migrations.
+- Disabling SID Filtering without understanding the implications.
+- Granting broad access across forest trusts.
+- Ignoring trust path complexity in large environments.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Review trust security settings.
+
+### Tasks
+
+1. Open:
+
+```text
+Active Directory Domains and Trusts
+```
+
+2. Identify:
+
+- Existing forest trusts
+- Trust directions
+- Authentication settings
+
+3. If available in your lab:
+
+- Review Selective Authentication configuration.
+- Review Name Suffix Routing.
+- Document trust security controls.
+
+4. Draw the authentication flow between two trusted domains.
+
+---
+
+# Interview Questions
+
+1. How does authentication work across trusted domains?
+2. What is a Kerberos referral?
+3. What is a SID?
+4. Why is SID History used during migrations?
+5. What security risk does SID Filtering mitigate?
+6. What is Selective Authentication?
+7. When would you enable Selective Authentication?
+8. What is Name Suffix Routing?
+9. Does a trust remove the domain security boundary?
+10. Why should organizations regularly audit trust relationships?
+
+---
+
+# Key Takeaways
+
+- Cross-domain authentication uses Kerberos referrals rather than copying credentials between domains.
+- Security Identifiers (SIDs) uniquely identify users, groups, and computers during authorization.
+- SID History helps preserve access during migrations, while SID Filtering protects against unauthorized SID injection.
+- Selective Authentication limits which systems can authenticate users from trusted domains.
+- Secure enterprise trust design combines least privilege, auditing, SID Filtering, and carefully managed trust relationships.
+
+---
+
+**Next:** Part 4
