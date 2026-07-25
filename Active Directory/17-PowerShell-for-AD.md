@@ -1518,4 +1518,822 @@ Review the exported file using a spreadsheet application.
 
 ---
 
-**Next:** Part 3
+# 17-PowerShell-for-AD.md
+
+# Part 3 — PowerShell Automation, Reporting, CSV Operations, Scheduled Tasks, Error Handling and Enterprise Active Directory Automation
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- PowerShell Automation
+- Active Directory Automation
+- Variables
+- Loops
+- Conditional Statements
+- Functions
+- Error Handling
+- CSV Import and Export
+- Scheduled Tasks
+- Administrative Reporting
+- Enterprise Automation Best Practices
+
+---
+
+# Introduction
+
+PowerShell becomes truly powerful when repetitive administrative tasks are automated.
+
+Instead of manually performing hundreds of operations every day, administrators can create scripts that:
+
+- Retrieve information
+- Generate reports
+- Perform repetitive administrative tasks
+- Validate configurations
+- Monitor Active Directory
+- Schedule recurring jobs
+
+Automation reduces manual effort while improving consistency.
+
+---
+
+# Why Automation Matters
+
+Imagine an enterprise with:
+
+- 120,000 Users
+- 45,000 Computers
+- 12,000 Security Groups
+- 60 Domain Controllers
+
+Performing routine administration manually would require significant time.
+
+Automation enables administrators to complete many recurring tasks reliably and consistently.
+
+---
+
+# Automation Workflow
+
+```
+Business Requirement
+
+        │
+
+        ▼
+
+PowerShell Script
+
+        │
+
+        ▼
+
+Active Directory Module
+
+        │
+
+        ▼
+
+Retrieve Objects
+
+        │
+
+        ▼
+
+Process Data
+
+        │
+
+        ▼
+
+Generate Report
+
+        │
+
+        ▼
+
+Administrator Review
+```
+
+---
+
+# Variables
+
+Variables temporarily store information.
+
+Example:
+
+```powershell
+$Department = "Finance"
+```
+
+Variables improve script readability and reduce duplication.
+
+Common uses:
+
+- User names
+- OU names
+- Department names
+- File paths
+- Report names
+
+---
+
+# PowerShell Data Flow
+
+```
+Input
+
+↓
+
+Variable
+
+↓
+
+Processing
+
+↓
+
+Output
+```
+
+Variables make scripts easier to maintain.
+
+---
+
+# Arrays
+
+Arrays store multiple values.
+
+Example:
+
+```powershell
+$Departments = @(
+"Finance",
+"HR",
+"IT"
+)
+```
+
+Arrays are useful when processing multiple objects.
+
+---
+
+# Conditional Statements
+
+PowerShell supports decision making.
+
+Example:
+
+```powershell
+if ($Enabled)
+{
+    "Account Enabled"
+}
+```
+
+Typical uses include:
+
+- Verify account status
+- Validate input
+- Check file existence
+- Confirm prerequisite conditions
+
+---
+
+# Example Decision Flow
+
+```
+User Found?
+
+↓
+
+Yes
+
+↓
+
+Generate Report
+
+-------------------
+
+No
+
+↓
+
+Display Message
+```
+
+Conditional logic helps scripts respond appropriately to different situations.
+
+---
+
+# Loops
+
+Loops process multiple objects.
+
+Example:
+
+```powershell
+foreach ($User in $Users)
+{
+    $User.Name
+}
+```
+
+Loops are widely used for:
+
+- User reporting
+- Computer inventory
+- Group membership review
+- OU processing
+
+---
+
+# Loop Workflow
+
+```
+CSV
+
+↓
+
+User 1
+
+↓
+
+User 2
+
+↓
+
+User 3
+
+↓
+
+Complete
+```
+
+---
+
+# Functions
+
+Functions group reusable logic.
+
+Example:
+
+```powershell
+function Get-DepartmentUsers
+{
+    param($Department)
+}
+```
+
+Benefits:
+
+- Reusable code
+- Improved readability
+- Easier maintenance
+- Consistent administrative workflows
+
+---
+
+# Script Structure
+
+A well-organized script often includes:
+
+```
+Script
+
+├── Parameters
+
+├── Variables
+
+├── Functions
+
+├── Processing
+
+├── Reporting
+
+└── Logging
+```
+
+Structured scripts are easier to review and maintain.
+
+---
+
+# Working with CSV Files
+
+CSV files are widely used for:
+
+- User provisioning
+- Reporting
+- Inventory
+- Auditing
+- Compliance
+
+PowerShell integrates well with structured CSV data.
+
+---
+
+# Importing CSV
+
+Example:
+
+```powershell
+Import-Csv Users.csv
+```
+
+Imported records become PowerShell objects.
+
+---
+
+# Exporting CSV
+
+Example:
+
+```powershell
+Get-ADUser -Filter * |
+Select-Object Name,Department |
+Export-Csv Report.csv -NoTypeInformation
+```
+
+CSV exports are commonly shared with auditors, managers, and operations teams.
+
+---
+
+# CSV Workflow
+
+```
+HR CSV
+
+↓
+
+Import
+
+↓
+
+Process
+
+↓
+
+Generate Results
+
+↓
+
+Export Report
+```
+
+---
+
+# Reporting
+
+PowerShell is commonly used to generate reports including:
+
+- User Inventory
+- Group Membership
+- Disabled Accounts
+- Locked Accounts
+- Password Expiration
+- Computer Inventory
+- OU Inventory
+- Domain Controller Inventory
+
+Reports support operational visibility and compliance.
+
+---
+
+# Example Reporting Workflow
+
+```
+PowerShell
+
+↓
+
+Active Directory
+
+↓
+
+Retrieve Objects
+
+↓
+
+Filter
+
+↓
+
+Export Report
+
+↓
+
+Administrator Review
+```
+
+---
+
+# Logging
+
+Scripts should record important activities.
+
+Typical log entries include:
+
+- Start Time
+- End Time
+- Success
+- Errors
+- Objects Processed
+- Generated Reports
+
+Logging improves troubleshooting and auditing.
+
+---
+
+# Error Handling
+
+Errors should be anticipated rather than ignored.
+
+Example:
+
+```powershell
+try
+{
+    # Administrative operation
+}
+catch
+{
+    # Handle exception
+}
+```
+
+Benefits include:
+
+- Improved reliability
+- Better troubleshooting
+- Cleaner automation
+- Reduced unexpected failures
+
+---
+
+# Error Handling Workflow
+
+```
+Command
+
+↓
+
+Success?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+-----------------
+
+No
+
+↓
+
+Log Error
+
+↓
+
+Notify Administrator
+```
+
+---
+
+# Scheduled Automation
+
+Many PowerShell scripts are executed automatically.
+
+Examples:
+
+- Daily reports
+- Weekly inventory
+- Monthly audits
+- Compliance reporting
+- Password expiration reports
+- Inactive account reports
+
+Scheduling improves consistency and reduces manual effort.
+
+---
+
+# Scheduled Task Workflow
+
+```
+Windows Task Scheduler
+
+↓
+
+PowerShell Script
+
+↓
+
+Active Directory
+
+↓
+
+Generate Report
+
+↓
+
+Save Report
+
+↓
+
+Administrator Review
+```
+
+---
+
+# Administrative Reporting Examples
+
+Common reports include:
+
+| Report | Purpose |
+|---------|----------|
+| Disabled Users | Account review |
+| Inactive Users | Cleanup |
+| Locked Accounts | Help Desk |
+| Password Expiration | User notifications |
+| Group Membership | Access review |
+| Computer Inventory | Asset management |
+| OU Inventory | Directory review |
+| Domain Controllers | Infrastructure review |
+
+---
+
+# Enterprise Automation Example
+
+Company:
+
+```
+Fabrikam Corporation
+```
+
+Infrastructure:
+
+- 95,000 Users
+- 32 Domain Controllers
+- 8 Forests
+- Hybrid Identity
+
+Daily automation performs:
+
+- User inventory
+- Password expiry reporting
+- Disabled account review
+- Inactive computer reporting
+- Group membership reporting
+- Compliance reporting
+
+Result:
+
+- Faster administration
+- Reduced manual effort
+- Standardized reporting
+- Improved operational visibility
+
+---
+
+# Script Documentation
+
+Every administrative script should include:
+
+```
+Script Name
+
+Author
+
+Purpose
+
+Version
+
+Date
+
+Requirements
+
+Usage
+
+Expected Output
+```
+
+Good documentation simplifies maintenance and knowledge transfer.
+
+---
+
+# Version Control
+
+PowerShell scripts should be maintained using version control.
+
+Benefits include:
+
+- Change tracking
+- Rollback capability
+- Collaboration
+- Audit history
+- Release management
+
+Version control improves both reliability and governance.
+
+---
+
+# Automation Governance
+
+Enterprise automation should follow:
+
+```
+Design
+
+↓
+
+Review
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Maintenance
+```
+
+Automation should never bypass organizational change management.
+
+---
+
+# Cybersecurity Perspective
+
+Administrative automation can affect large portions of an Active Directory environment.
+
+Security recommendations:
+
+- Review scripts before execution.
+- Use code review for production scripts.
+- Test automation in a lab environment.
+- Log administrative actions.
+- Protect scripts from unauthorized modification.
+- Store sensitive information securely.
+- Follow least-privilege principles.
+- Monitor scheduled administrative jobs.
+
+Automation should increase consistency while preserving security controls.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Build a simple reporting workflow using PowerShell.
+
+### Step 1
+
+Retrieve Active Directory users:
+
+```powershell
+Get-ADUser -Filter *
+```
+
+Review the returned objects.
+
+---
+
+### Step 2
+
+Select useful properties:
+
+```powershell
+Get-ADUser -Filter * |
+Select-Object Name,Department
+```
+
+Observe the simplified output.
+
+---
+
+### Step 3
+
+Export the results:
+
+```powershell
+Export-Csv UsersReport.csv -NoTypeInformation
+```
+
+Open the CSV file and review the contents.
+
+---
+
+### Step 4
+
+Create a small script that:
+
+- Retrieves users
+- Selects Name and Department
+- Exports a report
+
+Execute it in a lab environment.
+
+---
+
+### Step 5
+
+Modify the script to include:
+
+- Start time
+- End time
+- Number of processed objects
+
+Document the results.
+
+---
+
+# Interview Questions
+
+### Q1: Why is PowerShell automation important?
+
+**Answer:** It reduces repetitive manual work, improves consistency, minimizes human error, and enables large-scale Active Directory administration.
+
+---
+
+### Q2: Why should scripts include logging?
+
+**Answer:** Logging supports troubleshooting, auditing, operational visibility, and verification of completed tasks.
+
+---
+
+### Q3: What is the purpose of `Import-Csv`?
+
+**Answer:** It reads structured CSV data and converts each row into a PowerShell object for further processing.
+
+---
+
+### Q4: Why is error handling important?
+
+**Answer:** Error handling allows scripts to respond gracefully to failures, improving reliability and simplifying troubleshooting.
+
+---
+
+### Q5: Why should production scripts be tested before deployment?
+
+**Answer:** Testing helps identify logic errors, unexpected behavior, and compatibility issues before they affect production environments.
+
+---
+
+### Q6: Why should administrative scripts be version controlled?
+
+**Answer:** Version control tracks changes, supports collaboration, enables rollback, and provides an audit history for script development.
+
+---
+
+# Best Practices
+
+- Build reusable functions.
+- Use descriptive variable names.
+- Include comments where they add clarity.
+- Implement error handling.
+- Generate logs for administrative tasks.
+- Test scripts in a non-production environment.
+- Store scripts in version control.
+- Follow organizational approval and change management processes.
+
+---
+
+# Common Mistakes
+
+- Hardcoding environment-specific values.
+- Ignoring error handling.
+- Running untested scripts in production.
+- Overwriting reports without backups.
+- Failing to document scripts.
+- Not validating imported CSV data.
+- Scheduling automation without monitoring its results.
+
+---
+
+# Key Takeaways
+
+- PowerShell automation enables efficient, repeatable Active Directory administration.
+- Variables, loops, functions, and conditionals are fundamental building blocks of administrative scripts.
+- CSV import/export simplifies reporting and bulk administration.
+- Error handling, logging, and version control improve script reliability.
+- Enterprise automation should always include testing, documentation, governance, and ongoing monitoring.
+
+---
+
+**Next:** Part 4
