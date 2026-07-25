@@ -508,4 +508,3 @@ Prepare an incident report including the suspected root cause, validation steps,
 
 ---
 
-**Next:** Part 2
