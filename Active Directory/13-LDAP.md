@@ -735,4 +735,885 @@ Document:
 
 ---
 
-**Next:** Part 2
+# 13-LDAP.md
+
+# Part 2 — LDAP Operations, Search Filters, Attributes, Bind Types and LDAP Queries
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- LDAP Operations
+- LDAP Search
+- LDAP Filters
+- LDAP Attributes
+- LDAP Bind
+- Anonymous Bind
+- Simple Bind
+- SASL Bind
+- LDAP Search Base
+- Scope
+- Search Results
+- Enterprise LDAP Queries
+- LDAP Performance
+
+---
+
+# Introduction
+
+In Part 1, we learned that LDAP is the protocol used to communicate with directory services such as Active Directory.
+
+Now the next question is:
+
+> **How does an application actually search Active Directory?**
+
+For example,
+
+When Outlook searches for:
+
+```
+John Smith
+```
+
+or
+
+An HR application searches for:
+
+```
+All Employees
+Department = Finance
+```
+
+or
+
+An administrator searches for:
+
+```
+Disabled Users
+```
+
+All these operations are performed using LDAP queries.
+
+---
+
+# LDAP Operations
+
+LDAP defines several standard operations.
+
+| Operation | Purpose |
+|------------|----------|
+| Bind | Authenticate to the directory |
+| Search | Find objects |
+| Compare | Compare attribute values |
+| Add | Create new objects |
+| Modify | Update attributes |
+| Delete | Remove objects |
+| Modify DN | Rename or move objects |
+| Unbind | Close the LDAP session |
+
+Most enterprise applications primarily perform:
+
+- Bind
+- Search
+- Modify
+
+---
+
+# LDAP Session Lifecycle
+
+A typical LDAP session follows this sequence:
+
+```
+Client
+
+↓
+
+Connect
+
+↓
+
+Bind
+
+↓
+
+Search
+
+↓
+
+Read Results
+
+↓
+
+Modify (Optional)
+
+↓
+
+Unbind
+```
+
+---
+
+# What is an LDAP Bind?
+
+Before a client can interact with the directory, it usually performs a **Bind** operation.
+
+Binding establishes the client's identity.
+
+Think of it as:
+
+```
+Login
+
+↓
+
+Directory Access
+```
+
+---
+
+# Types of LDAP Bind
+
+Common Bind methods include:
+
+- Anonymous Bind
+- Simple Bind
+- SASL Bind
+
+---
+
+# Anonymous Bind
+
+```
+Client
+
+↓
+
+Connect
+
+↓
+
+No Credentials
+```
+
+Historically, some directory servers allowed anonymous access.
+
+Modern Active Directory environments typically restrict anonymous LDAP access because it can expose directory information.
+
+---
+
+# Simple Bind
+
+Simple Bind sends:
+
+```
+Username
+
+Password
+```
+
+to authenticate.
+
+When used without encryption, credentials can be exposed on the network.
+
+Therefore:
+
+- Use Simple Bind only over encrypted connections (such as LDAPS).
+- Avoid transmitting credentials over unencrypted channels.
+
+---
+
+# SASL Bind
+
+SASL stands for:
+
+**Simple Authentication and Security Layer**
+
+SASL allows LDAP to use stronger authentication mechanisms.
+
+Examples include:
+
+- Kerberos
+- NTLM (depending on configuration)
+- Other supported mechanisms
+
+In Active Directory, Kerberos-based SASL authentication is commonly used by domain-joined clients.
+
+---
+
+# LDAP Search
+
+The most frequently used LDAP operation is:
+
+```
+Search
+```
+
+Applications search for:
+
+- Users
+- Groups
+- Computers
+- Printers
+- Contacts
+- Organizational Units
+
+---
+
+# LDAP Search Components
+
+Every LDAP search contains several parts.
+
+```
+Search Base
+
+↓
+
+Scope
+
+↓
+
+Filter
+
+↓
+
+Requested Attributes
+
+↓
+
+Results
+```
+
+---
+
+# Search Base
+
+The Search Base tells LDAP:
+
+```
+Where should I start searching?
+```
+
+Example:
+
+```
+OU=Employees,
+DC=corp,
+DC=example,
+DC=com
+```
+
+The search begins inside the Employees OU.
+
+---
+
+# Search Scope
+
+The scope determines **how deep** LDAP searches.
+
+Three standard scopes exist.
+
+---
+
+## 1. Base
+
+Search only the specified object.
+
+```
+OU=Employees
+
+↓
+
+Only this object
+```
+
+---
+
+## 2. One-Level
+
+Search only the immediate children.
+
+```
+Employees
+
+↓
+
+User1
+
+↓
+
+User2
+
+↓
+
+User3
+```
+
+Sub-OUs are not searched.
+
+---
+
+## 3. Subtree
+
+Search everything below the Search Base.
+
+```
+Employees
+
+↓
+
+Engineering
+
+↓
+
+Finance
+
+↓
+
+HR
+
+↓
+
+Users
+
+↓
+
+Groups
+
+↓
+
+Computers
+```
+
+This is the most commonly used scope.
+
+---
+
+# LDAP Search Filter
+
+Filters determine:
+
+```
+Which objects
+should be returned?
+```
+
+Without a filter:
+
+```
+Return Everything
+```
+
+With a filter:
+
+```
+Return Only Matching Objects
+```
+
+---
+
+# Basic Filter Syntax
+
+LDAP filters use parentheses.
+
+Example:
+
+```
+(attribute=value)
+```
+
+---
+
+# Example Filters
+
+Find a user named Alice:
+
+```
+(cn=Alice)
+```
+
+---
+
+Find all users:
+
+```
+(objectClass=user)
+```
+
+---
+
+Find all computers:
+
+```
+(objectClass=computer)
+```
+
+---
+
+Find all groups:
+
+```
+(objectClass=group)
+```
+
+---
+
+Find a specific department:
+
+```
+(department=Finance)
+```
+
+---
+
+# Logical Operators
+
+LDAP supports logical operators.
+
+| Operator | Meaning |
+|----------|----------|
+| & | AND |
+| \| | OR |
+| ! | NOT |
+
+---
+
+# AND Filter
+
+Find users in Finance.
+
+```
+(&(objectClass=user)
+(department=Finance))
+```
+
+Meaning:
+
+```
+User
+
+AND
+
+Department = Finance
+```
+
+---
+
+# OR Filter
+
+```
+(|(department=HR)
+(department=Finance))
+```
+
+Returns users belonging to either department.
+
+---
+
+# NOT Filter
+
+```
+(!(department=Finance))
+```
+
+Returns objects whose department is not Finance.
+
+---
+
+# Wildcards
+
+LDAP commonly uses:
+
+```
+*
+```
+
+Examples:
+
+Names beginning with A:
+
+```
+(cn=A*)
+```
+
+Contains "Admin":
+
+```
+(cn=*Admin*)
+```
+
+Ends with "01":
+
+```
+(cn=*01)
+```
+
+---
+
+# LDAP Attributes
+
+Each object contains attributes.
+
+Example User:
+
+```
+Alice Smith
+```
+
+Attributes:
+
+```
+cn
+
+mail
+
+telephoneNumber
+
+department
+
+title
+
+manager
+
+employeeID
+```
+
+Applications can request only the attributes they need.
+
+---
+
+# Attribute Retrieval
+
+Instead of retrieving every attribute,
+
+an application may request:
+
+```
+Name
+
+Email
+
+Phone
+```
+
+This improves performance.
+
+---
+
+# Search Results
+
+After processing the query,
+
+LDAP returns:
+
+```
+Matching Objects
+
+↓
+
+Requested Attributes
+
+↓
+
+Client
+```
+
+---
+
+# Example Search
+
+Application:
+
+```
+Find Employee
+
+↓
+
+Department = IT
+```
+
+LDAP:
+
+```
+Search Base
+
+↓
+
+Employees OU
+
+↓
+
+Filter
+
+↓
+
+(department=IT)
+
+↓
+
+Return Matching Users
+```
+
+---
+
+# LDAP Search Workflow
+
+```
+Application
+
+↓
+
+Bind
+
+↓
+
+Search Base
+
+↓
+
+Filter
+
+↓
+
+Directory Search
+
+↓
+
+Matching Objects
+
+↓
+
+Return Results
+```
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Contoso
+```
+
+HR System needs:
+
+```
+All Employees
+
+↓
+
+Location = Bangalore
+
+↓
+
+Department = Engineering
+```
+
+Workflow:
+
+```
+HR Portal
+
+↓
+
+LDAP Bind
+
+↓
+
+LDAP Search
+
+↓
+
+Return Matching Employees
+
+↓
+
+Display Employee List
+```
+
+The application retrieves only the required information.
+
+---
+
+# LDAP Performance Considerations
+
+Large enterprises may have:
+
+- 250,000 users
+- 50,000 computers
+- Millions of directory objects
+
+Poorly designed LDAP queries can:
+
+- Increase Domain Controller CPU usage
+- Consume memory
+- Slow application response
+- Generate unnecessary network traffic
+
+Efficient searches improve overall directory performance.
+
+---
+
+# Cybersecurity Perspective
+
+LDAP queries can reveal valuable information.
+
+Examples include:
+
+- Usernames
+- Departments
+- Email addresses
+- Computer names
+- Organizational structure
+
+Organizations should:
+
+- Restrict unnecessary directory access.
+- Apply least-privilege permissions.
+- Monitor unusual LDAP query activity.
+- Limit anonymous directory enumeration.
+- Encrypt authentication where appropriate.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore LDAP queries using Active Directory tools.
+
+### Step 1
+
+Open:
+
+```
+Active Directory Users and Computers
+```
+
+---
+
+### Step 2
+
+Use the **Find** feature.
+
+Search for:
+
+```
+User Name
+```
+
+Observe the returned objects.
+
+---
+
+### Step 3
+
+Search for:
+
+```
+Groups
+```
+
+Review the matching results.
+
+---
+
+### Step 4
+
+Open the properties of a user.
+
+Review attributes such as:
+
+- Department
+- Email
+- Manager
+- Office
+
+---
+
+### Step 5
+
+Document:
+
+- Search criteria
+- Objects returned
+- Attributes displayed
+
+---
+
+# Interview Questions
+
+### Q1: What is the purpose of an LDAP Bind?
+
+**Answer:** It establishes the client's identity with the directory before performing operations.
+
+---
+
+### Q2: Which LDAP operation is used most frequently?
+
+**Answer:** Search.
+
+---
+
+### Q3: What is a Search Base?
+
+**Answer:** The location in the directory where LDAP begins searching.
+
+---
+
+### Q4: What are the three LDAP search scopes?
+
+**Answer:**
+
+- Base
+- One-Level
+- Subtree
+
+---
+
+### Q5: What does the filter `(objectClass=user)` return?
+
+**Answer:** User objects.
+
+---
+
+### Q6: Why should Simple Bind typically be used over encrypted connections?
+
+**Answer:** To protect credentials from being exposed during transmission.
+
+---
+
+# Best Practices
+
+- Use the narrowest practical Search Base.
+- Request only required attributes.
+- Prefer Subtree searches only when necessary.
+- Use efficient filters.
+- Restrict anonymous directory access.
+- Use secure authentication mechanisms for production environments.
+
+---
+
+# Common Mistakes
+
+- Searching the entire directory unnecessarily.
+- Retrieving all attributes for every query.
+- Using overly broad filters.
+- Allowing anonymous directory enumeration.
+- Sending credentials over unencrypted connections.
+
+---
+
+# Key Takeaways
+
+- LDAP operations include Bind, Search, Modify, Add, Delete, and Unbind.
+- Every LDAP search consists of a Search Base, Scope, Filter, and Requested Attributes.
+- Efficient search filters improve performance.
+- Proper authentication and directory permissions are essential for secure LDAP usage.
+- Well-designed LDAP queries are critical in large enterprise Active Directory environments.
+
+---
+
+**Next:** Part 3
