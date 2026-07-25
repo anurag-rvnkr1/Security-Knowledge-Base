@@ -1264,4 +1264,729 @@ Practice delegation and OU management.
 
 ---
 
-**Next:** Part 3
+# 06-Organizational-Units.md
+
+# Part 3 — Group Policy Inheritance, OU Design Strategies, Automation, Troubleshooting, and Enterprise Best Practices
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how Group Policy inheritance works with OUs.
+- Learn Block Inheritance and Enforced policies.
+- Design scalable OU structures.
+- Understand Microsoft's recommended OU design.
+- Learn automation concepts.
+- Troubleshoot common OU-related issues.
+- Apply enterprise best practices.
+
+---
+
+# Organizational Units and Group Policy
+
+One of the biggest advantages of Organizational Units is their ability to receive **Group Policy Objects (GPOs).**
+
+A GPO linked to an OU automatically affects the users and computers located inside that OU unless inheritance is blocked or filtering prevents application.
+
+Example:
+
+```text
+Company.com
+
+│
+
+├── Finance OU
+│      ├── Users
+│      └── Computers
+│
+└── HR OU
+       ├── Users
+       └── Computers
+
+Finance GPO
+        ↓
+Finance Users & Computers
+```
+
+---
+
+# Understanding Group Policy Scope
+
+A Group Policy can be linked to:
+
+- Site
+- Domain
+- Organizational Unit
+
+Example:
+
+```text
+Site
+
+↓
+
+Domain
+
+↓
+
+Parent OU
+
+↓
+
+Child OU
+
+↓
+
+User / Computer
+```
+
+Policies flow downward unless configured otherwise.
+
+---
+
+# Group Policy Inheritance
+
+Inheritance means that child OUs receive policies linked to their parent containers.
+
+Example:
+
+```text
+Company
+
+│
+
+├── Corporate
+
+│     ├── Users
+
+│     └── Computers
+```
+
+If a policy is linked to **Corporate**, both child OUs inherit it.
+
+---
+
+# Example
+
+```text
+Company
+
+│
+
+├── IT
+
+│     ├── Servers
+
+│     └── Workstations
+```
+
+If a password policy or software deployment GPO is linked to **IT**, both **Servers** and **Workstations** inherit that policy (unless filtering or blocking changes the behavior).
+
+---
+
+# Policy Processing Flow
+
+```text
+Local Policy
+
+↓
+
+Site GPO
+
+↓
+
+Domain GPO
+
+↓
+
+Parent OU
+
+↓
+
+Child OU
+```
+
+This is commonly referred to as the **LSDOU** processing order, which will be explored in detail in the Group Policy chapter.
+
+---
+
+# Block Inheritance
+
+Sometimes an OU should **not** receive policies from its parent.
+
+Example:
+
+```text
+Company
+
+│
+
+├── Corporate
+
+│
+
+└── Research
+      (Block Inheritance)
+```
+
+The Research OU ignores inherited policies unless a parent policy is marked as **Enforced**.
+
+Common use cases:
+
+- Test environments
+- Research labs
+- Isolated administrative environments
+
+---
+
+# Enforced Policies
+
+An administrator may require a policy to apply regardless of Block Inheritance.
+
+Example:
+
+```text
+Company Password Policy
+
+↓
+
+Enforced
+
+↓
+
+All Child OUs
+```
+
+Enforced policies override Block Inheritance.
+
+Typical enterprise examples include:
+
+- Security settings
+- Audit configuration
+- Domain-wide restrictions
+
+---
+
+# Inheritance Example
+
+```text
+Domain
+
+│
+
+├── Corporate
+
+│      │
+│      └── Finance
+
+│
+
+└── Research
+```
+
+Policy Linked:
+
+```text
+Domain Password Policy
+```
+
+Results:
+
+| OU | Receives Policy |
+|----|-----------------|
+| Corporate | Yes |
+| Finance | Yes |
+| Research | Yes (unless special configuration exists) |
+
+---
+
+# When Should Block Inheritance Be Used?
+
+Use it only when necessary.
+
+Good examples:
+
+- Dedicated lab environments
+- Specialized testing
+- Temporary migration projects
+- Isolated development forests
+
+Poor examples:
+
+- Avoiding proper GPO design
+- Solving policy conflicts without analysis
+- Everyday administration
+
+---
+
+# Designing Enterprise OUs
+
+Microsoft recommends designing OUs based on:
+
+- Administration
+- Policy requirements
+- Security requirements
+- Geographic regions
+- Device type
+
+Avoid designing OUs purely around reporting structures.
+
+---
+
+# Poor OU Design
+
+```text
+CEO
+
+├── VP
+
+│     ├── Manager
+
+│           ├── Employee
+
+│                 ├── Employee
+
+│                      ├── Employee
+```
+
+Problems:
+
+- Difficult administration
+- Frequent restructuring
+- Deep hierarchy
+- Complex policy management
+
+---
+
+# Better Enterprise Design
+
+```text
+Company
+
+├── Users
+
+├── Computers
+
+├── Servers
+
+├── Service Accounts
+
+├── Privileged Accounts
+
+├── Workstations
+
+├── Domain Controllers
+
+└── Groups
+```
+
+Administrative tasks become much easier.
+
+---
+
+# Separating Workstations and Servers
+
+Never mix servers and workstations inside the same OU.
+
+Recommended:
+
+```text
+Company
+
+├── Servers
+
+│      ├── File Servers
+
+│      ├── Web Servers
+
+│      └── SQL Servers
+
+└── Workstations
+```
+
+Reason:
+
+Different security policies apply to each.
+
+---
+
+# Privileged Accounts
+
+Enterprise administrators usually maintain a dedicated OU.
+
+Example:
+
+```text
+Privileged Accounts
+
+├── Domain Admins
+
+├── Enterprise Admins
+
+├── Server Admins
+
+└── Security Admins
+```
+
+Separate policies protect privileged identities.
+
+---
+
+# Service Accounts
+
+Dedicated OU:
+
+```text
+Service Accounts
+
+├── SQL Service
+
+├── IIS Service
+
+├── Backup Service
+
+└── Monitoring Service
+```
+
+Benefits:
+
+- Easier auditing
+- Dedicated security settings
+- Simplified lifecycle management
+
+---
+
+# Computer Lifecycle Example
+
+```text
+New Computer
+
+↓
+
+Staging OU
+
+↓
+
+Deployment
+
+↓
+
+Production OU
+
+↓
+
+Retirement OU
+
+↓
+
+Deletion
+```
+
+Many organizations use temporary OUs during provisioning.
+
+---
+
+# User Lifecycle Example
+
+```text
+New User
+
+↓
+
+HR OU
+
+↓
+
+Department OU
+
+↓
+
+Transferred
+
+↓
+
+Disabled Users OU
+
+↓
+
+Deleted
+```
+
+OUs help organize identity lifecycle processes.
+
+---
+
+# Automation with OUs
+
+PowerShell simplifies OU management.
+
+Example tasks include:
+
+- Create OUs
+- Rename OUs
+- Move users
+- Bulk user creation
+- Bulk computer movement
+- Generate reports
+
+Example:
+
+```powershell
+New-ADOrganizationalUnit -Name "Finance"
+```
+
+Move a user:
+
+```powershell
+Move-ADObject
+```
+
+Detailed PowerShell examples are covered in Chapter 17.
+
+---
+
+# Enterprise Automation
+
+Large enterprises automate:
+
+- Department creation
+- Branch office deployment
+- New user onboarding
+- Computer staging
+- Security auditing
+- Compliance reporting
+
+Automation reduces manual errors and improves consistency.
+
+---
+
+# OU Troubleshooting
+
+Common issues include:
+
+- GPO not applying
+- User in wrong OU
+- Computer moved accidentally
+- Delegation not working
+- Missing permissions
+- Replication delays
+- Incorrect inheritance settings
+
+---
+
+# Troubleshooting Checklist
+
+| Check | Why It Matters |
+|---------|----------------|
+| Correct OU | Ensures expected GPOs apply |
+| Replication healthy | Prevents inconsistent views |
+| Permissions | Confirms delegated access |
+| Inheritance | Verifies policy flow |
+| Security filtering | Confirms GPO scope |
+| WMI filters | Checks device targeting |
+| Object location | Ensures correct administrative scope |
+
+---
+
+# Monitoring OUs
+
+Administrators should monitor:
+
+- New OU creation
+- Deleted OUs
+- Moved objects
+- Permission changes
+- Delegation changes
+- GPO links
+- Administrative activity
+
+Logging helps identify unauthorized modifications.
+
+---
+
+# Enterprise Case Study
+
+Company:
+
+- 75,000 employees
+- 15 countries
+- 9 regional IT teams
+
+OU Design:
+
+```text
+Company
+
+├── Users
+
+├── Workstations
+
+├── Servers
+
+├── Privileged Accounts
+
+├── Service Accounts
+
+├── Branch Offices
+
+└── Contractors
+```
+
+Each regional IT team receives delegated permissions only for its assigned OUs.
+
+Benefits:
+
+- Reduced administrative risk
+- Simplified GPO management
+- Faster onboarding
+- Better compliance
+- Easier auditing
+
+---
+
+# Cybersecurity Perspective
+
+A well-planned OU structure strengthens security operations by:
+
+- Separating privileged identities.
+- Applying different hardening baselines.
+- Isolating administrative accounts.
+- Supporting least privilege.
+- Simplifying incident response.
+- Improving auditability.
+
+Example:
+
+```text
+Standard Users
+
+↓
+
+Standard GPO
+
+Privileged Users
+
+↓
+
+Hardened GPO
+
+↓
+
+MFA
+
+↓
+
+Restricted Logon
+
+↓
+
+Enhanced Auditing
+```
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Extremely deep OU hierarchies.
+- Frequent OU restructuring.
+- Mixing privileged and standard accounts.
+- Applying every GPO at the domain level.
+- Using Block Inheritance excessively.
+- Ignoring documentation.
+- Delegating permissions without regular review.
+
+---
+
+# Best Practices Checklist
+
+✔ Design OUs around administration.
+
+✔ Keep the hierarchy simple.
+
+✔ Separate servers from workstations.
+
+✔ Create dedicated OUs for privileged accounts.
+
+✔ Use meaningful names.
+
+✔ Delegate permissions through groups.
+
+✔ Document OU structure.
+
+✔ Protect important OUs from accidental deletion.
+
+✔ Review delegated permissions periodically.
+
+✔ Test Group Policy before production deployment.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Design a scalable OU hierarchy for a fictional enterprise.
+
+### Scenario
+
+Company:
+
+- 3,000 employees
+- IT
+- HR
+- Finance
+- Sales
+- London
+- Bengaluru
+- New York
+
+### Tasks
+
+1. Create a root OU for each location.
+2. Create child OUs:
+   - Users
+   - Computers
+   - Groups
+   - Servers
+3. Create a dedicated `Privileged Accounts` OU.
+4. Create a `Service Accounts` OU.
+5. Link placeholder GPOs to:
+   - Servers
+   - Workstations
+   - Privileged Accounts
+6. Enable accidental deletion protection on all production OUs.
+7. Document the final hierarchy.
+
+---
+
+# Interview Questions
+
+1. Why should OUs be designed around administration instead of organizational charts?
+2. What is Group Policy inheritance?
+3. What is Block Inheritance?
+4. What does an Enforced GPO do?
+5. Why should servers and workstations be placed in separate OUs?
+6. Why are privileged accounts usually stored in a dedicated OU?
+7. What are the benefits of PowerShell automation for OU management?
+8. How can accidental deletion of an OU be prevented?
+9. What should be checked when a GPO is not applying to an OU?
+10. What are common OU design mistakes?
+
+---
+
+# Key Takeaways
+
+- OUs are central to enterprise administration and Group Policy management.
+- Policies inherit through the OU hierarchy unless inheritance is blocked or overridden by an Enforced GPO.
+- Design OUs based on administrative and policy requirements, not organizational charts alone.
+- Separate privileged accounts, servers, workstations, and service accounts into dedicated OUs.
+- Automation and documentation improve consistency and reduce administrative overhead.
+- Regular reviews of delegation, permissions, and OU structure help maintain a secure Active Directory environment.
+
+---
+
+**Next:** Part 4
