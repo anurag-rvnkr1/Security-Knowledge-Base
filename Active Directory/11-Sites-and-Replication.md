@@ -1397,4 +1397,713 @@ Review inbound replication partners and verify successful replication.
 
 ---
 
-**Next:** Part 3
+# 11-Sites-and-Replication.md
+
+# Part 3 — Site Links, Site Link Costs, Replication Scheduling and Bridgehead Servers
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- What Site Links are
+- Why Site Links are required
+- Site Link Costs
+- Site Link Bridges
+- Bridgehead Servers
+- Preferred Bridgehead Servers
+- Replication Scheduling
+- Replication Intervals
+- Site Link Transitivity
+- Hub-and-Spoke vs Mesh Topologies
+- Enterprise WAN replication design
+- Best practices for multi-site environments
+
+---
+
+# Introduction
+
+In the previous part, we learned that:
+
+- KCC creates replication topology **within a Site**
+- ISTG creates replication topology **between Sites**
+
+However, the ISTG cannot determine how Sites are connected unless administrators define the network.
+
+This is accomplished using **Site Links**.
+
+---
+
+# What is a Site Link?
+
+A **Site Link** represents a logical network connection between two or more Active Directory Sites.
+
+It tells Active Directory:
+
+- Which Sites can communicate
+- Which WAN links exist
+- How much each connection costs
+- When replication is allowed
+- How frequently replication occurs
+
+Without Site Links, Domain Controllers in different Sites cannot replicate with one another.
+
+---
+
+# Simple Example
+
+Company Offices:
+
+```
+Bangalore
+
+Mumbai
+
+Delhi
+```
+
+WAN Connections:
+
+```
+Bangalore ←→ Mumbai
+
+Mumbai ←→ Delhi
+```
+
+Site Links:
+
+```
+BLR-MUM
+
+MUM-DEL
+```
+
+These Site Links tell Active Directory how information should flow.
+
+---
+
+# Visual Representation
+
+```
+         Bangalore
+             │
+     Site Link (BLR-MUM)
+             │
+          Mumbai
+             │
+     Site Link (MUM-DEL)
+             │
+           Delhi
+```
+
+Replication follows the defined Site Links.
+
+---
+
+# Site Link Components
+
+Each Site Link contains:
+
+- Connected Sites
+- Cost
+- Replication Schedule
+- Replication Interval
+- Transport Protocol
+- Description (optional)
+
+---
+
+# Transport Protocols
+
+Historically, Active Directory supported:
+
+- RPC over IP
+- SMTP (limited use)
+
+Today, **RPC over IP** is the standard transport for Domain Controller replication.
+
+SMTP is not used for Domain partition replication and is considered obsolete for most deployments.
+
+---
+
+# Site Link Cost
+
+Every Site Link has a **Cost**.
+
+The cost is **not** based on money.
+
+Instead, it represents the relative preference of one network path over another.
+
+Lower Cost = Preferred Route
+
+Higher Cost = Backup or Less Preferred Route
+
+---
+
+# Example
+
+```
+Bangalore → Mumbai
+
+Cost = 50
+```
+
+```
+Bangalore → Chennai
+
+Cost = 100
+```
+
+If Active Directory must choose between the two routes:
+
+```
+50
+
+↓
+
+Preferred
+```
+
+The route with Cost 50 is selected.
+
+---
+
+# Another Example
+
+```
+           Bangalore
+
+          /         \
+
+     Cost 50      Cost 150
+
+      /               \
+
+Mumbai             Hyderabad
+```
+
+Traffic prefers Mumbai because the Site Link Cost is lower.
+
+---
+
+# Why Costs Matter
+
+Large organizations often have:
+
+- MPLS circuits
+- Leased lines
+- VPN tunnels
+- SD-WAN
+- Backup WAN links
+
+Site Link Costs help Active Directory choose the most efficient replication path.
+
+---
+
+# Site Link Bridge
+
+Suppose:
+
+```
+Site A
+
+↓
+
+Site B
+
+↓
+
+Site C
+```
+
+If:
+
+- A trusts B
+- B trusts C
+
+Can A communicate with C?
+
+Usually, yes.
+
+This behavior is called **Site Link Transitivity**.
+
+---
+
+# Site Link Bridge
+
+A Site Link Bridge allows Active Directory to treat multiple Site Links as a continuous replication path.
+
+Example:
+
+```
+A
+
+↓
+
+B
+
+↓
+
+C
+```
+
+Replication can flow:
+
+```
+A
+
+↓
+
+B
+
+↓
+
+C
+```
+
+without requiring a direct Site Link between A and C.
+
+---
+
+# Bridge All Site Links
+
+By default:
+
+```
+Bridge all site links
+
+Enabled
+```
+
+This means Active Directory assumes that all Site Links are transitive.
+
+In highly complex networks, administrators may disable this setting and manually define Site Link Bridges.
+
+---
+
+# When Manual Site Link Bridges Are Used
+
+Manual bridges are useful when:
+
+- WAN routing is not fully transitive
+- Network segmentation exists
+- Regulatory requirements isolate traffic
+- Certain Sites must not communicate directly
+
+---
+
+# Replication Schedule
+
+Not every organization wants replication 24 hours a day.
+
+For example:
+
+```
+Office Hours
+
+High Business Traffic
+```
+
+WAN bandwidth should be reserved for business applications.
+
+Replication can therefore be scheduled for:
+
+- Evenings
+- Nights
+- Weekends
+- Every few hours
+
+---
+
+# Example Schedule
+
+```
+Monday
+
+00:00–06:00
+
+Replication Allowed
+
+06:00–22:00
+
+No Replication
+
+22:00–24:00
+
+Replication Allowed
+```
+
+Administrators can configure these schedules according to business requirements.
+
+---
+
+# Replication Interval
+
+In addition to the schedule, Site Links define the **Replication Interval**.
+
+Example:
+
+```
+180 Minutes
+```
+
+Meaning:
+
+Every 180 minutes, eligible Domain Controllers check for updates during the allowed schedule.
+
+Common intervals vary depending on:
+
+- WAN speed
+- Number of Sites
+- Business requirements
+
+---
+
+# Example Timeline
+
+```
+08:00
+
+Replication
+
+↓
+
+11:00
+
+Replication
+
+↓
+
+14:00
+
+Replication
+
+↓
+
+17:00
+
+Replication
+```
+
+---
+
+# Bridgehead Server
+
+A **Bridgehead Server** is the Domain Controller responsible for handling replication traffic between Sites.
+
+Instead of every Domain Controller communicating across the WAN:
+
+```
+Site A
+
+DC1
+
+DC2
+
+DC3
+```
+
+One Domain Controller is selected.
+
+Example:
+
+```
+DC2
+
+↓
+
+Bridgehead Server
+```
+
+DC2 communicates with another Bridgehead Server in the remote Site.
+
+---
+
+# Visual Example
+
+```
+      Bangalore Site
+
+DC1
+
+DC2 ← Bridgehead
+
+DC3
+
+        │
+        │ WAN
+        │
+
+DC4 ← Bridgehead
+
+DC5
+
+DC6
+
+       Mumbai Site
+```
+
+Only the Bridgehead Servers exchange inter-site replication traffic.
+
+Local Domain Controllers receive updates through normal intra-site replication.
+
+---
+
+# Preferred Bridgehead Server
+
+Administrators may specify a **Preferred Bridgehead Server**.
+
+Reasons include:
+
+- Better hardware
+- High availability
+- Dedicated network connectivity
+- Predictable replication paths
+
+If no Preferred Bridgehead is configured, Active Directory automatically selects one.
+
+---
+
+# Automatic Selection
+
+The ISTG evaluates:
+
+- Availability
+- Replication health
+- Site topology
+- Server suitability
+
+and selects the most appropriate Bridgehead Server.
+
+---
+
+# Hub-and-Spoke Topology
+
+A common enterprise design.
+
+```
+              HQ
+
+          /   |   \
+
+       BLR  DEL  MUM
+
+      /            \
+
+   Pune          Chennai
+```
+
+Advantages:
+
+- Easy management
+- Centralized administration
+- Predictable replication
+
+Disadvantages:
+
+- Hub becomes critical infrastructure.
+
+---
+
+# Full Mesh Topology
+
+Every Site connects to every other Site.
+
+```
+A────B
+
+|\  /|
+
+| \/ |
+
+| /\ |
+
+|/  \|
+
+C────D
+```
+
+Advantages:
+
+- High redundancy
+- Multiple paths
+
+Disadvantages:
+
+- Complex
+- Expensive
+- Difficult to manage at scale
+
+---
+
+# Ring Topology
+
+```
+A
+
+↓
+
+B
+
+↓
+
+C
+
+↓
+
+D
+
+↓
+
+A
+```
+
+Often used internally by the KCC for efficient replication with redundancy.
+
+---
+
+# Enterprise Example
+
+A multinational company has:
+
+- 30 Sites
+- 85 Domain Controllers
+- Multiple WAN providers
+
+Configuration:
+
+- Site Links reflect physical WAN connectivity.
+- Costs prioritize dedicated MPLS links over VPN backups.
+- Replication occurs every 30 minutes between regional hubs.
+- Regional Bridgehead Servers handle all inter-site replication.
+- Automatic failover occurs if a Bridgehead becomes unavailable.
+
+This design minimizes WAN usage while maintaining directory consistency.
+
+---
+
+# Cybersecurity Perspective
+
+Poor Site Link configuration can result in:
+
+- Delayed password synchronization
+- Slow propagation of account lockouts
+- Inconsistent security group memberships
+- Delayed Group Policy distribution
+- Increased recovery time during security incidents
+
+Proper Site Link design ensures that security-critical changes are replicated quickly while avoiding unnecessary WAN congestion.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Configure Site Links.
+
+### Step 1
+
+Open:
+
+```
+Active Directory Sites and Services
+```
+
+### Step 2
+
+Navigate to:
+
+```
+Inter-Site Transports
+
+↓
+
+IP
+```
+
+### Step 3
+
+View the existing Site Link.
+
+### Step 4
+
+Create a new Site Link connecting two lab Sites.
+
+### Step 5
+
+Assign:
+
+- Cost = 50
+- Replication Interval = 60 minutes
+
+### Step 6
+
+Review the schedule and verify the Site Link configuration.
+
+---
+
+# Interview Questions
+
+### Q1: What is a Site Link?
+
+**Answer:** A Site Link defines the logical WAN connection between Active Directory Sites and controls inter-site replication.
+
+---
+
+### Q2: What does Site Link Cost represent?
+
+**Answer:** It represents the relative preference of one replication path over another. Lower costs are preferred.
+
+---
+
+### Q3: What is a Bridgehead Server?
+
+**Answer:** A Domain Controller selected to handle replication traffic between different Active Directory Sites.
+
+---
+
+### Q4: What is Site Link Transitivity?
+
+**Answer:** It allows replication to flow across connected Site Links without requiring a direct Site Link between every pair of Sites.
+
+---
+
+### Q5: Can replication be scheduled?
+
+**Answer:** Yes. Administrators can define both replication schedules and intervals for inter-site replication.
+
+---
+
+# Best Practices
+
+- Assign Site Link Costs that reflect actual network quality.
+- Schedule replication according to WAN capacity and business needs.
+- Keep automatic Bridgehead selection unless there is a justified reason to override it.
+- Review Site Link design whenever WAN infrastructure changes.
+- Monitor replication latency across Sites.
+
+---
+
+# Common Mistakes
+
+- Using identical costs for all Site Links without considering network quality.
+- Creating unnecessary manual Bridgehead Servers.
+- Forgetting to adjust replication schedules after business expansion.
+- Assuming all Sites require continuous replication.
+- Ignoring Site Link documentation.
+
+---
+
+# Key Takeaways
+
+- Site Links define how Sites communicate.
+- Site Link Costs determine preferred replication paths.
+- Replication schedules and intervals optimize WAN usage.
+- Bridgehead Servers centralize inter-site replication.
+- Well-designed Site Links improve performance, scalability, and security across enterprise Active Directory environments.
+
+---
+
+**Next:** Part 4
