@@ -508,3 +508,584 @@ Prepare an incident report including the suspected root cause, validation steps,
 
 ---
 
+# 26-AD-Troubleshooting.md
+
+# Part 2 — Troubleshooting Authentication, DNS, Replication, Group Policy and Domain Controller Health
+
+> **Important Note**
+>
+> This section explains how to troubleshoot common **Active Directory operational issues** using a structured, defensive approach. It focuses on identifying symptoms, collecting evidence, validating infrastructure health, and restoring normal operation. It does **not** include offensive procedures or exploitation guidance.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Authentication Troubleshooting
+- DNS Troubleshooting
+- Replication Troubleshooting
+- Group Policy Troubleshooting
+- Domain Controller Health
+- Time Synchronization
+- Service Verification
+- Enterprise Troubleshooting Workflow
+- Validation Techniques
+
+---
+
+# Authentication Troubleshooting
+
+Authentication problems are among the most common Active Directory incidents.
+
+Common symptoms include:
+
+- Users cannot sign in
+- Password accepted on one system but not another
+- Delayed authentication
+- "Access Denied" messages
+- Account lockout notifications
+
+A structured investigation helps identify the underlying cause.
+
+---
+
+# Authentication Investigation Workflow
+
+```
+User Reports Issue
+
+↓
+
+Verify Username
+
+↓
+
+Verify Account Status
+
+↓
+
+Check Password Status
+
+↓
+
+Review Domain Controller
+
+↓
+
+Review DNS
+
+↓
+
+Review Time Synchronization
+
+↓
+
+Validate Resolution
+```
+
+Each step eliminates potential causes systematically.
+
+---
+
+# Authentication Checklist
+
+| Check | Purpose |
+|--------|----------|
+| User account exists | Verify account availability |
+| Account enabled | Confirm account status |
+| Password validity | Verify credentials |
+| Group membership | Confirm authorization |
+| Domain Controller availability | Ensure authentication services |
+| DNS resolution | Validate infrastructure |
+| Time synchronization | Support Kerberos authentication |
+
+---
+
+# DNS Troubleshooting
+
+Active Directory relies heavily on DNS.
+
+Without healthy DNS:
+
+- Users may not locate Domain Controllers.
+- Authentication may fail.
+- Replication can be disrupted.
+- Group Policy processing may be affected.
+
+DNS should be one of the first components reviewed.
+
+---
+
+# DNS Troubleshooting Workflow
+
+```
+Authentication Issue
+
+↓
+
+Check Name Resolution
+
+↓
+
+Verify DNS Records
+
+↓
+
+Confirm Zone Health
+
+↓
+
+Review DNS Service
+
+↓
+
+Validate Client Configuration
+
+↓
+
+Retest
+```
+
+Proper name resolution is essential for Active Directory functionality.
+
+---
+
+# Common DNS Symptoms
+
+| Symptom | Possible Area to Review |
+|----------|------------------------|
+| Domain cannot be located | DNS configuration |
+| Slow logons | DNS response |
+| Domain Controller unavailable | DNS records |
+| Replication delays | Name resolution |
+| Group Policy failures | DNS infrastructure |
+
+---
+
+# Replication Troubleshooting
+
+Replication keeps directory information consistent across Domain Controllers.
+
+Typical symptoms include:
+
+- Users appear on one Domain Controller but not another.
+- Group changes take longer than expected.
+- Organizational Unit changes are inconsistent.
+- Password updates are delayed.
+
+---
+
+# Replication Workflow
+
+```
+Directory Change
+
+↓
+
+Replication Scheduled
+
+↓
+
+Receiving Domain Controller
+
+↓
+
+Replication Verified
+
+↓
+
+Directory Consistent
+```
+
+Successful replication ensures a consistent directory across the enterprise.
+
+---
+
+# Replication Investigation
+
+Administrators should review:
+
+- Replication topology
+- Site configuration
+- Network connectivity
+- Domain Controller health
+- Replication status
+- Event logs
+
+Avoid assuming replication problems without collecting evidence.
+
+---
+
+# Replication Symptoms
+
+| Symptom | Review Area |
+|----------|-------------|
+| Missing user updates | Replication status |
+| Delayed password changes | Replication health |
+| Inconsistent group membership | Domain Controller synchronization |
+| Object mismatch | Replication validation |
+
+---
+
+# Group Policy Troubleshooting
+
+Group Policy issues commonly involve:
+
+- Policies not applying
+- Delayed policy updates
+- Unexpected settings
+- Different behavior between computers
+
+Investigation should determine whether the issue affects:
+
+- One user
+- One computer
+- One Organizational Unit
+- One site
+- Entire domain
+
+---
+
+# Group Policy Workflow
+
+```
+Policy Created
+
+↓
+
+Linked Correctly?
+
+↓
+
+Replication Complete?
+
+↓
+
+Client Receives Policy?
+
+↓
+
+Policy Applied?
+
+↓
+
+Validate Settings
+```
+
+Each stage should be verified independently.
+
+---
+
+# Group Policy Checklist
+
+- Verify policy exists
+- Verify correct Organizational Unit
+- Confirm policy linkage
+- Review security filtering
+- Confirm replication
+- Validate client policy processing
+
+---
+
+# Domain Controller Health
+
+Healthy Domain Controllers are essential.
+
+Areas to review include:
+
+- Directory Services
+- DNS services
+- Replication
+- Network connectivity
+- Resource utilization
+- Event logs
+
+---
+
+# Domain Controller Health Workflow
+
+```
+Domain Controller
+
+↓
+
+Operating System Healthy
+
+↓
+
+Services Running
+
+↓
+
+DNS Healthy
+
+↓
+
+Replication Healthy
+
+↓
+
+Authentication Working
+
+↓
+
+Operational
+```
+
+Routine health reviews reduce unexpected outages.
+
+---
+
+# Important Services
+
+Examples include:
+
+| Service | Purpose |
+|----------|----------|
+| Active Directory Domain Services | Directory operations |
+| DNS Server | Name resolution |
+| Kerberos Key Distribution Center | Authentication |
+| Netlogon | Domain logon support |
+| Windows Time | Time synchronization |
+
+These services should be operational for normal Active Directory functionality.
+
+---
+
+# Time Synchronization
+
+Kerberos depends on accurate time synchronization.
+
+```
+Time Service
+
+↓
+
+Consistent Time
+
+↓
+
+Kerberos Authentication
+
+↓
+
+Successful Logon
+```
+
+Large time differences between systems may prevent successful authentication.
+
+---
+
+# Network Connectivity
+
+Many Active Directory issues originate from network problems.
+
+Review:
+
+- Network availability
+- Routing
+- Firewall rules
+- Site connectivity
+- Interface status
+
+Infrastructure should be validated before assuming an Active Directory issue.
+
+---
+
+# Enterprise Troubleshooting Scenario
+
+## Company
+
+```
+Wingtip Manufacturing
+```
+
+Environment:
+
+- Three Sites
+- Twelve Domain Controllers
+- 15,000 Users
+
+Reported Issue:
+
+Employees at one regional office experience slow logons.
+
+Investigation:
+
+- Confirm affected location
+- Review DNS configuration
+- Validate Domain Controller availability
+- Check replication status
+- Review network connectivity
+- Examine event logs
+- Confirm successful logons after corrective action
+
+Outcome:
+
+A site-specific infrastructure issue was identified, resolved through standard operational procedures, and verified before closing the incident.
+
+---
+
+# Validation After Resolution
+
+Every issue should be validated.
+
+```
+Problem Fixed
+
+↓
+
+Retest
+
+↓
+
+User Confirms
+
+↓
+
+Monitoring
+
+↓
+
+Incident Closed
+```
+
+Validation ensures the underlying issue has been resolved.
+
+---
+
+# Cybersecurity Perspective
+
+Operational failures may resemble security incidents.
+
+Examples include:
+
+- Authentication failures
+- Service interruptions
+- Unexpected policy behavior
+- Replication inconsistencies
+
+Security teams and infrastructure teams should collaborate when investigating issues to distinguish operational problems from potential security events.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Investigate a fictional authentication problem affecting multiple users.
+
+### Step 1
+
+Document:
+
+- Symptoms
+- Affected users
+- Affected computers
+- Business impact
+
+---
+
+### Step 2
+
+Review:
+
+- DNS health
+- Domain Controller availability
+- Replication status
+- Time synchronization
+- Event logs
+
+---
+
+### Step 3
+
+Determine the likely root cause based on collected evidence.
+
+---
+
+### Step 4
+
+Document the corrective actions that would be taken through standard change management.
+
+---
+
+### Step 5
+
+Create a validation checklist confirming authentication, DNS, replication, and Group Policy are functioning correctly after the issue is resolved.
+
+---
+
+# Interview Questions
+
+### Q1: Why should DNS be checked during authentication problems?
+
+**Answer:** Active Directory depends on DNS to locate Domain Controllers and other directory services, making DNS a critical component of authentication.
+
+---
+
+### Q2: Why is replication important?
+
+**Answer:** Replication ensures directory information remains consistent across Domain Controllers, supporting reliable authentication and directory operations.
+
+---
+
+### Q3: Why is time synchronization critical?
+
+**Answer:** Kerberos authentication depends on accurate time synchronization between systems to function correctly.
+
+---
+
+### Q4: What should be verified when Group Policy is not applying?
+
+**Answer:** Verify policy linkage, Organizational Unit placement, replication, client processing, and any applicable filtering or scope settings.
+
+---
+
+### Q5: Why should Domain Controller health be monitored?
+
+**Answer:** Healthy Domain Controllers provide authentication, directory services, replication, and DNS functionality essential for Active Directory operations.
+
+---
+
+### Q6: Why should administrators validate fixes after troubleshooting?
+
+**Answer:** Validation confirms that services are operating normally, users can access required resources, and the root cause has been successfully addressed.
+
+---
+
+# Best Practices
+
+- Troubleshoot methodically.
+- Review DNS early in the investigation.
+- Monitor Domain Controller health regularly.
+- Verify replication before assuming configuration issues.
+- Keep system time synchronized.
+- Validate all changes after implementation.
+- Document investigations thoroughly.
+- Monitor the environment after incident resolution.
+
+---
+
+# Common Mistakes
+
+- Ignoring DNS during authentication troubleshooting.
+- Assuming replication is functioning without verification.
+- Overlooking time synchronization issues.
+- Making multiple changes simultaneously.
+- Closing incidents without validation.
+- Failing to review event logs and supporting evidence.
+
+---
+
+# Key Takeaways
+
+- Authentication, DNS, replication, and Group Policy are closely interconnected.
+- Healthy Domain Controllers are essential for reliable Active Directory operations.
+- Structured troubleshooting minimizes downtime and improves accuracy.
+- Validation and documentation are critical parts of every successful incident response.
+
+---
+
+**Next:** Part 3
