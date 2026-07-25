@@ -645,4 +645,783 @@ Explore the Group Policy infrastructure.
 
 ---
 
-**Next:** Part 2
+# 08-Group-Policy-Basics.md
+
+# Part 2 — Group Policy Processing, LSDOU, Inheritance, Enforcement, Block Inheritance, Loopback Processing, and GPO Linking
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand how Group Policy is processed.
+- Learn the LSDOU processing order.
+- Understand inheritance.
+- Learn GPO linking.
+- Understand Block Inheritance.
+- Learn Enforced (No Override).
+- Understand Loopback Processing.
+- Prepare for Group Policy troubleshooting.
+
+---
+
+# How Group Policy is Processed
+
+When a computer starts or a user logs on, Windows processes applicable Group Policies in a specific order.
+
+General workflow:
+
+```text
+Computer Starts
+
+↓
+
+Computer Authentication
+
+↓
+
+Computer Policies Applied
+
+↓
+
+User Logon
+
+↓
+
+User Authentication
+
+↓
+
+User Policies Applied
+
+↓
+
+Desktop Available
+```
+
+This ensures both the computer and user receive their respective configurations.
+
+---
+
+# Group Policy Processing Order
+
+Policies are processed in the following order:
+
+```text
+Local
+
+↓
+
+Site
+
+↓
+
+Domain
+
+↓
+
+Organizational Unit
+
+(Parent)
+
+↓
+
+Child Organizational Unit
+```
+
+This is known as the **LSDOU** order.
+
+---
+
+# LSDOU Explained
+
+| Letter | Meaning |
+|---------|----------|
+| L | Local Policy |
+| S | Site Policy |
+| D | Domain Policy |
+| O | Organizational Unit |
+| U | Child Organizational Unit |
+
+Policies processed later generally take precedence when multiple settings conflict.
+
+---
+
+# Visual Representation
+
+```text
+Windows Computer
+
+↓
+
+Local Policy
+
+↓
+
+Site GPO
+
+↓
+
+Domain GPO
+
+↓
+
+Parent OU GPO
+
+↓
+
+Child OU GPO
+
+↓
+
+Final Configuration
+```
+
+Each stage adds or overrides settings according to policy processing rules.
+
+---
+
+# Why Processing Order Matters
+
+Suppose three different GPOs configure the desktop wallpaper.
+
+```text
+Domain
+
+↓
+
+Blue Wallpaper
+
+↓
+
+Finance OU
+
+↓
+
+Green Wallpaper
+
+↓
+
+Finance Users OU
+
+↓
+
+Company Logo Wallpaper
+```
+
+Result:
+
+```text
+Company Logo Wallpaper
+```
+
+The child OU policy is processed last and therefore wins if the settings conflict.
+
+---
+
+# Group Policy Inheritance
+
+Inheritance allows child containers to automatically receive policies linked to parent containers.
+
+Example:
+
+```text
+company.com
+
+│
+
+├── Corporate
+
+│     ├── Finance
+
+│     └── HR
+```
+
+If a security policy is linked to **Corporate**, both **Finance** and **HR** inherit that policy.
+
+---
+
+# Benefits of Inheritance
+
+Inheritance provides:
+
+- Centralized management
+- Reduced duplication
+- Consistent configuration
+- Easier administration
+- Better scalability
+
+Without inheritance, administrators would have to configure each OU individually.
+
+---
+
+# GPO Linking
+
+A GPO is not active until it is linked.
+
+A GPO can be linked to:
+
+```text
+Site
+
+↓
+
+Domain
+
+↓
+
+OU
+```
+
+The same GPO may be linked to multiple locations when appropriate.
+
+---
+
+# Example
+
+```text
+Finance Security GPO
+
+↓
+
+Finance OU
+```
+
+Every user and computer inside the Finance OU receives the policy, subject to security filtering and inheritance rules.
+
+---
+
+# Multiple GPOs
+
+Multiple GPOs can be linked to the same OU.
+
+Example:
+
+```text
+Finance OU
+
+│
+
+├── Password Policy
+
+├── Firewall Policy
+
+├── BitLocker Policy
+
+└── Printer Policy
+```
+
+The client evaluates all applicable GPOs during processing.
+
+---
+
+# GPO Link Order
+
+If multiple GPOs configure the same setting, link order influences which setting takes precedence.
+
+Example:
+
+```text
+Finance OU
+
+↓
+
+GPO 1
+
+↓
+
+GPO 2
+
+↓
+
+GPO 3
+```
+
+When conflicting settings exist, the GPO with the highest precedence (lowest link order number in GPMC) is typically applied last.
+
+---
+
+# Group Policy Inheritance Example
+
+```text
+company.com
+
+│
+
+├── IT
+
+│     ├── Servers
+
+│     └── Workstations
+```
+
+Policies:
+
+```text
+Domain
+
+↓
+
+Password Policy
+```
+
+```text
+IT OU
+
+↓
+
+PowerShell Configuration
+```
+
+```text
+Servers OU
+
+↓
+
+Server Hardening
+```
+
+A server in the **Servers** OU receives all three policies unless inheritance is modified.
+
+---
+
+# Block Inheritance
+
+Sometimes an OU should not receive parent policies.
+
+Administrators can enable **Block Inheritance**.
+
+Example:
+
+```text
+Company
+
+│
+
+├── Corporate
+
+│
+
+└── Research
+
+(Block Inheritance)
+```
+
+Research does not inherit most parent-linked GPOs.
+
+---
+
+# When Block Inheritance is Useful
+
+Appropriate scenarios include:
+
+- Test laboratories
+- Development environments
+- Isolated research networks
+- Temporary migration projects
+
+It should be used sparingly in production.
+
+---
+
+# Enforced (No Override)
+
+An administrator may require a GPO to apply even if Block Inheritance exists.
+
+Example:
+
+```text
+Corporate Security Policy
+
+↓
+
+Enforced
+
+↓
+
+All Child OUs
+```
+
+Critical security settings continue to apply.
+
+---
+
+# Enforced vs Block Inheritance
+
+| Feature | Block Inheritance | Enforced |
+|----------|-------------------|-----------|
+| Stops inherited GPOs | Yes | No |
+| Overrides Block Inheritance | No | Yes |
+| Common Use | Isolated environments | Enterprise security policies |
+
+---
+
+# Example
+
+```text
+Domain
+
+↓
+
+Password Policy
+
+(Enforced)
+
+↓
+
+Research OU
+
+(Block Inheritance)
+```
+
+Result:
+
+The password policy is still applied because it is enforced.
+
+---
+
+# Group Policy Precedence
+
+When multiple policies configure the same setting:
+
+```text
+Local
+
+↓
+
+Site
+
+↓
+
+Domain
+
+↓
+
+Parent OU
+
+↓
+
+Child OU
+```
+
+The policy processed later usually overrides earlier conflicting settings.
+
+---
+
+# Group Policy Refresh
+
+Policies are refreshed automatically.
+
+Typical triggers include:
+
+- Computer startup
+- User logon
+- Periodic background refresh
+- Manual update using:
+
+```powershell
+gpupdate /force
+```
+
+Manual refresh is useful after creating or modifying GPOs.
+
+---
+
+# Computer Startup Processing
+
+```text
+Computer Starts
+
+↓
+
+Computer Authenticates
+
+↓
+
+Computer GPOs Applied
+
+↓
+
+Ctrl+Alt+Del
+
+↓
+
+User Signs In
+```
+
+Computer Configuration is processed before the user logs on.
+
+---
+
+# User Logon Processing
+
+```text
+User Signs In
+
+↓
+
+Authenticate
+
+↓
+
+User GPOs Applied
+
+↓
+
+Desktop Loads
+```
+
+User Configuration settings are processed after authentication.
+
+---
+
+# Synchronous vs Asynchronous Processing
+
+### Synchronous Processing
+
+The system waits for policy processing to complete before continuing.
+
+Example:
+
+```text
+Boot
+
+↓
+
+Apply Policies
+
+↓
+
+Continue Startup
+```
+
+Useful when policies must be fully applied before user interaction.
+
+---
+
+### Asynchronous Processing
+
+The system continues startup while policies are processed in the background.
+
+Example:
+
+```text
+Boot
+
+↓
+
+Continue Startup
+
+↓
+
+Policies Complete
+```
+
+This generally provides faster logon experiences.
+
+---
+
+# Loopback Processing
+
+Normally:
+
+- User policies follow the user's OU.
+- Computer policies follow the computer's OU.
+
+Loopback Processing changes this behavior.
+
+---
+
+# Why Loopback Exists
+
+Consider a training room.
+
+```text
+Training PC
+
+↓
+
+Any User Logs In
+```
+
+Every user should receive:
+
+- Training desktop
+- Training restrictions
+- Training applications
+
+Instead of their normal departmental settings.
+
+Loopback makes this possible.
+
+---
+
+# Loopback Modes
+
+There are two modes.
+
+## Merge Mode
+
+Normal user policies apply first.
+
+Then computer-based user policies are added.
+
+```text
+User Policies
+
+↓
+
+Computer Loopback Policies
+
+↓
+
+Combined Result
+```
+
+---
+
+## Replace Mode
+
+The user's normal User Configuration is ignored.
+
+Only the computer's assigned User Configuration is applied.
+
+```text
+User Logs On
+
+↓
+
+Ignore User OU
+
+↓
+
+Apply Computer OU User Policies
+
+↓
+
+Desktop Ready
+```
+
+---
+
+# Enterprise Examples
+
+Common Loopback use cases:
+
+- Classroom computers
+- Kiosks
+- Call centers
+- Hospital workstations
+- Manufacturing terminals
+- Shared conference room PCs
+- Reception systems
+
+These environments require consistent user experiences regardless of who signs in.
+
+---
+
+# Policy Conflict Example
+
+Domain:
+
+```text
+USB Storage Enabled
+```
+
+Server OU:
+
+```text
+USB Storage Disabled
+```
+
+Result:
+
+The Server OU policy takes precedence because it is processed later.
+
+---
+
+# Cybersecurity Perspective
+
+Security teams commonly use Group Policy to:
+
+- Disable removable storage.
+- Configure Windows Defender.
+- Enforce firewall rules.
+- Enable auditing.
+- Configure BitLocker.
+- Restrict PowerShell usage where appropriate.
+- Disable legacy protocols.
+- Configure Microsoft security baselines.
+
+Proper understanding of inheritance and precedence helps prevent accidental weakening of security configurations.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Excessive use of Block Inheritance.
+- Marking too many GPOs as Enforced.
+- Creating conflicting policies.
+- Linking GPOs to incorrect OUs.
+- Ignoring link order.
+- Forgetting to test Loopback Processing before deployment.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Observe Group Policy inheritance and processing.
+
+### Tasks
+
+1. Create a test OU named `Lab`.
+2. Create a child OU named `Workstations`.
+3. Create two test GPOs:
+   - Desktop Policy
+   - Security Policy
+4. Link one GPO to the parent OU.
+5. Link the second GPO to the child OU.
+6. Run:
+
+```powershell
+gpupdate /force
+```
+
+7. Verify which settings apply.
+8. Enable Block Inheritance on the child OU and observe the results.
+9. Remove Block Inheritance after testing.
+
+---
+
+# Interview Questions
+
+1. What does LSDOU stand for?
+2. In what order are Group Policies processed?
+3. What is Group Policy inheritance?
+4. What is Block Inheritance?
+5. What is an Enforced GPO?
+6. Can a GPO exist without being linked?
+7. What is the purpose of `gpupdate /force`?
+8. What is Loopback Processing?
+9. What is the difference between Merge and Replace Loopback modes?
+10. Why should Enforced GPOs be used carefully?
+
+---
+
+# Key Takeaways
+
+- Group Policy follows the LSDOU processing order: Local → Site → Domain → OU.
+- Child OU policies generally override conflicting parent policies.
+- GPOs become effective only after being linked to a Site, Domain, or OU.
+- Block Inheritance prevents most parent policies from flowing to child OUs, while Enforced policies override Block Inheritance.
+- Loopback Processing allows computers to control user settings in shared or specialized environments.
+- Understanding processing order and precedence is essential for predictable and secure Group Policy deployment.
+
+---
+
+**Next:** Part 3
