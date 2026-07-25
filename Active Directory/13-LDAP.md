@@ -1616,4 +1616,780 @@ Document:
 
 ---
 
-**Next:** Part 3
+# 13-LDAP.md
+
+# Part 3 — LDAP Authentication, LDAPS, Directory Security, Referrals and Enterprise Integration
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- LDAP Authentication
+- LDAP Authorization
+- LDAPS
+- LDAP Ports
+- LDAP Referrals
+- Global Catalog Searches
+- LDAP over SSL/TLS
+- Secure LDAP Communication
+- LDAP Integration with Enterprise Applications
+- LDAP Authentication Flow
+- Security Best Practices
+
+---
+
+# Introduction
+
+In the previous parts, we learned:
+
+- LDAP Fundamentals
+- Directory Structure
+- Distinguished Names
+- LDAP Operations
+- LDAP Search Filters
+- LDAP Queries
+
+Now we will focus on one of LDAP's most important enterprise uses:
+
+**Authentication and Secure Directory Communication**
+
+Almost every enterprise application uses LDAP for one or more of the following:
+
+- User authentication
+- User lookup
+- Group lookup
+- Authorization decisions
+- Employee information retrieval
+- Identity synchronization
+
+---
+
+# LDAP Authentication
+
+LDAP can authenticate users by verifying their credentials against the directory.
+
+The process generally follows this sequence:
+
+```
+User
+
+↓
+
+Username
+
+Password
+
+↓
+
+Application
+
+↓
+
+LDAP Bind
+
+↓
+
+Domain Controller
+
+↓
+
+Credentials Verified
+
+↓
+
+Authentication Result
+```
+
+The application itself does not validate the password.
+
+Instead, the Domain Controller performs the verification.
+
+---
+
+# Authentication vs Authorization
+
+Many people confuse these concepts.
+
+```
+Authentication
+
+↓
+
+Who are you?
+```
+
+```
+Authorization
+
+↓
+
+What can you access?
+```
+
+Example:
+
+```
+Login Successful
+
+↓
+
+Authenticated
+
+↓
+
+Member of HR Group?
+
+↓
+
+Authorized
+```
+
+Authentication always occurs before authorization.
+
+---
+
+# LDAP Authentication Flow
+
+A typical enterprise workflow:
+
+```
+User
+
+↓
+
+Login Portal
+
+↓
+
+LDAP Bind
+
+↓
+
+Domain Controller
+
+↓
+
+Authentication Success
+
+↓
+
+LDAP Search
+
+↓
+
+Retrieve User Groups
+
+↓
+
+Application
+
+↓
+
+Access Granted
+```
+
+Notice that authentication and directory searches are separate operations.
+
+---
+
+# Enterprise Login Example
+
+Suppose an employee logs into:
+
+```
+HR Portal
+```
+
+The application performs:
+
+```
+Step 1
+
+LDAP Bind
+
+↓
+
+Verify Credentials
+
+↓
+
+Step 2
+
+LDAP Search
+
+↓
+
+Retrieve Department
+
+↓
+
+Step 3
+
+Retrieve Groups
+
+↓
+
+Step 4
+
+Determine Permissions
+```
+
+---
+
+# LDAP Authorization
+
+After authentication, many applications query LDAP to determine:
+
+- Group Membership
+- Department
+- Job Title
+- Manager
+- Location
+- Security Groups
+
+Example:
+
+```
+User
+
+↓
+
+Member of
+
+↓
+
+Finance Managers
+
+↓
+
+Grant Finance Dashboard Access
+```
+
+---
+
+# LDAP Ports
+
+LDAP commonly uses the following ports.
+
+| Port | Purpose |
+|-------|----------|
+| 389 | LDAP |
+| 636 | LDAPS (LDAP over SSL/TLS) |
+| 3268 | Global Catalog |
+| 3269 | Global Catalog over SSL/TLS |
+
+Knowing these ports is important for troubleshooting and firewall configuration.
+
+---
+
+# What is LDAPS?
+
+LDAPS stands for:
+
+**LDAP over SSL/TLS**
+
+Instead of transmitting LDAP traffic in plaintext,
+
+the communication is encrypted.
+
+```
+Application
+
+↓
+
+Encrypted LDAP
+
+↓
+
+Domain Controller
+```
+
+This protects authentication traffic and directory queries.
+
+---
+
+# LDAP vs LDAPS
+
+| LDAP | LDAPS |
+|-------|--------|
+| Port 389 | Port 636 |
+| May operate without transport encryption | Uses SSL/TLS encryption |
+| Suitable only when protected appropriately | Preferred for transmitting sensitive information |
+| Lower confidentiality | Higher confidentiality |
+
+Modern enterprise environments should use encrypted LDAP communication whenever sensitive information or credentials are transmitted.
+
+---
+
+# Why LDAPS Matters
+
+Without encryption:
+
+```
+Client
+
+↓
+
+Directory Query
+
+↓
+
+Network
+```
+
+Sensitive information may be exposed if the network is compromised.
+
+With LDAPS:
+
+```
+Client
+
+↓
+
+Encrypted Channel
+
+↓
+
+Domain Controller
+```
+
+Only authorized participants can interpret the communication.
+
+---
+
+# TLS Handshake (Simplified)
+
+```
+Client
+
+↓
+
+Connect
+
+↓
+
+Server Certificate
+
+↓
+
+Certificate Validation
+
+↓
+
+Session Keys
+
+↓
+
+Encrypted LDAP Session
+```
+
+The server presents a certificate so the client can establish a secure connection.
+
+---
+
+# Certificates for LDAPS
+
+To support LDAPS, the Domain Controller requires a suitable server certificate.
+
+Typical certificate characteristics include:
+
+- Intended for Server Authentication
+- Trusted by clients
+- Contains the appropriate server identity
+- Valid (not expired)
+
+Without a valid certificate, LDAPS connections may fail.
+
+---
+
+# LDAP Referrals
+
+Large organizations may contain multiple directory partitions or domains.
+
+If an LDAP server cannot answer a request directly, it can return a **Referral**.
+
+Example:
+
+```
+Client
+
+↓
+
+Search User
+
+↓
+
+Domain A
+
+↓
+
+User Not Here
+
+↓
+
+Referral
+
+↓
+
+Domain B
+```
+
+The client then continues the search with the referred server.
+
+---
+
+# Why Referrals Exist
+
+Example:
+
+```
+Forest
+
+│
+
+├── corp.example.com
+
+├── europe.example.com
+
+└── asia.example.com
+```
+
+A user searches for:
+
+```
+Alice
+```
+
+The initial Domain Controller may determine that Alice belongs to another domain and return a referral.
+
+---
+
+# Global Catalog and LDAP
+
+Sometimes applications must search across an entire forest.
+
+Instead of contacting every Domain Controller individually,
+
+they can query the:
+
+**Global Catalog (GC)**
+
+```
+Application
+
+↓
+
+Global Catalog
+
+↓
+
+Search Entire Forest
+
+↓
+
+Results
+```
+
+The Global Catalog stores a partial replica of objects from all domains in the forest.
+
+---
+
+# LDAP Query to Global Catalog
+
+Example:
+
+```
+Search
+
+↓
+
+Employee
+
+↓
+
+Forest-Wide
+
+↓
+
+Global Catalog
+
+↓
+
+Return Matching User
+```
+
+This improves efficiency for cross-domain searches.
+
+---
+
+# LDAP Session Lifecycle
+
+```
+Connect
+
+↓
+
+Bind
+
+↓
+
+Search
+
+↓
+
+Read Results
+
+↓
+
+Modify (Optional)
+
+↓
+
+Unbind
+
+↓
+
+Connection Closed
+```
+
+---
+
+# Enterprise Application Integration
+
+Many enterprise applications integrate with LDAP.
+
+Examples include:
+
+- HR Systems
+- VPN Gateways
+- File Servers
+- Email Systems
+- Learning Management Systems
+- Help Desk Platforms
+- Identity Governance Solutions
+
+Typical workflow:
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+LDAP Authentication
+
+↓
+
+Retrieve Groups
+
+↓
+
+Determine Permissions
+
+↓
+
+Access Granted
+```
+
+---
+
+# Enterprise Architecture Example
+
+```
+                 Users
+
+                   │
+
+                   ▼
+
+          Enterprise Portal
+
+                   │
+
+            LDAP Authentication
+
+                   ▼
+
+          Domain Controller
+
+                   │
+
+          Active Directory
+
+                   │
+
+        ┌──────────┼──────────┐
+
+        ▼          ▼          ▼
+
+      Groups     Users      Computers
+```
+
+The application authenticates users and retrieves directory information from Active Directory.
+
+---
+
+# LDAP Performance Considerations
+
+Enterprise environments may contain:
+
+- Hundreds of thousands of users
+- Thousands of groups
+- Multiple domains
+
+Recommendations:
+
+- Use specific search filters.
+- Minimize unnecessary queries.
+- Query only required attributes.
+- Use the Global Catalog for forest-wide searches.
+- Avoid repeatedly authenticating within the same session.
+
+---
+
+# Cybersecurity Perspective
+
+LDAP provides access to valuable identity information.
+
+Organizations should:
+
+- Require authenticated access whenever possible.
+- Encrypt LDAP communication using TLS.
+- Monitor directory access logs.
+- Restrict excessive read permissions.
+- Audit applications using LDAP.
+- Protect Domain Controllers from unauthorized access.
+
+Directory information often contains usernames, group memberships, organizational structures, and other sensitive metadata.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore secure LDAP configuration.
+
+### Step 1
+
+Open:
+
+```
+Active Directory Users and Computers
+```
+
+Review a user object's:
+
+- Distinguished Name
+- Group Membership
+- Department
+
+---
+
+### Step 2
+
+Open:
+
+```
+Certification Authority
+```
+
+(or review existing Domain Controller certificates in a lab environment.)
+
+Observe the server authentication certificate used for secure services.
+
+---
+
+### Step 3
+
+Review firewall rules and verify that the appropriate LDAP and LDAPS ports are allowed where required.
+
+---
+
+### Step 4
+
+Document:
+
+- LDAP Port
+- LDAPS Port
+- Global Catalog Ports
+- Certificate observations
+
+---
+
+# Interview Questions
+
+### Q1: What is LDAPS?
+
+**Answer:** LDAPS is LDAP communication protected with SSL/TLS encryption.
+
+---
+
+### Q2: Which port is commonly used by LDAPS?
+
+**Answer:** TCP 636.
+
+---
+
+### Q3: Which port is commonly used by the Global Catalog?
+
+**Answer:** TCP 3268 (3269 when protected with SSL/TLS).
+
+---
+
+### Q4: What is an LDAP Referral?
+
+**Answer:** A referral directs an LDAP client to another directory server that can satisfy the request.
+
+---
+
+### Q5: Why is the Global Catalog useful?
+
+**Answer:** It enables efficient searches across all domains in an Active Directory forest.
+
+---
+
+### Q6: Why should LDAP traffic be encrypted?
+
+**Answer:** To protect authentication exchanges and sensitive directory information while it is transmitted across the network.
+
+---
+
+# Best Practices
+
+- Use LDAPS for sensitive directory communication.
+- Deploy trusted certificates on Domain Controllers.
+- Limit anonymous LDAP access.
+- Query only necessary attributes.
+- Use the Global Catalog for forest-wide searches.
+- Monitor applications performing LDAP authentication.
+- Regularly audit directory permissions.
+
+---
+
+# Common Mistakes
+
+- Using unencrypted LDAP for sensitive authentication traffic.
+- Forgetting to deploy valid server certificates.
+- Ignoring LDAP referrals in multi-domain environments.
+- Performing inefficient forest-wide searches.
+- Granting unnecessary read access to directory objects.
+
+---
+
+# Key Takeaways
+
+- LDAP supports authentication, directory searches, and directory management.
+- LDAPS protects LDAP traffic using SSL/TLS.
+- The Global Catalog enables efficient forest-wide searches.
+- LDAP referrals allow clients to locate objects stored in other domains.
+- Proper LDAP security is essential for protecting enterprise identity information.
+
+---
+
+**Next:** Part 4
