@@ -1459,4 +1459,724 @@ Explore LDAP search concepts.
 
 ---
 
-**Next:** Part 3
+# 14-Lightweight-Directory-Access-Protocol-(LDAP).md
+
+# Part 3 — LDAP Schema, Object Classes, Access Control, Active Directory Integration, LDAP Security, and Enterprise Administration
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand LDAP schema.
+- Learn object classes and attributes.
+- Understand mandatory and optional attributes.
+- Learn LDAP Access Control.
+- Understand Active Directory integration with LDAP.
+- Learn LDAP security threats.
+- Understand enterprise LDAP administration.
+
+---
+
+# LDAP Schema
+
+The **LDAP Schema** defines the rules that govern every object stored in the directory.
+
+The schema specifies:
+
+- Object classes
+- Attributes
+- Data types
+- Naming rules
+- Relationships
+- Constraints
+
+Without a schema, LDAP servers would not know what information each object can contain.
+
+---
+
+# Schema Architecture
+
+```text
+LDAP Schema
+
+├── Object Classes
+
+├── Attributes
+
+├── Syntax Rules
+
+├── Matching Rules
+
+└── Constraints
+```
+
+The schema ensures that all directory entries remain consistent.
+
+---
+
+# Why is the Schema Important?
+
+The schema provides:
+
+- Standardization
+- Data integrity
+- Interoperability
+- Validation
+- Consistency
+- Efficient searches
+
+Example:
+
+If the **telephoneNumber** attribute only accepts valid string values, invalid data can be rejected before being stored.
+
+---
+
+# Object Classes
+
+Every LDAP object belongs to one or more **Object Classes**.
+
+Object classes define:
+
+- Required attributes
+- Optional attributes
+- Object type
+- Object behavior
+
+Examples include:
+
+- person
+- organizationalPerson
+- inetOrgPerson
+- user
+- group
+- computer
+- organizationalUnit
+
+---
+
+# Object Class Hierarchy
+
+```text
+top
+
+↓
+
+person
+
+↓
+
+organizationalPerson
+
+↓
+
+user
+```
+
+Each child inherits characteristics from its parent.
+
+---
+
+# Example User Object
+
+```text
+User
+
+├── cn
+
+├── sn
+
+├── givenName
+
+├── mail
+
+├── department
+
+├── telephoneNumber
+
+├── manager
+
+└── memberOf
+```
+
+Each attribute describes a different property of the user.
+
+---
+
+# Attributes
+
+An **Attribute** represents a piece of information stored about an LDAP object.
+
+Examples:
+
+| Attribute | Description |
+|-----------|-------------|
+| cn | Common Name |
+| sn | Surname |
+| givenName | First Name |
+| mail | Email Address |
+| department | Department |
+| title | Job Title |
+| manager | Manager |
+| memberOf | Group Membership |
+
+---
+
+# Mandatory vs Optional Attributes
+
+LDAP distinguishes between required and optional attributes.
+
+| Type | Purpose |
+|------|----------|
+| Mandatory (MUST) | Required for object creation |
+| Optional (MAY) | Additional information |
+
+Example:
+
+```text
+User Object
+
+Required:
+
+- cn
+- sn
+
+Optional:
+
+- telephoneNumber
+- title
+- department
+```
+
+---
+
+# Attribute Syntax
+
+Every attribute has a defined data type.
+
+Examples:
+
+| Attribute | Syntax |
+|-----------|---------|
+| cn | String |
+| mail | String |
+| objectGUID | Binary |
+| objectSid | Binary |
+| whenCreated | Date/Time |
+| userAccountControl | Integer |
+
+The LDAP server validates data against these syntax rules.
+
+---
+
+# Object Identifiers (OIDs)
+
+Each schema object is uniquely identified by an **Object Identifier (OID)**.
+
+Example:
+
+```text
+OID
+
+↓
+
+1.2.840.x.x.x...
+```
+
+OIDs ensure uniqueness across vendors and implementations.
+
+---
+
+# LDAP Access Control
+
+LDAP does not allow unrestricted access.
+
+Access is controlled using permissions and security descriptors.
+
+Permissions determine who can:
+
+- Read
+- Write
+- Create
+- Delete
+- Modify
+- Search
+
+---
+
+# Access Control Workflow
+
+```text
+LDAP Client
+
+↓
+
+Authentication
+
+↓
+
+Authorization Check
+
+↓
+
+Permission Granted?
+
+↓
+
+Yes
+
+↓
+
+Directory Access
+```
+
+If permission is denied, the requested operation fails.
+
+---
+
+# Principle of Least Privilege
+
+LDAP permissions should follow the **Principle of Least Privilege**.
+
+Users and applications should receive only the permissions required to perform their tasks.
+
+Example:
+
+```text
+HR Application
+
+↓
+
+Read Employee Information
+
+↓
+
+No Permission
+
+↓
+
+Delete Users
+```
+
+---
+
+# LDAP Groups and Permissions
+
+Access is often granted through security groups.
+
+Example:
+
+```text
+Help Desk Group
+
+↓
+
+Reset Password
+
+↓
+
+No Domain Admin Rights
+```
+
+Using groups simplifies permission management.
+
+---
+
+# LDAP Referrals
+
+Large organizations may have multiple directory servers.
+
+If an object resides elsewhere:
+
+```text
+Client
+
+↓
+
+LDAP Server
+
+↓
+
+Referral
+
+↓
+
+Another LDAP Server
+```
+
+The client follows the referral to complete the request.
+
+---
+
+# Active Directory Integration
+
+Active Directory uses LDAP extensively for:
+
+- User lookups
+- Group membership
+- Authentication support
+- Administrative tools
+- Directory searches
+
+Examples of Microsoft tools using LDAP include:
+
+- Active Directory Users and Computers
+- Active Directory Administrative Center
+- Group Policy Management
+- PowerShell Active Directory module
+
+---
+
+# LDAP and Kerberos
+
+In Active Directory:
+
+```text
+Kerberos
+
+↓
+
+Authentication
+```
+
+```text
+LDAP
+
+↓
+
+Directory Access
+```
+
+These protocols work together.
+
+Example:
+
+```text
+User Logs In
+
+↓
+
+Kerberos Authentication
+
+↓
+
+LDAP Query
+
+↓
+
+Retrieve User Information
+```
+
+---
+
+# LDAP and Global Catalog
+
+The **Global Catalog (GC)** stores a partial replica of objects from every domain in the forest.
+
+Applications use LDAP to query the Global Catalog.
+
+Example:
+
+```text
+Application
+
+↓
+
+LDAP Query
+
+↓
+
+Global Catalog
+
+↓
+
+Forest-wide Search
+```
+
+Default ports:
+
+- 3268 (LDAP)
+- 3269 (LDAPS)
+
+---
+
+# LDAP Replication
+
+Directory changes are replicated between Domain Controllers.
+
+Example:
+
+```text
+User Updated
+
+↓
+
+Domain Controller A
+
+↓
+
+Active Directory Replication
+
+↓
+
+Domain Controller B
+
+↓
+
+LDAP Clients Receive Updated Data
+```
+
+LDAP itself does not perform replication; Active Directory replication handles synchronization.
+
+---
+
+# LDAP Security
+
+LDAP directories contain highly sensitive information.
+
+Potential targets include:
+
+- Usernames
+- Email addresses
+- Group memberships
+- Service accounts
+- Organizational structure
+
+Proper security controls are essential.
+
+---
+
+# LDAP Security Threats
+
+Common threats include:
+
+- Anonymous enumeration
+- Credential theft
+- LDAP injection
+- Unauthorized searches
+- Excessive permissions
+- Weak authentication
+- Information disclosure
+
+---
+
+# LDAP Injection
+
+LDAP Injection occurs when untrusted input is incorporated into an LDAP query without proper validation.
+
+Unsafe example:
+
+```text
+(&(uid=<user_input>)(objectClass=user))
+```
+
+If the application fails to validate input, an attacker may alter the intended query.
+
+---
+
+# Preventing LDAP Injection
+
+Recommendations:
+
+- Validate all user input.
+- Escape special LDAP characters.
+- Use parameterized APIs when available.
+- Apply least privilege.
+- Log suspicious queries.
+- Perform secure code reviews.
+
+---
+
+# Anonymous Enumeration
+
+If anonymous searches are enabled:
+
+```text
+Attacker
+
+↓
+
+Anonymous Bind
+
+↓
+
+Directory Search
+
+↓
+
+Collect Usernames
+
+↓
+
+Further Attacks
+```
+
+This information may assist phishing or password-spraying campaigns.
+
+---
+
+# LDAP Signing
+
+LDAP signing helps ensure the integrity of LDAP communications.
+
+Benefits:
+
+- Detects tampering
+- Prevents certain man-in-the-middle attacks
+- Improves directory security
+
+Modern Active Directory environments should require LDAP signing where supported.
+
+---
+
+# Channel Binding
+
+Channel Binding strengthens authentication by binding the authentication process to the secure TLS channel.
+
+Benefits:
+
+- Reduces relay attack risks
+- Strengthens authentication
+- Improves protection for LDAPS sessions
+
+---
+
+# LDAP Logging and Auditing
+
+Organizations should monitor:
+
+- Failed Bind attempts
+- Excessive searches
+- Administrative modifications
+- Anonymous Bind attempts
+- Privileged account activity
+- Schema changes
+
+Regular auditing supports incident detection and compliance.
+
+---
+
+# Enterprise Example
+
+Global organization:
+
+- 300,000 users
+- 120 Domain Controllers
+- Multiple geographic regions
+
+Architecture:
+
+```text
+Employees
+
+↓
+
+Kerberos Authentication
+
+↓
+
+LDAP Queries
+
+↓
+
+Global Catalog
+
+↓
+
+Applications
+
+↓
+
+Directory Information
+```
+
+Benefits:
+
+- Centralized identity management
+- Fast directory lookups
+- Consistent permissions
+- Scalable authentication infrastructure
+
+---
+
+# Cybersecurity Perspective
+
+Attackers frequently target LDAP because it provides valuable information about an organization's environment.
+
+Security teams should:
+
+- Disable unnecessary anonymous access.
+- Require LDAPS where appropriate.
+- Enforce LDAP signing and channel binding.
+- Monitor abnormal query patterns.
+- Protect Domain Controllers.
+- Regularly review directory permissions.
+
+Securing LDAP significantly reduces the attack surface for identity-based attacks.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Modifying the schema without testing.
+- Granting excessive LDAP permissions.
+- Leaving anonymous Bind enabled unnecessarily.
+- Ignoring LDAP logs.
+- Using plaintext LDAP for sensitive authentication.
+- Allowing applications to run with highly privileged service accounts.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore LDAP schema and security.
+
+### Tasks
+
+1. Open **Active Directory Users and Computers**.
+2. Enable **Advanced Features** from the **View** menu.
+3. Examine a user object's:
+   - Attributes
+   - Group memberships
+   - Distinguished Name
+4. Identify:
+   - Mandatory attributes
+   - Optional attributes
+5. Review your organization's LDAP security settings, if available:
+   - LDAP signing
+   - LDAPS configuration
+   - Anonymous Bind policy
+
+---
+
+# Interview Questions
+
+1. What is the LDAP schema?
+2. What is an object class?
+3. What is the difference between mandatory and optional attributes?
+4. What are Object Identifiers (OIDs)?
+5. How does Active Directory use LDAP?
+6. What is LDAP Injection?
+7. Why is LDAP signing important?
+8. What is channel binding?
+9. Why should anonymous LDAP access be restricted?
+10. How do Kerberos and LDAP work together?
+
+---
+
+# Key Takeaways
+
+- The LDAP schema defines the structure, attributes, and rules for all directory objects.
+- Object classes determine what information an LDAP entry can and must contain.
+- Access to directory information is controlled through permissions following the principle of least privilege.
+- Active Directory relies on LDAP for directory queries while using Kerberos primarily for authentication.
+- Securing LDAP with LDAPS, LDAP signing, channel binding, and proper access controls helps protect sensitive directory information from misuse.
+
+---
+
+**Next:** Part 4
