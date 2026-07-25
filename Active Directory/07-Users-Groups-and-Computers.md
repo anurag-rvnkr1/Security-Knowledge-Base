@@ -2155,4 +2155,741 @@ Practice managing identities and service accounts.
 
 ---
 
-**Next:** Part 4
+# 07-Users-Groups-and-Computers.md
+
+# Part 4 — Enterprise Administration, Security Best Practices, Troubleshooting, Final Revision, and Chapter Summary
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Apply enterprise best practices for managing users, groups, and computers.
+- Understand auditing and monitoring strategies.
+- Troubleshoot common account issues.
+- Learn identity governance recommendations.
+- Review the complete chapter.
+- Prepare for Group Policy Fundamentals.
+
+---
+
+# Enterprise Identity Administration
+
+Managing identities is one of the most important responsibilities of an Active Directory administrator.
+
+Every identity should follow:
+
+- Standardized provisioning
+- Least privilege
+- Lifecycle management
+- Periodic review
+- Secure deprovisioning
+
+A mature identity management process reduces security risks while improving operational efficiency.
+
+---
+
+# Identity Governance
+
+Identity Governance ensures that users have:
+
+- The correct access
+- Only the required permissions
+- Appropriate approval
+- Periodic access reviews
+
+Enterprise workflow:
+
+```text
+Employee Hired
+
+↓
+
+Account Created
+
+↓
+
+Manager Approval
+
+↓
+
+Group Assignment
+
+↓
+
+Application Access
+
+↓
+
+Periodic Review
+
+↓
+
+Account Removal
+```
+
+---
+
+# Identity Management Principles
+
+A mature Active Directory environment follows these principles:
+
+| Principle | Purpose |
+|-----------|----------|
+| Least Privilege | Users receive only required permissions |
+| Separation of Duties | Administrative responsibilities are divided |
+| Accountability | Every action is traceable |
+| Periodic Review | Access remains appropriate |
+| Automation | Reduces human error |
+| Documentation | Simplifies administration |
+
+---
+
+# Enterprise User Provisioning
+
+Typical onboarding process:
+
+```text
+HR System
+
+↓
+
+Identity Management Platform
+
+↓
+
+Active Directory
+
+↓
+
+Microsoft Entra ID
+
+↓
+
+Email
+
+↓
+
+Applications
+
+↓
+
+Endpoint Management
+
+↓
+
+Employee Ready
+```
+
+Many organizations integrate HR systems with identity management solutions to automate provisioning.
+
+---
+
+# User Offboarding
+
+Secure offboarding is just as important as onboarding.
+
+Typical workflow:
+
+```text
+Termination Notice
+
+↓
+
+Disable Account
+
+↓
+
+Block Sign-in
+
+↓
+
+Reset Credentials
+
+↓
+
+Remove Group Memberships
+
+↓
+
+Recover Assets
+
+↓
+
+Archive Data
+
+↓
+
+Delete Account
+```
+
+Immediate account disablement reduces the risk of unauthorized access.
+
+---
+
+# Group Management Strategy
+
+Microsoft recommends role-based access management.
+
+Example:
+
+```text
+Finance Users
+
+↓
+
+Finance Global Group
+
+↓
+
+Finance File Access
+
+↓
+
+Accounting Share
+```
+
+Benefits:
+
+- Easier auditing
+- Simpler permission changes
+- Reduced administrative effort
+- Better compliance
+
+---
+
+# Privileged Groups
+
+Examples of highly privileged groups include:
+
+```text
+Domain Admins
+
+Enterprise Admins
+
+Schema Admins
+
+Administrators
+
+Backup Operators
+
+Server Operators
+
+Account Operators
+```
+
+Membership should be tightly controlled and reviewed regularly.
+
+---
+
+# Privileged Access Best Practices
+
+✔ Use dedicated administrator accounts.
+
+✔ Require strong authentication.
+
+✔ Limit membership.
+
+✔ Review memberships frequently.
+
+✔ Log administrative activity.
+
+✔ Remove unused privileged accounts immediately.
+
+---
+
+# Password Policies
+
+User accounts should follow strong password policies.
+
+Recommendations:
+
+- Strong passwords or passphrases
+- Account lockout policies
+- Password history
+- Minimum password age
+- Maximum password age (where appropriate to organizational policy)
+- Multi-Factor Authentication (MFA) where supported
+
+Password policy details will be explored further in later security chapters.
+
+---
+
+# Account Lockout
+
+Repeated failed authentication attempts may trigger account lockout.
+
+Example:
+
+```text
+User
+
+↓
+
+Incorrect Password
+
+↓
+
+Incorrect Password
+
+↓
+
+Incorrect Password
+
+↓
+
+Account Locked
+```
+
+Possible causes:
+
+- Forgotten password
+- Password spraying attack
+- Cached credentials
+- Scheduled tasks using old passwords
+- Misconfigured services
+
+---
+
+# Group Membership Reviews
+
+Regular reviews help identify:
+
+- Excessive permissions
+- Orphaned groups
+- Unused groups
+- Privilege creep
+- Incorrect nested memberships
+
+Example review schedule:
+
+| Review Item | Frequency |
+|------------|-----------|
+| Privileged Groups | Monthly |
+| Standard Groups | Quarterly |
+| Service Accounts | Quarterly |
+| Stale Accounts | Monthly |
+
+---
+
+# Computer Account Administration
+
+Administrators should periodically review:
+
+- Inactive computers
+- Duplicate names
+- Failed domain joins
+- Disabled computer accounts
+- Operating system versions
+- Secure channel health
+
+Healthy computer accounts support reliable authentication and policy application.
+
+---
+
+# Account Auditing
+
+Organizations should monitor:
+
+- User creation
+- User deletion
+- Password resets
+- Group membership changes
+- Account lockouts
+- Privileged account activity
+- Computer account creation
+- Computer account deletion
+
+Centralized auditing improves visibility and incident response.
+
+---
+
+# Monitoring Identity Activity
+
+```text
+Domain Controller
+
+↓
+
+Security Logs
+
+↓
+
+SIEM
+
+↓
+
+Detection Rules
+
+↓
+
+Security Analysts
+
+↓
+
+Incident Response
+```
+
+Common SIEM platforms include:
+
+- Microsoft Sentinel
+- Splunk
+- IBM QRadar
+- Elastic Security
+
+---
+
+# Common Administrative Tasks
+
+Daily activities often include:
+
+- Creating users
+- Disabling users
+- Resetting passwords
+- Unlocking accounts
+- Joining computers to the domain
+- Managing group memberships
+- Reviewing inactive accounts
+- Updating user attributes
+
+---
+
+# Troubleshooting User Problems
+
+Common issues include:
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Cannot log in | Incorrect password, disabled account |
+| Account locked | Too many failed logons |
+| Missing access | Incorrect group membership |
+| Email unavailable | Provisioning incomplete |
+| Cannot access file share | Permission or group issue |
+
+---
+
+# Troubleshooting Computer Problems
+
+Common issues include:
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Domain join fails | DNS or permission issues |
+| Group Policy not applying | OU placement or connectivity |
+| Trust relationship failed | Broken secure channel |
+| Authentication issues | Time synchronization or Kerberos problems |
+| Missing computer object | Accidental deletion or provisioning issue |
+
+---
+
+# Troubleshooting Checklist
+
+When investigating identity-related issues:
+
+✔ Verify account status.
+
+✔ Check password expiration or reset history.
+
+✔ Review group memberships.
+
+✔ Confirm OU location.
+
+✔ Verify applied Group Policies.
+
+✔ Check security event logs.
+
+✔ Confirm Domain Controller connectivity.
+
+✔ Review replication status.
+
+✔ Validate DNS configuration.
+
+---
+
+# Enterprise Case Study
+
+Organization:
+
+- 80,000 employees
+- 9,000 servers
+- 45 branch offices
+
+Identity Strategy:
+
+```text
+HR
+
+↓
+
+Identity Automation
+
+↓
+
+Active Directory
+
+↓
+
+Microsoft Entra ID
+
+↓
+
+Applications
+
+↓
+
+Security Monitoring
+```
+
+Security controls:
+
+- Dedicated administrative accounts
+- Role-based access control
+- gMSAs for enterprise services
+- Monthly privileged access reviews
+- Automated user provisioning
+- Automated offboarding
+- Centralized logging
+
+Results:
+
+- Faster onboarding
+- Reduced administrative effort
+- Improved compliance
+- Lower risk of unauthorized access
+
+---
+
+# Cybersecurity Perspective
+
+Compromised identities are among the most common attack vectors.
+
+Attackers often target:
+
+- Weak passwords
+- Dormant accounts
+- Privileged accounts
+- Service accounts
+- Over-permissioned groups
+- Stale computer accounts
+
+Recommended defenses:
+
+- Multi-Factor Authentication
+- Least privilege
+- Role-Based Access Control (RBAC)
+- Privileged Access Management (PAM)
+- Access reviews
+- Account monitoring
+- Strong auditing
+- Secure lifecycle management
+
+Identity should be treated as a critical security boundary.
+
+---
+
+# Common Misconceptions
+
+## Myth 1
+
+> Disabled accounts can never be abused.
+
+**Reality:**
+
+Disabled accounts cannot authenticate normally, but they should still be reviewed and eventually removed when no longer needed to reduce administrative clutter and risk.
+
+---
+
+## Myth 2
+
+> Every administrator needs Domain Admin rights.
+
+**Reality:**
+
+Most administrative tasks can be delegated without granting full Domain Admin privileges.
+
+---
+
+## Myth 3
+
+> Groups should never contain other groups.
+
+**Reality:**
+
+Appropriate group nesting simplifies permission management when designed carefully.
+
+---
+
+## Myth 4
+
+> Service accounts are just normal user accounts.
+
+**Reality:**
+
+Service accounts require different management practices, tighter controls, and often benefit from MSA or gMSA features.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Sharing accounts.
+- Using privileged accounts for everyday work.
+- Assigning permissions directly to users.
+- Ignoring inactive accounts.
+- Creating unnecessary nested groups.
+- Failing to review privileged memberships.
+- Leaving obsolete computer accounts in the directory.
+- Not documenting naming standards or delegation.
+
+---
+
+# Best Practices Checklist
+
+✔ Follow AGDLP or AGUDLP.
+
+✔ Use Security Groups for authorization.
+
+✔ Use Distribution Groups only for messaging.
+
+✔ Separate privileged and standard accounts.
+
+✔ Prefer gMSAs where supported.
+
+✔ Remove stale users and computers.
+
+✔ Automate onboarding and offboarding.
+
+✔ Audit privileged groups regularly.
+
+✔ Enable centralized logging.
+
+✔ Document identity standards.
+
+---
+
+# Complete Chapter Summary
+
+In this chapter, you learned:
+
+- Active Directory object fundamentals.
+- User accounts.
+- Computer accounts.
+- Security principals.
+- Distinguished Names (DNs).
+- GUIDs and SIDs.
+- Group types.
+- Group scopes.
+- AGDLP and AGUDLP.
+- Service Accounts.
+- Managed Service Accounts (MSAs).
+- Group Managed Service Accounts (gMSAs).
+- Service Principal Names (SPNs).
+- Group nesting.
+- User lifecycle management.
+- Computer lifecycle management.
+- Identity governance.
+- Enterprise administration.
+- Security best practices.
+- Troubleshooting and auditing.
+
+Users, groups, and computers form the core of identity and access management in Active Directory. Understanding how these objects interact is essential for secure authentication, authorization, and enterprise administration.
+
+---
+
+# Final Revision Table
+
+| Topic | Key Point |
+|--------|-----------|
+| User Object | Represents a person or identity |
+| Computer Object | Represents a domain-joined device |
+| Group | Simplifies permission management |
+| SID | Security Identifier used for authorization |
+| GUID | Unique directory object identifier |
+| Security Group | Used for permissions |
+| Distribution Group | Used for email distribution |
+| Global Group | Organizes users with similar roles |
+| Domain Local Group | Assigned permissions to resources |
+| Universal Group | Used across multiple domains |
+| AGDLP | Accounts → Global → Domain Local → Permissions |
+| AGUDLP | Accounts → Global → Universal → Domain Local → Permissions |
+| Service Account | Runs applications and services |
+| MSA | Managed Service Account for a single computer |
+| gMSA | Managed Service Account for multiple authorized computers |
+| SPN | Identifies a service for Kerberos authentication |
+| JML | Joiner, Mover, Leaver identity lifecycle |
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Implement a secure identity management model for a fictional company.
+
+### Scenario
+
+The organization has:
+
+- Finance
+- HR
+- IT
+- Sales
+- Infrastructure
+- Security
+
+### Tasks
+
+1. Create Global Security Groups for each department.
+2. Create Domain Local Groups representing access to shared resources.
+3. Implement the AGDLP model.
+4. Create:
+   - One standard user
+   - One administrator account
+   - One test service account
+5. Simulate:
+   - User onboarding
+   - Department transfer
+   - User offboarding
+6. Document all changes and verify group memberships.
+
+---
+
+# Interview Questions
+
+1. What is the difference between a GUID and a SID?
+2. Why are users, groups, and computers considered security principals?
+3. What is the difference between Security Groups and Distribution Groups?
+4. Explain Global, Domain Local, and Universal group scopes.
+5. What is AGDLP, and why is it recommended?
+6. What is a gMSA, and when would you use one?
+7. Why should service accounts not be used for interactive logons?
+8. What is the Joiner-Mover-Leaver process?
+9. How would you troubleshoot a user who cannot access a shared folder?
+10. What identity management best practices improve Active Directory security?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Domain Services
+- Microsoft Learn – Active Directory Administrative Center
+- Microsoft Learn – Group Managed Service Accounts
+- Microsoft Learn – Security Groups
+- Windows Server Documentation
+- CIS Microsoft Windows Server Benchmarks
+- Microsoft Security Baselines
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 07 – Users, Groups, and Computers**.
+
+You now understand the fundamental identity objects of Active Directory, including user accounts, computer accounts, group management, service accounts, lifecycle management, and enterprise identity administration. These concepts provide the foundation for access control, authentication, authorization, and Group Policy.
+
+The next chapter introduces one of the most powerful features of Active Directory: **Group Policy**, which enables centralized configuration and security management across users and computers.
+
+---
+
