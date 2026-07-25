@@ -1148,4 +1148,711 @@ Remember:
 
 ---
 
-**Next:** Part 3
+# 28-Active-Directory-Cheat-Sheet.md
+
+# Part 3 — Active Directory Security, Hybrid Identity, PowerShell, Ports, Services and Interview Revision Cheat Sheet
+
+> **Purpose**
+>
+> This section is a **high-speed revision guide** for certifications, interviews, enterprise administration, and cybersecurity roles. It consolidates the most frequently referenced Active Directory security concepts, hybrid identity topics, PowerShell commands, networking information, and troubleshooting reminders.
+
+---
+
+# Active Directory Security Model
+
+```
+Identity
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Access Control
+
+↓
+
+Monitoring
+
+↓
+
+Auditing
+```
+
+Security begins with **identity** and continues throughout the user's lifecycle.
+
+---
+
+# Identity Lifecycle
+
+```
+Hire
+
+↓
+
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Apply Policies
+
+↓
+
+Daily Administration
+
+↓
+
+Role Change
+
+↓
+
+Access Review
+
+↓
+
+Disable Account
+
+↓
+
+Archive
+```
+
+---
+
+# Defense in Depth
+
+```
+User
+
+↓
+
+Password Policy
+
+↓
+
+Multi-Factor Authentication
+
+↓
+
+Conditional Access
+
+↓
+
+Least Privilege
+
+↓
+
+Monitoring
+
+↓
+
+Auditing
+```
+
+Multiple security layers reduce organizational risk.
+
+---
+
+# Zero Trust Principles
+
+Always remember:
+
+```
+Never Trust
+
+↓
+
+Always Verify
+
+↓
+
+Least Privilege
+
+↓
+
+Continuous Validation
+```
+
+---
+
+# Authentication Flow
+
+```
+User
+
+↓
+
+DNS
+
+↓
+
+Domain Controller
+
+↓
+
+Kerberos
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Access
+```
+
+---
+
+# Kerberos Quick Revision
+
+Purpose:
+
+- Secure authentication
+- Ticket-based authentication
+- Reduces repeated password transmission
+- Default Active Directory authentication protocol
+
+Remember:
+
+```
+Client
+
+↓
+
+Authentication Request
+
+↓
+
+Ticket
+
+↓
+
+Service Access
+```
+
+---
+
+# LDAP Quick Revision
+
+Purpose:
+
+- Query directory objects
+- Modify directory information
+- Search Active Directory
+
+Examples:
+
+- User lookup
+- Group lookup
+- Organizational Unit lookup
+
+---
+
+# DNS Quick Revision
+
+DNS provides:
+
+- Domain Controller discovery
+- Global Catalog discovery
+- Kerberos service discovery
+- Replication support
+
+Without DNS:
+
+- Authentication may fail.
+- Group Policy may fail.
+- Replication may fail.
+
+---
+
+# Group Policy Quick Revision
+
+Applied to:
+
+- Sites
+- Domains
+- Organizational Units
+
+Common configurations:
+
+- Password policy
+- Desktop settings
+- Security options
+- Administrative templates
+- Software deployment
+
+---
+
+# FSMO Roles
+
+| Role | Responsibility |
+|------|----------------|
+| Schema Master | Schema updates |
+| Domain Naming Master | Domain additions/removals |
+| RID Master | RID allocation |
+| PDC Emulator | Password updates & time |
+| Infrastructure Master | Cross-domain object references |
+
+---
+
+# Replication
+
+Purpose:
+
+```
+Consistency
+
++
+
+Availability
+
++
+
+Fault Tolerance
+```
+
+Replication ensures all Domain Controllers maintain consistent directory information.
+
+---
+
+# Global Catalog
+
+Purpose:
+
+- Forest-wide searches
+- Universal Group Membership
+- User logon support
+- Partial attribute storage
+
+---
+
+# Organizational Units
+
+Remember:
+
+```
+OU
+
+↓
+
+Organization
+
+↓
+
+Delegation
+
+↓
+
+Group Policy
+```
+
+OUs are **not** security boundaries.
+
+---
+
+# Group Scope Revision
+
+| Scope | Typical Usage |
+|--------|---------------|
+| Domain Local | Resource permissions |
+| Global | Users within a domain |
+| Universal | Multi-domain environments |
+
+---
+
+# Common Administrative Tools
+
+| Tool | Purpose |
+|------|----------|
+| Active Directory Users and Computers | Object management |
+| Active Directory Administrative Center | Modern administration |
+| Active Directory Sites and Services | Replication management |
+| Active Directory Domains and Trusts | Trust administration |
+| Group Policy Management | GPO management |
+| DNS Manager | DNS administration |
+| Event Viewer | Log analysis |
+| PowerShell | Automation |
+
+---
+
+# Frequently Used PowerShell Cmdlets
+
+| Cmdlet | Purpose |
+|---------|----------|
+| `Get-ADUser` | View users |
+| `New-ADUser` | Create user |
+| `Set-ADUser` | Modify user |
+| `Remove-ADUser` | Remove user |
+| `Get-ADComputer` | View computers |
+| `Get-ADGroup` | View groups |
+| `Get-ADGroupMember` | List group members |
+| `New-ADGroup` | Create group |
+| `Add-ADGroupMember` | Add members |
+| `Remove-ADGroupMember` | Remove members |
+| `Unlock-ADAccount` | Unlock account |
+| `Enable-ADAccount` | Enable account |
+| `Disable-ADAccount` | Disable account |
+
+---
+
+# Common Active Directory Ports
+
+| Protocol | Port | Purpose |
+|-----------|-----:|----------|
+| DNS | 53 | Name resolution |
+| Kerberos | 88 | Authentication |
+| LDAP | 389 | Directory access |
+| LDAPS | 636 | Secure LDAP |
+| SMB | 445 | File and directory services |
+| Global Catalog | 3268 | Directory search |
+| Global Catalog SSL | 3269 | Secure GC |
+| RPC Endpoint Mapper | 135 | RPC service discovery |
+
+---
+
+# Important Windows Services
+
+| Service | Purpose |
+|----------|----------|
+| Active Directory Domain Services | Directory database |
+| DNS Server | Name resolution |
+| Netlogon | Domain authentication |
+| Kerberos KDC | Ticket issuance |
+| Windows Time | Time synchronization |
+
+---
+
+# Hybrid Identity
+
+```
+On-Premises AD
+
+↓
+
+Identity Synchronization
+
+↓
+
+Microsoft Entra ID
+
+↓
+
+Microsoft 365
+
+↓
+
+Cloud Applications
+```
+
+---
+
+# Microsoft Entra ID Features
+
+- Single Sign-On (SSO)
+- Multi-Factor Authentication (MFA)
+- Conditional Access
+- Identity Governance
+- Cloud Identity
+- Hybrid Identity
+- Self-service capabilities
+
+---
+
+# Conditional Access
+
+Evaluates:
+
+- User
+- Device
+- Location
+- Risk
+- Application
+- Organizational policy
+
+```
+User
+
+↓
+
+Policy Evaluation
+
+↓
+
+Allow
+
+OR
+
+Require Additional Verification
+
+OR
+
+Block
+```
+
+---
+
+# Troubleshooting Checklist
+
+## User Cannot Log In
+
+Check:
+
+- Account status
+- Password
+- DNS
+- Domain Controller
+- Time synchronization
+- Network connectivity
+
+---
+
+## Replication Problems
+
+Review:
+
+- Domain Controllers
+- DNS
+- Network
+- Site topology
+- Event logs
+
+---
+
+## Group Policy Problems
+
+Verify:
+
+- OU placement
+- GPO link
+- Replication
+- Policy processing
+- Event logs
+
+---
+
+## DNS Problems
+
+Review:
+
+- DNS server health
+- Zone configuration
+- Client configuration
+- Name resolution
+
+---
+
+# Event Logs
+
+Most useful logs:
+
+| Log | Purpose |
+|------|----------|
+| Security | Authentication |
+| System | Operating system |
+| Directory Service | AD events |
+| DNS Server | DNS events |
+| Application | Applications |
+
+---
+
+# Backup Checklist
+
+```
+Backup
+
+↓
+
+Verify
+
+↓
+
+Store Securely
+
+↓
+
+Test Restore
+
+↓
+
+Document
+```
+
+---
+
+# Disaster Recovery Checklist
+
+- Backup available
+- Recovery documentation
+- Domain Controller redundancy
+- DNS redundancy
+- Replication validation
+- Authentication verification
+- Business validation
+
+---
+
+# Security Checklist
+
+Daily:
+
+- Review failed logons
+- Review privileged accounts
+- Check replication
+- Verify DNS
+- Review alerts
+
+Weekly:
+
+- Review inactive accounts
+- Review group memberships
+- Validate backups
+- Audit administrative changes
+
+Monthly:
+
+- Test recovery procedures
+- Review access permissions
+- Validate documentation
+- Review security policies
+
+---
+
+# Active Directory Best Practices
+
+- Deploy multiple Domain Controllers.
+- Use Role-Based Access Control (RBAC).
+- Follow Least Privilege.
+- Protect privileged accounts.
+- Enable MFA where supported.
+- Keep DNS healthy.
+- Monitor replication.
+- Review logs regularly.
+- Test backups.
+- Document changes.
+
+---
+
+# One-Page Interview Revision
+
+## Core Concepts
+
+- Active Directory
+- Forest
+- Domain
+- Tree
+- Organizational Unit
+- User
+- Group
+- Computer
+
+---
+
+## Authentication
+
+- Kerberos
+- LDAP
+- DNS
+- Domain Controller
+
+---
+
+## Administration
+
+- User management
+- Group management
+- GPO
+- Replication
+- FSMO
+- Global Catalog
+
+---
+
+## Security
+
+- MFA
+- Conditional Access
+- Least Privilege
+- Zero Trust
+- Identity Governance
+
+---
+
+## Troubleshooting
+
+- DNS
+- Replication
+- Authentication
+- Group Policy
+- Domain Controller Health
+
+---
+
+# 2-Minute Interview Revision
+
+If you only have two minutes before an interview, remember:
+
+1. Forest is the highest logical boundary.
+2. Domains provide administrative and security boundaries.
+3. OUs organize objects and receive GPOs.
+4. Kerberos is the default authentication protocol.
+5. LDAP queries directory data.
+6. DNS is essential for Active Directory.
+7. Domain Controllers authenticate users.
+8. Replication keeps directory data consistent.
+9. FSMO roles coordinate specific directory operations.
+10. Microsoft Entra ID extends identity into the cloud.
+
+---
+
+# Memory Map
+
+```
+                Active Directory
+
+                       │
+
+      ┌────────────────┼────────────────┐
+
+ Authentication   Administration    Security
+
+      │                 │               │
+
+ Kerberos          Users          Least Privilege
+
+ LDAP              Groups         MFA
+
+ DNS               GPO            Zero Trust
+
+ DC                FSMO           Monitoring
+
+ Replication       OUs            Auditing
+
+ Hybrid Identity   PowerShell     Governance
+```
+
+---
+
+# Key Takeaways
+
+- Active Directory administration combines identity management, security, networking, and troubleshooting.
+- DNS, Kerberos, LDAP, Group Policy, and replication form the foundation of AD.
+- Microsoft Entra ID extends Active Directory into hybrid cloud environments.
+- Consistent monitoring, documentation, and least privilege improve enterprise security and reliability.
+- This cheat sheet is intended as a rapid revision guide before interviews, certifications, or operational tasks.
+
+---
+
+**Next:** Part 4
