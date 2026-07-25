@@ -1319,4 +1319,795 @@ repadmin /showrepl
 
 ---
 
-**Next:** Part 3
+# 11-Active-Directory-Replication.md
+
+# Part 3 — Intra-Site Replication, Inter-Site Replication, Site Links, Bridgehead Servers, Conflict Resolution, and Replication Scheduling
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand Intra-Site Replication.
+- Learn Inter-Site Replication.
+- Understand Active Directory Sites.
+- Learn Site Links and Site Link Bridges.
+- Understand Bridgehead Servers.
+- Learn replication scheduling.
+- Understand replication conflict resolution.
+
+---
+
+# Understanding Active Directory Sites
+
+An **Active Directory Site** represents one or more well-connected IP subnets.
+
+Sites are created to optimize:
+
+- Replication
+- Authentication
+- Network bandwidth
+- Service location
+
+Example:
+
+```text
+Company Network
+
+│
+
+├── Bangalore Office
+
+├── Mumbai Office
+
+├── Delhi Office
+
+└── Hyderabad Office
+```
+
+Each office can be configured as an individual Active Directory Site.
+
+---
+
+# Why Sites Exist
+
+Without sites:
+
+```text
+Client
+
+↓
+
+Random Domain Controller
+
+↓
+
+High WAN Usage
+```
+
+With sites:
+
+```text
+Client
+
+↓
+
+Nearest Site
+
+↓
+
+Nearest Domain Controller
+
+↓
+
+Fast Authentication
+```
+
+Sites improve efficiency by keeping authentication and replication as local as possible.
+
+---
+
+# Intra-Site Replication
+
+**Intra-Site Replication** occurs **within the same Active Directory Site**.
+
+Example:
+
+```text
+Bangalore Site
+
+│
+
+├── DC01
+
+├── DC02
+
+└── DC03
+```
+
+Replication occurs between these Domain Controllers inside the same site.
+
+---
+
+# Characteristics of Intra-Site Replication
+
+Intra-site replication assumes:
+
+- High-speed LAN
+- Reliable network
+- Low latency
+- Minimal bandwidth concerns
+
+Therefore replication is optimized for speed.
+
+---
+
+# Intra-Site Replication Flow
+
+```text
+Administrator
+
+↓
+
+Modify User
+
+↓
+
+DC01
+
+↓
+
+Change Notification
+
+↓
+
+DC02
+
+↓
+
+DC03
+```
+
+Changes are propagated quickly throughout the site.
+
+---
+
+# Change Notification
+
+Inside a site:
+
+```text
+Change Made
+
+↓
+
+Notify Partner
+
+↓
+
+Replication Starts
+```
+
+Instead of waiting for long schedules, Domain Controllers notify their partners when updates occur.
+
+---
+
+# Typical Intra-Site Timing
+
+Illustrative process:
+
+```text
+Object Changed
+
+↓
+
+Partner Notified
+
+↓
+
+Replication Begins
+
+↓
+
+Other DC Updated
+```
+
+Windows uses configurable notification intervals and offsets to efficiently distribute changes while avoiding excessive traffic.
+
+---
+
+# Benefits of Intra-Site Replication
+
+Advantages:
+
+- Fast updates
+- Low authentication delay
+- Efficient synchronization
+- Better user experience
+- High availability
+
+---
+
+# Inter-Site Replication
+
+**Inter-Site Replication** occurs **between different Active Directory Sites**.
+
+Example:
+
+```text
+Bangalore Site
+
+↓
+
+WAN
+
+↓
+
+Mumbai Site
+```
+
+---
+
+# Why Inter-Site Replication is Different
+
+WAN links may have:
+
+- Higher latency
+- Lower bandwidth
+- Greater cost
+- Variable reliability
+
+Therefore replication is optimized to conserve bandwidth.
+
+---
+
+# Inter-Site Replication Flow
+
+```text
+DC01
+
+↓
+
+Bangalore Site
+
+↓
+
+WAN
+
+↓
+
+Mumbai Site
+
+↓
+
+DC05
+```
+
+Replication is controlled by schedules and topology rather than immediate notifications.
+
+---
+
+# Comparing Intra-Site and Inter-Site Replication
+
+| Feature | Intra-Site | Inter-Site |
+|----------|------------|------------|
+| Network | LAN | WAN |
+| Speed | Faster | Typically slower |
+| Optimization | Low latency | Bandwidth conservation |
+| Notification | Change notifications | Schedule-based (by default) |
+| Compression | Generally not used | Compression enabled by default |
+
+---
+
+# Replication Compression
+
+For WAN efficiency:
+
+```text
+Directory Changes
+
+↓
+
+Compress
+
+↓
+
+Transmit
+
+↓
+
+Decompress
+
+↓
+
+Apply Changes
+```
+
+Compression significantly reduces network utilization during inter-site replication.
+
+---
+
+# Active Directory Site Links
+
+A **Site Link** defines the logical connection between two or more Active Directory Sites.
+
+Example:
+
+```text
+Bangalore
+
+↓
+
+Site Link
+
+↓
+
+Mumbai
+```
+
+---
+
+# Why Site Links Matter
+
+Without Site Links:
+
+```text
+Sites
+
+↓
+
+No Replication Path
+```
+
+With Site Links:
+
+```text
+Site A
+
+↓
+
+Site Link
+
+↓
+
+Site B
+
+↓
+
+Replication
+```
+
+Site Links define the routes used for inter-site replication.
+
+---
+
+# Site Link Components
+
+Each Site Link includes:
+
+- Member sites
+- Cost
+- Schedule
+- Replication interval
+- Transport protocol (typically IP)
+
+---
+
+# Site Link Cost
+
+Each Site Link has a **cost**.
+
+Example:
+
+```text
+Bangalore ↔ Mumbai
+
+Cost = 50
+```
+
+```text
+Bangalore ↔ Delhi
+
+Cost = 100
+```
+
+The Knowledge Consistency Checker (KCC) generally prefers lower-cost routes.
+
+---
+
+# Example Topology
+
+```text
+             Delhi
+
+               │
+
+          Cost 100
+
+               │
+
+Bangalore ─────┼────── Mumbai
+
+     Cost 50
+```
+
+Replication normally follows the least-cost available path.
+
+---
+
+# Site Link Schedule
+
+Administrators can control **when** inter-site replication occurs.
+
+Example:
+
+```text
+Business Hours
+
+↓
+
+Limited Replication
+```
+
+```text
+Night
+
+↓
+
+Frequent Replication
+```
+
+Schedules help optimize WAN usage.
+
+---
+
+# Replication Interval
+
+Administrators can configure how frequently Site Links replicate.
+
+Example:
+
+```text
+Every Configured Interval
+
+↓
+
+Replication Begins
+```
+
+The appropriate interval depends on:
+
+- Business requirements
+- WAN capacity
+- Recovery objectives
+- Directory change frequency
+
+---
+
+# Site Link Bridges
+
+Sometimes multiple Site Links must be treated as connected paths.
+
+Example:
+
+```text
+Site A
+
+↓
+
+Site B
+
+↓
+
+Site C
+```
+
+If bridging is enabled:
+
+```text
+A
+
+↓
+
+B
+
+↓
+
+C
+```
+
+Active Directory can calculate indirect replication routes across multiple Site Links.
+
+---
+
+# Bridgehead Servers
+
+Inter-site replication is handled by **Bridgehead Servers**.
+
+Instead of every Domain Controller replicating across the WAN:
+
+```text
+Site A
+
+↓
+
+Bridgehead Server
+
+↓
+
+WAN
+
+↓
+
+Bridgehead Server
+
+↓
+
+Site B
+```
+
+This reduces WAN traffic and simplifies replication management.
+
+---
+
+# Automatic Bridgehead Selection
+
+Normally:
+
+```text
+KCC
+
+↓
+
+Selects Bridgehead
+
+↓
+
+Replication Begins
+```
+
+Administrators can manually specify preferred bridgehead servers when necessary, though automatic selection is recommended in most environments.
+
+---
+
+# Bridgehead Responsibilities
+
+Bridgehead Servers:
+
+- Receive inter-site updates.
+- Send inter-site updates.
+- Reduce WAN connections.
+- Optimize cross-site replication.
+
+---
+
+# Replication Conflict Resolution
+
+Sometimes two administrators modify the same object before replication completes.
+
+Example:
+
+```text
+DC01
+
+↓
+
+Phone Number
+
+↓
+
+1111111111
+```
+
+Simultaneously:
+
+```text
+DC02
+
+↓
+
+Phone Number
+
+↓
+
+2222222222
+```
+
+How does Active Directory decide which value wins?
+
+---
+
+# Conflict Resolution Rules
+
+Active Directory uses replication metadata such as:
+
+- Version number
+- Timestamp
+- Originating Domain Controller
+- Attribute metadata
+
+The directory applies deterministic rules to resolve conflicts and maintain consistency.
+
+---
+
+# Simplified Example
+
+```text
+DC01
+
+↓
+
+Attribute Version
+
+5
+```
+
+```text
+DC02
+
+↓
+
+Attribute Version
+
+6
+```
+
+Version 6 is considered the newer change and is replicated.
+
+If version numbers are equal, additional metadata (such as timestamps and originating information) is evaluated.
+
+---
+
+# Tombstones
+
+When an object is deleted:
+
+```text
+Delete User
+
+↓
+
+Object Marked
+
+↓
+
+Tombstone
+
+↓
+
+Replication
+
+↓
+
+Permanent Cleanup
+```
+
+Deletion information is replicated before the object is permanently removed.
+
+This prevents deleted objects from being recreated by outdated replicas.
+
+---
+
+# Enterprise Example
+
+Company:
+
+- 12 Active Directory Sites
+- 60 Domain Controllers
+- Dedicated WAN links
+
+Configuration:
+
+```text
+Each Site
+
+↓
+
+Local Replication
+
+↓
+
+Bridgehead
+
+↓
+
+WAN
+
+↓
+
+Remote Bridgehead
+
+↓
+
+Local Replication
+```
+
+Benefits:
+
+- Efficient WAN utilization
+- Faster local authentication
+- Controlled replication traffic
+- High availability
+
+---
+
+# Cybersecurity Perspective
+
+Replication traffic carries critical directory information.
+
+Recommendations:
+
+- Secure WAN links.
+- Monitor unexpected replication paths.
+- Review Site Link configurations.
+- Audit replication failures.
+- Protect Bridgehead Servers.
+- Monitor unusual object modifications across sites.
+
+Compromised replication between sites can spread unauthorized directory changes throughout the forest.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Configuring unrealistic Site Link costs.
+- Ignoring WAN bandwidth limitations.
+- Disabling replication schedules without understanding the impact.
+- Creating unnecessary manual replication connections.
+- Assuming inter-site replication is immediate.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Active Directory Sites and replication topology.
+
+### Tasks
+
+1. Open **Active Directory Sites and Services**.
+2. Examine:
+   - Sites
+   - Subnets
+   - Site Links
+3. Identify:
+   - Bridgehead Servers
+   - Replication connections
+4. Record:
+   - Site Link costs
+   - Replication intervals
+   - Connected sites
+5. Draw the inter-site replication topology for your lab.
+
+---
+
+# Interview Questions
+
+1. What is an Active Directory Site?
+2. What is the difference between Intra-Site and Inter-Site replication?
+3. Why is inter-site replication typically compressed?
+4. What is a Site Link?
+5. What does Site Link cost represent?
+6. What is a Bridgehead Server?
+7. How are Bridgehead Servers selected?
+8. What metadata is used during replication conflict resolution?
+9. What is a tombstone object?
+10. Why are replication schedules important in WAN environments?
+
+---
+
+# Key Takeaways
+
+- Intra-site replication is optimized for fast, reliable LAN environments using change notifications.
+- Inter-site replication is optimized for WAN environments using schedules, compression, and Site Links.
+- The KCC uses Site Link costs to calculate efficient replication paths.
+- Bridgehead Servers manage replication traffic between Active Directory Sites.
+- Active Directory resolves replication conflicts using replication metadata and replicates deletions through tombstone objects before permanent removal.
+
+---
+
+**Next:** Part 4
