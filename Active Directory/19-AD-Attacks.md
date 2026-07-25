@@ -1073,4 +1073,619 @@ Create a prioritized remediation list for any identified risks.
 
 ---
 
-**Next:** Part 3
+# 19-AD-Attacks.md
+
+# Part 3 — Detection Engineering, Logging, Threat Hunting, Hardening Against Active Directory Attacks and Defensive Response
+
+> **Important Note**
+>
+> This section focuses on **defensive detection, monitoring, threat hunting, and hardening**. It does **not** provide operational attack instructions. The goal is to help defenders recognize malicious activity and strengthen enterprise Active Directory environments.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Detection Engineering
+- Security Logging
+- Windows Event Logs
+- Active Directory Auditing
+- SIEM Integration
+- Threat Hunting
+- Indicators of Compromise (IOCs)
+- Indicators of Attack (IOAs)
+- Hardening Against Common AD Attacks
+- Enterprise Detection Strategy
+
+---
+
+# Introduction
+
+Prevention alone cannot stop every attack.
+
+Modern security programs assume that:
+
+- Some attacks will bypass preventive controls.
+- Early detection reduces business impact.
+- Rapid investigation limits attacker movement.
+- Continuous monitoring improves resilience.
+
+This philosophy is often referred to as **Assume Breach**.
+
+---
+
+# Security Monitoring Lifecycle
+
+```
+Collect Logs
+
+      │
+
+      ▼
+
+Normalize Data
+
+      │
+
+      ▼
+
+Correlate Events
+
+      │
+
+      ▼
+
+Generate Alerts
+
+      │
+
+      ▼
+
+Investigate
+
+      │
+
+      ▼
+
+Respond
+
+      │
+
+      ▼
+
+Improve Detection
+```
+
+---
+
+# Detection Engineering
+
+Detection engineering is the process of designing, testing, and maintaining security detections.
+
+Goals include:
+
+- Detect identity abuse
+- Detect privilege changes
+- Detect unauthorized administrative activity
+- Reduce false positives
+- Improve analyst visibility
+
+Detection rules should evolve as the environment changes.
+
+---
+
+# Log Sources
+
+Important Active Directory log sources include:
+
+| Source | Purpose |
+|---------|----------|
+| Security Event Log | Authentication and authorization events |
+| Directory Service Log | AD database operations |
+| DNS Server Log | Name resolution activity |
+| Group Policy Operational Log | GPO processing |
+| Windows Defender Logs | Endpoint protection events |
+| Sysmon (if deployed) | Enhanced endpoint visibility |
+| SIEM Platform | Centralized correlation |
+
+---
+
+# Centralized Logging
+
+```
+Domain Controllers
+
+        │
+
+        ▼
+
+Windows Event Logs
+
+        │
+
+        ▼
+
+Log Forwarding
+
+        │
+
+        ▼
+
+SIEM Platform
+
+        │
+
+        ▼
+
+SOC Dashboard
+```
+
+Centralized logging enables enterprise-wide visibility.
+
+---
+
+# Active Directory Auditing
+
+Organizations should audit important administrative actions.
+
+Examples include:
+
+- User creation
+- User deletion
+- Group membership modifications
+- Password resets
+- Administrative logons
+- GPO changes
+- OU modifications
+- Trust changes
+
+Auditing provides accountability and supports investigations.
+
+---
+
+# Security Event Prioritization
+
+```
+Critical
+
+↓
+
+High
+
+↓
+
+Medium
+
+↓
+
+Low
+
+↓
+
+Informational
+```
+
+High-priority events should receive faster investigation and response.
+
+---
+
+# Indicators of Compromise (IOCs)
+
+Indicators of Compromise are artifacts suggesting a system **may have been compromised**.
+
+Examples:
+
+- Unexpected administrative accounts
+- Unauthorized scheduled tasks
+- Unknown services
+- Suspicious binaries
+- Unexpected configuration changes
+
+IOCs often indicate that an attacker has already established some level of access.
+
+---
+
+# Indicators of Attack (IOAs)
+
+Indicators of Attack focus on **behavior** rather than artifacts.
+
+Examples:
+
+- Repeated authentication failures
+- Administrative activity from unusual locations
+- Unexpected privilege changes
+- Multiple administrative actions in a short period
+- Unusual account usage patterns
+
+Behavior-based detection can identify attacks earlier than artifact-based detection alone.
+
+---
+
+# Example Detection Workflow
+
+```
+Authentication Event
+
+↓
+
+Log Collection
+
+↓
+
+SIEM Correlation
+
+↓
+
+Risk Score
+
+↓
+
+SOC Alert
+
+↓
+
+Analyst Investigation
+```
+
+---
+
+# Threat Hunting
+
+Threat hunting is a proactive activity performed by security teams.
+
+Unlike alert-driven investigations, threat hunting begins with a hypothesis.
+
+Example hypotheses:
+
+- "Are privileged accounts being used outside expected hours?"
+- "Have any unexpected administrative groups changed recently?"
+- "Are there dormant accounts showing new activity?"
+
+Threat hunting complements automated detection.
+
+---
+
+# Threat Hunting Process
+
+```
+Hypothesis
+
+↓
+
+Collect Data
+
+↓
+
+Analyze
+
+↓
+
+Validate
+
+↓
+
+Document
+
+↓
+
+Improve Detection Rules
+```
+
+---
+
+# Authentication Monitoring
+
+Authentication monitoring should include:
+
+- Successful logons
+- Failed logons
+- Account lockouts
+- Privileged account usage
+- Service account authentication
+- Unusual authentication patterns
+
+Authentication data often provides the earliest indication of identity abuse.
+
+---
+
+# Administrative Change Monitoring
+
+Monitor changes involving:
+
+- Domain Admins
+- Enterprise Admins
+- Schema Admins
+- Group Policy
+- DNS
+- Trust relationships
+- Delegated permissions
+
+Unexpected changes should be reviewed promptly.
+
+---
+
+# Service Account Monitoring
+
+Service accounts should be monitored for:
+
+- Unexpected logon activity
+- Permission changes
+- Configuration changes
+- Ownership changes
+- Authentication anomalies
+
+Maintain a documented inventory of all service accounts.
+
+---
+
+# Hardening Strategy
+
+```
+Strong Authentication
+
+↓
+
+Least Privilege
+
+↓
+
+Administrative Tiering
+
+↓
+
+Security Baselines
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Incident Response
+```
+
+Hardening reduces opportunities for attackers while improving detection capability.
+
+---
+
+# Enterprise Security Controls
+
+Organizations should implement:
+
+- Multi-Factor Authentication where supported
+- Dedicated administrative accounts
+- Privileged Access Workstations
+- Security baselines
+- Regular patch management
+- Continuous vulnerability management
+- Centralized logging
+- Periodic security reviews
+
+These controls work together to reduce enterprise risk.
+
+---
+
+# Detection Maturity Model
+
+```
+Level 1
+
+Basic Logging
+
+        │
+
+        ▼
+
+Level 2
+
+Centralized Monitoring
+
+        │
+
+        ▼
+
+Level 3
+
+Correlation Rules
+
+        │
+
+        ▼
+
+Level 4
+
+Threat Hunting
+
+        │
+
+        ▼
+
+Level 5
+
+Continuous Improvement
+```
+
+Organizations typically mature through these stages over time.
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Woodgrove Bank
+```
+
+Infrastructure:
+
+- 110,000 Users
+- 58 Domain Controllers
+- Global Operations
+
+Monitoring Program:
+
+- Central SIEM
+- 24×7 Security Operations Center
+- Weekly Threat Hunting
+- Quarterly Detection Rule Reviews
+- Annual Purple Team Exercises
+
+Results:
+
+- Improved visibility into identity-related events
+- Faster detection of administrative anomalies
+- Better incident response coordination
+
+---
+
+# Cybersecurity Perspective
+
+Effective defense relies on:
+
+- Comprehensive logging
+- Continuous monitoring
+- Behavioral analytics
+- Regular threat hunting
+- Strong governance
+- Rapid incident response
+
+Detection capabilities should be tested and refined regularly to remain effective against evolving threats.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Review Active Directory monitoring coverage.
+
+### Step 1
+
+Verify that security logs are being collected from:
+
+- Domain Controllers
+- DNS Servers
+- Critical Member Servers
+
+---
+
+### Step 2
+
+Identify:
+
+- Privileged groups
+- Service accounts
+- Critical administrative systems
+
+Ensure these assets receive enhanced monitoring.
+
+---
+
+### Step 3
+
+Review recent security events.
+
+Classify them as:
+
+- Authentication
+- Administrative
+- Configuration
+- Informational
+
+---
+
+### Step 4
+
+Design a dashboard showing:
+
+- Failed logons
+- Administrative changes
+- Group membership changes
+- Account lockouts
+
+---
+
+### Step 5
+
+Recommend three improvements to the organization's Active Directory monitoring strategy.
+
+---
+
+# Interview Questions
+
+### Q1: What is detection engineering?
+
+**Answer:** Detection engineering is the design, implementation, testing, and continuous improvement of security detections to identify malicious or suspicious activity.
+
+---
+
+### Q2: What is the difference between an IOC and an IOA?
+
+**Answer:** An IOC is evidence suggesting compromise may have occurred, while an IOA focuses on suspicious behavior that may indicate an attack is in progress.
+
+---
+
+### Q3: Why is centralized logging important?
+
+**Answer:** It enables correlation of events from multiple systems, improving visibility, investigation, and incident response.
+
+---
+
+### Q4: What is threat hunting?
+
+**Answer:** Threat hunting is a proactive process where security analysts search for signs of malicious activity that may not have triggered automated alerts.
+
+---
+
+### Q5: Why should privileged accounts receive enhanced monitoring?
+
+**Answer:** Because misuse or compromise of privileged accounts can significantly impact the security of the Active Directory environment.
+
+---
+
+### Q6: Why should detection rules be reviewed regularly?
+
+**Answer:** Enterprise environments evolve over time, and detection rules must be updated to remain effective and minimize false positives.
+
+---
+
+# Best Practices
+
+- Centralize security logs.
+- Monitor privileged activity continuously.
+- Review administrative changes promptly.
+- Conduct periodic threat hunting.
+- Maintain accurate asset inventories.
+- Test detection rules regularly.
+- Review SIEM content after significant infrastructure changes.
+- Document lessons learned from investigations.
+
+---
+
+# Common Mistakes
+
+- Collecting logs without reviewing them.
+- Monitoring only Domain Controllers while ignoring supporting systems.
+- Failing to tune detection rules.
+- Ignoring repeated low-severity events that may indicate larger patterns.
+- Not documenting detection logic.
+- Delaying investigation of privileged account anomalies.
+
+---
+
+# Key Takeaways
+
+- Effective Active Directory defense depends on visibility as much as prevention.
+- Detection engineering, centralized logging, and threat hunting improve security maturity.
+- Monitoring privileged identities and administrative changes provides high-value security insights.
+- Continuous refinement of detections and operational processes strengthens enterprise resilience.
+
+---
+
+**Next:** Part 4
