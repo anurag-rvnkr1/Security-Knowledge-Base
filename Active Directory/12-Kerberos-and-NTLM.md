@@ -2258,4 +2258,849 @@ Document:
 
 ---
 
-**Next:** Part 4
+# 12-Kerberos-and-NTLM.md
+
+# Part 4 — Kerberos Delegation, SPNs, Authentication Troubleshooting, Enterprise Security and Best Practices
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Kerberos Delegation
+- Types of Delegation
+- Service Principal Names (SPNs)
+- Common Kerberos authentication failures
+- Time synchronization requirements
+- Ticket cache management
+- Authentication troubleshooting tools
+- Kerberos logging
+- Enterprise authentication architecture
+- Security best practices
+- Chapter summary
+
+---
+
+# Introduction
+
+So far, we have learned:
+
+- Windows Authentication Fundamentals
+- Kerberos Architecture
+- NTLM Authentication
+- Authentication Negotiation
+
+In this final part, we will explore how enterprise applications authenticate users across multiple services, how administrators troubleshoot authentication issues, and how organizations secure Kerberos deployments.
+
+---
+
+# What is Delegation?
+
+Delegation allows a service to access another service **on behalf of an authenticated user**.
+
+Without delegation:
+
+```
+User
+
+↓
+
+Web Server
+
+↓
+
+SQL Server
+
+❌ SQL Server
+doesn't know who the user is.
+```
+
+With delegation:
+
+```
+User
+
+↓
+
+Web Server
+
+↓
+
+SQL Server
+
+↓
+
+SQL Server receives
+the user's delegated identity.
+```
+
+This enables seamless multi-tier applications.
+
+---
+
+# Real-World Example
+
+An employee opens:
+
+```
+HR Portal
+```
+
+The HR Portal connects to:
+
+- SQL Database
+- File Server
+- Reporting Server
+
+Instead of asking the user to authenticate repeatedly, Kerberos delegation allows the web application to securely access those back-end services on the user's behalf.
+
+---
+
+# Types of Kerberos Delegation
+
+Active Directory supports three primary delegation models.
+
+---
+
+# 1. Unconstrained Delegation
+
+```
+User
+
+↓
+
+Server A
+
+↓
+
+Any Service
+```
+
+The server can request tickets to **any** service for the user.
+
+### Advantages
+
+- Simple configuration
+- Supports many legacy applications
+
+### Disadvantages
+
+- Broad trust
+- Large attack surface
+- Generally not recommended for modern environments
+
+---
+
+# 2. Constrained Delegation
+
+```
+User
+
+↓
+
+Application Server
+
+↓
+
+Only SQL Server
+```
+
+The administrator explicitly specifies which services may receive delegated credentials.
+
+### Advantages
+
+- Better security
+- Reduced attack surface
+- Preferred over unconstrained delegation
+
+---
+
+# 3. Resource-Based Constrained Delegation (RBCD)
+
+Instead of configuring the front-end server,
+
+the destination service decides:
+
+```
+Who is allowed
+to delegate to me?
+```
+
+This model is easier to manage in many modern environments and provides greater administrative flexibility.
+
+---
+
+# Delegation Comparison
+
+| Feature | Unconstrained | Constrained | Resource-Based Constrained |
+|----------|---------------|-------------|----------------------------|
+| Security | Low | High | Very High |
+| Configuration | Simple | Moderate | Moderate |
+| Scope | Any Service | Selected Services | Controlled by Target Service |
+| Recommended | No | Yes | Yes |
+
+---
+
+# Service Principal Names (SPNs)
+
+Every Kerberos-enabled service must have a unique identifier.
+
+This identifier is called the:
+
+**Service Principal Name (SPN)**
+
+Example:
+
+```
+HTTP/web01.corp.local
+```
+
+```
+HOST/DC01
+```
+
+```
+CIFS/FileServer01
+```
+
+```
+MSSQLSvc/SQL01:1433
+```
+
+---
+
+# Why SPNs Matter
+
+When a client requests a Service Ticket,
+
+it tells the KDC:
+
+```
+I want to access
+
+HTTP/web01
+```
+
+The KDC searches Active Directory.
+
+If the SPN exists:
+
+```
+Issue Service Ticket
+```
+
+If it does not:
+
+```
+Kerberos fails
+
+↓
+
+Possible NTLM fallback
+```
+
+---
+
+# SPN Lookup Process
+
+```
+Client
+
+↓
+
+Needs SQL Server
+
+↓
+
+KDC
+
+↓
+
+Search AD
+
+↓
+
+SPN Found?
+
+Yes
+
+↓
+
+Issue Service Ticket
+
+No
+
+↓
+
+Authentication Failure
+or NTLM Fallback
+```
+
+---
+
+# Viewing SPNs
+
+Administrators commonly use:
+
+```
+setspn -L <AccountName>
+```
+
+Example:
+
+```
+setspn -L SQLService
+```
+
+This lists the SPNs registered to the specified account.
+
+---
+
+# Registering SPNs
+
+Example command:
+
+```
+setspn -S HTTP/web01 corp\websvc
+```
+
+The `-S` option verifies uniqueness before creating the SPN.
+
+Avoid manually creating duplicate SPNs.
+
+---
+
+# Duplicate SPNs
+
+Duplicate SPNs cause:
+
+- Kerberos authentication failures
+- Service authentication errors
+- Ticket issuance problems
+
+Example:
+
+```
+HTTP/web01
+
+↓
+
+Account A
+
+↓
+
+Account B
+
+❌ Duplicate
+```
+
+Only one object should own a particular SPN.
+
+---
+
+# Time Synchronization
+
+Kerberos depends on accurate system clocks.
+
+```
+Client
+
+↓
+
+09:00
+
+Server
+
+↓
+
+09:06
+```
+
+Large time differences can prevent authentication.
+
+Active Directory typically allows only a limited clock skew (commonly five minutes by default).
+
+Time synchronization is therefore essential.
+
+---
+
+# Ticket Cache
+
+Windows stores Kerberos tickets in memory.
+
+```
+Login
+
+↓
+
+Receive Tickets
+
+↓
+
+Cache
+
+↓
+
+Reuse
+
+↓
+
+Single Sign-On
+```
+
+Administrators can inspect cached tickets.
+
+```
+klist
+```
+
+---
+
+# Purging Cached Tickets
+
+For troubleshooting:
+
+```
+klist purge
+```
+
+This removes cached Kerberos tickets from the current logon session.
+
+New tickets are obtained as needed.
+
+---
+
+# Common Kerberos Authentication Issues
+
+### DNS Problems
+
+Symptoms:
+
+- Authentication failures
+- Unable to locate Domain Controller
+- Missing Service Tickets
+
+---
+
+### Incorrect SPNs
+
+Symptoms:
+
+- Kerberos fails
+- NTLM fallback
+- Service login issues
+
+---
+
+### Clock Skew
+
+Symptoms:
+
+- Authentication denied
+- Ticket validation errors
+- Logon failures
+
+---
+
+### Expired Tickets
+
+Symptoms:
+
+- Access denied
+- Authentication prompts
+- Service access failures
+
+---
+
+### Trust Problems
+
+Symptoms:
+
+- Cross-domain authentication failures
+- Inaccessible resources
+- Authentication errors across trusted domains
+
+---
+
+# Authentication Troubleshooting Workflow
+
+```
+Authentication Failure
+
+        │
+
+        ▼
+
+Verify DNS
+
+        │
+
+        ▼
+
+Check Time
+
+        │
+
+        ▼
+
+Verify SPN
+
+        │
+
+        ▼
+
+Inspect Tickets
+
+(klist)
+
+        │
+
+        ▼
+
+Review Event Logs
+
+        │
+
+        ▼
+
+Confirm Domain Trust
+
+        │
+
+        ▼
+
+Resolve Issue
+```
+
+---
+
+# Useful Troubleshooting Commands
+
+Display cached tickets:
+
+```
+klist
+```
+
+---
+
+Purge tickets:
+
+```
+klist purge
+```
+
+---
+
+List SPNs:
+
+```
+setspn -L <Account>
+```
+
+---
+
+Check Domain Controller health:
+
+```
+dcdiag
+```
+
+---
+
+Verify replication:
+
+```
+repadmin /replsummary
+```
+
+---
+
+# Event Viewer
+
+Authentication events are commonly found in:
+
+```
+Windows Logs
+
+↓
+
+Security
+```
+
+Useful information includes:
+
+- Logon events
+- Kerberos authentication events
+- Authentication failures
+- Account lockouts
+- Ticket-related warnings
+
+---
+
+# Enterprise Authentication Example
+
+Company:
+
+```
+Contoso
+```
+
+Infrastructure:
+
+- 15 Sites
+- 40 Domain Controllers
+- SQL Servers
+- IIS Servers
+- File Servers
+- Microsoft Exchange
+
+Authentication Process:
+
+```
+User Login
+
+↓
+
+KDC
+
+↓
+
+TGT
+
+↓
+
+Service Tickets
+
+↓
+
+Web Portal
+
+↓
+
+SQL Server
+
+↓
+
+File Server
+
+↓
+
+SharePoint
+
+↓
+
+Email
+
+↓
+
+Single Sign-On
+```
+
+The user authenticates once and securely accesses multiple enterprise services.
+
+---
+
+# Cybersecurity Perspective
+
+Kerberos is one of the most security-sensitive components of Active Directory.
+
+Organizations should:
+
+- Prefer Kerberos over NTLM.
+- Disable NTLMv1.
+- Audit delegation settings regularly.
+- Remove unnecessary unconstrained delegation.
+- Review SPNs periodically.
+- Maintain accurate time synchronization.
+- Monitor authentication logs.
+- Secure privileged service accounts.
+- Apply the principle of least privilege.
+
+These practices reduce the risk of authentication failures and strengthen the overall identity infrastructure.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore Kerberos authentication.
+
+### Step 1
+
+Log into a domain-joined Windows computer.
+
+### Step 2
+
+Open Command Prompt.
+
+Run:
+
+```
+klist
+```
+
+Review:
+
+- Ticket Granting Ticket
+- Service Tickets
+- Expiration Times
+
+---
+
+### Step 3
+
+Run:
+
+```
+setspn -L <ServiceAccount>
+```
+
+Observe registered SPNs.
+
+---
+
+### Step 4
+
+Purge cached tickets:
+
+```
+klist purge
+```
+
+---
+
+### Step 5
+
+Access a domain resource such as:
+
+```
+\\FileServer\Share
+```
+
+---
+
+### Step 6
+
+Run:
+
+```
+klist
+```
+
+again.
+
+Observe that new Service Tickets have been issued.
+
+---
+
+# Interview Questions
+
+### Q1: What is Kerberos Delegation?
+
+**Answer:** Delegation allows a service to access another service on behalf of an authenticated user.
+
+---
+
+### Q2: What is an SPN?
+
+**Answer:** A Service Principal Name uniquely identifies a service instance so the KDC can issue the correct Kerberos Service Ticket.
+
+---
+
+### Q3: What happens if an SPN is missing?
+
+**Answer:** Kerberos cannot locate the target service, which may result in authentication failure or a fallback to NTLM if applicable.
+
+---
+
+### Q4: Why is time synchronization important?
+
+**Answer:** Kerberos relies on closely synchronized clocks to validate tickets and reduce the risk of replay attacks.
+
+---
+
+### Q5: Which command displays cached Kerberos tickets?
+
+**Answer:**
+
+```
+klist
+```
+
+---
+
+### Q6: Which command lists SPNs?
+
+**Answer:**
+
+```
+setspn -L <AccountName>
+```
+
+---
+
+### Q7: Which delegation model is generally recommended?
+
+**Answer:** Constrained Delegation or Resource-Based Constrained Delegation, depending on the application and administrative requirements.
+
+---
+
+# Best Practices
+
+- Use Kerberos as the primary authentication protocol.
+- Minimize NTLM usage.
+- Avoid unconstrained delegation whenever possible.
+- Register SPNs correctly and eliminate duplicates.
+- Synchronize system time using reliable time sources.
+- Monitor Security event logs for authentication issues.
+- Audit service accounts and delegation settings regularly.
+- Implement Multi-Factor Authentication for privileged accounts where appropriate.
+
+---
+
+# Common Mistakes
+
+- Creating duplicate SPNs.
+- Ignoring time synchronization issues.
+- Configuring unconstrained delegation unnecessarily.
+- Assuming Kerberos is always used without verification.
+- Neglecting authentication logs during troubleshooting.
+- Forgetting to review ticket expiration when diagnosing access issues.
+
+---
+
+# Key Takeaways
+
+- Kerberos delegation enables secure multi-tier authentication.
+- SPNs uniquely identify services for Kerberos ticket issuance.
+- Time synchronization is critical for successful Kerberos authentication.
+- `klist` and `setspn` are essential troubleshooting tools.
+- Constrained delegation and Resource-Based Constrained Delegation provide stronger security than unconstrained delegation.
+- Proper Kerberos configuration is fundamental to a secure and reliable Active Directory environment.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- Windows authentication fundamentals
+- Authentication vs authorization
+- Kerberos architecture
+- KDC, AS, TGS, TGT, and Service Tickets
+- Privilege Attribute Certificate (PAC)
+- NTLM authentication and fallback behavior
+- Kerberos delegation models
+- Service Principal Names (SPNs)
+- Common authentication failures
+- Enterprise troubleshooting techniques
+- Security best practices for Kerberos and NTLM
+
+You now have a strong understanding of how Windows authentication works in Active Directory and how to deploy, troubleshoot, and secure enterprise authentication.
+
+---
+
+
