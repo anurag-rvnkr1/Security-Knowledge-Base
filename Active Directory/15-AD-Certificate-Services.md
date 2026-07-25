@@ -706,4 +706,861 @@ Document the differences.
 
 ---
 
-**Next:** Part 2
+# 15-Active-Directory-Certificate-Services-(AD-CS).md
+
+# Part 2 — Certificate Templates, Enrollment, Auto Enrollment, CRL, AIA and Enterprise Certificate Management
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Certificate Templates
+- Certificate Enrollment
+- Certificate Auto Enrollment
+- Certificate Requests
+- Certificate Renewal
+- Certificate Revocation
+- Certificate Revocation List (CRL)
+- Authority Information Access (AIA)
+- Online Certificate Status Protocol (OCSP)
+- Enterprise Certificate Lifecycle
+- Certificate Stores
+
+---
+
+# Introduction
+
+In Part 1, we learned:
+
+- What AD CS is
+- Public Key Infrastructure (PKI)
+- Root CA
+- Subordinate CA
+- Certificates
+- Certificate Lifecycle
+
+Now we will explore **how certificates are actually issued and managed** in an enterprise Active Directory environment.
+
+---
+
+# What is Certificate Enrollment?
+
+Certificate Enrollment is the process through which a user, computer, or service obtains a digital certificate from a Certificate Authority.
+
+The process includes:
+
+- Identity verification
+- Certificate request
+- Approval (if required)
+- Certificate issuance
+- Certificate installation
+
+---
+
+# Certificate Enrollment Workflow
+
+```
+User / Computer
+
+        │
+
+        ▼
+
+Generate Key Pair
+
+        │
+
+        ▼
+
+Certificate Request
+
+        │
+
+        ▼
+
+Certificate Authority
+
+        │
+
+        ▼
+
+Identity Verification
+
+        │
+
+        ▼
+
+Certificate Issued
+
+        │
+
+        ▼
+
+Certificate Installed
+```
+
+---
+
+# Certificate Request
+
+Before a certificate is issued, the client generates:
+
+```
+Public Key
+
++
+
+Private Key
+```
+
+The public key is included in a **Certificate Signing Request (CSR)**.
+
+The private key remains securely stored on the client.
+
+---
+
+# Certificate Signing Request (CSR)
+
+A CSR typically contains:
+
+- Public Key
+- Subject Name
+- Organization
+- Common Name
+- Requested Key Usage
+- Digital Signature
+
+The CSR does **not** contain the private key.
+
+---
+
+# Enterprise Example
+
+A new web server is deployed.
+
+The administrator:
+
+```
+Generate Key Pair
+
+↓
+
+Create CSR
+
+↓
+
+Submit to Enterprise CA
+
+↓
+
+Certificate Issued
+
+↓
+
+Install Certificate
+
+↓
+
+Enable HTTPS
+```
+
+---
+
+# What are Certificate Templates?
+
+Certificate Templates define:
+
+- Who can request certificates
+- Certificate purpose
+- Key length
+- Validity period
+- Enrollment permissions
+- Renewal settings
+- Subject naming rules
+- Cryptographic providers
+
+Templates provide standardized certificate configurations across the enterprise.
+
+---
+
+# Why Templates are Important
+
+Without templates:
+
+Each administrator configures certificates manually.
+
+With templates:
+
+```
+Certificate Template
+
+↓
+
+Consistent Settings
+
+↓
+
+Automatic Certificate Issuance
+```
+
+Templates improve consistency and reduce administrative errors.
+
+---
+
+# Common Certificate Templates
+
+| Template | Purpose |
+|-----------|----------|
+| User | User authentication |
+| Computer | Computer authentication |
+| Web Server | HTTPS services |
+| Domain Controller | Kerberos and LDAP authentication |
+| Smart Card Logon | Smart card authentication |
+| Code Signing | Software signing |
+| EFS | Encrypting File System |
+| IP Security | IPsec authentication |
+
+---
+
+# Template Components
+
+A template defines:
+
+```
+Certificate Template
+
+├── Validity Period
+
+├── Renewal Period
+
+├── Key Length
+
+├── Key Usage
+
+├── Enhanced Key Usage (EKU)
+
+├── Enrollment Permissions
+
+├── Auto Enrollment
+
+└── Subject Name Rules
+```
+
+---
+
+# Certificate Enrollment Permissions
+
+Templates specify who may:
+
+- Read
+- Enroll
+- Auto Enroll
+
+Example:
+
+```
+Domain Computers
+
+↓
+
+Auto Enroll
+
+✓
+
+Guest Users
+
+↓
+
+Auto Enroll
+
+✗
+```
+
+Permissions should follow the Principle of Least Privilege.
+
+---
+
+# Manual Enrollment
+
+In manual enrollment:
+
+```
+Administrator
+
+↓
+
+Request Certificate
+
+↓
+
+CA Approval
+
+↓
+
+Certificate Issued
+```
+
+Suitable for:
+
+- Web servers
+- VPN servers
+- Code signing
+- High-security certificates
+
+---
+
+# Automatic Enrollment
+
+Automatic Enrollment (Auto Enrollment) allows Windows computers and users to receive certificates automatically.
+
+```
+Computer Joins Domain
+
+↓
+
+Group Policy Applied
+
+↓
+
+Auto Enrollment
+
+↓
+
+Certificate Installed
+```
+
+This greatly simplifies certificate management in large environments.
+
+---
+
+# Auto Enrollment Requirements
+
+Auto Enrollment typically requires:
+
+- Enterprise CA
+- Active Directory
+- Appropriate Certificate Template
+- Group Policy Configuration
+- Enrollment Permissions
+
+---
+
+# Auto Enrollment Workflow
+
+```
+User Logs In
+
+        │
+
+        ▼
+
+Group Policy Refresh
+
+        │
+
+        ▼
+
+Certificate Template
+
+        │
+
+        ▼
+
+Enterprise CA
+
+        │
+
+        ▼
+
+Certificate Issued
+
+        │
+
+        ▼
+
+Installed Automatically
+```
+
+---
+
+# Benefits of Auto Enrollment
+
+- Eliminates manual certificate requests
+- Reduces administrative effort
+- Supports thousands of devices
+- Ensures consistent certificate deployment
+- Simplifies certificate renewal
+
+---
+
+# Certificate Renewal
+
+Certificates have expiration dates.
+
+Before expiration:
+
+```
+Certificate
+
+↓
+
+Renewal Period Begins
+
+↓
+
+Renew Certificate
+
+↓
+
+New Validity Period
+```
+
+Timely renewal prevents service interruptions.
+
+---
+
+# Certificate Revocation
+
+Sometimes a certificate must be invalidated before it expires.
+
+Common reasons include:
+
+- Private key compromise
+- Device theft
+- Employee departure
+- Server decommissioning
+- Incorrect certificate issuance
+
+In such cases, the CA revokes the certificate.
+
+---
+
+# Certificate Revocation Workflow
+
+```
+Certificate Compromised
+
+↓
+
+Administrator
+
+↓
+
+Revoke Certificate
+
+↓
+
+Publish Revocation
+
+↓
+
+Clients Reject Certificate
+```
+
+Revocation ensures compromised certificates are no longer trusted.
+
+---
+
+# Certificate Revocation List (CRL)
+
+A Certificate Revocation List is a signed list of revoked certificates published by the Certificate Authority.
+
+Clients check the CRL before trusting a certificate.
+
+```
+Certificate
+
+↓
+
+Check CRL
+
+↓
+
+Revoked?
+
+↓
+
+Yes
+
+↓
+
+Reject Certificate
+```
+
+---
+
+# CRL Contents
+
+A CRL typically includes:
+
+- Revoked certificate serial numbers
+- Revocation dates
+- Issuing CA
+- Next publication date
+- Digital signature
+
+---
+
+# CRL Distribution Point (CDP)
+
+Clients need to know where the CRL is located.
+
+This location is called the:
+
+**CRL Distribution Point (CDP)**
+
+Example:
+
+```
+Certificate
+
+↓
+
+CDP URL
+
+↓
+
+Download CRL
+
+↓
+
+Verify Certificate
+```
+
+A highly available CDP is essential for reliable certificate validation.
+
+---
+
+# Authority Information Access (AIA)
+
+Authority Information Access tells clients where they can obtain information about the issuing Certificate Authority.
+
+AIA commonly provides:
+
+- CA certificate location
+- Certificate chain information
+
+Workflow:
+
+```
+Certificate
+
+↓
+
+AIA
+
+↓
+
+Retrieve Issuing CA
+
+↓
+
+Build Trust Chain
+```
+
+---
+
+# Online Certificate Status Protocol (OCSP)
+
+Instead of downloading an entire CRL,
+
+clients may query an OCSP responder.
+
+```
+Client
+
+↓
+
+OCSP Request
+
+↓
+
+Responder
+
+↓
+
+Certificate Status
+
+↓
+
+Good / Revoked / Unknown
+```
+
+OCSP provides faster revocation checking than downloading large CRLs.
+
+---
+
+# CRL vs OCSP
+
+| Feature | CRL | OCSP |
+|----------|-----|------|
+| Method | Download list | Real-time query |
+| Bandwidth | Higher | Lower |
+| Response | Entire list | Single certificate |
+| Scalability | Good | Better for frequent validation |
+| Enterprise Usage | Common | Increasingly common |
+
+---
+
+# Certificate Stores
+
+Windows maintains certificates in logical stores.
+
+Common stores include:
+
+```
+Personal
+
+Trusted Root Certification Authorities
+
+Intermediate Certification Authorities
+
+Trusted Publishers
+
+Trusted People
+```
+
+Different stores serve different trust purposes.
+
+---
+
+# User vs Computer Certificate Stores
+
+| Store | Used For |
+|--------|----------|
+| User Store | User authentication and user-specific certificates |
+| Computer Store | Machine authentication and server certificates |
+
+Applications use the appropriate store depending on the certificate type.
+
+---
+
+# Enterprise Certificate Lifecycle
+
+```
+Template Created
+
+↓
+
+Enrollment
+
+↓
+
+Certificate Issued
+
+↓
+
+Installed
+
+↓
+
+Used
+
+↓
+
+Renewed
+
+↓
+
+Revoked (If Necessary)
+
+↓
+
+Expired
+
+↓
+
+Archived
+```
+
+---
+
+# Enterprise Example
+
+Organization:
+
+```
+Global Finance Ltd.
+```
+
+Infrastructure:
+
+- 25,000 Employees
+- 18,000 Computers
+- 300 Servers
+- Enterprise CA
+
+Implementation:
+
+- User certificates deployed automatically.
+- Computer certificates issued through Auto Enrollment.
+- Web server certificates approved manually.
+- CRLs published regularly.
+- OCSP responder deployed for rapid validation.
+
+---
+
+# Cybersecurity Perspective
+
+Certificate management directly affects enterprise security.
+
+Security teams should:
+
+- Restrict enrollment permissions.
+- Protect private keys.
+- Monitor certificate issuance.
+- Publish CRLs reliably.
+- Deploy OCSP where appropriate.
+- Remove unused certificate templates.
+- Review certificate validity periods regularly.
+
+Improper certificate management can lead to unauthorized access or service outages.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore certificate templates and certificate stores.
+
+### Step 1
+
+Open:
+
+```
+certtmpl.msc
+```
+
+Review available certificate templates.
+
+---
+
+### Step 2
+
+Inspect a template.
+
+Observe:
+
+- Validity Period
+- Key Length
+- Enrollment Permissions
+- Enhanced Key Usage
+
+---
+
+### Step 3
+
+Open:
+
+```
+certlm.msc
+```
+
+Review:
+
+- Personal
+- Trusted Root Certification Authorities
+- Intermediate Certification Authorities
+
+---
+
+### Step 4
+
+Identify a certificate.
+
+Document:
+
+- Subject
+- Issuer
+- Valid From
+- Valid To
+- Intended Purpose
+
+---
+
+### Step 5
+
+Compare:
+
+- User Certificate Store
+- Computer Certificate Store
+
+Record differences.
+
+---
+
+# Interview Questions
+
+### Q1: What is a Certificate Template?
+
+**Answer:** A predefined configuration that controls how certificates are issued, including permissions, validity, key usage, and enrollment settings.
+
+---
+
+### Q2: What is Auto Enrollment?
+
+**Answer:** A feature that automatically enrolls eligible users and computers for certificates using Active Directory, Group Policy, and Enterprise CAs.
+
+---
+
+### Q3: Why is a CSR required?
+
+**Answer:** It securely submits the public key and identity information to the Certificate Authority while keeping the private key on the client.
+
+---
+
+### Q4: What is a CRL?
+
+**Answer:** A digitally signed list of revoked certificates published by a Certificate Authority.
+
+---
+
+### Q5: What is the purpose of AIA?
+
+**Answer:** AIA provides information that helps clients locate the issuing CA certificate and build a certificate trust chain.
+
+---
+
+### Q6: How does OCSP differ from a CRL?
+
+**Answer:** OCSP provides real-time certificate status for an individual certificate, whereas a CRL is a periodically published list of revoked certificates.
+
+---
+
+# Best Practices
+
+- Use Enterprise CAs with certificate templates.
+- Enable Auto Enrollment for eligible users and computers.
+- Protect private keys from unauthorized access.
+- Publish CRLs consistently and ensure CDP availability.
+- Deploy OCSP for environments requiring faster revocation checking.
+- Review template permissions regularly.
+- Remove obsolete certificate templates.
+
+---
+
+# Common Mistakes
+
+- Granting Auto Enrollment permissions too broadly.
+- Forgetting to renew certificates before expiration.
+- Publishing CRLs infrequently.
+- Leaving unused templates enabled.
+- Ignoring certificate revocation after key compromise.
+- Misconfiguring CDP or AIA locations.
+
+---
+
+# Key Takeaways
+
+- Certificate Templates standardize certificate issuance.
+- Auto Enrollment simplifies large-scale certificate deployment.
+- CRLs and OCSP allow clients to verify certificate validity.
+- AIA helps clients build trusted certificate chains.
+- Effective certificate lifecycle management is essential for a secure enterprise PKI.
+
+---
+
+**Next:** Part 3
