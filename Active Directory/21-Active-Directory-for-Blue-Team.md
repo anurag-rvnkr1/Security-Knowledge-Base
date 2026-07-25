@@ -1279,4 +1279,610 @@ Recommend three improvements to increase monitoring visibility.
 
 ---
 
-**Next:** Part 3
+# 21-Active-Directory-for-Blue-Team.md
+
+# Part 3 — Active Directory Threat Hunting, Incident Investigation, Baselines, Security Analytics and Defensive Operations
+
+> **Important Note**
+>
+> This section focuses on **defensive threat hunting and incident investigation** within Active Directory environments. The emphasis is on identifying abnormal behavior, validating alerts, and improving enterprise detection capabilities.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Threat Hunting Fundamentals
+- Active Directory Investigation Methodology
+- Security Baselines
+- Behavioral Analytics
+- Incident Investigation Workflow
+- Identity-Centric Threat Hunting
+- Security Dashboards
+- Detection Gap Analysis
+- Defensive Reporting
+
+---
+
+# Introduction
+
+Traditional monitoring is **alert-driven**.
+
+Threat hunting is **hypothesis-driven**.
+
+Instead of waiting for alerts, defenders proactively search for abnormal or suspicious activity that may indicate security issues.
+
+---
+
+# Blue Team Hunting Lifecycle
+
+```
+Define Hypothesis
+
+        │
+
+        ▼
+
+Collect Data
+
+        │
+
+        ▼
+
+Analyze
+
+        │
+
+        ▼
+
+Validate Findings
+
+        │
+
+        ▼
+
+Document
+
+        │
+
+        ▼
+
+Improve Detection
+```
+
+Threat hunting complements automated detection by identifying gaps and improving overall visibility.
+
+---
+
+# Security Baselines
+
+A baseline represents **normal behavior** within an environment.
+
+Examples include:
+
+- Normal administrator logon hours
+- Typical authentication volume
+- Expected privileged group changes
+- Standard Domain Controller performance
+- Regular service account activity
+- Routine replication traffic
+
+Without a baseline, distinguishing legitimate activity from anomalies becomes much more difficult.
+
+---
+
+# Building a Baseline
+
+```
+Collect Data
+
+↓
+
+Observe Normal Operations
+
+↓
+
+Document Expected Behavior
+
+↓
+
+Review Regularly
+
+↓
+
+Update When Needed
+```
+
+Baselines should evolve as infrastructure and business operations change.
+
+---
+
+# Identity-Centric Monitoring
+
+Identity should be at the center of every investigation.
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Resource Access
+
+↓
+
+Administrative Activity
+
+↓
+
+Logging
+
+↓
+
+Investigation
+```
+
+Understanding identity behavior provides valuable context during investigations.
+
+---
+
+# Investigation Workflow
+
+```
+Alert
+
+↓
+
+Validate
+
+↓
+
+Collect Context
+
+↓
+
+Analyze Timeline
+
+↓
+
+Assess Impact
+
+↓
+
+Contain (if required)
+
+↓
+
+Document
+
+↓
+
+Lessons Learned
+```
+
+A structured workflow improves consistency and reduces investigation time.
+
+---
+
+# Investigation Checklist
+
+Before reaching conclusions, analysts should answer:
+
+```
+✓ Who performed the activity?
+
+✓ What system generated the event?
+
+✓ When did it occur?
+
+✓ Is the behavior expected?
+
+✓ Are privileged identities involved?
+
+✓ Are related events present?
+
+✓ What is the business impact?
+```
+
+---
+
+# Timeline Analysis
+
+Organizing events chronologically often reveals important context.
+
+```
+08:45  User Authentication
+
+↓
+
+08:47  Administrative Action
+
+↓
+
+08:50  Policy Change
+
+↓
+
+08:55  Alert Generated
+
+↓
+
+09:05  Analyst Review
+```
+
+Timelines help correlate events during investigations.
+
+---
+
+# Security Analytics
+
+Security analytics combines multiple data sources to identify trends.
+
+Examples include:
+
+- Authentication patterns
+- Administrative activity
+- Account lifecycle events
+- Group membership changes
+- Service health
+- Configuration changes
+
+Analytics should support operational decision-making rather than relying on isolated events.
+
+---
+
+# Behavioral Analysis
+
+Behavioral analytics focuses on identifying deviations from established baselines.
+
+Examples:
+
+- Administrative activity outside normal patterns
+- Unusual authentication behavior
+- Unexpected configuration changes
+- Abnormal account lifecycle activity
+- Rare privileged operations
+
+Behavior should always be evaluated in organizational context.
+
+---
+
+# Identity Risk Indicators
+
+Examples of situations that may warrant additional review include:
+
+- Repeated authentication failures
+- Unexpected privileged account activity
+- Administrative actions without documented approval
+- Changes outside approved maintenance windows
+- Multiple identity-related alerts involving the same account
+
+These indicators require validation and should not automatically be treated as malicious.
+
+---
+
+# Threat Hunting Data Sources
+
+Useful data sources include:
+
+| Source | Purpose |
+|---------|----------|
+| Windows Security Logs | Authentication and authorization |
+| Directory Service Logs | Active Directory changes |
+| DNS Logs | Infrastructure visibility |
+| Group Policy Logs | Policy updates |
+| EDR Telemetry | Endpoint visibility |
+| SIEM | Centralized correlation |
+| Asset Inventory | System context |
+| CMDB | Business ownership |
+
+---
+
+# Threat Hunting Dashboard
+
+Example dashboard sections:
+
+```
+Authentication Overview
+
+↓
+
+Administrative Activity
+
+↓
+
+Privileged Group Changes
+
+↓
+
+Account Lifecycle
+
+↓
+
+Domain Controller Health
+
+↓
+
+Configuration Changes
+
+↓
+
+Security Trends
+```
+
+Dashboards help analysts prioritize investigations efficiently.
+
+---
+
+# Detection Gap Analysis
+
+Every detection program has blind spots.
+
+```
+Existing Monitoring
+
+↓
+
+Coverage Review
+
+↓
+
+Gap Identified
+
+↓
+
+New Detection
+
+↓
+
+Validation
+
+↓
+
+Deployment
+```
+
+Gap analysis should be performed regularly.
+
+---
+
+# Security Reporting
+
+Blue Teams should produce reports for different audiences.
+
+### Operational Reports
+
+- Daily alerts
+- Investigation summaries
+- Detection health
+
+### Management Reports
+
+- Security trends
+- Incident statistics
+- Risk summaries
+- Compliance metrics
+
+### Executive Reports
+
+- Overall security posture
+- Major incidents
+- Strategic recommendations
+
+Reports should be tailored to the audience.
+
+---
+
+# Continuous Improvement
+
+```
+Monitor
+
+↓
+
+Investigate
+
+↓
+
+Document
+
+↓
+
+Improve Detection
+
+↓
+
+Update Procedures
+
+↓
+
+Repeat
+```
+
+Continuous improvement strengthens long-term security maturity.
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Contoso Healthcare
+```
+
+Environment:
+
+- 140,000 Users
+- 52 Domain Controllers
+- Hybrid Identity
+- Global SOC
+
+Blue Team Program:
+
+- Daily threat hunting
+- Weekly detection review
+- Monthly baseline validation
+- Quarterly coverage assessment
+- Annual security maturity review
+
+Results:
+
+- Improved visibility
+- Reduced investigation time
+- Better detection coverage
+- Increased operational consistency
+
+---
+
+# Cybersecurity Perspective
+
+Threat hunting should:
+
+- Validate monitoring effectiveness
+- Improve detection quality
+- Identify coverage gaps
+- Strengthen operational awareness
+- Support continuous improvement
+
+The objective is to enhance defensive capability rather than simply generate additional alerts.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Develop a simple Active Directory threat hunting plan.
+
+### Step 1
+
+Identify critical assets:
+
+- Domain Controllers
+- Tier-0 systems
+- Administrative workstations
+- Identity infrastructure
+
+---
+
+### Step 2
+
+Document normal operational baselines for:
+
+- Authentication
+- Administrative activity
+- Group membership changes
+- Account lifecycle
+
+---
+
+### Step 3
+
+Review one week's worth of security events.
+
+Categorize:
+
+- Expected activity
+- Unusual activity
+- Events requiring further investigation
+
+---
+
+### Step 4
+
+Create a dashboard showing:
+
+- Authentication statistics
+- Privileged activity
+- Administrative changes
+- Domain Controller health
+
+---
+
+### Step 5
+
+Identify three areas where monitoring coverage could be improved.
+
+---
+
+# Interview Questions
+
+### Q1: What is threat hunting?
+
+**Answer:** Threat hunting is the proactive process of searching for suspicious or abnormal activity that may not have generated automated alerts.
+
+---
+
+### Q2: Why are security baselines important?
+
+**Answer:** Baselines define normal behavior, allowing analysts to identify meaningful deviations that may require investigation.
+
+---
+
+### Q3: Why is timeline analysis useful?
+
+**Answer:** Timeline analysis helps correlate events chronologically, providing context for investigations and supporting more accurate conclusions.
+
+---
+
+### Q4: What is detection gap analysis?
+
+**Answer:** Detection gap analysis identifies areas where existing monitoring may not provide sufficient visibility, enabling organizations to improve coverage.
+
+---
+
+### Q5: Why should security reports be tailored to different audiences?
+
+**Answer:** Different stakeholders require different levels of technical detail and business context to support decision-making.
+
+---
+
+### Q6: Why is continuous improvement important for Blue Teams?
+
+**Answer:** Because threats, infrastructure, and organizational requirements evolve, requiring ongoing refinement of detections, procedures, and monitoring capabilities.
+
+---
+
+# Best Practices
+
+- Establish and maintain behavioral baselines.
+- Use multiple data sources during investigations.
+- Document every investigation consistently.
+- Review detection coverage regularly.
+- Build dashboards focused on business risk.
+- Perform periodic threat hunting exercises.
+- Measure and improve investigation quality.
+- Share lessons learned across teams.
+
+---
+
+# Common Mistakes
+
+- Investigating events without sufficient context.
+- Ignoring changes to normal operational baselines.
+- Treating dashboards as replacements for detailed investigations.
+- Failing to document investigative findings.
+- Assuming every anomaly is malicious.
+- Neglecting periodic detection gap assessments.
+
+---
+
+# Key Takeaways
+
+- Threat hunting is a proactive defensive activity that complements automated monitoring.
+- Security baselines provide essential context for identifying abnormal behavior.
+- Structured investigation workflows improve consistency and effectiveness.
+- Continuous improvement, reporting, and detection gap analysis strengthen enterprise Active Directory defense.
+
+---
+
+**Next:** Part 4
