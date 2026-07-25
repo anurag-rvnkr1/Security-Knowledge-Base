@@ -1563,4 +1563,802 @@ Record differences.
 
 ---
 
-**Next:** Part 3
+# 15-Active-Directory-Certificate-Services-(AD-CS).md
+
+# Part 3 — Certificate Validation, Certificate Chains, EKU, Key Usage, HSM, NDES, CEP/CES and Enterprise PKI Security
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Certificate Validation
+- Certificate Chain
+- Chain of Trust
+- Root Trust
+- Intermediate Certificates
+- Key Usage (KU)
+- Enhanced Key Usage (EKU)
+- Subject Alternative Name (SAN)
+- Hardware Security Module (HSM)
+- Network Device Enrollment Service (NDES)
+- Certificate Enrollment Policy (CEP)
+- Certificate Enrollment Web Service (CES)
+- Enterprise PKI Security
+
+---
+
+# Introduction
+
+In the previous parts, we learned:
+
+- AD CS Fundamentals
+- Public Key Infrastructure (PKI)
+- Certificate Authorities
+- Certificate Templates
+- Certificate Enrollment
+- Auto Enrollment
+- CRL
+- AIA
+- OCSP
+
+Now we will study **how certificates are validated**, how Windows determines whether a certificate should be trusted, and how enterprise organizations secure their PKI infrastructure.
+
+---
+
+# Certificate Validation
+
+When a client receives a certificate,
+
+it does **not** automatically trust it.
+
+Instead, Windows performs several validation checks.
+
+Example:
+
+```
+Client
+
+↓
+
+Receive Certificate
+
+↓
+
+Validate
+
+↓
+
+Trusted?
+
+↓
+
+Secure Connection
+```
+
+---
+
+# Certificate Validation Process
+
+Windows typically verifies:
+
+- Certificate Chain
+- Issuer
+- Expiration
+- Revocation Status
+- Digital Signature
+- Intended Usage
+- Subject Name
+
+Only after these checks succeed is the certificate trusted.
+
+---
+
+# Certificate Validation Workflow
+
+```
+Certificate Received
+
+        │
+
+        ▼
+
+Build Certificate Chain
+
+        │
+
+        ▼
+
+Verify Signature
+
+        │
+
+        ▼
+
+Check Expiration
+
+        │
+
+        ▼
+
+Check Revocation
+
+        │
+
+        ▼
+
+Verify Intended Usage
+
+        │
+
+        ▼
+
+Certificate Trusted
+```
+
+---
+
+# Certificate Chain
+
+Certificates form a hierarchy.
+
+Example:
+
+```
+Web Server Certificate
+
+        │
+
+        ▼
+
+Issuing CA
+
+        │
+
+        ▼
+
+Root CA
+```
+
+Every certificate must ultimately trace back to a trusted Root CA.
+
+---
+
+# Chain of Trust
+
+```
+Root CA
+
+↓
+
+Intermediate CA
+
+↓
+
+Issuing CA
+
+↓
+
+Server Certificate
+
+↓
+
+Secure Website
+```
+
+Trust flows from the Root CA down to the end-entity certificate.
+
+---
+
+# Why Certificate Chains Matter
+
+Suppose a web server presents:
+
+```
+Server Certificate
+```
+
+Windows asks:
+
+```
+Who issued it?
+```
+
+Then:
+
+```
+Who issued that CA?
+```
+
+Eventually:
+
+```
+Trusted Root Found?
+
+↓
+
+Yes
+
+↓
+
+Trust Certificate
+```
+
+If the chain cannot be completed,
+
+validation fails.
+
+---
+
+# Root Certificate Store
+
+Windows maintains a store of trusted Root CAs.
+
+```
+Trusted Root
+Certification Authorities
+
+↓
+
+Trusted Root Certificates
+```
+
+Only certificates chaining to a trusted root are considered valid.
+
+---
+
+# Intermediate Certificates
+
+Most enterprise deployments use Intermediate (Subordinate) CAs.
+
+```
+Offline Root
+
+↓
+
+Issuing CA
+
+↓
+
+Server Certificate
+```
+
+Advantages:
+
+- Protects Root CA
+- Easier administration
+- Better scalability
+- Supports multiple issuing CAs
+
+---
+
+# Certificate Path Example
+
+```
+Client
+
+↓
+
+Server Certificate
+
+↓
+
+Issuing CA
+
+↓
+
+Corporate Root CA
+
+↓
+
+Trusted
+
+✓
+```
+
+---
+
+# Key Usage (KU)
+
+A certificate contains a **Key Usage** extension that specifies how its key may be used.
+
+Common examples include:
+
+- Digital Signature
+- Key Encipherment
+- Key Agreement
+- Certificate Signing
+- CRL Signing
+
+This prevents certificates from being used for unintended purposes.
+
+---
+
+# Example
+
+A CA certificate may include:
+
+```
+Certificate Signing
+
+CRL Signing
+```
+
+A web server certificate may include:
+
+```
+Digital Signature
+
+Key Encipherment
+```
+
+Different certificate types require different key usages.
+
+---
+
+# Enhanced Key Usage (EKU)
+
+EKU provides more detailed information about a certificate's intended purpose.
+
+Examples include:
+
+| EKU | Purpose |
+|------|----------|
+| Server Authentication | HTTPS, LDAPS |
+| Client Authentication | User or device authentication |
+| Smart Card Logon | Smart card authentication |
+| Secure Email | Email encryption/signing |
+| Code Signing | Software signing |
+| Time Stamping | Trusted timestamps |
+
+---
+
+# Why EKU Matters
+
+Suppose a Code Signing certificate is presented during HTTPS.
+
+```
+HTTPS Server
+
+↓
+
+Code Signing Certificate
+
+↓
+
+Validation
+
+↓
+
+Rejected
+```
+
+The certificate is valid,
+
+but not for that purpose.
+
+---
+
+# Subject Alternative Name (SAN)
+
+Modern certificates often include multiple identities.
+
+Example:
+
+```
+Certificate
+
+↓
+
+SAN
+
+↓
+
+www.company.com
+
+api.company.com
+
+portal.company.com
+```
+
+SAN allows one certificate to identify multiple DNS names.
+
+---
+
+# SAN Example
+
+A certificate may contain:
+
+```
+Common Name
+
+portal.company.com
+
+SAN
+
+portal.company.com
+
+vpn.company.com
+
+files.company.com
+```
+
+Applications check SAN during certificate validation.
+
+---
+
+# Certificate Thumbprint
+
+Every certificate has a unique fingerprint called a:
+
+```
+Thumbprint
+```
+
+Characteristics:
+
+- Unique identifier
+- Hash of certificate contents
+- Used for verification
+- Helpful during troubleshooting
+
+Administrators frequently compare thumbprints to confirm certificate identity.
+
+---
+
+# Hardware Security Module (HSM)
+
+A Hardware Security Module is a specialized device used to protect cryptographic keys.
+
+Instead of storing private keys in software:
+
+```
+Server
+
+↓
+
+HSM
+
+↓
+
+Private Key
+```
+
+The key remains protected inside dedicated hardware.
+
+---
+
+# Benefits of HSM
+
+- Strong physical protection
+- Tamper resistance
+- Secure key generation
+- Hardware-backed cryptographic operations
+- Compliance with regulatory requirements
+
+High-security organizations commonly protect CA private keys using HSMs.
+
+---
+
+# Network Device Enrollment Service (NDES)
+
+Network devices often cannot perform standard Active Directory enrollment.
+
+Examples:
+
+- Routers
+- Switches
+- Firewalls
+- VPN Appliances
+
+NDES allows these devices to request certificates using protocols designed for network equipment.
+
+```
+Network Device
+
+↓
+
+NDES
+
+↓
+
+Enterprise CA
+
+↓
+
+Certificate Issued
+```
+
+---
+
+# Certificate Enrollment Policy (CEP)
+
+CEP allows clients to discover:
+
+- Available certificate templates
+- Enrollment policies
+- Certificate settings
+
+Workflow:
+
+```
+Client
+
+↓
+
+CEP
+
+↓
+
+Available Templates
+
+↓
+
+Select Template
+```
+
+---
+
+# Certificate Enrollment Web Service (CES)
+
+CES enables certificate enrollment over web services.
+
+Useful for:
+
+- Remote users
+- Perimeter networks
+- Devices outside the corporate LAN
+- Hybrid deployments
+
+```
+Remote Client
+
+↓
+
+HTTPS
+
+↓
+
+CES
+
+↓
+
+Enterprise CA
+```
+
+---
+
+# Enterprise PKI Architecture
+
+```
+                 Offline Root CA
+
+                       │
+
+                       ▼
+
+            Enterprise Issuing CA
+
+          ┌────────────┼────────────┐
+
+          ▼            ▼            ▼
+
+      Users       Computers     Servers
+
+          │            │            │
+
+          ▼            ▼            ▼
+
+     Certificates   Certificates  Certificates
+```
+
+Additional components:
+
+```
+OCSP
+
+CRL
+
+AIA
+
+NDES
+
+CEP
+
+CES
+```
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Contoso Ltd.
+```
+
+PKI Infrastructure:
+
+- Offline Root CA
+- Two Issuing CAs
+- OCSP Responders
+- Highly Available CRL Distribution Points
+- NDES for network devices
+- HSM protecting CA private keys
+
+Certificates are used for:
+
+- HTTPS
+- LDAPS
+- VPN
+- Wi-Fi Authentication
+- Smart Card Logon
+- Device Authentication
+
+---
+
+# Cybersecurity Perspective
+
+Certificate trust is only as strong as the PKI protecting it.
+
+Security teams should:
+
+- Secure Root and Issuing CAs.
+- Protect CA private keys with HSMs where appropriate.
+- Review certificate templates regularly.
+- Monitor certificate issuance.
+- Remove unused templates.
+- Restrict administrative access to PKI servers.
+- Audit certificate lifecycle events.
+- Maintain highly available CRL and OCSP infrastructure.
+
+Compromise of a Certificate Authority can affect trust across the enterprise.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore certificate chains and certificate validation.
+
+### Step 1
+
+Open:
+
+```
+certlm.msc
+```
+
+---
+
+### Step 2
+
+Open a Web Server or Domain Controller certificate.
+
+Review:
+
+- Certification Path
+- Subject
+- Issuer
+- Thumbprint
+
+---
+
+### Step 3
+
+Select:
+
+```
+Certification Path
+```
+
+Observe:
+
+```
+Root
+
+↓
+
+Intermediate
+
+↓
+
+End Certificate
+```
+
+---
+
+### Step 4
+
+Inspect:
+
+- Key Usage
+- Enhanced Key Usage
+- Subject Alternative Name
+
+Document their values.
+
+---
+
+### Step 5
+
+Identify the Trusted Root Certification Authority used for the certificate chain.
+
+---
+
+# Interview Questions
+
+### Q1: What is a Certificate Chain?
+
+**Answer:** A sequence of certificates linking an end-entity certificate to a trusted Root Certificate Authority.
+
+---
+
+### Q2: Why is the Root CA important?
+
+**Answer:** It serves as the trust anchor for the entire PKI hierarchy.
+
+---
+
+### Q3: What is the difference between Key Usage and Enhanced Key Usage?
+
+**Answer:** Key Usage defines permitted cryptographic operations, while Enhanced Key Usage specifies the intended application or purpose of the certificate.
+
+---
+
+### Q4: What is the purpose of the Subject Alternative Name (SAN)?
+
+**Answer:** SAN allows a certificate to represent multiple identities, such as multiple DNS names.
+
+---
+
+### Q5: Why are HSMs used?
+
+**Answer:** HSMs securely generate and protect cryptographic keys, especially the private keys of Certificate Authorities.
+
+---
+
+### Q6: What is NDES used for?
+
+**Answer:** NDES enables network devices, such as routers and switches, to obtain certificates from an Enterprise CA.
+
+---
+
+# Best Practices
+
+- Keep the Root CA offline whenever practical.
+- Protect CA private keys using HSMs for high-security deployments.
+- Review EKUs before issuing certificates.
+- Use SAN instead of relying solely on the Common Name.
+- Monitor certificate issuance and enrollment activity.
+- Regularly audit PKI administrative permissions.
+- Ensure OCSP and CRL services are highly available.
+
+---
+
+# Common Mistakes
+
+- Trusting certificates without validating the complete chain.
+- Using certificates for purposes outside their EKU.
+- Misconfiguring Subject Alternative Names.
+- Leaving CA private keys unprotected.
+- Ignoring certificate chain warnings.
+- Failing to monitor certificate issuance events.
+
+---
+
+# Key Takeaways
+
+- Certificate validation verifies trust before secure communication begins.
+- Every certificate must chain to a trusted Root CA.
+- Key Usage and EKU define how certificates may be used.
+- SAN enables certificates to support multiple identities.
+- HSMs strengthen the security of enterprise PKI.
+- Enterprise PKI includes supporting services such as NDES, CEP, CES, CRL, and OCSP.
+
+---
+
+**Next:** Part 4
