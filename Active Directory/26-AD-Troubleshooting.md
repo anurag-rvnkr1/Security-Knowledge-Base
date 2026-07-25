@@ -1088,4 +1088,607 @@ Create a validation checklist confirming authentication, DNS, replication, and G
 
 ---
 
-**Next:** Part 3
+# 26-AD-Troubleshooting.md
+
+# Part 3 — Advanced Active Directory Troubleshooting, Performance Analysis, Recovery Planning and Enterprise Incident Management
+
+> **Important Note**
+>
+> This section focuses on **advanced Active Directory troubleshooting** from an **enterprise administration, operations, and defensive security** perspective. It covers performance analysis, service dependencies, backup validation, recovery planning, monitoring, and incident management. It does **not** include offensive procedures or exploitation guidance.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Advanced Troubleshooting Methodology
+- Performance Troubleshooting
+- Active Directory Service Dependencies
+- Backup and Recovery Validation
+- Enterprise Incident Management
+- Monitoring and Alerting
+- Root Cause Analysis
+- Preventive Maintenance
+
+---
+
+# Moving Beyond Basic Troubleshooting
+
+Basic troubleshooting focuses on resolving individual issues.
+
+Advanced troubleshooting focuses on:
+
+- Identifying recurring problems
+- Understanding infrastructure dependencies
+- Preventing future incidents
+- Improving operational reliability
+- Reducing Mean Time to Resolution (MTTR)
+
+```
+Incident
+
+↓
+
+Immediate Resolution
+
+↓
+
+Root Cause Analysis
+
+↓
+
+Infrastructure Improvements
+
+↓
+
+Prevent Future Incidents
+```
+
+---
+
+# Understanding Service Dependencies
+
+Active Directory relies on multiple supporting services.
+
+```
+Users
+
+↓
+
+Authentication
+
+↓
+
+Active Directory
+
+↓
+
+DNS
+
+↓
+
+Network
+
+↓
+
+Storage
+
+↓
+
+Operating System
+
+↓
+
+Hardware
+```
+
+A failure in any dependency can affect directory operations.
+
+---
+
+# Dependency Validation
+
+Before assuming an Active Directory issue, validate:
+
+| Component | Verify |
+|-----------|--------|
+| Network | Connectivity and routing |
+| DNS | Name resolution |
+| Domain Controller | Availability |
+| Storage | Disk health |
+| Operating System | Services and updates |
+| Time Service | Synchronization |
+| Virtualization Platform | Host health (if virtualized) |
+
+---
+
+# Performance Troubleshooting
+
+Performance issues may appear as:
+
+- Slow user logons
+- Delayed Group Policy processing
+- Slow directory searches
+- Replication latency
+- Administrative console delays
+
+Performance analysis should focus on identifying bottlenecks rather than symptoms.
+
+---
+
+# Performance Investigation Workflow
+
+```
+Performance Complaint
+
+↓
+
+Define Scope
+
+↓
+
+Collect Metrics
+
+↓
+
+Analyze Trends
+
+↓
+
+Identify Bottleneck
+
+↓
+
+Implement Improvement
+
+↓
+
+Monitor Results
+```
+
+---
+
+# Areas to Monitor
+
+Common performance indicators include:
+
+- CPU utilization
+- Memory utilization
+- Disk activity
+- Network latency
+- Authentication response time
+- Replication latency
+- DNS response time
+
+Monitoring trends is more valuable than isolated measurements.
+
+---
+
+# Capacity Planning
+
+Healthy environments grow over time.
+
+Capacity planning should consider:
+
+- Number of users
+- Number of computers
+- Number of Domain Controllers
+- Branch offices
+- Authentication volume
+- Replication traffic
+- Business growth
+
+```
+Current Capacity
+
+↓
+
+Growth Forecast
+
+↓
+
+Infrastructure Review
+
+↓
+
+Expansion Planning
+
+↓
+
+Future Readiness
+```
+
+---
+
+# Backup Validation
+
+Backups should not only exist—they should also be validated.
+
+Administrative checks include:
+
+- Backup completion status
+- Backup schedule compliance
+- Backup integrity
+- Secure storage
+- Recovery documentation
+- Periodic restoration testing
+
+A backup that cannot be restored should not be considered reliable.
+
+---
+
+# Recovery Planning
+
+Recovery planning prepares organizations for unexpected failures.
+
+```
+Incident
+
+↓
+
+Assess Impact
+
+↓
+
+Select Recovery Procedure
+
+↓
+
+Restore Services
+
+↓
+
+Validate Operations
+
+↓
+
+Document Incident
+```
+
+Recovery plans should be tested periodically through approved exercises.
+
+---
+
+# Incident Severity Classification
+
+Organizations often classify incidents by business impact.
+
+| Severity | Example |
+|----------|----------|
+| Critical | Enterprise-wide authentication unavailable |
+| High | Multiple business units affected |
+| Medium | Single department affected |
+| Low | Single user or isolated workstation issue |
+
+Prioritization helps allocate resources appropriately.
+
+---
+
+# Enterprise Incident Response Workflow
+
+```
+Issue Detected
+
+↓
+
+Incident Created
+
+↓
+
+Severity Assigned
+
+↓
+
+Investigation
+
+↓
+
+Root Cause Analysis
+
+↓
+
+Resolution
+
+↓
+
+Validation
+
+↓
+
+Closure
+
+↓
+
+Lessons Learned
+```
+
+---
+
+# Root Cause Analysis Techniques
+
+Effective root cause analysis asks:
+
+- What happened?
+- When did it start?
+- What changed?
+- Who was affected?
+- Which systems were involved?
+- Why did the issue occur?
+- How can recurrence be prevented?
+
+---
+
+# Example Root Cause Analysis
+
+```
+Problem
+
+↓
+
+Users Cannot Authenticate
+
+↓
+
+Domain Controller Reachable
+
+↓
+
+DNS Healthy
+
+↓
+
+Time Correct
+
+↓
+
+Authentication Service Issue Identified
+
+↓
+
+Service Restored
+
+↓
+
+Validation Successful
+```
+
+The focus remains on understanding *why* the issue occurred.
+
+---
+
+# Monitoring and Alerting
+
+Enterprise monitoring should include:
+
+- Domain Controller availability
+- Replication health
+- DNS health
+- Authentication failures
+- Critical service status
+- Resource utilization
+- Storage capacity
+- Event log anomalies
+
+Early detection reduces business impact.
+
+---
+
+# Monitoring Architecture
+
+```
+Infrastructure
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerts
+
+↓
+
+Operations Team
+
+↓
+
+Investigation
+
+↓
+
+Resolution
+```
+
+Automation improves response times while maintaining operational oversight.
+
+---
+
+# Preventive Maintenance
+
+Routine maintenance reduces unexpected incidents.
+
+Recommended activities:
+
+- Review event logs
+- Verify backups
+- Check replication health
+- Review DNS status
+- Validate time synchronization
+- Review storage capacity
+- Confirm service health
+- Apply approved updates through change management
+
+---
+
+# Enterprise Scenario
+
+## Company
+
+```
+Northwind Retail Group
+```
+
+Environment:
+
+- 22 Domain Controllers
+- 55,000 Users
+- Five Regional Data Centers
+
+Problem:
+
+Authentication performance gradually slows over several weeks.
+
+Investigation:
+
+- Review performance metrics
+- Analyze authentication trends
+- Verify DNS responsiveness
+- Validate replication health
+- Review infrastructure capacity
+- Compare recent configuration changes
+
+Outcome:
+
+Performance bottlenecks were identified, infrastructure capacity was adjusted through planned maintenance, and monitoring thresholds were updated to detect similar trends earlier.
+
+---
+
+# Cybersecurity Perspective
+
+Many operational issues can affect security.
+
+Examples include:
+
+- Delayed policy application
+- Authentication instability
+- Incomplete logging
+- Service interruptions
+- Replication inconsistencies
+
+Security and operations teams should coordinate investigations to maintain both service availability and security visibility.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Develop an enterprise troubleshooting and recovery plan for a fictional Active Directory environment.
+
+### Step 1
+
+List all critical Active Directory dependencies.
+
+---
+
+### Step 2
+
+Create a monitoring checklist covering:
+
+- Authentication
+- DNS
+- Replication
+- Domain Controller health
+- Resource utilization
+
+---
+
+### Step 3
+
+Design an incident response workflow from detection through closure.
+
+---
+
+### Step 4
+
+Prepare a backup validation checklist and define how recovery testing will be documented.
+
+---
+
+### Step 5
+
+Write a root cause analysis report template including:
+
+- Incident summary
+- Timeline
+- Evidence collected
+- Root cause
+- Resolution
+- Validation
+- Preventive actions
+
+---
+
+# Interview Questions
+
+### Q1: Why is root cause analysis important?
+
+**Answer:** It identifies the underlying cause of an incident, helping prevent recurrence rather than only resolving immediate symptoms.
+
+---
+
+### Q2: Why should backup restoration be tested?
+
+**Answer:** Successful backup completion does not guarantee recoverability. Periodic restoration testing validates that backups can be used when needed.
+
+---
+
+### Q3: What is the purpose of monitoring?
+
+**Answer:** Monitoring detects operational issues early, enabling faster investigation and reducing business impact.
+
+---
+
+### Q4: Why are service dependencies important?
+
+**Answer:** Active Directory depends on supporting components such as DNS, networking, storage, and time synchronization. Problems in these areas can affect directory services.
+
+---
+
+### Q5: What should be included in an incident report?
+
+**Answer:** Incident description, scope, evidence, timeline, root cause, resolution, validation results, and preventive recommendations.
+
+---
+
+### Q6: Why is preventive maintenance valuable?
+
+**Answer:** Regular maintenance identifies issues before they become outages, improving reliability and reducing operational risk.
+
+---
+
+# Best Practices
+
+- Monitor Active Directory continuously.
+- Validate backups with periodic restoration tests.
+- Investigate trends instead of isolated events.
+- Maintain accurate incident documentation.
+- Review infrastructure capacity regularly.
+- Perform structured root cause analysis.
+- Coordinate with security and operations teams.
+- Continuously improve monitoring based on previous incidents.
+
+---
+
+# Common Mistakes
+
+- Treating recurring incidents as unrelated.
+- Ignoring long-term performance trends.
+- Assuming backups are usable without testing.
+- Skipping post-incident reviews.
+- Overlooking infrastructure dependencies.
+- Failing to update monitoring after major changes.
+
+---
+
+# Key Takeaways
+
+- Advanced troubleshooting emphasizes prevention as well as resolution.
+- Performance analysis should focus on trends and dependencies.
+- Recovery planning and backup validation are essential operational practices.
+- Continuous monitoring and root cause analysis improve long-term Active Directory stability.
+
+---
+
+**Next:** Part 4
