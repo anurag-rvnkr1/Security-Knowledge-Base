@@ -404,4 +404,444 @@ Create answers in your own words for:
 
 ---
 
-**Next:** Part 2
+# 27-Active-Directory-Interview-Questions.md
+
+# Part 2 — Intermediate Active Directory Interview Questions (Administration, DNS, Replication, FSMO, GPO and Troubleshooting)
+
+> **Important Note**
+>
+> This section covers **intermediate-level Active Directory interview questions** commonly asked for **System Administrator, Windows Administrator, Infrastructure Engineer, Active Directory Administrator, IAM Engineer, SOC Analyst, and Cybersecurity roles**. Questions focus on enterprise administration and defensive operations.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Answer intermediate AD interview questions confidently
+- Explain enterprise Active Directory administration
+- Describe troubleshooting methodologies
+- Discuss replication, FSMO, DNS, and Group Policy
+- Handle real-world scenario-based interviews
+
+---
+
+# Section 1 — DNS and Active Directory
+
+## Q31. Why is DNS essential for Active Directory?
+
+**Answer:**
+
+Active Directory depends on DNS to locate Domain Controllers, Global Catalog servers, Kerberos services, and other directory resources. Incorrect DNS configuration can prevent authentication, replication, and Group Policy processing.
+
+---
+
+## Q32. What happens if DNS is unavailable?
+
+**Answer:**
+
+Potential impacts include:
+
+- User authentication failures
+- Group Policy processing issues
+- Replication problems
+- Domain Controller discovery failures
+- Slow logons
+- Service interruptions
+
+---
+
+## Q33. What should you check during DNS troubleshooting?
+
+**Answer:**
+
+- Client DNS configuration
+- DNS service health
+- Zone configuration
+- Name resolution
+- Domain Controller records
+- Event logs
+
+---
+
+## Q34. Why should clients use internal Active Directory DNS servers?
+
+**Answer:**
+
+Internal DNS servers contain the Active Directory-specific records required for locating directory services. Using external DNS alone can prevent domain-related operations from functioning correctly.
+
+---
+
+## Q35. What are common symptoms of DNS problems?
+
+Examples include:
+
+- "Domain cannot be contacted"
+- Slow authentication
+- Group Policy failures
+- Replication delays
+- Domain join failures
+
+---
+
+# Section 2 — Replication
+
+## Q36. What is Active Directory replication?
+
+**Answer:**
+
+Replication synchronizes directory changes between Domain Controllers so that all controllers maintain a consistent copy of directory information.
+
+---
+
+## Q37. Why is replication necessary?
+
+**Answer:**
+
+Replication provides:
+
+- High availability
+- Data consistency
+- Fault tolerance
+- Reliable authentication
+- Distributed administration
+
+---
+
+## Q38. What information is replicated?
+
+Examples include:
+
+- User accounts
+- Group memberships
+- Organizational Units
+- Password changes
+- Group Policy information
+- Directory configuration data
+
+---
+
+## Q39. What can happen if replication fails?
+
+Possible effects include:
+
+- Inconsistent directory information
+- Delayed password updates
+- Authentication inconsistencies
+- Administrative confusion
+- Group membership differences
+
+---
+
+## Q40. What should you investigate when replication problems occur?
+
+**Answer:**
+
+Review:
+
+- Domain Controller health
+- DNS
+- Site topology
+- Network connectivity
+- Event logs
+- Replication status
+
+---
+
+# Section 3 — FSMO Roles
+
+## Q41. What are FSMO roles?
+
+**Answer:**
+
+Flexible Single Master Operations (FSMO) roles are specialized Active Directory roles assigned to specific Domain Controllers to coordinate certain directory operations.
+
+---
+
+## Q42. Name the five FSMO roles.
+
+**Answer:**
+
+- Schema Master
+- Domain Naming Master
+- RID Master
+- PDC Emulator
+- Infrastructure Master
+
+---
+
+## Q43. Why are FSMO roles important?
+
+**Answer:**
+
+They ensure certain operations are performed by a single authoritative Domain Controller, preventing conflicts and maintaining directory consistency.
+
+---
+
+## Q44. Which FSMO role assists with password-related operations?
+
+**Answer:**
+
+The **PDC Emulator** plays a key role in password-related activities and time synchronization within a domain.
+
+---
+
+## Q45. Which FSMO roles are forest-wide?
+
+**Answer:**
+
+- Schema Master
+- Domain Naming Master
+
+---
+
+# Section 4 — Group Policy
+
+## Q46. What is Group Policy processing?
+
+**Answer:**
+
+Group Policy processing is the evaluation and application of configured policies to users and computers during startup, logon, and periodic background refresh.
+
+---
+
+## Q47. Why might Group Policy fail to apply?
+
+Possible reasons include:
+
+- Incorrect OU placement
+- Replication delays
+- DNS issues
+- Network connectivity problems
+- Incorrect policy scope
+- Client processing errors
+
+---
+
+## Q48. How would you troubleshoot a Group Policy issue?
+
+**Answer:**
+
+A structured approach includes:
+
+1. Verify the GPO exists.
+2. Confirm the correct OU.
+3. Review GPO links.
+4. Check replication.
+5. Review client event logs.
+6. Validate policy application.
+
+---
+
+## Q49. Can multiple GPOs apply simultaneously?
+
+**Answer:**
+
+Yes. Multiple Group Policy Objects may apply depending on inheritance, links, and processing order.
+
+---
+
+## Q50. Why should Group Policies be documented?
+
+**Answer:**
+
+Documentation simplifies administration, auditing, troubleshooting, and future changes.
+
+---
+
+# Section 5 — Domain Controllers
+
+## Q51. What should you verify if a Domain Controller appears unhealthy?
+
+**Answer:**
+
+Review:
+
+- Service status
+- Event logs
+- DNS
+- Replication
+- Resource utilization
+- Network connectivity
+
+---
+
+## Q52. Why should organizations deploy multiple Domain Controllers?
+
+**Answer:**
+
+Multiple Domain Controllers provide redundancy, improve availability, distribute authentication requests, and reduce single points of failure.
+
+---
+
+## Q53. What services commonly run on a Domain Controller?
+
+Examples include:
+
+- Active Directory Domain Services
+- DNS Server (where deployed)
+- Kerberos Key Distribution Center
+- Netlogon
+- Windows Time
+
+---
+
+## Q54. Why is time synchronization important?
+
+**Answer:**
+
+Kerberos authentication relies on consistent system time across domain-joined systems.
+
+---
+
+## Q55. What are common signs of Domain Controller issues?
+
+Examples include:
+
+- Authentication failures
+- Replication delays
+- Group Policy inconsistencies
+- Slow logons
+- Event log errors
+- Service failures
+
+---
+
+# Section 6 — Troubleshooting Scenarios
+
+## Q56. A user cannot log in, but everyone else can. What would you check?
+
+**Suggested Answer:**
+
+- User account status
+- Password validity
+- Group memberships
+- Computer connectivity
+- Event logs
+- Account lockout status
+
+---
+
+## Q57. All users in one branch office experience slow authentication.
+
+What is your investigation plan?
+
+**Suggested Answer:**
+
+- Verify site connectivity
+- Review DNS
+- Check Domain Controller availability
+- Review replication
+- Assess network performance
+
+---
+
+## Q58. A newly created user cannot access cloud resources in a hybrid environment.
+
+What would you verify?
+
+**Suggested Answer:**
+
+- User object creation
+- Identity synchronization status
+- Group memberships
+- Licensing (where applicable)
+- Authentication logs
+
+---
+
+## Q59. Password changes appear to take longer than expected.
+
+Which areas would you investigate?
+
+**Suggested Answer:**
+
+- Replication health
+- Domain Controller status
+- DNS
+- Site topology
+- Event logs
+
+---
+
+## Q60. Several users report that security settings are inconsistent across computers.
+
+What would you check?
+
+**Suggested Answer:**
+
+- Group Policy links
+- Replication
+- OU placement
+- Client policy processing
+- Domain Controller consistency
+
+---
+
+# HR + Technical Questions
+
+## Q61. Why do you want to work with Active Directory?
+
+**Sample Answer:**
+
+I enjoy managing enterprise infrastructure, improving security, solving complex operational issues, and ensuring reliable authentication and identity services. Active Directory is a foundational technology in Windows enterprise environments, making it both technically interesting and highly impactful.
+
+---
+
+## Q62. How do you handle production incidents?
+
+**Sample Answer:**
+
+I follow a structured process:
+
+- Gather information
+- Assess impact
+- Determine scope
+- Collect evidence
+- Identify the root cause
+- Implement approved changes
+- Validate the solution
+- Document the incident
+
+---
+
+## Q63. How do you prioritize multiple incidents?
+
+**Sample Answer:**
+
+I prioritize based on business impact, number of affected users, service criticality, and organizational incident management procedures.
+
+---
+
+# Interview Tips
+
+- Avoid memorized definitions only.
+- Use enterprise examples whenever possible.
+- Explain troubleshooting logically.
+- Mention documentation and validation.
+- Demonstrate awareness of security and operational best practices.
+
+---
+
+# Hands-on Practice
+
+Practice answering:
+
+- Explain Active Directory replication.
+- Describe the purpose of FSMO roles.
+- Walk through a DNS troubleshooting process.
+- Explain how Group Policy is applied.
+- Describe how you would investigate authentication failures.
+
+---
+
+# Key Takeaways
+
+- Intermediate interviews focus on administration, troubleshooting, and enterprise operations.
+- Structured troubleshooting demonstrates practical knowledge.
+- Understanding DNS, replication, FSMO, and Group Policy is essential.
+- Clear communication and logical reasoning are as important as technical accuracy.
+
+---
+
+**Next:** Part 3
