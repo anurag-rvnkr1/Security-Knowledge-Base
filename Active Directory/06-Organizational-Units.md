@@ -1989,4 +1989,675 @@ Company:
 
 ---
 
-**Next:** Part 4
+# 06-Organizational-Units.md
+
+# Part 4 — Enterprise OU Best Practices, Disaster Recovery, Auditing, Final Revision, and Chapter Summary
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Apply Microsoft-recommended OU best practices.
+- Understand OU auditing and monitoring.
+- Plan OU backup and recovery.
+- Avoid common enterprise design mistakes.
+- Review the complete Organizational Units chapter.
+- Prepare for Active Directory Users, Groups, and Computers.
+
+---
+
+# Enterprise OU Design Principles
+
+A well-designed OU structure should be:
+
+- Simple
+- Scalable
+- Easy to understand
+- Easy to administer
+- Secure
+- Well documented
+- Flexible enough for future growth
+
+A good OU design minimizes administrative overhead while supporting business and security requirements.
+
+---
+
+# Microsoft's General Recommendations
+
+Microsoft generally recommends:
+
+- Keep OU structures relatively shallow.
+- Design based on administrative boundaries.
+- Use OUs primarily for Group Policy and delegation.
+- Separate privileged accounts.
+- Separate servers and workstations.
+- Avoid unnecessary nesting.
+- Use meaningful names.
+- Document every major OU.
+
+---
+
+# Enterprise OU Architecture
+
+```text
+company.com
+
+│
+
+├── Administration
+│     ├── Domain Admins
+│     ├── Enterprise Admins
+│     └── Security Admins
+│
+├── Users
+│     ├── HR
+│     ├── Finance
+│     ├── Sales
+│     └── IT
+│
+├── Computers
+│     ├── Workstations
+│     ├── Laptops
+│     └── Kiosks
+│
+├── Servers
+│     ├── File
+│     ├── Database
+│     ├── Web
+│     └── Application
+│
+├── Service Accounts
+│
+├── Domain Controllers
+│
+└── Branch Offices
+      ├── Bengaluru
+      ├── London
+      └── New York
+```
+
+This structure supports:
+
+- Delegation
+- Group Policy
+- Auditing
+- Automation
+- Security
+- Lifecycle management
+
+---
+
+# Administrative Boundary Example
+
+```text
+Finance OU
+
+↓
+
+Finance Administrators
+
+↓
+
+Finance Resources Only
+```
+
+```text
+HR OU
+
+↓
+
+HR Administrators
+
+↓
+
+HR Resources Only
+```
+
+No administrator should receive permissions beyond their operational responsibilities unless explicitly required.
+
+---
+
+# OU Security Model
+
+Although OUs are **not security boundaries**, they contribute significantly to secure administration.
+
+```text
+OU
+
+↓
+
+Access Control List (ACL)
+
+↓
+
+Delegated Permissions
+
+↓
+
+Authorized Administrator
+```
+
+Security is enforced through permissions—not by the OU itself.
+
+---
+
+# Privileged Administrative Model
+
+Enterprise environments often separate administrative identities.
+
+Example:
+
+```text
+Standard User Account
+
+↓
+
+Daily Activities
+```
+
+```text
+Administrative Account
+
+↓
+
+Server Administration
+```
+
+```text
+Highly Privileged Account
+
+↓
+
+Forest Administration
+```
+
+Each account type can reside in a dedicated OU with tailored Group Policies.
+
+---
+
+# Group Policy Strategy
+
+Avoid linking every GPO at the domain level.
+
+Recommended:
+
+```text
+Domain
+
+↓
+
+Core Security Policies
+
+↓
+
+OU
+
+↓
+
+Department Policies
+
+↓
+
+Child OU
+
+↓
+
+Specialized Policies
+```
+
+This approach keeps policy management organized and predictable.
+
+---
+
+# Documentation Standards
+
+Every enterprise should maintain documentation for:
+
+- OU hierarchy
+- Naming conventions
+- Delegated administrators
+- Linked GPOs
+- Administrative contacts
+- Business owner
+- Change history
+- Review schedule
+
+Example:
+
+| OU | Owner | Purpose |
+|----|--------|----------|
+| Finance | Finance IT | Department users |
+| Servers | Infrastructure | Server management |
+| Privileged Accounts | Security Team | Administrative accounts |
+
+---
+
+# Change Management
+
+Changes to OU structures should follow a controlled process.
+
+Typical workflow:
+
+```text
+Request
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Testing
+
+↓
+
+Implementation
+
+↓
+
+Validation
+
+↓
+
+Documentation
+```
+
+Avoid making structural changes directly in production without proper testing.
+
+---
+
+# Auditing Organizational Units
+
+Monitor the following events:
+
+- OU creation
+- OU deletion
+- OU renaming
+- Object movement
+- Permission changes
+- Delegation changes
+- GPO link modifications
+
+Auditing helps detect unauthorized or accidental changes.
+
+---
+
+# Monitoring Checklist
+
+Administrators should regularly review:
+
+| Item | Frequency |
+|------|-----------|
+| OU structure | Monthly |
+| Delegated permissions | Quarterly |
+| GPO links | Monthly |
+| Administrative groups | Monthly |
+| Documentation | Quarterly |
+| Naming consistency | Quarterly |
+| Stale OUs | Semi-annually |
+
+---
+
+# Disaster Recovery Considerations
+
+Although OUs themselves are lightweight objects, they are essential to the administrative structure of Active Directory.
+
+Loss of an OU may affect:
+
+- User organization
+- Computer organization
+- Group memberships
+- Delegation
+- GPO targeting
+- Administrative workflows
+
+Recovery options include:
+
+- Active Directory Recycle Bin (if enabled)
+- Authoritative Restore
+- System State Backup
+- Forest Recovery (for severe scenarios)
+
+---
+
+# Active Directory Recycle Bin
+
+When enabled, the Active Directory Recycle Bin allows recovery of accidentally deleted objects with much of their metadata preserved.
+
+Example:
+
+```text
+OU Deleted
+
+↓
+
+Recycle Bin
+
+↓
+
+Restore
+
+↓
+
+OU Recovered
+```
+
+This feature significantly simplifies recovery compared to older methods.
+
+---
+
+# Backup Strategy
+
+A mature backup strategy includes:
+
+- Regular System State backups
+- Validation through restore testing
+- Backup documentation
+- Off-site or resilient storage
+- Recovery procedures
+
+Remember:
+
+A backup that has never been tested should not be assumed to be recoverable.
+
+---
+
+# Lifecycle Management
+
+Example OU lifecycle:
+
+```text
+Planning
+
+↓
+
+Creation
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Review
+
+↓
+
+Retirement
+
+↓
+
+Deletion
+```
+
+Periodic reviews ensure that obsolete OUs are removed and the hierarchy remains manageable.
+
+---
+
+# Enterprise Case Study
+
+Organization:
+
+- 120,000 employees
+- 18 countries
+- 14 IT regions
+- 2,500 servers
+
+OU Structure:
+
+```text
+Global
+
+├── Administration
+├── Infrastructure
+├── Security
+├── Users
+├── Servers
+├── Workstations
+├── Service Accounts
+├── Contractors
+└── Regional Offices
+```
+
+Results:
+
+- Simplified delegation
+- Consistent Group Policy deployment
+- Reduced administrative risk
+- Easier audits
+- Faster onboarding and offboarding
+- Improved compliance
+
+---
+
+# Cybersecurity Perspective
+
+A mature OU strategy supports multiple security objectives.
+
+Benefits include:
+
+- Easier separation of privileged identities.
+- Different hardening baselines for servers and workstations.
+- Better visibility during incident response.
+- Controlled delegation of administrative tasks.
+- Simplified compliance reporting.
+- Reduced attack surface through structured administration.
+
+However, remember:
+
+> Compromising an account with excessive delegated permissions can still have significant impact. Regular permission reviews are essential.
+
+---
+
+# Common Misconceptions
+
+## Myth 1
+
+> OUs provide security boundaries.
+
+**Reality:**
+
+Permissions and authentication provide security boundaries. OUs are administrative containers.
+
+---
+
+## Myth 2
+
+> More nested OUs always mean better organization.
+
+**Reality:**
+
+Excessive nesting increases complexity and can make administration more difficult.
+
+---
+
+## Myth 3
+
+> Every department needs a unique OU hierarchy.
+
+**Reality:**
+
+Many departments can share a standardized structure while using different GPOs or delegated permissions.
+
+---
+
+## Myth 4
+
+> Group Policy should always be linked at the domain level.
+
+**Reality:**
+
+Only policies intended for the entire domain should be linked there. Departmental or device-specific policies are often better linked to OUs.
+
+---
+
+# Common Administrative Mistakes
+
+Avoid:
+
+- Deep OU hierarchies with little purpose.
+- Granting excessive delegated permissions.
+- Mixing privileged and standard accounts.
+- Ignoring documentation.
+- Forgetting accidental deletion protection.
+- Creating duplicate OU structures without justification.
+- Leaving obsolete OUs in production.
+
+---
+
+# Best Practices Checklist
+
+✔ Keep OU hierarchy simple.
+
+✔ Design around administration.
+
+✔ Separate privileged accounts.
+
+✔ Separate users, computers, and servers.
+
+✔ Use clear naming conventions.
+
+✔ Delegate using security groups.
+
+✔ Protect OUs from accidental deletion.
+
+✔ Audit delegated permissions regularly.
+
+✔ Test GPO changes before deployment.
+
+✔ Maintain accurate documentation.
+
+✔ Review the OU structure periodically.
+
+---
+
+# Complete Chapter Summary
+
+In this chapter, you learned:
+
+- What Organizational Units are.
+- Differences between OUs and Containers.
+- Enterprise OU hierarchy design.
+- Delegation of administration.
+- Access Control Lists (ACLs).
+- Group Policy integration.
+- Policy inheritance.
+- Block Inheritance.
+- Enforced policies.
+- Administrative boundaries.
+- PowerShell automation concepts.
+- Enterprise OU strategies.
+- Auditing and monitoring.
+- Backup and recovery considerations.
+- Best practices for secure administration.
+
+Organizational Units form the administrative backbone of Active Directory and are essential for scalable management and policy application.
+
+---
+
+# Final Revision Table
+
+| Topic | Key Point |
+|--------|-----------|
+| Organizational Unit | Logical administrative container |
+| Container | Basic object container with limited management capabilities |
+| Delegation | Assigns limited administrative permissions |
+| ACL | Controls permissions on an OU |
+| GPO | Applies configuration settings to users and computers |
+| Inheritance | Child OUs receive parent policies by default |
+| Block Inheritance | Prevents most parent GPOs from applying |
+| Enforced | Forces a GPO to apply despite Block Inheritance |
+| Distinguished Name | Unique LDAP path of an object |
+| Accidental Deletion Protection | Prevents unintended OU deletion |
+| Administrative Boundary | Defines management scope, not security |
+| Active Directory Recycle Bin | Restores deleted directory objects |
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Design and secure an enterprise-ready OU structure.
+
+### Scenario
+
+A company has:
+
+- HR
+- Finance
+- Sales
+- IT
+- Infrastructure
+- Security
+- Two regional offices (London and Bengaluru)
+
+### Tasks
+
+1. Create a root OU for each department.
+2. Create child OUs for:
+   - Users
+   - Computers
+   - Groups
+3. Create dedicated OUs for:
+   - Servers
+   - Service Accounts
+   - Privileged Accounts
+4. Enable accidental deletion protection.
+5. Document:
+   - Delegated administrators
+   - Planned GPO links
+   - Naming standards
+6. Review the structure and identify any unnecessary nesting.
+
+---
+
+# Interview Questions
+
+1. What is the primary purpose of an Organizational Unit?
+2. How does an OU differ from a Container?
+3. Why are OUs important for Group Policy?
+4. What is delegation in Active Directory?
+5. What is the principle of least privilege?
+6. What is Block Inheritance?
+7. What does an Enforced GPO do?
+8. Why are privileged accounts often placed in separate OUs?
+9. How can accidental deletion of an OU be prevented?
+10. Why is documentation important in OU management?
+11. Does an OU provide a security boundary? Explain.
+12. What Microsoft best practices should be followed when designing OUs?
+
+---
+
+# References
+
+- Microsoft Learn – Active Directory Domain Services
+- Microsoft Learn – Organizational Units
+- Microsoft Learn – Delegating Administration
+- Microsoft Learn – Group Policy
+- Windows Server Documentation
+- CIS Microsoft Windows Server Benchmarks
+- Microsoft Security Baselines
+
+---
+
+# Congratulations!
+
+You have successfully completed **Chapter 06 – Organizational Units**.
+
+You now understand how enterprises organize, delegate, secure, and manage Active Directory using Organizational Units. This knowledge forms the foundation for effective Group Policy deployment, administrative delegation, and scalable directory management.
+
+The next chapter focuses on the core directory objects that administrators work with every day: **Users, Groups, and Computers**.
+
+---
+
