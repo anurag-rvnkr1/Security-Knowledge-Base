@@ -788,4 +788,781 @@ View the privileges assigned to the current logon session.
 
 ---
 
-**Next:** Part 2
+# 12-Kerberos-and-NTLM.md
+
+# Part 2 — Kerberos Architecture, Ticket Granting, KDC, AS, TGS, PAC and Authentication Flow
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Kerberos architecture
+- Key Distribution Center (KDC)
+- Authentication Server (AS)
+- Ticket Granting Server (TGS)
+- Ticket Granting Ticket (TGT)
+- Service Ticket (ST)
+- Privilege Attribute Certificate (PAC)
+- Service Principal Names (SPNs)
+- Kerberos authentication flow
+- Ticket lifetime
+- Encryption in Kerberos
+- Enterprise authentication examples
+
+---
+
+# Introduction
+
+Kerberos is one of the most important technologies in Active Directory.
+
+Almost every authentication inside a Windows domain uses Kerberos.
+
+When a user logs in, Windows does **not** continuously send the user's password across the network.
+
+Instead, Kerberos uses encrypted **tickets**.
+
+These tickets prove the user's identity securely.
+
+---
+
+# What is Kerberos?
+
+Kerberos is:
+
+> A secure, ticket-based network authentication protocol designed to authenticate users and services over an insecure network without transmitting passwords in plaintext.
+
+Kerberos provides:
+
+- Secure authentication
+- Mutual authentication
+- Single Sign-On (SSO)
+- Delegation support
+- Strong encryption
+- Replay attack protection
+
+---
+
+# Why Ticket-Based Authentication?
+
+Imagine logging into ten different servers.
+
+Without Kerberos:
+
+```
+Login
+
+↓
+
+Password
+
+↓
+
+Server 1
+
+↓
+
+Password
+
+↓
+
+Server 2
+
+↓
+
+Password
+
+↓
+
+Server 3
+
+...
+```
+
+The password would be transmitted or processed repeatedly.
+
+With Kerberos:
+
+```
+Login Once
+
+↓
+
+Receive Ticket
+
+↓
+
+Reuse Ticket
+
+↓
+
+Access Multiple Services
+```
+
+The password is used only during the initial authentication process.
+
+---
+
+# Kerberos Components
+
+Kerberos consists of several major components.
+
+```
+User
+
+↓
+
+Client Computer
+
+↓
+
+Key Distribution Center (KDC)
+
+↓
+
+Authentication Server (AS)
+
+↓
+
+Ticket Granting Server (TGS)
+
+↓
+
+Application Server
+```
+
+---
+
+# Key Distribution Center (KDC)
+
+The **Key Distribution Center (KDC)** is the heart of Kerberos.
+
+In Active Directory:
+
+> Every Domain Controller acts as a KDC.
+
+The KDC has two logical services:
+
+- Authentication Server (AS)
+- Ticket Granting Server (TGS)
+
+---
+
+# KDC Responsibilities
+
+The KDC:
+
+- Authenticates users
+- Issues Ticket Granting Tickets
+- Issues Service Tickets
+- Validates credentials
+- Maintains secure authentication
+
+Without the KDC, Kerberos authentication cannot occur.
+
+---
+
+# Authentication Server (AS)
+
+The Authentication Server performs the initial authentication.
+
+Responsibilities:
+
+- Verify user credentials
+- Authenticate the user
+- Issue a Ticket Granting Ticket (TGT)
+
+Think of the AS as the "identity verifier."
+
+---
+
+# Ticket Granting Server (TGS)
+
+After the user has a TGT, they no longer need to authenticate with their password for every service.
+
+Instead, they contact the Ticket Granting Server.
+
+Responsibilities:
+
+- Validate the TGT
+- Issue Service Tickets
+- Support Single Sign-On
+
+Think of the TGS as the "ticket issuer."
+
+---
+
+# Kerberos Ticket Types
+
+Kerberos primarily uses two ticket types.
+
+```
+Authentication
+
+↓
+
+Ticket Granting Ticket (TGT)
+
+↓
+
+Request Service
+
+↓
+
+Service Ticket
+
+↓
+
+Access Resource
+```
+
+---
+
+# Ticket Granting Ticket (TGT)
+
+The **Ticket Granting Ticket** is issued immediately after successful authentication.
+
+Purpose:
+
+- Proves the user's identity
+- Allows requests for additional Service Tickets
+- Enables Single Sign-On
+
+The TGT is **not** presented directly to application servers.
+
+It is presented only to the TGS.
+
+---
+
+# Service Ticket
+
+When the user wants to access a service such as:
+
+- File Server
+- SQL Server
+- SharePoint
+- IIS
+- Print Server
+
+the client requests a **Service Ticket**.
+
+The Service Ticket is presented to the destination service to prove the user's identity.
+
+---
+
+# Privilege Attribute Certificate (PAC)
+
+A Service Ticket contains a structure called the **Privilege Attribute Certificate (PAC).**
+
+The PAC includes:
+
+- User SID
+- Group Memberships
+- User Privileges
+- Logon Information
+- Authorization Data
+
+Windows uses the PAC to determine what the authenticated user is authorized to do.
+
+---
+
+# Service Principal Name (SPN)
+
+Every Kerberos-enabled service is identified by a **Service Principal Name (SPN).**
+
+Examples:
+
+```
+HTTP/webserver
+
+HOST/server01
+
+MSSQLSvc/sql01
+
+CIFS/fileserver
+```
+
+SPNs uniquely identify services within Active Directory.
+
+---
+
+# Kerberos Authentication Flow
+
+The complete authentication process occurs in three phases:
+
+```
+1.
+
+Authentication
+
+↓
+
+Receive TGT
+
+↓
+
+2.
+
+Request Service Ticket
+
+↓
+
+Receive Service Ticket
+
+↓
+
+3.
+
+Access Service
+```
+
+Let's examine each phase.
+
+---
+
+# Phase 1 — Initial Authentication
+
+```
+User
+
+↓
+
+Enters Username
+
+Password
+
+↓
+
+Client
+
+↓
+
+Authentication Server (AS)
+
+↓
+
+Credentials Verified
+
+↓
+
+TGT Issued
+```
+
+The client now possesses a Ticket Granting Ticket.
+
+---
+
+# Phase 2 — Request Service Ticket
+
+Suppose the user wants to access:
+
+```
+\\FILESERVER
+```
+
+The client sends:
+
+```
+TGT
+
+↓
+
+Ticket Granting Server
+
+↓
+
+Request
+
+↓
+
+Service Ticket
+```
+
+The TGS verifies the TGT and issues a Service Ticket.
+
+---
+
+# Phase 3 — Access Resource
+
+```
+Client
+
+↓
+
+Service Ticket
+
+↓
+
+File Server
+
+↓
+
+Ticket Verified
+
+↓
+
+Access Granted
+```
+
+The user gains access without entering the password again.
+
+---
+
+# Complete Kerberos Flow
+
+```
+          User
+
+            │
+
+      Enter Password
+
+            │
+
+            ▼
+
+        Authentication
+         Server (AS)
+
+            │
+
+     Issue TGT
+
+            ▼
+
+        Client Stores TGT
+
+            │
+
+            ▼
+
+   Requests Service Ticket
+
+            │
+
+            ▼
+
+ Ticket Granting Server (TGS)
+
+            │
+
+ Issue Service Ticket
+
+            ▼
+
+        Application Server
+
+            │
+
+      Validate Ticket
+
+            ▼
+
+       Access Granted
+```
+
+---
+
+# Ticket Lifetime
+
+Kerberos tickets are temporary.
+
+Typical enterprise configuration:
+
+| Ticket | Purpose |
+|---------|----------|
+| TGT | Valid for several hours (commonly 10 hours by default) |
+| Service Ticket | Valid for a limited period based on domain policy |
+
+After expiration:
+
+- Tickets may be renewed (if permitted).
+- Users may need to obtain new tickets.
+
+Ticket lifetime is configurable through Group Policy.
+
+---
+
+# Ticket Cache
+
+Windows stores Kerberos tickets in memory.
+
+```
+User Login
+
+↓
+
+Receive TGT
+
+↓
+
+Stored in Cache
+
+↓
+
+Reuse Ticket
+
+↓
+
+Single Sign-On
+```
+
+This avoids repeated authentication requests.
+
+---
+
+# Viewing Kerberos Tickets
+
+Administrators can inspect cached tickets using:
+
+```
+klist
+```
+
+Example output includes:
+
+- TGT
+- Service Tickets
+- Expiration Time
+- Encryption Type
+- Client Principal
+- Server Principal
+
+---
+
+# Mutual Authentication
+
+Unlike many legacy authentication methods,
+
+Kerberos provides **Mutual Authentication**.
+
+This means:
+
+```
+Client verifies Server
+
+AND
+
+Server verifies Client
+```
+
+Both parties authenticate each other.
+
+This reduces the risk of impersonation attacks.
+
+---
+
+# Encryption in Kerberos
+
+Kerberos supports modern encryption algorithms.
+
+Commonly used algorithms include:
+
+- AES-128
+- AES-256
+
+Older environments may still support legacy algorithms for compatibility, but modern deployments should prioritize strong encryption.
+
+---
+
+# Enterprise Authentication Example
+
+Company:
+
+```
+Contoso
+```
+
+User:
+
+```
+Alice
+```
+
+Resource:
+
+```
+SQL Server
+```
+
+Workflow:
+
+```
+Alice
+
+↓
+
+Login
+
+↓
+
+Domain Controller (KDC)
+
+↓
+
+Receive TGT
+
+↓
+
+Request SQL Service Ticket
+
+↓
+
+Receive Ticket
+
+↓
+
+SQL Server
+
+↓
+
+Access Database
+```
+
+Alice authenticates once while securely accessing multiple enterprise resources.
+
+---
+
+# Cybersecurity Perspective
+
+Kerberos provides several important security benefits:
+
+- Passwords are not repeatedly transmitted.
+- Mutual authentication helps prevent impersonation.
+- Ticket expiration limits long-term misuse.
+- Strong encryption protects authentication data.
+- Single Sign-On reduces password prompts, improving usability while maintaining security.
+
+To strengthen Kerberos security:
+
+- Prefer AES encryption.
+- Keep Domain Controllers synchronized with accurate time.
+- Monitor authentication logs.
+- Review SPN registrations.
+- Regularly audit service accounts.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Inspect Kerberos tickets.
+
+### Step 1
+
+Log into a domain-joined Windows computer.
+
+### Step 2
+
+Open Command Prompt.
+
+### Step 3
+
+Run:
+
+```
+klist
+```
+
+Observe:
+
+- Ticket Granting Ticket
+- Service Tickets
+- Expiration Time
+- Encryption Type
+
+### Step 4
+
+Access a network file share.
+
+### Step 5
+
+Run:
+
+```
+klist
+```
+
+again.
+
+Notice that a new Service Ticket has been added for the accessed service.
+
+---
+
+# Interview Questions
+
+### Q1: What is the Key Distribution Center (KDC)?
+
+**Answer:** The KDC is the Kerberos service running on Domain Controllers that authenticates users and issues Kerberos tickets.
+
+---
+
+### Q2: What is a Ticket Granting Ticket (TGT)?
+
+**Answer:** A TGT is issued after successful authentication and allows a user to request Service Tickets without repeatedly entering credentials.
+
+---
+
+### Q3: What is a Service Ticket?
+
+**Answer:** A Service Ticket allows an authenticated client to access a specific network service, such as a file server or SQL Server.
+
+---
+
+### Q4: What is the role of the Ticket Granting Server (TGS)?
+
+**Answer:** The TGS validates the user's TGT and issues Service Tickets for requested services.
+
+---
+
+### Q5: What information is stored in the Privilege Attribute Certificate (PAC)?
+
+**Answer:** The PAC contains authorization-related information such as the user's SID, group memberships, privileges, and logon details.
+
+---
+
+### Q6: What command displays Kerberos tickets?
+
+**Answer:**
+
+```
+klist
+```
+
+---
+
+# Best Practices
+
+- Use Kerberos as the default authentication protocol.
+- Prefer AES-based encryption.
+- Maintain accurate time synchronization across Domain Controllers and clients.
+- Regularly review Service Principal Names (SPNs).
+- Monitor Kerberos authentication events.
+- Keep service account permissions to the minimum required.
+
+---
+
+# Common Mistakes
+
+- Confusing the KDC with the Domain Controller (the KDC is a service hosted on a Domain Controller).
+- Assuming the TGT is sent directly to application servers.
+- Misconfiguring SPNs, causing authentication failures.
+- Ignoring time synchronization issues.
+- Relying on deprecated encryption algorithms.
+
+---
+
+# Key Takeaways
+
+- Kerberos is a secure, ticket-based authentication protocol used by Active Directory.
+- Every Domain Controller hosts a Key Distribution Center (KDC).
+- The Authentication Server (AS) issues Ticket Granting Tickets (TGTs).
+- The Ticket Granting Server (TGS) issues Service Tickets.
+- The Privilege Attribute Certificate (PAC) carries authorization information.
+- Kerberos enables secure Single Sign-On while minimizing password exposure.
+
+---
+
+**Next:** Part 3
