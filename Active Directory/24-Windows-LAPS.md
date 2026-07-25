@@ -498,4 +498,585 @@ Document the expected security improvements after deployment.
 
 ---
 
-**Next:** Part 2
+# 24-Windows-LAPS.md
+
+# Part 2 — Windows LAPS Architecture, Active Directory Integration, Policies, Password Lifecycle and Enterprise Deployment
+
+> **Important Note**
+>
+> This section explains the **architecture and enterprise deployment** of Windows LAPS from a defensive and administrative perspective. It focuses on how Windows LAPS integrates with Active Directory, manages password lifecycles, and supports secure enterprise operations. It does **not** include offensive procedures or exploitation guidance.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Windows LAPS Architecture
+- Active Directory Integration
+- Password Lifecycle
+- Policy Configuration Concepts
+- Enterprise Deployment Workflow
+- Password Storage
+- Authorization Model
+- Auditing
+- Administrative Best Practices
+
+---
+
+# Windows LAPS Architecture
+
+Windows LAPS operates through several coordinated components.
+
+```
++----------------------+
+|  Active Directory    |
++----------+-----------+
+           |
+           |
+           ▼
++----------------------+
+| LAPS Policy          |
++----------+-----------+
+           |
+           |
+           ▼
++----------------------+
+| Windows Client       |
++----------+-----------+
+           |
+           |
+           ▼
++----------------------+
+| Local Administrator  |
+| Password Management  |
++----------+-----------+
+           |
+           |
+           ▼
++----------------------+
+| Secure Password Data |
++----------------------+
+```
+
+Each component contributes to centralized password management while keeping administrative processes consistent.
+
+---
+
+# How Windows LAPS Works
+
+High-level workflow:
+
+```
+Computer Starts
+
+↓
+
+Policy Applied
+
+↓
+
+Password Evaluated
+
+↓
+
+Rotation Required?
+
+│
+
+├── No
+
+│      ↓
+
+│ Continue Monitoring
+
+│
+
+└── Yes
+
+       ↓
+
+Generate New Password
+
+↓
+
+Securely Store Password
+
+↓
+
+Record Expiration
+
+↓
+
+Continue Normal Operation
+```
+
+This process is automated according to organizational policy.
+
+---
+
+# Active Directory Integration
+
+Windows LAPS integrates with Active Directory to support:
+
+- Centralized management
+- Policy enforcement
+- Secure password storage
+- Password expiration tracking
+- Administrative authorization
+
+Administrators do not need to manually maintain passwords for every endpoint.
+
+---
+
+# Enterprise Deployment Model
+
+```
+Domain
+
+│
+
+├── Workstations
+
+├── Laptops
+
+├── Administrative PCs
+
+├── Shared Devices
+
+└── Servers (where appropriate)
+
+        │
+
+        ▼
+
+Windows LAPS Policies
+
+        │
+
+        ▼
+
+Unique Local Passwords
+```
+
+Organizations may choose deployment scopes based on operational requirements.
+
+---
+
+# Policy-Based Management
+
+Windows LAPS follows centrally managed policies.
+
+Examples of policy categories include:
+
+- Password complexity
+- Password length
+- Rotation interval
+- Managed account selection
+- Backup destination
+- Authorization settings
+
+Policies provide consistent behavior across managed devices.
+
+---
+
+# Password Lifecycle
+
+```
+Password Created
+
+↓
+
+Stored Securely
+
+↓
+
+Valid Until Expiration
+
+↓
+
+Rotation Trigger
+
+↓
+
+New Password Generated
+
+↓
+
+Expiration Updated
+
+↓
+
+Old Password Replaced
+```
+
+Automation reduces manual administrative effort.
+
+---
+
+# Password Rotation
+
+Instead of changing passwords manually:
+
+```
+Manual Process
+
+Administrator
+
+↓
+
+Visit Device
+
+↓
+
+Change Password
+
+↓
+
+Document Change
+
+↓
+
+Repeat Thousands of Times
+```
+
+Windows LAPS automates this workflow.
+
+```
+Policy
+
+↓
+
+Automatic Rotation
+
+↓
+
+Secure Storage
+
+↓
+
+Administrative Retrieval
+
+↓
+
+Next Rotation
+```
+
+---
+
+# Password Storage
+
+Windows LAPS securely associates password information with the managed device in Active Directory, enabling authorized retrieval when required.
+
+Benefits include:
+
+- Centralized administration
+- Reduced manual documentation
+- Consistent password management
+- Improved operational visibility
+
+Only authorized personnel should have access.
+
+---
+
+# Authorization Model
+
+```
+Administrator
+
+↓
+
+Permission Check
+
+↓
+
+Authorized?
+
+│
+
+├── No
+
+│      ↓
+
+│ Access Denied
+
+│
+
+└── Yes
+
+       ↓
+
+Password Retrieval
+```
+
+Authorization should follow the principle of least privilege.
+
+---
+
+# Administrative Roles
+
+Example responsibilities:
+
+| Role | Responsibility |
+|------|----------------|
+| Help Desk | Limited password retrieval (as approved) |
+| Endpoint Administrator | Device administration |
+| Active Directory Administrator | Policy management |
+| Security Team | Auditing and governance |
+| Compliance Team | Policy verification |
+
+Responsibilities should be clearly documented.
+
+---
+
+# Auditing
+
+Organizations should audit:
+
+- Password retrieval requests
+- Administrative access
+- Policy modifications
+- Authorization changes
+- Configuration reviews
+
+Auditing supports accountability and compliance.
+
+---
+
+# Enterprise Deployment Workflow
+
+```
+Plan Deployment
+
+↓
+
+Identify Managed Devices
+
+↓
+
+Configure Policies
+
+↓
+
+Deploy Policies
+
+↓
+
+Verify Operation
+
+↓
+
+Audit Configuration
+
+↓
+
+Continuous Monitoring
+```
+
+Pilot deployments are recommended before organization-wide rollout.
+
+---
+
+# Change Management
+
+Before deployment:
+
+- Document objectives
+- Identify stakeholders
+- Define rollback procedures
+- Schedule maintenance windows
+- Notify support teams
+
+Proper change management minimizes operational disruption.
+
+---
+
+# Enterprise Example
+
+## Company
+
+```
+Fabrikam Financial Services
+```
+
+Environment:
+
+- 12,500 Windows endpoints
+- Multiple regional IT teams
+- Hybrid Active Directory
+
+Deployment Plan:
+
+- Pilot with IT department
+- Expand to administrative workstations
+- Roll out to employee laptops
+- Extend to remaining workstations
+- Conduct post-deployment validation
+
+Benefits achieved:
+
+- Consistent password management
+- Simplified administration
+- Improved audit readiness
+- Reduced operational overhead
+
+---
+
+# Integration with Enterprise Operations
+
+Windows LAPS complements:
+
+```
+Endpoint Management
+
+↓
+
+Identity Management
+
+↓
+
+Active Directory
+
+↓
+
+Security Monitoring
+
+↓
+
+Compliance
+
+↓
+
+IT Operations
+```
+
+It should be part of an organization's broader endpoint security strategy.
+
+---
+
+# Cybersecurity Perspective
+
+Centralized password management reduces the risks associated with manually managed local administrator credentials.
+
+When combined with strong identity governance, endpoint management, and auditing, Windows LAPS strengthens enterprise credential security while simplifying operational processes.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Develop a deployment plan for Windows LAPS in a fictional enterprise.
+
+### Step 1
+
+Categorize devices:
+
+- Workstations
+- Laptops
+- Administrative systems
+- Shared devices
+
+---
+
+### Step 2
+
+Define policy requirements:
+
+- Password length
+- Rotation interval
+- Administrative roles
+- Audit requirements
+
+---
+
+### Step 3
+
+Create a phased deployment schedule.
+
+---
+
+### Step 4
+
+Document how password retrieval permissions will be assigned and reviewed.
+
+---
+
+### Step 5
+
+Create a post-deployment validation checklist covering policy application, auditing, and operational readiness.
+
+---
+
+# Interview Questions
+
+### Q1: Why does Windows LAPS use centralized policies?
+
+**Answer:** Centralized policies ensure consistent password management, simplify administration, and reduce configuration drift across managed devices.
+
+---
+
+### Q2: Why is automated password rotation beneficial?
+
+**Answer:** It reduces manual effort, limits password lifetime, and improves overall credential hygiene.
+
+---
+
+### Q3: Why should password retrieval be restricted?
+
+**Answer:** Restricting retrieval to authorized personnel supports least privilege and reduces unnecessary credential exposure.
+
+---
+
+### Q4: Why are deployment pilots recommended?
+
+**Answer:** Pilot deployments help validate configuration, identify operational issues, and reduce the risk of organization-wide disruption.
+
+---
+
+### Q5: What role does auditing play in Windows LAPS?
+
+**Answer:** Auditing provides accountability by recording administrative actions, policy changes, and password retrieval activities.
+
+---
+
+### Q6: How does Windows LAPS integrate with enterprise operations?
+
+**Answer:** It works alongside Active Directory, endpoint management, identity governance, security monitoring, and compliance processes to strengthen credential management.
+
+---
+
+# Best Practices
+
+- Deploy Windows LAPS in phases.
+- Use centrally managed policies.
+- Restrict password retrieval permissions.
+- Audit administrative actions regularly.
+- Review authorization assignments periodically.
+- Integrate LAPS with change management processes.
+- Validate deployment after rollout.
+- Maintain accurate documentation.
+
+---
+
+# Common Mistakes
+
+- Deploying without adequate planning.
+- Assigning excessive password retrieval permissions.
+- Skipping pilot deployments.
+- Ignoring audit reviews.
+- Failing to document administrative responsibilities.
+- Not validating policy application after deployment.
+
+---
+
+# Key Takeaways
+
+- Windows LAPS integrates with Active Directory to automate local administrator password management.
+- Centralized policies provide consistent password rotation and administration.
+- Authorization and auditing are essential components of a secure deployment.
+- A phased deployment with ongoing validation improves operational success and security.
+
+---
+
+**Next:** Part 3
