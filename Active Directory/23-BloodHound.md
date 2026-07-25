@@ -518,4 +518,578 @@ Recommend three governance improvements based on your diagram.
 
 ---
 
-**Next:** Part 2
+# 23-BloodHound.md
+
+# Part 2 — BloodHound Data Model, Nodes, Edges, Graph Concepts, Enterprise Analysis and Defensive Risk Assessment
+
+> **Important Note**
+>
+> This section explains BloodHound's **graph data model** from a defensive and architectural perspective. The focus is on understanding how identity relationships are represented and how security teams use that information to improve Active Directory security. It intentionally avoids offensive procedures or exploitation guidance.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- BloodHound Data Model
+- Nodes
+- Edges
+- Graph Relationships
+- Identity Mapping
+- Enterprise Graph Analysis
+- Privilege Relationship Visualization
+- Defensive Risk Assessment
+- Graph-Based Governance
+
+---
+
+# Introduction
+
+BloodHound models Active Directory as a **graph**.
+
+Instead of storing information in rows and columns, it stores:
+
+- Objects
+- Relationships
+- Connections
+
+This approach allows security teams to understand how identities interact across an enterprise.
+
+---
+
+# BloodHound Graph Model
+
+```
+          Active Directory
+
+                  │
+
+                  ▼
+
+          Identity Objects
+
+                  │
+
+                  ▼
+
+         Relationship Graph
+
+                  │
+
+                  ▼
+
+      Security Visualization
+
+                  │
+
+                  ▼
+
+      Governance Decisions
+```
+
+---
+
+# What is a Node?
+
+A **Node** represents an object.
+
+Examples include:
+
+- User
+- Group
+- Computer
+- Domain
+- Organizational Unit
+- Certificate Authority
+- Group Policy Object
+
+Each object becomes a node inside the graph.
+
+---
+
+# Example Node Structure
+
+```
++----------------+
+
+     USER
+
++----------------+
+
+Name
+
+Department
+
+SID
+
+Description
+
+Attributes
+```
+
+Each node contains metadata that describes the object.
+
+---
+
+# Common Node Types
+
+| Node Type | Represents |
+|-----------|------------|
+| User | Identity account |
+| Group | Security or distribution group |
+| Computer | Domain-joined device |
+| Domain | Active Directory domain |
+| OU | Organizational Unit |
+| GPO | Group Policy Object |
+| Certificate Services | PKI infrastructure |
+| Enterprise CA | Certification Authority |
+
+---
+
+# What is an Edge?
+
+An **Edge** represents a relationship between two nodes.
+
+Example:
+
+```
+User
+
+      │
+
+Member Of
+
+      ▼
+
+Group
+```
+
+Without edges, the graph would simply be a collection of unrelated objects.
+
+---
+
+# Example Relationship
+
+```
+Alice
+
+ │
+
+Member Of
+
+ ▼
+
+Helpdesk Group
+
+ │
+
+Administrative Access
+
+ ▼
+
+Management Server
+```
+
+This illustrates how relationships connect objects.
+
+---
+
+# Types of Relationships
+
+Examples of relationship categories include:
+
+- Membership
+- Administrative delegation
+- Ownership
+- Trust
+- Group Policy linkage
+- Organizational hierarchy
+
+These relationships help defenders understand privilege flow throughout the environment.
+
+---
+
+# Graph Visualization
+
+```
+User A
+
+   │
+
+   ▼
+
+Security Group
+
+   │
+
+   ▼
+
+Administrative Role
+
+   │
+
+   ▼
+
+Critical Server
+```
+
+Graph visualization helps simplify complex environments.
+
+---
+
+# Identity Relationship Mapping
+
+```
+Users
+
+↓
+
+Groups
+
+↓
+
+Permissions
+
+↓
+
+Administrative Roles
+
+↓
+
+Enterprise Resources
+```
+
+This representation helps identify where governance improvements may be beneficial.
+
+---
+
+# Why Graph Analysis Matters
+
+Traditional permission reviews often answer:
+
+> "What permissions does this account have?"
+
+Graph analysis also answers:
+
+> "How are these permissions connected to other identities and resources?"
+
+This broader context supports more effective security reviews.
+
+---
+
+# Enterprise Relationship Analysis
+
+Security teams commonly review:
+
+- Administrative group memberships
+- Delegated administration
+- Trust relationships
+- Service account placement
+- Tier-0 relationships
+- Identity hierarchy
+
+The objective is to understand how permissions are distributed across the environment.
+
+---
+
+# Graph Traversal (Conceptual)
+
+```
+Node
+
+↓
+
+Connected Node
+
+↓
+
+Connected Node
+
+↓
+
+Connected Node
+
+↓
+
+Visualization
+```
+
+Graph traversal helps security teams understand how objects are interconnected without manually reviewing thousands of permissions.
+
+---
+
+# Tier-0 Visualization
+
+```
+Tier-0
+
+├── Domain Controllers
+
+├── Enterprise Admins
+
+├── Domain Admins
+
+├── PKI
+
+├── Administrative Workstations
+
+└── Identity Services
+```
+
+Graph visualization assists in identifying relationships involving critical assets.
+
+---
+
+# Administrative Relationship Review
+
+```
+User
+
+↓
+
+Administrative Group
+
+↓
+
+Server
+
+↓
+
+Critical Resource
+```
+
+Organizations should periodically review whether each relationship remains necessary.
+
+---
+
+# Privilege Review Process
+
+```
+Relationship
+
+↓
+
+Business Need?
+
+│
+
+├── Yes → Retain
+
+│
+
+└── No → Review for Removal
+```
+
+Least privilege should guide remediation decisions.
+
+---
+
+# Defensive Risk Assessment
+
+Graph analysis can support review of:
+
+- Excessive administrative access
+- Identity governance
+- Delegation models
+- Tier-0 exposure
+- Administrative complexity
+
+The objective is to reduce unnecessary privilege relationships.
+
+---
+
+# Governance Workflow
+
+```
+Graph Analysis
+
+↓
+
+Risk Review
+
+↓
+
+Recommendation
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Validation
+```
+
+Governance ensures privilege changes are controlled and documented.
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Wingtip Pharmaceuticals
+```
+
+Environment:
+
+- 160,000 Users
+- 58 Domain Controllers
+- Hybrid Identity
+- Multiple Administrative Teams
+
+Review Objectives:
+
+- Validate privileged relationships
+- Review delegated administration
+- Reduce excessive privilege exposure
+- Improve Tier-0 governance
+
+Results:
+
+- Simplified administrative structure
+- Better documentation
+- Reduced unnecessary permissions
+- Improved governance maturity
+
+---
+
+# Cybersecurity Perspective
+
+As enterprises grow, identity relationships become increasingly complex.
+
+Graph-based visualization enables defenders to:
+
+- Understand privilege relationships
+- Improve governance
+- Reduce administrative complexity
+- Prioritize security improvements
+
+Visibility is the first step toward reducing identity-related risk.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Create a graph model for a fictional Active Directory environment.
+
+### Step 1
+
+Identify node types:
+
+- Users
+- Groups
+- Computers
+- Domains
+- Organizational Units
+
+---
+
+### Step 2
+
+Draw relationships between each node.
+
+---
+
+### Step 3
+
+Highlight:
+
+- Administrative groups
+- Tier-0 assets
+- Delegated administration
+
+---
+
+### Step 4
+
+Review each administrative relationship and determine whether it supports a legitimate business requirement.
+
+---
+
+### Step 5
+
+Document three recommendations to simplify the privilege structure while maintaining operational needs.
+
+---
+
+# Interview Questions
+
+### Q1: What is a node in BloodHound?
+
+**Answer:** A node represents an Active Directory object such as a user, group, computer, domain, or Organizational Unit.
+
+---
+
+### Q2: What is an edge?
+
+**Answer:** An edge represents the relationship between two nodes, such as membership, delegation, or ownership.
+
+---
+
+### Q3: Why does BloodHound use a graph model?
+
+**Answer:** A graph model makes it easier to understand complex identity relationships and privilege structures that are difficult to analyze using traditional tables.
+
+---
+
+### Q4: Why are relationships important?
+
+**Answer:** Relationships show how permissions and administrative responsibilities are connected across an environment, supporting better governance and risk assessment.
+
+---
+
+### Q5: How does graph analysis help security teams?
+
+**Answer:** It provides visibility into privilege structures, administrative relationships, and identity governance, enabling organizations to identify opportunities to reduce unnecessary risk.
+
+---
+
+### Q6: Why should privileged relationships be reviewed regularly?
+
+**Answer:** Regular reviews help ensure privileges remain aligned with business needs and support the principle of least privilege.
+
+---
+
+# Best Practices
+
+- Maintain an up-to-date inventory of identity objects.
+- Review administrative relationships on a regular schedule.
+- Protect Tier-0 assets with enhanced governance.
+- Document privilege changes and approvals.
+- Validate remediation after governance updates.
+- Integrate graph analysis into periodic security assessments.
+- Keep identity documentation current.
+- Combine graph analysis with monitoring and auditing.
+
+---
+
+# Common Mistakes
+
+- Treating graph analysis as a one-time exercise.
+- Ignoring indirect privilege relationships.
+- Failing to document governance decisions.
+- Reviewing only individual accounts instead of relationship chains.
+- Allowing administrative complexity to grow unchecked.
+- Not validating changes after privilege reviews.
+
+---
+
+# Key Takeaways
+
+- BloodHound models Active Directory using nodes and edges to represent identity relationships.
+- Graph analysis provides valuable visibility into privilege structures and administrative relationships.
+- Organizations use graph-based analysis to support governance, least privilege, and security assessments.
+- Continuous review and validation of identity relationships improve long-term Active Directory security.
+
+---
+
+**Next:** Part 3
