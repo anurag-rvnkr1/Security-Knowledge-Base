@@ -1485,4 +1485,718 @@ Create a simple security review checklist for monthly Active Directory account a
 
 ---
 
-**Next:** Part 3
+# 18-AD-Security.md
+
+# Part 3 — Securing Domain Controllers, Group Policy Security, Administrative Protection, Delegation, Network Security and Monitoring
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Domain Controller Security
+- Physical Security
+- Operating System Hardening
+- Group Policy Security
+- Administrative Delegation
+- Tiered Administration
+- Secure DNS
+- Time Synchronization Security
+- Windows Firewall
+- Security Monitoring
+- Enterprise Hardening Strategies
+
+---
+
+# Introduction
+
+Domain Controllers (DCs) are the most critical systems in an Active Directory environment.
+
+A compromised Domain Controller can expose:
+
+- User accounts
+- Computer accounts
+- Password hashes
+- Kerberos authentication
+- Group Policy Objects
+- DNS
+- Trust relationships
+- Certificate information (where integrated)
+
+Because of this, Domain Controllers require significantly stronger protection than ordinary servers.
+
+---
+
+# Domain Controller Security Model
+
+```
+              Domain Controller
+
+                     │
+
+     ┌───────────────┼────────────────┐
+
+     ▼               ▼                ▼
+
+Authentication   Authorization    Directory Database
+
+     ▼               ▼                ▼
+
+Kerberos         LDAP            SYSVOL
+
+     ▼               ▼                ▼
+
+Enterprise Identity Infrastructure
+```
+
+---
+
+# Why Domain Controllers Must Be Protected
+
+Every authentication request typically involves a Domain Controller.
+
+```
+User
+
+↓
+
+Logon Request
+
+↓
+
+Domain Controller
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Access Granted
+```
+
+If attackers gain administrative control of a Domain Controller, they may be able to manipulate identity services across the domain.
+
+---
+
+# Physical Security
+
+Domain Controllers should be physically protected.
+
+Recommended controls:
+
+- Restricted server rooms
+- Badge-controlled access
+- CCTV monitoring
+- Environmental monitoring
+- Locked racks
+- Visitor logging
+- Hardware inventory
+
+Physical compromise can bypass many software security controls.
+
+---
+
+# Operating System Hardening
+
+Domain Controllers should have a minimal attack surface.
+
+Recommended practices:
+
+- Install only required roles
+- Remove unnecessary software
+- Disable unused services
+- Apply security updates promptly
+- Use supported Windows Server versions
+- Enable Windows Defender or approved endpoint protection
+
+Hardening reduces opportunities for exploitation.
+
+---
+
+# Domain Controller Hardening Workflow
+
+```
+Install Windows Server
+
+↓
+
+Apply Updates
+
+↓
+
+Promote to Domain Controller
+
+↓
+
+Apply Security Baseline
+
+↓
+
+Enable Auditing
+
+↓
+
+Continuous Monitoring
+```
+
+---
+
+# Security Baselines
+
+Security baselines provide a consistent starting configuration.
+
+Typical baseline areas include:
+
+- Password policies
+- Audit policies
+- Firewall rules
+- Remote management
+- Security options
+- User rights assignments
+- Event log settings
+
+Applying standardized baselines improves consistency across Domain Controllers.
+
+---
+
+# Administrative Access Restrictions
+
+Administrative access should be tightly controlled.
+
+```
+Administrator
+
+↓
+
+Privileged Account
+
+↓
+
+Privileged Access Workstation
+
+↓
+
+Domain Controller
+
+↓
+
+Administrative Session
+```
+
+Avoid administering Domain Controllers from unmanaged or non-administrative systems.
+
+---
+
+# Group Policy Security
+
+Group Policy is one of the most powerful administrative mechanisms in Active Directory.
+
+Because Group Policy can configure thousands of computers simultaneously, unauthorized modification presents significant risk.
+
+---
+
+# Protecting Group Policy Objects
+
+Recommendations:
+
+- Restrict GPO editing permissions.
+- Delegate administration carefully.
+- Audit GPO changes.
+- Document critical policies.
+- Review linked GPOs periodically.
+
+Only authorized administrators should modify security-related Group Policy Objects.
+
+---
+
+# Group Policy Security Workflow
+
+```
+Change Request
+
+↓
+
+Approval
+
+↓
+
+Modify GPO
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Audit
+```
+
+Production GPO changes should follow formal change management procedures.
+
+---
+
+# Delegation Security
+
+Delegation improves operational efficiency but must be implemented carefully.
+
+Example:
+
+```
+Domain Admin
+
+↓
+
+Delegate
+
+↓
+
+Help Desk
+
+↓
+
+Password Reset
+
+↓
+
+No Domain Admin Rights
+```
+
+Grant only the permissions necessary for assigned responsibilities.
+
+---
+
+# Secure Delegation Principles
+
+- Delegate to groups instead of individual users.
+- Document delegated permissions.
+- Review delegations regularly.
+- Remove obsolete delegations.
+- Follow least privilege.
+
+---
+
+# Administrative Tiering
+
+Separating administration by security tier reduces credential exposure.
+
+```
+Tier 0
+
+↓
+
+Domain Controllers
+
+Forest
+
+Authentication
+
+-------------------------
+
+Tier 1
+
+↓
+
+Application Servers
+
+File Servers
+
+Database Servers
+
+-------------------------
+
+Tier 2
+
+↓
+
+User Workstations
+
+Laptops
+
+Desktops
+```
+
+Credentials from higher tiers should not routinely be used on lower-tier systems.
+
+---
+
+# Protecting Administrative Credentials
+
+Administrative credentials should never be exposed unnecessarily.
+
+Recommendations:
+
+- Use separate admin accounts.
+- Avoid internet browsing with admin accounts.
+- Use dedicated administrative workstations.
+- Sign out after administrative tasks.
+- Rotate credentials according to policy.
+
+Credential hygiene is essential for protecting privileged identities.
+
+---
+
+# DNS Security
+
+Active Directory depends heavily on DNS.
+
+Threats include:
+
+- Unauthorized DNS changes
+- Incorrect DNS configuration
+- Zone manipulation
+- Service disruption
+
+Recommendations:
+
+- Use secure dynamic updates where appropriate.
+- Restrict DNS administration.
+- Monitor DNS changes.
+- Audit administrative actions.
+
+---
+
+# Time Synchronization Security
+
+Kerberos relies on accurate time.
+
+```
+Time Source
+
+↓
+
+Domain Controller
+
+↓
+
+Member Servers
+
+↓
+
+Client Computers
+```
+
+Significant time differences can prevent successful authentication.
+
+Protect the organization's time synchronization hierarchy and monitor for unexpected drift.
+
+---
+
+# Windows Firewall
+
+Windows Firewall should remain enabled on Domain Controllers unless a documented operational requirement exists.
+
+Benefits:
+
+- Network filtering
+- Reduced attack surface
+- Protection from unnecessary inbound connections
+
+Firewall rules should follow organizational standards.
+
+---
+
+# Network Segmentation
+
+Many enterprises isolate Domain Controllers from general-purpose systems.
+
+Example:
+
+```
+Users
+
+↓
+
+Corporate Network
+
+↓
+
+Administrative Network
+
+↓
+
+Domain Controllers
+```
+
+Segmentation limits unnecessary communication paths and reduces exposure.
+
+---
+
+# Security Monitoring
+
+Continuous monitoring helps detect suspicious activity.
+
+Monitor for:
+
+- Administrative logons
+- Group membership changes
+- GPO modifications
+- DNS changes
+- Authentication failures
+- Replication failures
+- Service failures
+
+Monitoring supports early detection of operational and security issues.
+
+---
+
+# Security Monitoring Workflow
+
+```
+Domain Controllers
+
+↓
+
+Security Events
+
+↓
+
+Log Collection
+
+↓
+
+SIEM
+
+↓
+
+Correlation
+
+↓
+
+Alert
+
+↓
+
+Security Operations Center
+```
+
+---
+
+# Administrative Reviews
+
+Regular reviews should include:
+
+- Privileged group memberships
+- Delegated permissions
+- Service accounts
+- Group Policy administrators
+- Domain Controller configuration
+- Security baselines
+
+Periodic reviews help maintain a secure environment.
+
+---
+
+# Enterprise Hardening Checklist
+
+```
+✓ Supported Windows Server Version
+
+✓ Latest Security Updates
+
+✓ Security Baseline Applied
+
+✓ Windows Firewall Enabled
+
+✓ Privileged Access Restricted
+
+✓ Logging Enabled
+
+✓ Auditing Enabled
+
+✓ DNS Protected
+
+✓ Time Synchronization Healthy
+
+✓ GPO Permissions Reviewed
+```
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Northwind Energy
+```
+
+Infrastructure:
+
+- 55 Domain Controllers
+- 120,000 Users
+- 4 Forests
+- Multiple Geographic Regions
+
+Security Controls:
+
+- Tiered Administration
+- Dedicated Privileged Access Workstations
+- Restricted GPO Editors
+- Security Baselines
+- Centralized SIEM
+- Continuous Health Monitoring
+- Quarterly Administrative Reviews
+
+These layered controls reduce operational risk while improving visibility into administrative activity.
+
+---
+
+# Cybersecurity Perspective
+
+Domain Controllers should be treated as **Tier 0 assets** with the highest level of protection.
+
+Defensive recommendations:
+
+- Restrict interactive logons to authorized administrators.
+- Limit software installed on Domain Controllers.
+- Apply security updates in accordance with change management.
+- Monitor privileged authentication and configuration changes.
+- Protect DNS and time synchronization infrastructure.
+- Audit Group Policy modifications.
+- Review delegated permissions regularly.
+- Maintain tested backup and recovery procedures.
+
+Strong operational discipline is as important as technical security controls.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Review Domain Controller hardening and administrative security.
+
+### Step 1
+
+Inspect a Domain Controller and document:
+
+- Installed roles
+- Installed features
+- Running services
+
+Identify unnecessary components for further review.
+
+---
+
+### Step 2
+
+Review the Windows Firewall configuration.
+
+Confirm that required rules are enabled and document any exceptions.
+
+---
+
+### Step 3
+
+Review the permissions on a critical Group Policy Object.
+
+Identify:
+
+- Editors
+- Owners
+- Delegated administrators
+
+---
+
+### Step 4
+
+Review privileged group memberships.
+
+Verify that all members have a documented business justification.
+
+---
+
+### Step 5
+
+Create a Domain Controller security checklist for quarterly reviews.
+
+---
+
+# Interview Questions
+
+### Q1: Why are Domain Controllers considered Tier 0 assets?
+
+**Answer:** They provide authentication, authorization, and directory services for the domain. Compromise of a Domain Controller can significantly impact the security of the entire Active Directory environment.
+
+---
+
+### Q2: Why should Group Policy modifications be tightly controlled?
+
+**Answer:** Group Policy can configure thousands of systems simultaneously, so unauthorized or incorrect changes may have widespread operational and security impacts.
+
+---
+
+### Q3: Why is DNS security important in Active Directory?
+
+**Answer:** Active Directory depends on DNS for locating domain services. Unauthorized or incorrect DNS changes can disrupt authentication and other directory operations.
+
+---
+
+### Q4: Why should administrative accounts be separated from normal user accounts?
+
+**Answer:** Using separate accounts reduces the exposure of privileged credentials during routine activities and supports the Principle of Least Privilege.
+
+---
+
+### Q5: Why is accurate time synchronization critical?
+
+**Answer:** Kerberos authentication relies on synchronized time. Significant clock differences can cause authentication failures.
+
+---
+
+### Q6: Why should delegated permissions be reviewed regularly?
+
+**Answer:** Regular reviews help ensure permissions remain appropriate, remove obsolete access, and reduce the risk of privilege accumulation.
+
+---
+
+# Best Practices
+
+- Treat Domain Controllers as Tier 0 systems.
+- Apply standardized security baselines.
+- Restrict administrative access to authorized personnel.
+- Protect Group Policy administration.
+- Keep Windows Firewall enabled unless a documented exception exists.
+- Monitor DNS and time synchronization health.
+- Conduct periodic administrative and configuration reviews.
+- Maintain comprehensive logging and centralized monitoring.
+
+---
+
+# Common Mistakes
+
+- Installing unnecessary software on Domain Controllers.
+- Allowing broad Group Policy editing permissions.
+- Using privileged accounts for routine user activities.
+- Ignoring DNS or time synchronization issues.
+- Failing to review delegated permissions.
+- Delaying security updates without proper risk assessment.
+- Neglecting documentation of administrative changes.
+
+---
+
+# Key Takeaways
+
+- Domain Controllers are the most sensitive systems in an Active Directory environment and require the strongest protections.
+- Group Policy, DNS, and privileged administration are critical security components.
+- Administrative tiering, security baselines, and least privilege significantly reduce organizational risk.
+- Continuous monitoring, auditing, and periodic reviews improve security posture.
+- Operational discipline, documentation, and governance are essential for maintaining a secure Active Directory infrastructure.
+
+---
+
+**Next:** Part 4
