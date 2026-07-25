@@ -2300,5 +2300,3 @@ In this chapter, you learned:
 You now have a comprehensive understanding of how to **recognize, detect, respond to, and defend against** common Active Directory attack techniques while following enterprise security best practices.
 
 ---
-
-**Next Chapter:** 20-Advanced-AD-Security.md
