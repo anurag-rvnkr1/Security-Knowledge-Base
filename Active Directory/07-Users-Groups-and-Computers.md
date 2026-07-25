@@ -625,4 +625,832 @@ Explore Active Directory objects.
 
 ---
 
-**Next:** Part 2
+# 07-Users-Groups-and-Computers.md
+
+# Part 2 — User Accounts, Computer Accounts, Group Types, Group Scopes, AGDLP, and Enterprise Identity Management
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand different types of user accounts.
+- Learn the lifecycle of user accounts.
+- Understand computer accounts.
+- Differentiate security groups and distribution groups.
+- Learn group scopes.
+- Understand AGDLP and AGUDLP.
+- Learn enterprise identity management best practices.
+
+---
+
+# User Accounts in Active Directory
+
+A **User Account** represents a digital identity that can authenticate to Active Directory and access enterprise resources.
+
+Examples include:
+
+- Employee accounts
+- Administrator accounts
+- Service accounts
+- Temporary contractor accounts
+- Test accounts
+
+Every user account has:
+
+- Username
+- Password
+- SID
+- GUID
+- Group Memberships
+- Attributes
+- Permissions
+
+---
+
+# Types of User Accounts
+
+| Account Type | Purpose |
+|--------------|----------|
+| Standard User | Daily work |
+| Administrator | Administrative tasks |
+| Service Account | Runs applications/services |
+| Guest | Limited temporary access |
+| Contractor | External workforce |
+| Test Account | Lab/testing purposes |
+
+---
+
+# Standard User Accounts
+
+Most employees receive a standard user account.
+
+Example:
+
+```text
+Alice
+
+↓
+
+Sign in
+
+↓
+
+Email
+
+↓
+
+Office Applications
+
+↓
+
+Shared Drives
+
+↓
+
+Business Applications
+```
+
+A standard account should **not** have administrative privileges.
+
+---
+
+# Administrative Accounts
+
+Administrators should use **separate privileged accounts**.
+
+Example:
+
+```text
+John
+
+↓
+
+john.smith
+
+(Standard Account)
+
+Daily Work
+```
+
+```text
+john.smith-admin
+
+↓
+
+Administrative Tasks
+```
+
+Benefits:
+
+- Reduced attack surface
+- Better auditing
+- Supports least privilege
+- Limits credential exposure
+
+---
+
+# Service Accounts
+
+Applications often require accounts to run services.
+
+Examples:
+
+- SQL Server
+- IIS
+- Backup Software
+- Monitoring Agents
+
+Example:
+
+```text
+SQL Service
+
+↓
+
+Runs Database Service
+
+↓
+
+Accesses Required Resources
+```
+
+Service accounts should never be used for interactive logon unless absolutely necessary.
+
+---
+
+# User Account Lifecycle
+
+Enterprise identity management follows a defined lifecycle.
+
+```text
+Recruitment
+
+↓
+
+Account Creation
+
+↓
+
+Active Employment
+
+↓
+
+Department Transfer
+
+↓
+
+Role Change
+
+↓
+
+Account Disable
+
+↓
+
+Account Deletion
+```
+
+Proper lifecycle management reduces security risks.
+
+---
+
+# New User Provisioning
+
+Typical workflow:
+
+```text
+HR
+
+↓
+
+Employee Record
+
+↓
+
+Identity Created
+
+↓
+
+Group Membership Assigned
+
+↓
+
+Mailbox Created
+
+↓
+
+Applications Assigned
+
+↓
+
+User Starts Work
+```
+
+Automation often handles much of this process.
+
+---
+
+# User Attributes
+
+Common user attributes include:
+
+| Attribute | Example |
+|-----------|----------|
+| First Name | John |
+| Last Name | Smith |
+| Display Name | John Smith |
+| Email | john.smith@company.com |
+| Department | Finance |
+| Job Title | Analyst |
+| Manager | Sarah Brown |
+| Office | Bengaluru |
+| Employee ID | EMP10542 |
+| Phone | +91-XXXXXXXXXX |
+
+These attributes support searches, address books, automation, and reporting.
+
+---
+
+# Account States
+
+User accounts may exist in different states.
+
+```text
+New
+
+↓
+
+Enabled
+
+↓
+
+Locked
+
+↓
+
+Disabled
+
+↓
+
+Deleted
+```
+
+Understanding these states helps administrators troubleshoot authentication issues.
+
+---
+
+# Disabled Accounts
+
+Instead of immediately deleting accounts, organizations often disable them first.
+
+Benefits:
+
+- Preserves audit history
+- Prevents accidental access
+- Allows recovery if required
+- Supports compliance requirements
+
+---
+
+# Locked Accounts
+
+Accounts may become locked due to:
+
+- Multiple failed logon attempts
+- Password attacks
+- Forgotten passwords
+- Automated processes using old credentials
+
+Administrators should determine the cause before unlocking an account.
+
+---
+
+# Computer Accounts
+
+Every domain-joined computer receives a computer account.
+
+Examples:
+
+```text
+FIN-PC-101
+
+HR-LAPTOP-205
+
+SQL-SERVER-01
+
+WEB-SRV-10
+```
+
+Computer accounts are security principals and possess their own SID.
+
+---
+
+# Computer Authentication
+
+Unlike user accounts, computer accounts authenticate automatically.
+
+Example:
+
+```text
+Computer Starts
+
+↓
+
+Contacts Domain Controller
+
+↓
+
+Kerberos Authentication
+
+↓
+
+Secure Channel Established
+
+↓
+
+Policies Applied
+```
+
+This secure channel is essential for Active Directory communication.
+
+---
+
+# Computer Account Passwords
+
+Computer accounts maintain passwords just like users.
+
+Characteristics:
+
+- Generated automatically
+- Rotated automatically (by default in Windows environments)
+- Not managed manually under normal circumstances
+- Used to maintain the secure channel with the domain
+
+---
+
+# Computer Lifecycle
+
+```text
+Purchase
+
+↓
+
+Imaging
+
+↓
+
+Domain Join
+
+↓
+
+Production
+
+↓
+
+Maintenance
+
+↓
+
+Retirement
+
+↓
+
+Deletion
+```
+
+Lifecycle management helps maintain a clean directory.
+
+---
+
+# Group Objects
+
+Groups simplify administration.
+
+Instead of assigning permissions directly to users:
+
+```text
+User
+
+↓
+
+Group
+
+↓
+
+Permission
+
+↓
+
+Resource
+```
+
+This approach scales efficiently in enterprise environments.
+
+---
+
+# Why Groups Exist
+
+Without groups:
+
+```text
+100 Users
+
+↓
+
+100 Individual Permissions
+```
+
+With groups:
+
+```text
+100 Users
+
+↓
+
+Finance Group
+
+↓
+
+One Permission Assignment
+```
+
+Administration becomes significantly easier.
+
+---
+
+# Types of Groups
+
+There are two primary group types.
+
+## Security Groups
+
+Purpose:
+
+- Assign permissions
+- Control access
+- Security filtering
+- Group Policy filtering
+
+Example:
+
+```text
+Finance_Read
+
+↓
+
+Shared Folder Access
+```
+
+---
+
+## Distribution Groups
+
+Purpose:
+
+- Email distribution
+- Messaging
+- Collaboration
+
+Distribution groups **cannot** be used to assign permissions.
+
+Example:
+
+```text
+All Employees
+
+↓
+
+Email Announcement
+```
+
+---
+
+# Security vs Distribution Groups
+
+| Feature | Security Group | Distribution Group |
+|----------|----------------|--------------------|
+| Access Control | Yes | No |
+| Email Distribution | Yes (if mail-enabled) | Yes |
+| File Permissions | Yes | No |
+| NTFS Permissions | Yes | No |
+| Group Policy Filtering | Yes | No |
+
+---
+
+# Group Scopes
+
+Active Directory defines three primary group scopes.
+
+- Domain Local
+- Global
+- Universal
+
+Choosing the correct scope is important for scalable access management.
+
+---
+
+# Domain Local Groups
+
+Purpose:
+
+Assign permissions to resources **within a single domain**.
+
+Example:
+
+```text
+Finance Share
+
+↓
+
+Finance-Share-Access
+
+↓
+
+Users
+```
+
+Think of Domain Local groups as being **close to the resource**.
+
+---
+
+# Global Groups
+
+Purpose:
+
+Collect users with similar job roles or departmental functions.
+
+Example:
+
+```text
+Finance Users
+
+↓
+
+Finance Global Group
+```
+
+Global groups are typically used to organize identities.
+
+---
+
+# Universal Groups
+
+Purpose:
+
+Provide membership across multiple domains within the same forest.
+
+Example:
+
+```text
+India Finance
+
+UK Finance
+
+USA Finance
+
+↓
+
+Universal Finance Group
+```
+
+Useful in multi-domain forests.
+
+---
+
+# Group Scope Comparison
+
+| Scope | Typical Members | Typical Use |
+|--------|-----------------|-------------|
+| Global | Users from same domain | Organize users |
+| Domain Local | Users and groups | Assign permissions |
+| Universal | Users/groups from multiple domains | Forest-wide access |
+
+---
+
+# AGDLP
+
+AGDLP is Microsoft's recommended access management model for a **single-domain** environment.
+
+It stands for:
+
+```text
+Accounts
+
+↓
+
+Global Groups
+
+↓
+
+Domain Local Groups
+
+↓
+
+Permissions
+```
+
+---
+
+# AGDLP Example
+
+```text
+Alice
+
+Bob
+
+Charlie
+
+↓
+
+Finance Global Group
+
+↓
+
+Finance Share Domain Local Group
+
+↓
+
+Read/Write Permission
+
+↓
+
+Finance Folder
+```
+
+Benefits:
+
+- Easy administration
+- Simplified auditing
+- Scalable permission management
+
+---
+
+# AGUDLP
+
+For **multi-domain forests**, Microsoft recommends AGUDLP.
+
+```text
+Accounts
+
+↓
+
+Global Groups
+
+↓
+
+Universal Groups
+
+↓
+
+Domain Local Groups
+
+↓
+
+Permissions
+```
+
+This model supports resource sharing across domains while reducing administrative complexity.
+
+---
+
+# Enterprise Example
+
+Company:
+
+- India Domain
+- UK Domain
+- USA Domain
+
+```text
+India Finance Users
+
+↓
+
+Global Group
+
+↓
+
+Universal Finance
+
+↓
+
+Finance Resource Group
+
+↓
+
+Finance File Server
+```
+
+Each regional team manages its own users while permissions remain centralized.
+
+---
+
+# Identity Management Best Practices
+
+✔ Use standard user accounts for daily work.
+
+✔ Separate privileged accounts.
+
+✔ Disable inactive accounts promptly.
+
+✔ Review group memberships regularly.
+
+✔ Assign permissions to groups, not users.
+
+✔ Follow AGDLP or AGUDLP.
+
+✔ Remove stale computer accounts.
+
+✔ Document naming standards.
+
+---
+
+# Cybersecurity Perspective
+
+Poor identity management is a frequent cause of security incidents.
+
+Examples include:
+
+- Dormant accounts
+- Excessive privileges
+- Shared accounts
+- Orphaned service accounts
+- Misconfigured group memberships
+- Stale computer objects
+
+Security teams should periodically review:
+
+- Disabled accounts
+- Inactive users
+- Privileged groups
+- Group nesting
+- Service account usage
+- Computer account health
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Using administrator accounts for daily work.
+- Assigning permissions directly to users.
+- Sharing user credentials.
+- Leaving disabled accounts indefinitely.
+- Creating unnecessary Universal Groups.
+- Forgetting to remove obsolete computer accounts.
+- Ignoring periodic access reviews.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Practice managing users, computers, and groups.
+
+### Tasks
+
+1. Create a test user named `John Test`.
+2. Create a Global Security Group named `Finance-Users`.
+3. Add `John Test` to the group.
+4. Create a Domain Local Group named `Finance-Share-Access`.
+5. Add the Global Group to the Domain Local Group.
+6. Create a test computer account (or identify an existing lab computer account).
+7. Review:
+   - SID
+   - Group memberships
+   - Distinguished Name (DN)
+8. Disable and then re-enable the test user account.
+
+---
+
+# Interview Questions
+
+1. What is the difference between a standard user account and an administrator account?
+2. Why should administrators use separate privileged accounts?
+3. What is a service account?
+4. Why do computers have Active Directory accounts?
+5. What is the difference between a Security Group and a Distribution Group?
+6. What are the three Active Directory group scopes?
+7. Explain the AGDLP model.
+8. When is AGUDLP preferred over AGDLP?
+9. Why should permissions be assigned to groups rather than individual users?
+10. What are common risks associated with inactive or stale accounts?
+
+---
+
+# Key Takeaways
+
+- User, computer, and group objects form the foundation of Active Directory identity management.
+- Standard and privileged accounts should be separated to improve security.
+- Computer accounts authenticate automatically and maintain secure channels with the domain.
+- Security Groups are used for authorization, while Distribution Groups are used primarily for messaging.
+- AGDLP and AGUDLP are Microsoft-recommended models for scalable permission management.
+- Regular identity reviews help reduce security risks and improve compliance.
+
+---
+
+**Next:** Part 3
