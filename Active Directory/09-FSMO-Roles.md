@@ -647,4 +647,786 @@ netdom query fsmo
 
 ---
 
-**Next:** Part 2
+# 09-FSMO-Roles.md
+
+# Part 2 — Deep Dive into the Five FSMO Roles, Responsibilities, Operations, Failure Impact, and Enterprise Examples
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand each FSMO role in detail.
+- Learn which operations depend on each role.
+- Understand the impact of FSMO role failures.
+- Learn enterprise deployment considerations.
+- Identify which roles are critical during daily operations.
+
+---
+
+# The Five FSMO Roles
+
+Active Directory contains five FSMO roles.
+
+```text
+Forest-Wide Roles
+
+├── Schema Master
+└── Domain Naming Master
+
+----------------------------
+
+Domain-Wide Roles
+
+├── RID Master
+├── PDC Emulator
+└── Infrastructure Master
+```
+
+Each role has a unique responsibility.
+
+---
+
+# 1. Schema Master
+
+## Purpose
+
+The **Schema Master** controls all modifications to the Active Directory Schema.
+
+There is **only one Schema Master per forest**.
+
+---
+
+# What is the Active Directory Schema?
+
+The schema defines:
+
+- Object classes
+- Object attributes
+- Data types
+- Object relationships
+
+Example:
+
+```text
+Schema
+
+│
+
+├── User
+
+├── Computer
+
+├── Group
+
+├── Printer
+
+└── Organizational Unit
+```
+
+Every Domain Controller uses the same schema.
+
+---
+
+# Why Only One Schema Master?
+
+Imagine:
+
+```text
+DC-01
+
+↓
+
+Adds Attribute
+
+EmployeeCode
+```
+
+Simultaneously:
+
+```text
+DC-02
+
+↓
+
+Deletes
+
+EmployeeCode
+```
+
+Conflicting schema modifications could make the directory inconsistent.
+
+Therefore:
+
+```text
+Schema Change
+
+↓
+
+Schema Master
+
+↓
+
+Replication
+
+↓
+
+All Domain Controllers
+```
+
+---
+
+# Common Schema Changes
+
+Examples include:
+
+- Installing Microsoft Exchange Server
+- Installing Microsoft LAPS (legacy implementation)
+- Extending the schema for enterprise applications
+- Installing identity management software
+- Adding custom object classes
+- Adding custom attributes
+
+Schema modifications are relatively rare in production environments.
+
+---
+
+# Enterprise Example
+
+Company installs:
+
+```text
+Enterprise HR System
+
+↓
+
+Requires New Attribute
+
+↓
+
+Schema Master
+
+↓
+
+Schema Updated
+
+↓
+
+Replicated Forest-Wide
+```
+
+All Domain Controllers then recognize the new schema objects.
+
+---
+
+# What Happens if the Schema Master Fails?
+
+Normal operations continue.
+
+Users can:
+
+✔ Log in
+
+✔ Reset passwords
+
+✔ Access files
+
+✔ Join existing workflows
+
+However:
+
+❌ New schema modifications cannot be performed until the role becomes available or is transferred/seized.
+
+---
+
+# 2. Domain Naming Master
+
+## Purpose
+
+The **Domain Naming Master** controls changes to the forest namespace.
+
+There is **only one Domain Naming Master per forest**.
+
+---
+
+# Responsibilities
+
+The Domain Naming Master authorizes:
+
+- New domains
+- Removing domains
+- Adding application partitions
+- Removing application partitions
+- Certain forest-level naming operations
+
+---
+
+# Example
+
+Current forest:
+
+```text
+company.com
+
+│
+
+├── india.company.com
+
+└── europe.company.com
+```
+
+Administrator wants:
+
+```text
+asia.company.com
+```
+
+Process:
+
+```text
+Administrator
+
+↓
+
+Domain Naming Master
+
+↓
+
+Domain Created
+
+↓
+
+Replication
+```
+
+---
+
+# Failure Impact
+
+If the Domain Naming Master is unavailable:
+
+Existing domains continue functioning normally.
+
+However:
+
+❌ New domains cannot be created.
+
+❌ Existing domains cannot be removed.
+
+---
+
+# Forest-Wide FSMO Summary
+
+| FSMO Role | Responsibility |
+|-----------|----------------|
+| Schema Master | Controls schema modifications |
+| Domain Naming Master | Controls forest namespace |
+
+These two roles affect the **entire forest**.
+
+---
+
+# 3. RID Master
+
+## Purpose
+
+The **RID Master** allocates pools of Relative Identifiers (RIDs) to Domain Controllers.
+
+There is **one RID Master per domain**.
+
+---
+
+# Understanding a SID
+
+Every security principal receives a **Security Identifier (SID)**.
+
+Example:
+
+```text
+S-1-5-21-123456789-987654321-1122334455-1050
+```
+
+The final portion:
+
+```text
+1050
+```
+
+is the **Relative Identifier (RID)**.
+
+---
+
+# SID Structure
+
+```text
+Domain SID
+
++
+
+Relative Identifier
+
+↓
+
+Complete SID
+```
+
+Every object must have a unique SID.
+
+---
+
+# Why the RID Master Exists
+
+Suppose three Domain Controllers create users simultaneously.
+
+Without coordination:
+
+```text
+DC-01
+
+↓
+
+RID 1500
+```
+
+```text
+DC-02
+
+↓
+
+RID 1500
+```
+
+Duplicate SIDs would occur.
+
+Instead:
+
+```text
+RID Master
+
+↓
+
+RID Pool
+
+↓
+
+DC-01
+
+1000–1499
+```
+
+```text
+RID Master
+
+↓
+
+RID Pool
+
+↓
+
+DC-02
+
+1500–1999
+```
+
+Each Domain Controller receives a unique RID pool.
+
+---
+
+# RID Pool Allocation
+
+Example:
+
+```text
+RID Master
+
+↓
+
+Allocates
+
+↓
+
+DC-01
+
+500 RIDs
+```
+
+```text
+RID Master
+
+↓
+
+Allocates
+
+↓
+
+DC-02
+
+500 RIDs
+```
+
+Each Domain Controller creates new objects locally until its assigned pool is nearly exhausted.
+
+---
+
+# Failure Impact
+
+If the RID Master becomes unavailable:
+
+Initially:
+
+✔ Existing RID pools continue working.
+
+Eventually:
+
+❌ Domain Controllers cannot obtain new RID pools.
+
+Consequences:
+
+- Cannot create new users
+- Cannot create new computers
+- Cannot create new groups
+
+Existing authentication continues normally.
+
+---
+
+# 4. PDC Emulator
+
+## Purpose
+
+The **Primary Domain Controller (PDC) Emulator** is the busiest and most critical FSMO role in most environments.
+
+There is **one PDC Emulator per domain**.
+
+---
+
+# Responsibilities
+
+The PDC Emulator handles:
+
+- Password change prioritization
+- Account lockout processing
+- Time synchronization
+- Group Policy updates
+- Legacy client compatibility
+- Password validation assistance
+
+---
+
+# Password Changes
+
+Scenario:
+
+```text
+User
+
+↓
+
+Changes Password
+
+↓
+
+DC-02
+```
+
+Immediately afterward:
+
+```text
+User
+
+↓
+
+Logs In
+
+↓
+
+DC-03
+```
+
+If DC-03 has not yet received replication, it can consult the PDC Emulator before rejecting the logon attempt.
+
+---
+
+# Password Workflow
+
+```text
+Password Changed
+
+↓
+
+Replicated
+
+↓
+
+PDC Emulator
+
+↓
+
+Other Domain Controllers
+
+↓
+
+Successful Authentication
+```
+
+This helps reduce authentication failures after recent password changes.
+
+---
+
+# Time Synchronization
+
+Kerberos requires clocks to remain closely synchronized.
+
+Time hierarchy:
+
+```text
+External Time Source
+
+↓
+
+Forest Root PDC Emulator
+
+↓
+
+Child Domain PDC
+
+↓
+
+Other Domain Controllers
+
+↓
+
+Member Servers
+
+↓
+
+Client Computers
+```
+
+The forest root PDC Emulator is typically configured to synchronize with a reliable external time source.
+
+---
+
+# Why Time Matters
+
+If system clocks differ significantly:
+
+```text
+Client
+
+↓
+
+Kerberos Request
+
+↓
+
+Time Difference Too Large
+
+↓
+
+Authentication Fails
+```
+
+Accurate time synchronization is essential for Kerberos authentication.
+
+---
+
+# Group Policy Coordination
+
+The PDC Emulator also plays an important role in Group Policy editing.
+
+When administrators edit GPOs, management tools often prefer contacting the PDC Emulator to reduce version conflicts.
+
+---
+
+# Legacy Compatibility
+
+Older Windows systems and certain legacy applications historically relied on PDC behavior.
+
+The PDC Emulator preserves compatibility with these environments while supporting modern Active Directory operations.
+
+---
+
+# Failure Impact
+
+If the PDC Emulator is unavailable:
+
+Possible effects include:
+
+- Delayed password validation
+- Account lockout processing delays
+- Time synchronization issues
+- Group Policy editing inconveniences
+- Legacy client issues
+
+Most users can still authenticate using replicated information.
+
+---
+
+# 5. Infrastructure Master
+
+## Purpose
+
+The **Infrastructure Master** updates references to objects located in other domains.
+
+There is **one Infrastructure Master per domain**.
+
+---
+
+# Cross-Domain References
+
+Example:
+
+```text
+Forest
+
+│
+
+├── Sales Domain
+
+└── HR Domain
+```
+
+Sales users are added to an HR group.
+
+The Infrastructure Master ensures cross-domain object references remain accurate when changes occur.
+
+---
+
+# Example
+
+User:
+
+```text
+Alice
+```
+
+Moves from:
+
+```text
+Sales Domain
+```
+
+to:
+
+```text
+Finance Domain
+```
+
+The Infrastructure Master updates references so group memberships and object references remain consistent.
+
+---
+
+# Failure Impact
+
+If the Infrastructure Master is unavailable:
+
+Normal user authentication continues.
+
+However:
+
+- Cross-domain object references may become outdated.
+- Group membership information spanning domains may not update correctly until the role is restored or transferred.
+
+In a single-domain forest, this role has minimal operational impact because there are no cross-domain references to maintain.
+
+---
+
+# FSMO Role Comparison
+
+| FSMO Role | Scope | Primary Responsibility |
+|-----------|-------|------------------------|
+| Schema Master | Forest | Schema modifications |
+| Domain Naming Master | Forest | Domain and partition management |
+| RID Master | Domain | RID pool allocation |
+| PDC Emulator | Domain | Passwords, time, lockouts, GPO coordination |
+| Infrastructure Master | Domain | Cross-domain reference updates |
+
+---
+
+# Cybersecurity Perspective
+
+Because FSMO role holders perform critical directory operations:
+
+Security teams should:
+
+- Monitor privileged logons.
+- Audit schema changes.
+- Protect time synchronization.
+- Monitor RID allocation issues.
+- Restrict administrative access.
+- Maintain regular backups.
+- Monitor replication health.
+
+Compromising a PDC Emulator or Schema Master can have significant operational and security consequences.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Performing schema updates without testing.
+- Ignoring time synchronization issues.
+- Forgetting to monitor RID pool availability.
+- Confusing the PDC Emulator with the old Windows NT Primary Domain Controller.
+- Assuming every FSMO role affects daily user authentication equally.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore FSMO role responsibilities.
+
+### Tasks
+
+1. Run:
+
+```powershell
+netdom query fsmo
+```
+
+2. Identify the Domain Controller hosting each role.
+3. Determine which roles are:
+   - Forest-wide
+   - Domain-wide
+4. Document the primary responsibility of each FSMO role.
+5. Identify which role would be involved in:
+   - Extending the schema
+   - Creating a new child domain
+   - Allocating new RIDs
+   - Synchronizing domain time
+   - Updating cross-domain references
+
+---
+
+# Interview Questions
+
+1. What is the purpose of the Schema Master?
+2. Why is there only one Schema Master in a forest?
+3. What operations require the Domain Naming Master?
+4. How does the RID Master prevent duplicate SIDs?
+5. Why is the PDC Emulator considered the busiest FSMO role?
+6. Why is accurate time synchronization important for Kerberos?
+7. What does the Infrastructure Master do?
+8. Which FSMO roles are forest-wide?
+9. Which FSMO role would be involved when installing an application that extends the Active Directory schema?
+10. What happens if the RID Master remains unavailable for an extended period?
+
+---
+
+# Key Takeaways
+
+- The Schema Master controls all Active Directory schema modifications across the forest.
+- The Domain Naming Master manages the creation and removal of domains and application partitions.
+- The RID Master allocates unique RID pools to Domain Controllers, ensuring unique SIDs.
+- The PDC Emulator supports password changes, account lockouts, time synchronization, and Group Policy coordination.
+- The Infrastructure Master maintains accurate cross-domain object references in multi-domain forests.
+- Each FSMO role exists to ensure consistency for operations that cannot safely use multi-master replication.
+
+---
+
+**Next:** Part 3
