@@ -594,4 +594,693 @@ Identify Global Catalog servers in a lab environment.
 
 ---
 
-**Next:** Part 2
+# 10-Global-Catalog.md
+
+# Part 2 — Global Catalog in Authentication, Universal Groups, UPN Resolution, Replication, and Enterprise Operations
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand the role of the Global Catalog during user logon.
+- Learn how Universal Groups depend on the Global Catalog.
+- Understand User Principal Name (UPN) resolution.
+- Learn Global Catalog replication.
+- Understand Global Catalog ports and communication.
+- Learn enterprise deployment considerations.
+
+---
+
+# Global Catalog and User Authentication
+
+One of the most important responsibilities of the Global Catalog is assisting during **user authentication**, especially in multi-domain forests.
+
+A normal authentication process involves:
+
+```text
+User
+
+↓
+
+Domain Controller
+
+↓
+
+Kerberos Authentication
+
+↓
+
+Access Granted
+```
+
+However, additional steps are required when Universal Groups or forest-wide identities are involved.
+
+---
+
+# Authentication in a Multi-Domain Forest
+
+Consider the following forest:
+
+```text
+Forest
+
+│
+
+├── india.company.com
+
+├── europe.company.com
+
+└── usa.company.com
+```
+
+A user belongs to:
+
+```text
+india.company.com
+```
+
+But logs on from:
+
+```text
+europe.company.com
+```
+
+The authenticating Domain Controller may need Global Catalog information to build the user's complete authorization token.
+
+---
+
+# Authentication Workflow
+
+```text
+User
+
+↓
+
+Nearest Domain Controller
+
+↓
+
+Password Verification
+
+↓
+
+Global Catalog
+
+↓
+
+Universal Group Membership
+
+↓
+
+Kerberos Ticket
+
+↓
+
+User Logged In
+```
+
+---
+
+# Why is the Global Catalog Needed?
+
+The authenticating Domain Controller knows its own domain very well.
+
+However, it may not know:
+
+- Universal Group memberships
+- Objects in other domains
+- Forest-wide identity information
+
+The Global Catalog supplies this information quickly.
+
+---
+
+# Universal Groups
+
+Active Directory supports several group scopes:
+
+- Domain Local
+- Global
+- Universal
+
+The Global Catalog is especially important for **Universal Groups**.
+
+---
+
+# Universal Group Overview
+
+Example:
+
+```text
+Forest
+
+│
+
+├── India Domain
+
+├── Europe Domain
+
+└── USA Domain
+
+↓
+
+Universal Group
+
+↓
+
+CyberSecurity-Team
+```
+
+Members may come from multiple domains.
+
+---
+
+# Example
+
+Employees:
+
+```text
+India
+
+↓
+
+Rahul
+```
+
+```text
+Europe
+
+↓
+
+Emma
+```
+
+```text
+USA
+
+↓
+
+David
+```
+
+All belong to:
+
+```text
+Universal Group
+
+↓
+
+Security-Operations
+```
+
+The Global Catalog maintains the information required to resolve this membership efficiently.
+
+---
+
+# Why Universal Groups Need the GC
+
+Without a Global Catalog:
+
+```text
+Authentication
+
+↓
+
+Query Domain A
+
+↓
+
+Query Domain B
+
+↓
+
+Query Domain C
+
+↓
+
+Build Access Token
+```
+
+With a Global Catalog:
+
+```text
+Authentication
+
+↓
+
+Global Catalog
+
+↓
+
+Universal Group Membership
+
+↓
+
+Access Token Ready
+```
+
+---
+
+# Universal Group Membership Caching
+
+Some branch offices may not have a local Global Catalog.
+
+To improve logon performance, Windows supports **Universal Group Membership Caching (UGMC).**
+
+Workflow:
+
+```text
+First Logon
+
+↓
+
+Contact Global Catalog
+
+↓
+
+Cache Membership
+
+↓
+
+Future Logons
+
+↓
+
+Use Cached Information
+```
+
+This reduces WAN traffic while allowing users to authenticate even if a Global Catalog is temporarily unreachable.
+
+---
+
+# User Principal Name (UPN)
+
+Users often log on using a **User Principal Name (UPN).**
+
+Example:
+
+```text
+john.smith@company.com
+```
+
+Instead of:
+
+```text
+COMPANY\johnsmith
+```
+
+---
+
+# UPN Resolution
+
+When a user enters:
+
+```text
+alice@company.com
+```
+
+The Domain Controller may consult the Global Catalog to determine where the account exists within the forest.
+
+Workflow:
+
+```text
+User
+
+↓
+
+Enter UPN
+
+↓
+
+Global Catalog
+
+↓
+
+Locate Account
+
+↓
+
+Authenticate
+```
+
+---
+
+# Forest-Wide Searches
+
+Suppose an administrator searches for:
+
+```text
+Sophia Williams
+```
+
+The search request:
+
+```text
+Administrator
+
+↓
+
+Global Catalog
+
+↓
+
+Forest Search
+
+↓
+
+Matching Objects
+```
+
+The administrator does not need to know the user's domain beforehand.
+
+---
+
+# Exchange Server Example
+
+Microsoft Exchange heavily relies on the Global Catalog.
+
+Example:
+
+```text
+User
+
+↓
+
+Search Address Book
+
+↓
+
+Global Catalog
+
+↓
+
+Return User Details
+```
+
+This allows fast organization-wide address lookups.
+
+---
+
+# Identity Management Example
+
+Identity management systems often query the Global Catalog to:
+
+- Locate users
+- Verify identities
+- Search groups
+- Retrieve email addresses
+- Discover organizational information
+
+Because the GC spans the forest, one query can replace many domain-specific queries.
+
+---
+
+# Global Catalog Replication
+
+The Global Catalog receives updates through Active Directory replication.
+
+Example:
+
+```text
+User Updated
+
+↓
+
+Domain Controller
+
+↓
+
+Replication
+
+↓
+
+Global Catalog
+
+↓
+
+PAS Updated
+```
+
+Only attributes included in the Partial Attribute Set are replicated to Global Catalog servers in other domains.
+
+---
+
+# Replication Scope
+
+For its own domain:
+
+```text
+All Attributes
+
+↓
+
+Replicated Normally
+```
+
+For other domains:
+
+```text
+Partial Attribute Set
+
+↓
+
+Replicated Forest-Wide
+```
+
+This design reduces replication traffic.
+
+---
+
+# Global Catalog Ports
+
+Common LDAP ports:
+
+| Service | Port |
+|----------|-----:|
+| LDAP | 389 |
+| LDAP over SSL (LDAPS) | 636 |
+| Global Catalog (LDAP) | 3268 |
+| Global Catalog over SSL | 3269 |
+
+Applications that require forest-wide searches commonly use ports **3268** or **3269**.
+
+---
+
+# LDAP vs Global Catalog
+
+Normal LDAP query:
+
+```text
+Client
+
+↓
+
+LDAP (389)
+
+↓
+
+Single Domain
+```
+
+Global Catalog query:
+
+```text
+Client
+
+↓
+
+GC (3268)
+
+↓
+
+Entire Forest
+```
+
+---
+
+# Enterprise Deployment
+
+Large organizations often deploy multiple Global Catalog servers.
+
+Example:
+
+```text
+Head Office
+
+↓
+
+GC01
+```
+
+```text
+Regional Office
+
+↓
+
+GC02
+```
+
+```text
+Branch Office
+
+↓
+
+GC03
+```
+
+Benefits include:
+
+- Faster searches
+- Reduced WAN traffic
+- Better availability
+- Improved authentication performance
+
+---
+
+# Branch Office Example
+
+Without a nearby GC:
+
+```text
+User
+
+↓
+
+WAN
+
+↓
+
+Remote GC
+
+↓
+
+Authentication Delay
+```
+
+With a local GC:
+
+```text
+User
+
+↓
+
+Local GC
+
+↓
+
+Immediate Response
+```
+
+---
+
+# High Availability
+
+Enterprises generally deploy more than one Global Catalog.
+
+Example:
+
+```text
+GC01
+
+↓
+
+Primary
+```
+
+If unavailable:
+
+```text
+GC02
+
+↓
+
+Handles Requests
+```
+
+This improves resilience during maintenance or outages.
+
+---
+
+# Global Catalog Placement Guidelines
+
+Recommended practices:
+
+- Place at least one GC in each major Active Directory site.
+- Ensure reliable replication between sites.
+- Consider WAN bandwidth.
+- Evaluate authentication volume.
+- Monitor replication latency.
+
+---
+
+# Cybersecurity Perspective
+
+Because the Global Catalog contains searchable information from every domain:
+
+Security teams should:
+
+- Restrict administrative access.
+- Secure LDAP with LDAPS where appropriate.
+- Monitor LDAP query activity.
+- Audit directory searches.
+- Protect Global Catalog servers with the same rigor as other critical Domain Controllers.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Assuming a Global Catalog stores every attribute.
+- Deploying only one GC in a large forest.
+- Ignoring WAN latency when placing GCs.
+- Blocking required GC ports with firewalls.
+- Confusing LDAP queries with Global Catalog queries.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Verify Global Catalog connectivity.
+
+### Tasks
+
+1. Identify a Global Catalog server.
+2. Verify that it listens on:
+   - TCP 3268
+   - TCP 3269 (if LDAPS is configured)
+3. Search for users located in another domain using Active Directory Users and Computers or an LDAP query tool.
+4. Observe that the search succeeds without manually specifying the target domain.
+
+---
+
+# Interview Questions
+
+1. Why is the Global Catalog important during authentication?
+2. What are Universal Groups?
+3. Why do Universal Groups depend on the Global Catalog?
+4. What is Universal Group Membership Caching?
+5. What is a User Principal Name (UPN)?
+6. Which ports are used by the Global Catalog?
+7. What is the difference between LDAP port 389 and GC port 3268?
+8. Why does Microsoft use a Partial Attribute Set?
+9. Why do Exchange and identity management systems rely on the Global Catalog?
+10. How should Global Catalog servers be distributed in a large enterprise?
+
+---
+
+# Key Takeaways
+
+- The Global Catalog plays a vital role in authentication by providing Universal Group membership information.
+- UPN logons and forest-wide searches rely on the Global Catalog for efficient object location.
+- Universal Group Membership Caching helps branch offices authenticate users even without a local GC.
+- Global Catalog servers use ports **3268** (LDAP) and **3269** (LDAPS).
+- Proper placement and redundancy of Global Catalog servers improve authentication performance, scalability, and availability.
+
+---
+
+**Next:** Part 3
