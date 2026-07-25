@@ -559,4 +559,518 @@ Recommend improvements based on your findings.
 
 ---
 
-**Next:** Part 2
+# 19-AD-Attacks.md
+
+# Part 2 — Active Directory Attack Categories, Misconfigurations, Credential Theft Risks and Defensive Detection
+
+> **Important Note**
+>
+> This chapter discusses Active Directory attack techniques **from a defensive perspective only**. The purpose is to help defenders recognize risks, improve monitoring, strengthen configurations, and reduce attack opportunities.
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Major categories of Active Directory attacks
+- Common security misconfigurations
+- Credential theft risks
+- Password-related attacks (conceptual)
+- Kerberos-related attacks (high level)
+- LDAP abuse (high level)
+- Group Policy abuse (high level)
+- Service account risks
+- Defensive monitoring strategies
+
+---
+
+# Active Directory Attack Categories
+
+Most attacks against Active Directory fall into one or more of the following categories.
+
+```
+                 AD Attacks
+
+                      │
+
+      ┌───────────────┼────────────────┐
+
+      ▼               ▼                ▼
+
+Credential      Misconfiguration    Privilege
+
+Abuse              Abuse            Escalation
+
+      ▼               ▼                ▼
+
+Persistence     Lateral Movement   Defense Evasion
+```
+
+Understanding these categories helps security teams prioritize defenses.
+
+---
+
+# Identity-Centric Attacks
+
+Instead of attacking infrastructure directly, many modern attackers target identities.
+
+Common targets include:
+
+- User accounts
+- Administrative accounts
+- Service accounts
+- Privileged groups
+- Authentication systems
+
+Protecting identities is often more effective than focusing solely on network boundaries.
+
+---
+
+# Misconfiguration Risks
+
+Many compromises originate from insecure configurations rather than software vulnerabilities.
+
+Examples include:
+
+- Excessive administrative privileges
+- Weak password policies
+- Disabled auditing
+- Unrestricted delegation
+- Legacy protocols left enabled
+- Poor Group Policy management
+- Unused privileged accounts
+
+Regular configuration reviews reduce these risks.
+
+---
+
+# Configuration Risk Model
+
+```
+Poor Configuration
+
+        │
+
+        ▼
+
+Expanded Attack Surface
+
+        │
+
+        ▼
+
+Greater Likelihood of Compromise
+
+        │
+
+        ▼
+
+Business Impact
+```
+
+---
+
+# Credential Theft Risks
+
+Credentials remain one of the most valuable assets in an enterprise.
+
+Potential sources of exposure include:
+
+- Weak passwords
+- Password reuse
+- Shared administrative accounts
+- Insecure storage of credentials
+- Phishing
+- Malware
+- Social engineering
+
+Organizations should focus on preventing credential exposure rather than assuming credentials will always remain secret.
+
+---
+
+# Password-Based Attacks (Conceptual)
+
+Password attacks attempt to obtain valid authentication credentials.
+
+Examples include:
+
+- Guessing weak passwords
+- Password reuse
+- Previously exposed credentials
+- Social engineering
+
+Defensive controls include:
+
+- Strong password policies
+- Multi-Factor Authentication
+- Account lockout policies
+- Security awareness training
+
+---
+
+# Kerberos-Related Risks (High Level)
+
+Kerberos provides secure authentication for Active Directory.
+
+However, poor operational practices can increase risk.
+
+Examples include:
+
+- Excessively privileged service accounts
+- Weak service account passwords
+- Outdated encryption settings
+- Inadequate monitoring of authentication events
+
+Defenders should monitor authentication activity and apply current security recommendations.
+
+---
+
+# Kerberos Security Workflow
+
+```
+User Requests Access
+
+↓
+
+Authentication
+
+↓
+
+Ticket Issued
+
+↓
+
+Resource Access
+
+↓
+
+Security Logging
+
+↓
+
+Monitoring
+```
+
+Monitoring authentication events helps identify abnormal behavior.
+
+---
+
+# LDAP Security Risks
+
+LDAP is used to access directory information.
+
+Potential defensive concerns include:
+
+- Excessive anonymous access
+- Weak access permissions
+- Insecure connections
+- Unnecessary directory exposure
+
+Recommended protections:
+
+- Require authenticated access where appropriate.
+- Prefer encrypted communication.
+- Restrict directory permissions.
+- Audit directory changes.
+
+---
+
+# Group Policy Risks
+
+Because Group Policy can affect thousands of systems, it must be protected carefully.
+
+Risks include:
+
+- Unauthorized policy modification
+- Excessive editing permissions
+- Poor change management
+- Accidental configuration errors
+
+Mitigations:
+
+- Least privilege
+- Approval workflows
+- Auditing
+- Version control documentation
+
+---
+
+# Service Account Risks
+
+Service accounts frequently require elevated permissions.
+
+Poor management may result in:
+
+- Forgotten accounts
+- Stale passwords
+- Excessive privileges
+- Unknown ownership
+
+Recommended practices:
+
+- Maintain an inventory.
+- Assign documented owners.
+- Review permissions regularly.
+- Prefer Managed Service Accounts (MSA/gMSA) where supported.
+
+---
+
+# Administrative Group Risks
+
+Privileged groups require continuous oversight.
+
+```
+Domain Admins
+
+↓
+
+Review Membership
+
+↓
+
+Validate Business Need
+
+↓
+
+Remove Unnecessary Access
+
+↓
+
+Document Changes
+```
+
+Privilege accumulation should be avoided.
+
+---
+
+# Legacy Protocol Risks
+
+Older protocols and legacy configurations may increase organizational risk.
+
+Examples include:
+
+- Legacy authentication methods
+- Outdated encryption algorithms
+- Unsupported operating systems
+
+Organizations should follow vendor guidance when planning upgrades and decommission legacy technologies.
+
+---
+
+# Monitoring Strategy
+
+Security monitoring should focus on:
+
+- Authentication anomalies
+- Privileged logons
+- Administrative group changes
+- GPO modifications
+- Account creation
+- Account deletion
+- Password reset activity
+- Service account changes
+
+These events provide valuable visibility into identity-related activity.
+
+---
+
+# Detection Workflow
+
+```
+Security Event
+
+↓
+
+Central Logging
+
+↓
+
+SIEM Correlation
+
+↓
+
+Alert
+
+↓
+
+Analyst Review
+
+↓
+
+Response
+```
+
+Automation can improve detection speed, while human analysis provides context.
+
+---
+
+# Enterprise Example
+
+Company:
+
+```
+Adventure Works Corporation
+```
+
+Environment:
+
+- 42 Domain Controllers
+- 95,000 Users
+- Hybrid identity deployment
+
+The security team performs:
+
+- Weekly privileged group reviews
+- Daily authentication monitoring
+- Monthly service account reviews
+- Quarterly configuration assessments
+- Annual disaster recovery exercises
+
+This structured approach improves both operational resilience and security.
+
+---
+
+# Cybersecurity Perspective
+
+Defenders should prioritize:
+
+- Protecting identities
+- Reducing unnecessary privileges
+- Eliminating insecure configurations
+- Monitoring authentication activity
+- Maintaining comprehensive audit logs
+- Reviewing privileged accounts regularly
+
+Strong operational practices significantly reduce opportunities for attackers.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Perform a defensive review of Active Directory security settings.
+
+### Step 1
+
+Review password policy settings.
+
+Document:
+
+- Minimum password length
+- Complexity requirements
+- Lockout policy
+
+---
+
+### Step 2
+
+Review privileged groups.
+
+Identify:
+
+- Group members
+- Business justification
+- Recently added members
+
+---
+
+### Step 3
+
+Review service accounts.
+
+Document:
+
+- Purpose
+- Owner
+- Assigned permissions
+
+---
+
+### Step 4
+
+Review Group Policy permissions.
+
+Verify that only authorized administrators can modify critical GPOs.
+
+---
+
+### Step 5
+
+Create a prioritized remediation list for any identified risks.
+
+---
+
+# Interview Questions
+
+### Q1: Why are misconfigurations a major security concern?
+
+**Answer:** Misconfigurations can unintentionally expose sensitive resources or grant excessive permissions, increasing the organization's attack surface.
+
+---
+
+### Q2: Why should service accounts be reviewed regularly?
+
+**Answer:** Regular reviews help ensure service accounts remain necessary, properly documented, appropriately privileged, and securely managed.
+
+---
+
+### Q3: Why is monitoring authentication activity important?
+
+**Answer:** Authentication events can reveal unusual behavior, unauthorized access attempts, and potential account compromise.
+
+---
+
+### Q4: Why should privileged group memberships be reviewed?
+
+**Answer:** To ensure only authorized users retain elevated permissions and to prevent privilege accumulation over time.
+
+---
+
+### Q5: Why is Group Policy considered a high-value administrative target?
+
+**Answer:** Because a single Group Policy change can affect large numbers of users and systems across the environment.
+
+---
+
+### Q6: What is the primary goal of Active Directory monitoring?
+
+**Answer:** To detect suspicious identity-related activity early so defenders can investigate and respond before significant impact occurs.
+
+---
+
+# Best Practices
+
+- Review configurations regularly.
+- Protect privileged identities.
+- Enable centralized logging.
+- Audit administrative changes.
+- Prefer managed service accounts where possible.
+- Follow least privilege.
+- Maintain accurate documentation.
+- Continuously assess security posture.
+
+---
+
+# Common Mistakes
+
+- Leaving excessive permissions in place.
+- Failing to inventory service accounts.
+- Ignoring authentication anomalies.
+- Disabling security auditing.
+- Allowing unmanaged changes to Group Policy.
+- Delaying remediation of known misconfigurations.
+
+---
+
+# Key Takeaways
+
+- Many Active Directory compromises stem from identity abuse and configuration weaknesses rather than software flaws.
+- Credential protection, configuration management, and continuous monitoring are essential defensive practices.
+- Regular reviews of privileged accounts, service accounts, and Group Policy help reduce enterprise risk.
+- Security teams should focus on early detection, strong governance, and ongoing improvement.
+
+---
+
+**Next:** Part 3
