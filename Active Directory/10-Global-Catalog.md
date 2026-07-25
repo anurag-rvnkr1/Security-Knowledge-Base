@@ -1283,4 +1283,751 @@ Verify Global Catalog connectivity.
 
 ---
 
-**Next:** Part 3
+# 10-Global-Catalog.md
+
+# Part 3 — Global Catalog Management, Placement, Troubleshooting, Monitoring, Performance, and Disaster Recovery
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Configure and manage Global Catalog servers.
+- Understand Global Catalog placement strategies.
+- Monitor Global Catalog health.
+- Troubleshoot common GC-related issues.
+- Learn disaster recovery considerations.
+- Understand enterprise best practices.
+
+---
+
+# Managing Global Catalog Servers
+
+A Global Catalog (GC) is simply a Domain Controller with the **Global Catalog option enabled**.
+
+When enabled:
+
+```text
+Domain Controller
+
+↓
+
+Stores Own Domain
+
++
+
+Partial Attribute Set
+
+↓
+
+Becomes Global Catalog
+```
+
+No separate server software is installed.
+
+---
+
+# Enabling the Global Catalog
+
+Using **Active Directory Sites and Services**:
+
+```text
+Sites
+
+↓
+
+Servers
+
+↓
+
+Server Name
+
+↓
+
+NTDS Settings
+
+↓
+
+Properties
+
+↓
+
+Global Catalog ✔
+```
+
+Once enabled:
+
+- Initial synchronization begins.
+- Partial Attribute Set (PAS) is replicated.
+- The Domain Controller starts responding to GC queries after synchronization completes.
+
+---
+
+# Initial Synchronization
+
+When a Domain Controller becomes a GC:
+
+```text
+Enable GC
+
+↓
+
+Initial Replication
+
+↓
+
+Receive PAS
+
+↓
+
+Index Objects
+
+↓
+
+Ready for Client Requests
+```
+
+The synchronization duration depends on:
+
+- Forest size
+- Number of domains
+- Network bandwidth
+- Replication health
+
+---
+
+# Global Catalog Placement Strategy
+
+Placement depends on:
+
+- Number of sites
+- WAN bandwidth
+- Authentication traffic
+- Number of users
+- Disaster recovery requirements
+
+---
+
+# Small Organization
+
+Example:
+
+```text
+One Site
+
+↓
+
+Two Domain Controllers
+
+↓
+
+Both are Global Catalogs
+```
+
+Advantages:
+
+- Simplicity
+- Redundancy
+- Easy management
+
+---
+
+# Medium Organization
+
+```text
+Head Office
+
+↓
+
+GC01
+```
+
+```text
+Branch Office
+
+↓
+
+GC02
+```
+
+Benefits:
+
+- Local authentication
+- Faster searches
+- Reduced WAN usage
+
+---
+
+# Large Enterprise
+
+```text
+North America
+
+↓
+
+GC01
+
+GC02
+```
+
+```text
+Europe
+
+↓
+
+GC03
+
+GC04
+```
+
+```text
+Asia
+
+↓
+
+GC05
+
+GC06
+```
+
+Every major site has at least one Global Catalog.
+
+---
+
+# Site Awareness
+
+Active Directory Sites optimize client connections.
+
+Example:
+
+```text
+Client
+
+↓
+
+Nearest Site
+
+↓
+
+Nearest Global Catalog
+
+↓
+
+Authentication
+```
+
+This reduces latency and WAN utilization.
+
+---
+
+# Client Discovery
+
+Clients discover Global Catalog servers through DNS.
+
+Workflow:
+
+```text
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Locate GC
+
+↓
+
+Connect
+
+↓
+
+Authentication/Search
+```
+
+Correct DNS configuration is therefore critical.
+
+---
+
+# Global Catalog Replication Monitoring
+
+Administrators should regularly verify:
+
+- Replication success
+- Replication latency
+- PAS consistency
+- Cross-site replication
+- Domain Controller health
+
+---
+
+# Replication Workflow
+
+```text
+Object Updated
+
+↓
+
+Writable DC
+
+↓
+
+Replication
+
+↓
+
+Global Catalog
+
+↓
+
+PAS Updated
+
+↓
+
+Clients Receive Updated Information
+```
+
+---
+
+# Monitoring Tools
+
+Common administrative tools include:
+
+- Event Viewer
+- Active Directory Sites and Services
+- Active Directory Users and Computers
+- PowerShell
+- `repadmin`
+- `dcdiag`
+
+These tools help validate both Domain Controller and Global Catalog health.
+
+---
+
+# Useful Commands
+
+Check replication summary:
+
+```powershell
+repadmin /replsummary
+```
+
+Force replication:
+
+```powershell
+repadmin /syncall
+```
+
+Run Domain Controller diagnostics:
+
+```powershell
+dcdiag
+```
+
+These commands are frequently used during troubleshooting.
+
+---
+
+# Performance Considerations
+
+Large forests require careful GC planning.
+
+Performance factors include:
+
+- Number of objects
+- Number of domains
+- Query volume
+- Replication schedule
+- CPU
+- Memory
+- Storage performance
+- Network latency
+
+---
+
+# Indexing
+
+The Global Catalog maintains indexes to accelerate searches.
+
+Example:
+
+Without indexing:
+
+```text
+Search
+
+↓
+
+Millions of Objects
+
+↓
+
+Slow
+```
+
+With indexing:
+
+```text
+Search
+
+↓
+
+Indexed Attributes
+
+↓
+
+Fast Results
+```
+
+Indexes significantly improve search efficiency.
+
+---
+
+# High Availability
+
+Never rely on a single Global Catalog.
+
+Example:
+
+```text
+GC01
+
+↓
+
+Failure
+```
+
+Automatic fallback:
+
+```text
+GC02
+
+↓
+
+Handles Requests
+```
+
+Multiple GCs reduce downtime.
+
+---
+
+# Load Distribution
+
+Large organizations distribute client requests.
+
+```text
+Clients
+
+↓
+
+GC01
+
+GC02
+
+GC03
+
+↓
+
+Balanced Workload
+```
+
+This improves responsiveness and reduces resource contention.
+
+---
+
+# Disaster Recovery
+
+Suppose:
+
+```text
+GC01
+
+↓
+
+Hardware Failure
+```
+
+Recovery options:
+
+```text
+Restore Server
+
+OR
+
+Use Existing GC
+
+↓
+
+Continue Operations
+```
+
+Because multiple GCs are recommended, authentication and searches generally continue during a single-server failure.
+
+---
+
+# Removing a Global Catalog
+
+A GC can be removed when:
+
+- Hardware is retired.
+- Infrastructure is redesigned.
+- Consolidation occurs.
+- Maintenance requires reconfiguration.
+
+Before removing a GC:
+
+✔ Confirm another GC is available.
+
+✔ Verify replication health.
+
+✔ Assess site coverage.
+
+---
+
+# Common Problems
+
+## Problem 1
+
+Users experience slow forest-wide searches.
+
+Possible causes:
+
+- No nearby GC
+- WAN latency
+- Replication delays
+- Overloaded server
+
+---
+
+## Problem 2
+
+Authentication delays.
+
+Possible causes:
+
+- GC unavailable
+- DNS issues
+- Replication failures
+- Network connectivity problems
+
+---
+
+## Problem 3
+
+Universal Group membership not updating.
+
+Possible causes:
+
+- Replication delays
+- PAS synchronization issues
+- Global Catalog unavailable
+
+---
+
+## Problem 4
+
+Search results missing recent changes.
+
+Possible causes:
+
+```text
+Object Updated
+
+↓
+
+Replication Pending
+
+↓
+
+GC Not Yet Updated
+```
+
+Replication should be verified before assuming data inconsistency.
+
+---
+
+# Troubleshooting Workflow
+
+```text
+Problem Reported
+
+↓
+
+Identify GC
+
+↓
+
+Verify DNS
+
+↓
+
+Check Connectivity
+
+↓
+
+Verify Replication
+
+↓
+
+Review Event Logs
+
+↓
+
+Run dcdiag
+
+↓
+
+Resolve Issue
+```
+
+---
+
+# Enterprise Case Study
+
+Organization:
+
+- 350,000 users
+- 90 Domain Controllers
+- 10 Active Directory sites
+- 7 domains
+
+Deployment:
+
+```text
+Each Site
+
+↓
+
+Minimum Two GCs
+```
+
+Monitoring:
+
+- Continuous replication monitoring
+- Automated health checks
+- Event log collection
+- DNS monitoring
+- Performance baselines
+
+Results:
+
+- High availability
+- Fast authentication
+- Efficient forest-wide searches
+- Reduced WAN dependency
+
+---
+
+# Cybersecurity Perspective
+
+Global Catalog servers expose searchable directory information across the forest.
+
+Recommendations:
+
+- Secure LDAP with TLS (LDAPS) where appropriate.
+- Restrict administrative access.
+- Monitor LDAP and GC query activity.
+- Enable auditing for directory service events.
+- Apply least-privilege administration.
+- Patch Domain Controllers promptly.
+- Protect DNS infrastructure.
+
+---
+
+# Best Practices
+
+✔ Deploy at least one GC per major site.
+
+✔ Deploy multiple GCs for redundancy.
+
+✔ Monitor replication continuously.
+
+✔ Validate DNS health.
+
+✔ Keep replication schedules optimized.
+
+✔ Monitor server performance.
+
+✔ Maintain updated backups.
+
+✔ Document GC placement.
+
+✔ Review authentication performance regularly.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Deploying only one GC in a large enterprise.
+- Ignoring replication failures.
+- Removing a GC before validating redundancy.
+- Assuming replication is instantaneous.
+- Overlooking DNS configuration.
+- Failing to monitor WAN latency.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Evaluate Global Catalog health.
+
+### Tasks
+
+1. Open **Active Directory Sites and Services**.
+2. Identify every GC in the forest.
+3. Run:
+
+```powershell
+repadmin /replsummary
+```
+
+4. Run:
+
+```powershell
+dcdiag
+```
+
+5. Verify:
+
+- Replication health
+- DNS resolution
+- GC availability
+- Site placement
+- Redundancy
+
+6. Create a diagram showing GC placement across sites.
+
+---
+
+# Interview Questions
+
+1. How do you enable a Global Catalog?
+2. How does a client locate a GC?
+3. Why should each major site have a GC?
+4. Which tools help troubleshoot Global Catalog issues?
+5. What happens when a GC is enabled?
+6. Why is DNS important for GC discovery?
+7. How does indexing improve GC performance?
+8. Why should enterprises deploy multiple GCs?
+9. What should you verify before removing a GC?
+10. What are common causes of slow forest-wide searches?
+
+---
+
+# Key Takeaways
+
+- A Global Catalog is a Domain Controller configured with additional forest-wide search capabilities.
+- Proper GC placement reduces WAN traffic and improves authentication performance.
+- DNS, replication, and indexing are essential for reliable Global Catalog operation.
+- Multiple Global Catalog servers provide redundancy and high availability.
+- Continuous monitoring and careful planning ensure optimal Global Catalog performance in enterprise environments.
+
+---
+
+**Next:** Part 4
