@@ -1586,4 +1586,781 @@ Document:
 
 ---
 
-**Next:** Part 3
+# 16-Active-Directory-Administration.md
+
+# Part 3 — Administrative Automation, Fine-Grained Password Policies, Active Directory Recycle Bin, Object Recovery, Auditing and Enterprise Administration
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Administrative Automation
+- Account Lifecycle Automation
+- Fine-Grained Password Policies (FGPP)
+- Active Directory Recycle Bin
+- Object Recovery
+- Administrative Auditing
+- Change Management
+- Enterprise Administration
+- Administrative Monitoring
+
+---
+
+# Introduction
+
+As Active Directory environments grow, manual administration becomes increasingly difficult.
+
+Consider an enterprise with:
+
+- 50,000 Users
+- 18,000 Computers
+- 3,000 Servers
+- Hundreds of Organizational Units
+- Thousands of Security Groups
+
+Managing these objects manually is inefficient and increases the likelihood of errors.
+
+Enterprise administrators therefore rely on:
+
+- Automation
+- Standardized procedures
+- Delegation
+- Auditing
+- Monitoring
+
+---
+
+# Enterprise Administration Workflow
+
+```
+Business Request
+
+        │
+
+        ▼
+
+Approval
+
+        │
+
+        ▼
+
+Automated Provisioning
+
+        │
+
+        ▼
+
+Validation
+
+        │
+
+        ▼
+
+Audit
+
+        │
+
+        ▼
+
+Monitoring
+```
+
+Automation should complement administrative controls, not replace them.
+
+---
+
+# Administrative Automation
+
+Automation allows repetitive administrative tasks to be performed consistently.
+
+Examples include:
+
+- User provisioning
+- Password expiration notifications
+- Group membership updates
+- Computer inventory
+- Inactive account reporting
+- Scheduled audits
+- Compliance reporting
+
+Benefits include:
+
+- Reduced manual effort
+- Improved consistency
+- Faster provisioning
+- Fewer administrative errors
+
+---
+
+# Automation Example
+
+Without automation:
+
+```
+Administrator
+
+↓
+
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Configure Home Folder
+
+↓
+
+Notify Manager
+```
+
+With automation:
+
+```
+HR Approval
+
+↓
+
+Automation Workflow
+
+↓
+
+Create User
+
+↓
+
+Assign Groups
+
+↓
+
+Apply Policies
+
+↓
+
+Send Notification
+```
+
+---
+
+# Identity Lifecycle Automation
+
+Most organizations define a complete identity lifecycle.
+
+```
+Recruitment
+
+↓
+
+Create Identity
+
+↓
+
+Provision Access
+
+↓
+
+Role Changes
+
+↓
+
+Permission Updates
+
+↓
+
+Leave of Absence
+
+↓
+
+Return
+
+↓
+
+Employee Exit
+
+↓
+
+Disable
+
+↓
+
+Archive
+
+↓
+
+Delete per Policy
+```
+
+Each stage should follow documented procedures.
+
+---
+
+# Joiner-Mover-Leaver (JML) Model
+
+A common identity governance model is:
+
+```
+Joiner
+
+↓
+
+Provision
+
+↓
+
+Mover
+
+↓
+
+Modify Access
+
+↓
+
+Leaver
+
+↓
+
+Disable Access
+
+↓
+
+Archive
+```
+
+Benefits:
+
+- Consistent provisioning
+- Reduced orphaned accounts
+- Improved compliance
+- Better security
+
+---
+
+# Fine-Grained Password Policies (FGPP)
+
+In traditional Active Directory environments, a domain typically has a single password policy.
+
+Fine-Grained Password Policies allow different password settings for different users or groups.
+
+Example:
+
+| Group | Password Requirement |
+|--------|----------------------|
+| Standard Users | 12 Characters |
+| Finance | 14 Characters |
+| IT Administrators | 16 Characters |
+| Service Accounts | Separate managed policy |
+
+---
+
+# Why FGPP?
+
+Different accounts have different security requirements.
+
+Example:
+
+```
+Standard User
+
+↓
+
+Moderate Requirements
+
+-------------------------
+
+Domain Administrator
+
+↓
+
+Stronger Password Policy
+```
+
+FGPP allows organizations to strengthen protection for privileged accounts.
+
+---
+
+# FGPP Workflow
+
+```
+Create Password Settings Object (PSO)
+
+↓
+
+Configure Policy
+
+↓
+
+Assign to Group
+
+↓
+
+Users Receive Policy
+```
+
+---
+
+# Password Settings Object (PSO)
+
+A PSO can define:
+
+- Password Length
+- Complexity
+- Password History
+- Lockout Threshold
+- Lockout Duration
+- Maximum Password Age
+- Minimum Password Age
+
+Multiple PSOs may exist within the same domain.
+
+---
+
+# Administrative Change Management
+
+Administrative changes should follow a structured process.
+
+```
+Request
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Verification
+
+↓
+
+Documentation
+
+↓
+
+Review
+```
+
+Examples:
+
+- OU creation
+- Group changes
+- Delegation updates
+- Password policy modifications
+- Trust configuration changes
+
+---
+
+# Active Directory Recycle Bin
+
+Before Windows Server 2008 R2, accidentally deleted objects were difficult to recover.
+
+The Active Directory Recycle Bin improves recoverability.
+
+Benefits include:
+
+- Restore deleted users
+- Restore deleted groups
+- Restore OUs
+- Restore computers
+- Restore group memberships
+- Preserve most object attributes
+
+---
+
+# Recycle Bin Workflow
+
+```
+User Deleted
+
+↓
+
+Recycle Bin
+
+↓
+
+Administrator
+
+↓
+
+Restore
+
+↓
+
+Object Available Again
+```
+
+This reduces downtime caused by accidental deletions.
+
+---
+
+# Object States
+
+```
+Active Object
+
+↓
+
+Deleted Object
+
+↓
+
+Recycled Object
+
+↓
+
+Permanently Removed
+```
+
+Recovery becomes more limited as an object progresses through these stages.
+
+---
+
+# Recovering Deleted Objects
+
+Typical recovery process:
+
+```
+Locate Deleted Object
+
+↓
+
+Verify Identity
+
+↓
+
+Restore
+
+↓
+
+Replication
+
+↓
+
+User Can Authenticate
+```
+
+Recovery should be validated after restoration.
+
+---
+
+# Administrative Auditing
+
+Auditing answers questions such as:
+
+- Who created the user?
+- Who deleted the group?
+- Who reset the password?
+- Who modified permissions?
+- Who changed delegation?
+- When did the change occur?
+
+Auditing supports both security investigations and compliance.
+
+---
+
+# Administrative Events to Audit
+
+Examples include:
+
+- User creation
+- User deletion
+- Password resets
+- Group membership changes
+- OU modifications
+- Delegation changes
+- Policy changes
+- Administrative logons
+
+---
+
+# Administrative Audit Workflow
+
+```
+Administrator Action
+
+↓
+
+Windows Event Log
+
+↓
+
+Forwarded Logs
+
+↓
+
+SIEM
+
+↓
+
+Alert
+
+↓
+
+Investigation
+```
+
+Centralized logging improves visibility and incident response.
+
+---
+
+# Administrative Monitoring
+
+Enterprise administrators monitor:
+
+- Replication health
+- Domain Controller availability
+- DNS health
+- Authentication failures
+- Group Policy processing
+- Privileged account activity
+- Certificate health
+- Backup status
+
+Monitoring helps detect issues before users are affected.
+
+---
+
+# Administrative Dashboard Example
+
+```
+Enterprise Dashboard
+
+├── Domain Health
+
+├── Replication Status
+
+├── DNS Health
+
+├── Authentication Failures
+
+├── Locked Accounts
+
+├── Privileged Changes
+
+├── Group Policy Status
+
+└── Active Alerts
+```
+
+---
+
+# Compliance and Administration
+
+Many industries require:
+
+- Audit logs
+- Approval records
+- Administrative reviews
+- Password policies
+- Access reviews
+- Change documentation
+
+Examples include:
+
+- ISO/IEC 27001
+- NIST Cybersecurity Framework
+- CIS Controls
+- PCI DSS
+- HIPAA (where applicable)
+
+---
+
+# Enterprise Administration Example
+
+Company:
+
+```
+Global Banking Corporation
+```
+
+Infrastructure:
+
+- 85,000 Employees
+- 40 Domain Controllers
+- Multiple Geographic Regions
+
+Daily automation performs:
+
+- New user provisioning
+- Role-based group assignment
+- Password expiry notifications
+- Disabled account reporting
+- Inactive computer reporting
+- Administrative audit collection
+- Compliance report generation
+
+The result is consistent administration with reduced operational effort.
+
+---
+
+# Administrative Documentation
+
+Maintain documentation for:
+
+- Administrative roles
+- Password policies
+- FGPP assignments
+- Delegation model
+- Recovery procedures
+- Audit procedures
+- Automation workflows
+- Approval processes
+
+Well-maintained documentation supports continuity and governance.
+
+---
+
+# Cybersecurity Perspective
+
+Administrative activities should always be traceable.
+
+Security recommendations:
+
+- Enable auditing for privileged actions.
+- Review privileged group memberships regularly.
+- Protect automation accounts with least privilege.
+- Test recovery procedures before they are needed.
+- Monitor changes to password policies and delegation.
+- Investigate unexpected administrative activity promptly.
+
+Automation improves efficiency but should always include logging, approval, and validation.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Explore administrative recovery and auditing features.
+
+### Step 1
+
+Review the Active Directory Recycle Bin status.
+
+Document whether it is enabled in the lab environment.
+
+---
+
+### Step 2
+
+Create a test user.
+
+Delete the user.
+
+Restore the user using the Recycle Bin (if available).
+
+Verify that important attributes are retained.
+
+---
+
+### Step 3
+
+Review Fine-Grained Password Policies.
+
+Identify:
+
+- Password Length
+- Lockout Threshold
+- Password History
+- Target Group
+
+---
+
+### Step 4
+
+Review administrative audit logs.
+
+Identify recent:
+
+- User creation
+- Password reset
+- Group membership modification
+
+---
+
+### Step 5
+
+Draw the organization's Joiner-Mover-Leaver workflow.
+
+---
+
+# Interview Questions
+
+### Q1: Why is automation important in Active Directory administration?
+
+**Answer:** Automation reduces repetitive work, improves consistency, minimizes human error, and accelerates administrative processes.
+
+---
+
+### Q2: What is a Fine-Grained Password Policy?
+
+**Answer:** A Fine-Grained Password Policy allows different password and lockout settings to be applied to different users or groups within the same Active Directory domain.
+
+---
+
+### Q3: What is the purpose of the Active Directory Recycle Bin?
+
+**Answer:** It enables administrators to restore deleted Active Directory objects while preserving most of their attributes and relationships.
+
+---
+
+### Q4: Why is administrative auditing important?
+
+**Answer:** Auditing provides accountability, supports compliance, assists investigations, and records who performed administrative actions and when.
+
+---
+
+### Q5: What is the Joiner-Mover-Leaver model?
+
+**Answer:** It is an identity lifecycle model that manages user provisioning, access changes during role transitions, and secure deprovisioning when users leave the organization.
+
+---
+
+### Q6: Why should administrative changes follow a formal change management process?
+
+**Answer:** Structured change management reduces operational risk, ensures approvals are obtained, improves documentation, and supports rollback and compliance requirements.
+
+---
+
+# Best Practices
+
+- Automate repetitive administrative tasks where appropriate.
+- Implement Fine-Grained Password Policies for privileged accounts.
+- Enable and monitor the Active Directory Recycle Bin.
+- Audit privileged administrative activities.
+- Maintain comprehensive documentation.
+- Review automation workflows regularly.
+- Test recovery procedures periodically.
+- Follow formal change management processes.
+
+---
+
+# Common Mistakes
+
+- Performing repetitive manual tasks that could be automated.
+- Applying identical password policies to all account types without evaluating risk.
+- Not enabling or understanding the Active Directory Recycle Bin.
+- Failing to review audit logs.
+- Making undocumented administrative changes.
+- Not validating automation results after execution.
+
+---
+
+# Key Takeaways
+
+- Enterprise Active Directory administration depends on automation, governance, auditing, and monitoring.
+- Fine-Grained Password Policies provide flexible password management for different account types.
+- The Active Directory Recycle Bin improves recoverability after accidental deletions.
+- Administrative auditing and structured change management strengthen security and operational reliability.
+- Well-designed automation should always include approval, validation, and logging.
+
+---
+
+**Next:** Part 4
