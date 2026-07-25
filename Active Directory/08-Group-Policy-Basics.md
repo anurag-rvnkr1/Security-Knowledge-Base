@@ -1424,4 +1424,813 @@ gpupdate /force
 
 ---
 
-**Next:** Part 3
+# 08-Group-Policy-Basics.md
+
+# Part 3 — Administrative Templates, Security Filtering, WMI Filtering, Group Policy Preferences, Processing, Troubleshooting, and Enterprise Design
+
+---
+
+# Learning Objectives
+
+After completing this part, you will be able to:
+
+- Understand Administrative Templates.
+- Learn Security Filtering.
+- Understand WMI Filtering.
+- Learn Group Policy Preferences (GPP).
+- Understand Group Policy processing behavior.
+- Learn enterprise GPO design.
+- Troubleshoot common Group Policy issues.
+
+---
+
+# Administrative Templates
+
+One of the most commonly used components of Group Policy is **Administrative Templates**.
+
+Administrative Templates allow administrators to configure thousands of Windows and application settings without editing the registry manually.
+
+Examples include:
+
+- Windows Components
+- Microsoft Edge
+- Microsoft Office
+- Start Menu
+- Taskbar
+- Control Panel
+- Windows Update
+- Network settings
+- Remote Desktop
+- OneDrive
+- File Explorer
+
+---
+
+# Administrative Templates Architecture
+
+```text
+Administrator
+
+↓
+
+Group Policy
+
+↓
+
+Administrative Templates
+
+↓
+
+Registry-Based Settings
+
+↓
+
+Client Computer
+```
+
+Most Administrative Template settings ultimately write values to the Windows Registry.
+
+---
+
+# ADMX and ADML Files
+
+Modern Administrative Templates use:
+
+| File | Purpose |
+|------|----------|
+| ADMX | Policy definitions |
+| ADML | Language-specific resources |
+
+Example:
+
+```text
+PolicyDefinitions
+
+│
+
+├── Windows.admx
+
+├── System.admx
+
+├── Explorer.admx
+
+└── en-US
+
+      └── *.adml
+```
+
+These files define which settings appear in the Group Policy editor.
+
+---
+
+# Central Store
+
+Large enterprises typically maintain a **Central Store**.
+
+Benefits:
+
+- Consistent templates
+- Easier administration
+- Version control
+- Simplified management
+- Supports multiple administrators
+
+Location:
+
+```text
+SYSVOL
+
+↓
+
+Policies
+
+↓
+
+PolicyDefinitions
+```
+
+All administrators use the same template versions.
+
+---
+
+# Registry-Based Policies
+
+Many policies configure registry values automatically.
+
+Example:
+
+```text
+Administrator
+
+↓
+
+Enable Windows Firewall
+
+↓
+
+Group Policy
+
+↓
+
+Registry Updated
+
+↓
+
+Windows Firewall Enabled
+```
+
+Administrators should configure registry-based settings through Group Policy rather than editing the registry directly whenever possible.
+
+---
+
+# Security Filtering
+
+By default, a linked GPO applies to authenticated users and computers within its scope.
+
+Sometimes administrators need to target only specific users or groups.
+
+This is achieved through **Security Filtering**.
+
+---
+
+# Security Filtering Example
+
+```text
+Finance OU
+
+↓
+
+Finance Security GPO
+
+↓
+
+Finance Users Group
+
+↓
+
+Finance Employees
+```
+
+Only members of the specified security group receive the policy.
+
+---
+
+# Benefits of Security Filtering
+
+- Targeted deployment
+- Reduced number of GPOs
+- Easier administration
+- Better testing
+- Improved flexibility
+
+---
+
+# Enterprise Example
+
+Company:
+
+```text
+Finance OU
+
+↓
+
+Finance Workstations
+
+↓
+
+BitLocker Policy
+```
+
+Security Filter:
+
+```text
+Finance-Laptops
+```
+
+Only laptops in the Finance department receive the BitLocker configuration.
+
+---
+
+# WMI Filtering
+
+**Windows Management Instrumentation (WMI) Filtering** allows GPOs to apply only if specific system conditions are met.
+
+Example conditions:
+
+- Operating system version
+- Windows edition
+- Laptop vs Desktop
+- RAM
+- CPU architecture
+- Domain role
+
+---
+
+# Example
+
+```text
+Windows 11 Devices
+
+↓
+
+Apply Windows 11 Policy
+```
+
+Windows 10 devices ignore the policy because they do not meet the WMI filter criteria.
+
+---
+
+# WMI Filtering Workflow
+
+```text
+Client
+
+↓
+
+Evaluate WMI Filter
+
+↓
+
+True?
+
+↓
+
+Yes
+
+↓
+
+Apply GPO
+
+↓
+
+No
+
+↓
+
+Skip GPO
+```
+
+---
+
+# Example Use Cases
+
+Common WMI filtering scenarios:
+
+- Windows Server only
+- Windows 11 only
+- Domain Controllers only
+- Virtual Machines only
+- Laptops only
+- Devices with TPM
+- Devices meeting hardware requirements
+
+---
+
+# Security Filtering vs WMI Filtering
+
+| Security Filtering | WMI Filtering |
+|-------------------|---------------|
+| Targets identities | Targets device characteristics |
+| Uses security groups | Uses WMI queries |
+| User/Computer based | Hardware/OS based |
+| Faster evaluation | More processing overhead |
+
+Many enterprises use both together.
+
+---
+
+# Group Policy Preferences (GPP)
+
+Group Policy **Preferences** provide additional configuration capabilities beyond standard policy settings.
+
+Unlike many traditional policies, Preferences often configure settings without permanently enforcing them.
+
+Examples include:
+
+- Drive mappings
+- Printer deployment
+- Scheduled Tasks
+- Registry values
+- Local Users and Groups
+- Environment Variables
+- Network Shares
+- Shortcuts
+
+---
+
+# Preferences vs Policies
+
+| Policy | Preference |
+|----------|------------|
+| Usually enforces settings | Configures settings |
+| Often cannot be changed by users | Users may modify some settings afterward |
+| Security focused | Convenience and configuration |
+| Used for compliance | Used for deployment |
+
+---
+
+# Common Group Policy Preferences
+
+Examples:
+
+```text
+Finance Users
+
+↓
+
+Map Drive F:
+
+↓
+
+Finance Share
+```
+
+```text
+HR Users
+
+↓
+
+Install HR Printer
+```
+
+```text
+All Employees
+
+↓
+
+Desktop Shortcut
+
+↓
+
+Help Desk Portal
+```
+
+---
+
+# Item-Level Targeting
+
+Group Policy Preferences support **Item-Level Targeting (ILT).**
+
+Example:
+
+```text
+User Department
+
+↓
+
+Finance?
+
+↓
+
+Yes
+
+↓
+
+Map Finance Drive
+```
+
+This provides granular deployment without creating many separate GPOs.
+
+---
+
+# Group Policy Processing Lifecycle
+
+Policies are processed during:
+
+```text
+Computer Startup
+
+↓
+
+Computer Refresh
+
+↓
+
+User Logon
+
+↓
+
+User Refresh
+```
+
+Background refresh ensures that clients periodically receive updated policies.
+
+---
+
+# Foreground Processing
+
+Occurs during:
+
+- Computer startup
+- User logon
+
+Used when settings must be applied before the user begins working.
+
+---
+
+# Background Processing
+
+Occurs automatically after the system is running.
+
+Characteristics:
+
+- Periodic
+- Transparent
+- Does not require reboot for many settings
+- Applies updated configurations when supported
+
+Some policy types still require a restart or logoff to take effect.
+
+---
+
+# Group Policy Caching
+
+Modern Windows versions support Group Policy caching to improve logon performance in many scenarios.
+
+Benefits include:
+
+- Faster startup
+- Faster logon
+- Better user experience
+- Reduced processing time
+
+---
+
+# Enterprise GPO Design
+
+Microsoft generally recommends:
+
+Separate GPOs by function.
+
+Example:
+
+```text
+Security Baseline
+
+↓
+
+Firewall Policy
+
+↓
+
+BitLocker Policy
+
+↓
+
+Printer Deployment
+
+↓
+
+Office Configuration
+```
+
+Avoid placing every configuration into a single large GPO.
+
+---
+
+# Recommended Naming Convention
+
+Examples:
+
+```text
+SEC-Workstation-Baseline
+
+SEC-Server-Hardening
+
+APP-Office365
+
+NET-Printer-Finance
+
+USR-Desktop-Restrictions
+
+CMP-BitLocker
+```
+
+Clear naming simplifies administration and troubleshooting.
+
+---
+
+# GPO Documentation
+
+Document:
+
+- Purpose
+- Owner
+- Linked OUs
+- Security Filters
+- WMI Filters
+- Date Created
+- Last Modified
+- Change History
+- Dependencies
+
+Good documentation reduces operational risk.
+
+---
+
+# Troubleshooting Tools
+
+Useful tools include:
+
+| Tool | Purpose |
+|------|----------|
+| gpupdate | Refresh policies |
+| gpresult | Display applied policies |
+| rsop.msc | Resultant Set of Policy |
+| GPMC | Manage GPOs |
+| Event Viewer | Policy events |
+| PowerShell | Automation and reporting |
+
+---
+
+# gpresult
+
+Example:
+
+```powershell
+gpresult /r
+```
+
+Shows:
+
+- Applied GPOs
+- Denied GPOs
+- Security filtering results
+- User information
+- Computer information
+
+Useful for diagnosing policy application.
+
+---
+
+# Resultant Set of Policy (RSoP)
+
+RSoP helps determine the **effective** policies applied to a user or computer.
+
+Example:
+
+```text
+Multiple GPOs
+
+↓
+
+Policy Processing
+
+↓
+
+RSoP
+
+↓
+
+Final Effective Settings
+```
+
+This is one of the most valuable troubleshooting tools for administrators.
+
+---
+
+# Common Group Policy Problems
+
+Examples:
+
+| Problem | Possible Cause |
+|----------|----------------|
+| GPO not applying | Incorrect OU |
+| GPO ignored | Security filtering |
+| Unexpected settings | Higher-precedence GPO |
+| Slow logon | Excessive GPOs or slow processing |
+| Printer not deployed | Preference targeting issue |
+| Wrong desktop settings | User in incorrect group |
+
+---
+
+# Troubleshooting Checklist
+
+✔ Verify OU placement.
+
+✔ Confirm GPO link.
+
+✔ Check Security Filtering.
+
+✔ Review WMI Filters.
+
+✔ Run:
+
+```powershell
+gpupdate /force
+```
+
+✔ Review:
+
+```powershell
+gpresult /r
+```
+
+✔ Check Event Viewer.
+
+✔ Confirm Active Directory replication.
+
+✔ Verify SYSVOL replication.
+
+✔ Confirm DNS health.
+
+---
+
+# Enterprise Case Study
+
+Company:
+
+- 35,000 employees
+- 18 regional offices
+- 12,000 workstations
+
+GPO Design:
+
+```text
+Security Baseline
+
+↓
+
+Server Hardening
+
+↓
+
+BitLocker
+
+↓
+
+Office Settings
+
+↓
+
+Printer Deployment
+
+↓
+
+Drive Mapping
+```
+
+Filtering:
+
+- Security Groups
+- WMI Filters
+- Item-Level Targeting
+
+Benefits:
+
+- Faster troubleshooting
+- Better scalability
+- Easier administration
+- Reduced policy conflicts
+
+---
+
+# Cybersecurity Perspective
+
+Security teams commonly deploy:
+
+- Windows Defender configuration
+- Firewall rules
+- BitLocker enforcement
+- Credential protection settings
+- Security auditing
+- Device control
+- Application restrictions
+- Attack surface reduction rules (where supported)
+
+Proper use of Security Filtering and WMI Filtering helps ensure that security policies reach only the intended systems while avoiding unintended operational impact.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- One "mega" GPO containing every setting.
+- Overusing WMI Filters when simpler targeting is sufficient.
+- Poor GPO naming.
+- Forgetting documentation.
+- Ignoring GPO ownership.
+- Linking test GPOs to production OUs.
+- Creating duplicate GPOs for similar purposes.
+
+---
+
+# Best Practices Checklist
+
+✔ Maintain a Central Store for ADMX templates.
+
+✔ Separate GPOs by function.
+
+✔ Use Security Filtering for identity-based targeting.
+
+✔ Use WMI Filters only when necessary.
+
+✔ Use Group Policy Preferences for deployment tasks.
+
+✔ Test all GPOs before production deployment.
+
+✔ Document every GPO.
+
+✔ Periodically review unused GPOs.
+
+✔ Monitor SYSVOL and AD replication health.
+
+---
+
+# Hands-on Lab
+
+## Objective
+
+Deploy and troubleshoot targeted Group Policy settings.
+
+### Tasks
+
+1. Create a GPO named `SEC-Workstation-Baseline`.
+2. Configure a simple Administrative Template setting (e.g., disable Control Panel access in a lab environment).
+3. Link the GPO to a test OU.
+4. Create a Security Group named `Lab-Workstations`.
+5. Apply Security Filtering so only that group receives the policy.
+6. Run:
+
+```powershell
+gpupdate /force
+```
+
+7. Verify results using:
+
+```powershell
+gpresult /r
+```
+
+8. Open `rsop.msc` and review the effective policy settings.
+
+---
+
+# Interview Questions
+
+1. What are Administrative Templates?
+2. What is the purpose of ADMX and ADML files?
+3. What is the Central Store?
+4. What is Security Filtering?
+5. How does WMI Filtering differ from Security Filtering?
+6. What are Group Policy Preferences?
+7. What is Item-Level Targeting?
+8. What does `gpresult` display?
+9. What is Resultant Set of Policy (RSoP)?
+10. Why should GPOs be separated by function?
+
+---
+
+# Key Takeaways
+
+- Administrative Templates provide centralized configuration for thousands of Windows and application settings.
+- ADMX/ADML files define available policy settings, and the Central Store ensures consistency across administrators.
+- Security Filtering targets policies based on identities, while WMI Filtering targets devices based on system characteristics.
+- Group Policy Preferences simplify deployment of configuration items such as printers, drives, and shortcuts.
+- Tools like `gpupdate`, `gpresult`, and RSoP are essential for diagnosing Group Policy issues.
+- Well-designed, documented, and modular GPOs improve scalability, security, and maintainability.
+
+---
+
+**Next:** Part 4
