@@ -2560,6 +2560,720 @@ Think about which requests contain sensitive information and which should requir
 - Browsers parse HTML, build the DOM, load additional resources, and render pages.
 - Security checks should occur throughout the request lifecycle rather than at a single point.
 
-```text id="jid720"
-**Next:** Part 4
+```
+
+# 02-How-the-Web-Works.md
+
+# Part 4 — Complete End-to-End Request Lifecycle, Modern Web Architectures, Security Perspective, and Chapter Summary
+
+> **"Understanding how the web works is the foundation of Web Security. Every vulnerability, defense, and security control exists somewhere in the request lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Complete end-to-end request lifecycle
+- Modern web architectures
+- Monolithic vs Microservices
+- APIs in modern applications
+- Browser security checkpoints
+- Enterprise request flow
+- Security controls at every layer
+- Common misconceptions
+- Final revision
+- Chapter summary
+
+---
+
+# Complete End-to-End Request Lifecycle
+
+The following diagram summarizes everything you've learned in this chapter.
+
+```
+                    USER
+
+                      │
+
+              Types URL / Clicks Link
+
+                      │
+
+                   Browser
+
+                      │
+
+                 URL Parsing
+
+                      │
+
+               Browser Cache
+
+                      │
+
+                 DNS Lookup
+
+                      │
+
+                TCP Handshake
+
+                      │
+
+                 TLS Handshake
+
+                      │
+
+               HTTP Request
+
+                      │
+
+                  Firewall
+
+                      │
+
+                     CDN
+
+                      │
+
+          Web Application Firewall
+
+                      │
+
+               Load Balancer
+
+                      │
+
+              Reverse Proxy
+
+                      │
+
+                Web Server
+
+                      │
+
+           Application Server
+
+                      │
+
+        Authentication & Authorization
+
+                      │
+
+             Business Logic
+
+                      │
+
+                 Database
+
+                      │
+
+               HTTP Response
+
+                      │
+
+          HTML + CSS + JavaScript
+
+                      │
+
+            Browser Rendering
+
+                      │
+
+                User Sees Page
+```
+
+Every stage has specific performance and security responsibilities.
+
+---
+
+# Where Security Controls Exist
+
+```
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+Firewall
+
+↓
+
+WAF
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Business Logic
+
+↓
+
+Database Security
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+Security is distributed across multiple layers.
+
+---
+
+# Traditional Monolithic Architecture
+
+Earlier web applications were often built as a single application.
+
+```
+Browser
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+Advantages:
+
+- Simpler deployment
+- Easier initial development
+
+Disadvantages:
+
+- Harder to scale individual components
+- Single application grows large over time
+- Tighter coupling between modules
+
+---
+
+# Microservices Architecture
+
+Modern enterprise applications often use microservices.
+
+```
+               Browser
+
+                  │
+
+            API Gateway
+
+      ┌───────────┼───────────┐
+
+      │           │           │
+
+ User Service  Order Service  Payment Service
+
+      │           │           │
+
+      └───────────┼───────────┘
+
+            Shared Infrastructure
+
+                  │
+
+              Databases
+```
+
+Benefits:
+
+- Independent deployment
+- Better scalability
+- Technology flexibility
+- Fault isolation
+
+Challenges:
+
+- More complex communication
+- Service authentication
+- Monitoring
+- Distributed tracing
+
+---
+
+# What is an API?
+
+An **Application Programming Interface (API)** allows software systems to communicate.
+
+Example:
+
+```
+Browser
+
+↓
+
+API Request
+
+↓
+
+Application
+
+↓
+
+JSON Response
+```
+
+Modern websites often rely heavily on APIs for dynamic content.
+
+---
+
+# Browser and API Interaction
+
+Instead of loading an entirely new page, many applications request data asynchronously.
+
+```
+Browser
+
+↓
+
+API Call
+
+↓
+
+JSON
+
+↓
+
+JavaScript Updates Page
+```
+
+This improves responsiveness and user experience.
+
+---
+
+# Browser Storage (Overview)
+
+Browsers can store data in several ways.
+
+| Storage Type | Typical Purpose |
+|--------------|-----------------|
+| Cookies | Session identifiers, preferences |
+| Local Storage | Persistent client-side data |
+| Session Storage | Temporary tab-specific data |
+| Cache | Performance optimization |
+
+These mechanisms will be explored in dedicated chapters.
+
+---
+
+# Authentication Flow (Overview)
+
+```
+User
+
+↓
+
+Login Request
+
+↓
+
+Application
+
+↓
+
+Verify Credentials
+
+↓
+
+Create Session / Token
+
+↓
+
+Access Protected Resources
+```
+
+---
+
+# Authorization Flow (Overview)
+
+```
+Authenticated User
+
+↓
+
+Permission Check
+
+↓
+
+Access Decision
+
+↓
+
+Resource
+```
+
+Authentication identifies the user; authorization determines what they can access.
+
+---
+
+# Browser Security Responsibilities
+
+Modern browsers provide many built-in protections, including:
+
+- Certificate validation
+- Same-Origin Policy
+- Sandboxing
+- Content isolation
+- Secure cookie handling
+- Safe browsing features
+
+These protections reduce risk but do not eliminate application vulnerabilities.
+
+---
+
+# Enterprise Infrastructure Example
+
+An online banking application may include:
+
+```
+Internet
+
+↓
+
+DNS
+
+↓
+
+CDN
+
+↓
+
+Firewall
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Authentication Service
+
+↓
+
+API Gateway
+
+↓
+
+Microservices
+
+↓
+
+Database Cluster
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Backup Systems
+```
+
+Each component contributes to resilience, scalability, and security.
+
+---
+
+# Performance vs Security
+
+Enterprise systems must balance performance with protection.
+
+| Performance Technique | Security Consideration |
+|-----------------------|------------------------|
+| Caching | Avoid caching sensitive data |
+| Compression | Review security implications |
+| CDN | Protect origin servers |
+| Load Balancing | High availability |
+| Reverse Proxy | Hide backend infrastructure |
+| API Gateway | Centralized authentication and routing |
+
+---
+
+# Common Misconceptions
+
+| Myth | Reality |
+|------|----------|
+| The browser talks directly to the database | Requests are processed by application logic before reaching the database. |
+| HTTPS prevents all attacks | HTTPS protects data in transit but does not fix application flaws. |
+| A WAF makes secure coding unnecessary | A WAF complements, not replaces, secure development. |
+| Only login pages require security | Every endpoint, API, and resource requires appropriate protection. |
+
+---
+
+# Security Perspective
+
+As a security professional, analyze every request by asking:
+
+- Where does the request originate?
+- Is the connection encrypted?
+- Who is making the request?
+- Is the user authenticated?
+- Is the action authorized?
+- Is the input validated?
+- Is sensitive data protected?
+- Is the activity logged?
+- How would abnormal behavior be detected?
+
+---
+
+# End-to-End Security Checklist
+
+```
+✓ DNS Resolution
+
+↓
+
+✓ Secure TLS
+
+↓
+
+✓ Authentication
+
+↓
+
+✓ Authorization
+
+↓
+
+✓ Input Validation
+
+↓
+
+✓ Business Logic
+
+↓
+
+✓ Secure Database Access
+
+↓
+
+✓ Secure Response
+
+↓
+
+✓ Logging
+
+↓
+
+✓ Monitoring
+```
+
+---
+
+# Real Enterprise Scenario
+
+A customer purchases an item from an e-commerce platform.
+
+```
+Customer
+
+↓
+
+HTTPS Request
+
+↓
+
+CDN
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Application
+
+↓
+
+Validate Session
+
+↓
+
+Authorize Purchase
+
+↓
+
+Inventory Check
+
+↓
+
+Payment Processing
+
+↓
+
+Order Database
+
+↓
+
+Confirmation Response
+
+↓
+
+Browser Displays Receipt
+```
+
+Security controls are applied throughout the transaction to protect customer information and business operations.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Open the Network tab in your browser and inspect a modern web application.
+
+Identify:
+
+- Initial HTML request
+- CSS files
+- JavaScript bundles
+- Image requests
+- API calls
+- HTTP methods
+- Response codes
+- Response headers
+- Content types
+
+Then draw a simple diagram showing the likely path from the browser to the backend services.
+
+---
+
+# Interview Questions
+
+1. Explain the complete lifecycle of a web request.
+2. What is the role of DNS?
+3. Why is the TCP handshake necessary?
+4. What does TLS provide?
+5. What is the difference between a web server and an application server?
+6. What is an API?
+7. What is the difference between a monolithic application and microservices?
+8. Why is authorization different from authentication?
+9. Why shouldn't browsers communicate directly with databases?
+10. Where should security controls be applied during request processing?
+
+---
+
+# Best Practices
+
+- Understand the complete request lifecycle before studying web attacks.
+- Encrypt all traffic using HTTPS.
+- Authenticate users before granting access.
+- Authorize every sensitive action.
+- Validate input on the server.
+- Log important security events.
+- Monitor application behavior continuously.
+- Keep infrastructure components updated and securely configured.
+
+---
+
+# Common Mistakes
+
+- Assuming all requests are trustworthy.
+- Treating APIs differently from other application endpoints.
+- Ignoring browser-side security mechanisms.
+- Exposing backend services directly to the Internet.
+- Focusing only on network security while neglecting application security.
+
+---
+
+# Quick Revision
+
+Remember the request lifecycle:
+
+```
+URL
+
+↓
+
+DNS
+
+↓
+
+TCP
+
+↓
+
+TLS
+
+↓
+
+HTTP Request
+
+↓
+
+Infrastructure
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+HTTP Response
+
+↓
+
+Browser Rendering
+```
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- How a browser processes a URL
+- DNS resolution
+- TCP and TLS handshakes
+- HTTP request and response structure
+- Web server and application server responsibilities
+- Database interaction
+- Browser rendering process
+- Static vs dynamic content
+- Modern enterprise web architectures
+- APIs and microservices
+- Security controls throughout the request lifecycle
+
+This understanding forms the foundation for every topic that follows. In the next chapter, we will study the **HTTP Protocol** in depth, including request methods, headers, status codes, caching, content negotiation, persistent connections, and the security implications of HTTP.
+
 ```
