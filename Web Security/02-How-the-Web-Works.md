@@ -760,6 +760,871 @@ Notice how a single webpage often requires dozens or even hundreds of network re
 - HTTPS adds encryption through TLS.
 - Modern enterprise applications include multiple infrastructure layers before requests reach the application.
 
+```
+# 02-How-the-Web-Works.md
+
+# Part 2 — DNS Resolution, TCP/IP, TLS Handshake, HTTP Request Journey, and Enterprise Network Flow
+
+> **"Before a web application can process a request, the browser must locate the correct server, establish a reliable connection, negotiate encryption, and only then exchange application data."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- DNS resolution in detail
+- IP addresses
+- Ports
+- TCP/IP fundamentals
+- TCP Three-Way Handshake
+- TLS Handshake
+- HTTP request journey
+- Enterprise network path
+- Firewalls
+- Load Balancers
+- Reverse Proxies
+- Security implications of each layer
+
+---
+
+# Recap
+
+In Part 1 we learned:
+
+```
+Browser
+
+↓
+
+URL
+
+↓
+
+DNS
+
+↓
+
+TCP
+
+↓
+
+TLS
+
+↓
+
+HTTP
+
+↓
+
+Server
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Now we'll explore each networking stage in much greater detail.
+
+---
+
+# What is DNS?
+
+**DNS (Domain Name System)** translates human-readable domain names into IP addresses.
+
+Example:
+
+```
+www.example.com
+
+↓
+
+93.184.216.34
+```
+
+Humans remember names.
+
+Computers communicate using IP addresses.
+
+---
+
+# Why Do We Need DNS?
+
+Imagine remembering every website like this:
+
+```
+https://142.250.190.78
+```
+
+instead of
+
+```
+https://www.google.com
+```
+
+DNS makes the Internet practical and user-friendly.
+
+---
+
+# DNS Analogy
+
+Think of DNS as a phonebook.
+
+```
+Person Name
+
+↓
+
+Phonebook
+
+↓
+
+Phone Number
+
+↓
+
+Call
+```
+
+Similarly,
+
+```
+Domain Name
+
+↓
+
+DNS
+
+↓
+
+IP Address
+
+↓
+
+Connection
+```
+
+---
+
+# Types of DNS Servers
+
+```
+Browser
+
+↓
+
+Local Cache
+
+↓
+
+Operating System Cache
+
+↓
+
+Recursive Resolver
+
+↓
+
+Root Server
+
+↓
+
+TLD Server
+
+↓
+
+Authoritative Server
+
+↓
+
+IP Address
+```
+
+---
+
+# DNS Resolution Process
+
+### Step 1
+
+User enters:
+
+```
+https://shop.example.com
+```
+
+---
+
+### Step 2
+
+Browser checks:
+
+- Browser DNS cache
+
+---
+
+### Step 3
+
+Operating System checks:
+
+- Local DNS cache
+
+---
+
+### Step 4
+
+If not found:
+
+Recursive Resolver performs DNS lookup.
+
+---
+
+### Step 5
+
+Resolver contacts:
+
+```
+Root DNS Server
+```
+
+---
+
+### Step 6
+
+Root server replies:
+
+```
+Ask the .com server.
+```
+
+---
+
+### Step 7
+
+Resolver contacts:
+
+```
+.com TLD Server
+```
+
+---
+
+### Step 8
+
+TLD replies:
+
+```
+Ask example.com's authoritative server.
+```
+
+---
+
+### Step 9
+
+Resolver contacts:
+
+```
+Authoritative DNS Server
+```
+
+---
+
+### Step 10
+
+Authoritative server replies:
+
+```
+shop.example.com
+
+↓
+
+203.0.113.50
+```
+
+---
+
+### Step 11
+
+Browser receives:
+
+```
+203.0.113.50
+```
+
+Now the browser knows where to connect.
+
+---
+
+# Complete DNS Flow
+
+```
+Browser
+
+↓
+
+Browser Cache
+
+↓
+
+OS Cache
+
+↓
+
+Recursive Resolver
+
+↓
+
+Root DNS
+
+↓
+
+TLD DNS
+
+↓
+
+Authoritative DNS
+
+↓
+
+IP Address
+
+↓
+
+Browser
+```
+
+---
+
+# Security Perspective
+
+Attackers may target DNS through:
+
+- DNS Cache Poisoning
+- DNS Hijacking
+- Malicious DNS Records
+- DNS Amplification
+- Domain Takeover
+
+Defenders use:
+
+- DNSSEC
+- Monitoring
+- Secure DNS configuration
+- Access controls
+- Logging
+
+---
+
+# What is an IP Address?
+
+Every device connected to a network has an IP address.
+
+Example:
+
+```
+203.0.113.50
+```
+
+or
+
+```
+2001:db8::1
+```
+
+---
+
+# IPv4 vs IPv6
+
+| IPv4 | IPv6 |
+|------|-------|
+| 32-bit | 128-bit |
+| Limited address space | Vast address space |
+| Example: 203.0.113.50 | Example: 2001:db8::1 |
+
+---
+
+# What is a Port?
+
+A single server can host multiple services.
+
+Ports identify the destination service.
+
+Example:
+
+```
+Server
+
+↓
+
+Port 80 → HTTP
+
+Port 443 → HTTPS
+
+Port 22 → SSH
+
+Port 53 → DNS
+```
+
+---
+
+# Common Ports
+
+| Port | Service |
+|------|----------|
+| 21 | FTP |
+| 22 | SSH |
+| 25 | SMTP |
+| 53 | DNS |
+| 80 | HTTP |
+| 110 | POP3 |
+| 143 | IMAP |
+| 443 | HTTPS |
+
+---
+
+# What is TCP?
+
+TCP stands for:
+
+```
+Transmission Control Protocol
+```
+
+It provides:
+
+- Reliable communication
+- Ordered delivery
+- Error recovery
+- Flow control
+
+---
+
+# Why Not Send Data Immediately?
+
+The client and server must first agree to communicate.
+
+TCP establishes this connection using the **Three-Way Handshake**.
+
+---
+
+# TCP Three-Way Handshake
+
+```
+Client                     Server
+
+SYN ---------------------->
+
+     <---------------- SYN-ACK
+
+ACK ----------------------->
+```
+
+Connection established.
+
+---
+
+# Step 1 — SYN
+
+Client says:
+
+> "I want to communicate."
+
+---
+
+# Step 2 — SYN-ACK
+
+Server replies:
+
+> "I received your request."
+
+---
+
+# Step 3 — ACK
+
+Client confirms:
+
+> "Let's begin."
+
+The TCP connection is now established.
+
+---
+
+# Why TCP Matters for Security
+
+Reliable communication supports:
+
+- Authentication
+- Secure sessions
+- Data integrity
+- Application reliability
+
+While TCP itself is not an encryption protocol, it provides the dependable transport layer used by higher-level protocols like TLS.
+
+---
+
+# HTTPS Connection
+
+After TCP is established:
+
+```
+TCP
+
+↓
+
+TLS Handshake
+
+↓
+
+Encrypted Connection
+
+↓
+
+HTTP Requests
+```
+
+---
+
+# What is TLS?
+
+**TLS (Transport Layer Security)** encrypts communication between the client and server.
+
+Benefits:
+
+- Confidentiality
+- Integrity
+- Server authentication
+
+---
+
+# Simplified TLS Handshake
+
+```
+Client
+
+↓
+
+Client Hello
+
+↓
+
+Server Hello
+
+↓
+
+Certificate
+
+↓
+
+Key Exchange
+
+↓
+
+Session Keys
+
+↓
+
+Encrypted Communication
+```
+
+---
+
+# Why Certificates Matter
+
+Certificates help the browser verify that it is communicating with the intended server.
+
+Example:
+
+```
+Browser
+
+↓
+
+Certificate Validation
+
+↓
+
+Trusted Certificate Authority
+
+↓
+
+Secure Connection
+```
+
+---
+
+# Enterprise Network Flow
+
+A typical enterprise request may follow this path:
+
+```
+Browser
+
+↓
+
+Internet
+
+↓
+
+Firewall
+
+↓
+
+CDN
+
+↓
+
+Web Application Firewall
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application Server
+
+↓
+
+Database
+```
+
+---
+
+# Why Use a Firewall?
+
+A firewall filters network traffic.
+
+It can:
+
+- Allow trusted traffic
+- Block unwanted connections
+- Enforce network policies
+
+---
+
+# Why Use a CDN?
+
+A **Content Delivery Network (CDN)** caches content closer to users.
+
+Benefits:
+
+- Faster delivery
+- Reduced latency
+- Lower server load
+- Basic DDoS mitigation
+
+---
+
+# Why Use a Web Application Firewall (WAF)?
+
+A WAF helps inspect HTTP requests before they reach the application.
+
+It can detect or block common attack patterns such as malformed requests or suspicious payloads, providing an additional layer of defense alongside secure coding.
+
+---
+
+# Why Use a Load Balancer?
+
+Instead of one server:
+
+```
+Users
+
+↓
+
+One Server
+```
+
+Enterprise applications often use:
+
+```
+Users
+
+↓
+
+Load Balancer
+
+↓
+
+Server 1
+
+Server 2
+
+Server 3
+```
+
+Benefits:
+
+- High availability
+- Scalability
+- Fault tolerance
+
+---
+
+# Why Use a Reverse Proxy?
+
+A reverse proxy sits between clients and backend servers.
+
+Responsibilities:
+
+- Forward requests
+- Hide internal servers
+- TLS termination (in some architectures)
+- Caching
+- Compression
+- Routing
+
+---
+
+# Enterprise Architecture Example
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+CDN
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application Cluster
+
+↓
+
+API Layer
+
+↓
+
+Database Cluster
+```
+
+---
+
+# Where Can Attacks Occur?
+
+```
+Browser
+
+↓
+
+DNS
+
+↓
+
+Network
+
+↓
+
+TLS
+
+↓
+
+HTTP
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+Each stage has different security considerations, which will be explored in later chapters.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Choose any website and answer:
+
+1. Does it use HTTPS?
+2. What IP address does its domain resolve to?
+3. Which port is used?
+4. Can you identify if it uses a CDN from the response headers?
+5. Open the browser's Network tab and observe:
+   - Initial request
+   - Status code
+   - Response headers
+   - Additional resources loaded
+
+---
+
+# Interview Questions
+
+1. What is DNS?
+2. Why is DNS required?
+3. What is an IP address?
+4. What is a network port?
+5. Explain the TCP Three-Way Handshake.
+6. What is TLS?
+7. Why is HTTPS more secure than HTTP?
+8. What is the purpose of a Load Balancer?
+9. What is a Reverse Proxy?
+10. Why do enterprises deploy Web Application Firewalls?
+
+---
+
+# Best Practices
+
+- Use HTTPS for all web traffic.
+- Configure DNS securely and monitor changes.
+- Keep TLS configurations updated.
+- Place applications behind firewalls and reverse proxies.
+- Use load balancers for resilience and scalability.
+- Monitor network traffic for unusual activity.
+
+---
+
+# Common Mistakes
+
+- Assuming DNS is inherently secure.
+- Exposing backend servers directly to the Internet.
+- Using outdated TLS versions or weak cipher suites.
+- Running production services without a firewall.
+- Believing a WAF can replace secure application development.
+
+---
+
+# Key Takeaways
+
+- DNS translates domain names into IP addresses through a hierarchical resolution process.
+- TCP establishes a reliable connection before application data is exchanged.
+- TLS encrypts communication and authenticates servers.
+- Enterprise web traffic typically passes through multiple infrastructure components before reaching the application.
+- Each networking layer has unique security responsibilities and potential attack vectors.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
