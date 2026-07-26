@@ -615,6 +615,767 @@ Document your observations and think about what security controls each page migh
 - Effective security relies on layered defenses rather than a single control.
 - Understanding how web applications work is the first step toward securing them.
 
+```
+
+# 01-Introduction-to-Web-Security.md
+
+# Part 2 — The Web Security Landscape, Threat Model, Attack Surface, and Security Lifecycle
+
+> **"To secure a web application, you must first understand what you are protecting, who you are protecting it from, and how attackers think."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- The Web Security ecosystem
+- Types of web applications
+- Threat actors
+- Threat modeling
+- Attack surface
+- Assets
+- Risk
+- Vulnerabilities
+- Security controls
+- Defense in Depth
+- Secure Software Development Lifecycle (SSDLC)
+- Enterprise security teams
+
+---
+
+# The Web Security Ecosystem
+
+A modern web application is much more than a webpage.
+
+```
+                   Users
+
+                     │
+
+          Internet / Mobile Network
+
+                     │
+
+              DNS Resolution
+
+                     │
+
+           CDN / Reverse Proxy / WAF
+
+                     │
+
+             Load Balancer
+
+                     │
+
+             Web Server Cluster
+
+                     │
+
+           Application Servers
+
+                     │
+
+      Authentication Services
+
+                     │
+
+          APIs / Microservices
+
+                     │
+
+          Database Servers
+
+                     │
+
+     Storage / Backup / Logging
+```
+
+Every component must be secured.
+
+---
+
+# What Makes Web Security Difficult?
+
+Modern applications include:
+
+- Browsers
+- Mobile Apps
+- APIs
+- Third-party services
+- Cloud platforms
+- Microservices
+- Containers
+- Databases
+- Identity providers
+
+Each additional component increases complexity.
+
+---
+
+# Modern Web Application Architecture
+
+```
+User
+
+↓
+
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+CDN
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+API
+
+↓
+
+Database
+```
+
+Each layer can become an attack target.
+
+---
+
+# What Are We Protecting?
+
+These are called **Assets**.
+
+Examples include:
+
+- Customer accounts
+- Passwords
+- Financial records
+- Business data
+- Source code
+- Session tokens
+- API keys
+- Cloud resources
+- Administrative portals
+- Payment information
+
+---
+
+# Information Classification
+
+Organizations often classify data.
+
+| Classification | Example |
+|---------------|----------|
+| Public | Company homepage |
+| Internal | Internal documentation |
+| Confidential | Customer records |
+| Restricted | Encryption keys |
+| Highly Sensitive | Banking credentials |
+
+The higher the sensitivity, the stronger the protection required.
+
+---
+
+# Who Are We Protecting Against?
+
+Potential threat actors include:
+
+- Cybercriminals
+- Organized crime groups
+- Insider threats
+- Nation-state attackers
+- Competitors
+- Hacktivists
+- Automated bots
+- Opportunistic attackers
+
+---
+
+# Threat Actor Comparison
+
+| Threat Actor | Typical Motivation |
+|-------------|-------------------|
+| Cybercriminal | Financial gain |
+| Insider | Misuse of privileges |
+| Nation-state | Espionage |
+| Competitor | Competitive advantage |
+| Script Kiddie | Curiosity or recognition |
+| Bot | Automated exploitation |
+
+---
+
+# Understanding Risk
+
+Risk is generally influenced by three factors:
+
+```
+Asset
+
++
+
+Threat
+
++
+
+Vulnerability
+
+↓
+
+Risk
+```
+
+If a valuable asset has a vulnerability that a threat actor can exploit, the overall risk increases.
+
+---
+
+# Example
+
+Imagine an online banking application.
+
+Asset:
+
+- Customer money
+
+Threat:
+
+- Criminal attacker
+
+Vulnerability:
+
+- Weak authentication
+
+Risk:
+
+- Unauthorized account access
+
+---
+
+# What is a Vulnerability?
+
+A **vulnerability** is a weakness that can potentially be exploited.
+
+Examples:
+
+- Weak passwords
+- Missing input validation
+- Insecure session management
+- Misconfigured servers
+- Outdated software
+- Excessive permissions
+
+---
+
+# What is an Exploit?
+
+An exploit is the method or technique used to take advantage of a vulnerability.
+
+Example:
+
+```
+Weak Password Policy
+
+↓
+
+Password Guessing
+
+↓
+
+Unauthorized Login
+```
+
+---
+
+# What is an Attack?
+
+An attack is an attempt to compromise:
+
+- Confidentiality
+- Integrity
+- Availability
+
+Attackers may attempt to:
+
+- Steal data
+- Modify data
+- Delete information
+- Impersonate users
+- Interrupt services
+
+---
+
+# Security Objectives
+
+A secure application should provide:
+
+- Authentication
+- Authorization
+- Confidentiality
+- Integrity
+- Availability
+- Logging
+- Monitoring
+- Accountability
+
+---
+
+# Understanding Attack Surface
+
+The **attack surface** is every point where an attacker can interact with a system.
+
+```
+Website
+
+├── Login Page
+
+├── Registration
+
+├── Search
+
+├── Contact Form
+
+├── File Upload
+
+├── API
+
+├── Admin Portal
+
+├── Password Reset
+
+├── Third-party Integrations
+
+└── Mobile API
+```
+
+Each entry point requires appropriate security controls.
+
+---
+
+# Attack Surface Categories
+
+## External
+
+Examples:
+
+- Public website
+- APIs
+- Login pages
+- DNS records
+
+---
+
+## Internal
+
+Examples:
+
+- Administrative portals
+- Internal dashboards
+- Employee applications
+- Internal APIs
+
+---
+
+## Human
+
+Examples:
+
+- Weak passwords
+- Social engineering
+- Phishing
+- Insider misuse
+
+---
+
+# Reducing Attack Surface
+
+Organizations can reduce exposure by:
+
+- Removing unused features
+- Disabling unnecessary services
+- Restricting administrative interfaces
+- Applying least privilege
+- Updating software
+- Limiting exposed APIs
+
+---
+
+# Threat Modeling
+
+Threat modeling is the process of identifying:
+
+- Assets
+- Threats
+- Vulnerabilities
+- Risks
+- Security controls
+
+before an application is deployed.
+
+---
+
+# Threat Modeling Workflow
+
+```
+Understand System
+
+↓
+
+Identify Assets
+
+↓
+
+Identify Threats
+
+↓
+
+Identify Vulnerabilities
+
+↓
+
+Assess Risk
+
+↓
+
+Implement Controls
+
+↓
+
+Review
+```
+
+---
+
+# Example Threat Model
+
+Application:
+
+Online shopping platform
+
+Assets:
+
+- Customer accounts
+- Payment information
+- Orders
+
+Threats:
+
+- Account takeover
+- Data theft
+- Fraud
+
+Security Controls:
+
+- MFA
+- HTTPS
+- Secure session management
+- Input validation
+- Monitoring
+
+---
+
+# Security Controls
+
+Security controls reduce risk.
+
+There are several categories.
+
+---
+
+## Preventive Controls
+
+Designed to stop attacks before they occur.
+
+Examples:
+
+- MFA
+- Access control
+- Input validation
+- WAF
+- Secure coding
+
+---
+
+## Detective Controls
+
+Identify suspicious activity.
+
+Examples:
+
+- Logs
+- SIEM
+- Intrusion detection
+- Security monitoring
+- Alerting
+
+---
+
+## Corrective Controls
+
+Help restore normal operations.
+
+Examples:
+
+- Incident response
+- Patch management
+- Backup restoration
+- Disaster recovery
+
+---
+
+# Defense in Depth
+
+No single control can stop every attack.
+
+Enterprise security uses multiple protective layers.
+
+```
+Users
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Web Application Firewall
+
+↓
+
+Monitoring
+
+↓
+
+Logging
+
+↓
+
+Incident Response
+```
+
+If one layer fails, others continue to provide protection.
+
+---
+
+# Secure Software Development Lifecycle (SSDLC)
+
+Security should be integrated throughout software development.
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Maintenance
+```
+
+Security is not limited to the testing phase.
+
+---
+
+# Traditional SDLC vs SSDLC
+
+| Traditional SDLC | SSDLC |
+|------------------|-------|
+| Security added later | Security built into every phase |
+| Vulnerabilities found late | Issues identified earlier |
+| Higher remediation cost | Lower remediation cost |
+| Reactive | Proactive |
+
+---
+
+# Enterprise Security Teams
+
+Several teams collaborate to secure web applications.
+
+| Team | Responsibility |
+|------|----------------|
+| Developers | Build applications |
+| QA | Test functionality |
+| Security Engineers | Design security controls |
+| DevSecOps | Integrate security into CI/CD |
+| SOC | Monitor threats |
+| Incident Response | Handle security incidents |
+| Cloud Team | Secure cloud infrastructure |
+
+---
+
+# Shared Responsibility
+
+```
+Developers
+
+↓
+
+Secure Code
+
+↓
+
+Security Team
+
+↓
+
+Review
+
+↓
+
+Operations
+
+↓
+
+Deployment
+
+↓
+
+SOC
+
+↓
+
+Continuous Monitoring
+```
+
+Security is a shared responsibility across the organization.
+
+---
+
+# Real Enterprise Scenario
+
+A company launches an online payment platform.
+
+Potential attack surface includes:
+
+- Login page
+- Password reset
+- Checkout
+- Payment gateway
+- APIs
+- Administrative dashboard
+
+Potential security controls:
+
+- HTTPS
+- MFA for administrators
+- Secure session management
+- Rate limiting
+- Logging
+- Web Application Firewall
+- Continuous monitoring
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Choose a website that you use regularly.
+
+Create a table with:
+
+| Component | Purpose | Possible Security Concern |
+|----------|---------|---------------------------|
+| Login | User authentication | Weak password policy |
+| Search | Product lookup | Input validation |
+| File Upload | Document upload | Malicious file upload |
+| API | Data exchange | Authorization checks |
+
+Think about how each component could be protected.
+
+---
+
+# Interview Questions
+
+1. What is an attack surface?
+2. What is a vulnerability?
+3. What is an exploit?
+4. What is risk?
+5. What are assets?
+6. Explain Defense in Depth.
+7. What is threat modeling?
+8. Why should security be included during development?
+9. What is SSDLC?
+10. What are preventive, detective, and corrective controls?
+
+---
+
+# Best Practices
+
+- Reduce unnecessary attack surface.
+- Perform threat modeling during design.
+- Classify and protect sensitive data.
+- Apply multiple security layers.
+- Integrate security into the development lifecycle.
+- Monitor continuously and review logs.
+- Keep systems updated and remove unused components.
+
+---
+
+# Common Mistakes
+
+- Exposing unnecessary services.
+- Ignoring third-party dependencies.
+- Treating security as only the security team's responsibility.
+- Failing to classify sensitive data.
+- Performing security testing only before release.
+- Overlooking administrative interfaces and APIs.
+
+---
+
+# Key Takeaways
+
+- Modern web applications consist of many interconnected components.
+- Every exposed component contributes to the application's attack surface.
+- Risk arises from the combination of valuable assets, threats, and vulnerabilities.
+- Threat modeling helps identify security issues early in the design process.
+- Defense in Depth uses multiple layers of security rather than relying on a single control.
+- Secure Software Development Lifecycle (SSDLC) integrates security into every phase of development.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
