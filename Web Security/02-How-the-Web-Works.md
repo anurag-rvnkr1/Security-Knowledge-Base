@@ -1625,6 +1625,941 @@ Choose any website and answer:
 - Enterprise web traffic typically passes through multiple infrastructure components before reaching the application.
 - Each networking layer has unique security responsibilities and potential attack vectors.
 
+```
+
+# 02-How-the-Web-Works.md
+
+# Part 3 — HTTP Request Processing, Web Servers, Application Servers, Databases, Browser Rendering, and Complete Request Lifecycle
+
+> **"The network delivers your request to the server, but the application decides what happens next. Understanding this processing pipeline is essential for understanding modern web security."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- HTTP request processing
+- Web server responsibilities
+- Application server responsibilities
+- Dynamic content generation
+- Database interaction
+- Browser rendering process
+- Static vs Dynamic resources
+- Browser caching
+- Sessions and cookies (overview)
+- Security checkpoints throughout the request lifecycle
+
+---
+
+# Recap
+
+So far we have learned:
+
+```
+User
+
+↓
+
+Browser
+
+↓
+
+DNS
+
+↓
+
+TCP
+
+↓
+
+TLS
+
+↓
+
+HTTP Request
+```
+
+Now we will explore what happens **after the request reaches the server**.
+
+---
+
+# Complete Request Processing
+
+```
+Browser
+
+↓
+
+Firewall
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Database
+
+↓
+
+Response
+
+↓
+
+Browser Rendering
+```
+
+---
+
+# What is an HTTP Request?
+
+An HTTP request is a message sent from a client to a server requesting a resource.
+
+Example:
+
+```http
+GET /products HTTP/1.1
+Host: shop.example.com
+```
+
+A request tells the server:
+
+- Which resource is needed
+- Which method is being used
+- Additional information through headers
+
+---
+
+# Anatomy of an HTTP Request
+
+```
+Request Line
+
+↓
+
+Headers
+
+↓
+
+Blank Line
+
+↓
+
+Body (Optional)
+```
+
+Example:
+
+```http
+POST /login HTTP/1.1
+Host: example.com
+Content-Type: application/json
+
+{
+  "username":"alice",
+  "password":"********"
+}
+```
+
+---
+
+# Common HTTP Methods
+
+| Method | Purpose |
+|---------|----------|
+| GET | Retrieve data |
+| POST | Submit data |
+| PUT | Replace a resource |
+| PATCH | Partially update a resource |
+| DELETE | Remove a resource |
+| HEAD | Retrieve headers only |
+| OPTIONS | Discover supported methods |
+
+Each method has a different purpose and should be used appropriately.
+
+---
+
+# HTTP Headers
+
+Headers provide additional information.
+
+Examples include:
+
+- Host
+- User-Agent
+- Accept
+- Authorization
+- Cookie
+- Content-Type
+- Content-Length
+- Cache-Control
+
+Example:
+
+```http
+User-Agent: Mozilla/5.0
+```
+
+---
+
+# HTTP Body
+
+The body usually contains data sent by the client.
+
+Example:
+
+```
+Login Form
+
+↓
+
+Username
+
+Password
+
+↓
+
+HTTP Body
+
+↓
+
+Server
+```
+
+Typical body formats:
+
+- JSON
+- XML
+- HTML
+- Form data
+- Multipart form data
+
+---
+
+# Request Reaches the Web Server
+
+```
+Client
+
+↓
+
+HTTP Request
+
+↓
+
+Web Server
+```
+
+Popular web servers include:
+
+- Apache HTTP Server
+- Nginx
+- Microsoft IIS
+- Caddy
+
+---
+
+# Responsibilities of a Web Server
+
+A web server typically:
+
+- Accepts client connections
+- Serves static files
+- Handles HTTPS (depending on architecture)
+- Routes requests
+- Logs requests
+- Passes dynamic requests to the application
+
+---
+
+# Static Resources
+
+Static resources do not change for each user.
+
+Examples:
+
+- HTML files
+- CSS files
+- Images
+- Fonts
+- JavaScript files
+- Videos
+
+```
+Browser
+
+↓
+
+Web Server
+
+↓
+
+Image.jpg
+```
+
+No database lookup is required.
+
+---
+
+# Dynamic Resources
+
+Dynamic resources are generated at request time.
+
+Examples:
+
+- User profile
+- Shopping cart
+- Dashboard
+- Account balance
+- Search results
+
+```
+Browser
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+Generated Response
+```
+
+---
+
+# Web Server vs Application Server
+
+| Web Server | Application Server |
+|------------|--------------------|
+| Serves static content | Executes business logic |
+| Handles HTTP connections | Processes application code |
+| Efficient with files | Generates dynamic responses |
+| Routes requests | Interacts with databases |
+
+---
+
+# What is an Application Server?
+
+The application server contains the application's logic.
+
+Responsibilities include:
+
+- Authentication
+- Authorization
+- Input validation
+- Business rules
+- API processing
+- Database interaction
+- Response generation
+
+---
+
+# Example Request Flow
+
+Customer requests:
+
+```
+/account
+```
+
+Application workflow:
+
+```
+Receive Request
+
+↓
+
+Validate Session
+
+↓
+
+Authenticate User
+
+↓
+
+Authorize Access
+
+↓
+
+Retrieve Account Data
+
+↓
+
+Generate HTML
+
+↓
+
+Return Response
+```
+
+---
+
+# Business Logic
+
+Business logic defines how an application behaves.
+
+Examples:
+
+- Calculate discounts
+- Validate orders
+- Process payments
+- Generate invoices
+- Check inventory
+- Enforce access rules
+
+---
+
+# Database Interaction
+
+Many web applications store information in databases.
+
+```
+Application
+
+↓
+
+SQL Query
+
+↓
+
+Database
+
+↓
+
+Result
+
+↓
+
+Application
+```
+
+Typical data stored:
+
+- Users
+- Products
+- Orders
+- Sessions
+- Logs
+- Payments
+
+---
+
+# Database Types
+
+## Relational Databases
+
+Examples:
+
+- PostgreSQL
+- MySQL
+- Microsoft SQL Server
+- Oracle Database
+
+---
+
+## NoSQL Databases
+
+Examples:
+
+- MongoDB
+- Redis
+- Cassandra
+
+Different applications choose different databases based on their requirements.
+
+---
+
+# Example Login Workflow
+
+```
+User
+
+↓
+
+Login Form
+
+↓
+
+Application
+
+↓
+
+Database Lookup
+
+↓
+
+Password Verification
+
+↓
+
+Session Creation
+
+↓
+
+Dashboard
+```
+
+---
+
+# Response Generation
+
+After processing the request, the application creates a response.
+
+Possible formats:
+
+- HTML
+- JSON
+- XML
+- PDF
+- Images
+- Files
+
+---
+
+# HTTP Response
+
+Example:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+```
+
+The response consists of:
+
+```
+Status Line
+
+↓
+
+Headers
+
+↓
+
+Blank Line
+
+↓
+
+Response Body
+```
+
+---
+
+# Common HTTP Status Codes
+
+| Code | Meaning |
+|------|----------|
+| 200 | OK |
+| 201 | Created |
+| 204 | No Content |
+| 301 | Moved Permanently |
+| 302 | Temporary Redirect |
+| 304 | Not Modified |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 405 | Method Not Allowed |
+| 429 | Too Many Requests |
+| 500 | Internal Server Error |
+| 502 | Bad Gateway |
+| 503 | Service Unavailable |
+
+---
+
+# Browser Receives Response
+
+The browser processes:
+
+```
+HTML
+
+↓
+
+CSS
+
+↓
+
+JavaScript
+
+↓
+
+Fonts
+
+↓
+
+Images
+
+↓
+
+Videos
+
+↓
+
+Rendered Page
+```
+
+---
+
+# Browser Rendering Process
+
+```
+Download HTML
+
+↓
+
+Parse HTML
+
+↓
+
+Build DOM
+
+↓
+
+Download CSS
+
+↓
+
+Build CSSOM
+
+↓
+
+Execute JavaScript
+
+↓
+
+Combine DOM + CSSOM
+
+↓
+
+Render Tree
+
+↓
+
+Layout
+
+↓
+
+Paint
+
+↓
+
+Display Page
+```
+
+---
+
+# What is the DOM?
+
+The **Document Object Model (DOM)** is the browser's internal representation of an HTML document.
+
+Example:
+
+```
+HTML
+
+↓
+
+DOM Tree
+
+↓
+
+JavaScript Interaction
+```
+
+JavaScript can modify the DOM dynamically, allowing pages to update without a full reload.
+
+---
+
+# Additional Browser Requests
+
+A single HTML page often references many additional resources.
+
+Example:
+
+```
+index.html
+
+├── style.css
+
+├── app.js
+
+├── logo.png
+
+├── profile.jpg
+
+├── font.woff2
+
+└── api/user
+```
+
+The browser sends separate HTTP requests for many of these resources.
+
+---
+
+# Browser Cache
+
+Browsers cache resources to improve performance.
+
+```
+First Visit
+
+↓
+
+Download Resource
+
+↓
+
+Cache Resource
+
+↓
+
+Future Visit
+
+↓
+
+Reuse Cached Copy (if valid)
+```
+
+Benefits:
+
+- Faster page loads
+- Reduced bandwidth
+- Lower server load
+
+---
+
+# Cookies (Overview)
+
+Cookies are small pieces of data stored by the browser.
+
+Typical uses:
+
+- Session identifiers
+- User preferences
+- Language settings
+- Shopping carts
+
+A dedicated chapter will explore cookies in depth.
+
+---
+
+# Sessions (Overview)
+
+A session allows the server to recognize multiple requests as belonging to the same user.
+
+Example:
+
+```
+Login
+
+↓
+
+Session Created
+
+↓
+
+User Browsing
+
+↓
+
+Server Recognizes User
+```
+
+---
+
+# Security Checkpoints
+
+A secure application performs checks throughout the request lifecycle.
+
+```
+Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Business Rules
+
+↓
+
+Database Access
+
+↓
+
+Output Generation
+
+↓
+
+Logging
+
+↓
+
+Response
+```
+
+Security should not rely on a single checkpoint.
+
+---
+
+# Enterprise Example
+
+A customer views an order history page.
+
+```
+Customer
+
+↓
+
+HTTPS Request
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Validate Session
+
+↓
+
+Authorize User
+
+↓
+
+Database Query
+
+↓
+
+Generate HTML
+
+↓
+
+Browser Render
+```
+
+Each step contributes to the overall security and reliability of the application.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser's Developer Tools:
+
+1. Open the **Network** tab.
+2. Visit a dynamic website.
+3. Observe:
+   - Initial HTML request
+   - CSS files
+   - JavaScript files
+   - Images
+   - API calls
+   - Response status codes
+4. Compare the size and timing of different resources.
+
+Think about which requests contain sensitive information and which should require authentication.
+
+---
+
+# Interview Questions
+
+1. What is the difference between a web server and an application server?
+2. What is an HTTP request?
+3. What is an HTTP response?
+4. Explain common HTTP methods.
+5. What are HTTP headers?
+6. What is business logic?
+7. What is the DOM?
+8. What is browser caching?
+9. Why are sessions needed?
+10. What are common HTTP status codes?
+
+---
+
+# Best Practices
+
+- Separate static and dynamic content efficiently.
+- Validate all incoming data before processing.
+- Return appropriate HTTP status codes.
+- Cache static resources responsibly.
+- Minimize unnecessary HTTP requests.
+- Log important application events without exposing sensitive information.
+
+---
+
+# Common Mistakes
+
+- Returning overly detailed error messages.
+- Trusting client-side validation alone.
+- Misusing HTTP methods.
+- Exposing internal application details in responses.
+- Ignoring caching behavior for sensitive content.
+
+---
+
+# Key Takeaways
+
+- Web servers receive requests and serve static resources, while application servers execute business logic.
+- Dynamic pages often require database access before generating a response.
+- HTTP requests and responses consist of structured components such as headers and bodies.
+- Browsers parse HTML, build the DOM, load additional resources, and render pages.
+- Security checks should occur throughout the request lifecycle rather than at a single point.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
