@@ -1657,6 +1657,842 @@ Using your browser's Developer Tools:
 - MIME types tell clients how to interpret response data.
 - Proper use of caching and content negotiation improves both performance and user experience.
 
+```
+
+# 03-HTTP-Protocol.md
+
+# Part 3 — HTTP Versions, Persistent Connections, Caching, Compression, Proxies, and Enterprise HTTP Communication
+
+> **"Modern HTTP has evolved far beyond simple web pages. Today's HTTP powers cloud platforms, mobile applications, streaming services, APIs, and billions of secure transactions every day."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Evolution of HTTP
+- HTTP/0.9
+- HTTP/1.0
+- HTTP/1.1
+- HTTP/2
+- HTTP/3
+- Persistent Connections
+- Keep-Alive
+- Connection Multiplexing
+- Compression
+- Chunked Transfer Encoding
+- Reverse Proxies
+- Forward Proxies
+- Enterprise HTTP Architecture
+
+---
+
+# Evolution of HTTP
+
+HTTP has continuously improved to increase:
+
+- Performance
+- Scalability
+- Reliability
+- Security
+- Efficiency
+
+```
+HTTP/0.9
+
+↓
+
+HTTP/1.0
+
+↓
+
+HTTP/1.1
+
+↓
+
+HTTP/2
+
+↓
+
+HTTP/3
+```
+
+---
+
+# HTTP/0.9
+
+Released in:
+
+```
+1991
+```
+
+Features:
+
+- GET method only
+- HTML only
+- No headers
+- No status codes
+- Very simple protocol
+
+Example:
+
+```
+GET /index.html
+```
+
+---
+
+# Limitations of HTTP/0.9
+
+- No metadata
+- No authentication
+- No content types
+- No caching
+- No compression
+
+The early Web was extremely simple.
+
+---
+
+# HTTP/1.0
+
+Introduced major improvements.
+
+New features:
+
+- Headers
+- Status codes
+- Content types
+- POST method
+- Better error handling
+
+Example:
+
+```http
+GET / HTTP/1.0
+Host: example.com
+```
+
+---
+
+# Limitation of HTTP/1.0
+
+Each request required a new TCP connection.
+
+```
+Request
+
+↓
+
+Open TCP
+
+↓
+
+Response
+
+↓
+
+Close TCP
+```
+
+Opening connections repeatedly introduced unnecessary overhead.
+
+---
+
+# HTTP/1.1
+
+Released in:
+
+```
+1997
+```
+
+Major improvements:
+
+- Persistent connections
+- Host header
+- Chunked transfer encoding
+- Better caching
+- Additional HTTP methods
+- Improved performance
+
+HTTP/1.1 became the dominant version of HTTP for many years.
+
+---
+
+# Persistent Connections
+
+Instead of creating a new connection for every request:
+
+Old behavior:
+
+```
+Request
+
+↓
+
+Open TCP
+
+↓
+
+Response
+
+↓
+
+Close TCP
+```
+
+HTTP/1.1:
+
+```
+Open TCP
+
+↓
+
+Request 1
+
+↓
+
+Response
+
+↓
+
+Request 2
+
+↓
+
+Response
+
+↓
+
+Request 3
+
+↓
+
+Response
+
+↓
+
+Close TCP
+```
+
+This significantly reduces latency.
+
+---
+
+# Keep-Alive
+
+Persistent connections are commonly referred to as **Keep-Alive** connections.
+
+Benefits:
+
+- Faster browsing
+- Lower latency
+- Reduced CPU usage
+- Reduced network overhead
+
+---
+
+# Host Header
+
+Multiple websites can share one IP address.
+
+Example:
+
+```http
+Host: shop.example.com
+```
+
+The server uses the `Host` header to determine which website should receive the request.
+
+---
+
+# Virtual Hosting
+
+One server
+
+↓
+
+Multiple websites
+
+```
+203.0.113.10
+
+│
+
+├── example.com
+
+├── shop.example.com
+
+├── blog.example.com
+
+└── api.example.com
+```
+
+Virtual hosting is widely used in shared hosting environments.
+
+---
+
+# Chunked Transfer Encoding
+
+Sometimes the server does not know the response size in advance.
+
+Instead of:
+
+```
+Content-Length
+```
+
+it sends:
+
+```
+Chunk
+
+↓
+
+Chunk
+
+↓
+
+Chunk
+
+↓
+
+End
+```
+
+This allows data to be streamed as it becomes available.
+
+---
+
+# Why Chunking Matters
+
+Useful for:
+
+- Large files
+- Streaming responses
+- Dynamically generated content
+
+---
+
+# HTTP Pipelining
+
+HTTP/1.1 introduced pipelining.
+
+```
+Request 1
+
+Request 2
+
+Request 3
+
+↓
+
+Responses
+```
+
+However, pipelining suffered from practical limitations such as head-of-line blocking and was not widely adopted.
+
+---
+
+# Head-of-Line Blocking
+
+Example:
+
+```
+Request A
+
+↓
+
+Slow
+
+↓
+
+Request B waits
+
+↓
+
+Request C waits
+```
+
+One slow response delays later responses on the same connection.
+
+---
+
+# HTTP/2
+
+HTTP/2 greatly improves performance while keeping the same HTTP semantics.
+
+Major features:
+
+- Multiplexing
+- Header compression
+- Binary framing
+- Stream prioritization
+- Single connection
+
+---
+
+# Binary Protocol
+
+HTTP/1.1:
+
+```
+Text
+```
+
+HTTP/2:
+
+```
+Binary Frames
+```
+
+Binary framing is more efficient for machines to process.
+
+---
+
+# Multiplexing
+
+Multiple requests can share a single connection simultaneously.
+
+```
+Single TCP Connection
+
+│
+
+├── Request A
+
+├── Request B
+
+├── Request C
+
+├── Request D
+
+└── Request E
+```
+
+Responses can be interleaved without waiting for previous requests to finish.
+
+---
+
+# Benefits of Multiplexing
+
+- Lower latency
+- Better bandwidth utilization
+- Faster page loading
+- Fewer TCP connections
+
+---
+
+# Header Compression
+
+HTTP requests often repeat many headers.
+
+Example:
+
+```
+Cookie
+
+User-Agent
+
+Accept
+
+Host
+```
+
+HTTP/2 compresses repeated header information to reduce network usage.
+
+---
+
+# Stream Prioritization
+
+Browsers can indicate that some resources are more important than others.
+
+Example:
+
+```
+HTML
+
+↓
+
+CSS
+
+↓
+
+JavaScript
+
+↓
+
+Images
+```
+
+This helps optimize perceived page loading performance.
+
+---
+
+# HTTP/3
+
+HTTP/3 is the newest major version of HTTP.
+
+Major improvements:
+
+- Uses QUIC instead of TCP
+- Reduced connection setup time
+- Better handling of packet loss
+- Improved performance on unreliable networks
+- Built-in transport encryption through QUIC's use of TLS 1.3
+
+---
+
+# HTTP/3 Overview
+
+```
+Browser
+
+↓
+
+QUIC
+
+↓
+
+TLS 1.3
+
+↓
+
+HTTP/3
+
+↓
+
+Server
+```
+
+Unlike earlier versions, HTTP/3 runs over UDP using the QUIC transport protocol rather than TCP.
+
+---
+
+# HTTP Version Comparison
+
+| Feature | HTTP/1.0 | HTTP/1.1 | HTTP/2 | HTTP/3 |
+|----------|----------|----------|---------|---------|
+| Persistent Connections | ✗ | ✓ | ✓ | ✓ |
+| Multiplexing | ✗ | ✗ | ✓ | ✓ |
+| Header Compression | ✗ | ✗ | ✓ | ✓ |
+| Binary Protocol | ✗ | ✗ | ✓ | ✓ |
+| QUIC | ✗ | ✗ | ✗ | ✓ |
+
+---
+
+# Forward Proxy
+
+A forward proxy sits between clients and the Internet.
+
+```
+Client
+
+↓
+
+Forward Proxy
+
+↓
+
+Internet
+```
+
+Common uses:
+
+- Web filtering
+- Privacy
+- Access control
+- Organizational Internet access
+
+---
+
+# Reverse Proxy
+
+A reverse proxy sits between the Internet and backend servers.
+
+```
+Internet
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application Servers
+```
+
+Responsibilities:
+
+- TLS termination
+- Request routing
+- Caching
+- Load distribution
+- Hide backend infrastructure
+
+---
+
+# CDN and HTTP
+
+Content Delivery Networks optimize HTTP delivery.
+
+```
+Browser
+
+↓
+
+Nearest CDN
+
+↓
+
+Origin Server
+```
+
+Benefits:
+
+- Faster delivery
+- Reduced latency
+- Lower bandwidth costs
+- Improved availability
+
+---
+
+# Compression
+
+Responses can be compressed before transmission.
+
+```
+Server
+
+↓
+
+Compress
+
+↓
+
+Network
+
+↓
+
+Browser
+
+↓
+
+Decompress
+```
+
+Common algorithms:
+
+- gzip
+- Brotli
+
+Compression reduces transfer size and improves load times.
+
+---
+
+# Enterprise HTTP Architecture
+
+```
+Browser
+
+↓
+
+DNS
+
+↓
+
+CDN
+
+↓
+
+Firewall
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application Servers
+
+↓
+
+Microservices
+
+↓
+
+Database
+```
+
+HTTP traffic passes through multiple components before reaching the application.
+
+---
+
+# HTTP Request Journey in Enterprise
+
+```
+User
+
+↓
+
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+CDN
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+HTTP Response
+```
+
+Each layer contributes to performance, scalability, and security.
+
+---
+
+# Security Considerations
+
+Each HTTP version introduces different operational considerations.
+
+Examples include:
+
+- Use HTTPS with modern TLS versions.
+- Disable unnecessary HTTP methods where appropriate.
+- Keep servers updated to support secure protocol versions.
+- Validate all client input regardless of HTTP version.
+- Configure reverse proxies securely.
+
+---
+
+# Enterprise Example
+
+A customer accesses a cloud-based banking portal.
+
+```
+Customer
+
+↓
+
+HTTPS (HTTP/2)
+
+↓
+
+CDN
+
+↓
+
+WAF
+
+↓
+
+Reverse Proxy
+
+↓
+
+API Gateway
+
+↓
+
+Application Cluster
+
+↓
+
+Database
+```
+
+Modern browsers and servers may negotiate HTTP/2 or HTTP/3 automatically when both ends support them.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser's **Developer Tools**:
+
+1. Open the **Network** tab.
+2. Visit a modern website.
+3. Add the **Protocol** column (if available).
+4. Observe whether requests use:
+   - HTTP/1.1
+   - HTTP/2
+   - HTTP/3
+5. Compare the number of requests and note how a single connection can efficiently deliver many resources.
+
+---
+
+# Interview Questions
+
+1. Why was HTTP/1.1 introduced?
+2. What are persistent connections?
+3. What is the purpose of the `Host` header?
+4. What is chunked transfer encoding?
+5. Why was HTTP pipelining not widely adopted?
+6. What is multiplexing in HTTP/2?
+7. What are the advantages of HTTP/3?
+8. What is the difference between a forward proxy and a reverse proxy?
+9. Why do CDNs improve HTTP performance?
+10. How do modern HTTP versions improve user experience?
+
+---
+
+# Best Practices
+
+- Prefer HTTP/2 or HTTP/3 where supported.
+- Enable response compression for suitable content.
+- Use reverse proxies to protect backend services.
+- Configure caching carefully for both performance and security.
+- Monitor protocol usage and keep server software updated.
+
+---
+
+# Common Mistakes
+
+- Assuming newer HTTP versions automatically make an application secure.
+- Disabling compression without understanding the performance impact.
+- Exposing backend servers directly instead of using reverse proxies.
+- Using outdated HTTP implementations that no longer receive security updates.
+- Ignoring compatibility testing when enabling new protocol versions.
+
+---
+
+# Key Takeaways
+
+- HTTP has evolved from a simple text-based protocol into a highly optimized communication standard.
+- HTTP/1.1 introduced persistent connections and improved efficiency.
+- HTTP/2 added multiplexing, binary framing, and header compression.
+- HTTP/3 uses QUIC to reduce latency and improve performance on modern networks.
+- Reverse proxies, CDNs, and compression play a critical role in enterprise HTTP deployments.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
