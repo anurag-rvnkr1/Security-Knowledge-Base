@@ -1700,6 +1700,862 @@ Using your browser's Developer Tools:
 - JavaScript enables interactivity through events, DOM manipulation, and browser APIs.
 - Browser APIs and third-party scripts expand application capabilities but also increase the client-side attack surface.
 
+# 09-HTML-CSS-JavaScript-Security.md
+
+# Part 3 — JavaScript Security, Browser Storage Security, Same-Origin Policy, CORS, Client-Side Security Controls, and Common Vulnerabilities
+
+> **"Most client-side attacks do not exploit the browser itself—they exploit insecure JavaScript, improper trust assumptions, unsafe storage, and weak communication between the browser and web applications."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- JavaScript Security
+- Client-Side Trust Model
+- Browser Storage Security
+- Cookies
+- Local Storage
+- Session Storage
+- IndexedDB Security
+- Same-Origin Policy (SOP)
+- Cross-Origin Resource Sharing (CORS)
+- Browser Security Controls
+- Common Client-Side Vulnerabilities
+- Secure JavaScript Practices
+
+---
+
+# JavaScript Security
+
+JavaScript executes with the permissions granted to the webpage.
+
+```
+Website
+
+↓
+
+JavaScript
+
+↓
+
+Browser
+
+↓
+
+DOM
+
+↓
+
+User Interaction
+```
+
+If malicious JavaScript executes, it may interact with resources that the webpage is permitted to access.
+
+---
+
+# JavaScript Trust Model
+
+The browser downloads JavaScript from the server.
+
+```
+Server
+
+↓
+
+JavaScript
+
+↓
+
+Browser
+
+↓
+
+Execute
+```
+
+Because browsers execute delivered scripts, applications must ensure only trusted and authorized scripts are served.
+
+---
+
+# Why Client-Side Code Cannot Be Trusted
+
+Everything delivered to the browser is visible to users.
+
+```
+HTML
+
+↓
+
+CSS
+
+↓
+
+JavaScript
+
+↓
+
+Developer Tools
+
+↓
+
+User Can Inspect
+```
+
+Therefore:
+
+- Client-side validation can be bypassed.
+- JavaScript can be modified locally.
+- Requests can be replayed or altered.
+- Hidden fields should not be considered secure.
+
+---
+
+# Security Principle
+
+Never assume the browser is a trusted environment.
+
+```
+Browser
+
+↓
+
+User Controlled
+
+↓
+
+Validate Again
+
+↓
+
+Server
+```
+
+Sensitive decisions must always be enforced on the server.
+
+---
+
+# Client-Side vs Server-Side Security
+
+| Client Side | Server Side |
+|-------------|-------------|
+| Improves usability | Enforces security |
+| Can be modified | Controlled by server |
+| Visible to users | Hidden from users |
+| Executes in browser | Executes on server |
+| Never trust completely | Source of authoritative decisions |
+
+---
+
+# Browser Storage
+
+Modern browsers provide multiple storage mechanisms.
+
+```
+Browser
+
+│
+
+├── Cookies
+
+├── Local Storage
+
+├── Session Storage
+
+└── IndexedDB
+```
+
+Each mechanism has different security characteristics.
+
+---
+
+# Cookies
+
+Cookies are small pieces of data stored by the browser.
+
+```
+Server
+
+↓
+
+Set Cookie
+
+↓
+
+Browser Stores
+
+↓
+
+Future Requests
+
+↓
+
+Cookie Sent
+```
+
+Cookies are commonly used for:
+
+- Sessions
+- Authentication
+- User preferences
+- Tracking
+
+---
+
+# Secure Cookie Attributes
+
+Important cookie security attributes include:
+
+| Attribute | Purpose |
+|------------|----------|
+| Secure | Sent only over HTTPS |
+| HttpOnly | Not accessible to JavaScript |
+| SameSite | Controls cross-site sending |
+| Path | Restricts URL scope |
+| Domain | Restricts host scope |
+| Expires / Max-Age | Defines lifetime |
+
+---
+
+# HttpOnly
+
+```
+JavaScript
+
+↓
+
+Read Cookie?
+
+↓
+
+No
+```
+
+HttpOnly helps protect cookies from being read through client-side JavaScript, reducing the impact of certain attacks such as XSS on session cookies.
+
+---
+
+# Secure Attribute
+
+```
+HTTP
+
+↓
+
+Cookie Sent?
+
+↓
+
+No
+
+────────────
+
+HTTPS
+
+↓
+
+Cookie Sent
+```
+
+This helps prevent cookies from being transmitted over unencrypted connections.
+
+---
+
+# SameSite Attribute
+
+SameSite limits when browsers send cookies with cross-site requests.
+
+Common values:
+
+- Strict
+- Lax
+- None (must also use `Secure` in modern browsers)
+
+This attribute is an important defense against Cross-Site Request Forgery (CSRF).
+
+---
+
+# Local Storage
+
+Local Storage stores persistent data.
+
+```
+Browser
+
+↓
+
+Local Storage
+
+↓
+
+Data Persists
+
+↓
+
+Browser Restart
+```
+
+Characteristics:
+
+- Large capacity
+- Persistent
+- Accessible through JavaScript
+
+---
+
+# Session Storage
+
+Session Storage is temporary.
+
+```
+Browser Tab
+
+↓
+
+Session Storage
+
+↓
+
+Tab Closed
+
+↓
+
+Data Removed
+```
+
+Data is isolated to the browser tab or window.
+
+---
+
+# Local Storage vs Session Storage
+
+| Local Storage | Session Storage |
+|---------------|-----------------|
+| Persistent | Temporary |
+| Shared within same origin | Isolated per tab/session |
+| Larger storage | Temporary storage |
+| Accessible by JavaScript | Accessible by JavaScript |
+
+---
+
+# IndexedDB
+
+IndexedDB provides structured browser storage.
+
+```
+Browser
+
+↓
+
+IndexedDB
+
+↓
+
+Large Structured Data
+
+↓
+
+Offline Applications
+```
+
+Common uses include:
+
+- Offline web applications
+- Large datasets
+- Progressive Web Apps (PWAs)
+
+---
+
+# Storage Security
+
+Sensitive information should be handled carefully.
+
+Examples of data requiring protection:
+
+- Authentication tokens
+- Personal information
+- Financial information
+- Health records
+
+Choosing an appropriate storage mechanism depends on the application's security requirements.
+
+---
+
+# Storage Risks
+
+Improper storage can lead to:
+
+- Data exposure
+- Privacy issues
+- Token theft
+- Persistent compromise after an attack
+
+Client-side storage should not contain information that would cause significant harm if exposed.
+
+---
+
+# Same-Origin Policy (SOP)
+
+The Same-Origin Policy is a core browser security mechanism.
+
+```
+Website A
+
+↓
+
+Cannot Freely Access
+
+↓
+
+Website B
+```
+
+SOP helps isolate websites from one another.
+
+---
+
+# What is an Origin?
+
+An origin consists of:
+
+```
+Protocol
+
++
+
+Host
+
++
+
+Port
+```
+
+Example:
+
+```
+https://example.com:443
+```
+
+All three components determine the origin.
+
+---
+
+# Same-Origin Examples
+
+| URL 1 | URL 2 | Same Origin? |
+|--------|--------|--------------|
+| https://example.com | https://example.com | Yes |
+| https://example.com | http://example.com | No |
+| https://example.com | https://api.example.com | No |
+| https://example.com | https://example.com:8443 | No |
+
+---
+
+# Why SOP Exists
+
+Without SOP:
+
+```
+Malicious Site
+
+↓
+
+Read Banking Website
+
+↓
+
+Sensitive Data Stolen
+```
+
+SOP prevents arbitrary cross-origin access in browsers.
+
+---
+
+# What SOP Restricts
+
+SOP restricts many cross-origin interactions involving:
+
+- DOM access
+- Cookies
+- Storage
+- JavaScript objects
+- Certain network responses
+
+This isolation is fundamental to browser security.
+
+---
+
+# Cross-Origin Resource Sharing (CORS)
+
+Sometimes applications legitimately need cross-origin communication.
+
+```
+Frontend
+
+↓
+
+API
+
+↓
+
+Different Origin
+```
+
+CORS provides a controlled mechanism for this.
+
+---
+
+# CORS Flow
+
+```
+Browser
+
+↓
+
+Cross-Origin Request
+
+↓
+
+Server Sends CORS Headers
+
+↓
+
+Browser Decision
+
+↓
+
+Allow
+
+OR
+
+Block
+```
+
+The browser enforces the server's CORS policy.
+
+---
+
+# Simple Requests
+
+Some requests are considered "simple" and may not require a preflight request.
+
+Typical characteristics include:
+
+- Standard HTTP methods
+- Simple headers
+- Supported content types
+
+The browser still checks the server's CORS response headers.
+
+---
+
+# Preflight Requests
+
+For certain cross-origin requests:
+
+```
+Browser
+
+↓
+
+OPTIONS Request
+
+↓
+
+Server
+
+↓
+
+Permission?
+
+↓
+
+Actual Request
+```
+
+The browser verifies that the server permits the intended request before sending it.
+
+---
+
+# Common CORS Headers
+
+| Header | Purpose |
+|----------|----------|
+| Access-Control-Allow-Origin | Allowed origins |
+| Access-Control-Allow-Methods | Allowed HTTP methods |
+| Access-Control-Allow-Headers | Allowed request headers |
+| Access-Control-Allow-Credentials | Allows credentialed requests |
+| Access-Control-Max-Age | Preflight cache duration |
+
+---
+
+# Browser Security Controls
+
+Modern browsers implement multiple protections.
+
+```
+Browser
+
+│
+
+├── Same-Origin Policy
+
+├── CORS
+
+├── CSP
+
+├── Sandbox
+
+├── Permissions
+
+├── Mixed Content Protection
+
+└── Certificate Validation
+```
+
+These controls work together to reduce client-side risk.
+
+---
+
+# Content Security Policy (CSP)
+
+CSP restricts which resources may load.
+
+```
+Browser
+
+↓
+
+Script Request
+
+↓
+
+Allowed by CSP?
+
+↓
+
+Yes
+
+↓
+
+Execute
+
+──────────────
+
+No
+
+↓
+
+Blocked
+```
+
+A strong CSP can significantly reduce the impact of certain script injection attacks.
+
+---
+
+# Mixed Content Protection
+
+A secure page should avoid loading insecure resources.
+
+```
+HTTPS Page
+
+↓
+
+HTTP Script
+
+↓
+
+Blocked
+```
+
+Mixed content protection helps maintain transport security.
+
+---
+
+# Third-Party Scripts
+
+Applications frequently depend on external JavaScript.
+
+```
+Website
+
+↓
+
+Third-Party Script
+
+↓
+
+Browser Executes
+```
+
+Potential risks include:
+
+- Supply-chain attacks
+- Unexpected updates
+- Privacy concerns
+- Compromised dependencies
+
+---
+
+# Common Client-Side Vulnerabilities (Overview)
+
+Examples include:
+
+- Cross-Site Scripting (XSS)
+- DOM-Based XSS
+- Clickjacking
+- Insecure Browser Storage
+- Sensitive Data Exposure
+- Misconfigured CORS
+- Dependency Vulnerabilities
+
+Each vulnerability will be explored in dedicated chapters.
+
+---
+
+# Secure JavaScript Practices
+
+Recommended practices:
+
+- Treat browser input as untrusted.
+- Validate all data on the server.
+- Avoid exposing sensitive information.
+- Use secure browser APIs.
+- Review third-party dependencies.
+- Apply the principle of least privilege.
+
+---
+
+# Enterprise Architecture
+
+```
+Browser
+
+↓
+
+JavaScript
+
+↓
+
+Same-Origin Policy
+
+↓
+
+HTTPS
+
+↓
+
+API Gateway
+
+↓
+
+Application Server
+
+↓
+
+Database
+```
+
+Multiple browser and server controls protect communication.
+
+---
+
+# Real Enterprise Example
+
+A healthcare portal stores a user's session in a secure cookie.
+
+```
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+Secure + HttpOnly Cookie
+
+↓
+
+Authenticated API
+
+↓
+
+Medical Records
+```
+
+The application also:
+
+- Uses CSP
+- Enables HSTS
+- Restricts cross-origin requests with CORS
+- Performs server-side authorization for every request
+
+Together these controls help protect sensitive patient information.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser:
+
+1. Open Developer Tools.
+2. Inspect browser cookies.
+3. View Local Storage and Session Storage.
+4. Identify which cookies use `Secure`, `HttpOnly`, and `SameSite`.
+5. Observe CORS headers for API requests in the Network panel.
+6. Compare resources loaded from the same origin and different origins.
+
+---
+
+# Interview Questions
+
+1. Why can't client-side JavaScript be trusted?
+2. What is the Same-Origin Policy?
+3. What defines an origin?
+4. Compare Local Storage and Session Storage.
+5. What are the benefits of HttpOnly cookies?
+6. What does the Secure cookie attribute do?
+7. What is CORS?
+8. What is a CORS preflight request?
+9. Why are third-party JavaScript libraries a security concern?
+10. Name common browser security mechanisms.
+
+---
+
+# Best Practices
+
+- Never trust client-side validation alone.
+- Store sensitive session information using appropriate server-managed mechanisms.
+- Enable Secure, HttpOnly, and appropriate SameSite cookie attributes.
+- Configure CORS using the principle of least privilege.
+- Use HTTPS throughout the application.
+- Apply a strong Content Security Policy.
+- Regularly review third-party JavaScript dependencies.
+
+---
+
+# Common Mistakes
+
+- Storing highly sensitive information in insecure client-side storage.
+- Using overly permissive CORS configurations.
+- Assuming hidden form fields are secure.
+- Disabling browser security features during production.
+- Exposing unnecessary information through JavaScript.
+- Loading untrusted third-party scripts without review.
+
+---
+
+# Key Takeaways
+
+- Browser-side code executes in an environment controlled by the user and should never be fully trusted.
+- Cookies, Local Storage, Session Storage, and IndexedDB each have different security properties and use cases.
+- The Same-Origin Policy isolates websites from one another, while CORS enables controlled cross-origin communication.
+- Modern browsers provide multiple built-in security mechanisms, including CSP, mixed content protection, and certificate validation.
+- Secure client-side development requires careful handling of storage, communication, dependencies, and trust boundaries.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
