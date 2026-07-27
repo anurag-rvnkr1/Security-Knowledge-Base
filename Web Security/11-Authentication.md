@@ -692,6 +692,806 @@ Using a test application:
 - Secure authentication requires HTTPS, strong credential management, and careful session handling.
 - Enterprise authentication systems combine identity stores, authentication services, MFA, session management, and audit logging.
 
+# 11-Authentication.md
+
+# Part 2 — Password Security, Credential Verification, MFA, Passwordless Authentication, Identity Providers, Federation, and Enterprise Authentication Workflows
+
+> **"Modern authentication is no longer limited to usernames and passwords. Enterprise systems combine strong credential protection, Multi-Factor Authentication (MFA), identity federation, passwordless authentication, and continuous verification to reduce account compromise."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Password Security
+- Password Hashing (Conceptual)
+- Credential Verification
+- Password Policies
+- Account Registration
+- Password Reset
+- Multi-Factor Authentication (MFA)
+- Passwordless Authentication
+- Single Sign-On (SSO)
+- Identity Providers (IdP)
+- Authentication Federation
+- Enterprise Authentication Workflow
+
+---
+
+# Password Lifecycle
+
+A password goes through several stages.
+
+```
+Password Created
+
+↓
+
+Stored Securely
+
+↓
+
+Authentication
+
+↓
+
+Password Change
+
+↓
+
+Password Expiration (Optional)
+
+↓
+
+Account Deletion
+```
+
+The entire lifecycle should be protected.
+
+---
+
+# Password Storage
+
+Applications should **never** store user passwords in plaintext.
+
+Instead:
+
+```
+Password
+
+↓
+
+Hash Function
+
+↓
+
+Stored Hash
+
+↓
+
+Database
+```
+
+If the database is compromised, properly hashed passwords are significantly harder to recover than plaintext passwords.
+
+---
+
+# Password Hashing (Conceptual)
+
+Hashing converts data into a fixed-length value.
+
+```
+Password
+
+↓
+
+Hash Function
+
+↓
+
+Hash Value
+```
+
+Hashing is designed to be **one-way**, meaning the original password is not intended to be recovered from the stored hash.
+
+---
+
+# Password Verification
+
+During login:
+
+```
+User Password
+
+↓
+
+Hash Function
+
+↓
+
+Compare
+
+↓
+
+Stored Hash
+
+↓
+
+Match?
+
+↓
+
+Authenticated
+```
+
+The application compares hashes rather than storing or comparing plaintext passwords.
+
+---
+
+# Salting (Conceptual)
+
+A salt is a unique random value combined with a password before hashing.
+
+```
+Password
+
++
+
+Random Salt
+
+↓
+
+Hash Function
+
+↓
+
+Stored Hash
+```
+
+Salting helps defend against attacks that rely on precomputed hash tables and identical password hashes.
+
+---
+
+# Password Policy
+
+Organizations commonly define password requirements such as:
+
+- Minimum length
+- Maximum length
+- Password uniqueness
+- Password history
+- Compromised password detection
+- Password manager support
+
+Modern guidance generally emphasizes **length and uniqueness** over arbitrary complexity rules.
+
+---
+
+# Password Complexity
+
+Example characteristics:
+
+```
+Long
+
++
+
+Unique
+
++
+
+Random
+
+↓
+
+Stronger Password
+```
+
+Complexity alone should not replace sufficient password length.
+
+---
+
+# Password Reuse
+
+Using the same password across multiple websites creates risk.
+
+```
+Website A
+
+↓
+
+Password Compromised
+
+↓
+
+Same Password
+
+↓
+
+Website B
+
+↓
+
+Account Risk
+```
+
+Each account should have a unique password.
+
+---
+
+# Password Managers
+
+Password managers help users generate and store strong credentials.
+
+Benefits include:
+
+- Long random passwords
+- Unique passwords
+- Reduced password reuse
+- Secure storage
+- Automatic filling
+
+---
+
+# Account Registration
+
+Typical workflow:
+
+```
+User
+
+↓
+
+Registration Form
+
+↓
+
+Validation
+
+↓
+
+Password Hashing
+
+↓
+
+User Account Created
+```
+
+User input should always be validated on the server.
+
+---
+
+# Email Verification
+
+Many applications verify ownership of an email address.
+
+```
+Register
+
+↓
+
+Verification Email
+
+↓
+
+User Confirms
+
+↓
+
+Account Activated
+```
+
+This helps reduce fraudulent or mistyped registrations.
+
+---
+
+# Password Reset
+
+A secure password reset process should verify user identity before allowing a password change.
+
+```
+Forgot Password
+
+↓
+
+Identity Verification
+
+↓
+
+Reset Link
+
+↓
+
+New Password
+
+↓
+
+Login
+```
+
+Reset links should expire after a limited time.
+
+---
+
+# Secure Password Reset Principles
+
+Password reset mechanisms should:
+
+- Verify user identity
+- Use HTTPS
+- Generate unpredictable reset tokens
+- Expire reset links
+- Invalidate previous reset requests when appropriate
+- Notify users after successful password changes
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+MFA combines multiple independent authentication factors.
+
+```
+Password
+
++
+
+Second Factor
+
+↓
+
+Authentication
+
+↓
+
+Access Granted
+```
+
+MFA significantly reduces the effectiveness of password theft alone.
+
+---
+
+# Common MFA Methods
+
+Examples include:
+
+- Authenticator applications
+- Hardware security keys
+- Smart cards
+- Push notifications
+- Biometric verification
+- One-time passcodes
+
+Each method has different security and usability characteristics.
+
+---
+
+# MFA Workflow
+
+```
+Username
+
+↓
+
+Password
+
+↓
+
+Verified
+
+↓
+
+Second Factor
+
+↓
+
+Verified
+
+↓
+
+Authenticated
+```
+
+Both authentication stages must succeed.
+
+---
+
+# Backup Authentication Methods
+
+Organizations often provide recovery options.
+
+Examples:
+
+- Backup recovery codes
+- Secondary authentication devices
+- Verified recovery process
+- Administrative recovery
+
+Recovery methods should be protected with strong verification procedures.
+
+---
+
+# Passwordless Authentication
+
+Some systems authenticate users without traditional passwords.
+
+Examples include:
+
+- Security keys
+- Passkeys
+- Platform authenticators
+- Biometric authentication combined with cryptographic credentials
+
+Passwordless authentication reduces risks associated with password theft and reuse.
+
+---
+
+# Passwordless Workflow
+
+```
+User
+
+↓
+
+Device Authentication
+
+↓
+
+Cryptographic Verification
+
+↓
+
+Authenticated
+```
+
+The authentication mechanism depends on the underlying implementation.
+
+---
+
+# Identity Provider (IdP)
+
+An Identity Provider authenticates users for multiple applications.
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+Application
+```
+
+The application relies on the trusted identity provider rather than authenticating users directly.
+
+---
+
+# Service Provider (SP)
+
+The Service Provider is the application the user wants to access.
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Verified
+
+↓
+
+Service Provider
+
+↓
+
+Access
+```
+
+---
+
+# Identity Federation
+
+Federation enables authentication across organizational boundaries.
+
+```
+Organization A
+
+↓
+
+Trusted Identity
+
+↓
+
+Organization B
+
+↓
+
+Application Access
+```
+
+Federation reduces the need for separate credentials across participating systems.
+
+---
+
+# Single Sign-On (SSO)
+
+With SSO:
+
+```
+One Login
+
+↓
+
+Identity Provider
+
+↓
+
+Application A
+
+↓
+
+Application B
+
+↓
+
+Application C
+```
+
+Users authenticate once and access multiple authorized applications.
+
+---
+
+# Authentication Protocols (Overview)
+
+Modern authentication commonly relies on standardized protocols.
+
+Examples include:
+
+- SAML
+- OAuth 2.0
+- OpenID Connect (OIDC)
+
+Each protocol addresses different authentication and authorization scenarios.
+
+---
+
+# Authentication Logging
+
+Authentication systems commonly record:
+
+- Successful logins
+- Failed logins
+- MFA events
+- Password resets
+- Account lockouts
+- Logout events
+
+Sensitive information such as passwords should never appear in logs.
+
+---
+
+# Account Lockout
+
+Applications may temporarily restrict repeated failed login attempts.
+
+```
+Failed Attempts
+
+↓
+
+Threshold Reached
+
+↓
+
+Temporary Lockout
+
+↓
+
+Later Retry
+```
+
+Lockout policies should balance usability and protection against automated guessing attempts.
+
+---
+
+# Enterprise Authentication Workflow
+
+```
+User
+
+↓
+
+HTTPS
+
+↓
+
+Login Page
+
+↓
+
+Identity Provider
+
+↓
+
+Credential Verification
+
+↓
+
+MFA
+
+↓
+
+Session Created
+
+↓
+
+Protected Application
+```
+
+---
+
+# Enterprise Authentication Architecture
+
+```
+                 User
+
+                   │
+
+                   ▼
+
+                Browser
+
+                   │
+
+                   ▼
+
+             Reverse Proxy
+
+                   │
+
+                   ▼
+
+          Identity Provider
+
+         ┌────────┼────────┐
+
+         ▼                 ▼
+
+ Identity Store      MFA Service
+
+         │
+
+         ▼
+
+ Session Manager
+
+         │
+
+         ▼
+
+   Protected Application
+```
+
+---
+
+# Enterprise Example
+
+A multinational software company authenticates employees as follows:
+
+```
+Employee
+
+↓
+
+Corporate Login
+
+↓
+
+Password
+
+↓
+
+Authenticator App
+
+↓
+
+Identity Provider
+
+↓
+
+SSO
+
+↓
+
+Engineering Portal
+
+↓
+
+HR Portal
+
+↓
+
+Internal Dashboard
+```
+
+Additional protections include:
+
+- HTTPS
+- Audit logging
+- Session timeout
+- Device monitoring
+- Risk-based authentication
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using a test application:
+
+1. Register a new account.
+2. Verify the email confirmation process.
+3. Log in and observe the authentication workflow.
+4. Enable MFA if available.
+5. Perform a password reset.
+6. Review authentication-related network requests using Developer Tools.
+
+---
+
+# Interview Questions
+
+1. Why should passwords never be stored in plaintext?
+2. What is password hashing?
+3. What is a salt, and why is it important?
+4. What are the advantages of password managers?
+5. Explain the purpose of MFA.
+6. What is passwordless authentication?
+7. What is an Identity Provider (IdP)?
+8. What is Single Sign-On (SSO)?
+9. What is identity federation?
+10. What authentication events should be logged?
+
+---
+
+# Best Practices
+
+- Store passwords only as secure password hashes.
+- Use unique random salts for password hashing.
+- Encourage long, unique passwords supported by password managers.
+- Require MFA for privileged and sensitive accounts.
+- Protect password reset workflows with strong identity verification.
+- Log authentication events while avoiding sensitive data.
+- Use standardized authentication protocols for enterprise integrations.
+
+---
+
+# Common Mistakes
+
+- Storing plaintext passwords.
+- Allowing weak or reused passwords.
+- Implementing insecure password reset workflows.
+- Treating MFA as optional for high-value accounts.
+- Logging credentials or sensitive authentication data.
+- Building custom authentication protocols instead of using well-tested standards.
+
+---
+
+# Key Takeaways
+
+- Passwords should never be stored in plaintext; secure hashing and salting are fundamental protections.
+- Password managers help users maintain long, unique credentials.
+- MFA significantly strengthens authentication by combining independent authentication factors.
+- Passwordless authentication and identity federation are increasingly common in enterprise environments.
+- Modern authentication systems combine secure credential management, MFA, standardized protocols, logging, and continuous monitoring.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
