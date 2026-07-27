@@ -1707,6 +1707,826 @@ Using your browser's Developer Tools:
 - Token-based and session-based authentication models both require careful storage and lifecycle management.
 - Strong session management is a critical component of enterprise web application security.
 
+# 10-Cookies-Sessions-and-Storage.md
+
+# Part 3 — Session Security, Session Attacks, Token Security, Browser Storage Risks, Modern Authentication, and Enterprise Session Protection
+
+> **"The security of an authenticated user depends less on the password they entered and more on how securely the application manages their session after login."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Session Security
+- Session Lifecycle
+- Session Identifier Security
+- Session Fixation (Conceptual)
+- Session Hijacking (Conceptual)
+- Session Expiration
+- Logout Security
+- Token-Based Authentication
+- JWT Overview
+- Browser Storage Risks
+- Enterprise Session Protection
+
+---
+
+# Session Security
+
+After authentication, the application must continue verifying that each request belongs to the authenticated user.
+
+```
+Login
+
+↓
+
+Session Created
+
+↓
+
+Every Request
+
+↓
+
+Session Validation
+
+↓
+
+Authorized Response
+```
+
+Authentication is not a one-time security event—it is continuously enforced through session validation.
+
+---
+
+# Secure Session Lifecycle
+
+```
+User Login
+
+↓
+
+Authentication
+
+↓
+
+Session Created
+
+↓
+
+Authenticated Requests
+
+↓
+
+Session Timeout
+
+↓
+
+Logout
+
+↓
+
+Session Destroyed
+```
+
+Each phase should be securely implemented.
+
+---
+
+# Session Identifier
+
+A session identifier links a browser to server-side session data.
+
+```
+Browser
+
+↓
+
+Session ID
+
+↓
+
+Application Server
+
+↓
+
+Session Record
+```
+
+The session ID acts as a reference—not the actual session data.
+
+---
+
+# Characteristics of Secure Session IDs
+
+A secure session identifier should be:
+
+- Unique
+- Unpredictable
+- Random
+- Difficult to guess
+- Generated using cryptographically secure randomness
+
+Applications should never use sequential or predictable session identifiers.
+
+---
+
+# Session Validation
+
+Every authenticated request follows a similar process.
+
+```
+Browser
+
+↓
+
+Session Cookie
+
+↓
+
+Application
+
+↓
+
+Lookup Session
+
+↓
+
+Valid?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+──────────────
+
+No
+
+↓
+
+Authentication Required
+```
+
+---
+
+# Session Renewal
+
+Applications may periodically issue a new session identifier.
+
+```
+Old Session
+
+↓
+
+Validated
+
+↓
+
+New Session ID
+
+↓
+
+Old Session Invalidated
+```
+
+Regular renewal limits the lifetime of a single session identifier.
+
+---
+
+# Session Rotation
+
+Important events that commonly trigger session rotation include:
+
+- Successful login
+- Password change
+- Multi-factor authentication completion
+- Privilege elevation
+- Account recovery
+
+Rotating the session identifier helps reduce the impact of compromised identifiers.
+
+---
+
+# Session Expiration
+
+Applications should automatically expire inactive sessions.
+
+```
+User Inactive
+
+↓
+
+Configured Timeout
+
+↓
+
+Session Expired
+
+↓
+
+Login Required
+```
+
+Timeouts reduce exposure if users forget to log out.
+
+---
+
+# Idle Timeout
+
+```
+Activity
+
+↓
+
+Reset Timer
+
+↓
+
+No Activity
+
+↓
+
+Timeout
+
+↓
+
+Logout
+```
+
+Idle timeout measures user inactivity.
+
+---
+
+# Absolute Session Lifetime
+
+Even active sessions should eventually expire.
+
+```
+Login
+
+↓
+
+Maximum Lifetime
+
+↓
+
+Reached
+
+↓
+
+Session Invalidated
+```
+
+This limits long-running authenticated sessions.
+
+---
+
+# Logout Security
+
+A secure logout process should invalidate both client and server state.
+
+```
+User Logout
+
+↓
+
+Invalidate Session
+
+↓
+
+Delete Session Cookie
+
+↓
+
+Require Authentication Again
+```
+
+Logging out should prevent reuse of the previous session.
+
+---
+
+# Multiple Device Sessions
+
+Many enterprise applications support multiple active sessions.
+
+```
+User
+
+│
+
+├── Laptop
+
+├── Mobile
+
+└── Tablet
+```
+
+Each device may maintain an independent authenticated session.
+
+---
+
+# Session Management Dashboard
+
+Many enterprise applications provide users with:
+
+- Active session list
+- Device information
+- Login history
+- Last activity
+- Remote logout
+
+These features improve account visibility and control.
+
+---
+
+# Session Hijacking (Conceptual)
+
+Session hijacking occurs when an attacker obtains a valid session identifier.
+
+```
+Attacker
+
+↓
+
+Valid Session ID
+
+↓
+
+Application
+
+↓
+
+Session Accepted
+```
+
+The attacker attempts to impersonate the authenticated user by presenting the stolen session identifier.
+
+---
+
+# Preventing Session Hijacking
+
+Organizations commonly reduce risk through:
+
+- HTTPS
+- Secure cookies
+- HttpOnly cookies
+- Appropriate SameSite configuration
+- Session rotation
+- Short session lifetimes
+- Multi-factor authentication
+- Continuous session monitoring
+
+---
+
+# Session Fixation (Conceptual)
+
+Session fixation is a class of attack in which an attacker attempts to make a victim use a known session identifier.
+
+Conceptually:
+
+```
+Known Session ID
+
+↓
+
+Victim Authenticates
+
+↓
+
+Application Fails To Rotate Session
+
+↓
+
+Attacker Attempts Reuse
+```
+
+Regenerating the session identifier after successful authentication helps mitigate this risk.
+
+---
+
+# Concurrent Session Control
+
+Organizations may choose different policies.
+
+```
+Policy
+
+│
+
+├── Single Active Session
+
+├── Multiple Sessions
+
+└── Limited Concurrent Sessions
+```
+
+The appropriate choice depends on business requirements.
+
+---
+
+# Detecting Suspicious Sessions
+
+Applications may monitor for unusual behavior such as:
+
+- Impossible travel
+- Sudden IP changes
+- Device fingerprint changes
+- Multiple failed validations
+- Unusual geographic locations
+
+Detection enables risk-based responses.
+
+---
+
+# Risk-Based Session Protection
+
+```
+User Activity
+
+↓
+
+Risk Analysis
+
+↓
+
+Low Risk
+
+↓
+
+Continue
+
+──────────────
+
+High Risk
+
+↓
+
+Re-authentication
+
+↓
+
+MFA
+
+↓
+
+Continue
+```
+
+Modern applications increasingly adapt authentication requirements based on risk.
+
+---
+
+# Token-Based Authentication
+
+Some applications use authentication tokens instead of traditional server-managed sessions.
+
+```
+Authentication
+
+↓
+
+Token Generated
+
+↓
+
+Browser
+
+↓
+
+Future Requests
+
+↓
+
+Token Verified
+```
+
+---
+
+# What is a JWT?
+
+JWT stands for:
+
+```
+JSON
+
+↓
+
+Web
+
+↓
+
+Token
+```
+
+A JWT is a standardized token format commonly used in web APIs and distributed systems.
+
+---
+
+# JWT Structure
+
+Conceptually:
+
+```
+JWT
+
+│
+
+├── Header
+
+├── Payload
+
+└── Signature
+```
+
+Applications should validate tokens before accepting them.
+
+---
+
+# Session-Based vs Token-Based Authentication
+
+| Session-Based | Token-Based |
+|---------------|-------------|
+| Server stores session | Token carries authentication information |
+| Session ID references server state | Token presented with requests |
+| Common in traditional web applications | Common in APIs and SPAs |
+| Logout often invalidates server session | Token handling depends on implementation |
+
+---
+
+# Token Expiration
+
+Tokens should not remain valid indefinitely.
+
+```
+Token Issued
+
+↓
+
+Expiration Time
+
+↓
+
+Expired
+
+↓
+
+Authentication Required
+```
+
+Short-lived tokens reduce the impact of token exposure.
+
+---
+
+# Refresh Tokens (Overview)
+
+Some authentication systems use two token types.
+
+```
+Login
+
+↓
+
+Access Token
+
+↓
+
+Expires
+
+↓
+
+Refresh Token
+
+↓
+
+New Access Token
+```
+
+Refresh tokens typically have stronger protection requirements than access tokens.
+
+---
+
+# Browser Storage Risks
+
+Client-side storage should be selected carefully.
+
+```
+Browser
+
+│
+
+├── Cookies
+
+├── Local Storage
+
+├── Session Storage
+
+└── IndexedDB
+```
+
+Different mechanisms provide different persistence, accessibility, and security characteristics.
+
+---
+
+# Storage Comparison
+
+| Storage | Typical Use | JavaScript Access | Persistence |
+|----------|-------------|-------------------|-------------|
+| Secure Cookie | Session identifier | HttpOnly prevents JS access | Configurable |
+| Local Storage | Non-sensitive application data | Yes | Persistent |
+| Session Storage | Temporary session data | Yes | Browser session |
+| IndexedDB | Structured offline data | Yes | Persistent |
+
+---
+
+# Sensitive Data
+
+Applications should carefully evaluate storing:
+
+- Authentication tokens
+- Personal information
+- Financial data
+- Healthcare records
+- Internal identifiers
+
+Only the minimum necessary information should be stored in the browser.
+
+---
+
+# Enterprise Authentication Architecture
+
+```
+                 User
+
+                   │
+
+                   ▼
+
+              HTTPS Login
+
+                   │
+
+                   ▼
+
+        Identity Provider (IdP)
+
+                   │
+
+                   ▼
+
+         Multi-Factor Authentication
+
+                   │
+
+                   ▼
+
+          Session / Token Issued
+
+                   │
+
+                   ▼
+
+             Reverse Proxy
+
+                   │
+
+                   ▼
+
+         Application Cluster
+
+                   │
+
+                   ▼
+
+       Session Store / Token Validation
+
+                   │
+
+                   ▼
+
+               Database
+```
+
+---
+
+# Enterprise Banking Example
+
+```
+Customer
+
+↓
+
+Login
+
+↓
+
+Password
+
+↓
+
+MFA
+
+↓
+
+Authentication Successful
+
+↓
+
+Secure Session Cookie
+
+↓
+
+Bank Dashboard
+
+↓
+
+Every Request Validated
+
+↓
+
+Logout
+
+↓
+
+Session Destroyed
+```
+
+Additional controls include:
+
+- Device recognition
+- Risk scoring
+- Session timeout
+- Continuous monitoring
+- Secure audit logging
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser's Developer Tools:
+
+1. Log in to a test application.
+2. Observe session cookies.
+3. Monitor cookie changes after re-authentication.
+4. Review session timeout behavior.
+5. Compare cookie persistence with browser storage.
+6. Observe logout and verify session invalidation.
+
+---
+
+# Interview Questions
+
+1. What is a session identifier?
+2. Why should session identifiers be unpredictable?
+3. What is session rotation?
+4. Why are idle and absolute timeouts important?
+5. What is session hijacking (conceptually)?
+6. What is session fixation (conceptually)?
+7. Compare session-based and token-based authentication.
+8. What is a JWT?
+9. Why should tokens expire?
+10. Why should logout invalidate the session?
+
+---
+
+# Best Practices
+
+- Generate strong, unpredictable session identifiers.
+- Rotate session identifiers after authentication and privilege changes.
+- Use Secure, HttpOnly, and appropriate SameSite cookie attributes.
+- Implement idle and absolute session timeouts.
+- Protect authentication with MFA where appropriate.
+- Monitor active sessions for unusual behavior.
+- Invalidate sessions immediately after logout.
+- Minimize sensitive information stored in browser-accessible storage.
+
+---
+
+# Common Mistakes
+
+- Using predictable session identifiers.
+- Allowing sessions to remain active indefinitely.
+- Failing to regenerate session identifiers after login.
+- Leaving sessions valid after logout.
+- Storing sensitive authentication information insecurely in browser storage.
+- Ignoring suspicious session activity.
+- Using excessively long-lived authentication tokens.
+
+---
+
+# Key Takeaways
+
+- Session management is a critical component of web application security after authentication.
+- Session identifiers should be unique, unpredictable, rotated when appropriate, and protected during transmission.
+- Applications should enforce idle and absolute session timeouts and properly invalidate sessions during logout.
+- Token-based authentication introduces different lifecycle and storage considerations than traditional session-based authentication.
+- Enterprise applications combine secure cookies, HTTPS, MFA, monitoring, and continuous session validation to protect authenticated users.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
