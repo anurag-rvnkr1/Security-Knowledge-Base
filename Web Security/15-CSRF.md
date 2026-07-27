@@ -527,6 +527,742 @@ The impact depends on the application's functionality and authorization model.
 - State-changing operations require dedicated CSRF defenses.
 - Understanding browser session behavior is essential for designing secure web applications.
 
+# 15-CSRF.md
+
+# Part 2 — CSRF Attack Vectors, HTTP Methods, Browser Behavior, CSRF Tokens, SameSite Cookies, Origin Validation, and Enterprise Defenses
+
+> **"Modern CSRF protection does not rely on a single control. Secure applications combine CSRF tokens, browser protections, cookie attributes, origin validation, and secure application design to defend against forged requests."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- CSRF Attack Vectors
+- Browser Request Behavior
+- State-Changing Requests
+- CSRF Tokens
+- Synchronizer Token Pattern
+- Double Submit Cookie Pattern
+- SameSite Cookies
+- Origin and Referer Validation
+- Enterprise CSRF Protection
+- Defense in Depth
+
+---
+
+# Browser Request Behavior
+
+Browsers automatically attach authentication information when making requests to a website.
+
+```
+User Logged In
+
+↓
+
+Browser Stores Session
+
+↓
+
+Future Request
+
+↓
+
+Session Cookie Attached
+
+↓
+
+Server Receives Request
+```
+
+This automatic behavior is the primary reason CSRF attacks are possible.
+
+---
+
+# State-Changing Requests
+
+CSRF primarily targets operations that modify server-side data.
+
+Examples include:
+
+- Change password
+- Update profile
+- Delete account
+- Create user
+- Transfer funds
+- Submit orders
+- Change email
+- Modify permissions
+
+```
+Authenticated User
+
+↓
+
+Modify Data
+
+↓
+
+Server State Changes
+```
+
+---
+
+# Read vs Write Operations
+
+```
+Read Data
+
+↓
+
+Generally Lower Risk
+
+──────────────
+
+Modify Data
+
+↓
+
+Higher CSRF Risk
+```
+
+State-changing requests should always receive stronger protection.
+
+---
+
+# Common Attack Flow
+
+```
+Victim
+
+↓
+
+Authenticated
+
+↓
+
+Visits Malicious Site
+
+↓
+
+Hidden Request Generated
+
+↓
+
+Browser Sends Session
+
+↓
+
+Application Processes Request
+```
+
+The browser behaves normally—the application must determine whether the request is legitimate.
+
+---
+
+# Hidden Form Submission
+
+A malicious page could attempt to submit a hidden form automatically.
+
+Conceptually:
+
+```
+Malicious Page
+
+↓
+
+Hidden Form
+
+↓
+
+Browser Submission
+
+↓
+
+Target Application
+```
+
+Without proper protections, the server may treat the request as legitimate.
+
+---
+
+# Image-Based Requests
+
+Historically, attackers attempted to trigger requests through embedded resources.
+
+```
+Malicious Page
+
+↓
+
+Embedded Resource
+
+↓
+
+Browser Sends Request
+```
+
+Modern browser protections have reduced many historical attack techniques, but applications should not rely solely on browser behavior.
+
+---
+
+# CSRF Protection Strategy
+
+Modern applications typically combine multiple defenses.
+
+```
+Authentication
+
++
+
+CSRF Token
+
++
+
+SameSite Cookies
+
++
+
+Origin Validation
+
++
+
+Authorization
+
+↓
+
+Protected Request
+```
+
+---
+
+# CSRF Tokens
+
+A **CSRF token** is a server-generated value associated with the user's session or request.
+
+```
+User
+
+↓
+
+Server
+
+↓
+
+Generate Token
+
+↓
+
+Browser
+
+↓
+
+Return Token
+
+↓
+
+Server Validation
+```
+
+The server verifies the token before processing sensitive requests.
+
+---
+
+# Synchronizer Token Pattern
+
+One common approach is the Synchronizer Token Pattern.
+
+```
+Session Created
+
+↓
+
+Unique Token Generated
+
+↓
+
+Embedded in Form
+
+↓
+
+User Submits Form
+
+↓
+
+Server Compares Token
+
+↓
+
+Valid?
+
+↓
+
+Accept
+
+OR
+
+Reject
+```
+
+The token should be difficult to predict and generated securely.
+
+---
+
+# Token Validation
+
+```
+Incoming Request
+
+↓
+
+Token Present?
+
+↓
+
+Yes
+
+↓
+
+Token Valid?
+
+↓
+
+Yes
+
+↓
+
+Process Request
+
+──────────────
+
+No
+
+↓
+
+Reject Request
+```
+
+Missing or invalid tokens should result in request rejection.
+
+---
+
+# Why Tokens Work
+
+An attacker can often cause the browser to send a request.
+
+However:
+
+```
+Attacker
+
+↓
+
+Cannot Predict
+
+↓
+
+Valid CSRF Token
+
+↓
+
+Server Rejects Request
+```
+
+The token demonstrates that the request originated from the legitimate application workflow.
+
+---
+
+# Token Lifecycle
+
+```
+User Login
+
+↓
+
+Session Created
+
+↓
+
+Token Generated
+
+↓
+
+User Request
+
+↓
+
+Token Verified
+
+↓
+
+Continue Session
+```
+
+Applications may generate tokens per session or per request depending on their design.
+
+---
+
+# Double Submit Cookie Pattern
+
+Another approach is the **Double Submit Cookie Pattern**.
+
+Conceptually:
+
+```
+Browser
+
+↓
+
+Cookie Value
+
+↓
+
+Request Value
+
+↓
+
+Server Compares
+
+↓
+
+Match?
+
+↓
+
+Accept
+
+OR
+
+Reject
+```
+
+The server validates that both values match before processing the request.
+
+---
+
+# SameSite Cookies
+
+Modern browsers support the **SameSite** cookie attribute.
+
+Conceptually:
+
+```
+Cookie
+
+↓
+
+SameSite Policy
+
+↓
+
+Browser
+
+↓
+
+Cross-Site Request
+
+↓
+
+Evaluate Rules
+```
+
+SameSite reduces the likelihood that cookies will be automatically included in certain cross-site requests.
+
+---
+
+# Common SameSite Modes
+
+| Mode | High-Level Behavior |
+|------|----------------------|
+| Strict | Strongest cross-site restrictions |
+| Lax | Allows some navigation scenarios while restricting many cross-site requests |
+| None | Cross-site usage permitted when configured appropriately |
+
+Exact browser behavior depends on standards and browser implementation.
+
+---
+
+# SameSite Concept
+
+```
+Cross-Site Request
+
+↓
+
+Browser
+
+↓
+
+Cookie Policy
+
+↓
+
+Cookie Included?
+
+↓
+
+Depends On SameSite Rules
+```
+
+SameSite provides an important browser-side mitigation but should not replace server-side CSRF defenses.
+
+---
+
+# Origin Validation
+
+Applications may verify the request's origin.
+
+Conceptually:
+
+```
+Incoming Request
+
+↓
+
+Origin Header
+
+↓
+
+Trusted?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+──────────────
+
+No
+
+↓
+
+Reject
+```
+
+Origin validation helps detect unexpected cross-site requests.
+
+---
+
+# Referer Validation
+
+Some applications also examine the `Referer` header.
+
+```
+Incoming Request
+
+↓
+
+Referer
+
+↓
+
+Expected?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+──────────────
+
+No
+
+↓
+
+Investigate
+
+OR
+
+Reject
+```
+
+Referer validation is typically used as an additional layer rather than the sole defense.
+
+---
+
+# Layered Defense
+
+```
+Authenticated Session
+
+↓
+
+CSRF Token
+
+↓
+
+SameSite Cookie
+
+↓
+
+Origin Validation
+
+↓
+
+Authorization
+
+↓
+
+Sensitive Operation
+```
+
+Multiple independent controls improve resilience.
+
+---
+
+# Enterprise Architecture
+
+```
+                  Browser
+
+                     │
+
+            Authenticated Session
+
+                     │
+
+                     ▼
+
+               Load Secure Form
+
+                     │
+
+          Receive CSRF Token
+
+                     │
+
+                     ▼
+
+             Submit Request
+
+                     │
+
+                     ▼
+
+                API Gateway
+
+                     │
+
+     Validate Token & Origin
+
+                     │
+
+                     ▼
+
+              Business Service
+
+                     │
+
+                     ▼
+
+                 Database
+```
+
+---
+
+# Enterprise Example
+
+An enterprise HR application protects profile updates using:
+
+- Session authentication
+- CSRF token validation
+- SameSite cookies
+- Origin verification
+- Authorization checks
+- Audit logging
+
+Only requests that satisfy all required security checks are processed.
+
+---
+
+# Security Checklist
+
+```
+✓ Session Authentication
+
+✓ CSRF Tokens
+
+✓ SameSite Cookies
+
+✓ Origin Validation
+
+✓ Authorization Checks
+
+✓ HTTPS
+
+✓ Logging
+
+✓ Monitoring
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Identify state-changing requests in an application.
+2. Observe whether forms contain a CSRF token.
+3. Inspect cookies using Developer Tools.
+4. Review SameSite attributes conceptually.
+5. Compare requests with and without CSRF protection in a controlled environment.
+6. Document the application's layered defense strategy.
+
+> Perform testing only in systems where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. Why are CSRF tokens effective?
+2. What is the Synchronizer Token Pattern?
+3. What is the Double Submit Cookie Pattern?
+4. What is the purpose of the SameSite cookie attribute?
+5. Why shouldn't SameSite replace CSRF tokens?
+6. What is Origin validation?
+7. What is the role of the Referer header in CSRF protection?
+8. Why should multiple CSRF defenses be combined?
+9. Which requests require CSRF protection?
+10. Why are state-changing operations the primary CSRF target?
+
+---
+
+# Best Practices
+
+- Protect every state-changing endpoint with CSRF defenses.
+- Generate cryptographically secure CSRF tokens.
+- Validate tokens on the server.
+- Use appropriate SameSite cookie settings.
+- Validate request origins where applicable.
+- Continue enforcing authentication and authorization independently.
+- Periodically review CSRF protections during security assessments.
+
+---
+
+# Common Mistakes
+
+- Protecting login pages but not profile updates.
+- Treating SameSite as a complete replacement for CSRF tokens.
+- Accepting missing or invalid tokens.
+- Trusting only the Referer header.
+- Forgetting to protect newly added API endpoints or forms.
+- Assuming HTTPS alone prevents CSRF.
+
+---
+
+# Key Takeaways
+
+- CSRF exploits authenticated browser sessions, not authentication itself.
+- CSRF tokens are a primary server-side defense against forged requests.
+- SameSite cookies add an important browser-level mitigation.
+- Origin and Referer validation provide additional layers of protection.
+- A defense-in-depth strategy offers the strongest protection against CSRF attacks.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
