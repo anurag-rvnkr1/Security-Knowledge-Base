@@ -1756,6 +1756,920 @@ Using **Nginx** or **HAProxy**:
 - Sticky sessions maintain session continuity for stateful applications.
 - TLS termination, connection pooling, and Keep-Alive significantly improve performance and simplify enterprise operations.
 
+```
+# 08-Reverse-Proxies-and-Load-Balancers.md
+
+# Part 3 — Advanced Reverse Proxy Features, Web Application Firewall (WAF), Rate Limiting, Caching, Compression, Header Management, API Gateway, and Enterprise Security
+
+> **"Modern reverse proxies are no longer simple request forwarders. They have evolved into intelligent edge gateways capable of enforcing security policies, accelerating applications, protecting APIs, and providing centralized observability for enterprise environments."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Advanced Reverse Proxy Features
+- Request Filtering
+- Header Manipulation
+- Web Application Firewall (WAF)
+- Rate Limiting
+- Request Size Limiting
+- Caching
+- Compression
+- API Gateway
+- Service Discovery
+- SSL Offloading
+- X-Forwarded Headers
+- Security Best Practices
+
+---
+
+# Evolution of Reverse Proxies
+
+Initially, reverse proxies only forwarded requests.
+
+```
+Client
+
+↓
+
+Reverse Proxy
+
+↓
+
+Server
+```
+
+Modern reverse proxies provide:
+
+- Security
+- Authentication
+- Authorization
+- Routing
+- Monitoring
+- Compression
+- Caching
+- API Management
+- Traffic Analytics
+
+---
+
+# Enterprise Reverse Proxy Architecture
+
+```
+                 Internet
+
+                     │
+
+                     ▼
+
+             Reverse Proxy Cluster
+
+        ┌────────┬─────────┬────────┐
+
+        ▼        ▼         ▼
+
+     WAF      Rate Limit  Cache
+
+        │        │         │
+
+        └────────┴─────────┘
+
+               │
+
+               ▼
+
+          Load Balancer
+
+               │
+
+               ▼
+
+        Application Cluster
+```
+
+---
+
+# Request Filtering
+
+Reverse proxies inspect requests before forwarding them.
+
+```
+Incoming Request
+
+↓
+
+Validation
+
+↓
+
+Allowed?
+
+↓
+
+Yes
+
+↓
+
+Backend
+
+──────────────
+
+No
+
+↓
+
+Blocked
+```
+
+Filtering reduces unnecessary traffic reaching backend applications.
+
+---
+
+# Common Filtering Rules
+
+Requests may be evaluated based on:
+
+- HTTP Method
+- URL
+- Query Parameters
+- Headers
+- Cookies
+- Content-Type
+- User-Agent
+- IP Address
+
+---
+
+# Header Manipulation
+
+Reverse proxies can modify request and response headers.
+
+```
+Client
+
+↓
+
+Reverse Proxy
+
+↓
+
+Add Header
+
+↓
+
+Backend
+```
+
+Common use cases:
+
+- Add authentication information
+- Remove internal headers
+- Add tracing identifiers
+- Insert security headers
+
+---
+
+# Common Headers Added by Reverse Proxies
+
+| Header | Purpose |
+|---------|----------|
+| X-Forwarded-For | Original client IP |
+| X-Forwarded-Host | Original hostname |
+| X-Forwarded-Proto | Original protocol |
+| X-Request-ID | Request tracing |
+| Forwarded | Standard forwarding information |
+
+---
+
+# X-Forwarded-For
+
+Without a reverse proxy:
+
+```
+Backend
+
+↓
+
+Client IP Visible
+```
+
+With a reverse proxy:
+
+```
+Client
+
+↓
+
+Reverse Proxy
+
+↓
+
+Backend
+
+↓
+
+X-Forwarded-For:
+203.0.113.10
+```
+
+The backend can identify the original client.
+
+---
+
+# Important Security Note
+
+Applications should **not blindly trust** forwarding headers.
+
+```
+Attacker
+
+↓
+
+Fake X-Forwarded-For
+
+↓
+
+Backend
+```
+
+Only trusted reverse proxies should be permitted to set forwarding headers.
+
+---
+
+# Response Header Management
+
+Reverse proxies can improve security by modifying responses.
+
+Examples:
+
+- Remove version information
+- Add HSTS
+- Add CSP
+- Add Referrer-Policy
+- Add Permissions-Policy
+
+```
+Backend Response
+
+↓
+
+Reverse Proxy
+
+↓
+
+Security Headers Added
+
+↓
+
+Browser
+```
+
+---
+
+# Web Application Firewall (WAF)
+
+A WAF filters HTTP and HTTPS traffic before it reaches applications.
+
+```
+Internet
+
+↓
+
+WAF
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application
+```
+
+---
+
+# WAF Responsibilities
+
+A Web Application Firewall can:
+
+- Block SQL Injection attempts
+- Detect Cross-Site Scripting (XSS)
+- Prevent malicious file uploads
+- Restrict suspicious requests
+- Detect bots
+- Apply custom security rules
+
+---
+
+# WAF Processing Flow
+
+```
+Incoming Request
+
+↓
+
+WAF Inspection
+
+↓
+
+Rule Match?
+
+↓
+
+Yes
+
+↓
+
+Block
+
+──────────────
+
+No
+
+↓
+
+Forward Request
+```
+
+---
+
+# WAF vs Traditional Firewall
+
+| Network Firewall | Web Application Firewall |
+|------------------|--------------------------|
+| Operates at Network Layer | Operates at Application Layer |
+| Filters IPs and Ports | Filters HTTP/HTTPS Requests |
+| Protects Network | Protects Web Applications |
+| Cannot understand URLs | Understands URLs, Headers, Cookies |
+
+---
+
+# Rate Limiting
+
+Rate limiting restricts excessive requests.
+
+```
+Client
+
+↓
+
+100 Requests
+
+↓
+
+Allowed Limit = 20
+
+↓
+
+80 Blocked
+```
+
+---
+
+# Why Rate Limiting?
+
+It helps protect against:
+
+- Brute force attacks
+- API abuse
+- Credential stuffing
+- Resource exhaustion
+- HTTP Flood attacks
+
+---
+
+# Rate Limiting Strategies
+
+Common strategies:
+
+- Per IP
+- Per User
+- Per API Key
+- Per Token
+- Per Session
+- Per Endpoint
+
+---
+
+# Rate Limiting Flow
+
+```
+Request
+
+↓
+
+Counter
+
+↓
+
+Limit Exceeded?
+
+↓
+
+Yes
+
+↓
+
+429 Too Many Requests
+
+──────────────
+
+No
+
+↓
+
+Continue
+```
+
+---
+
+# Request Size Limiting
+
+Large requests may consume excessive resources.
+
+```
+Large Upload
+
+↓
+
+Reverse Proxy
+
+↓
+
+Allowed Size?
+
+↓
+
+No
+
+↓
+
+Rejected
+```
+
+Typical limits apply to:
+
+- Request body
+- Uploads
+- Headers
+- Cookies
+
+---
+
+# Connection Limiting
+
+Instead of limiting requests:
+
+```
+Client
+
+↓
+
+Too Many Connections
+
+↓
+
+Rejected
+```
+
+Connection limits help mitigate connection exhaustion attacks.
+
+---
+
+# Request Timeout
+
+Long-running connections consume server resources.
+
+```
+Request
+
+↓
+
+Timer
+
+↓
+
+Exceeded?
+
+↓
+
+Yes
+
+↓
+
+Connection Closed
+```
+
+Proper timeout values improve resilience.
+
+---
+
+# Caching
+
+Reverse proxies often cache static and semi-static responses.
+
+```
+Client
+
+↓
+
+Reverse Proxy
+
+↓
+
+Cache Hit?
+
+↓
+
+Yes
+
+↓
+
+Cached Response
+
+──────────────
+
+No
+
+↓
+
+Backend
+
+↓
+
+Cache
+```
+
+---
+
+# Benefits of Caching
+
+- Lower latency
+- Reduced backend load
+- Better scalability
+- Lower bandwidth consumption
+- Improved user experience
+
+---
+
+# Cacheable Content
+
+Typically cached:
+
+- Images
+- CSS
+- JavaScript
+- Fonts
+- Static HTML
+- Public API responses
+
+Dynamic user-specific data should only be cached when appropriate controls are in place.
+
+---
+
+# Compression
+
+Responses are compressed before transmission.
+
+```
+Backend
+
+↓
+
+HTML
+
+↓
+
+Gzip/Brotli
+
+↓
+
+Browser
+```
+
+Compression reduces bandwidth usage and improves page load times.
+
+---
+
+# Compression Algorithms
+
+| Algorithm | Characteristics |
+|-----------|-----------------|
+| Gzip | Widely supported |
+| Brotli | Higher compression ratio for many web assets |
+| Deflate | Legacy support in some environments |
+
+---
+
+# API Gateway
+
+An API Gateway is a specialized reverse proxy for APIs.
+
+```
+Client
+
+↓
+
+API Gateway
+
+↓
+
+Microservices
+```
+
+---
+
+# API Gateway Responsibilities
+
+- Authentication
+- Authorization
+- Routing
+- Rate Limiting
+- Request Validation
+- Logging
+- API Versioning
+- Monitoring
+
+---
+
+# API Gateway Example
+
+```
+Internet
+
+↓
+
+API Gateway
+
+│
+
+├── User Service
+
+├── Payment Service
+
+├── Inventory Service
+
+└── Notification Service
+```
+
+---
+
+# Reverse Proxy vs API Gateway
+
+| Reverse Proxy | API Gateway |
+|---------------|-------------|
+| General web traffic | API-specific traffic |
+| Routing | API routing |
+| TLS termination | Authentication + API management |
+| Caching | API versioning |
+| Load balancing | Request transformation |
+
+Many API gateways also include reverse proxy capabilities.
+
+---
+
+# Service Discovery
+
+In cloud environments, backend servers frequently change.
+
+```
+Reverse Proxy
+
+↓
+
+Service Registry
+
+↓
+
+Available Services
+
+↓
+
+Route Request
+```
+
+This allows routing without manually updating configurations.
+
+---
+
+# Dynamic Routing
+
+Instead of fixed backend addresses:
+
+```
+Application Starts
+
+↓
+
+Registers Itself
+
+↓
+
+Proxy Learns
+
+↓
+
+Traffic Routed
+```
+
+This is common in Kubernetes and other orchestration platforms.
+
+---
+
+# SSL Offloading
+
+SSL/TLS operations require CPU resources.
+
+```
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+Reverse Proxy
+
+↓
+
+Decrypt
+
+↓
+
+Backend
+```
+
+The reverse proxy performs the expensive cryptographic operations, reducing backend workload.
+
+---
+
+# Logging
+
+Reverse proxies create valuable security logs.
+
+Examples include:
+
+- Client IP
+- Request path
+- Response code
+- Backend selected
+- Processing time
+- TLS version
+- User-Agent
+
+These logs support monitoring and incident response.
+
+---
+
+# Enterprise Architecture
+
+```
+                 Internet
+
+                     │
+
+                     ▼
+
+            Web Application Firewall
+
+                     │
+
+                     ▼
+
+          Reverse Proxy Cluster
+
+                     │
+
+             Rate Limiting
+
+                     │
+
+               API Gateway
+
+                     │
+
+             Load Balancer
+
+                     │
+
+           Kubernetes Cluster
+
+                     │
+
+            Application Pods
+
+                     │
+
+               Database Tier
+```
+
+---
+
+# Enterprise Example
+
+A multinational banking platform exposes hundreds of APIs.
+
+```
+Mobile App
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Rate Limiting
+
+↓
+
+Reverse Proxy
+
+↓
+
+Microservices
+
+↓
+
+Database
+```
+
+Benefits:
+
+- Centralized authentication
+- Consistent security policies
+- API monitoring
+- Traffic control
+- Scalable architecture
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using **Nginx** or **Traefik** in a lab:
+
+1. Configure a reverse proxy for two backend applications.
+2. Enable response compression.
+3. Configure request size limits.
+4. Enable rate limiting.
+5. Inspect response headers using browser Developer Tools.
+6. Observe access logs and verify forwarded headers.
+
+---
+
+# Interview Questions
+
+1. What additional capabilities do modern reverse proxies provide beyond request forwarding?
+2. What is the purpose of the `X-Forwarded-For` header?
+3. Why shouldn't applications trust forwarded headers from arbitrary clients?
+4. What is a Web Application Firewall (WAF)?
+5. How does rate limiting improve security?
+6. What is the difference between connection limiting and rate limiting?
+7. Why is caching beneficial at the reverse proxy?
+8. What is SSL/TLS offloading?
+9. What is an API Gateway?
+10. How does service discovery support cloud-native environments?
+
+---
+
+# Best Practices
+
+- Place a WAF in front of public-facing applications where appropriate.
+- Validate and sanitize forwarded headers.
+- Enable response compression for suitable content.
+- Apply rate limiting to authentication and API endpoints.
+- Configure request size limits.
+- Enable centralized logging and monitoring.
+- Keep reverse proxy software updated.
+- Use secure TLS configurations and rotate certificates regularly.
+
+---
+
+# Common Mistakes
+
+- Trusting client-supplied `X-Forwarded-*` headers without validation.
+- Applying aggressive caching to sensitive or personalized content.
+- Disabling request logging.
+- Setting rate limits too high or too low.
+- Leaving unnecessary response headers exposed.
+- Failing to protect APIs with authentication and throttling.
+
+---
+
+# Key Takeaways
+
+- Modern reverse proxies provide advanced traffic management, security, and performance optimization.
+- WAFs protect applications by inspecting HTTP/HTTPS requests at the application layer.
+- Rate limiting, request size limits, and connection limits help mitigate abuse and denial-of-service attacks.
+- API gateways extend reverse proxy functionality with API-specific features such as authentication and versioning.
+- Proper header management, caching, compression, and logging are essential components of enterprise reverse proxy deployments.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
