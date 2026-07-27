@@ -1263,6 +1263,643 @@ Only requests that satisfy all required security checks are processed.
 - Origin and Referer validation provide additional layers of protection.
 - A defense-in-depth strategy offers the strongest protection against CSRF attacks.
 
+# 15-CSRF.md
+
+# Part 3 — Advanced CSRF, Modern Browser Protections, APIs, OAuth Considerations, Security Testing, Enterprise Architecture, and Secure Design
+
+> **"Modern browsers have significantly reduced CSRF risk through features like SameSite cookies, but secure applications must still implement server-side defenses because browser behavior alone cannot guarantee protection."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Modern Browser Protections
+- CSRF and APIs
+- CSRF in Single Page Applications (SPAs)
+- OAuth and CSRF Considerations
+- Login CSRF
+- Logout CSRF
+- CSRF Security Testing
+- Enterprise API Architecture
+- Secure Design Principles
+- Common Misconfigurations
+
+---
+
+# Modern Browser Defenses
+
+Today's browsers provide several built-in protections.
+
+```
+Browser Security
+
+│
+
+├── SameSite Cookies
+
+├── Origin Header
+
+├── Fetch Metadata
+
+├── HTTPS
+
+└── Secure Cookie Handling
+```
+
+These protections reduce risk but should complement—not replace—application-level defenses.
+
+---
+
+# Defense in Depth
+
+A secure application combines multiple security controls.
+
+```
+HTTPS
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+CSRF Token
+
+↓
+
+SameSite Cookies
+
+↓
+
+Origin Validation
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+No single protection should be considered sufficient on its own.
+
+---
+
+# CSRF in APIs
+
+Traditional browser-based applications commonly use cookies for authentication.
+
+```
+Browser
+
+↓
+
+Cookie
+
+↓
+
+Authenticated API Request
+```
+
+If authentication relies on automatically included cookies, CSRF protections remain important.
+
+---
+
+# Browser-Based APIs
+
+```
+Frontend
+
+↓
+
+JavaScript
+
+↓
+
+Authenticated Request
+
+↓
+
+API
+
+↓
+
+Server Validation
+```
+
+The API should validate both authentication and CSRF protections where applicable.
+
+---
+
+# Single Page Applications (SPAs)
+
+Many modern applications are built as SPAs.
+
+```
+Browser
+
+↓
+
+Single Page Application
+
+↓
+
+API Calls
+
+↓
+
+Backend Services
+```
+
+The application may make many asynchronous requests after login.
+
+---
+
+# SPA Security
+
+Even in SPAs:
+
+```
+Authenticated Session
+
+↓
+
+Sensitive Request
+
+↓
+
+CSRF Protection Required
+```
+
+The application architecture changes, but the security principles remain the same.
+
+---
+
+# Token-Based Authentication
+
+Some applications authenticate requests using tokens sent explicitly by JavaScript instead of automatically included session cookies.
+
+Conceptually:
+
+```
+JavaScript
+
+↓
+
+Authentication Token
+
+↓
+
+Request
+
+↓
+
+Server Validation
+```
+
+Whether CSRF protection is required depends on **how authentication credentials are transmitted** and the application's overall design.
+
+---
+
+# Cookies vs Explicit Tokens
+
+| Authentication Method | Browser Automatically Includes Credentials? |
+|-----------------------|---------------------------------------------|
+| Session Cookies | Generally Yes |
+| Explicitly Added Authorization Header | Typically Added by Application Code |
+
+This distinction affects CSRF risk but does not eliminate the need for secure application design.
+
+---
+
+# Login CSRF
+
+Applications should also consider login workflows.
+
+Conceptually:
+
+```
+Attacker
+
+↓
+
+Forces Login Request
+
+↓
+
+Victim Browser
+
+↓
+
+Unexpected Session
+```
+
+Proper validation during authentication flows helps reduce this risk.
+
+---
+
+# Logout CSRF
+
+Similarly, applications should evaluate logout operations.
+
+```
+Authenticated User
+
+↓
+
+Unexpected Logout Request
+
+↓
+
+Session Ends
+```
+
+While generally less severe than unauthorized state changes, unexpected logout behavior may still impact users.
+
+---
+
+# Password Change Example
+
+```
+User
+
+↓
+
+Authenticated Session
+
+↓
+
+Password Change Request
+
+↓
+
+CSRF Validation
+
+↓
+
+Authorized?
+
+↓
+
+Process Request
+```
+
+Sensitive account-management operations should always be protected.
+
+---
+
+# Administrative Operations
+
+High-risk operations include:
+
+- User creation
+- User deletion
+- Role assignment
+- Permission changes
+- System configuration
+- Billing modifications
+
+These operations require robust authentication, authorization, and CSRF protections.
+
+---
+
+# OAuth Considerations
+
+Applications using OAuth or OpenID Connect often involve multiple browser redirects.
+
+```
+Application
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+Return
+
+↓
+
+Application
+```
+
+These workflows include additional protections against request forgery, which are specific to the authentication protocol.
+
+---
+
+# Request Validation
+
+Every sensitive request should undergo multiple checks.
+
+```
+Incoming Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+CSRF Validation
+
+↓
+
+Business Rules
+
+↓
+
+Database Update
+```
+
+---
+
+# Fetch Metadata (Conceptual)
+
+Modern browsers may provide metadata about how requests originated.
+
+Conceptually:
+
+```
+Browser
+
+↓
+
+Request Metadata
+
+↓
+
+Server Evaluation
+
+↓
+
+Additional Validation
+```
+
+This information can serve as another layer of defense.
+
+---
+
+# Enterprise API Gateway
+
+```
+                Browser
+
+                   │
+
+          Authenticated Request
+
+                   │
+
+                   ▼
+
+             API Gateway
+
+                   │
+
+   Authentication Validation
+
+                   │
+
+        CSRF Validation
+
+                   │
+
+       Authorization Check
+
+                   │
+
+                   ▼
+
+            Backend Services
+```
+
+The gateway may centralize common security controls.
+
+---
+
+# Enterprise Security Pipeline
+
+```
+Incoming Request
+
+↓
+
+TLS
+
+↓
+
+Authentication
+
+↓
+
+CSRF Validation
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Business Logic
+
+↓
+
+Audit Logging
+
+↓
+
+Database
+```
+
+Each stage contributes to overall application security.
+
+---
+
+# Security Testing
+
+During an assessment, verify:
+
+```
+✓ State-Changing Requests
+
+✓ CSRF Token Validation
+
+✓ SameSite Cookies
+
+✓ Origin Validation
+
+✓ Sensitive APIs
+
+✓ Administrative Functions
+
+✓ Authentication Flow
+
+✓ Session Management
+```
+
+Testing must always be conducted with proper authorization.
+
+---
+
+# Logging
+
+Applications should record:
+
+- CSRF validation failures
+- Invalid tokens
+- Missing tokens
+- Origin validation failures
+- Administrative actions
+- Authentication events
+
+Logs support incident response and forensic analysis.
+
+---
+
+# Monitoring
+
+Useful metrics include:
+
+| Metric | Purpose |
+|---------|----------|
+| Invalid CSRF tokens | Detect potential attacks or client issues |
+| Missing tokens | Identify implementation problems |
+| Origin validation failures | Detect unexpected request sources |
+| Authentication failures | Monitor account security |
+| Sensitive operation frequency | Detect unusual behavior |
+
+---
+
+# Enterprise Example
+
+A multinational healthcare organization protects patient record updates using:
+
+```
+User
+
+↓
+
+HTTPS
+
+↓
+
+Authentication
+
+↓
+
+CSRF Token
+
+↓
+
+SameSite Cookie
+
+↓
+
+Origin Validation
+
+↓
+
+Authorization
+
+↓
+
+Electronic Medical Records
+```
+
+Every update request passes multiple independent security checks.
+
+---
+
+# Common Misconfigurations
+
+| Misconfiguration | Risk |
+|------------------|------|
+| Missing CSRF protection on profile updates | Unauthorized state changes |
+| Relying only on SameSite cookies | Reduced defense in depth |
+| Accepting missing tokens | Forged requests may succeed |
+| Protecting only admin pages | Regular user functions remain exposed |
+| Inconsistent validation across APIs | Uneven security posture |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Map all state-changing endpoints.
+2. Identify where CSRF tokens are validated.
+3. Review cookie attributes.
+4. Observe authenticated requests in Developer Tools.
+5. Verify that sensitive requests undergo multiple validation steps.
+6. Document the application's CSRF protection strategy.
+
+> Perform testing only in systems where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. Does a Single Page Application eliminate CSRF risk?
+2. Why are state-changing requests prioritized for CSRF protection?
+3. What is Login CSRF?
+4. Why should logout functionality also be reviewed?
+5. How does token-based authentication differ from cookie-based authentication in terms of browser behavior?
+6. What additional browser information can support CSRF defenses?
+7. Why is CSRF validation performed before business logic?
+8. What security controls should surround administrative operations?
+9. What events should be logged for CSRF monitoring?
+10. Why is defense in depth important for CSRF protection?
+
+---
+
+# Best Practices
+
+- Protect every state-changing operation.
+- Use cryptographically secure CSRF tokens.
+- Combine CSRF tokens with SameSite cookies and origin validation.
+- Review authentication workflows, including login and logout.
+- Protect administrative functions with additional safeguards.
+- Log and monitor CSRF validation failures.
+- Regularly review CSRF protections after architectural changes.
+
+---
+
+# Common Mistakes
+
+- Assuming SPAs are automatically immune to CSRF.
+- Protecting only high-profile pages while ignoring ordinary account features.
+- Depending solely on browser protections.
+- Ignoring login and logout workflows.
+- Failing to monitor repeated CSRF validation failures.
+- Treating CSRF protection as optional for internal applications.
+
+---
+
+# Key Takeaways
+
+- Modern browsers reduce CSRF risk, but server-side defenses remain essential.
+- Both traditional and modern web applications should evaluate CSRF risks based on how authentication is handled.
+- Administrative and state-changing operations require strong layered protections.
+- Enterprise applications combine authentication, authorization, CSRF validation, logging, and monitoring.
+- Defense in depth remains the most effective approach against request forgery.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
