@@ -563,6 +563,709 @@ Only explicitly trusted resources should be permitted.
 - CSP complements—but does not replace—secure coding and output encoding.
 - Enterprise applications should treat CSP as an essential layer in a defense-in-depth strategy.
 
+# 17-Content-Security-Policy.md
+
+# Part 2 — CSP Directives, Resource Types, Policy Design, Nonces, Hashes, Reporting, and Enterprise Deployment
+
+> **"An effective Content Security Policy precisely defines what the browser is allowed to load. The principle is simple: explicitly allow only trusted resources and deny everything else."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- CSP Directive Categories
+- Resource-Specific Policies
+- Default Policy Behavior
+- Nonces (Conceptual)
+- Hash-Based Policies (Conceptual)
+- CSP Reporting
+- Policy Design Strategy
+- Enterprise Deployment
+- Common Misconfigurations
+- Defense in Depth
+
+---
+
+# CSP Directive Structure
+
+A Content Security Policy is composed of multiple directives.
+
+```
+Content Security Policy
+
+│
+
+├── Default Rules
+
+├── Script Rules
+
+├── Style Rules
+
+├── Image Rules
+
+├── Font Rules
+
+├── Connection Rules
+
+├── Frame Rules
+
+└── Reporting Rules
+```
+
+Each directive governs a specific category of browser behavior.
+
+---
+
+# Resource Categories
+
+Browsers load many different resource types.
+
+```
+Web Application
+
+│
+
+├── HTML
+
+├── JavaScript
+
+├── CSS
+
+├── Images
+
+├── Fonts
+
+├── Media
+
+├── Frames
+
+└── API Connections
+```
+
+CSP allows each category to be managed independently.
+
+---
+
+# Default Policy Concept
+
+A default policy establishes the baseline behavior for resources.
+
+```
+Browser Requests Resource
+
+↓
+
+Specific Rule Exists?
+
+↓
+
+Yes
+
+↓
+
+Use Specific Rule
+
+──────────────
+
+No
+
+↓
+
+Apply Default Rule
+```
+
+This provides a fallback mechanism for resource evaluation.
+
+---
+
+# Script Resources
+
+JavaScript is one of the highest-risk resource categories.
+
+```
+Browser
+
+↓
+
+Load Script
+
+↓
+
+Evaluate CSP
+
+↓
+
+Allowed?
+
+↓
+
+Yes → Execute
+
+No → Block
+```
+
+Restricting script execution is one of the primary objectives of CSP.
+
+---
+
+# Style Resources
+
+```
+Browser
+
+↓
+
+Load CSS
+
+↓
+
+Policy Check
+
+↓
+
+Allow
+
+OR
+
+Block
+```
+
+Style resources should also be restricted to trusted origins.
+
+---
+
+# Image Resources
+
+```
+Image Request
+
+↓
+
+Browser
+
+↓
+
+CSP Check
+
+↓
+
+Load
+
+OR
+
+Reject
+```
+
+Although images are generally less risky than scripts, they should still be controlled.
+
+---
+
+# Font Resources
+
+```
+Browser
+
+↓
+
+Font Request
+
+↓
+
+Policy Evaluation
+
+↓
+
+Allowed?
+
+↓
+
+Load
+
+OR
+
+Block
+```
+
+Restricting font sources reduces unnecessary external dependencies.
+
+---
+
+# Network Connections
+
+Modern web applications frequently communicate with APIs.
+
+```
+Browser
+
+↓
+
+API Request
+
+↓
+
+CSP Evaluation
+
+↓
+
+Allowed Endpoint?
+
+↓
+
+Yes
+
+↓
+
+Connection Established
+```
+
+Only approved endpoints should be permitted.
+
+---
+
+# Frames
+
+Applications may embed or be embedded within other pages.
+
+```
+Parent Page
+
+↓
+
+Embedded Content
+
+↓
+
+Browser
+
+↓
+
+Policy Validation
+```
+
+Frame-related directives help control these interactions.
+
+---
+
+# Principle of Least Privilege
+
+```
+Everything
+
+↓
+
+Blocked By Default
+
+↓
+
+Explicitly Allow
+
+↓
+
+Only Trusted Resources
+```
+
+Grant only the minimum permissions necessary for application functionality.
+
+---
+
+# Policy Design Strategy
+
+```
+Identify Resources
+
+↓
+
+Classify Trust
+
+↓
+
+Create Policy
+
+↓
+
+Test
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Improve
+```
+
+Policies should evolve alongside the application.
+
+---
+
+# Nonces (Conceptual)
+
+A **nonce** is a unique value generated for a page load that allows approved scripts to execute.
+
+Conceptually:
+
+```
+Server
+
+↓
+
+Generate Unique Value
+
+↓
+
+Browser Receives Page
+
+↓
+
+Browser Verifies
+
+↓
+
+Approved Script Executes
+```
+
+The value should be unpredictable and generated securely.
+
+---
+
+# Why Nonces Help
+
+```
+Unexpected Script
+
+↓
+
+No Valid Nonce
+
+↓
+
+Browser
+
+↓
+
+Reject Execution
+```
+
+Only scripts associated with the expected nonce are permitted to execute.
+
+---
+
+# Hash-Based Policies (Conceptual)
+
+Another approach allows execution based on the cryptographic hash of approved content.
+
+```
+Script
+
+↓
+
+Calculate Hash
+
+↓
+
+Browser
+
+↓
+
+Hash Matches Policy?
+
+↓
+
+Yes → Execute
+
+No → Block
+```
+
+This approach is often suitable for static content that rarely changes.
+
+---
+
+# Nonces vs Hashes
+
+| Feature | Nonce | Hash |
+|---------|-------|------|
+| Generated | Per page/request | Based on script content |
+| Suitable For | Dynamic content | Static content |
+| Browser Validation | Unique value | Content fingerprint |
+| Primary Goal | Authorize trusted scripts | Verify approved script content |
+
+---
+
+# Inline Content
+
+Inline content should be carefully reviewed during CSP design.
+
+```
+Inline Content
+
+↓
+
+Policy Evaluation
+
+↓
+
+Trusted?
+
+↓
+
+Allow
+
+OR
+
+Block
+```
+
+Reducing unnecessary inline content generally improves security.
+
+---
+
+# Third-Party Resources
+
+Many applications rely on external providers.
+
+```
+Application
+
+↓
+
+Third-Party Resource
+
+↓
+
+Browser
+
+↓
+
+Policy Check
+
+↓
+
+Approved?
+
+↓
+
+Load
+
+OR
+
+Reject
+```
+
+Every external dependency should be evaluated before inclusion.
+
+---
+
+# CSP Reporting
+
+Browsers can generate reports when policy violations occur.
+
+```
+Policy Violation
+
+↓
+
+Browser
+
+↓
+
+Generate Report
+
+↓
+
+Security Monitoring
+
+↓
+
+Investigation
+```
+
+Reporting helps organizations identify both attacks and policy configuration issues.
+
+---
+
+# Reporting Workflow
+
+```
+Browser
+
+↓
+
+Detect Violation
+
+↓
+
+Generate Event
+
+↓
+
+Security Platform
+
+↓
+
+Review
+
+↓
+
+Improve Policy
+```
+
+Monitoring should be an ongoing operational activity.
+
+---
+
+# Enterprise Architecture
+
+```
+                  Browser
+
+                     ▲
+
+                     │
+
+          CSP Response Header
+
+                     │
+
+                     ▼
+
+              Web Application
+
+                     │
+
+     Authentication & Authorization
+
+                     │
+
+        Business Logic
+
+                     │
+
+       Resource Generation
+
+                     │
+
+        Content Security Policy
+
+                     │
+
+                     ▼
+
+             Browser Enforcement
+```
+
+---
+
+# Enterprise Example
+
+An enterprise HR platform loads:
+
+- Internal JavaScript
+- Internal CSS
+- Corporate fonts
+- Approved API endpoints
+
+The browser evaluates each request against the organization's CSP before allowing it.
+
+---
+
+# Security Review Checklist
+
+```
+✓ Scripts Restricted
+
+✓ Styles Restricted
+
+✓ Images Reviewed
+
+✓ Fonts Reviewed
+
+✓ API Endpoints Approved
+
+✓ Third-Party Resources Reviewed
+
+✓ Reporting Enabled
+
+✓ Policy Tested
+```
+
+---
+
+# Common Misconfigurations
+
+| Misconfiguration | Risk |
+|------------------|------|
+| Overly permissive resource rules | Larger attack surface |
+| Unnecessary third-party resources | Increased exposure |
+| Missing reporting | Reduced visibility |
+| Policy not updated after application changes | Broken functionality or security gaps |
+| Inconsistent policies across applications | Operational complexity |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Review the application's resource inventory.
+2. Classify each resource by type.
+3. Identify which resources originate from trusted and external locations.
+4. Draw a conceptual CSP covering each resource category.
+5. Document where violation reporting would support security operations.
+
+> Perform testing only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of CSP directives?
+2. Why is JavaScript considered a high-risk resource?
+3. What is the principle of least privilege in CSP?
+4. What is a CSP nonce?
+5. When are hash-based policies useful?
+6. How do browsers enforce CSP?
+7. Why should third-party resources be reviewed carefully?
+8. What is the purpose of CSP violation reporting?
+9. Why should policies evolve with the application?
+10. What are the benefits of restricting resource categories independently?
+
+---
+
+# Best Practices
+
+- Apply the principle of least privilege to resource loading.
+- Restrict each resource type independently.
+- Use nonces or hashes where appropriate instead of broad allowances.
+- Review all third-party dependencies regularly.
+- Enable CSP violation reporting and integrate it with monitoring.
+- Test policy changes before deploying them to production.
+- Keep CSP aligned with application architecture changes.
+
+---
+
+# Common Mistakes
+
+- Creating overly permissive policies.
+- Trusting every third-party resource by default.
+- Ignoring CSP violation reports.
+- Treating CSP as a substitute for secure coding.
+- Failing to update policies when new resources are introduced.
+- Allowing inconsistent CSP configurations across environments.
+
+---
+
+# Key Takeaways
+
+- CSP directives control different categories of browser resources.
+- The principle of least privilege should guide CSP policy design.
+- Nonces and hashes provide mechanisms to authorize trusted scripts.
+- CSP reporting improves visibility into policy violations.
+- Enterprise CSP deployment requires continuous review, testing, and monitoring.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
