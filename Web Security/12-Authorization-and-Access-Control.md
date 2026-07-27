@@ -726,3 +726,857 @@ Using a sample web application:
 - Enterprise authorization relies on least privilege, separation of duties, and centralized policy enforcement.
 
 
+# 12-Authorization-and-Access-Control.md
+
+# Part 2 — Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), Policy Enforcement, Permission Management, and Enterprise Authorization Design
+
+> **"Enterprise authorization is not about granting access—it is about granting only the right access, at the right time, to the right identity, under the right conditions."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Role-Based Access Control (RBAC)
+- Attribute-Based Access Control (ABAC)
+- Policy-Based Access Control
+- Permission Management
+- Resource Hierarchies
+- Access Decisions
+- Fine-Grained Authorization
+- Enterprise Authorization Services
+- Authorization Lifecycle
+- Secure Authorization Design
+
+---
+
+# Authorization Decision Process
+
+Every authorization decision evaluates several inputs.
+
+```
+Authenticated User
+
+↓
+
+Requested Resource
+
+↓
+
+Requested Action
+
+↓
+
+Policy Evaluation
+
+↓
+
+Allow
+
+OR
+
+Deny
+```
+
+Authorization should occur for **every protected request**.
+
+---
+
+# Authorization Components
+
+```
+Authorization
+
+│
+
+├── Identity
+
+├── Resource
+
+├── Action
+
+├── Policy
+
+├── Context
+
+└── Decision
+```
+
+Each component contributes to determining whether access should be granted.
+
+---
+
+# Role-Based Access Control (RBAC)
+
+RBAC assigns permissions to roles instead of individual users.
+
+```
+User
+
+↓
+
+Role
+
+↓
+
+Permissions
+
+↓
+
+Resources
+```
+
+This simplifies administration in organizations with many users.
+
+---
+
+# RBAC Architecture
+
+```
+             Users
+
+               │
+
+               ▼
+
+             Roles
+
+               │
+
+               ▼
+
+          Permissions
+
+               │
+
+               ▼
+
+          Protected Resources
+```
+
+Adding or removing users from roles updates their permissions automatically.
+
+---
+
+# RBAC Example
+
+```
+Sales Employee
+
+↓
+
+Sales Role
+
+↓
+
+Read Customers
+
+Create Orders
+
+View Products
+```
+
+```
+Sales Manager
+
+↓
+
+Manager Role
+
+↓
+
+Read Customers
+
+Approve Orders
+
+Generate Reports
+```
+
+---
+
+# Role Hierarchy
+
+Organizations often define hierarchical roles.
+
+```
+Administrator
+
+│
+
+├── Manager
+
+│
+
+└── Employee
+
+│
+
+└── Guest
+```
+
+Higher-level roles may inherit permissions from lower-level roles depending on organizational policy.
+
+---
+
+# Permission Inheritance
+
+Example:
+
+```
+Employee
+
+↓
+
+Read Dashboard
+
+────────────
+
+Manager
+
+↓
+
+Employee Permissions
+
++
+
+Approve Requests
+
+────────────
+
+Administrator
+
+↓
+
+Manager Permissions
+
++
+
+Manage Users
+```
+
+Inheritance reduces duplicated permission definitions.
+
+---
+
+# Designing Roles
+
+Good roles should be:
+
+- Business-oriented
+- Easy to understand
+- Limited in scope
+- Stable over time
+- Reviewed regularly
+
+Roles should represent **job functions**, not individual users.
+
+---
+
+# Problems with Too Many Roles
+
+```
+Few Roles
+
+↓
+
+Easy Management
+
+──────────────
+
+Hundreds of Roles
+
+↓
+
+Role Explosion
+
+↓
+
+Complex Administration
+```
+
+Role explosion makes authorization difficult to maintain.
+
+---
+
+# Attribute-Based Access Control (ABAC)
+
+ABAC evaluates multiple attributes before making an authorization decision.
+
+```
+User
+
++
+
+Resource
+
++
+
+Environment
+
+↓
+
+Policy Engine
+
+↓
+
+Decision
+```
+
+---
+
+# Types of Attributes
+
+### User Attributes
+
+Examples:
+
+- Department
+- Job title
+- Clearance level
+- Employment status
+
+---
+
+### Resource Attributes
+
+Examples:
+
+- Owner
+- Classification
+- Department
+- Sensitivity
+- Data type
+
+---
+
+### Environmental Attributes
+
+Examples:
+
+- Time
+- Date
+- Location
+- Device type
+- Network
+- Authentication strength
+
+---
+
+### Action Attributes
+
+Examples:
+
+- Read
+- Create
+- Delete
+- Download
+- Share
+- Approve
+
+---
+
+# ABAC Example
+
+```
+IF
+
+Department = Finance
+
+AND
+
+Device = Corporate
+
+AND
+
+Business Hours = True
+
+↓
+
+Allow Access
+```
+
+If any required condition is not satisfied, access is denied.
+
+---
+
+# RBAC vs ABAC
+
+| RBAC | ABAC |
+|-------|------|
+| Based on roles | Based on attributes |
+| Easier administration | More flexible |
+| Good for stable organizations | Better for dynamic environments |
+| Simple policies | Complex policy evaluation |
+
+Many enterprise environments combine both approaches.
+
+---
+
+# Hybrid Access Control
+
+```
+Authentication
+
+↓
+
+Role Evaluation
+
+↓
+
+Attribute Evaluation
+
+↓
+
+Policy Engine
+
+↓
+
+Final Decision
+```
+
+Hybrid authorization balances simplicity and flexibility.
+
+---
+
+# Policy-Based Authorization
+
+Instead of embedding authorization rules directly into application code:
+
+```
+Application
+
+↓
+
+Authorization Service
+
+↓
+
+Policy Store
+
+↓
+
+Decision
+```
+
+This centralizes authorization logic and improves consistency.
+
+---
+
+# Policy Engine
+
+A policy engine evaluates authorization rules.
+
+```
+Access Request
+
+↓
+
+Policy Engine
+
+↓
+
+Evaluate Rules
+
+↓
+
+Allow
+
+OR
+
+Deny
+```
+
+Applications ask the policy engine rather than making independent decisions.
+
+---
+
+# Authorization Policies
+
+Policies define business rules.
+
+Examples:
+
+```
+Managers
+
+↓
+
+Approve Expense Reports
+
+──────────────
+
+Employees
+
+↓
+
+Cannot Approve Their Own Reports
+```
+
+Policies should be easy to review and update.
+
+---
+
+# Resource Hierarchy
+
+Applications often organize resources hierarchically.
+
+```
+Organization
+
+│
+
+├── Department
+
+│
+
+├── Projects
+
+│
+
+├── Documents
+
+│
+
+└── Files
+```
+
+Permissions may propagate through resource hierarchies according to organizational policy.
+
+---
+
+# Fine-Grained Authorization
+
+Authorization can occur at multiple levels.
+
+```
+Application
+
+↓
+
+Page
+
+↓
+
+API
+
+↓
+
+Database Record
+
+↓
+
+Field
+```
+
+The deeper the authorization layer, the more precise the access control.
+
+---
+
+# Object-Level Authorization
+
+Example:
+
+```
+Customer A
+
+↓
+
+Own Profile
+
+↓
+
+Allowed
+
+──────────────
+
+Customer B Profile
+
+↓
+
+Denied
+```
+
+Ownership is frequently part of authorization decisions.
+
+---
+
+# Record-Level Authorization
+
+Example:
+
+```
+Doctor
+
+↓
+
+Assigned Patients
+
+↓
+
+Medical Records
+
+↓
+
+Access Allowed
+```
+
+The doctor cannot automatically access records for every patient.
+
+---
+
+# Field-Level Authorization
+
+Different users may see different parts of the same record.
+
+```
+Employee Record
+
+│
+
+├── Name
+
+├── Department
+
+├── Salary
+
+└── Performance Review
+```
+
+HR personnel may view salary information while general managers cannot.
+
+---
+
+# API Authorization
+
+Every protected API endpoint should verify permissions.
+
+```
+Client
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+API
+
+↓
+
+Response
+```
+
+Backend authorization must not rely on client-side checks.
+
+---
+
+# Authorization Cache
+
+To improve performance:
+
+```
+Policy Evaluation
+
+↓
+
+Cached Decision
+
+↓
+
+Fast Response
+```
+
+Cached decisions should expire appropriately when permissions change.
+
+---
+
+# Enterprise Authorization Architecture
+
+```
+                User
+
+                  │
+
+                  ▼
+
+           Authentication
+
+                  │
+
+                  ▼
+
+          API Gateway / WAF
+
+                  │
+
+                  ▼
+
+        Authorization Service
+
+        ┌─────────┼─────────┐
+
+        ▼                   ▼
+
+   Role Store         Policy Store
+
+        │
+
+        ▼
+
+ Attribute Service
+
+        │
+
+        ▼
+
+ Decision Engine
+
+        │
+
+        ▼
+
+ Protected Resources
+```
+
+This centralized approach promotes consistent authorization across applications.
+
+---
+
+# Authorization Lifecycle
+
+```
+User Created
+
+↓
+
+Assign Role
+
+↓
+
+Grant Permissions
+
+↓
+
+Periodic Review
+
+↓
+
+Role Updated
+
+↓
+
+Access Revoked
+```
+
+Permissions should evolve with organizational responsibilities.
+
+---
+
+# Enterprise Example
+
+A multinational retailer manages authorization as follows:
+
+```
+Employee
+
+↓
+
+Authentication
+
+↓
+
+Sales Role
+
+↓
+
+Store Attribute
+
+↓
+
+Regional Policy
+
+↓
+
+Inventory System
+
+↓
+
+Access Granted
+```
+
+A sales employee can manage inventory only for their assigned store.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using a sample application:
+
+1. Create multiple roles.
+2. Assign permissions to each role.
+3. Test user access with different accounts.
+4. Modify role assignments.
+5. Verify authorization changes immediately affect resource access.
+6. Observe how resource ownership influences authorization.
+
+---
+
+# Interview Questions
+
+1. What is Role-Based Access Control (RBAC)?
+2. What is Attribute-Based Access Control (ABAC)?
+3. What is role inheritance?
+4. What causes role explosion?
+5. Why are policies preferable to hard-coded authorization logic?
+6. What is fine-grained authorization?
+7. What is object-level authorization?
+8. What is field-level authorization?
+9. Why should APIs perform server-side authorization?
+10. Why are authorization policies reviewed regularly?
+
+---
+
+# Best Practices
+
+- Centralize authorization decisions.
+- Design roles around business responsibilities.
+- Apply least privilege.
+- Use fine-grained authorization for sensitive data.
+- Evaluate authorization on every protected request.
+- Separate authentication from authorization logic.
+- Review permissions periodically.
+- Keep authorization policies maintainable and well documented.
+
+---
+
+# Common Mistakes
+
+- Hard-coding permissions throughout application code.
+- Allowing users to inherit unnecessary permissions.
+- Performing authorization only on the client side.
+- Ignoring object ownership during authorization.
+- Creating excessive numbers of overlapping roles.
+- Forgetting to remove permissions when roles change.
+
+---
+
+# Key Takeaways
+
+- RBAC simplifies permission management through business-oriented roles.
+- ABAC provides flexible, context-aware authorization using attributes.
+- Policy engines centralize authorization decisions and improve consistency.
+- Fine-grained authorization can protect APIs, records, objects, and individual fields.
+- Enterprise authorization combines roles, attributes, policies, and centralized decision-making to enforce secure access control.
+
+```text id="jid720"
+**Next:** Part 3
+```
