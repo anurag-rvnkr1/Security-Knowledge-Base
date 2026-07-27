@@ -1446,6 +1446,777 @@ Using Developer Tools:
 - Proper CORS configuration balances functionality with security.
 - Enterprise environments often centralize CORS policies through API gateways or reverse proxies.
 
+# 14-CORS.md
+
+# Part 3 — Advanced CORS, Credentials, Preflight Caching, Security Risks, Misconfigurations, Enterprise Architecture, and Secure Design
+
+> **"Most CORS vulnerabilities are not caused by the browser—they are caused by incorrect server configurations that unintentionally trust untrusted origins."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Credentialed CORS Requests
+- Cookies and Authentication
+- Preflight Caching
+- Origin Reflection
+- Dynamic Origin Validation
+- Common CORS Misconfigurations
+- CORS Security Risks
+- Enterprise API Gateways
+- Reverse Proxies and CORS
+- Secure CORS Design
+
+---
+
+# Credentialed Requests
+
+Some web applications need to include authentication information when making cross-origin requests.
+
+Examples include:
+
+- Session Cookies
+- Authentication Tokens
+- Client Certificates (where applicable)
+
+Conceptually:
+
+```
+Browser
+
+↓
+
+Cross-Origin Request
+
+↓
+
+Credentials Included
+
+↓
+
+Server Validation
+
+↓
+
+Browser CORS Validation
+
+↓
+
+Response
+```
+
+---
+
+# Credentials and Browser Security
+
+Credentialed requests require additional browser validation.
+
+```
+Cross-Origin Request
+
+↓
+
+Credentials?
+
+↓
+
+Yes
+
+↓
+
+Additional CORS Rules Apply
+```
+
+The browser applies stricter rules before exposing responses.
+
+---
+
+# Authentication Flow
+
+```
+User
+
+↓
+
+Login
+
+↓
+
+Session Created
+
+↓
+
+Browser Stores Session
+
+↓
+
+Cross-Origin API Request
+
+↓
+
+Authentication Verified
+
+↓
+
+CORS Evaluated
+```
+
+Authentication and CORS are independent security mechanisms.
+
+---
+
+# Important Principle
+
+Authentication answers:
+
+```
+Who is the user?
+```
+
+Authorization answers:
+
+```
+What may the user access?
+```
+
+CORS answers:
+
+```
+May this browser origin read the response?
+```
+
+Each solves a different security problem.
+
+---
+
+# Dynamic Origin Validation
+
+Many enterprise applications allow multiple trusted origins.
+
+Conceptually:
+
+```
+Incoming Origin
+
+↓
+
+Trusted Origin List
+
+↓
+
+Match?
+
+↓
+
+Yes
+
+↓
+
+Allow
+
+──────────────
+
+No
+
+↓
+
+Reject
+```
+
+The server should validate the origin against an approved allowlist.
+
+---
+
+# Origin Reflection
+
+A dangerous configuration pattern is blindly reflecting the incoming origin.
+
+Conceptually:
+
+```
+Request
+
+↓
+
+Origin Header
+
+↓
+
+Copied Directly
+
+↓
+
+Response
+
+↓
+
+Potential Security Risk
+```
+
+Servers should validate origins before allowing access.
+
+---
+
+# Secure Origin Validation
+
+```
+Incoming Origin
+
+↓
+
+Lookup
+
+↓
+
+Approved List
+
+↓
+
+Found?
+
+↓
+
+Yes
+
+↓
+
+Allow
+
+──────────────
+
+No
+
+↓
+
+Deny
+```
+
+Explicit allowlists are significantly safer than unrestricted reflection.
+
+---
+
+# Wildcard Origins
+
+Conceptually:
+
+```
+*
+
+↓
+
+Every Origin
+```
+
+Suitable only for carefully reviewed public resources that do not expose sensitive information.
+
+Sensitive APIs should generally avoid unrestricted wildcard policies.
+
+---
+
+# Credential Rule
+
+When credentials are involved:
+
+```
+Trusted Origin
+
+↓
+
+Explicitly Allowed
+
+↓
+
+Credentials
+
+↓
+
+Browser Validation
+```
+
+Explicit origin validation is essential.
+
+---
+
+# Preflight Caching
+
+Browsers may cache successful preflight responses.
+
+```
+OPTIONS Request
+
+↓
+
+Success
+
+↓
+
+Cache Policy
+
+↓
+
+Future Requests
+
+↓
+
+Reuse Result
+```
+
+Caching reduces unnecessary network traffic.
+
+---
+
+# Preflight Cache Lifecycle
+
+```
+First Request
+
+↓
+
+Preflight
+
+↓
+
+Success
+
+↓
+
+Cache
+
+↓
+
+Later Request
+
+↓
+
+Reuse Cache
+```
+
+Eventually the cache expires and the browser performs another preflight.
+
+---
+
+# Enterprise API Gateway
+
+Many organizations centralize CORS handling.
+
+```
+Browser
+
+↓
+
+API Gateway
+
+↓
+
+CORS Validation
+
+↓
+
+Backend Services
+```
+
+Centralized policy management improves consistency.
+
+---
+
+# Reverse Proxy Architecture
+
+```
+Browser
+
+↓
+
+Reverse Proxy
+
+↓
+
+CORS Policy
+
+↓
+
+Microservices
+```
+
+The reverse proxy may apply consistent CORS headers before forwarding requests.
+
+---
+
+# Microservice Environment
+
+```
+Customer Portal
+
+↓
+
+Gateway
+
+│
+
+├── Orders API
+
+├── Payment API
+
+├── Inventory API
+
+└── User API
+```
+
+Each backend service should follow consistent organizational CORS policies.
+
+---
+
+# Browser Validation Flow
+
+```
+Cross-Origin Request
+
+↓
+
+Origin
+
+↓
+
+Method
+
+↓
+
+Headers
+
+↓
+
+Credentials
+
+↓
+
+Browser Decision
+```
+
+Every required validation step must succeed before the response becomes available to JavaScript.
+
+---
+
+# Common Misconfiguration 1
+
+## Allowing Every Origin
+
+```
+Everyone
+
+↓
+
+Sensitive API
+
+↓
+
+Response Accessible
+```
+
+This unnecessarily broad trust model increases exposure.
+
+---
+
+# Common Misconfiguration 2
+
+## Blind Origin Reflection
+
+```
+Attacker Origin
+
+↓
+
+Server Reflects Origin
+
+↓
+
+Browser Accepts
+
+↓
+
+Potential Risk
+```
+
+Reflection without validation should be avoided.
+
+---
+
+# Common Misconfiguration 3
+
+## Excessive Allowed Methods
+
+Example:
+
+```
+GET
+
+POST
+
+PUT
+
+PATCH
+
+DELETE
+
+OPTIONS
+
+...
+```
+
+Allow only methods that the application genuinely requires.
+
+---
+
+# Common Misconfiguration 4
+
+## Excessive Allowed Headers
+
+Allowing unnecessary request headers increases configuration complexity and may broaden the attack surface.
+
+Apply the principle of least privilege.
+
+---
+
+# Common Misconfiguration 5
+
+## Inconsistent Policies
+
+```
+API A
+
+↓
+
+Restrictive
+
+──────────────
+
+API B
+
+↓
+
+Permissive
+```
+
+Inconsistent CORS behavior creates operational confusion and increases the chance of security mistakes.
+
+---
+
+# Least Privilege for CORS
+
+```
+Allow
+
+Only
+
+Required
+
+Origins
+
+Methods
+
+Headers
+
+Credentials
+```
+
+The least privilege principle applies to CORS just as it does to authorization.
+
+---
+
+# Enterprise Architecture
+
+```
+                     Browser
+
+                        │
+
+                 Cross-Origin Request
+
+                        │
+
+                        ▼
+
+                  API Gateway
+
+                        │
+
+            Validate Origin Policy
+
+                        │
+
+          ┌─────────────┼─────────────┐
+
+          ▼             ▼             ▼
+
+      User API     Billing API    Orders API
+
+                        │
+
+                  Business Logic
+
+                        │
+
+                     Database
+```
+
+---
+
+# Security Review Checklist
+
+```
+✓ Approved Origin List
+
+✓ Minimal Methods
+
+✓ Minimal Headers
+
+✓ Credential Review
+
+✓ HTTPS Everywhere
+
+✓ API Gateway Policy
+
+✓ Logging Enabled
+
+✓ Configuration Reviewed
+```
+
+---
+
+# Logging
+
+Organizations should log:
+
+- Origin values
+- CORS policy decisions
+- Failed validations
+- Preflight requests
+- Configuration changes
+- Administrative modifications
+
+Logs assist with troubleshooting and security investigations.
+
+---
+
+# Monitoring
+
+Useful operational metrics include:
+
+| Metric | Purpose |
+|---------|----------|
+| Failed CORS validations | Detect configuration issues |
+| Preflight frequency | Measure API behavior |
+| Origin distribution | Identify expected clients |
+| Credentialed requests | Monitor authentication usage |
+| Configuration changes | Detect unauthorized modifications |
+
+---
+
+# Enterprise Example
+
+A multinational retailer deploys:
+
+```
+store.company.com
+
+↓
+
+Customer Portal
+
+──────────────
+
+admin.company.com
+
+↓
+
+Administration
+
+──────────────
+
+api.company.com
+
+↓
+
+REST API
+
+──────────────
+
+identity.company.com
+
+↓
+
+Authentication
+```
+
+The API Gateway:
+
+- Validates incoming origins
+- Applies centralized CORS policies
+- Logs CORS decisions
+- Supports approved enterprise applications
+- Rejects unknown origins
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using browser Developer Tools:
+
+1. Open the Network panel.
+2. Identify requests using credentials.
+3. Observe any preflight `OPTIONS` requests.
+4. Compare successful and unsuccessful cross-origin requests.
+5. Review CORS-related response headers.
+6. Document which origins appear to be trusted.
+
+---
+
+# Interview Questions
+
+1. What is a credentialed CORS request?
+2. Why must authentication and CORS be treated separately?
+3. What is origin reflection?
+4. Why is unrestricted wildcard usage risky for sensitive APIs?
+5. Why should servers validate origins against an allowlist?
+6. What is the purpose of preflight caching?
+7. Why do organizations centralize CORS policies?
+8. How can reverse proxies simplify CORS management?
+9. What operational metrics are useful for monitoring CORS?
+10. How does the principle of least privilege apply to CORS?
+
+---
+
+# Best Practices
+
+- Maintain an explicit allowlist of trusted origins.
+- Centralize CORS policies using API gateways or reverse proxies where appropriate.
+- Apply least privilege to origins, methods, headers, and credentials.
+- Review CORS settings during architecture and security reviews.
+- Log CORS validation failures and configuration changes.
+- Periodically audit trusted origins and remove obsolete entries.
+- Keep authentication, authorization, and CORS as separate security controls.
+
+---
+
+# Common Mistakes
+
+- Blindly reflecting the `Origin` header.
+- Using unrestricted wildcard policies for sensitive APIs.
+- Allowing unnecessary HTTP methods or request headers.
+- Assuming CORS replaces authentication or authorization.
+- Applying inconsistent CORS policies across services.
+- Ignoring failed preflight requests during troubleshooting.
+
+---
+
+# Key Takeaways
+
+- Credentialed CORS requests require stricter browser validation.
+- Dynamic origin validation should rely on explicit allowlists rather than blind reflection.
+- API gateways and reverse proxies help centralize CORS management.
+- Least privilege should guide CORS configuration for origins, methods, headers, and credentials.
+- Most CORS vulnerabilities stem from insecure server configuration rather than flaws in the browser.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
