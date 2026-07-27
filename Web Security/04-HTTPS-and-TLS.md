@@ -750,6 +750,6 @@ Visit any HTTPS website.
 - Digital certificates allow browsers to verify server identity.
 - Trusted Certificate Authorities help establish trust on the Internet.
 
-```text id="jid720"
-**Next:** Part 2
+
 ```
+
