@@ -2556,6 +2556,918 @@ Using your browser:
 - Modern browsers provide multiple built-in security mechanisms, including CSP, mixed content protection, and certificate validation.
 - Secure client-side development requires careful handling of storage, communication, dependencies, and trust boundaries.
 
-```text id="jid720"
-**Next:** Part 4
+# 09-HTML-CSS-JavaScript-Security.md
+
+# Part 4 — DOM Security, Secure Frontend Development, Client-Side Threats, Browser Defenses, Security Testing, Enterprise Best Practices, and Chapter Summary
+
+> **"Modern web applications execute thousands of lines of JavaScript inside users' browsers. Secure frontend development is about minimizing trust, protecting sensitive data, safely manipulating the DOM, and leveraging browser security features to reduce client-side attack risks."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- DOM Security
+- Secure DOM Manipulation
+- Secure Frontend Development
+- Client-Side Threats
+- Browser Security Features
+- Secure Third-Party Libraries
+- Dependency Security
+- Client-Side Security Testing
+- Enterprise Frontend Security
+- Secure Development Checklist
+- Chapter Revision
+
+---
+
+# Secure DOM Manipulation
+
+JavaScript frequently modifies the Document Object Model (DOM).
+
 ```
+JavaScript
+
+↓
+
+DOM
+
+↓
+
+Updated Page
+```
+
+DOM updates should always be performed safely because untrusted content may originate from users or external systems.
+
+---
+
+# DOM Data Flow
+
+```
+User Input
+
+↓
+
+JavaScript
+
+↓
+
+DOM
+
+↓
+
+Browser Rendering
+```
+
+Every value flowing into the DOM should be considered untrusted until properly handled.
+
+---
+
+# Trust Boundaries
+
+Data may originate from:
+
+```
+User
+
+↓
+
+Forms
+
+↓
+
+URL Parameters
+
+↓
+
+Cookies
+
+↓
+
+API Responses
+
+↓
+
+Third-Party Services
+```
+
+None of these sources should automatically be considered trustworthy.
+
+---
+
+# Safe DOM Updates
+
+Prefer techniques that treat user data as **text rather than executable HTML** whenever possible.
+
+```
+User Data
+
+↓
+
+Safe DOM Update
+
+↓
+
+Displayed as Text
+
+↓
+
+Browser
+```
+
+This reduces the likelihood of unintentionally executing injected markup or scripts.
+
+---
+
+# Unsafe DOM Updates (Conceptual)
+
+Conceptually:
+
+```
+Untrusted Data
+
+↓
+
+Interpreted as HTML
+
+↓
+
+Browser Parses
+
+↓
+
+Unexpected Behavior
+```
+
+Avoid patterns where untrusted content is interpreted as executable HTML.
+
+---
+
+# DOM-Based Security Risks
+
+Improper DOM manipulation may contribute to:
+
+- DOM-based Cross-Site Scripting (DOM XSS)
+- UI manipulation
+- Unauthorized content injection
+- Data leakage
+- Clickjacking assistance
+- Phishing interfaces
+
+Dedicated chapters will explore these attacks in depth.
+
+---
+
+# Dynamic Content
+
+Modern applications frequently generate content dynamically.
+
+```
+API Response
+
+↓
+
+JavaScript
+
+↓
+
+DOM
+
+↓
+
+Updated Interface
+```
+
+Applications should validate and safely process received data before displaying it.
+
+---
+
+# Client-Side Routing
+
+Single Page Applications often use client-side routing.
+
+```
+Browser
+
+↓
+
+JavaScript Router
+
+↓
+
+New View
+
+↓
+
+No Full Reload
+```
+
+Security controls must remain effective regardless of routing approach.
+
+---
+
+# Sensitive Data Exposure
+
+Sensitive information should never be unnecessarily exposed to the browser.
+
+Examples include:
+
+- Passwords
+- Encryption keys
+- Internal API secrets
+- Administrative credentials
+- Private certificates
+
+Remember:
+
+```
+Downloaded
+
+↓
+
+Visible
+
+↓
+
+Inspectable
+```
+
+Anything delivered to the browser can potentially be inspected.
+
+---
+
+# API Keys
+
+Some applications require public API identifiers.
+
+```
+Browser
+
+↓
+
+Public API
+
+↓
+
+Public Key
+```
+
+However:
+
+```
+Private Secret
+
+↓
+
+Browser
+
+↓
+
+❌ Never
+```
+
+Server-side secrets must remain on trusted backend systems.
+
+---
+
+# Source Maps
+
+During development, source maps simplify debugging.
+
+```
+Bundled Code
+
+↓
+
+Source Map
+
+↓
+
+Original Source
+```
+
+Production deployments should review whether source maps are appropriate to expose.
+
+---
+
+# Debug Information
+
+Avoid exposing:
+
+- Stack traces
+- Internal paths
+- Framework versions
+- Debug endpoints
+- Development configuration
+
+Reducing unnecessary information disclosure limits attacker reconnaissance.
+
+---
+
+# Third-Party Dependencies
+
+Modern applications commonly use:
+
+```
+Application
+
+↓
+
+Package Manager
+
+↓
+
+Libraries
+
+↓
+
+Browser
+```
+
+Examples include UI frameworks, analytics, and visualization libraries.
+
+---
+
+# Dependency Risks
+
+Potential risks include:
+
+- Vulnerable packages
+- Malicious package updates
+- Supply-chain attacks
+- Dependency confusion
+- Abandoned projects
+
+Organizations should continuously review software dependencies.
+
+---
+
+# Dependency Management
+
+Recommended practices:
+
+- Maintain an inventory.
+- Update regularly.
+- Remove unused packages.
+- Review security advisories.
+- Pin supported versions where appropriate.
+- Test updates before production deployment.
+
+---
+
+# Content Delivery Networks (CDNs)
+
+Libraries may be delivered through CDNs.
+
+```
+Browser
+
+↓
+
+CDN
+
+↓
+
+JavaScript Library
+```
+
+CDNs improve performance but introduce additional trust relationships.
+
+---
+
+# Subresource Integrity (SRI)
+
+Subresource Integrity allows browsers to verify downloaded resources.
+
+```
+Browser
+
+↓
+
+Download File
+
+↓
+
+Verify Hash
+
+↓
+
+Match?
+
+↓
+
+Yes
+
+↓
+
+Execute
+
+──────────────
+
+No
+
+↓
+
+Reject
+```
+
+SRI helps detect unexpected modifications to externally hosted resources.
+
+---
+
+# Browser Permissions
+
+Applications may request access to:
+
+- Camera
+- Microphone
+- Geolocation
+- Notifications
+- Clipboard
+- Bluetooth
+- USB
+
+```
+Application
+
+↓
+
+Permission Request
+
+↓
+
+User Decision
+```
+
+Applications should request only the permissions they genuinely require.
+
+---
+
+# Principle of Least Privilege
+
+Frontend applications should request the minimum permissions necessary.
+
+```
+Need Camera?
+
+↓
+
+Yes
+
+↓
+
+Request
+
+──────────────
+
+No
+
+↓
+
+Do Not Request
+```
+
+This reduces both security and privacy risks.
+
+---
+
+# Browser Security Features
+
+Modern browsers include multiple protections.
+
+```
+Browser
+
+│
+
+├── Same-Origin Policy
+
+├── CORS
+
+├── CSP
+
+├── Sandbox
+
+├── Site Isolation
+
+├── Mixed Content Protection
+
+├── Permission Controls
+
+└── Certificate Validation
+```
+
+Applications should complement—not replace—these protections.
+
+---
+
+# Browser Sandbox
+
+Each webpage executes within an isolated environment.
+
+```
+Website
+
+↓
+
+Sandbox
+
+↓
+
+Limited Access
+```
+
+Sandboxing restricts direct interaction with other websites and the operating system.
+
+---
+
+# Site Isolation
+
+Many modern browsers isolate different sites into separate processes.
+
+```
+Site A
+
+↓
+
+Process A
+
+──────────────
+
+Site B
+
+↓
+
+Process B
+```
+
+Process isolation reduces the impact of certain classes of browser attacks.
+
+---
+
+# Secure Communication
+
+Frontend applications should communicate securely.
+
+```
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+Encrypted communication protects data in transit.
+
+---
+
+# Frontend Logging
+
+Applications may log:
+
+- Errors
+- Performance metrics
+- User actions (where appropriate)
+- Network failures
+
+Logs should avoid including:
+
+- Passwords
+- Authentication tokens
+- Sensitive personal information
+- Secret keys
+
+---
+
+# Client-Side Error Handling
+
+Applications should:
+
+```
+Detect Error
+
+↓
+
+Handle Gracefully
+
+↓
+
+Show Safe Message
+
+↓
+
+Log Internally
+```
+
+Avoid displaying detailed internal implementation information to end users.
+
+---
+
+# Client-Side Security Testing
+
+Security testing should include:
+
+- HTML review
+- JavaScript review
+- Browser storage inspection
+- Network traffic analysis
+- Dependency review
+- Security header verification
+- Permission review
+
+---
+
+# Frontend Security Review Checklist
+
+```
+✓ HTTPS Enabled
+
+✓ CSP Configured
+
+✓ Secure Cookies
+
+✓ Appropriate CORS Policy
+
+✓ No Secrets in JavaScript
+
+✓ Secure Browser Storage
+
+✓ Dependency Review
+
+✓ Third-Party Script Review
+
+✓ Error Handling
+
+✓ Logging
+
+✓ Security Headers
+
+✓ Regular Updates
+```
+
+---
+
+# Enterprise Frontend Architecture
+
+```
+Browser
+
+↓
+
+HTML
+
+↓
+
+CSS
+
+↓
+
+JavaScript
+
+↓
+
+Content Security Policy
+
+↓
+
+HTTPS
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Application Server
+
+↓
+
+Database
+```
+
+Security is applied across both the browser and backend infrastructure.
+
+---
+
+# Enterprise Example
+
+A multinational banking application uses:
+
+```
+Browser
+
+↓
+
+HTTPS
+
+↓
+
+Content Security Policy
+
+↓
+
+Secure Cookies
+
+↓
+
+JavaScript
+
+↓
+
+Authentication API
+
+↓
+
+Banking Services
+```
+
+Additional protections include:
+
+- HSTS
+- Secure and HttpOnly cookies
+- Appropriate SameSite configuration
+- Browser permission restrictions
+- Dependency scanning
+- Continuous security testing
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser's Developer Tools:
+
+1. Inspect loaded JavaScript resources.
+2. Review browser storage.
+3. Examine HTTP response security headers.
+4. Verify HTTPS usage.
+5. Check loaded third-party libraries.
+6. Observe browser permissions requested by the application.
+7. Review Network requests for unnecessary information exposure.
+
+---
+
+# Interview Questions
+
+1. Why should untrusted data be handled carefully before updating the DOM?
+2. What is Subresource Integrity (SRI)?
+3. Why should secrets never be embedded in frontend JavaScript?
+4. What are common dependency security risks?
+5. Why is the Principle of Least Privilege important for browser permissions?
+6. What protections does the browser sandbox provide?
+7. What is Site Isolation?
+8. What information should never appear in frontend logs?
+9. What should be included in a frontend security review?
+10. Why is HTTPS essential for modern web applications?
+
+---
+
+# Best Practices
+
+- Treat all client-side input and external data as untrusted.
+- Keep sensitive business logic and secrets on the server.
+- Use HTTPS throughout the application.
+- Configure strong Content Security Policies.
+- Enable Secure, HttpOnly, and appropriate SameSite cookie attributes.
+- Review third-party libraries regularly.
+- Use Subresource Integrity when loading supported external resources.
+- Minimize requested browser permissions.
+- Keep dependencies updated and remove unused packages.
+- Perform regular client-side security testing.
+
+---
+
+# Common Mistakes
+
+- Embedding private API keys or secrets in JavaScript.
+- Trusting browser-side validation as a security mechanism.
+- Loading unnecessary third-party scripts.
+- Ignoring dependency vulnerabilities.
+- Exposing verbose debug information in production.
+- Storing sensitive information insecurely in browser storage.
+- Requesting excessive browser permissions.
+
+---
+
+# Quick Revision
+
+```
+HTML
+
+↓
+
+Structure
+
+↓
+
+CSS
+
+↓
+
+Presentation
+
+↓
+
+JavaScript
+
+↓
+
+Interactivity
+
+↓
+
+DOM
+
+↓
+
+Browser
+```
+
+Browser Security:
+
+```
+Same-Origin Policy
+
+↓
+
+CORS
+
+↓
+
+CSP
+
+↓
+
+HTTPS
+
+↓
+
+Secure Cookies
+
+↓
+
+Permission Controls
+
+↓
+
+Sandbox
+
+↓
+
+Site Isolation
+```
+
+Frontend Security Principles:
+
+```
+Never Trust Client
+
+↓
+
+Validate Server-Side
+
+↓
+
+Protect Secrets
+
+↓
+
+Minimize Exposure
+
+↓
+
+Continuous Testing
+```
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The roles of HTML, CSS, and JavaScript in modern web applications.
+- How browsers parse HTML, construct the DOM, apply CSS, and execute JavaScript.
+- The importance of secure client-side development and browser trust boundaries.
+- Browser storage mechanisms, cookies, Same-Origin Policy (SOP), and Cross-Origin Resource Sharing (CORS).
+- Browser security features such as CSP, sandboxing, mixed content protection, and site isolation.
+- Safe DOM manipulation principles, dependency management, Subresource Integrity (SRI), browser permissions, and secure frontend practices.
+- Enterprise approaches to frontend security testing, monitoring, and secure deployment.
+
+A solid understanding of HTML, CSS, JavaScript, browser behavior, and client-side security forms the foundation for studying advanced web vulnerabilities such as Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), Clickjacking, DOM-based attacks, and modern frontend exploitation techniques.
+
