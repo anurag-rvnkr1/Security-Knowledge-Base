@@ -670,6 +670,782 @@ Using your browser:
 - CORS applies primarily to browser-based cross-origin JavaScript requests.
 - Authentication, authorization, and business logic remain server-side responsibilities.
 
+# 14-CORS.md
+
+# Part 2 — CORS HTTP Headers, Simple Requests, Preflight Requests, Browser Validation, Credentials, and Enterprise API Design
+
+> **"CORS is implemented through HTTP headers exchanged between the browser and the server. The browser evaluates these headers before deciding whether JavaScript may access a cross-origin response."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- CORS HTTP Headers
+- Request Headers
+- Response Headers
+- Simple Requests
+- Preflight Requests
+- OPTIONS Requests
+- Credentials and Cookies
+- Browser Validation
+- Enterprise API Design
+- Common Configuration Mistakes
+
+---
+
+# How CORS Works
+
+CORS operates through HTTP request and response headers.
+
+```
+JavaScript
+
+↓
+
+Browser
+
+↓
+
+HTTP Request
+
+↓
+
+Server
+
+↓
+
+HTTP Response
+
+↓
+
+Browser Validation
+
+↓
+
+Expose Response
+
+OR
+
+Restrict Response
+```
+
+---
+
+# CORS Request Lifecycle
+
+```
+Page
+
+↓
+
+JavaScript
+
+↓
+
+Cross-Origin Request
+
+↓
+
+Browser
+
+↓
+
+Server
+
+↓
+
+CORS Headers
+
+↓
+
+Browser Decision
+```
+
+The browser always performs the final decision.
+
+---
+
+# Important CORS Headers
+
+The most common response headers include:
+
+| Header | Purpose |
+|---------|----------|
+| `Access-Control-Allow-Origin` | Specifies allowed origin(s) |
+| `Access-Control-Allow-Methods` | Lists permitted HTTP methods |
+| `Access-Control-Allow-Headers` | Lists permitted request headers |
+| `Access-Control-Allow-Credentials` | Indicates whether credentials may be included |
+| `Access-Control-Expose-Headers` | Makes selected response headers accessible to JavaScript |
+| `Access-Control-Max-Age` | Specifies how long preflight results may be cached |
+
+---
+
+# Access-Control-Allow-Origin
+
+This response header identifies which origin may access the response.
+
+Conceptually:
+
+```
+Server
+
+↓
+
+Access-Control-Allow-Origin
+
+↓
+
+Browser
+
+↓
+
+Origin Match?
+
+↓
+
+Yes
+
+↓
+
+Expose Response
+```
+
+---
+
+# Example
+
+Frontend:
+
+```
+https://app.company.com
+```
+
+API:
+
+```
+https://api.company.com
+```
+
+The API explicitly identifies which origin is permitted to access the response.
+
+---
+
+# Origin Matching
+
+```
+Browser Origin
+
+↓
+
+Compare
+
+↓
+
+Allowed Origin
+
+↓
+
+Match?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+──────────────
+
+No
+
+↓
+
+Restrict Access
+```
+
+---
+
+# Wildcard Origin
+
+Some servers use:
+
+```
+*
+```
+
+Conceptually:
+
+```
+Allow
+
+↓
+
+All Origins
+```
+
+While this may be appropriate for certain public resources, it is generally **not appropriate for sensitive APIs**.
+
+---
+
+# Access-Control-Allow-Methods
+
+Servers indicate which HTTP methods are permitted.
+
+Examples include:
+
+- GET
+- POST
+- PUT
+- PATCH
+- DELETE
+- OPTIONS
+
+```
+Browser
+
+↓
+
+Requested Method
+
+↓
+
+Server Policy
+
+↓
+
+Allowed?
+
+↓
+
+Yes / No
+```
+
+---
+
+# Access-Control-Allow-Headers
+
+Applications sometimes send additional request headers.
+
+Examples:
+
+- Authorization
+- Content-Type
+- X-Request-ID
+- X-Correlation-ID
+
+The server specifies which request headers are acceptable.
+
+---
+
+# Access-Control-Expose-Headers
+
+Browsers do not automatically expose every response header to JavaScript.
+
+The server can explicitly identify additional headers that may be accessed.
+
+```
+Server
+
+↓
+
+Response Headers
+
+↓
+
+Expose Selected Headers
+
+↓
+
+JavaScript
+```
+
+---
+
+# Access-Control-Allow-Credentials
+
+Some applications require credentials such as cookies or authentication information.
+
+Conceptually:
+
+```
+Browser
+
+↓
+
+Credentialed Request
+
+↓
+
+Server Policy
+
+↓
+
+Allowed?
+
+↓
+
+Yes / No
+```
+
+Credentialed requests require careful configuration.
+
+---
+
+# Important Credential Rule
+
+Conceptually:
+
+```
+Credentials
+
++
+
+Wildcard Origin
+
+↓
+
+Not Valid Together
+```
+
+Sensitive applications should explicitly identify trusted origins when credentials are involved.
+
+---
+
+# Simple Requests
+
+Certain cross-origin requests are considered **simple requests** by browsers.
+
+Conceptually:
+
+```
+Simple Request
+
+↓
+
+Browser
+
+↓
+
+Send Request
+
+↓
+
+Evaluate Response
+```
+
+Simple requests generally do **not** require a preflight request.
+
+---
+
+# Typical Characteristics
+
+Simple requests generally involve:
+
+- Standard HTTP methods
+- Standard request headers
+- Browser-defined safe request formats
+
+The browser determines whether a request qualifies as "simple."
+
+---
+
+# Non-Simple Requests
+
+More complex requests require additional validation.
+
+Examples may include:
+
+- Custom request headers
+- Certain content types
+- Additional HTTP methods
+
+```
+Complex Request
+
+↓
+
+Browser
+
+↓
+
+Preflight Required
+```
+
+---
+
+# What is a Preflight Request?
+
+A preflight request asks the server whether a future request is permitted.
+
+```
+Browser
+
+↓
+
+OPTIONS Request
+
+↓
+
+Server
+
+↓
+
+Policy Response
+
+↓
+
+Browser Decision
+
+↓
+
+Actual Request
+```
+
+---
+
+# Why Preflight Exists
+
+Without preflight:
+
+```
+Complex Request
+
+↓
+
+Server
+
+↓
+
+Unexpected Operation
+```
+
+With preflight:
+
+```
+Browser
+
+↓
+
+Permission Check
+
+↓
+
+Server Approval
+
+↓
+
+Actual Request
+```
+
+This helps browsers determine whether the cross-origin request is allowed.
+
+---
+
+# Preflight Workflow
+
+```
+JavaScript
+
+↓
+
+Complex Request
+
+↓
+
+Browser
+
+↓
+
+OPTIONS
+
+↓
+
+Server
+
+↓
+
+Policy Response
+
+↓
+
+Allowed?
+
+↓
+
+Yes
+
+↓
+
+Actual Request
+
+──────────────
+
+No
+
+↓
+
+Stop
+```
+
+---
+
+# OPTIONS Request
+
+The browser automatically generates the preflight request when required.
+
+```
+Browser
+
+↓
+
+OPTIONS
+
+↓
+
+Server
+
+↓
+
+Response
+
+↓
+
+Browser Validation
+```
+
+Applications generally do not create these requests manually.
+
+---
+
+# Browser Validation
+
+After receiving the preflight response:
+
+```
+Browser
+
+↓
+
+Validate
+
+↓
+
+Origin
+
+↓
+
+Method
+
+↓
+
+Headers
+
+↓
+
+Decision
+```
+
+If validation succeeds, the browser proceeds with the actual request.
+
+---
+
+# Access-Control-Max-Age
+
+Browsers may cache successful preflight decisions.
+
+```
+Successful Preflight
+
+↓
+
+Cache Result
+
+↓
+
+Reuse
+
+↓
+
+Reduce Future Preflight Requests
+```
+
+This improves performance by avoiding unnecessary repeated checks.
+
+---
+
+# Enterprise API Example
+
+```
+Customer Portal
+
+↓
+
+JavaScript
+
+↓
+
+Browser
+
+↓
+
+OPTIONS
+
+↓
+
+API Gateway
+
+↓
+
+Policy
+
+↓
+
+Browser
+
+↓
+
+GET Request
+
+↓
+
+API
+
+↓
+
+Response
+```
+
+The API Gateway commonly centralizes CORS policy management.
+
+---
+
+# Enterprise Multi-Service Architecture
+
+```
+                 Browser
+
+                    │
+
+      ┌─────────────┼─────────────┐
+
+      ▼             ▼             ▼
+
+ Frontend      Identity API    Business API
+
+                    │
+
+             Independent CORS Policies
+
+                    │
+
+            Browser Validation
+```
+
+Each service may define its own CORS policy.
+
+---
+
+# Browser Decision Matrix
+
+| Check | Result |
+|--------|--------|
+| Origin Allowed | Continue |
+| Method Allowed | Continue |
+| Headers Allowed | Continue |
+| Credentials Valid | Continue |
+| Validation Failed | Restrict JavaScript Access |
+
+---
+
+# Security Considerations
+
+Proper CORS configuration should:
+
+- Allow only trusted origins
+- Permit only necessary HTTP methods
+- Limit accepted request headers
+- Carefully configure credential support
+- Avoid unnecessary wildcard usage
+
+---
+
+# Common Configuration Mistakes
+
+| Mistake | Risk |
+|----------|------|
+| Wildcard for sensitive APIs | Excessive exposure |
+| Allowing unnecessary methods | Larger attack surface |
+| Allowing unnecessary headers | Increased risk |
+| Poor credential configuration | Authentication issues |
+| Inconsistent CORS across services | Operational problems |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using Developer Tools:
+
+1. Open the Network tab.
+2. Visit an application using a cross-origin API.
+3. Observe the request and response headers.
+4. Identify:
+   - Origin
+   - Access-Control-Allow-Origin
+   - Access-Control-Allow-Methods
+   - Access-Control-Allow-Headers
+5. Find an example where an OPTIONS preflight request occurs.
+6. Compare the preflight request with the subsequent actual request.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of `Access-Control-Allow-Origin`?
+2. What is a simple request?
+3. What is a preflight request?
+4. Why does the browser send an OPTIONS request?
+5. What is `Access-Control-Allow-Methods` used for?
+6. What is `Access-Control-Allow-Headers`?
+7. What is `Access-Control-Allow-Credentials`?
+8. Why is `Access-Control-Max-Age` useful?
+9. Why shouldn't sensitive APIs use unrestricted wildcard origins?
+10. Who decides whether a cross-origin response is exposed to JavaScript?
+
+---
+
+# Best Practices
+
+- Explicitly allow only trusted origins.
+- Minimize allowed HTTP methods.
+- Permit only required request headers.
+- Review credential usage carefully.
+- Centralize CORS policy where practical.
+- Test browser behavior after deployment.
+- Periodically audit CORS configurations.
+
+---
+
+# Common Mistakes
+
+- Treating CORS as an authentication mechanism.
+- Allowing every origin unnecessarily.
+- Forgetting to review credential behavior.
+- Ignoring preflight requests during debugging.
+- Configuring inconsistent CORS policies across multiple APIs.
+
+---
+
+# Key Takeaways
+
+- CORS is implemented through HTTP headers exchanged between browsers and servers.
+- The browser validates origins, methods, headers, and credentials before exposing responses.
+- Simple requests generally proceed directly, while complex requests require a preflight `OPTIONS` request.
+- Proper CORS configuration balances functionality with security.
+- Enterprise environments often centralize CORS policies through API gateways or reverse proxies.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
