@@ -1439,6 +1439,730 @@ Using two different websites:
 - Browser storage, DOM objects, and JavaScript execution remain isolated across different origins.
 - Modern enterprise applications rely on SOP as a core browser security boundary.
 
+# 13-Same-Origin-Policy.md
+
+# Part 3 — Cross-Origin Communication, CORS Introduction, Cross-Origin Messaging, Browser Isolation, Enterprise Architectures, and SOP Limitations
+
+> **"The Same-Origin Policy is intentionally restrictive, but modern web applications still need controlled communication between different origins. Browsers therefore provide secure mechanisms that allow carefully managed cross-origin interactions without removing SOP itself."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Why Cross-Origin Communication is Needed
+- SOP Limitations
+- Controlled Cross-Origin Access
+- Introduction to Cross-Origin Resource Sharing (CORS)
+- Cross-Origin Messaging
+- Browser Security Decisions
+- Enterprise Multi-Origin Architectures
+- Browser Storage Isolation
+- Modern Browser Security Features
+- Secure Design Principles
+
+---
+
+# Why Cross-Origin Communication Exists
+
+Modern applications rarely consist of a single website.
+
+Example:
+
+```
+Customer Portal
+
+↓
+
+API Server
+
+↓
+
+Authentication Service
+
+↓
+
+Payment Service
+
+↓
+
+CDN
+```
+
+These components may operate from different origins.
+
+---
+
+# Enterprise Example
+
+```
+portal.company.com
+
+↓
+
+Employee Portal
+
+──────────────
+
+api.company.com
+
+↓
+
+Backend API
+
+──────────────
+
+login.company.com
+
+↓
+
+Authentication
+
+──────────────
+
+cdn.company.com
+
+↓
+
+Static Content
+```
+
+Although they belong to the same organization, browsers still recognize them as different origins.
+
+---
+
+# SOP Creates Isolation
+
+```
+Origin A
+
+↓
+
+Protected
+
+──────────────
+
+Origin B
+
+↓
+
+Protected
+```
+
+Without an explicit mechanism, one origin cannot freely access another.
+
+---
+
+# Why Not Disable SOP?
+
+Imagine the browser ignored origin checks.
+
+```
+Malicious Website
+
+↓
+
+Reads
+
+↓
+
+Email
+
+↓
+
+Bank
+
+↓
+
+Corporate Portal
+```
+
+Sensitive information could be exposed without user knowledge.
+
+SOP exists specifically to prevent this situation.
+
+---
+
+# Controlled Cross-Origin Access
+
+Instead of removing SOP:
+
+```
+Browser
+
+↓
+
+Apply Rules
+
+↓
+
+Allow Limited Communication
+
+↓
+
+Maintain Isolation
+```
+
+Modern browsers provide controlled exceptions rather than unrestricted access.
+
+---
+
+# Introduction to Cross-Origin Resource Sharing (CORS)
+
+One controlled mechanism is **Cross-Origin Resource Sharing (CORS)**.
+
+Conceptually:
+
+```
+Browser
+
+↓
+
+Cross-Origin Request
+
+↓
+
+Server Policy
+
+↓
+
+Browser Decision
+```
+
+The browser evaluates the server's declared policy before exposing the response to JavaScript.
+
+> **Note:** CORS will be covered in detail in the next chapter.
+
+---
+
+# SOP and CORS
+
+```
+Without CORS
+
+↓
+
+Cross-Origin Read
+
+↓
+
+Restricted
+
+──────────────
+
+With Appropriate CORS Policy
+
+↓
+
+Browser Validation
+
+↓
+
+Controlled Access
+```
+
+CORS extends browser behavior—it does **not** replace the Same-Origin Policy.
+
+---
+
+# Browser Decision Process
+
+```
+JavaScript
+
+↓
+
+Cross-Origin Request
+
+↓
+
+Browser
+
+↓
+
+Server Policy
+
+↓
+
+Allowed?
+
+↓
+
+Expose Response
+
+OR
+
+Restrict Access
+```
+
+---
+
+# Cross-Origin Communication Methods
+
+Modern browsers support several controlled communication mechanisms.
+
+```
+Cross-Origin Communication
+
+│
+
+├── CORS
+
+├── Cross-Document Messaging
+
+├── Navigation
+
+└── Resource Embedding
+```
+
+Each mechanism has different security properties.
+
+---
+
+# Cross-Document Messaging
+
+Different browser windows or iframes can exchange messages through dedicated browser APIs.
+
+Conceptually:
+
+```
+Window A
+
+↓
+
+Browser Messaging
+
+↓
+
+Window B
+```
+
+The browser provides controls to help ensure messages are exchanged only between expected origins.
+
+---
+
+# Parent and Iframe Communication
+
+```
+Parent Window
+
+↓
+
+Browser Messaging
+
+↓
+
+Iframe
+```
+
+Unlike direct DOM access, controlled messaging allows communication while preserving isolation.
+
+---
+
+# Browser Validation
+
+Before delivering a message:
+
+```
+Message
+
+↓
+
+Origin Check
+
+↓
+
+Validation
+
+↓
+
+Deliver
+
+OR
+
+Discard
+```
+
+Applications should validate the origin of received messages.
+
+---
+
+# Navigation is Different
+
+```
+Website A
+
+↓
+
+Redirect
+
+↓
+
+Website B
+```
+
+Changing the current page is different from allowing one origin to inspect another origin's data.
+
+---
+
+# Resource Embedding
+
+Many resources can be displayed across origins.
+
+Examples:
+
+- Images
+- Fonts
+- Videos
+- Stylesheets
+
+```
+Website
+
+↓
+
+Embed Resource
+
+↓
+
+Browser Renders
+```
+
+Rendering does not automatically provide JavaScript access to the resource's internal data.
+
+---
+
+# SOP Does Not Protect Everything
+
+The Same-Origin Policy primarily protects browser-managed resources.
+
+```
+Browser
+
+↓
+
+DOM
+
+↓
+
+Storage
+
+↓
+
+JavaScript Objects
+
+↓
+
+Protected
+```
+
+Applications must still implement proper authentication, authorization, and server-side security controls.
+
+---
+
+# Browser Storage Isolation
+
+Each origin has its own storage.
+
+```
+Origin A
+
+│
+
+├── Cookies
+
+├── Local Storage
+
+├── Session Storage
+
+└── IndexedDB
+
+──────────────
+
+Origin B
+
+↓
+
+Separate Storage
+```
+
+Applications should not assume browser storage is shared between origins.
+
+---
+
+# Browser Security Layers
+
+SOP is one layer within a larger browser security model.
+
+```
+Browser Security
+
+│
+
+├── Same-Origin Policy
+
+├── Site Isolation
+
+├── Sandbox Mechanisms
+
+├── Secure Contexts
+
+└── Permission Controls
+```
+
+Multiple mechanisms work together to reduce risk.
+
+---
+
+# Site Isolation (Conceptual)
+
+Modern browsers increasingly isolate websites internally.
+
+```
+Browser
+
+↓
+
+Separate Processes
+
+↓
+
+Origin Isolation
+
+↓
+
+Reduced Impact
+```
+
+Process isolation complements SOP by limiting the effects of certain browser vulnerabilities.
+
+---
+
+# Secure Contexts
+
+Some browser capabilities require secure contexts.
+
+```
+HTTPS
+
+↓
+
+Secure Context
+
+↓
+
+Advanced Browser Features
+```
+
+Many modern browser APIs are available only over HTTPS.
+
+---
+
+# Enterprise Multi-Origin Architecture
+
+```
+                  Browser
+
+                     │
+
+        ┌────────────┼────────────┐
+
+        ▼            ▼            ▼
+
+   Login App     Customer App    API
+
+        │            │            │
+
+   Origin A      Origin B     Origin C
+
+        │            │            │
+
+ Controlled Communication
+
+        │
+
+ Browser Security Enforcement
+```
+
+---
+
+# Identity Across Origins
+
+Enterprise authentication often involves multiple origins.
+
+```
+Application
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+Return to Application
+```
+
+The browser coordinates these interactions while enforcing origin boundaries.
+
+---
+
+# Secure Design Principles
+
+When designing applications:
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Origin Isolation
+
+↓
+
+Controlled Communication
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+Browser security should complement—not replace—application security.
+
+---
+
+# Browser Responsibilities
+
+The browser is responsible for:
+
+- Enforcing origin boundaries
+- Protecting client-side storage
+- Restricting cross-origin DOM access
+- Applying CORS decisions
+- Isolating JavaScript execution
+- Managing secure browser contexts
+
+---
+
+# Server Responsibilities
+
+Servers remain responsible for:
+
+- Authentication
+- Authorization
+- Input validation
+- Session management
+- Business logic
+- Secure API design
+
+Browser security does not replace server-side security.
+
+---
+
+# Enterprise Example
+
+A multinational bank deploys:
+
+```
+login.bank.com
+
+↓
+
+Identity Service
+
+──────────────
+
+portal.bank.com
+
+↓
+
+Customer Dashboard
+
+──────────────
+
+api.bank.com
+
+↓
+
+Backend Services
+```
+
+The browser treats each host as a separate origin.
+
+Controlled communication occurs only through approved browser mechanisms and properly configured server policies.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser:
+
+1. Visit an application that loads content from multiple origins.
+2. Open Developer Tools → Network.
+3. Observe requests made to different hosts.
+4. Compare the origins involved.
+5. Identify which resources are embedded.
+6. Observe that browser storage remains isolated per origin.
+
+---
+
+# Interview Questions
+
+1. Why do modern applications require cross-origin communication?
+2. Why doesn't the browser simply disable SOP?
+3. What problem does CORS solve?
+4. Does CORS replace SOP?
+5. How can different browser windows communicate safely?
+6. Why should applications validate the origin of received messages?
+7. What browser resources remain isolated by origin?
+8. What is the difference between embedding and reading a resource?
+9. Why is HTTPS important for modern browser capabilities?
+10. Why are both browser and server security required?
+
+---
+
+# Best Practices
+
+- Design applications with clear origin boundaries.
+- Use controlled browser mechanisms for cross-origin communication.
+- Validate the origin of cross-document messages.
+- Keep sensitive operations on the server.
+- Use HTTPS consistently across applications.
+- Treat browser security as one layer of a defense-in-depth strategy.
+- Review cross-origin interactions during application security assessments.
+
+---
+
+# Common Mistakes
+
+- Assuming CORS disables SOP.
+- Trusting cross-origin messages without validating their origin.
+- Relying solely on browser protections for sensitive operations.
+- Assuming all applications within the same organization share a browser origin.
+- Forgetting that browser storage remains isolated even within multi-origin architectures.
+
+---
+
+# Key Takeaways
+
+- Modern applications often require controlled communication between different origins.
+- The Same-Origin Policy remains the foundation of browser isolation.
+- CORS provides a controlled mechanism for selected cross-origin resource access without replacing SOP.
+- Cross-document messaging allows communication while maintaining origin boundaries.
+- Browser security and server-side security work together to protect modern web applications.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
