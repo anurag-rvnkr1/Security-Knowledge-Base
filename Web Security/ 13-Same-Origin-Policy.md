@@ -742,6 +742,703 @@ Using your browser:
 - SOP isolates browser resources such as the DOM and client-side storage.
 - Browser-enforced origin isolation forms the foundation for many modern web security controls.
 
+# 13-Same-Origin-Policy.md
+
+# Part 2 — SOP Enforcement, Cross-Origin Resource Access, Browser Behavior, Cross-Origin Communication, and Enterprise Web Architecture
+
+> **"The Same-Origin Policy does not prohibit all cross-origin interactions. Instead, browsers carefully control *what* can be shared, *how* it can be shared, and *under which security rules* it may occur."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- How SOP is Enforced
+- Browser Resource Isolation
+- Cross-Origin Requests
+- Cross-Origin Reads
+- Cross-Origin Writes
+- Cross-Origin Embedding
+- Cross-Origin Communication
+- Browser Security Decisions
+- Enterprise Multi-Origin Applications
+- Modern Browser Architecture
+
+---
+
+# SOP Enforcement Model
+
+Whenever JavaScript attempts to access a resource, the browser evaluates the request.
+
+```
+JavaScript
+
+↓
+
+Resource Request
+
+↓
+
+Origin Comparison
+
+↓
+
+Same Origin?
+
+↓
+
+Yes
+
+↓
+
+Allow
+
+──────────────
+
+No
+
+↓
+
+Apply Browser Security Rules
+```
+
+---
+
+# Browser Security Decisions
+
+The browser evaluates several factors before granting access.
+
+```
+Request
+
+↓
+
+Origin
+
+↓
+
+Resource Type
+
+↓
+
+Security Policy
+
+↓
+
+Decision
+```
+
+Different resource types follow different browser rules.
+
+---
+
+# Three Types of Cross-Origin Activity
+
+Cross-origin interactions can be broadly grouped into:
+
+```
+Cross-Origin Activity
+
+│
+
+├── Reads
+
+├── Writes
+
+└── Embedding
+```
+
+Each category is treated differently by browsers.
+
+---
+
+# Cross-Origin Reads
+
+A cross-origin read attempts to obtain data from another origin.
+
+Conceptually:
+
+```
+Website A
+
+↓
+
+Read Data
+
+↓
+
+Website B
+```
+
+The browser generally restricts JavaScript from directly reading sensitive responses across origins unless explicit mechanisms permit it.
+
+---
+
+# Cross-Origin Writes
+
+Examples include:
+
+- Submitting a form
+- Navigating to another website
+- Redirecting the browser
+
+Conceptually:
+
+```
+Website A
+
+↓
+
+Send Request
+
+↓
+
+Website B
+```
+
+Cross-origin writes have historically been more common on the web than unrestricted cross-origin reads.
+
+---
+
+# Cross-Origin Embedding
+
+Browsers allow certain resources to be embedded.
+
+Examples include:
+
+- Images
+- Stylesheets
+- Fonts
+- Audio
+- Video
+
+Conceptually:
+
+```
+Website A
+
+↓
+
+Embed Resource
+
+↓
+
+Website B
+```
+
+Embedding does **not** necessarily grant JavaScript access to the embedded content.
+
+---
+
+# Browser Isolation
+
+Even when resources are embedded:
+
+```
+Embedded Resource
+
+↓
+
+Displayed
+
+↓
+
+JavaScript Access?
+
+↓
+
+Restricted
+```
+
+Rendering content is different from allowing programmatic access.
+
+---
+
+# Reading vs Displaying
+
+These are different operations.
+
+```
+Display Image
+
+↓
+
+Allowed
+
+──────────────
+
+Read Image Data
+
+↓
+
+Browser Rules Apply
+```
+
+The browser distinguishes between displaying content and exposing its underlying data to scripts.
+
+---
+
+# Navigation Between Origins
+
+Users regularly navigate between websites.
+
+```
+Website A
+
+↓
+
+User Clicks Link
+
+↓
+
+Website B
+```
+
+Navigation itself is a normal browser behavior and is distinct from unrestricted cross-origin scripting.
+
+---
+
+# Forms and Cross-Origin Submission
+
+Traditional HTML forms can submit data to another origin.
+
+```
+Form
+
+↓
+
+Submit
+
+↓
+
+Different Website
+```
+
+However, this does not automatically allow the originating page to read the response.
+
+---
+
+# Iframes
+
+A webpage may embed another webpage.
+
+```
+Website A
+
+↓
+
+Iframe
+
+↓
+
+Website B
+```
+
+Although the embedded page is visible, browser isolation still applies between different origins.
+
+---
+
+# Cross-Origin Iframe Access
+
+```
+Parent Page
+
+↓
+
+Access Iframe DOM
+
+↓
+
+Origin Check
+
+↓
+
+Blocked (if different origin)
+```
+
+Direct DOM interaction between different origins is generally restricted.
+
+---
+
+# Same-Origin Iframes
+
+If both pages share the same origin:
+
+```
+Parent
+
+↓
+
+Iframe
+
+↓
+
+Same Origin
+
+↓
+
+DOM Access Allowed
+```
+
+The browser treats them as part of the same security boundary.
+
+---
+
+# JavaScript Execution
+
+Scripts execute within their own origin.
+
+```
+Origin A
+
+↓
+
+JavaScript
+
+↓
+
+Origin A Resources
+```
+
+Scripts do not automatically gain access to resources belonging to other origins.
+
+---
+
+# Storage Separation
+
+Each origin maintains independent storage.
+
+```
+Origin A
+
+│
+
+├── Cookies
+
+├── Local Storage
+
+├── Session Storage
+
+└── IndexedDB
+
+──────────────
+
+Origin B
+
+↓
+
+Separate Storage
+```
+
+This isolation prevents accidental data sharing.
+
+---
+
+# Cookie Isolation
+
+Conceptually:
+
+```
+shop.example
+
+↓
+
+Cookies
+
+↓
+
+shop.example
+
+──────────────
+
+news.example
+
+↓
+
+No Automatic Access
+```
+
+Cookie behavior also depends on attributes such as `Domain`, `Secure`, `HttpOnly`, and `SameSite`.
+
+---
+
+# Service Isolation
+
+Modern browsers isolate many services per origin.
+
+```
+Origin
+
+│
+
+├── Storage
+
+├── JavaScript
+
+├── IndexedDB
+
+├── Cache
+
+└── Service Worker
+```
+
+Origin isolation improves security and reliability.
+
+---
+
+# Enterprise Multi-Origin Applications
+
+Large organizations often separate applications.
+
+```
+portal.company.com
+
+finance.company.com
+
+support.company.com
+
+mail.company.com
+```
+
+Each application has its own origin and browser security boundary.
+
+---
+
+# Enterprise Example
+
+A company hosts:
+
+```
+https://portal.company.com
+
+↓
+
+Employee Dashboard
+
+──────────────
+
+https://finance.company.com
+
+↓
+
+Payroll System
+```
+
+Although both belong to the same organization, the browser considers them different origins because the hosts differ.
+
+---
+
+# Browser Origin Matrix
+
+| Resource | Same Origin | Cross Origin |
+|----------|-------------|--------------|
+| DOM Access | Allowed | Restricted |
+| Local Storage | Allowed | Isolated |
+| Session Storage | Allowed | Isolated |
+| IndexedDB | Allowed | Isolated |
+| JavaScript Objects | Allowed | Restricted |
+
+Actual behavior depends on browser security policies and the specific APIs involved.
+
+---
+
+# Why SOP Uses Origins
+
+Origins provide a simple and consistent security boundary.
+
+```
+Protocol
+
++
+
+Host
+
++
+
+Port
+
+↓
+
+Origin
+
+↓
+
+Security Boundary
+```
+
+This model allows browsers to isolate unrelated websites.
+
+---
+
+# Browser Process Isolation (Conceptual)
+
+Modern browsers increasingly isolate websites internally.
+
+```
+Browser
+
+│
+
+├── Process A
+
+│      ↓
+
+│   Origin A
+
+├── Process B
+
+│      ↓
+
+│   Origin B
+
+└── Process C
+
+       ↓
+
+    Origin C
+```
+
+Process isolation complements the Same-Origin Policy by reducing the impact of browser vulnerabilities.
+
+---
+
+# Enterprise Browser Architecture
+
+```
+                 Browser
+
+                    │
+
+      ┌─────────────┼─────────────┐
+
+      ▼             ▼             ▼
+
+ HR Portal     CRM Portal    Finance Portal
+
+      │             │             │
+
+  Origin A      Origin B      Origin C
+
+      │             │             │
+
+ Independent Browser Security Boundaries
+```
+
+---
+
+# Browser Decision Flow
+
+```
+JavaScript
+
+↓
+
+Cross-Origin Access
+
+↓
+
+Browser
+
+↓
+
+Origin Match?
+
+↓
+
+Yes
+
+↓
+
+Allow
+
+──────────────
+
+No
+
+↓
+
+Evaluate Browser Rules
+
+↓
+
+Permit Limited Interaction
+
+OR
+
+Restrict Access
+```
+
+---
+
+# Common Misunderstandings
+
+| Misunderstanding | Correct Explanation |
+|------------------|---------------------|
+| SOP blocks every cross-origin request | Different resource types have different browser behaviors. |
+| Displaying a resource means JavaScript can read it | Rendering and programmatic access are separate concepts. |
+| Iframes bypass SOP | Different-origin iframes remain isolated. |
+| Same company means same origin | Browser decisions depend on protocol, host, and port—not ownership. |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using two different websites:
+
+1. Open Developer Tools.
+2. Compare the origins of both sites.
+3. Inspect Local Storage for each origin.
+4. Observe that browser storage is separated.
+5. Embed an image from another website (where permitted) and observe that displaying it does not automatically provide script access to its underlying data.
+6. Compare same-origin and cross-origin iframe behavior conceptually.
+
+---
+
+# Interview Questions
+
+1. How does the browser enforce the Same-Origin Policy?
+2. What is the difference between cross-origin reads and writes?
+3. Why are embedded resources treated differently from DOM access?
+4. Can two subdomains directly access each other's DOM?
+5. Why is browser storage isolated by origin?
+6. Does embedding a webpage bypass SOP?
+7. Why are forms historically able to submit across origins?
+8. What is the difference between displaying and reading a resource?
+9. Why do enterprise applications often use multiple origins?
+10. How does browser process isolation complement SOP?
+
+---
+
+# Best Practices
+
+- Design applications with clear origin boundaries.
+- Keep sensitive applications isolated.
+- Understand the distinction between navigation, embedding, and script access.
+- Avoid assuming organizational ownership affects browser origin checks.
+- Test applications in multi-origin deployment environments.
+- Review browser security behavior during application design.
+
+---
+
+# Common Mistakes
+
+- Assuming embedded resources can always be accessed by JavaScript.
+- Confusing navigation with unrestricted data access.
+- Assuming iframes bypass browser security.
+- Treating different subdomains as a single browser origin.
+- Forgetting that browser storage is isolated by origin.
+
+---
+
+# Key Takeaways
+
+- SOP evaluates requests based on origin and resource type.
+- Cross-origin reads, writes, and embedding are handled differently by browsers.
+- Displaying external resources does not automatically grant JavaScript access to their contents.
+- Browser storage, DOM objects, and JavaScript execution remain isolated across different origins.
+- Modern enterprise applications rely on SOP as a core browser security boundary.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
