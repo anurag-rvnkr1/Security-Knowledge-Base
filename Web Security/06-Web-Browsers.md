@@ -1813,6 +1813,1000 @@ Using Developer Tools:
 - Layout calculates element geometry, Paint draws pixels, and Compositing assembles layers for display.
 - Efficient rendering improves user experience and forms the foundation for secure, high-performance web applications.
 
+```
+
+# 06-Web-Browsers.md
+
+# Part 3 — JavaScript Execution, Event Loop, Browser Storage, Cookies, Same-Origin Policy (SOP), CORS, and Browser Security Mechanisms
+
+> **"Modern browsers are secure application runtimes. They execute JavaScript, manage storage, isolate websites, enforce permissions, and implement security mechanisms that protect users from malicious web applications."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- JavaScript execution inside browsers
+- JavaScript Engine architecture
+- Call Stack
+- Heap Memory
+- Event Loop
+- Web APIs
+- Task Queue
+- Browser Storage
+- Cookies
+- Local Storage
+- Session Storage
+- IndexedDB
+- Same-Origin Policy (SOP)
+- Cross-Origin Resource Sharing (CORS)
+- Browser security mechanisms
+
+---
+
+# Browser Execution Environment
+
+A browser is not just a renderer.
+
+It also provides an execution environment.
+
+```
+Browser
+
+│
+
+├── Rendering Engine
+
+├── JavaScript Engine
+
+├── Web APIs
+
+├── Storage
+
+├── Networking
+
+├── Security Policies
+
+└── Operating System
+```
+
+---
+
+# JavaScript Engine
+
+The JavaScript Engine executes JavaScript code.
+
+Responsibilities:
+
+- Parse JavaScript
+- Compile code
+- Execute instructions
+- Manage memory
+- Perform garbage collection
+
+Popular engines:
+
+| Browser | JavaScript Engine |
+|----------|-------------------|
+| Chrome | V8 |
+| Edge | V8 |
+| Firefox | SpiderMonkey |
+| Safari | JavaScriptCore |
+
+---
+
+# JavaScript Execution Flow
+
+```
+JavaScript
+
+↓
+
+Parser
+
+↓
+
+Compiler
+
+↓
+
+Machine Code
+
+↓
+
+Execution
+```
+
+Modern engines use Just-In-Time (JIT) compilation to improve performance.
+
+---
+
+# JavaScript Memory
+
+Memory is divided into two major areas.
+
+```
+Memory
+
+│
+
+├── Heap
+
+└── Call Stack
+```
+
+---
+
+# Heap Memory
+
+The Heap stores:
+
+- Objects
+- Arrays
+- Functions
+- Dynamic data
+
+Example:
+
+```
+User Object
+
+↓
+
+Heap Memory
+```
+
+Objects remain in memory until no longer referenced.
+
+---
+
+# Call Stack
+
+The Call Stack stores currently executing functions.
+
+Example:
+
+```javascript
+login()
+
+↓
+
+authenticate()
+
+↓
+
+verifyPassword()
+```
+
+Stack:
+
+```
+verifyPassword()
+
+↓
+
+authenticate()
+
+↓
+
+login()
+```
+
+Functions return in reverse order.
+
+---
+
+# Stack Overflow
+
+If recursive calls never terminate:
+
+```
+Function
+
+↓
+
+Calls Itself
+
+↓
+
+Calls Itself
+
+↓
+
+Calls Itself
+
+↓
+
+Stack Full
+
+↓
+
+Stack Overflow
+```
+
+---
+
+# Garbage Collection
+
+Unused objects are automatically removed.
+
+```
+Unused Object
+
+↓
+
+Garbage Collector
+
+↓
+
+Memory Released
+```
+
+Automatic memory management helps prevent leaks, though developers can still create unnecessary memory retention.
+
+---
+
+# JavaScript is Single-Threaded
+
+JavaScript executes one task at a time.
+
+```
+Task 1
+
+↓
+
+Task 2
+
+↓
+
+Task 3
+
+↓
+
+Task 4
+```
+
+Only one function executes on the Call Stack at any given moment.
+
+---
+
+# How Can Browsers Handle Multiple Tasks?
+
+Browsers provide additional components.
+
+```
+JavaScript
+
+↓
+
+Web APIs
+
+↓
+
+Task Queue
+
+↓
+
+Event Loop
+```
+
+Together they enable asynchronous programming.
+
+---
+
+# Browser Web APIs
+
+Web APIs are provided by the browser.
+
+Examples:
+
+- setTimeout()
+- fetch()
+- DOM APIs
+- Geolocation
+- Clipboard
+- Notifications
+- WebSocket
+- WebRTC
+
+These APIs are **not** part of the JavaScript language itself.
+
+---
+
+# Example
+
+```javascript
+setTimeout(function(){
+console.log("Hello");
+},1000);
+```
+
+Execution:
+
+```
+Call Stack
+
+↓
+
+Timer
+
+↓
+
+Web API
+
+↓
+
+Task Queue
+
+↓
+
+Event Loop
+
+↓
+
+Console
+```
+
+---
+
+# Event Loop
+
+The Event Loop coordinates asynchronous execution.
+
+```
+Call Stack Empty?
+
+↓
+
+Yes
+
+↓
+
+Move Next Task
+
+↓
+
+Execute
+```
+
+If the Call Stack is busy, queued tasks wait.
+
+---
+
+# Event Loop Diagram
+
+```
+JavaScript
+
+↓
+
+Call Stack
+
+↑
+
+↓
+
+Event Loop
+
+↓
+
+Task Queue
+
+↓
+
+Web APIs
+```
+
+The Event Loop continuously checks whether queued tasks can be executed.
+
+---
+
+# Task Queue
+
+Completed asynchronous operations enter the Task Queue.
+
+```
+HTTP Response
+
+↓
+
+Task Queue
+
+↓
+
+Event Loop
+
+↓
+
+Call Stack
+```
+
+---
+
+# Fetch Example
+
+```javascript
+fetch("/api/users")
+```
+
+Flow:
+
+```
+JavaScript
+
+↓
+
+Browser Network API
+
+↓
+
+Server
+
+↓
+
+Response
+
+↓
+
+Task Queue
+
+↓
+
+JavaScript Callback
+```
+
+---
+
+# Browser Storage
+
+Browsers support multiple storage mechanisms.
+
+```
+Browser Storage
+
+│
+
+├── Cookies
+
+├── Local Storage
+
+├── Session Storage
+
+├── IndexedDB
+
+└── Cache Storage
+```
+
+Each serves different purposes.
+
+---
+
+# Cookies
+
+Cookies store small pieces of information.
+
+Typical uses:
+
+- Session IDs
+- Authentication
+- User preferences
+- Shopping carts
+
+Example:
+
+```
+Browser
+
+↓
+
+Cookie
+
+↓
+
+Server
+```
+
+Cookies are sent with matching HTTP requests.
+
+---
+
+# Cookie Lifecycle
+
+```
+Server
+
+↓
+
+Set-Cookie Header
+
+↓
+
+Browser Stores Cookie
+
+↓
+
+Future Request
+
+↓
+
+Cookie Sent
+```
+
+---
+
+# Cookie Security Attributes
+
+Important attributes include:
+
+| Attribute | Purpose |
+|-----------|----------|
+| Secure | Sent only over HTTPS |
+| HttpOnly | Prevents JavaScript access |
+| SameSite | Controls cross-site sending |
+| Expires / Max-Age | Defines lifetime |
+| Domain | Limits applicable domains |
+| Path | Limits applicable paths |
+
+---
+
+# Local Storage
+
+Local Storage stores persistent data.
+
+Characteristics:
+
+- Survives browser restart
+- Per origin
+- Accessible by JavaScript
+- Larger capacity than cookies
+
+```
+Website
+
+↓
+
+Local Storage
+
+↓
+
+Persistent Data
+```
+
+---
+
+# Session Storage
+
+Session Storage lasts only for the current tab.
+
+```
+Open Tab
+
+↓
+
+Session Storage
+
+↓
+
+Close Tab
+
+↓
+
+Deleted
+```
+
+Useful for temporary page-specific state.
+
+---
+
+# Local Storage vs Session Storage
+
+| Local Storage | Session Storage |
+|---------------|-----------------|
+| Persistent | Removed when tab closes |
+| Shared within same origin | Limited to one tab/session |
+| Larger capacity | Similar API |
+| JavaScript accessible | JavaScript accessible |
+
+---
+
+# IndexedDB
+
+IndexedDB is a browser database.
+
+Supports:
+
+- Large datasets
+- Structured objects
+- Transactions
+- Offline applications
+
+```
+Application
+
+↓
+
+IndexedDB
+
+↓
+
+Large Data Storage
+```
+
+---
+
+# Cache Storage
+
+Progressive Web Apps (PWAs) use Cache Storage.
+
+```
+Application
+
+↓
+
+Cache API
+
+↓
+
+Offline Resources
+```
+
+Useful for:
+
+- Offline access
+- Faster loading
+- Reduced bandwidth
+
+---
+
+# Same-Origin Policy (SOP)
+
+One of the browser's most important security controls.
+
+Definition:
+
+A webpage may only freely access resources from the **same origin**, unless explicit permission is granted.
+
+---
+
+# What is an Origin?
+
+An origin consists of:
+
+```
+Protocol
+
++
+
+Hostname
+
++
+
+Port
+```
+
+Example:
+
+```
+https://example.com:443
+```
+
+All three components determine the origin.
+
+---
+
+# Same-Origin Examples
+
+| URL A | URL B | Same Origin? |
+|--------|--------|--------------|
+| https://example.com | https://example.com | ✅ Yes |
+| https://example.com | http://example.com | ❌ No |
+| https://example.com | https://api.example.com | ❌ No |
+| https://example.com | https://example.com:8443 | ❌ No |
+
+---
+
+# Why SOP Exists
+
+Without SOP:
+
+```
+Malicious Website
+
+↓
+
+Reads Banking Website
+
+↓
+
+Steals Data
+```
+
+With SOP:
+
+```
+Browser
+
+↓
+
+Request Blocked
+```
+
+SOP prevents many cross-site attacks.
+
+---
+
+# Cross-Origin Resource Sharing (CORS)
+
+Sometimes cross-origin access is required.
+
+Example:
+
+```
+Frontend
+
+↓
+
+https://app.example.com
+
+↓
+
+Backend
+
+↓
+
+https://api.example.com
+```
+
+CORS provides a controlled mechanism for allowing such requests.
+
+---
+
+# CORS Flow
+
+```
+Browser
+
+↓
+
+Cross-Origin Request
+
+↓
+
+Server
+
+↓
+
+CORS Headers
+
+↓
+
+Allowed?
+
+↓
+
+Yes / No
+```
+
+The browser enforces the decision based on the server's response.
+
+---
+
+# Common CORS Headers
+
+| Header | Purpose |
+|----------|----------|
+| Access-Control-Allow-Origin | Allowed origins |
+| Access-Control-Allow-Methods | Allowed HTTP methods |
+| Access-Control-Allow-Headers | Allowed request headers |
+| Access-Control-Allow-Credentials | Whether credentials may be included |
+
+---
+
+# Preflight Request
+
+Certain cross-origin requests require an OPTIONS request first.
+
+```
+Browser
+
+↓
+
+OPTIONS Request
+
+↓
+
+Server
+
+↓
+
+Permission Granted
+
+↓
+
+Actual Request
+```
+
+This is called a **Preflight Request**.
+
+---
+
+# Browser Permission Model
+
+Browsers protect sensitive features.
+
+Examples:
+
+- Camera
+- Microphone
+- Location
+- Notifications
+- Clipboard
+- USB devices
+- Bluetooth
+
+Users must generally grant permission before access.
+
+---
+
+# Browser Sandboxing Revisited
+
+Each webpage executes inside a sandbox.
+
+```
+Webpage
+
+↓
+
+Sandbox
+
+↓
+
+Restricted Environment
+
+↓
+
+Operating System
+```
+
+This limits the impact of malicious code.
+
+---
+
+# Browser Process Isolation
+
+```
+Browser
+
+│
+
+├── Banking Tab
+
+├── Email Tab
+
+├── Social Media Tab
+
+└── News Tab
+```
+
+Each renderer process is isolated to improve both security and stability.
+
+---
+
+# Enterprise Browser Security
+
+Organizations often enforce browser policies.
+
+Examples:
+
+- Approved extensions only
+- Safe Browsing enabled
+- Automatic updates
+- Password manager controls
+- Download restrictions
+- Certificate management
+- Proxy configuration
+
+---
+
+# Real Enterprise Example
+
+An employee logs into:
+
+```
+https://portal.company.com
+```
+
+Browser actions:
+
+```
+Receive Cookie
+
+↓
+
+Store Session
+
+↓
+
+Enforce Same-Origin Policy
+
+↓
+
+Execute JavaScript
+
+↓
+
+Load API Data
+
+↓
+
+Render Dashboard
+```
+
+Security mechanisms operate continuously throughout the session.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using Developer Tools:
+
+1. Open **Application** (or **Storage**) panel.
+2. Observe:
+   - Cookies
+   - Local Storage
+   - Session Storage
+   - IndexedDB (if used)
+3. Open the **Network** panel.
+4. Inspect request and response headers.
+5. Identify any `Set-Cookie` and CORS-related headers.
+
+---
+
+# Interview Questions
+
+1. What is the role of the JavaScript Engine?
+2. What is the Call Stack?
+3. What is Heap Memory?
+4. What is the Event Loop?
+5. What are Web APIs?
+6. What is the difference between Cookies and Local Storage?
+7. What is IndexedDB?
+8. What is the Same-Origin Policy?
+9. What is CORS?
+10. Why is process isolation important in browsers?
+
+---
+
+# Best Practices
+
+- Store sensitive session identifiers in secure, HttpOnly cookies.
+- Enable appropriate `SameSite` cookie attributes.
+- Use CORS only for trusted origins.
+- Minimize unnecessary browser permissions.
+- Keep browser storage free of sensitive plaintext information.
+- Use HTTPS to protect cookies and web traffic.
+
+---
+
+# Common Mistakes
+
+- Storing authentication tokens insecurely.
+- Allowing overly permissive CORS policies.
+- Assuming Local Storage is secure for sensitive secrets.
+- Disabling browser security protections during development and forgetting to restore them.
+- Granting excessive permissions to websites without review.
+
+---
+
+# Key Takeaways
+
+- The JavaScript Engine executes application logic while the browser provides Web APIs for asynchronous operations.
+- The Event Loop coordinates execution between the Call Stack and queued asynchronous tasks.
+- Browsers provide multiple storage mechanisms, each designed for different use cases.
+- The Same-Origin Policy is a foundational browser security control.
+- CORS enables controlled cross-origin communication without weakening browser security boundaries.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
