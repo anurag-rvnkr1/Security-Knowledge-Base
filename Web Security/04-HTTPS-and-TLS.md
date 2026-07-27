@@ -3068,3 +3068,744 @@ Using your browser:
 
 
 ```
+# 04-HTTPS-and-TLS.md
+
+# Part 4 — TLS Attacks, Certificate Pinning, HTTPS Best Practices, Enterprise Deployment, Troubleshooting, and Chapter Summary
+
+> **"HTTPS is only as secure as its implementation. Strong cryptography cannot protect applications that are poorly configured, improperly validated, or vulnerable to protocol misuse."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Common TLS and HTTPS attacks
+- Man-in-the-Middle (MITM) attacks
+- Certificate pinning
+- Mixed content
+- TLS downgrade attacks
+- Secure HTTPS deployment
+- TLS troubleshooting
+- Enterprise best practices
+- HTTPS monitoring
+- Final chapter revision
+
+---
+
+# HTTPS Security Overview
+
+HTTPS protects communication by ensuring:
+
+```
+Confidentiality
+
+↓
+
+Integrity
+
+↓
+
+Authentication
+```
+
+However, security also depends on:
+
+- Proper certificate validation
+- Strong TLS configuration
+- Secure application development
+- Continuous monitoring
+
+---
+
+# Common HTTPS Threats
+
+Although TLS is secure when correctly implemented, deployments can still face threats.
+
+Examples include:
+
+- Man-in-the-Middle (MITM)
+- Certificate spoofing
+- TLS downgrade attempts
+- Mixed content
+- Expired certificates
+- Weak cipher suites
+- Certificate misconfiguration
+
+---
+
+# Man-in-the-Middle (MITM)
+
+A MITM attacker attempts to intercept communication between the client and server.
+
+Without HTTPS:
+
+```
+Client
+
+↓
+
+Attacker
+
+↓
+
+Server
+```
+
+The attacker may read or modify traffic.
+
+---
+
+# HTTPS Against MITM
+
+With proper HTTPS:
+
+```
+Client
+
+↓
+
+Encrypted TLS
+
+↓
+
+Server
+```
+
+If the attacker cannot present a trusted certificate for the target domain, the browser warns the user and prevents a trusted connection.
+
+---
+
+# Public Wi-Fi Example
+
+Imagine connecting to:
+
+```
+Airport Wi-Fi
+```
+
+Without HTTPS:
+
+```
+Laptop
+
+↓
+
+Public Network
+
+↓
+
+Potential Eavesdropper
+
+↓
+
+Website
+```
+
+With HTTPS:
+
+```
+Laptop
+
+↓
+
+Encrypted TLS
+
+↓
+
+Website
+```
+
+Even if packets are captured, the encrypted contents are protected.
+
+---
+
+# Certificate Spoofing
+
+An attacker may attempt to impersonate a website using a fake certificate.
+
+```
+Fake Website
+
+↓
+
+Fake Certificate
+
+↓
+
+Browser Validation
+
+↓
+
+Rejected
+```
+
+Modern browsers reject certificates that fail validation.
+
+---
+
+# Certificate Validation Reminder
+
+Browsers verify:
+
+- Domain name
+- Expiration date
+- Digital signature
+- Trusted issuer
+- Certificate chain
+
+Failure of these checks results in a warning or blocked connection.
+
+---
+
+# Mixed Content
+
+A webpage loaded over HTTPS should avoid loading insecure HTTP resources.
+
+Example:
+
+```
+https://example.com
+
+↓
+
+Loads
+
+↓
+
+http://image.example.com/logo.png
+```
+
+This is called **Mixed Content**.
+
+---
+
+# Types of Mixed Content
+
+### Passive Mixed Content
+
+Examples:
+
+- Images
+- Audio
+- Video
+
+Risk:
+
+- Content may be modified during transmission.
+
+---
+
+### Active Mixed Content
+
+Examples:
+
+- JavaScript
+- CSS
+- Iframes
+
+Risk:
+
+- May allow attackers to influence or execute code within the page.
+
+Modern browsers often block active mixed content by default.
+
+---
+
+# Mixed Content Flow
+
+```
+HTTPS Page
+
+↓
+
+HTTP Script
+
+↓
+
+Browser Blocks Resource
+```
+
+---
+
+# TLS Downgrade Attack
+
+An attacker attempts to force communication to use an older, weaker protocol.
+
+```
+Client
+
+↓
+
+TLS 1.3
+
+↓
+
+Attacker
+
+↓
+
+Older Protocol
+
+↓
+
+Server
+```
+
+Modern TLS implementations include protections against many downgrade attacks.
+
+---
+
+# Weak Cipher Suites
+
+Older deployments may still support outdated cryptographic algorithms.
+
+Example:
+
+```
+Modern Browser
+
+↓
+
+Server Supports Weak Cipher
+
+↓
+
+Reduced Security
+```
+
+Best practice:
+
+- Disable obsolete cipher suites.
+- Prefer modern authenticated encryption algorithms.
+
+---
+
+# Expired Certificates
+
+```
+Certificate
+
+↓
+
+Expiration Date Passed
+
+↓
+
+Browser Warning
+```
+
+Consequences:
+
+- Loss of user trust
+- Service disruption
+- Possible business impact
+
+Certificate monitoring is essential.
+
+---
+
+# Certificate Pinning
+
+Certificate pinning is a technique where an application remembers or expects a specific certificate or public key.
+
+```
+Expected Certificate
+
+↓
+
+Compare
+
+↓
+
+Match
+
+↓
+
+Trusted
+```
+
+If the certificate changes unexpectedly:
+
+```
+Mismatch
+
+↓
+
+Connection Rejected
+```
+
+---
+
+# Advantages of Certificate Pinning
+
+- Additional protection against unauthorized certificates
+- Reduced trust in unexpected certificate chains
+
+Potential challenges:
+
+- Operational complexity
+- Risk of service disruption if certificates change unexpectedly without proper planning
+
+Because of these operational considerations, certificate pinning should be used carefully.
+
+---
+
+# HTTPS Redirect
+
+Organizations often redirect all HTTP traffic to HTTPS.
+
+```
+User
+
+↓
+
+http://example.com
+
+↓
+
+301 Redirect
+
+↓
+
+https://example.com
+```
+
+This helps ensure encrypted communication.
+
+---
+
+# Secure Enterprise HTTPS Architecture
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+TLS Termination
+
+↓
+
+Reverse Proxy
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+Security controls may include:
+
+- HSTS
+- Modern TLS versions
+- Strong cipher suites
+- Certificate monitoring
+- Automated renewal
+
+---
+
+# HTTPS Monitoring
+
+Organizations continuously monitor:
+
+- Certificate expiration
+- TLS versions
+- Cipher suites
+- Handshake failures
+- Connection errors
+- Security headers
+
+Monitoring enables proactive maintenance and incident response.
+
+---
+
+# TLS Troubleshooting
+
+Common HTTPS issues include:
+
+| Problem | Possible Cause |
+|----------|----------------|
+| Certificate warning | Expired or invalid certificate |
+| Hostname mismatch | Certificate issued for another domain |
+| Handshake failure | Unsupported protocol or cipher suite |
+| Browser warning | Broken certificate chain |
+| Connection refused | Server or network issue |
+
+---
+
+# Secure HTTPS Deployment Checklist
+
+```
+✓ HTTPS Enabled
+
+✓ TLS 1.3 Preferred
+
+✓ TLS 1.2 Supported (if required)
+
+✓ Trusted Certificate
+
+✓ Automatic Renewal
+
+✓ HSTS Enabled
+
+✓ Strong Cipher Suites
+
+✓ Secure Cookies
+
+✓ Certificate Monitoring
+
+✓ Security Headers
+```
+
+---
+
+# Enterprise Deployment Example
+
+A healthcare organization protects patient portals using:
+
+```
+Patient
+
+↓
+
+HTTPS
+
+↓
+
+CDN
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Authentication
+
+↓
+
+Healthcare Application
+
+↓
+
+Encrypted Database Connection
+```
+
+Additional security controls:
+
+- Multi-factor authentication
+- HSTS
+- Secure cookies
+- Certificate lifecycle management
+- Continuous logging and monitoring
+
+---
+
+# HTTPS in APIs
+
+Modern REST APIs also rely on HTTPS.
+
+```
+Mobile App
+
+↓
+
+HTTPS
+
+↓
+
+API Gateway
+
+↓
+
+Backend Services
+
+↓
+
+Database
+```
+
+HTTPS protects:
+
+- API tokens
+- Authentication credentials
+- JSON payloads
+- Sensitive business data
+
+---
+
+# Real Incident Scenario
+
+An administrator forgets to renew a production certificate.
+
+```
+Certificate Expires
+
+↓
+
+Browser Displays Warning
+
+↓
+
+Customers Cannot Trust Website
+
+↓
+
+Business Disruption
+```
+
+Lesson:
+
+Certificate expiration monitoring and automated renewal are critical operational practices.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Choose any HTTPS website.
+
+Using your browser:
+
+1. Inspect the certificate.
+2. Verify:
+   - Certificate validity
+   - Issuer
+   - Domain name
+3. Inspect response headers for:
+   - Strict-Transport-Security
+   - Content-Security-Policy
+4. Confirm that all page resources are loaded over HTTPS without mixed content warnings.
+
+---
+
+# Interview Questions
+
+1. What is a Man-in-the-Middle attack?
+2. How does HTTPS help defend against MITM attacks?
+3. What is Mixed Content?
+4. What is the difference between active and passive mixed content?
+5. Why are expired certificates dangerous?
+6. What is Certificate Pinning?
+7. What is an HTTPS redirect?
+8. Why is HSTS important?
+9. What should be monitored in an enterprise TLS deployment?
+10. What are common causes of TLS handshake failures?
+
+---
+
+# Best Practices
+
+- Enable HTTPS across the entire application.
+- Redirect HTTP traffic to HTTPS.
+- Prefer TLS 1.3 and support TLS 1.2 when necessary.
+- Disable deprecated protocols and weak cipher suites.
+- Enable HSTS after confirming HTTPS is fully deployed.
+- Monitor certificate expiration and automate renewals.
+- Use secure cookies and appropriate security headers.
+- Regularly review TLS configurations.
+
+---
+
+# Common Mistakes
+
+- Allowing mixed content on secure pages.
+- Ignoring browser certificate warnings.
+- Forgetting certificate renewals.
+- Supporting deprecated TLS versions.
+- Assuming HTTPS alone prevents application-layer attacks such as SQL Injection or Cross-Site Scripting.
+
+---
+
+# Quick Revision
+
+```
+HTTP
+
++
+
+TLS
+
+↓
+
+HTTPS
+
+↓
+
+Certificate Validation
+
+↓
+
+TLS Handshake
+
+↓
+
+Session Keys
+
+↓
+
+Encrypted Communication
+
+↓
+
+Secure HTTP Requests
+
+↓
+
+Secure HTTP Responses
+```
+
+Remember:
+
+- HTTPS = HTTP protected by TLS.
+- TLS provides confidentiality, integrity, and authentication.
+- Certificates establish server identity.
+- Browsers validate certificate chains before trusting a connection.
+- Strong configuration and monitoring are essential for secure deployments.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The purpose of HTTPS and TLS
+- Confidentiality, integrity, and authentication
+- Symmetric and asymmetric cryptography
+- Digital certificates and Certificate Authorities
+- Public Key Infrastructure (PKI)
+- The TLS handshake
+- Session keys and Perfect Forward Secrecy
+- TLS versions from SSL to TLS 1.3
+- Modern cryptographic algorithms
+- HSTS, OCSP, and certificate revocation
+- Common HTTPS attacks and defenses
+- Enterprise HTTPS deployment and monitoring
+- TLS troubleshooting and operational best practices
+
+With HTTPS and TLS understood, you are now ready to explore **Web Browsers, Rendering Engines, Cookies, Storage, and the Browser Security Model**, which explain how browsers process web content and enforce client-side security.
+
+
+```
