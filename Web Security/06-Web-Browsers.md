@@ -874,6 +874,945 @@ Using any modern browser:
 - Browser sandboxing and process isolation are essential security mechanisms.
 - Understanding browser architecture is fundamental for web development, penetration testing, SOC analysis, and secure web application design.
 
+```
+# 06-Web-Browsers.md
+
+# Part 2 — Browser Rendering Pipeline, DOM, CSSOM, Render Tree, Layout, Paint, Reflow, Repaint, and Browser Performance
+
+> **"A browser does not simply display HTML. It transforms HTML, CSS, and JavaScript into an interactive visual interface through a sophisticated rendering pipeline that balances correctness, speed, and security."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Browser rendering pipeline
+- HTML parsing
+- DOM
+- CSS parsing
+- CSSOM
+- Render Tree
+- Layout (Reflow)
+- Paint
+- Compositing
+- GPU acceleration
+- Critical Rendering Path
+- Browser rendering performance
+- Security implications of rendering
+
+---
+
+# Browser Rendering Pipeline
+
+After receiving an HTTP response, the browser begins rendering.
+
+```
+HTML
+
+↓
+
+HTML Parser
+
+↓
+
+DOM
+
+↓
+
+CSS Parser
+
+↓
+
+CSSOM
+
+↓
+
+Render Tree
+
+↓
+
+Layout
+
+↓
+
+Paint
+
+↓
+
+Compositing
+
+↓
+
+Display
+```
+
+This process is called the **Rendering Pipeline**.
+
+---
+
+# Receiving HTML
+
+Example:
+
+```
+https://example.com
+```
+
+Browser receives:
+
+```html
+<html>
+<head>
+<title>Example</title>
+</head>
+
+<body>
+<h1>Hello</h1>
+</body>
+
+</html>
+```
+
+Initially, this is only text.
+
+---
+
+# HTML Parsing
+
+The browser parses HTML token by token.
+
+```
+HTML
+
+↓
+
+Tokenizer
+
+↓
+
+Parser
+
+↓
+
+DOM Nodes
+```
+
+Malformed HTML is often corrected automatically by the browser to create a usable document structure.
+
+---
+
+# What is the DOM?
+
+DOM stands for:
+
+```
+Document Object Model
+```
+
+The DOM is an in-memory tree representation of an HTML document.
+
+---
+
+# DOM Tree
+
+Example HTML:
+
+```html
+<html>
+
+<body>
+
+<h1>Hello</h1>
+
+<p>Welcome</p>
+
+</body>
+
+</html>
+```
+
+DOM:
+
+```
+Document
+
+↓
+
+html
+
+↓
+
+body
+
+├── h1
+
+└── p
+```
+
+Every HTML element becomes a node.
+
+---
+
+# Why the DOM Matters
+
+JavaScript interacts with webpages through the DOM.
+
+Example:
+
+```
+JavaScript
+
+↓
+
+DOM
+
+↓
+
+Page Updated
+```
+
+Without the DOM:
+
+- No dynamic updates
+- No user interaction
+- No modern web applications
+
+---
+
+# CSS Parsing
+
+The browser downloads CSS.
+
+Example:
+
+```css
+h1{
+color:blue;
+}
+```
+
+Processing:
+
+```
+CSS
+
+↓
+
+CSS Parser
+
+↓
+
+CSSOM
+```
+
+---
+
+# CSSOM
+
+CSSOM stands for:
+
+```
+CSS Object Model
+```
+
+It represents all CSS rules in memory.
+
+Example:
+
+```
+Stylesheet
+
+↓
+
+CSSOM Tree
+```
+
+---
+
+# CSSOM Example
+
+```
+body
+
+↓
+
+font-size
+
+↓
+
+color
+
+↓
+
+margin
+
+────────────
+
+h1
+
+↓
+
+font-size
+
+↓
+
+font-weight
+
+↓
+
+color
+```
+
+The browser combines these styles with the DOM.
+
+---
+
+# DOM vs CSSOM
+
+| DOM | CSSOM |
+|------|--------|
+| HTML structure | CSS styles |
+| Elements | Style rules |
+| Created from HTML | Created from CSS |
+| Represents content | Represents presentation |
+
+---
+
+# Render Tree
+
+The browser combines:
+
+```
+DOM
+
++
+
+CSSOM
+
+↓
+
+Render Tree
+```
+
+The Render Tree contains only elements that are actually rendered.
+
+---
+
+# Render Tree Example
+
+```
+DOM
+
+↓
+
+html
+
+↓
+
+body
+
+├── h1
+
+├── p
+
+└── script
+
+↓
+
+Render Tree
+
+↓
+
+body
+
+├── h1
+
+└── p
+```
+
+The `<script>` element exists in the DOM but is not a visible renderable object.
+
+---
+
+# Hidden Elements
+
+Example:
+
+```css
+display:none;
+```
+
+These elements:
+
+- Exist in the DOM
+- Do not appear in the Render Tree while hidden
+
+---
+
+# Layout (Reflow)
+
+Once the Render Tree is created, the browser calculates:
+
+- Width
+- Height
+- Position
+- Margins
+- Padding
+- Coordinates
+
+```
+Render Tree
+
+↓
+
+Layout
+
+↓
+
+Pixel Positions
+```
+
+---
+
+# Layout Example
+
+```
+Page
+
+↓
+
+Header
+
+↓
+
+Navigation
+
+↓
+
+Content
+
+↓
+
+Footer
+```
+
+Each element receives an exact position on the page.
+
+---
+
+# Why Layout is Expensive
+
+Changing page structure may require recalculating many elements.
+
+Example:
+
+```
+Change Width
+
+↓
+
+Recalculate Positions
+
+↓
+
+Entire Layout Updated
+```
+
+Large layouts increase computational cost.
+
+---
+
+# Paint
+
+After layout:
+
+```
+Layout
+
+↓
+
+Paint
+
+↓
+
+Pixels
+```
+
+The browser draws:
+
+- Text
+- Images
+- Borders
+- Colors
+- Shadows
+- Backgrounds
+
+---
+
+# Painting Example
+
+```
+Layout Complete
+
+↓
+
+Draw Background
+
+↓
+
+Draw Text
+
+↓
+
+Draw Images
+
+↓
+
+Draw Borders
+
+↓
+
+Screen
+```
+
+---
+
+# Compositing
+
+Modern browsers separate pages into layers.
+
+```
+Paint
+
+↓
+
+Layers
+
+↓
+
+GPU
+
+↓
+
+Final Image
+```
+
+Compositing improves animation and scrolling performance.
+
+---
+
+# GPU Acceleration
+
+Graphics-intensive work is delegated to the GPU.
+
+```
+Rendering Engine
+
+↓
+
+GPU
+
+↓
+
+Display
+```
+
+Examples:
+
+- CSS transforms
+- Animations
+- Video playback
+- WebGL
+- Canvas rendering
+
+---
+
+# Critical Rendering Path
+
+The sequence required before the first visible content appears.
+
+```
+Receive HTML
+
+↓
+
+Build DOM
+
+↓
+
+Download CSS
+
+↓
+
+Build CSSOM
+
+↓
+
+Render Tree
+
+↓
+
+Layout
+
+↓
+
+Paint
+```
+
+Reducing the Critical Rendering Path improves page load speed.
+
+---
+
+# Render Blocking Resources
+
+Certain resources delay rendering.
+
+Examples:
+
+- External CSS
+- Synchronous JavaScript
+
+```
+HTML
+
+↓
+
+CSS Download
+
+↓
+
+Rendering Waits
+```
+
+Until required CSS is available, browsers generally avoid rendering incomplete pages.
+
+---
+
+# JavaScript and Rendering
+
+JavaScript can modify:
+
+```
+DOM
+
+↓
+
+CSSOM
+
+↓
+
+Layout
+
+↓
+
+Paint
+```
+
+Every modification may trigger additional rendering work.
+
+---
+
+# DOM Manipulation
+
+Example:
+
+```javascript
+document.body.appendChild(div);
+```
+
+Browser performs:
+
+```
+DOM Updated
+
+↓
+
+Render Tree Updated
+
+↓
+
+Layout
+
+↓
+
+Paint
+```
+
+---
+
+# Reflow
+
+Reflow occurs when layout calculations must be repeated.
+
+Triggers include:
+
+- Resizing window
+- Adding elements
+- Removing elements
+- Changing dimensions
+- Font size changes
+
+---
+
+# Reflow Example
+
+```
+User Resizes Window
+
+↓
+
+Layout Invalid
+
+↓
+
+Recalculate Positions
+
+↓
+
+Reflow
+```
+
+Frequent reflows reduce performance.
+
+---
+
+# Repaint
+
+Repaint redraws visual appearance without changing layout.
+
+Example:
+
+```
+Text Color
+
+↓
+
+Blue → Red
+
+↓
+
+Repaint
+```
+
+Position remains unchanged.
+
+---
+
+# Reflow vs Repaint
+
+| Reflow | Repaint |
+|----------|----------|
+| Layout changes | Visual changes only |
+| More expensive | Less expensive |
+| Positions recalculated | Pixels redrawn |
+| May trigger repaint | Does not require layout changes |
+
+---
+
+# Browser Rendering Timeline
+
+```
+Download HTML
+
+↓
+
+Build DOM
+
+↓
+
+Download CSS
+
+↓
+
+Build CSSOM
+
+↓
+
+Create Render Tree
+
+↓
+
+Layout
+
+↓
+
+Paint
+
+↓
+
+Composite
+
+↓
+
+Interactive Page
+```
+
+---
+
+# Incremental Rendering
+
+Browsers do not always wait for the complete page.
+
+```
+HTML Arrives
+
+↓
+
+Partial DOM
+
+↓
+
+Partial Rendering
+
+↓
+
+More Data
+
+↓
+
+Continue Rendering
+```
+
+This improves perceived responsiveness.
+
+---
+
+# Browser Optimization
+
+Modern browsers optimize rendering through:
+
+- Parallel downloads
+- Resource prioritization
+- Lazy rendering
+- GPU compositing
+- Incremental layout
+- Efficient caching
+
+---
+
+# Security During Rendering
+
+Rendering engines enforce several security mechanisms.
+
+Examples:
+
+- Same-Origin Policy
+- HTML parsing rules
+- Script execution controls
+- Sandboxing
+- Cross-Origin restrictions
+
+These protections help isolate untrusted content.
+
+---
+
+# Enterprise Rendering Example
+
+A banking dashboard loads:
+
+```
+HTML
+
+↓
+
+CSS
+
+↓
+
+JavaScript
+
+↓
+
+API Data
+
+↓
+
+DOM Updated
+
+↓
+
+Render Tree
+
+↓
+
+Layout
+
+↓
+
+Paint
+
+↓
+
+Interactive Dashboard
+```
+
+As account information changes, only affected portions of the interface are updated whenever possible.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using Developer Tools:
+
+1. Open the **Elements** panel.
+2. Inspect the DOM.
+3. Modify:
+   - Text
+   - Color
+   - Width
+4. Observe:
+   - Layout changes
+   - Visual updates
+5. Open the **Performance** tab and record page activity to see rendering stages such as scripting, layout, and painting.
+
+---
+
+# Interview Questions
+
+1. What is the DOM?
+2. What is the CSSOM?
+3. What is the Render Tree?
+4. How is the Render Tree created?
+5. What is Layout (Reflow)?
+6. What is Paint?
+7. What is Compositing?
+8. What is the Critical Rendering Path?
+9. What is the difference between Reflow and Repaint?
+10. Why is GPU acceleration important?
+
+---
+
+# Best Practices
+
+- Minimize unnecessary DOM updates.
+- Reduce expensive layout recalculations.
+- Avoid repeated forced synchronous layouts.
+- Load CSS efficiently.
+- Defer non-critical JavaScript where appropriate.
+- Optimize rendering with efficient CSS and modern browser APIs.
+- Profile rendering performance using browser developer tools.
+
+---
+
+# Common Mistakes
+
+- Triggering repeated layout recalculations inside loops.
+- Blocking rendering with unnecessary synchronous scripts.
+- Manipulating the DOM excessively instead of batching updates.
+- Loading large unused CSS files.
+- Ignoring rendering performance during development.
+
+---
+
+# Key Takeaways
+
+- Browsers transform HTML and CSS into visual pages through a multi-stage rendering pipeline.
+- The DOM represents document structure, while the CSSOM represents styling information.
+- The Render Tree combines both to determine what is displayed.
+- Layout calculates element geometry, Paint draws pixels, and Compositing assembles layers for display.
+- Efficient rendering improves user experience and forms the foundation for secure, high-performance web applications.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
