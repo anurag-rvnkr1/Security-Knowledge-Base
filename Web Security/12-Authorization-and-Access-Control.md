@@ -725,6 +725,4 @@ Using a sample web application:
 - DAC, MAC, RBAC, and ABAC are widely used access control models.
 - Enterprise authorization relies on least privilege, separation of duties, and centralized policy enforcement.
 
-```text id="jid720"
-**Next:** Part 2
-```
+
