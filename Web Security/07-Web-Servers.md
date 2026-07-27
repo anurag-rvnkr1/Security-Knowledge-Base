@@ -1799,6 +1799,938 @@ Using Nginx or Apache:
 - Reverse proxies improve security, scalability, and manageability.
 - Load balancing distributes traffic, improves availability, and supports enterprise-scale deployments.
 
+```
+# 07-Web-Servers.md
+
+# Part 3 — Web Server Configuration, Security Headers, TLS Configuration, Authentication, Logging, Caching, Compression, and Enterprise Hardening
+
+> **"A properly configured web server is one of the strongest security controls in a web application. Most successful attacks exploit misconfigurations rather than flaws in the web server software itself."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Web server configuration
+- Configuration files
+- Virtual host configuration
+- TLS configuration
+- HTTP Security Headers
+- Authentication mechanisms
+- Access control
+- Logging
+- Compression
+- Caching
+- Enterprise hardening
+- Secure deployment practices
+
+---
+
+# Why Configuration Matters
+
+A web server's security depends heavily on its configuration.
+
+```
+Secure Configuration
+
+↓
+
+Secure Server
+
+────────────
+
+Poor Configuration
+
+↓
+
+Security Vulnerabilities
+```
+
+Even fully patched software can become vulnerable due to insecure settings.
+
+---
+
+# Typical Configuration File
+
+Every web server loads configuration during startup.
+
+```
+Configuration File
+
+↓
+
+Server Startup
+
+↓
+
+Settings Applied
+
+↓
+
+Ready to Accept Requests
+```
+
+Configuration commonly defines:
+
+- Listening ports
+- Virtual hosts
+- TLS settings
+- Logging
+- Access rules
+- MIME types
+- Compression
+- Caching
+- Reverse proxy rules
+
+---
+
+# Configuration Hierarchy
+
+```
+Global Configuration
+
+↓
+
+Virtual Host
+
+↓
+
+Location
+
+↓
+
+Specific Rules
+```
+
+More specific rules generally override broader settings.
+
+---
+
+# Example Configuration Structure
+
+```
+Main Configuration
+
+│
+
+├── HTTP Settings
+
+├── TLS Settings
+
+├── Logging
+
+├── Compression
+
+├── Virtual Hosts
+
+└── Reverse Proxy
+```
+
+---
+
+# Listening Configuration
+
+The server defines which ports it accepts connections on.
+
+```
+Port 80
+
+↓
+
+HTTP
+
+────────────
+
+Port 443
+
+↓
+
+HTTPS
+```
+
+Production environments should prioritize HTTPS.
+
+---
+
+# Document Root
+
+The Document Root is the directory containing public web content.
+
+```
+Web Server
+
+↓
+
+Document Root
+
+↓
+
+index.html
+
+style.css
+
+logo.png
+
+script.js
+```
+
+Only intended public files should be placed here.
+
+---
+
+# Virtual Host Configuration
+
+Each website can have independent settings.
+
+```
+Web Server
+
+│
+
+├── company.com
+
+├── api.company.com
+
+├── admin.company.com
+
+└── blog.company.com
+```
+
+Each virtual host may define:
+
+- TLS certificate
+- Logging
+- Document root
+- Security policies
+- Reverse proxy rules
+
+---
+
+# Default Virtual Host
+
+If no matching host is found:
+
+```
+Incoming Request
+
+↓
+
+Unknown Host
+
+↓
+
+Default Virtual Host
+```
+
+The default site should not expose unnecessary information.
+
+---
+
+# Directory Configuration
+
+Servers apply rules to directories.
+
+Example controls:
+
+- Directory listing
+- Authentication
+- Permissions
+- Allowed HTTP methods
+
+```
+Directory
+
+↓
+
+Security Rules
+
+↓
+
+Access Decision
+```
+
+---
+
+# Directory Listing
+
+Unsafe configuration:
+
+```
+https://example.com/uploads/
+```
+
+Response:
+
+```
+file1.pdf
+
+backup.zip
+
+database.sql
+
+config.old
+```
+
+This may reveal sensitive files.
+
+---
+
+# Secure Directory Listing
+
+Preferred behavior:
+
+```
+Directory
+
+↓
+
+Listing Disabled
+
+↓
+
+403 Forbidden
+
+OR
+
+Default Page
+```
+
+Disable directory indexing unless explicitly required.
+
+---
+
+# File Permissions
+
+The web server should have only the permissions it requires.
+
+```
+Public Files
+
+↓
+
+Read
+
+────────────
+
+Configuration Files
+
+↓
+
+Restricted
+
+────────────
+
+Private Keys
+
+↓
+
+Highly Restricted
+```
+
+Follow the principle of least privilege.
+
+---
+
+# MIME Types
+
+The server identifies file types using MIME headers.
+
+Examples:
+
+| File | MIME Type |
+|------|-----------|
+| .html | text/html |
+| .css | text/css |
+| .js | application/javascript |
+| .png | image/png |
+| .json | application/json |
+| .pdf | application/pdf |
+
+Correct MIME types help browsers process content safely.
+
+---
+
+# TLS Configuration
+
+HTTPS requires proper TLS configuration.
+
+```
+Browser
+
+↓
+
+TLS Handshake
+
+↓
+
+Certificate Validation
+
+↓
+
+Encrypted Connection
+```
+
+Key configuration items include:
+
+- Certificate
+- Private key
+- Supported protocols
+- Cipher suites
+
+---
+
+# Strong TLS Configuration
+
+Recommended practices:
+
+- Disable obsolete SSL versions.
+- Disable TLS 1.0 and TLS 1.1 where compatibility requirements permit.
+- Prefer modern TLS versions.
+- Use strong cipher suites.
+- Enable forward secrecy when supported.
+
+---
+
+# Certificate Configuration
+
+The server loads:
+
+```
+Certificate
+
++
+
+Private Key
+
+↓
+
+HTTPS Enabled
+```
+
+Protect private keys from unauthorized access.
+
+---
+
+# HTTP Security Headers
+
+Security headers instruct browsers how to behave.
+
+```
+Web Server
+
+↓
+
+HTTP Response
+
+↓
+
+Security Headers
+
+↓
+
+Browser Protection
+```
+
+---
+
+# Common Security Headers
+
+| Header | Purpose |
+|----------|----------|
+| Strict-Transport-Security | Force HTTPS |
+| Content-Security-Policy | Restrict resource loading |
+| X-Content-Type-Options | Prevent MIME sniffing |
+| Referrer-Policy | Control referrer information |
+| Permissions-Policy | Restrict browser features |
+| Cross-Origin-Resource-Policy | Protect resources across origins |
+
+---
+
+# Strict-Transport-Security (HSTS)
+
+Purpose:
+
+```
+HTTP
+
+↓
+
+Redirect
+
+↓
+
+Remember HTTPS
+
+↓
+
+Future HTTPS Only
+```
+
+HSTS helps prevent protocol downgrade attacks.
+
+---
+
+# Content Security Policy (CSP)
+
+CSP limits what content a browser may load.
+
+```
+Browser
+
+↓
+
+Load Script?
+
+↓
+
+Allowed?
+
+↓
+
+Yes / No
+```
+
+Benefits:
+
+- Reduces XSS risk
+- Controls third-party resources
+- Limits unauthorized script execution
+
+---
+
+# X-Content-Type-Options
+
+Purpose:
+
+```
+Declared MIME Type
+
+↓
+
+Browser
+
+↓
+
+No MIME Sniffing
+```
+
+This reduces certain content interpretation risks.
+
+---
+
+# Referrer-Policy
+
+Controls what information is shared when navigating.
+
+```
+Current Page
+
+↓
+
+Next Website
+
+↓
+
+Limited Referrer
+```
+
+This helps reduce unnecessary information disclosure.
+
+---
+
+# Permissions-Policy
+
+Restricts browser capabilities.
+
+Examples:
+
+- Camera
+- Microphone
+- Geolocation
+- USB
+- Bluetooth
+
+Only approved features are available to webpages.
+
+---
+
+# Authentication
+
+Web servers can enforce authentication before requests reach applications.
+
+Common methods:
+
+- Basic Authentication
+- Digest Authentication
+- Client Certificates
+- Integrated Authentication
+- Reverse Proxy Authentication
+
+---
+
+# Basic Authentication
+
+```
+Browser
+
+↓
+
+Username + Password
+
+↓
+
+Authorization Header
+
+↓
+
+Server
+```
+
+Basic Authentication should only be used over HTTPS.
+
+---
+
+# Client Certificate Authentication
+
+```
+Browser
+
+↓
+
+Client Certificate
+
+↓
+
+TLS Verification
+
+↓
+
+Access Granted
+```
+
+Common in:
+
+- Government
+- Banking
+- Enterprise VPNs
+
+---
+
+# Access Control
+
+Servers can restrict access based on:
+
+- IP Address
+- Network
+- User
+- Group
+- Client Certificate
+- Authentication status
+
+```
+Request
+
+↓
+
+Access Rules
+
+↓
+
+Allowed
+
+OR
+
+Denied
+```
+
+---
+
+# IP-Based Restrictions
+
+Example:
+
+```
+Admin Panel
+
+↓
+
+Corporate Network Only
+```
+
+External requests are denied before reaching the application.
+
+---
+
+# Logging
+
+Every request should be logged.
+
+Typical fields:
+
+- Timestamp
+- Client IP
+- HTTP Method
+- URL
+- Status Code
+- Response Size
+- Response Time
+- User Agent
+
+---
+
+# Access Log Example
+
+```
+Client
+
+↓
+
+GET /dashboard
+
+↓
+
+200 OK
+
+↓
+
+Logged
+```
+
+Access logs support:
+
+- Monitoring
+- Auditing
+- Incident response
+
+---
+
+# Error Logs
+
+Error logs record operational issues.
+
+Examples:
+
+- Missing files
+- Application failures
+- TLS errors
+- Permission problems
+- Proxy failures
+
+These logs are essential during troubleshooting.
+
+---
+
+# Compression
+
+Responses can be compressed.
+
+```
+Large HTML
+
+↓
+
+Compression
+
+↓
+
+Smaller Response
+
+↓
+
+Client
+```
+
+Common algorithms:
+
+- Gzip
+- Brotli
+
+Compression improves page load times and reduces bandwidth consumption.
+
+---
+
+# Caching
+
+The server may cache frequently requested content.
+
+```
+Request
+
+↓
+
+Cache?
+
+↓
+
+Yes
+
+↓
+
+Return Cached Copy
+
+────────────
+
+No
+
+↓
+
+Generate Response
+
+↓
+
+Store Cache
+```
+
+Proper cache configuration improves scalability.
+
+---
+
+# Cache-Control Headers
+
+Servers communicate caching behavior using headers.
+
+Examples:
+
+- Public
+- Private
+- No-Cache
+- No-Store
+- Max-Age
+
+These influence browser and intermediary caching.
+
+---
+
+# Enterprise Hardening Checklist
+
+```
+✓ HTTPS Enabled
+
+✓ Strong TLS
+
+✓ Security Headers
+
+✓ Logging Enabled
+
+✓ Compression Configured
+
+✓ Directory Listing Disabled
+
+✓ Least Privilege Permissions
+
+✓ Secure Certificates
+
+✓ Updated Software
+
+✓ Reverse Proxy Protection
+```
+
+---
+
+# Enterprise Deployment Example
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+Web Application Firewall
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Authentication
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+Security is applied in multiple layers before requests reach backend systems.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+In a lab environment:
+
+1. Review the web server configuration.
+2. Verify:
+   - HTTPS listener
+   - Document root
+   - Access logs
+   - Error logs
+3. Inspect HTTP response headers using your browser's Developer Tools.
+4. Confirm that security headers are present.
+5. Verify that directory listing is disabled.
+
+---
+
+# Interview Questions
+
+1. Why is web server configuration critical?
+2. What is a Document Root?
+3. What is a Virtual Host?
+4. Why should directory listing be disabled?
+5. What is HSTS?
+6. What is Content Security Policy (CSP)?
+7. Why is Basic Authentication unsafe without HTTPS?
+8. What information is stored in access logs?
+9. Why is response compression beneficial?
+10. What is the purpose of Cache-Control headers?
+
+---
+
+# Best Practices
+
+- Enable HTTPS for all production services.
+- Use modern TLS configurations.
+- Apply appropriate HTTP security headers.
+- Disable unnecessary modules and services.
+- Restrict administrative interfaces.
+- Protect certificates and private keys.
+- Review logs regularly.
+- Keep server software updated.
+- Follow the principle of least privilege.
+
+---
+
+# Common Mistakes
+
+- Leaving directory indexing enabled.
+- Using weak or outdated TLS configurations.
+- Omitting security headers.
+- Exposing configuration files publicly.
+- Running services with excessive privileges.
+- Ignoring access and error logs.
+- Allowing unrestricted access to administrative endpoints.
+
+---
+
+# Key Takeaways
+
+- Secure web server configuration is essential for protecting web applications.
+- Virtual hosts, document roots, TLS, logging, compression, and caching are core server features.
+- HTTP security headers provide important browser-side protections.
+- Strong authentication and access controls reduce unauthorized access.
+- Enterprise hardening combines secure configuration, monitoring, logging, and layered defenses.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
