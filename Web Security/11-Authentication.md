@@ -1492,6 +1492,845 @@ Using a test application:
 - Passwordless authentication and identity federation are increasingly common in enterprise environments.
 - Modern authentication systems combine secure credential management, MFA, standardized protocols, logging, and continuous monitoring.
 
+# 11-Authentication.md
+
+# Part 3 — Modern Authentication Protocols, OAuth 2.0, OpenID Connect (OIDC), SAML, Adaptive Authentication, Identity Management, and Enterprise Authentication Security
+
+> **"Modern enterprise authentication extends beyond passwords. Organizations increasingly rely on identity providers, federation, adaptive authentication, standardized protocols, and Zero Trust principles to securely authenticate users across cloud, mobile, and distributed applications."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Identity and Access Management (IAM)
+- Authentication Protocols
+- OAuth 2.0 (Overview)
+- OpenID Connect (OIDC)
+- SAML
+- Identity Federation
+- Adaptive Authentication
+- Risk-Based Authentication
+- Zero Trust Authentication
+- Enterprise Identity Architecture
+- Authentication Security Best Practices
+
+---
+
+# Modern Authentication
+
+Traditional authentication:
+
+```
+Username
+
+↓
+
+Password
+
+↓
+
+Application
+```
+
+Modern authentication:
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+Application
+```
+
+Authentication is increasingly centralized.
+
+---
+
+# Identity and Access Management (IAM)
+
+IAM is the framework used to manage digital identities.
+
+```
+IAM
+
+│
+
+├── Identity Management
+
+├── Authentication
+
+├── Authorization
+
+├── User Lifecycle
+
+├── Role Management
+
+└── Audit
+```
+
+IAM ensures the right individuals receive appropriate access.
+
+---
+
+# IAM Responsibilities
+
+Typical IAM functions include:
+
+- User registration
+- Authentication
+- Password management
+- MFA
+- Access control
+- Account provisioning
+- Account deprovisioning
+- Identity auditing
+
+---
+
+# Enterprise Identity Architecture
+
+```
+Users
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Applications
+
+↓
+
+Resources
+```
+
+The Identity Provider becomes the trusted authentication authority.
+
+---
+
+# Identity Federation
+
+Federation allows multiple organizations or applications to trust a common identity.
+
+```
+Company A
+
+↓
+
+Identity Provider
+
+↓
+
+Federated Trust
+
+↓
+
+Company B
+
+↓
+
+Application Access
+```
+
+Users authenticate once using their trusted identity.
+
+---
+
+# Benefits of Federation
+
+Advantages include:
+
+- Reduced password fatigue
+- Centralized authentication
+- Simplified user management
+- Improved user experience
+- Consistent security policies
+
+---
+
+# Authentication Protocols
+
+Modern identity systems commonly use standardized protocols.
+
+```
+Authentication
+
+│
+
+├── OAuth 2.0
+
+├── OpenID Connect
+
+└── SAML
+```
+
+Each protocol addresses different authentication or authorization scenarios.
+
+---
+
+# OAuth 2.0 (Overview)
+
+OAuth 2.0 is an **authorization framework**.
+
+It allows applications to obtain limited access to protected resources without directly sharing user credentials.
+
+```
+User
+
+↓
+
+Authorize
+
+↓
+
+Application
+
+↓
+
+Access Token
+
+↓
+
+Protected Resource
+```
+
+---
+
+# OAuth Roles
+
+OAuth typically involves:
+
+```
+Resource Owner
+
+↓
+
+Client
+
+↓
+
+Authorization Server
+
+↓
+
+Resource Server
+```
+
+Each component has a specific responsibility.
+
+---
+
+# OAuth Authorization Flow (Conceptual)
+
+```
+User
+
+↓
+
+Client Application
+
+↓
+
+Authorization Server
+
+↓
+
+User Approval
+
+↓
+
+Access Token
+
+↓
+
+Resource Server
+
+↓
+
+Protected Data
+```
+
+The client receives an access token after successful authorization.
+
+---
+
+# Access Token
+
+An access token represents delegated authorization.
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Access Token
+
+↓
+
+API Request
+```
+
+Access tokens should have limited lifetimes.
+
+---
+
+# Refresh Token
+
+Some systems issue refresh tokens.
+
+```
+Access Token
+
+↓
+
+Expires
+
+↓
+
+Refresh Token
+
+↓
+
+New Access Token
+```
+
+Refresh tokens help avoid repeated user logins while maintaining security.
+
+---
+
+# OAuth is NOT Authentication
+
+OAuth answers:
+
+```
+Can This Application
+
+↓
+
+Access Resource?
+```
+
+OAuth alone does **not** prove user identity.
+
+Identity verification is handled by protocols such as OpenID Connect.
+
+---
+
+# OpenID Connect (OIDC)
+
+OIDC builds on OAuth 2.0 to provide authentication.
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+ID Token
+
+↓
+
+Application
+```
+
+OIDC allows applications to verify user identity.
+
+---
+
+# ID Token
+
+An ID Token contains information about the authenticated user.
+
+Conceptually:
+
+```
+Authentication
+
+↓
+
+Identity
+
+↓
+
+ID Token
+
+↓
+
+Application
+```
+
+Applications validate the token before trusting the identity information.
+
+---
+
+# OAuth vs OpenID Connect
+
+| OAuth 2.0 | OpenID Connect |
+|------------|----------------|
+| Authorization | Authentication |
+| Access Token | ID Token |
+| API access | User identity |
+| Delegated access | Login capability |
+
+OIDC extends OAuth rather than replacing it.
+
+---
+
+# Security Assertion Markup Language (SAML)
+
+SAML is widely used for enterprise Single Sign-On.
+
+```
+Employee
+
+↓
+
+Identity Provider
+
+↓
+
+SAML Assertion
+
+↓
+
+Enterprise Application
+```
+
+SAML is commonly found in large organizations.
+
+---
+
+# SAML Authentication Flow
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+SAML Assertion
+
+↓
+
+Application
+
+↓
+
+Access Granted
+```
+
+The application trusts the Identity Provider.
+
+---
+
+# OIDC vs SAML
+
+| OIDC | SAML |
+|------|------|
+| Modern web & mobile applications | Enterprise web applications |
+| JSON-based | XML-based |
+| Lightweight | More verbose |
+| API friendly | Traditional enterprise environments |
+
+Both remain widely used depending on organizational requirements.
+
+---
+
+# Single Sign-On (SSO)
+
+SSO allows one authentication session to access multiple applications.
+
+```
+Login
+
+↓
+
+Identity Provider
+
+↓
+
+Application A
+
+↓
+
+Application B
+
+↓
+
+Application C
+```
+
+Users authenticate once instead of repeatedly.
+
+---
+
+# Benefits of SSO
+
+- Improved user experience
+- Reduced password reuse
+- Centralized identity management
+- Simplified account administration
+- Consistent authentication policies
+
+---
+
+# Adaptive Authentication
+
+Authentication requirements can change dynamically based on context.
+
+```
+Login Attempt
+
+↓
+
+Risk Evaluation
+
+↓
+
+Normal Risk
+
+↓
+
+Password + MFA
+
+──────────────
+
+High Risk
+
+↓
+
+Additional Verification
+```
+
+---
+
+# Risk Signals
+
+Authentication systems may evaluate:
+
+- Device reputation
+- Login location
+- Network characteristics
+- Time of access
+- User behavior
+- Previous authentication history
+
+These signals help determine authentication confidence.
+
+---
+
+# Zero Trust Authentication
+
+Zero Trust follows the principle:
+
+```
+Never Trust
+
+↓
+
+Always Verify
+```
+
+Authentication is continuously evaluated rather than trusted indefinitely.
+
+---
+
+# Continuous Verification
+
+Instead of authenticating only once:
+
+```
+Login
+
+↓
+
+Session
+
+↓
+
+Every Sensitive Request
+
+↓
+
+Validation
+
+↓
+
+Continue
+```
+
+Continuous verification reduces long-term risk.
+
+---
+
+# Device Trust
+
+Organizations may evaluate device health before granting access.
+
+Examples include:
+
+- Managed device status
+- Operating system compliance
+- Endpoint protection status
+- Device certificates
+
+Device trust is one component of a broader security strategy.
+
+---
+
+# Authentication Logging
+
+Authentication systems should record events such as:
+
+- Successful logins
+- Failed logins
+- MFA challenges
+- Password changes
+- Account recovery
+- Device registration
+- Logout events
+
+Logs should avoid exposing credentials or sensitive secrets.
+
+---
+
+# Authentication Monitoring
+
+```
+Authentication Events
+
+↓
+
+Central Logging
+
+↓
+
+Security Analytics
+
+↓
+
+SOC
+
+↓
+
+Investigation
+```
+
+Monitoring helps identify abnormal authentication behavior.
+
+---
+
+# Enterprise Identity Architecture
+
+```
+                 Users
+
+                   │
+
+                   ▼
+
+              Web Browser
+
+                   │
+
+              HTTPS Login
+
+                   │
+
+                   ▼
+
+            Reverse Proxy
+
+                   │
+
+                   ▼
+
+          Identity Provider
+
+         ┌────────┼────────┐
+
+         ▼                 ▼
+
+ Authentication      MFA Service
+
+         │
+
+         ▼
+
+   OAuth / OIDC / SAML
+
+         │
+
+         ▼
+
+   Protected Applications
+
+         │
+
+         ▼
+
+      Enterprise APIs
+```
+
+---
+
+# Enterprise Example
+
+A multinational bank authenticates employees.
+
+```
+Employee
+
+↓
+
+Corporate Portal
+
+↓
+
+Identity Provider
+
+↓
+
+Password
+
+↓
+
+Authenticator App
+
+↓
+
+OIDC Authentication
+
+↓
+
+SSO
+
+↓
+
+Trading Platform
+
+↓
+
+Internal Dashboard
+
+↓
+
+Email
+```
+
+Security controls include:
+
+- HTTPS
+- MFA
+- Device compliance
+- Risk-based authentication
+- Continuous monitoring
+- Session timeout
+- Audit logging
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using a cloud identity platform or a test environment:
+
+1. Observe the login workflow.
+2. Identify the Identity Provider.
+3. Log in using MFA.
+4. Access multiple applications through SSO.
+5. Observe authentication-related network requests.
+6. Compare OAuth, OIDC, and SAML authentication flows conceptually.
+
+---
+
+# Interview Questions
+
+1. What is Identity and Access Management (IAM)?
+2. What is an Identity Provider (IdP)?
+3. What problem does OAuth 2.0 solve?
+4. Why isn't OAuth considered an authentication protocol?
+5. What is OpenID Connect (OIDC)?
+6. What is an ID Token?
+7. Compare OIDC and SAML.
+8. What is adaptive authentication?
+9. Explain the Zero Trust authentication model.
+10. Why is centralized authentication beneficial?
+
+---
+
+# Best Practices
+
+- Use standardized authentication protocols instead of custom implementations.
+- Centralize authentication through a trusted Identity Provider.
+- Require MFA for privileged and sensitive accounts.
+- Apply adaptive authentication based on risk.
+- Use short-lived access tokens.
+- Monitor authentication events continuously.
+- Enforce HTTPS across all authentication flows.
+- Integrate authentication logs with centralized monitoring systems.
+
+---
+
+# Common Mistakes
+
+- Confusing OAuth with authentication.
+- Building proprietary authentication protocols.
+- Ignoring risk signals during authentication.
+- Allowing long-lived access tokens without appropriate controls.
+- Failing to monitor authentication activity.
+- Treating authentication as a one-time event instead of continuous verification.
+
+---
+
+# Key Takeaways
+
+- Modern authentication relies on centralized identity management rather than isolated application logins.
+- OAuth 2.0 provides delegated authorization, while OpenID Connect adds user authentication capabilities.
+- SAML remains widely used for enterprise Single Sign-On.
+- Adaptive authentication and Zero Trust strengthen authentication by evaluating context and continuously verifying trust.
+- Enterprise authentication combines Identity Providers, MFA, standardized protocols, monitoring, and secure session management.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
