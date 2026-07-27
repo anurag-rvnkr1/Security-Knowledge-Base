@@ -1494,3 +1494,744 @@ Using the browser's certificate viewer:
 
 
 ```
+# 04-HTTPS-and-TLS.md
+
+# Part 2 — TLS Handshake, Public Key Infrastructure (PKI), Certificate Validation, Cipher Suites, and Session Keys
+
+> **"The TLS handshake is the foundation of secure web communication. Before any encrypted HTTP data is exchanged, both parties must establish trust, negotiate security parameters, and derive shared cryptographic keys."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- TLS Handshake
+- Public Key Infrastructure (PKI)
+- Certificate validation
+- Certificate chain
+- Root and Intermediate CAs
+- Public and Private keys
+- Digital signatures
+- Cipher suites
+- Session keys
+- Perfect Forward Secrecy (PFS)
+- Enterprise TLS architecture
+
+---
+
+# Recap
+
+HTTPS communication begins with:
+
+```
+Browser
+
+↓
+
+DNS
+
+↓
+
+TCP Connection
+
+↓
+
+TLS Handshake
+
+↓
+
+Encrypted HTTP Communication
+```
+
+This part focuses on the **TLS Handshake**.
+
+---
+
+# What is the TLS Handshake?
+
+The TLS Handshake is the process used by the client and server to:
+
+- Verify identity
+- Agree on security settings
+- Establish encryption keys
+- Create a secure communication channel
+
+Only after the handshake completes is application data exchanged.
+
+---
+
+# Simplified TLS Handshake
+
+```
+Browser
+
+↓
+
+ClientHello
+
+↓
+
+ServerHello
+
+↓
+
+Certificate
+
+↓
+
+Key Exchange
+
+↓
+
+Session Keys
+
+↓
+
+Encrypted Communication
+```
+
+---
+
+# Why is the Handshake Necessary?
+
+Without a handshake:
+
+- The browser would not know if it is talking to the correct server.
+- The client and server would not agree on encryption methods.
+- Secure session keys could not be established.
+
+---
+
+# Step 1 — ClientHello
+
+The browser starts communication.
+
+```
+Browser
+
+↓
+
+ClientHello
+```
+
+Typical information includes:
+
+- Supported TLS versions
+- Supported cipher suites
+- Random value
+- Supported extensions
+- Server Name Indication (SNI)
+
+---
+
+# Step 2 — ServerHello
+
+The server replies.
+
+```
+Server
+
+↓
+
+ServerHello
+```
+
+The server selects:
+
+- TLS version
+- Cipher suite
+- Random value
+- Additional negotiated parameters
+
+---
+
+# Step 3 — Server Certificate
+
+The server sends its digital certificate.
+
+```
+Server
+
+↓
+
+Certificate
+
+↓
+
+Browser
+```
+
+The certificate contains:
+
+- Domain name
+- Public key
+- Issuer
+- Validity period
+- Digital signature
+
+---
+
+# Step 4 — Certificate Validation
+
+The browser validates the certificate before trusting the server.
+
+Validation includes:
+
+- Is the certificate expired?
+- Does the domain name match?
+- Is the certificate digitally signed?
+- Is the issuing CA trusted?
+- Has the certificate been revoked (where applicable)?
+
+Only if these checks succeed does the browser continue.
+
+---
+
+# Certificate Validation Flow
+
+```
+Certificate Received
+
+↓
+
+Domain Check
+
+↓
+
+Expiry Check
+
+↓
+
+Signature Verification
+
+↓
+
+Trusted CA Check
+
+↓
+
+Certificate Accepted
+```
+
+---
+
+# Domain Name Validation
+
+Example:
+
+User visits:
+
+```
+https://bank.example.com
+```
+
+Certificate must contain:
+
+```
+bank.example.com
+```
+
+A mismatch results in a browser warning.
+
+---
+
+# Expired Certificate
+
+```
+Certificate
+
+↓
+
+Validity Period Ended
+
+↓
+
+Browser Warning
+
+↓
+
+Connection Not Trusted
+```
+
+Expired certificates should be renewed before expiration.
+
+---
+
+# What is PKI?
+
+**Public Key Infrastructure (PKI)** is the trust framework that enables digital certificates.
+
+PKI includes:
+
+- Certificate Authorities
+- Certificates
+- Public keys
+- Private keys
+- Trust stores
+- Certificate policies
+
+---
+
+# PKI Architecture
+
+```
+Root CA
+
+↓
+
+Intermediate CA
+
+↓
+
+Website Certificate
+
+↓
+
+Browser
+```
+
+This hierarchy helps protect the highly trusted root certificate.
+
+---
+
+# Root Certificate Authority
+
+The Root CA is trusted by browsers and operating systems.
+
+```
+Browser Trust Store
+
+↓
+
+Trusted Root CA
+```
+
+Root certificates are distributed with operating systems and browsers.
+
+---
+
+# Intermediate Certificate Authority
+
+Most public CAs do not directly sign website certificates.
+
+Instead:
+
+```
+Root CA
+
+↓
+
+Intermediate CA
+
+↓
+
+Website Certificate
+```
+
+This limits exposure of the highly trusted root key.
+
+---
+
+# Certificate Chain
+
+A browser validates an entire chain.
+
+```
+Website Certificate
+
+↓
+
+Intermediate CA
+
+↓
+
+Root CA
+
+↓
+
+Trusted
+```
+
+If any required link is missing or invalid, validation fails.
+
+---
+
+# Public Key
+
+The public key is included in the certificate.
+
+Anyone can access it.
+
+Typical uses:
+
+- Signature verification
+- Secure key establishment
+
+---
+
+# Private Key
+
+The private key remains secret on the server.
+
+```
+Public Key
+
+↓
+
+Visible
+
+──────────────
+
+Private Key
+
+↓
+
+Secret
+```
+
+If the private key is compromised, the certificate should be replaced immediately.
+
+---
+
+# Digital Signatures
+
+Certificate Authorities digitally sign certificates.
+
+```
+Certificate
+
+↓
+
+Digital Signature
+
+↓
+
+Browser Verification
+
+↓
+
+Trust Established
+```
+
+Digital signatures provide authenticity and integrity for the certificate.
+
+---
+
+# Cipher Suites
+
+A cipher suite defines the cryptographic algorithms used during a TLS session.
+
+A modern cipher suite specifies algorithms for:
+
+- Key exchange
+- Authentication
+- Encryption
+- Integrity protection
+
+The client offers supported cipher suites, and the server selects one that both support.
+
+---
+
+# Cipher Suite Negotiation
+
+```
+Browser
+
+↓
+
+Supported Cipher Suites
+
+↓
+
+Server
+
+↓
+
+Selected Cipher Suite
+
+↓
+
+Secure Session
+```
+
+---
+
+# Session Keys
+
+After the handshake:
+
+```
+Shared Session Key
+
+↓
+
+Encrypt Requests
+
+↓
+
+Encrypt Responses
+```
+
+Session keys are temporary and used for efficient symmetric encryption.
+
+---
+
+# Why Not Use Asymmetric Encryption for Everything?
+
+Asymmetric cryptography is computationally expensive.
+
+TLS therefore uses:
+
+```
+Asymmetric Cryptography
+
+↓
+
+Establish Session Keys
+
+↓
+
+Symmetric Cryptography
+
+↓
+
+Encrypt Data
+```
+
+This provides both security and performance.
+
+---
+
+# Perfect Forward Secrecy (PFS)
+
+Modern TLS commonly supports **Perfect Forward Secrecy (PFS)**.
+
+Benefits:
+
+- Each session uses unique session keys.
+- Compromise of a server's long-term private key does not automatically expose past encrypted sessions.
+
+This significantly improves long-term confidentiality.
+
+---
+
+# Simplified Handshake Timeline
+
+```
+Browser                        Server
+
+ClientHello ------------------>
+
+                 <----------- ServerHello
+
+                 <----------- Certificate
+
+Key Exchange ---------------->
+
+Session Keys Established
+
+Encrypted HTTP Begins
+```
+
+---
+
+# Enterprise TLS Deployment
+
+```
+Browser
+
+↓
+
+Internet
+
+↓
+
+Firewall
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+TLS Termination
+
+↓
+
+Application Servers
+
+↓
+
+Database
+```
+
+In some enterprise architectures, TLS may terminate at a trusted reverse proxy or load balancer before traffic is forwarded internally. Whether internal traffic is also encrypted depends on the organization's security requirements.
+
+---
+
+# TLS Termination
+
+TLS termination means:
+
+```
+Encrypted Traffic
+
+↓
+
+Reverse Proxy
+
+↓
+
+Decrypt
+
+↓
+
+Process Request
+```
+
+Organizations may also choose to re-encrypt traffic before forwarding it to backend services.
+
+---
+
+# Mutual TLS (mTLS) Overview
+
+Normally:
+
+```
+Browser
+
+↓
+
+Authenticates Server
+```
+
+With **Mutual TLS (mTLS):**
+
+```
+Client
+
+↓
+
+Certificate
+
+↓
+
+Server
+
+↓
+
+Certificate
+
+↓
+
+Mutual Authentication
+```
+
+mTLS is commonly used between internal services, enterprise APIs, and zero-trust environments.
+
+---
+
+# Real Enterprise Example
+
+An employee accesses an internal HR portal.
+
+```
+Employee Laptop
+
+↓
+
+HTTPS
+
+↓
+
+Corporate Gateway
+
+↓
+
+Reverse Proxy
+
+↓
+
+Certificate Validation
+
+↓
+
+Session Key Established
+
+↓
+
+Encrypted Communication
+```
+
+The browser verifies the HR portal's certificate before any sensitive employee information is transmitted.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Visit a secure website.
+
+Using the browser's certificate viewer:
+
+1. View the certificate.
+2. Identify:
+   - Subject
+   - Issuer
+   - Validity dates
+   - Public key information
+3. Examine the certificate chain.
+4. Observe which Root CA the browser trusts.
+
+---
+
+# Interview Questions
+
+1. What is the TLS Handshake?
+2. Why is the TLS Handshake necessary?
+3. What is PKI?
+4. What is the purpose of a Certificate Authority?
+5. What is the difference between a Root CA and an Intermediate CA?
+6. What is a certificate chain?
+7. What is a cipher suite?
+8. Why are session keys used?
+9. What is Perfect Forward Secrecy?
+10. What is Mutual TLS (mTLS)?
+
+---
+
+# Best Practices
+
+- Use certificates from trusted Certificate Authorities.
+- Rotate and protect private keys.
+- Monitor certificate expiration.
+- Enable modern TLS versions and strong cipher suites.
+- Use Perfect Forward Secrecy where supported.
+- Consider mTLS for sensitive internal service communication.
+
+---
+
+# Common Mistakes
+
+- Trusting certificates without validation.
+- Leaving expired certificates in production.
+- Exposing private keys.
+- Using outdated cipher suites.
+- Assuming internal networks never require encryption.
+
+---
+
+# Key Takeaways
+
+- The TLS Handshake establishes trust and secure session keys before HTTP data is exchanged.
+- PKI provides the trust framework for digital certificates.
+- Browsers validate certificates through a trusted certificate chain.
+- Session keys provide efficient symmetric encryption after the handshake.
+- Modern TLS deployments often support Perfect Forward Secrecy and may use Mutual TLS for stronger authentication.
+
+
+```
