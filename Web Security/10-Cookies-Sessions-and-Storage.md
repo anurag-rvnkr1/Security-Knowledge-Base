@@ -861,6 +861,852 @@ Using your browser's Developer Tools:
 - Browser storage mechanisms such as Local Storage and Session Storage serve different purposes than server-managed sessions.
 - Authentication verifies identity, while authorization determines access rights.
 
+
+# 10-Cookies-Sessions-and-Storage.md
+
+# Part 2 — Cookie Attributes, Session Management, Browser Storage, Token Storage, Session Lifecycle, and Enterprise Authentication Flows
+
+> **"A cookie by itself is not secure or insecure. Its security depends on how it is configured, how the session is managed, and how the application uses it."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Cookie Attributes
+- Secure Cookies
+- HttpOnly Cookies
+- SameSite Cookies
+- Cookie Scope
+- Session Management
+- Session Timeouts
+- Session Rotation
+- Browser Storage Security
+- Token Storage
+- Enterprise Authentication Flow
+
+---
+
+# Anatomy of a Cookie
+
+A cookie consists of:
+
+```
+Cookie
+
+│
+
+├── Name
+
+├── Value
+
+├── Domain
+
+├── Path
+
+├── Secure
+
+├── HttpOnly
+
+├── SameSite
+
+├── Expires
+
+└── Max-Age
+```
+
+Each attribute affects how and when the browser sends the cookie.
+
+---
+
+# Cookie Scope
+
+A cookie is not necessarily sent to every request.
+
+```
+Browser
+
+↓
+
+Request
+
+↓
+
+Does Cookie Scope Match?
+
+↓
+
+Yes
+
+↓
+
+Send Cookie
+
+────────────
+
+No
+
+↓
+
+Do Not Send
+```
+
+Scope depends on attributes such as **Domain** and **Path**.
+
+---
+
+# Domain Attribute
+
+The **Domain** attribute specifies which hosts may receive the cookie.
+
+Example (conceptual):
+
+```
+example.com
+
+↓
+
+Cookie
+
+↓
+
+example.com
+
+↓
+
+Allowed
+```
+
+Applications should avoid unnecessarily broad cookie scope.
+
+---
+
+# Path Attribute
+
+The **Path** attribute limits where cookies are sent.
+
+```
+Cookie Path
+
+↓
+
+/account
+
+↓
+
+Only Matching Requests
+
+↓
+
+Cookie Included
+```
+
+Using narrower paths helps reduce unnecessary cookie exposure.
+
+---
+
+# Secure Attribute
+
+```
+HTTPS
+
+↓
+
+Cookie Sent
+
+────────────
+
+HTTP
+
+↓
+
+Cookie Not Sent
+```
+
+The **Secure** attribute ensures cookies are transmitted only over encrypted HTTPS connections.
+
+---
+
+# Why Secure Matters
+
+Without Secure:
+
+```
+HTTP Connection
+
+↓
+
+Cookie
+
+↓
+
+Network Exposure
+```
+
+Secure cookies help protect authentication data during transmission.
+
+---
+
+# HttpOnly Attribute
+
+```
+Browser
+
+↓
+
+JavaScript
+
+↓
+
+Access Cookie?
+
+↓
+
+No
+```
+
+Cookies marked **HttpOnly** cannot be accessed by client-side JavaScript.
+
+This helps reduce the impact of certain client-side attacks targeting session cookies.
+
+---
+
+# SameSite Attribute
+
+SameSite controls whether cookies are sent with cross-site requests.
+
+Available values:
+
+```
+Strict
+
+Lax
+
+None
+```
+
+Modern browsers require `Secure` when `SameSite=None` is used.
+
+---
+
+# SameSite Strict
+
+```
+External Website
+
+↓
+
+Request
+
+↓
+
+Cookie?
+
+↓
+
+No
+```
+
+Strict provides the strongest cross-site protection but may affect some navigation flows.
+
+---
+
+# SameSite Lax
+
+```
+Top-Level Navigation
+
+↓
+
+Cookie
+
+↓
+
+Usually Allowed
+```
+
+Lax offers a balance between usability and security.
+
+---
+
+# SameSite None
+
+```
+Cross-Site Request
+
+↓
+
+Cookie Allowed
+
+↓
+
+Secure Required
+```
+
+This mode is typically used only when cross-site cookies are genuinely required.
+
+---
+
+# Cookie Expiration
+
+Cookies may expire in two ways:
+
+```
+Expires
+
+OR
+
+Max-Age
+```
+
+After expiration, browsers remove the cookie.
+
+---
+
+# Session Cookies
+
+```
+Browser Starts
+
+↓
+
+Cookie Exists
+
+↓
+
+Browser Closed
+
+↓
+
+Cookie Removed
+```
+
+Session cookies are temporary.
+
+---
+
+# Persistent Cookies
+
+```
+Cookie Created
+
+↓
+
+Expiration Stored
+
+↓
+
+Browser Restart
+
+↓
+
+Cookie Remains
+
+↓
+
+Expiration Reached
+
+↓
+
+Deleted
+```
+
+Persistent cookies survive browser restarts until expiration.
+
+---
+
+# Cookie Security Summary
+
+| Attribute | Security Benefit |
+|------------|------------------|
+| Secure | HTTPS only |
+| HttpOnly | Blocks JavaScript access |
+| SameSite | Reduces cross-site risks |
+| Path | Limits request scope |
+| Domain | Restricts host scope |
+| Expiration | Controls cookie lifetime |
+
+---
+
+# Session Management
+
+After successful authentication:
+
+```
+User
+
+↓
+
+Login
+
+↓
+
+Authentication
+
+↓
+
+Session Created
+
+↓
+
+Session ID Generated
+
+↓
+
+Cookie Issued
+```
+
+Future requests reference the session through the session identifier.
+
+---
+
+# Session Store
+
+Applications typically maintain session data on the server.
+
+```
+Browser
+
+↓
+
+Session ID
+
+↓
+
+Application
+
+↓
+
+Session Store
+
+↓
+
+User Details
+```
+
+Possible session stores include:
+
+- Memory
+- Database
+- Distributed cache
+- Dedicated session service
+
+---
+
+# Session Timeout
+
+Sessions should not remain active forever.
+
+```
+User Inactive
+
+↓
+
+Timeout Reached
+
+↓
+
+Session Expires
+
+↓
+
+Login Required
+```
+
+Timeouts reduce exposure if a device is left unattended.
+
+---
+
+# Idle Timeout
+
+```
+User Active
+
+↓
+
+Timer Reset
+
+────────────
+
+User Inactive
+
+↓
+
+Timer Expires
+
+↓
+
+Session Ends
+```
+
+Idle timeout measures inactivity.
+
+---
+
+# Absolute Timeout
+
+Even active sessions may have a maximum lifetime.
+
+```
+Login
+
+↓
+
+Maximum Lifetime
+
+↓
+
+Reached
+
+↓
+
+Session Terminated
+```
+
+This limits long-lived authenticated sessions.
+
+---
+
+# Session Rotation
+
+Applications may issue a new session identifier after important events.
+
+Examples:
+
+- Successful login
+- Password change
+- Privilege elevation
+
+```
+Old Session ID
+
+↓
+
+Authentication
+
+↓
+
+New Session ID
+```
+
+Session rotation helps reduce risks associated with reused session identifiers.
+
+---
+
+# Logout Process
+
+```
+User Clicks Logout
+
+↓
+
+Session Destroyed
+
+↓
+
+Cookie Invalidated
+
+↓
+
+Browser Redirected
+
+↓
+
+Login Page
+```
+
+Proper logout removes the authenticated session.
+
+---
+
+# Remember Me
+
+Some applications offer persistent login.
+
+```
+User
+
+↓
+
+Remember Me
+
+↓
+
+Persistent Cookie
+
+↓
+
+Future Visit
+
+↓
+
+Authentication Restored
+```
+
+Persistent authentication should be implemented carefully with appropriate security controls.
+
+---
+
+# Browser Storage Review
+
+```
+Browser
+
+│
+
+├── Cookies
+
+├── Local Storage
+
+├── Session Storage
+
+└── IndexedDB
+```
+
+Each mechanism has different persistence and security characteristics.
+
+---
+
+# Cookies vs Browser Storage
+
+| Feature | Cookies | Local Storage | Session Storage |
+|----------|----------|---------------|-----------------|
+| Sent Automatically | Yes | No | No |
+| JavaScript Access | Usually Yes* | Yes | Yes |
+| Server Visibility | Yes | No | No |
+| Persistence | Configurable | Persistent | Browser Session |
+
+\*Cookies marked **HttpOnly** are not accessible through JavaScript.
+
+---
+
+# Authentication Tokens
+
+Some modern applications use tokens instead of traditional server-side sessions.
+
+```
+Authentication
+
+↓
+
+Token Issued
+
+↓
+
+Browser Stores Token
+
+↓
+
+Future Requests
+```
+
+Different token-based architectures have different security considerations.
+
+---
+
+# Token Storage Considerations
+
+Possible storage locations include:
+
+- Secure cookies
+- Memory
+- Local Storage
+- Session Storage
+
+Each option has trade-offs related to usability, persistence, and security.
+
+---
+
+# Enterprise Authentication Flow
+
+```
+User
+
+↓
+
+HTTPS Login
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication Success
+
+↓
+
+Session Created
+
+↓
+
+Secure Cookie
+
+↓
+
+Browser
+
+↓
+
+Authenticated Requests
+
+↓
+
+Application Server
+```
+
+---
+
+# Enterprise Session Architecture
+
+```
+               Browser
+
+                   │
+
+        Secure Session Cookie
+
+                   │
+
+                   ▼
+
+           Reverse Proxy
+
+                   │
+
+                   ▼
+
+          Application Cluster
+
+                   │
+
+          Session Validation
+
+                   │
+
+        ┌──────────┼──────────┐
+
+        ▼                     ▼
+
+ Session Database      Distributed Cache
+
+        │
+
+        ▼
+
+ Authentication Service
+```
+
+This architecture supports scalability and high availability.
+
+---
+
+# Enterprise Example
+
+A multinational retailer authenticates customers as follows:
+
+```
+Customer
+
+↓
+
+Login
+
+↓
+
+Authentication Service
+
+↓
+
+Session Created
+
+↓
+
+Secure + HttpOnly Cookie
+
+↓
+
+Shopping Portal
+
+↓
+
+Checkout
+
+↓
+
+Logout
+
+↓
+
+Session Removed
+```
+
+Session validation occurs on every authenticated request.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser's Developer Tools:
+
+1. Log in to a test application.
+2. Inspect all cookies.
+3. Identify `Secure`, `HttpOnly`, and `SameSite` attributes.
+4. Compare session cookies and persistent cookies.
+5. Observe cookie behavior after logout.
+6. Compare cookies with Local Storage and Session Storage.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of the Secure cookie attribute?
+2. Why is HttpOnly important?
+3. Explain SameSite cookie modes.
+4. What is the difference between session cookies and persistent cookies?
+5. Why are idle timeouts important?
+6. What is an absolute timeout?
+7. Why should session IDs be rotated?
+8. Compare cookies with Local Storage.
+9. What happens during logout?
+10. Why do enterprises use centralized session stores?
+
+---
+
+# Best Practices
+
+- Use HTTPS for all authenticated traffic.
+- Mark authentication cookies as `Secure`.
+- Use `HttpOnly` for session cookies whenever appropriate.
+- Configure an appropriate `SameSite` policy.
+- Rotate session identifiers after authentication and privilege changes.
+- Implement idle and absolute session timeouts.
+- Invalidate sessions immediately after logout.
+- Limit cookie scope using `Domain` and `Path`.
+
+---
+
+# Common Mistakes
+
+- Sending authentication cookies over HTTP.
+- Leaving sessions active indefinitely.
+- Using overly broad cookie domains.
+- Forgetting to invalidate sessions after logout.
+- Storing sensitive session data directly inside cookies.
+- Assuming persistent cookies are appropriate for every application.
+- Ignoring session timeout policies.
+
+---
+
+# Key Takeaways
+
+- Cookie attributes such as `Secure`, `HttpOnly`, `SameSite`, `Domain`, and `Path` are essential for protecting authenticated sessions.
+- Session management includes creation, validation, timeout, rotation, and destruction of user sessions.
+- Browser storage mechanisms differ significantly from cookies and should be selected based on application requirements.
+- Token-based and session-based authentication models both require careful storage and lifecycle management.
+- Strong session management is a critical component of enterprise web application security.
+
 ```text id="jid720"
-**Next:** Part 2
+**Next:** Part 3
 ```
