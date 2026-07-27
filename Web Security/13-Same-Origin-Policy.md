@@ -2163,6 +2163,666 @@ Using your browser:
 - Cross-document messaging allows communication while maintaining origin boundaries.
 - Browser security and server-side security work together to protect modern web applications.
 
-```text id="jid720"
-**Next:** Part 4
+# 13-Same-Origin-Policy.md
+
+# Part 4 — SOP Security Review, Enterprise Browser Architecture, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
+
+> **"The Same-Origin Policy is one of the browser's most important security controls. It protects users by isolating websites from one another, but it must work together with server-side security, secure application design, and controlled cross-origin communication mechanisms."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Enterprise Browser Architecture
+- SOP Security Review
+- Browser Isolation Techniques
+- Security Testing
+- SOP Troubleshooting
+- Enterprise Best Practices
+- Common Misconfigurations
+- Browser Security Checklist
+- Interview Preparation
+- Chapter Summary
+
+---
+
+# Enterprise Browser Security Architecture
+
+Large organizations often deploy multiple web applications.
+
 ```
+                     Browser
+
+                        │
+
+        ┌───────────────┼───────────────┐
+
+        ▼               ▼               ▼
+
+   HR Portal      Finance Portal     CRM Portal
+
+        │               │               │
+
+     Origin A        Origin B       Origin C
+
+        │               │               │
+
+      Browser Enforces Origin Isolation
+
+        │
+
+        ▼
+
+ Controlled Communication (When Explicitly Allowed)
+```
+
+Every application maintains its own browser security boundary.
+
+---
+
+# Browser Security Layers
+
+The Same-Origin Policy is only one layer of browser security.
+
+```
+Browser Security
+
+│
+
+├── Same-Origin Policy
+
+├── Site Isolation
+
+├── Secure Contexts (HTTPS)
+
+├── Sandboxing
+
+├── Storage Isolation
+
+├── Content Security Policy (CSP)
+
+├── CORS
+
+└── Permission Controls
+```
+
+Modern browsers combine multiple defensive mechanisms.
+
+---
+
+# Defense in Depth
+
+```
+User
+
+↓
+
+HTTPS
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Same-Origin Policy
+
+↓
+
+CORS
+
+↓
+
+Application Logic
+
+↓
+
+Database
+```
+
+No single security mechanism should be relied upon exclusively.
+
+---
+
+# Browser Security Responsibilities
+
+Browsers are responsible for enforcing:
+
+- Origin isolation
+- DOM isolation
+- JavaScript isolation
+- Storage isolation
+- Cookie handling rules
+- Secure context requirements
+- Cross-origin restrictions
+
+These protections apply automatically within supported browsers.
+
+---
+
+# Application Responsibilities
+
+Applications remain responsible for:
+
+- Authentication
+- Authorization
+- Session management
+- Input validation
+- Output encoding
+- Secure API design
+- Business logic
+- Logging and monitoring
+
+Browser security does not replace application security.
+
+---
+
+# Browser Isolation Review
+
+Each origin maintains independent resources.
+
+```
+Origin A
+
+│
+
+├── DOM
+
+├── Cookies
+
+├── Local Storage
+
+├── Session Storage
+
+├── IndexedDB
+
+└── JavaScript Context
+
+──────────────
+
+Origin B
+
+↓
+
+Independent Resources
+```
+
+Isolation helps prevent unintended data access between websites.
+
+---
+
+# Secure Multi-Origin Design
+
+A modern enterprise may separate services by function.
+
+```
+login.company.com
+
+↓
+
+Authentication
+
+──────────────
+
+portal.company.com
+
+↓
+
+User Portal
+
+──────────────
+
+api.company.com
+
+↓
+
+Backend APIs
+
+──────────────
+
+cdn.company.com
+
+↓
+
+Static Assets
+```
+
+Each host represents a distinct origin.
+
+---
+
+# Browser Decision Workflow
+
+```
+JavaScript Request
+
+↓
+
+Browser
+
+↓
+
+Origin Comparison
+
+↓
+
+Security Policy Evaluation
+
+↓
+
+Allowed
+
+OR
+
+Restricted
+```
+
+The browser evaluates origin rules before exposing protected resources.
+
+---
+
+# Common Enterprise Use Cases
+
+Organizations commonly deploy:
+
+- Authentication services
+- Customer portals
+- Administrative portals
+- Internal dashboards
+- API gateways
+- Content Delivery Networks (CDNs)
+
+These systems frequently communicate across origins using approved browser mechanisms.
+
+---
+
+# Security Review Checklist
+
+During architecture reviews, verify:
+
+```
+✓ HTTPS Used Everywhere
+
+✓ Origin Boundaries Identified
+
+✓ Sensitive Applications Isolated
+
+✓ Browser Storage Reviewed
+
+✓ Cross-Origin Communication Documented
+
+✓ Server Authorization Verified
+
+✓ Authentication Centralized
+
+✓ Session Security Enabled
+```
+
+---
+
+# Security Testing
+
+A security assessment should examine:
+
+- Origin relationships
+- Browser storage isolation
+- Cookie behavior
+- Iframe interactions
+- Cross-origin communication paths
+- Authentication flow
+- Authorization checks
+- Browser security headers
+
+Testing should always occur in authorized environments.
+
+---
+
+# Conceptual Testing Workflow
+
+```
+Identify Origins
+
+↓
+
+Map Trust Relationships
+
+↓
+
+Review Browser Behavior
+
+↓
+
+Validate Security Controls
+
+↓
+
+Document Findings
+```
+
+This process helps identify unintended cross-origin interactions.
+
+---
+
+# Enterprise Troubleshooting
+
+| Symptom | Possible Cause |
+|----------|----------------|
+| Script cannot access another page | Different origin |
+| Browser blocks client-side data access | SOP enforcement |
+| Application fails after domain change | Origin mismatch |
+| Storage appears empty | Different origin or browser profile |
+| Embedded page cannot be manipulated | Cross-origin iframe restrictions |
+
+Understanding the origin model is often the first troubleshooting step.
+
+---
+
+# Troubleshooting Workflow
+
+```
+Unexpected Browser Behavior
+
+↓
+
+Identify Origin
+
+↓
+
+Compare Protocol
+
+↓
+
+Compare Host
+
+↓
+
+Compare Port
+
+↓
+
+Same Origin?
+
+↓
+
+Yes → Continue Investigation
+
+No → Browser Isolation Applies
+```
+
+---
+
+# Common Design Mistakes
+
+```
+Assume Same Company
+
+↓
+
+Assume Same Origin
+
+↓
+
+Unexpected Browser Restrictions
+```
+
+Browser decisions are based on **protocol, host, and port**, not organizational ownership.
+
+---
+
+# Secure Architecture Example
+
+```
+Customer Browser
+
+↓
+
+login.bank.com
+
+↓
+
+Authentication
+
+↓
+
+portal.bank.com
+
+↓
+
+Dashboard
+
+↓
+
+api.bank.com
+
+↓
+
+Protected API
+
+↓
+
+Database
+```
+
+Every cross-origin interaction is explicitly designed and validated.
+
+---
+
+# Enterprise Example
+
+A global healthcare provider deploys:
+
+```
+patients.health.org
+
+↓
+
+Patient Portal
+
+──────────────
+
+auth.health.org
+
+↓
+
+Identity Provider
+
+──────────────
+
+records.health.org
+
+↓
+
+Medical Records API
+
+──────────────
+
+static.health.org
+
+↓
+
+Images & Scripts
+```
+
+Security architecture includes:
+
+- HTTPS everywhere
+- Centralized authentication
+- Least-privilege authorization
+- Browser origin isolation
+- Controlled cross-origin communication
+- Audit logging
+- Continuous monitoring
+
+---
+
+# SOP Security Checklist
+
+```
+✓ Understand Origin Boundaries
+
+✓ Use HTTPS
+
+✓ Separate Sensitive Applications
+
+✓ Review Browser Storage Usage
+
+✓ Protect Sessions
+
+✓ Validate Cross-Origin Communication
+
+✓ Perform Server-Side Authorization
+
+✓ Monitor Security Events
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using your browser:
+
+1. Visit several enterprise-style web applications.
+2. Identify the protocol, host, and port for each.
+3. Determine whether the applications are same-origin or cross-origin.
+4. Inspect Local Storage and Session Storage for each origin.
+5. Observe cookie isolation using Developer Tools.
+6. Map the application's origin architecture.
+7. Identify where controlled cross-origin communication is required.
+
+---
+
+# Interview Questions
+
+1. What is the Same-Origin Policy?
+2. Why does SOP exist?
+3. What defines an origin?
+4. Why are subdomains considered different origins?
+5. What browser resources are isolated by SOP?
+6. Why doesn't browser security replace server-side security?
+7. What is the relationship between SOP and CORS?
+8. Why do enterprise applications frequently use multiple origins?
+9. How would you troubleshoot an SOP-related issue?
+10. Why is SOP considered a foundational browser security mechanism?
+
+---
+
+# Best Practices
+
+- Design applications with clearly defined origin boundaries.
+- Use HTTPS consistently across all services.
+- Keep sensitive browser data isolated by origin.
+- Document and review all cross-origin interactions.
+- Perform authorization on the server regardless of browser protections.
+- Test applications after infrastructure or domain changes.
+- Incorporate SOP considerations into architecture reviews and threat modeling.
+
+---
+
+# Common Mistakes
+
+- Assuming organizational ownership determines browser trust.
+- Confusing rendering with unrestricted data access.
+- Ignoring protocol or port differences during deployment.
+- Depending solely on browser security for sensitive operations.
+- Overlooking cross-origin implications when moving services to new domains.
+- Failing to test browser behavior in production-like environments.
+
+---
+
+# Quick Revision
+
+Origin
+
+```
+Protocol
+
++
+
+Host
+
++
+
+Port
+
+↓
+
+Origin
+```
+
+SOP Decision
+
+```
+Request
+
+↓
+
+Origin Check
+
+↓
+
+Same Origin?
+
+↓
+
+Yes
+
+↓
+
+Normal Access
+
+──────────────
+
+No
+
+↓
+
+Browser Restrictions
+```
+
+Defense in Depth
+
+```
+HTTPS
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Same-Origin Policy
+
+↓
+
+CORS
+
+↓
+
+Application Security
+```
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The purpose of the Same-Origin Policy (SOP) and why it is fundamental to browser security.
+- How an origin is defined by the combination of **protocol, host, and port**.
+- How browsers isolate the DOM, JavaScript execution, cookies, Local Storage, Session Storage, IndexedDB, and other browser-managed resources.
+- The differences between same-origin and cross-origin interactions, including reads, writes, embedding, and controlled communication.
+- How SOP works alongside mechanisms such as Cross-Origin Resource Sharing (CORS), browser messaging APIs, secure contexts, and site isolation.
+- Enterprise architecture considerations, browser security testing, troubleshooting techniques, and security best practices.
+
+The Same-Origin Policy is one of the foundational building blocks of web application security. Understanding SOP is essential before studying **Cross-Origin Resource Sharing (CORS)**, browser-based attacks, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), clickjacking, and modern browser isolation technologies.
+
