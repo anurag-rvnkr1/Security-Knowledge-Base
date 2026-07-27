@@ -1577,6 +1577,932 @@ Using a sample application:
 - Fine-grained authorization can protect APIs, records, objects, and individual fields.
 - Enterprise authorization combines roles, attributes, policies, and centralized decision-making to enforce secure access control.
 
+# 12-Authorization-and-Access-Control.md
+
+# Part 3 — Authorization Enforcement, Object-Level Security, API Authorization, Access Reviews, Zero Trust Authorization, and Enterprise Access Control
+
+> **"The most secure authorization policy is meaningless if it is not enforced consistently. Every request, every API call, every object, and every sensitive operation must be validated by the server."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Authorization Enforcement
+- Policy Enforcement Points (PEP)
+- Policy Decision Points (PDP)
+- Object-Level Authorization
+- Record-Level Authorization
+- API Authorization
+- Function-Level Authorization
+- Access Reviews
+- Zero Trust Authorization
+- Enterprise Authorization Monitoring
+
+---
+
+# Authorization Enforcement
+
+Authorization is effective only when every protected request is validated.
+
+```
+Client Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Protected Resource
+
+↓
+
+Response
+```
+
+Skipping authorization checks on even a single endpoint can expose sensitive resources.
+
+---
+
+# Enforcement Points
+
+Authorization is typically enforced at multiple layers.
+
+```
+Application
+
+│
+
+├── Web Pages
+
+├── APIs
+
+├── Business Logic
+
+├── Services
+
+└── Database Operations
+```
+
+Each layer should independently validate access where appropriate.
+
+---
+
+# Policy Enforcement Point (PEP)
+
+The Policy Enforcement Point intercepts requests.
+
+```
+User Request
+
+↓
+
+Policy Enforcement Point
+
+↓
+
+Policy Decision Point
+
+↓
+
+Allow / Deny
+
+↓
+
+Application
+```
+
+The PEP does not decide permissions itself—it enforces the decision.
+
+---
+
+# Policy Decision Point (PDP)
+
+The PDP evaluates authorization policies.
+
+```
+Request
+
+↓
+
+Policy Decision Point
+
+↓
+
+Evaluate Policies
+
+↓
+
+Decision
+
+↓
+
+Allow / Deny
+```
+
+Centralizing decisions promotes consistent authorization across applications.
+
+---
+
+# Policy Information Point (PIP)
+
+The Policy Information Point supplies attributes used during policy evaluation.
+
+```
+Policy Engine
+
+↓
+
+Needs Attributes
+
+↓
+
+User Directory
+
+↓
+
+Resource Metadata
+
+↓
+
+Device Information
+```
+
+These attributes help the PDP make informed authorization decisions.
+
+---
+
+# End-to-End Authorization Flow
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+PEP
+
+↓
+
+PDP
+
+↓
+
+PIP
+
+↓
+
+Decision
+
+↓
+
+Protected Resource
+```
+
+This separation improves scalability and maintainability.
+
+---
+
+# Object-Level Authorization
+
+Authorization should verify ownership or entitlement for each object.
+
+Example:
+
+```
+User A
+
+↓
+
+Document A
+
+↓
+
+Allowed
+
+──────────────
+
+User A
+
+↓
+
+Document B
+
+↓
+
+Denied
+```
+
+Authentication alone does not grant access to every object.
+
+---
+
+# Record-Level Authorization
+
+Applications often store many users' data together.
+
+```
+Database
+
+│
+
+├── Record 1
+
+├── Record 2
+
+├── Record 3
+
+└── Record 4
+```
+
+Each request should verify that the authenticated user is permitted to access the specific record.
+
+---
+
+# Row-Level Authorization Example
+
+```
+Customer
+
+↓
+
+Order History
+
+↓
+
+Own Orders
+
+↓
+
+Allowed
+
+──────────────
+
+Other Customer's Orders
+
+↓
+
+Denied
+```
+
+Authorization decisions should be based on business rules rather than assumptions.
+
+---
+
+# Field-Level Authorization
+
+Sometimes only selected fields should be visible.
+
+```
+Employee Record
+
+│
+
+├── Name
+
+├── Department
+
+├── Salary
+
+├── Tax Information
+
+└── Performance Rating
+```
+
+Different roles may receive different views of the same record.
+
+---
+
+# Function-Level Authorization
+
+Applications expose many functions.
+
+```
+Application
+
+│
+
+├── View Dashboard
+
+├── Export Data
+
+├── Delete Records
+
+├── Manage Users
+
+└── Configure Settings
+```
+
+Each function should have explicit authorization requirements.
+
+---
+
+# Administrative Functions
+
+Administrative operations require additional protection.
+
+Examples include:
+
+- User management
+- Role management
+- System configuration
+- Audit log access
+- Security settings
+- Backup management
+
+These functions should be restricted to authorized administrators.
+
+---
+
+# API Authorization
+
+Every API endpoint should verify authorization.
+
+```
+Client
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Database
+```
+
+Authorization should never depend solely on client-side controls.
+
+---
+
+# API Gateway Authorization
+
+API gateways frequently perform:
+
+```
+Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Rate Limiting
+
+↓
+
+Routing
+
+↓
+
+Backend Service
+```
+
+Gateways provide a centralized enforcement layer.
+
+---
+
+# Microservice Authorization
+
+In distributed systems:
+
+```
+Client
+
+↓
+
+Gateway
+
+↓
+
+Service A
+
+↓
+
+Service B
+
+↓
+
+Service C
+```
+
+Each service should validate that requests are authorized rather than assuming upstream services performed all checks.
+
+---
+
+# Backend Authorization
+
+```
+Browser
+
+↓
+
+Frontend
+
+↓
+
+Backend
+
+↓
+
+Authorization
+
+↓
+
+Database
+```
+
+The backend remains the authoritative source for access decisions.
+
+---
+
+# Access Control Lists (ACLs)
+
+An ACL associates permissions directly with a resource.
+
+Example:
+
+| Resource | User/Role | Permission |
+|----------|-----------|------------|
+| Report A | Manager | Read |
+| Report A | Employee | Read |
+| Report A | Guest | Denied |
+| Report B | Administrator | Full |
+
+ACLs are useful for resources with individualized permissions.
+
+---
+
+# Authorization Policies
+
+Policies commonly evaluate:
+
+- User role
+- Resource ownership
+- Department
+- Location
+- Device trust
+- Authentication strength
+- Time restrictions
+
+Policies should be reviewed regularly.
+
+---
+
+# Time-Based Authorization
+
+Some systems restrict access based on time.
+
+```
+Business Hours
+
+↓
+
+Allow
+
+──────────────
+
+Outside Business Hours
+
+↓
+
+Additional Approval
+
+OR
+
+Deny
+```
+
+Time is one possible policy attribute.
+
+---
+
+# Location-Based Authorization
+
+Policies may also evaluate location.
+
+```
+Corporate Network
+
+↓
+
+Allow
+
+──────────────
+
+Unknown Network
+
+↓
+
+Additional Verification
+```
+
+Location should be combined with other security controls rather than used alone.
+
+---
+
+# Device-Based Authorization
+
+Authorization decisions may consider:
+
+- Managed device
+- Operating system compliance
+- Endpoint protection status
+- Device certificate
+
+Device trust is commonly used in enterprise Zero Trust environments.
+
+---
+
+# Risk-Based Authorization
+
+Authorization can adapt to changing risk.
+
+```
+Authenticated User
+
+↓
+
+Risk Evaluation
+
+↓
+
+Normal Risk
+
+↓
+
+Continue
+
+──────────────
+
+Elevated Risk
+
+↓
+
+Require Additional Verification
+```
+
+High-risk situations may require stronger verification before sensitive actions.
+
+---
+
+# Just-In-Time (JIT) Access
+
+Some privileged permissions are granted only when required.
+
+```
+Request Privileged Access
+
+↓
+
+Approval
+
+↓
+
+Temporary Access
+
+↓
+
+Task Completed
+
+↓
+
+Access Removed
+```
+
+This minimizes long-term privileged access.
+
+---
+
+# Access Reviews
+
+Organizations periodically review permissions.
+
+```
+Users
+
+↓
+
+Assigned Roles
+
+↓
+
+Manager Review
+
+↓
+
+Approve
+
+OR
+
+Revoke
+```
+
+Regular reviews help maintain least privilege.
+
+---
+
+# Access Recertification
+
+Large enterprises often require scheduled recertification.
+
+```
+Quarterly Review
+
+↓
+
+Managers
+
+↓
+
+Validate Access
+
+↓
+
+Remove Unnecessary Permissions
+```
+
+This reduces permission accumulation over time.
+
+---
+
+# Segregation of Duties Review
+
+Organizations ensure incompatible permissions are not assigned together.
+
+Example:
+
+```
+Create Invoice
+
++
+
+Approve Invoice
+
+↓
+
+Conflict
+
+↓
+
+Review Required
+```
+
+Segregation of duties helps reduce fraud and operational risk.
+
+---
+
+# Zero Trust Authorization
+
+Zero Trust assumes no request is automatically trusted.
+
+```
+Every Request
+
+↓
+
+Authenticate
+
+↓
+
+Authorize
+
+↓
+
+Evaluate Context
+
+↓
+
+Grant Limited Access
+```
+
+Authorization decisions are continuous rather than one-time events.
+
+---
+
+# Authorization Logging
+
+Important authorization events include:
+
+- Access granted
+- Access denied
+- Administrative actions
+- Role assignments
+- Permission changes
+- Privileged operations
+- Policy updates
+
+Logs support investigations and compliance.
+
+---
+
+# Authorization Monitoring
+
+```
+Authorization Logs
+
+↓
+
+SIEM
+
+↓
+
+Correlation
+
+↓
+
+Alerting
+
+↓
+
+Security Operations Center
+```
+
+Monitoring helps identify abnormal access patterns.
+
+---
+
+# Enterprise Authorization Architecture
+
+```
+                 User
+
+                   │
+
+                   ▼
+
+           Authentication
+
+                   │
+
+                   ▼
+
+            API Gateway
+
+                   │
+
+                   ▼
+
+      Policy Enforcement Point
+
+                   │
+
+                   ▼
+
+      Policy Decision Point
+
+        ┌─────────┼─────────┐
+
+        ▼                   ▼
+
+ Policy Store      Attribute Store
+
+        │
+
+        ▼
+
+ Protected Services
+
+        │
+
+        ▼
+
+ Databases / APIs
+```
+
+This architecture centralizes policy evaluation while allowing distributed enforcement.
+
+---
+
+# Enterprise Example
+
+A multinational healthcare provider authorizes access as follows:
+
+```
+Doctor
+
+↓
+
+Authentication
+
+↓
+
+Role Verification
+
+↓
+
+Assigned Patient Check
+
+↓
+
+Department Policy
+
+↓
+
+Medical Record
+
+↓
+
+Access Granted
+```
+
+Additional controls include:
+
+- Least privilege
+- MFA for privileged actions
+- Continuous monitoring
+- Audit logging
+- Quarterly access reviews
+- Temporary privileged access for emergency maintenance
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using a sample application:
+
+1. Create multiple roles with different permissions.
+2. Test access to protected pages.
+3. Verify API responses for authorized and unauthorized users.
+4. Modify object ownership and observe authorization changes.
+5. Review authorization logs after successful and denied requests.
+6. Simulate an access review by removing unnecessary permissions.
+
+---
+
+# Interview Questions
+
+1. What is a Policy Enforcement Point (PEP)?
+2. What is a Policy Decision Point (PDP)?
+3. What is a Policy Information Point (PIP)?
+4. Why should authorization be enforced on every API request?
+5. What is object-level authorization?
+6. Why is backend authorization essential?
+7. What is Just-In-Time (JIT) access?
+8. What are access reviews?
+9. Why is segregation of duties important?
+10. How does Zero Trust influence authorization?
+
+---
+
+# Best Practices
+
+- Enforce authorization on every protected request.
+- Perform authorization on the server.
+- Protect APIs independently of the frontend.
+- Apply least privilege throughout the system.
+- Use centralized policy evaluation where practical.
+- Perform regular access reviews and recertification.
+- Log authorization decisions and privileged operations.
+- Implement temporary privileged access for administrative tasks.
+
+---
+
+# Common Mistakes
+
+- Assuming authentication automatically grants authorization.
+- Trusting client-side permission checks.
+- Missing authorization checks on internal APIs.
+- Granting permanent privileged access.
+- Ignoring object ownership during authorization.
+- Failing to review accumulated permissions.
+- Allowing incompatible duties without review.
+
+---
+
+# Key Takeaways
+
+- Authorization must be consistently enforced across pages, APIs, services, and data.
+- PEP, PDP, and PIP separate enforcement, decision-making, and policy information for scalable enterprise authorization.
+- Object-level, record-level, and field-level authorization protect sensitive resources with fine granularity.
+- Zero Trust authorization evaluates every request using context and policy.
+- Continuous monitoring, logging, access reviews, and least privilege are essential for maintaining secure enterprise authorization.
+
 ```text id="jid720"
-**Next:** Part 3
+**Next:** Part 4
 ```
