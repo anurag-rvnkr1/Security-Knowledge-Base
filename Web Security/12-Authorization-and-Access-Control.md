@@ -2503,6 +2503,825 @@ Using a sample application:
 - Zero Trust authorization evaluates every request using context and policy.
 - Continuous monitoring, logging, access reviews, and least privilege are essential for maintaining secure enterprise authorization.
 
-```text id="jid720"
-**Next:** Part 4
+# 12-Authorization-and-Access-Control.md
+
+# Part 4 — Enterprise Authorization Governance, Identity Lifecycle, Access Auditing, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
+
+> **"Authorization is successful only when the correct permissions are granted, continuously validated, regularly reviewed, and immediately revoked when no longer required."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Enterprise Authorization Governance
+- Identity Lifecycle Management
+- Permission Reviews
+- Access Auditing
+- Authorization Monitoring
+- Security Testing
+- Authorization Troubleshooting
+- Compliance Considerations
+- Enterprise Best Practices
+- Chapter Summary
+
+---
+
+# Enterprise Authorization Lifecycle
+
+Authorization is not a one-time configuration.
+
 ```
+User Created
+
+↓
+
+Assign Role
+
+↓
+
+Grant Permissions
+
+↓
+
+Access Resources
+
+↓
+
+Periodic Review
+
+↓
+
+Modify Permissions
+
+↓
+
+Revoke Access
+
+↓
+
+Archive Audit Records
+```
+
+Permissions should evolve as users' responsibilities change.
+
+---
+
+# Identity Lifecycle Management
+
+A user's access changes throughout their employment or relationship with an organization.
+
+```
+Join Organization
+
+↓
+
+Account Created
+
+↓
+
+Role Assigned
+
+↓
+
+Department Change
+
+↓
+
+Role Updated
+
+↓
+
+Promotion
+
+↓
+
+Additional Permissions
+
+↓
+
+Resignation
+
+↓
+
+Access Revoked
+```
+
+Failure to manage this lifecycle increases security risk.
+
+---
+
+# Joiner-Mover-Leaver (JML) Model
+
+Most enterprises follow the **Joiner-Mover-Leaver (JML)** process.
+
+```
+Joiner
+
+↓
+
+Create Account
+
+↓
+
+Assign Initial Role
+
+──────────────
+
+Mover
+
+↓
+
+Review Role
+
+↓
+
+Adjust Permissions
+
+──────────────
+
+Leaver
+
+↓
+
+Disable Account
+
+↓
+
+Terminate Sessions
+
+↓
+
+Remove Access
+```
+
+JML helps ensure permissions remain aligned with business responsibilities.
+
+---
+
+# Access Request Workflow
+
+```
+User Requests Access
+
+↓
+
+Manager Approval
+
+↓
+
+Security Review
+
+↓
+
+Permission Granted
+
+↓
+
+Audit Logged
+```
+
+Sensitive permissions should require appropriate approvals.
+
+---
+
+# Permission Revocation
+
+Access should be removed promptly when no longer needed.
+
+```
+Permission No Longer Required
+
+↓
+
+Review
+
+↓
+
+Remove Permission
+
+↓
+
+Log Event
+```
+
+Delayed revocation may expose unnecessary risk.
+
+---
+
+# Permission Creep
+
+Permission creep occurs when users accumulate access over time.
+
+```
+Employee
+
+↓
+
+Role Change
+
+↓
+
+Old Permissions Kept
+
+↓
+
+New Permissions Added
+
+↓
+
+Excessive Access
+```
+
+Regular access reviews help prevent permission creep.
+
+---
+
+# Access Certification
+
+Managers periodically verify that users still require assigned permissions.
+
+```
+Assigned Permissions
+
+↓
+
+Manager Review
+
+↓
+
+Approve
+
+OR
+
+Remove Access
+```
+
+Certification supports least privilege and regulatory compliance.
+
+---
+
+# Privileged Access Governance
+
+Privileged accounts require additional controls.
+
+Examples:
+
+- Domain administrators
+- Database administrators
+- Cloud administrators
+- Security administrators
+- Backup operators
+
+Additional safeguards often include:
+
+- MFA
+- Just-In-Time (JIT) access
+- Session recording (where appropriate)
+- Approval workflows
+- Enhanced monitoring
+
+---
+
+# Emergency Access ("Break Glass")
+
+Organizations sometimes maintain emergency administrative accounts.
+
+```
+Emergency Incident
+
+↓
+
+Emergency Account
+
+↓
+
+Temporary Administrative Access
+
+↓
+
+Incident Resolved
+
+↓
+
+Password Rotation
+
+↓
+
+Audit Review
+```
+
+Emergency accounts should be tightly controlled and thoroughly audited.
+
+---
+
+# Authorization Monitoring
+
+Organizations monitor authorization events continuously.
+
+```
+Access Request
+
+↓
+
+Authorization Decision
+
+↓
+
+Logging
+
+↓
+
+SIEM
+
+↓
+
+Security Team
+```
+
+Monitoring helps identify abnormal permission usage.
+
+---
+
+# High-Value Authorization Events
+
+Important events include:
+
+- Permission granted
+- Permission revoked
+- Role assignment
+- Role removal
+- Administrative action
+- Policy modification
+- Privileged access activation
+- Access denial
+- Resource deletion
+
+---
+
+# Authorization Audit Trail
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Protected Action
+
+↓
+
+Audit Log
+
+↓
+
+Compliance Review
+```
+
+Audit trails help reconstruct security events.
+
+---
+
+# Centralized Authorization Logging
+
+```
+Applications
+
+↓
+
+Authorization Logs
+
+↓
+
+Central Log Platform
+
+↓
+
+SIEM
+
+↓
+
+Analytics
+
+↓
+
+Alerting
+```
+
+Centralization simplifies investigations across multiple systems.
+
+---
+
+# Compliance Considerations
+
+Many regulations require organizations to demonstrate proper authorization controls.
+
+Typical expectations include:
+
+- Least privilege
+- Role-based access management
+- Audit logging
+- Access reviews
+- Separation of duties
+- Timely access revocation
+
+Specific compliance requirements vary by industry and jurisdiction.
+
+---
+
+# Authorization Metrics
+
+Organizations commonly monitor:
+
+| Metric | Purpose |
+|---------|----------|
+| Failed authorization attempts | Detect misuse or misconfiguration |
+| Privileged access requests | Monitor administrative activity |
+| Access review completion | Governance effectiveness |
+| Permission changes | Track authorization updates |
+| Dormant privileged accounts | Identify unnecessary access |
+| Role assignment trends | Detect unusual changes |
+
+These metrics help measure the health of the authorization program.
+
+---
+
+# Authorization Security Testing
+
+Authorization testing should evaluate:
+
+- Role enforcement
+- Object ownership validation
+- Record-level authorization
+- API authorization
+- Administrative functions
+- Privileged workflows
+- Access revocation
+- Policy consistency
+
+Testing must always be performed only with proper authorization.
+
+---
+
+# Authorization Testing Workflow
+
+```
+Protected Resource
+
+↓
+
+Authenticate
+
+↓
+
+Attempt Access
+
+↓
+
+Expected Policy
+
+↓
+
+Verify Result
+
+↓
+
+Document Findings
+```
+
+Expected and actual behavior should match the defined authorization policy.
+
+---
+
+# Authorization Review Checklist
+
+```
+✓ Authentication Required
+
+✓ Server-Side Authorization
+
+✓ Least Privilege
+
+✓ Role Reviews
+
+✓ Object-Level Checks
+
+✓ API Authorization
+
+✓ Administrative Protection
+
+✓ Access Revocation
+
+✓ Audit Logging
+
+✓ Continuous Monitoring
+```
+
+---
+
+# Enterprise Troubleshooting
+
+| Symptom | Possible Cause |
+|----------|----------------|
+| User cannot access resource | Missing role or permission |
+| Administrator cannot perform action | Incorrect policy assignment or privilege issue |
+| User sees another user's data | Missing object-level authorization |
+| API returns access denied | Authorization policy or role mismatch |
+| Access remains after role removal | Permission synchronization or cache issue |
+
+Investigate authorization issues systematically.
+
+---
+
+# Troubleshooting Workflow
+
+```
+Authorization Issue
+
+↓
+
+Authentication Verified?
+
+↓
+
+Correct Role?
+
+↓
+
+Correct Permissions?
+
+↓
+
+Policy Evaluation
+
+↓
+
+Object Ownership
+
+↓
+
+Audit Logs
+
+↓
+
+Resolved
+```
+
+Each layer should be examined independently.
+
+---
+
+# Enterprise Authorization Architecture
+
+```
+                     Users
+
+                       │
+
+                       ▼
+
+                Authentication
+
+                       │
+
+                       ▼
+
+              API Gateway / WAF
+
+                       │
+
+                       ▼
+
+          Policy Enforcement Point
+
+                       │
+
+                       ▼
+
+           Policy Decision Point
+
+         ┌──────────┼──────────┐
+
+         ▼                     ▼
+
+   Role Directory       Policy Repository
+
+         │
+
+         ▼
+
+ Attribute Sources
+
+         │
+
+         ▼
+
+ Business Services
+
+         │
+
+         ▼
+
+ Databases / APIs / Files
+```
+
+This architecture supports centralized policy decisions with distributed enforcement.
+
+---
+
+# Enterprise Example
+
+A global insurance company implements authorization as follows:
+
+```
+Claims Adjuster
+
+↓
+
+Authenticate
+
+↓
+
+RBAC Evaluation
+
+↓
+
+Department Attribute
+
+↓
+
+Claim Ownership Check
+
+↓
+
+Authorization Policy
+
+↓
+
+Claims Portal
+
+↓
+
+Audit Logging
+```
+
+Additional protections include:
+
+- Multi-Factor Authentication for privileged operations
+- Quarterly access reviews
+- Automatic permission revocation after role changes
+- Continuous SIEM monitoring
+- Just-In-Time administrative access
+- Segregation of duties for claim approval workflows
+
+---
+
+# Hands-on Lab (Conceptual)
+
+Using a sample enterprise application:
+
+1. Create users with different roles.
+2. Assign object ownership to resources.
+3. Verify access to authorized resources.
+4. Attempt access to unauthorized resources and confirm denial.
+5. Modify a user's role and verify updated permissions.
+6. Remove access and ensure authorization changes take effect.
+7. Review authorization logs for successful and denied requests.
+
+---
+
+# Interview Questions
+
+1. What is the Joiner-Mover-Leaver (JML) process?
+2. What is permission creep?
+3. Why are periodic access reviews necessary?
+4. What is privileged access governance?
+5. What is a "break glass" account?
+6. Why should authorization events be logged?
+7. What should be included in an authorization security assessment?
+8. Why is object-level authorization important?
+9. What metrics help measure authorization effectiveness?
+10. Why should access be revoked immediately after a user leaves an organization?
+
+---
+
+# Best Practices
+
+- Apply the Principle of Least Privilege throughout the organization.
+- Perform server-side authorization for every protected request.
+- Review roles and permissions regularly.
+- Remove unnecessary access immediately.
+- Monitor privileged account activity continuously.
+- Protect administrative functions with stronger controls.
+- Maintain centralized authorization policies where practical.
+- Log authorization decisions and permission changes.
+- Automate Joiner-Mover-Leaver processes where possible.
+- Conduct regular security and compliance reviews.
+
+---
+
+# Common Mistakes
+
+- Allowing permission creep to accumulate.
+- Forgetting to revoke access after role changes.
+- Relying on client-side authorization.
+- Sharing privileged accounts.
+- Failing to review dormant accounts.
+- Ignoring authorization logs.
+- Embedding authorization logic inconsistently across applications.
+- Performing authorization only at login instead of every protected request.
+
+---
+
+# Quick Revision
+
+Authorization Flow
+
+```
+Authenticate
+
+↓
+
+Policy Evaluation
+
+↓
+
+Permission Check
+
+↓
+
+Access Granted
+
+OR
+
+Access Denied
+```
+
+Enterprise Governance
+
+```
+Provision
+
+↓
+
+Assign Role
+
+↓
+
+Review Access
+
+↓
+
+Modify Permissions
+
+↓
+
+Revoke Access
+```
+
+Authorization Architecture
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Policy Enforcement
+
+↓
+
+Policy Decision
+
+↓
+
+Protected Resource
+```
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The difference between authentication and authorization.
+- Core authorization concepts including subjects, resources, actions, permissions, and policies.
+- Access control models such as DAC, MAC, RBAC, and ABAC.
+- Enterprise authorization architecture using Policy Enforcement Points (PEP), Policy Decision Points (PDP), and Policy Information Points (PIP).
+- Fine-grained authorization techniques including object-level, record-level, field-level, and API authorization.
+- Governance concepts such as Joiner-Mover-Leaver (JML), permission reviews, privileged access management, and Just-In-Time (JIT) access.
+- Authorization monitoring, centralized logging, security testing, troubleshooting, and enterprise best practices.
+
+Effective authorization is a continuous process that combines centralized policy management, least privilege, fine-grained access control, regular reviews, and comprehensive monitoring to ensure users can access only the resources necessary for their legitimate business responsibilities.
+
