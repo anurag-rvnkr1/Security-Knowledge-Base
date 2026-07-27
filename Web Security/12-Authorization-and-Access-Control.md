@@ -3325,3 +3325,4 @@ In this chapter, you learned:
 
 Effective authorization is a continuous process that combines centralized policy management, least privilege, fine-grained access control, regular reviews, and comprehensive monitoring to ensure users can access only the resources necessary for their legitimate business responsibilities.
 
+
