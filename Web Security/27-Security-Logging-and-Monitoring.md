@@ -1403,6 +1403,692 @@ Response
 - Protecting log integrity is essential for trustworthy investigations.
 - Effective monitoring depends on high-quality telemetry, tuned detections, and continuous operational improvement.
 
+# 27-Security-Logging-and-Monitoring-Failures.md
+
+# Part 3 — Threat Detection, Incident Detection, Threat Hunting, SOC Operations, Metrics, and Enterprise Monitoring
+
+> **"Logs record the past, monitoring observes the present, and detection enables organizations to respond before incidents escalate into major business disruptions."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Threat Detection
+- Indicators of Compromise (IoCs)
+- Indicators of Attack (IoAs)
+- Security Operations Center (SOC)
+- Threat Hunting
+- Detection Coverage
+- Security Metrics
+- Incident Escalation
+- Security Dashboards
+- Enterprise Monitoring Strategy
+
+---
+
+# Detection vs Monitoring
+
+Although related, these activities serve different purposes.
+
+| Monitoring | Detection |
+|------------|-----------|
+| Continuously observes systems | Identifies suspicious activity |
+| Collects operational visibility | Identifies potential security incidents |
+| Broad operational focus | Security-focused analysis |
+| Continuous process | Event-driven process |
+
+Monitoring provides visibility, while detection transforms that visibility into actionable security information.
+
+---
+
+# Detection Lifecycle
+
+```
+Security Event
+
+↓
+
+Collection
+
+↓
+
+Analysis
+
+↓
+
+Correlation
+
+↓
+
+Detection
+
+↓
+
+Alert
+
+↓
+
+Investigation
+
+↓
+
+Response
+```
+
+Each phase contributes to reducing the time required to identify security incidents.
+
+---
+
+# Threat Detection
+
+Threat detection identifies activities that may indicate malicious or unauthorized behavior.
+
+```
+System Activity
+
+↓
+
+Log Collection
+
+↓
+
+Detection Logic
+
+↓
+
+Potential Threat
+
+↓
+
+Investigation
+```
+
+Detection relies on quality telemetry, reliable detection logic, and timely analysis.
+
+---
+
+# Indicators of Compromise (IoCs)
+
+Indicators of Compromise represent evidence suggesting that a system may have been compromised.
+
+Examples include:
+
+```
+Indicators of Compromise
+
+│
+
+├── Unexpected Account Activity
+
+├── Unauthorized File Changes
+
+├── Suspicious Network Connections
+
+├── Malware Detection
+
+├── Privilege Abuse
+
+└── Unexpected Administrative Actions
+```
+
+IoCs support investigation but should be interpreted within the broader operational context.
+
+---
+
+# Indicators of Attack (IoAs)
+
+Indicators of Attack focus on suspicious behaviors rather than known artifacts.
+
+```
+Observed Activity
+
+↓
+
+Behavior Analysis
+
+↓
+
+Potential Attack
+
+↓
+
+Investigation
+```
+
+Behavioral analysis can help identify previously unseen attack techniques.
+
+---
+
+# Detection Sources
+
+```
+Enterprise Telemetry
+
+│
+
+├── Authentication Logs
+
+├── Application Logs
+
+├── Web Server Logs
+
+├── Database Logs
+
+├── Endpoint Logs
+
+├── Cloud Audit Logs
+
+├── Firewall Logs
+
+├── DNS Logs
+
+├── VPN Logs
+
+└── Identity Provider Logs
+```
+
+Comprehensive telemetry improves detection capability.
+
+---
+
+# Detection Engineering Workflow
+
+```
+Threat Research
+
+↓
+
+Detection Design
+
+↓
+
+Implementation
+
+↓
+
+Validation
+
+↓
+
+Deployment
+
+↓
+
+Continuous Review
+```
+
+Detection content should evolve alongside organizational infrastructure and threat intelligence.
+
+---
+
+# Threat Hunting
+
+Threat hunting is a structured, proactive activity that searches for evidence of suspicious activity that automated alerts may not have identified.
+
+```
+Hypothesis
+
+↓
+
+Data Collection
+
+↓
+
+Analysis
+
+↓
+
+Findings
+
+↓
+
+Investigation
+
+↓
+
+Improvements
+```
+
+Threat hunting complements automated detection rather than replacing it.
+
+---
+
+# Threat Hunting Process
+
+```
+Define Hypothesis
+
+↓
+
+Collect Relevant Data
+
+↓
+
+Analyze Patterns
+
+↓
+
+Validate Findings
+
+↓
+
+Document Results
+
+↓
+
+Improve Detection Rules
+```
+
+Lessons learned from hunting exercises often improve future detection coverage.
+
+---
+
+# Security Operations Center (SOC)
+
+The SOC is responsible for monitoring, investigating, and coordinating responses to security events.
+
+```
+Security Events
+
+↓
+
+SIEM
+
+↓
+
+SOC Analysts
+
+↓
+
+Investigation
+
+↓
+
+Incident Response
+
+↓
+
+Lessons Learned
+```
+
+SOC teams operate continuously in many enterprise environments.
+
+---
+
+# SOC Responsibilities
+
+```
+SOC
+
+│
+
+├── Monitor Alerts
+
+├── Validate Events
+
+├── Investigate Incidents
+
+├── Coordinate Response
+
+├── Escalate Critical Events
+
+├── Report Findings
+
+└── Improve Detection
+```
+
+---
+
+# Alert Triage
+
+Not every alert represents a security incident.
+
+```
+Alert
+
+↓
+
+Initial Review
+
+↓
+
+False Positive?
+
+↓
+
+Yes ── Close
+
+↓
+
+No
+
+↓
+
+Investigation
+```
+
+Efficient triage helps analysts focus on meaningful events.
+
+---
+
+# Incident Escalation
+
+When an event requires broader action:
+
+```
+Detection
+
+↓
+
+Analyst Review
+
+↓
+
+Incident Confirmed
+
+↓
+
+Escalation
+
+↓
+
+Incident Response Team
+
+↓
+
+Recovery
+```
+
+Escalation procedures should be clearly documented.
+
+---
+
+# Detection Coverage
+
+Organizations measure how well monitoring covers important systems.
+
+```
+Detection Coverage
+
+│
+
+├── Authentication
+
+├── Applications
+
+├── Databases
+
+├── Endpoints
+
+├── Cloud Resources
+
+├── Network Infrastructure
+
+└── Administrative Activities
+```
+
+Coverage gaps may leave important activity unobserved.
+
+---
+
+# Detection Maturity
+
+```
+Basic
+
+↓
+
+Centralized Logging
+
+↓
+
+Correlation
+
+↓
+
+Behavior Analytics
+
+↓
+
+Threat Hunting
+
+↓
+
+Continuous Improvement
+```
+
+Security monitoring capabilities mature over time through iterative improvements.
+
+---
+
+# Security Metrics
+
+Organizations use metrics to evaluate monitoring effectiveness.
+
+| Metric | Purpose |
+|---------|----------|
+| Mean Time to Detect (MTTD) | Measure detection speed |
+| Mean Time to Respond (MTTR) | Measure response efficiency |
+| Alert Volume | Monitor workload |
+| Detection Coverage | Evaluate visibility |
+| False Positive Rate | Measure detection quality |
+| Incident Closure Time | Track investigation efficiency |
+
+---
+
+# Security Dashboards
+
+Operational dashboards commonly display:
+
+```
+Security Dashboard
+
+│
+
+├── Active Alerts
+
+├── Failed Authentication Attempts
+
+├── High-Severity Events
+
+├── Open Incidents
+
+├── Detection Trends
+
+├── Authentication Activity
+
+├── Administrative Changes
+
+└── System Health
+```
+
+Dashboards improve situational awareness for analysts and leadership.
+
+---
+
+# Enterprise Monitoring Strategy
+
+```
+Applications
+
+↓
+
+Infrastructure
+
+↓
+
+Cloud Services
+
+↓
+
+Centralized Logging
+
+↓
+
+SIEM
+
+↓
+
+Detection Rules
+
+↓
+
+SOC
+
+↓
+
+Incident Response
+```
+
+Each layer contributes valuable security telemetry.
+
+---
+
+# Enterprise Example
+
+A multinational healthcare organization monitors:
+
+```
+Electronic Health Records
+
+↓
+
+Identity Provider
+
+↓
+
+Cloud Services
+
+↓
+
+Network Infrastructure
+
+↓
+
+SIEM
+
+↓
+
+SOC
+
+↓
+
+Incident Response Team
+```
+
+Correlated monitoring helps identify unusual authentication activity, unauthorized administrative actions, and unexpected changes across multiple systems.
+
+---
+
+# Common Detection Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large event volume | Prioritize high-value telemetry |
+| Alert fatigue | Tune detection rules regularly |
+| Visibility gaps | Expand monitoring coverage |
+| Evolving threats | Continuously improve detections |
+| Manual investigations | Use structured workflows |
+| Limited context | Correlate multiple log sources |
+
+---
+
+# Enterprise Detection Architecture
+
+```
+Log Sources
+
+↓
+
+Collection
+
+↓
+
+Normalization
+
+↓
+
+Correlation
+
+↓
+
+Detection Engine
+
+↓
+
+Alert Queue
+
+↓
+
+SOC
+
+↓
+
+Incident Response
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design a monitoring architecture for an enterprise application.
+2. Identify important log sources.
+3. Create a conceptual alert severity classification.
+4. Map security events to detection workflows.
+5. Document an incident escalation process.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is threat detection?
+2. What is the difference between monitoring and detection?
+3. What are Indicators of Compromise (IoCs)?
+4. What are Indicators of Attack (IoAs)?
+5. What is threat hunting?
+6. What responsibilities does a SOC perform?
+7. Why is alert triage important?
+8. What is Mean Time to Detect (MTTD)?
+9. Why should detection coverage be measured?
+10. How does continuous improvement strengthen security monitoring?
+
+---
+
+# Best Practices
+
+- Collect telemetry from diverse enterprise systems.
+- Continuously refine detection logic to improve quality.
+- Measure detection effectiveness using meaningful metrics.
+- Perform proactive threat hunting to complement automated detections.
+- Document escalation procedures and investigation workflows.
+- Expand monitoring coverage as infrastructure evolves.
+- Regularly review dashboards, alerts, and operational metrics.
+
+---
+
+# Common Mistakes
+
+- Assuming every alert is a confirmed incident.
+- Ignoring false positive trends.
+- Monitoring only applications while overlooking infrastructure.
+- Failing to review detection coverage periodically.
+- Relying solely on automated alerts without proactive analysis.
+- Neglecting lessons learned after investigations.
+
+---
+
+# Key Takeaways
+
+- Monitoring provides visibility, while detection identifies potentially malicious activity.
+- IoCs and IoAs offer different perspectives for identifying suspicious behavior.
+- SOC teams combine monitoring, investigation, escalation, and response to protect enterprise environments.
+- Threat hunting proactively searches for threats that automated detections may miss.
+- Detection quality improves through continuous tuning, metrics, broader coverage, and operational feedback.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
