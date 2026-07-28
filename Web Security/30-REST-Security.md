@@ -698,6 +698,840 @@ Response
 - HTTP methods should be used consistently with their intended semantics.
 - Defense in depth, secure architecture, and operational visibility are essential for enterprise REST security.
 
+# 30-REST-Security.md
+
+# Part 2 — Authentication, Authorization, Transport Security, Input Validation, Rate Limiting, and Secure REST API Design
+
+> **"A secure REST API verifies identity, enforces authorization, validates every request, protects data in transit, and continuously monitors every interaction."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- REST Authentication
+- REST Authorization
+- HTTPS for REST APIs
+- TLS Security
+- Input Validation
+- Output Encoding
+- Secure Error Handling
+- Rate Limiting
+- API Versioning
+- Secure REST Design
+
+---
+
+# REST Authentication
+
+Authentication verifies the identity of the client before granting access.
+
+```
+Client
+
+↓
+
+Credentials
+
+↓
+
+Authentication
+
+↓
+
+Verified Identity
+
+↓
+
+REST API
+```
+
+Every protected endpoint should require authentication.
+
+---
+
+# Common Authentication Mechanisms
+
+```
+Authentication
+
+│
+
+├── Username & Password
+
+├── API Keys
+
+├── OAuth 2.0
+
+├── OpenID Connect
+
+├── JWT
+
+├── Mutual TLS (mTLS)
+
+└── Certificate Authentication
+```
+
+The appropriate mechanism depends on the application's architecture and security requirements.
+
+---
+
+# Authentication Workflow
+
+```
+Client
+
+↓
+
+Credentials
+
+↓
+
+Identity Provider
+
+↓
+
+Verification
+
+↓
+
+Access Token
+
+↓
+
+REST API
+```
+
+Authentication should occur before authorization decisions.
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+Sensitive REST APIs should support strong authentication.
+
+```
+User
+
+↓
+
+Password
+
++
+
+Second Factor
+
+↓
+
+Verified Identity
+
+↓
+
+API Access
+```
+
+MFA significantly reduces the risk of account compromise.
+
+---
+
+# REST Authorization
+
+Authorization determines what an authenticated client is permitted to access.
+
+```
+Authenticated Client
+
+↓
+
+Authorization Policy
+
+↓
+
+Permission Check
+
+↓
+
+Protected Resource
+```
+
+Authorization should be evaluated for every protected resource.
+
+---
+
+# Authorization Models
+
+```
+Authorization
+
+│
+
+├── Role-Based Access Control (RBAC)
+
+├── Attribute-Based Access Control (ABAC)
+
+├── Policy-Based Access
+
+├── Resource-Based Access
+
+└── Least Privilege
+```
+
+Organizations often combine multiple models.
+
+---
+
+# Resource-Level Authorization
+
+Authorization should be enforced at the resource level.
+
+```
+Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Requested Resource
+
+↓
+
+Response
+```
+
+Every request should verify that the requester is allowed to access the specific resource.
+
+---
+
+# Least Privilege
+
+```
+Identity
+
+↓
+
+Minimum Permissions
+
+↓
+
+Business Operation
+
+↓
+
+Approved Access
+```
+
+Grant only the permissions necessary for legitimate business functions.
+
+---
+
+# HTTPS for REST APIs
+
+REST APIs should always use encrypted communication.
+
+```
+Client
+
+↓
+
+HTTPS
+
+↓
+
+REST API
+
+↓
+
+Secure Response
+```
+
+Encryption protects confidentiality and integrity during transmission.
+
+---
+
+# TLS Security
+
+TLS provides secure communication.
+
+```
+REST Client
+
+↓
+
+TLS Handshake
+
+↓
+
+Encrypted Channel
+
+↓
+
+REST Server
+```
+
+TLS protects data from interception and unauthorized modification while in transit.
+
+---
+
+# Secure Communication Principles
+
+```
+Secure Communication
+
+│
+
+├── HTTPS
+
+├── TLS
+
+├── Certificate Validation
+
+├── Strong Cipher Suites
+
+├── Perfect Forward Secrecy
+
+└── Certificate Rotation
+```
+
+Transport security should follow current organizational and industry standards.
+
+---
+
+# Request Validation
+
+Every request should be validated before processing.
+
+```
+Request
+
+↓
+
+Syntax Validation
+
+↓
+
+Data Type Validation
+
+↓
+
+Length Validation
+
+↓
+
+Business Validation
+
+↓
+
+Processing
+```
+
+Validation improves both security and reliability.
+
+---
+
+# Validation Layers
+
+```
+Client Input
+
+↓
+
+Format Validation
+
+↓
+
+Range Validation
+
+↓
+
+Business Rules
+
+↓
+
+Application Logic
+```
+
+Layered validation reduces implementation errors.
+
+---
+
+# Input Validation Checklist
+
+```
+Validation
+
+│
+
+├── Required Fields
+
+├── Data Types
+
+├── Length Limits
+
+├── Allowed Characters
+
+├── Business Rules
+
+├── Expected Formats
+
+└── Mandatory Values
+```
+
+Validation should occur on the server regardless of client-side checks.
+
+---
+
+# Output Encoding
+
+Applications should safely prepare data before returning it to clients.
+
+```
+Application Data
+
+↓
+
+Output Processing
+
+↓
+
+Response
+
+↓
+
+Client
+```
+
+Output handling helps ensure responses remain well-formed and appropriate for their intended consumers.
+
+---
+
+# Secure Error Handling
+
+Applications should return consistent and informative error responses without exposing unnecessary implementation details.
+
+```
+Request
+
+↓
+
+Validation
+
+↓
+
+Error?
+
+↓
+
+Standard Error Response
+
+↓
+
+Client
+```
+
+Detailed diagnostic information should remain available only through protected server logs.
+
+---
+
+# Error Response Principles
+
+```
+Error Handling
+
+│
+
+├── Consistent Format
+
+├── Appropriate Status Code
+
+├── Generic Messages
+
+├── Correlation ID
+
+├── Logging
+
+└── Monitoring
+```
+
+Consistency improves both usability and security.
+
+---
+
+# HTTP Status Codes
+
+| Code | Meaning |
+|------|---------|
+| 200 | Successful request |
+| 201 | Resource created |
+| 204 | Successful request with no content |
+| 400 | Invalid client request |
+| 401 | Authentication required or failed |
+| 403 | Authenticated but not authorized |
+| 404 | Resource not found |
+| 429 | Too many requests |
+| 500 | Internal server error |
+
+Applications should use status codes consistently.
+
+---
+
+# Rate Limiting
+
+Rate limiting helps maintain service availability.
+
+```
+Client
+
+↓
+
+Rate Limiter
+
+↓
+
+Within Policy?
+
+↓
+
+Yes → Continue
+
+↓
+
+No
+
+↓
+
+Reject or Delay
+```
+
+Rate limiting reduces abuse and supports fair resource usage.
+
+---
+
+# Benefits of Rate Limiting
+
+```
+Rate Limiting
+
+│
+
+├── Service Stability
+
+├── Fair Usage
+
+├── Availability Protection
+
+├── Reduced Resource Exhaustion
+
+├── Better Performance
+
+└── Improved Reliability
+```
+
+---
+
+# Request Size Controls
+
+Applications should define reasonable limits for incoming requests.
+
+```
+Incoming Request
+
+↓
+
+Size Validation
+
+↓
+
+Policy Check
+
+↓
+
+Accepted
+
+↓
+
+Processing
+```
+
+Limiting request size helps protect application resources.
+
+---
+
+# Secure REST Response Design
+
+Responses should contain only information necessary for the requesting client.
+
+```
+Database
+
+↓
+
+Business Logic
+
+↓
+
+Required Fields
+
+↓
+
+REST Response
+```
+
+Data minimization reduces unnecessary exposure.
+
+---
+
+# API Versioning
+
+REST APIs evolve over time.
+
+```
+REST API
+
+│
+
+├── Version 1
+
+├── Version 2
+
+└── Future Versions
+```
+
+Version management enables improvements while supporting controlled migrations.
+
+---
+
+# API Deprecation
+
+```
+Active Version
+
+↓
+
+Deprecation Notice
+
+↓
+
+Migration
+
+↓
+
+Retirement
+```
+
+Consumers should receive adequate notice before an API version is retired.
+
+---
+
+# REST Security Headers
+
+REST responses may include security-related HTTP headers.
+
+```
+REST Response
+
+↓
+
+Security Headers
+
+↓
+
+Client
+```
+
+Appropriate response headers complement transport security and secure client interactions.
+
+---
+
+# Secure REST API Design
+
+```
+Secure REST API
+
+│
+
+├── HTTPS
+
+├── Authentication
+
+├── Authorization
+
+├── Validation
+
+├── Logging
+
+├── Monitoring
+
+├── Rate Limiting
+
+└── Least Privilege
+```
+
+Security should be integrated into the API from the design phase.
+
+---
+
+# Enterprise REST Request Flow
+
+```
+Client
+
+↓
+
+HTTPS
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Logging
+
+↓
+
+Response
+```
+
+Every stage contributes to secure request processing.
+
+---
+
+# Enterprise Example
+
+A global healthcare provider secures REST APIs serving patient and clinician applications.
+
+```
+Mobile App
+
+↓
+
+HTTPS
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+Authorization
+
+↓
+
+Healthcare Services
+
+↓
+
+Electronic Health Records
+
+↓
+
+Monitoring Platform
+```
+
+All requests are encrypted, authenticated, authorized, validated, logged, and monitored. Rate limiting and centralized policy enforcement protect service availability.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Weak authentication | Use strong identity mechanisms and MFA where appropriate |
+| Excessive permissions | Apply least privilege |
+| Inconsistent validation | Standardize validation libraries and practices |
+| Large request volumes | Implement rate limiting and monitoring |
+| Legacy API versions | Maintain structured versioning and deprecation plans |
+| Operational visibility | Centralize logging and monitoring |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design a secure REST authentication workflow.
+2. Compare RBAC and ABAC for a sample REST API.
+3. Identify where request validation should occur.
+4. Create a conceptual rate-limiting policy.
+5. Design a standardized REST error response format.
+
+> Perform all assessments only in environments where you have explicit authorization. Focus on secure API design and defensive implementation.
+
+---
+
+# Interview Questions
+
+1. Why should every REST API use HTTPS?
+2. What is the difference between authentication and authorization?
+3. Why is server-side validation essential?
+4. What is the purpose of rate limiting?
+5. Why should REST APIs use standardized error responses?
+6. What is resource-level authorization?
+7. Why is least privilege important?
+8. What information should REST APIs avoid exposing in error messages?
+9. Why is API versioning important?
+10. How does TLS protect REST communications?
+
+---
+
+# Best Practices
+
+- Enforce HTTPS for all REST endpoints.
+- Authenticate every protected request.
+- Perform authorization checks for every protected resource.
+- Validate all inputs on the server.
+- Return only necessary information in responses.
+- Implement consistent error handling.
+- Apply rate limiting and request size limits.
+- Monitor authentication failures, authorization denials, and unusual traffic patterns.
+
+---
+
+# Common Mistakes
+
+- Accepting client input without validation.
+- Using HTTP instead of HTTPS.
+- Exposing internal implementation details in error responses.
+- Applying authentication but not authorization.
+- Returning excessive response data.
+- Ignoring API version management.
+- Failing to protect service availability through rate limiting.
+
+---
+
+# Key Takeaways
+
+- REST security depends on strong identity verification, authorization, transport security, validation, and operational controls.
+- HTTPS and TLS protect data during transmission.
+- Every request should undergo authentication, authorization, and validation before business logic executes.
+- Standardized error handling and secure responses improve both security and maintainability.
+- Rate limiting, version management, and defense in depth strengthen enterprise REST API security.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
