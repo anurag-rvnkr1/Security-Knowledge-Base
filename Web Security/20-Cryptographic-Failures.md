@@ -1368,6 +1368,744 @@ Audit
 - PKI and certificates establish trust in secure communications.
 - Strong cryptography depends on secure key management, certificate validation, and proper operational practices.
 
+# 20-Cryptographic-Failures.md
+
+# Part 3 — Password Security, TLS, Secrets Management, Secure Storage, Enterprise Implementation, and Cryptographic Best Practices
+
+> **"Most cryptographic failures are not caused by broken mathematics—they result from weak implementation, poor operational practices, insecure secret management, or incorrect deployment."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Password Hashing
+- Salting
+- Key Derivation Functions
+- Transport Layer Security (TLS)
+- Secrets Management
+- Secure Storage
+- Hardware Security Modules (HSM)
+- Enterprise Key Management
+- Common Cryptographic Mistakes
+- Defense Strategies
+
+---
+
+# Password Storage
+
+Passwords should **never** be stored in plaintext.
+
+Incorrect approach:
+
+```
+User Password
+
+↓
+
+Database
+
+↓
+
+Readable Password
+```
+
+Correct conceptual approach:
+
+```
+Password
+
+↓
+
+Password Hashing
+
+↓
+
+Stored Hash
+
+↓
+
+Authentication Verification
+```
+
+Even if the database is compromised, properly hashed passwords are significantly more resistant to disclosure than plaintext passwords.
+
+---
+
+# Why Passwords Should Not Be Encrypted
+
+Many beginners ask:
+
+> "Why not simply encrypt passwords?"
+
+Authentication systems generally **verify** passwords rather than recover them.
+
+Conceptually:
+
+```
+User Password
+
+↓
+
+Hash Function
+
+↓
+
+Stored Hash
+
+↓
+
+Future Login
+
+↓
+
+Hash Again
+
+↓
+
+Compare
+```
+
+There is typically no operational need to recover the original password.
+
+---
+
+# Salting
+
+A **salt** is unique data combined with a password before hashing.
+
+Conceptually:
+
+```
+Password
+
++
+
+Unique Salt
+
+↓
+
+Password Hash
+
+↓
+
+Database
+```
+
+Benefits include:
+
+- Makes identical passwords produce different hashes
+- Reduces effectiveness of precomputed lookup attacks
+- Improves password storage security
+
+---
+
+# Example Concept
+
+Two users choose the same password.
+
+Without unique salts:
+
+```
+Password A
+
+↓
+
+Hash
+
+↓
+
+Same Stored Value
+
+────────────
+
+Password A
+
+↓
+
+Hash
+
+↓
+
+Same Stored Value
+```
+
+With unique salts:
+
+```
+Password A
+
++
+
+Salt X
+
+↓
+
+Hash X
+
+────────────
+
+Password A
+
++
+
+Salt Y
+
+↓
+
+Hash Y
+```
+
+Although the passwords are identical, the stored hashes differ.
+
+---
+
+# Password Hashing vs Encryption
+
+| Password Hashing | Encryption |
+|------------------|------------|
+| One-way operation | Reversible with appropriate keys |
+| Used for password verification | Used to protect confidential data |
+| Original password is not recovered | Original data can be recovered by authorized parties |
+| Supports authentication | Supports confidentiality |
+
+---
+
+# Key Derivation Functions (KDFs)
+
+Password hashing should use algorithms specifically designed for password protection.
+
+Conceptually:
+
+```
+Password
+
+↓
+
+Key Derivation Function
+
+↓
+
+Secure Password Hash
+```
+
+Characteristics:
+
+- Computationally expensive
+- Resistant to large-scale guessing attempts
+- Designed specifically for password storage
+
+---
+
+# Password Security Lifecycle
+
+```
+User Creates Password
+
+↓
+
+Password Policy
+
+↓
+
+Hash + Salt
+
+↓
+
+Secure Storage
+
+↓
+
+Authentication
+
+↓
+
+Password Change
+
+↓
+
+Re-Hash
+```
+
+Password security is a continuous lifecycle.
+
+---
+
+# Transport Layer Security (TLS)
+
+TLS protects information transmitted across networks.
+
+```
+Browser
+
+↓
+
+TLS
+
+↓
+
+Encrypted Connection
+
+↓
+
+Server
+```
+
+TLS helps protect:
+
+- Login credentials
+- Session tokens
+- Payment information
+- Personal information
+- API communication
+
+---
+
+# TLS Handshake (Conceptual)
+
+Before secure communication begins:
+
+```
+Client
+
+↓
+
+Server Identity
+
+↓
+
+Certificate Validation
+
+↓
+
+Session Established
+
+↓
+
+Secure Communication
+```
+
+This process establishes trust before transmitting sensitive information.
+
+---
+
+# Data at Rest vs Data in Transit
+
+```
+Data at Rest
+
+↓
+
+Stored
+
+↓
+
+Encryption
+
+────────────────
+
+Data in Transit
+
+↓
+
+Moving Across Network
+
+↓
+
+TLS Protection
+```
+
+Both categories require appropriate cryptographic protection.
+
+---
+
+# Secrets Management
+
+Applications depend on numerous sensitive secrets.
+
+```
+Secrets
+
+│
+
+├── API Keys
+
+├── Database Credentials
+
+├── Encryption Keys
+
+├── Signing Keys
+
+├── Cloud Credentials
+
+└── Service Tokens
+```
+
+Secrets should never be treated as ordinary configuration values.
+
+---
+
+# Hardcoded Secrets
+
+Poor practice:
+
+```
+Application Code
+
+↓
+
+Embedded Secret
+```
+
+Better approach:
+
+```
+Application
+
+↓
+
+Secure Secret Store
+
+↓
+
+Authorized Retrieval
+```
+
+Separating secrets from application code reduces operational risk.
+
+---
+
+# Secret Lifecycle
+
+```
+Generate
+
+↓
+
+Store
+
+↓
+
+Use
+
+↓
+
+Rotate
+
+↓
+
+Revoke
+
+↓
+
+Destroy
+```
+
+Every secret should have a clearly defined lifecycle.
+
+---
+
+# Enterprise Secrets Architecture
+
+```
+Application
+
+↓
+
+Authentication
+
+↓
+
+Secrets Manager
+
+↓
+
+Temporary Secret Access
+
+↓
+
+Business Logic
+```
+
+Applications retrieve only the secrets required for their current operation.
+
+---
+
+# Hardware Security Modules (HSM)
+
+Some organizations use dedicated hardware to protect highly sensitive cryptographic keys.
+
+Conceptually:
+
+```
+Application
+
+↓
+
+HSM
+
+↓
+
+Protected Key Operations
+
+↓
+
+Result Returned
+```
+
+The objective is to reduce exposure of sensitive keys.
+
+---
+
+# Enterprise Key Management
+
+```
+Generate Keys
+
+↓
+
+Secure Storage
+
+↓
+
+Access Control
+
+↓
+
+Rotation
+
+↓
+
+Backup
+
+↓
+
+Retirement
+
+↓
+
+Secure Destruction
+```
+
+Key management should be governed by organizational policy.
+
+---
+
+# Cryptographic Architecture
+
+```
+                    User
+
+                     │
+
+                     ▼
+
+                  Browser
+
+                     │
+
+                 TLS Session
+
+                     │
+
+                     ▼
+
+               Web Application
+
+          ┌──────────┼──────────┐
+
+          ▼          ▼          ▼
+
+ Authentication   Business Logic   APIs
+
+          │          │          │
+
+          └──────────┼──────────┘
+
+                     ▼
+
+             Encrypted Database
+
+                     │
+
+                     ▼
+
+               Secure Key Store
+```
+
+Cryptography supports multiple layers within enterprise systems.
+
+---
+
+# Secure Development Practices
+
+Developers should:
+
+```
+✓ Classify Sensitive Data
+
+✓ Protect Secrets
+
+✓ Validate Certificates
+
+✓ Use Strong Randomness
+
+✓ Rotate Keys
+
+✓ Secure Password Storage
+
+✓ Review Cryptographic Configuration
+
+✓ Follow Organizational Standards
+```
+
+---
+
+# Common Cryptographic Weaknesses
+
+| Weakness | Potential Impact |
+|----------|------------------|
+| Plaintext password storage | Credential exposure |
+| Hardcoded API keys | Unauthorized service access |
+| Shared cryptographic keys | Increased compromise impact |
+| Poor secret rotation | Long-term exposure |
+| Weak certificate validation | Reduced communication trust |
+| Missing TLS | Data interception risk |
+| Improper password hashing | Increased credential risk |
+
+---
+
+# Enterprise Example
+
+A healthcare platform:
+
+```
+Doctor Login
+
+↓
+
+TLS Connection
+
+↓
+
+Authentication
+
+↓
+
+Password Verification
+
+↓
+
+Patient Database
+
+↓
+
+Encrypted Storage
+
+↓
+
+Audit Logging
+```
+
+Multiple cryptographic controls work together to protect patient information.
+
+---
+
+# Defense in Depth
+
+Cryptography complements other controls.
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Encryption
+
+↓
+
+Secrets Management
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Incident Response
+```
+
+No single security control protects every asset.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Identify every secret used by a sample application.
+2. Categorize each secret according to its purpose.
+3. Design a conceptual secret lifecycle.
+4. Identify where TLS protects communication.
+5. Document where password hashing, key management, and encrypted storage should be applied.
+
+> Perform all activities only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. Why should passwords be hashed instead of encrypted?
+2. What is a salt?
+3. What is the purpose of a Key Derivation Function?
+4. What does TLS protect?
+5. Why should secrets never be hardcoded?
+6. What is a Hardware Security Module (HSM)?
+7. Why is secret rotation important?
+8. What is the difference between data at rest and data in transit?
+9. Why should certificate validation be performed?
+10. Why is cryptography considered part of defense in depth?
+
+---
+
+# Best Practices
+
+- Store passwords using dedicated password hashing algorithms with unique salts.
+- Protect all sensitive network communications using TLS.
+- Store secrets in secure secrets management systems rather than source code.
+- Rotate keys and secrets according to organizational policy.
+- Validate certificates before establishing trust.
+- Review cryptographic implementations regularly.
+- Restrict access to cryptographic material using least privilege.
+
+---
+
+# Common Mistakes
+
+- Storing passwords in plaintext or with general-purpose reversible encryption.
+- Hardcoding secrets into repositories.
+- Ignoring certificate validation.
+- Reusing long-lived secrets indefinitely.
+- Failing to inventory cryptographic assets.
+- Treating cryptographic implementation as a one-time deployment task.
+
+---
+
+# Key Takeaways
+
+- Passwords should be protected using secure password hashing techniques with unique salts.
+- TLS protects sensitive information during transmission.
+- Secrets require dedicated lifecycle management and secure storage.
+- HSMs and centralized key management strengthen enterprise cryptographic security.
+- Most cryptographic failures arise from implementation and operational mistakes rather than weaknesses in modern cryptographic algorithms.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
