@@ -2068,6 +2068,747 @@ A secure design minimizes opportunities for authorization bypass.
 - Logging and monitoring strengthen authorization by improving visibility.
 - Secure authorization combines least privilege, default deny, centralized policy enforcement, and continuous review.
 
-```text id="rrks28"
-**Next:** Part 4
+# 19-Broken-Access-Control.md
+
+# Part 4 — Enterprise Governance, Secure Authorization Architecture, Incident Response, Best Practices, and Chapter Summary
+
+> **"Broken Access Control is one of the most dangerous application security risks because it directly violates confidentiality, integrity, and trust. Strong authorization must be designed into the application—not added later."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Enterprise Authorization Governance
+- Secure Authorization Architecture
+- Incident Response
+- Continuous Authorization Review
+- Operational Best Practices
+- Security Metrics
+- Common Challenges
+- Interview Revision
+- Chapter Summary
+
+---
+
+# Enterprise Authorization Governance
+
+Access control should be managed through organizational policies rather than ad hoc application logic.
+
 ```
+Security Policy
+
+↓
+
+Authorization Standards
+
+↓
+
+Development Guidelines
+
+↓
+
+Implementation
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Periodic Review
+```
+
+Governance ensures consistent authorization across all enterprise applications.
+
+---
+
+# Authorization Lifecycle
+
+Access permissions change over time.
+
+```
+User Created
+
+↓
+
+Identity Verified
+
+↓
+
+Role Assigned
+
+↓
+
+Permissions Granted
+
+↓
+
+Periodic Review
+
+↓
+
+Role Updated
+
+↓
+
+Access Revoked
+```
+
+Proper lifecycle management helps prevent unnecessary or outdated privileges.
+
+---
+
+# Joiner–Mover–Leaver (JML) Process
+
+Organizations should manage user access throughout employment.
+
+```
+New Employee
+
+↓
+
+Grant Required Access
+
+↓
+
+Role Change
+
+↓
+
+Update Permissions
+
+↓
+
+Employee Departure
+
+↓
+
+Revoke All Access
+```
+
+Timely permission updates reduce security risks.
+
+---
+
+# Separation of Duties (SoD)
+
+Critical operations should require different authorized individuals.
+
+```
+Employee A
+
+↓
+
+Create Payment
+
+──────────────
+
+Employee B
+
+↓
+
+Approve Payment
+```
+
+Separating responsibilities reduces the risk of fraud and accidental misuse.
+
+---
+
+# Principle of Default Deny
+
+Applications should deny access unless permission is explicitly granted.
+
+```
+Access Request
+
+↓
+
+Permission Exists?
+
+↓
+
+Yes
+
+↓
+
+Allow
+
+──────────────
+
+No
+
+↓
+
+Deny
+```
+
+This approach minimizes accidental exposure of sensitive resources.
+
+---
+
+# Centralized Authorization
+
+Large organizations often centralize authorization decisions.
+
+```
+Users
+
+↓
+
+Authentication
+
+↓
+
+Authorization Service
+
+↓
+
+Business Policies
+
+↓
+
+Protected Applications
+```
+
+Benefits include:
+
+- Consistent policy enforcement
+- Easier maintenance
+- Simplified auditing
+- Reduced duplication
+- Improved governance
+
+---
+
+# Enterprise Authorization Architecture
+
+```
+                 Internet
+
+                     │
+
+                     ▼
+
+             Identity Provider
+
+                     │
+
+                     ▼
+
+            Authentication Layer
+
+                     │
+
+                     ▼
+
+         Central Authorization Engine
+
+          ┌──────────┼──────────┐
+
+          ▼          ▼          ▼
+
+      RBAC       ABAC       Policies
+
+          │          │          │
+
+          └──────────┼──────────┘
+
+                     ▼
+
+            Business Applications
+
+                     │
+
+                     ▼
+
+                  Databases
+```
+
+A centralized architecture promotes consistency across applications.
+
+---
+
+# Authorization in APIs
+
+API authorization should be enforced independently for every request.
+
+```
+API Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Validation
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Authorization decisions should never rely on assumptions from previous requests.
+
+---
+
+# Authorization Caching
+
+Some systems temporarily cache authorization information for performance.
+
+```
+User Request
+
+↓
+
+Authorization Cache
+
+↓
+
+Valid?
+
+↓
+
+Yes → Continue
+
+──────────────
+
+No
+
+↓
+
+Re-evaluate Permissions
+```
+
+Cached permissions should expire appropriately and reflect permission changes promptly.
+
+---
+
+# Access Reviews
+
+Organizations should regularly review user permissions.
+
+```
+Users
+
+↓
+
+Current Roles
+
+↓
+
+Permission Review
+
+↓
+
+Unnecessary Access?
+
+↓
+
+Remove
+
+↓
+
+Document
+```
+
+Regular reviews help maintain least privilege.
+
+---
+
+# Privileged Access Management (PAM)
+
+Highly privileged accounts require additional protection.
+
+```
+Administrator
+
+↓
+
+Strong Authentication
+
+↓
+
+Authorization
+
+↓
+
+Session Monitoring
+
+↓
+
+Audit Logging
+```
+
+Administrative actions should receive greater oversight than standard user activities.
+
+---
+
+# Security Logging
+
+Authorization-related events should be logged.
+
+Examples include:
+
+- Administrative actions
+- Permission changes
+- Failed authorization attempts
+- Role assignments
+- Privilege changes
+- Sensitive data access
+
+---
+
+# Security Monitoring
+
+Security teams should continuously monitor:
+
+```
+✓ Failed Authorization Attempts
+
+✓ Privilege Escalation Indicators
+
+✓ Administrative Activities
+
+✓ Permission Changes
+
+✓ Cross-Tenant Access Attempts
+
+✓ High-Risk Business Operations
+
+✓ Unusual Access Patterns
+```
+
+Monitoring supports rapid detection and investigation.
+
+---
+
+# Incident Response
+
+If an authorization issue is discovered:
+
+```
+Detection
+
+↓
+
+Validate Issue
+
+↓
+
+Containment
+
+↓
+
+Root Cause Analysis
+
+↓
+
+Correct Authorization Logic
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Continuous Monitoring
+```
+
+After remediation, organizations should review whether similar weaknesses exist elsewhere.
+
+---
+
+# Enterprise Security Metrics
+
+Useful authorization metrics include:
+
+| Metric | Purpose |
+|---------|----------|
+| Failed Authorization Attempts | Detect abnormal activity |
+| Privilege Escalation Incidents | Measure authorization effectiveness |
+| Permission Review Completion | Ensure governance compliance |
+| Dormant Privileged Accounts | Identify unnecessary risk |
+| Time to Revoke Access | Measure offboarding efficiency |
+| Unauthorized Access Events | Evaluate control effectiveness |
+
+---
+
+# Authorization Review Checklist
+
+```
+✓ Authentication Verified
+
+✓ Server-Side Authorization
+
+✓ Least Privilege Applied
+
+✓ Default Deny Implemented
+
+✓ Object Ownership Validated
+
+✓ API Authorization Verified
+
+✓ Tenant Isolation Confirmed
+
+✓ Logging Enabled
+
+✓ Monitoring Enabled
+
+✓ Documentation Updated
+```
+
+---
+
+# Enterprise Example
+
+A multinational retail platform:
+
+```
+Customer
+
+↓
+
+Order History
+
+↓
+
+Ownership Check
+
+↓
+
+Authorized
+
+↓
+
+Display Orders
+
+────────────────
+
+Store Manager
+
+↓
+
+Inventory Management
+
+↓
+
+Role Validation
+
+↓
+
+Authorized
+
+↓
+
+Update Inventory
+
+────────────────
+
+Customer
+
+↓
+
+Inventory Management
+
+↓
+
+Denied
+```
+
+Each action is evaluated independently according to business rules.
+
+---
+
+# Defense in Depth
+
+Authorization is one layer within a broader security architecture.
+
+```
+Secure Design
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Output Encoding
+
+↓
+
+Encryption
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Incident Response
+```
+
+Combining multiple controls significantly improves resilience.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Complex role structures | Define clear role hierarchies and document permissions |
+| Excessive privileges | Conduct periodic access reviews |
+| Legacy applications | Introduce centralized authorization gradually |
+| Multiple development teams | Standardize authorization policies |
+| Rapid application growth | Automate testing and governance where appropriate |
+
+---
+
+# Interview Revision
+
+## Authentication vs Authorization
+
+| Authentication | Authorization |
+|----------------|---------------|
+| Verifies identity | Determines permissions |
+| Happens first | Happens after authentication |
+| Answers "Who are you?" | Answers "What can you do?" |
+
+---
+
+## Horizontal vs Vertical Privilege Escalation
+
+| Horizontal | Vertical |
+|------------|----------|
+| Access another user's resources | Gain higher-level privileges |
+| Same privilege level | Higher privilege level |
+| Ownership violation | Permission violation |
+
+---
+
+## Common Authorization Models
+
+```
+RBAC
+
+↓
+
+ABAC
+
+↓
+
+DAC
+
+↓
+
+MAC
+
+↓
+
+Rule-Based Access Control
+```
+
+Each model serves different organizational requirements.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Create an authorization matrix for a sample enterprise application.
+2. Define roles, permissions, and protected resources.
+3. Identify where object-level and function-level authorization checks are required.
+4. Design a periodic permission review process.
+5. Document authorization events that should be logged and monitored.
+
+> Perform all testing only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. Why is Broken Access Control ranked as one of the highest OWASP risks?
+2. What is the principle of default deny?
+3. Why is server-side authorization mandatory?
+4. What is the purpose of separation of duties?
+5. Why are periodic access reviews important?
+6. What is Privileged Access Management (PAM)?
+7. Why should authorization events be logged?
+8. How does centralized authorization improve security?
+9. What metrics help measure authorization effectiveness?
+10. Why should authorization be considered throughout the application lifecycle?
+
+---
+
+# Best Practices
+
+- Enforce authorization on every protected server-side request.
+- Follow the principles of least privilege and default deny.
+- Centralize authorization logic where practical.
+- Perform regular access reviews and promptly revoke unnecessary permissions.
+- Protect privileged accounts with stronger controls and monitoring.
+- Log and monitor authorization decisions involving sensitive operations.
+- Test authorization consistently across web interfaces, APIs, and business workflows.
+- Integrate authorization reviews into the Secure SDLC.
+
+---
+
+# Common Mistakes
+
+- Assuming authenticated users are automatically authorized.
+- Trusting client-side permission checks.
+- Leaving dormant privileged accounts active.
+- Granting excessive permissions for convenience.
+- Failing to review permissions after organizational changes.
+- Ignoring authorization failures in monitoring systems.
+- Applying inconsistent authorization rules across different applications.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The fundamentals of Broken Access Control and why it is the **#1 OWASP Top 10 risk**.
+- The distinction between authentication and authorization.
+- Common authorization models including RBAC, ABAC, DAC, MAC, and rule-based access control.
+- The concepts of horizontal and vertical privilege escalation and IDOR.
+- How object-level, function-level, API-level, and business logic authorization protect enterprise applications.
+- The importance of least privilege, default deny, separation of duties, centralized authorization, logging, monitoring, and periodic access reviews.
+- How enterprise governance integrates authorization into the Secure Software Development Lifecycle (SSDLC).
+
+Broken Access Control remains one of the most impactful web application security risks because authorization failures can expose sensitive information, administrative capabilities, and critical business functions. A robust authorization strategy requires secure architecture, consistent server-side enforcement, continuous monitoring, and ongoing governance to ensure that every request is evaluated according to clearly defined business rules.
+
