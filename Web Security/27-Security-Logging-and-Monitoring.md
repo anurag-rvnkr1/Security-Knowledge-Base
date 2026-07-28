@@ -641,6 +641,768 @@ Incident Response
 - Event correlation helps identify meaningful patterns from multiple log sources.
 - High-quality logs are accurate, complete, protected, and continuously monitored.
 
+# 27-Security-Logging-and-Monitoring-Failures.md
+
+# Part 2 — Log Collection, SIEM, Detection Engineering, Alerting, Log Integrity, and Enterprise Monitoring
+
+> **"Logs become valuable only when they are collected, protected, correlated, analyzed, and transformed into actionable security intelligence."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Log Collection
+- Log Aggregation
+- Security Information and Event Management (SIEM)
+- Detection Engineering
+- Security Alerts
+- Event Correlation
+- Log Integrity
+- Log Retention
+- Monitoring Strategies
+- Enterprise Detection Architecture
+
+---
+
+# Enterprise Log Collection
+
+Organizations generate logs from hundreds or even thousands of systems.
+
+```
+Applications
+
+↓
+
+Servers
+
+↓
+
+Databases
+
+↓
+
+Network Devices
+
+↓
+
+Cloud Services
+
+↓
+
+Central Log Collection
+```
+
+Centralized collection enables efficient monitoring and investigation.
+
+---
+
+# Log Collection Pipeline
+
+```
+Event Generated
+
+↓
+
+Log Created
+
+↓
+
+Log Collector
+
+↓
+
+Central Repository
+
+↓
+
+SIEM
+
+↓
+
+SOC Monitoring
+```
+
+Each stage should preserve log integrity and availability.
+
+---
+
+# Log Aggregation
+
+Aggregation combines logs from multiple systems into a centralized platform.
+
+```
+Web Servers
+
++
+
+Applications
+
++
+
+Firewalls
+
++
+
+VPN
+
++
+
+Cloud Logs
+
+↓
+
+Central Repository
+```
+
+Aggregation provides a unified view of organizational activity.
+
+---
+
+# Benefits of Centralized Logging
+
+```
+Centralized Logging
+
+│
+
+├── Single Source of Truth
+
+├── Faster Investigations
+
+├── Event Correlation
+
+├── Long-Term Storage
+
+├── Compliance Support
+
+└── Improved Visibility
+```
+
+---
+
+# Security Information and Event Management (SIEM)
+
+A SIEM platform collects, normalizes, correlates, and analyzes security events from multiple sources.
+
+```
+Log Sources
+
+↓
+
+Collection
+
+↓
+
+Normalization
+
+↓
+
+Correlation
+
+↓
+
+Detection
+
+↓
+
+Alert
+
+↓
+
+SOC
+```
+
+SIEM solutions support security operations by providing centralized visibility and investigation capabilities.
+
+---
+
+# Core SIEM Functions
+
+```
+SIEM
+
+│
+
+├── Log Collection
+
+├── Data Normalization
+
+├── Event Correlation
+
+├── Alert Generation
+
+├── Dashboards
+
+├── Search
+
+├── Reporting
+
+└── Investigation
+```
+
+---
+
+# Data Normalization
+
+Different systems produce logs in different formats.
+
+```
+Firewall Logs
+
+↓
+
+Application Logs
+
+↓
+
+Cloud Logs
+
+↓
+
+Normalize
+
+↓
+
+Common Format
+```
+
+Normalization simplifies searching and correlation.
+
+---
+
+# Event Correlation
+
+Individual events may appear harmless in isolation.
+
+```
+Login Failure
+
++
+
+VPN Login
+
++
+
+Privilege Change
+
++
+
+Database Access
+
+↓
+
+Correlated Detection
+```
+
+Correlation combines multiple events into meaningful security observations.
+
+---
+
+# Detection Engineering
+
+Detection engineering focuses on creating reliable methods to identify suspicious or malicious activity using telemetry from applications, systems, and networks.
+
+```
+Telemetry
+
+↓
+
+Detection Logic
+
+↓
+
+Evaluation
+
+↓
+
+Alert
+
+↓
+
+Investigation
+```
+
+Effective detections aim to maximize useful alerts while minimizing unnecessary noise.
+
+---
+
+# Detection Lifecycle
+
+```
+Threat Understanding
+
+↓
+
+Detection Design
+
+↓
+
+Implementation
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+Detection content should evolve as environments and threats change.
+
+---
+
+# Detection Sources
+
+```
+Detection Data
+
+│
+
+├── Authentication Logs
+
+├── Application Logs
+
+├── Endpoint Events
+
+├── Network Logs
+
+├── Firewall Logs
+
+├── Cloud Logs
+
+├── DNS Logs
+
+└── Audit Logs
+```
+
+Combining diverse telemetry improves detection coverage.
+
+---
+
+# Alert Generation
+
+When predefined conditions are met:
+
+```
+Security Event
+
+↓
+
+Detection Rule
+
+↓
+
+Alert
+
+↓
+
+SOC Queue
+
+↓
+
+Investigation
+```
+
+Alerts should represent meaningful situations requiring analyst attention.
+
+---
+
+# Alert Severity
+
+Organizations commonly prioritize alerts.
+
+| Severity | Typical Response |
+|-----------|------------------|
+| Informational | Record for visibility |
+| Low | Monitor |
+| Medium | Analyst review |
+| High | Immediate investigation |
+| Critical | Rapid incident response |
+
+Severity should reflect organizational risk and business impact.
+
+---
+
+# Alert Fatigue
+
+Excessive low-value alerts can overwhelm analysts.
+
+```
+Thousands of Alerts
+
+↓
+
+Analyst Overload
+
+↓
+
+Important Alert Missed
+
+↓
+
+Delayed Response
+```
+
+Reducing false positives is an important detection engineering goal.
+
+---
+
+# Improving Detection Quality
+
+```
+Detection Improvement
+
+│
+
+├── Tune Rules
+
+├── Reduce Noise
+
+├── Validate Alerts
+
+├── Improve Context
+
+├── Review Regularly
+
+└── Measure Effectiveness
+```
+
+Well-maintained detections improve operational efficiency.
+
+---
+
+# Log Integrity
+
+Security logs themselves must be protected.
+
+```
+Generated Log
+
+↓
+
+Secure Transport
+
+↓
+
+Protected Storage
+
+↓
+
+Access Control
+
+↓
+
+Integrity Verification
+```
+
+Unauthorized modification of logs can undermine investigations.
+
+---
+
+# Protecting Logs
+
+```
+Log Protection
+
+│
+
+├── Access Control
+
+├── Encryption
+
+├── Integrity Verification
+
+├── Backups
+
+├── Audit Trails
+
+└── Retention Policies
+```
+
+Only authorized personnel should access sensitive security logs.
+
+---
+
+# Log Retention
+
+Organizations define how long logs should be retained.
+
+```
+Generate Log
+
+↓
+
+Store
+
+↓
+
+Monitor
+
+↓
+
+Archive
+
+↓
+
+Secure Disposal
+```
+
+Retention requirements depend on operational, legal, and regulatory needs.
+
+---
+
+# Monitoring Strategies
+
+Monitoring may include:
+
+```
+Continuous Monitoring
+
+│
+
+├── Authentication Activity
+
+├── Administrative Actions
+
+├── Configuration Changes
+
+├── Application Errors
+
+├── Network Events
+
+├── Cloud Activity
+
+└── Security Alerts
+```
+
+Continuous visibility helps reduce detection time.
+
+---
+
+# Enterprise Monitoring Architecture
+
+```
+Applications
+
+      │
+
+Servers
+
+      │
+
+Cloud
+
+      │
+
+Network Devices
+
+      ▼
+
+Log Collection
+
+      ▼
+
+SIEM Platform
+
+      ▼
+
+Detection Rules
+
+      ▼
+
+Alert Queue
+
+      ▼
+
+Security Operations Center
+```
+
+---
+
+# Security Dashboards
+
+SOC teams commonly monitor dashboards showing:
+
+```
+Dashboard
+
+│
+
+├── Authentication Trends
+
+├── Active Alerts
+
+├── Failed Logins
+
+├── Privileged Activity
+
+├── System Health
+
+├── Cloud Events
+
+├── Open Incidents
+
+└── Risk Indicators
+```
+
+Dashboards improve situational awareness.
+
+---
+
+# Enterprise Example
+
+A multinational manufacturing company collects logs from:
+
+```
+ERP System
+
+↓
+
+Authentication Server
+
+↓
+
+Cloud Infrastructure
+
+↓
+
+Firewalls
+
+↓
+
+Endpoints
+
+↓
+
+SIEM
+
+↓
+
+SOC Analysts
+```
+
+Correlated detections enable analysts to investigate suspicious authentication activity alongside network and application events.
+
+---
+
+# Common Monitoring Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large log volume | Centralize and prioritize data |
+| Multiple log formats | Normalize events |
+| Alert fatigue | Tune detection rules |
+| Incomplete visibility | Expand telemetry coverage |
+| Long investigations | Improve correlation and dashboards |
+| Weak log protection | Apply access controls and integrity safeguards |
+
+---
+
+# Enterprise Detection Workflow
+
+```
+Security Event
+
+↓
+
+Log Collection
+
+↓
+
+Normalization
+
+↓
+
+Correlation
+
+↓
+
+Detection Rule
+
+↓
+
+Alert
+
+↓
+
+SOC Investigation
+
+↓
+
+Response
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw an enterprise SIEM architecture.
+2. Identify five major log sources.
+3. Classify alerts by severity.
+4. Design a conceptual detection workflow.
+5. Create a dashboard layout showing key security metrics.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is a SIEM?
+2. Why is log normalization necessary?
+3. What is event correlation?
+4. What is detection engineering?
+5. Why does alert fatigue occur?
+6. How can organizations improve detection quality?
+7. Why must security logs be protected?
+8. What is log retention?
+9. What information should appear on a SOC dashboard?
+10. How does centralized logging improve investigations?
+
+---
+
+# Best Practices
+
+- Centralize security logs from applications, infrastructure, and cloud platforms.
+- Normalize log formats before analysis.
+- Continuously improve detection rules based on operational feedback.
+- Protect log integrity using strong access controls and secure storage.
+- Tune alerts to reduce false positives and analyst fatigue.
+- Define appropriate log retention and archival policies.
+- Regularly review dashboards, alerts, and detection coverage.
+
+---
+
+# Common Mistakes
+
+- Collecting logs without monitoring them.
+- Generating excessive low-value alerts.
+- Ignoring log integrity and access control.
+- Failing to normalize logs from different systems.
+- Keeping detection rules static despite environmental changes.
+- Relying on a single log source for investigations.
+
+---
+
+# Key Takeaways
+
+- Centralized log collection improves visibility and investigation capabilities.
+- SIEM platforms aggregate, normalize, correlate, and analyze security events.
+- Detection engineering transforms telemetry into actionable alerts.
+- Protecting log integrity is essential for trustworthy investigations.
+- Effective monitoring depends on high-quality telemetry, tuned detections, and continuous operational improvement.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
