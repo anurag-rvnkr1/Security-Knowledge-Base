@@ -2111,6 +2111,774 @@ Every layer contributes to maintaining trustworthy data.
 - File Integrity Monitoring helps detect unauthorized modifications to critical files.
 - Enterprise integrity depends on validation, monitoring, change management, and continuous operational oversight.
 
-```text id="rrks28"
-**Next:** Part 4
+# 26-Software-and-Data-Integrity-Failures.md
+
+# Part 4 — Enterprise Governance, Incident Response, Compliance, Secure SDLC Integration, and Chapter Summary
+
+> **"Integrity is not achieved through a single security control. It is maintained through governance, continuous verification, secure engineering practices, monitoring, and disciplined operational processes."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Enterprise Integrity Governance
+- Secure SDLC Integration
+- Integrity Incident Response
+- Compliance Considerations
+- Security Metrics
+- Continuous Improvement
+- Enterprise Integrity Maturity
+- Operational Best Practices
+- Chapter Summary
+
+---
+
+# Enterprise Integrity Governance
+
+Integrity governance establishes policies, standards, and processes that ensure software and data remain trustworthy throughout their lifecycle.
+
 ```
+Business Objectives
+
+↓
+
+Security Policies
+
+↓
+
+Integrity Standards
+
+↓
+
+Development Standards
+
+↓
+
+Deployment Standards
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+Governance aligns technical controls with organizational goals.
+
+---
+
+# Integrity Governance Framework
+
+```
+Governance
+
+│
+
+├── Policies
+
+├── Standards
+
+├── Procedures
+
+├── Risk Management
+
+├── Compliance
+
+├── Auditing
+
+└── Continuous Monitoring
+```
+
+A structured governance framework promotes consistency across development and operations.
+
+---
+
+# Secure SDLC Integration
+
+Integrity controls should be embedded into every phase of the Software Development Life Cycle.
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Testing
+
+↓
+
+Build
+
+↓
+
+Deployment
+
+↓
+
+Operations
+
+↓
+
+Retirement
+```
+
+Security is most effective when integrated from the beginning rather than added later.
+
+---
+
+# Integrity Controls Across the SDLC
+
+| SDLC Phase | Integrity Control |
+|------------|-------------------|
+| Requirements | Security requirements definition |
+| Design | Architecture review |
+| Development | Peer review and version control |
+| Testing | Integrity validation |
+| Build | Artifact verification |
+| Deployment | Release approval |
+| Operations | Continuous monitoring |
+| Retirement | Secure decommissioning |
+
+---
+
+# Change Management
+
+Every production change should follow an approved workflow.
+
+```
+Change Request
+
+↓
+
+Impact Assessment
+
+↓
+
+Risk Analysis
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Validation
+
+↓
+
+Documentation
+
+↓
+
+Review
+```
+
+Structured change management minimizes operational risk.
+
+---
+
+# Configuration Governance
+
+Configuration should be treated as a controlled organizational asset.
+
+```
+Configuration
+
+↓
+
+Version Control
+
+↓
+
+Peer Review
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Configuration changes should always be traceable.
+
+---
+
+# Release Governance
+
+Enterprise software releases typically follow controlled processes.
+
+```
+Development Complete
+
+↓
+
+Testing Complete
+
+↓
+
+Security Review
+
+↓
+
+Integrity Verification
+
+↓
+
+Release Approval
+
+↓
+
+Production Deployment
+```
+
+Every release should be documented and auditable.
+
+---
+
+# Integrity Monitoring
+
+Continuous monitoring helps identify unexpected changes.
+
+```
+Applications
+
+↓
+
+Integrity Monitoring
+
+↓
+
+Alert Generation
+
+↓
+
+Investigation
+
+↓
+
+Resolution
+```
+
+Monitoring should include software, configuration, and critical business data.
+
+---
+
+# Incident Response for Integrity Events
+
+When an integrity issue is identified:
+
+```
+Detection
+
+↓
+
+Initial Assessment
+
+↓
+
+Containment
+
+↓
+
+Investigation
+
+↓
+
+Recovery
+
+↓
+
+Validation
+
+↓
+
+Lessons Learned
+```
+
+Incident response should be documented and regularly exercised.
+
+---
+
+# Incident Classification
+
+Integrity incidents may involve:
+
+```
+Integrity Incident
+
+│
+
+├── Unauthorized Software Changes
+
+├── Unexpected Configuration Changes
+
+├── Data Corruption
+
+├── Failed Integrity Verification
+
+├── Supply Chain Concerns
+
+└── Deployment Errors
+```
+
+Classification helps prioritize investigation and response.
+
+---
+
+# Root Cause Analysis
+
+Following recovery, organizations should determine:
+
+```
+Incident
+
+↓
+
+Evidence Collection
+
+↓
+
+Timeline Review
+
+↓
+
+Root Cause
+
+↓
+
+Corrective Actions
+
+↓
+
+Preventive Improvements
+```
+
+Root cause analysis strengthens long-term resilience.
+
+---
+
+# Continuous Improvement
+
+Security programs should evolve based on operational experience.
+
+```
+Operations
+
+↓
+
+Monitoring
+
+↓
+
+Lessons Learned
+
+↓
+
+Policy Updates
+
+↓
+
+Process Improvements
+
+↓
+
+Training
+
+↓
+
+Improved Security
+```
+
+Continuous improvement increases organizational maturity over time.
+
+---
+
+# Compliance Considerations
+
+Many regulations and standards emphasize integrity controls.
+
+Examples of expected practices include:
+
+```
+✓ Change Management
+
+✓ Audit Logging
+
+✓ Access Control
+
+✓ Secure Software Development
+
+✓ Configuration Management
+
+✓ Integrity Monitoring
+
+✓ Risk Assessments
+
+✓ Incident Response
+```
+
+Good governance simplifies compliance efforts.
+
+---
+
+# Enterprise Integrity Metrics
+
+Organizations monitor measurable indicators to assess integrity.
+
+| Metric | Purpose |
+|---------|----------|
+| Verified Releases | Measure deployment quality |
+| Configuration Drift Events | Identify unauthorized changes |
+| Integrity Verification Success Rate | Assess validation effectiveness |
+| Incident Response Time | Measure operational readiness |
+| Change Approval Compliance | Evaluate governance maturity |
+| Backup Verification Success | Confirm recovery readiness |
+
+---
+
+# Enterprise Integrity Dashboard
+
+```
+Integrity Dashboard
+
+│
+
+├── Software Releases
+
+├── Configuration Status
+
+├── Integrity Alerts
+
+├── Verified Artifacts
+
+├── Backup Health
+
+├── Open Incidents
+
+├── Compliance Status
+
+└── Risk Overview
+```
+
+Dashboards provide operational visibility for security and management teams.
+
+---
+
+# Enterprise Integrity Architecture
+
+```
+Developers
+
+↓
+
+Version Control
+
+↓
+
+CI/CD Pipeline
+
+↓
+
+Security Validation
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Security Operations Center
+```
+
+Every stage contributes to maintaining software and data integrity.
+
+---
+
+# Enterprise Example
+
+A multinational financial institution secures its software lifecycle using:
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Secure Development
+
+↓
+
+Peer Review
+
+↓
+
+Automated Testing
+
+↓
+
+Artifact Signing
+
+↓
+
+Release Approval
+
+↓
+
+Production
+
+↓
+
+Continuous Monitoring
+```
+
+Software releases are tracked, reviewed, verified, and continuously monitored throughout their operational lifecycle.
+
+---
+
+# Enterprise Integrity Checklist
+
+```
+✓ Source Code Reviewed
+
+✓ Build Verified
+
+✓ Artifacts Validated
+
+✓ Configuration Controlled
+
+✓ Updates Approved
+
+✓ Integrity Monitoring Enabled
+
+✓ Backups Verified
+
+✓ Change Management Followed
+
+✓ Incident Response Prepared
+
+✓ Continuous Improvement Implemented
+```
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large development teams | Standardize governance and review processes |
+| Frequent software releases | Automate integrity verification within CI/CD |
+| Complex cloud environments | Continuously monitor configurations and deployments |
+| Multiple software suppliers | Establish vendor evaluation and verification processes |
+| Regulatory obligations | Maintain complete audit trails and documentation |
+| Legacy applications | Prioritize modernization while applying compensating controls |
+
+---
+
+# Interview Revision
+
+## Software Integrity
+
+```
+Source Code
+
+↓
+
+Build
+
+↓
+
+Verification
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+---
+
+## Data Integrity
+
+```
+Create
+
+↓
+
+Validate
+
+↓
+
+Store
+
+↓
+
+Transfer
+
+↓
+
+Verify
+
+↓
+
+Use
+```
+
+---
+
+## Secure Software Supply Chain
+
+```
+Developer
+
+↓
+
+Repository
+
+↓
+
+Build
+
+↓
+
+Artifact
+
+↓
+
+Deployment
+
+↓
+
+Production
+```
+
+---
+
+## Integrity Incident Response
+
+```
+Detect
+
+↓
+
+Contain
+
+↓
+
+Investigate
+
+↓
+
+Recover
+
+↓
+
+Improve
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design an enterprise software supply chain with integrity verification at each stage.
+2. Develop a change management workflow for production deployments.
+3. Create a conceptual integrity monitoring dashboard.
+4. Document an incident response plan for software integrity failures.
+5. Map integrity controls to each phase of the Secure SDLC.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What are Software and Data Integrity Failures?
+2. Why is integrity a core principle of cybersecurity?
+3. How do digital signatures support software integrity?
+4. What is build provenance?
+5. Why should configuration changes follow formal change management?
+6. What is File Integrity Monitoring (FIM)?
+7. Why is backup verification important?
+8. How does governance improve software integrity?
+9. Which metrics help measure integrity maturity?
+10. Why is continuous monitoring essential for integrity protection?
+
+---
+
+# Best Practices
+
+- Integrate integrity controls throughout the Secure SDLC.
+- Protect build systems, artifact repositories, and deployment pipelines.
+- Verify software, updates, and critical data before trusting them.
+- Apply formal change management to software and configuration updates.
+- Monitor software, configuration, and business-critical data continuously.
+- Maintain complete audit logs and documentation.
+- Perform regular reviews and improve processes based on operational experience.
+
+---
+
+# Common Mistakes
+
+- Trusting software without verification.
+- Skipping integrity checks during deployments.
+- Allowing unmanaged configuration changes.
+- Neglecting backup verification.
+- Treating integrity verification as a one-time activity.
+- Failing to review incidents for root causes and long-term improvements.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The meaning of **Software and Data Integrity** and why integrity is fundamental to secure systems.
+- How software supply chains, trusted components, checksums, cryptographic hashes, and digital signatures help maintain software authenticity.
+- The importance of secure CI/CD pipelines, code signing, build provenance, artifact repositories, and release governance.
+- How data validation, transaction integrity, configuration management, secure updates, serialization integrity, and backup verification protect organizational information.
+- How governance, Secure SDLC integration, continuous monitoring, incident response, compliance, and operational metrics contribute to enterprise integrity.
+
+Modern organizations depend on trustworthy software and reliable data. By integrating integrity verification into development, deployment, operations, and governance, enterprises can reduce supply chain risk, detect unauthorized changes early, and maintain confidence in their software and business data throughout their lifecycle.
+
