@@ -1120,6 +1120,764 @@ Applications validate every resource reference, resolve it to an approved reposi
 - Enterprise repository architecture should emphasize governance, monitoring, and predictable resource handling.
 - Continuous logging and operational visibility strengthen long-term resource security.
 
+# 50-File-Inclusion.md
+
+# Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Secure Resource Management, Monitoring, and Enterprise Defense
+
+> **"Preventing File Inclusion vulnerabilities requires secure resource management, trusted repositories, validated references, least-privilege access, continuous monitoring, and governance integrated throughout the software development lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Detecting File Inclusion Risks
+- Resource Loading Architecture Reviews
+- Threat Modeling
+- Secure Resource Management
+- Secure SDLC
+- DevSecOps Integration
+- Repository Governance
+- Logging
+- Monitoring
+- Enterprise Defense Strategy
+
+---
+
+# Detecting File Inclusion Risks
+
+Organizations should periodically review every application component responsible for loading resources.
+
+```
+Application
+
+↓
+
+Resource Loading Review
+
+↓
+
+Architecture Assessment
+
+↓
+
+Validation Review
+
+↓
+
+Deployment Verification
+```
+
+The objective is to verify that applications load resources only from approved repositories using validated references.
+
+---
+
+# Resource Loading Security Review
+
+Every resource loading workflow should be documented and reviewed.
+
+```
+User Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Reference Validation
+
+↓
+
+Approved Repository
+
+↓
+
+Resource Loader
+
+↓
+
+Application Response
+```
+
+Security reviews should verify that every stage follows organizational security policies.
+
+---
+
+# Resource Inventory
+
+Maintain a complete inventory of application resources.
+
+```
+Application Resources
+
+│
+
+├── Templates
+
+├── Configuration Files
+
+├── Language Packs
+
+├── Reports
+
+├── Shared Components
+
+├── Documentation
+
+├── Static Assets
+
+└── Libraries
+```
+
+A complete inventory supports governance, maintenance, and security reviews.
+
+---
+
+# Repository Component Inventory
+
+Document every component involved in resource loading.
+
+```
+Repository Components
+
+│
+
+├── Web Server
+
+├── Application
+
+├── Validation Layer
+
+├── Resource Loader
+
+├── Repository
+
+├── Monitoring
+
+├── Audit Logs
+
+└── Deployment Pipeline
+```
+
+Documented dependencies simplify architecture reviews and incident investigations.
+
+---
+
+# Configuration Consistency
+
+Resource loading policies should remain consistent across environments.
+
+```
+Development
+
+↓
+
+Approved Configuration
+
+↓
+
+Testing
+
+↓
+
+Approved Configuration
+
+↓
+
+Production
+```
+
+Configuration consistency reduces operational risk and deployment issues.
+
+---
+
+# Architecture Review
+
+Security reviews should evaluate:
+
+- Resource loading workflow
+- Repository structure
+- Reference validation
+- Canonicalization
+- Authorization
+- Repository permissions
+- Logging
+- Monitoring
+
+```
+Architecture
+
+↓
+
+Security Review
+
+↓
+
+Recommendations
+
+↓
+
+Implementation
+```
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies trust boundaries associated with resource loading.
+
+```
+Incoming Request
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Resource Selection
+
+↓
+
+Repository
+
+↓
+
+Application Response
+```
+
+The objective is to ensure that application-controlled logic determines resource selection.
+
+---
+
+# Threat Modeling Questions
+
+Security architects should ask:
+
+- Which components load application resources?
+- Which repositories are approved?
+- Where are references validated?
+- Where does canonicalization occur?
+- Which users may modify repositories?
+- How are repository permissions enforced?
+- Which resource events are logged?
+- Which operational metrics are monitored?
+
+```
+Threat Assessment
+
+↓
+
+Risk Analysis
+
+↓
+
+Security Controls
+```
+
+---
+
+# Secure Resource Validation
+
+Applications should validate every resource reference before loading.
+
+```
+Incoming Request
+
+↓
+
+Validation
+
+↓
+
+Canonicalization
+
+↓
+
+Authorization
+
+↓
+
+Allowlist Verification
+
+↓
+
+Resource Loading
+```
+
+Validation should ensure that only approved resources are processed.
+
+---
+
+# Types of Testing
+
+```
+Testing
+
+│
+
+├── Unit Testing
+
+├── Integration Testing
+
+├── Functional Testing
+
+├── Repository Validation
+
+├── Regression Testing
+
+├── Security Testing
+
+├── Deployment Validation
+
+└── Architecture Review
+```
+
+Testing should verify correctness, reliability, and secure resource management.
+
+---
+
+# Secure Resource Lifecycle
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Review
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Retirement
+```
+
+Security controls should accompany every lifecycle stage.
+
+---
+
+# Repository Governance
+
+Organizations should establish governance for resource repositories.
+
+```
+Repository Governance
+
+│
+
+├── Repository Standards
+
+├── Ownership
+
+├── Access Policies
+
+├── Documentation
+
+├── Change Management
+
+├── Security Reviews
+
+├── Monitoring
+
+└── Compliance
+```
+
+Governance improves consistency across engineering teams.
+
+---
+
+# Secure SDLC
+
+File inclusion security should be integrated throughout software development.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Security Review
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security activities should begin during application design.
+
+---
+
+# DevSecOps Integration
+
+```
+Developer
+
+↓
+
+Version Control
+
+↓
+
+Build
+
+↓
+
+Automated Tests
+
+↓
+
+Reference Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Automation strengthens deployment quality and improves consistency.
+
+---
+
+# Change Management
+
+Changes affecting repositories or resource-loading behavior should follow a controlled process.
+
+```
+Repository Change
+
+↓
+
+Review
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Formal change management improves accountability and operational resilience.
+
+---
+
+# Logging
+
+Applications should record important resource-loading events.
+
+```
+Application
+
+↓
+
+Resource Events
+
+↓
+
+Audit Logs
+
+↓
+
+Monitoring Platform
+```
+
+Logs support investigations, troubleshooting, governance, and compliance.
+
+---
+
+# Important Events
+
+| Event | Purpose |
+|--------|----------|
+| Resource Loaded | Operational visibility |
+| Authorization Failure | Security monitoring |
+| Repository Update | Change tracking |
+| Configuration Change | Governance |
+| Validation Failure | Operational awareness |
+| Administrative Action | Accountability |
+| Service Restart | Reliability monitoring |
+| Monitoring Alert | Incident response |
+
+Sensitive application resources should not be unnecessarily disclosed in logs.
+
+---
+
+# Monitoring Architecture
+
+```
+Applications
+
+↓
+
+Resource Metrics
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboards
+
+↓
+
+Operations Team
+```
+
+Continuous monitoring helps detect operational issues before they affect business services.
+
+---
+
+# Useful Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Successful Resource Loads | Operational visibility |
+| Failed Resource Loads | Reliability monitoring |
+| Validation Failures | Security awareness |
+| Repository Availability | Operational health |
+| Average Load Time | Performance |
+| Configuration Changes | Governance |
+| Active Alerts | Incident awareness |
+
+---
+
+# Enterprise Architecture
+
+```
+                    Internet
+
+                        │
+
+                        ▼
+
+                 Load Balancer
+
+                        │
+
+                        ▼
+
+                  Web Server
+
+                        │
+
+                        ▼
+
+                  Application
+
+                        │
+
+                        ▼
+
+              Resource Validation Layer
+
+                        │
+
+        ┌───────────────┼───────────────┐
+
+        ▼               ▼               ▼
+
+ Approved Repository  Audit Logs   Monitoring
+
+                        │
+
+                        ▼
+
+                  SIEM / SOC
+```
+
+This layered architecture separates validation, repositories, monitoring, and governance responsibilities.
+
+---
+
+# Enterprise Example
+
+A multinational banking organization maintains customer portals, multilingual interfaces, regulatory reports, and shared UI components using centralized resource repositories.
+
+```
+Customer Request
+
+↓
+
+Application
+
+↓
+
+Reference Validation
+
+↓
+
+Approved Repository
+
+↓
+
+Resource Loader
+
+↓
+
+Business Response
+```
+
+Every resource request is validated, mapped to an approved repository, reviewed through change management, logged for auditing, and monitored through centralized dashboards.
+
+---
+
+# Operational Readiness Checklist
+
+```
+✓ Resource Inventory Documented
+
+✓ Approved Repositories Defined
+
+✓ Reference Validation Implemented
+
+✓ Canonicalization Enabled
+
+✓ Repository Permissions Reviewed
+
+✓ Monitoring Enabled
+
+✓ Audit Logging Configured
+
+✓ Architecture Reviewed
+
+✓ Change Management Established
+
+✓ Security Validation Completed
+```
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large repository infrastructure | Centralized repository governance |
+| Legacy applications | Incremental modernization |
+| Multiple deployment environments | Standardized configuration |
+| Frequent releases | Automated validation in CI/CD |
+| Distributed engineering teams | Shared secure development standards |
+| Regulatory requirements | Centralized auditing and compliance reviews |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Create an inventory of every repository used by an application.
+2. Draw the complete resource-loading architecture.
+3. Document where canonicalization and validation occur.
+4. Review repository permissions using least-privilege principles.
+5. Design a monitoring dashboard for repository availability, validation failures, and resource-loading performance.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on architecture review, governance, secure resource management, and defensive engineering practices.
+
+---
+
+# Interview Questions
+
+1. What is File Inclusion?
+2. Why should applications validate resource references?
+3. What is the purpose of canonicalization?
+4. Why should repositories be centrally managed?
+5. What is the benefit of allowlisted resources?
+6. Which resource events should be logged?
+7. How does Secure SDLC improve resource security?
+8. Why should repository changes follow change management?
+9. Which metrics indicate repository health?
+10. How does DevSecOps strengthen enterprise defenses?
+
+---
+
+# Best Practices
+
+- Validate every resource reference before loading.
+- Restrict resource loading to approved repositories.
+- Maintain allowlists for selectable resources.
+- Apply least-privilege permissions to repositories.
+- Standardize repository configuration across environments.
+- Integrate resource validation into CI/CD pipelines.
+- Continuously monitor repository performance and availability.
+- Review resource-loading architecture during security assessments.
+- Maintain comprehensive repository documentation.
+
+---
+
+# Common Mistakes
+
+- Allowing uncontrolled resource selection.
+- Trusting externally influenced references.
+- Maintaining inconsistent repository configurations.
+- Granting excessive repository permissions.
+- Skipping validation before resource loading.
+- Neglecting monitoring after deployments.
+- Failing to document repository dependencies.
+
+---
+
+# Key Takeaways
+
+- Secure file inclusion depends on validated references, trusted repositories, and allowlisted resources.
+- Threat modeling identifies trust boundaries surrounding resource loading.
+- Secure SDLC and DevSecOps integrate resource security throughout development.
+- Repository governance, logging, and monitoring improve operational resilience.
+- Continuous review and standardized architecture strengthen enterprise defenses against File Inclusion risks.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
