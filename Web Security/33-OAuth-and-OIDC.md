@@ -1514,6 +1514,933 @@ Each application validates tokens before providing access to protected resources
 - PKCE significantly strengthens the Authorization Code Flow for public clients.
 - Secure token lifecycle management—including validation, rotation, revocation, and least privilege—is fundamental to enterprise OAuth security.
 
+# 33-OAuth-and-OIDC.md
+
+# Part 3 — OAuth & OIDC Security, Common Threats, PKCE, Token Security, Session Management, Logging, Monitoring, and Enterprise Operations
+
+> **"The security of OAuth and OpenID Connect depends not only on strong authentication, but also on secure token handling, robust validation, continuous monitoring, and disciplined operational practices."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- OAuth Threat Landscape
+- OIDC Security
+- Token Security
+- PKCE Security Benefits
+- Session Management
+- OAuth Security Best Practices
+- Logging & Monitoring
+- Threat Modeling
+- Security Testing
+- Enterprise Security Operations
+
+---
+
+# OAuth Threat Landscape
+
+OAuth implementations face many of the same risks as other authentication systems, along with threats specific to delegated authorization.
+
+```
+OAuth Threats
+
+│
+
+├── Token Theft
+
+├── Token Replay
+
+├── Client Impersonation
+
+├── Authorization Code Interception
+
+├── Scope Misconfiguration
+
+├── Redirect URI Misconfiguration
+
+├── Session Hijacking
+
+├── Weak Token Validation
+
+├── Sensitive Data Exposure
+
+└── Insufficient Logging
+```
+
+Most risks result from insecure implementation rather than weaknesses in the OAuth specification.
+
+---
+
+# OAuth Attack Surface
+
+```
+User
+
+↓
+
+Client Application
+
+↓
+
+Authorization Server
+
+↓
+
+Access Token
+
+↓
+
+Resource Server
+
+↓
+
+Protected APIs
+```
+
+Each component should implement independent security controls.
+
+---
+
+# Token Theft
+
+Access Tokens represent delegated authorization.
+
+If an attacker obtains a valid token, they may be able to access protected resources until the token expires or is revoked.
+
+```
+Access Token
+
+↓
+
+Protected Storage
+
+↓
+
+Secure Transmission
+
+↓
+
+Resource Server
+```
+
+Organizations should minimize token exposure through secure handling and short lifetimes.
+
+---
+
+# Token Replay
+
+A replay attack involves reusing a previously issued valid token.
+
+```
+Captured Token
+
+↓
+
+Replay Attempt
+
+↓
+
+Token Validation
+
+↓
+
+Accept or Reject
+```
+
+Short-lived tokens, TLS, and proper validation help reduce replay risks.
+
+---
+
+# Authorization Code Interception
+
+Authorization Codes should be exchanged securely.
+
+```
+Authorization Request
+
+↓
+
+Authorization Code
+
+↓
+
+Secure Exchange
+
+↓
+
+Access Token
+```
+
+PKCE significantly strengthens this process for public clients.
+
+---
+
+# Why PKCE Matters
+
+PKCE (Proof Key for Code Exchange) adds an additional verification step during the Authorization Code Flow.
+
+```
+Client
+
+↓
+
+PKCE Challenge
+
+↓
+
+Authorization Server
+
+↓
+
+Authorization Code
+
+↓
+
+PKCE Verification
+
+↓
+
+Access Token
+```
+
+Without successful PKCE verification, the Authorization Code cannot be exchanged for tokens.
+
+---
+
+# Redirect URI Validation
+
+Redirect URIs determine where authorization responses are sent.
+
+```
+Client
+
+↓
+
+Authorization Request
+
+↓
+
+Registered Redirect URI
+
+↓
+
+Authorization Server
+```
+
+Authorization Servers should validate redirect URIs against pre-registered values.
+
+---
+
+# Scope Security
+
+Scopes define the permissions granted to a client.
+
+```
+Requested Scope
+
+↓
+
+Authorization
+
+↓
+
+Approved Scope
+
+↓
+
+Access Token
+```
+
+Applications should request only the permissions they genuinely require.
+
+---
+
+# Least Privilege
+
+```
+Client
+
+↓
+
+Minimum Required Scope
+
+↓
+
+Authorized Access
+```
+
+Least privilege reduces the impact of compromised applications or tokens.
+
+---
+
+# Client Authentication
+
+Confidential clients authenticate themselves when interacting with the Authorization Server.
+
+```
+Confidential Client
+
+↓
+
+Authentication
+
+↓
+
+Authorization Server
+```
+
+Strong client authentication improves trust between participating systems.
+
+---
+
+# Secure Token Validation
+
+Every Resource Server should validate incoming tokens before granting access.
+
+```
+Incoming Token
+
+↓
+
+Signature Validation
+
+↓
+
+Issuer Validation
+
+↓
+
+Audience Validation
+
+↓
+
+Expiration Check
+
+↓
+
+Scope Validation
+
+↓
+
+Access Decision
+```
+
+Validation should occur before processing protected requests.
+
+---
+
+# Common Validation Checks
+
+| Validation | Purpose |
+|------------|----------|
+| Signature | Verify integrity |
+| Issuer | Verify trusted issuer |
+| Audience | Confirm intended recipient |
+| Expiration | Reject expired tokens |
+| Not Before | Prevent premature use |
+| Scope | Verify permissions |
+| Token Status | Check revocation or validity |
+
+---
+
+# Token Lifetime Strategy
+
+```
+Access Token
+
+↓
+
+Short Lifetime
+
+↓
+
+Expiration
+
+↓
+
+Refresh Token
+
+↓
+
+New Access Token
+```
+
+Short-lived Access Tokens reduce the impact of token compromise.
+
+---
+
+# Refresh Token Security
+
+Refresh Tokens require stronger protection than Access Tokens because they can be used to obtain new Access Tokens.
+
+```
+Refresh Token
+
+↓
+
+Secure Storage
+
+↓
+
+Authorization Server
+
+↓
+
+New Access Token
+```
+
+Refresh Token rotation further improves security.
+
+---
+
+# Token Revocation
+
+Organizations may revoke tokens before expiration.
+
+```
+Security Event
+
+↓
+
+Token Revocation
+
+↓
+
+Resource Server
+
+↓
+
+Access Denied
+```
+
+Revocation is useful after credential compromise, account changes, or policy violations.
+
+---
+
+# OIDC Authentication Security
+
+OpenID Connect introduces identity verification.
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Identity Provider
+
+↓
+
+ID Token
+
+↓
+
+Application
+```
+
+Applications should validate ID Tokens before trusting user identity information.
+
+---
+
+# ID Token Validation
+
+Applications typically verify:
+
+```
+ID Token
+
+↓
+
+Signature
+
+↓
+
+Issuer
+
+↓
+
+Audience
+
+↓
+
+Expiration
+
+↓
+
+Authentication Context
+
+↓
+
+Identity Accepted
+```
+
+Only successfully validated ID Tokens should be trusted.
+
+---
+
+# Session Management
+
+Authentication sessions require ongoing management.
+
+```
+User Login
+
+↓
+
+Session
+
+↓
+
+Monitoring
+
+↓
+
+Expiration
+
+↓
+
+Logout
+```
+
+Session security complements token security.
+
+---
+
+# Logout Considerations
+
+Organizations should define secure logout processes.
+
+```
+Logout
+
+↓
+
+Session Terminated
+
+↓
+
+Token Invalidated (Where Applicable)
+
+↓
+
+Access Removed
+```
+
+Logout behavior depends on application architecture and organizational requirements.
+
+---
+
+# Logging
+
+OAuth and OIDC events should be logged for operational visibility.
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Token Issuance
+
+↓
+
+API Access
+
+↓
+
+Logging
+```
+
+Logs support auditing and incident investigations.
+
+---
+
+# Events to Log
+
+| Event | Purpose |
+|--------|----------|
+| Login Events | Authentication auditing |
+| Token Issuance | Authorization tracking |
+| Authorization Decisions | Access auditing |
+| Failed Authentication | Security monitoring |
+| Token Revocation | Incident response |
+| Administrative Changes | Accountability |
+
+Sensitive values such as raw access tokens should generally **not** be recorded in logs.
+
+---
+
+# Monitoring
+
+Continuous monitoring helps detect suspicious authentication and authorization activity.
+
+```
+Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerting
+
+↓
+
+SOC
+
+↓
+
+Investigation
+```
+
+Monitoring improves both security and operational awareness.
+
+---
+
+# OAuth Observability
+
+```
+Observability
+
+│
+
+├── Logs
+
+├── Metrics
+
+├── Traces
+
+└── Dashboards
+```
+
+Observability enables teams to understand authentication behavior across distributed environments.
+
+---
+
+# Security Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Login Success Rate | Identity monitoring |
+| Authentication Failures | Threat detection |
+| Token Issuance Rate | Operational monitoring |
+| Token Revocations | Security tracking |
+| Authorization Failures | Access monitoring |
+| API Response Time | Performance |
+| Identity Provider Availability | Reliability |
+| Security Alerts | Threat visibility |
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies authentication and authorization risks during system design.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Trust Boundaries
+
+↓
+
+Threat Analysis
+
+↓
+
+Security Controls
+```
+
+This process helps reduce design-related vulnerabilities.
+
+---
+
+# Secure SDLC Integration
+
+OAuth security should be incorporated throughout software development.
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Threat Modeling
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security should be integrated throughout the lifecycle.
+
+---
+
+# OAuth Security Testing
+
+Security testing verifies implemented controls.
+
+```
+Security Testing
+
+│
+
+├── Authentication Testing
+
+├── Authorization Testing
+
+├── Token Validation Review
+
+├── Configuration Review
+
+├── Logging Validation
+
+├── Monitoring Validation
+
+├── Architecture Review
+
+└── Code Review
+```
+
+Testing should confirm that authentication and authorization behave as expected.
+
+---
+
+# Defense in Depth
+
+OAuth benefits from multiple security layers.
+
+```
+Internet
+
+↓
+
+WAF
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+Authorization Server
+
+↓
+
+Resource Server
+
+↓
+
+Business Services
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+No single control should be relied upon exclusively.
+
+---
+
+# Enterprise OAuth Architecture
+
+```
+Internet
+
+↓
+
+HTTPS
+
+↓
+
+Load Balancer
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+Authorization Server
+
+↓
+
+Resource Server
+
+↓
+
+Business Applications
+
+↓
+
+Central Logging
+
+↓
+
+Monitoring Platform
+
+↓
+
+Security Operations Center
+```
+
+This layered architecture supports secure identity, delegated authorization, and operational visibility.
+
+---
+
+# Enterprise Example
+
+A multinational healthcare organization provides a patient portal secured using OpenID Connect.
+
+```
+Patient
+
+↓
+
+Patient Portal
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+ID Token
+
+↓
+
+Access Token
+
+↓
+
+Healthcare APIs
+
+↓
+
+Electronic Health Records
+```
+
+The patient authenticates through the Identity Provider. The portal validates the ID Token to establish identity, while healthcare APIs validate the Access Token before providing authorized medical information.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Token compromise | Short token lifetimes and revocation |
+| Excessive permissions | Least privilege scopes |
+| Weak redirect validation | Register and validate redirect URIs |
+| Poor visibility | Centralized logging and monitoring |
+| Session management | Controlled session lifecycle |
+| Distributed applications | Centralized identity platform |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw an OAuth trust boundary diagram.
+2. Design a secure token validation workflow.
+3. Compare Access Tokens and ID Tokens.
+4. Identify where PKCE fits into the Authorization Code Flow.
+5. Create a conceptual monitoring dashboard for OAuth authentication events.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on architecture, governance, validation, and defensive security engineering.
+
+---
+
+# Interview Questions
+
+1. What is token replay?
+2. Why are Access Tokens generally short-lived?
+3. What problem does PKCE address?
+4. Why should redirect URIs be validated?
+5. How is an ID Token different from an Access Token?
+6. What information should Resource Servers validate?
+7. Why should Refresh Tokens receive stronger protection?
+8. What OAuth events should be logged?
+9. Why is threat modeling valuable?
+10. How does defense in depth improve OAuth security?
+
+---
+
+# Best Practices
+
+- Use Authorization Code Flow with PKCE for public clients.
+- Validate every Access Token before granting resource access.
+- Validate ID Tokens before trusting user identity.
+- Register and strictly validate redirect URIs.
+- Use short-lived Access Tokens and protect Refresh Tokens.
+- Apply least-privilege scopes.
+- Centralize authentication logging and monitoring.
+- Integrate OAuth security into Secure SDLC and DevSecOps processes.
+
+---
+
+# Common Mistakes
+
+- Trusting Access Tokens without validation.
+- Treating ID Tokens as API authorization credentials.
+- Requesting excessive scopes.
+- Allowing overly broad redirect URI configurations.
+- Logging sensitive token values.
+- Ignoring monitoring after deployment.
+
+---
+
+# Key Takeaways
+
+- OAuth security depends on secure token issuance, validation, storage, and lifecycle management.
+- PKCE strengthens the Authorization Code Flow by protecting authorization code exchanges.
+- Access Tokens, Refresh Tokens, and ID Tokens each have distinct security responsibilities.
+- Logging, monitoring, and threat modeling improve operational security.
+- Defense in depth and least privilege are essential principles for secure OAuth and OIDC deployments.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
