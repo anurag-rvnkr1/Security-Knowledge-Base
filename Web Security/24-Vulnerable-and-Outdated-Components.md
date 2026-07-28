@@ -630,6 +630,696 @@ Update Planning
 - SBOMs improve transparency and support faster risk assessment.
 - Effective dependency management is a continuous operational process.
 
+# 24-Vulnerable-and-Outdated-Components.md
+
+# Part 2 — Vulnerability Management, CVE, CVSS, Patch Management, Dependency Scanning, and Enterprise Supply Chain Security
+
+> **"You cannot protect software components that you do not know exist. Visibility, vulnerability assessment, and timely updates are the foundation of software supply chain security."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Vulnerability Management
+- CVE (Common Vulnerabilities and Exposures)
+- CVSS (Common Vulnerability Scoring System)
+- Patch Management
+- Dependency Scanning
+- Container Image Security
+- Software Supply Chain Security
+- Secure Dependency Lifecycle
+- Enterprise Risk Management
+- Continuous Monitoring
+
+---
+
+# Vulnerability Management
+
+Vulnerability management is the continuous process of identifying, evaluating, prioritizing, remediating, and monitoring security weaknesses.
+
+```
+Discover
+
+↓
+
+Assess
+
+↓
+
+Prioritize
+
+↓
+
+Remediate
+
+↓
+
+Verify
+
+↓
+
+Monitor
+```
+
+This process applies to applications, operating systems, containers, cloud services, and third-party software components.
+
+---
+
+# Vulnerability Management Lifecycle
+
+```
+Asset Inventory
+
+↓
+
+Component Discovery
+
+↓
+
+Vulnerability Identification
+
+↓
+
+Risk Assessment
+
+↓
+
+Patch Planning
+
+↓
+
+Deployment
+
+↓
+
+Verification
+
+↓
+
+Continuous Monitoring
+```
+
+Effective vulnerability management depends on maintaining an accurate inventory of software assets.
+
+---
+
+# What is a CVE?
+
+**CVE (Common Vulnerabilities and Exposures)** provides standardized identifiers for publicly disclosed security vulnerabilities.
+
+Example format:
+
+```
+CVE-YYYY-NNNNN
+```
+
+Example:
+
+```
+CVE-2026-12345
+```
+
+A CVE identifier helps security teams consistently reference a specific vulnerability across different tools and vendors.
+
+---
+
+# Why CVEs Matter
+
+Without standardized identifiers:
+
+```
+Vendor A
+
+↓
+
+Different Name
+
+────────────
+
+Vendor B
+
+↓
+
+Another Name
+```
+
+With CVEs:
+
+```
+Vendor A
+
+↓
+
+CVE Identifier
+
+↑
+
+↓
+
+Vendor B
+
+↓
+
+Same Vulnerability
+```
+
+Standard identifiers improve communication and incident response.
+
+---
+
+# CVSS Overview
+
+The **Common Vulnerability Scoring System (CVSS)** provides a standardized way to estimate the severity of vulnerabilities.
+
+Typical severity ranges:
+
+| Score | Severity |
+|--------|----------|
+| 0.0 | None |
+| 0.1 – 3.9 | Low |
+| 4.0 – 6.9 | Medium |
+| 7.0 – 8.9 | High |
+| 9.0 – 10.0 | Critical |
+
+CVSS helps organizations prioritize remediation but should not be the only factor considered.
+
+---
+
+# Risk-Based Prioritization
+
+```
+Detected Vulnerability
+
+↓
+
+Severity
+
+↓
+
+Business Impact
+
+↓
+
+Exploitability
+
+↓
+
+Priority
+
+↓
+
+Remediation
+```
+
+Organizations often combine technical severity with business context.
+
+---
+
+# Enterprise Risk Factors
+
+```
+Risk Evaluation
+
+│
+
+├── CVSS Severity
+
+├── Internet Exposure
+
+├── Business Criticality
+
+├── Asset Value
+
+├── Existing Controls
+
+├── Vendor Support
+
+└── Operational Impact
+```
+
+Risk should be evaluated holistically rather than relying solely on numerical scores.
+
+---
+
+# Patch Management
+
+Patch management is the structured process of applying security updates safely.
+
+```
+Vendor Update
+
+↓
+
+Review
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Verification
+```
+
+Updates should be validated before production deployment.
+
+---
+
+# Patch Management Lifecycle
+
+```
+Patch Released
+
+↓
+
+Inventory Affected Systems
+
+↓
+
+Risk Assessment
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Validation
+
+↓
+
+Documentation
+```
+
+Organizations should establish defined maintenance procedures for updates.
+
+---
+
+# Emergency vs Routine Patching
+
+| Routine Updates | Emergency Updates |
+|-----------------|------------------|
+| Scheduled maintenance | Urgent security response |
+| Standard testing | Accelerated testing |
+| Planned deployment | Immediate risk reduction |
+| Normal approval process | Emergency approval workflow |
+
+Both require documentation and validation.
+
+---
+
+# Dependency Scanning
+
+Dependency scanning identifies known vulnerabilities in software libraries and packages.
+
+```
+Application
+
+↓
+
+Dependency Inventory
+
+↓
+
+Vulnerability Database
+
+↓
+
+Risk Report
+
+↓
+
+Review
+```
+
+Scanning helps organizations detect outdated or vulnerable components before deployment.
+
+---
+
+# Continuous Dependency Monitoring
+
+```
+Application
+
+↓
+
+Dependencies
+
+↓
+
+Continuous Scanning
+
+↓
+
+New Vulnerability Found
+
+↓
+
+Risk Assessment
+
+↓
+
+Remediation
+```
+
+Security reviews should continue after deployment because new vulnerabilities may be disclosed over time.
+
+---
+
+# Software Composition Analysis (SCA)
+
+Software Composition Analysis (SCA) tools help organizations understand the components within an application.
+
+Typical capabilities include:
+
+```
+SCA
+
+│
+
+├── Dependency Discovery
+
+├── License Analysis
+
+├── Vulnerability Detection
+
+├── Version Tracking
+
+├── SBOM Generation
+
+└── Continuous Monitoring
+```
+
+SCA improves visibility into software supply chains.
+
+---
+
+# Container Image Security
+
+Containers include multiple software layers.
+
+```
+Container Image
+
+│
+
+├── Base Operating System
+
+├── Runtime
+
+├── Framework
+
+├── Libraries
+
+└── Application
+```
+
+Each layer should be reviewed and maintained throughout its lifecycle.
+
+---
+
+# Container Lifecycle
+
+```
+Build
+
+↓
+
+Scan
+
+↓
+
+Review
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Update
+```
+
+Container security is an ongoing process rather than a one-time activity.
+
+---
+
+# Supply Chain Security
+
+Software supply chain security extends beyond application code.
+
+```
+Source Code
+
+↓
+
+Dependencies
+
+↓
+
+Build Pipeline
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment
+
+↓
+
+Production
+```
+
+Every stage should include integrity and security verification.
+
+---
+
+# Third-Party Risk Management
+
+Organizations should evaluate external software before adoption.
+
+Review areas include:
+
+```
+✓ Vendor Support
+
+✓ Maintenance Activity
+
+✓ Security History
+
+✓ Update Frequency
+
+✓ Documentation
+
+✓ Community Trust
+
+✓ Compatibility
+
+✓ Licensing
+```
+
+Well-maintained software generally provides a more predictable security lifecycle.
+
+---
+
+# Enterprise Dependency Governance
+
+```
+New Dependency
+
+↓
+
+Architecture Review
+
+↓
+
+Security Review
+
+↓
+
+Approval
+
+↓
+
+Integration
+
+↓
+
+Monitoring
+```
+
+Dependency selection should be governed rather than left to individual preference.
+
+---
+
+# Enterprise Example
+
+A financial application uses:
+
+```
+Application
+
+↓
+
+Framework
+
+↓
+
+Authentication Library
+
+↓
+
+Logging Library
+
+↓
+
+Database Driver
+
+↓
+
+Operating System
+
+↓
+
+Container Runtime
+```
+
+Each component is:
+
+- Inventoried
+- Version tracked
+- Periodically reviewed
+- Updated through a documented process
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large dependency tree | Maintain automated inventories |
+| Legacy software | Develop modernization plans |
+| Slow patch cycles | Prioritize based on risk |
+| Hidden transitive dependencies | Use dependency analysis tools |
+| Unsupported packages | Replace with maintained alternatives |
+| Multiple development teams | Standardize dependency governance |
+
+---
+
+# Enterprise Vulnerability Workflow
+
+```
+Inventory
+
+↓
+
+Dependency Scan
+
+↓
+
+Risk Assessment
+
+↓
+
+Patch Planning
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Verification
+
+↓
+
+Continuous Monitoring
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Select a sample web application.
+2. Create a conceptual dependency inventory.
+3. Classify direct and transitive dependencies.
+4. Develop a risk-based update prioritization process.
+5. Design a patch management workflow suitable for an enterprise environment.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is vulnerability management?
+2. What is a CVE?
+3. Why is CVSS useful?
+4. Why shouldn't organizations rely only on CVSS scores?
+5. What is patch management?
+6. What is dependency scanning?
+7. What is Software Composition Analysis (SCA)?
+8. Why should container images be scanned regularly?
+9. What is software supply chain security?
+10. Why should dependency monitoring continue after deployment?
+
+---
+
+# Best Practices
+
+- Maintain a complete inventory of software components.
+- Continuously monitor dependencies for newly disclosed vulnerabilities.
+- Apply risk-based prioritization when planning updates.
+- Test patches before production deployment.
+- Review third-party software before adoption.
+- Generate and maintain an SBOM.
+- Include dependency scanning in the development lifecycle.
+
+---
+
+# Common Mistakes
+
+- Delaying security updates indefinitely.
+- Ignoring transitive dependencies.
+- Treating vulnerability scans as one-time activities.
+- Using unsupported software without migration planning.
+- Deploying patches directly to production without validation.
+- Failing to document dependency versions.
+
+---
+
+# Key Takeaways
+
+- Vulnerability management is a continuous operational process.
+- CVEs provide standardized vulnerability identifiers, while CVSS helps estimate severity.
+- Patch management requires planning, testing, deployment, and verification.
+- Dependency scanning and Software Composition Analysis improve visibility into software supply chains.
+- Effective governance ensures that software components remain secure throughout their lifecycle.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
