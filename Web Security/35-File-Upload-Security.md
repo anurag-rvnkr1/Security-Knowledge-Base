@@ -1628,6 +1628,828 @@ Faculty members retrieve submissions only after authorization checks confirm the
 - Secure storage, encryption, retention policies, and audit logging strengthen enterprise upload security.
 - Validation, access control, and lifecycle management are essential components of a secure file handling system.
 
+# 35-File-Upload-Security.md
+
+# Part 3 — File Upload Security Threats, Common Vulnerabilities, Secure Processing, Monitoring, and Enterprise Security Operations
+
+> **"Secure file upload systems assume every uploaded file may be malicious until proven otherwise. Multiple defensive controls should protect every stage of the upload lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- File Upload Threat Landscape
+- Common File Upload Vulnerabilities
+- Secure File Processing
+- File Isolation
+- Authorization Controls
+- Monitoring & Logging
+- Threat Modeling
+- Secure SDLC
+- Enterprise File Security
+- Defense in Depth
+
+---
+
+# File Upload Threat Landscape
+
+File uploads introduce one of the largest attack surfaces in modern web applications.
+
+```
+Threat Landscape
+
+│
+
+├── Malicious Files
+
+├── Oversized Uploads
+
+├── Unauthorized Access
+
+├── Metadata Manipulation
+
+├── Storage Abuse
+
+├── Content-Type Confusion
+
+├── Processing Failures
+
+├── Information Disclosure
+
+├── Insufficient Logging
+
+└── Resource Exhaustion
+```
+
+Most risks arise from inadequate validation, weak access control, or insecure processing workflows.
+
+---
+
+# Upload Attack Surface
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Upload Request
+
+↓
+
+Validation
+
+↓
+
+Processing
+
+↓
+
+Storage
+
+↓
+
+Download
+
+↓
+
+Other Users
+```
+
+Every stage should implement appropriate security controls.
+
+---
+
+# Untrusted Input
+
+Every uploaded file should be considered untrusted.
+
+```
+External User
+
+↓
+
+Uploaded File
+
+↓
+
+Trust Boundary
+
+↓
+
+Application
+```
+
+Validation should occur before the file is trusted or processed.
+
+---
+
+# Defense in Depth
+
+Multiple security controls should protect uploaded content.
+
+```
+Defense Layers
+
+│
+
+├── Authentication
+
+├── Authorization
+
+├── Validation
+
+├── Content Inspection
+
+├── Storage Isolation
+
+├── Encryption
+
+├── Monitoring
+
+└── Auditing
+```
+
+No individual control should be relied upon exclusively.
+
+---
+
+# Secure Processing Pipeline
+
+```
+Upload
+
+↓
+
+Validation
+
+↓
+
+Security Inspection
+
+↓
+
+Metadata Extraction
+
+↓
+
+Storage
+
+↓
+
+Authorization
+
+↓
+
+Download
+```
+
+Each processing stage has clearly defined security responsibilities.
+
+---
+
+# Resource Exhaustion
+
+Applications should protect themselves from excessive resource consumption.
+
+Examples include:
+
+- Extremely large uploads
+- Large numbers of simultaneous uploads
+- Excessive storage consumption
+- High processing workloads
+
+```
+Upload
+
+↓
+
+Resource Controls
+
+↓
+
+Application Stability
+```
+
+Appropriate quotas and operational controls improve system availability.
+
+---
+
+# Storage Abuse
+
+Storage should not be treated as unlimited.
+
+```
+User
+
+↓
+
+Upload
+
+↓
+
+Quota Validation
+
+↓
+
+Storage
+```
+
+Organizations commonly enforce:
+
+- Storage quotas
+- File count limits
+- Upload frequency limits
+- Retention policies
+
+---
+
+# Authorization Risks
+
+Authentication alone is insufficient.
+
+```
+Authenticated User
+
+↓
+
+Authorization Check
+
+↓
+
+Upload Allowed?
+
+↓
+
+Yes / No
+```
+
+Users should only upload files permitted by their assigned roles and business responsibilities.
+
+---
+
+# Download Authorization
+
+Every download request should be authorized.
+
+```
+Download Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Storage
+
+↓
+
+Response
+```
+
+Ownership and business rules should be verified before serving content.
+
+---
+
+# File Isolation
+
+Uploaded files should remain isolated from critical application components.
+
+```
+Application
+
+↓
+
+Upload Service
+
+↓
+
+Dedicated Storage
+
+↓
+
+Content Delivery
+```
+
+Isolation limits the impact of unexpected processing issues.
+
+---
+
+# Metadata Integrity
+
+Metadata supports secure file management.
+
+```
+File
+
+↓
+
+Metadata
+
+↓
+
+Validation
+
+↓
+
+Database
+```
+
+Metadata should be generated or verified by the server whenever possible.
+
+---
+
+# File Lifecycle Security
+
+```
+Upload
+
+↓
+
+Validation
+
+↓
+
+Inspection
+
+↓
+
+Storage
+
+↓
+
+Access
+
+↓
+
+Retention
+
+↓
+
+Deletion
+```
+
+Security controls should remain effective throughout the entire lifecycle.
+
+---
+
+# Secure Storage Architecture
+
+```
+Internet
+
+↓
+
+Application
+
+↓
+
+Upload Service
+
+↓
+
+Object Storage
+
+↓
+
+Metadata Database
+
+↓
+
+Download Service
+```
+
+Separating services improves maintainability and security.
+
+---
+
+# Temporary Storage
+
+Some upload workflows require temporary storage during processing.
+
+```
+Upload
+
+↓
+
+Temporary Storage
+
+↓
+
+Validation
+
+↓
+
+Permanent Storage
+```
+
+Temporary locations should be protected and cleaned according to operational policies.
+
+---
+
+# Secure File Delivery
+
+```
+Client
+
+↓
+
+Authenticated Request
+
+↓
+
+Authorization
+
+↓
+
+Download Service
+
+↓
+
+Storage
+
+↓
+
+Response
+```
+
+Files should be delivered only after successful authorization.
+
+---
+
+# Logging
+
+File upload activities should be logged.
+
+```
+Upload
+
+↓
+
+Validation
+
+↓
+
+Storage
+
+↓
+
+Access
+
+↓
+
+Audit Logs
+```
+
+Logs support operational visibility and security investigations.
+
+---
+
+# Important Events to Log
+
+| Event | Purpose |
+|--------|----------|
+| Upload Started | Operational visibility |
+| Upload Completed | Audit trail |
+| Validation Failure | Security monitoring |
+| Download Attempt | Access auditing |
+| Authorization Failure | Threat detection |
+| File Deletion | Lifecycle auditing |
+| Administrative Actions | Accountability |
+
+Sensitive file contents should generally not appear in logs.
+
+---
+
+# Monitoring
+
+Continuous monitoring strengthens operational security.
+
+```
+Application
+
+↓
+
+Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerting
+
+↓
+
+SOC
+```
+
+Monitoring enables early identification of abnormal upload activity.
+
+---
+
+# Useful Security Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Upload Success Rate | Operational health |
+| Validation Failures | Security visibility |
+| Authorization Failures | Access monitoring |
+| Storage Consumption | Capacity planning |
+| Upload Volume | Operational monitoring |
+| Download Activity | Usage monitoring |
+| Administrative Changes | Governance |
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies risks before implementation.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Trust Boundaries
+
+↓
+
+Threat Analysis
+
+↓
+
+Security Controls
+```
+
+Threat modeling helps organizations design safer upload systems.
+
+---
+
+# Secure SDLC
+
+Upload security should be integrated into the software development lifecycle.
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security should be considered throughout development, not only during deployment.
+
+---
+
+# Zero Trust for File Uploads
+
+Zero Trust principles apply to uploaded content.
+
+```
+Every Upload
+
+↓
+
+Authenticate
+
+↓
+
+Authorize
+
+↓
+
+Validate
+
+↓
+
+Inspect
+
+↓
+
+Store
+
+↓
+
+Monitor
+```
+
+No uploaded file should be implicitly trusted.
+
+---
+
+# Enterprise Upload Architecture
+
+```
+                 Internet
+
+                     │
+
+                     ▼
+
+              Load Balancer
+
+                     │
+
+                     ▼
+
+             Web Application
+
+                     │
+
+                     ▼
+
+              Upload Service
+
+                     │
+
+                     ▼
+
+          Validation Engine
+
+                     │
+
+                     ▼
+
+         Security Inspection
+
+                     │
+
+                     ▼
+
+           Object Storage
+
+                     │
+
+         ┌───────────┴───────────┐
+
+         ▼                       ▼
+
+ Metadata Database      Download Service
+
+         │                       │
+
+         └───────────┬───────────┘
+
+                     ▼
+
+          Logging & Monitoring
+
+                     │
+
+                     ▼
+
+                   SOC
+```
+
+This architecture separates upload handling, validation, storage, and monitoring responsibilities.
+
+---
+
+# Enterprise Example
+
+A multinational insurance company allows customers to upload claim documents.
+
+```
+Customer
+
+↓
+
+Claims Portal
+
+↓
+
+Authentication
+
+↓
+
+Upload Service
+
+↓
+
+Validation
+
+↓
+
+Object Storage
+
+↓
+
+Claims Processing
+
+↓
+
+Authorized Adjuster
+```
+
+The upload service validates files before storage, while claims adjusters retrieve documents only after successful authorization checks.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Excessive uploads | Quotas and rate limits |
+| Unauthorized downloads | Strong authorization |
+| Metadata inconsistency | Server-side validation |
+| Storage growth | Retention policies |
+| Distributed services | Centralized upload service |
+| Limited visibility | Centralized logging and monitoring |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw a secure enterprise upload architecture.
+2. Identify trust boundaries in the upload lifecycle.
+3. Design a secure authorization workflow for downloads.
+4. Create a monitoring dashboard for upload activity.
+5. Map Zero Trust principles to file upload processing.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on architecture, governance, validation, and operational security.
+
+---
+
+# Interview Questions
+
+1. Why are uploaded files considered untrusted?
+2. What is defense in depth for file uploads?
+3. Why should uploads and downloads both require authorization?
+4. Why should uploaded files be isolated from application components?
+5. What events should be logged during file uploads?
+6. Why is monitoring important for upload systems?
+7. What is the purpose of upload quotas?
+8. Why should metadata be validated?
+9. How does Zero Trust apply to uploaded files?
+10. Why is threat modeling valuable for upload systems?
+
+---
+
+# Best Practices
+
+- Treat every uploaded file as untrusted input.
+- Apply layered validation and inspection before storage.
+- Authenticate and authorize every upload and download request.
+- Isolate uploaded content from application components.
+- Enforce storage quotas and retention policies.
+- Protect temporary and permanent storage locations.
+- Log significant upload and download events.
+- Continuously monitor upload infrastructure for operational and security anomalies.
+
+---
+
+# Common Mistakes
+
+- Trusting uploaded files without validation.
+- Allowing authenticated users unrestricted upload permissions.
+- Serving uploaded content without authorization checks.
+- Ignoring storage quotas and capacity planning.
+- Failing to protect temporary storage.
+- Logging sensitive file contents.
+- Omitting centralized monitoring and auditing.
+
+---
+
+# Key Takeaways
+
+- File uploads introduce a significant trust boundary and require layered security controls.
+- Secure processing includes validation, inspection, isolation, authorization, and monitoring.
+- Uploaded content should remain isolated from application components and accessed only through controlled workflows.
+- Logging, monitoring, and threat modeling strengthen enterprise file upload security.
+- Zero Trust and defense in depth are foundational principles for secure file handling.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
