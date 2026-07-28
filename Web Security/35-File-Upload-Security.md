@@ -772,6 +772,862 @@ These principles guide secure upload architecture.
 - Metadata management and unique file identifiers improve security and operational control.
 - Defense in depth and Zero Trust principles are fundamental to enterprise file upload security.
 
+# 35-File-Upload-Security.md
+
+# Part 2 — File Validation, Content Inspection, Storage Security, Access Control, and Secure Upload Processing
+
+> **"The most important security principle for file uploads is simple: validate everything, trust nothing, and isolate uploaded content from the rest of the application."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- File Validation
+- File Type Verification
+- MIME Type Validation
+- File Signature Validation
+- Content Inspection
+- Storage Security
+- Access Control
+- Secure Download Architecture
+- File Processing Pipeline
+- Enterprise Validation Strategies
+
+---
+
+# File Validation
+
+Every uploaded file should pass through multiple validation stages before it is accepted.
+
+```
+File Upload
+
+↓
+
+Validation
+
+↓
+
+Inspection
+
+↓
+
+Storage
+
+↓
+
+Access
+```
+
+Validation should occur before permanent storage whenever possible.
+
+---
+
+# Defense in Depth
+
+No single validation mechanism is sufficient.
+
+```
+Validation Layers
+
+│
+
+├── Authentication
+
+├── Authorization
+
+├── File Size
+
+├── File Type
+
+├── File Signature
+
+├── Content Inspection
+
+├── Storage Controls
+
+└── Access Control
+```
+
+Multiple independent controls improve overall security.
+
+---
+
+# Validation Pipeline
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Upload
+
+↓
+
+File Validation
+
+↓
+
+Security Inspection
+
+↓
+
+Storage
+
+↓
+
+Metadata
+
+↓
+
+Download Service
+```
+
+Each stage performs a distinct security function.
+
+---
+
+# File Extension Validation
+
+Applications often check file extensions.
+
+Examples:
+
+```
+report.pdf
+
+photo.jpg
+
+presentation.pptx
+
+spreadsheet.xlsx
+```
+
+Extension validation improves usability but should **not** be the only validation mechanism.
+
+---
+
+# Why Extensions Are Insufficient
+
+```
+Filename
+
+↓
+
+Extension
+
+↓
+
+Claimed File Type
+
+↓
+
+Actual File?
+```
+
+A filename alone does not reliably identify file content.
+
+---
+
+# MIME Type
+
+MIME (Multipurpose Internet Mail Extensions) identifies the declared content type.
+
+Examples include:
+
+| MIME Type | Typical File |
+|-----------|--------------|
+| image/jpeg | JPEG Image |
+| image/png | PNG Image |
+| application/pdf | PDF Document |
+| text/plain | Text File |
+| application/zip | ZIP Archive |
+
+MIME information may originate from the client and should be verified rather than blindly trusted.
+
+---
+
+# File Signature Validation
+
+Many file formats begin with recognizable binary patterns that help identify their format.
+
+```
+Uploaded File
+
+↓
+
+Header Inspection
+
+↓
+
+Expected Format?
+
+↓
+
+Yes
+
+↓
+
+Continue Validation
+```
+
+Signature validation provides stronger assurance than relying only on file names or declared MIME types.
+
+---
+
+# Multiple Validation Checks
+
+```
+Validation
+
+│
+
+├── Extension
+
+├── MIME Type
+
+├── File Signature
+
+├── File Size
+
+├── Business Rules
+
+└── Content Inspection
+```
+
+Combining these checks improves confidence in uploaded content.
+
+---
+
+# File Size Validation
+
+Applications should verify file size against business policies.
+
+```
+Upload
+
+↓
+
+Size Check
+
+↓
+
+Within Limit?
+
+↓
+
+Accept
+
+or
+
+Reject
+```
+
+Size limits protect storage capacity and application resources.
+
+---
+
+# Business Validation
+
+Validation should also enforce business requirements.
+
+Examples:
+
+- Allowed file categories
+- Maximum number of uploads
+- User storage quota
+- Project-specific restrictions
+- Department-specific permissions
+
+```
+Business Rules
+
+↓
+
+Validation
+
+↓
+
+Upload Decision
+```
+
+---
+
+# Content Inspection
+
+After basic validation, organizations may inspect uploaded content before storage or release.
+
+```
+Upload
+
+↓
+
+Validation
+
+↓
+
+Inspection
+
+↓
+
+Storage
+```
+
+Inspection provides an additional security layer beyond file identification.
+
+---
+
+# Content Inspection Pipeline
+
+```
+File
+
+↓
+
+Validation
+
+↓
+
+Security Inspection
+
+↓
+
+Metadata Extraction
+
+↓
+
+Storage
+
+↓
+
+Download
+```
+
+Each stage contributes to safer handling of uploaded content.
+
+---
+
+# Metadata Extraction
+
+Metadata can support search, auditing, and operational processes.
+
+Examples include:
+
+| Metadata | Purpose |
+|----------|----------|
+| Upload Time | Auditing |
+| Owner | Access Control |
+| File Identifier | Tracking |
+| File Size | Monitoring |
+| Storage Location | Retrieval |
+| Processing Status | Workflow |
+
+Applications should validate metadata before relying on it.
+
+---
+
+# File Storage Architecture
+
+```
+Application
+
+↓
+
+Upload Service
+
+↓
+
+Storage
+
+↓
+
+Metadata Database
+
+↓
+
+Download Service
+```
+
+Storage should remain logically separated from application logic.
+
+---
+
+# Storage Models
+
+```
+Storage
+
+│
+
+├── Local Disk
+
+├── NAS
+
+├── SAN
+
+├── Object Storage
+
+├── Cloud Storage
+
+└── Distributed Storage
+```
+
+Enterprise deployments commonly favor scalable object storage for uploaded content.
+
+---
+
+# Secure Storage Principles
+
+```
+Storage Security
+
+│
+
+├── Isolation
+
+├── Encryption
+
+├── Access Control
+
+├── Backup
+
+├── Audit Logging
+
+├── Monitoring
+
+└── High Availability
+```
+
+Storage security protects uploaded content throughout its lifecycle.
+
+---
+
+# Logical Isolation
+
+Uploaded files should be separated from application components.
+
+```
+Application
+
+↓
+
+Upload Service
+
+↓
+
+Dedicated Storage
+
+↓
+
+Business Data
+```
+
+Isolation reduces the impact of storage-related issues.
+
+---
+
+# Access Control
+
+Only authorized users should access uploaded files.
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Download Permission
+
+↓
+
+File
+```
+
+Access decisions should be enforced consistently.
+
+---
+
+# Download Workflow
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+File Request
+
+↓
+
+Storage
+
+↓
+
+Download
+```
+
+Authorization should be evaluated before serving content.
+
+---
+
+# File Identifier
+
+Applications commonly reference files using unique identifiers.
+
+```
+User Request
+
+↓
+
+File Identifier
+
+↓
+
+Metadata Lookup
+
+↓
+
+Storage
+
+↓
+
+Response
+```
+
+Identifiers simplify management and auditing.
+
+---
+
+# Storage Encryption
+
+Organizations frequently protect stored files using encryption.
+
+```
+File
+
+↓
+
+Encryption
+
+↓
+
+Secure Storage
+```
+
+Encryption helps protect confidentiality if storage media are exposed.
+
+---
+
+# Encryption States
+
+```
+Encryption
+
+│
+
+├── In Transit
+
+└── At Rest
+```
+
+Both transmission and storage protections contribute to overall security.
+
+---
+
+# Secure File Retrieval
+
+```
+Client
+
+↓
+
+Authenticated Request
+
+↓
+
+Authorization Check
+
+↓
+
+Storage
+
+↓
+
+File Delivery
+```
+
+The download path should apply the same security standards as the upload path.
+
+---
+
+# File Lifecycle
+
+```
+Upload
+
+↓
+
+Validation
+
+↓
+
+Inspection
+
+↓
+
+Storage
+
+↓
+
+Access
+
+↓
+
+Retention
+
+↓
+
+Deletion
+```
+
+Every phase should follow organizational policies.
+
+---
+
+# Retention Policies
+
+Organizations often define retention requirements.
+
+Examples include:
+
+- Temporary uploads
+- Customer documents
+- Medical records
+- Financial records
+- Legal evidence
+
+Retention periods depend on business, legal, and regulatory requirements.
+
+---
+
+# Audit Logging
+
+Upload and download operations should be logged.
+
+```
+Upload
+
+↓
+
+Storage
+
+↓
+
+Download
+
+↓
+
+Audit Log
+```
+
+Logs support investigations and compliance activities.
+
+---
+
+# Events to Log
+
+| Event | Purpose |
+|--------|----------|
+| Upload Started | Operational tracking |
+| Upload Completed | Auditing |
+| Validation Failure | Security monitoring |
+| Download Request | Access auditing |
+| File Deletion | Lifecycle tracking |
+| Administrative Changes | Accountability |
+
+Sensitive file contents should generally **not** be stored in application logs.
+
+---
+
+# Enterprise Upload Architecture
+
+```
+Internet
+
+↓
+
+Load Balancer
+
+↓
+
+Web Application
+
+↓
+
+Upload Service
+
+↓
+
+Validation Engine
+
+↓
+
+Content Inspection
+
+↓
+
+Object Storage
+
+↓
+
+Metadata Database
+
+↓
+
+Download Service
+
+↓
+
+Authorized User
+```
+
+Each component has clearly defined security responsibilities.
+
+---
+
+# Enterprise Example
+
+A university allows students to upload assignment submissions.
+
+```
+Student
+
+↓
+
+Portal
+
+↓
+
+Authentication
+
+↓
+
+Upload Service
+
+↓
+
+Validation
+
+↓
+
+Storage
+
+↓
+
+Faculty Download
+```
+
+Faculty members retrieve submissions only after authorization checks confirm they have permission to access the relevant course materials.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Incorrect file identification | Multi-layer validation |
+| Large uploads | Size limits and quotas |
+| Unauthorized downloads | Strong access control |
+| Storage growth | Retention policies |
+| Metadata inconsistency | Centralized validation |
+| Distributed applications | Centralized upload service |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design a multi-stage upload validation pipeline.
+2. Compare extension validation, MIME validation, and file signature validation.
+3. Draw a secure file storage architecture.
+4. Design a secure download workflow with authentication and authorization.
+5. Create a conceptual retention policy for uploaded business documents.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on validation, architecture, storage security, and defensive engineering.
+
+---
+
+# Interview Questions
+
+1. Why is file extension validation alone insufficient?
+2. What is a MIME type?
+3. Why should applications validate file signatures?
+4. Why should uploaded files be stored separately from application code?
+5. What metadata is useful for uploaded files?
+6. Why should downloads require authorization?
+7. What is the difference between encryption at rest and encryption in transit?
+8. Why are retention policies important?
+9. Why should upload events be logged?
+10. What is defense in depth for file uploads?
+
+---
+
+# Best Practices
+
+- Apply multiple independent validation mechanisms.
+- Verify file extensions, MIME types, and file signatures.
+- Authenticate and authorize both uploads and downloads.
+- Store uploaded files in isolated storage locations.
+- Encrypt files during transmission and at rest where appropriate.
+- Maintain metadata separately from binary content.
+- Define retention and deletion policies.
+- Log upload and download events for auditing.
+
+---
+
+# Common Mistakes
+
+- Trusting file extensions alone.
+- Relying solely on client-supplied MIME types.
+- Storing uploaded files alongside application resources.
+- Serving files without authorization checks.
+- Ignoring storage growth and retention planning.
+- Logging sensitive file contents.
+- Omitting audit trails for upload activities.
+
+---
+
+# Key Takeaways
+
+- Secure file uploads require layered validation rather than a single security check.
+- File extensions, MIME types, and file signatures each provide different validation signals.
+- Uploaded content should be isolated, protected, and accessed only through authorized workflows.
+- Secure storage, encryption, retention policies, and audit logging strengthen enterprise upload security.
+- Validation, access control, and lifecycle management are essential components of a secure file handling system.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
