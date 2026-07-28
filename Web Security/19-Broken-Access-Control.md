@@ -1357,6 +1357,717 @@ Each business function is protected by explicit authorization rules.
 - IDOR is fundamentally an authorization failure involving object access.
 - Consistent, server-side authorization checks are essential for protecting enterprise applications.
 
+# 19-Broken-Access-Control.md
+
+# Part 3 — Authorization Testing, Common Access Control Weaknesses, Enterprise Architecture, and Defense Strategies
+
+> **"Authorization is not verified by a single successful login. Every request, every API call, every business function, and every object access must be independently authorized."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Authorization Testing Methodology
+- Object-Level Authorization
+- Function-Level Authorization
+- Business Logic Authorization
+- API Authorization
+- Multi-Tenant Security
+- Enterprise Authorization Architecture
+- Defense Strategies
+- Security Monitoring
+- Secure Development Practices
+
+---
+
+# Authorization Testing Workflow
+
+Authorization testing follows a systematic process.
+
+```
+Identify User
+
+↓
+
+Authenticate
+
+↓
+
+Identify Permissions
+
+↓
+
+Attempt Resource Access
+
+↓
+
+Evaluate Authorization
+
+↓
+
+Allow
+
+OR
+
+Deny
+```
+
+The objective is to verify that every authorization decision matches the application's intended security policy.
+
+---
+
+# Types of Authorization Testing
+
+```
+Authorization Testing
+
+│
+
+├── Page Access
+
+├── API Access
+
+├── Object Access
+
+├── File Access
+
+├── Administrative Functions
+
+├── Business Logic
+
+└── Multi-Tenant Isolation
+```
+
+Each area should be evaluated independently.
+
+---
+
+# Object-Level Authorization
+
+Every object belongs to an authorized owner or group.
+
+```
+User Request
+
+↓
+
+Requested Object
+
+↓
+
+Ownership Check
+
+↓
+
+Authorized?
+
+↓
+
+Allow
+
+OR
+
+Deny
+```
+
+Authorization should be enforced for every object request.
+
+---
+
+# Function-Level Authorization
+
+Sensitive functionality requires explicit permission checks.
+
+```
+User
+
+↓
+
+Administrative Function
+
+↓
+
+Role Verification
+
+↓
+
+Permission Check
+
+↓
+
+Decision
+```
+
+Examples:
+
+- User management
+- Payroll approval
+- Configuration changes
+- Financial approvals
+
+---
+
+# URL Authorization
+
+Access control should never depend solely on whether a user can discover a URL.
+
+```
+Browser Request
+
+↓
+
+Application
+
+↓
+
+Authorization
+
+↓
+
+Allow
+
+OR
+
+Reject
+```
+
+Knowing or guessing a URL must not bypass authorization.
+
+---
+
+# API Authorization
+
+Modern applications expose numerous APIs.
+
+```
+Client
+
+↓
+
+REST API
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Database
+```
+
+Every API endpoint requires independent authorization.
+
+---
+
+# Record-Level Authorization
+
+Applications frequently store data for many users.
+
+```
+Database
+
+↓
+
+Record
+
+↓
+
+Ownership Validation
+
+↓
+
+Access Decision
+```
+
+Each record should be evaluated separately.
+
+---
+
+# Multi-Tenant Applications
+
+Cloud applications often serve multiple organizations.
+
+```
+Tenant A
+
+↓
+
+Application
+
+↓
+
+Tenant Isolation
+
+↓
+
+Tenant B
+```
+
+Tenant data must remain isolated even though the same application serves multiple customers.
+
+---
+
+# Multi-Tenant Authorization
+
+```
+User
+
+↓
+
+Tenant Validation
+
+↓
+
+Role Validation
+
+↓
+
+Resource Ownership
+
+↓
+
+Business Rules
+
+↓
+
+Access Decision
+```
+
+Multiple checks work together before access is granted.
+
+---
+
+# Business Logic Authorization
+
+Authorization extends beyond pages and APIs.
+
+```
+Business Process
+
+↓
+
+Business Rule
+
+↓
+
+Authorization
+
+↓
+
+Execute
+
+OR
+
+Reject
+```
+
+Examples include:
+
+- Refund approval
+- Loan approval
+- Salary modification
+- Account closure
+
+---
+
+# Administrative Interfaces
+
+Administrative functionality should receive additional protection.
+
+```
+Administrator
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Audit Logging
+
+↓
+
+Administrative Action
+```
+
+Administrative operations should be monitored and logged.
+
+---
+
+# File Authorization
+
+Applications often manage sensitive files.
+
+```
+User
+
+↓
+
+File Request
+
+↓
+
+Ownership
+
+↓
+
+Permission
+
+↓
+
+Download
+
+OR
+
+Denied
+```
+
+Every file request should undergo authorization validation.
+
+---
+
+# Enterprise Authorization Flow
+
+```
+                    User
+
+                     │
+
+                     ▼
+
+             Authentication
+
+                     │
+
+                     ▼
+
+           Authorization Engine
+
+                     │
+
+          ┌──────────┼──────────┐
+
+          ▼          ▼          ▼
+
+       Roles     Attributes   Policies
+
+          │          │          │
+
+          └──────────┼──────────┘
+
+                     ▼
+
+            Business Validation
+
+                     ▼
+
+             Protected Resource
+```
+
+Centralizing authorization improves consistency across the application.
+
+---
+
+# Security Logging
+
+Authorization events should be logged.
+
+```
+Authorization Request
+
+↓
+
+Decision
+
+↓
+
+Audit Log
+
+↓
+
+Security Monitoring
+
+↓
+
+SOC
+```
+
+Logging supports incident investigation and compliance requirements.
+
+---
+
+# Security Monitoring
+
+Security teams should monitor:
+
+```
+✓ Authorization Failures
+
+✓ Privileged Operations
+
+✓ Administrative Changes
+
+✓ Failed Permission Checks
+
+✓ Unusual Resource Access
+
+✓ Cross-Tenant Access Attempts
+
+✓ High-Risk Business Actions
+```
+
+Repeated authorization failures may indicate probing or misconfiguration.
+
+---
+
+# Secure Development Lifecycle
+
+Authorization should be considered during every SDLC phase.
+
+```
+Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Architecture
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Authorization should never be treated as an afterthought.
+
+---
+
+# Enterprise Authorization Checklist
+
+```
+✓ Server-Side Authorization
+
+✓ Least Privilege
+
+✓ Role Validation
+
+✓ Object Ownership Checks
+
+✓ Function-Level Authorization
+
+✓ API Authorization
+
+✓ Tenant Isolation
+
+✓ Audit Logging
+
+✓ Security Monitoring
+```
+
+---
+
+# Enterprise Example
+
+An online banking platform:
+
+```
+Customer
+
+↓
+
+Transfer Funds
+
+↓
+
+Own Accounts?
+
+↓
+
+Authorized
+
+↓
+
+Transfer
+
+──────────────
+
+Customer
+
+↓
+
+Approve Employee Payroll
+
+↓
+
+Denied
+```
+
+Each business operation is validated according to predefined authorization rules.
+
+---
+
+# Defense in Depth
+
+Authorization works alongside other security controls.
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Secure Sessions
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Incident Response
+```
+
+Multiple controls reduce overall risk.
+
+---
+
+# Common Authorization Weaknesses
+
+| Weakness | Security Impact |
+|----------|-----------------|
+| Missing ownership validation | Cross-user data exposure |
+| Inconsistent authorization logic | Unpredictable behavior |
+| Missing API authorization | Unauthorized API access |
+| Weak tenant isolation | Cross-tenant data leakage |
+| Excessive privileges | Increased attack surface |
+| Missing audit logs | Difficult investigations |
+
+---
+
+# Secure Design Principles
+
+```
+Default Deny
+
+↓
+
+Least Privilege
+
+↓
+
+Centralized Authorization
+
+↓
+
+Consistent Enforcement
+
+↓
+
+Continuous Review
+```
+
+A secure design minimizes opportunities for authorization bypass.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design an authorization matrix for a multi-role application.
+2. Identify object-level, function-level, and record-level resources.
+3. Determine where authorization checks should occur.
+4. Review tenant isolation requirements for a cloud application.
+5. Document which authorization events should be logged.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is object-level authorization?
+2. Why is function-level authorization important?
+3. Why must every API endpoint enforce authorization?
+4. What is tenant isolation?
+5. Why should authorization be centralized where practical?
+6. What authorization events should be logged?
+7. Why is "default deny" considered a security best practice?
+8. How does least privilege reduce business risk?
+9. Why should authorization be considered during system design?
+10. What challenges arise in multi-tenant applications?
+
+---
+
+# Best Practices
+
+- Apply server-side authorization to every protected request.
+- Validate ownership for all user-controlled resources.
+- Protect sensitive business functions with explicit authorization checks.
+- Centralize authorization logic where feasible.
+- Apply the principle of default deny.
+- Log sensitive authorization events.
+- Review authorization policies after application changes.
+- Test authorization across web pages, APIs, and business workflows.
+
+---
+
+# Common Mistakes
+
+- Assuming authenticated users are automatically authorized.
+- Protecting web pages but forgetting APIs.
+- Trusting client-side role information.
+- Missing ownership checks for records or files.
+- Granting excessive permissions to simplify administration.
+- Ignoring tenant isolation in multi-tenant applications.
+
+---
+
+# Key Takeaways
+
+- Every protected request requires an independent authorization decision.
+- Authorization applies to pages, APIs, objects, files, and business processes.
+- Multi-tenant systems require strong tenant isolation.
+- Logging and monitoring strengthen authorization by improving visibility.
+- Secure authorization combines least privilege, default deny, centralized policy enforcement, and continuous review.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
