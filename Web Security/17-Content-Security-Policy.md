@@ -1266,6 +1266,674 @@ The browser evaluates each request against the organization's CSP before allowin
 - CSP reporting improves visibility into policy violations.
 - Enterprise CSP deployment requires continuous review, testing, and monitoring.
 
-```text id="jid720"
-**Next:** Part 3
+# 17-Content-Security-Policy.md
+
+# Part 4 — Enterprise CSP Governance, Incident Response, Best Practices, Security Review, and Chapter Summary
+
+> **"A well-designed Content Security Policy is a living security control. It evolves with the application, is continuously monitored, and complements secure coding practices throughout the software development lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Enterprise CSP Governance
+- Security Review Process
+- CSP Incident Response
+- Operational Best Practices
+- Deployment Checklist
+- Compliance Considerations
+- Common Mistakes
+- Interview Revision
+- Chapter Summary
+
+---
+
+# Enterprise CSP Governance
+
+Organizations should establish a standardized CSP policy across all web applications.
+
 ```
+Security Team
+
+↓
+
+Enterprise CSP Standard
+
+↓
+
+Development Teams
+
+↓
+
+Security Review
+
+↓
+
+Deployment
+
+↓
+
+Continuous Monitoring
+```
+
+A centralized approach helps ensure consistency and simplifies maintenance.
+
+---
+
+# CSP Governance Lifecycle
+
+```
+Policy Definition
+
+↓
+
+Architecture Review
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Policy Review
+
+↓
+
+Continuous Improvement
+```
+
+Content Security Policies should be reviewed whenever application functionality changes.
+
+---
+
+# Secure SDLC Integration
+
+```
+Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Architecture Design
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Maintenance
+```
+
+CSP should be considered from the design stage rather than added after deployment.
+
+---
+
+# Security Architecture
+
+```
+                   Browser
+
+                      ▲
+
+                      │
+
+              CSP Enforcement
+
+                      │
+
+                      ▼
+
+              Web Application
+
+                      │
+
+         Authentication Layer
+
+                      │
+
+        Authorization Layer
+
+                      │
+
+         Business Services
+
+                      │
+
+      Output Encoding & Templates
+
+                      │
+
+             Database Layer
+
+                      │
+
+            Audit & Monitoring
+```
+
+Multiple independent security controls provide stronger protection than any single mechanism.
+
+---
+
+# Defense in Depth
+
+```
+HTTPS
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Output Encoding
+
+↓
+
+Content Security Policy
+
+↓
+
+Secure Cookies
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+Each layer contributes to reducing application risk.
+
+---
+
+# Enterprise Security Review
+
+During an architecture review, verify:
+
+```
+✓ Resource Inventory Complete
+
+✓ CSP Configured
+
+✓ Report-Only Tested
+
+✓ Production Policy Validated
+
+✓ Third-Party Resources Reviewed
+
+✓ Browser Compatibility Verified
+
+✓ Monitoring Enabled
+
+✓ Documentation Updated
+```
+
+---
+
+# Code Review Checklist
+
+Security reviewers should examine:
+
+- Resource loading logic
+- Template rendering
+- Client-side JavaScript
+- Third-party dependencies
+- Browser security headers
+- CSP configuration
+- Build pipeline integration
+
+---
+
+# Deployment Workflow
+
+```
+Develop
+
+↓
+
+Review
+
+↓
+
+Test
+
+↓
+
+Report-Only
+
+↓
+
+Analyze Reports
+
+↓
+
+Refine Policy
+
+↓
+
+Production Enforcement
+
+↓
+
+Monitor
+
+↓
+
+Improve
+```
+
+Gradual deployment reduces operational risk.
+
+---
+
+# Incident Response
+
+If CSP violations increase unexpectedly:
+
+```
+Identify
+
+↓
+
+Collect Reports
+
+↓
+
+Determine Cause
+
+↓
+
+Assess Risk
+
+↓
+
+Remediate
+
+↓
+
+Validate
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+```
+
+Not every violation represents an attack; some may result from legitimate application changes.
+
+---
+
+# Monitoring Strategy
+
+Security teams should monitor:
+
+```
+✓ CSP Violations
+
+✓ Unauthorized Resource Requests
+
+✓ Third-Party Resource Changes
+
+✓ Browser Compatibility Issues
+
+✓ Application Releases
+
+✓ Security Events
+
+✓ Configuration Changes
+```
+
+Monitoring supports both security and operational stability.
+
+---
+
+# Logging
+
+Important events include:
+
+- CSP violation reports
+- Policy changes
+- Deployment events
+- Security header modifications
+- Authentication events
+- Administrative actions
+
+Logs assist with investigations and compliance audits.
+
+---
+
+# Enterprise Example
+
+A multinational financial institution follows this workflow:
+
+```
+Developer
+
+↓
+
+Code Review
+
+↓
+
+Security Review
+
+↓
+
+Report-Only Deployment
+
+↓
+
+SOC Analysis
+
+↓
+
+Production Enforcement
+
+↓
+
+Continuous Monitoring
+```
+
+Every release undergoes CSP validation before reaching production.
+
+---
+
+# Compliance Considerations
+
+Many security standards encourage:
+
+- Secure application development
+- Defense in depth
+- Browser security controls
+- Continuous monitoring
+- Security logging
+- Risk management
+- Regular security reviews
+
+CSP supports these objectives as part of a broader application security program.
+
+---
+
+# Operational Checklist
+
+```
+✓ HTTPS Enabled
+
+✓ CSP Configured
+
+✓ Output Encoding Implemented
+
+✓ Authentication Verified
+
+✓ Authorization Verified
+
+✓ Third-Party Resources Reviewed
+
+✓ Monitoring Enabled
+
+✓ Logging Enabled
+
+✓ Security Testing Completed
+
+✓ Documentation Updated
+```
+
+---
+
+# Common CSP Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large number of external resources | Create a complete resource inventory before designing the policy |
+| Frequent application updates | Review and update CSP during every release cycle |
+| Legacy applications | Introduce CSP gradually using Report-Only mode |
+| Third-party dependencies | Periodically reassess trust and necessity |
+| Policy maintenance | Integrate CSP review into change management processes |
+
+---
+
+# Enterprise Best Practices
+
+- Adopt the principle of least privilege for resource loading.
+- Prefer HTTP response headers for policy delivery.
+- Use Report-Only mode before enforcing new policies.
+- Review third-party dependencies regularly.
+- Combine CSP with output encoding and secure coding practices.
+- Monitor CSP violations continuously.
+- Include CSP validation in CI/CD security testing.
+- Update policies whenever application architecture changes.
+- Document CSP decisions and approved resource sources.
+- Train development teams on browser security concepts.
+
+---
+
+# Common Mistakes
+
+- Assuming CSP alone prevents all XSS vulnerabilities.
+- Deploying strict policies without testing.
+- Ignoring browser violation reports.
+- Allowing unnecessary third-party resources.
+- Forgetting to review CSP after application updates.
+- Disabling framework security features instead of understanding them.
+- Maintaining different CSP policies across similar enterprise applications without justification.
+
+---
+
+# Quick Revision
+
+## CSP Lifecycle
+
+```
+Design
+
+↓
+
+Inventory
+
+↓
+
+Policy
+
+↓
+
+Test
+
+↓
+
+Report-Only
+
+↓
+
+Production
+
+↓
+
+Monitor
+
+↓
+
+Improve
+```
+
+---
+
+## Browser Enforcement
+
+```
+HTTP Response
+
+↓
+
+Browser Reads CSP
+
+↓
+
+Resource Requested
+
+↓
+
+Policy Check
+
+↓
+
+Allow
+
+OR
+
+Block
+```
+
+---
+
+## Defense in Depth
+
+```
+Secure Coding
+
++
+
+Output Encoding
+
++
+
+Authentication
+
++
+
+Authorization
+
++
+
+Content Security Policy
+
++
+
+Monitoring
+```
+
+---
+
+## Enterprise Security Pipeline
+
+```
+Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Output Encoding
+
+↓
+
+CSP Header
+
+↓
+
+Browser Enforcement
+
+↓
+
+Monitoring
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Inventory all resources loaded by an application.
+2. Classify each resource by trust level.
+3. Design a conceptual CSP based on the principle of least privilege.
+4. Plan a Report-Only deployment strategy.
+5. Define how CSP violation reports would be monitored by the security team.
+6. Create a maintenance checklist for future application updates.
+
+> Perform all testing only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is Content Security Policy (CSP)?
+2. Why is CSP considered a defense-in-depth mechanism?
+3. Who enforces a Content Security Policy?
+4. What is the purpose of Report-Only mode?
+5. Why are nonces and hashes useful?
+6. What are Trusted Types at a high level?
+7. Why should organizations maintain a resource inventory before deploying CSP?
+8. Why is continuous monitoring important for CSP?
+9. What are common challenges when deploying CSP in large enterprises?
+10. Why should CSP never replace secure coding practices?
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The purpose and architecture of Content Security Policy (CSP).
+- How browsers enforce CSP using directives that control resource loading.
+- The role of directives, nonces, hashes, Report-Only mode, and Trusted Types.
+- How CSP integrates with secure coding, output encoding, and browser security features.
+- Enterprise deployment strategies, governance, monitoring, and incident response.
+- Best practices for maintaining effective CSP policies throughout the application lifecycle.
+
+Content Security Policy is one of the most powerful browser-based security mechanisms available for modern web applications. While it significantly reduces the impact of Cross-Site Scripting (XSS) and unauthorized resource loading, it is most effective when combined with secure coding, context-aware output encoding, authentication, authorization, logging, and continuous monitoring. Enterprise organizations should treat CSP as an evolving security control that grows alongside their applications and security maturity.
+
