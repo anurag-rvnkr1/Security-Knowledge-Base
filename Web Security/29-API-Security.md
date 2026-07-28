@@ -1468,6 +1468,839 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 - API gateways centralize security controls such as authentication, authorization, validation, and rate limiting.
 - Secure API design combines identity, least privilege, validation, monitoring, and defense in depth.
 
+# 29-API-Security.md
+
+# Part 3 — API Threats, OWASP API Security Top Risks, Secure Development, Testing, Monitoring, and Enterprise Operations
+
+> **"Most successful API attacks exploit flaws in business logic, authorization, or operational controls rather than weaknesses in the API protocol itself."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- OWASP API Security Risks
+- API Threat Landscape
+- Broken Object Level Authorization (BOLA)
+- Broken Authentication
+- Excessive Data Exposure
+- Input Validation
+- API Security Testing
+- API Monitoring
+- Secure API Operations
+- Enterprise API Security Practices
+
+---
+
+# API Threat Landscape
+
+Modern APIs are exposed to a variety of security risks.
+
+```
+API Threats
+
+│
+
+├── Broken Authorization
+
+├── Broken Authentication
+
+├── Excessive Data Exposure
+
+├── Injection
+
+├── Security Misconfiguration
+
+├── Business Logic Abuse
+
+├── Resource Exhaustion
+
+├── Improper Asset Management
+
+└── Insufficient Monitoring
+```
+
+Many of these risks result from insecure implementation rather than weaknesses in the API protocol itself.
+
+---
+
+# OWASP API Security Risks
+
+The OWASP API Security Top 10 identifies common categories of API security issues.
+
+```
+OWASP API Risks
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Data Protection
+
+↓
+
+Input Validation
+
+↓
+
+Monitoring
+
+↓
+
+Configuration
+
+↓
+
+Business Logic
+```
+
+These categories help organizations prioritize secure API design and testing.
+
+---
+
+# Broken Object Level Authorization (BOLA)
+
+Object-level authorization ensures users can access only resources they are permitted to use.
+
+```
+Authenticated User
+
+↓
+
+Authorization Check
+
+↓
+
+Requested Resource
+
+↓
+
+Access Decision
+```
+
+Every request for protected resources should undergo authorization checks.
+
+---
+
+# Importance of Object-Level Authorization
+
+```
+API Request
+
+↓
+
+Resource Identifier
+
+↓
+
+Authorization
+
+↓
+
+Allowed Resource
+
+↓
+
+Response
+```
+
+Authorization decisions should be based on both the requester and the requested resource.
+
+---
+
+# Broken Authentication
+
+Authentication failures may allow unauthorized entities to impersonate legitimate users.
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Verified Identity
+
+↓
+
+API Access
+```
+
+Strong authentication mechanisms reduce this risk.
+
+---
+
+# Excessive Data Exposure
+
+Applications should return only information required by the client.
+
+```
+Database
+
+↓
+
+Business Logic
+
+↓
+
+Required Fields
+
+↓
+
+API Response
+```
+
+Returning unnecessary information increases exposure.
+
+---
+
+# Data Minimization
+
+```
+Stored Data
+
+↓
+
+Business Rules
+
+↓
+
+Required Fields
+
+↓
+
+Client Response
+```
+
+Only the minimum necessary information should be included in responses.
+
+---
+
+# Input Validation
+
+Every API request should be validated before processing.
+
+```
+Client Request
+
+↓
+
+Syntax Validation
+
+↓
+
+Business Validation
+
+↓
+
+Processing
+```
+
+Validation improves both security and reliability.
+
+---
+
+# Secure Input Validation
+
+```
+Input
+
+↓
+
+Format Validation
+
+↓
+
+Length Validation
+
+↓
+
+Type Validation
+
+↓
+
+Business Rules
+
+↓
+
+Application Logic
+```
+
+Multiple validation layers reduce implementation errors.
+
+---
+
+# API Business Logic
+
+Business logic determines how applications process requests.
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Business rules should enforce organizational policies consistently.
+
+---
+
+# Business Logic Security
+
+Applications should verify that requests align with expected business processes.
+
+```
+Request
+
+↓
+
+Business Rules
+
+↓
+
+Policy Evaluation
+
+↓
+
+Approved Action
+```
+
+Secure business logic prevents unintended operations.
+
+---
+
+# API Error Handling
+
+Applications should handle errors consistently.
+
+```
+Request
+
+↓
+
+Validation
+
+↓
+
+Error?
+
+↓
+
+Yes ──→ Standard Error Response
+
+↓
+
+No
+
+↓
+
+Normal Response
+```
+
+Error messages should assist legitimate users without revealing unnecessary implementation details.
+
+---
+
+# API Security Headers
+
+API responses may include security-related HTTP headers.
+
+```
+API Response
+
+↓
+
+Security Headers
+
+↓
+
+Client
+```
+
+Appropriate headers contribute to secure communication and browser behavior where applicable.
+
+---
+
+# API Versioning
+
+Organizations commonly maintain multiple API versions.
+
+```
+API
+
+│
+
+├── Version 1
+
+├── Version 2
+
+└── Future Versions
+```
+
+Version management helps introduce improvements while maintaining compatibility.
+
+---
+
+# API Deprecation
+
+Retiring APIs should follow a controlled process.
+
+```
+Active API
+
+↓
+
+Deprecation Notice
+
+↓
+
+Migration Period
+
+↓
+
+Retirement
+```
+
+Consumers should receive sufficient notice before unsupported versions are removed.
+
+---
+
+# API Inventory
+
+Organizations should maintain an inventory of exposed APIs.
+
+```
+API Inventory
+
+│
+
+├── Public APIs
+
+├── Internal APIs
+
+├── Partner APIs
+
+├── Version
+
+├── Owner
+
+├── Authentication Method
+
+└── Status
+```
+
+A current inventory improves governance and security visibility.
+
+---
+
+# API Security Testing
+
+Security testing should occur throughout the SDLC.
+
+```
+Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Code Review
+
+↓
+
+Security Testing
+
+↓
+
+Deployment Review
+
+↓
+
+Monitoring
+```
+
+Testing validates that security controls operate as intended.
+
+---
+
+# Types of API Security Testing
+
+```
+API Security Testing
+
+│
+
+├── Code Review
+
+├── Architecture Review
+
+├── Functional Testing
+
+├── Authorization Testing
+
+├── Authentication Testing
+
+├── Configuration Review
+
+├── Dependency Review
+
+└── Monitoring Validation
+```
+
+Different testing activities examine different aspects of API security.
+
+---
+
+# Threat Modeling
+
+Threat modeling helps identify security risks before implementation.
+
+```
+Business Requirements
+
+↓
+
+Architecture
+
+↓
+
+Trust Boundaries
+
+↓
+
+Potential Threats
+
+↓
+
+Security Controls
+```
+
+Early analysis reduces development costs and security risks.
+
+---
+
+# API Logging
+
+Important API events should be logged.
+
+```
+API Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Logging
+
+↓
+
+Response
+```
+
+Logging supports investigations and operational monitoring.
+
+---
+
+# What Should Be Logged?
+
+| Event | Reason |
+|--------|--------|
+| Authentication Attempts | Identity verification |
+| Authorization Decisions | Access auditing |
+| Administrative Actions | Accountability |
+| Configuration Changes | Change tracking |
+| API Errors | Operational troubleshooting |
+| Security Events | Incident detection |
+
+Sensitive information should be protected and logged only when necessary.
+
+---
+
+# API Monitoring
+
+Monitoring transforms log data into operational awareness.
+
+```
+API Logs
+
+↓
+
+Monitoring
+
+↓
+
+Detection
+
+↓
+
+Alert
+
+↓
+
+SOC
+
+↓
+
+Investigation
+```
+
+Continuous monitoring improves detection of unusual behavior.
+
+---
+
+# API Observability
+
+Modern API operations rely on multiple telemetry sources.
+
+```
+Observability
+
+│
+
+├── Logs
+
+├── Metrics
+
+├── Traces
+
+└── Dashboards
+```
+
+Together, they provide a comprehensive operational view.
+
+---
+
+# Enterprise API Architecture
+
+```
+Internet
+
+↓
+
+Web Application Firewall
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Application Services
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+SOC
+```
+
+Security controls should be applied consistently across all APIs.
+
+---
+
+# Enterprise Example
+
+A multinational airline provides booking, payment, and customer APIs.
+
+```
+Customer App
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+Booking API
+
+↓
+
+Payment API
+
+↓
+
+Customer Database
+
+↓
+
+Central Logging
+
+↓
+
+Monitoring Platform
+```
+
+Each API request is authenticated, authorized, validated, logged, and continuously monitored. API versions are managed centrally, and deprecated versions are retired through controlled migration processes.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large number of APIs | Maintain a complete API inventory |
+| Legacy API versions | Follow structured deprecation plans |
+| Inconsistent authorization | Centralize policy management |
+| Excessive response data | Apply data minimization |
+| Limited monitoring | Implement centralized logging and observability |
+| Rapid development | Integrate API security into the Secure SDLC |
+
+---
+
+# Enterprise API Workflow
+
+```
+Client
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+Response
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Create an inventory of APIs for a sample enterprise.
+2. Identify where authorization decisions occur.
+3. Design a conceptual API logging strategy.
+4. Draw an API observability architecture using logs, metrics, and traces.
+5. Develop a versioning and deprecation policy for enterprise APIs.
+
+> Perform all assessments only in environments where you have explicit authorization. Focus on secure architecture, governance, and defensive validation.
+
+---
+
+# Interview Questions
+
+1. What is Broken Object Level Authorization (BOLA)?
+2. Why is excessive data exposure a security concern?
+3. Why should every API request undergo authorization?
+4. What is API observability?
+5. Why is maintaining an API inventory important?
+6. What information should API logs contain?
+7. Why is threat modeling valuable during API development?
+8. What is the purpose of API versioning?
+9. Why should deprecated APIs be retired carefully?
+10. How does centralized monitoring improve API security?
+
+---
+
+# Best Practices
+
+- Enforce authorization checks for every protected resource.
+- Return only the minimum data required for business functionality.
+- Validate all API inputs before processing.
+- Maintain a complete inventory of public, private, and partner APIs.
+- Integrate security testing throughout the Secure SDLC.
+- Centralize API logging, monitoring, and observability.
+- Manage API versions through structured lifecycle governance.
+
+---
+
+# Common Mistakes
+
+- Assuming authenticated users may access every resource.
+- Returning unnecessary information in API responses.
+- Allowing outdated API versions to remain unsupported indefinitely.
+- Neglecting API inventories and ownership records.
+- Treating monitoring as optional after deployment.
+- Performing security testing only before production release.
+
+---
+
+# Key Takeaways
+
+- API security extends beyond authentication to include authorization, data protection, secure business logic, monitoring, and lifecycle management.
+- Broken Object Level Authorization is one of the most significant API security risks.
+- Data minimization and consistent input validation reduce unnecessary exposure.
+- API inventories, observability, and structured version management improve operational security.
+- Continuous testing, monitoring, and governance are essential for secure enterprise APIs.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
