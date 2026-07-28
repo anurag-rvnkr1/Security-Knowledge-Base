@@ -1452,6 +1452,910 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 - Pagination and rate limiting improve scalability and availability.
 - Secure schema design, consistent error handling, and least privilege strengthen enterprise GraphQL security.
 
+# 31-GraphQL-Security.md
+
+# Part 3 — GraphQL Threats, OWASP GraphQL Risks, Introspection, Secure Operations, Logging, Monitoring, and Security Testing
+
+> **"The flexibility of GraphQL is one of its greatest strengths—but without proper controls, it can also become one of its greatest security challenges."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- GraphQL Threat Landscape
+- Common GraphQL Security Risks
+- GraphQL Introspection
+- Batch Requests
+- Alias Abuse
+- Secure Logging
+- Monitoring & Observability
+- GraphQL Security Testing
+- Threat Modeling
+- Enterprise Security Operations
+
+---
+
+# GraphQL Threat Landscape
+
+GraphQL APIs introduce security considerations beyond traditional REST APIs.
+
+```
+GraphQL Threats
+
+│
+
+├── Broken Authentication
+
+├── Broken Authorization
+
+├── Excessive Query Complexity
+
+├── Deep Query Nesting
+
+├── Excessive Data Exposure
+
+├── Injection
+
+├── Business Logic Abuse
+
+├── Security Misconfiguration
+
+├── Resource Exhaustion
+
+└── Insufficient Monitoring
+```
+
+Many of these risks originate from insecure implementation rather than the GraphQL specification itself.
+
+---
+
+# GraphQL Attack Surface
+
+```
+Client
+
+↓
+
+HTTPS
+
+↓
+
+GraphQL Endpoint
+
+↓
+
+Schema
+
+↓
+
+Resolvers
+
+↓
+
+Business Logic
+
+↓
+
+Databases
+
+↓
+
+External Services
+```
+
+Each layer should be protected independently.
+
+---
+
+# OWASP API Security Risks in GraphQL
+
+Many GraphQL implementations are affected by the same categories described in the OWASP API Security Top 10.
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Business Logic
+
+↓
+
+Configuration
+
+↓
+
+Monitoring
+```
+
+GraphQL introduces additional concerns around query flexibility and resource consumption.
+
+---
+
+# Broken Object-Level Authorization
+
+Every requested object should undergo authorization.
+
+```
+Authenticated User
+
+↓
+
+Requested Object
+
+↓
+
+Authorization
+
+↓
+
+Response
+```
+
+Authentication alone is insufficient.
+
+---
+
+# Broken Function-Level Authorization
+
+Operations should only be available to authorized identities.
+
+```
+Mutation
+
+↓
+
+Authorization Policy
+
+↓
+
+Allowed?
+
+↓
+
+Execute
+```
+
+Administrative operations should never rely solely on client-side controls.
+
+---
+
+# Excessive Data Exposure
+
+Applications should return only authorized information.
+
+```
+Database
+
+↓
+
+Business Logic
+
+↓
+
+Authorized Fields
+
+↓
+
+Client
+```
+
+Data minimization reduces unnecessary exposure.
+
+---
+
+# GraphQL Introspection
+
+GraphQL supports schema introspection.
+
+```
+Client
+
+↓
+
+Introspection Query
+
+↓
+
+Schema Information
+```
+
+Introspection is valuable for development and tooling, but organizations should evaluate its exposure in production based on operational and business requirements.
+
+---
+
+# Introspection Benefits
+
+```
+Introspection
+
+│
+
+├── API Discovery
+
+├── Developer Tooling
+
+├── Documentation
+
+├── Schema Validation
+
+└── Client Development
+```
+
+---
+
+# Production Considerations
+
+Organizations commonly review whether production environments should expose unrestricted schema information.
+
+```
+Development
+
+↓
+
+Testing
+
+↓
+
+Production Review
+
+↓
+
+Operational Policy
+```
+
+The appropriate approach depends on business needs, risk tolerance, and access controls.
+
+---
+
+# Deep Query Nesting
+
+Nested relationships can increase processing requirements.
+
+```
+User
+
+↓
+
+Orders
+
+↓
+
+Products
+
+↓
+
+Reviews
+
+↓
+
+Authors
+
+↓
+
+Profiles
+```
+
+Organizations often enforce maximum nesting depth to maintain predictable performance.
+
+---
+
+# Query Complexity
+
+Resource-intensive queries can affect availability.
+
+```
+Incoming Query
+
+↓
+
+Complexity Analysis
+
+↓
+
+Policy
+
+↓
+
+Execution
+```
+
+Complexity analysis helps estimate computational cost before execution.
+
+---
+
+# Large Response Generation
+
+Large responses may affect bandwidth, memory usage, and client performance.
+
+```
+GraphQL Query
+
+↓
+
+Resolver
+
+↓
+
+Large Dataset
+
+↓
+
+Response
+```
+
+Pagination and response limits help improve scalability.
+
+---
+
+# Aliases
+
+GraphQL aliases allow clients to rename fields in responses.
+
+```
+Client Query
+
+↓
+
+Aliases
+
+↓
+
+Resolver
+
+↓
+
+Response
+```
+
+Aliases are a legitimate GraphQL feature. Security controls should account for their use when evaluating request complexity and monitoring query behavior.
+
+---
+
+# Batch Operations
+
+Some GraphQL implementations support multiple operations within a request.
+
+```
+Request
+
+↓
+
+Multiple Operations
+
+↓
+
+Validation
+
+↓
+
+Execution
+```
+
+Organizations should evaluate batching policies based on performance, authorization, and operational requirements.
+
+---
+
+# Input Validation
+
+Every GraphQL argument should be validated.
+
+```
+Input
+
+↓
+
+Type Validation
+
+↓
+
+Business Validation
+
+↓
+
+Resolver
+```
+
+Validation should occur before business logic executes.
+
+---
+
+# Business Logic Security
+
+Business rules should enforce organizational policies.
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Rules
+
+↓
+
+Database
+```
+
+Security decisions should remain inside trusted server-side components.
+
+---
+
+# Secure Error Handling
+
+GraphQL responses should remain consistent without exposing sensitive implementation details.
+
+```
+Request
+
+↓
+
+Validation
+
+↓
+
+Error?
+
+↓
+
+Standard Error Response
+```
+
+Detailed debugging information should remain in protected server logs.
+
+---
+
+# Logging
+
+Security-relevant GraphQL events should be logged.
+
+```
+GraphQL Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Execution
+
+↓
+
+Logging
+```
+
+Logs support investigations and operational visibility.
+
+---
+
+# What Should Be Logged?
+
+| Event | Purpose |
+|--------|----------|
+| Authentication Events | Identity verification |
+| Authorization Decisions | Access auditing |
+| Query Execution | Operational visibility |
+| Administrative Actions | Accountability |
+| Configuration Changes | Change tracking |
+| Security Events | Incident detection |
+
+Sensitive information should be protected and logged only when necessary.
+
+---
+
+# Monitoring
+
+Monitoring transforms logs into actionable insights.
+
+```
+Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerting
+
+↓
+
+SOC
+
+↓
+
+Investigation
+```
+
+Continuous monitoring improves detection of operational and security issues.
+
+---
+
+# GraphQL Observability
+
+Modern GraphQL platforms benefit from comprehensive telemetry.
+
+```
+Observability
+
+│
+
+├── Logs
+
+├── Metrics
+
+├── Traces
+
+└── Dashboards
+```
+
+Together, these sources provide visibility into application behavior.
+
+---
+
+# GraphQL Security Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Authentication Success Rate | Identity monitoring |
+| Authorization Failure Rate | Access monitoring |
+| Query Complexity Trends | Resource management |
+| Average Query Depth | Operational analysis |
+| API Availability | Service health |
+| Error Rate | Reliability |
+| Response Latency | Performance |
+| Security Alerts | Threat visibility |
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies security concerns during design.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Trust Boundaries
+
+↓
+
+Threat Analysis
+
+↓
+
+Security Controls
+```
+
+Threat modeling helps organizations address risks early in development.
+
+---
+
+# Secure SDLC Integration
+
+GraphQL security should be incorporated throughout software development.
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Threat Modeling
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security should be part of every phase rather than a final verification step.
+
+---
+
+# GraphQL Security Testing
+
+Security testing validates implemented controls.
+
+```
+Security Testing
+
+│
+
+├── Architecture Review
+
+├── Code Review
+
+├── Authentication Testing
+
+├── Authorization Testing
+
+├── Schema Review
+
+├── Configuration Review
+
+├── Logging Validation
+
+└── Monitoring Validation
+```
+
+Testing should verify that security controls operate as intended.
+
+---
+
+# Defense in Depth
+
+GraphQL environments benefit from multiple independent security controls.
+
+```
+Internet
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+GraphQL Server
+
+↓
+
+Resolvers
+
+↓
+
+Database
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+Each layer contributes to reducing overall risk.
+
+---
+
+# Enterprise GraphQL Architecture
+
+```
+Internet
+
+↓
+
+HTTPS
+
+↓
+
+Web Application Firewall
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+Authorization Service
+
+↓
+
+GraphQL Server
+
+↓
+
+Resolvers
+
+↓
+
+Microservices
+
+↓
+
+Databases
+
+↓
+
+Central Logging
+
+↓
+
+Monitoring Platform
+
+↓
+
+SOC
+```
+
+This layered architecture supports scalability, governance, and operational security.
+
+---
+
+# Enterprise Example
+
+A multinational healthcare organization provides GraphQL APIs for patient portals, appointment scheduling, and clinician dashboards.
+
+```
+Patient Portal
+
+↓
+
+HTTPS
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+GraphQL Server
+
+↓
+
+Authorization
+
+↓
+
+Resolvers
+
+↓
+
+Healthcare Services
+
+↓
+
+Electronic Health Records
+
+↓
+
+Monitoring Platform
+```
+
+Resolvers perform authorization before accessing medical records. Query complexity analysis, pagination, logging, and continuous monitoring support secure operations.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Deep query nesting | Apply depth limits |
+| Resource-intensive queries | Use complexity analysis |
+| Excessive response sizes | Implement pagination |
+| Schema visibility | Review production introspection policies |
+| Inconsistent authorization | Enforce resolver-level authorization |
+| Limited visibility | Centralize logging and monitoring |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw a layered GraphQL security architecture.
+2. Identify GraphQL trust boundaries.
+3. Create a conceptual logging strategy for GraphQL operations.
+4. Design a monitoring dashboard using logs, metrics, and traces.
+5. Review a sample GraphQL schema and identify where authorization should be enforced.
+
+> Perform all assessments only in environments where you have explicit authorization. Focus on defensive architecture, governance, monitoring, and secure implementation.
+
+---
+
+# Interview Questions
+
+1. What is GraphQL introspection?
+2. Why should resolver-level authorization be implemented?
+3. What is query complexity analysis?
+4. Why is deep query nesting a concern?
+5. What are GraphQL aliases?
+6. What are batch operations?
+7. What information should GraphQL logs contain?
+8. What is GraphQL observability?
+9. Why should threat modeling occur early?
+10. How does defense in depth improve GraphQL security?
+
+---
+
+# Best Practices
+
+- Enforce authorization within every resolver.
+- Validate every GraphQL input before processing.
+- Apply query depth and complexity limits.
+- Use pagination for large collections.
+- Review schema introspection exposure for production environments.
+- Centralize logging, monitoring, and observability.
+- Integrate GraphQL security testing into the Secure SDLC.
+
+---
+
+# Common Mistakes
+
+- Assuming authentication alone protects GraphQL resources.
+- Allowing unrestricted query complexity.
+- Returning unnecessary data in responses.
+- Exposing sensitive operational information through error messages.
+- Ignoring monitoring after deployment.
+- Performing security testing only before production releases.
+
+---
+
+# Key Takeaways
+
+- GraphQL security extends beyond authentication to include authorization, query validation, resource management, and operational monitoring.
+- Introspection, aliases, batching, and flexible queries require thoughtful governance rather than blanket trust.
+- Logging, monitoring, and observability provide visibility into GraphQL operations.
+- Threat modeling and Secure SDLC practices help reduce implementation risks.
+- Defense in depth remains fundamental for enterprise GraphQL deployments.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
