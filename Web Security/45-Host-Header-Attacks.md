@@ -1252,6 +1252,748 @@ The organization validates incoming host information against approved applicatio
 - Reverse proxy trust relationships should be explicitly documented.
 - Centralized governance, monitoring, and standardized validation strengthen enterprise Host header security.
 
+# 45-Host-Header-Attacks.md
+
+# Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, Monitoring, and Enterprise Defense
+
+> **"Preventing Host Header-related security issues requires continuous validation of request routing, standardized infrastructure configuration, secure application design, and operational visibility across every layer that processes HTTP requests."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Detecting Host Header Risks
+- Secure Host Validation Testing
+- Threat Modeling
+- Infrastructure Review
+- Secure SDLC
+- DevSecOps Integration
+- Configuration Management
+- Logging
+- Monitoring
+- Enterprise Governance
+
+---
+
+# Detecting Host Header Risks
+
+Organizations should periodically review how host information is processed throughout the application.
+
+```
+Client Request
+
+↓
+
+Infrastructure Review
+
+↓
+
+Host Validation Review
+
+↓
+
+Architecture Assessment
+
+↓
+
+Deployment Verification
+```
+
+The objective is to verify that host-related information never influences security-sensitive decisions without validation.
+
+---
+
+# Security Review Process
+
+Every request-routing component should be evaluated.
+
+```
+Browser
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Business Logic
+```
+
+Each layer should process host information consistently.
+
+---
+
+# Infrastructure Inventory
+
+Maintain an inventory of every component involved in request routing.
+
+```
+Infrastructure
+
+│
+
+├── DNS
+
+├── CDN
+
+├── Load Balancers
+
+├── Reverse Proxies
+
+├── Web Servers
+
+├── API Gateways
+
+├── Applications
+
+└── Monitoring
+```
+
+Complete inventories improve governance and troubleshooting.
+
+---
+
+# Host Processing Inventory
+
+Applications should document every location where host information is used.
+
+```
+Host Usage
+
+│
+
+├── URL Generation
+
+├── Authentication
+
+├── Email Notifications
+
+├── Routing
+
+├── Multi-Tenant Resolution
+
+├── Logging
+
+├── Monitoring
+
+└── Administration
+```
+
+Documented usage simplifies architecture reviews.
+
+---
+
+# Configuration Consistency
+
+Infrastructure should implement identical validation policies wherever practical.
+
+```
+Environment A
+
+↓
+
+Approved Policy
+
+↓
+
+Environment B
+
+↓
+
+Approved Policy
+
+↓
+
+Environment C
+```
+
+Consistent configurations reduce operational drift.
+
+---
+
+# Architecture Review
+
+Architecture reviews should evaluate:
+
+- Request routing
+- Reverse proxy configuration
+- Trusted proxies
+- Canonical hostnames
+- URL generation
+- Authentication workflows
+- Monitoring
+- Logging
+
+```
+Architecture
+
+↓
+
+Security Review
+
+↓
+
+Recommendations
+
+↓
+
+Implementation
+```
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies where host information affects application behavior.
+
+```
+Incoming Request
+
+↓
+
+Host Processing
+
+↓
+
+Business Logic
+
+↓
+
+Security Review
+```
+
+The goal is to understand where trusted configuration should replace client-controlled input.
+
+---
+
+# Threat Modeling Questions
+
+Security architects should ask:
+
+- Which systems process the Host header?
+- Which applications generate absolute URLs?
+- Which components perform routing?
+- Which reverse proxies are trusted?
+- Where are canonical hostnames defined?
+- Which workflows depend on host information?
+- How are routing policies maintained?
+- How are configuration changes approved?
+
+```
+Threat Assessment
+
+↓
+
+Risk Analysis
+
+↓
+
+Security Controls
+```
+
+---
+
+# Secure Host Validation Testing
+
+Testing should verify that applications consistently use trusted host configuration.
+
+```
+Incoming Request
+
+↓
+
+Host Validation
+
+↓
+
+Expected Configuration
+
+↓
+
+Business Logic
+```
+
+Validation should focus on correctness and policy compliance.
+
+---
+
+# Types of Testing
+
+```
+Testing
+
+│
+
+├── Unit Testing
+
+├── Integration Testing
+
+├── Functional Testing
+
+├── Infrastructure Validation
+
+├── Configuration Validation
+
+├── Regression Testing
+
+├── Security Testing
+
+└── Deployment Validation
+```
+
+Each testing phase contributes to secure request handling.
+
+---
+
+# Reverse Proxy Validation
+
+Organizations should periodically review reverse proxy behavior.
+
+```
+Client
+
+↓
+
+Reverse Proxy
+
+↓
+
+Validated Request
+
+↓
+
+Application
+```
+
+Reviews should verify alignment with documented routing policies.
+
+---
+
+# Canonical Host Validation
+
+Applications should verify that canonical hostnames remain accurate.
+
+```
+Approved Configuration
+
+↓
+
+Application
+
+↓
+
+Validation
+
+↓
+
+Compliance
+```
+
+Periodic validation reduces configuration drift.
+
+---
+
+# Secure SDLC
+
+Host validation should be integrated throughout software development.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Security Review
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Early validation reduces long-term operational risk.
+
+---
+
+# DevSecOps Integration
+
+```
+Developer
+
+↓
+
+Version Control
+
+↓
+
+Build
+
+↓
+
+Automated Tests
+
+↓
+
+Host Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Infrastructure validation becomes part of continuous software delivery.
+
+---
+
+# Change Management
+
+Host-related configuration changes should follow formal governance.
+
+```
+Configuration Change
+
+↓
+
+Review
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Controlled changes improve traceability and operational reliability.
+
+---
+
+# Logging
+
+Host-processing events should be logged appropriately.
+
+```
+Application
+
+↓
+
+Host Events
+
+↓
+
+Audit Logs
+
+↓
+
+Monitoring Platform
+```
+
+Logs support investigations and operational visibility.
+
+---
+
+# Important Events
+
+| Event | Purpose |
+|--------|----------|
+| Host Validation Success | Operational visibility |
+| Host Validation Failure | Security monitoring |
+| Canonical Host Update | Governance |
+| Reverse Proxy Configuration Change | Change management |
+| Application Deployment | Release auditing |
+| Administrative Action | Accountability |
+| Service Restart | Operational awareness |
+| Monitoring Alert | Operations response |
+
+Sensitive request details should be masked or excluded where appropriate.
+
+---
+
+# Monitoring Architecture
+
+```
+Applications
+
+↓
+
+Host Metrics
+
+↓
+
+Central Monitoring
+
+↓
+
+Dashboards
+
+↓
+
+Operations Team
+```
+
+Continuous monitoring confirms that routing policies remain effective.
+
+---
+
+# Useful Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Host Validation Success Rate | Policy effectiveness |
+| Validation Failures | Security monitoring |
+| Routing Consistency | Operational visibility |
+| Configuration Drift | Governance |
+| Deployment Success Rate | Release quality |
+| Service Availability | Reliability |
+| Active Alerts | Incident visibility |
+
+---
+
+# Governance
+
+Organizations should establish centralized standards for host handling.
+
+```
+Host Governance
+
+│
+
+├── Validation Standards
+
+├── Canonical Host Policies
+
+├── Reverse Proxy Standards
+
+├── Security Reviews
+
+├── Monitoring Standards
+
+├── Documentation
+
+├── Change Management
+
+└── Continuous Improvement
+```
+
+Governance improves consistency across infrastructure and development teams.
+
+---
+
+# Enterprise Architecture
+
+```
+Internet
+
+↓
+
+DNS
+
+↓
+
+CDN
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Monitoring
+
+↓
+
+SOC
+```
+
+Every infrastructure layer contributes to secure request routing.
+
+---
+
+# Enterprise Example
+
+A multinational banking organization operates internet banking, mobile APIs, partner integrations, and internal administrative portals.
+
+```
+Customer
+
+↓
+
+CDN
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Banking Portal
+
+↓
+
+Business Services
+```
+
+The organization maintains centrally approved hostnames, validates routing policies during CI/CD, reviews reverse proxy configurations regularly, and continuously monitors routing consistency across production environments.
+
+---
+
+# Operational Readiness Checklist
+
+```
+✓ Approved Hostnames Documented
+
+✓ Canonical Domains Defined
+
+✓ Reverse Proxies Reviewed
+
+✓ Host Validation Enabled
+
+✓ Monitoring Configured
+
+✓ Logging Enabled
+
+✓ Architecture Reviewed
+
+✓ Governance Approved
+
+✓ Security Review Completed
+
+✓ Deployment Validation Performed
+```
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Legacy routing rules | Standardized validation |
+| Multiple reverse proxies | Central trust management |
+| Hybrid cloud infrastructure | Infrastructure as Code |
+| Frequent releases | Automated configuration validation |
+| Large application portfolio | Organization-wide governance |
+| Limited visibility | Centralized dashboards and SIEM |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Create a complete inventory of request-routing components.
+2. Document all approved canonical hostnames.
+3. Review reverse proxy trust relationships.
+4. Design a dashboard using host validation metrics.
+5. Perform a high-level architecture review focused on request routing and host validation.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on defensive architecture review, governance, monitoring, and secure request handling.
+
+---
+
+# Interview Questions
+
+1. Why should Host header values be validated?
+2. What is a canonical hostname?
+3. Why are reverse proxies important for request routing?
+4. Why should trusted proxies be documented?
+5. What is the purpose of host normalization?
+6. Which workflows commonly depend on host information?
+7. Why should host validation be automated?
+8. What events should be logged?
+9. How does DevSecOps improve Host header security?
+10. Why should request routing be reviewed during architecture assessments?
+
+---
+
+# Best Practices
+
+- Maintain an inventory of all Host header processing components.
+- Validate hostnames against centrally approved configuration.
+- Standardize reverse proxy configurations across environments.
+- Generate security-sensitive URLs using trusted configuration.
+- Integrate host validation into CI/CD pipelines.
+- Continuously monitor routing metrics.
+- Review routing architecture during security assessments.
+- Document trusted proxies and canonical hostnames.
+- Regularly audit routing configuration for drift.
+
+---
+
+# Common Mistakes
+
+- Trusting Host header values without validation.
+- Generating application URLs from unvalidated request metadata.
+- Maintaining inconsistent proxy configurations.
+- Allowing configuration drift between environments.
+- Failing to document trusted routing infrastructure.
+- Neglecting host validation during software releases.
+- Omitting Host header processing from threat-modeling exercises.
+
+---
+
+# Key Takeaways
+
+- Secure Host header handling requires validation, trusted configuration, and consistent routing.
+- Architecture reviews and threat modeling identify routing-related risks early.
+- Reverse proxies, web servers, and applications should share standardized validation policies.
+- Secure SDLC and DevSecOps integrate host validation throughout development.
+- Continuous monitoring, governance, and operational visibility strengthen enterprise request-routing security.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
