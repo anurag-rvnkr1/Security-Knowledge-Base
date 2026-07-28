@@ -2094,6 +2094,755 @@ Secure design is an ongoing operational responsibility.
 - Governance and documentation ensure consistency across development teams.
 - Secure design is an ongoing process that continues throughout the application's lifecycle.
 
-```text id="rrks28"
-**Next:** Part 4
+# 22-Insecure-Design.md
+
+# Part 4 — Enterprise Governance, Secure SDLC, Incident Response, Operational Excellence, and Chapter Summary
+
+> **"Secure design is a continuous engineering discipline. Organizations that consistently build security into requirements, architecture, development, operations, and governance are significantly more resilient than those that rely solely on fixing vulnerabilities after deployment."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Enterprise Security Governance
+- Secure SDLC
+- Security Architecture Governance
+- Design Assurance
+- Security Reviews
+- Incident Response
+- Continuous Improvement
+- Security Metrics
+- Operational Best Practices
+- Chapter Summary
+
+---
+
+# Enterprise Security Governance
+
+Governance ensures that secure design principles are consistently applied across every project.
+
 ```
+Business Strategy
+
+↓
+
+Security Governance
+
+↓
+
+Security Policies
+
+↓
+
+Architecture Standards
+
+↓
+
+Secure Development
+
+↓
+
+Operations
+
+↓
+
+Continuous Improvement
+```
+
+Governance establishes consistency, accountability, and measurable security outcomes.
+
+---
+
+# Secure Software Development Lifecycle (SSDLC)
+
+Security activities should occur throughout the entire development lifecycle.
+
+```
+Business Requirements
+
+↓
+
+Security Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Architecture Review
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+Every phase contributes to the overall security posture.
+
+---
+
+# Security Gates
+
+Organizations often introduce security checkpoints before progressing to the next phase.
+
+```
+Requirements
+
+↓
+
+Security Approval
+
+↓
+
+Architecture
+
+↓
+
+Security Review
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Testing
+
+↓
+
+Production Approval
+```
+
+Security gates help identify issues before they become expensive to correct.
+
+---
+
+# Design Assurance
+
+Design assurance verifies that security objectives have been achieved.
+
+```
+Security Requirements
+
+↓
+
+Architecture
+
+↓
+
+Design Review
+
+↓
+
+Validation
+
+↓
+
+Approval
+```
+
+Verification should occur before implementation begins.
+
+---
+
+# Architecture Governance
+
+Enterprise architecture should follow documented standards.
+
+```
+Architecture Standards
+
+│
+
+├── Authentication
+
+├── Authorization
+
+├── Encryption
+
+├── Logging
+
+├── Monitoring
+
+├── Secure APIs
+
+├── Network Segmentation
+
+└── Data Protection
+```
+
+Standardization improves consistency across multiple development teams.
+
+---
+
+# Change Management
+
+Architectural changes should undergo security review.
+
+```
+Proposed Change
+
+↓
+
+Impact Assessment
+
+↓
+
+Security Review
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Validation
+```
+
+Changes can introduce new risks and should be evaluated carefully.
+
+---
+
+# Secure Design Documentation
+
+Security documentation should include:
+
+```
+✓ Business Requirements
+
+✓ Security Requirements
+
+✓ Trust Boundaries
+
+✓ Data Flows
+
+✓ Threat Model
+
+✓ Risk Assessment
+
+✓ Security Controls
+
+✓ Review History
+
+✓ Assumptions
+
+✓ Architecture Decisions
+```
+
+Documentation supports maintenance, audits, and future enhancements.
+
+---
+
+# Continuous Security Reviews
+
+Applications evolve over time.
+
+```
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Architecture Review
+
+↓
+
+Risk Review
+
+↓
+
+Improvement
+
+↓
+
+Updated Design
+```
+
+Security reviews should continue throughout the application's lifecycle.
+
+---
+
+# Incident Response
+
+If a design-related weakness is discovered:
+
+```
+Detection
+
+↓
+
+Risk Assessment
+
+↓
+
+Containment
+
+↓
+
+Root Cause Analysis
+
+↓
+
+Architecture Update
+
+↓
+
+Implementation
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Addressing the underlying design issue helps prevent similar problems in the future.
+
+---
+
+# Root Cause Analysis
+
+Questions to consider:
+
+```
+✓ Was the security requirement missing?
+
+✓ Was the architecture incomplete?
+
+✓ Were trust assumptions incorrect?
+
+✓ Were business rules insufficient?
+
+✓ Was the threat model outdated?
+
+✓ Were reviews performed effectively?
+```
+
+Understanding *why* the issue occurred is essential for long-term improvement.
+
+---
+
+# Continuous Improvement
+
+```
+Lessons Learned
+
+↓
+
+Updated Standards
+
+↓
+
+Developer Training
+
+↓
+
+Improved Architecture
+
+↓
+
+Future Projects
+```
+
+Every security incident provides opportunities to strengthen future designs.
+
+---
+
+# Enterprise Monitoring
+
+Security operations should monitor:
+
+```
+✓ Authentication Trends
+
+✓ Authorization Failures
+
+✓ Business Logic Anomalies
+
+✓ Configuration Changes
+
+✓ Audit Logs
+
+✓ API Usage
+
+✓ Security Alerts
+
+✓ Infrastructure Health
+```
+
+Monitoring validates that security controls continue to operate effectively.
+
+---
+
+# Security Metrics
+
+Organizations can measure secure design maturity using metrics.
+
+| Metric | Purpose |
+|---------|----------|
+| Threat Models Completed | Measure design maturity |
+| Architecture Reviews Completed | Track governance adoption |
+| Security Defects Found During Design | Evaluate early detection |
+| Security Defects Found After Release | Measure design effectiveness |
+| Mean Time to Remediate (MTTR) | Measure response capability |
+| Security Training Completion | Improve developer readiness |
+
+---
+
+# Enterprise Security Dashboard
+
+```
+Security Dashboard
+
+│
+
+├── Threat Models
+
+├── Open Risks
+
+├── Security Reviews
+
+├── Architecture Compliance
+
+├── Security Incidents
+
+├── Policy Compliance
+
+└── Improvement Actions
+```
+
+Dashboards provide visibility into organizational security posture.
+
+---
+
+# Enterprise Architecture Example
+
+```
+                   Internet
+
+                       │
+
+                       ▼
+
+                Load Balancer
+
+                       │
+
+                       ▼
+
+            Web Application Firewall
+
+                       │
+
+                       ▼
+
+               Web Application
+
+        ┌────────────┼────────────┐
+
+        ▼            ▼            ▼
+
+ Authentication Authorization Validation
+
+        │            │            │
+
+        └────────────┼────────────┘
+
+                     ▼
+
+              Business Logic
+
+                     ▼
+
+           Secure Data Access Layer
+
+                     ▼
+
+                 Database
+
+                     ▼
+
+              Audit & Monitoring
+```
+
+Each architectural layer contributes to the application's overall security.
+
+---
+
+# Operational Security
+
+Security continues after deployment.
+
+```
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Logging
+
+↓
+
+Incident Detection
+
+↓
+
+Review
+
+↓
+
+Architecture Improvement
+```
+
+Secure operations maintain the effectiveness of the original design.
+
+---
+
+# Enterprise Design Checklist
+
+```
+✓ Security Requirements Defined
+
+✓ Assets Identified
+
+✓ Threat Model Completed
+
+✓ Trust Boundaries Documented
+
+✓ Architecture Reviewed
+
+✓ Secure Defaults Applied
+
+✓ Least Privilege Implemented
+
+✓ Logging Enabled
+
+✓ Monitoring Planned
+
+✓ Documentation Maintained
+```
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Legacy architecture | Modernize incrementally based on risk |
+| Rapid product delivery | Integrate security into agile workflows |
+| Multiple cloud platforms | Apply consistent architecture standards |
+| Third-party dependencies | Include external services in threat modeling |
+| Organizational growth | Strengthen governance and documentation |
+
+---
+
+# Interview Revision
+
+## Insecure Design
+
+```
+Weak Requirements
+
+↓
+
+Weak Architecture
+
+↓
+
+Weak Design
+
+↓
+
+Implementation
+
+↓
+
+Security Risk
+```
+
+---
+
+## Secure Design
+
+```
+Security Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Architecture
+
+↓
+
+Design Review
+
+↓
+
+Implementation
+
+↓
+
+Testing
+```
+
+---
+
+## Security Principles
+
+```
+✓ Least Privilege
+
+✓ Defense in Depth
+
+✓ Secure Defaults
+
+✓ Complete Mediation
+
+✓ Separation of Duties
+
+✓ Minimize Attack Surface
+
+✓ Fail Securely
+```
+
+---
+
+## Secure SDLC
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Operations
+```
+
+Security should be integrated into every phase.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Select a sample enterprise application.
+2. Review its security requirements.
+3. Create a high-level threat model.
+4. Document trust boundaries and critical assets.
+5. Conduct a conceptual architecture review.
+6. Identify opportunities to improve governance and operational monitoring.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is Insecure Design?
+2. How does Insecure Design differ from implementation vulnerabilities?
+3. Why is threat modeling important?
+4. What is the purpose of secure design documentation?
+5. Why should organizations establish security gates?
+6. What is architecture governance?
+7. Why should security reviews continue after deployment?
+8. What metrics can measure secure design maturity?
+9. Why is continuous improvement important in security?
+10. How does the Secure SDLC reduce long-term security risk?
+
+---
+
+# Best Practices
+
+- Define security requirements alongside business requirements.
+- Perform threat modeling before implementation.
+- Conduct formal architecture and design reviews.
+- Apply secure design principles consistently across all systems.
+- Document architectural assumptions and trust boundaries.
+- Integrate security into CI/CD and operational processes.
+- Continuously monitor, review, and improve security controls.
+- Learn from incidents to strengthen future designs.
+
+---
+
+# Common Mistakes
+
+- Treating design reviews as optional.
+- Ignoring business logic during architecture planning.
+- Assuming secure code can compensate for insecure design.
+- Failing to document architectural decisions.
+- Neglecting governance as systems evolve.
+- Stopping security activities after deployment.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The meaning of **Insecure Design** and why it differs from implementation flaws.
+- How Security by Design integrates protection into requirements, architecture, and business logic.
+- The importance of threat modeling, trust boundaries, abuse cases, and risk assessment.
+- How secure design principles—including least privilege, defense in depth, secure defaults, complete mediation, and separation of duties—strengthen enterprise systems.
+- The role of governance, architecture reviews, documentation, operational monitoring, and continuous improvement in maintaining secure designs.
+
+Secure applications begin with secure thinking. By incorporating security into every stage of the software lifecycle—from requirements and architecture to deployment and operations—organizations reduce systemic weaknesses, improve resilience, and build applications that remain secure even as business needs and technology evolve.
+
