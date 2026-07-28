@@ -1264,6 +1264,713 @@ Each layer contributes to reducing Injection risk.
 - Safe APIs, validation, least privilege, and secure architecture work together to reduce Injection risk.
 - Consistent security controls across all interpreter interactions are essential for enterprise applications.
 
+# 21-Injection.md
+
+# Part 3 — Enterprise Injection Prevention, Secure Architecture, Detection, Logging, and Governance
+
+> **"Injection prevention is an architectural responsibility. Every layer—from user input to backend interpreters—should consistently ensure that untrusted data is never treated as executable instructions."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Enterprise Injection Prevention Strategy
+- Secure Architecture
+- Input Validation
+- Output Handling
+- Canonicalization
+- Positive (Allowlist) Validation
+- Secure APIs
+- Logging and Monitoring
+- Detection Strategies
+- Secure SDLC
+- Enterprise Governance
+
+---
+
+# Enterprise Defense Strategy
+
+Injection prevention should be implemented in multiple layers.
+
+```
+User
+
+↓
+
+Input Validation
+
+↓
+
+Business Logic
+
+↓
+
+Safe APIs
+
+↓
+
+Interpreter
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+Every layer contributes to reducing risk.
+
+---
+
+# Defense in Depth
+
+A secure application does not rely on a single protection.
+
+```
+Client Validation
+
+↓
+
+Server Validation
+
+↓
+
+Business Rules
+
+↓
+
+Safe Query Construction
+
+↓
+
+Least Privilege
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+If one control fails, additional controls continue to reduce risk.
+
+---
+
+# Secure Architecture
+
+```
+                 Browser
+
+                    │
+
+                    ▼
+
+             Web Application
+
+        ┌───────────┼───────────┐
+
+        ▼           ▼           ▼
+
+ Validation   Business Logic   Logging
+
+        │           │           │
+
+        └───────────┼───────────┘
+
+                    ▼
+
+           Secure Data Access Layer
+
+        ┌───────────┼───────────┐
+
+        ▼           ▼           ▼
+
+    Database      LDAP        APIs
+```
+
+Separating application logic from interpreter interactions improves consistency and maintainability.
+
+---
+
+# Input Validation
+
+Validation confirms that incoming data meets application expectations.
+
+```
+Receive Input
+
+↓
+
+Validate
+
+↓
+
+Accept
+
+OR
+
+Reject
+```
+
+Validation should occur on the server regardless of any client-side checks.
+
+---
+
+# Client-Side vs Server-Side Validation
+
+```
+Client Validation
+
+↓
+
+User Experience
+
+──────────────
+
+Server Validation
+
+↓
+
+Security Enforcement
+```
+
+Client-side validation improves usability but should not be considered a security control by itself.
+
+---
+
+# Allowlist Validation
+
+Allowlist validation accepts only expected input.
+
+```
+Input
+
+↓
+
+Expected Pattern?
+
+↓
+
+Yes
+
+↓
+
+Process
+
+──────────────
+
+No
+
+↓
+
+Reject
+```
+
+Examples of suitable allowlist checks include:
+
+- Numeric identifiers
+- Email address format
+- Country codes
+- Date formats
+- Product categories
+
+---
+
+# Blocklist Validation
+
+```
+Input
+
+↓
+
+Known Bad Pattern?
+
+↓
+
+Reject
+
+OR
+
+Continue
+```
+
+Blocklists may help detect known undesirable patterns but should not be the primary defense because new variations can appear.
+
+---
+
+# Canonicalization
+
+Applications may receive the same logical value in different representations.
+
+```
+Incoming Input
+
+↓
+
+Normalize
+
+↓
+
+Validate
+
+↓
+
+Business Logic
+```
+
+Normalization before validation helps ensure consistent processing.
+
+---
+
+# Data Validation Pipeline
+
+```
+Receive
+
+↓
+
+Normalize
+
+↓
+
+Validate
+
+↓
+
+Business Rules
+
+↓
+
+Safe Processing
+
+↓
+
+Response
+```
+
+Each step performs a specific responsibility.
+
+---
+
+# Secure APIs
+
+Applications should communicate with backend services through well-defined APIs.
+
+```
+Business Logic
+
+↓
+
+Safe API
+
+↓
+
+Interpreter
+
+↓
+
+Result
+```
+
+This approach reduces duplicated security logic across the application.
+
+---
+
+# Secure Data Access Layer
+
+```
+Application
+
+↓
+
+Data Access Layer
+
+↓
+
+Parameterized Requests
+
+↓
+
+Database
+```
+
+Centralizing database access improves consistency and simplifies security reviews.
+
+---
+
+# Centralized Validation
+
+```
+Application
+
+│
+
+├── User Module
+
+├── Payment Module
+
+├── Orders Module
+
+└── Reports Module
+
+↓
+
+Shared Validation Library
+```
+
+Reusable validation components reduce inconsistencies between modules.
+
+---
+
+# Error Handling
+
+Applications should respond gracefully to unexpected input.
+
+```
+Unexpected Input
+
+↓
+
+Validation Failure
+
+↓
+
+Controlled Error
+
+↓
+
+Logging
+```
+
+Error responses should avoid revealing unnecessary implementation details.
+
+---
+
+# Logging
+
+Security-relevant events should be recorded.
+
+Examples include:
+
+- Validation failures
+- Authorization failures
+- Unexpected interpreter errors
+- Administrative actions
+- Configuration changes
+- Repeated malformed requests
+
+---
+
+# Security Monitoring
+
+Operations teams should monitor:
+
+```
+✓ Repeated Validation Failures
+
+✓ Unexpected Query Errors
+
+✓ Application Exceptions
+
+✓ Privileged Operations
+
+✓ Configuration Changes
+
+✓ API Abuse Indicators
+
+✓ Unusual Traffic Patterns
+```
+
+Monitoring helps identify abnormal application behavior.
+
+---
+
+# Enterprise Detection Workflow
+
+```
+Application
+
+↓
+
+Security Logs
+
+↓
+
+SIEM
+
+↓
+
+Alert
+
+↓
+
+SOC Investigation
+
+↓
+
+Incident Response
+```
+
+Detection capabilities complement preventive controls.
+
+---
+
+# Least Privilege
+
+Backend services should have only the permissions required.
+
+```
+Application
+
+↓
+
+Limited Service Account
+
+↓
+
+Required Database Access
+```
+
+Restricting permissions limits the potential impact of implementation mistakes.
+
+---
+
+# Secure Software Development Lifecycle (SSDLC)
+
+Injection prevention should be incorporated throughout development.
+
+```
+Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Architecture Review
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security activities should not be deferred until after deployment.
+
+---
+
+# Code Review Focus Areas
+
+During reviews, examine:
+
+```
+✓ Input Validation
+
+✓ Interpreter Calls
+
+✓ Database Access
+
+✓ API Usage
+
+✓ Error Handling
+
+✓ Logging
+
+✓ Least Privilege
+
+✓ Third-Party Libraries
+```
+
+Consistent review processes improve software quality.
+
+---
+
+# Enterprise Governance
+
+Organizations should define secure coding standards.
+
+```
+Security Policy
+
+↓
+
+Coding Standards
+
+↓
+
+Developer Training
+
+↓
+
+Implementation
+
+↓
+
+Testing
+
+↓
+
+Compliance Review
+```
+
+Governance helps ensure consistent security practices across development teams.
+
+---
+
+# Enterprise Example
+
+A healthcare portal receives appointment requests.
+
+```
+Patient
+
+↓
+
+Appointment Form
+
+↓
+
+Validation
+
+↓
+
+Business Rules
+
+↓
+
+Safe Database Request
+
+↓
+
+Appointment Stored
+
+↓
+
+Audit Log
+```
+
+Each stage validates and safely processes user input before interacting with backend systems.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Multiple development teams | Standardize secure coding practices |
+| Legacy applications | Introduce security improvements incrementally |
+| Many backend services | Use centralized validation and data access layers |
+| Rapid feature development | Integrate security reviews into CI/CD |
+| Inconsistent logging | Adopt standardized logging formats |
+
+---
+
+# Enterprise Security Checklist
+
+```
+✓ Server-Side Validation
+
+✓ Input Normalization
+
+✓ Allowlist Validation
+
+✓ Safe APIs
+
+✓ Parameterized Queries
+
+✓ Least Privilege
+
+✓ Secure Error Handling
+
+✓ Centralized Logging
+
+✓ Continuous Monitoring
+
+✓ Regular Code Reviews
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw the architecture of a sample web application.
+2. Mark all input entry points.
+3. Identify every backend interpreter.
+4. Determine where validation, normalization, and logging should occur.
+5. Review whether backend services follow the principle of least privilege.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. Why should server-side validation always be performed?
+2. What is allowlist validation?
+3. What is canonicalization?
+4. Why is centralized validation beneficial?
+5. Why should applications use a data access layer?
+6. What events should be logged for Injection detection?
+7. How does least privilege reduce business risk?
+8. Why is secure error handling important?
+9. How does a SIEM assist with Injection detection?
+10. Why should Injection prevention be included throughout the SSDLC?
+
+---
+
+# Best Practices
+
+- Validate all untrusted input on the server.
+- Normalize input before validation where appropriate.
+- Use centralized validation and data access components.
+- Separate business logic from interpreter interactions.
+- Apply least privilege to backend services.
+- Log validation failures and interpreter-related errors.
+- Include Injection-focused reviews during architecture, code review, and testing.
+
+---
+
+# Common Mistakes
+
+- Relying solely on client-side validation.
+- Duplicating validation logic inconsistently across modules.
+- Revealing sensitive implementation details in error messages.
+- Granting excessive database or service permissions.
+- Ignoring monitoring for repeated validation failures.
+- Treating Injection prevention as only a developer responsibility.
+
+---
+
+# Key Takeaways
+
+- Enterprise Injection prevention requires multiple coordinated security layers.
+- Validation, normalization, safe APIs, and centralized data access improve consistency.
+- Server-side validation is mandatory for security.
+- Logging, monitoring, and governance help detect and prevent Injection-related issues.
+- Secure architecture and the Secure SDLC significantly reduce Injection risk.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
