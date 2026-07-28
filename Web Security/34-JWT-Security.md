@@ -1579,6 +1579,805 @@ Every API independently validates signatures and claims before processing busine
 - Strong key management and periodic rotation strengthen JWT security.
 - Secure transport, proper validation, and layered authorization are fundamental to enterprise JWT deployments.
 
+# 34-JWT-Security.md
+
+# Part 3 — JWT Security Threats, Common Vulnerabilities, Defensive Design, Monitoring, and Enterprise Security Operations
+
+> **"JWT vulnerabilities rarely originate from the JWT specification itself—they almost always arise from insecure implementation, poor key management, weak validation, or operational mistakes."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- JWT Threat Landscape
+- Common JWT Vulnerabilities
+- Defensive JWT Design
+- Secure Key Management
+- Secure Claim Design
+- Logging & Monitoring
+- JWT in Zero Trust
+- Threat Modeling
+- Secure SDLC
+- Enterprise Operations
+
+---
+
+# JWT Threat Landscape
+
+JWT-based systems face threats throughout the authentication and authorization lifecycle.
+
+```
+JWT Threats
+
+│
+
+├── Token Theft
+
+├── Token Replay
+
+├── Weak Key Management
+
+├── Improper Validation
+
+├── Sensitive Claims
+
+├── Long Token Lifetime
+
+├── Misconfigured Authorization
+
+├── Logging Sensitive Tokens
+
+├── Key Exposure
+
+└── Session Abuse
+```
+
+Most successful attacks exploit implementation weaknesses rather than flaws in the JWT format.
+
+---
+
+# JWT Attack Surface
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Identity Provider
+
+↓
+
+JWT Issuance
+
+↓
+
+Client
+
+↓
+
+Transmission
+
+↓
+
+API Gateway
+
+↓
+
+Resource Server
+
+↓
+
+Business Services
+```
+
+Each stage requires appropriate security controls.
+
+---
+
+# Token Theft
+
+JWTs represent authenticated or authorized sessions.
+
+If an attacker gains access to a valid token, they may be able to use it until it expires or is revoked.
+
+```
+JWT
+
+↓
+
+Protected Storage
+
+↓
+
+HTTPS
+
+↓
+
+Secure Validation
+
+↓
+
+Protected APIs
+```
+
+Reducing token exposure minimizes this risk.
+
+---
+
+# Token Replay
+
+Replay occurs when a previously issued valid token is presented again.
+
+```
+Captured JWT
+
+↓
+
+Replay Attempt
+
+↓
+
+Validation
+
+↓
+
+Access Decision
+```
+
+Short-lived tokens and proper validation reduce replay opportunities.
+
+---
+
+# Long-Lived Tokens
+
+Long expiration periods increase organizational risk.
+
+```
+Long Lifetime
+
+↓
+
+Extended Exposure
+
+↓
+
+Higher Risk
+```
+
+Organizations generally prefer shorter token lifetimes balanced against usability requirements.
+
+---
+
+# Weak Key Management
+
+Signing keys are high-value assets.
+
+```
+Private Key
+
+↓
+
+Secure Storage
+
+↓
+
+Signing Service
+
+↓
+
+JWT
+```
+
+Compromised signing keys undermine trust in issued tokens.
+
+---
+
+# Key Lifecycle
+
+```
+Generate
+
+↓
+
+Protect
+
+↓
+
+Use
+
+↓
+
+Rotate
+
+↓
+
+Retire
+
+↓
+
+Destroy
+```
+
+Every phase should follow documented organizational procedures.
+
+---
+
+# Sensitive Claims
+
+JWT payloads should contain only information required by the application.
+
+```
+Claims
+
+↓
+
+Business Need
+
+↓
+
+Minimal Data
+
+↓
+
+JWT
+```
+
+Avoid unnecessary personal or confidential information in tokens.
+
+---
+
+# Principle of Minimal Claims
+
+```
+Application
+
+↓
+
+Required Claims
+
+↓
+
+JWT
+
+↓
+
+Authorization
+```
+
+Smaller claim sets reduce information exposure.
+
+---
+
+# Claim Trust
+
+Claims should not automatically override application authorization logic.
+
+```
+JWT Claims
+
+↓
+
+Validation
+
+↓
+
+Business Rules
+
+↓
+
+Authorization Decision
+```
+
+Business authorization should remain under application control.
+
+---
+
+# Improper Validation
+
+Every incoming JWT should undergo validation before processing.
+
+```
+Incoming JWT
+
+↓
+
+Signature
+
+↓
+
+Claims
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+```
+
+Skipping any validation step weakens security.
+
+---
+
+# Validation Checklist
+
+```
+JWT Validation
+
+│
+
+├── Signature
+
+├── Issuer
+
+├── Audience
+
+├── Expiration
+
+├── Not Before
+
+├── Issued At
+
+├── Token Status
+
+└── Required Claims
+```
+
+Each check contributes to overall trust.
+
+---
+
+# Trust Boundaries
+
+JWTs commonly cross multiple systems.
+
+```
+Internet
+
+↓
+
+Client
+
+↓
+
+API Gateway
+
+↓
+
+Microservices
+
+↓
+
+Database
+```
+
+Trust should not automatically extend across boundaries without validation.
+
+---
+
+# Secure API Design
+
+```
+Request
+
+↓
+
+Authentication
+
+↓
+
+JWT Validation
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Response
+```
+
+Authentication and authorization should precede business processing.
+
+---
+
+# JWT in Zero Trust
+
+Zero Trust requires continuous verification.
+
+```
+Every Request
+
+↓
+
+JWT Validation
+
+↓
+
+Identity Verification
+
+↓
+
+Authorization
+
+↓
+
+Access Decision
+```
+
+No request is implicitly trusted.
+
+---
+
+# Defense in Depth
+
+JWT security benefits from layered defenses.
+
+```
+Internet
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+JWT Validation
+
+↓
+
+Business Services
+
+↓
+
+Monitoring
+```
+
+Each layer complements the others.
+
+---
+
+# Secure Secret Management
+
+Applications often depend on secrets beyond signing keys.
+
+```
+Secrets
+
+│
+
+├── Client Secrets
+
+├── Signing Keys
+
+├── Encryption Keys
+
+├── Certificates
+
+└── Configuration Secrets
+```
+
+Secrets should be centrally managed and protected.
+
+---
+
+# Logging Strategy
+
+Authentication and authorization events should be logged.
+
+```
+Login
+
+↓
+
+JWT Issuance
+
+↓
+
+Validation
+
+↓
+
+Authorization
+
+↓
+
+Audit Log
+```
+
+Logs support investigations and compliance activities.
+
+---
+
+# What to Log
+
+| Event | Purpose |
+|--------|----------|
+| Authentication | Identity auditing |
+| Token Issuance | Operational visibility |
+| Validation Failures | Threat detection |
+| Authorization Decisions | Access auditing |
+| Key Rotation | Change tracking |
+| Administrative Events | Accountability |
+
+Raw JWTs and other sensitive authentication artifacts should generally **not** be stored in application logs.
+
+---
+
+# Monitoring
+
+Continuous monitoring improves visibility.
+
+```
+Logs
+
+↓
+
+SIEM
+
+↓
+
+Correlation
+
+↓
+
+Alert
+
+↓
+
+SOC
+
+↓
+
+Investigation
+```
+
+Monitoring helps identify unusual authentication and authorization activity.
+
+---
+
+# Security Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Successful Logins | Operational health |
+| Failed Authentication | Threat monitoring |
+| JWT Validation Failures | Security visibility |
+| Token Issuance Rate | Capacity planning |
+| Authorization Failures | Access monitoring |
+| Key Rotation Events | Cryptographic governance |
+| Identity Provider Availability | Reliability |
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies JWT-related risks during system design.
+
+```
+Architecture
+
+↓
+
+Assets
+
+↓
+
+Trust Boundaries
+
+↓
+
+Threat Analysis
+
+↓
+
+Security Controls
+```
+
+Design reviews reduce implementation weaknesses.
+
+---
+
+# Secure SDLC
+
+JWT security should be integrated throughout development.
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Identity security should be considered from project inception through production operations.
+
+---
+
+# Enterprise Microservices
+
+JWTs commonly secure distributed services.
+
+```
+Client
+
+↓
+
+API Gateway
+
+↓
+
+JWT Validation
+
+↓
+
+Service A
+
+↓
+
+Service B
+
+↓
+
+Service C
+```
+
+Each service independently validates incoming tokens before processing requests.
+
+---
+
+# Enterprise Example
+
+A global manufacturing company provides a supplier portal secured with JWT-based authentication.
+
+```
+Supplier
+
+↓
+
+Identity Provider
+
+↓
+
+JWT
+
+↓
+
+API Gateway
+
+↓
+
+Inventory API
+
+↓
+
+Order API
+
+↓
+
+Logistics API
+
+↓
+
+Monitoring Platform
+```
+
+Every API validates signatures and claims before serving protected business data. Security events are forwarded to centralized monitoring systems for continuous visibility.
+
+---
+
+# Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Distributed services | Standardized validation libraries |
+| Multiple identity providers | Centralized trust management |
+| Token exposure | Short lifetimes and secure storage |
+| Key compromise | Strong key management and rotation |
+| Limited visibility | Centralized logging and monitoring |
+| Authorization drift | Periodic policy review |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw a JWT trust boundary diagram.
+2. Identify where validation occurs within a distributed architecture.
+3. Create a conceptual monitoring dashboard for JWT authentication events.
+4. Design a secure key lifecycle process.
+5. Map JWT validation into a Zero Trust architecture.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, governance, monitoring, and defensive engineering principles.
+
+---
+
+# Interview Questions
+
+1. What is token replay?
+2. Why should JWTs have limited lifetimes?
+3. Why is secure key management critical?
+4. What information should be logged during JWT authentication?
+5. Why shouldn't applications log raw JWTs?
+6. How does Zero Trust relate to JWT validation?
+7. Why should each microservice validate JWTs independently?
+8. What is defense in depth?
+9. Why is threat modeling important?
+10. How does centralized monitoring improve JWT security?
+
+---
+
+# Best Practices
+
+- Validate every JWT before processing requests.
+- Protect signing keys using secure key management practices.
+- Keep token lifetimes as short as practical.
+- Include only necessary claims.
+- Apply authorization checks independently of JWT validation.
+- Use HTTPS for all JWT transmission.
+- Centralize logging, monitoring, and alerting.
+- Periodically review trust relationships and cryptographic policies.
+
+---
+
+# Common Mistakes
+
+- Treating JWT validation as the only authorization mechanism.
+- Storing sensitive information in token payloads.
+- Using unnecessarily long-lived tokens.
+- Logging complete JWTs.
+- Failing to rotate signing keys.
+- Assuming internal services do not require token validation.
+- Ignoring monitoring after deployment.
+
+---
+
+# Key Takeaways
+
+- JWT security depends primarily on proper implementation rather than the token format itself.
+- Secure validation, key management, and minimal claims are fundamental defensive practices.
+- Zero Trust requires every request and every token to be independently verified.
+- Logging, monitoring, and threat modeling strengthen operational security.
+- Defense in depth provides multiple layers of protection for JWT-based authentication systems.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
