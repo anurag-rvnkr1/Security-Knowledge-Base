@@ -565,6 +565,646 @@ Business Benefits
 - Threat Modeling complements Secure SDLC, DevSecOps, and defense-in-depth strategies.
 - Continuous review and collaboration are essential for maintaining effective threat models.
 
+# 55-Threat-Modeling.md
+
+# Part 2 — Threat Modeling Methodologies, Data Flow Diagrams, Risk Assessment, Threat Analysis, and Enterprise Security Planning
+
+> **"An effective Threat Model provides a structured understanding of how a system operates, where trust changes, what assets require protection, and which security controls reduce business risk."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Threat Modeling Methodologies
+- Data Flow Diagrams (DFDs)
+- Process Decomposition
+- Trust Boundary Analysis
+- Threat Identification
+- Risk Assessment
+- Security Control Selection
+- Documentation
+- Enterprise Threat Modeling Workflow
+- Continuous Review
+
+---
+
+# Threat Modeling Methodologies
+
+Organizations use structured methodologies to ensure consistency across projects.
+
+Common examples include:
+
+```
+Threat Modeling
+
+│
+
+├── STRIDE
+
+├── PASTA
+
+├── LINDDUN
+
+├── OCTAVE
+
+├── Trike
+
+└── Organization-Specific Methods
+```
+
+Different methodologies emphasize different aspects such as application security, privacy, business risk, or enterprise governance.
+
+---
+
+# Selecting a Methodology
+
+Method selection depends on:
+
+```
+Project Requirements
+
+↓
+
+Business Objectives
+
+↓
+
+Compliance Needs
+
+↓
+
+Architecture Complexity
+
+↓
+
+Threat Modeling Method
+```
+
+Many organizations combine elements from multiple methodologies while maintaining standardized internal processes.
+
+---
+
+# Understanding Data Flow Diagrams (DFDs)
+
+A Data Flow Diagram (DFD) visually represents how information moves through a system.
+
+```
+User
+
+↓
+
+Web Application
+
+↓
+
+API
+
+↓
+
+Business Service
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+DFDs help security teams understand communication paths before analyzing potential risks.
+
+---
+
+# Components of a Data Flow Diagram
+
+```
+DFD Components
+
+│
+
+├── External Entities
+
+├── Processes
+
+├── Data Stores
+
+├── Data Flows
+
+└── Trust Boundaries
+```
+
+Each component contributes to understanding how data moves throughout the application.
+
+---
+
+# Example Enterprise DFD
+
+```
+             Customer
+
+                 │
+
+                 ▼
+
+          Web Application
+
+                 │
+
+         ── Trust Boundary ──
+
+                 │
+
+                 ▼
+
+            API Gateway
+
+                 │
+
+        ┌────────┴────────┐
+
+        ▼                 ▼
+
+ Authentication      Business Service
+
+        │                 │
+
+        └────────┬────────┘
+
+                 ▼
+
+             Database
+```
+
+This simplified diagram helps identify where security controls should be evaluated.
+
+---
+
+# Process Decomposition
+
+Large applications should be divided into smaller logical components.
+
+```
+Application
+
+│
+
+├── Authentication
+
+├── Authorization
+
+├── User Management
+
+├── Business Logic
+
+├── Payment Services
+
+├── Reporting
+
+└── Administration
+```
+
+Smaller components are easier to review and secure.
+
+---
+
+# Trust Boundary Analysis
+
+Every trust boundary represents a transition where additional verification should occur.
+
+```
+External User
+
+↓
+
+Internet
+
+──────── Trust Boundary ────────
+
+Reverse Proxy
+
+↓
+
+Application
+
+──────── Trust Boundary ────────
+
+Internal Services
+
+↓
+
+Database
+```
+
+Security controls should be evaluated wherever trust changes.
+
+---
+
+# Identifying Threats
+
+Threat identification focuses on understanding where business risks may exist.
+
+```
+System Review
+
+↓
+
+Architecture Analysis
+
+↓
+
+Asset Review
+
+↓
+
+Data Flow Review
+
+↓
+
+Threat Identification
+
+↓
+
+Security Controls
+```
+
+Threats should be documented using consistent organizational standards.
+
+---
+
+# Threat Categories (Conceptual)
+
+Organizations often group identified threats into broad categories.
+
+```
+Threat Categories
+
+│
+
+├── Identity Risks
+
+├── Data Protection Risks
+
+├── Availability Risks
+
+├── Configuration Risks
+
+├── Communication Risks
+
+├── Privacy Risks
+
+├── Operational Risks
+
+└── Business Logic Risks
+```
+
+Categories help organize analysis and prioritize remediation activities.
+
+---
+
+# Risk Assessment
+
+After identifying potential threats, organizations evaluate business impact and likelihood.
+
+```
+Threat
+
+↓
+
+Risk Analysis
+
+↓
+
+Business Impact
+
+↓
+
+Likelihood
+
+↓
+
+Priority
+
+↓
+
+Mitigation
+```
+
+Risk assessment enables informed security decisions.
+
+---
+
+# Example Risk Matrix
+
+| Likelihood | Business Impact | Priority |
+|------------|-----------------|----------|
+| Low | Low | Low |
+| Low | High | Medium |
+| Medium | Medium | Medium |
+| High | Medium | High |
+| High | High | Critical |
+
+Organizations should define their own risk criteria based on business objectives.
+
+---
+
+# Risk Treatment Options
+
+```
+Risk
+
+│
+
+├── Mitigate
+
+├── Transfer
+
+├── Accept
+
+└── Avoid
+```
+
+The chosen treatment depends on business requirements, resources, and organizational risk tolerance.
+
+---
+
+# Selecting Security Controls
+
+After risks are prioritized, appropriate defensive controls are selected.
+
+```
+Risk
+
+↓
+
+Control Selection
+
+↓
+
+Implementation
+
+↓
+
+Validation
+
+↓
+
+Monitoring
+```
+
+Controls should align with business objectives and architectural requirements.
+
+---
+
+# Security Control Categories
+
+```
+Security Controls
+
+│
+
+├── Preventive
+
+├── Detective
+
+├── Corrective
+
+├── Administrative
+
+├── Technical
+
+└── Physical
+```
+
+Layering multiple categories improves resilience.
+
+---
+
+# Threat Model Documentation
+
+Threat models should include:
+
+```
+Documentation
+
+│
+
+├── System Overview
+
+├── Architecture Diagram
+
+├── Data Flow Diagram
+
+├── Asset Inventory
+
+├── Trust Boundaries
+
+├── Identified Risks
+
+├── Security Controls
+
+├── Assumptions
+
+├── Review History
+
+└── Ownership
+```
+
+Good documentation supports future reviews and audits.
+
+---
+
+# Threat Model Lifecycle
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Threat Modeling
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Review
+
+↓
+
+Update
+```
+
+Threat models should evolve as systems evolve.
+
+---
+
+# Enterprise Threat Modeling Workflow
+
+```
+Business Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Data Flow Diagram
+
+↓
+
+Asset Identification
+
+↓
+
+Trust Boundary Analysis
+
+↓
+
+Threat Identification
+
+↓
+
+Risk Assessment
+
+↓
+
+Security Controls
+
+↓
+
+Documentation
+
+↓
+
+Development
+```
+
+This structured workflow helps maintain consistency across projects.
+
+---
+
+# Enterprise Example
+
+A global logistics company develops a shipment tracking platform.
+
+```
+Business Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Threat Modeling
+
+↓
+
+Security Controls
+
+↓
+
+Development
+
+↓
+
+Production
+```
+
+Security architects identify customer data, API integrations, mobile applications, cloud services, and external partners. They document trust boundaries, classify assets, evaluate business risks, and recommend layered security controls before implementation begins.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Complex architectures | Component decomposition |
+| Large microservice environments | Separate DFDs for major services |
+| Frequent application changes | Regular model updates |
+| Distributed development teams | Standardized documentation |
+| Multiple cloud providers | Unified governance |
+| Evolving business requirements | Continuous threat reviews |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Create a Data Flow Diagram for an enterprise application.
+2. Identify all external entities and trust boundaries.
+3. List critical business assets.
+4. Classify identified risks using an organizational risk matrix.
+5. Recommend appropriate categories of security controls for each major risk.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on architecture analysis, documentation, risk assessment, and defensive planning.
+
+---
+
+# Interview Questions
+
+1. What is a Data Flow Diagram (DFD)?
+2. Why are trust boundaries important?
+3. What information should a threat model contain?
+4. Why should large systems be decomposed into smaller components?
+5. How does risk assessment support Threat Modeling?
+6. What are common risk treatment options?
+7. Why is documentation important?
+8. How often should Threat Models be reviewed?
+9. Why are Data Flow Diagrams valuable during architecture reviews?
+10. How do Threat Models support secure software development?
+
+---
+
+# Best Practices
+
+- Create Data Flow Diagrams before identifying threats.
+- Maintain accurate asset inventories.
+- Clearly document trust boundaries.
+- Apply standardized risk assessment methods.
+- Keep threat models under version control.
+- Update threat models after significant architectural changes.
+- Include business stakeholders during reviews.
+- Maintain complete documentation throughout the Secure SDLC.
+
+---
+
+# Common Mistakes
+
+- Creating incomplete Data Flow Diagrams.
+- Ignoring trust boundaries.
+- Focusing only on technical risks while overlooking business risks.
+- Performing Threat Modeling only once.
+- Failing to document assumptions.
+- Using inconsistent risk assessment methods.
+- Neglecting ownership and review history.
+
+---
+
+# Key Takeaways
+
+- Data Flow Diagrams provide the foundation for structured Threat Modeling.
+- Risk assessment prioritizes security efforts according to business impact and likelihood.
+- Threat Models should include assets, trust boundaries, identified risks, security controls, and documentation.
+- Security controls should be selected using a layered, risk-based approach.
+- Threat Modeling is an iterative process that should evolve alongside application architecture and business requirements.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
