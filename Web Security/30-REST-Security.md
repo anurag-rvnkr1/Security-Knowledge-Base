@@ -1532,6 +1532,803 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 - Standardized error handling and secure responses improve both security and maintainability.
 - Rate limiting, version management, and defense in depth strengthen enterprise REST API security.
 
+# 30-REST-Security.md
+
+# Part 3 — REST API Threats, OWASP Risks, Secure Operations, Logging, Monitoring, and Security Testing
+
+> **"REST itself is not insecure. Most successful attacks exploit weaknesses in implementation, authorization, validation, configuration, or operational security rather than the REST architectural style."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- REST API Threat Landscape
+- OWASP API Security Risks
+- Common REST Security Misconfigurations
+- Resource-Level Security
+- Secure Logging
+- Monitoring & Observability
+- REST Security Testing
+- Threat Modeling
+- Enterprise REST Operations
+- Secure SDLC Integration
+
+---
+
+# REST Threat Landscape
+
+Modern REST APIs face numerous security challenges.
+
+```
+REST API Threats
+
+│
+
+├── Broken Authentication
+
+├── Broken Authorization
+
+├── Injection
+
+├── Sensitive Data Exposure
+
+├── Security Misconfiguration
+
+├── Resource Exhaustion
+
+├── Business Logic Abuse
+
+├── API Inventory Issues
+
+└── Insufficient Monitoring
+```
+
+Most threats arise from insecure implementation rather than the REST architecture itself.
+
+---
+
+# OWASP API Security Risks
+
+The OWASP API Security Top 10 categorizes the most significant API security issues.
+
+```
+OWASP API Risks
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Business Logic
+
+↓
+
+Configuration
+
+↓
+
+Monitoring
+```
+
+These categories provide a structured framework for improving API security.
+
+---
+
+# Broken Object Level Authorization (BOLA)
+
+Resource-level authorization is one of the most critical REST security requirements.
+
+```
+Authenticated User
+
+↓
+
+Authorization Check
+
+↓
+
+Requested Resource
+
+↓
+
+Access Decision
+```
+
+Every request for a protected resource should verify ownership or permission.
+
+---
+
+# Function-Level Authorization
+
+Different users may perform different operations on the same resource.
+
+```
+Authenticated User
+
+↓
+
+Role Evaluation
+
+↓
+
+Allowed Function?
+
+↓
+
+Yes
+
+↓
+
+Execute Operation
+```
+
+Authorization should consider both the resource and the requested action.
+
+---
+
+# Sensitive Data Exposure
+
+REST APIs should return only information required for the requested operation.
+
+```
+Database
+
+↓
+
+Business Logic
+
+↓
+
+Required Fields
+
+↓
+
+REST Response
+```
+
+Reducing unnecessary data exposure minimizes security risk.
+
+---
+
+# Data Classification
+
+Organizations should classify API data.
+
+```
+Data Classification
+
+│
+
+├── Public
+
+├── Internal
+
+├── Confidential
+
+├── Restricted
+
+└── Regulated
+```
+
+Different classifications require different protection measures.
+
+---
+
+# Input Validation
+
+Every incoming request should be validated.
+
+```
+Incoming Request
+
+↓
+
+Syntax Validation
+
+↓
+
+Business Rules
+
+↓
+
+Application Logic
+```
+
+Validation prevents malformed or unexpected data from affecting application behavior.
+
+---
+
+# Output Validation
+
+Responses should also be validated before being returned.
+
+```
+Business Logic
+
+↓
+
+Response Validation
+
+↓
+
+Approved Output
+
+↓
+
+Client
+```
+
+Output validation helps maintain consistency and prevent accidental data disclosure.
+
+---
+
+# Secure Business Logic
+
+Business rules should enforce organizational policies.
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Rules
+
+↓
+
+Database
+```
+
+Security controls should be integrated into business workflows.
+
+---
+
+# Business Logic Abuse
+
+Applications should verify that requests follow intended business processes.
+
+```
+Request
+
+↓
+
+Policy Evaluation
+
+↓
+
+Business Rules
+
+↓
+
+Approved Action
+```
+
+Proper validation helps prevent unintended or unauthorized operations.
+
+---
+
+# Security Misconfiguration
+
+Improper configuration increases attack surface.
+
+```
+Configuration
+
+│
+
+├── Default Settings
+
+├── Unnecessary Services
+
+├── Weak Policies
+
+├── Missing Security Headers
+
+├── Excessive Permissions
+
+└── Outdated Software
+```
+
+Configuration should follow approved security baselines.
+
+---
+
+# API Version Management
+
+Organizations often maintain multiple API versions.
+
+```
+REST APIs
+
+│
+
+├── v1
+
+├── v2
+
+├── v3
+
+└── Future Versions
+```
+
+Older versions should be monitored and retired according to governance policies.
+
+---
+
+# API Inventory
+
+Every REST API should be documented.
+
+```
+Inventory
+
+│
+
+├── API Name
+
+├── Version
+
+├── Owner
+
+├── Authentication
+
+├── Environment
+
+├── Data Classification
+
+└── Status
+```
+
+Maintaining an inventory improves visibility and governance.
+
+---
+
+# Logging
+
+Important security events should be logged.
+
+```
+REST Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Logic
+
+↓
+
+Logging
+
+↓
+
+Response
+```
+
+Logging supports auditing, troubleshooting, and incident response.
+
+---
+
+# What Should Be Logged?
+
+| Event | Purpose |
+|--------|----------|
+| Authentication Attempts | Identity verification |
+| Authorization Decisions | Access auditing |
+| Administrative Actions | Accountability |
+| Configuration Changes | Change tracking |
+| API Errors | Troubleshooting |
+| Security Alerts | Incident detection |
+
+Sensitive data should not be unnecessarily recorded in logs.
+
+---
+
+# Monitoring
+
+Monitoring continuously evaluates API health and security.
+
+```
+REST APIs
+
+↓
+
+Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerting
+
+↓
+
+SOC
+```
+
+Monitoring enables rapid detection of operational and security issues.
+
+---
+
+# API Observability
+
+Observability combines multiple telemetry sources.
+
+```
+Observability
+
+│
+
+├── Logs
+
+├── Metrics
+
+├── Traces
+
+└── Dashboards
+```
+
+Together, they provide insight into system health and performance.
+
+---
+
+# REST Security Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Authentication Success Rate | Identity monitoring |
+| Authorization Failure Rate | Permission monitoring |
+| API Availability | Service health |
+| Error Rate | Operational quality |
+| Request Latency | Performance monitoring |
+| Security Event Count | Threat visibility |
+| API Version Usage | Lifecycle management |
+
+Security metrics help organizations measure improvements over time.
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies risks before implementation.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Trust Boundaries
+
+↓
+
+Threat Analysis
+
+↓
+
+Security Controls
+```
+
+Early planning reduces implementation risk.
+
+---
+
+# Secure SDLC Integration
+
+REST security should be integrated throughout software development.
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Threat Modeling
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security is most effective when incorporated from the beginning.
+
+---
+
+# REST Security Testing
+
+Security testing validates implemented controls.
+
+```
+REST Security Testing
+
+│
+
+├── Architecture Review
+
+├── Code Review
+
+├── Authentication Testing
+
+├── Authorization Testing
+
+├── Configuration Review
+
+├── Dependency Review
+
+├── Logging Validation
+
+└── Monitoring Validation
+```
+
+Testing should be continuous rather than limited to pre-release activities.
+
+---
+
+# Defense in Depth
+
+REST APIs should implement multiple layers of protection.
+
+```
+Internet
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Database
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+No single security control should be relied upon exclusively.
+
+---
+
+# Enterprise REST Architecture
+
+```
+Internet
+
+↓
+
+HTTPS
+
+↓
+
+Web Application Firewall
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+Authorization Service
+
+↓
+
+REST Microservices
+
+↓
+
+Databases
+
+↓
+
+Central Logging
+
+↓
+
+Monitoring Platform
+
+↓
+
+SOC
+```
+
+This layered approach improves resilience, governance, and operational visibility.
+
+---
+
+# Enterprise Example
+
+A multinational retail organization exposes REST APIs for online shopping, inventory management, and customer accounts.
+
+```
+Customer
+
+↓
+
+HTTPS
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Order Service
+
+↓
+
+Inventory Service
+
+↓
+
+Payment Service
+
+↓
+
+Database
+
+↓
+
+Monitoring
+```
+
+Every request is authenticated, authorized, validated, logged, and monitored. API inventories are maintained, version lifecycles are governed, and security reviews are integrated into the Secure SDLC.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| API sprawl | Maintain centralized API inventory |
+| Legacy versions | Structured version management |
+| Weak monitoring | Centralized observability platform |
+| Excessive data exposure | Data minimization |
+| Inconsistent authorization | Centralized policy enforcement |
+| Rapid deployments | Automated security testing in CI/CD |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw a layered REST security architecture.
+2. Build a conceptual API inventory for a fictional organization.
+3. Identify where logging and monitoring should occur.
+4. Map trust boundaries within a REST application.
+5. Design a dashboard showing REST security metrics.
+
+> Perform all assessments only in environments where you have explicit authorization. Focus on architecture, governance, defensive validation, and operational security.
+
+---
+
+# Interview Questions
+
+1. What is Broken Object Level Authorization (BOLA)?
+2. Why is API inventory management important?
+3. What information should REST API logs contain?
+4. What is API observability?
+5. Why should threat modeling occur early in development?
+6. What is defense in depth?
+7. Why should REST APIs implement layered security?
+8. What metrics should organizations monitor for REST APIs?
+9. Why should outdated API versions be retired?
+10. How does Secure SDLC improve REST security?
+
+---
+
+# Best Practices
+
+- Apply authorization checks to every protected resource.
+- Maintain a complete inventory of all REST APIs.
+- Log security-relevant events while protecting sensitive information.
+- Continuously monitor API health, performance, and security.
+- Perform threat modeling during system design.
+- Integrate automated security testing into CI/CD pipelines.
+- Use layered security controls rather than relying on a single mechanism.
+
+---
+
+# Common Mistakes
+
+- Assuming authentication alone protects resources.
+- Failing to maintain an API inventory.
+- Logging sensitive information unnecessarily.
+- Ignoring deprecated API versions.
+- Performing security testing only before production deployment.
+- Treating monitoring as optional after release.
+
+---
+
+# Key Takeaways
+
+- REST security requires strong authorization, secure business logic, operational visibility, and continuous governance.
+- Resource-level authorization is one of the most critical security controls for REST APIs.
+- Logging, monitoring, and observability enable rapid detection of security and operational issues.
+- Threat modeling and Secure SDLC practices reduce security risks before deployment.
+- Defense in depth provides multiple layers of protection for enterprise REST environments.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
