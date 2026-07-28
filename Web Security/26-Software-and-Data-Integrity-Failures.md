@@ -641,6 +641,730 @@ Integrity should be maintained throughout development and operations.
 - Trust relationships should be carefully established and periodically reviewed.
 - Integrity verification should occur throughout the software development and deployment lifecycle.
 
+# 26-Software-and-Data-Integrity-Failures.md
+
+# Part 2 — Code Signing, Digital Signatures, Secure Build Pipelines, CI/CD Integrity, Artifact Repositories, and Supply Chain Security
+
+> **"A secure build pipeline ensures that only trusted source code becomes trusted software. Every stage—from source control to production—must preserve integrity."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Code Signing
+- Digital Signature Lifecycle
+- Secure Build Pipelines
+- CI/CD Integrity
+- Artifact Repositories
+- Build Provenance
+- Trusted Build Systems
+- Supply Chain Verification
+- Release Integrity
+- Enterprise Deployment Security
+
+---
+
+# Secure Software Development Lifecycle (SSDLC)
+
+Integrity begins long before deployment.
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Build
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Each phase should include integrity controls.
+
+---
+
+# Why Build Integrity Matters
+
+Without build integrity:
+
+```
+Source Code
+
+↓
+
+Unverified Build
+
+↓
+
+Untrusted Software
+
+↓
+
+Production Risk
+```
+
+With build integrity:
+
+```
+Source Code
+
+↓
+
+Verified Build
+
+↓
+
+Trusted Artifact
+
+↓
+
+Secure Deployment
+```
+
+---
+
+# Secure Build Pipeline
+
+A secure build pipeline transforms reviewed source code into deployable software.
+
+```
+Developer
+
+↓
+
+Version Control
+
+↓
+
+Code Review
+
+↓
+
+CI Build
+
+↓
+
+Security Checks
+
+↓
+
+Artifact
+
+↓
+
+Deployment
+```
+
+Integrity should be maintained throughout the pipeline.
+
+---
+
+# Enterprise Build Workflow
+
+```
+Developer
+
+↓
+
+Source Repository
+
+↓
+
+Automated Build
+
+↓
+
+Testing
+
+↓
+
+Integrity Verification
+
+↓
+
+Artifact Repository
+
+↓
+
+Production
+```
+
+Automation improves consistency while reducing manual errors.
+
+---
+
+# Code Signing
+
+Code signing provides assurance that software originates from a trusted publisher and has not been altered after signing.
+
+```
+Software
+
+↓
+
+Signing Process
+
+↓
+
+Digital Signature
+
+↓
+
+Distribution
+```
+
+Recipients can verify the authenticity of the software before installation or execution.
+
+---
+
+# Benefits of Code Signing
+
+```
+Code Signing
+
+│
+
+├── Publisher Verification
+
+├── Integrity Protection
+
+├── Trusted Distribution
+
+├── Tamper Detection
+
+└── Improved User Confidence
+```
+
+---
+
+# Digital Signature Lifecycle
+
+```
+Software Created
+
+↓
+
+Code Review
+
+↓
+
+Build
+
+↓
+
+Digital Signing
+
+↓
+
+Distribution
+
+↓
+
+Signature Verification
+
+↓
+
+Execution
+```
+
+Verification should occur before software is trusted.
+
+---
+
+# Integrity Verification During Deployment
+
+```
+Artifact
+
+↓
+
+Verify Signature
+
+↓
+
+Verify Integrity
+
+↓
+
+Deployment Approval
+
+↓
+
+Production
+```
+
+Deployment should only proceed after successful verification.
+
+---
+
+# Build Provenance
+
+Build provenance records how software was produced.
+
+```
+Build Provenance
+
+│
+
+├── Source Repository
+
+├── Commit Reference
+
+├── Build System
+
+├── Build Time
+
+├── Builder Identity
+
+├── Dependencies
+
+└── Artifact Version
+```
+
+This information improves traceability and incident response.
+
+---
+
+# Reproducible Builds
+
+A reproducible build aims to produce identical outputs when the same source code and build process are used.
+
+```
+Source Code
+
+↓
+
+Controlled Build
+
+↓
+
+Artifact
+
+↓
+
+Repeat Build
+
+↓
+
+Equivalent Artifact
+```
+
+Reproducibility helps verify build consistency.
+
+---
+
+# CI/CD Pipeline Integrity
+
+Continuous Integration and Continuous Deployment (CI/CD) pipelines should include integrity verification.
+
+```
+Developer
+
+↓
+
+Commit
+
+↓
+
+CI Pipeline
+
+↓
+
+Security Validation
+
+↓
+
+Artifact
+
+↓
+
+Approval
+
+↓
+
+Production
+```
+
+Security validation should be integrated into the pipeline rather than performed only at the end.
+
+---
+
+# CI/CD Security Controls
+
+```
+CI/CD Controls
+
+│
+
+├── Branch Protection
+
+├── Code Review
+
+├── Automated Testing
+
+├── Dependency Review
+
+├── Build Verification
+
+├── Secret Protection
+
+├── Artifact Signing
+
+└── Audit Logging
+```
+
+Each control contributes to overall software integrity.
+
+---
+
+# Artifact Repository
+
+An artifact repository stores verified build outputs.
+
+```
+Build
+
+↓
+
+Verified Artifact
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment
+```
+
+Repositories improve consistency and support controlled software releases.
+
+---
+
+# Benefits of Artifact Repositories
+
+| Benefit | Description |
+|----------|-------------|
+| Central Storage | Single location for approved artifacts |
+| Version Control | Track released builds |
+| Controlled Distribution | Prevent unauthorized releases |
+| Audit Support | Improve traceability |
+| Repeatable Deployments | Promote consistency |
+
+---
+
+# Release Approval Workflow
+
+```
+Build Complete
+
+↓
+
+Testing
+
+↓
+
+Integrity Verification
+
+↓
+
+Release Approval
+
+↓
+
+Production Deployment
+```
+
+Formal approval reduces deployment risk.
+
+---
+
+# Supply Chain Verification
+
+Organizations should verify multiple aspects of software before deployment.
+
+```
+Software Package
+
+│
+
+├── Source
+
+├── Version
+
+├── Signature
+
+├── Integrity
+
+├── Dependencies
+
+└── Approval Status
+```
+
+Verification should be part of every release process.
+
+---
+
+# Trusted Build Infrastructure
+
+```
+Build Infrastructure
+
+│
+
+├── Version Control
+
+├── Build Servers
+
+├── Security Controls
+
+├── Access Control
+
+├── Logging
+
+└── Monitoring
+```
+
+Build infrastructure should receive the same level of protection as production systems.
+
+---
+
+# Configuration Integrity
+
+Integrity also applies to configuration.
+
+```
+Configuration
+
+↓
+
+Version Control
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Deployment
+```
+
+Unauthorized configuration changes can significantly affect application security.
+
+---
+
+# Enterprise Deployment Architecture
+
+```
+Developer
+
+↓
+
+Version Control
+
+↓
+
+CI Pipeline
+
+↓
+
+Security Validation
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment Platform
+
+↓
+
+Production Environment
+```
+
+Every transition should preserve integrity.
+
+---
+
+# Enterprise Example
+
+A global e-commerce organization deploys applications using the following workflow:
+
+```
+Developer
+
+↓
+
+Source Repository
+
+↓
+
+Peer Review
+
+↓
+
+Automated Build
+
+↓
+
+Automated Testing
+
+↓
+
+Artifact Signing
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment Approval
+
+↓
+
+Production
+```
+
+Every production release is reviewed, verified, and traceable.
+
+---
+
+# Common Build Integrity Risks
+
+| Risk | Potential Impact |
+|------|------------------|
+| Unauthorized code changes | Untrusted software |
+| Missing code review | Reduced software quality |
+| Weak pipeline security | Increased supply chain risk |
+| Unverified artifacts | Deployment of untrusted software |
+| Poor version control | Reduced traceability |
+| Inadequate audit logging | Difficult investigations |
+
+---
+
+# Enterprise Integrity Workflow
+
+```
+Source Code
+
+↓
+
+Review
+
+↓
+
+Build
+
+↓
+
+Testing
+
+↓
+
+Signing
+
+↓
+
+Artifact Repository
+
+↓
+
+Verification
+
+↓
+
+Deployment
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw a secure CI/CD pipeline for a sample application.
+2. Identify where integrity verification should occur.
+3. Document where code signing fits into the release lifecycle.
+4. List the metadata that should be recorded for build provenance.
+5. Design an approval workflow before production deployment.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is code signing?
+2. Why are digital signatures important?
+3. What is build provenance?
+4. Why are reproducible builds valuable?
+5. What is an artifact repository?
+6. Why should CI/CD pipelines include integrity verification?
+7. What security controls protect build infrastructure?
+8. Why is configuration integrity important?
+9. Why should releases require formal approval?
+10. How does build integrity improve software security?
+
+---
+
+# Best Practices
+
+- Protect build infrastructure with strong access controls.
+- Require peer review before merging production code.
+- Verify software integrity before deployment.
+- Use trusted artifact repositories for software distribution.
+- Record build provenance for every release.
+- Secure CI/CD pipelines with automated security validation.
+- Maintain detailed audit logs for build and deployment activities.
+
+---
+
+# Common Mistakes
+
+- Deploying software directly from unverified builds.
+- Allowing unrestricted access to build systems.
+- Skipping code reviews for production changes.
+- Ignoring configuration integrity.
+- Failing to maintain build metadata.
+- Treating CI/CD security as optional.
+
+---
+
+# Key Takeaways
+
+- Build integrity ensures trusted source code becomes trusted software.
+- Code signing and digital signatures verify authenticity and integrity.
+- Secure CI/CD pipelines integrate integrity checks throughout the development lifecycle.
+- Artifact repositories provide controlled storage and distribution of approved software.
+- Build provenance, reproducible builds, and strong governance improve traceability and supply chain security.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
