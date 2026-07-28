@@ -1365,6 +1365,752 @@ Deployment
 - Artifact repositories provide controlled storage and distribution of approved software.
 - Build provenance, reproducible builds, and strong governance improve traceability and supply chain security.
 
+# 26-Software-and-Data-Integrity-Failures.md
+
+# Part 3 — Data Integrity, Secure Updates, Serialization Integrity, Configuration Integrity, Backup Integrity, and Enterprise Monitoring
+
+> **"Protecting software integrity is only half the challenge. Organizations must also ensure that data, configurations, updates, and backups remain accurate, authentic, and trustworthy throughout their lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Data Integrity
+- Data Validation
+- Integrity During Data Transfer
+- Configuration Integrity
+- Secure Software Updates
+- Backup Integrity
+- Serialization Integrity
+- Integrity Monitoring
+- Change Management
+- Enterprise Integrity Operations
+
+---
+
+# Data Integrity
+
+Data integrity ensures that information remains:
+
+- Accurate
+- Complete
+- Consistent
+- Authentic
+- Unmodified without authorization
+
+```
+Create Data
+
+↓
+
+Validate
+
+↓
+
+Store
+
+↓
+
+Transfer
+
+↓
+
+Retrieve
+
+↓
+
+Verify
+
+↓
+
+Trusted Data
+```
+
+---
+
+# Types of Data Integrity
+
+```
+Data Integrity
+
+│
+
+├── Physical Integrity
+
+├── Logical Integrity
+
+├── Transaction Integrity
+
+├── Referential Integrity
+
+└── Operational Integrity
+```
+
+Each type contributes to reliable business operations.
+
+---
+
+# Physical Integrity
+
+Physical integrity protects data from hardware or environmental failures.
+
+Examples include:
+
+- Disk failures
+- Power interruptions
+- Hardware faults
+- Natural disasters
+
+Organizations mitigate these risks through redundancy and resilient infrastructure.
+
+---
+
+# Logical Integrity
+
+Logical integrity ensures data remains correct according to business rules.
+
+Examples:
+
+- Valid customer IDs
+- Correct account balances
+- Valid order numbers
+- Consistent inventory records
+
+Applications should validate data before accepting or processing it.
+
+---
+
+# Data Validation
+
+Validation helps prevent accidental or malicious corruption.
+
+```
+Incoming Data
+
+↓
+
+Validation Rules
+
+↓
+
+Accepted
+
+OR
+
+Rejected
+```
+
+Validation should occur at every trust boundary.
+
+---
+
+# Integrity During Data Transmission
+
+Data should remain unchanged while moving between systems.
+
+```
+Application A
+
+↓
+
+Protected Transmission
+
+↓
+
+Integrity Verification
+
+↓
+
+Application B
+```
+
+Integrity verification helps detect unauthorized modifications during transmission.
+
+---
+
+# Data Processing Integrity
+
+```
+Input
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Output Validation
+
+↓
+
+Storage
+```
+
+Each processing stage should preserve correctness.
+
+---
+
+# Database Integrity
+
+Relational databases commonly enforce integrity using constraints.
+
+```
+Database
+
+│
+
+├── Primary Keys
+
+├── Foreign Keys
+
+├── Unique Constraints
+
+├── Check Constraints
+
+└── Transactions
+```
+
+These mechanisms help maintain consistent and reliable data.
+
+---
+
+# Transaction Integrity
+
+Transactions should preserve consistency.
+
+```
+Start Transaction
+
+↓
+
+Validate
+
+↓
+
+Execute
+
+↓
+
+Commit
+
+OR
+
+Rollback
+```
+
+Either all required changes occur successfully, or none are applied.
+
+---
+
+# Configuration Integrity
+
+Configuration files directly influence application behavior.
+
+```
+Configuration
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Version Control
+
+↓
+
+Deployment
+
+↓
+
+Verification
+```
+
+Configuration changes should follow formal change management processes.
+
+---
+
+# Why Configuration Integrity Matters
+
+```
+Incorrect Configuration
+
+↓
+
+Application Failure
+
+↓
+
+Security Weakness
+
+↓
+
+Business Impact
+```
+
+Even small configuration errors can affect availability and security.
+
+---
+
+# Secure Software Updates
+
+Updates should only be obtained from trusted sources.
+
+```
+Vendor
+
+↓
+
+Update Package
+
+↓
+
+Integrity Verification
+
+↓
+
+Approval
+
+↓
+
+Deployment
+```
+
+Updates should be verified before installation.
+
+---
+
+# Secure Update Lifecycle
+
+```
+Release Available
+
+↓
+
+Evaluate
+
+↓
+
+Verify
+
+↓
+
+Test
+
+↓
+
+Approve
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+```
+
+Organizations should avoid deploying updates directly into production without appropriate validation.
+
+---
+
+# Serialization Overview
+
+Serialization converts objects into a format suitable for storage or transmission.
+
+```
+Application Object
+
+↓
+
+Serialize
+
+↓
+
+Transfer or Store
+
+↓
+
+Deserialize
+
+↓
+
+Application Object
+```
+
+Applications should validate serialized data before trusting it.
+
+---
+
+# Serialization Integrity
+
+Organizations should ensure that serialized data:
+
+```
+Serialized Data
+
+│
+
+├── Origin Verified
+
+├── Integrity Verified
+
+├── Expected Format
+
+├── Trusted Source
+
+└── Proper Validation
+```
+
+Trust decisions should never rely solely on the existence of serialized data.
+
+---
+
+# Backup Integrity
+
+Backups must be both available and trustworthy.
+
+```
+Production Data
+
+↓
+
+Backup
+
+↓
+
+Integrity Verification
+
+↓
+
+Secure Storage
+
+↓
+
+Recovery Testing
+```
+
+Backups should be tested periodically to ensure they can be restored successfully.
+
+---
+
+# Backup Lifecycle
+
+```
+Create Backup
+
+↓
+
+Verify
+
+↓
+
+Store
+
+↓
+
+Monitor
+
+↓
+
+Restore Test
+
+↓
+
+Archive
+
+↓
+
+Retire
+```
+
+Backup verification is as important as backup creation.
+
+---
+
+# Enterprise Integrity Monitoring
+
+Continuous monitoring helps detect unauthorized changes.
+
+```
+Applications
+
+↓
+
+Logs
+
+↓
+
+Integrity Monitoring
+
+↓
+
+Alerts
+
+↓
+
+Investigation
+```
+
+Monitoring supports rapid detection and response.
+
+---
+
+# File Integrity Monitoring (FIM)
+
+File Integrity Monitoring identifies unexpected changes to important files.
+
+```
+Critical Files
+
+↓
+
+Baseline
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Change Detected
+
+↓
+
+Review
+```
+
+FIM is commonly applied to:
+
+- System binaries
+- Configuration files
+- Application code
+- Security policies
+- Critical scripts
+
+---
+
+# Enterprise Change Management
+
+All significant changes should follow structured approval processes.
+
+```
+Change Request
+
+↓
+
+Risk Assessment
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Validation
+
+↓
+
+Documentation
+```
+
+Formal change management improves accountability and reduces operational risk.
+
+---
+
+# Integrity Logging
+
+Important integrity-related events should be recorded.
+
+```
+Integrity Events
+
+↓
+
+Central Logging
+
+↓
+
+Correlation
+
+↓
+
+Monitoring
+
+↓
+
+Investigation
+```
+
+Examples include:
+
+- Configuration changes
+- Software updates
+- Deployment events
+- Backup operations
+- Verification failures
+
+---
+
+# Enterprise Example
+
+A healthcare organization manages patient systems using:
+
+```
+Developers
+
+↓
+
+CI/CD Pipeline
+
+↓
+
+Artifact Verification
+
+↓
+
+Deployment
+
+↓
+
+Configuration Management
+
+↓
+
+Production
+
+↓
+
+Integrity Monitoring
+```
+
+Critical databases, configuration files, and application binaries are continuously monitored for unauthorized changes.
+
+---
+
+# Common Data Integrity Risks
+
+| Risk | Potential Impact |
+|------|------------------|
+| Corrupted data | Incorrect business decisions |
+| Unauthorized configuration changes | System instability |
+| Unverified software updates | Deployment of untrusted software |
+| Failed backups | Data recovery failures |
+| Weak validation | Invalid business records |
+| Missing monitoring | Delayed detection of integrity issues |
+
+---
+
+# Enterprise Integrity Architecture
+
+```
+Users
+
+↓
+
+Applications
+
+↓
+
+Validation
+
+↓
+
+Database
+
+↓
+
+Backup
+
+↓
+
+Integrity Monitoring
+
+↓
+
+Security Operations Center
+```
+
+Every layer contributes to maintaining trustworthy data.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw the lifecycle of business data from creation to archival.
+2. Identify where validation and integrity verification should occur.
+3. Create a conceptual configuration change approval workflow.
+4. List files that should be monitored using File Integrity Monitoring.
+5. Design a backup verification schedule for a production environment.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is data integrity?
+2. What is logical integrity?
+3. Why is transaction integrity important?
+4. What is File Integrity Monitoring (FIM)?
+5. Why should software updates be verified?
+6. Why is configuration integrity critical?
+7. What is serialization?
+8. Why should backups be verified regularly?
+9. What events should be logged for integrity monitoring?
+10. How does change management improve integrity?
+
+---
+
+# Best Practices
+
+- Validate data at every trust boundary.
+- Protect configuration files using version control and approval workflows.
+- Verify software updates before deployment.
+- Implement File Integrity Monitoring for critical systems.
+- Test backups regularly through restoration exercises.
+- Record integrity-related events in centralized logs.
+- Review configuration and software changes through formal change management.
+
+---
+
+# Common Mistakes
+
+- Trusting incoming data without validation.
+- Deploying software updates without verification.
+- Ignoring configuration changes outside formal processes.
+- Assuming backups are usable without testing restores.
+- Failing to monitor critical files for unauthorized changes.
+- Not documenting integrity-related events.
+
+---
+
+# Key Takeaways
+
+- Data integrity ensures information remains accurate, complete, and trustworthy.
+- Configuration, backups, and serialized data all require integrity verification.
+- Secure software updates should follow verification, testing, approval, and monitoring processes.
+- File Integrity Monitoring helps detect unauthorized modifications to critical files.
+- Enterprise integrity depends on validation, monitoring, change management, and continuous operational oversight.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
