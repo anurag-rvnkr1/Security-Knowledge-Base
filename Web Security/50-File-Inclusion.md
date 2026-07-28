@@ -520,6 +520,606 @@ Repositories should have defined ownership, version control, and access policies
 - Secure resource loading relies on trusted repositories, allowlisted references, validation, least privilege, and centralized governance.
 - Enterprise monitoring, documentation, and standardized resource management improve application resilience.
 
+# 50-File-Inclusion.md
+
+# Part 2 — Resource Resolution, Allowlists, Repository Management, Secure Configuration, Logging, Monitoring, and Enterprise Architecture
+
+> **"Secure file inclusion depends on trusted repositories, validated resource references, allowlisted resources, centralized configuration, least-privilege access, and continuous monitoring throughout the resource loading lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Resource Resolution
+- Resource Canonicalization
+- Allowlisted Resource Selection
+- Repository Management
+- Configuration Management
+- Resource Permissions
+- Validation Pipeline
+- Logging
+- Monitoring
+- Enterprise Resource Architecture
+
+---
+
+# Resource Resolution
+
+Applications should resolve every resource request into a trusted, approved location before processing.
+
+```
+Requested Resource
+
+↓
+
+Resource Resolution
+
+↓
+
+Approved Repository
+
+↓
+
+Validation
+
+↓
+
+Application Processing
+```
+
+Resolution should produce a predictable resource location before loading begins.
+
+---
+
+# Canonical Resource Resolution
+
+Applications should normalize resource references before making security decisions.
+
+```
+Incoming Reference
+
+↓
+
+Normalization
+
+↓
+
+Canonical Resource
+
+↓
+
+Validation
+```
+
+Security controls should evaluate canonical resource references rather than raw input values.
+
+---
+
+# Why Canonicalization Matters
+
+Different reference formats may represent the same application resource.
+
+```
+Incoming Reference
+
+↓
+
+Canonicalization
+
+↓
+
+Standard Representation
+
+↓
+
+Validation
+```
+
+Canonicalization reduces ambiguity and improves policy enforcement.
+
+---
+
+# Allowlisted Resource Selection
+
+Applications should maintain a predefined set of approved resources.
+
+```
+Approved Resources
+
+│
+
+├── Templates
+
+├── Configuration Files
+
+├── Language Packs
+
+├── Shared Components
+
+├── Reports
+
+└── Static Assets
+```
+
+Only approved resources should be eligible for inclusion.
+
+---
+
+# Repository Boundaries
+
+Every repository should have clearly defined responsibilities.
+
+```
+Enterprise Repository
+
+│
+
+├── Templates
+
+├── Configuration
+
+├── Localization
+
+├── Components
+
+├── Documentation
+
+└── Reports
+```
+
+Applications should restrict resource loading to these approved repositories.
+
+---
+
+# Resource Validation Pipeline
+
+```
+Incoming Request
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Reference Validation
+
+↓
+
+Canonicalization
+
+↓
+
+Allowlist Verification
+
+↓
+
+Repository Access
+
+↓
+
+Application Processing
+```
+
+Each validation stage contributes to secure resource management.
+
+---
+
+# Repository Permissions
+
+Repositories should follow the principle of least privilege.
+
+```
+Repository
+
+│
+
+├── Read
+
+├── Write
+
+├── Ownership
+
+└── Administrative Access
+```
+
+Permissions should be granted only when required for legitimate business operations.
+
+---
+
+# Least Privilege
+
+Applications should receive only the repository permissions necessary for normal functionality.
+
+```
+Application
+
+↓
+
+Minimal Repository Access
+
+↓
+
+Approved Resources
+
+↓
+
+Business Operations
+```
+
+Limiting permissions reduces operational risk.
+
+---
+
+# Configuration Management
+
+Resource-loading behavior should be centrally configured.
+
+```
+Configuration Repository
+
+↓
+
+Version Control
+
+↓
+
+Deployment
+
+↓
+
+Application
+
+↓
+
+Resource Loader
+```
+
+Configuration should remain consistent across all environments.
+
+---
+
+# Secure Resource Workflow
+
+```
+User Request
+
+↓
+
+Business Logic
+
+↓
+
+Validation
+
+↓
+
+Approved Resource
+
+↓
+
+Application Processing
+
+↓
+
+Response
+```
+
+Business logic should determine which resources may be loaded.
+
+---
+
+# Resource Metadata
+
+Resources often contain metadata in addition to content.
+
+```
+Resource
+
+│
+
+├── Name
+
+├── Type
+
+├── Version
+
+├── Owner
+
+├── Creation Date
+
+└── Permissions
+```
+
+Metadata supports auditing, lifecycle management, and governance.
+
+---
+
+# Resource Lifecycle
+
+```
+Design
+
+↓
+
+Creation
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Usage
+
+↓
+
+Review
+
+↓
+
+Retirement
+```
+
+Security controls should accompany every stage of the lifecycle.
+
+---
+
+# Enterprise Resource Architecture
+
+```
+Internet
+
+↓
+
+Load Balancer
+
+↓
+
+Application
+
+↓
+
+Validation Layer
+
+↓
+
+Resource Loader
+
+↓
+
+Approved Repository
+```
+
+Resource validation should always occur before repository access.
+
+---
+
+# Defense in Depth
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Reference Validation
+
+↓
+
+Canonicalization
+
+↓
+
+Allowlist Verification
+
+↓
+
+Monitoring
+```
+
+Independent security controls improve resilience and operational reliability.
+
+---
+
+# Logging
+
+Resource-related operations should generate audit records.
+
+```
+Application
+
+↓
+
+Resource Events
+
+↓
+
+Audit Logs
+
+↓
+
+Monitoring Platform
+```
+
+Logs improve accountability, troubleshooting, and governance.
+
+---
+
+# Important Resource Events
+
+| Event | Purpose |
+|--------|----------|
+| Resource Loaded | Operational visibility |
+| Authorization Failure | Security monitoring |
+| Configuration Change | Governance |
+| Repository Update | Change tracking |
+| Validation Failure | Operational awareness |
+| Administrative Action | Accountability |
+| Service Restart | Reliability monitoring |
+
+Sensitive resource contents should not be unnecessarily recorded in logs.
+
+---
+
+# Monitoring
+
+```
+Applications
+
+↓
+
+Resource Metrics
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboards
+
+↓
+
+Operations Team
+```
+
+Continuous monitoring helps maintain operational stability.
+
+---
+
+# Useful Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Successful Resource Loads | Operational visibility |
+| Failed Resource Loads | Reliability monitoring |
+| Validation Failures | Security awareness |
+| Repository Availability | Operational health |
+| Average Load Time | Performance |
+| Configuration Changes | Governance |
+| Active Alerts | Incident awareness |
+
+---
+
+# Enterprise Example
+
+A multinational healthcare provider stores templates, multilingual content, compliance documents, and reporting components in centralized repositories.
+
+```
+User Request
+
+↓
+
+Business Logic
+
+↓
+
+Reference Validation
+
+↓
+
+Approved Repository
+
+↓
+
+Resource Loader
+
+↓
+
+Application Response
+```
+
+Applications validate every resource reference, resolve it to an approved repository, verify authorization, and continuously monitor repository availability and loading performance.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large resource repositories | Centralized repository governance |
+| Multiple applications | Standardized validation policies |
+| Legacy applications | Incremental modernization |
+| Frequent deployments | Automated validation |
+| Distributed engineering teams | Shared secure development standards |
+| Compliance requirements | Centralized auditing and monitoring |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw an enterprise resource-loading architecture.
+2. Identify all approved repositories.
+3. Document the resource validation pipeline.
+4. Review where canonicalization occurs before resource loading.
+5. Design a monitoring dashboard for repository health and resource-loading reliability.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, repository governance, resource validation, and operational monitoring.
+
+---
+
+# Interview Questions
+
+1. What is resource resolution?
+2. Why is canonicalization important for resource references?
+3. What is an allowlist?
+4. Why should applications use approved repositories?
+5. How does least privilege improve repository security?
+6. What is the purpose of configuration management?
+7. Which resource events should be logged?
+8. Why is repository metadata valuable?
+9. Which metrics indicate repository health?
+10. How does centralized governance improve file inclusion security?
+
+---
+
+# Best Practices
+
+- Resolve and validate every resource reference before loading.
+- Use allowlists for approved resources.
+- Restrict resource loading to trusted repositories.
+- Apply least-privilege permissions to repositories.
+- Standardize configuration across environments.
+- Maintain version-controlled repositories.
+- Log significant resource-loading events.
+- Continuously monitor repository availability and performance.
+
+---
+
+# Common Mistakes
+
+- Validating raw references instead of canonical references.
+- Allowing unrestricted repository access.
+- Granting excessive repository permissions.
+- Mixing trusted and untrusted resources.
+- Maintaining inconsistent configurations across environments.
+- Failing to monitor repository operations.
+- Neglecting documentation of repository architecture.
+
+---
+
+# Key Takeaways
+
+- Canonical resource resolution provides a consistent foundation for secure validation.
+- Resource loading should be limited to approved repositories and allowlisted resources.
+- Authentication, authorization, validation, and least privilege work together to secure file inclusion.
+- Enterprise repository architecture should emphasize governance, monitoring, and predictable resource handling.
+- Continuous logging and operational visibility strengthen long-term resource security.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
