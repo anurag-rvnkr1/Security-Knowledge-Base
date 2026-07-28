@@ -1450,6 +1450,811 @@ Connections are authenticated before establishment, authorized throughout their 
 - Secure session management, heartbeat monitoring, and connection lifecycle controls improve resilience.
 - Rate controls, message size limits, and defense in depth are essential for enterprise WebSocket security.
 
+# 32-WebSockets-and-Real-Time-Security.md
+
+# Part 3 — WebSocket Threats, OWASP Risks, Origin Validation, Logging, Monitoring, Security Testing, and Operational Security
+
+> **"A WebSocket connection may remain active for hours. Organizations must continuously validate, monitor, and protect every message exchanged throughout its lifetime."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- WebSocket Threat Landscape
+- Common WebSocket Security Risks
+- Origin Validation
+- Connection Security
+- Resource Management
+- Logging
+- Monitoring
+- Observability
+- Security Testing
+- Enterprise Security Operations
+
+---
+
+# WebSocket Threat Landscape
+
+Like any network service, WebSocket applications can be affected by common application security risks if they are not properly designed and operated.
+
+```
+WebSocket Threats
+
+│
+
+├── Broken Authentication
+
+├── Broken Authorization
+
+├── Session Hijacking
+
+├── Cross-Site WebSocket Hijacking (CSWSH)
+
+├── Message Injection
+
+├── Resource Exhaustion
+
+├── Denial of Service
+
+├── Security Misconfiguration
+
+├── Sensitive Data Exposure
+
+└── Insufficient Logging
+```
+
+Most risks arise from insecure implementation rather than the WebSocket protocol itself.
+
+---
+
+# WebSocket Attack Surface
+
+```
+Client
+
+↓
+
+WebSocket Handshake
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Persistent Connection
+
+↓
+
+Message Processing
+
+↓
+
+Business Logic
+
+↓
+
+Database
+```
+
+Every layer should enforce appropriate security controls.
+
+---
+
+# Cross-Site WebSocket Hijacking (CSWSH)
+
+Cross-Site WebSocket Hijacking is a risk where a user's authenticated browser could establish an unintended WebSocket connection if the server does not properly validate the connection request.
+
+```
+Browser
+
+↓
+
+Connection Request
+
+↓
+
+Origin Validation
+
+↓
+
+Authentication
+
+↓
+
+Authorized Connection
+```
+
+Proper origin validation and authentication help reduce this risk.
+
+---
+
+# Origin Validation
+
+Servers should validate the expected origin during the WebSocket handshake when appropriate.
+
+```
+Incoming Connection
+
+↓
+
+Origin Validation
+
+↓
+
+Allowed?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+↓
+
+No
+
+↓
+
+Reject
+```
+
+Origin validation complements—not replaces—authentication and authorization.
+
+---
+
+# Authentication Failures
+
+Weak authentication can expose real-time services to unauthorized users.
+
+```
+Connection Request
+
+↓
+
+Authentication
+
+↓
+
+Verified Identity
+
+↓
+
+Connection
+```
+
+Every protected connection should require verified identity.
+
+---
+
+# Authorization Failures
+
+Authorization should be evaluated whenever a client accesses protected resources.
+
+```
+Authenticated Client
+
+↓
+
+Channel Request
+
+↓
+
+Authorization
+
+↓
+
+Allowed Resources
+```
+
+Authentication alone is not sufficient.
+
+---
+
+# Session Hijacking
+
+Long-lived sessions require strong protection throughout their lifecycle.
+
+```
+Authenticated Session
+
+↓
+
+Session Monitoring
+
+↓
+
+Policy Enforcement
+
+↓
+
+Secure Communication
+```
+
+Secure transport, session management, and continuous authorization help reduce risk.
+
+---
+
+# Resource Exhaustion
+
+Persistent connections consume server resources.
+
+```
+Active Connections
+
+↓
+
+Memory
+
+↓
+
+CPU
+
+↓
+
+Network
+
+↓
+
+Application Resources
+```
+
+Organizations should monitor and manage resource utilization.
+
+---
+
+# Connection Limits
+
+Applications commonly define limits on active connections.
+
+```
+Client
+
+↓
+
+Connection Request
+
+↓
+
+Connection Policy
+
+↓
+
+Accept
+
+↓
+
+Reject (Policy Limit)
+```
+
+Reasonable limits improve service stability and availability.
+
+---
+
+# Idle Connection Management
+
+Idle connections should not remain open indefinitely.
+
+```
+Idle Session
+
+↓
+
+Timeout Evaluation
+
+↓
+
+Close Connection
+```
+
+Timeout policies help reclaim resources and reduce unnecessary exposure.
+
+---
+
+# Message Flooding
+
+High message rates may affect application availability.
+
+```
+Client
+
+↓
+
+Incoming Messages
+
+↓
+
+Rate Controls
+
+↓
+
+Application
+```
+
+Rate limiting and monitoring help maintain service health.
+
+---
+
+# Message Validation
+
+Every received message should be validated.
+
+```
+Incoming Message
+
+↓
+
+Syntax Validation
+
+↓
+
+Business Validation
+
+↓
+
+Processing
+```
+
+Validation reduces the likelihood of invalid or unexpected data affecting application behavior.
+
+---
+
+# Sensitive Data Exposure
+
+Applications should minimize the amount of sensitive information transmitted over WebSocket channels.
+
+```
+Sensitive Data
+
+↓
+
+Authorization
+
+↓
+
+Approved Response
+
+↓
+
+Client
+```
+
+Only authorized clients should receive sensitive information.
+
+---
+
+# Logging
+
+Security-relevant WebSocket events should be logged.
+
+```
+Connection
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Messages
+
+↓
+
+Disconnection
+
+↓
+
+Logs
+```
+
+Logging supports operational visibility and incident investigations.
+
+---
+
+# Events to Log
+
+| Event | Purpose |
+|--------|----------|
+| Connection Established | Session tracking |
+| Authentication Events | Identity verification |
+| Authorization Decisions | Access auditing |
+| Connection Closed | Lifecycle management |
+| Security Events | Incident detection |
+| Administrative Actions | Accountability |
+
+Sensitive information should be handled carefully within logs.
+
+---
+
+# Monitoring
+
+Monitoring provides continuous visibility into WebSocket environments.
+
+```
+Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerting
+
+↓
+
+Security Team
+
+↓
+
+Investigation
+```
+
+Monitoring supports early detection of operational and security issues.
+
+---
+
+# Observability
+
+Modern WebSocket services benefit from comprehensive telemetry.
+
+```
+Observability
+
+│
+
+├── Logs
+
+├── Metrics
+
+├── Traces
+
+└── Dashboards
+```
+
+Together, these sources provide insight into system behavior and performance.
+
+---
+
+# Security Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Active Connections | Capacity planning |
+| Authentication Success Rate | Identity monitoring |
+| Authorization Failures | Access monitoring |
+| Connection Duration | Session analysis |
+| Error Rate | Reliability |
+| Message Rate | Operational monitoring |
+| API Availability | Service health |
+| Security Alerts | Threat visibility |
+
+---
+
+# Threat Modeling
+
+Threat modeling should be performed during system design.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Trust Boundaries
+
+↓
+
+Threat Analysis
+
+↓
+
+Security Controls
+```
+
+This process helps identify security concerns before deployment.
+
+---
+
+# Secure SDLC Integration
+
+WebSocket security should be integrated throughout development.
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Threat Modeling
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security should be addressed continuously rather than only before release.
+
+---
+
+# Security Testing
+
+Security testing verifies implemented controls.
+
+```
+Security Testing
+
+│
+
+├── Architecture Review
+
+├── Authentication Testing
+
+├── Authorization Testing
+
+├── Configuration Review
+
+├── Session Review
+
+├── Logging Validation
+
+├── Monitoring Validation
+
+└── Code Review
+```
+
+Testing should confirm that security controls behave as intended.
+
+---
+
+# Defense in Depth
+
+Multiple independent controls strengthen security.
+
+```
+Internet
+
+↓
+
+Web Application Firewall
+
+↓
+
+Reverse Proxy
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Message Validation
+
+↓
+
+WebSocket Server
+
+↓
+
+Business Logic
+
+↓
+
+Database
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+Layered defenses reduce the impact of individual control failures.
+
+---
+
+# Enterprise WebSocket Architecture
+
+```
+Internet
+
+↓
+
+HTTPS / WSS
+
+↓
+
+Web Application Firewall
+
+↓
+
+Load Balancer
+
+↓
+
+API Gateway
+
+↓
+
+Identity Provider
+
+↓
+
+WebSocket Gateway
+
+↓
+
+Application Services
+
+↓
+
+Databases
+
+↓
+
+Central Logging
+
+↓
+
+Monitoring Platform
+
+↓
+
+Security Operations Center
+```
+
+This architecture supports secure, scalable, and observable real-time communication.
+
+---
+
+# Enterprise Example
+
+A global logistics company provides real-time shipment tracking for customers and internal operations teams.
+
+```
+Tracking Application
+
+↓
+
+WSS
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+WebSocket Gateway
+
+↓
+
+Shipment Services
+
+↓
+
+Logistics Database
+
+↓
+
+Monitoring Platform
+```
+
+Every connection is authenticated, authorized for appropriate tracking information, monitored throughout its lifecycle, and logged for operational visibility.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Long-lived sessions | Apply timeout policies |
+| High connection volume | Define connection limits |
+| Message flooding | Use rate controls |
+| Weak visibility | Centralize logging and monitoring |
+| Unauthorized channel access | Enforce continuous authorization |
+| Resource exhaustion | Monitor capacity and usage |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw a WebSocket trust boundary diagram.
+2. Design a conceptual connection lifecycle monitoring dashboard.
+3. Identify where authentication and authorization should occur.
+4. Create a logging strategy for connection events.
+5. Review a sample architecture and identify opportunities for defense in depth.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on defensive architecture, operational monitoring, and secure implementation.
+
+---
+
+# Interview Questions
+
+1. What is Cross-Site WebSocket Hijacking (CSWSH)?
+2. Why is origin validation important?
+3. Why should authorization continue after connection establishment?
+4. Why are idle connection timeouts useful?
+5. What security events should be logged?
+6. What metrics are useful for monitoring WebSocket services?
+7. Why is observability important?
+8. How does threat modeling improve WebSocket security?
+9. Why should message validation occur on every message?
+10. How does defense in depth strengthen WebSocket security?
+
+---
+
+# Best Practices
+
+- Validate connection origins where appropriate.
+- Require strong authentication before establishing protected connections.
+- Enforce authorization throughout the session lifecycle.
+- Validate every incoming message.
+- Apply connection limits and timeout policies.
+- Monitor active connections, message rates, and resource utilization.
+- Centralize logs and integrate them with security monitoring platforms.
+- Perform regular architecture reviews and security testing.
+
+---
+
+# Common Mistakes
+
+- Trusting a connection simply because it was authenticated once.
+- Allowing idle sessions to remain active indefinitely.
+- Ignoring message validation after connection establishment.
+- Failing to monitor long-lived connections.
+- Logging sensitive information unnecessarily.
+- Treating WebSocket traffic as outside normal security monitoring processes.
+
+---
+
+# Key Takeaways
+
+- WebSocket security requires continuous protection throughout the connection lifecycle.
+- Origin validation, authentication, authorization, and message validation work together to reduce risk.
+- Long-lived sessions require careful management, monitoring, and timeout policies.
+- Logging, observability, and security testing improve operational resilience.
+- Defense in depth remains a foundational principle for enterprise WebSocket deployments.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
