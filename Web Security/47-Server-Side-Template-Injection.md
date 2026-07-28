@@ -1182,6 +1182,771 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 - Auto-escaping and context-aware output encoding strengthen rendering safety.
 - Enterprise governance, monitoring, and standardized rendering practices improve reliability and resilience.
 
+# 47-Server-Side-Template-Injection.md
+
+# Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, DevSecOps, Monitoring, and Enterprise Defense
+
+> **"Preventing Server-Side Template Injection requires trusted template management, secure rendering architecture, rigorous input validation, contextual output encoding, continuous testing, and centralized governance throughout the software development lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Detecting SSTI Risks
+- Secure Template Validation
+- Threat Modeling
+- Rendering Architecture Review
+- Template Governance
+- Secure SDLC
+- DevSecOps Integration
+- Configuration Management
+- Logging
+- Monitoring
+- Enterprise Governance
+
+---
+
+# Detecting SSTI Risks
+
+Organizations should periodically review every component involved in template rendering.
+
+```
+Application
+
+↓
+
+Rendering Review
+
+↓
+
+Template Validation
+
+↓
+
+Architecture Assessment
+
+↓
+
+Deployment Verification
+```
+
+The objective is to ensure that application-controlled templates remain separate from untrusted data throughout the rendering lifecycle.
+
+---
+
+# Rendering Security Review
+
+Every rendering workflow should be reviewed.
+
+```
+User Request
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Rendering Context
+
+↓
+
+Template Engine
+
+↓
+
+Rendered Output
+```
+
+Reviews should verify that rendering behavior follows documented application policies.
+
+---
+
+# Template Inventory
+
+Maintain an inventory of every template used by the application.
+
+```
+Templates
+
+│
+
+├── Login Pages
+
+├── Dashboards
+
+├── Reports
+
+├── Email Templates
+
+├── Notifications
+
+├── Administrative Views
+
+├── Error Pages
+
+└── Documents
+```
+
+A complete inventory simplifies governance and maintenance.
+
+---
+
+# Rendering Component Inventory
+
+Document every rendering-related component.
+
+```
+Rendering Components
+
+│
+
+├── Template Engine
+
+├── Template Repository
+
+├── Rendering Service
+
+├── Business Logic
+
+├── Output Encoder
+
+├── Cache
+
+├── Monitoring
+
+└── Logging
+```
+
+Clear documentation supports architecture reviews and operational readiness.
+
+---
+
+# Configuration Consistency
+
+Rendering configuration should remain consistent across environments.
+
+```
+Development
+
+↓
+
+Approved Configuration
+
+↓
+
+Testing
+
+↓
+
+Approved Configuration
+
+↓
+
+Production
+```
+
+Consistency minimizes unexpected rendering behavior.
+
+---
+
+# Architecture Review
+
+Architecture reviews should evaluate:
+
+- Rendering workflow
+- Template storage
+- Template lifecycle
+- Context creation
+- Validation
+- Output encoding
+- Logging
+- Monitoring
+
+```
+Architecture
+
+↓
+
+Security Review
+
+↓
+
+Recommendations
+
+↓
+
+Implementation
+```
+
+---
+
+# Threat Modeling
+
+Threat modeling identifies where rendering decisions influence business processes.
+
+```
+Incoming Request
+
+↓
+
+Validation
+
+↓
+
+Rendering Context
+
+↓
+
+Template Engine
+
+↓
+
+Business Output
+```
+
+The goal is to identify trust boundaries and ensure rendering decisions rely on trusted application resources.
+
+---
+
+# Threat Modeling Questions
+
+Security architects should ask:
+
+- Which templates are rendered?
+- Where are templates stored?
+- Which systems manage template updates?
+- Where is rendering context created?
+- Which data sources populate templates?
+- Where are trust boundaries?
+- How are rendering policies maintained?
+- Which rendering events are monitored?
+
+```
+Threat Assessment
+
+↓
+
+Risk Analysis
+
+↓
+
+Security Controls
+```
+
+---
+
+# Secure Rendering Validation
+
+Applications should verify rendering behavior against documented requirements.
+
+```
+Incoming Data
+
+↓
+
+Validation
+
+↓
+
+Rendering Context
+
+↓
+
+Trusted Template
+
+↓
+
+Expected Output
+```
+
+Testing should focus on predictable rendering and policy compliance.
+
+---
+
+# Types of Testing
+
+```
+Testing
+
+│
+
+├── Unit Testing
+
+├── Integration Testing
+
+├── Functional Testing
+
+├── Rendering Validation
+
+├── Regression Testing
+
+├── Security Testing
+
+├── Deployment Validation
+
+└── Architecture Validation
+```
+
+Each testing phase contributes to secure template rendering.
+
+---
+
+# Template Lifecycle Review
+
+Organizations should periodically review the lifecycle of templates.
+
+```
+Design
+
+↓
+
+Development
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Retirement
+```
+
+A managed lifecycle improves security and maintainability.
+
+---
+
+# Template Governance Review
+
+Reviews should evaluate:
+
+```
+Template Governance
+
+│
+
+├── Ownership
+
+├── Version Control
+
+├── Approval Process
+
+├── Security Reviews
+
+├── Documentation
+
+├── Change History
+
+├── Deployment Controls
+
+└── Monitoring
+```
+
+Formal governance ensures consistency across large engineering teams.
+
+---
+
+# Secure SDLC
+
+Template security should be integrated throughout software development.
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Security Review
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security activities should occur throughout the development lifecycle.
+
+---
+
+# DevSecOps Integration
+
+```
+Developer
+
+↓
+
+Version Control
+
+↓
+
+Build
+
+↓
+
+Automated Tests
+
+↓
+
+Rendering Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Automated validation improves deployment reliability.
+
+---
+
+# Change Management
+
+Template-related changes should follow controlled governance.
+
+```
+Template Change
+
+↓
+
+Review
+
+↓
+
+Testing
+
+↓
+
+Approval
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Controlled changes improve traceability and reduce operational risk.
+
+---
+
+# Logging
+
+Applications should record rendering-related operational events.
+
+```
+Application
+
+↓
+
+Rendering Events
+
+↓
+
+Audit Logs
+
+↓
+
+Monitoring Platform
+```
+
+Logs support troubleshooting, governance, and investigations.
+
+---
+
+# Important Events
+
+| Event | Purpose |
+|--------|----------|
+| Template Render Completed | Operational visibility |
+| Rendering Validation Failure | Security monitoring |
+| Template Deployment | Release auditing |
+| Configuration Update | Governance |
+| Cache Refresh | Operational awareness |
+| Administrative Action | Accountability |
+| Service Restart | Reliability monitoring |
+| Monitoring Alert | Operations response |
+
+Sensitive customer or business information should be masked or omitted where appropriate.
+
+---
+
+# Monitoring Architecture
+
+```
+Applications
+
+↓
+
+Rendering Metrics
+
+↓
+
+Central Monitoring
+
+↓
+
+Dashboards
+
+↓
+
+Operations Team
+```
+
+Continuous monitoring confirms rendering reliability after releases.
+
+---
+
+# Useful Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Successful Renders | Operational visibility |
+| Rendering Failure Rate | Reliability monitoring |
+| Average Rendering Time | Performance |
+| Cache Utilization | Efficiency |
+| Template Deployment Success | Release quality |
+| Service Availability | Operational health |
+| Active Alerts | Incident visibility |
+
+---
+
+# Governance
+
+Organizations should establish centralized standards for template rendering.
+
+```
+Rendering Governance
+
+│
+
+├── Template Standards
+
+├── Rendering Policies
+
+├── Validation Standards
+
+├── Security Reviews
+
+├── Monitoring Standards
+
+├── Documentation
+
+├── Change Management
+
+└── Continuous Improvement
+```
+
+Governance improves consistency across applications and engineering teams.
+
+---
+
+# Enterprise Architecture
+
+```
+Internet
+
+↓
+
+Load Balancer
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Rendering Service
+
+↓
+
+Template Engine
+
+↓
+
+Monitoring
+
+↓
+
+SOC
+```
+
+Each layer contributes to predictable and secure rendering.
+
+---
+
+# Enterprise Example
+
+A multinational financial services organization generates customer dashboards, account statements, notifications, and regulatory reports through centralized rendering services.
+
+```
+Customer
+
+↓
+
+Application
+
+↓
+
+Business Logic
+
+↓
+
+Validated Context
+
+↓
+
+Trusted Template
+
+↓
+
+Rendered Dashboard
+```
+
+Templates are stored in a version-controlled repository, rendering validation is integrated into CI/CD pipelines, configuration changes require security approval, and rendering metrics are continuously monitored through centralized dashboards.
+
+---
+
+# Operational Readiness Checklist
+
+```
+✓ Templates Documented
+
+✓ Rendering Configuration Standardized
+
+✓ Validation Enabled
+
+✓ Output Encoding Reviewed
+
+✓ Monitoring Configured
+
+✓ Logging Enabled
+
+✓ Architecture Reviewed
+
+✓ Governance Approved
+
+✓ Security Review Completed
+
+✓ Deployment Validation Performed
+```
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large template repositories | Central template governance |
+| Multiple rendering engines | Standardized rendering policies |
+| Legacy rendering systems | Incremental modernization |
+| Frequent deployments | Automated rendering validation |
+| Distributed engineering teams | Shared secure coding standards |
+| Limited operational visibility | Centralized dashboards and SIEM |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Create an inventory of every server-side template used by an application.
+2. Document the rendering lifecycle from request to response.
+3. Review where rendering contexts are created and validated.
+4. Design a governance process for template changes.
+5. Create a monitoring dashboard for rendering reliability and performance.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on architecture review, rendering governance, validation, monitoring, and defensive application design.
+
+---
+
+# Interview Questions
+
+1. What is Server-Side Template Injection?
+2. Why should templates remain trusted?
+3. What is a rendering context?
+4. Why is output encoding important?
+5. Why should template changes follow governance?
+6. What is the purpose of threat modeling?
+7. Which rendering events should be logged?
+8. Which metrics help monitor rendering health?
+9. How does DevSecOps improve template security?
+10. Why should rendering architecture be reviewed regularly?
+
+---
+
+# Best Practices
+
+- Keep templates under strict application control.
+- Validate all data before creating rendering contexts.
+- Separate template logic from application data.
+- Apply context-aware output encoding.
+- Maintain version-controlled templates.
+- Integrate rendering validation into CI/CD pipelines.
+- Continuously monitor rendering metrics.
+- Review rendering architecture during security assessments.
+- Apply centralized governance for template lifecycle management.
+
+---
+
+# Common Mistakes
+
+- Mixing user-controlled data with template logic.
+- Maintaining inconsistent rendering configurations.
+- Poor template lifecycle documentation.
+- Skipping validation before rendering.
+- Neglecting monitoring after template deployments.
+- Allowing uncontrolled template changes.
+- Omitting rendering workflows from architecture reviews.
+
+---
+
+# Key Takeaways
+
+- Secure rendering depends on trusted templates, validated data, and predictable workflows.
+- Threat modeling helps identify rendering trust boundaries.
+- Template governance and lifecycle management improve long-term security.
+- Secure SDLC and DevSecOps integrate rendering validation throughout development.
+- Continuous monitoring, logging, and centralized governance strengthen enterprise defenses against SSTI-related risks.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
