@@ -638,6 +638,736 @@ Organizations should classify data before determining appropriate protections.
 - Strong cryptography requires secure key management.
 - Enterprise security combines cryptography with other security controls to protect business-critical information.
 
+# 20-Cryptographic-Failures.md
+
+# Part 2 — Encryption Types, Hashing, Digital Signatures, Key Management, Certificates, and Enterprise Cryptography
+
+> **"Strong cryptography is not achieved by selecting a secure algorithm alone. Security depends equally on proper key management, trusted certificates, secure implementation, and correct operational practices."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Symmetric Encryption
+- Asymmetric Encryption
+- Hash Functions
+- Digital Signatures
+- Public Key Infrastructure (PKI)
+- Certificates
+- Key Management
+- Cryptographic Randomness
+- Enterprise Cryptography
+- Common Cryptographic Weaknesses
+
+---
+
+# Types of Cryptography
+
+Modern cryptography consists of several complementary techniques.
+
+```
+Cryptography
+
+│
+
+├── Symmetric Encryption
+
+├── Asymmetric Encryption
+
+├── Hash Functions
+
+├── Digital Signatures
+
+└── Certificate Infrastructure
+```
+
+Each serves a different security purpose.
+
+---
+
+# Symmetric Encryption
+
+Symmetric encryption uses **one shared key** for both encryption and decryption.
+
+```
+Plaintext
+
+↓
+
+Encrypt
+
+↓
+
+Shared Secret Key
+
+↓
+
+Ciphertext
+
+↓
+
+Decrypt
+
+↓
+
+Shared Secret Key
+
+↓
+
+Plaintext
+```
+
+Both communicating parties must securely possess the same secret key.
+
+---
+
+# Characteristics of Symmetric Encryption
+
+Advantages:
+
+- Fast
+- Efficient
+- Suitable for large volumes of data
+
+Challenges:
+
+- Secure key distribution
+- Key storage
+- Key rotation
+- Key compromise
+
+---
+
+# Enterprise Example
+
+```
+Database
+
+↓
+
+Sensitive Records
+
+↓
+
+Symmetric Encryption
+
+↓
+
+Encrypted Storage
+```
+
+Organizations commonly use symmetric encryption to protect stored data.
+
+---
+
+# Asymmetric Encryption
+
+Asymmetric encryption uses **two mathematically related keys**.
+
+```
+Key Pair
+
+│
+
+├── Public Key
+
+└── Private Key
+```
+
+The keys have different purposes and should never be confused.
+
+---
+
+# Asymmetric Encryption Workflow
+
+```
+Sender
+
+↓
+
+Public Key
+
+↓
+
+Encryption
+
+↓
+
+Ciphertext
+
+↓
+
+Private Key
+
+↓
+
+Decryption
+
+↓
+
+Recipient
+```
+
+The private key must remain confidential.
+
+---
+
+# Symmetric vs Asymmetric Encryption
+
+| Symmetric | Asymmetric |
+|------------|------------|
+| One shared key | Public and private key pair |
+| Faster | Slower |
+| Suitable for bulk data | Suitable for key exchange and identity verification |
+| Simpler mathematically | More computationally intensive |
+
+---
+
+# Hybrid Cryptography
+
+Modern secure communication often combines both approaches.
+
+```
+Client
+
+↓
+
+Asymmetric Encryption
+
+↓
+
+Secure Session Key Exchange
+
+↓
+
+Symmetric Encryption
+
+↓
+
+Secure Communication
+```
+
+This combines the strengths of each technique.
+
+---
+
+# Hash Functions
+
+Hash functions transform data into a fixed-length value.
+
+```
+Original Data
+
+↓
+
+Hash Function
+
+↓
+
+Hash Value
+```
+
+Hashes are designed for integrity verification rather than encryption.
+
+---
+
+# Properties of Hash Functions
+
+A secure hash function should exhibit:
+
+```
+Input
+
+↓
+
+Hash Function
+
+↓
+
+Fixed-Length Output
+
+↓
+
+Integrity Verification
+```
+
+Desired characteristics include:
+
+- Deterministic output
+- Fixed output length
+- Efficient computation
+- Strong resistance to collisions and reversal
+
+---
+
+# Integrity Verification
+
+```
+Original File
+
+↓
+
+Hash
+
+↓
+
+Stored Hash
+
+────────────
+
+Received File
+
+↓
+
+Hash
+
+↓
+
+Compare
+
+↓
+
+Match?
+
+↓
+
+Integrity Verified
+```
+
+Matching hashes indicate the content has not changed.
+
+---
+
+# Encryption vs Hashing
+
+| Encryption | Hashing |
+|------------|----------|
+| Protects confidentiality | Verifies integrity |
+| Reversible with appropriate keys | Designed to be one-way |
+| Produces ciphertext | Produces a hash value |
+| Supports secure communication | Supports integrity verification |
+
+---
+
+# Digital Signatures
+
+Digital signatures help verify authenticity and integrity.
+
+Conceptually:
+
+```
+Document
+
+↓
+
+Digital Signature
+
+↓
+
+Transmission
+
+↓
+
+Verification
+
+↓
+
+Trusted?
+```
+
+Digital signatures provide confidence that content originates from the expected source and has not been altered unexpectedly.
+
+---
+
+# Why Digital Signatures Matter
+
+```
+Document
+
+↓
+
+Modified?
+
+↓
+
+Verification
+
+↓
+
+Success
+
+OR
+
+Failure
+```
+
+Verification failures indicate that integrity or authenticity cannot be confirmed.
+
+---
+
+# Public Key Infrastructure (PKI)
+
+PKI provides a framework for managing digital certificates and trust relationships.
+
+```
+PKI
+
+│
+
+├── Certificates
+
+├── Public Keys
+
+├── Private Keys
+
+├── Certificate Authorities
+
+└── Trust Chain
+```
+
+PKI enables secure communication across untrusted networks.
+
+---
+
+# Digital Certificates
+
+Certificates associate a public key with an identity.
+
+```
+Organization
+
+↓
+
+Certificate
+
+↓
+
+Trusted Identity
+
+↓
+
+Secure Communication
+```
+
+Certificates help browsers and applications establish trust.
+
+---
+
+# Certificate Chain
+
+```
+Root Authority
+
+↓
+
+Intermediate Authority
+
+↓
+
+Server Certificate
+
+↓
+
+Browser Trust
+```
+
+Each level contributes to establishing trust.
+
+---
+
+# Certificate Validation
+
+Before establishing secure communication:
+
+```
+Certificate Received
+
+↓
+
+Validity Check
+
+↓
+
+Trusted Issuer?
+
+↓
+
+Expiration Check
+
+↓
+
+Accept
+
+OR
+
+Reject
+```
+
+Certificates should be valid, trusted, and unexpired.
+
+---
+
+# Key Management Lifecycle
+
+Cryptographic keys require management throughout their lifecycle.
+
+```
+Generate
+
+↓
+
+Store
+
+↓
+
+Use
+
+↓
+
+Rotate
+
+↓
+
+Archive
+
+↓
+
+Destroy
+```
+
+Improper key management can undermine otherwise strong cryptographic systems.
+
+---
+
+# Key Rotation
+
+Organizations periodically replace cryptographic keys.
+
+```
+Existing Key
+
+↓
+
+New Key Generated
+
+↓
+
+Migration
+
+↓
+
+Old Key Retired
+```
+
+Regular rotation limits the impact of long-term key exposure.
+
+---
+
+# Secure Key Storage
+
+Keys should be protected separately from encrypted data.
+
+```
+Encrypted Data
+
+↓
+
+Application
+
+↓
+
+Secure Key Storage
+
+↓
+
+Key Retrieval
+
+↓
+
+Decryption
+```
+
+Separating keys from protected data reduces overall risk.
+
+---
+
+# Random Number Generation
+
+Many cryptographic operations rely on unpredictable random values.
+
+```
+Random Source
+
+↓
+
+Cryptographic Operation
+
+↓
+
+Secure Output
+```
+
+Predictable randomness can weaken cryptographic protections.
+
+---
+
+# Secrets Management
+
+Applications often rely on sensitive secrets.
+
+Examples include:
+
+- API keys
+- Database credentials
+- Encryption keys
+- Signing keys
+- Authentication secrets
+
+Secrets should be managed securely throughout their lifecycle.
+
+---
+
+# Enterprise Cryptography
+
+```
+Enterprise
+
+│
+
+├── TLS
+
+├── Database Encryption
+
+├── Disk Encryption
+
+├── VPN
+
+├── Secure Email
+
+├── Cloud Storage
+
+├── Authentication Tokens
+
+└── Digital Certificates
+```
+
+Cryptography is integrated into numerous enterprise technologies.
+
+---
+
+# Enterprise Cryptographic Workflow
+
+```
+Sensitive Data
+
+↓
+
+Classification
+
+↓
+
+Encryption
+
+↓
+
+Secure Storage
+
+↓
+
+Transmission
+
+↓
+
+Monitoring
+
+↓
+
+Key Rotation
+
+↓
+
+Audit
+```
+
+---
+
+# Common Cryptographic Weaknesses
+
+| Weakness | Security Impact |
+|----------|-----------------|
+| Weak key management | Key exposure |
+| Hardcoded secrets | Unauthorized access |
+| Expired certificates | Trust failures |
+| Weak randomness | Predictable cryptographic values |
+| Improper certificate validation | Increased communication risk |
+| Shared secrets without proper management | Larger compromise impact |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. List where a sample application uses cryptography.
+2. Classify each use as:
+   - Symmetric encryption
+   - Asymmetric encryption
+   - Hashing
+   - Digital signatures
+3. Create a conceptual key lifecycle.
+4. Identify where certificates would be required.
+5. Document potential risks associated with poor key management.
+
+> Perform all testing only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is the difference between symmetric and asymmetric encryption?
+2. Why is symmetric encryption generally faster?
+3. What is a cryptographic hash function?
+4. How does hashing differ from encryption?
+5. What is a digital signature?
+6. What is PKI?
+7. Why are digital certificates important?
+8. What is key rotation?
+9. Why should cryptographic keys be stored securely?
+10. Why is cryptographically secure randomness important?
+
+---
+
+# Best Practices
+
+- Use well-established cryptographic algorithms and libraries.
+- Separate encrypted data from cryptographic keys.
+- Rotate keys according to organizational policy.
+- Validate certificates before establishing trust.
+- Protect secrets using dedicated secrets management solutions.
+- Monitor certificate expiration and renewal.
+- Review cryptographic configurations periodically.
+
+---
+
+# Common Mistakes
+
+- Confusing encryption with hashing.
+- Hardcoding secrets into application code.
+- Leaving expired certificates in production.
+- Using predictable random values for cryptographic operations.
+- Failing to rotate long-lived keys.
+- Storing encryption keys alongside encrypted data.
+
+---
+
+# Key Takeaways
+
+- Symmetric and asymmetric encryption serve different purposes and are often used together.
+- Hashing supports integrity verification rather than confidentiality.
+- Digital signatures provide authenticity and integrity assurance.
+- PKI and certificates establish trust in secure communications.
+- Strong cryptography depends on secure key management, certificate validation, and proper operational practices.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
