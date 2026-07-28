@@ -636,6 +636,757 @@ Security requirements should evolve alongside functional requirements.
 - Trust boundaries, attack surface, and business logic are central to secure design.
 - Secure design principles provide the foundation for resilient enterprise applications.
 
+
+# 22-Insecure-Design.md
+
+# Part 2 — Threat Modeling, Abuse Cases, Secure Design Patterns, Risk Assessment, and Business Logic Security
+
+> **"The objective of secure design is not to predict every attack, but to build systems that remain secure even when unexpected situations occur."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Threat Modeling
+- Assets
+- Threat Actors
+- Attack Surface Analysis
+- Abuse Cases
+- Misuse Cases
+- Business Logic Security
+- Risk Assessment
+- Secure Design Patterns
+- Enterprise Security Reviews
+
+---
+
+# Threat Modeling
+
+Threat modeling is a structured process used to identify potential security risks **before implementation begins**.
+
+```
+Business Requirements
+
+↓
+
+Architecture
+
+↓
+
+Threat Modeling
+
+↓
+
+Risk Identification
+
+↓
+
+Security Controls
+
+↓
+
+Implementation
+```
+
+The earlier risks are identified, the less costly they are to address.
+
+---
+
+# Why Threat Modeling Matters
+
+Without threat modeling:
+
+```
+Requirements
+
+↓
+
+Development
+
+↓
+
+Deployment
+
+↓
+
+Security Problems
+```
+
+With threat modeling:
+
+```
+Requirements
+
+↓
+
+Threat Analysis
+
+↓
+
+Secure Design
+
+↓
+
+Implementation
+
+↓
+
+Reduced Risk
+```
+
+Threat modeling encourages proactive rather than reactive security.
+
+---
+
+# Components of Threat Modeling
+
+```
+Threat Modeling
+
+│
+
+├── Assets
+
+├── Trust Boundaries
+
+├── Entry Points
+
+├── Threat Actors
+
+├── Threats
+
+├── Risks
+
+└── Security Controls
+```
+
+Each component contributes to a complete security assessment.
+
+---
+
+# Identify Assets
+
+Assets are resources that require protection.
+
+Examples include:
+
+```
+Assets
+
+│
+
+├── Customer Data
+
+├── Credentials
+
+├── Payment Information
+
+├── Source Code
+
+├── API Keys
+
+├── Business Documents
+
+├── Financial Records
+
+└── Audit Logs
+```
+
+Understanding assets helps prioritize security efforts.
+
+---
+
+# Identify Entry Points
+
+Applications receive input through multiple interfaces.
+
+```
+Entry Points
+
+│
+
+├── Login
+
+├── Registration
+
+├── REST APIs
+
+├── GraphQL APIs
+
+├── Mobile APIs
+
+├── File Upload
+
+├── Search
+
+└── Administrative Portal
+```
+
+Each entry point should be evaluated independently.
+
+---
+
+# Identify Trust Boundaries
+
+```
+Browser
+
+↓
+
+Internet
+
+↓
+
+Load Balancer
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+Whenever information crosses a trust boundary, validation and security checks should occur.
+
+---
+
+# Threat Actors
+
+Threat actors are entities capable of interacting with the system.
+
+```
+Threat Actors
+
+│
+
+├── Customers
+
+├── Administrators
+
+├── Employees
+
+├── Third-Party Services
+
+├── Automated Systems
+
+└── Unauthorized Parties
+```
+
+Different actors require different security controls.
+
+---
+
+# Threat Modeling Workflow
+
+```
+Identify Assets
+
+↓
+
+Identify Entry Points
+
+↓
+
+Identify Trust Boundaries
+
+↓
+
+Identify Threats
+
+↓
+
+Evaluate Risks
+
+↓
+
+Select Controls
+
+↓
+
+Review Design
+```
+
+Threat modeling should be repeated whenever significant architectural changes occur.
+
+---
+
+# Abuse Cases
+
+An abuse case describes how a system **could be intentionally misused**.
+
+Example:
+
+```
+Feature
+
+↓
+
+Normal Usage
+
+↓
+
+Potential Misuse
+
+↓
+
+Required Security Control
+```
+
+Thinking about misuse helps uncover missing protections.
+
+---
+
+# Misuse Cases
+
+A misuse case focuses on **undesired system behavior**.
+
+```
+Business Feature
+
+↓
+
+Improper Use
+
+↓
+
+Potential Impact
+
+↓
+
+Mitigation
+```
+
+Designers should consider both intended and unintended behavior.
+
+---
+
+# Business Logic Security
+
+Business logic defines organizational rules.
+
+Example workflow:
+
+```
+Customer
+
+↓
+
+Place Order
+
+↓
+
+Inventory Check
+
+↓
+
+Payment Verification
+
+↓
+
+Order Approval
+
+↓
+
+Shipping
+```
+
+Each step should include appropriate validation and authorization.
+
+---
+
+# Secure Business Workflow
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Business Validation
+
+↓
+
+Fraud Checks
+
+↓
+
+Transaction
+
+↓
+
+Audit Logging
+```
+
+Security should be integrated into the workflow itself.
+
+---
+
+# Business Rules
+
+Business rules enforce organizational policies.
+
+Examples:
+
+- Maximum transaction limits
+- Age verification
+- Purchase restrictions
+- Approval workflows
+- Daily usage limits
+- Account ownership validation
+
+These rules reduce business risk in addition to technical risk.
+
+---
+
+# Risk Assessment
+
+Each identified threat should be evaluated.
+
+```
+Threat
+
+↓
+
+Likelihood
+
+↓
+
+Impact
+
+↓
+
+Risk Level
+
+↓
+
+Mitigation
+```
+
+Risk assessment helps prioritize limited security resources.
+
+---
+
+# Example Risk Matrix
+
+| Likelihood | Impact | Priority |
+|------------|--------|----------|
+| High | High | Critical |
+| High | Medium | High |
+| Medium | Medium | Moderate |
+| Low | High | Moderate |
+| Low | Low | Low |
+
+Organizations may customize risk ratings according to their governance processes.
+
+---
+
+# Secure Design Patterns
+
+Secure design patterns provide reusable architectural approaches.
+
+```
+Secure Patterns
+
+│
+
+├── Authentication Layer
+
+├── Authorization Layer
+
+├── Validation Layer
+
+├── Audit Logging
+
+├── Error Handling
+
+├── Secure Session Management
+
+└── Encryption
+```
+
+Patterns encourage consistency across applications.
+
+---
+
+# Layered Architecture
+
+```
+Presentation Layer
+
+↓
+
+Application Layer
+
+↓
+
+Business Logic Layer
+
+↓
+
+Data Access Layer
+
+↓
+
+Database
+```
+
+Separating responsibilities improves maintainability and security.
+
+---
+
+# Separation of Responsibilities
+
+```
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Database Access
+```
+
+Each component should perform a clearly defined function.
+
+---
+
+# Security Design Reviews
+
+Architectural reviews should examine:
+
+```
+✓ Trust Boundaries
+
+✓ Authentication
+
+✓ Authorization
+
+✓ Input Validation
+
+✓ Logging
+
+✓ Encryption
+
+✓ Session Management
+
+✓ Business Logic
+
+✓ Third-Party Integrations
+```
+
+Reviews are most effective before implementation begins.
+
+---
+
+# Enterprise Example
+
+An online loan application:
+
+```
+Applicant
+
+↓
+
+Application Submission
+
+↓
+
+Identity Verification
+
+↓
+
+Eligibility Validation
+
+↓
+
+Risk Assessment
+
+↓
+
+Approval Workflow
+
+↓
+
+Loan Issuance
+
+↓
+
+Audit Log
+```
+
+Every stage incorporates both functional and security requirements.
+
+---
+
+# Secure Decision Flow
+
+```
+Request
+
+↓
+
+Authenticate
+
+↓
+
+Authorize
+
+↓
+
+Validate
+
+↓
+
+Business Rules
+
+↓
+
+Risk Checks
+
+↓
+
+Execute
+
+↓
+
+Audit
+```
+
+Security decisions should occur before sensitive operations.
+
+---
+
+# Common Design Weaknesses
+
+| Weakness | Potential Impact |
+|----------|------------------|
+| Missing approval workflow | Unauthorized business actions |
+| Weak business rules | Business process abuse |
+| Excessive trust | Unauthorized operations |
+| Missing validation | Incorrect processing |
+| No audit trail | Difficult investigations |
+| Inconsistent architecture | Uneven security controls |
+
+---
+
+# Enterprise Workflow
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Threat Modeling
+
+↓
+
+Security Review
+
+↓
+
+Implementation
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Threat modeling should be revisited whenever significant changes occur.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Select a sample enterprise application.
+2. Identify its key assets.
+3. Draw trust boundaries.
+4. List potential abuse cases.
+5. Create a simple risk matrix for identified threats.
+6. Recommend secure design improvements.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is threat modeling?
+2. Why should threat modeling occur before implementation?
+3. What is an asset?
+4. What is an abuse case?
+5. What is the purpose of a trust boundary?
+6. Why are business rules important for security?
+7. What is risk assessment?
+8. Why are layered architectures considered more secure?
+9. What should be reviewed during a security design review?
+10. Why should threat modeling be repeated after major architectural changes?
+
+---
+
+# Best Practices
+
+- Perform threat modeling during system design.
+- Identify and classify critical assets.
+- Document trust boundaries clearly.
+- Develop abuse and misuse cases alongside functional requirements.
+- Apply layered architecture and separation of responsibilities.
+- Conduct formal security design reviews.
+- Update threat models whenever the architecture changes.
+
+---
+
+# Common Mistakes
+
+- Beginning implementation before evaluating threats.
+- Focusing only on technical vulnerabilities while ignoring business logic.
+- Treating all risks as equally important.
+- Ignoring third-party integrations during design.
+- Failing to document architectural assumptions.
+- Never revisiting threat models after significant changes.
+
+---
+
+# Key Takeaways
+
+- Threat modeling is a proactive approach to identifying security risks during design.
+- Assets, trust boundaries, entry points, and threat actors form the foundation of secure architecture reviews.
+- Abuse cases help identify how legitimate functionality might be intentionally misused.
+- Business logic security is as important as technical security controls.
+- Secure design patterns, layered architecture, and regular design reviews improve long-term application security.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
