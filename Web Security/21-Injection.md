@@ -600,6 +600,670 @@ No single control should be relied upon exclusively.
 - Secure design separates user data from executable commands.
 - Effective prevention combines validation, safe APIs, least privilege, logging, monitoring, and secure development practices.
 
+# 21-Injection.md
+
+# Part 2 — SQL Injection, NoSQL Injection, LDAP Injection, XPath Injection, Command Injection, and Secure Query Design
+
+> **"The safest way to prevent Injection is to ensure that user input is never interpreted as executable instructions. Data should always remain data."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- SQL Injection (SQLi)
+- NoSQL Injection
+- LDAP Injection
+- XPath Injection
+- OS Command Injection
+- Server-Side Template Injection (SSTI)
+- Expression Language Injection
+- Secure Query Design
+- Parameterized Queries (Conceptual)
+- Enterprise Best Practices
+
+---
+
+# Understanding Interpreters
+
+Applications communicate with various interpreters.
+
+```
+Application
+
+│
+
+├── SQL Database
+
+├── NoSQL Database
+
+├── Operating System
+
+├── LDAP Directory
+
+├── XML Processor
+
+├── Template Engine
+
+└── Search Engine
+```
+
+Each interpreter expects properly formatted instructions from the application.
+
+---
+
+# SQL Injection (SQLi)
+
+SQL Injection occurs when untrusted input improperly influences SQL query construction.
+
+Conceptually:
+
+```
+User Input
+
+↓
+
+Application
+
+↓
+
+SQL Query
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+The risk arises when input becomes part of the query structure instead of remaining ordinary data.
+
+---
+
+# Enterprise Example
+
+```
+Customer
+
+↓
+
+Search Product
+
+↓
+
+Application
+
+↓
+
+Database Query
+
+↓
+
+Matching Products
+```
+
+The customer's search term should be treated strictly as search data.
+
+---
+
+# Secure Query Design
+
+Applications should clearly separate:
+
+```
+Instructions
+
++
+
+User Data
+
+↓
+
+Safe Execution
+```
+
+This separation prevents user input from modifying query logic.
+
+---
+
+# Parameterized Queries (Conceptual)
+
+Instead of embedding user input directly into a query, applications bind user data as parameters.
+
+Conceptually:
+
+```
+Application
+
+↓
+
+Prepared Statement
+
++
+
+User Data
+
+↓
+
+Database
+```
+
+The database distinguishes query instructions from supplied values.
+
+---
+
+# Benefits of Parameterized Queries
+
+```
+✓ Clear Separation of Data
+
+✓ Consistent Query Structure
+
+✓ Reduced Injection Risk
+
+✓ Easier Maintenance
+
+✓ Improved Reliability
+```
+
+Parameterized queries are a foundational defense for database interactions.
+
+---
+
+# NoSQL Injection
+
+Modern applications often use NoSQL databases.
+
+```
+Application
+
+↓
+
+NoSQL Query
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Although query languages differ from SQL, applications should still prevent untrusted input from altering intended query behavior.
+
+---
+
+# Common NoSQL Platforms
+
+```
+NoSQL
+
+│
+
+├── Document Databases
+
+├── Key-Value Stores
+
+├── Column Databases
+
+└── Graph Databases
+```
+
+Each platform has unique query mechanisms but shares the need for secure input handling.
+
+---
+
+# LDAP Injection
+
+LDAP directories manage identity information.
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+LDAP Query
+
+↓
+
+Directory Service
+
+↓
+
+Result
+```
+
+Applications should safely construct directory queries using validated input.
+
+---
+
+# Enterprise LDAP Example
+
+```
+Employee Login
+
+↓
+
+Identity Service
+
+↓
+
+Directory Lookup
+
+↓
+
+Authentication Result
+```
+
+Directory searches should treat user input as directory data rather than query instructions.
+
+---
+
+# XPath Injection
+
+Applications processing XML data may evaluate XPath expressions.
+
+```
+Application
+
+↓
+
+XPath Query
+
+↓
+
+XML Document
+
+↓
+
+Matching Nodes
+```
+
+Secure query construction prevents user input from changing intended XPath behavior.
+
+---
+
+# XML Processing
+
+```
+Application
+
+↓
+
+XML Parser
+
+↓
+
+Business Logic
+
+↓
+
+Response
+```
+
+XML processing should include secure parser configuration and proper input handling.
+
+---
+
+# OS Command Injection
+
+Some applications interact with operating system utilities.
+
+```
+Application
+
+↓
+
+Operating System
+
+↓
+
+Requested Operation
+
+↓
+
+Result
+```
+
+Applications should avoid constructing operating system commands directly from untrusted input.
+
+---
+
+# Safer Design
+
+```
+Application
+
+↓
+
+Safe System API
+
+↓
+
+Operating System
+
+↓
+
+Expected Operation
+```
+
+Whenever possible, use dedicated APIs instead of command interpreters.
+
+---
+
+# Server-Side Template Injection (SSTI)
+
+Template engines generate dynamic content.
+
+```
+Application
+
+↓
+
+Template Engine
+
+↓
+
+Rendered Output
+```
+
+Applications should avoid allowing untrusted input to become executable template expressions.
+
+---
+
+# Expression Language Injection
+
+Some frameworks evaluate expressions.
+
+```
+User Input
+
+↓
+
+Expression Evaluation
+
+↓
+
+Application Logic
+```
+
+Expression evaluation should never process untrusted input directly.
+
+---
+
+# Multiple Injection Points
+
+```
+Browser
+
+↓
+
+Application
+
+├─────────────┬─────────────┬─────────────┐
+
+▼             ▼             ▼             ▼
+
+Database    LDAP      XML Parser     Operating System
+```
+
+Each integration point requires independent protection.
+
+---
+
+# Secure Input Handling
+
+```
+Receive Input
+
+↓
+
+Validate
+
+↓
+
+Normalize
+
+↓
+
+Business Logic
+
+↓
+
+Safe API
+
+↓
+
+Interpreter
+```
+
+Validation should occur before data reaches sensitive components.
+
+---
+
+# Allowlist Validation
+
+Whenever appropriate, applications should accept only expected input.
+
+```
+User Input
+
+↓
+
+Expected Format?
+
+↓
+
+Yes
+
+↓
+
+Continue
+
+──────────────
+
+No
+
+↓
+
+Reject
+```
+
+Allowlisting is generally more predictable than attempting to block every possible invalid input.
+
+---
+
+# Least Privilege
+
+Even with secure coding practices, backend services should operate with only the permissions they require.
+
+```
+Application
+
+↓
+
+Limited Database Account
+
+↓
+
+Required Operations Only
+```
+
+Limiting privileges reduces the impact of implementation mistakes.
+
+---
+
+# Enterprise Architecture
+
+```
+                    Browser
+
+                       │
+
+                       ▼
+
+                 Web Application
+
+         ┌─────────────┼─────────────┐
+
+         ▼             ▼             ▼
+
+ Validation     Business Logic    Logging
+
+         │             │             │
+
+         └─────────────┼─────────────┘
+
+                       ▼
+
+                 Safe Query Layer
+
+         ┌─────────────┼─────────────┐
+
+         ▼             ▼             ▼
+
+      Database      Directory      APIs
+```
+
+A dedicated data access layer encourages consistent security controls.
+
+---
+
+# Secure Development Practices
+
+```
+✓ Validate Input
+
+✓ Normalize Data
+
+✓ Use Parameterized Queries
+
+✓ Prefer Safe APIs
+
+✓ Apply Least Privilege
+
+✓ Review Interpreter Calls
+
+✓ Log Security Events
+
+✓ Perform Security Testing
+```
+
+---
+
+# Common Injection Weaknesses
+
+| Weakness | Potential Impact |
+|----------|------------------|
+| Direct query construction | Unexpected interpreter behavior |
+| Missing validation | Increased attack surface |
+| Excessive database privileges | Greater business impact |
+| Unsafe OS command construction | System-level risk |
+| Inconsistent API usage | Uneven security posture |
+| Weak logging | Reduced incident visibility |
+
+---
+
+# Enterprise Workflow
+
+```
+User Request
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+
+↓
+
+Safe Data Access
+
+↓
+
+Interpreter
+
+↓
+
+Response
+
+↓
+
+Logging
+```
+
+Each layer contributes to reducing Injection risk.
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. List every interpreter used by a sample web application.
+2. Identify where user input reaches each interpreter.
+3. Determine where parameterized queries or safe APIs should be used.
+4. Review which backend accounts require least privilege.
+5. Document security controls for each integration point.
+
+> Perform all testing only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is SQL Injection?
+2. How does SQL Injection differ from NoSQL Injection?
+3. Why are parameterized queries important?
+4. What is LDAP Injection?
+5. What is XPath Injection?
+6. Why should applications avoid constructing operating system commands from user input?
+7. What is Server-Side Template Injection (SSTI)?
+8. Why is allowlist validation preferred in many situations?
+9. How does least privilege reduce Injection risk?
+10. Why should every interpreter interaction be reviewed during code reviews?
+
+---
+
+# Best Practices
+
+- Use parameterized queries for database interactions.
+- Validate and normalize all untrusted input.
+- Prefer framework-provided APIs over direct interpreter access.
+- Apply least privilege to databases and backend services.
+- Centralize query and interpreter interactions through reusable components.
+- Log interpreter errors and security-relevant events.
+- Include Injection testing in every release cycle.
+
+---
+
+# Common Mistakes
+
+- Concatenating user input into queries.
+- Assuming only SQL databases are vulnerable.
+- Using excessive privileges for application service accounts.
+- Ignoring template engines and expression evaluators.
+- Depending solely on client-side validation.
+- Failing to review non-database interpreter integrations.
+
+---
+
+# Key Takeaways
+
+- Injection vulnerabilities affect many interpreter types, not just SQL databases.
+- SQL, NoSQL, LDAP, XPath, command interpreters, and template engines all require secure input handling.
+- Parameterized queries conceptually separate instructions from user data.
+- Safe APIs, validation, least privilege, and secure architecture work together to reduce Injection risk.
+- Consistent security controls across all interpreter interactions are essential for enterprise applications.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
