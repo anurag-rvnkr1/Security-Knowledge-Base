@@ -566,6 +566,692 @@ Applications should provide:
 - Secure routing depends on trusted configuration, deterministic validation, and layered controls.
 - Centralized governance and continuous review improve enterprise resilience against Host header-related issues.
 
+# 45-Host-Header-Attacks.md
+
+# Part 2 — Host Header Processing Lifecycle, Virtual Host Resolution, Reverse Proxy Trust, Absolute URL Generation, and Enterprise Architecture
+
+> **"Secure Host header processing requires trusted request routing, deterministic host validation, centralized configuration, and consistent handling across web servers, reverse proxies, and applications."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Host Header Processing Lifecycle
+- Virtual Host Resolution
+- Reverse Proxy Trust
+- Absolute URL Generation
+- Canonical Hostnames
+- Multi-Tenant Applications
+- Enterprise Routing Architecture
+- Logging
+- Monitoring
+- Secure Host Validation
+
+---
+
+# Host Header Processing Lifecycle
+
+Every HTTP request follows a routing lifecycle before reaching business logic.
+
+```
+Incoming Request
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Host Validation
+
+↓
+
+Application
+
+↓
+
+Business Logic
+```
+
+Each stage should process request information consistently and according to organizational policy.
+
+---
+
+# Enterprise Request Flow
+
+```
+Client
+
+↓
+
+DNS
+
+↓
+
+CDN
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application
+```
+
+The Host header is evaluated by multiple infrastructure components during request routing.
+
+---
+
+# Virtual Host Resolution
+
+A web server selects the appropriate virtual host using configured routing rules.
+
+```
+Incoming Request
+
+↓
+
+Host Information
+
+↓
+
+Virtual Host Lookup
+
+↓
+
+Matching Website
+
+↓
+
+Application
+```
+
+Resolution should rely on trusted configuration rather than assumptions about client input.
+
+---
+
+# Canonical Hostname
+
+Organizations typically define one or more canonical hostnames for each application.
+
+```
+Application
+
+↓
+
+Approved Hostname
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+```
+
+Canonical hostnames improve consistency across authentication, routing, and URL generation.
+
+---
+
+# Host Validation Workflow
+
+```
+Incoming Request
+
+↓
+
+Normalize
+
+↓
+
+Validate
+
+↓
+
+Approved Host?
+
+↓
+
+Continue Processing
+```
+
+Validation should occur before host information influences security-sensitive operations.
+
+---
+
+# Reverse Proxy Processing
+
+Reverse proxies frequently perform:
+
+- TLS termination
+- Request routing
+- Header normalization
+- Logging
+- Load distribution
+- Access control
+
+```
+Client
+
+↓
+
+Reverse Proxy
+
+↓
+
+Validated Request
+
+↓
+
+Application
+```
+
+Proxy behavior should align with documented security policies.
+
+---
+
+# Trusted Reverse Proxies
+
+Applications should distinguish between trusted infrastructure components and external clients.
+
+```
+Internet
+
+↓
+
+Trusted Proxy
+
+↓
+
+Application
+```
+
+Trust relationships should be explicitly configured rather than inferred.
+
+---
+
+# Absolute URL Generation
+
+Applications sometimes generate complete URLs for legitimate business purposes.
+
+Examples include:
+
+- Password reset links
+- Email verification
+- Account activation
+- Administrative notifications
+- Workflow notifications
+
+```
+Application
+
+↓
+
+Business Logic
+
+↓
+
+Absolute URL
+
+↓
+
+User
+```
+
+Absolute URLs should be generated using trusted application configuration rather than untrusted request metadata.
+
+---
+
+# URL Generation Flow
+
+```
+Application Configuration
+
+↓
+
+Approved Host
+
+↓
+
+URL Builder
+
+↓
+
+Generated URL
+```
+
+Trusted configuration provides predictable application behavior.
+
+---
+
+# Multi-Tenant Applications
+
+Some enterprise platforms support multiple customers using shared infrastructure.
+
+```
+Shared Platform
+
+│
+
+├── Tenant A
+
+├── Tenant B
+
+├── Tenant C
+
+└── Tenant D
+```
+
+Tenant routing should follow documented and validated routing policies.
+
+---
+
+# Multi-Tenant Request Flow
+
+```
+Client
+
+↓
+
+Host Validation
+
+↓
+
+Tenant Resolution
+
+↓
+
+Application
+
+↓
+
+Business Services
+```
+
+Tenant identification should be based on approved application design.
+
+---
+
+# Host Normalization
+
+Before validation, organizations often normalize host information.
+
+Conceptually:
+
+```
+Incoming Host
+
+↓
+
+Normalization
+
+↓
+
+Validation
+
+↓
+
+Business Logic
+```
+
+Normalization helps ensure consistent processing across infrastructure components.
+
+---
+
+# Secure Configuration
+
+```
+Configuration
+
+│
+
+├── Approved Hosts
+
+├── Canonical Domains
+
+├── Trusted Proxies
+
+├── Routing Policies
+
+├── URL Generation Rules
+
+└── Monitoring
+```
+
+Configuration should remain centrally managed and version controlled.
+
+---
+
+# Authentication Workflows
+
+Authentication systems frequently generate navigation links.
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Application
+
+↓
+
+Approved URL
+
+↓
+
+Browser
+```
+
+These workflows should rely on trusted configuration for URL construction.
+
+---
+
+# Password Recovery Workflow
+
+```
+User
+
+↓
+
+Password Recovery
+
+↓
+
+Application
+
+↓
+
+Approved URL
+
+↓
+
+Email
+```
+
+Recovery workflows should consistently use approved hostnames.
+
+---
+
+# Enterprise Routing Architecture
+
+```
+Internet
+
+↓
+
+CDN
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Business Services
+
+↓
+
+Database
+```
+
+Each layer contributes to secure request routing and validation.
+
+---
+
+# Defense in Depth
+
+```
+DNS
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Host Validation
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Monitoring
+```
+
+Multiple layers reduce dependency on any single security mechanism.
+
+---
+
+# Logging
+
+Host-processing events should be logged appropriately.
+
+```
+Application
+
+↓
+
+Operational Events
+
+↓
+
+Audit Logs
+
+↓
+
+Monitoring Platform
+```
+
+Logs improve troubleshooting, governance, and operational awareness.
+
+---
+
+# Important Events
+
+| Event | Purpose |
+|--------|----------|
+| Host Validation Success | Operational visibility |
+| Host Validation Failure | Security monitoring |
+| Configuration Change | Governance |
+| Routing Policy Update | Change management |
+| Application Deployment | Release auditing |
+| Service Restart | Operational awareness |
+| Administrative Action | Accountability |
+
+Sensitive request data should be protected in operational logs.
+
+---
+
+# Monitoring
+
+```
+Applications
+
+↓
+
+Routing Metrics
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboards
+
+↓
+
+Operations Team
+```
+
+Continuous monitoring verifies that routing policies operate as intended.
+
+---
+
+# Useful Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Host Validation Success Rate | Policy effectiveness |
+| Validation Failures | Security monitoring |
+| Routing Latency | Performance |
+| Configuration Drift | Governance |
+| Deployment Success | Release quality |
+| Service Availability | Operational health |
+| Active Alerts | Incident visibility |
+
+---
+
+# Enterprise Example
+
+A multinational healthcare organization hosts patient, physician, and administrator portals behind a shared reverse proxy.
+
+```
+Patient
+
+↓
+
+CDN
+
+↓
+
+Load Balancer
+
+↓
+
+Reverse Proxy
+
+↓
+
+Healthcare Portal
+
+↓
+
+Business Services
+```
+
+The organization validates incoming host information against approved application configuration, generates all business URLs using canonical hostnames, and continuously monitors routing consistency across production environments.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Legacy routing rules | Standardize host validation |
+| Multiple proxy layers | Centralize trust configuration |
+| Multi-tenant platforms | Document tenant routing |
+| Cloud migration | Validate routing consistency |
+| Frequent deployments | Automated configuration validation |
+| Large infrastructure | Central governance |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw the Host header processing lifecycle for an enterprise application.
+2. Identify every infrastructure component involved in request routing.
+3. Document approved hostnames and canonical domains.
+4. Review where applications generate absolute URLs.
+5. Design a monitoring dashboard for host validation metrics.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, request routing, validation, and operational governance.
+
+---
+
+# Interview Questions
+
+1. What is virtual host resolution?
+2. Why should applications use canonical hostnames?
+3. What role does a reverse proxy play in request routing?
+4. Why should Host header values be validated?
+5. Why should absolute URLs be generated from trusted configuration?
+6. What is host normalization?
+7. How do multi-tenant applications use host information?
+8. Which operational events should be logged?
+9. Why is centralized configuration important?
+10. How does defense in depth improve request routing security?
+
+---
+
+# Best Practices
+
+- Validate Host header values against approved hostnames.
+- Generate absolute URLs using trusted application configuration.
+- Maintain documented canonical hostnames.
+- Standardize reverse proxy configurations.
+- Centralize routing and validation policies.
+- Continuously monitor routing metrics.
+- Review host handling during architecture assessments.
+- Maintain version-controlled infrastructure configuration.
+
+---
+
+# Common Mistakes
+
+- Generating business URLs from untrusted request metadata.
+- Using inconsistent host validation across applications.
+- Failing to document trusted reverse proxies.
+- Allowing routing configuration drift.
+- Overlooking multi-tenant routing requirements.
+- Neglecting monitoring of host validation events.
+
+---
+
+# Key Takeaways
+
+- Host header processing spans browsers, proxies, web servers, and applications.
+- Virtual host resolution should depend on trusted configuration.
+- Absolute URLs should be generated from canonical application configuration.
+- Reverse proxy trust relationships should be explicitly documented.
+- Centralized governance, monitoring, and standardized validation strengthen enterprise Host header security.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
