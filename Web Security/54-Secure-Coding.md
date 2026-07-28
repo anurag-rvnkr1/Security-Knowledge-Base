@@ -1193,3 +1193,727 @@ Development teams validate all external inputs, protect sensitive patient inform
 - Secure error handling protects users while supporting operational troubleshooting.
 - Secrets, dependencies, and configuration require disciplined governance throughout the Secure SDLC.
 
+# 54-Secure-Coding.md
+
+# Part 3 — Secure Code Reviews, Secure SDLC, DevSecOps, Security Testing, Governance, and Operational Excellence
+
+> **"Secure Coding is not complete when code is written. Enterprise software security depends on structured reviews, automated testing, governance, continuous monitoring, and continuous improvement throughout the Secure SDLC."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Secure Code Reviews
+- Security Design Reviews
+- Secure SDLC Integration
+- DevSecOps
+- Static Application Security Testing (SAST)
+- Dynamic Application Security Testing (DAST)
+- Software Composition Analysis (SCA)
+- Security Governance
+- Logging and Monitoring
+- Capacity Planning
+- Enterprise Operational Readiness
+
+---
+
+# Secure Code Reviews
+
+Code reviews help identify security, quality, and maintainability issues before software reaches production.
+
+```
+Developer
+
+↓
+
+Peer Review
+
+↓
+
+Security Review
+
+↓
+
+Approval
+
+↓
+
+Merge
+```
+
+Security-focused reviews should be part of every development cycle.
+
+---
+
+# Objectives of Secure Code Reviews
+
+```
+Code Review Objectives
+
+│
+
+├── Security
+
+├── Correctness
+
+├── Reliability
+
+├── Maintainability
+
+├── Performance
+
+├── Compliance
+
+├── Documentation
+
+└── Consistency
+```
+
+Reviews improve software quality while reducing future remediation costs.
+
+---
+
+# Secure Review Checklist
+
+During reviews, teams should verify:
+
+```
+✓ Input Validation
+
+✓ Output Encoding
+
+✓ Authentication Logic
+
+✓ Authorization Logic
+
+✓ Error Handling
+
+✓ Logging
+
+✓ Secrets Management
+
+✓ Configuration Handling
+
+✓ Dependency Usage
+
+✓ Secure Defaults
+```
+
+A standardized checklist promotes consistent review quality.
+
+---
+
+# Four-Eyes Principle
+
+Enterprise development commonly follows the "four-eyes principle."
+
+```
+Developer
+
+↓
+
+Independent Reviewer
+
+↓
+
+Approval
+
+↓
+
+Merge
+```
+
+Independent review reduces the likelihood of introducing security weaknesses.
+
+---
+
+# Security Design Reviews
+
+Security should be reviewed before implementation begins.
+
+```
+Business Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Threat Assessment
+
+↓
+
+Security Review
+
+↓
+
+Development
+```
+
+Design reviews reduce costly changes later in the project lifecycle.
+
+---
+
+# Secure SDLC Integration
+
+```
+Requirements
+
+↓
+
+Architecture
+
+↓
+
+Development
+
+↓
+
+Code Review
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Operations
+```
+
+Security activities should be embedded into every development phase.
+
+---
+
+# DevSecOps
+
+DevSecOps integrates security into automated software delivery pipelines.
+
+```
+Developer
+
+↓
+
+Source Control
+
+↓
+
+Build
+
+↓
+
+Automated Testing
+
+↓
+
+Security Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Automation improves consistency, repeatability, and operational efficiency.
+
+---
+
+# Automated Security Validation
+
+Security validation may include:
+
+```
+Automation Pipeline
+
+│
+
+├── Coding Standards
+
+├── Static Analysis
+
+├── Dependency Review
+
+├── Configuration Validation
+
+├── Unit Testing
+
+├── Integration Testing
+
+├── Security Testing
+
+└── Deployment Validation
+```
+
+Automation supports early identification of issues while complementing manual reviews.
+
+---
+
+# Static Application Security Testing (SAST)
+
+SAST analyzes application source code or compiled artifacts without executing the application.
+
+```
+Source Code
+
+↓
+
+Static Analysis
+
+↓
+
+Findings
+
+↓
+
+Developer Review
+
+↓
+
+Remediation
+```
+
+Benefits include:
+
+- Early detection
+- Developer feedback
+- Integration with CI/CD
+- Improved code quality
+
+SAST complements—but does not replace—other testing methods.
+
+---
+
+# Dynamic Application Security Testing (DAST)
+
+DAST evaluates a running application from the outside.
+
+```
+Running Application
+
+↓
+
+Dynamic Assessment
+
+↓
+
+Findings
+
+↓
+
+Analysis
+
+↓
+
+Improvement
+```
+
+DAST helps evaluate runtime behavior and complements source-code analysis.
+
+---
+
+# Software Composition Analysis (SCA)
+
+Modern applications frequently depend on third-party software components.
+
+```
+Application
+
+↓
+
+Dependencies
+
+↓
+
+Composition Analysis
+
+↓
+
+Review
+
+↓
+
+Maintenance
+```
+
+SCA helps organizations maintain visibility into software components and their lifecycle.
+
+---
+
+# Comparing Security Testing Approaches
+
+| Technique | Primary Focus | Typical Stage |
+|-----------|---------------|---------------|
+| SAST | Source code analysis | Development |
+| DAST | Running application assessment | Testing |
+| SCA | Third-party components | Development & Operations |
+| Manual Review | Business logic and design | Throughout SDLC |
+
+Each technique provides unique insights and should be used together as part of a layered security strategy.
+
+---
+
+# Security Governance
+
+Secure coding should follow documented organizational standards.
+
+```
+Security Governance
+
+│
+
+├── Coding Standards
+
+├── Review Process
+
+├── Testing Standards
+
+├── Documentation
+
+├── Risk Management
+
+├── Compliance
+
+├── Training
+
+└── Continuous Improvement
+```
+
+Governance ensures consistent implementation across teams.
+
+---
+
+# Secure Coding Standards
+
+Organizations should establish standards covering:
+
+- Naming conventions
+- Error handling
+- Input validation
+- Output encoding
+- Logging
+- Authentication
+- Authorization
+- Dependency management
+- Configuration management
+- Secrets management
+
+Documented standards improve consistency and maintainability.
+
+---
+
+# Developer Training
+
+```
+Developer Training
+
+↓
+
+Secure Coding
+
+↓
+
+Practical Exercises
+
+↓
+
+Code Reviews
+
+↓
+
+Continuous Learning
+```
+
+Regular education helps teams adopt evolving secure development practices.
+
+---
+
+# Logging Strategy
+
+Applications should generate meaningful operational and security logs.
+
+```
+Application
+
+↓
+
+Logging
+
+↓
+
+Central Platform
+
+↓
+
+Monitoring
+
+↓
+
+Operations
+```
+
+Logging supports troubleshooting, audits, and incident response.
+
+---
+
+# Security Monitoring
+
+```
+Applications
+
+↓
+
+Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboards
+
+↓
+
+Security Team
+```
+
+Continuous monitoring helps identify operational issues and supports security investigations.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Build Success Rate | Development quality |
+| Review Completion Rate | Process compliance |
+| Security Findings | Risk visibility |
+| Dependency Inventory | Software governance |
+| Deployment Success | Operational reliability |
+| Application Availability | Service health |
+| Mean Time to Resolve | Operational improvement |
+| Training Completion | Team readiness |
+
+---
+
+# Capacity Planning
+
+Security activities should scale with development.
+
+```
+Project Growth
+
+↓
+
+Development Activity
+
+↓
+
+Pipeline Capacity
+
+↓
+
+Infrastructure Planning
+
+↓
+
+Continuous Monitoring
+```
+
+Capacity planning supports predictable software delivery.
+
+---
+
+# Enterprise Architecture
+
+```
+                Business Requirements
+
+                         │
+
+                         ▼
+
+                Secure Architecture
+
+                         │
+
+                         ▼
+
+                  Source Control
+
+                         │
+
+                         ▼
+
+               Secure CI/CD Pipeline
+
+      ┌────────────┬─────────────┬────────────┐
+
+      ▼            ▼             ▼
+
+   SAST         SCA          Automated Tests
+
+      └────────────┴─────────────┘
+
+                    ▼
+
+              Code Review
+
+                    ▼
+
+              Deployment
+
+                    ▼
+
+          Monitoring & Operations
+```
+
+Security is integrated throughout the delivery pipeline rather than being isolated to a single phase.
+
+---
+
+# Enterprise Example
+
+A multinational insurance company develops customer self-service applications using a standardized Secure SDLC.
+
+```
+Requirements
+
+↓
+
+Architecture Review
+
+↓
+
+Development
+
+↓
+
+Peer Review
+
+↓
+
+Automated Security Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Security engineers collaborate with developers, architecture teams, and operations teams to ensure coding standards, dependency governance, and continuous monitoring remain consistent across projects.
+
+---
+
+# Operational Readiness Checklist
+
+```
+✓ Coding Standards Published
+
+✓ Peer Reviews Completed
+
+✓ Architecture Reviewed
+
+✓ Security Testing Integrated
+
+✓ Dependencies Reviewed
+
+✓ Secrets Managed Securely
+
+✓ Logging Enabled
+
+✓ Monitoring Configured
+
+✓ Documentation Updated
+
+✓ Developer Training Current
+```
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large development teams | Standardized coding standards |
+| Multiple repositories | Central governance |
+| Rapid releases | Automated validation |
+| Growing dependency ecosystem | Continuous SCA reviews |
+| Distributed engineering teams | Documented review processes |
+| Operational complexity | Continuous monitoring |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design a Secure SDLC workflow for an enterprise application.
+2. Create a secure code review checklist.
+3. Map where SAST, DAST, and SCA integrate into the development lifecycle.
+4. Document governance requirements for secure coding.
+5. Create an operational dashboard showing development and security metrics.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure engineering practices, governance, quality assurance, and operational excellence.
+
+---
+
+# Interview Questions
+
+1. Why are secure code reviews important?
+2. What is the purpose of the four-eyes principle?
+3. How does Secure SDLC improve software security?
+4. What is DevSecOps?
+5. How does SAST differ from DAST?
+6. What is Software Composition Analysis (SCA)?
+7. Why should secure coding standards be documented?
+8. Why is developer training important?
+9. Which metrics help evaluate Secure SDLC effectiveness?
+10. Why should security be integrated throughout the CI/CD pipeline?
+
+---
+
+# Best Practices
+
+- Perform peer reviews for all production code.
+- Integrate security into every SDLC phase.
+- Use multiple complementary security testing techniques.
+- Maintain standardized coding guidelines.
+- Review dependencies regularly.
+- Continuously train development teams.
+- Monitor application and pipeline health.
+- Maintain comprehensive documentation and governance.
+- Regularly review and improve development processes.
+
+---
+
+# Common Mistakes
+
+- Treating code review as optional.
+- Depending on only one security testing technique.
+- Ignoring third-party dependencies.
+- Inconsistent coding standards across teams.
+- Delaying security testing until late in development.
+- Poor documentation of security decisions.
+- Neglecting developer education and continuous improvement.
+
+---
+
+# Key Takeaways
+
+- Secure code reviews are a foundational component of secure software development.
+- Secure SDLC and DevSecOps integrate security throughout the development lifecycle.
+- SAST, DAST, SCA, and manual reviews provide complementary perspectives.
+- Governance, documentation, and training enable consistent secure coding practices.
+- Continuous monitoring and operational metrics help organizations mature their Secure Coding programs.
+
