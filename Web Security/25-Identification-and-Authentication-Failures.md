@@ -1333,6 +1333,735 @@ Monitoring
 - Passwordless authentication and passkeys represent modern alternatives to traditional passwords.
 - Session management, secure recovery, and continuous monitoring are essential components of enterprise authentication.
 
+# 25-Identification-and-Authentication-Failures.md
+
+# Part 3 — Authentication Protocols, Federation, Single Sign-On (SSO), OAuth 2.0, OpenID Connect (OIDC), SAML, and Enterprise Identity Architecture
+
+> **"Modern enterprise authentication extends beyond usernames and passwords. Organizations increasingly rely on centralized identity, federation, and standardized authentication protocols to securely connect users, applications, and cloud services."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Identity Federation
+- Single Sign-On (SSO)
+- Identity Providers (IdP)
+- Service Providers (SP)
+- OAuth 2.0
+- OpenID Connect (OIDC)
+- SAML
+- Authentication Tokens
+- Enterprise Identity Architecture
+- Authentication Monitoring
+
+---
+
+# Evolution of Authentication
+
+Authentication has evolved significantly.
+
+```
+Username + Password
+
+↓
+
+Multi-Factor Authentication
+
+↓
+
+Single Sign-On
+
+↓
+
+Federated Identity
+
+↓
+
+Passwordless Authentication
+
+↓
+
+Continuous Authentication
+```
+
+Modern authentication focuses on both security and usability.
+
+---
+
+# Enterprise Authentication Architecture
+
+```
+                User
+
+                  │
+
+                  ▼
+
+          Identity Provider
+
+      ┌───────────┼───────────┐
+
+      ▼           ▼           ▼
+
+ HR Portal   Finance App   CRM System
+
+      │           │           │
+
+      └───────────┼───────────┘
+
+                  ▼
+
+           Enterprise Services
+```
+
+Centralized identity reduces administrative complexity.
+
+---
+
+# Identity Federation
+
+Identity federation allows one trusted identity system to authenticate users for multiple independent applications.
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+Trusted Applications
+```
+
+Applications rely on the identity provider instead of maintaining separate authentication systems.
+
+---
+
+# Benefits of Federation
+
+```
+Federation
+
+│
+
+├── Centralized Identity
+
+├── Consistent Authentication
+
+├── Simplified User Experience
+
+├── Reduced Password Fatigue
+
+├── Easier Account Management
+
+└── Improved Security Monitoring
+```
+
+---
+
+# Single Sign-On (SSO)
+
+Single Sign-On allows users to authenticate once and access multiple applications without repeatedly entering credentials.
+
+```
+User
+
+↓
+
+Login Once
+
+↓
+
+Identity Provider
+
+↓
+
+Application A
+
+Application B
+
+Application C
+```
+
+SSO improves usability while simplifying centralized identity management.
+
+---
+
+# SSO Workflow
+
+```
+User
+
+↓
+
+Authenticate
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication Assertion
+
+↓
+
+Application Access
+```
+
+Applications trust the authentication performed by the identity provider.
+
+---
+
+# Identity Provider (IdP)
+
+An Identity Provider is responsible for authenticating users.
+
+Responsibilities include:
+
+```
+Identity Provider
+
+│
+
+├── User Authentication
+
+├── MFA
+
+├── Credential Management
+
+├── Identity Verification
+
+├── Session Management
+
+└── Token Issuance
+```
+
+---
+
+# Service Provider (SP)
+
+A Service Provider relies on an Identity Provider to authenticate users.
+
+```
+Service Provider
+
+↓
+
+Receive Identity Information
+
+↓
+
+Validate Trust
+
+↓
+
+Authorize User
+
+↓
+
+Provide Services
+```
+
+Authentication and authorization remain separate responsibilities.
+
+---
+
+# Authentication Tokens
+
+After successful authentication, identity information is commonly represented using tokens.
+
+```
+Authenticate
+
+↓
+
+Identity Verified
+
+↓
+
+Token Issued
+
+↓
+
+Application Access
+```
+
+Tokens reduce the need to repeatedly submit credentials during authenticated sessions.
+
+---
+
+# OAuth 2.0 Overview
+
+OAuth 2.0 is an **authorization framework**.
+
+It allows applications to obtain limited access to protected resources on behalf of a user without requiring the user's password to be shared with every application.
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+Authorization
+
+↓
+
+Access Granted
+
+↓
+
+Protected Resource
+```
+
+> **Important:** OAuth 2.0 primarily addresses **authorization**, not user authentication.
+
+---
+
+# OAuth 2.0 Components
+
+```
+OAuth 2.0
+
+│
+
+├── Resource Owner
+
+├── Client
+
+├── Authorization Server
+
+├── Resource Server
+
+└── Access Token
+```
+
+Each component has a defined responsibility within the authorization process.
+
+---
+
+# OpenID Connect (OIDC)
+
+OpenID Connect builds on OAuth 2.0 to provide **authentication**.
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Authentication
+
+↓
+
+Identity Token
+
+↓
+
+Application
+```
+
+OIDC allows applications to verify the authenticated identity of users using standardized protocols.
+
+---
+
+# OAuth 2.0 vs OpenID Connect
+
+| OAuth 2.0 | OpenID Connect |
+|-----------|----------------|
+| Authorization framework | Authentication layer built on OAuth 2.0 |
+| Controls access to resources | Verifies user identity |
+| Uses access tokens | Uses identity information in addition to OAuth tokens |
+| Focuses on permissions | Focuses on authentication |
+
+---
+
+# Security Assertion Markup Language (SAML)
+
+SAML is an XML-based standard widely used for enterprise Single Sign-On.
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+SAML Assertion
+
+↓
+
+Enterprise Application
+```
+
+Many enterprise environments use SAML for web-based authentication.
+
+---
+
+# SAML Components
+
+```
+SAML
+
+│
+
+├── Identity Provider
+
+├── Service Provider
+
+├── Authentication Assertion
+
+├── Attribute Assertion
+
+└── Trust Relationship
+```
+
+---
+
+# Federation Trust
+
+Applications trust authenticated identities through established trust relationships.
+
+```
+Identity Provider
+
+↓
+
+Trusted Assertion
+
+↓
+
+Application
+
+↓
+
+User Access
+```
+
+Trust relationships must be carefully managed and periodically reviewed.
+
+---
+
+# Authentication Flow Comparison
+
+```
+Traditional Login
+
+↓
+
+Application
+
+↓
+
+Local Authentication
+
+────────────────────
+
+Federated Login
+
+↓
+
+Identity Provider
+
+↓
+
+Trusted Authentication
+
+↓
+
+Application
+```
+
+Federated identity centralizes authentication while allowing applications to focus on authorization.
+
+---
+
+# Continuous Authentication
+
+Modern systems increasingly evaluate authentication continuously.
+
+```
+Login
+
+↓
+
+Authenticated Session
+
+↓
+
+Risk Evaluation
+
+↓
+
+Additional Verification (if required)
+
+↓
+
+Continued Access
+```
+
+Continuous evaluation strengthens long-lived sessions.
+
+---
+
+# Enterprise Identity Architecture
+
+```
+                  Employees
+
+                      │
+
+                      ▼
+
+             Identity Provider
+
+          ┌───────────┼───────────┐
+
+          ▼           ▼           ▼
+
+      Web Apps    Cloud Apps    Mobile Apps
+
+          │           │           │
+
+          └───────────┼───────────┘
+
+                      ▼
+
+            Central Audit Logging
+
+                      ▼
+
+          Security Operations Center
+```
+
+Identity services provide centralized authentication while applications enforce authorization.
+
+---
+
+# Authentication Logging
+
+Authentication systems should generate security-relevant events.
+
+```
+Authentication
+
+↓
+
+Audit Log
+
+↓
+
+Central Logging
+
+↓
+
+Monitoring
+
+↓
+
+Alerting
+```
+
+Logs support compliance, investigations, and operational monitoring.
+
+---
+
+# Authentication Events
+
+Examples include:
+
+```
+Authentication Events
+
+│
+
+├── Login Success
+
+├── Login Failure
+
+├── MFA Completion
+
+├── Password Change
+
+├── Account Recovery
+
+├── Logout
+
+├── Session Timeout
+
+└── Administrative Changes
+```
+
+Sensitive information should never be recorded in logs.
+
+---
+
+# Enterprise Example
+
+A multinational organization:
+
+```
+Employee
+
+↓
+
+Identity Provider
+
+↓
+
+MFA
+
+↓
+
+SSO
+
+↓
+
+ERP
+
+↓
+
+CRM
+
+↓
+
+HR Portal
+
+↓
+
+Audit Logs
+```
+
+Authentication is centralized while each application independently evaluates authorization.
+
+---
+
+# Common Authentication Architecture Weaknesses
+
+| Weakness | Potential Impact |
+|----------|------------------|
+| Separate authentication systems | Inconsistent identity management |
+| Weak trust relationships | Increased authentication risk |
+| Poor logging | Delayed detection of suspicious activity |
+| Weak session controls | Increased exposure after login |
+| Missing MFA | Lower identity assurance |
+| Poor governance | Inconsistent authentication policies |
+
+---
+
+# Enterprise Identity Workflow
+
+```
+User
+
+↓
+
+Identity Verification
+
+↓
+
+Authentication
+
+↓
+
+MFA
+
+↓
+
+Identity Provider
+
+↓
+
+SSO
+
+↓
+
+Application
+
+↓
+
+Authorization
+
+↓
+
+Audit Logging
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw an enterprise authentication architecture.
+2. Identify the Identity Provider and Service Providers.
+3. Document where SSO is used.
+4. Compare traditional authentication with federated authentication.
+5. Identify authentication events that should be logged.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is identity federation?
+2. What is Single Sign-On (SSO)?
+3. What is an Identity Provider (IdP)?
+4. What is a Service Provider (SP)?
+5. What is OAuth 2.0?
+6. How does OpenID Connect differ from OAuth 2.0?
+7. What is SAML?
+8. Why do enterprises centralize authentication?
+9. Why should authentication events be logged?
+10. What is continuous authentication?
+
+---
+
+# Best Practices
+
+- Centralize authentication using trusted identity providers.
+- Separate authentication from authorization responsibilities.
+- Enable MFA for federated authentication systems.
+- Establish and regularly review trust relationships.
+- Monitor authentication events continuously.
+- Use standardized authentication protocols appropriate for the environment.
+- Periodically review identity architecture and access policies.
+
+---
+
+# Common Mistakes
+
+- Confusing OAuth 2.0 with authentication.
+- Assuming SSO eliminates the need for authorization checks.
+- Maintaining inconsistent authentication mechanisms across applications.
+- Failing to review federation trust relationships.
+- Neglecting centralized authentication logging.
+- Treating authentication as a one-time event rather than an ongoing process.
+
+---
+
+# Key Takeaways
+
+- Identity federation enables centralized authentication across multiple applications.
+- Single Sign-On improves usability while simplifying enterprise identity management.
+- OAuth 2.0 is an authorization framework, while OpenID Connect adds standardized authentication.
+- SAML remains a widely adopted enterprise authentication protocol.
+- Enterprise authentication architectures rely on trusted identity providers, centralized monitoring, and continuous evaluation of authentication events.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
