@@ -1387,6 +1387,713 @@ Threat modeling should be revisited whenever significant changes occur.
 - Business logic security is as important as technical security controls.
 - Secure design patterns, layered architecture, and regular design reviews improve long-term application security.
 
+# 22-Insecure-Design.md
+
+# Part 3 — Secure Design Methodologies, Security Architecture, Zero Trust, Design Reviews, and Enterprise Governance
+
+> **"Secure design is not about building barriers everywhere—it is about making correct security decisions at every architectural layer."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Secure Design Methodology
+- Security Architecture
+- Zero Trust Design
+- Defense in Depth
+- Secure Design Reviews
+- Security Requirements Engineering
+- Security Architecture Patterns
+- Enterprise Governance
+- Design Validation
+- Operational Security
+
+---
+
+# Secure Design Methodology
+
+A secure application follows a structured design process.
+
+```
+Business Requirements
+
+↓
+
+Security Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Architecture
+
+↓
+
+Design Review
+
+↓
+
+Implementation
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Continuous Monitoring
+```
+
+Security decisions should be documented before development begins.
+
+---
+
+# Security Requirements Engineering
+
+Security requirements should be treated like functional requirements.
+
+```
+Requirements
+
+│
+
+├── Functional
+
+├── Performance
+
+├── Reliability
+
+└── Security
+```
+
+Examples of security requirements include:
+
+- Authentication
+- Authorization
+- Encryption
+- Logging
+- Audit trails
+- Availability
+- Privacy protection
+
+---
+
+# Functional vs Security Requirements
+
+| Functional Requirement | Security Requirement |
+|------------------------|----------------------|
+| User can log in | Login requires secure authentication |
+| User can upload files | Uploaded files must be validated |
+| User can reset password | Password reset must verify identity |
+| User can download reports | Access requires authorization |
+| User can search records | Search requests must be validated |
+
+Security requirements support and protect functional requirements.
+
+---
+
+# Secure Architecture
+
+```
+                 Internet
+
+                     │
+
+                     ▼
+
+              Load Balancer
+
+                     │
+
+                     ▼
+
+          Web Application Firewall
+
+                     │
+
+                     ▼
+
+             Web Application
+
+      ┌──────────┼──────────┐
+
+      ▼          ▼          ▼
+
+ Authentication Authorization Validation
+
+      │          │          │
+
+      └──────────┼──────────┘
+
+                 ▼
+
+           Business Logic
+
+                 ▼
+
+          Secure Data Layer
+
+                 ▼
+
+             Database
+```
+
+Each architectural layer performs a specific security function.
+
+---
+
+# Layered Security
+
+```
+User
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Business Rules
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+No single layer should be responsible for all security.
+
+---
+
+# Zero Trust Design
+
+Zero Trust assumes that no request should be trusted automatically.
+
+```
+Every Request
+
+↓
+
+Verify Identity
+
+↓
+
+Verify Authorization
+
+↓
+
+Evaluate Context
+
+↓
+
+Allow
+
+OR
+
+Deny
+```
+
+Trust is continuously verified rather than assumed.
+
+---
+
+# Zero Trust Principles
+
+```
+Zero Trust
+
+│
+
+├── Verify Explicitly
+
+├── Least Privilege
+
+├── Continuous Validation
+
+├── Assume Breach
+
+└── Continuous Monitoring
+```
+
+These principles reduce reliance on implicit trust.
+
+---
+
+# Security Zones
+
+Enterprise systems often separate workloads into different security zones.
+
+```
+Internet
+
+↓
+
+DMZ
+
+↓
+
+Application Network
+
+↓
+
+Database Network
+
+↓
+
+Management Network
+```
+
+Movement between zones should require appropriate security controls.
+
+---
+
+# Segmentation
+
+```
+Enterprise
+
+│
+
+├── User Services
+
+├── Administrative Systems
+
+├── Payment Systems
+
+├── Internal APIs
+
+└── Database Services
+```
+
+Segmentation limits the impact of individual component failures.
+
+---
+
+# Least Privilege by Design
+
+```
+User
+
+↓
+
+Assigned Role
+
+↓
+
+Required Permissions
+
+↓
+
+Business Operation
+```
+
+Permissions should be limited to operational needs.
+
+---
+
+# Fail Securely
+
+Unexpected situations should not bypass security controls.
+
+```
+Unexpected Event
+
+↓
+
+Controlled Failure
+
+↓
+
+Secure Response
+
+↓
+
+Logging
+
+↓
+
+Alert
+```
+
+Applications should deny access safely when required information is unavailable.
+
+---
+
+# Secure Defaults
+
+Applications should begin with restrictive settings.
+
+```
+New Feature
+
+↓
+
+Disabled by Default
+
+↓
+
+Configuration Review
+
+↓
+
+Explicit Approval
+
+↓
+
+Production
+```
+
+Explicit enablement reduces accidental exposure.
+
+---
+
+# Separation of Duties
+
+Critical business processes should involve independent responsibilities.
+
+```
+Employee A
+
+↓
+
+Initiate Action
+
+────────────
+
+Employee B
+
+↓
+
+Approve Action
+```
+
+This reduces the likelihood of fraud and operational errors.
+
+---
+
+# Security Architecture Patterns
+
+```
+Patterns
+
+│
+
+├── Authentication Service
+
+├── Authorization Service
+
+├── Validation Layer
+
+├── Audit Service
+
+├── Secrets Management
+
+├── API Gateway
+
+└── Monitoring Platform
+```
+
+Reusable patterns improve consistency across applications.
+
+---
+
+# Security Design Review
+
+A design review examines architecture before implementation.
+
+Checklist:
+
+```
+✓ Authentication
+
+✓ Authorization
+
+✓ Trust Boundaries
+
+✓ Data Classification
+
+✓ Encryption
+
+✓ Logging
+
+✓ Monitoring
+
+✓ Third-Party Integrations
+
+✓ Business Logic
+
+✓ Availability
+```
+
+Review findings should be documented and tracked.
+
+---
+
+# Design Validation
+
+```
+Architecture
+
+↓
+
+Threat Modeling
+
+↓
+
+Design Review
+
+↓
+
+Risk Assessment
+
+↓
+
+Approval
+
+↓
+
+Development
+```
+
+Validation confirms that security objectives have been addressed before coding begins.
+
+---
+
+# Enterprise Governance
+
+```
+Security Policy
+
+↓
+
+Architecture Standards
+
+↓
+
+Secure Coding Standards
+
+↓
+
+Design Reviews
+
+↓
+
+Compliance
+
+↓
+
+Continuous Improvement
+```
+
+Governance promotes consistent security practices across teams.
+
+---
+
+# Design Documentation
+
+Architectural documentation should include:
+
+- Security objectives
+- Trust boundaries
+- Data flows
+- Security controls
+- Assumptions
+- Risks
+- Design decisions
+- Review history
+
+Good documentation supports future maintenance and audits.
+
+---
+
+# Enterprise Example
+
+A healthcare management system:
+
+```
+Patient
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Appointment Request
+
+↓
+
+Business Validation
+
+↓
+
+Medical Records
+
+↓
+
+Audit Logging
+
+↓
+
+Monitoring
+```
+
+Each component contributes to maintaining confidentiality and integrity.
+
+---
+
+# Operational Security
+
+After deployment:
+
+```
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Logging
+
+↓
+
+Metrics
+
+↓
+
+Review
+
+↓
+
+Improvement
+```
+
+Secure design is an ongoing operational responsibility.
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Rapid feature delivery | Integrate security reviews into development workflows |
+| Multiple development teams | Standardize architecture and coding standards |
+| Legacy systems | Prioritize modernization based on risk |
+| Third-party integrations | Perform architectural and security assessments |
+| Growing cloud environments | Apply consistent security architecture across environments |
+
+---
+
+# Enterprise Security Checklist
+
+```
+✓ Security Requirements Defined
+
+✓ Threat Modeling Completed
+
+✓ Trust Boundaries Identified
+
+✓ Secure Defaults Configured
+
+✓ Least Privilege Applied
+
+✓ Zero Trust Principles Considered
+
+✓ Design Review Approved
+
+✓ Documentation Completed
+
+✓ Monitoring Planned
+
+✓ Governance Requirements Met
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Select a sample enterprise application.
+2. Draw its high-level architecture.
+3. Identify trust boundaries and security zones.
+4. Define security requirements alongside functional requirements.
+5. Conduct a conceptual design review using the checklist above.
+6. Recommend architectural improvements.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of security requirements engineering?
+2. Why should security be incorporated during architecture rather than after deployment?
+3. What are the principles of Zero Trust?
+4. Why are secure defaults important?
+5. What is separation of duties?
+6. Why should organizations perform design reviews?
+7. What information belongs in security design documentation?
+8. How does segmentation improve enterprise security?
+9. What is meant by "fail securely"?
+10. Why is governance important for secure design?
+
+---
+
+# Best Practices
+
+- Define security requirements during project planning.
+- Apply Zero Trust principles throughout the architecture.
+- Use layered security and segmentation.
+- Conduct formal design reviews before implementation.
+- Maintain comprehensive security documentation.
+- Standardize architectural patterns across projects.
+- Continuously review and improve designs after deployment.
+
+---
+
+# Common Mistakes
+
+- Designing first and considering security later.
+- Relying solely on implementation controls.
+- Assuming internal systems are inherently trusted.
+- Omitting documentation of trust boundaries.
+- Allowing excessive privileges by default.
+- Skipping architecture reviews due to project deadlines.
+
+---
+
+# Key Takeaways
+
+- Secure design begins with clear security requirements and structured architecture.
+- Zero Trust, least privilege, segmentation, and secure defaults strengthen enterprise systems.
+- Design reviews validate security decisions before implementation.
+- Governance and documentation ensure consistency across development teams.
+- Secure design is an ongoing process that continues throughout the application's lifecycle.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
