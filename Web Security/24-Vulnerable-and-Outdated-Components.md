@@ -1320,6 +1320,759 @@ Continuous Monitoring
 - Dependency scanning and Software Composition Analysis improve visibility into software supply chains.
 - Effective governance ensures that software components remain secure throughout their lifecycle.
 
+# 24-Vulnerable-and-Outdated-Components.md
+
+# Part 3 — Secure Dependency Management, CI/CD Security, SBOM, Container Supply Chain, Trusted Repositories, and Enterprise Governance
+
+> **"A secure software supply chain requires continuous verification—not only of your own code, but also of every dependency, build artifact, container image, and deployment pipeline."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Secure Dependency Management
+- Trusted Package Repositories
+- Software Bill of Materials (SBOM)
+- Dependency Locking
+- Version Pinning
+- CI/CD Supply Chain Security
+- Container Image Lifecycle
+- Artifact Integrity
+- Enterprise Governance
+- Continuous Component Monitoring
+
+---
+
+# Secure Dependency Management
+
+Dependency management is not simply installing libraries—it is managing their entire lifecycle.
+
+```
+Business Requirement
+
+↓
+
+Component Selection
+
+↓
+
+Security Review
+
+↓
+
+Approval
+
+↓
+
+Integration
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Upgrade
+
+↓
+
+Retirement
+```
+
+Each dependency should be treated as an enterprise asset.
+
+---
+
+# Enterprise Dependency Lifecycle
+
+```
+Component
+
+↓
+
+Evaluation
+
+↓
+
+Approval
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Replacement
+```
+
+Dependencies should be reviewed throughout their operational life.
+
+---
+
+# Selecting Third-Party Components
+
+Before adopting a component, organizations commonly evaluate:
+
+```
+Candidate Component
+
+│
+
+├── Maintenance Activity
+
+├── Vendor Reputation
+
+├── Community Adoption
+
+├── Documentation
+
+├── Security History
+
+├── Release Frequency
+
+├── Compatibility
+
+└── Licensing
+```
+
+Selection should balance functionality, maintainability, and organizational requirements.
+
+---
+
+# Trusted Package Repositories
+
+Package repositories distribute software components.
+
+Examples include:
+
+| Ecosystem | Repository |
+|-----------|------------|
+| Python | PyPI |
+| JavaScript | npm Registry |
+| Java | Maven Central |
+| .NET | NuGet Gallery |
+| PHP | Packagist |
+| Go | Go Module Proxy |
+
+Organizations should establish policies governing which repositories are approved for use.
+
+---
+
+# Repository Governance
+
+```
+Developer
+
+↓
+
+Approved Repository
+
+↓
+
+Package Review
+
+↓
+
+Dependency Integration
+
+↓
+
+Application
+```
+
+Restricting software sources improves consistency and reduces supply chain risk.
+
+---
+
+# Dependency Version Management
+
+Every dependency should have a clearly defined version.
+
+```
+Application
+
+↓
+
+Framework vX
+
+↓
+
+Library vY
+
+↓
+
+Runtime vZ
+```
+
+Version tracking supports reproducible builds and simplifies troubleshooting.
+
+---
+
+# Version Pinning
+
+Version pinning specifies the exact version of a dependency to be used.
+
+Benefits include:
+
+```
+Version Pinning
+
+│
+
+├── Predictable Builds
+
+├── Repeatable Testing
+
+├── Easier Auditing
+
+├── Stable Deployments
+
+└── Controlled Updates
+```
+
+Organizations should periodically review pinned versions and update them as appropriate.
+
+---
+
+# Dependency Lock Files
+
+Many package managers generate lock files.
+
+```
+Dependencies
+
+↓
+
+Resolved Versions
+
+↓
+
+Lock File
+
+↓
+
+Consistent Installation
+```
+
+Lock files help ensure consistent dependency versions across development, testing, and production environments.
+
+---
+
+# Software Bill of Materials (SBOM)
+
+An SBOM provides a structured inventory of software components.
+
+```
+Application
+
+↓
+
+SBOM
+
+│
+
+├── Component Name
+
+├── Version
+
+├── Supplier
+
+├── Dependency Chain
+
+├── License
+
+└── Metadata
+```
+
+SBOMs improve visibility into software composition.
+
+---
+
+# Why SBOMs Matter
+
+```
+New Vulnerability
+
+↓
+
+Affected Component?
+
+↓
+
+SBOM Lookup
+
+↓
+
+Identify Systems
+
+↓
+
+Risk Assessment
+
+↓
+
+Remediation
+```
+
+Organizations can respond more efficiently when they know exactly where affected components are used.
+
+---
+
+# Artifact Repository
+
+Compiled software artifacts are often stored centrally.
+
+```
+Source Code
+
+↓
+
+Build
+
+↓
+
+Artifact
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment
+```
+
+Access to repositories should follow organizational security policies.
+
+---
+
+# Build Integrity
+
+Every build should be reproducible and verifiable.
+
+```
+Source Code
+
+↓
+
+Approved Dependencies
+
+↓
+
+Automated Build
+
+↓
+
+Verification
+
+↓
+
+Release Artifact
+```
+
+Reliable build processes reduce operational risk.
+
+---
+
+# CI/CD Supply Chain
+
+```
+Developer
+
+↓
+
+Source Repository
+
+↓
+
+CI Pipeline
+
+↓
+
+Security Checks
+
+↓
+
+Artifact Repository
+
+↓
+
+Deployment
+
+↓
+
+Production
+```
+
+Security validation should occur throughout the pipeline.
+
+---
+
+# Security Controls in CI/CD
+
+```
+CI/CD Security
+
+│
+
+├── Access Control
+
+├── Branch Protection
+
+├── Code Review
+
+├── Dependency Review
+
+├── Build Validation
+
+├── Secret Protection
+
+├── Artifact Verification
+
+└── Audit Logging
+```
+
+No single control is sufficient on its own.
+
+---
+
+# Container Supply Chain
+
+Containers consist of multiple layers.
+
+```
+Container
+
+│
+
+├── Base Image
+
+├── Operating System Packages
+
+├── Runtime
+
+├── Libraries
+
+├── Application
+
+└── Configuration
+```
+
+Every layer contributes to the overall security posture.
+
+---
+
+# Container Image Lifecycle
+
+```
+Select Base Image
+
+↓
+
+Review
+
+↓
+
+Build
+
+↓
+
+Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Update
+```
+
+Container images should be updated and reviewed throughout their lifecycle.
+
+---
+
+# Image Provenance
+
+Organizations benefit from knowing:
+
+```
+Image
+
+│
+
+├── Source
+
+├── Builder
+
+├── Creation Date
+
+├── Version
+
+├── Dependencies
+
+└── Review Status
+```
+
+Documenting provenance improves traceability and incident response.
+
+---
+
+# Enterprise Governance
+
+```
+Governance
+
+│
+
+├── Dependency Policy
+
+├── Repository Policy
+
+├── Update Policy
+
+├── Review Policy
+
+├── Build Standards
+
+├── Approval Process
+
+└── Continuous Monitoring
+```
+
+Governance helps development teams follow consistent practices.
+
+---
+
+# Dependency Approval Workflow
+
+```
+Developer Request
+
+↓
+
+Architecture Review
+
+↓
+
+Security Review
+
+↓
+
+Approval
+
+↓
+
+Repository
+
+↓
+
+Project Integration
+```
+
+Reviewing new dependencies reduces unnecessary software risk.
+
+---
+
+# Continuous Monitoring
+
+New vulnerabilities may be disclosed after deployment.
+
+```
+Application
+
+↓
+
+Dependency Inventory
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Risk Assessment
+
+↓
+
+Update Planning
+```
+
+Monitoring should continue throughout the application's operational life.
+
+---
+
+# Enterprise Example
+
+An enterprise healthcare application:
+
+```
+Application
+
+↓
+
+Framework
+
+↓
+
+Authentication Library
+
+↓
+
+Logging Library
+
+↓
+
+Database Driver
+
+↓
+
+Container Image
+
+↓
+
+Operating System
+
+↓
+
+Cloud Platform
+```
+
+All components are:
+
+- Documented
+- Version controlled
+- Continuously monitored
+- Updated through change management
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Rapid dependency growth | Maintain centralized inventories |
+| Multiple repositories | Establish approved repository policies |
+| Inconsistent versions | Use version pinning and lock files |
+| Legacy dependencies | Create modernization roadmaps |
+| Container reuse | Periodically rebuild and review images |
+| Decentralized teams | Standardize governance across projects |
+
+---
+
+# Enterprise Dependency Governance Workflow
+
+```
+Business Need
+
+↓
+
+Dependency Selection
+
+↓
+
+Architecture Review
+
+↓
+
+Security Review
+
+↓
+
+Approval
+
+↓
+
+Integration
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Lifecycle Management
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Select a sample enterprise application.
+2. Create a conceptual SBOM.
+3. Identify all direct and transitive dependencies.
+4. Design a dependency approval workflow.
+5. Create a policy for updating components and reviewing repositories.
+
+> Perform all assessments only in environments where you have explicit authorization.
+
+---
+
+# Interview Questions
+
+1. Why is secure dependency management important?
+2. What is version pinning?
+3. Why are dependency lock files useful?
+4. What information is contained in an SBOM?
+5. Why should organizations use trusted repositories?
+6. What is artifact integrity?
+7. Why should CI/CD pipelines verify dependencies?
+8. What is image provenance?
+9. Why is governance important for supply chain security?
+10. Why must dependency monitoring continue after deployment?
+
+---
+
+# Best Practices
+
+- Maintain an accurate inventory of all software components.
+- Adopt dependencies only after appropriate review.
+- Use approved package repositories.
+- Pin dependency versions where appropriate.
+- Generate and maintain SBOMs.
+- Protect build pipelines with strong access controls.
+- Continuously monitor dependencies and container images.
+- Establish governance for software supply chain security.
+
+---
+
+# Common Mistakes
+
+- Downloading packages from untrusted sources.
+- Using inconsistent dependency versions across environments.
+- Ignoring dependency lock files.
+- Failing to document software components.
+- Allowing unrestricted dependency additions.
+- Assuming software components remain secure indefinitely.
+
+---
+
+# Key Takeaways
+
+- Secure dependency management extends throughout the entire software lifecycle.
+- Trusted repositories, version pinning, and lock files improve consistency and security.
+- SBOMs provide visibility into software composition and accelerate incident response.
+- CI/CD pipelines and artifact repositories are essential parts of the software supply chain.
+- Continuous governance and monitoring strengthen enterprise supply chain security.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
