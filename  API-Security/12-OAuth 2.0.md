@@ -1554,4 +1554,1074 @@ Avoid
 
 ---
 
-**Next:** OAuth Threats, State Parameter, CSRF Protection, Redirect URI Attacks, Token Leakage, OAuth Client Authentication, Detection Engineering, SIEM Integration, Hands-on Labs, Interview Questions, and Enterprise OAuth Architecture.
+# OAuth Security Threats
+
+OAuth is widely deployed across enterprise applications, but incorrect implementation can introduce serious security vulnerabilities.
+
+Common OAuth attack categories include:
+
+- CSRF attacks
+- Authorization code interception
+- Redirect URI manipulation
+- Token leakage
+- Token replay
+- Client impersonation
+- Scope abuse
+- Refresh token theft
+- Clickjacking
+- Consent phishing
+
+Understanding these threats is essential for secure OAuth deployments.
+
+---
+
+# OAuth Threat Landscape
+
+```
+                     OAuth
+
+                       │
+
+        ┌──────────────┼────────────────┐
+
+        ▼              ▼                ▼
+
+   Client Attacks   Token Attacks   Flow Attacks
+
+        │              │                │
+
+        ▼              ▼                ▼
+
+Redirect URI      Token Replay     PKCE Bypass
+
+CSRF              Token Theft      Consent Abuse
+
+Clickjacking      Refresh Theft    Code Interception
+```
+
+---
+
+# Cross-Site Request Forgery (CSRF)
+
+An attacker tricks a user's browser into sending an unintended authorization request.
+
+Without proper protection,
+
+the Authorization Server may associate the wrong authorization response with the client.
+
+---
+
+# OAuth CSRF Attack
+
+```
+Victim
+
+   │
+
+Already Logged In
+
+   │
+
+Visits Malicious Website
+
+   │
+
+Hidden OAuth Request
+
+   │
+
+Authorization Server
+
+   ▼
+
+Authorization Response
+
+   ▼
+
+Attacker's Session
+```
+
+---
+
+# State Parameter
+
+The **state** parameter protects OAuth authorization requests against CSRF.
+
+Client
+
+```
+Generate Random State
+
+↓
+
+Authorization Request
+
+↓
+
+Authorization Server
+
+↓
+
+Authorization Response
+
+↓
+
+Validate State
+```
+
+---
+
+# State Validation
+
+```
+Authorization Response
+
+         │
+
+Compare State
+
+         │
+
+Matches?
+
+    ┌────┴────┐
+
+    ▼         ▼
+
+   Yes       No
+
+    │         │
+
+ Continue   Reject
+```
+
+State values should be:
+
+- Random
+- Unpredictable
+- Single use
+- Bound to the user's session
+
+---
+
+# Authorization Code Interception
+
+An attacker intercepts the authorization code before it reaches the legitimate client.
+
+```
+User
+
+ │
+
+Authorization Code
+
+ │
+
+Attacker Intercepts
+
+ │
+
+Attempts Token Exchange
+
+ ▼
+
+Authorization Server
+```
+
+Without PKCE,
+
+the attacker may obtain an access token.
+
+---
+
+# PKCE Protection
+
+```
+Authorization Code
+
+         │
+
+Code Verifier
+
+         │
+
+Verification
+
+         │
+
+Challenge Matches?
+
+    ┌────┴────┐
+
+    ▼         ▼
+
+   Yes       No
+
+    │         │
+
+ Issue     Reject
+
+ Token
+```
+
+PKCE prevents attackers from exchanging intercepted authorization codes.
+
+---
+
+# Redirect URI Manipulation
+
+Attackers attempt to redirect authorization responses to attacker-controlled locations.
+
+Example
+
+```
+Registered
+
+https://client.example/callback
+```
+
+Attacker attempts
+
+```
+https://evil.example/callback
+```
+
+---
+
+# Redirect URI Validation
+
+```
+Incoming Redirect
+
+         │
+
+Registered?
+
+    ┌────┴────┐
+
+    ▼         ▼
+
+   Yes       No
+
+    │         │
+
+ Allow     Reject
+```
+
+Never allow wildcard redirect URIs.
+
+---
+
+# Open Redirect Vulnerabilities
+
+Poor redirect validation may allow attackers to steal authorization codes or tokens.
+
+Example
+
+```
+client.example
+
+↓
+
+Open Redirect
+
+↓
+
+evil.example
+```
+
+Open redirects should be eliminated before integrating OAuth.
+
+---
+
+# Token Leakage
+
+Access tokens may leak through:
+
+- Browser history
+- URL parameters
+- Proxy logs
+- Referrer headers
+- Application logs
+- Screen captures
+
+Tokens should never appear in URLs.
+
+---
+
+# Secure Token Transmission
+
+Correct
+
+```
+Authorization:
+
+Bearer <Access Token>
+```
+
+Avoid
+
+```
+GET /profile?token=abcdef
+```
+
+---
+
+# Token Replay Attack
+
+A stolen access token is reused by an attacker.
+
+```
+Valid Token
+
+     │
+
+Copied
+
+     │
+
+Replay
+
+     ▼
+
+Protected API
+```
+
+Mitigations
+
+- HTTPS
+- Short-lived access tokens
+- Token revocation
+- Continuous monitoring
+
+---
+
+# Refresh Token Theft
+
+Refresh tokens represent high-value credentials.
+
+```
+Refresh Token
+
+       │
+
+Stolen
+
+       │
+
+Request New Access Token
+
+       ▼
+
+Account Compromise
+```
+
+Protect refresh tokens with stronger controls than access tokens.
+
+---
+
+# Refresh Token Rotation
+
+```
+Refresh Token A
+
+        │
+
+Used
+
+        ▼
+
+Refresh Token B
+
+        │
+
+Old Token Revoked
+```
+
+Reuse detection can identify compromised refresh tokens.
+
+---
+
+# Consent Phishing
+
+Attackers create malicious applications requesting excessive permissions.
+
+```
+Fake Application
+
+        │
+
+Requests
+
+Read Email
+
+Read Files
+
+Admin Access
+
+        │
+
+User Approves
+```
+
+Users should review requested scopes carefully.
+
+---
+
+# Excessive Scopes
+
+Applications sometimes request more permissions than necessary.
+
+Poor example
+
+```
+Application
+
+↓
+
+Full Account Access
+```
+
+Better
+
+```
+Read Calendar Only
+```
+
+Always follow the principle of least privilege.
+
+---
+
+# Scope Escalation
+
+An attacker attempts to obtain unauthorized scopes.
+
+```
+Requested Scope
+
+↓
+
+read:profile
+
+-----------------
+
+Attacker Requests
+
+↓
+
+admin
+```
+
+The Authorization Server must validate permitted scopes.
+
+---
+
+# Clickjacking
+
+Attackers overlay invisible elements over authorization pages.
+
+```
+Victim
+
+↓
+
+Invisible Frame
+
+↓
+
+Approves Authorization
+```
+
+Mitigations
+
+- CSP
+- X-Frame-Options
+- Frame restrictions
+
+---
+
+# Client Secret Exposure
+
+Client secrets should remain confidential.
+
+Common exposure sources
+
+- Source code
+- Public repositories
+- Mobile applications
+- Browser JavaScript
+- Configuration mistakes
+
+Public clients should not rely on client secrets.
+
+---
+
+# OAuth Client Impersonation
+
+Attackers impersonate legitimate OAuth clients.
+
+```
+Fake Client
+
+      │
+
+Requests Authorization
+
+      │
+
+User Trusts
+
+      ▼
+
+Sensitive Data
+```
+
+Client registration and redirect URI validation reduce this risk.
+
+---
+
+# Authorization Server Impersonation
+
+Attackers create fake authorization pages.
+
+```
+Victim
+
+     │
+
+Fake Login Page
+
+     │
+
+Credentials Entered
+
+     ▼
+
+Attacker
+```
+
+Mitigations
+
+- HTTPS
+- Trusted domains
+- User awareness
+- Passkeys
+- MFA
+
+---
+
+# Token Substitution Attack
+
+A token intended for one client or API is presented to another.
+
+```
+Token
+
+↓
+
+Wrong Resource Server
+
+↓
+
+Audience Validation
+
+↓
+
+Reject
+```
+
+Resource servers must validate the `aud` claim.
+
+---
+
+# Mix-Up Attack
+
+A client communicating with multiple Authorization Servers may accept responses from the wrong server.
+
+```
+Client
+
+  │
+
+Auth Server A
+
+Auth Server B
+
+  │
+
+Wrong Response Accepted
+```
+
+Clients should validate the expected issuer and endpoint.
+
+---
+
+# OAuth Threat Summary
+
+| Threat | Primary Mitigation |
+|---------|--------------------|
+| CSRF | State parameter |
+| Code interception | PKCE |
+| Redirect manipulation | Exact redirect URI validation |
+| Token replay | Short-lived tokens and monitoring |
+| Refresh theft | Rotation and secure storage |
+| Consent phishing | User awareness and scope review |
+| Scope escalation | Scope validation |
+| Client impersonation | Client authentication |
+| Token substitution | Audience validation |
+| Mix-Up attack | Issuer validation |
+
+---
+
+# OAuth Security Best Practices
+
+Authorization
+
+- Use Authorization Code with PKCE.
+- Require HTTPS.
+- Validate every redirect URI.
+- Validate issuer and audience.
+- Validate scopes.
+
+Client Security
+
+- Protect confidential client secrets.
+- Avoid secrets in public clients.
+- Register exact redirect URIs.
+- Rotate credentials.
+
+Operational Security
+
+- Enable MFA.
+- Rotate refresh tokens.
+- Monitor abnormal token issuance.
+- Audit consent events.
+- Revoke compromised tokens promptly.
+
+---
+
+# OAuth Logging
+
+Log
+
+- Authorization requests
+- Consent approvals
+- Consent denials
+- Token issuance
+- Token refresh
+- Token revocation
+- Failed client authentication
+- Invalid redirect URI attempts
+- Scope validation failures
+
+Do not log
+
+- Access tokens
+- Refresh tokens
+- Client secrets
+- User passwords
+
+---
+
+# Detection Engineering
+
+Recommended detections
+
+| Detection | Indicator |
+|-----------|-----------|
+| Invalid State | State mismatch during callback |
+| Redirect URI Abuse | Requests using unregistered redirect URIs |
+| Authorization Code Reuse | Same code exchanged multiple times |
+| Refresh Token Reuse | Previously rotated token used again |
+| Excessive Scope Requests | Requests for unusually privileged scopes |
+| Token Replay | Same access token used from different locations |
+| Consent Abuse | Large number of consent approvals for a new client |
+| Client Authentication Failures | Multiple failed confidential client logins |
+| Issuer Mismatch | Unexpected issuer values |
+| Audience Mismatch | Tokens presented to the wrong resource server |
+
+Behavior-based detection provides stronger protection than signature-based detection alone.
+
+---
+
+# SIEM Integration
+
+Recommended log sources
+
+```
+Authorization Server
+
+          │
+
+Identity Provider
+
+          │
+
+API Gateway
+
+          │
+
+Application Logs
+
+          │
+
+Reverse Proxy
+
+          │
+
+Cloud IAM
+
+          ▼
+
+Enterprise SIEM
+
+          │
+
+Correlation Rules
+
+          ▼
+
+SOC Alerts
+```
+
+Example correlation rules
+
+- Authorization code used more than once
+- Refresh token reuse followed by successful login
+- Multiple invalid redirect URI attempts
+- Excessive OAuth consent approvals within a short period
+- Same access token used from multiple countries
+- New OAuth client immediately requesting administrative scopes
+
+---
+
+# Enterprise OAuth Architecture
+
+```
+                    User
+
+                      │
+
+                      ▼
+
+              Client Application
+
+                      │
+
+                      ▼
+
+          Authorization Server
+
+         │                  │
+
+         ▼                  ▼
+
+   Authentication      Consent Engine
+
+         │                  │
+
+         └──────────┬───────┘
+
+                    ▼
+
+              Access Token
+
+                    │
+
+                    ▼
+
+               API Gateway
+
+                    │
+
+          Token Validation
+
+                    │
+
+                    ▼
+
+             Resource Server
+
+                    │
+
+                    ▼
+
+         Logging & Monitoring
+
+                    │
+
+                    ▼
+
+               SIEM / SOC
+```
+
+---
+
+# Hands-on Lab 1 – Redirect URI Validation
+
+**Objective**
+
+Review redirect URI validation in an authorized test environment.
+
+**Steps**
+
+1. Register a valid redirect URI.
+2. Attempt authorization using an unregistered URI.
+3. Confirm the Authorization Server rejects the request.
+4. Review logs for validation events.
+
+**Learning Outcomes**
+
+- Redirect URI security
+- OAuth endpoint validation
+- Secure client registration
+
+---
+
+# Hands-on Lab 2 – PKCE Verification
+
+**Objective**
+
+Verify PKCE enforcement.
+
+**Steps**
+
+1. Generate a valid code challenge.
+2. Complete the authorization request.
+3. Exchange the authorization code with the correct verifier.
+4. Attempt an exchange using an incorrect verifier and confirm rejection.
+
+**Learning Outcomes**
+
+- PKCE workflow
+- Authorization code protection
+- Secure OAuth implementation
+
+---
+
+# Hands-on Lab 3 – Scope Review
+
+**Objective**
+
+Evaluate OAuth scope assignments.
+
+**Steps**
+
+1. Review client registrations.
+2. Identify excessive permissions.
+3. Remove unnecessary scopes.
+4. Verify least-privilege operation.
+
+**Learning Outcomes**
+
+- Scope management
+- Least privilege
+- OAuth governance
+
+---
+
+# Troubleshooting
+
+## Invalid Redirect URI
+
+Possible causes
+
+- URI not registered
+- Typographical error
+- HTTP instead of HTTPS
+- Trailing slash mismatch
+
+---
+
+## Invalid State
+
+Possible causes
+
+- CSRF protection working correctly
+- Session expired
+- Callback tampering
+- Incorrect client implementation
+
+---
+
+## Authorization Code Rejected
+
+Possible causes
+
+- Code already used
+- Code expired
+- PKCE verification failed
+- Incorrect client
+
+---
+
+## Token Refresh Failure
+
+Possible causes
+
+- Refresh token expired
+- Refresh token revoked
+- Refresh token reuse detected
+- Client authentication failure
+
+---
+
+## Invalid Scope
+
+Possible causes
+
+- Scope not registered
+- Excessive permission request
+- Client restriction
+- Policy denial
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What problem does OAuth 2.0 solve?
+2. Why is OAuth considered an authorization framework rather than an authentication protocol?
+3. What is the purpose of the `state` parameter?
+4. What is PKCE?
+5. Why should redirect URIs be validated?
+6. What is a refresh token?
+7. Why are scopes important?
+8. What is consent in OAuth?
+9. What is token replay?
+10. Why should client secrets never be embedded in public applications?
+
+---
+
+## Intermediate
+
+11. Explain the Authorization Code Flow.
+12. How does PKCE prevent authorization code interception?
+13. What is a Mix-Up attack?
+14. How would you secure OAuth in a mobile application?
+15. Why should refresh token rotation be enabled?
+16. How would you detect OAuth token replay?
+17. What logs should be forwarded to a SIEM?
+18. How would you protect confidential client secrets?
+19. Why should wildcard redirect URIs be avoided?
+20. How would you investigate excessive scope requests?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+A confidential client repeatedly receives callback requests with invalid `state` values.
+
+- What attack may be occurring?
+- What should you verify first?
+
+---
+
+**Scenario 2**
+
+A refresh token that was already rotated is used again several hours later.
+
+- What does this likely indicate?
+- What immediate containment actions would you take?
+
+---
+
+**Scenario 3**
+
+A newly registered OAuth client begins requesting highly privileged scopes across multiple users.
+
+- Which detections should trigger?
+- How would you investigate and respond?
+
+---
+
+# Chapter Summary
+
+In this section, we explored OAuth 2.0 security and common implementation threats.
+
+We covered:
+
+- CSRF protection
+- State parameter
+- PKCE
+- Redirect URI validation
+- Token replay
+- Refresh token security
+- Consent phishing
+- Scope abuse
+- OAuth threat detection
+- Detection engineering
+- SIEM integration
+- Hands-on labs
+- Troubleshooting
+- Interview preparation
+
+Secure OAuth deployments rely on strong client validation, least-privilege scopes, robust token handling, and continuous monitoring to defend against modern attack techniques.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- Why is the `state` parameter essential?
+- How does PKCE protect authorization codes?
+- Why should redirect URIs require exact matching?
+- How can refresh token reuse indicate compromise?
+- Which OAuth events should be monitored by a SIEM?
+- How can excessive scope requests be detected?
+- What controls reduce the risk of OAuth token replay?
+
+If you can confidently answer these questions, you are ready to continue with **Chapter 13 – OpenID Connect (OIDC)**, where you'll learn how authentication is layered on top of OAuth 2.0 using ID Tokens, discovery endpoints, UserInfo, session management, and enterprise identity federation.
+
+---
+
+# References
+
+## Standards
+
+- RFC 6749 – OAuth 2.0 Authorization Framework
+- RFC 6750 – Bearer Token Usage
+- RFC 7636 – PKCE
+- RFC 7009 – Token Revocation
+- RFC 7662 – Token Introspection
+
+## Security Standards
+
+- OAuth 2.0 Security Best Current Practice
+- OWASP OAuth Security Cheat Sheet
+- OWASP API Security Top 10
+- NIST SP 800-63
+- NIST Cybersecurity Framework (CSF)
+
+## Further Reading
+
+- OAuth 2.1 Draft Specification
+- Financial-grade API (FAPI) Security Profiles
+- Enterprise Identity and Access Management Best Practices
+
+---
+
+# What's Next?
+
+➡️ **Chapter 13 – OpenID Connect (OIDC)**
+
+In the next chapter, we will explore:
+
+- OpenID Connect fundamentals
+- OAuth vs OIDC
+- ID Tokens
+- UserInfo Endpoint
+- Discovery Document
+- Dynamic Client Registration
+- Session Management
+- Logout Flows
+- Federation
+- Enterprise Identity Architecture
+- Detection Engineering
+- SIEM Integration
+- Hands-on Labs
+- Interview Questions
