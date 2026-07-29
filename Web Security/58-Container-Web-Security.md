@@ -1937,6 +1937,738 @@ Platform engineers manage orchestration, security teams define governance polici
 - Incident response and lessons learned should drive continuous improvement.
 - Mature container platforms integrate security, operations, and governance throughout the application lifecycle.
 
-```text id="rrks28"
-**Next:** Part 4
+# 58-Container-Web-Security.md
+
+# Part 4 — Enterprise Governance, Zero Trust, Container Supply Chain Security, Security Maturity, Best Practices, and Chapter Summary
+
+> **"Container Web Security is most effective when security is integrated throughout the entire container lifecycle—from application development and image creation to runtime operations, orchestration, governance, and continuous monitoring."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will understand:
+
+- Enterprise Container Governance
+- Zero Trust for Container Platforms
+- Container Supply Chain Security
+- Software Bill of Materials (SBOM)
+- Business Continuity
+- Backup and Recovery
+- Container Security Maturity Model
+- Operational Excellence
+- Enterprise Readiness
+- Chapter Summary
+
+---
+
+# Enterprise Container Governance
+
+Container environments should operate under standardized organizational governance.
+
 ```
+Business Objectives
+
+↓
+
+Security Policies
+
+↓
+
+Container Standards
+
+↓
+
+Implementation
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+Governance ensures that container platforms remain secure, consistent, and aligned with organizational objectives.
+
+---
+
+# Governance Framework
+
+```
+Container Governance
+
+│
+
+├── Security Policies
+
+├── Image Standards
+
+├── Registry Standards
+
+├── Runtime Standards
+
+├── Network Standards
+
+├── Storage Standards
+
+├── Change Management
+
+├── Compliance
+
+└── Continuous Improvement
+```
+
+Documented governance enables consistent security practices across development and operations teams.
+
+---
+
+# Zero Trust for Containers
+
+Zero Trust principles extend to containerized environments.
+
+```
+User or Service
+
+↓
+
+Identity Verification
+
+↓
+
+Authorization
+
+↓
+
+Container Platform
+
+↓
+
+Continuous Monitoring
+```
+
+Every request should be authenticated, authorized, and evaluated according to organizational policies.
+
+---
+
+# Zero Trust Principles
+
+```
+Zero Trust
+
+│
+
+├── Verify Identity
+
+├── Least Privilege
+
+├── Continuous Verification
+
+├── Network Segmentation
+
+├── Secure Defaults
+
+├── Logging
+
+├── Monitoring
+
+└── Risk-Based Decisions
+```
+
+Applying these principles reduces unnecessary trust relationships across the container ecosystem.
+
+---
+
+# Container Supply Chain Security
+
+The integrity of a containerized application depends on every component involved in its creation and delivery.
+
+```
+Container Supply Chain
+
+│
+
+├── Source Code
+
+├── Build Process
+
+├── Base Images
+
+├── Dependencies
+
+├── Container Registry
+
+├── Deployment Platform
+
+├── Runtime
+
+└── Monitoring
+```
+
+Protecting the complete supply chain improves software integrity and operational confidence.
+
+---
+
+# Supply Chain Governance
+
+```
+Component Selection
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Build
+
+↓
+
+Validation
+
+↓
+
+Registry
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Every stage should follow documented governance procedures.
+
+---
+
+# Software Bill of Materials (SBOM)
+
+An SBOM provides a structured inventory of software components included within a container image.
+
+```
+SBOM
+
+│
+
+├── Image Name
+
+├── Base Image
+
+├── Application Components
+
+├── Libraries
+
+├── Dependencies
+
+├── Versions
+
+├── Build Information
+
+└── Ownership
+```
+
+Maintaining accurate SBOMs improves visibility, governance, and lifecycle management.
+
+---
+
+# Benefits of SBOMs
+
+```
+SBOM Benefits
+
+│
+
+├── Component Visibility
+
+├── Dependency Tracking
+
+├── Asset Inventory
+
+├── Governance
+
+├── Operational Awareness
+
+├── Compliance Support
+
+├── Lifecycle Management
+
+└── Faster Impact Assessment
+```
+
+SBOMs provide valuable context for software maintenance and operational planning.
+
+---
+
+# Backup and Recovery
+
+Critical container platform assets should be protected.
+
+```
+Container Assets
+
+↓
+
+Backup
+
+↓
+
+Integrity Verification
+
+↓
+
+Secure Storage
+
+↓
+
+Recovery Testing
+```
+
+Regular recovery exercises improve confidence in operational resilience.
+
+---
+
+# Business Continuity
+
+Container platforms should support organizational continuity planning.
+
+```
+Operational Event
+
+↓
+
+Business Continuity Plan
+
+↓
+
+Recovery Procedures
+
+↓
+
+Service Restoration
+
+↓
+
+Operational Review
+```
+
+Business continuity planning should include container infrastructure, registries, and supporting services.
+
+---
+
+# Disaster Recovery Considerations
+
+```
+Recovery Planning
+
+│
+
+├── Container Images
+
+├── Registries
+
+├── Configurations
+
+├── Persistent Storage
+
+├── Infrastructure
+
+├── Monitoring
+
+├── Documentation
+
+└── Recovery Procedures
+```
+
+Recovery plans should be reviewed and updated regularly.
+
+---
+
+# Continuous Verification
+
+Security verification should continue throughout the container lifecycle.
+
+```
+Development
+
+↓
+
+Image Validation
+
+↓
+
+Deployment
+
+↓
+
+Runtime Monitoring
+
+↓
+
+Review
+
+↓
+
+Improvement
+```
+
+Continuous verification ensures security assumptions remain appropriate as environments evolve.
+
+---
+
+# Enterprise Container Security Maturity Model
+
+```
+Level 1
+
+Basic Container Usage
+
+↓
+
+Level 2
+
+Standardized Images
+
+↓
+
+Level 3
+
+Secure Runtime &
+Governance
+
+↓
+
+Level 4
+
+Continuous Monitoring &
+Automation
+
+↓
+
+Level 5
+
+Enterprise Container
+Security Optimization
+```
+
+Organizations mature by improving governance, automation, monitoring, and operational processes.
+
+---
+
+# Characteristics of Mature Container Security
+
+```
+Mature Container Security
+
+│
+
+├── Security by Design
+
+├── Standardized Images
+
+├── Secure Registries
+
+├── Runtime Governance
+
+├── Network Segmentation
+
+├── Continuous Monitoring
+
+├── Centralized Logging
+
+├── Supply Chain Visibility
+
+└── Continuous Improvement
+```
+
+---
+
+# Enterprise Container Architecture
+
+```
+                 Business Requirements
+
+                          │
+
+                          ▼
+
+                 Application Source
+
+                          │
+
+                          ▼
+
+                 Container Build
+
+                          │
+
+                          ▼
+
+               Image Validation
+
+                          │
+
+                          ▼
+
+               Container Registry
+
+                          │
+
+                          ▼
+
+          Container Orchestration Platform
+
+                          │
+
+                          ▼
+
+             Containerized Applications
+
+                          │
+
+                          ▼
+
+       Monitoring • Logging • Governance
+
+                          │
+
+                          ▼
+
+         Continuous Improvement Cycle
+```
+
+This architecture demonstrates the integration of secure development, operations, governance, and monitoring throughout the container lifecycle.
+
+---
+
+# Enterprise Example
+
+A multinational financial institution operates hundreds of containerized microservices supporting online banking platforms.
+
+```
+Development
+
+↓
+
+Container Build
+
+↓
+
+Registry
+
+↓
+
+Container Platform
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Governance Review
+```
+
+Engineering teams maintain standardized container images, platform administrators enforce runtime governance, security teams review architectural changes, and operations teams continuously monitor service health, capacity, and configuration consistency across environments.
+
+---
+
+# Enterprise Security Checklist
+
+```
+✓ Standardized Container Images
+
+✓ Trusted Container Registry
+
+✓ Runtime Governance Implemented
+
+✓ Identity and Access Controls Defined
+
+✓ Network Segmentation Documented
+
+✓ Configuration Management Standardized
+
+✓ Centralized Monitoring Enabled
+
+✓ Audit Logging Configured
+
+✓ Backup and Recovery Procedures Tested
+
+✓ Continuous Improvement Program Established
+```
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large container fleets | Standardized governance and automation |
+| Multiple registries | Centralized registry management |
+| Frequent image updates | Documented image lifecycle management |
+| Distributed clusters | Unified monitoring and operational dashboards |
+| Complex networking | Documented segmentation architecture |
+| Regulatory requirements | Continuous governance and audit reviews |
+
+---
+
+# Container Web Security Quick Revision
+
+## Container Lifecycle
+
+```
+Development
+
+↓
+
+Build
+
+↓
+
+Registry
+
+↓
+
+Deployment
+
+↓
+
+Runtime
+
+↓
+
+Monitoring
+```
+
+---
+
+## Core Security Principles
+
+```
+Security by Design
+
+↓
+
+Least Privilege
+
+↓
+
+Defense in Depth
+
+↓
+
+Zero Trust
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+## Operational Lifecycle
+
+```
+Planning
+
+↓
+
+Implementation
+
+↓
+
+Operations
+
+↓
+
+Monitoring
+
+↓
+
+Review
+
+↓
+
+Optimization
+```
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design an enterprise container platform architecture for a web application.
+2. Identify trust boundaries between registries, orchestration platforms, and workloads.
+3. Create a governance policy for container images, registries, networking, and runtime environments.
+4. Build a conceptual SBOM for a containerized application.
+5. Evaluate the organization's container security maturity using the maturity model above and identify areas for improvement.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, governance, supply chain management, and operational resilience.
+
+---
+
+# Interview Questions
+
+1. What is Container Web Security?
+2. Why should Zero Trust principles be applied to container platforms?
+3. What is container supply chain security?
+4. What is an SBOM, and why is it useful?
+5. Why is runtime governance important?
+6. How does network segmentation improve container security?
+7. Why should container registries follow governance standards?
+8. What characteristics define a mature container security program?
+9. Why are backup and recovery important for container environments?
+10. How does continuous improvement strengthen container operations?
+
+---
+
+# Best Practices
+
+- Build security into the entire container lifecycle.
+- Standardize and maintain trusted container images.
+- Protect container registries using strong access controls.
+- Apply Zero Trust principles throughout container environments.
+- Maintain accurate SBOMs and software inventories.
+- Continuously monitor runtime environments and platform health.
+- Regularly review backup, recovery, and business continuity procedures.
+- Improve governance using operational metrics and lessons learned.
+
+---
+
+# Common Mistakes
+
+- Treating container security as only a runtime responsibility.
+- Using unmanaged or inconsistent container images.
+- Neglecting container registry governance.
+- Ignoring software supply chain visibility.
+- Maintaining undocumented platform configurations.
+- Performing backup planning without recovery testing.
+- Failing to update governance as container environments evolve.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- The fundamentals of **Container Web Security** and the components of the container ecosystem.
+- The differences between **containers** and **virtual machines**, and how container isolation, namespaces, and resource management contribute to secure operations.
+- The importance of **secure container images**, **trusted registries**, **runtime governance**, **network segmentation**, **storage security**, and **configuration management**.
+- How **container orchestration**, **Identity and Access Management (IAM)**, **monitoring**, **logging**, **risk management**, and **incident response** support secure enterprise container platforms.
+- The role of **Zero Trust**, **container supply chain security**, **Software Bills of Materials (SBOMs)**, **business continuity**, and **continuous improvement** in building mature container security programs.
+
+Container Web Security is a continuous process that combines secure software development, trusted software supply chains, strong governance, operational visibility, and resilient infrastructure. By integrating these practices throughout the container lifecycle, organizations can operate containerized web applications securely while maintaining scalability, reliability, and long-term operational excellence.
+
