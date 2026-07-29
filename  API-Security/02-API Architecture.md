@@ -2108,4 +2108,813 @@ This architecture supports millions of daily transactions while maintaining stro
 
 ---
 
-**Next:** **Part 4 – Security Architecture, Detection Engineering, Logging & Monitoring, Enterprise Case Studies, Hands-on Labs, Troubleshooting, Interview Questions, Summary, Review Questions, and References**
+# 02 - API Architecture (Part 4)
+
+# API Security Architecture
+
+A secure API architecture does not rely on a single security mechanism.
+
+Instead, it implements **Defense in Depth**, where multiple security controls work together to protect APIs from different types of attacks.
+
+```
+                     Internet
+                         │
+                         ▼
+                 DDoS Protection
+                         │
+                         ▼
+                  Content Delivery Network
+                         │
+                         ▼
+               Web Application Firewall
+                         │
+                         ▼
+                   API Gateway
+                         │
+         Authentication & Authorization
+                         │
+                         ▼
+                  Rate Limiting
+                         │
+                         ▼
+                Input Validation
+                         │
+                         ▼
+                 Business Services
+                         │
+                         ▼
+                 Database Encryption
+                         │
+                         ▼
+              Logging & Monitoring
+                         │
+                         ▼
+                      SIEM/SOC
+```
+
+Each layer protects against different categories of threats.
+
+---
+
+# Defense in Depth
+
+Defense in Depth is one of the most important security principles in API architecture.
+
+Instead of depending on one control, multiple independent controls reduce overall risk.
+
+```
+Client
+   │
+   ▼
+HTTPS
+   │
+   ▼
+Web Application Firewall
+   │
+   ▼
+API Gateway
+   │
+   ▼
+Authentication
+   │
+   ▼
+Authorization
+   │
+   ▼
+Input Validation
+   │
+   ▼
+Business Logic
+   │
+   ▼
+Database Security
+```
+
+If one layer fails, the remaining controls continue to provide protection.
+
+---
+
+# Zero Trust Architecture
+
+Modern enterprise APIs increasingly follow the **Zero Trust** model.
+
+Core principle:
+
+> **Never Trust, Always Verify**
+
+Every request is verified regardless of its origin.
+
+```
+Request
+
+    │
+
+Authenticate
+
+    │
+
+Authorize
+
+    │
+
+Validate Device
+
+    │
+
+Evaluate Risk
+
+    │
+
+Allow / Deny
+```
+
+Zero Trust requires continuous verification instead of assuming internal traffic is trustworthy.
+
+---
+
+# API Security Controls
+
+A secure API architecture typically includes the following controls.
+
+| Control | Purpose |
+|----------|----------|
+| HTTPS | Encrypt communication |
+| Authentication | Verify identity |
+| Authorization | Verify permissions |
+| API Gateway | Centralized security |
+| WAF | Block web attacks |
+| Rate Limiting | Prevent abuse |
+| Input Validation | Prevent injections |
+| Logging | Record activity |
+| Monitoring | Detect attacks |
+| Encryption | Protect sensitive data |
+| Secrets Management | Protect credentials |
+| SIEM | Centralized detection |
+
+---
+
+# Detection Engineering
+
+Detection Engineering focuses on identifying malicious API activity through logs, telemetry, and behavioral analysis.
+
+Examples of suspicious events include:
+
+- Repeated authentication failures
+- API enumeration
+- Unusual request frequency
+- Geographic anomalies
+- Token misuse
+- Privilege escalation attempts
+- Access to deprecated endpoints
+- Excessive error responses
+
+Detection rules should be continuously refined to reduce false positives and improve incident response.
+
+---
+
+# Logging Architecture
+
+Logging provides visibility into API operations.
+
+```
+Client
+   │
+   ▼
+API Gateway
+   │
+   ▼
+Application Logs
+   │
+   ▼
+Central Log Platform
+   │
+   ▼
+SIEM
+```
+
+Typical log sources include:
+
+- API Gateway
+- Application Server
+- Authentication Server
+- Database
+- Load Balancer
+- Reverse Proxy
+- Kubernetes
+- Cloud Services
+
+---
+
+# What Should Be Logged?
+
+Important events include:
+
+Authentication
+
+- Successful logins
+- Failed logins
+- MFA failures
+- Token issuance
+
+Authorization
+
+- Access denied
+- Role changes
+- Privilege escalation attempts
+
+API Requests
+
+- Endpoint accessed
+- HTTP method
+- Status code
+- Response time
+- Request size
+- Response size
+
+Infrastructure
+
+- Server errors
+- Pod restarts
+- Configuration changes
+- Certificate expiration
+
+Security
+
+- Rate limit violations
+- Injection attempts
+- WAF alerts
+- Suspicious IP addresses
+
+---
+
+# SIEM Integration
+
+A Security Information and Event Management (SIEM) platform collects and correlates logs from multiple sources.
+
+```
+API Gateway
+      │
+      ▼
+Application Logs
+      │
+      ▼
+Authentication Logs
+      │
+      ▼
+Cloud Logs
+      │
+      ▼
+SIEM
+      │
+      ▼
+SOC Dashboard
+```
+
+Benefits include:
+
+- Centralized visibility
+- Threat correlation
+- Automated alerts
+- Compliance reporting
+- Incident investigation
+
+Common SIEM platforms:
+
+- Splunk
+- Microsoft Sentinel
+- Elastic Security
+- IBM QRadar
+- Google Chronicle
+
+---
+
+# Monitoring and Observability
+
+Modern API architectures require continuous monitoring.
+
+Key metrics include:
+
+Performance
+
+- Requests per second
+- Average latency
+- Response time
+- Throughput
+
+Reliability
+
+- Error rate
+- Availability
+- Uptime
+- Failed requests
+
+Security
+
+- Authentication failures
+- Authorization failures
+- Blocked requests
+- WAF events
+
+Infrastructure
+
+- CPU usage
+- Memory usage
+- Network utilization
+- Pod health
+
+Business
+
+- Transactions
+- Orders
+- Revenue-related API calls
+- User activity
+
+---
+
+# Distributed Tracing
+
+In a microservices architecture, a single request may traverse many services.
+
+```
+Client
+
+ │
+
+ ▼
+
+Gateway
+
+ │
+
+ ▼
+
+User Service
+
+ │
+
+ ▼
+
+Order Service
+
+ │
+
+ ▼
+
+Payment Service
+
+ │
+
+ ▼
+
+Inventory Service
+```
+
+Distributed tracing allows engineers to follow the complete request path.
+
+Popular tools:
+
+- Jaeger
+- Zipkin
+- OpenTelemetry
+
+---
+
+# Cloud-Native Security
+
+Cloud deployments introduce additional security requirements.
+
+Examples include:
+
+Identity
+
+- IAM Roles
+- Service Accounts
+
+Networking
+
+- Private Subnets
+- Security Groups
+- Network Policies
+
+Secrets
+
+- AWS Secrets Manager
+- Azure Key Vault
+- HashiCorp Vault
+
+Containers
+
+- Image scanning
+- Runtime protection
+- Admission controllers
+
+Kubernetes
+
+- RBAC
+- Pod Security Standards
+- Network Policies
+
+---
+
+# Enterprise Case Study
+
+## Scenario
+
+A global fintech organization exposes over 1,500 APIs.
+
+Daily traffic:
+
+- 80 million requests
+- Multiple cloud regions
+- Mobile applications
+- Banking integrations
+- Third-party partners
+
+Architecture
+
+```
+Users
+
+ │
+
+ ▼
+
+CloudFront CDN
+
+ │
+
+ ▼
+
+AWS WAF
+
+ │
+
+ ▼
+
+AWS API Gateway
+
+ │
+
+ ▼
+
+Kubernetes Cluster
+
+ │
+
+ ▼
+
+Istio Service Mesh
+
+ │
+
+ ▼
+
+Microservices
+
+ │
+
+ ▼
+
+Aurora Database
+
+ │
+
+ ▼
+
+CloudWatch
+
+ │
+
+ ▼
+
+Splunk SIEM
+
+ │
+
+ ▼
+
+SOC Team
+```
+
+Security Features
+
+- OAuth 2.0
+- JWT validation
+- Mutual TLS
+- WAF
+- Rate limiting
+- Input validation
+- Central logging
+- Threat detection
+- Automated alerting
+
+Result
+
+- Improved scalability
+- Reduced attack surface
+- Faster incident detection
+- Better compliance posture
+- High availability across regions
+
+---
+
+# Hands-on Lab 1 – Explore an API Gateway
+
+Objective:
+
+Understand how an API Gateway routes requests.
+
+Steps:
+
+1. Install Kong Gateway (or another API gateway).
+2. Create two sample backend services.
+3. Configure routes:
+   - `/users`
+   - `/orders`
+4. Send requests using `curl` or Postman.
+5. Observe routing behavior.
+
+Learning Outcomes:
+
+- Gateway routing
+- Centralized entry point
+- Request forwarding
+
+---
+
+# Hands-on Lab 2 – Observe Load Balancing
+
+Objective:
+
+Understand traffic distribution.
+
+Steps:
+
+1. Deploy multiple instances of the same API.
+2. Place a load balancer in front of them.
+3. Send repeated requests.
+4. Observe request distribution in the logs.
+
+Learning Outcomes:
+
+- Horizontal scaling
+- High availability
+- Traffic balancing
+
+---
+
+# Hands-on Lab 3 – Analyze API Logs
+
+Collect logs from:
+
+- API Gateway
+- Application
+- Authentication Service
+
+Identify:
+
+- Failed logins
+- Unauthorized access attempts
+- High request rates
+- Repeated errors
+
+This exercise demonstrates how operational logs support both troubleshooting and security investigations.
+
+---
+
+# Common Architectural Mistakes
+
+Many organizations encounter similar design issues.
+
+Examples:
+
+- Direct database exposure
+- Missing API Gateway
+- Shared administrator accounts
+- Hardcoded secrets
+- Weak authentication
+- No authorization checks
+- No rate limiting
+- Excessive trust between services
+- Insufficient monitoring
+- Lack of API inventory
+- Inconsistent versioning
+- Missing documentation
+
+These weaknesses increase both operational and security risks.
+
+---
+
+# Troubleshooting
+
+## High Latency
+
+Possible causes:
+
+- Database bottlenecks
+- Network congestion
+- Slow downstream services
+- Cache misses
+
+---
+
+## Frequent 502/503 Errors
+
+Possible causes:
+
+- Backend service unavailable
+- Misconfigured load balancer
+- Gateway timeout
+- Service crash
+
+---
+
+## Authentication Failures
+
+Possible causes:
+
+- Expired tokens
+- Clock synchronization issues
+- Invalid credentials
+- Incorrect OAuth configuration
+
+---
+
+## Service Communication Failures
+
+Possible causes:
+
+- DNS resolution issues
+- Service discovery failures
+- Network policy restrictions
+- TLS certificate problems
+
+---
+
+## Uneven Traffic Distribution
+
+Possible causes:
+
+- Load balancer misconfiguration
+- Unhealthy backend instances
+- Sticky session configuration
+- Incorrect health checks
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What is API architecture?
+2. Why is layered architecture important?
+3. What is an API Gateway?
+4. What is a Service Mesh?
+5. Explain stateless APIs.
+6. What is horizontal scaling?
+7. What is vertical scaling?
+8. What is high availability?
+9. What is distributed tracing?
+10. What is observability?
+
+---
+
+## Intermediate
+
+11. Compare API Gateway and Service Mesh.
+12. Explain the role of a load balancer.
+13. Why should APIs avoid direct database access?
+14. What is the purpose of caching?
+15. Explain Zero Trust in API architecture.
+16. How does distributed tracing help debugging?
+17. Why are microservices more operationally complex than monoliths?
+18. What security controls belong at the API Gateway?
+19. What should be logged in an enterprise API?
+20. How would you design a highly available API platform?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+Your organization's APIs experience a sudden spike in traffic, causing intermittent failures.
+
+- What architectural components would you investigate first?
+- How would you distinguish between legitimate traffic growth and a denial-of-service attack?
+
+---
+
+**Scenario 2**
+
+A microservice is healthy, but requests routed through the API Gateway consistently return `502 Bad Gateway`.
+
+- What troubleshooting steps would you perform?
+- Which logs and metrics would you examine?
+
+---
+
+**Scenario 3**
+
+An attacker compromises one internal service account.
+
+- How can Zero Trust principles, least privilege, and a Service Mesh help limit lateral movement?
+
+---
+
+# Chapter Summary
+
+In this chapter, we explored the architectural foundations of modern API ecosystems.
+
+We covered:
+
+- API architecture fundamentals
+- Client–server communication
+- Layered architectures
+- Monolithic and microservices architectures
+- Service-Oriented Architecture (SOA)
+- Event-driven communication
+- API Gateways
+- Service Meshes
+- Cloud-native API deployments
+- Containers and Kubernetes
+- High Availability and scalability
+- Caching strategies
+- Security architecture
+- Detection engineering
+- Logging and monitoring
+- SIEM integration
+- Enterprise design patterns
+- Troubleshooting
+- Real-world enterprise architectures
+
+These concepts provide the architectural knowledge required to understand how secure, scalable, and resilient APIs are designed and operated in production environments.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- What is API architecture?
+- Why are layered architectures important?
+- How do monoliths differ from microservices?
+- What is the role of an API Gateway?
+- How does a Service Mesh differ from an API Gateway?
+- Why are stateless APIs easier to scale?
+- What architectural patterns improve API reliability?
+- How do logging, monitoring, and SIEM strengthen API security?
+- What does Zero Trust mean in the context of APIs?
+- How would you design a secure, highly available enterprise API platform?
+
+If you can confidently explain these topics, you are ready to continue.
+
+---
+
+# References
+
+## RFCs
+
+- RFC 9110 – HTTP Semantics
+- RFC 9112 – HTTP/1.1
+- RFC 8446 – TLS 1.3
+
+## Security Standards
+
+- OWASP API Security Top 10
+- OWASP ASVS
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+- NIST SP 800-204 – Security Strategies for Microservices
+- CIS Controls v8
+- Zero Trust Architecture (NIST SP 800-207)
+
+## Further Reading
+
+- OpenAPI Specification
+- Kubernetes Documentation
+- Istio Documentation
+- Envoy Proxy Documentation
+- OpenTelemetry Documentation
+- CNCF Cloud Native Landscape
+
+---
+
+# What's Next?
+
+➡️ **Chapter 03 – REST API**
+
+In the next chapter, we will take a deep dive into REST (Representational State Transfer), including:
+
+- History and principles of REST
+- REST architectural constraints
+- Resources and URIs
+- HTTP methods in REST
+- Stateless communication
+- Request and response design
+- REST maturity model
+- REST security considerations
+- Enterprise REST API design
+- Best practices, testing, troubleshooting, and interview preparation
+
+REST is the most widely used API architecture in the world, making it an essential foundation for both developers and cybersecurity professionals.
