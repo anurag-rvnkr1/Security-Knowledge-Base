@@ -1231,6 +1231,695 @@ Platform engineers manage cluster configuration, development teams deploy standa
 - Configuration management and version control strengthen operational consistency.
 - Enterprise Kubernetes environments benefit from standardized governance, monitoring, and continuous review.
 
+# 59-Kubernetes-Web-Security.md
+
+# Part 3 — Network Policies, Secrets Management, Monitoring, Logging, Compliance, Incident Response, and Enterprise Operations
+
+> **"A secure Kubernetes environment requires continuous visibility, controlled communication between workloads, secure management of sensitive information, operational governance, and an established incident response process."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Kubernetes Network Policies
+- Service Discovery
+- Secrets Management
+- Monitoring
+- Logging
+- Audit Logging
+- Compliance
+- Risk Management
+- Incident Response
+- Continuous Improvement
+
+---
+
+# Kubernetes Network Security
+
+Networking is a fundamental part of Kubernetes security because applications communicate extensively with one another.
+
+```
+Users
+
+↓
+
+Ingress
+
+↓
+
+Services
+
+↓
+
+Pods
+
+↓
+
+Databases
+```
+
+Network communication should follow organizational security policies and documented architecture.
+
+---
+
+# Kubernetes Network Policies
+
+Network Policies define which workloads are permitted to communicate with each other.
+
+```
+Network Policy
+
+│
+
+├── Allowed Sources
+
+├── Allowed Destinations
+
+├── Allowed Ports
+
+├── Protocol Rules
+
+├── Namespace Rules
+
+├── Pod Selection
+
+└── Policy Enforcement
+```
+
+Network segmentation reduces unnecessary communication and supports least-privilege networking.
+
+---
+
+# Logical Network Segmentation
+
+```
+Kubernetes Cluster
+
+│
+
+├── Frontend Namespace
+
+├── Backend Namespace
+
+├── Database Namespace
+
+├── Monitoring Namespace
+
+└── Administrative Namespace
+```
+
+Logical segmentation improves isolation between different application tiers.
+
+---
+
+# Service Discovery
+
+Kubernetes provides mechanisms that allow applications to locate services consistently.
+
+```
+Application
+
+↓
+
+Service Discovery
+
+↓
+
+Target Service
+
+↓
+
+Application Response
+```
+
+Reliable service discovery supports scalable and resilient application architectures.
+
+---
+
+# Secure Service Communication
+
+```
+Client
+
+↓
+
+Service
+
+↓
+
+Application Pods
+
+↓
+
+Persistent Storage
+```
+
+Communication paths should be documented and reviewed as part of cluster governance.
+
+---
+
+# Kubernetes Secrets
+
+Applications often require sensitive configuration information.
+
+```
+Application
+
+↓
+
+Sensitive Information
+
+↓
+
+Authorized Access
+
+↓
+
+Runtime Usage
+```
+
+Sensitive information should be managed securely throughout its lifecycle.
+
+---
+
+# Secrets Lifecycle
+
+```
+Creation
+
+↓
+
+Review
+
+↓
+
+Storage
+
+↓
+
+Deployment
+
+↓
+
+Rotation
+
+↓
+
+Retirement
+```
+
+Lifecycle management improves operational security and governance.
+
+---
+
+# Sensitive Information Examples
+
+```
+Sensitive Data
+
+│
+
+├── API Credentials
+
+├── Database Credentials
+
+├── Certificates
+
+├── Encryption Keys
+
+├── Authentication Tokens
+
+├── Configuration Values
+
+└── Service Credentials
+```
+
+Organizations should maintain clear ownership and lifecycle policies for sensitive information.
+
+---
+
+# Monitoring Kubernetes
+
+Continuous monitoring provides operational visibility across the cluster.
+
+```
+Cluster
+
+↓
+
+Metrics Collection
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboards
+
+↓
+
+Operations Teams
+```
+
+Monitoring supports reliability, troubleshooting, and security operations.
+
+---
+
+# Monitoring Areas
+
+```
+Monitoring
+
+│
+
+├── Cluster Health
+
+├── Node Health
+
+├── Pod Status
+
+├── Resource Utilization
+
+├── Network Activity
+
+├── Storage Usage
+
+├── Configuration Changes
+
+└── Platform Availability
+```
+
+These metrics help identify operational issues early.
+
+---
+
+# Logging Strategy
+
+Centralized logging supports troubleshooting, auditing, and operational analysis.
+
+```
+Applications
+
+↓
+
+Cluster Components
+
+↓
+
+Central Logging
+
+↓
+
+Analysis Platform
+```
+
+Logs should be protected from unauthorized modification and retained according to organizational policies.
+
+---
+
+# Types of Logs
+
+```
+Cluster Logs
+
+│
+
+├── Application Logs
+
+├── System Logs
+
+├── Platform Logs
+
+├── Audit Logs
+
+├── Networking Logs
+
+├── Storage Logs
+
+├── Scheduling Events
+
+└── Operational Events
+```
+
+Different log sources provide different operational insights.
+
+---
+
+# Audit Logging
+
+Audit logging records important administrative and operational activities.
+
+```
+User Action
+
+↓
+
+Audit Event
+
+↓
+
+Central Repository
+
+↓
+
+Review
+```
+
+Audit logs improve accountability and support governance.
+
+---
+
+# Important Audit Events
+
+```
+Audit Events
+
+│
+
+├── Authentication Events
+
+├── Authorization Decisions
+
+├── Administrative Changes
+
+├── Configuration Updates
+
+├── Deployment Activities
+
+├── Cluster Events
+
+├── Access Requests
+
+└── Policy Changes
+```
+
+Audit records should be reviewed regularly.
+
+---
+
+# Compliance Integration
+
+Compliance activities should be integrated into normal cluster operations.
+
+```
+Policies
+
+↓
+
+Implementation
+
+↓
+
+Monitoring
+
+↓
+
+Documentation
+
+↓
+
+Audit Readiness
+```
+
+Routine compliance activities reduce operational risk.
+
+---
+
+# Risk Management
+
+Risk management should be an ongoing operational process.
+
+```
+Platform Review
+
+↓
+
+Risk Identification
+
+↓
+
+Assessment
+
+↓
+
+Mitigation
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Review
+```
+
+Organizations should regularly reassess risks as clusters evolve.
+
+---
+
+# Common Risk Categories
+
+```
+Cluster Risks
+
+│
+
+├── Configuration Risks
+
+├── Identity Risks
+
+├── Network Risks
+
+├── Storage Risks
+
+├── Operational Risks
+
+├── Availability Risks
+
+├── Governance Risks
+
+└── Compliance Risks
+```
+
+Categorizing risks helps prioritize mitigation efforts.
+
+---
+
+# Incident Response
+
+Incident response should be integrated with organizational security operations.
+
+```
+Detection
+
+↓
+
+Analysis
+
+↓
+
+Containment
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+
+↓
+
+Improvement
+```
+
+A documented response process improves resilience and operational readiness.
+
+---
+
+# Continuous Improvement
+
+```
+Monitoring
+
+↓
+
+Operational Feedback
+
+↓
+
+Policy Review
+
+↓
+
+Platform Improvements
+
+↓
+
+Updated Standards
+```
+
+Operational lessons should be incorporated into future platform improvements.
+
+---
+
+# Enterprise Kubernetes Security Architecture
+
+```
+               Kubernetes Cluster
+
+                     │
+
+     ┌───────────────┼────────────────┐
+
+     ▼               ▼                ▼
+
+ Control Plane   Worker Nodes    Networking
+
+     │               │                │
+
+     └───────────────┼────────────────┘
+
+                     ▼
+
+          Containerized Applications
+
+                     ▼
+
+      Monitoring • Logging • SIEM
+
+                     ▼
+
+       Governance & Incident Response
+```
+
+Continuous monitoring and governance provide visibility across the entire platform.
+
+---
+
+# Enterprise Example
+
+A global banking organization operates multiple Kubernetes clusters supporting digital banking services.
+
+```
+Development
+
+↓
+
+Deployment
+
+↓
+
+Cluster Operations
+
+↓
+
+Monitoring
+
+↓
+
+Governance Review
+
+↓
+
+Continuous Improvement
+```
+
+Operations teams monitor cluster health and availability, while security teams review audit logs, governance policies, and platform changes to maintain a resilient and compliant Kubernetes environment.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Cluster Availability | Platform reliability |
+| Node Availability | Infrastructure health |
+| Pod Health | Workload stability |
+| Resource Utilization | Capacity planning |
+| Audit Review Completion | Governance |
+| Log Collection Coverage | Operational visibility |
+| Incident Resolution Time | Response effectiveness |
+| Policy Compliance Rate | Security maturity |
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large clusters | Centralized governance |
+| High log volume | Centralized log management |
+| Complex networking | Documented segmentation |
+| Frequent deployments | Continuous monitoring |
+| Identity management | Standardized RBAC |
+| Compliance obligations | Automated documentation and periodic reviews |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design a logical network segmentation model for a Kubernetes cluster.
+2. Document the lifecycle of sensitive configuration information.
+3. Create a centralized monitoring and logging architecture.
+4. Build an audit logging workflow for administrative events.
+5. Define an incident response workflow for Kubernetes operations.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, governance, operational monitoring, and defensive administration.
+
+---
+
+# Interview Questions
+
+1. What are Kubernetes Network Policies?
+2. Why is network segmentation important?
+3. What types of information should be managed as sensitive configuration?
+4. Why is centralized monitoring important?
+5. What information should audit logs contain?
+6. How does logging support incident investigations?
+7. Why should compliance activities be continuous?
+8. What are common Kubernetes operational risks?
+9. Why should incident response be documented?
+10. How does continuous improvement strengthen Kubernetes security?
+
+---
+
+# Best Practices
+
+- Design and document logical network segmentation.
+- Manage sensitive configuration information throughout its lifecycle.
+- Centralize monitoring, logging, and audit collection.
+- Continuously review governance and compliance requirements.
+- Monitor platform health using meaningful operational metrics.
+- Review incident response procedures regularly.
+- Maintain documentation for operational changes.
+- Improve processes using lessons learned from operations.
+
+---
+
+# Common Mistakes
+
+- Allowing unrestricted communication between workloads.
+- Managing sensitive information without governance.
+- Keeping logs distributed across multiple systems.
+- Ignoring audit log reviews.
+- Treating compliance as a one-time exercise.
+- Failing to document operational procedures.
+- Neglecting continuous improvement after incidents.
+
+---
+
+# Key Takeaways
+
+- Kubernetes Network Policies improve workload isolation through controlled communication.
+- Secure management of sensitive configuration information is essential for enterprise operations.
+- Centralized monitoring, logging, and audit records provide operational visibility and accountability.
+- Risk management, compliance, and incident response strengthen platform resilience.
+- Mature Kubernetes environments continuously improve through governance, monitoring, and operational feedback.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
