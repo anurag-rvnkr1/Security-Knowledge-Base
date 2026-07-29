@@ -805,4 +805,753 @@ Avoid
 
 ---
 
-**Next:** OAuth 2.0 Grant Types, Authorization Code Flow, PKCE, Device Authorization Flow, Client Credentials Flow, Refresh Tokens, OAuth Security Threats, Detection Engineering, SIEM Integration, Hands-on Labs, and Interview Questions.
+
+# OAuth 2.0 Grant Types
+
+Grant types define how a client obtains an access token from the Authorization Server.
+
+```
+OAuth 2.0
+
+      │
+
+ ┌────┼─────────┬────────────┬──────────────┐
+
+ ▼    ▼         ▼            ▼
+
+Authorization  Client     Device      Refresh
+Code           Credentials Authorization Token
+
+            (+ PKCE)
+```
+
+Modern deployments primarily use:
+
+- Authorization Code + PKCE
+- Client Credentials
+- Device Authorization
+- Refresh Token
+
+Some older grant types are now deprecated or discouraged.
+
+---
+
+# OAuth Authorization Code Flow
+
+The Authorization Code Flow is the recommended OAuth flow for:
+
+- Web Applications
+- Server-side Applications
+- Enterprise Applications
+
+It separates user authentication from token issuance.
+
+---
+
+# Authorization Code Flow Overview
+
+```
++--------+                                +----------------------+
+|  User  |                                | Authorization Server |
++--------+                                +----------------------+
+     |                                              |
+     | Access Client                                |
+     ▼                                              |
++------------+                                       |
+|   Client   |-------------------------------------->|
++------------+   Authorization Request               |
+     |                                              |
+     |<----------------------------------------------|
+     |        Login & Consent                        |
+     |                                              |
+     |---------------------------------------------->|
+     |      Authorization Code                      |
+     |                                              |
+     |----------------------/token------------------>|
+     |                                              |
+     |<----------------------------------------------|
+     |   Access Token + Refresh Token               |
+     |                                              |
+     ▼
+Protected Resource
+```
+
+---
+
+# Step 1 - Authorization Request
+
+The client redirects the user to the Authorization Server.
+
+Typical parameters include:
+
+- client_id
+- redirect_uri
+- response_type
+- scope
+- state
+
+Example
+
+```
+GET /authorize
+
+client_id=inventory-app
+
+response_type=code
+
+scope=read:products
+
+state=random-value
+```
+
+---
+
+# Step 2 - User Authentication
+
+The Authorization Server authenticates the Resource Owner.
+
+```
+User
+
+ │
+
+Username
+
+Password
+
+MFA
+
+ ▼
+
+Authenticated
+```
+
+Authentication mechanisms may include:
+
+- Passwords
+- Passkeys
+- MFA
+- Smart Cards
+- Enterprise SSO
+
+---
+
+# Step 3 - User Consent
+
+The Authorization Server requests approval.
+
+```
+Inventory Application
+
+Requests Permission
+
+-----------------------
+
+Read Products
+
+Read Orders
+
+-----------------------
+
+Approve?
+
+Yes / No
+```
+
+Only approved scopes should be granted.
+
+---
+
+# Step 4 - Authorization Code
+
+After successful authentication and consent,
+
+the Authorization Server returns a temporary authorization code.
+
+```
+Authorization Server
+
+        │
+
+Authorization Code
+
+        ▼
+
+Client
+```
+
+Characteristics
+
+- Short-lived
+- Single use
+- Not an access token
+
+---
+
+# Step 5 - Token Exchange
+
+The client exchanges the authorization code.
+
+```
+Authorization Code
+
+        │
+
+POST /token
+
+        │
+
+Authorization Server
+
+        ▼
+
+Access Token
+
+Refresh Token
+```
+
+Only trusted clients should perform this exchange.
+
+---
+
+# Authorization Code Lifetime
+
+Typical characteristics
+
+- Very short lifetime
+- One-time use
+- Invalid after exchange
+
+If reused,
+
+the Authorization Server should reject the request.
+
+---
+
+# PKCE (Proof Key for Code Exchange)
+
+PKCE protects the Authorization Code Flow against authorization code interception.
+
+Originally designed for public clients,
+
+PKCE is now recommended for virtually all OAuth clients.
+
+---
+
+# Why PKCE?
+
+Without PKCE
+
+```
+Attacker
+
+↓
+
+Steals Authorization Code
+
+↓
+
+Exchanges Code
+
+↓
+
+Receives Access Token
+```
+
+PKCE prevents unauthorized token exchange.
+
+---
+
+# PKCE Components
+
+PKCE introduces two values.
+
+```
+Code Verifier
+
+↓
+
+Random Secret
+
+--------------------
+
+Code Challenge
+
+↓
+
+Hashed Verifier
+```
+
+The verifier remains known only to the client.
+
+---
+
+# PKCE Flow
+
+```
+Client
+
+ │
+
+Generate Code Verifier
+
+ │
+
+Generate Code Challenge
+
+ │
+
+Authorization Request
+
+ ▼
+
+Authorization Server
+
+ │
+
+Authorization Code
+
+ ▼
+
+Client
+
+ │
+
+Send Authorization Code
+
++
+
+Code Verifier
+
+ ▼
+
+Authorization Server
+
+ │
+
+Challenge Matches?
+
+ ┌────┴─────┐
+
+ ▼          ▼
+
+Yes        No
+
+ ▼          ▼
+
+Issue      Reject
+
+Token
+```
+
+---
+
+# PKCE Benefits
+
+Advantages
+
+- Prevents authorization code interception
+- No client secret required
+- Ideal for public clients
+- Recommended for SPAs
+- Recommended for mobile applications
+
+---
+
+# Client Credentials Grant
+
+The Client Credentials Grant is used for machine-to-machine communication.
+
+No user participates.
+
+```
+Application
+
+ │
+
+Client ID
+
+Client Secret
+
+ ▼
+
+Authorization Server
+
+ │
+
+Access Token
+
+ ▼
+
+API
+```
+
+Typical use cases
+
+- Internal APIs
+- Microservices
+- Background jobs
+- Scheduled tasks
+
+---
+
+# Client Credentials Flow
+
+```
+Service A
+
+ │
+
+Authenticate Client
+
+ │
+
+Receive Access Token
+
+ │
+
+Access Service B
+
+ ▼
+
+Protected API
+```
+
+No refresh token is typically issued.
+
+---
+
+# Device Authorization Grant
+
+The Device Authorization Grant supports devices with limited input capabilities.
+
+Examples
+
+- Smart TVs
+- IoT Devices
+- Gaming Consoles
+- Embedded Devices
+
+---
+
+# Device Authorization Flow
+
+```
+Smart TV
+
+ │
+
+Device Code
+
+ ▼
+
+Authorization Server
+
+ │
+
+Display User Code
+
+ ▼
+
+User
+
+ │
+
+Visit Browser
+
+ │
+
+Authenticate
+
+ ▼
+
+Authorization Server
+
+ │
+
+Approve
+
+ ▼
+
+TV Receives Access Token
+```
+
+The user authenticates on a separate trusted device.
+
+---
+
+# Refresh Token Grant
+
+When the access token expires,
+
+the refresh token obtains a replacement.
+
+```
+Expired Access Token
+
+        │
+
+Refresh Token
+
+        ▼
+
+Authorization Server
+
+        │
+
+New Access Token
+
+        ▼
+
+Continue Session
+```
+
+Refresh tokens should never be sent to Resource Servers.
+
+---
+
+# OAuth Scopes
+
+Scopes limit client permissions.
+
+Examples
+
+```
+read:users
+
+write:users
+
+delete:users
+```
+
+Cloud examples
+
+```
+storage.read
+
+storage.write
+
+billing.read
+```
+
+Applications should request only required scopes.
+
+---
+
+# Scope Evaluation
+
+```
+Access Token
+
+      │
+
+Contains Scope?
+
+      │
+
+read:orders
+
+      │
+
+API Request
+
+      │
+
+Permission Check
+
+ ┌────┴────┐
+
+ ▼         ▼
+
+Allow    Deny
+```
+
+Authorization decisions should include scope validation.
+
+---
+
+# Incremental Authorization
+
+Applications may request additional permissions only when needed.
+
+Example
+
+```
+Initial Login
+
+↓
+
+Read Profile
+
+-------------------
+
+Later
+
+↓
+
+Request Calendar Access
+```
+
+Benefits
+
+- Better user trust
+- Reduced permissions
+- Improved security
+
+---
+
+# OAuth Token Types
+
+```
+OAuth Tokens
+
+      │
+
+ ┌────┼─────────┐
+
+ ▼    ▼         ▼
+
+Access Refresh ID Token
+```
+
+ID Tokens are provided by OpenID Connect rather than OAuth itself.
+
+---
+
+# OAuth Error Responses
+
+Common errors
+
+| Error | Meaning |
+|--------|----------|
+| invalid_request | Missing or invalid parameters |
+| invalid_client | Client authentication failed |
+| invalid_grant | Invalid authorization code or refresh token |
+| invalid_scope | Requested scope not allowed |
+| unauthorized_client | Client not permitted for grant type |
+| access_denied | User denied authorization |
+| unsupported_grant_type | Unsupported OAuth flow |
+
+Applications should handle errors securely without exposing sensitive information.
+
+---
+
+# OAuth Flow Comparison
+
+| Flow | User Present | Typical Use Case |
+|------|--------------|------------------|
+| Authorization Code + PKCE | Yes | Web, Mobile, SPA |
+| Client Credentials | No | Service-to-Service |
+| Device Authorization | Yes | Smart Devices |
+| Refresh Token | No | Session Continuation |
+
+---
+
+# Deprecated OAuth Grant Types
+
+The following grant types are no longer recommended.
+
+### Implicit Grant
+
+Previously used for browser applications.
+
+Problems
+
+- Token exposed in browser
+- Token leakage
+- Weak security
+
+Modern recommendation
+
+```
+Authorization Code
+
++
+
+PKCE
+```
+
+---
+
+### Resource Owner Password Credentials (ROPC)
+
+The user provides credentials directly to the client.
+
+```
+User
+
+↓
+
+Username
+
+Password
+
+↓
+
+Application
+```
+
+Problems
+
+- Password exposure
+- Phishing risk
+- No delegated authorization
+- Weak separation of trust
+
+ROPC should be avoided except in limited legacy scenarios.
+
+---
+
+# OAuth Security Best Practices
+
+Authorization
+
+- Always use Authorization Code with PKCE for user-facing applications.
+- Validate redirect URIs.
+- Validate scopes.
+- Use short-lived access tokens.
+- Rotate refresh tokens.
+
+Client Security
+
+- Protect client secrets.
+- Register exact redirect URIs.
+- Use HTTPS exclusively.
+- Authenticate confidential clients.
+
+Operations
+
+- Monitor token issuance.
+- Audit consent events.
+- Remove unused clients.
+- Rotate secrets regularly.
+
+---
+
+# Common Security Mistakes
+
+Avoid
+
+- Using the Implicit Grant
+- Using ROPC in new applications
+- Missing PKCE
+- Excessive scopes
+- Wildcard redirect URIs
+- Long-lived tokens
+- Shared client secrets
+- Missing state validation
+- Ignoring refresh token reuse
+
+---
+
+# Key Takeaways
+
+- Authorization Code + PKCE is the recommended OAuth flow for most user-facing applications.
+- Client Credentials is designed for service-to-service communication.
+- Device Authorization supports devices with limited input capabilities.
+- Refresh tokens enable session continuity.
+- PKCE significantly strengthens OAuth security by protecting authorization codes.
+
+---
+
+**Next:** OAuth Threats, State Parameter, CSRF Protection, Redirect URI Attacks, Token Leakage, OAuth Client Authentication, Detection Engineering, SIEM Integration, Hands-on Labs, Interview Questions, and Enterprise OAuth Architecture.
