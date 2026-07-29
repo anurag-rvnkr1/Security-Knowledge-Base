@@ -534,4 +534,775 @@ Each endpoint represents a business resource rather than an internal function, a
 
 ---
 
-**Next:** Resource Identification, URI Design, REST Maturity Model, Resource Relationships, HTTP Methods in REST, and Enterprise REST Design Principles.
+# Resource Identification
+
+Everything in a REST API revolves around **resources**.
+
+A resource is any object, entity, or piece of information that can be identified and manipulated through a URI.
+
+Examples include:
+
+- Users
+- Products
+- Orders
+- Customers
+- Employees
+- Invoices
+- Payments
+- Books
+- Vehicles
+- Flights
+
+A resource is identified using a **Uniform Resource Identifier (URI).**
+
+Example:
+
+```
+/users
+/orders
+/products
+/payments
+```
+
+Each URI uniquely identifies a collection or an individual resource.
+
+---
+
+# Collections vs Individual Resources
+
+REST distinguishes between collections and individual resources.
+
+Collection:
+
+```
+GET /users
+```
+
+Returns:
+
+```
+All Users
+```
+
+Individual Resource:
+
+```
+GET /users/101
+```
+
+Returns:
+
+```
+User 101
+```
+
+Architecture Diagram:
+
+```
+Users Collection
+
+/users
+   │
+   ├────────► User 101
+   │
+   ├────────► User 102
+   │
+   ├────────► User 103
+   │
+   └────────► User 104
+```
+
+---
+
+# URI Structure
+
+A well-designed REST URI follows a predictable hierarchy.
+
+General format:
+
+```
+https://api.company.com/version/resource/id/subresource
+```
+
+Example:
+
+```
+https://api.company.com/v1/users/105/orders
+```
+
+Components:
+
+| Component | Description |
+|-----------|-------------|
+| https | Protocol |
+| api.company.com | Domain |
+| v1 | API Version |
+| users | Resource Collection |
+| 105 | Resource Identifier |
+| orders | Child Resource |
+
+---
+
+# URI Naming Best Practices
+
+REST URIs should follow consistent naming conventions.
+
+Good Examples
+
+```
+/users
+
+/products
+
+/orders
+
+/customers
+
+/invoices
+```
+
+Bad Examples
+
+```
+/GetUsers
+
+/CreateOrder
+
+/deleteCustomer
+
+/getAllProducts
+
+/FindInvoice
+```
+
+REST focuses on **resources**, not actions.
+
+---
+
+# Use Nouns Instead of Verbs
+
+Incorrect
+
+```
+POST /createUser
+
+GET /getOrders
+
+DELETE /deleteOrder
+```
+
+Correct
+
+```
+POST /users
+
+GET /orders
+
+DELETE /orders/15
+```
+
+The HTTP method already defines the action.
+
+---
+
+# Use Plural Resource Names
+
+Recommended
+
+```
+/users
+
+/orders
+
+/products
+
+/employees
+
+/customers
+```
+
+Avoid
+
+```
+/user
+
+/order
+
+/product
+```
+
+Plural naming improves consistency and readability.
+
+---
+
+# Use Lowercase URIs
+
+Recommended
+
+```
+/users
+
+/user-profile
+
+/order-items
+```
+
+Avoid
+
+```
+/Users
+
+/UserProfile
+
+/ORDER
+```
+
+Reasons:
+
+- Consistency
+- Better portability
+- Easier documentation
+- Reduced ambiguity
+
+---
+
+# Use Hyphens Instead of Underscores
+
+Good
+
+```
+/user-profile
+
+/payment-history
+
+/order-items
+```
+
+Avoid
+
+```
+/user_profile
+
+/payment_history
+
+/order_items
+```
+
+Hyphens improve readability and align with common REST conventions.
+
+---
+
+# Avoid File Extensions
+
+Avoid
+
+```
+/users.json
+
+/products.xml
+```
+
+Instead
+
+```
+/users
+```
+
+The response format should be determined using the `Accept` header rather than embedding file types in the URI.
+
+---
+
+# Hierarchical Resources
+
+Resources often have parent-child relationships.
+
+Example:
+
+```
+Customer
+
+ └────► Orders
+
+            └────► Order Items
+```
+
+Corresponding URIs:
+
+```
+/customers/25/orders
+
+/customers/25/orders/101
+
+/customers/25/orders/101/items
+```
+
+Hierarchy should reflect real business relationships.
+
+---
+
+# Nested Resources
+
+Nested resources represent ownership or containment.
+
+Example:
+
+```
+Department
+
+   │
+
+   ▼
+
+Employees
+
+   │
+
+   ▼
+
+Projects
+```
+
+REST URIs:
+
+```
+/departments/4/employees
+
+/departments/4/employees/20
+
+/departments/4/employees/20/projects
+```
+
+Avoid excessive nesting.
+
+Instead of:
+
+```
+/company/1/departments/2/teams/3/employees/5/projects/8/tasks/10
+```
+
+Prefer flatter structures where practical.
+
+---
+
+# Resource Relationships
+
+Resources may have different types of relationships.
+
+### One-to-One
+
+```
+User
+
+ │
+
+ ▼
+
+Profile
+```
+
+URI
+
+```
+/users/15/profile
+```
+
+---
+
+### One-to-Many
+
+```
+Customer
+
+ │
+
+ ▼
+
+Orders
+```
+
+URI
+
+```
+/customers/10/orders
+```
+
+---
+
+### Many-to-Many
+
+```
+Students
+
+     │
+
+     ▼
+
+Courses
+```
+
+Possible URIs
+
+```
+/students/50/courses
+
+/courses/12/students
+```
+
+---
+
+# Query Parameters
+
+Query parameters filter, sort, and paginate results.
+
+Filtering
+
+```
+GET /products?category=laptops
+```
+
+Sorting
+
+```
+GET /products?sort=price
+```
+
+Descending
+
+```
+GET /products?sort=-price
+```
+
+Pagination
+
+```
+GET /products?page=2&limit=25
+```
+
+Searching
+
+```
+GET /products?search=keyboard
+```
+
+Multiple Filters
+
+```
+GET /products?brand=Dell&category=Laptop&price=50000
+```
+
+Query parameters should **not** change the identity of a resource.
+
+---
+
+# Path Parameters vs Query Parameters
+
+| Path Parameter | Query Parameter |
+|---------------|-----------------|
+| Identifies a resource | Filters resources |
+| Mandatory | Usually optional |
+| Part of URI path | Appears after `?` |
+| `/users/15` | `/users?page=2` |
+
+Example:
+
+```
+GET /users/25
+```
+
+Retrieves User 25.
+
+```
+GET /users?country=India
+```
+
+Retrieves users filtered by country.
+
+---
+
+# Resource Versioning
+
+Enterprise APIs evolve over time.
+
+Versioning prevents breaking existing clients.
+
+Examples:
+
+URI Versioning
+
+```
+/v1/users
+
+/v2/users
+```
+
+Header Versioning
+
+```
+Accept: application/vnd.company.v2+json
+```
+
+Query Versioning
+
+```
+/users?version=2
+```
+
+URI versioning is the most widely adopted approach because it is explicit and easy to document.
+
+---
+
+# REST Maturity Model
+
+The Richardson Maturity Model evaluates how closely an API follows REST principles.
+
+```
+Level 0
+
+↓
+
+Level 1
+
+↓
+
+Level 2
+
+↓
+
+Level 3
+```
+
+Each level introduces additional REST capabilities.
+
+---
+
+# Level 0 — Single Endpoint
+
+Everything is handled by one endpoint.
+
+Example
+
+```
+POST /api
+```
+
+Request body determines the operation.
+
+Problems:
+
+- Poor scalability
+- Difficult documentation
+- Not RESTful
+
+---
+
+# Level 1 — Resources
+
+Separate resources are introduced.
+
+Example
+
+```
+/users
+
+/orders
+
+/products
+```
+
+Resources are identified independently.
+
+---
+
+# Level 2 — HTTP Methods
+
+HTTP methods express operations.
+
+```
+GET
+
+POST
+
+PUT
+
+PATCH
+
+DELETE
+```
+
+Example
+
+```
+GET /products
+
+POST /products
+
+DELETE /products/10
+```
+
+This is where most production REST APIs operate.
+
+---
+
+# Level 3 — Hypermedia (HATEOAS)
+
+Responses include links to related actions.
+
+Example:
+
+```json
+{
+  "id": 100,
+  "status": "Processing",
+  "links": [
+    {
+      "rel": "cancel",
+      "href": "/orders/100/cancel"
+    },
+    {
+      "rel": "payment",
+      "href": "/orders/100/payment"
+    }
+  ]
+}
+```
+
+Clients discover available actions dynamically.
+
+---
+
+# REST Resource Lifecycle
+
+```
+Create
+
+   │
+
+   ▼
+
+Read
+
+   │
+
+   ▼
+
+Update
+
+   │
+
+   ▼
+
+Delete
+```
+
+This lifecycle maps naturally to CRUD operations and standard HTTP methods.
+
+---
+
+# Enterprise REST Design Principles
+
+Successful enterprise APIs follow several design principles.
+
+- Resource-oriented design
+- Predictable URIs
+- Consistent naming
+- Proper use of HTTP methods
+- Versioning strategy
+- Stateless communication
+- Pagination support
+- Filtering and sorting
+- Clear error responses
+- Comprehensive documentation
+- Security by design
+- Backward compatibility
+
+Following these principles improves developer experience and long-term maintainability.
+
+---
+
+# Enterprise Example
+
+An online retail platform exposes the following REST resources:
+
+```
+GET    /products
+
+GET    /products/200
+
+POST   /orders
+
+GET    /orders/500
+
+GET    /customers/25/orders
+
+PATCH  /orders/500
+
+DELETE /cart/items/20
+```
+
+Notice that the URIs represent business resources, while the HTTP methods indicate the desired operation.
+
+---
+
+# Common URI Design Mistakes
+
+Avoid these common mistakes:
+
+❌ Using verbs in URIs
+
+```
+/createUser
+```
+
+✔ Correct
+
+```
+POST /users
+```
+
+---
+
+❌ Inconsistent naming
+
+```
+/users
+
+/getOrders
+
+/ProductList
+```
+
+✔ Correct
+
+```
+/users
+
+/orders
+
+/products
+```
+
+---
+
+❌ Excessive nesting
+
+```
+/companies/1/departments/2/teams/3/projects/5/tasks/10/comments/15
+```
+
+Prefer simpler resource structures where possible.
+
+---
+
+# Key Takeaways
+
+- Resources are the core building blocks of REST APIs.
+- Every resource should have a unique and meaningful URI.
+- URIs should use nouns, plural names, lowercase letters, and consistent structures.
+- Path parameters identify resources, while query parameters filter or modify result sets.
+- REST maturity progresses from single endpoints to hypermedia-driven APIs.
+- Well-designed resource hierarchies improve usability, maintainability, and scalability.
+- Consistent URI design is essential for enterprise-grade API development.
+
+---
+
+**Next:** HTTP Methods in REST, Idempotency, Safe Methods, Request and Response Structure, Status Codes, Content Negotiation, and Enterprise REST Best Practices.
