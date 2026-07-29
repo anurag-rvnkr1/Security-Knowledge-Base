@@ -690,6 +690,713 @@ This layered approach improves operational resilience while supporting business 
 - HTTPS protects communication through encryption, integrity, and server authentication.
 - Strong security depends on layered controls, monitoring, governance, and continuous improvement.
 
+# 66-Web-Security-Cheat-Sheet.md
+
+# Part 2 — OWASP, Secure Headers, Cookies, Sessions, API Security, Encryption, Authentication, and Authorization
+
+> **"Most web security incidents can be significantly reduced by consistently applying well-established security best practices across authentication, sessions, APIs, data protection, and application design."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will have a quick-reference guide for:
+
+- OWASP Top Risks
+- Secure HTTP Headers
+- Cookies
+- Session Management
+- API Security
+- Authentication & Authorization
+- Encryption
+- Data Protection
+- Enterprise Security Controls
+
+---
+
+# OWASP Security Philosophy
+
+```
+Secure Design
+
+↓
+
+Secure Coding
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Common Web Security Risk Categories
+
+| Category | Primary Goal |
+|----------|--------------|
+| Broken Access Control | Prevent unauthorized access |
+| Cryptographic Failures | Protect sensitive information |
+| Injection | Prevent untrusted input from affecting application behavior |
+| Insecure Design | Build security into architecture |
+| Security Misconfiguration | Maintain secure defaults |
+| Vulnerable Components | Keep software updated |
+| Identification & Authentication Failures | Protect user identities |
+| Software & Data Integrity Failures | Preserve trusted software and data |
+| Security Logging & Monitoring Failures | Improve visibility |
+| Server-Side Request Forgery (SSRF) | Validate outbound requests appropriately |
+
+---
+
+# Secure Authentication Flow
+
+```
+User
+
+↓
+
+Identity Verification
+
+↓
+
+Multi-Factor Authentication
+
+↓
+
+Authenticated Session
+
+↓
+
+Application Access
+```
+
+---
+
+# Authorization Flow
+
+```
+Authenticated User
+
+↓
+
+Role Evaluation
+
+↓
+
+Permission Check
+
+↓
+
+Resource Access
+
+↓
+
+Audit Logging
+```
+
+---
+
+# Authentication Factors
+
+```
+Authentication
+
+│
+
+├── Something You Know
+
+├── Something You Have
+
+└── Something You Are
+```
+
+Combining multiple factors strengthens identity verification.
+
+---
+
+# Password Best Practices
+
+```
+Passwords
+
+│
+
+├── Strong
+
+├── Unique
+
+├── Long
+
+├── Password Manager
+
+├── MFA Enabled
+
+└── Secure Storage
+```
+
+---
+
+# Session Security Checklist
+
+```
+✓ Secure Session IDs
+
+✓ HTTPS Only
+
+✓ Appropriate Expiration
+
+✓ Secure Logout
+
+✓ Session Renewal
+
+✓ Continuous Validation
+```
+
+---
+
+# Secure Cookie Attributes
+
+| Attribute | Purpose |
+|-----------|----------|
+| Secure | Send only over HTTPS |
+| HttpOnly | Reduce client-side script access |
+| SameSite | Reduce unintended cross-site requests |
+| Appropriate Expiration | Limit session lifetime |
+
+---
+
+# Secure HTTP Headers
+
+| Header | Purpose |
+|---------|----------|
+| Content-Security-Policy | Restrict allowed content sources |
+| Strict-Transport-Security | Enforce HTTPS |
+| X-Content-Type-Options | Reduce MIME type confusion |
+| Referrer-Policy | Control referrer information |
+| Permissions-Policy | Limit browser feature access |
+| Cache-Control | Manage caching of sensitive responses |
+
+---
+
+# Input Validation Checklist
+
+```
+Input
+
+↓
+
+Validate Type
+
+↓
+
+Validate Length
+
+↓
+
+Validate Format
+
+↓
+
+Validate Business Rules
+
+↓
+
+Process
+```
+
+Validate every input regardless of its source.
+
+---
+
+# Output Encoding
+
+```
+Application Data
+
+↓
+
+Context-Aware Encoding
+
+↓
+
+Browser
+
+↓
+
+Safe Rendering
+```
+
+Encode output according to the destination context (such as HTML, JavaScript, CSS, or URLs).
+
+---
+
+# API Security Fundamentals
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Input Validation
+
+↓
+
+Business Logic
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+```
+
+---
+
+# API Security Checklist
+
+```
+✓ Authentication
+
+✓ Authorization
+
+✓ HTTPS
+
+✓ Rate Limiting
+
+✓ Input Validation
+
+✓ Logging
+
+✓ Monitoring
+
+✓ Error Handling
+```
+
+---
+
+# Encryption Overview
+
+```
+Sensitive Data
+
+↓
+
+Encryption
+
+↓
+
+Secure Storage
+
+↓
+
+Authorized Access
+```
+
+Encryption helps protect sensitive information both in transit and at rest.
+
+---
+
+# Data Classification
+
+```
+Data
+
+│
+
+├── Public
+
+├── Internal
+
+├── Confidential
+
+└── Restricted
+```
+
+Security controls should match the sensitivity of the data being protected.
+
+---
+
+# Least Privilege
+
+```
+User
+
+↓
+
+Minimum Permissions
+
+↓
+
+Business Tasks
+
+↓
+
+Review
+
+↓
+
+Adjustment
+```
+
+Grant only the permissions required to perform legitimate responsibilities.
+
+---
+
+# Defense in Depth
+
+```
+Users
+
+↓
+
+Identity
+
+↓
+
+Application
+
+↓
+
+Network
+
+↓
+
+Infrastructure
+
+↓
+
+Monitoring
+
+↓
+
+Governance
+```
+
+Multiple security layers improve resilience.
+
+---
+
+# Zero Trust
+
+```
+Request
+
+↓
+
+Verify Identity
+
+↓
+
+Verify Device
+
+↓
+
+Evaluate Policy
+
+↓
+
+Grant Limited Access
+```
+
+Trust is established through continuous verification rather than network location.
+
+---
+
+# Secure SDLC Reminder
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Operations
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Logging Checklist
+
+Log important events such as:
+
+```
+Logs
+
+│
+
+├── Login Events
+
+├── Access Decisions
+
+├── Administrative Actions
+
+├── Configuration Changes
+
+├── Security Events
+
+├── Errors
+
+└── Audit Records
+```
+
+---
+
+# Monitoring Checklist
+
+```
+Applications
+
+↓
+
+Metrics
+
+↓
+
+Logs
+
+↓
+
+Alerts
+
+↓
+
+Analysis
+
+↓
+
+Operational Response
+```
+
+---
+
+# Security Configuration Checklist
+
+```
+✓ Secure Defaults
+
+✓ Remove Unnecessary Services
+
+✓ Strong Authentication
+
+✓ Least Privilege
+
+✓ Regular Updates
+
+✓ Configuration Reviews
+
+✓ Documentation
+```
+
+---
+
+# Vulnerability Management Lifecycle
+
+```
+Identify
+
+↓
+
+Assess
+
+↓
+
+Prioritize
+
+↓
+
+Remediate
+
+↓
+
+Validate
+
+↓
+
+Continuous Monitoring
+```
+
+---
+
+# Patch Management Lifecycle
+
+```
+Update Available
+
+↓
+
+Evaluation
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Verification
+
+↓
+
+Documentation
+```
+
+---
+
+# Enterprise Security Layers
+
+```
+Governance
+
+↓
+
+Identity
+
+↓
+
+Application
+
+↓
+
+Network
+
+↓
+
+Infrastructure
+
+↓
+
+Monitoring
+
+↓
+
+Business Continuity
+```
+
+---
+
+# Enterprise Example
+
+An e-commerce company protects its customer platform by implementing:
+
+- MFA for administrators
+- RBAC for internal users
+- Secure cookie settings
+- HTTPS across all services
+- Context-aware output encoding
+- Centralized logging
+- Continuous monitoring
+- Regular vulnerability management
+- Governance reviews
+
+These controls work together to strengthen the organization's security posture.
+
+---
+
+# Quick Revision Table
+
+| Topic | Quick Reminder |
+|--------|----------------|
+| MFA | Multiple authentication factors |
+| RBAC | Role-based permissions |
+| Least Privilege | Minimum required access |
+| CSP | Restrict content sources |
+| HSTS | Enforce HTTPS |
+| Secure Cookies | Secure, HttpOnly, SameSite |
+| API Security | Authentication + Authorization + Validation |
+| Encryption | Protect sensitive data |
+| Defense in Depth | Multiple independent controls |
+| Zero Trust | Verify every request |
+
+---
+
+# Conceptual Hands-on Lab
+
+1. Draw a secure authentication workflow.
+2. Create a checklist for reviewing cookie settings.
+3. Design a conceptual API request flow showing authentication, authorization, validation, logging, and monitoring.
+4. Classify sample business data into Public, Internal, Confidential, and Restricted.
+5. Review an application's security headers and explain the purpose of each.
+
+> Perform all exercises conceptually and only in authorized environments.
+
+---
+
+# Best Practices
+
+- Apply security controls consistently across all applications.
+- Protect authentication with multiple factors where appropriate.
+- Use secure cookie attributes for session management.
+- Validate all inputs on the server side.
+- Implement context-aware output encoding.
+- Log security-relevant events while protecting sensitive information.
+- Review configurations regularly.
+- Integrate security into every phase of the SDLC.
+
+---
+
+# Common Mistakes
+
+- Treating authentication as sufficient without authorization.
+- Granting excessive permissions.
+- Using insecure default configurations.
+- Forgetting to review session management settings.
+- Neglecting logging and monitoring.
+- Applying encryption without proper key management governance.
+- Failing to update components and configurations regularly.
+
+---
+
+# Key Takeaways
+
+- Authentication, authorization, session management, and secure configuration are foundational web security controls.
+- Defense in Depth and Zero Trust complement each other in enterprise environments.
+- Secure headers, cookies, encryption, and API protections improve application resilience.
+- Continuous monitoring, logging, vulnerability management, and governance help maintain a strong security posture.
+- Consistent application of best practices is more effective than relying on any single security control.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
