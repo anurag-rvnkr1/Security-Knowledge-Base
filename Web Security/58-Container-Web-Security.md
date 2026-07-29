@@ -599,6 +599,651 @@ Business Benefits
 - Security by Design, Defense in Depth, and shared responsibility strengthen container security.
 - Mature container security programs integrate governance, monitoring, and continuous improvement throughout the application lifecycle.
 
+# 58-Container-Web-Security.md
+
+# Part 2 — Secure Container Images, Registries, Runtime Security, Networking, Storage, and Enterprise Governance
+
+> **"Container security begins long before a container starts running. Secure image creation, trusted registries, runtime protection, network isolation, and storage governance collectively establish a trustworthy container ecosystem."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Secure Container Images
+- Base Image Selection
+- Image Lifecycle Management
+- Container Registry Security
+- Runtime Security
+- Container Networking
+- Storage Security
+- Configuration Management
+- Enterprise Governance
+- Operational Best Practices
+
+---
+
+# Secure Container Images
+
+Container images should be built using secure engineering practices.
+
+```
+Application Code
+
+↓
+
+Container Build
+
+↓
+
+Image Validation
+
+↓
+
+Registry
+
+↓
+
+Deployment
+```
+
+Secure images provide the foundation for trustworthy containerized applications.
+
+---
+
+# Characteristics of Secure Images
+
+```
+Secure Images
+
+│
+
+├── Trusted Base Image
+
+├── Minimal Components
+
+├── Updated Packages
+
+├── Consistent Configuration
+
+├── Documented Metadata
+
+├── Version Control
+
+├── Lifecycle Management
+
+└── Governance
+```
+
+Smaller, well-maintained images generally simplify maintenance and operational management.
+
+---
+
+# Base Image Selection
+
+Choosing an appropriate base image is an important architectural decision.
+
+```
+Base Image
+
+↓
+
+Application Layer
+
+↓
+
+Runtime
+
+↓
+
+Final Image
+```
+
+Organizations should establish internal standards for selecting and maintaining approved base images.
+
+---
+
+# Image Lifecycle
+
+```
+Planning
+
+↓
+
+Development
+
+↓
+
+Build
+
+↓
+
+Validation
+
+↓
+
+Registry
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Retirement
+```
+
+Each stage should include appropriate review and governance activities.
+
+---
+
+# Image Versioning
+
+Container images should follow a documented versioning strategy.
+
+```
+Image
+
+↓
+
+Version
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Release
+```
+
+Version tracking improves traceability and operational consistency.
+
+---
+
+# Image Metadata
+
+Metadata improves visibility into container images.
+
+```
+Image Metadata
+
+│
+
+├── Image Name
+
+├── Version
+
+├── Build Date
+
+├── Owner
+
+├── Runtime
+
+├── Labels
+
+├── Dependencies
+
+└── Documentation
+```
+
+Well-maintained metadata simplifies asset management and auditing.
+
+---
+
+# Container Registry
+
+A container registry stores and distributes container images.
+
+```
+Image Build
+
+↓
+
+Registry
+
+↓
+
+Deployment Platform
+
+↓
+
+Runtime
+```
+
+The registry is a critical enterprise asset and should be protected accordingly.
+
+---
+
+# Registry Components
+
+```
+Container Registry
+
+│
+
+├── Image Repository
+
+├── Metadata
+
+├── Access Control
+
+├── Audit Logs
+
+├── Version History
+
+├── Storage
+
+├── Replication
+
+└── Monitoring
+```
+
+Governance should apply to every stored image.
+
+---
+
+# Registry Security Principles
+
+```
+Registry Security
+
+│
+
+├── Authentication
+
+├── Authorization
+
+├── Least Privilege
+
+├── Audit Logging
+
+├── Image Integrity
+
+├── Backup
+
+├── Monitoring
+
+└── Governance
+```
+
+Strong registry controls help preserve software integrity.
+
+---
+
+# Runtime Security
+
+Runtime security focuses on protecting containers after deployment.
+
+```
+Image
+
+↓
+
+Container Runtime
+
+↓
+
+Running Container
+
+↓
+
+Monitoring
+```
+
+Runtime protection complements secure image creation and deployment practices.
+
+---
+
+# Runtime Security Objectives
+
+```
+Runtime Security
+
+│
+
+├── Isolation
+
+├── Access Control
+
+├── Resource Management
+
+├── Monitoring
+
+├── Logging
+
+├── Configuration
+
+├── Governance
+
+└── Operational Visibility
+```
+
+Multiple controls work together to improve runtime resilience.
+
+---
+
+# Container Networking
+
+Containerized applications communicate through virtual networks.
+
+```
+Client
+
+↓
+
+Ingress
+
+↓
+
+Application Container
+
+↓
+
+Internal Services
+
+↓
+
+Database
+```
+
+Network architecture should be documented and reviewed throughout the application lifecycle.
+
+---
+
+# Network Segmentation
+
+Container workloads should be logically separated according to business and architectural requirements.
+
+```
+Container Network
+
+│
+
+├── Frontend
+
+├── Backend
+
+├── Internal Services
+
+├── Databases
+
+├── Monitoring
+
+└── Administrative Services
+```
+
+Segmentation limits unnecessary communication between workloads.
+
+---
+
+# Storage Security
+
+Containers frequently use persistent storage for application data.
+
+```
+Application
+
+↓
+
+Volume
+
+↓
+
+Storage
+
+↓
+
+Backup
+```
+
+Storage governance should include lifecycle management, access control, and backup planning.
+
+---
+
+# Storage Components
+
+```
+Storage
+
+│
+
+├── Persistent Volumes
+
+├── Temporary Storage
+
+├── Configuration
+
+├── Backup
+
+├── Retention
+
+├── Monitoring
+
+├── Encryption
+
+└── Recovery
+```
+
+Storage planning should align with organizational data governance policies.
+
+---
+
+# Configuration Management
+
+Container configuration should remain separate from application logic whenever practical.
+
+```
+Application
+
+↓
+
+Configuration
+
+↓
+
+Validation
+
+↓
+
+Deployment
+```
+
+Configuration should follow documented governance procedures.
+
+---
+
+# Configuration Governance
+
+```
+Configuration
+
+│
+
+├── Version Control
+
+├── Documentation
+
+├── Review
+
+├── Approval
+
+├── Deployment
+
+├── Monitoring
+
+├── Rollback Planning
+
+└── Audit Logging
+```
+
+Consistent configuration management improves operational stability.
+
+---
+
+# Enterprise Container Workflow
+
+```
+Application Source
+
+↓
+
+Container Build
+
+↓
+
+Image Validation
+
+↓
+
+Registry
+
+↓
+
+Deployment
+
+↓
+
+Runtime
+
+↓
+
+Monitoring
+```
+
+Every stage contributes to secure and reliable container operations.
+
+---
+
+# Enterprise Example
+
+A multinational healthcare provider deploys patient-facing applications using containerized microservices.
+
+```
+Development
+
+↓
+
+Container Build
+
+↓
+
+Registry
+
+↓
+
+Container Platform
+
+↓
+
+Production
+
+↓
+
+Monitoring
+```
+
+Container images are standardized, centrally managed, and documented. Runtime environments follow organization-wide governance, while operations teams continuously monitor application health, configuration changes, and platform performance.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Image Inventory | Asset management |
+| Registry Availability | Operational reliability |
+| Image Version Coverage | Governance |
+| Runtime Availability | Platform health |
+| Configuration Review Rate | Change management |
+| Storage Utilization | Capacity planning |
+| Backup Success Rate | Business continuity |
+| Platform Uptime | Operational resilience |
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large image inventory | Standardized lifecycle management |
+| Multiple registries | Centralized governance |
+| Configuration inconsistency | Version-controlled configuration |
+| Storage growth | Capacity planning and retention policies |
+| Complex networking | Documented network architecture |
+| Distributed operations | Centralized monitoring and dashboards |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design a secure container image lifecycle.
+2. Create a governance policy for container registries.
+3. Draw the network architecture of a multi-container web application.
+4. Document storage requirements and backup planning.
+5. Create a runtime monitoring dashboard showing platform health, image inventory, storage utilization, and operational metrics.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, governance, runtime management, and operational excellence.
+
+---
+
+# Interview Questions
+
+1. Why are secure container images important?
+2. What factors should be considered when selecting a base image?
+3. Why is a container registry considered a critical asset?
+4. What are the objectives of runtime security?
+5. Why should container networks be segmented?
+6. What information should image metadata contain?
+7. Why is storage governance important?
+8. How does configuration management improve operational consistency?
+9. Which metrics indicate container platform health?
+10. Why should image lifecycle management be documented?
+
+---
+
+# Best Practices
+
+- Use trusted and standardized base images.
+- Maintain a documented image lifecycle.
+- Protect container registries with strong access controls.
+- Monitor runtime environments continuously.
+- Document network architecture and segmentation.
+- Apply governance to configuration and storage.
+- Maintain accurate image metadata and inventory.
+- Continuously review platform architecture and operational procedures.
+
+---
+
+# Common Mistakes
+
+- Using inconsistent or unmanaged base images.
+- Treating registries as simple storage locations.
+- Ignoring runtime monitoring.
+- Overlooking storage planning.
+- Maintaining undocumented configurations.
+- Allowing inconsistent image versioning.
+- Neglecting governance for container infrastructure.
+
+---
+
+# Key Takeaways
+
+- Secure container images and trusted registries establish the foundation for container security.
+- Runtime security, network segmentation, and storage governance complement image security.
+- Configuration management and lifecycle documentation improve operational consistency.
+- Enterprise container platforms benefit from centralized governance, monitoring, and asset management.
+- Mature container security integrates image management, runtime protection, networking, storage, and continuous operational improvement.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
