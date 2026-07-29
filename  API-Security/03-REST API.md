@@ -2829,4 +2829,1110 @@ Instead, return generic client-facing errors while logging detailed information 
 
 ---
 
-**Next:** REST API Security, Stateless Authentication, Caching, Versioning, Pagination, Filtering, HATEOAS, Best Practices, Hands-on Labs, Troubleshooting, and Interview Questions.
+# REST API Security
+
+REST APIs expose business functionality directly to clients over HTTP, making them one of the most targeted attack surfaces in modern applications.
+
+Unlike traditional web applications, REST APIs are consumed by:
+
+- Mobile applications
+- Single Page Applications (SPA)
+- Desktop software
+- IoT devices
+- Third-party integrations
+- Internal microservices
+- Cloud-native applications
+
+Because APIs often expose sensitive operations such as authentication, payments, file uploads, and financial transactions, they must be designed with security as a fundamental requirement.
+
+---
+
+# Why REST APIs Are Targeted
+
+Attackers prefer APIs because they provide direct access to backend functionality.
+
+Typical reasons include:
+
+- Predictable endpoints
+- Machine-readable responses
+- Large attack surface
+- Business logic exposure
+- Automated exploitation
+- Weak authentication
+- Excessive data exposure
+
+Example
+
+```
+Attacker
+
+     │
+
+API Enumeration
+
+     │
+
+Find Hidden Endpoints
+
+     │
+
+Exploit Vulnerability
+
+     │
+
+Access Sensitive Data
+```
+
+---
+
+# Enterprise REST API Security Architecture
+
+```
+                    Internet
+                        │
+                        ▼
+               DDoS Protection
+                        │
+                        ▼
+              Web Application Firewall
+                        │
+                        ▼
+                  API Gateway
+                        │
+                        ▼
+          Authentication & Authorization
+                        │
+                        ▼
+             Input Validation Layer
+                        │
+                        ▼
+               Business Services
+                        │
+                        ▼
+                   Database
+                        │
+                        ▼
+             Logging & Monitoring
+                        │
+                        ▼
+                    SIEM / SOC
+```
+
+Security should be implemented at every architectural layer.
+
+---
+
+# HTTPS Everywhere
+
+REST APIs should always use HTTPS.
+
+```
+Incorrect
+
+HTTP
+
+↓
+
+Sensitive Data
+
+↓
+
+Plain Text
+```
+
+```
+Correct
+
+HTTPS
+
+↓
+
+Encrypted
+
+↓
+
+Secure Transmission
+```
+
+HTTPS provides:
+
+- Encryption
+- Integrity
+- Authentication
+
+Without HTTPS, attackers can intercept sensitive information such as:
+
+- Passwords
+- Session tokens
+- JWTs
+- API keys
+- Personal information
+
+---
+
+# Authentication
+
+Authentication verifies the identity of the client.
+
+Common authentication mechanisms include:
+
+- Username and Password
+- API Keys
+- JWT
+- OAuth 2.0
+- OpenID Connect
+- Mutual TLS (mTLS)
+
+Example
+
+```
+Client
+
+   │
+
+Login
+
+   ▼
+
+Authentication Server
+
+   │
+
+JWT
+
+   ▼
+
+Client
+
+   │
+
+Authenticated Request
+
+   ▼
+
+REST API
+```
+
+Authentication should occur before any sensitive operation is performed.
+
+---
+
+# Authorization
+
+Authentication answers:
+
+```
+Who are you?
+```
+
+Authorization answers:
+
+```
+What are you allowed to do?
+```
+
+Example
+
+```
+User
+
+     │
+
+Authenticated
+
+     │
+
+Role Check
+
+     │
+
+Access Decision
+```
+
+Typical authorization models:
+
+- Role-Based Access Control (RBAC)
+- Attribute-Based Access Control (ABAC)
+- Policy-Based Access Control (PBAC)
+
+Authorization must be enforced on every request, not just during login.
+
+---
+
+# Principle of Least Privilege
+
+Users and services should receive only the permissions required to perform their tasks.
+
+Example
+
+```
+Administrator
+
+↓
+
+Full Access
+```
+
+```
+Customer
+
+↓
+
+Own Account Only
+```
+
+```
+Support Engineer
+
+↓
+
+Read-Only Access
+```
+
+This principle reduces the impact of compromised accounts.
+
+---
+
+# Input Validation
+
+Never trust client-supplied data.
+
+Validate:
+
+- Length
+- Format
+- Type
+- Allowed values
+- Range
+- Encoding
+
+Example
+
+```
+Email
+
+✓ user@example.com
+
+✗ invalid@@@
+```
+
+```
+Age
+
+✓ 25
+
+✗ -10
+
+✗ abc
+```
+
+Proper validation helps prevent:
+
+- SQL Injection
+- Command Injection
+- Cross-Site Scripting (XSS)
+- Buffer overflows
+- Business logic abuse
+
+---
+
+# Output Encoding
+
+Data returned to clients should be safely encoded.
+
+Example
+
+Incorrect
+
+```json
+{
+  "comment":"<script>alert(1)</script>"
+}
+```
+
+Correct
+
+```
+Encoded Output
+
+↓
+
+Safe Rendering
+```
+
+Output encoding reduces the risk of client-side script execution.
+
+---
+
+# Rate Limiting
+
+Rate limiting prevents excessive API usage.
+
+Example
+
+```
+Maximum
+
+100 Requests
+
+Per Minute
+```
+
+If exceeded
+
+```
+429 Too Many Requests
+```
+
+Benefits
+
+- Prevents brute-force attacks
+- Mitigates abuse
+- Reduces infrastructure load
+- Improves availability
+
+---
+
+# API Keys
+
+API keys identify applications rather than individual users.
+
+Example
+
+```
+X-API-Key:
+
+abc123xyz456
+```
+
+Best Practices
+
+- Rotate regularly
+- Store securely
+- Never hardcode
+- Apply usage limits
+- Monitor usage
+
+API keys should not be considered a replacement for user authentication.
+
+---
+
+# JSON Web Tokens (JWT)
+
+JWTs are widely used in REST APIs.
+
+Typical workflow
+
+```
+Login
+
+ │
+
+ ▼
+
+Authentication Server
+
+ │
+
+Generate JWT
+
+ ▼
+
+Client
+
+ │
+
+Authorization Header
+
+ ▼
+
+REST API
+```
+
+Example
+
+```
+Authorization:
+
+Bearer eyJhbGciOi...
+```
+
+JWTs should have:
+
+- Short expiration
+- Strong signing algorithm
+- Secure storage
+- Signature validation
+
+---
+
+# Secure Password Storage
+
+Passwords should never be stored in plain text.
+
+Correct approach
+
+```
+Password
+
+ │
+
+Hash
+
+ │
+
+Salt
+
+ │
+
+Database
+```
+
+Recommended algorithms
+
+- Argon2
+- bcrypt
+- scrypt
+
+Avoid:
+
+- MD5
+- SHA-1
+- Unsalted hashes
+
+---
+
+# Secrets Management
+
+Applications require secrets such as:
+
+- Database passwords
+- API keys
+- Encryption keys
+- OAuth secrets
+
+Avoid storing secrets in:
+
+- Source code
+- Git repositories
+- Configuration files committed to version control
+
+Use dedicated secrets management solutions instead.
+
+Examples
+
+- HashiCorp Vault
+- AWS Secrets Manager
+- Azure Key Vault
+- Google Secret Manager
+
+---
+
+# Logging and Monitoring
+
+Every REST API should generate security-relevant logs.
+
+Examples
+
+Authentication
+
+- Login success
+- Login failure
+- Token expiration
+
+Authorization
+
+- Access denied
+- Privilege changes
+
+Requests
+
+- Endpoint
+- Method
+- Response code
+- Latency
+
+Infrastructure
+
+- Server errors
+- Service restarts
+- Configuration changes
+
+These logs enable detection, troubleshooting, and incident response.
+
+---
+
+# API Versioning
+
+Versioning allows APIs to evolve without breaking existing clients.
+
+Common approaches
+
+URI Versioning
+
+```
+/v1/users
+
+/v2/users
+```
+
+Header Versioning
+
+```
+Accept:
+
+application/vnd.company.v2+json
+```
+
+Versioning should be planned from the beginning of API development.
+
+---
+
+# Pagination
+
+Returning millions of records in one response is inefficient.
+
+Incorrect
+
+```
+GET /users
+```
+
+Returns
+
+```
+10 Million Records
+```
+
+Correct
+
+```
+GET /users?page=2&limit=50
+```
+
+Benefits
+
+- Faster responses
+- Lower memory usage
+- Better scalability
+- Improved user experience
+
+---
+
+# Filtering and Sorting
+
+REST APIs should support efficient data retrieval.
+
+Filtering
+
+```
+GET /products?category=Laptop
+```
+
+Sorting
+
+```
+GET /products?sort=price
+```
+
+Descending
+
+```
+GET /products?sort=-price
+```
+
+Searching
+
+```
+GET /products?search=wireless
+```
+
+These features reduce unnecessary network traffic.
+
+---
+
+# Caching
+
+Caching improves performance.
+
+```
+Client
+
+ │
+
+ ▼
+
+Cache
+
+ │
+
+ ├── Cache Hit
+
+ │      ▼
+
+ │   Response
+
+ │
+
+ └── Cache Miss
+
+        ▼
+
+REST API
+```
+
+Common caching headers
+
+```
+Cache-Control
+
+ETag
+
+Expires
+
+If-None-Match
+```
+
+Caching should never expose sensitive information.
+
+---
+
+# HATEOAS
+
+HATEOAS stands for:
+
+> Hypermedia As The Engine Of Application State
+
+Instead of hardcoding URLs, responses include links to related actions.
+
+Example
+
+```json
+{
+  "id": 200,
+  "status": "Pending",
+  "links": [
+    {
+      "rel": "payment",
+      "href": "/orders/200/payment"
+    },
+    {
+      "rel": "cancel",
+      "href": "/orders/200/cancel"
+    }
+  ]
+}
+```
+
+Although part of the REST maturity model, HATEOAS is not commonly implemented in many public REST APIs.
+
+---
+
+# Enterprise REST Best Practices
+
+Design
+
+- Use resource-oriented URIs
+- Follow HTTP standards
+- Maintain stateless communication
+- Use consistent naming
+
+Security
+
+- Enforce HTTPS
+- Validate every input
+- Authenticate every request
+- Authorize every action
+- Implement rate limiting
+- Protect secrets
+- Encrypt sensitive data
+
+Performance
+
+- Enable caching
+- Support pagination
+- Optimize payload size
+- Compress responses
+
+Operations
+
+- Monitor APIs continuously
+- Log security events
+- Version APIs carefully
+- Document endpoints thoroughly
+
+---
+
+# Enterprise Case Study
+
+A global e-commerce platform exposes over 600 REST APIs for customers, partners, warehouses, and mobile applications.
+
+Architecture
+
+```
+Customers
+
+     │
+
+     ▼
+
+Cloud CDN
+
+     │
+
+     ▼
+
+WAF
+
+     │
+
+     ▼
+
+API Gateway
+
+     │
+
+JWT Authentication
+
+     │
+
+Microservices
+
+     │
+
+Redis Cache
+
+     │
+
+Databases
+
+     │
+
+Central Logging
+
+     │
+
+SIEM
+
+     │
+
+SOC
+```
+
+Security controls include:
+
+- HTTPS enforcement
+- OAuth 2.0 authentication
+- JWT validation
+- Rate limiting
+- Input validation
+- API Gateway policies
+- WAF protection
+- Continuous monitoring
+- Automated threat detection
+
+This layered approach enables secure handling of millions of API requests each day.
+
+---
+
+# Hands-on Lab 1 – Explore a Public REST API
+
+Objective
+
+Understand REST requests and responses.
+
+Steps
+
+1. Open Postman or use `curl`.
+2. Send a `GET` request to a public REST API.
+3. Observe:
+   - Request headers
+   - Response headers
+   - Status code
+   - JSON body
+4. Modify query parameters and compare responses.
+
+Learning Outcomes
+
+- Request structure
+- Response structure
+- Resource retrieval
+- JSON parsing
+
+---
+
+# Hands-on Lab 2 – Test Different HTTP Methods
+
+Objective
+
+Understand CRUD operations.
+
+Steps
+
+1. Create a test resource using `POST`.
+2. Retrieve it with `GET`.
+3. Update it using `PATCH`.
+4. Replace it using `PUT`.
+5. Delete it using `DELETE`.
+
+Observe the status codes returned for each operation.
+
+Learning Outcomes
+
+- CRUD mapping
+- HTTP semantics
+- Status code behavior
+
+---
+
+# Hands-on Lab 3 – Analyze REST Security
+
+Objective
+
+Identify common REST security controls.
+
+Verify whether an API:
+
+- Uses HTTPS
+- Requires authentication
+- Returns proper status codes
+- Implements rate limiting
+- Uses secure response headers
+- Provides structured error messages
+
+Document your findings and identify areas for improvement.
+
+---
+
+# Common REST API Design Mistakes
+
+Avoid:
+
+- Using verbs in URIs
+- Ignoring HTTP method semantics
+- Returning `200 OK` for every response
+- Exposing stack traces
+- Missing authentication
+- Weak authorization
+- No rate limiting
+- Hardcoded secrets
+- Unbounded responses
+- Inconsistent error messages
+- Poor documentation
+- Breaking backward compatibility without versioning
+
+---
+
+# Troubleshooting
+
+## 401 Unauthorized
+
+Possible causes:
+
+- Missing token
+- Expired token
+- Invalid credentials
+
+---
+
+## 403 Forbidden
+
+Possible causes:
+
+- Insufficient permissions
+- Incorrect role assignment
+- Authorization policy failure
+
+---
+
+## 404 Not Found
+
+Possible causes:
+
+- Incorrect URI
+- Resource does not exist
+- Version mismatch
+
+---
+
+## 415 Unsupported Media Type
+
+Possible causes:
+
+- Incorrect `Content-Type`
+- Unsupported payload format
+
+---
+
+## 429 Too Many Requests
+
+Possible causes:
+
+- Rate limit exceeded
+- Excessive automated requests
+
+---
+
+## Slow API Responses
+
+Possible causes:
+
+- Missing caching
+- Large payloads
+- Slow database queries
+- Network latency
+- Inefficient business logic
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What is REST?
+2. What are REST constraints?
+3. What is a resource?
+4. Why are REST APIs stateless?
+5. What is the difference between PUT and PATCH?
+6. What is idempotency?
+7. Why is HTTPS mandatory for REST APIs?
+8. What is content negotiation?
+9. Why are HTTP status codes important?
+10. What is HATEOAS?
+
+---
+
+## Intermediate
+
+11. Explain REST API versioning strategies.
+12. How does pagination improve API performance?
+13. What is the purpose of rate limiting?
+14. How would you secure JWT-based authentication?
+15. Explain the difference between authentication and authorization.
+16. Why is input validation important?
+17. How should secrets be managed in enterprise APIs?
+18. What should be included in API logs?
+19. Why should REST APIs avoid exposing stack traces?
+20. What security controls would you place in front of a public REST API?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+Your organization exposes a public REST API for mobile banking. Attackers begin sending thousands of login attempts every minute.
+
+- Which architectural and security controls would you deploy?
+- How would you detect and respond to the attack?
+
+---
+
+**Scenario 2**
+
+A client reports receiving `500 Internal Server Error` responses after updating an application.
+
+- Which logs, metrics, and HTTP details would you examine first?
+- How would you determine whether the issue is in the client, gateway, or backend service?
+
+---
+
+**Scenario 3**
+
+A new version of your REST API introduces breaking changes.
+
+- How would you maintain backward compatibility?
+- Which versioning strategy would you choose and why?
+
+---
+
+# Chapter Summary
+
+In this chapter, we explored REST as the dominant architectural style for modern web APIs.
+
+We covered:
+
+- REST fundamentals
+- REST architectural constraints
+- Resources and URI design
+- HTTP methods
+- Request and response structures
+- Status codes
+- Content negotiation
+- REST security
+- Authentication and authorization
+- Pagination, filtering, and caching
+- Versioning strategies
+- HATEOAS
+- Enterprise design practices
+- Hands-on exercises
+- Troubleshooting
+- Interview preparation
+
+These concepts form the foundation for understanding and securing RESTful APIs in enterprise environments.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- What makes an API RESTful?
+- How should resources and URIs be designed?
+- Which HTTP methods should be used for different operations?
+- What is the difference between safe and idempotent methods?
+- How are HTTP requests and responses structured?
+- Which status codes should APIs return?
+- How can REST APIs be secured?
+- Why are pagination, filtering, and caching important?
+- What are the best practices for enterprise REST API design?
+- How would you troubleshoot common REST API issues?
+
+If you can confidently explain these topics, you are ready to move on to SOAP APIs and compare them with REST.
+
+---
+
+# References
+
+## RFCs
+
+- RFC 9110 – HTTP Semantics
+- RFC 9112 – HTTP/1.1
+- RFC 8259 – JSON Data Interchange Format
+- RFC 7232 – HTTP Conditional Requests
+
+## Security Standards
+
+- OWASP API Security Top 10
+- OWASP ASVS
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+- NIST SP 800-204
+- NIST SP 800-207 (Zero Trust)
+
+## Further Reading
+
+- REST Architectural Style (Roy Fielding Dissertation)
+- OpenAPI Specification
+- JSON:API Specification
+- RFC 7807 – Problem Details for HTTP APIs
+
+---
+
+# What's Next?
+
+➡️ **Chapter 04 – SOAP API**
+
+In the next chapter, we will explore:
+
+- SOAP architecture
+- XML messaging
+- WSDL
+- SOAP envelopes
+- SOAP headers and body
+- SOAP faults
+- WS-Security
+- REST vs SOAP
+- Enterprise SOAP deployments
+- Security considerations
+- Hands-on labs and interview questions
