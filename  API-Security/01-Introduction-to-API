@@ -489,4 +489,641 @@ As organizations adopt microservices, cloud-native architectures, and mobile-fir
 
 ---
 
-**Next:** **Part 2 – API Evolution, API Types, Communication Models, Request–Response Lifecycle, and Enterprise API Ecosystems**
+# 01 - Introduction to APIs (Part 2)
+
+# Evolution of APIs
+
+APIs have evolved significantly over the past several decades. Initially, software applications were designed to run independently on a single computer. As businesses grew and networks became more common, applications needed standardized ways to exchange information.
+
+The evolution of APIs closely follows the evolution of distributed computing.
+
+---
+
+## Phase 1 — Local Library APIs
+
+Early software primarily communicated through libraries and operating system functions.
+
+```
++----------------------+
+|     Application      |
++----------+-----------+
+           │
+           ▼
++----------------------+
+|   Local Libraries    |
++----------+-----------+
+           │
+           ▼
++----------------------+
+|   Operating System   |
++----------------------+
+```
+
+Examples:
+
+- C Standard Library
+- Windows API
+- POSIX APIs
+- Linux System Calls
+
+Characteristics:
+
+- Local communication
+- No networking
+- High performance
+- Limited interoperability
+
+---
+
+## Phase 2 — Remote Procedure Calls (RPC)
+
+Organizations later required applications running on different computers to communicate.
+
+Remote Procedure Calls (RPC) allowed one computer to execute a function on another computer as if it were a local function.
+
+```
+Application A
+      │
+      │ RPC Call
+      ▼
+Network
+      │
+      ▼
+Application B
+```
+
+Advantages:
+
+- Transparent communication
+- Faster enterprise integration
+
+Limitations:
+
+- Platform dependency
+- Tight coupling
+- Difficult debugging
+
+Examples:
+
+- Sun RPC
+- XML-RPC
+- JSON-RPC
+
+---
+
+## Phase 3 — SOAP Web Services
+
+As enterprise software expanded, organizations required standardized communication across different programming languages and operating systems.
+
+SOAP (Simple Object Access Protocol) became one of the first enterprise API standards.
+
+```
+Client
+   │
+SOAP XML
+   ▼
+Internet
+   │
+SOAP XML
+   ▼
+Enterprise Server
+```
+
+Advantages:
+
+- Highly standardized
+- Strong security standards
+- Transaction support
+- Enterprise integration
+
+Disadvantages:
+
+- Complex
+- Verbose XML
+- Larger payloads
+- Slower processing
+
+---
+
+## Phase 4 — REST APIs
+
+REST (Representational State Transfer) revolutionized API development by using standard HTTP methods.
+
+Instead of complex XML messages, REST commonly uses JSON, making communication lightweight and developer-friendly.
+
+```
+Browser
+     │
+HTTP + JSON
+     ▼
+REST API
+     │
+     ▼
+Database
+```
+
+Advantages:
+
+- Lightweight
+- Easy to understand
+- High performance
+- Web-native
+- Excellent scalability
+
+REST is currently the most widely adopted API architecture.
+
+---
+
+## Phase 5 — GraphQL
+
+As applications became more complex, developers wanted greater flexibility.
+
+GraphQL allows clients to request exactly the data they need.
+
+Traditional REST:
+
+```
+GET /users/15
+```
+
+GraphQL:
+
+```
+{
+ user(id:15){
+   name
+   email
+ }
+}
+```
+
+Advantages:
+
+- Reduced over-fetching
+- Reduced under-fetching
+- Flexible queries
+- Efficient mobile applications
+
+---
+
+## Phase 6 — gRPC
+
+Modern cloud-native systems require extremely fast communication between microservices.
+
+Google developed gRPC to address this need.
+
+```
+Microservice A
+      │
+      ▼
+Protocol Buffers
+      │
+      ▼
+Microservice B
+```
+
+Advantages:
+
+- Extremely fast
+- Binary protocol
+- Low bandwidth
+- Ideal for cloud environments
+
+Widely used in:
+
+- Kubernetes
+- Google Cloud
+- Service Meshes
+- Enterprise microservices
+
+---
+
+# Why APIs Became Popular
+
+Several factors contributed to the widespread adoption of APIs.
+
+## Digital Transformation
+
+Organizations shifted from standalone software to interconnected digital ecosystems.
+
+Examples:
+
+- Banking
+- Healthcare
+- Retail
+- Government
+- Manufacturing
+
+---
+
+## Mobile Applications
+
+Mobile apps rely almost entirely on APIs.
+
+```
+Android App
+      │
+      ▼
+API
+      │
+      ▼
+Backend
+```
+
+Every user action triggers one or more API requests.
+
+---
+
+## Cloud Computing
+
+Cloud providers expose nearly all infrastructure functionality through APIs.
+
+Examples:
+
+- Create VM
+- Delete Storage
+- Deploy Containers
+- Configure Firewall
+- Create IAM User
+
+Every cloud management console internally calls APIs.
+
+---
+
+## Microservices
+
+Instead of one large application, modern systems consist of hundreds of independent services.
+
+```
+Frontend
+    │
+    ▼
+API Gateway
+    │
+ ┌──┴────────────┐
+ ▼               ▼
+User Service   Order Service
+        │
+        ▼
+Payment Service
+```
+
+Communication between these services occurs almost entirely through APIs.
+
+---
+
+## Third-Party Integrations
+
+Organizations integrate with numerous external providers.
+
+Examples:
+
+- Payment gateways
+- SMS providers
+- Maps
+- Identity providers
+- AI services
+- Analytics platforms
+
+APIs make these integrations possible without sharing internal systems.
+
+---
+
+# Types of APIs
+
+APIs can be categorized based on accessibility.
+
+---
+
+## Public APIs
+
+Accessible to external developers.
+
+Examples:
+
+- Weather APIs
+- Currency APIs
+- Maps APIs
+
+Characteristics:
+
+- Internet accessible
+- Authentication required
+- Developer documentation
+- Rate limiting
+
+---
+
+## Private APIs
+
+Used only within an organization.
+
+```
+HR System
+     │
+     ▼
+Employee API
+     │
+     ▼
+Payroll System
+```
+
+Characteristics:
+
+- Internal use only
+- Protected by corporate networks
+- Supports internal applications
+
+---
+
+## Partner APIs
+
+Shared with trusted business partners.
+
+Examples:
+
+- Banking integrations
+- Insurance companies
+- Logistics providers
+- Supply chain systems
+
+Access is restricted through contracts and authentication.
+
+---
+
+## Composite APIs
+
+Combine multiple services into a single API request.
+
+Instead of calling:
+
+```
+User API
+
+Order API
+
+Payment API
+
+Shipping API
+```
+
+The client calls:
+
+```
+Dashboard API
+```
+
+The Dashboard API internally communicates with all required services.
+
+Benefits:
+
+- Reduced network requests
+- Better performance
+- Simpler client applications
+
+---
+
+# API Styles
+
+Modern applications commonly use several API styles.
+
+| API Style | Primary Format | Typical Use Cases |
+|-----------|----------------|-------------------|
+| REST | JSON | Web Applications |
+| SOAP | XML | Enterprise Systems |
+| GraphQL | JSON | Mobile & Web |
+| gRPC | Protocol Buffers | Microservices |
+| WebSocket | Frames | Real-time Communication |
+| JSON-RPC | JSON | Lightweight RPC |
+| XML-RPC | XML | Legacy Systems |
+
+Each style has its own strengths, trade-offs, and security considerations.
+
+---
+
+# API Communication Models
+
+---
+
+## Request–Response
+
+The most common communication model.
+
+```
+Client
+   │ Request
+   ▼
+API Server
+   │ Response
+   ▼
+Client
+```
+
+Used by:
+
+- REST
+- SOAP
+- GraphQL
+
+---
+
+## Streaming
+
+Continuous exchange of information between client and server.
+
+```
+Client
+   ⇄
+Streaming API
+```
+
+Examples:
+
+- Live stock prices
+- IoT telemetry
+- Video streaming
+- Sensor data
+
+---
+
+## Publish–Subscribe
+
+Applications publish events while other systems subscribe to receive them.
+
+```
+Producer
+     │
+     ▼
+Message Broker
+     │
+ ┌───┴─────┐
+ ▼         ▼
+Service A  Service B
+```
+
+Examples:
+
+- Kafka
+- RabbitMQ
+- MQTT
+- Google Pub/Sub
+
+---
+
+# Anatomy of an API Request
+
+Every API request contains several important components.
+
+```
+POST /api/v1/users HTTP/1.1
+
+Host: example.com
+
+Authorization: Bearer token
+
+Content-Type: application/json
+
+Accept: application/json
+
+{
+  "name":"Alice",
+  "email":"alice@example.com"
+}
+```
+
+Components include:
+
+- Method
+- URL
+- Path
+- Query Parameters
+- Headers
+- Authentication
+- Body
+- Content Type
+
+---
+
+# Anatomy of an API Response
+
+A response contains:
+
+```
+HTTP/1.1 201 Created
+
+Content-Type: application/json
+
+{
+   "id":15,
+   "status":"success"
+}
+```
+
+Typical response elements:
+
+- Status Code
+- Headers
+- Response Body
+- Cookies (if applicable)
+- Metadata
+
+---
+
+# Common HTTP Status Codes
+
+| Code | Meaning |
+|------|----------|
+| 200 | OK |
+| 201 | Created |
+| 202 | Accepted |
+| 204 | No Content |
+| 301 | Moved Permanently |
+| 302 | Redirect |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 405 | Method Not Allowed |
+| 409 | Conflict |
+| 415 | Unsupported Media Type |
+| 429 | Too Many Requests |
+| 500 | Internal Server Error |
+| 502 | Bad Gateway |
+| 503 | Service Unavailable |
+
+Understanding these status codes is essential for troubleshooting, penetration testing, and incident analysis.
+
+---
+
+# Enterprise API Ecosystem
+
+A modern enterprise rarely operates a single API.
+
+Instead, it manages hundreds or even thousands of APIs serving different business functions.
+
+```
+                      Users
+                        │
+                        ▼
+                Load Balancer
+                        │
+                        ▼
+                  API Gateway
+                        │
+ ┌──────────────┬───────────────┬──────────────┐
+ ▼              ▼               ▼              ▼
+User API    Order API      Payment API    Inventory API
+ │              │               │              │
+ ▼              ▼               ▼              ▼
+ User DB     Order DB      Payment DB     Inventory DB
+```
+
+Additional enterprise components often include:
+
+- Identity Provider (IdP)
+- API Gateway
+- Web Application Firewall (WAF)
+- Service Mesh
+- Logging Platform
+- SIEM
+- Monitoring Dashboard
+- Secrets Manager
+- Load Balancer
+- CDN
+- Kubernetes Ingress
+
+Securing each layer is critical to protecting the overall API ecosystem.
+
+---
+
+# Real-World Example
+
+Consider an online shopping application.
+
+When a customer views a product page, the frontend may invoke multiple APIs:
+
+- Product API
+- Inventory API
+- Pricing API
+- Recommendation API
+- Review API
+- User Profile API
+
+Although the customer clicks a single button, the application may perform numerous backend API calls to assemble the complete page.
+
+This demonstrates how APIs enable modular, scalable, and maintainable enterprise architectures.
+
+---
+
+# Key Takeaways
+
+- APIs have evolved from local libraries to cloud-native communication platforms.
+- REST is the dominant API architecture, but SOAP, GraphQL, and gRPC remain widely used.
+- APIs can be public, private, partner, or composite.
+- Request–response is the most common communication model, while streaming and publish–subscribe support real-time and event-driven systems.
+- Every API request and response follows a structured format that includes methods, headers, payloads, and status codes.
+- Modern enterprises operate complex API ecosystems involving gateways, microservices, identity providers, and monitoring platforms, making API security a foundational component of cybersecurity.
+
+---
+
+**Next:** **Part 3 – API Internals, Security Risks, Common Attack Surface, Enterprise Security Architecture, and API Security Fundamentals**
