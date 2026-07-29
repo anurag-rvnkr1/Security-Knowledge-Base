@@ -594,6 +594,643 @@ Business Benefits
 - Security by Design, Defense in Depth, and shared responsibility strengthen Kubernetes environments.
 - Mature Kubernetes security integrates governance, monitoring, and continuous improvement throughout the cluster lifecycle.
 
+# 59-Kubernetes-Web-Security.md
+
+# Part 2 — Secure Cluster Configuration, Identity & Access Management, Workload Security, Networking, Storage, and Enterprise Governance
+
+> **"Kubernetes security depends on secure cluster configuration, strong identity management, controlled workload deployment, protected networking, secure storage, and well-defined governance throughout the platform lifecycle."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Secure Cluster Configuration
+- Kubernetes Identity and Access Management (IAM)
+- Role-Based Access Control (RBAC)
+- Service Accounts
+- Workload Security
+- Kubernetes Networking
+- Storage Security
+- Configuration Management
+- Enterprise Governance
+- Operational Best Practices
+
+---
+
+# Secure Cluster Configuration
+
+A Kubernetes cluster should be securely configured before workloads are deployed.
+
+```
+Cluster Design
+
+↓
+
+Configuration
+
+↓
+
+Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Configuration should follow organizational security standards and be reviewed regularly.
+
+---
+
+# Cluster Configuration Components
+
+```
+Cluster Configuration
+
+│
+
+├── Control Plane
+
+├── Worker Nodes
+
+├── Networking
+
+├── Storage
+
+├── Authentication
+
+├── Authorization
+
+├── Logging
+
+└── Monitoring
+```
+
+Every configuration area contributes to the overall security posture of the cluster.
+
+---
+
+# Kubernetes Identity and Access Management (IAM)
+
+Every user, service, and application interacting with Kubernetes should have a managed identity.
+
+```
+User or Service
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Cluster Resources
+
+↓
+
+Audit Logging
+```
+
+Proper identity management strengthens accountability and reduces unauthorized access.
+
+---
+
+# Authentication
+
+Authentication verifies the identity of a user or service before access is granted.
+
+```
+Identity
+
+↓
+
+Authentication
+
+↓
+
+Verified Identity
+```
+
+Authentication should integrate with organizational identity management wherever appropriate.
+
+---
+
+# Authorization
+
+After authentication, authorization determines which resources an identity can access.
+
+```
+Verified Identity
+
+↓
+
+Authorization
+
+↓
+
+Permitted Actions
+```
+
+Authorization policies should follow the Principle of Least Privilege.
+
+---
+
+# Role-Based Access Control (RBAC)
+
+RBAC is the standard authorization model used in Kubernetes.
+
+```
+Identity
+
+↓
+
+Role
+
+↓
+
+Permissions
+
+↓
+
+Cluster Resources
+```
+
+Roles define what actions are permitted on specific Kubernetes resources.
+
+---
+
+# RBAC Components
+
+```
+RBAC
+
+│
+
+├── Users
+
+├── Groups
+
+├── Service Accounts
+
+├── Roles
+
+├── Cluster Roles
+
+├── Role Bindings
+
+├── Cluster Role Bindings
+
+└── Permissions
+```
+
+RBAC simplifies access management while improving governance.
+
+---
+
+# Principle of Least Privilege
+
+Each identity should receive only the permissions required for its responsibilities.
+
+```
+Identity
+
+↓
+
+Assigned Role
+
+↓
+
+Minimum Permissions
+
+↓
+
+Authorized Operations
+```
+
+Restricting unnecessary permissions reduces operational and security risks.
+
+---
+
+# Service Accounts
+
+Service Accounts provide identities for workloads running inside the cluster.
+
+```
+Application
+
+↓
+
+Service Account
+
+↓
+
+Authorized Cluster Access
+```
+
+Applications should use dedicated identities aligned with organizational access policies.
+
+---
+
+# Workload Security
+
+Every workload should follow secure deployment and operational standards.
+
+```
+Application
+
+↓
+
+Pod
+
+↓
+
+Container
+
+↓
+
+Runtime
+
+↓
+
+Monitoring
+```
+
+Secure workloads contribute to a resilient Kubernetes platform.
+
+---
+
+# Workload Security Components
+
+```
+Workload Security
+
+│
+
+├── Container Images
+
+├── Configuration
+
+├── Runtime
+
+├── Resource Allocation
+
+├── Identity
+
+├── Storage
+
+├── Networking
+
+└── Monitoring
+```
+
+Security should be considered throughout the workload lifecycle.
+
+---
+
+# Resource Management
+
+Resource allocation helps maintain platform stability.
+
+```
+Workloads
+
+↓
+
+CPU
+
+↓
+
+Memory
+
+↓
+
+Storage
+
+↓
+
+Operational Stability
+```
+
+Appropriate resource planning improves reliability and supports predictable cluster performance.
+
+---
+
+# Kubernetes Networking
+
+Networking enables communication between workloads and external systems.
+
+```
+Client
+
+↓
+
+Ingress
+
+↓
+
+Service
+
+↓
+
+Pods
+
+↓
+
+Database
+```
+
+Network architecture should be documented and reviewed as part of the cluster design.
+
+---
+
+# Network Segmentation
+
+Logical separation improves workload isolation.
+
+```
+Cluster Network
+
+│
+
+├── Frontend
+
+├── Backend
+
+├── Databases
+
+├── Monitoring
+
+├── Administrative Services
+
+└── Internal Applications
+```
+
+Segmentation reduces unnecessary communication between workloads.
+
+---
+
+# Storage Security
+
+Persistent storage should be managed securely.
+
+```
+Application
+
+↓
+
+Persistent Volume
+
+↓
+
+Storage
+
+↓
+
+Backup
+```
+
+Storage governance should include lifecycle management, access control, and recovery planning.
+
+---
+
+# Storage Components
+
+```
+Storage
+
+│
+
+├── Persistent Volumes
+
+├── Claims
+
+├── Storage Classes
+
+├── Backup
+
+├── Encryption
+
+├── Retention
+
+├── Monitoring
+
+└── Recovery
+```
+
+Organizations should establish policies for storage management and retention.
+
+---
+
+# Configuration Management
+
+Configuration should remain separate from application code whenever practical.
+
+```
+Application
+
+↓
+
+Configuration
+
+↓
+
+Review
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Configuration changes should follow documented review and approval procedures.
+
+---
+
+# Configuration Governance
+
+```
+Configuration
+
+│
+
+├── Version Control
+
+├── Documentation
+
+├── Peer Review
+
+├── Validation
+
+├── Deployment
+
+├── Rollback Planning
+
+├── Monitoring
+
+└── Audit Logging
+```
+
+Configuration governance improves operational consistency.
+
+---
+
+# Enterprise Kubernetes Workflow
+
+```
+Application Source
+
+↓
+
+Container Images
+
+↓
+
+Cluster Configuration
+
+↓
+
+Deployment
+
+↓
+
+Runtime
+
+↓
+
+Monitoring
+```
+
+Every stage contributes to secure and reliable Kubernetes operations.
+
+---
+
+# Enterprise Example
+
+A multinational healthcare organization operates multiple Kubernetes clusters supporting patient-facing applications.
+
+```
+Development
+
+↓
+
+Container Images
+
+↓
+
+Kubernetes Cluster
+
+↓
+
+Production
+
+↓
+
+Monitoring
+```
+
+Platform engineers manage cluster configuration, development teams deploy standardized workloads, and security teams oversee access management, governance, and operational monitoring to maintain platform reliability.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Cluster Availability | Platform reliability |
+| Node Health | Infrastructure stability |
+| RBAC Review Completion | Access governance |
+| Workload Availability | Service reliability |
+| Storage Utilization | Capacity planning |
+| Configuration Review Rate | Governance |
+| Deployment Success Rate | Operational quality |
+| Platform Uptime | Business continuity |
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large clusters | Standardized governance |
+| Identity sprawl | Centralized IAM and RBAC |
+| Configuration inconsistency | Version-controlled configuration |
+| Rapid workload growth | Standard deployment processes |
+| Complex networking | Documented network architecture |
+| Storage expansion | Lifecycle management and capacity planning |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design a secure Kubernetes cluster architecture.
+2. Document RBAC roles for administrators, developers, and applications.
+3. Draw the networking architecture of a multi-tier Kubernetes application.
+4. Create a storage governance policy for persistent workloads.
+5. Build a configuration review workflow covering validation, approval, deployment, and monitoring.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, governance, configuration management, and operational resilience.
+
+---
+
+# Interview Questions
+
+1. Why is secure cluster configuration important?
+2. What is Kubernetes RBAC?
+3. What is the Principle of Least Privilege?
+4. Why are Service Accounts used?
+5. How does network segmentation improve Kubernetes security?
+6. Why should storage be governed?
+7. What information should configuration documentation contain?
+8. Which metrics indicate cluster health?
+9. Why should configuration changes follow version control?
+10. How does governance improve Kubernetes operations?
+
+---
+
+# Best Practices
+
+- Secure cluster configuration before deploying workloads.
+- Use RBAC to enforce least-privilege access.
+- Assign dedicated Service Accounts to workloads.
+- Document network architecture and segmentation.
+- Govern storage using lifecycle and backup policies.
+- Manage configuration through version control.
+- Continuously monitor cluster health and operational metrics.
+- Regularly review IAM and governance policies.
+
+---
+
+# Common Mistakes
+
+- Granting excessive permissions through RBAC.
+- Sharing Service Accounts across unrelated workloads.
+- Deploying undocumented configuration changes.
+- Ignoring storage planning.
+- Maintaining inconsistent network architecture.
+- Neglecting configuration reviews.
+- Failing to monitor platform health.
+
+---
+
+# Key Takeaways
+
+- Secure cluster configuration establishes the foundation for Kubernetes security.
+- IAM, RBAC, and Service Accounts provide structured identity and authorization.
+- Workload security, network segmentation, and storage governance improve platform resilience.
+- Configuration management and version control strengthen operational consistency.
+- Enterprise Kubernetes environments benefit from standardized governance, monitoring, and continuous review.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
