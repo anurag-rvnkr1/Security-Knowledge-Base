@@ -751,4 +751,1066 @@ Avoid
 
 ---
 
-**Next:** Advanced abuse detection, bot mitigation, rate-limit evasion techniques, Detection Engineering, SIEM integration, hands-on labs, troubleshooting, interview questions, and enterprise case studies.
+# Advanced Abuse Detection
+
+Traditional rate limiting blocks excessive request volume.
+
+However,
+
+modern attackers often remain below configured thresholds to avoid detection.
+
+Advanced abuse detection combines behavioral analytics, identity analysis, reputation systems, and machine learning to identify sophisticated attacks.
+
+---
+
+# Modern API Threats
+
+```
+                    API Abuse
+
+                        │
+
+      ┌─────────────────┼─────────────────┐
+
+      ▼                 ▼                 ▼
+
+ Credential         Data              Resource
+
+ Stuffing          Scraping         Exhaustion
+
+      │                 │                 │
+
+      ▼                 ▼                 ▼
+
+ Bot Networks     Enumeration      Slow Attacks
+```
+
+Traditional rate limiting alone cannot stop every attack.
+
+---
+
+# Types of API Abuse
+
+Common abuse patterns include:
+
+- Credential stuffing
+- Password spraying
+- Brute-force attacks
+- API scraping
+- Account enumeration
+- Resource exhaustion
+- Token replay
+- Bot automation
+- Business logic abuse
+- Inventory hoarding
+
+---
+
+# Credential Stuffing
+
+Attackers reuse stolen username/password combinations.
+
+```
+Leaked Credentials
+
+        │
+
+Bot Network
+
+        │
+
+API Login
+
+        │
+
+Thousands of Accounts
+
+        ▼
+
+Successful Compromise
+```
+
+Detection indicators
+
+- Large number of login attempts
+- Low success ratio
+- Requests from many IP addresses
+- Repeated usernames
+
+---
+
+# Password Spraying
+
+Instead of attacking one account,
+
+attackers attempt a few common passwords across many users.
+
+```
+Password
+
+Spring2026!
+
+        │
+
+User A
+
+User B
+
+User C
+
+User D
+```
+
+Detection indicators
+
+- Same password attempt
+- Many accounts
+- Distributed IP addresses
+
+---
+
+# API Scraping
+
+Scraping extracts large amounts of information.
+
+```
+Bot
+
+ │
+
+Sequential Requests
+
+ │
+
+Product API
+
+ │
+
+Entire Catalog
+
+ ▼
+
+Data Theft
+```
+
+Detection indicators
+
+- Sequential object access
+- High read ratio
+- Low interaction diversity
+- Constant request timing
+
+---
+
+# Business Logic Abuse
+
+Some attacks exploit intended functionality instead of software vulnerabilities.
+
+Examples
+
+- Coupon abuse
+- Reward point manipulation
+- Inventory reservation
+- Cart hoarding
+- Referral fraud
+
+These attacks require behavioral detection rather than signature matching.
+
+---
+
+# API Enumeration
+
+Attackers systematically discover endpoints.
+
+```
+/api/v1/users
+
+/api/v1/orders
+
+/api/v1/admin
+
+/api/v1/payments
+```
+
+Indicators
+
+- Sequential endpoint requests
+- Numerous HTTP 404 responses
+- Unusual endpoint discovery patterns
+
+---
+
+# Slow API Attacks
+
+Instead of flooding the API,
+
+attackers deliberately send slow requests.
+
+```
+Connection
+
+───────────────
+
+Very Slow Upload
+
+───────────────
+
+Resources Occupied
+```
+
+Mitigations
+
+- Request timeouts
+- Connection limits
+- Reverse proxies
+- Load balancers
+
+---
+
+# Distributed Bot Networks
+
+Large attacks often originate from thousands of devices.
+
+```
+Bot 1
+
+Bot 2
+
+Bot 3
+
+Bot 4
+
+      │
+
+API Gateway
+
+      ▼
+
+Target API
+```
+
+Per-IP rate limiting alone becomes ineffective.
+
+---
+
+# Bot Detection
+
+Modern gateways evaluate multiple signals.
+
+```
+Incoming Request
+
+        │
+
+Fingerprint
+
+Behavior
+
+Headers
+
+TLS
+
+Cookies
+
+Timing
+
+        ▼
+
+Bot Score
+```
+
+---
+
+# Browser Fingerprinting
+
+Browsers expose characteristics useful for identifying clients.
+
+Examples
+
+- User-Agent
+- Screen resolution
+- Time zone
+- Language
+- TLS fingerprint
+- Header ordering
+
+These signals assist in identifying automation but should be used with privacy considerations and applicable regulations.
+
+---
+
+# Device Fingerprinting
+
+Applications may identify devices using:
+
+- Device identifiers
+- Secure cookies
+- Platform information
+- Authentication history
+
+Device fingerprints help detect suspicious account activity.
+
+---
+
+# IP Reputation
+
+Gateways may consult threat intelligence.
+
+```
+Incoming IP
+
+      │
+
+Threat Feed
+
+      │
+
+Known Malicious?
+
+ ┌────┴────┐
+
+ ▼         ▼
+
+Yes       No
+
+ ▼         ▼
+
+Block    Continue
+```
+
+---
+
+# Geo-Velocity Detection
+
+Impossible travel may indicate compromised accounts.
+
+Example
+
+```
+09:00
+
+Bengaluru
+
+↓
+
+09:20
+
+London
+```
+
+Detection
+
+```
+Travel Speed
+
+>
+
+Physically Possible
+
+↓
+
+Alert
+```
+
+---
+
+# User Behavior Analytics (UBA)
+
+UBA builds behavioral baselines.
+
+Examples
+
+- Login times
+- Device usage
+- Geographic regions
+- Request frequency
+- API usage patterns
+
+Deviations may indicate compromise.
+
+---
+
+# Behavioral Baselines
+
+```
+Normal User
+
+      │
+
+100 Requests
+
+Business Hours
+
+Known Device
+
+──────────────
+
+Abnormal
+
+5000 Requests
+
+Unknown Device
+
+03:00 AM
+```
+
+---
+
+# Risk Scoring
+
+Each request receives a calculated risk score.
+
+```
+Signals
+
+ │
+
+Location
+
+ │
+
+Device
+
+ │
+
+Token
+
+ │
+
+Behavior
+
+ ▼
+
+Risk Score
+
+ ▼
+
+Allow
+
+Challenge
+
+Block
+```
+
+---
+
+# Adaptive Authentication
+
+High-risk requests may require additional verification.
+
+```
+Normal Risk
+
+↓
+
+Access Granted
+
+-----------------------
+
+High Risk
+
+↓
+
+Require MFA
+```
+
+Adaptive authentication reduces unnecessary user friction.
+
+---
+
+# Token Abuse Detection
+
+Monitor for:
+
+- Token replay
+- Unusual token lifetime
+- Multiple concurrent locations
+- Excessive refresh requests
+- Audience mismatches
+
+---
+
+# Refresh Token Abuse
+
+Indicators
+
+```
+Refresh Token
+
+ │
+
+Multiple Devices
+
+ │
+
+Repeated Refresh
+
+ ▼
+
+Possible Theft
+```
+
+Refresh token reuse detection is a valuable control.
+
+---
+
+# API Key Abuse
+
+Common indicators
+
+- Sudden traffic increase
+- Geographic anomalies
+- Excessive failures
+- Requests outside normal hours
+- Unexpected endpoint usage
+
+Compromised API keys should be rotated immediately.
+
+---
+
+# Machine Learning in API Security
+
+Machine learning may identify anomalies such as:
+
+- Unusual request sequences
+- Unknown attack patterns
+- New bot behaviors
+- Behavioral deviations
+
+Machine learning should complement, not replace, deterministic security controls.
+
+---
+
+# Rate-Limit Evasion Techniques
+
+Attackers may attempt to bypass rate limits.
+
+Examples
+
+- IP rotation
+- Residential proxies
+- VPNs
+- Botnets
+- Multiple API keys
+- Multiple accounts
+- Distributed timing
+
+```
+Bot
+
+ │
+
+IP1
+
+IP2
+
+IP3
+
+IP4
+
+ ▼
+
+Gateway
+```
+
+---
+
+# Defending Against Evasion
+
+Recommended controls
+
+- Identity-based limits
+- Device reputation
+- Behavioral analytics
+- Bot detection
+- CAPTCHA where appropriate
+- Risk scoring
+- Adaptive authentication
+
+Layered defenses are more effective than any single control.
+
+---
+
+# CAPTCHA Integration
+
+Sensitive workflows may require human verification.
+
+Examples
+
+- Login
+- Account creation
+- Password reset
+- Bulk searches
+
+CAPTCHA should be applied selectively to minimize user impact.
+
+---
+
+# Threat Intelligence Integration
+
+```
+Threat Intelligence
+
+        │
+
+Known IPs
+
+Known Domains
+
+Known Botnets
+
+        │
+
+API Gateway
+
+        ▼
+
+Decision Engine
+```
+
+Threat intelligence improves detection of known malicious infrastructure.
+
+---
+
+# Detection Engineering
+
+Recommended detections
+
+| Detection | Indicator |
+|-----------|-----------|
+| Credential Stuffing | Many login failures across numerous accounts |
+| Password Spraying | Same password attempted for many users |
+| API Scraping | Sequential object access with high volume |
+| Enumeration | High volume of HTTP 404 responses |
+| Bot Activity | Consistent request intervals and fingerprints |
+| Token Replay | Same token used from multiple locations |
+| Refresh Abuse | Excessive refresh requests |
+| Impossible Travel | Authentication from distant regions within unrealistic timeframes |
+| API Key Abuse | Sudden increase in requests from a single key |
+| Slow API Attack | Long-lived connections consuming resources |
+
+---
+
+# SIEM Integration
+
+Recommended telemetry
+
+```
+API Gateway
+
+      │
+
+Authentication Logs
+
+      │
+
+Rate-Limit Events
+
+      │
+
+Threat Intelligence
+
+      │
+
+Identity Provider
+
+      │
+
+Application Logs
+
+      ▼
+
+Enterprise SIEM
+
+      │
+
+Correlation
+
+      ▼
+
+SOC Alerts
+```
+
+---
+
+# Correlation Rules
+
+Example Rule 1
+
+```
+Failed Logins
+
+        │
+
+Successful Login
+
+        │
+
+New Device
+
+        ▼
+
+High Severity Alert
+```
+
+Example Rule 2
+
+```
+Token Replay
+
+      │
+
+Impossible Travel
+
+      │
+
+API Key Rotation
+
+      ▼
+
+Incident
+```
+
+Example Rule 3
+
+```
+High 404 Rate
+
+      │
+
+Endpoint Enumeration
+
+      │
+
+SQL Injection Attempts
+
+      ▼
+
+Reconnaissance Alert
+```
+
+---
+
+# Enterprise Abuse Detection Architecture
+
+```
+                    Internet
+
+                        │
+
+                        ▼
+
+              DDoS Protection
+
+                        │
+
+                        ▼
+
+          Web Application Firewall
+
+                        │
+
+                        ▼
+
+                 API Gateway
+
+        ┌────────┼─────────┬──────────┐
+
+        ▼        ▼         ▼          ▼
+
+ Authentication Rate Limit Bot Detection Threat Intelligence
+
+                        │
+
+                        ▼
+
+                Risk Scoring Engine
+
+                        │
+
+          ┌─────────────┼─────────────┐
+
+          ▼             ▼             ▼
+
+       Allow        Challenge       Block
+
+                        │
+
+                        ▼
+
+                 Backend Services
+
+                        │
+
+                        ▼
+
+                    SIEM / SOC
+```
+
+---
+
+# Hands-on Lab 1 – Credential Stuffing Detection
+
+**Objective**
+
+Identify credential stuffing activity in an authorized lab.
+
+**Steps**
+
+1. Generate normal login traffic.
+2. Simulate repeated failed logins across multiple accounts.
+3. Review gateway and authentication logs.
+4. Create a detection rule for credential stuffing indicators.
+
+**Learning Outcomes**
+
+- Authentication monitoring
+- Detection engineering
+- SOC investigation workflow
+
+---
+
+# Hands-on Lab 2 – API Scraping Analysis
+
+**Objective**
+
+Identify scraping behavior.
+
+**Steps**
+
+1. Generate normal browsing activity.
+2. Simulate automated sequential API requests.
+3. Review request patterns.
+4. Compare legitimate and automated behaviors.
+
+**Learning Outcomes**
+
+- Behavioral analysis
+- Enumeration detection
+- Abuse investigation
+
+---
+
+# Hands-on Lab 3 – Risk-Based Authentication
+
+**Objective**
+
+Evaluate adaptive authentication.
+
+**Steps**
+
+1. Authenticate from a trusted device.
+2. Repeat authentication from a new device and location.
+3. Review calculated risk signals.
+4. Verify that additional authentication is requested for high-risk events.
+
+**Learning Outcomes**
+
+- Risk scoring
+- Adaptive authentication
+- Identity protection
+
+---
+
+# Troubleshooting
+
+## Excessive False Positives
+
+Possible causes
+
+- Aggressive thresholds
+- Shared IP addresses
+- Legitimate automation
+- Incomplete behavioral baselines
+
+---
+
+## Missed Bot Activity
+
+Possible causes
+
+- Static detection rules
+- Weak fingerprinting
+- Missing threat intelligence
+- No behavioral analysis
+
+---
+
+## Frequent CAPTCHA Challenges
+
+Possible causes
+
+- Misconfigured risk scoring
+- Excessively strict policies
+- Shared enterprise networks
+- Incorrect device reputation
+
+---
+
+## Token Replay Not Detected
+
+Possible causes
+
+- Missing correlation
+- Incomplete identity logs
+- No geographic analysis
+- Short log retention
+
+---
+
+## API Scraping Continues
+
+Possible causes
+
+- No identity-based limits
+- Missing bot detection
+- Weak rate limiting
+- Public endpoints lacking abuse controls
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What is API abuse?
+2. How does credential stuffing differ from brute-force attacks?
+3. What is API scraping?
+4. Why is rate limiting alone insufficient against sophisticated attackers?
+5. What is user behavior analytics (UBA)?
+6. What is adaptive authentication?
+7. What is IP reputation?
+8. What is geo-velocity detection?
+9. What is risk scoring?
+10. Why is threat intelligence useful for API security?
+
+---
+
+## Intermediate
+
+11. How would you detect password spraying?
+12. Explain how behavioral analytics identifies API abuse.
+13. How would you detect token replay?
+14. What indicators suggest API enumeration?
+15. How would you defend against rate-limit evasion?
+16. What telemetry should be forwarded to a SIEM?
+17. How would you reduce false positives in bot detection?
+18. Explain identity-based rate limiting.
+19. How would you investigate API key abuse?
+20. How would you implement adaptive authentication for high-risk API requests?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+A single user account successfully authenticates from three different countries within one hour using the same access token.
+
+- Which indicators suggest compromise?
+- What additional evidence would you collect?
+- What immediate containment actions would you recommend?
+
+---
+
+**Scenario 2**
+
+An API experiences a large increase in sequential requests for product records. Traffic stays below configured rate limits.
+
+- What attack might be occurring?
+- Which behavioral indicators would help confirm it?
+- Which gateway controls would you enable?
+
+---
+
+**Scenario 3**
+
+Multiple API keys begin making requests from infrastructure previously identified in threat intelligence feeds.
+
+- Which correlation rules should trigger?
+- How would you prioritize the incident?
+- What actions would you take to reduce business impact?
+
+---
+
+# Chapter Summary
+
+In this section, we expanded rate limiting into comprehensive API abuse detection.
+
+We covered:
+
+- Modern API abuse techniques
+- Credential stuffing
+- Password spraying
+- API scraping
+- Enumeration
+- Bot detection
+- Behavioral analytics
+- Risk scoring
+- Adaptive authentication
+- Threat intelligence
+- Detection engineering
+- SIEM integration
+- Hands-on labs
+- Troubleshooting
+- Interview preparation
+
+Modern API protection requires layered defenses that combine rate limiting, behavioral analytics, identity-aware controls, threat intelligence, and continuous monitoring.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- Why is rate limiting alone insufficient against sophisticated attacks?
+- How can behavioral analytics detect API scraping?
+- What signals contribute to API risk scoring?
+- How does adaptive authentication improve security?
+- Which events should trigger abuse-related SIEM alerts?
+- How would you investigate credential stuffing or token replay?
+- How can organizations defend against rate-limit evasion techniques?
+
+If you can confidently answer these questions, you are ready to continue with **Chapter 16 – Cross-Origin Resource Sharing (CORS)**, where you'll learn browser same-origin policy, CORS headers, preflight requests, credential handling, common misconfigurations, exploitation techniques, detection engineering, and enterprise deployment best practices.
+
+---
+
+# References
+
+## Standards
+
+- RFC 6585 – Additional HTTP Status Codes (HTTP 429)
+- RFC 9110 – HTTP Semantics
+
+## Security Standards
+
+- OWASP API Security Top 10
+- OWASP Automated Threats to Web Applications
+- OWASP Credential Stuffing Prevention Cheat Sheet
+- NIST SP 800-61 Rev. 2 – Computer Security Incident Handling Guide
+
+## Further Reading
+
+- MITRE ATT&CK Framework
+- OpenTelemetry Documentation
+- Enterprise Bot Management Best Practices
+
+---
+
+# What's Next?
+
+➡️ **Chapter 16 – Cross-Origin Resource Sharing (CORS)**
+
+Topics include:
+
+- Same-Origin Policy (SOP)
+- CORS fundamentals
+- Preflight requests
+- CORS request and response headers
+- Credentialed requests
+- Browser enforcement
+- Common CORS misconfigurations
+- Exploitation techniques
+- Detection engineering
+- SIEM integration
+- Hands-on labs
+- Interview questions
