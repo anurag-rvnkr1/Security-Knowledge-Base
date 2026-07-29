@@ -1305,4 +1305,778 @@ Prefer simpler resource structures where possible.
 
 ---
 
-**Next:** HTTP Methods in REST, Idempotency, Safe Methods, Request and Response Structure, Status Codes, Content Negotiation, and Enterprise REST Best Practices.
+# HTTP Methods in REST
+
+HTTP methods define the action that should be performed on a resource.
+
+Unlike traditional RPC systems where the action is embedded in the URI, REST uses standardized HTTP methods while keeping the URI focused on the resource.
+
+Example:
+
+```
+GET /users/15
+```
+
+The URI identifies the resource.
+
+The HTTP method defines the operation.
+
+This separation is one of the core principles of REST.
+
+---
+
+# Common HTTP Methods
+
+The most commonly used HTTP methods are:
+
+| Method | Purpose |
+|----------|----------|
+| GET | Retrieve resource |
+| POST | Create resource |
+| PUT | Replace resource |
+| PATCH | Partially update resource |
+| DELETE | Delete resource |
+| HEAD | Retrieve headers only |
+| OPTIONS | Discover supported methods |
+| TRACE | Diagnostic method (rarely enabled) |
+| CONNECT | Establish tunnel (used by proxies) |
+
+In REST APIs, the first five methods are used most frequently.
+
+---
+
+# GET Method
+
+The GET method retrieves information from the server.
+
+It should **never modify data**.
+
+Example:
+
+```
+GET /products
+```
+
+Retrieve all products.
+
+```
+GET /products/101
+```
+
+Retrieve Product 101.
+
+Architecture
+
+```
+Client
+
+   │
+
+GET /products
+
+   ▼
+
+REST API
+
+   │
+
+Database
+
+   │
+
+Return Data
+
+   ▼
+
+Client
+```
+
+Example Response
+
+```json
+[
+  {
+    "id": 101,
+    "name": "Laptop"
+  },
+  {
+    "id": 102,
+    "name": "Keyboard"
+  }
+]
+```
+
+---
+
+# Characteristics of GET
+
+Properties:
+
+- Read-only
+- Safe
+- Idempotent
+- Cacheable
+- No request body required
+
+Suitable for:
+
+- Search
+- Listing resources
+- Viewing details
+- Downloading data
+
+---
+
+# POST Method
+
+POST creates new resources.
+
+Example:
+
+```
+POST /users
+```
+
+Request
+
+```json
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+```
+
+Architecture
+
+```
+Client
+
+   │
+
+POST
+
+   ▼
+
+API
+
+   │
+
+Create User
+
+   ▼
+
+Database
+
+   │
+
+New Record
+
+   ▼
+
+Response
+```
+
+Example Response
+
+```json
+{
+  "id": 120,
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+```
+
+Typical status code:
+
+```
+201 Created
+```
+
+---
+
+# Characteristics of POST
+
+Properties:
+
+- Creates resources
+- Not idempotent
+- Usually contains request body
+- Often changes server state
+
+Common Uses
+
+- Registration
+- Login
+- Payment processing
+- File uploads
+- Creating orders
+- Sending messages
+
+---
+
+# PUT Method
+
+PUT completely replaces an existing resource.
+
+Example
+
+```
+PUT /users/25
+```
+
+Request
+
+```json
+{
+  "name": "Alice Smith",
+  "email": "alice@example.com"
+}
+```
+
+Entire resource is replaced.
+
+If fields are omitted, they may be overwritten depending on implementation.
+
+---
+
+# PUT Architecture
+
+```
+Existing User
+
+↓
+
+Replace Entire Record
+
+↓
+
+Save
+
+↓
+
+Return Updated Resource
+```
+
+Example Response
+
+```json
+{
+  "id": 25,
+  "name": "Alice Smith",
+  "email": "alice@example.com"
+}
+```
+
+---
+
+# PATCH Method
+
+PATCH modifies only specific fields.
+
+Example
+
+```
+PATCH /users/25
+```
+
+Request
+
+```json
+{
+  "email": "alice.new@example.com"
+}
+```
+
+Only the email changes.
+
+Everything else remains unchanged.
+
+---
+
+# PATCH Architecture
+
+```
+Current User
+
+ │
+
+ ▼
+
+Update Email
+
+ │
+
+ ▼
+
+Save
+
+ │
+
+ ▼
+
+Return Updated User
+```
+
+PATCH is generally preferred for partial updates because it minimizes data transfer and reduces the risk of unintentionally overwriting fields.
+
+---
+
+# PUT vs PATCH
+
+| PUT | PATCH |
+|------|--------|
+| Full replacement | Partial update |
+| Entire resource sent | Changed fields only |
+| Larger payload | Smaller payload |
+| Idempotent | Usually idempotent when implemented correctly |
+| May overwrite missing fields | Updates specified fields only |
+
+Example
+
+PUT
+
+```json
+{
+  "name":"Alice",
+  "email":"alice@example.com",
+  "phone":"9876543210"
+}
+```
+
+PATCH
+
+```json
+{
+  "phone":"9876543210"
+}
+```
+
+---
+
+# DELETE Method
+
+DELETE removes a resource.
+
+Example
+
+```
+DELETE /users/15
+```
+
+Architecture
+
+```
+Client
+
+ │
+
+DELETE
+
+ ▼
+
+API
+
+ │
+
+Delete Record
+
+ ▼
+
+Database
+
+ │
+
+Success
+
+ ▼
+
+Response
+```
+
+Typical Response
+
+```
+204 No Content
+```
+
+Some APIs instead return:
+
+```
+200 OK
+```
+
+with confirmation details.
+
+---
+
+# HEAD Method
+
+HEAD behaves similarly to GET but returns only response headers.
+
+Example
+
+```
+HEAD /products
+```
+
+Response
+
+```
+Headers Only
+
+No Response Body
+```
+
+Uses
+
+- Checking file size
+- Cache validation
+- Health checks
+- Metadata retrieval
+
+---
+
+# OPTIONS Method
+
+OPTIONS returns information about supported operations.
+
+Example
+
+```
+OPTIONS /users
+```
+
+Response
+
+```
+Allow:
+
+GET
+
+POST
+
+PUT
+
+DELETE
+```
+
+This method is heavily used during **CORS preflight requests**.
+
+---
+
+# TRACE Method
+
+TRACE returns the received request for diagnostic purposes.
+
+```
+TRACE /users
+```
+
+Most production servers disable TRACE because it can assist attackers during reconnaissance.
+
+---
+
+# CONNECT Method
+
+CONNECT establishes a network tunnel through an HTTP proxy.
+
+```
+Client
+
+ │
+
+CONNECT
+
+ ▼
+
+Proxy
+
+ │
+
+Encrypted Tunnel
+
+ ▼
+
+Destination Server
+```
+
+This method is primarily used by proxy servers and is rarely implemented in REST APIs.
+
+---
+
+# Safe Methods
+
+A safe method does **not modify server data**.
+
+Safe Methods
+
+```
+GET
+
+HEAD
+
+OPTIONS
+```
+
+Unsafe Methods
+
+```
+POST
+
+PUT
+
+PATCH
+
+DELETE
+```
+
+Safe methods should only retrieve information.
+
+---
+
+# Idempotent Methods
+
+An idempotent method produces the same result even if executed multiple times.
+
+Example
+
+```
+GET /users/15
+```
+
+Calling it 100 times returns the same resource.
+
+```
+GET
+
+↓
+
+Same Result
+
+↓
+
+Same Resource
+```
+
+---
+
+# Idempotency Table
+
+| Method | Safe | Idempotent |
+|----------|------|------------|
+| GET | Yes | Yes |
+| POST | No | No |
+| PUT | No | Yes |
+| PATCH | No | Usually* |
+| DELETE | No | Yes |
+| HEAD | Yes | Yes |
+| OPTIONS | Yes | Yes |
+
+\*PATCH is commonly implemented to be idempotent, but this depends on the API's update logic.
+
+---
+
+# Why Idempotency Matters
+
+Idempotency improves reliability.
+
+Example:
+
+```
+Payment Request
+
+↓
+
+Network Failure
+
+↓
+
+Retry
+```
+
+If the operation is idempotent:
+
+```
+Only One Update
+```
+
+Without idempotency:
+
+```
+Duplicate Processing
+
+↓
+
+Duplicate Payment
+
+↓
+
+Business Loss
+```
+
+Many payment APIs use **Idempotency Keys** to safely retry requests.
+
+---
+
+# CRUD Mapping
+
+REST naturally maps HTTP methods to CRUD operations.
+
+| CRUD | HTTP Method |
+|-------|-------------|
+| Create | POST |
+| Read | GET |
+| Update | PUT / PATCH |
+| Delete | DELETE |
+
+Architecture
+
+```
+Create
+
+↓
+
+POST
+
+──────────────
+
+Read
+
+↓
+
+GET
+
+──────────────
+
+Update
+
+↓
+
+PUT / PATCH
+
+──────────────
+
+Delete
+
+↓
+
+DELETE
+```
+
+---
+
+# Choosing the Correct Method
+
+| Requirement | Recommended Method |
+|--------------|-------------------|
+| Retrieve users | GET |
+| Create account | POST |
+| Replace profile | PUT |
+| Update password | PATCH |
+| Delete order | DELETE |
+| Retrieve headers | HEAD |
+| Discover supported methods | OPTIONS |
+
+Selecting the correct HTTP method improves API consistency and interoperability.
+
+---
+
+# Enterprise Example
+
+A banking application may expose the following endpoints:
+
+```
+GET    /accounts
+
+GET    /accounts/5001
+
+POST   /payments
+
+PATCH  /accounts/5001
+
+PUT    /customers/120
+
+DELETE /beneficiaries/8
+```
+
+Each endpoint combines a resource-oriented URI with the appropriate HTTP method to clearly express the intended operation.
+
+---
+
+# Common Mistakes
+
+### Using GET for Updates
+
+Incorrect
+
+```
+GET /updateBalance
+```
+
+Correct
+
+```
+PATCH /accounts/1001
+```
+
+---
+
+### Using POST for Every Operation
+
+Incorrect
+
+```
+POST /getUsers
+
+POST /deleteUser
+
+POST /updateProfile
+```
+
+Correct
+
+```
+GET /users
+
+DELETE /users/25
+
+PATCH /users/25
+```
+
+---
+
+### Ignoring Idempotency
+
+Using POST for operations that may be retried can lead to duplicate transactions if retries occur after network failures.
+
+Design APIs with retries and idempotency in mind, especially for financial and transactional systems.
+
+---
+
+# Best Practices
+
+- Use HTTP methods according to their intended semantics.
+- Keep GET requests free of side effects.
+- Use POST only for resource creation or non-idempotent operations.
+- Use PUT for complete replacements.
+- Use PATCH for partial updates.
+- Use DELETE to remove resources.
+- Support HEAD and OPTIONS where appropriate.
+- Design idempotent operations for reliable retries.
+- Return meaningful HTTP status codes.
+- Document the behavior of every endpoint clearly.
+
+---
+
+# Key Takeaways
+
+- HTTP methods define the action performed on a resource.
+- REST separates resource identification (URI) from the operation (HTTP method).
+- GET, POST, PUT, PATCH, and DELETE form the foundation of RESTful APIs.
+- Safe methods do not modify server state, while idempotent methods produce consistent results across repeated requests.
+- Proper use of HTTP methods improves API usability, reliability, and interoperability.
+- Designing APIs with correct method semantics and idempotency is essential for enterprise-grade systems.
+
+---
+
+**Next:** HTTP Request Structure, HTTP Response Structure, Status Codes, Content Negotiation, Headers, Error Handling, and Enterprise REST API Best Practices.
