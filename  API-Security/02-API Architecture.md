@@ -590,4 +590,635 @@ These principles reduce complexity while improving long-term reliability.
 
 ---
 
-**Next:** **Part 2 – Client–Server Architecture, Monolithic vs Microservices, Service-Oriented Architecture (SOA), Event-Driven Architecture, and Enterprise Communication Patterns**
+# 02 - API Architecture (Part 2)
+
+# Client–Server Architecture
+
+The client–server model is the foundation of modern API communication.
+
+In this architecture, responsibilities are divided between two independent systems.
+
+- **Client** — Requests information or performs an action.
+- **Server** — Processes requests and returns responses.
+
+```
+           Request
+Client -----------------> Server
+       <-----------------
+           Response
+```
+
+Examples of clients include:
+
+- Web browsers
+- Android applications
+- iOS applications
+- Desktop software
+- CLI tools
+- IoT devices
+- Other APIs
+
+Examples of servers include:
+
+- Authentication Server
+- Payment Server
+- User Service
+- Inventory Service
+- Database Server
+
+This separation allows clients and servers to evolve independently.
+
+---
+
+# Responsibilities of the Client
+
+The client is responsible for:
+
+- Collecting user input
+- Displaying information
+- Sending API requests
+- Managing user sessions
+- Rendering user interfaces
+- Handling client-side validation
+
+Example
+
+```
+User clicks "Login"
+
+        │
+
+        ▼
+
+Browser
+
+        │
+
+POST /login
+
+        ▼
+
+API Server
+```
+
+The client never directly accesses the database.
+
+---
+
+# Responsibilities of the Server
+
+The server performs business operations.
+
+Responsibilities include:
+
+- Authentication
+- Authorization
+- Input validation
+- Business logic execution
+- Database interaction
+- Logging
+- Monitoring
+- Response generation
+
+Example
+
+```
+Client
+
+   │
+
+POST /login
+
+   ▼
+
+API Server
+
+   │
+
+Validate Credentials
+
+   │
+
+Generate JWT
+
+   │
+
+Return Response
+```
+
+---
+
+# Advantages of Client–Server Architecture
+
+Benefits include:
+
+- Centralized security
+- Better scalability
+- Easier maintenance
+- Platform independence
+- Independent development
+- Resource sharing
+- Simplified updates
+
+---
+
+# Two-Tier Architecture
+
+One of the earliest enterprise architectures.
+
+```
++----------------+
+|     Client     |
++--------+-------+
+         │
+         ▼
++----------------+
+|   Database     |
++----------------+
+```
+
+Problems:
+
+- Direct database access
+- Poor security
+- Tight coupling
+- Difficult scalability
+- Limited flexibility
+
+Modern APIs rarely use this architecture.
+
+---
+
+# Three-Tier Architecture
+
+Introduces a business layer between clients and databases.
+
+```
++----------------------+
+| Presentation Layer   |
++----------+-----------+
+           │
+           ▼
++----------------------+
+| Business Layer       |
++----------+-----------+
+           │
+           ▼
++----------------------+
+| Database Layer       |
++----------------------+
+```
+
+Benefits:
+
+- Better security
+- Better maintainability
+- Reusable business logic
+- Improved scalability
+
+This architecture remains common in enterprise software.
+
+---
+
+# N-Tier Architecture
+
+Large organizations often introduce additional layers.
+
+```
+Client
+
+   │
+
+API Gateway
+
+   │
+
+Authentication
+
+   │
+
+Business Services
+
+   │
+
+Cache
+
+   │
+
+Messaging
+
+   │
+
+Database
+```
+
+Advantages:
+
+- Better scalability
+- Easier maintenance
+- Improved security
+- Fault isolation
+- Independent deployment
+
+---
+
+# Monolithic Architecture
+
+A monolithic application packages all functionality into a single deployment unit.
+
+```
++------------------------------------+
+|          Monolithic App            |
+|------------------------------------|
+| Authentication                     |
+| User Management                    |
+| Orders                             |
+| Payments                           |
+| Inventory                          |
+| Notifications                      |
+| Reports                            |
++----------------+-------------------+
+                 │
+                 ▼
+            Database
+```
+
+Everything runs as one application.
+
+---
+
+# Characteristics of Monolithic Applications
+
+Advantages
+
+- Simple development
+- Easy deployment
+- Easier debugging initially
+- Good for small applications
+- Lower operational complexity
+
+Disadvantages
+
+- Difficult scaling
+- Large deployments
+- Tight coupling
+- Slower releases
+- One failure can affect the entire application
+- Difficult technology upgrades
+
+---
+
+# Enterprise Example — Monolith
+
+```
+Online Store
+
+ ├── Login
+ ├── Products
+ ├── Orders
+ ├── Payments
+ ├── Shipping
+ ├── Reviews
+ └── Reports
+```
+
+Any update requires redeploying the entire application.
+
+---
+
+# Microservices Architecture
+
+Microservices divide applications into multiple independent services.
+
+Each service focuses on a single business capability.
+
+```
+                 API Gateway
+
+                      │
+
+      ┌───────────────┼───────────────┐
+
+      ▼               ▼               ▼
+
+ User Service    Order Service   Payment Service
+
+      ▼               ▼               ▼
+
+  User DB        Order DB        Payment DB
+```
+
+Every service has:
+
+- Independent deployment
+- Independent scaling
+- Independent development
+- Independent database (recommended)
+
+---
+
+# Characteristics of Microservices
+
+Advantages
+
+- High scalability
+- Independent deployments
+- Faster development
+- Better fault isolation
+- Easier cloud deployment
+- Technology flexibility
+
+Disadvantages
+
+- Operational complexity
+- Distributed debugging
+- Network latency
+- More monitoring requirements
+- Increased security considerations
+
+---
+
+# Monolith vs Microservices
+
+| Feature | Monolith | Microservices |
+|----------|-----------|--------------|
+| Deployment | Single | Multiple |
+| Scaling | Entire application | Individual services |
+| Failure Isolation | Low | High |
+| Development Speed | Slower over time | Faster for large teams |
+| Complexity | Low | High |
+| Security | Centralized | Distributed |
+| Technology Choices | Limited | Flexible |
+| Infrastructure | Simple | Complex |
+
+---
+
+# Service-Oriented Architecture (SOA)
+
+Service-Oriented Architecture (SOA) preceded modern microservices.
+
+SOA exposes reusable enterprise services.
+
+```
+               Enterprise Bus
+
+      ┌─────────┼─────────┐
+
+      ▼         ▼         ▼
+
+ HR Service  CRM Service ERP Service
+
+      ▼         ▼         ▼
+
+ Shared Enterprise Systems
+```
+
+SOA typically relies on:
+
+- Enterprise Service Bus (ESB)
+- SOAP
+- XML
+- Enterprise messaging
+
+---
+
+# SOA vs Microservices
+
+| SOA | Microservices |
+|------|---------------|
+| Large enterprise services | Small independent services |
+| Enterprise Service Bus | Lightweight APIs |
+| SOAP/XML common | REST/gRPC common |
+| Shared databases possible | Independent databases preferred |
+| Heavy governance | Agile governance |
+| Centralized integration | Decentralized communication |
+
+---
+
+# Event-Driven Architecture
+
+Instead of requesting data continuously, systems communicate using events.
+
+```
+Customer Places Order
+
+          │
+
+          ▼
+
+     Order Created
+
+          │
+
+ ┌────────┼────────┐
+
+ ▼        ▼        ▼
+
+Billing Inventory Shipping
+```
+
+Each service reacts independently.
+
+---
+
+# Event Components
+
+```
+Producer
+
+     │
+
+Publish Event
+
+     ▼
+
+Message Broker
+
+     │
+
+ ┌───┼────┐
+
+ ▼   ▼    ▼
+
+Consumer A
+
+Consumer B
+
+Consumer C
+```
+
+Popular technologies:
+
+- Apache Kafka
+- RabbitMQ
+- AWS SNS
+- AWS SQS
+- Azure Service Bus
+- Google Pub/Sub
+
+---
+
+# Synchronous Communication
+
+Client waits for a response.
+
+```
+Client
+
+   │
+
+Request
+
+   ▼
+
+API
+
+   │
+
+Response
+
+   ▼
+
+Client
+```
+
+Advantages:
+
+- Simple
+- Predictable
+- Immediate response
+
+Disadvantages:
+
+- Blocking
+- Higher latency
+- Lower resilience
+
+---
+
+# Asynchronous Communication
+
+The sender does not wait for immediate processing.
+
+```
+Client
+
+   │
+
+Submit Request
+
+   ▼
+
+Queue
+
+   │
+
+Worker
+
+   │
+
+Database
+```
+
+Advantages:
+
+- Better scalability
+- Improved resilience
+- High throughput
+- Fault tolerance
+
+Disadvantages:
+
+- More complex implementation
+- Eventual consistency
+
+---
+
+# Enterprise Communication Patterns
+
+Large organizations combine multiple communication models.
+
+```
+                 Clients
+
+                    │
+
+                    ▼
+
+              API Gateway
+
+      ┌────────────┼─────────────┐
+
+      ▼            ▼             ▼
+
+ REST APIs     GraphQL      gRPC Services
+
+      │            │             │
+
+      └──────┬─────┴──────┬──────┘
+
+             ▼            ▼
+
+        Event Bus      Databases
+```
+
+This hybrid architecture provides flexibility while supporting diverse workloads.
+
+---
+
+# Enterprise Case Study
+
+A global e-commerce company migrated from a monolithic application to microservices.
+
+Before migration:
+
+- One deployment package
+- Single database
+- Difficult scaling
+- Long release cycles
+- High downtime risk
+
+After migration:
+
+- Independent services
+- API Gateway
+- Kubernetes deployment
+- Dedicated databases
+- Event-driven communication
+- Horizontal scaling
+- Faster releases
+- Improved resilience
+
+The migration allowed development teams to deploy features independently while improving overall system availability.
+
+---
+
+# Best Practices
+
+- Design services around business capabilities.
+- Keep services loosely coupled.
+- Avoid direct database sharing between services.
+- Use API gateways for centralized routing and security.
+- Prefer asynchronous communication for long-running operations.
+- Implement standardized error handling across services.
+- Ensure every service is independently deployable.
+- Apply consistent authentication and authorization mechanisms.
+- Monitor inter-service communication.
+- Document service contracts thoroughly.
+
+---
+
+# Key Takeaways
+
+- Client–server architecture separates responsibilities between consumers and providers.
+- Two-tier architectures are simple but expose security and scalability limitations.
+- Three-tier and N-tier architectures improve maintainability and security through layered design.
+- Monolithic applications are easier to start with but become harder to scale and maintain.
+- Microservices enable independent deployment, scaling, and fault isolation at the cost of increased operational complexity.
+- SOA and microservices both promote service reuse but differ in communication patterns and governance.
+- Event-driven and asynchronous architectures improve scalability and resilience for enterprise systems.
+- Modern API ecosystems often combine REST, GraphQL, gRPC, messaging systems, and event buses into hybrid architectures.
+
+---
+
+**Next:** **Part 3 – API Gateway Architecture, Service Mesh, Cloud-Native APIs, High Availability, Scalability, Security Architecture, and Enterprise Design Patterns**
