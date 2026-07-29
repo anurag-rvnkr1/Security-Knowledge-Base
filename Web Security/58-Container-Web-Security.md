@@ -1244,6 +1244,699 @@ Container images are standardized, centrally managed, and documented. Runtime en
 - Enterprise container platforms benefit from centralized governance, monitoring, and asset management.
 - Mature container security integrates image management, runtime protection, networking, storage, and continuous operational improvement.
 
+# 58-Container-Web-Security.md
+
+# Part 3 — Container Orchestration, Identity & Access Management, Monitoring, Logging, Compliance, Incident Response, and Enterprise Operations
+
+> **"Container security extends beyond individual containers. Enterprise environments require secure orchestration, strong identity management, centralized monitoring, comprehensive logging, governance, and continuous operational visibility."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Container Orchestration Security
+- Identity and Access Management (IAM)
+- Least Privilege
+- Configuration Governance
+- Monitoring
+- Logging
+- Compliance
+- Risk Management
+- Incident Response
+- Enterprise Operational Excellence
+
+---
+
+# Container Orchestration
+
+Container orchestration platforms automate the deployment, scaling, networking, and lifecycle management of containers.
+
+```
+Application
+
+↓
+
+Container Images
+
+↓
+
+Container Runtime
+
+↓
+
+Container Orchestrator
+
+↓
+
+Production Environment
+```
+
+The orchestration platform becomes a critical part of the enterprise infrastructure and requires dedicated security governance.
+
+---
+
+# Responsibilities of an Orchestrator
+
+```
+Container Orchestrator
+
+│
+
+├── Scheduling
+
+├── Service Discovery
+
+├── Scaling
+
+├── Health Monitoring
+
+├── Networking
+
+├── Storage Management
+
+├── Configuration
+
+└── Lifecycle Management
+```
+
+Operational reliability depends on secure orchestration practices.
+
+---
+
+# Enterprise Orchestration Architecture
+
+```
+Developers
+
+↓
+
+Container Registry
+
+↓
+
+Container Orchestrator
+
+↓
+
+Worker Nodes
+
+↓
+
+Containerized Applications
+
+↓
+
+Monitoring Platform
+```
+
+Every component should follow documented security and governance policies.
+
+---
+
+# Identity and Access Management (IAM)
+
+Every user, service, and automation component interacting with the container platform should have a managed identity.
+
+```
+User or Service
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Container Platform Access
+
+↓
+
+Audit Logging
+```
+
+Proper IAM improves accountability and operational control.
+
+---
+
+# Identity Types
+
+```
+Platform Identities
+
+│
+
+├── Developers
+
+├── Platform Administrators
+
+├── Automation Services
+
+├── Monitoring Services
+
+├── Security Teams
+
+├── Operations Teams
+
+├── Applications
+
+└── External Integrations
+```
+
+Permissions should align with organizational roles and responsibilities.
+
+---
+
+# Principle of Least Privilege
+
+Only the permissions necessary for assigned responsibilities should be granted.
+
+```
+Identity
+
+↓
+
+Role
+
+↓
+
+Authorized Permissions
+
+↓
+
+Container Resources
+```
+
+Limiting privileges reduces operational and security risks.
+
+---
+
+# Access Governance
+
+```
+Access Request
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Provisioning
+
+↓
+
+Monitoring
+
+↓
+
+Periodic Review
+```
+
+Access reviews should occur regularly to ensure permissions remain appropriate.
+
+---
+
+# Configuration Governance
+
+Container platform configurations should be centrally managed.
+
+```
+Configuration
+
+↓
+
+Version Control
+
+↓
+
+Peer Review
+
+↓
+
+Validation
+
+↓
+
+Deployment
+```
+
+Configuration consistency improves reliability and simplifies maintenance.
+
+---
+
+# Configuration Components
+
+```
+Platform Configuration
+
+│
+
+├── Networking
+
+├── Storage
+
+├── Policies
+
+├── Scheduling
+
+├── Resource Allocation
+
+├── Logging
+
+├── Monitoring
+
+└── Access Control
+```
+
+Every configuration change should follow a documented governance process.
+
+---
+
+# Monitoring
+
+Continuous monitoring provides visibility into platform health and application operations.
+
+```
+Containers
+
+↓
+
+Operational Events
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboards
+
+↓
+
+Engineering Teams
+```
+
+Monitoring supports operational awareness and timely response to issues.
+
+---
+
+# Monitoring Areas
+
+```
+Container Monitoring
+
+│
+
+├── Platform Health
+
+├── Container Status
+
+├── Resource Utilization
+
+├── Service Availability
+
+├── Configuration Changes
+
+├── Storage Usage
+
+├── Network Activity
+
+└── Operational Metrics
+```
+
+Comprehensive monitoring improves operational resilience.
+
+---
+
+# Logging Strategy
+
+Centralized logging supports troubleshooting, governance, and operational investigations.
+
+```
+Applications
+
+↓
+
+Container Runtime
+
+↓
+
+Orchestrator
+
+↓
+
+Central Logging
+
+↓
+
+Analysis
+```
+
+Logs should be retained according to organizational policies while protecting sensitive information.
+
+---
+
+# Important Audit Events
+
+```
+Audit Events
+
+│
+
+├── User Authentication
+
+├── Administrative Actions
+
+├── Configuration Changes
+
+├── Deployment Events
+
+├── Container Lifecycle Events
+
+├── Access Requests
+
+├── Policy Changes
+
+└── Platform Updates
+```
+
+Audit records improve accountability and governance.
+
+---
+
+# Compliance Integration
+
+Container platforms should support organizational compliance objectives.
+
+```
+Business Requirements
+
+↓
+
+Security Standards
+
+↓
+
+Platform Configuration
+
+↓
+
+Documentation
+
+↓
+
+Audit Readiness
+```
+
+Compliance activities should become part of routine operational processes.
+
+---
+
+# Risk Management
+
+Operational risks should be reviewed continuously.
+
+```
+Platform Review
+
+↓
+
+Risk Identification
+
+↓
+
+Risk Assessment
+
+↓
+
+Mitigation
+
+↓
+
+Monitoring
+
+↓
+
+Continuous Improvement
+```
+
+Risk management helps maintain a resilient container platform.
+
+---
+
+# Common Risk Categories
+
+```
+Container Risks
+
+│
+
+├── Configuration Risks
+
+├── Identity Risks
+
+├── Network Risks
+
+├── Storage Risks
+
+├── Availability Risks
+
+├── Governance Risks
+
+├── Operational Risks
+
+└── Compliance Risks
+```
+
+Risk categorization supports prioritization and informed decision-making.
+
+---
+
+# Incident Response
+
+Container environments should integrate with organizational incident response procedures.
+
+```
+Detection
+
+↓
+
+Analysis
+
+↓
+
+Containment
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+
+↓
+
+Process Improvement
+```
+
+Operational feedback strengthens future platform security.
+
+---
+
+# Continuous Improvement
+
+```
+Monitoring
+
+↓
+
+Operational Feedback
+
+↓
+
+Configuration Review
+
+↓
+
+Platform Improvements
+
+↓
+
+Updated Standards
+```
+
+Continuous improvement supports long-term operational excellence.
+
+---
+
+# Enterprise Container Security Architecture
+
+```
+              Container Registry
+
+                     │
+
+                     ▼
+
+           Container Orchestrator
+
+                     │
+
+        ┌────────────┼────────────┐
+
+        ▼            ▼            ▼
+
+ Worker Nodes   Networking   Storage
+
+        └────────────┼────────────┘
+
+                     ▼
+
+        Containerized Applications
+
+                     ▼
+
+     Monitoring • Logging • Governance
+
+                     ▼
+
+      Incident Response & Improvement
+```
+
+Security, monitoring, and governance operate together across the entire container platform.
+
+---
+
+# Enterprise Example
+
+A multinational banking organization deploys hundreds of containerized services across multiple environments.
+
+```
+Development
+
+↓
+
+Container Registry
+
+↓
+
+Orchestration Platform
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Operational Review
+```
+
+Platform engineers manage orchestration, security teams define governance policies, and operations teams continuously monitor platform health, configuration changes, and service availability. Lessons learned from operational reviews are incorporated into future platform improvements.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Container Availability | Platform reliability |
+| Service Availability | Business continuity |
+| Resource Utilization | Capacity planning |
+| Configuration Review Rate | Governance |
+| Administrative Activities | Accountability |
+| Deployment Frequency | Operational visibility |
+| Platform Uptime | Reliability |
+| Incident Resolution Time | Operational effectiveness |
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Large orchestration environments | Centralized governance |
+| Identity sprawl | Centralized IAM |
+| Frequent configuration changes | Version-controlled configuration |
+| Multiple operational teams | Standardized operational procedures |
+| Distributed workloads | Centralized monitoring and logging |
+| Compliance requirements | Continuous documentation and reviews |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Draw the architecture of a container orchestration platform.
+2. Identify the identities interacting with the platform.
+3. Create a governance workflow for platform configuration changes.
+4. Design a centralized monitoring and logging architecture.
+5. Build an operational dashboard displaying container health, resource utilization, deployments, and governance metrics.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on defensive administration, governance, operational monitoring, and platform resilience.
+
+---
+
+# Interview Questions
+
+1. What is container orchestration?
+2. Why is Identity and Access Management important for container platforms?
+3. What is the Principle of Least Privilege?
+4. Why should configuration changes be version controlled?
+5. What information should centralized logging collect?
+6. How does monitoring improve container operations?
+7. What are common categories of container platform risk?
+8. Why should container platforms integrate with incident response?
+9. Which metrics indicate platform health?
+10. Why is continuous improvement important in container operations?
+
+---
+
+# Best Practices
+
+- Apply strong IAM controls throughout the container platform.
+- Enforce least-privilege access for users and services.
+- Centralize monitoring and audit logging.
+- Manage configurations through version control and documented approvals.
+- Continuously assess operational risks.
+- Integrate compliance into everyday platform operations.
+- Review incidents and update operational procedures accordingly.
+- Monitor platform health using meaningful operational metrics.
+
+---
+
+# Common Mistakes
+
+- Granting excessive administrative permissions.
+- Managing configurations outside version control.
+- Maintaining fragmented monitoring and logging systems.
+- Ignoring operational feedback after incidents.
+- Treating compliance as a separate activity.
+- Failing to review platform configurations regularly.
+- Neglecting governance documentation.
+
+---
+
+# Key Takeaways
+
+- Secure container orchestration requires governance, strong IAM, and configuration management.
+- Centralized monitoring and logging improve operational visibility and accountability.
+- Continuous risk management and compliance activities strengthen platform resilience.
+- Incident response and lessons learned should drive continuous improvement.
+- Mature container platforms integrate security, operations, and governance throughout the application lifecycle.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
