@@ -1,4 +1,4 @@
-# 01 - Introduction to APIs (Part 1)
+# 01 - Introduction to APIs 
 
 # Introduction
 
@@ -489,7 +489,7 @@ As organizations adopt microservices, cloud-native architectures, and mobile-fir
 
 ---
 
-# 01 - Introduction to APIs (Part 2)
+# 01 - Introduction to APIs
 
 # Evolution of APIs
 
@@ -1126,4 +1126,549 @@ This demonstrates how APIs enable modular, scalable, and maintainable enterprise
 
 ---
 
-**Next:** **Part 3 – API Internals, Security Risks, Common Attack Surface, Enterprise Security Architecture, and API Security Fundamentals**
+# 01 - Introduction to APIs (Part 3)
+
+# Understanding API Internals
+
+Although APIs appear simple from the outside, every API request passes through multiple internal components before a response is returned.
+
+A single request often traverses authentication services, authorization engines, business logic, caches, databases, logging systems, monitoring agents, and security controls.
+
+Understanding this internal workflow helps security professionals identify where attacks can occur and where defensive controls should be implemented.
+
+---
+
+# Internal API Request Processing
+
+A typical enterprise API request follows this sequence:
+
+```
+                    Client
+                      │
+                      │ HTTPS Request
+                      ▼
+              Load Balancer / CDN
+                      │
+                      ▼
+                Web Application Firewall
+                      │
+                      ▼
+                 API Gateway
+                      │
+          Authentication Service
+                      │
+          Authorization Engine
+                      │
+                Rate Limiter
+                      │
+              Input Validation
+                      │
+               Business Logic
+                      │
+              Cache (Optional)
+                      │
+                  Database
+                      │
+             Audit & Security Logs
+                      │
+                  API Response
+                      │
+                      ▼
+                    Client
+```
+
+Each layer contributes to the security, scalability, and reliability of the API.
+
+---
+
+# API Endpoint
+
+An endpoint is a specific URL where an API exposes a particular function.
+
+Examples:
+
+```
+GET /users
+
+POST /login
+
+GET /orders
+
+POST /payments
+
+DELETE /users/15
+
+PUT /profile
+```
+
+Each endpoint performs one well-defined business operation.
+
+Examples:
+
+| Endpoint | Purpose |
+|----------|---------|
+| /login | Authenticate user |
+| /logout | End user session |
+| /products | Retrieve products |
+| /orders | Manage customer orders |
+| /payments | Process payments |
+| /profile | Manage user profile |
+
+---
+
+# API Resources
+
+In RESTful design, APIs expose **resources** rather than actions.
+
+Examples of resources:
+
+```
+Users
+
+Products
+
+Orders
+
+Invoices
+
+Payments
+
+Customers
+
+Employees
+
+Transactions
+```
+
+Each resource can usually be manipulated using standard HTTP methods.
+
+Example:
+
+```
+GET /users
+
+POST /users
+
+PUT /users/12
+
+DELETE /users/12
+```
+
+---
+
+# Request Lifecycle
+
+Consider the following request.
+
+```
+GET /api/v1/profile
+
+Authorization:
+Bearer eyJhb...
+
+Accept:
+application/json
+```
+
+The server typically performs the following sequence.
+
+```
+Receive Request
+      │
+      ▼
+Validate URL
+      │
+      ▼
+Validate HTTP Method
+      │
+      ▼
+Authenticate User
+      │
+      ▼
+Authorize Access
+      │
+      ▼
+Validate Parameters
+      │
+      ▼
+Execute Business Logic
+      │
+      ▼
+Access Database
+      │
+      ▼
+Generate Response
+      │
+      ▼
+Log Request
+      │
+      ▼
+Return Response
+```
+
+Any weakness in these stages may introduce security vulnerabilities.
+
+---
+
+# API Contracts
+
+An API contract defines how clients and servers communicate.
+
+It specifies:
+
+- Available endpoints
+- Supported methods
+- Parameters
+- Authentication requirements
+- Request format
+- Response format
+- Error codes
+- Version information
+
+Example:
+
+```
+POST /users
+
+Required Fields
+
+name
+email
+password
+
+Returns
+
+201 Created
+```
+
+Well-defined contracts reduce implementation errors and improve interoperability.
+
+---
+
+# API Documentation
+
+Good APIs are accompanied by comprehensive documentation.
+
+Typical documentation includes:
+
+- Endpoint descriptions
+- Parameters
+- Authentication
+- Example requests
+- Example responses
+- Status codes
+- Error handling
+- Rate limits
+- SDK examples
+
+Popular documentation tools:
+
+- OpenAPI Specification
+- Swagger UI
+- Redoc
+- Postman Collections
+
+Poor documentation often leads to implementation mistakes and insecure integrations.
+
+---
+
+# API Versioning
+
+APIs evolve over time.
+
+Changing an API without versioning can break existing applications.
+
+Common versioning strategies:
+
+## URI Versioning
+
+```
+/api/v1/users
+
+/api/v2/users
+```
+
+---
+
+## Header Versioning
+
+```
+API-Version: 2
+```
+
+---
+
+## Query Parameter Versioning
+
+```
+/users?version=2
+```
+
+---
+
+## Content Negotiation
+
+```
+Accept:
+application/vnd.company.v2+json
+```
+
+URI versioning is the most commonly used approach because it is explicit and easy to understand.
+
+---
+
+# API Payloads
+
+The payload is the data exchanged between the client and server.
+
+Example Request
+
+```json
+{
+  "username": "alice",
+  "password": "Password123!"
+}
+```
+
+Example Response
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "expires": 3600
+}
+```
+
+Modern REST APIs primarily use JSON because it is lightweight and easy to parse.
+
+Older enterprise systems frequently use XML.
+
+---
+
+# Why APIs Are Attractive Targets
+
+APIs expose valuable business functionality directly to users and other systems.
+
+Unlike traditional web pages, APIs often provide structured access to sensitive information.
+
+Examples include:
+
+- Customer records
+- Financial transactions
+- Medical information
+- Cloud resources
+- Authentication services
+- Payment processing
+- Internal administration
+- Employee records
+
+If compromised, attackers can directly manipulate business operations.
+
+---
+
+# API Attack Surface
+
+The attack surface includes every publicly or internally accessible API component.
+
+```
+Internet
+    │
+    ▼
+API Gateway
+    │
+ ┌──┴────────────┐
+ ▼               ▼
+Public APIs   Internal APIs
+      │             │
+      ▼             ▼
+ Authentication  Databases
+ Authorization   Business Logic
+ Logging         Monitoring
+```
+
+Attackers look for weaknesses across the entire API ecosystem rather than targeting only a single endpoint.
+
+---
+
+# Common API Security Risks
+
+Some of the most frequently encountered API security risks include:
+
+- Broken Authentication
+- Broken Authorization
+- Excessive Data Exposure
+- Injection Attacks
+- Server-Side Request Forgery (SSRF)
+- SQL Injection
+- Command Injection
+- Mass Assignment
+- Security Misconfiguration
+- Weak Rate Limiting
+- Business Logic Abuse
+- Sensitive Data Exposure
+- Improper Asset Management
+- Credential Stuffing
+- Token Theft
+
+These topics are explored in detail throughout later chapters.
+
+---
+
+# Why Attackers Prefer APIs
+
+APIs are attractive because they:
+
+- Return structured data
+- Are easy to automate
+- Often expose business logic
+- Are consumed by mobile applications
+- Have predictable endpoints
+- May lack proper authorization checks
+- Frequently trust client input
+
+Automation tools can test thousands of API requests in minutes.
+
+---
+
+# Enterprise API Security Architecture
+
+A secure enterprise API ecosystem typically looks like this.
+
+```
+                 Internet
+                     │
+                     ▼
+            DDoS Protection
+                     │
+                     ▼
+               Web Application
+                  Firewall
+                     │
+                     ▼
+                API Gateway
+                     │
+        ┌────────────┴────────────┐
+        ▼                         ▼
+ Authentication Service     Rate Limiter
+        │                         │
+        └────────────┬────────────┘
+                     ▼
+             Authorization Engine
+                     │
+                     ▼
+            Business Services
+                     │
+        ┌────────────┴────────────┐
+        ▼                         ▼
+     Databases               Cache Layer
+        │                         │
+        └────────────┬────────────┘
+                     ▼
+         Logging & Monitoring
+                     │
+                     ▼
+              SIEM Platform
+```
+
+Every layer contributes to reducing the attack surface and improving visibility into malicious activity.
+
+---
+
+# Security Controls Throughout the API Lifecycle
+
+Security should be implemented at every stage of an API's lifecycle.
+
+| Phase | Security Activities |
+|-------|---------------------|
+| Design | Threat modeling, secure architecture |
+| Development | Secure coding, input validation |
+| Testing | SAST, DAST, API pentesting |
+| Deployment | Secure configuration, secrets management |
+| Operations | Monitoring, logging, alerting |
+| Maintenance | Patch management, version updates |
+| Retirement | Secure decommissioning and asset removal |
+
+Security is not a one-time task—it is a continuous process.
+
+---
+
+# Business Impact of Insecure APIs
+
+Poorly secured APIs can lead to severe business consequences.
+
+Examples include:
+
+- Customer data breaches
+- Financial fraud
+- Identity theft
+- Regulatory penalties
+- Operational disruption
+- Loss of customer trust
+- Intellectual property theft
+- Cloud infrastructure compromise
+- Business logic abuse
+- Reputational damage
+
+For many organizations, APIs are among their most valuable digital assets, making their protection a strategic business priority.
+
+---
+
+# Enterprise Case Study
+
+An international retail company exposes APIs for:
+
+- Customer accounts
+- Orders
+- Payments
+- Loyalty rewards
+- Shipping
+- Inventory
+
+An attacker discovers that changing a customer ID in an API request returns another customer's information because authorization is only checked during login.
+
+Result:
+
+- Customer information disclosed
+- Regulatory investigation
+- Incident response activation
+- Emergency API patching
+- Mandatory customer notifications
+- Financial losses
+- Brand damage
+
+This illustrates how a single authorization flaw can escalate into a major security incident.
+
+---
+
+# Best Practices Introduced
+
+Even before exploring advanced API security topics, organizations should follow several foundational practices:
+
+- Expose only necessary endpoints.
+- Validate all client input.
+- Authenticate every request.
+- Enforce authorization for every resource.
+- Encrypt data in transit using HTTPS.
+- Maintain comprehensive logging and auditing.
+- Apply rate limiting to prevent abuse.
+- Use standardized error handling.
+- Keep API documentation up to date.
+- Regularly review and retire unused APIs.
+
+These practices significantly reduce the likelihood of common attacks.
+
+---
+
+# Key Takeaways
+
+- API requests pass through multiple internal security and processing layers before reaching business logic.
+- Endpoints expose specific business functions and collectively form the API attack surface.
+- API contracts and documentation promote secure, consistent integrations.
+- Versioning enables APIs to evolve without disrupting consumers.
+- APIs are attractive targets because they expose structured data and business operations.
+- Enterprise API security requires layered defenses spanning design, development, deployment, and operations.
+- Strong authentication, authorization, validation, logging, and monitoring are fundamental building blocks of secure APIs.
+
+---
+
+**Next:** **Part 4 – Hands-on Examples, API Security Tools, Enterprise Best Practices, Troubleshooting, Interview Questions, Chapter Summary, Review Questions, and References**
