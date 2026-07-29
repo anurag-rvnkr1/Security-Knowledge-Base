@@ -1442,4 +1442,1108 @@ Avoid:
 
 ---
 
-**Next:** WS-Security, SOAP Faults, Security Architecture, REST vs SOAP Comparison, Enterprise Use Cases, Hands-on Labs, Troubleshooting, Interview Questions, and Chapter Summary.
+# WS-Security
+
+One of the biggest strengths of SOAP is its standardized security framework.
+
+Unlike REST, which typically relies on HTTPS, JWT, OAuth 2.0, or API Gateways for security, SOAP includes an extensive specification called **WS-Security**.
+
+WS-Security provides standardized mechanisms for:
+
+- Authentication
+- Authorization
+- Confidentiality
+- Integrity
+- Non-repudiation
+- Secure message exchange
+
+It protects the **SOAP message itself**, not just the transport channel.
+
+---
+
+# What is WS-Security?
+
+WS-Security (Web Services Security) is an extension to SOAP that adds security information to SOAP headers.
+
+Instead of relying solely on HTTPS, security information travels inside the SOAP message.
+
+Architecture
+
+```
+SOAP Message
+
+│
+
+├────────► Security Header
+
+│              │
+
+│              ├── Username Token
+
+│              ├── Digital Signature
+
+│              ├── Encryption
+
+│              └── Timestamp
+
+│
+
+└────────► SOAP Body
+```
+
+This enables end-to-end security across multiple intermediaries.
+
+---
+
+# Why WS-Security?
+
+HTTPS protects data **only while it travels across the network**.
+
+```
+Client
+
+ │
+
+HTTPS
+
+ ▼
+
+Gateway
+
+ │
+
+HTTP
+
+ ▼
+
+Application
+```
+
+If messages pass through intermediaries, encryption may terminate before reaching the final destination.
+
+WS-Security protects the SOAP message itself.
+
+```
+SOAP Message
+
+↓
+
+Encrypted
+
+↓
+
+Gateway
+
+↓
+
+Still Encrypted
+
+↓
+
+SOAP Service
+```
+
+This provides **message-level security**.
+
+---
+
+# WS-Security Components
+
+WS-Security consists of several security mechanisms.
+
+```
+WS-Security
+
+│
+
+├────────► Username Token
+
+├────────► Binary Security Token
+
+├────────► Digital Signature
+
+├────────► XML Encryption
+
+├────────► Timestamp
+
+└────────► Security Token References
+```
+
+Each mechanism addresses different security requirements.
+
+---
+
+# Username Token
+
+Username Tokens provide authentication credentials.
+
+Example
+
+```xml
+<wsse:UsernameToken>
+
+    <wsse:Username>Alice</wsse:Username>
+
+    <wsse:Password>******</wsse:Password>
+
+</wsse:UsernameToken>
+```
+
+Instead of transmitting plain-text passwords, secure implementations typically use password digests.
+
+---
+
+# Binary Security Tokens
+
+Binary Security Tokens carry certificates.
+
+Examples include:
+
+- X.509 Certificates
+- Kerberos Tickets
+- SAML Tokens
+
+Architecture
+
+```
+Client
+
+ │
+
+Certificate
+
+ ▼
+
+SOAP Header
+
+ │
+
+Server Validation
+```
+
+These tokens enable strong identity verification.
+
+---
+
+# XML Digital Signature
+
+Digital signatures provide:
+
+- Integrity
+- Authentication
+- Non-repudiation
+
+Workflow
+
+```
+SOAP Message
+
+ │
+
+Generate Hash
+
+ │
+
+Private Key
+
+ │
+
+Digital Signature
+
+ ▼
+
+Transmit
+```
+
+The receiver verifies the signature using the sender's public key.
+
+---
+
+# Digital Signature Verification
+
+```
+Sender
+
+ │
+
+Private Key
+
+ ▼
+
+Sign Message
+
+ │
+
+SOAP
+
+ ▼
+
+Receiver
+
+ │
+
+Public Key
+
+ ▼
+
+Verify Signature
+```
+
+If the message changes during transit, signature verification fails.
+
+---
+
+# XML Encryption
+
+Encryption protects sensitive message contents.
+
+Example
+
+```
+Customer Data
+
+↓
+
+Encrypt
+
+↓
+
+SOAP Message
+
+↓
+
+Decrypt
+
+↓
+
+Receiver
+```
+
+Unlike HTTPS, XML Encryption allows only specific XML elements to be encrypted.
+
+Example:
+
+- Credit Card Number
+- Account Balance
+- Personal Information
+
+while leaving the remainder of the message readable.
+
+---
+
+# Timestamp
+
+Timestamps help prevent replay attacks.
+
+Example
+
+```xml
+<wsu:Timestamp>
+
+    <Created>
+
+        2026-07-29T10:00:00Z
+
+    </Created>
+
+    <Expires>
+
+        2026-07-29T10:05:00Z
+
+    </Expires>
+
+</wsu:Timestamp>
+```
+
+Expired messages are rejected.
+
+---
+
+# Security Token Reference
+
+Security Token References identify authentication credentials.
+
+Example
+
+```
+Certificate
+
+↓
+
+Security Token Reference
+
+↓
+
+SOAP Header
+```
+
+This avoids repeatedly transmitting certificates.
+
+---
+
+# WS-Security Workflow
+
+```
+Client
+
+ │
+
+Create SOAP Message
+
+ │
+
+Add Timestamp
+
+ │
+
+Add Username Token
+
+ │
+
+Sign XML
+
+ │
+
+Encrypt XML
+
+ ▼
+
+Transmit
+
+ ▼
+
+SOAP Server
+
+ │
+
+Decrypt
+
+ │
+
+Verify Signature
+
+ │
+
+Validate Token
+
+ │
+
+Process Request
+
+ ▼
+
+Response
+```
+
+This layered workflow ensures confidentiality, integrity, and authenticity.
+
+---
+
+# Message-Level Security
+
+Unlike HTTPS, WS-Security protects individual message elements.
+
+```
+SOAP Envelope
+
+│
+
+├────────► Header
+
+│
+
+├────────► Encrypted Customer Data
+
+│
+
+├────────► Signed Payment Details
+
+│
+
+└────────► Timestamp
+```
+
+Even if the transport changes, protected elements remain secure.
+
+---
+
+# Transport-Level vs Message-Level Security
+
+| Transport Security | Message Security |
+|--------------------|------------------|
+| HTTPS | WS-Security |
+| Protects connection | Protects message |
+| Session-based | End-to-end |
+| Easier implementation | More complex |
+| Lower overhead | Higher processing cost |
+| Widely used | Enterprise-focused |
+
+Many enterprise SOAP systems use **both** HTTPS and WS-Security together.
+
+---
+
+# SOAP Fault
+
+SOAP provides standardized error handling using **SOAP Faults**.
+
+Structure
+
+```
+SOAP Envelope
+
+│
+
+└────────► Fault
+```
+
+Faults communicate errors in a structured format.
+
+---
+
+# SOAP Fault Components
+
+```
+Fault
+
+│
+
+├────────► Code
+
+├────────► Reason
+
+├────────► Node
+
+├────────► Role
+
+└────────► Detail
+```
+
+Each element provides information about the error.
+
+---
+
+# SOAP Fault Example
+
+```xml
+<soap:Fault>
+
+    <Code>
+
+        soap:Sender
+
+    </Code>
+
+    <Reason>
+
+        Invalid Customer ID
+
+    </Reason>
+
+</soap:Fault>
+```
+
+Clients can process these standardized responses programmatically.
+
+---
+
+# Common SOAP Fault Codes
+
+| Fault Code | Meaning |
+|------------|----------|
+| VersionMismatch | Unsupported SOAP version |
+| MustUnderstand | Required header missing |
+| Sender | Client request error |
+| Receiver | Server processing error |
+| DataEncodingUnknown | Unsupported encoding |
+
+These standardized fault codes improve interoperability.
+
+---
+
+# SOAP Security Threats
+
+Although SOAP provides strong security capabilities, it is still vulnerable to attacks when improperly configured.
+
+Common threats include:
+
+- XML Injection
+- XXE (XML External Entity)
+- SOAP Injection
+- Replay Attacks
+- XML Signature Wrapping
+- XML Bomb (Billion Laughs)
+- Weak Authentication
+- Broken Authorization
+- Information Disclosure
+- Insecure WSDL Exposure
+
+Proper configuration and validation are essential.
+
+---
+
+# XML External Entity (XXE)
+
+One of the most common SOAP vulnerabilities.
+
+```
+Attacker
+
+ │
+
+Malicious XML
+
+ ▼
+
+SOAP Parser
+
+ │
+
+Read Local File
+
+ ▼
+
+Sensitive Data
+```
+
+Mitigations:
+
+- Disable external entities
+- Disable DTD processing
+- Use secure XML parsers
+- Keep XML libraries updated
+
+---
+
+# XML Signature Wrapping
+
+Attackers manipulate XML structure while preserving valid signatures.
+
+Example
+
+```
+Original Signed Element
+
+↓
+
+Move Signed Element
+
+↓
+
+Insert Malicious Element
+
+↓
+
+Application Processes Wrong Data
+```
+
+Mitigation:
+
+- Validate XML structure
+- Verify signed elements
+- Use secure XML libraries
+
+---
+
+# SOAP Injection
+
+SOAP Injection is similar to other injection attacks.
+
+Example
+
+```
+Malicious XML
+
+↓
+
+SOAP Parser
+
+↓
+
+Business Logic
+
+↓
+
+Unexpected Execution
+```
+
+Mitigations:
+
+- Input validation
+- Schema validation
+- Parameterized database queries
+- Output encoding
+
+---
+
+# Enterprise SOAP Security Architecture
+
+```
+                 Internet
+
+                     │
+
+                     ▼
+
+             Web Application Firewall
+
+                     │
+
+                     ▼
+
+                 API Gateway
+
+                     │
+
+                     ▼
+
+              HTTPS + TLS 1.3
+
+                     │
+
+                     ▼
+
+               SOAP Service
+
+                     │
+
+                     ▼
+
+               WS-Security
+
+         ┌──────────┼──────────┐
+
+         ▼          ▼          ▼
+
+ Authentication Encryption Signature
+
+                     │
+
+                     ▼
+
+              Business Logic
+
+                     │
+
+                     ▼
+
+                 Database
+
+                     │
+
+                     ▼
+
+            Logging & Monitoring
+
+                     │
+
+                     ▼
+
+                 SIEM / SOC
+```
+
+This layered architecture combines transport security, message security, and operational monitoring.
+
+---
+
+# REST vs SOAP
+
+| Feature | REST | SOAP |
+|----------|------|------|
+| Type | Architectural Style | Protocol |
+| Data Format | JSON, XML, YAML, etc. | XML Only |
+| Performance | Lightweight | Heavier |
+| Standardization | Flexible | Highly Standardized |
+| WSDL | Optional | Required |
+| Security | HTTPS, JWT, OAuth | WS-Security |
+| Message Size | Small | Large |
+| Caching | Native HTTP Support | Limited |
+| Learning Curve | Easier | Steeper |
+| Enterprise Integration | Excellent | Excellent |
+| Mobile Friendly | Yes | Less Suitable |
+| Formal Contracts | Optional | Built-in |
+
+---
+
+# When to Choose SOAP
+
+SOAP is well suited for:
+
+- Banking systems
+- Insurance platforms
+- Government services
+- Healthcare integrations
+- Enterprise ERP systems
+- B2B integrations
+- Regulatory environments
+- Mission-critical transactions
+
+Choose SOAP when:
+
+- Strong contracts are required
+- Advanced security is mandatory
+- Reliable messaging is critical
+- Formal standards are required
+
+---
+
+# Enterprise Case Study
+
+A multinational insurance company integrates policy management systems across multiple countries.
+
+Architecture
+
+```
+Insurance Portal
+
+       │
+
+       ▼
+
+API Gateway
+
+       │
+
+       ▼
+
+SOAP Service
+
+       │
+
+       ▼
+
+WS-Security
+
+       │
+
+ ┌─────┼────────────┐
+
+ ▼     ▼            ▼
+
+Signature Encryption Timestamp
+
+       │
+
+       ▼
+
+Policy Engine
+
+       │
+
+       ▼
+
+Claims Database
+
+       │
+
+       ▼
+
+Enterprise SIEM
+```
+
+Security Features
+
+- HTTPS
+- Mutual TLS
+- X.509 Certificates
+- XML Digital Signatures
+- XML Encryption
+- Timestamp Validation
+- Centralized Logging
+- Continuous Monitoring
+
+This architecture enables secure, compliant communication between internal systems and external partners.
+
+---
+
+# Hands-on Lab 1 – Inspect a SOAP Message
+
+Objective
+
+Understand the structure of a SOAP request.
+
+Steps
+
+1. Capture a SOAP request using a proxy tool such as Burp Suite.
+2. Identify:
+   - Envelope
+   - Header
+   - Body
+   - Namespaces
+3. Determine whether WS-Security headers are present.
+
+Learning Outcomes
+
+- SOAP message anatomy
+- XML parsing
+- Security header identification
+
+---
+
+# Hands-on Lab 2 – Analyze a WSDL
+
+Objective
+
+Understand how SOAP services are documented.
+
+Steps
+
+1. Obtain a publicly available WSDL.
+2. Identify:
+   - Operations
+   - Messages
+   - Bindings
+   - Service endpoint
+3. Map one operation to its request and response structure.
+
+Learning Outcomes
+
+- WSDL interpretation
+- Service contracts
+- SOAP operation discovery
+
+---
+
+# Hands-on Lab 3 – Security Assessment
+
+Objective
+
+Identify common SOAP security controls.
+
+Verify whether the service:
+
+- Uses HTTPS
+- Implements WS-Security
+- Signs messages
+- Encrypts sensitive elements
+- Returns standardized SOAP Faults
+- Protects against XXE
+
+Document observations and recommend improvements.
+
+---
+
+# Common SOAP Security Mistakes
+
+Avoid:
+
+- Allowing XML External Entities (XXE)
+- Missing schema validation
+- Weak certificate management
+- Unsigned messages
+- Unencrypted sensitive data
+- Exposing internal stack traces
+- Outdated TLS versions
+- Poor WSDL access controls
+- Weak authentication
+- Missing replay protection
+
+---
+
+# Troubleshooting
+
+## Invalid SOAP Envelope
+
+Possible causes:
+
+- Malformed XML
+- Missing namespace
+- Incorrect SOAP version
+
+---
+
+## Authentication Failure
+
+Possible causes:
+
+- Invalid Username Token
+- Expired certificate
+- Incorrect credentials
+- Missing WS-Security header
+
+---
+
+## Signature Validation Failure
+
+Possible causes:
+
+- Modified message
+- Incorrect certificate
+- Expired signing key
+- Canonicalization mismatch
+
+---
+
+## XML Parsing Errors
+
+Possible causes:
+
+- Invalid XML
+- Schema validation failure
+- Unsupported encoding
+- Namespace mismatch
+
+---
+
+## Service Unavailable
+
+Possible causes:
+
+- Endpoint unavailable
+- Backend application failure
+- Network connectivity issue
+- Incorrect WSDL endpoint
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What is SOAP?
+2. How does SOAP differ from REST?
+3. What is a SOAP Envelope?
+4. What is WSDL?
+5. What is WS-Security?
+6. Why does SOAP use XML?
+7. What is a SOAP Fault?
+8. What is the purpose of XML namespaces?
+9. What is the difference between transport-level and message-level security?
+10. Why is Document/Literal preferred over RPC style?
+
+---
+
+## Intermediate
+
+11. Explain the components of a WSDL document.
+12. How does XML Digital Signature work?
+13. What is XML Encryption?
+14. Why are timestamps important in WS-Security?
+15. Explain XML Schema validation.
+16. What is XML Signature Wrapping?
+17. How would you secure a SOAP web service?
+18. Why is SOAP still used in enterprise environments?
+19. Compare SOAP Faults with HTTP status codes.
+20. What security controls would you implement for a public SOAP service?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+A banking SOAP service begins rejecting valid requests with signature verification errors.
+
+- Which parts of the WS-Security implementation would you investigate first?
+- How would you determine whether the issue is related to certificates, canonicalization, or message modification?
+
+---
+
+**Scenario 2**
+
+During a security assessment, you discover that the SOAP parser accepts external entities.
+
+- What are the associated risks?
+- Which parser configurations would you change to mitigate the issue?
+
+---
+
+**Scenario 3**
+
+A legacy enterprise application must integrate securely with an external partner using SOAP.
+
+- Which WS-Security features would you enable?
+- How would you protect both the transport channel and the SOAP message itself?
+
+---
+
+# Chapter Summary
+
+In this chapter, we explored SOAP as a protocol for enterprise web services.
+
+We covered:
+
+- SOAP fundamentals
+- XML namespaces
+- SOAP message structure
+- WSDL
+- SOAP operations
+- Document and RPC styles
+- WS-Security
+- XML Digital Signatures
+- XML Encryption
+- SOAP Faults
+- Enterprise security architecture
+- SOAP security threats
+- REST vs SOAP comparison
+- Hands-on exercises
+- Troubleshooting
+- Interview preparation
+
+Although REST dominates modern public APIs, SOAP remains an essential technology in many enterprise environments where security, reliability, formal contracts, and interoperability are critical.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- What is SOAP and how does it differ from REST?
+- How are SOAP messages structured?
+- What role do XML namespaces and WSDL play?
+- How does WS-Security protect SOAP messages?
+- What is the difference between transport-level and message-level security?
+- How do SOAP Faults communicate errors?
+- What are the most common SOAP security threats?
+- How would you secure an enterprise SOAP service?
+- When should SOAP be chosen instead of REST?
+- How would you troubleshoot common SOAP issues?
+
+If you can confidently explain these topics, you are ready to continue to GraphQL and understand how its architecture, flexibility, and security model differ from both REST and SOAP.
+
+---
+
+# References
+
+## Standards
+
+- SOAP 1.2 Specification (W3C)
+- Web Services Description Language (WSDL) 2.0
+- WS-Security 1.1
+- XML Signature Syntax and Processing
+- XML Encryption Syntax and Processing
+- XML Schema Definition (XSD)
+
+## Security Standards
+
+- OWASP API Security Top 10
+- OWASP Web Security Testing Guide (WSTG)
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+- NIST SP 800-204
+
+## Further Reading
+
+- W3C SOAP Specifications
+- W3C XML Namespaces
+- W3C XML Schema
+- WS-I Basic Profile
+- OASIS WS-Security Specifications
+
+---
+
+# What's Next?
+
+➡️ **Chapter 05 – GraphQL Security**
+
+In the next chapter, we will explore:
+
+- GraphQL architecture
+- Queries, mutations, and subscriptions
+- Schema and type system
+- Resolvers
+- Introspection
+- Authentication and authorization
+- GraphQL-specific attack vectors
+- Security best practices
+- Enterprise deployments
+- Hands-on labs and interview questions
