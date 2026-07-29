@@ -854,4 +854,1131 @@ Each method is selected according to the intended resource operation.
 
 ---
 
-**Next:** HTTP Method Security, Method Override Attacks, Unsafe Method Exposure, CORS Interactions, Detection Engineering, SIEM Integration, Hands-on Labs, and Interview Questions.
+# HTTP Method Security
+
+HTTP methods determine **what action a client is requesting**, but they do **not** provide security by themselves.
+
+Every HTTP method must be protected using appropriate:
+
+- Authentication
+- Authorization
+- Input validation
+- Rate limiting
+- Logging
+- Monitoring
+
+Security controls should be applied consistently regardless of the HTTP method.
+
+---
+
+# Security Model
+
+```
+               Client
+
+                  │
+
+                  ▼
+
+        Authentication Layer
+
+                  │
+
+                  ▼
+
+        Authorization Layer
+
+                  │
+
+                  ▼
+
+        HTTP Method Validation
+
+                  │
+
+                  ▼
+
+         Input Validation
+
+                  │
+
+                  ▼
+
+        Business Logic Layer
+
+                  │
+
+                  ▼
+
+            Database
+```
+
+Each layer protects against different attack vectors.
+
+---
+
+# Method-Based Authorization
+
+Different HTTP methods often require different permissions.
+
+Example
+
+```
+Anonymous User
+
+↓
+
+GET /products
+
+↓
+
+Allowed
+```
+
+```
+Authenticated User
+
+↓
+
+POST /orders
+
+↓
+
+Allowed
+```
+
+```
+Administrator
+
+↓
+
+DELETE /users
+
+↓
+
+Allowed
+```
+
+Authorization decisions should consider:
+
+- User identity
+- Role
+- Resource ownership
+- Business rules
+
+---
+
+# Principle of Least Privilege
+
+Users should receive only the permissions necessary to perform their tasks.
+
+Example
+
+```
+Customer
+
+↓
+
+GET /orders
+
+↓
+
+Own Orders Only
+```
+
+```
+Support Engineer
+
+↓
+
+GET /customers
+
+↓
+
+Assigned Customers
+```
+
+```
+Administrator
+
+↓
+
+DELETE /users
+
+↓
+
+Authorized
+```
+
+Limiting permissions reduces the impact of compromised accounts.
+
+---
+
+# Broken Function Level Authorization (BFLA)
+
+A common API vulnerability occurs when sensitive HTTP methods are accessible to unauthorized users.
+
+Example
+
+```
+DELETE /api/users/100
+```
+
+If every authenticated user can invoke this endpoint,
+
+```
+Authenticated User
+
+↓
+
+DELETE
+
+↓
+
+Administrative Action
+```
+
+This represents Broken Function Level Authorization.
+
+Mitigation
+
+- Role verification
+- Permission checks
+- Server-side authorization
+- Audit logging
+
+---
+
+# Broken Object Level Authorization (BOLA)
+
+Object ownership must be verified.
+
+Example
+
+```
+GET /orders/100
+```
+
+Attacker changes
+
+```
+100
+
+↓
+
+101
+```
+
+If ownership is not validated,
+
+```
+Customer B Order
+
+↓
+
+Information Disclosure
+```
+
+Every object request must validate ownership before returning data.
+
+---
+
+# GET Method Security
+
+Although GET is considered safe, it can expose sensitive information.
+
+Potential risks
+
+- Sensitive query parameters
+- Information disclosure
+- Insecure Direct Object References (IDOR)
+- Excessive data exposure
+- Enumeration
+
+Example
+
+```
+GET /users?email=user@example.com
+```
+
+Sensitive identifiers should be handled carefully.
+
+---
+
+# Secure GET Practices
+
+Recommendations
+
+- Validate query parameters
+- Require authentication where appropriate
+- Enforce authorization
+- Limit returned fields
+- Implement pagination
+- Apply rate limiting
+- Avoid exposing internal identifiers
+
+---
+
+# POST Method Security
+
+POST commonly performs operations that modify server state.
+
+Examples
+
+- User registration
+- Login
+- Payment processing
+- File uploads
+- Order creation
+
+Security controls
+
+- CSRF protection (where applicable)
+- Authentication
+- Authorization
+- Input validation
+- Business logic validation
+- Rate limiting
+
+---
+
+# PUT Security
+
+PUT replaces entire resources.
+
+Potential risks
+
+- Unauthorized modification
+- Mass assignment
+- Missing validation
+- Resource replacement
+
+Example
+
+```
+PUT /users/10
+```
+
+Ensure clients cannot overwrite protected attributes.
+
+---
+
+# PATCH Security
+
+PATCH modifies selected fields.
+
+Potential risks
+
+```
+PATCH
+
+↓
+
+Unexpected Fields
+
+↓
+
+Privilege Escalation
+```
+
+Example
+
+```json
+{
+    "role":"Administrator"
+}
+```
+
+Servers should explicitly allow only approved fields to be modified.
+
+---
+
+# DELETE Security
+
+DELETE operations have significant security impact.
+
+Requirements
+
+- Strong authentication
+- Strong authorization
+- Ownership verification
+- Audit logging
+- Soft-delete where appropriate
+- Multi-factor approval for sensitive operations
+
+Example
+
+```
+DELETE /payments/100
+```
+
+Deletion requests should be carefully controlled.
+
+---
+
+# HEAD Security
+
+Although HEAD returns no body, it can still disclose information.
+
+Potential exposure
+
+- File existence
+- Content length
+- Server type
+- Resource availability
+
+Protect sensitive resources with the same authentication and authorization as GET.
+
+---
+
+# OPTIONS Security
+
+OPTIONS reveals supported HTTP methods.
+
+Example
+
+```
+Allow:
+
+GET
+
+POST
+
+PUT
+
+DELETE
+```
+
+Attackers may use this information for reconnaissance.
+
+Recommendations
+
+- Return only supported methods
+- Avoid exposing unnecessary functionality
+- Authenticate sensitive endpoints when appropriate
+
+---
+
+# TRACE Security
+
+TRACE echoes the received request.
+
+Potential risks
+
+- Information disclosure
+- Cross-Site Tracing (XST)
+- Header exposure
+
+Most production servers disable TRACE.
+
+Example
+
+```
+TRACE
+
+↓
+
+Echo Authorization Header
+
+↓
+
+Information Leakage
+```
+
+---
+
+# CONNECT Security
+
+CONNECT establishes proxy tunnels.
+
+Potential risks
+
+- Proxy abuse
+- Unauthorized tunneling
+- Bypass of security controls
+
+Recommendations
+
+- Restrict CONNECT
+- Authenticate proxy users
+- Monitor unusual tunnel creation
+
+---
+
+# HTTP Method Enumeration
+
+Attackers often identify supported methods.
+
+Example
+
+```
+OPTIONS /users
+```
+
+Response
+
+```
+GET
+
+POST
+
+PUT
+
+DELETE
+```
+
+Enumeration helps attackers understand the application's capabilities.
+
+---
+
+# Method Fuzzing
+
+Security assessments frequently test unexpected methods.
+
+Examples
+
+```
+MOVE
+
+COPY
+
+SEARCH
+
+LINK
+
+UNLINK
+
+PROPFIND
+
+MKCOL
+```
+
+Applications should reject unsupported methods.
+
+Expected response
+
+```
+405 Method Not Allowed
+```
+
+---
+
+# HTTP Method Override
+
+Some applications support overriding HTTP methods.
+
+Example
+
+```
+POST
+
+↓
+
+X-HTTP-Method-Override: DELETE
+```
+
+Result
+
+```
+DELETE Executed
+```
+
+If not properly controlled, attackers may bypass filtering or firewall rules.
+
+---
+
+# Method Override Headers
+
+Common override mechanisms
+
+```
+X-HTTP-Method-Override
+
+X-Method-Override
+
+_method
+```
+
+Servers should only support method overrides when absolutely necessary.
+
+---
+
+# Security Risks of Method Override
+
+Potential attacks
+
+- Firewall bypass
+- Proxy bypass
+- Authorization bypass
+- Logging inconsistencies
+- Unexpected request processing
+
+Mitigations
+
+- Disable unnecessary overrides
+- Validate override headers
+- Log effective HTTP methods
+- Apply authorization after method resolution
+
+---
+
+# Cross-Origin Resource Sharing (CORS)
+
+CORS controls which origins may invoke HTTP methods.
+
+Example
+
+```
+Origin A
+
+↓
+
+GET
+
+↓
+
+Allowed
+```
+
+```
+Origin B
+
+↓
+
+DELETE
+
+↓
+
+Blocked
+```
+
+Unsafe methods typically require additional browser preflight checks.
+
+---
+
+# Preflight Requests
+
+Browsers send an OPTIONS request before certain cross-origin requests.
+
+```
+Browser
+
+ │
+
+OPTIONS
+
+ ▼
+
+Server
+
+ │
+
+Allowed Methods
+
+ ▼
+
+Browser
+
+ │
+
+POST
+
+ ▼
+
+Server
+```
+
+Servers should respond with appropriate CORS headers.
+
+---
+
+# Idempotency and Security
+
+Idempotent methods reduce unintended side effects.
+
+Example
+
+```
+DELETE
+
+↓
+
+Retry
+
+↓
+
+No Additional Deletion
+```
+
+POST operations often require additional controls such as:
+
+- Idempotency keys
+- Duplicate request detection
+- Transaction identifiers
+
+---
+
+# Rate Limiting by HTTP Method
+
+Different methods often require different rate limits.
+
+Example
+
+| Method | Example Limit |
+|---------|---------------|
+| GET | Higher |
+| POST | Moderate |
+| PUT | Moderate |
+| PATCH | Moderate |
+| DELETE | Lower |
+
+Destructive operations generally require stricter controls.
+
+---
+
+# Logging Requirements
+
+Log
+
+- HTTP method
+- URI
+- Status code
+- User identity
+- Source IP
+- Request size
+- Response size
+- Execution time
+- Authentication status
+
+Example
+
+```
+POST
+
+↓
+
+/orders
+
+↓
+
+201 Created
+
+↓
+
+User: 1200
+```
+
+Comprehensive logging supports investigations and compliance.
+
+---
+
+# Detection Engineering
+
+Recommended detections
+
+| Detection | Indicator |
+|-----------|-----------|
+| DELETE Spike | Sudden increase in DELETE requests |
+| Failed Authorization | Multiple 401 or 403 responses |
+| Method Enumeration | Repeated OPTIONS requests |
+| TRACE Attempts | TRACE requests observed |
+| Unsupported Methods | Multiple 405 responses |
+| Method Override Abuse | Frequent override headers |
+| Enumeration | Sequential GET requests against object identifiers |
+| High-Risk Operations | Multiple PATCH or DELETE requests in short periods |
+
+Detection rules should be tuned according to expected application behavior.
+
+---
+
+# SIEM Integration
+
+Recommended telemetry
+
+```
+Access Logs
+
+       │
+
+Authentication Logs
+
+       │
+
+Authorization Logs
+
+       │
+
+API Gateway Logs
+
+       │
+
+Application Logs
+
+       ▼
+
+Enterprise SIEM
+
+       │
+
+Correlation Rules
+
+       ▼
+
+SOC Alerts
+```
+
+Example correlation rules
+
+- Multiple DELETE requests across different resources
+- Enumeration followed by successful access
+- Repeated method override attempts
+- Large increase in OPTIONS requests
+- Unauthorized PATCH attempts
+- TRACE requests against production systems
+
+---
+
+# Enterprise Security Architecture
+
+```
+                  Internet
+
+                      │
+
+                      ▼
+
+              Web Application Firewall
+
+                      │
+
+                      ▼
+
+                 API Gateway
+
+                      │
+
+                      ▼
+
+            Authentication Service
+
+                      │
+
+                      ▼
+
+           Authorization Engine
+
+                      │
+
+                      ▼
+
+             HTTP Method Validation
+
+                      │
+
+                      ▼
+
+             Application Services
+
+                      │
+
+                      ▼
+
+                 Database Layer
+
+                      │
+
+                      ▼
+
+           Logging & Monitoring
+
+                      │
+
+                      ▼
+
+                 SIEM / SOC
+```
+
+Each request should traverse every security control before reaching application logic.
+
+---
+
+# Hands-on Lab 1 – HTTP Method Enumeration
+
+**Objective**
+
+Identify which HTTP methods are supported by an authorized application.
+
+**Steps**
+
+1. Review API documentation or use an authorized testing environment.
+2. Send an `OPTIONS` request to selected endpoints.
+3. Record the methods returned in the `Allow` header.
+4. Compare supported methods with expected functionality.
+
+**Learning Outcomes**
+
+- HTTP method discovery
+- API documentation validation
+- Endpoint analysis
+
+---
+
+# Hands-on Lab 2 – Authorization Verification
+
+**Objective**
+
+Verify authorization controls for different HTTP methods.
+
+**Steps**
+
+1. Authenticate with a low-privilege account.
+2. Attempt permitted read operations.
+3. Verify that privileged methods (such as `DELETE`) are rejected.
+4. Document authorization behavior and ownership enforcement.
+
+**Learning Outcomes**
+
+- Method-level authorization
+- Least privilege
+- Ownership validation
+
+---
+
+# Hands-on Lab 3 – Method Override Review
+
+**Objective**
+
+Determine whether HTTP method override functionality is enabled.
+
+**Steps**
+
+1. Review application documentation or configuration.
+2. Identify whether override headers or parameters are supported.
+3. Confirm that authorization and logging remain consistent when overrides are used.
+4. Record findings and recommendations.
+
+**Learning Outcomes**
+
+- Method override understanding
+- Authorization validation
+- Logging verification
+
+---
+
+# Common Security Mistakes
+
+Avoid:
+
+- Missing authorization for DELETE
+- Exposing sensitive data through GET
+- Accepting unsupported HTTP methods
+- Allowing unrestricted method overrides
+- Returning verbose error messages
+- Missing audit logging
+- Weak rate limiting
+- Ignoring object ownership
+- Excessive data exposure
+- Missing input validation
+
+---
+
+# Troubleshooting
+
+## 405 Method Not Allowed
+
+Possible causes
+
+- Unsupported method
+- Incorrect endpoint
+- Proxy restrictions
+- API configuration
+
+---
+
+## 401 Unauthorized
+
+Possible causes
+
+- Missing credentials
+- Invalid token
+- Expired session
+- Authentication failure
+
+---
+
+## 403 Forbidden
+
+Possible causes
+
+- Insufficient permissions
+- Ownership validation
+- Role restrictions
+- Policy enforcement
+
+---
+
+## Unexpected DELETE Success
+
+Possible causes
+
+- Missing authorization
+- Broken access control
+- Incorrect policy configuration
+- Privilege escalation vulnerability
+
+---
+
+## CORS Preflight Failure
+
+Possible causes
+
+- Missing `Access-Control-Allow-Methods`
+- Incorrect origin configuration
+- Unsupported headers
+- Proxy misconfiguration
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What is an HTTP method?
+2. What is the difference between GET and POST?
+3. What makes a method safe?
+4. What makes a method idempotent?
+5. When should PUT be used instead of PATCH?
+6. Why is DELETE considered high risk?
+7. What is the purpose of the OPTIONS method?
+8. Why is TRACE commonly disabled?
+9. What is an HTTP preflight request?
+10. What is HTTP method override?
+
+---
+
+## Intermediate
+
+11. How would you secure DELETE endpoints?
+12. Explain Broken Function Level Authorization.
+13. How would you prevent HTTP method override abuse?
+14. Why should GET requests avoid sensitive query parameters?
+15. How would you detect HTTP method enumeration?
+16. What events should be forwarded to a SIEM?
+17. How do CORS and HTTP methods interact?
+18. Why are PATCH requests susceptible to privilege escalation?
+19. How would you rate-limit different HTTP methods?
+20. What logging fields are essential for HTTP method monitoring?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+A production API suddenly experiences a significant increase in `DELETE` requests.
+
+- Which logs and metrics would you review first?
+- How would you determine whether the activity is legitimate or malicious?
+- Which immediate containment measures could reduce risk?
+
+---
+
+**Scenario 2**
+
+A penetration test reveals that an application accepts `X-HTTP-Method-Override: DELETE` even though only `POST` is expected.
+
+- What risks does this introduce?
+- How would you remediate the issue while preserving required functionality?
+
+---
+
+**Scenario 3**
+
+A customer reports receiving another user's data after modifying an identifier in a `GET` request.
+
+- Which access control weakness does this indicate?
+- How would you verify and remediate the vulnerability?
+
+---
+
+# Chapter Summary
+
+In this chapter, we explored the security implications of HTTP methods and their role in secure API design.
+
+We covered:
+
+- HTTP method semantics
+- Safe and idempotent methods
+- Method-based authorization
+- BOLA and BFLA
+- Method override attacks
+- CORS interactions
+- Rate limiting
+- Logging
+- Detection engineering
+- SIEM integration
+- Hands-on exercises
+- Troubleshooting
+- Interview preparation
+
+Proper implementation of HTTP methods improves API predictability, strengthens security controls, and supports effective monitoring and incident response.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- What distinguishes safe and idempotent methods?
+- How should authorization differ across HTTP methods?
+- Why are DELETE and PATCH operations considered higher risk?
+- What is HTTP method override, and why can it be dangerous?
+- How should applications respond to unsupported methods?
+- Which HTTP method patterns should be monitored in a SIEM?
+- How would you investigate suspicious method usage in production?
+
+If you can confidently answer these questions, you are ready to continue with **Chapter 08 – HTTP Headers**, where you'll explore request and response headers, security-related headers, caching directives, content negotiation, and header-based attacks.
+
+---
+
+# References
+
+## Standards
+
+- RFC 9110 – HTTP Semantics
+- RFC 9112 – HTTP/1.1
+- RFC 9113 – HTTP/2
+- RFC 9114 – HTTP/3
+
+## Security Standards
+
+- OWASP API Security Top 10
+- OWASP ASVS
+- OWASP Web Security Testing Guide (WSTG)
+- NIST SP 800-53
+- NIST Cybersecurity Framework (CSF)
+
+## Further Reading
+
+- HTTPWG Specifications
+- Mozilla HTTP Documentation
+- OWASP Cheat Sheets
+
+---
+
+# What's Next?
+
+➡️ **Chapter 08 – HTTP Headers**
+
+In the next chapter, we will explore:
+
+- Request headers
+- Response headers
+- Security headers
+- Authentication headers
+- Caching headers
+- Content negotiation
+- Header injection
+- Header-based attacks
+- Detection engineering
+- Enterprise best practices
