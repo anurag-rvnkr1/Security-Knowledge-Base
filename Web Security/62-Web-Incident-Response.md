@@ -637,6 +637,783 @@ Benefits
 - Clear communication and documentation improve operational effectiveness.
 - Continuous improvement strengthens future incident readiness.
 
+# 62-Web-Incident-Response.md
+
+# Part 2 — Incident Analysis, Containment, Evidence Preservation, Eradication, Recovery, and Enterprise Coordination
+
+> **"An effective incident response program relies on structured analysis, coordinated containment, evidence preservation, systematic recovery, and continuous communication to minimize business disruption."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Incident Analysis
+- Incident Validation
+- Impact Assessment
+- Evidence Preservation
+- Containment Strategies
+- Eradication
+- Recovery
+- Stakeholder Communication
+- Enterprise Coordination
+- Operational Documentation
+
+---
+
+# Incident Analysis
+
+Incident analysis determines the scope, impact, and characteristics of a confirmed incident.
+
+```
+Security Incident
+
+↓
+
+Information Collection
+
+↓
+
+Analysis
+
+↓
+
+Impact Assessment
+
+↓
+
+Response Planning
+```
+
+Analysis should follow documented procedures to ensure consistency and accuracy.
+
+---
+
+# Analysis Objectives
+
+```
+Incident Analysis
+
+│
+
+├── Validate Incident
+
+├── Identify Scope
+
+├── Assess Impact
+
+├── Determine Priority
+
+├── Identify Affected Systems
+
+├── Support Decision Making
+
+├── Document Findings
+
+└── Enable Recovery
+```
+
+---
+
+# Information Collection
+
+Collecting relevant information supports informed decision-making.
+
+```
+Applications
+
+↓
+
+Logs
+
+↓
+
+Monitoring Data
+
+↓
+
+System Information
+
+↓
+
+Incident Analysis
+```
+
+Information should be collected systematically while maintaining integrity.
+
+---
+
+# Sources of Information
+
+```
+Information Sources
+
+│
+
+├── Application Logs
+
+├── Audit Logs
+
+├── Monitoring Dashboards
+
+├── Infrastructure Metrics
+
+├── Configuration Records
+
+├── User Reports
+
+├── Operational Documentation
+
+└── Asset Inventory
+```
+
+Using multiple information sources improves the quality of the investigation.
+
+---
+
+# Incident Validation
+
+Not every alert represents a confirmed incident.
+
+```
+Alert
+
+↓
+
+Verification
+
+↓
+
+Evidence Review
+
+↓
+
+Business Impact
+
+↓
+
+Confirmed Incident
+```
+
+Validation prevents unnecessary escalation and ensures appropriate resource allocation.
+
+---
+
+# Scope Assessment
+
+Understanding the scope helps determine response priorities.
+
+```
+Incident Scope
+
+│
+
+├── Applications
+
+├── Servers
+
+├── Databases
+
+├── APIs
+
+├── Users
+
+├── Business Services
+
+├── Cloud Resources
+
+└── Supporting Infrastructure
+```
+
+The scope should be updated as new information becomes available.
+
+---
+
+# Business Impact Assessment
+
+Business impact assessment evaluates how the incident affects organizational operations.
+
+```
+Incident
+
+↓
+
+Business Analysis
+
+↓
+
+Operational Impact
+
+↓
+
+Priority
+
+↓
+
+Response Planning
+```
+
+Impact assessments should involve technical and business stakeholders.
+
+---
+
+# Impact Categories
+
+```
+Business Impact
+
+│
+
+├── Service Availability
+
+├── Customer Experience
+
+├── Business Operations
+
+├── Financial Operations
+
+├── Regulatory Obligations
+
+├── Reputation
+
+├── Internal Productivity
+
+└── Operational Continuity
+```
+
+These categories help prioritize recovery efforts.
+
+---
+
+# Evidence Preservation
+
+Evidence preservation ensures that relevant information remains accurate and available for analysis, auditing, and lessons learned.
+
+```
+Incident
+
+↓
+
+Evidence Collection
+
+↓
+
+Documentation
+
+↓
+
+Secure Storage
+
+↓
+
+Review
+```
+
+Evidence handling procedures should align with organizational policies.
+
+---
+
+# Types of Evidence
+
+```
+Evidence
+
+│
+
+├── Logs
+
+├── Audit Records
+
+├── Monitoring Data
+
+├── Configuration Records
+
+├── System Information
+
+├── Screenshots
+
+├── Timeline Notes
+
+└── Incident Documentation
+```
+
+Evidence should be organized and retained according to documented procedures.
+
+---
+
+# Evidence Handling Principles
+
+```
+Evidence Handling
+
+│
+
+├── Accuracy
+
+├── Integrity
+
+├── Documentation
+
+├── Controlled Access
+
+├── Secure Storage
+
+├── Traceability
+
+├── Consistency
+
+└── Retention
+```
+
+Proper evidence management supports reliable investigations.
+
+---
+
+# Containment
+
+Containment limits the operational impact of an incident while maintaining essential business services whenever possible.
+
+```
+Confirmed Incident
+
+↓
+
+Containment Plan
+
+↓
+
+Affected Systems
+
+↓
+
+Stabilized Environment
+
+↓
+
+Recovery Planning
+```
+
+Containment activities should be coordinated across relevant teams.
+
+---
+
+# Containment Objectives
+
+```
+Containment
+
+│
+
+├── Limit Impact
+
+├── Protect Services
+
+├── Preserve Evidence
+
+├── Reduce Risk
+
+├── Maintain Stability
+
+├── Support Recovery
+
+├── Protect Business
+
+└── Enable Investigation
+```
+
+---
+
+# Containment Workflow
+
+```
+Incident
+
+↓
+
+Assessment
+
+↓
+
+Containment Decision
+
+↓
+
+Implementation
+
+↓
+
+Validation
+
+↓
+
+Monitoring
+```
+
+Containment effectiveness should be continuously monitored.
+
+---
+
+# Enterprise Coordination
+
+Effective response requires coordinated decision-making.
+
+```
+Security Team
+
+        │
+
+Application Team
+
+        │
+
+Infrastructure Team
+
+        │
+
+Management
+
+        │
+
+Business Owners
+
+        ▼
+
+Response Coordination
+```
+
+Clearly defined responsibilities improve response efficiency.
+
+---
+
+# Stakeholder Communication
+
+Communication should remain accurate, timely, and consistent throughout the incident.
+
+```
+Incident Status
+
+↓
+
+Response Team
+
+↓
+
+Management
+
+↓
+
+Business Stakeholders
+
+↓
+
+Status Updates
+```
+
+Communication frequency should match the incident's severity and business impact.
+
+---
+
+# Communication Principles
+
+```
+Communication
+
+│
+
+├── Accuracy
+
+├── Timeliness
+
+├── Consistency
+
+├── Transparency
+
+├── Documentation
+
+├── Defined Ownership
+
+├── Business Context
+
+└── Regular Updates
+```
+
+---
+
+# Eradication
+
+Eradication focuses on removing the underlying cause of the incident after containment has stabilized the environment.
+
+```
+Contained Incident
+
+↓
+
+Root Cause Review
+
+↓
+
+Corrective Actions
+
+↓
+
+Validation
+
+↓
+
+Recovery Preparation
+```
+
+Corrective actions should follow approved organizational procedures.
+
+---
+
+# Recovery
+
+Recovery restores business services to normal operation.
+
+```
+Corrective Actions
+
+↓
+
+System Validation
+
+↓
+
+Service Restoration
+
+↓
+
+Operational Monitoring
+
+↓
+
+Business Operations
+```
+
+Recovery should be completed in a controlled and documented manner.
+
+---
+
+# Recovery Validation
+
+```
+Recovery Validation
+
+│
+
+├── Application Health
+
+├── Service Availability
+
+├── Performance
+
+├── Monitoring Status
+
+├── Business Functionality
+
+├── User Verification
+
+├── Documentation
+
+└── Operational Approval
+```
+
+Validation confirms that services operate as expected.
+
+---
+
+# Operational Documentation
+
+Documentation should be maintained throughout every response phase.
+
+```
+Incident Timeline
+
+↓
+
+Analysis
+
+↓
+
+Decisions
+
+↓
+
+Actions
+
+↓
+
+Recovery
+
+↓
+
+Final Report
+```
+
+Comprehensive documentation supports governance, audits, and future improvements.
+
+---
+
+# Enterprise Incident Response Architecture
+
+```
+             Monitoring & Detection
+
+                      │
+
+                      ▼
+
+            Incident Validation
+
+                      │
+
+                      ▼
+
+      Analysis & Business Assessment
+
+                      │
+
+                      ▼
+
+    Containment • Evidence Preservation
+
+                      │
+
+                      ▼
+
+      Eradication • Recovery • Validation
+
+                      │
+
+                      ▼
+
+         Documentation & Governance
+```
+
+---
+
+# Enterprise Example
+
+A multinational healthcare provider identifies abnormal application behavior through centralized monitoring.
+
+```
+Monitoring
+
+↓
+
+Incident Validation
+
+↓
+
+Impact Assessment
+
+↓
+
+Containment
+
+↓
+
+Recovery
+
+↓
+
+Operational Review
+```
+
+Security analysts coordinate with application, infrastructure, and business teams to assess operational impact, preserve evidence, restore services, and document lessons learned for future improvements.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Time to Validate Incident | Response efficiency |
+| Business Impact Assessment Completion | Decision support |
+| Containment Time | Operational resilience |
+| Recovery Validation Success | Service quality |
+| Documentation Completion | Governance |
+| Stakeholder Notification Timeliness | Communication effectiveness |
+| Incident Resolution Time | Operational performance |
+| Post-Incident Review Completion | Continuous improvement |
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Incomplete information | Use multiple validated data sources |
+| Large incident scope | Prioritize based on business impact |
+| Poor coordination | Clearly defined response roles |
+| Communication delays | Documented communication plans |
+| Inconsistent evidence handling | Standardized evidence procedures |
+| Recovery uncertainty | Structured validation process |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Develop an incident analysis workflow for an enterprise web application.
+2. Identify information sources that support incident validation.
+3. Create an incident impact assessment template.
+4. Design a containment workflow showing coordination between technical and business teams.
+5. Document a recovery validation checklist for restoring critical business services.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on defensive incident management, operational coordination, and governance.
+
+---
+
+# Interview Questions
+
+1. What is the purpose of incident analysis?
+2. Why is incident validation necessary?
+3. How is business impact assessed?
+4. Why is evidence preservation important?
+5. What are the objectives of containment?
+6. How does eradication differ from recovery?
+7. Why should recovery be validated?
+8. What information should incident documentation contain?
+9. Why is stakeholder communication critical?
+10. How does enterprise coordination improve incident response?
+
+---
+
+# Best Practices
+
+- Validate incidents before escalating response activities.
+- Preserve relevant evidence using documented procedures.
+- Assess business impact before determining priorities.
+- Coordinate containment across all affected teams.
+- Validate recovered services before returning to normal operations.
+- Maintain accurate documentation throughout the incident lifecycle.
+- Communicate regularly with stakeholders.
+- Continuously refine response procedures based on operational experience.
+
+---
+
+# Common Mistakes
+
+- Acting before validating the incident.
+- Incomplete evidence collection or documentation.
+- Poor communication between technical and business teams.
+- Expanding containment without assessing business impact.
+- Skipping recovery validation.
+- Failing to document decisions and timelines.
+- Ending the response without planning improvements.
+
+---
+
+# Key Takeaways
+
+- Incident analysis establishes the scope, impact, and priorities for response.
+- Evidence preservation supports reliable investigations and governance.
+- Containment reduces operational impact while enabling recovery.
+- Recovery should be carefully validated before normal operations resume.
+- Effective coordination, communication, and documentation are essential for successful incident response.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
