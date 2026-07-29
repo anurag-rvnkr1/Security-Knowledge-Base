@@ -1671,4 +1671,621 @@ These practices significantly reduce the likelihood of common attacks.
 
 ---
 
-**Next:** **Part 4 – Hands-on Examples, API Security Tools, Enterprise Best Practices, Troubleshooting, Interview Questions, Chapter Summary, Review Questions, and References**
+# 01 - Introduction to APIs 
+
+# Hands-on Lab 1 – Your First API Request
+
+One of the easiest ways to understand APIs is by interacting with a public API.
+
+In this lab, we'll use a simple REST API that returns sample user information.
+
+---
+
+## Objective
+
+Learn how to:
+
+- Send an HTTP request
+- Receive an API response
+- Understand JSON
+- Interpret status codes
+- Inspect headers
+
+---
+
+## Using curl
+
+Example:
+
+```bash
+curl https://jsonplaceholder.typicode.com/users/1
+```
+
+Example Response
+
+```json
+{
+  "id": 1,
+  "name": "Leanne Graham",
+  "username": "Bret",
+  "email": "Sincere@april.biz"
+}
+```
+
+---
+
+## Understanding the Response
+
+| Field | Description |
+|--------|-------------|
+| id | Unique user identifier |
+| name | User's full name |
+| username | Login username |
+| email | Registered email |
+
+---
+
+# Hands-on Lab 2 – Viewing Response Headers
+
+Use curl to display headers.
+
+```bash
+curl -I https://jsonplaceholder.typicode.com/users
+```
+
+Example Output
+
+```
+HTTP/1.1 200 OK
+
+Content-Type: application/json
+
+Content-Length: 5645
+
+Cache-Control: max-age=43200
+```
+
+Important headers include:
+
+- Content-Type
+- Content-Length
+- Cache-Control
+- Server
+- Date
+
+These headers provide valuable metadata for both developers and security analysts.
+
+---
+
+# Hands-on Lab 3 – Sending a POST Request
+
+Example
+
+```bash
+curl -X POST \
+https://jsonplaceholder.typicode.com/posts \
+-H "Content-Type: application/json" \
+-d '{
+"title":"API Security",
+"body":"Learning APIs",
+"userId":1
+}'
+```
+
+Expected Response
+
+```json
+{
+"id":101,
+"title":"API Security",
+"body":"Learning APIs",
+"userId":1
+}
+```
+
+The server acknowledges creation of a new resource.
+
+---
+
+# Hands-on Lab 4 – Using Postman
+
+Postman is one of the most widely used API development and testing tools.
+
+Typical workflow:
+
+```
+Open Postman
+       │
+       ▼
+Enter URL
+       │
+       ▼
+Choose Method
+       │
+       ▼
+Add Headers
+       │
+       ▼
+Add Request Body
+       │
+       ▼
+Send Request
+       │
+       ▼
+Inspect Response
+```
+
+Things to inspect:
+
+- Status code
+- Response time
+- Headers
+- Cookies
+- JSON response
+- Error messages
+
+---
+
+# Hands-on Lab 5 – Browser Developer Tools
+
+Most browsers allow inspection of API calls.
+
+Steps:
+
+```
+F12
+
+↓
+
+Network Tab
+
+↓
+
+Reload Page
+
+↓
+
+XHR / Fetch
+
+↓
+
+Select Request
+```
+
+Observe:
+
+- Request URL
+- Headers
+- Cookies
+- Payload
+- Response
+- Status code
+- Timing
+
+This is one of the easiest ways to learn how modern applications communicate with APIs.
+
+---
+
+# Enterprise Example
+
+Consider an e-commerce website.
+
+When a customer visits the homepage, multiple APIs are invoked.
+
+```
+Homepage
+    │
+    ├────────► Product API
+    │
+    ├────────► Search API
+    │
+    ├────────► Recommendation API
+    │
+    ├────────► Inventory API
+    │
+    ├────────► User Profile API
+    │
+    └────────► Notification API
+```
+
+Although the user sees a single webpage, numerous API requests work together behind the scenes.
+
+---
+
+# Enterprise API Workflow
+
+```
+Customer
+
+     │
+
+     ▼
+
+Mobile App
+
+     │
+
+HTTPS
+
+     ▼
+
+Load Balancer
+
+     │
+
+     ▼
+
+Web Application Firewall
+
+     │
+
+     ▼
+
+API Gateway
+
+     │
+
+Authentication
+
+     │
+
+Authorization
+
+     │
+
+Business Service
+
+     │
+
+Database
+
+     │
+
+Logging
+
+     │
+
+Monitoring
+
+     ▼
+
+Response
+```
+
+This layered architecture provides scalability, reliability, and multiple security checkpoints.
+
+---
+
+# API Security Tools
+
+During later chapters, we'll use several industry-standard tools.
+
+| Tool | Purpose |
+|------|---------|
+| Postman | API testing and development |
+| curl | Command-line HTTP client |
+| HTTPie | Human-friendly API client |
+| Burp Suite | API interception and penetration testing |
+| OWASP ZAP | Automated security testing |
+| Swagger UI | API documentation and exploration |
+| OpenAPI | API specification |
+| ffuf | Content discovery and fuzzing |
+| Kiterunner | API enumeration |
+| Arjun | Parameter discovery |
+| Nuclei | Vulnerability scanning |
+| mitmproxy | Traffic interception |
+| Wireshark | Packet analysis |
+| tcpdump | Network capture |
+
+Each tool will be introduced in detail in later chapters.
+
+---
+
+# API Security Best Practices
+
+Organizations should adopt secure practices from the beginning of the API lifecycle.
+
+## Design
+
+- Use secure-by-design principles.
+- Document every endpoint.
+- Perform threat modeling.
+- Minimize exposed functionality.
+
+---
+
+## Development
+
+- Validate all inputs.
+- Sanitize outputs.
+- Use secure coding standards.
+- Avoid hardcoded secrets.
+
+---
+
+## Authentication
+
+- Require authentication for protected resources.
+- Prefer modern authentication mechanisms.
+- Enforce strong password policies.
+- Use multi-factor authentication where appropriate.
+
+---
+
+## Authorization
+
+- Apply least privilege.
+- Validate authorization on every request.
+- Avoid client-side authorization decisions.
+- Implement object-level authorization.
+
+---
+
+## Data Protection
+
+- Use HTTPS everywhere.
+- Encrypt sensitive information.
+- Minimize sensitive data exposure.
+- Mask confidential information in responses.
+
+---
+
+## Monitoring
+
+- Log all important API activity.
+- Detect anomalies.
+- Monitor authentication failures.
+- Alert on suspicious behavior.
+- Retain logs securely.
+
+---
+
+## Maintenance
+
+- Update dependencies regularly.
+- Remove deprecated APIs.
+- Rotate secrets and keys.
+- Conduct periodic security assessments.
+
+---
+
+# Common Beginner Mistakes
+
+Many developers make avoidable mistakes when first working with APIs.
+
+Examples include:
+
+- Assuming APIs are inherently secure.
+- Sending sensitive data over HTTP.
+- Trusting client input.
+- Exposing internal error messages.
+- Ignoring authentication failures.
+- Not validating request parameters.
+- Hardcoding API keys.
+- Forgetting rate limiting.
+- Logging sensitive information.
+- Leaving unused endpoints exposed.
+
+Understanding these mistakes early helps establish secure development habits.
+
+---
+
+# Troubleshooting
+
+## Request Returns 404
+
+Possible causes:
+
+- Incorrect endpoint
+- Typographical error
+- API version mismatch
+- Deleted resource
+
+---
+
+## Request Returns 401
+
+Possible causes:
+
+- Missing authentication
+- Expired token
+- Invalid credentials
+
+---
+
+## Request Returns 403
+
+Possible causes:
+
+- Insufficient permissions
+- Role restrictions
+- Authorization failure
+
+---
+
+## Request Returns 500
+
+Possible causes:
+
+- Application bug
+- Database failure
+- Server-side exception
+- Configuration issue
+
+---
+
+## Slow API Response
+
+Possible causes:
+
+- High server load
+- Inefficient database queries
+- Network latency
+- External dependency delays
+
+---
+
+# Interview Questions
+
+## Basic
+
+1. What is an API?
+
+2. Why are APIs used?
+
+3. What are API endpoints?
+
+4. What is a client?
+
+5. What is a server?
+
+6. What is JSON?
+
+7. What is an HTTP request?
+
+8. What is an HTTP response?
+
+9. What is an API resource?
+
+10. What is API versioning?
+
+---
+
+## Intermediate
+
+11. Explain the API request lifecycle.
+
+12. Differentiate API consumer and provider.
+
+13. Explain request headers.
+
+14. Explain response headers.
+
+15. Why is HTTPS important?
+
+16. Why are APIs attractive attack targets?
+
+17. What is the role of an API Gateway?
+
+18. What is the purpose of authentication?
+
+19. What is the difference between authentication and authorization?
+
+20. Why should APIs be monitored?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+An API suddenly begins returning 500 Internal Server Error responses.
+
+How would you investigate the issue?
+
+---
+
+**Scenario 2**
+
+A mobile application cannot retrieve user information.
+
+What troubleshooting steps would you follow?
+
+---
+
+**Scenario 3**
+
+An attacker discovers undocumented API endpoints.
+
+What risks does this pose, and how would you mitigate them?
+
+---
+
+# Chapter Summary
+
+In this chapter, we established the foundation for understanding APIs and their role in modern software systems.
+
+We learned:
+
+- What APIs are.
+- Why APIs exist.
+- How applications communicate using APIs.
+- The evolution of API technologies.
+- Different API styles and communication models.
+- Components of API requests and responses.
+- Enterprise API architectures.
+- Why APIs are valuable business assets.
+- Why APIs are major cybersecurity targets.
+- Basic API testing using command-line tools and Postman.
+- Secure API development principles.
+- Common operational issues and troubleshooting techniques.
+
+This foundational knowledge prepares us for the remaining chapters, where we will progressively explore API architectures, authentication, authorization, vulnerabilities, penetration testing, monitoring, and incident response.
+
+---
+
+# Chapter Review
+
+You should now be able to answer the following questions:
+
+- What is an API?
+- Why are APIs important?
+- How does an API process a request?
+- What is an endpoint?
+- What is an API resource?
+- What are the different types of APIs?
+- How do clients and servers communicate?
+- Why is HTTPS essential for APIs?
+- Why are APIs frequently targeted by attackers?
+- What security controls should protect APIs?
+
+If you can confidently answer these questions, you are ready to continue.
+
+---
+
+# References
+
+## Standards
+
+- RFC 9110 – HTTP Semantics
+- RFC 9112 – HTTP/1.1
+- RFC 8259 – JSON Data Interchange Format
+
+## Security Frameworks
+
+- OWASP API Security Top 10
+- OWASP ASVS
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+- NIST SP 800-204 (Microservices Security)
+- CIS Controls v8
+
+## Further Reading
+
+- OpenAPI Specification
+- REST Architectural Style
+- GraphQL Specification
+- gRPC Documentation
+- OAuth 2.0 Framework
+- OpenID Connect Core Specification
+
+---
+
+# What's Next?
+
+➡️ **Chapter 02 – API Architecture**
+
+In the next chapter, we will explore:
+
+- API architectural styles
+- REST architecture in depth
+- Layered architectures
+- Monolithic vs Microservices
+- API Gateway architecture
+- Service Mesh
+- Enterprise API ecosystems
+- Cloud-native API architectures
+- High Availability and Scalability
+- Security architecture for enterprise APIs
+
+This chapter will provide the architectural foundation needed to understand how secure, scalable, and resilient APIs are designed in modern enterprise environments.
