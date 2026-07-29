@@ -2762,4 +2762,1150 @@ Avoid:
 
 ---
 
-**Next:** GraphQL Vulnerability Assessment, Penetration Testing Methodology, Common Exploitation Techniques, Secure Development Practices, Hands-on Labs, Troubleshooting, Interview Questions, and Chapter Summary.
+# GraphQL Vulnerability Assessment
+
+GraphQL security assessments differ significantly from traditional REST API testing.
+
+Because GraphQL exposes a single endpoint with a flexible query language, security testing focuses on:
+
+- Schema discovery
+- Authentication
+- Authorization
+- Resolver security
+- Query complexity
+- Introspection
+- Business logic
+- Input validation
+- Data exposure
+
+A comprehensive assessment should evaluate both the GraphQL engine and the underlying business logic.
+
+---
+
+# GraphQL Security Assessment Methodology
+
+A structured methodology improves consistency and coverage.
+
+```
+Reconnaissance
+
+      │
+
+      ▼
+
+Endpoint Discovery
+
+      │
+
+      ▼
+
+Schema Enumeration
+
+      │
+
+      ▼
+
+Authentication Testing
+
+      │
+
+      ▼
+
+Authorization Testing
+
+      │
+
+      ▼
+
+Input Validation
+
+      │
+
+      ▼
+
+Business Logic Testing
+
+      │
+
+      ▼
+
+DoS Testing
+
+      │
+
+      ▼
+
+Reporting
+```
+
+Each phase builds upon the previous one.
+
+---
+
+# Phase 1 – Endpoint Discovery
+
+Unlike REST APIs with multiple endpoints, GraphQL commonly exposes one endpoint.
+
+Common endpoint names
+
+```
+/graphql
+
+/api/graphql
+
+/graphql/v1
+
+/api
+
+/query
+
+/gql
+```
+
+Discovery methods include:
+
+- Public documentation
+- Mobile applications
+- JavaScript source code
+- Network traffic
+- Browser Developer Tools
+- API documentation
+- Reverse engineering
+
+---
+
+# Phase 2 – Identify GraphQL
+
+Indicators include:
+
+HTTP Request
+
+```http
+POST /graphql
+```
+
+JSON Body
+
+```json
+{
+    "query":"{__typename}"
+}
+```
+
+Typical response
+
+```json
+{
+    "data":{
+        "__typename":"Query"
+    }
+}
+```
+
+This confirms GraphQL support.
+
+---
+
+# Phase 3 – Introspection Testing
+
+Determine whether introspection is enabled.
+
+Example
+
+```graphql
+{
+    __schema{
+        types{
+            name
+        }
+    }
+}
+```
+
+Possible outcomes
+
+```
+Success
+
+↓
+
+Schema Exposed
+```
+
+or
+
+```
+Access Denied
+
+↓
+
+Introspection Restricted
+```
+
+If enabled, enumerate:
+
+- Queries
+- Mutations
+- Types
+- Fields
+- Directives
+- Input Objects
+- Enums
+
+---
+
+# Phase 4 – Schema Enumeration
+
+Collect information such as:
+
+```
+User
+
+Admin
+
+Product
+
+Payment
+
+Invoice
+
+Customer
+```
+
+Document:
+
+- Object types
+- Relationships
+- Administrative operations
+- Deprecated fields
+- Sensitive objects
+
+This helps identify high-value attack targets.
+
+---
+
+# Phase 5 – Authentication Testing
+
+Verify whether authentication is required.
+
+Test:
+
+- Anonymous queries
+- Expired tokens
+- Invalid JWTs
+- Missing tokens
+- Session handling
+- API keys
+
+Example
+
+```
+Authorization
+
+↓
+
+Missing
+
+↓
+
+401 Unauthorized
+```
+
+Unexpected success indicates a serious security issue.
+
+---
+
+# Phase 6 – Authorization Testing
+
+Authorization is one of the highest-risk areas.
+
+Test whether users can access:
+
+- Other users' records
+- Administrative fields
+- Sensitive mutations
+- Internal objects
+- Restricted reports
+
+Example
+
+```graphql
+query{
+
+    user(id:200){
+
+        salary
+
+    }
+
+}
+```
+
+Determine whether ownership and permissions are enforced.
+
+---
+
+# Broken Object Level Authorization (BOLA)
+
+GraphQL is susceptible to BOLA when resolvers fail to validate ownership.
+
+Attack
+
+```
+Customer A
+
+↓
+
+Order ID 100
+```
+
+Modify
+
+```
+Order ID 101
+```
+
+Possible result
+
+```
+Customer B Order
+```
+
+Expected behavior
+
+```
+403 Forbidden
+```
+
+or equivalent authorization error.
+
+---
+
+# Broken Function Level Authorization (BFLA)
+
+Administrative mutations should be restricted.
+
+Example
+
+```graphql
+mutation{
+
+    deleteUser(id:100)
+
+}
+```
+
+Verify that only authorized roles can execute sensitive operations.
+
+---
+
+# Phase 7 – Input Validation Testing
+
+Test every argument.
+
+Examples
+
+```
+Very Long Strings
+
+Negative Numbers
+
+Special Characters
+
+Unicode
+
+Null Values
+
+Unexpected Types
+
+Boundary Values
+```
+
+Goal
+
+Determine whether validation occurs before resolver execution.
+
+---
+
+# SQL Injection Testing
+
+Resolvers frequently interact with databases.
+
+Test inputs such as:
+
+```
+'
+
+"
+
+--
+
+OR 1=1
+
+UNION
+```
+
+Applications should use:
+
+- Parameterized queries
+- ORM protections
+- Input validation
+
+Never concatenate user input directly into SQL statements.
+
+---
+
+# NoSQL Injection Testing
+
+Applications using MongoDB or similar databases require separate testing.
+
+Example payloads
+
+```json
+{
+    "$ne": null
+}
+```
+
+or
+
+```json
+{
+    "$gt":""
+}
+```
+
+Verify that resolvers reject malicious operators where appropriate.
+
+---
+
+# Command Injection Testing
+
+Resolvers may invoke operating system commands.
+
+Example payload
+
+```
+;
+
+&&
+
+|
+
+`
+
+$()
+```
+
+Secure applications avoid passing untrusted input to system commands.
+
+---
+
+# XML Injection
+
+If GraphQL integrates with SOAP or XML-based services, test for:
+
+- XML Injection
+- XXE
+- XPath Injection
+
+Input validation and secure XML parser configuration are essential.
+
+---
+
+# Server-Side Request Forgery (SSRF)
+
+Resolvers sometimes fetch external resources.
+
+Example
+
+```graphql
+mutation{
+
+    importURL(url:"https://example.com")
+
+}
+```
+
+Potential attack
+
+```
+Attacker
+
+↓
+
+Internal URL
+
+↓
+
+Cloud Metadata
+
+↓
+
+Sensitive Information
+```
+
+Validate URLs and restrict outbound network access.
+
+---
+
+# File Upload Testing
+
+Some GraphQL implementations support file uploads.
+
+Verify:
+
+- File type validation
+- File size limits
+- Malware scanning
+- Filename sanitization
+- Storage security
+
+Large uploads should be rate limited.
+
+---
+
+# Query Depth Testing
+
+Attempt progressively deeper queries.
+
+Example
+
+```
+User
+
+↓
+
+Orders
+
+↓
+
+Products
+
+↓
+
+Reviews
+
+↓
+
+Authors
+
+↓
+
+Comments
+
+↓
+
+Followers
+```
+
+Expected result
+
+```
+Depth Limit
+
+Exceeded
+
+↓
+
+Rejected
+```
+
+Unlimited nesting may lead to resource exhaustion.
+
+---
+
+# Query Complexity Testing
+
+Construct increasingly expensive queries.
+
+```
+Single Query
+
+↓
+
+Hundreds of Resolvers
+
+↓
+
+Database Calls
+
+↓
+
+High CPU
+
+↓
+
+High Memory
+```
+
+Servers should reject overly expensive requests.
+
+---
+
+# Alias Abuse Testing
+
+Aliases can multiply resolver executions.
+
+Example
+
+```graphql
+query{
+
+    u1:user(id:1){name}
+
+    u2:user(id:2){name}
+
+    u3:user(id:3){name}
+
+}
+```
+
+Attempt large numbers of aliases to determine whether server-side limits exist.
+
+---
+
+# Batch Request Testing
+
+Some implementations allow multiple operations per request.
+
+```
+One HTTP Request
+
+↓
+
+500 Operations
+
+↓
+
+Server Load
+```
+
+Verify:
+
+- Batch size limits
+- Authentication enforcement
+- Rate limiting
+- Logging
+
+---
+
+# Denial-of-Service Testing
+
+Assess resource exhaustion risks.
+
+Potential vectors
+
+- Deep queries
+- Recursive queries
+- Large responses
+- Alias abuse
+- Batch abuse
+- Expensive filters
+- Complex sorting
+
+Testing should be carefully controlled in authorized environments to avoid disrupting production systems.
+
+---
+
+# Business Logic Testing
+
+Business logic flaws cannot be detected automatically.
+
+Examples
+
+- Purchase negative quantities
+- Skip payment steps
+- Reuse discount codes
+- Bypass workflow approval
+- Modify completed orders
+- Cancel shipped products
+- Access hidden discounts
+
+These issues often have significant business impact.
+
+---
+
+# Sensitive Data Exposure
+
+Review responses for unnecessary information.
+
+Potential exposure
+
+- Password hashes
+- API keys
+- JWT secrets
+- Internal IDs
+- Email addresses
+- Financial records
+- Debug messages
+- Stack traces
+
+GraphQL responses should contain only the fields requested and authorized.
+
+---
+
+# Error Handling Assessment
+
+Incorrect
+
+```json
+{
+    "errors":[
+        {
+            "message":"SQL Exception in UserResolver.java line 250"
+        }
+    ]
+}
+```
+
+Correct
+
+```json
+{
+    "errors":[
+        {
+            "message":"Unable to process request."
+        }
+    ]
+}
+```
+
+Detailed diagnostics belong in server logs rather than client responses.
+
+---
+
+# Logging Assessment
+
+Verify that the application logs:
+
+Authentication
+
+- Successful logins
+- Failed logins
+- Token validation failures
+
+Authorization
+
+- Access denied
+- Privilege violations
+
+GraphQL
+
+- Introspection attempts
+- Expensive queries
+- Alias abuse
+- Batch requests
+
+Infrastructure
+
+- CPU utilization
+- Memory utilization
+- Database latency
+
+Comprehensive logging supports incident response and forensic analysis.
+
+---
+
+# Detection Engineering
+
+Recommended detection rules
+
+| Detection | Indicator |
+|-----------|-----------|
+| Introspection Abuse | Repeated `__schema` or `__type` queries |
+| High Query Cost | Cost exceeds configured threshold |
+| Deep Nesting | Query depth beyond policy |
+| Alias Abuse | Excessive aliases in one request |
+| Batch Abuse | Large number of operations per request |
+| Authorization Failures | Repeated access denials |
+| SSRF Attempts | Requests targeting internal or metadata addresses |
+| File Upload Abuse | Repeated oversized or unsupported uploads |
+
+Detection rules should be tuned to reduce false positives while identifying genuine attacks.
+
+---
+
+# SIEM Integration
+
+Security telemetry should include:
+
+```
+Authentication Logs
+
+        │
+
+Authorization Logs
+
+        │
+
+GraphQL Query Logs
+
+        │
+
+Resolver Metrics
+
+        │
+
+Infrastructure Metrics
+
+        ▼
+
+SIEM
+
+        │
+
+Correlation Rules
+
+        ▼
+
+SOC Alerts
+```
+
+High-value alerts include:
+
+- Excessive failed authentication attempts
+- Introspection from untrusted sources
+- High-cost query spikes
+- Repeated authorization failures
+- Unusual mutation activity
+- Resource exhaustion indicators
+
+---
+
+# Enterprise Assessment Workflow
+
+```
+Planning
+
+    │
+
+Reconnaissance
+
+    │
+
+Schema Discovery
+
+    │
+
+Authentication Review
+
+    │
+
+Authorization Testing
+
+    │
+
+Input Validation
+
+    │
+
+Business Logic Review
+
+    │
+
+Performance Testing
+
+    │
+
+Risk Assessment
+
+    │
+
+Reporting
+
+    ▼
+
+Remediation
+```
+
+A structured workflow improves repeatability and reporting quality.
+
+---
+
+# Hands-on Lab 1 – Identify a GraphQL Endpoint
+
+Objective
+
+Identify and verify a GraphQL endpoint in an authorized testing environment.
+
+Steps
+
+1. Inspect application network traffic.
+2. Locate requests sent to a GraphQL endpoint.
+3. Confirm GraphQL by sending a simple query such as retrieving `__typename` where permitted.
+4. Record endpoint behavior, authentication requirements, and response format.
+
+Learning Outcomes
+
+- GraphQL endpoint discovery
+- Basic protocol identification
+- Request and response analysis
+
+---
+
+# Hands-on Lab 2 – Authorization Review
+
+Objective
+
+Verify object-level and field-level authorization.
+
+Steps
+
+1. Authenticate as a standard user.
+2. Request only resources that should be accessible to that user.
+3. Verify that administrative fields and other users' data remain inaccessible.
+4. Document any unexpected access.
+
+Learning Outcomes
+
+- Resolver authorization analysis
+- Ownership verification
+- Least-privilege validation
+
+---
+
+# Hands-on Lab 3 – Query Limit Verification
+
+Objective
+
+Confirm that query depth and complexity protections are implemented.
+
+Steps
+
+1. Review server documentation or configuration where available.
+2. Send increasingly nested but authorized queries within acceptable testing limits.
+3. Observe when requests are rejected based on depth or complexity.
+4. Record configured thresholds and server behavior.
+
+Learning Outcomes
+
+- Query depth controls
+- Complexity analysis
+- Resource protection mechanisms
+
+---
+
+# Common Security Mistakes
+
+Avoid:
+
+- Public introspection in production
+- Missing resolver authorization
+- Unlimited query depth
+- Unlimited query complexity
+- Excessive alias usage
+- Missing rate limiting
+- Weak input validation
+- Verbose error messages
+- Exposed developer tools
+- Missing security monitoring
+
+---
+
+# Troubleshooting
+
+## Authentication Failure
+
+Possible causes
+
+- Missing token
+- Invalid signature
+- Expired token
+- Incorrect authentication scheme
+
+---
+
+## Authorization Failure
+
+Possible causes
+
+- Missing role
+- Incorrect ownership checks
+- Resolver authorization logic
+- Policy misconfiguration
+
+---
+
+## Query Rejected
+
+Possible causes
+
+- Query depth exceeded
+- Query cost exceeded
+- Validation error
+- Unsupported field
+
+---
+
+## Slow Query Execution
+
+Possible causes
+
+- N+1 query problem
+- Inefficient resolvers
+- Missing caching
+- Database latency
+
+---
+
+## File Upload Failure
+
+Possible causes
+
+- Unsupported file type
+- File size limit exceeded
+- Storage permissions
+- Validation failure
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What is GraphQL?
+2. How does GraphQL differ from REST?
+3. What is a GraphQL schema?
+4. What are resolvers?
+5. What is introspection?
+6. What are queries, mutations, and subscriptions?
+7. Why is field-level authorization important?
+8. What is query complexity?
+9. What is query depth?
+10. Why is GraphQL more susceptible to BOLA?
+
+---
+
+## Intermediate
+
+11. How would you secure a GraphQL API?
+12. Explain resolver-level authorization.
+13. How would you prevent alias abuse?
+14. What is the N+1 query problem?
+15. How would you implement query cost analysis?
+16. Why should introspection be restricted in production?
+17. How would you test GraphQL authentication?
+18. How would you detect GraphQL abuse in a SIEM?
+19. Explain GraphQL batching attacks.
+20. What are common GraphQL business logic vulnerabilities?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+A production GraphQL API experiences a sudden increase in CPU utilization.
+
+- Which GraphQL-specific attack vectors would you investigate first?
+- Which logs and metrics would help determine whether the cause is expensive queries, deep nesting, or alias abuse?
+
+---
+
+**Scenario 2**
+
+During an assessment, you discover that an authenticated user can retrieve another customer's order by modifying an object identifier.
+
+- Which OWASP API Security risk does this represent?
+- How would you verify and remediate the issue?
+
+---
+
+**Scenario 3**
+
+Your organization is deploying a public GraphQL API.
+
+- Which controls would you implement before production release?
+- How would you balance developer usability with production security?
+
+---
+
+# Chapter Summary
+
+In this chapter, we examined GraphQL security assessment methodologies and common attack vectors.
+
+We covered:
+
+- GraphQL assessment methodology
+- Endpoint discovery
+- Schema enumeration
+- Authentication testing
+- Authorization testing
+- Input validation
+- Query depth and complexity testing
+- Alias and batching abuse
+- Business logic assessment
+- Error handling
+- Logging
+- Detection engineering
+- SIEM integration
+- Hands-on exercises
+- Troubleshooting
+- Interview preparation
+
+GraphQL's flexibility offers significant benefits but also introduces unique security challenges. Effective security requires strong authentication, fine-grained authorization, query validation, resolver hardening, comprehensive monitoring, and continuous testing.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- How do you identify and assess a GraphQL endpoint?
+- How should authentication and authorization be tested?
+- What are GraphQL-specific attack vectors?
+- Why are query depth and complexity limits important?
+- How do alias abuse and batching attacks work?
+- How should GraphQL APIs be monitored?
+- Which events should be forwarded to a SIEM?
+- How would you perform an enterprise GraphQL security assessment?
+
+If you can confidently answer these questions, you are ready to continue with **Chapter 06 – gRPC Security**, where you'll explore modern high-performance APIs built on HTTP/2 and Protocol Buffers.
+
+---
+
+# References
+
+## Standards
+
+- GraphQL Specification
+- GraphQL over HTTP Specification
+- Protocol Buffers Language Guide (for comparison)
+- RFC 9110 – HTTP Semantics
+
+## Security Standards
+
+- OWASP API Security Top 10
+- OWASP ASVS
+- OWASP Web Security Testing Guide (WSTG)
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-53
+- NIST SP 800-204
+
+## Further Reading
+
+- GraphQL Best Practices
+- Apollo Security Documentation
+- GraphQL Foundation Documentation
+- DataLoader Documentation
+
+---
+
+# What's Next?
+
+➡️ **Chapter 06 – gRPC Security**
+
+In the next chapter, we will explore:
+
+- gRPC architecture
+- Protocol Buffers (Protobuf)
+- HTTP/2 fundamentals
+- Unary and streaming RPCs
+- Service definitions
+- Authentication and authorization
+- TLS and mTLS
+- gRPC attack surface
+- Security best practices
+- Enterprise deployments
+- Hands-on labs and interview questions
