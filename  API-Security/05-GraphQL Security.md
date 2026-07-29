@@ -1607,4 +1607,1159 @@ Avoid:
 
 ---
 
-**Next:** GraphQL Authentication, Authorization, Introspection Security, Query Complexity Attacks, Batching Attacks, Denial-of-Service Risks, Secure Resolver Design, and Enterprise GraphQL Security.
+# GraphQL Authentication
+
+Authentication verifies the identity of the client before allowing access to GraphQL resources.
+
+Unlike REST, GraphQL typically exposes a **single endpoint**, meaning authentication must be enforced consistently regardless of which query or mutation is executed.
+
+Common authentication mechanisms include:
+
+- JWT (JSON Web Token)
+- OAuth 2.0
+- OpenID Connect (OIDC)
+- API Keys
+- Session Cookies
+- Mutual TLS (mTLS)
+
+---
+
+# Authentication Flow
+
+```
+Client
+
+   │
+
+Login
+
+   │
+
+   ▼
+
+Identity Provider
+
+   │
+
+Generate Token
+
+   ▼
+
+Client
+
+   │
+
+Authorization Header
+
+   ▼
+
+GraphQL Server
+
+   │
+
+Validate Token
+
+   ▼
+
+Authenticated Request
+```
+
+Authentication occurs before GraphQL query execution.
+
+---
+
+# JWT Authentication
+
+JWT is the most common authentication mechanism.
+
+Example
+
+```
+Authorization:
+
+Bearer eyJhbGciOi...
+```
+
+Workflow
+
+```
+User Login
+
+    │
+
+Generate JWT
+
+    │
+
+Store Token
+
+    │
+
+Include in Every Request
+
+    │
+
+Server Validation
+
+    ▼
+
+Execute Query
+```
+
+JWTs should:
+
+- Have short expiration times
+- Use secure signing algorithms
+- Be validated on every request
+- Be transmitted only over HTTPS
+
+---
+
+# Session-Based Authentication
+
+Some enterprise applications still use sessions.
+
+```
+Client
+
+ │
+
+Login
+
+ ▼
+
+Session Cookie
+
+ │
+
+Every Request
+
+ ▼
+
+GraphQL Server
+```
+
+Advantages
+
+- Easy session invalidation
+- Mature ecosystem
+- Widely supported
+
+Disadvantages
+
+- Stateful infrastructure
+- Session storage required
+
+---
+
+# API Key Authentication
+
+Applications sometimes authenticate using API keys.
+
+Example
+
+```
+X-API-Key:
+
+abc123xyz456
+```
+
+API keys identify applications rather than individual users.
+
+Best practices
+
+- Rotate regularly
+- Store securely
+- Apply rate limits
+- Monitor usage
+- Restrict by IP where appropriate
+
+---
+
+# OAuth 2.0
+
+OAuth allows delegated authorization.
+
+```
+User
+
+ │
+
+Login
+
+ ▼
+
+Authorization Server
+
+ │
+
+Access Token
+
+ ▼
+
+GraphQL API
+```
+
+OAuth is commonly used for:
+
+- Mobile applications
+- Third-party integrations
+- Enterprise SSO
+- Cloud applications
+
+---
+
+# Authentication Middleware
+
+Authentication should occur before GraphQL execution.
+
+```
+Incoming Request
+
+      │
+
+Authentication Middleware
+
+      │
+
+ ├── Invalid
+
+ │      ▼
+
+ │   Reject Request
+
+ │
+
+ └── Valid
+
+        ▼
+
+Schema Validation
+
+        ▼
+
+Resolvers
+```
+
+Unauthenticated requests should never reach sensitive business logic.
+
+---
+
+# Authorization
+
+Authentication identifies the user.
+
+Authorization determines what that user is allowed to access.
+
+Every GraphQL resolver should perform authorization checks.
+
+```
+Authenticated User
+
+        │
+
+Permission Check
+
+        │
+
+Allowed?
+
+   ┌────┴────┐
+
+  Yes       No
+
+   │         │
+
+Execute    Reject
+```
+
+Authorization must be enforced even if authentication succeeds.
+
+---
+
+# Why Authorization Is Critical
+
+Consider this query.
+
+```graphql
+query {
+
+    user(id:100){
+
+        name
+
+        salary
+
+        ssn
+
+    }
+
+}
+```
+
+Authentication alone is insufficient.
+
+The resolver must determine whether the requester is authorized to access:
+
+- Salary
+- Social Security Number
+- Financial information
+- Administrative fields
+
+---
+
+# Resolver-Level Authorization
+
+Every resolver should verify permissions.
+
+Example
+
+```
+Query
+
+ │
+
+Resolver
+
+ │
+
+Authorization Check
+
+ │
+
+Database
+
+ ▼
+
+Response
+```
+
+Authorization should not rely solely on frontend controls.
+
+---
+
+# Role-Based Access Control (RBAC)
+
+Roles determine accessible operations.
+
+Example
+
+```
+Administrator
+
+↓
+
+Full Access
+```
+
+```
+Manager
+
+↓
+
+Department Access
+```
+
+```
+Customer
+
+↓
+
+Own Data Only
+```
+
+Resolvers should verify roles before returning data.
+
+---
+
+# Attribute-Based Access Control (ABAC)
+
+Authorization decisions may depend on multiple attributes.
+
+Examples
+
+- Department
+- Country
+- Clearance Level
+- Time of Day
+- Device Type
+- Project Membership
+
+Example
+
+```
+Employee
+
++
+
+Finance Department
+
++
+
+Business Hours
+
+↓
+
+Approve Payment
+```
+
+ABAC enables fine-grained authorization.
+
+---
+
+# Field-Level Authorization
+
+One of GraphQL's biggest security challenges is field-level authorization.
+
+Example
+
+```graphql
+query{
+
+    employee{
+
+        name
+
+        email
+
+        salary
+
+    }
+
+}
+```
+
+The resolver must determine which fields the requester can access.
+
+Example
+
+```
+HR
+
+↓
+
+Salary Visible
+```
+
+```
+Employee
+
+↓
+
+Salary Hidden
+```
+
+Authorization decisions may differ for each field.
+
+---
+
+# Object-Level Authorization
+
+Users should access only permitted objects.
+
+Example
+
+Incorrect
+
+```
+User A
+
+↓
+
+Reads User B Account
+```
+
+Correct
+
+```
+User A
+
+↓
+
+Own Account Only
+```
+
+Resolvers should verify ownership before returning objects.
+
+---
+
+# Broken Object Level Authorization (BOLA)
+
+BOLA is one of the most common GraphQL vulnerabilities.
+
+Example
+
+```graphql
+query{
+
+    order(id:500){
+
+        total
+
+    }
+
+}
+```
+
+If the server checks only authentication,
+
+```
+Attacker
+
+↓
+
+Change ID
+
+↓
+
+Read Another Customer's Order
+```
+
+Proper ownership validation prevents this attack.
+
+---
+
+# Broken Function Level Authorization (BFLA)
+
+Example
+
+```graphql
+mutation{
+
+    deleteUser(id:100)
+}
+```
+
+If any authenticated user can execute this mutation,
+
+```
+Regular User
+
+↓
+
+Administrative Mutation
+
+↓
+
+Unauthorized Action
+```
+
+Resolvers must verify privileges before executing sensitive operations.
+
+---
+
+# GraphQL Introspection Security
+
+Introspection provides valuable documentation but may expose sensitive information.
+
+Example
+
+```graphql
+{
+    __schema{
+        types{
+            name
+        }
+    }
+}
+```
+
+Attackers can discover:
+
+- Administrative mutations
+- Hidden object types
+- Internal fields
+- Business relationships
+- Deprecated operations
+
+---
+
+# Restricting Introspection
+
+Development
+
+```
+Introspection
+
+↓
+
+Enabled
+```
+
+Production
+
+```
+Public APIs
+
+↓
+
+Restricted or Disabled
+```
+
+Many organizations disable introspection for public production environments while keeping it enabled internally for trusted developers.
+
+---
+
+# GraphQL Playground Security
+
+GraphQL Playground, GraphiQL, and Apollo Sandbox provide interactive interfaces.
+
+Benefits
+
+- Auto-completion
+- Documentation
+- Query testing
+- Developer productivity
+
+Risks
+
+- Endpoint discovery
+- Schema enumeration
+- Administrative operation discovery
+- Easier attacker reconnaissance
+
+Interactive tools should not be publicly exposed without proper authentication.
+
+---
+
+# Query Complexity Attacks
+
+One of GraphQL's unique attack vectors is excessive query complexity.
+
+Example
+
+```
+User
+
+↓
+
+Orders
+
+↓
+
+Products
+
+↓
+
+Reviews
+
+↓
+
+Authors
+
+↓
+
+Comments
+
+↓
+
+Likes
+
+↓
+
+Profiles
+```
+
+A single request may trigger hundreds or thousands of backend operations.
+
+---
+
+# Query Depth Attack
+
+Attackers intentionally create deeply nested queries.
+
+Example
+
+```
+User
+
+↓
+
+Orders
+
+↓
+
+Products
+
+↓
+
+Reviews
+
+↓
+
+Author
+
+↓
+
+Orders
+
+↓
+
+Products
+
+↓
+
+Reviews
+```
+
+This recursive structure can consume excessive CPU and memory.
+
+---
+
+# Query Cost Analysis
+
+Modern GraphQL servers often calculate query cost before execution.
+
+```
+Incoming Query
+
+ │
+
+Cost Calculator
+
+ │
+
+ ├── Cost < Limit
+
+ │        ▼
+
+ │    Execute
+
+ │
+
+ └── Cost > Limit
+
+          ▼
+
+      Reject Query
+```
+
+This prevents expensive operations from overwhelming backend services.
+
+---
+
+# Query Depth Limiting
+
+Depth limiting prevents excessive nesting.
+
+Example
+
+```
+Maximum Depth
+
+=
+
+10 Levels
+```
+
+Request
+
+```
+Depth
+
+=
+
+25 Levels
+
+↓
+
+Rejected
+```
+
+Depth limits reduce denial-of-service risks.
+
+---
+
+# Alias Abuse
+
+Aliases allow multiple requests within a single GraphQL query.
+
+Example
+
+```graphql
+query{
+
+    user1:user(id:1){name}
+
+    user2:user(id:2){name}
+
+    user3:user(id:3){name}
+
+}
+```
+
+Large numbers of aliases may generate many resolver executions.
+
+Mitigation
+
+- Alias limits
+- Query cost analysis
+- Rate limiting
+
+---
+
+# Batching Attacks
+
+Some GraphQL servers accept batched requests.
+
+Example
+
+```
+Request
+
+↓
+
+500 Queries
+
+↓
+
+Single HTTP Request
+```
+
+Attackers may use batching to bypass traditional rate limiting.
+
+Mitigations
+
+- Disable unnecessary batching
+- Apply per-operation limits
+- Rate limit at resolver level
+- Monitor unusual query volume
+
+---
+
+# Denial-of-Service (DoS)
+
+GraphQL DoS attacks commonly exploit:
+
+- Deep nesting
+- Expensive resolvers
+- Large responses
+- Recursive queries
+- Alias abuse
+- Batching
+- Complex filtering
+
+```
+Attacker
+
+ │
+
+Expensive Query
+
+ ▼
+
+Resolvers
+
+ ▼
+
+Database
+
+ ▼
+
+Resource Exhaustion
+```
+
+---
+
+# Secure Resolver Design
+
+Resolvers should:
+
+- Validate input
+- Enforce authorization
+- Limit returned fields
+- Use parameterized queries
+- Batch database requests
+- Handle errors safely
+- Log security events
+- Avoid unnecessary computation
+
+Resolvers represent the primary security boundary within GraphQL.
+
+---
+
+# Input Validation
+
+Validate every argument.
+
+Example
+
+```graphql
+query{
+
+    user(id:"abc")
+}
+```
+
+Validation should verify:
+
+- Type
+- Length
+- Format
+- Range
+- Allowed values
+
+Never trust client-provided input.
+
+---
+
+# Error Handling
+
+Avoid exposing internal implementation details.
+
+Incorrect
+
+```json
+{
+    "errors":[
+        {
+            "message":"SQL Exception in UserResolver.java line 152"
+        }
+    ]
+}
+```
+
+Correct
+
+```json
+{
+    "errors":[
+        {
+            "message":"Unable to process request."
+        }
+    ]
+}
+```
+
+Detailed errors should be logged internally rather than returned to clients.
+
+---
+
+# Logging and Monitoring
+
+Security-relevant events should be logged.
+
+Examples
+
+Authentication
+
+- Failed logins
+- Token validation failures
+
+Authorization
+
+- Access denied
+- Privilege escalation attempts
+
+GraphQL
+
+- Expensive queries
+- Deep queries
+- Alias abuse
+- Introspection attempts
+- Batch requests
+
+Infrastructure
+
+- High latency
+- Server errors
+- Resource exhaustion
+
+These logs support detection engineering and incident response.
+
+---
+
+# Detection Engineering
+
+Security teams should monitor for:
+
+| Detection | Indicator |
+|-----------|-----------|
+| Excessive Query Depth | Nested queries beyond policy |
+| High Query Cost | Queries exceeding complexity thresholds |
+| Alias Abuse | Large number of aliases in a request |
+| Introspection Attempts | Repeated `__schema` or `__type` queries |
+| Authentication Failures | Repeated invalid tokens |
+| Authorization Failures | Multiple denied resolver executions |
+| Batch Abuse | Excessive operations in a single request |
+| DoS Activity | High CPU, memory, or resolver latency |
+
+Alerts should be correlated with source IPs, user identities, and application logs.
+
+---
+
+# SIEM Integration
+
+Typical GraphQL events forwarded to a SIEM include:
+
+```
+Authentication Logs
+
+        │
+
+Authorization Logs
+
+        │
+
+Resolver Execution Logs
+
+        │
+
+GraphQL Audit Logs
+
+        │
+
+Infrastructure Metrics
+
+        ▼
+
+Enterprise SIEM
+
+        │
+
+Correlation Rules
+
+        ▼
+
+SOC Alerts
+```
+
+Useful detection rules include:
+
+- Multiple failed authentication attempts
+- High-frequency introspection queries
+- Repeated authorization failures
+- Abnormally expensive queries
+- Sudden spikes in mutation execution
+- Large-scale data extraction patterns
+
+---
+
+# Enterprise GraphQL Security Architecture
+
+```
+                  Internet
+
+                      │
+
+                      ▼
+
+              Web Application Firewall
+
+                      │
+
+                      ▼
+
+                 API Gateway
+
+                      │
+
+                      ▼
+
+          Authentication Middleware
+
+                      │
+
+                      ▼
+
+             GraphQL Server
+
+                      │
+
+        Query Cost & Depth Analysis
+
+                      │
+
+          Resolver Authorization
+
+                      │
+
+      ┌───────────────┼───────────────┐
+
+      ▼               ▼               ▼
+
+ User Service    Product Service   Order Service
+
+                      │
+
+                      ▼
+
+                 Databases
+
+                      │
+
+                      ▼
+
+            Logging & Monitoring
+
+                      │
+
+                      ▼
+
+                 SIEM / SOC
+```
+
+This layered architecture helps protect GraphQL APIs against both application-layer attacks and infrastructure abuse.
+
+---
+
+# Enterprise Best Practices
+
+Authentication
+
+- Enforce HTTPS.
+- Validate tokens on every request.
+- Use short-lived access tokens.
+- Rotate secrets regularly.
+
+Authorization
+
+- Verify permissions in every resolver.
+- Implement object-level and field-level authorization.
+- Follow the principle of least privilege.
+
+Performance
+
+- Limit query depth.
+- Enforce query complexity limits.
+- Cache frequently accessed data.
+- Batch resolver operations.
+
+Operations
+
+- Disable or restrict introspection where appropriate.
+- Secure developer tools.
+- Monitor expensive queries.
+- Log all security-relevant events.
+- Perform regular security testing.
+
+---
+
+# Common Security Mistakes
+
+Avoid:
+
+- Missing resolver authorization
+- Broken object-level authorization (BOLA)
+- Unlimited query depth
+- Unlimited query complexity
+- Public introspection in production
+- Exposed GraphQL Playground
+- Returning verbose error messages
+- Missing rate limiting
+- Excessive resolver database calls
+- Lack of monitoring and alerting
+
+---
+
+# Key Takeaways
+
+- Authentication verifies identity, while authorization determines permitted actions.
+- Authorization must be enforced at the resolver, object, and field levels.
+- GraphQL introduces unique attack vectors such as introspection abuse, query complexity attacks, deep nesting, alias abuse, and batching attacks.
+- Query cost analysis and depth limiting are essential security controls.
+- Secure resolver design, comprehensive logging, and SIEM integration are critical for enterprise GraphQL deployments.
+
+---
+
+**Next:** GraphQL Vulnerability Assessment, Penetration Testing Methodology, Common Exploitation Techniques, Secure Development Practices, Hands-on Labs, Troubleshooting, Interview Questions, and Chapter Summary.
