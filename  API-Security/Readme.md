@@ -2,589 +2,665 @@
 
 <div align="center">
 
-# 🔐 Enterprise API Security Handbook
+# 🔐 API Security Handbook
 
-### A Complete Beginner-to-Advanced Guide for API Security, Secure Development, Penetration Testing, DevSecOps, and Enterprise Defense
+### Enterprise Guide to Secure API Design, Development, Testing, Defense, Monitoring & Incident Response
 
----
-
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Markdown](https://img.shields.io/badge/Built%20With-Markdown-success)
-![Security](https://img.shields.io/badge/Focus-API%20Security-red)
-![OWASP](https://img.shields.io/badge/OWASP-API%20Top%2010-orange)
-![Level](https://img.shields.io/badge/Level-Beginner%20to%20Expert-brightgreen)
+**Beginner → Intermediate → Advanced**
 
 ---
 
-**Designed for**
+![Status](https://img.shields.io/badge/Status-Active-success)
+![API](https://img.shields.io/badge/API-Security-blue)
+![OWASP](https://img.shields.io/badge/OWASP-API%20Top%2010-red)
+![REST](https://img.shields.io/badge/REST-API-green)
+![GraphQL](https://img.shields.io/badge/GraphQL-Security-purple)
+![Cloud](https://img.shields.io/badge/Cloud-Ready-orange)
+![DevSecOps](https://img.shields.io/badge/DevSecOps-Compatible-blueviolet)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Cybersecurity Students • API Security Engineers • Penetration Testers • SOC Analysts • Security Engineers • Backend Developers • Cloud Engineers • DevSecOps Engineers • Bug Bounty Hunters • Security Architects
+---
+
+**A comprehensive enterprise-grade handbook covering modern API Security from fundamentals to advanced penetration testing, secure development, detection engineering, cloud-native security, and incident response.**
 
 </div>
 
 ---
 
-# 📖 About This Repository
+# Table of Contents
 
-Modern applications are no longer monolithic.
+- Introduction
+- Why API Security Matters
+- Learning Objectives
+- Who Should Read This Handbook
+- Prerequisites
+- Learning Roadmap
+- Repository Structure
+- Chapter Overview
+- Skills You Will Gain
+- Enterprise API Security Lifecycle
+- API Security Domains
+- Enterprise Tools Covered
+- Hands-on Labs
+- Recommended Learning Path
+- Industry Standards
+- Career Roadmap
+- Interview Preparation
+- Contributing
+- License
+- Acknowledgements
 
-Today's enterprise software consists of hundreds of services communicating through APIs.
+---
+
+# Introduction
+
+Modern applications rarely communicate directly with databases or services.
+
+Instead, nearly every interaction between users, mobile applications, web applications, cloud platforms, IoT devices, microservices, third-party vendors, AI systems, and enterprise applications happens through **Application Programming Interfaces (APIs).**
+
+APIs have become the backbone of digital transformation.
 
 Whether you use:
 
 - Banking Applications
+- UPI Payments
+- E-Commerce
+- Social Media
+- AI Platforms
+- Cloud Infrastructure
 - Healthcare Systems
-- E-Commerce Platforms
-- Government Portals
-- Mobile Applications
-- Cloud Services
-- SaaS Platforms
-- AI Applications
-- IoT Devices
+- Government Services
+- SaaS Products
 
-Almost every operation happens through an API.
-
-APIs have become one of the largest attack surfaces on the Internet.
-
-Many of the world's largest data breaches occurred because APIs were:
-
-- Poorly authenticated
-- Improperly authorized
-- Exposed to the Internet
-- Misconfigured
-- Missing rate limiting
-- Vulnerable to injection attacks
-- Returning excessive sensitive data
-
-As organizations increasingly adopt:
-
-- Cloud Computing
-- Kubernetes
-- Microservices
-- Serverless Computing
-- Mobile Applications
-- AI Services
-- Multi-Cloud Infrastructure
-
-API security has become a critical component of enterprise cybersecurity.
-
-This handbook teaches API Security from the ground up with an enterprise-first mindset.
+you are interacting with APIs.
 
 ---
 
-# 🎯 Repository Objectives
+Unfortunately,
 
-After completing this handbook, you will understand:
+the same APIs that power modern businesses have also become one of the largest attack surfaces.
+
+According to industry reports, API attacks have grown dramatically because organizations expose thousands of APIs across:
+
+- Public Internet
+- Internal Networks
+- Mobile Applications
+- Cloud Platforms
+- Kubernetes
+- IoT Devices
+- Partner Integrations
+- Third-party Vendors
+
+A single vulnerable API can expose millions of customer records.
+
+---
+
+This handbook teaches API Security from an enterprise perspective—not just how APIs work, but how attackers exploit them and how defenders secure them.
+
+---
+
+# Why API Security Matters
+
+Modern organizations expose hundreds or even thousands of APIs.
+
+Examples include:
+
+- Login APIs
+- Payment APIs
+- User Profile APIs
+- Search APIs
+- Authentication Services
+- Banking APIs
+- Healthcare APIs
+- Inventory APIs
+- AI APIs
+- Cloud APIs
+
+Every exposed API becomes a potential attack surface.
+
+If improperly secured, APIs can lead to:
+
+- Data Breaches
+- Account Takeover
+- Privilege Escalation
+- Business Logic Abuse
+- Financial Fraud
+- Cloud Compromise
+- Supply Chain Attacks
+- Regulatory Violations
+- Reputation Damage
+
+API Security is no longer optional.
+
+It is a business requirement.
+
+---
+
+# Learning Objectives
+
+By the end of this handbook, you will understand:
 
 - API fundamentals
-- Enterprise API architectures
-- REST APIs
-- SOAP APIs
-- GraphQL Security
-- gRPC Security
-- HTTP Protocol
-- Authentication
-- Authorization
-- JWT Security
+- REST architecture
+- SOAP architecture
+- GraphQL
+- gRPC
+- HTTP protocol
+- Authentication mechanisms
+- Authorization models
+- JWT security
 - OAuth 2.0
 - OpenID Connect
-- API Gateways
-- API Security Testing
+- API Gateway architecture
+- Rate limiting
+- CORS
+- CSRF
+- Input validation
+- Secure coding
 - OWASP API Security Top 10
-- Secure API Development
-- API Monitoring
-- API Logging
-- Detection Engineering
-- Incident Response
-- API Penetration Testing
-- Enterprise API Defense
+- API penetration testing
+- API fuzzing
+- API monitoring
+- Detection engineering
+- SIEM integration
+- Cloud-native API security
+- Zero Trust APIs
+- Incident response
+- Enterprise API Governance
 
 ---
 
-# 👨‍💻 Who Should Read This?
+# Who Should Read This Handbook
 
-This repository is suitable for:
+This handbook is designed for:
 
-## Students
-
-Learning APIs from scratch.
-
----
-
-## Developers
-
-Building secure backend applications.
-
----
-
-## Penetration Testers
-
-Testing enterprise APIs.
-
----
-
-## SOC Analysts
-
-Detecting API attacks.
+- Students
+- Software Developers
+- Backend Engineers
+- Full Stack Developers
+- Security Engineers
+- SOC Analysts
+- Penetration Testers
+- DevSecOps Engineers
+- Cloud Security Engineers
+- API Developers
+- Security Researchers
+- Bug Bounty Hunters
+- Solution Architects
+- Technical Leads
+- Security Architects
 
 ---
 
-## Security Engineers
+# Prerequisites
 
-Designing enterprise API defenses.
+Although beginner friendly, readers should know:
 
----
-
-## DevSecOps Engineers
-
-Integrating API security into CI/CD.
-
----
-
-## Cloud Engineers
-
-Securing cloud-native APIs.
-
----
-
-## Security Architects
-
-Designing enterprise API ecosystems.
-
----
-
-# 📚 Prerequisites
-
-Basic understanding of:
-
-- Computer Networks
+- Basic Networking
 - HTTP
-- TCP/IP
-- Operating Systems
-- Linux
 - Web Applications
+- Client-Server Architecture
 - Basic Programming
 - JSON
-- Cybersecurity Fundamentals
+- Linux Basics
 
-Recommended repositories before this handbook:
+Helpful but optional:
 
-- Networking
-- Linux
-- Web Security
-- Cryptography
-- Secure Coding
+- Docker
+- Kubernetes
+- Cloud Platforms
+- Python
+- Burp Suite
+- Postman
 
 ---
 
-# 🛣 Learning Roadmap
+# Learning Roadmap
 
 ```
 Networking
-      │
-      ▼
-HTTP Protocol
-      │
-      ▼
-What is an API?
-      │
-      ▼
+        │
+        ▼
+HTTP Fundamentals
+        │
+        ▼
+API Basics
+        │
+        ▼
 REST APIs
-      │
-      ▼
+        │
+        ▼
 Authentication
-      │
-      ▼
+        │
+        ▼
 Authorization
-      │
-      ▼
+        │
+        ▼
 JWT
-      │
-      ▼
+        │
+        ▼
 OAuth
-      │
-      ▼
-API Gateways
-      │
-      ▼
+        │
+        ▼
+API Gateway
+        │
+        ▼
+API Security
+        │
+        ▼
 OWASP API Top 10
-      │
-      ▼
+        │
+        ▼
 API Pentesting
-      │
-      ▼
-Enterprise API Security
-      │
-      ▼
+        │
+        ▼
 Detection Engineering
-      │
-      ▼
-Incident Response
+        │
+        ▼
+Cloud API Security
+        │
+        ▼
+Enterprise Security
 ```
 
 ---
 
-# 📂 Repository Structure
+# Repository Structure
 
 ```
 API-Security/
 
 README.md
 
-01 Introduction to APIs
+01-Introduction-to-APIs.md
 
-02 API Architecture
+02-API-Architecture.md
 
-03 REST API
+03-REST-API.md
 
-04 SOAP API
+04-SOAP-API.md
 
-05 GraphQL Security
+05-GraphQL-Security.md
 
-06 gRPC Security
+06-gRPC-Security.md
 
-07 HTTP Methods
+07-HTTP-Methods.md
 
-08 HTTP Headers
+08-HTTP-Headers.md
 
-09 Authentication
+09-Authentication.md
 
-10 Authorization
+10-Authorization.md
 
-11 JWT Security
+11-JWT-Security.md
 
-12 OAuth 2.0
+12-OAuth-2.0.md
 
-13 OpenID Connect
+13-OpenID-Connect.md
 
-14 API Gateways
+14-API-Gateways.md
 
-15 Rate Limiting
+15-Rate-Limiting.md
 
-16 CORS
+16-CORS.md
 
-17 CSRF in APIs
+17-CSRF-in-APIs.md
 
-18 API Input Validation
+18-API-Input-Validation.md
 
-19 OWASP API Security Top 10
+19-OWASP-API-Security-Top-10.md
 
-20 API Vulnerability Testing
+20-API-Vulnerability-Testing.md
 
-21 API Fuzzing
+21-API-Fuzzing.md
 
-22 API Pentesting
+22-API-Pentesting.md
 
-23 API Security Tools
+23-API-Security-Tools.md
 
-24 Secure API Development
+24-Secure-API-Development.md
 
-25 API Monitoring and Logging
+25-API-Monitoring-and-Logging.md
 
-26 API Incident Response
+26-API-Incident-Response.md
 
-27 Interview Questions
+27-API-Security-Interview-Questions.md
 
-28 Cheat Sheet
+28-API-Security-Cheat-Sheet.md
 
-Resources
+Resources.md
 ```
 
 ---
 
-# 🎓 Learning Path
+# Chapter Overview
 
-Each chapter follows the same structure.
+| Chapter | Description |
+|----------|-------------|
+| 01 | API Fundamentals |
+| 02 | API Architecture |
+| 03 | REST APIs |
+| 04 | SOAP APIs |
+| 05 | GraphQL Security |
+| 06 | gRPC Security |
+| 07 | HTTP Methods |
+| 08 | HTTP Headers |
+| 09 | Authentication |
+| 10 | Authorization |
+| 11 | JWT |
+| 12 | OAuth 2.0 |
+| 13 | OpenID Connect |
+| 14 | API Gateways |
+| 15 | Rate Limiting |
+| 16 | CORS |
+| 17 | CSRF |
+| 18 | Input Validation |
+| 19 | OWASP API Top 10 |
+| 20 | API Vulnerability Testing |
+| 21 | API Fuzzing |
+| 22 | API Pentesting |
+| 23 | API Security Tools |
+| 24 | Secure Development |
+| 25 | Monitoring & Logging |
+| 26 | Incident Response |
+| 27 | Interview Questions |
+| 28 | Cheat Sheet |
+
+---
+
+# Skills You Will Gain
+
+By completing this handbook, you'll gain practical skills in:
+
+- API Design
+- Secure API Development
+- API Authentication
+- OAuth Implementations
+- JWT Security
+- API Authorization
+- API Hardening
+- Burp Suite Testing
+- Postman Security Testing
+- API Enumeration
+- API Discovery
+- API Fuzzing
+- API Exploitation
+- Detection Engineering
+- SIEM Correlation
+- Threat Hunting
+- Secure Cloud APIs
+- DevSecOps
+- Incident Response
+- API Governance
+
+---
+
+# Enterprise API Security Lifecycle
 
 ```
-Introduction
-
-↓
-
-Theory
-
-↓
-
-Architecture
-
-↓
-
-Enterprise Examples
-
-↓
-
-ASCII Diagrams
-
-↓
-
-Attack Techniques
-
-↓
-
-Defense Techniques
-
-↓
-
-Best Practices
-
-↓
-
-Detection Engineering
-
-↓
-
-SIEM Use Cases
-
-↓
-
-Hands-on Labs
-
-↓
-
-Troubleshooting
-
-↓
-
-Interview Questions
-
-↓
-
-Summary
-
-↓
-
-Review
+Business Requirements
+        │
+        ▼
+API Design
+        │
+        ▼
+Threat Modeling
+        │
+        ▼
+Secure Development
+        │
+        ▼
+Authentication
+        │
+        ▼
+Authorization
+        │
+        ▼
+Input Validation
+        │
+        ▼
+Security Testing
+        │
+        ▼
+Deployment
+        │
+        ▼
+Monitoring
+        │
+        ▼
+Detection
+        │
+        ▼
+Incident Response
+        │
+        ▼
+Continuous Improvement
 ```
 
 ---
 
-# 🏢 Enterprise Technologies Covered
+# API Security Domains
 
-Throughout this handbook, examples are based on technologies commonly used in production environments.
+This handbook covers every major API security domain, including:
 
-## API Frameworks
-
-- Spring Boot
-- ASP.NET Core
-- Django REST Framework
-- FastAPI
-- Flask
-- Express.js
-- Laravel
-- Go Fiber
-
----
-
-## API Gateways
-
-- Kong
-- NGINX
-- Apigee
-- AWS API Gateway
-- Azure API Management
-- Traefik
-- Envoy
+- REST Security
+- SOAP Security
+- GraphQL Security
+- gRPC Security
+- Authentication
+- Authorization
+- Identity Federation
+- Token Security
+- Secure Headers
+- API Gateway Security
+- Cloud API Security
+- Kubernetes APIs
+- Microservices Security
+- Zero Trust APIs
+- Business Logic Security
+- API Abuse Prevention
+- Detection Engineering
+- Threat Intelligence
+- Compliance
+- Governance
 
 ---
 
-## Cloud Platforms
+# Enterprise Tools Covered
 
-- AWS
-- Azure
-- Google Cloud
+Development
 
----
+- Postman
+- Swagger UI
+- OpenAPI
 
-## Containers
-
-- Docker
-- Kubernetes
-
----
-
-## Authentication Providers
-
-- Keycloak
-- Auth0
-- Okta
-- Microsoft Entra ID
-
----
-
-## Monitoring
-
-- Splunk
-- Elastic Stack
-- Grafana
-- Prometheus
-- Datadog
-
----
-
-## Security Tools
+Testing
 
 - Burp Suite
 - OWASP ZAP
-- Postman
-- Insomnia
-- Nmap
-- Wireshark
-- mitmproxy
 - ffuf
-- nuclei
+- curl
+- HTTPie
+
+Reconnaissance
+
+- Katana
+- httpx
+- gau
+- waybackurls
+
+Scanning
+
+- Nuclei
+- Kiterunner
+- Arjun
+
+Cloud
+
+- AWS API Gateway
+- Azure API Management
+- Google Cloud Endpoints
+
+Monitoring
+
+- Splunk
+- ELK Stack
+- Grafana
+- Prometheus
+
+Traffic Analysis
+
+- Wireshark
+- tcpdump
+- mitmproxy
+
+DevSecOps
+
+- GitHub Actions
+- Docker
+- Kubernetes
+- Trivy
 
 ---
 
-# 🔥 Skills You Will Gain
+# Hands-on Labs
 
-After completing this handbook, you will be able to:
+Throughout the handbook you will perform:
 
-✔ Design secure APIs
-
-✔ Secure REST APIs
-
-✔ Secure GraphQL APIs
-
-✔ Implement Authentication
-
-✔ Implement Authorization
-
-✔ Secure JWT Tokens
-
-✔ Configure OAuth 2.0
-
-✔ Detect API Attacks
-
-✔ Perform API Pentesting
-
-✔ Secure Cloud APIs
-
-✔ Build Enterprise API Gateways
-
-✔ Analyze API Logs
-
-✔ Investigate Security Incidents
-
-✔ Mitigate OWASP API Top 10 Risks
-
-✔ Build Detection Rules
-
-✔ Perform Threat Hunting
+- REST API Testing
+- GraphQL Enumeration
+- JWT Manipulation
+- OAuth Testing
+- API Discovery
+- API Fuzzing
+- Broken Authentication Testing
+- Broken Authorization Testing
+- Rate Limit Bypass
+- CORS Testing
+- CSRF Testing
+- Business Logic Testing
+- API Gateway Testing
+- Cloud API Testing
+- SIEM Detection Labs
+- Incident Response Exercises
 
 ---
 
-# 💼 Career Relevance
+# Recommended Learning Path
 
-This handbook prepares you for roles such as:
+Follow the chapters in order.
 
-- API Security Engineer
-- Cybersecurity Engineer
-- Application Security Engineer
-- Security Consultant
-- Security Architect
-- Penetration Tester
-- Red Team Operator
-- Blue Team Analyst
-- SOC Analyst
-- DevSecOps Engineer
-- Cloud Security Engineer
-- Backend Security Engineer
+Each chapter builds upon previous concepts.
 
----
+Do not skip:
 
-# 🎯 Interview Preparation
+- HTTP
+- Authentication
+- Authorization
+- JWT
+- OAuth
 
-Special chapters include:
-
-- API Interview Questions
-- Scenario-Based Questions
-- Real Enterprise Case Studies
-- Hands-on Labs
-- Attack Simulations
-- Defense Strategies
-- Troubleshooting Exercises
-- Cheat Sheets
-- Rapid Revision Notes
+These concepts are foundational for advanced API security.
 
 ---
 
-# 📖 Standards and References
+# Industry Standards Covered
 
-This handbook references industry-recognized standards and guidance wherever applicable, including:
+The handbook aligns with industry-recognized standards and best practices, including:
 
 - OWASP API Security Top 10
 - OWASP ASVS
-- OWASP Cheat Sheet Series
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
-- NIST SP 800-204 (Microservices Security)
-- RFC 7230–7235 (HTTP/1.1)
-- RFC 9110 (HTTP Semantics)
-- RFC 7519 (JWT)
-- RFC 6749 (OAuth 2.0)
-- RFC 6750 (Bearer Token Usage)
-- RFC 7617 (Basic Authentication)
-- RFC 7616 (Digest Authentication)
-- CIS Benchmarks
+- NIST SP 800-204
 - ISO/IEC 27001
+- CIS Controls
+- OpenAPI Specification
+- OAuth 2.0 RFCs
+- OpenID Connect Specifications
+- JWT RFC 7519
+- HTTP RFC 9110
 
 ---
 
-# 🧪 Hands-on Focus
+# Career Roadmap
 
-Every major topic includes practical exercises such as:
+After mastering this handbook, you can pursue roles such as:
 
-- Building APIs
-- Testing APIs
-- Exploiting vulnerable APIs
-- Hardening APIs
-- Traffic Analysis
-- Log Analysis
-- Detection Rule Creation
-- SIEM Investigations
-- Incident Response Scenarios
-- Enterprise Case Studies
+- API Security Engineer
+- Application Security Engineer
+- Penetration Tester
+- Security Consultant
+- Backend Security Engineer
+- Cloud Security Engineer
+- DevSecOps Engineer
+- Security Architect
+- SOC Analyst
+- Detection Engineer
+- Product Security Engineer
 
 ---
 
-# 🤝 Contributing
+# Interview Preparation
+
+This repository is designed to prepare you for interviews by including:
+
+- Fundamental concepts
+- Scenario-based questions
+- Architecture discussions
+- Practical attack scenarios
+- Defensive strategies
+- Hands-on exercises
+- Troubleshooting techniques
+- Enterprise case studies
+- Mock interview questions
+- Rapid revision cheat sheets
+
+---
+
+# Contributing
 
 Contributions are welcome.
 
-Please:
+Please ensure that:
 
-- Improve explanations
-- Fix errors
-- Add enterprise examples
-- Add labs
-- Improve diagrams
-- Update standards
-- Enhance security recommendations
+- Content is technically accurate.
+- Examples are practical.
+- Security advice follows industry best practices.
+- References are cited where applicable.
+- Markdown formatting remains consistent across the repository.
 
 ---
 
-# ⚠️ Disclaimer
+# License
 
-This repository is intended solely for educational purposes and authorized security testing.
-
-Do not perform security testing against systems, APIs, or infrastructure without explicit written authorization.
-
-The authors and contributors are not responsible for any misuse of the information contained in this repository.
+This project is released under the MIT License.
 
 ---
 
-# 🚀 Next Chapter
+# Acknowledgements
 
-➡️ **01 – Introduction to APIs**
+This handbook draws inspiration from:
 
-In the next chapter, we begin by understanding:
+- OWASP Foundation
+- IETF RFCs
+- NIST Publications
+- Cloud Security Alliance
+- OpenAPI Initiative
+- CNCF
+- Industry best practices
+- Enterprise security engineering experience
 
-- What APIs are
-- Why APIs exist
-- How APIs work
-- Types of APIs
-- Enterprise API lifecycle
-- Real-world API communication
-- Why API security is critical in modern organizations
+---
 
-This foundation will support every advanced topic covered throughout the handbook.
+# What Next?
+
+Begin your journey with:
+
+> **01-Introduction-to-APIs.md**
+
+where you'll learn what APIs are, how they work, why they exist, common API styles, and why API Security has become one of the most critical disciplines in modern cybersecurity.
+
+---
+
+**Happy Learning and Happy Securing! 🔐**
