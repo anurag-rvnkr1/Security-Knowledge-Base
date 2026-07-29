@@ -1221,4 +1221,891 @@ The migration allowed development teams to deploy features independently while i
 
 ---
 
-**Next:** **Part 3 – API Gateway Architecture, Service Mesh, Cloud-Native APIs, High Availability, Scalability, Security Architecture, and Enterprise Design Patterns**
+# 02 - API Architecture (Part 3)
+
+# API Gateway Architecture
+
+As organizations transition from monolithic applications to microservices, the number of backend services increases significantly.
+
+Without a centralized entry point, clients would need to communicate with dozens or even hundreds of services individually.
+
+An **API Gateway** solves this problem by acting as the single entry point for all client requests.
+
+```
+                Clients
+        ┌────────┼────────┐
+        ▼        ▼        ▼
+     Web App  Mobile App Partner API
+            │
+            ▼
+      +---------------+
+      |  API Gateway  |
+      +-------+-------+
+              │
+      ┌───────┼────────┐
+      ▼       ▼        ▼
+  User API Order API Payment API
+      │       │        │
+      ▼       ▼        ▼
+    Database Database Database
+```
+
+The gateway hides internal implementation details and provides a unified interface for consumers.
+
+---
+
+# Why API Gateways are Important
+
+Without an API Gateway:
+
+```
+Client
+
+ │
+
+ ├────────► User Service
+
+ ├────────► Order Service
+
+ ├────────► Payment Service
+
+ ├────────► Inventory Service
+
+ ├────────► Notification Service
+
+ └────────► Shipping Service
+```
+
+Problems include:
+
+- Complex client logic
+- Multiple authentication requests
+- Inconsistent security
+- Higher latency
+- Difficult monitoring
+- Difficult version management
+
+With an API Gateway:
+
+```
+Client
+
+ │
+
+ ▼
+
+API Gateway
+
+ │
+
+ ├────────► User Service
+
+ ├────────► Order Service
+
+ ├────────► Payment Service
+
+ ├────────► Inventory Service
+
+ └────────► Notification Service
+```
+
+The client communicates with only one endpoint.
+
+---
+
+# Responsibilities of an API Gateway
+
+A modern API Gateway performs numerous functions.
+
+### Request Routing
+
+Routes incoming requests to the correct backend service.
+
+Example:
+
+```
+/users
+
+↓
+
+User Service
+```
+
+```
+/orders
+
+↓
+
+Order Service
+```
+
+---
+
+### Authentication
+
+Verifies the identity of clients.
+
+Examples:
+
+- Username & Password
+- API Keys
+- JWT
+- OAuth 2.0
+- OpenID Connect
+- Mutual TLS (mTLS)
+
+---
+
+### Authorization
+
+Determines whether an authenticated user has permission to access a resource.
+
+Examples:
+
+```
+Admin
+
+↓
+
+Access Dashboard
+```
+
+```
+Customer
+
+↓
+
+Access Own Orders
+```
+
+---
+
+### SSL/TLS Termination
+
+The gateway decrypts HTTPS traffic before forwarding requests internally.
+
+```
+HTTPS
+
+↓
+
+Gateway
+
+↓
+
+HTTP or HTTPS
+
+↓
+
+Backend Services
+```
+
+---
+
+### Rate Limiting
+
+Protects APIs from abuse.
+
+Example:
+
+```
+Maximum
+
+100 Requests
+
+Per Minute
+```
+
+Requests exceeding the limit are rejected.
+
+---
+
+### Request Transformation
+
+Transforms incoming requests before forwarding them.
+
+Example:
+
+```
+Client JSON
+
+↓
+
+Gateway
+
+↓
+
+Backend XML
+```
+
+or
+
+```
+Client Header
+
+↓
+
+Gateway
+
+↓
+
+Internal Header
+```
+
+---
+
+### Response Aggregation
+
+Instead of requiring multiple API calls:
+
+```
+Profile
+
+Orders
+
+Notifications
+```
+
+The gateway aggregates data into a single response.
+
+```
+Dashboard API
+
+↓
+
+Complete Response
+```
+
+---
+
+### Logging
+
+Records:
+
+- Requests
+- Responses
+- Authentication events
+- Errors
+- Latency
+- User identity
+- Source IP
+
+---
+
+### Monitoring
+
+Provides metrics such as:
+
+- Requests per second
+- Error rate
+- Response time
+- API usage
+- Geographic traffic
+- Authentication failures
+
+---
+
+# Popular API Gateways
+
+Commercial
+
+- Kong Enterprise
+- Apigee
+- MuleSoft
+- IBM API Connect
+- Azure API Management
+- AWS API Gateway
+
+Open Source
+
+- Kong
+- KrakenD
+- Apache APISIX
+- Traefik
+- NGINX
+- Envoy Proxy
+
+---
+
+# Reverse Proxy vs API Gateway
+
+Many beginners confuse these concepts.
+
+| Reverse Proxy | API Gateway |
+|---------------|-------------|
+| Routes traffic | Routes API traffic |
+| Basic load balancing | Intelligent routing |
+| Limited API awareness | API-aware |
+| Limited authentication | Advanced authentication |
+| Basic logging | Detailed analytics |
+| General-purpose | API-specific |
+
+An API Gateway often includes reverse proxy capabilities, but it provides significantly more functionality.
+
+---
+
+# Service Mesh
+
+As microservice deployments grow, communication between services becomes increasingly complex.
+
+A **Service Mesh** manages service-to-service communication.
+
+Unlike an API Gateway, which manages north-south traffic (client to server), a Service Mesh manages east-west traffic (service to service).
+
+```
+            API Gateway
+
+                 │
+
+ ┌───────────────┼───────────────┐
+
+ ▼               ▼               ▼
+
+User Service  Order Service  Payment Service
+
+      ▲            ▲              ▲
+
+      └──────Service Mesh─────────┘
+```
+
+---
+
+# Responsibilities of a Service Mesh
+
+A Service Mesh provides:
+
+- Service discovery
+- Mutual TLS (mTLS)
+- Encryption
+- Traffic routing
+- Load balancing
+- Retry policies
+- Circuit breaking
+- Observability
+- Metrics
+- Distributed tracing
+
+---
+
+# Sidecar Proxy Architecture
+
+Most service meshes use sidecar proxies.
+
+```
++---------------------------+
+
+| User Service              |
+
+|   +-------------------+   |
+
+|   | Envoy Proxy       |   |
+
+|   +-------------------+   |
+
++---------------------------+
+```
+
+Each service communicates through its local proxy.
+
+Benefits include:
+
+- Transparent security
+- Consistent policies
+- Better observability
+- Zero code modifications
+
+---
+
+# Popular Service Mesh Solutions
+
+Examples:
+
+- Istio
+- Linkerd
+- Consul Connect
+- Kuma
+- Open Service Mesh (OSM)
+
+---
+
+# Cloud-Native API Architecture
+
+Modern APIs are increasingly deployed on cloud-native infrastructure.
+
+```
+Users
+
+ │
+
+ ▼
+
+CDN
+
+ │
+
+ ▼
+
+Load Balancer
+
+ │
+
+ ▼
+
+API Gateway
+
+ │
+
+ ▼
+
+Kubernetes Cluster
+
+ │
+
+ ├────► Service A
+
+ ├────► Service B
+
+ ├────► Service C
+
+ └────► Service D
+
+ │
+
+ ▼
+
+Cloud Database
+```
+
+Cloud-native APIs emphasize:
+
+- Elastic scaling
+- Self-healing
+- Containerization
+- Automation
+- Continuous deployment
+
+---
+
+# Containers and APIs
+
+Containers package applications with all dependencies.
+
+```
+Container
+
+├── API
+
+├── Runtime
+
+├── Libraries
+
+└── Configuration
+```
+
+Advantages:
+
+- Portability
+- Consistency
+- Fast deployment
+- Isolation
+
+Popular platforms:
+
+- Docker
+- Podman
+
+---
+
+# Kubernetes Architecture
+
+Many enterprise APIs run on Kubernetes.
+
+```
+Internet
+
+ │
+
+ ▼
+
+Ingress Controller
+
+ │
+
+ ▼
+
+Service
+
+ │
+
+ ├─────────────┐
+
+ ▼             ▼
+
+Pod 1        Pod 2
+
+ ▼             ▼
+
+Container   Container
+```
+
+Kubernetes automatically manages:
+
+- Scaling
+- Recovery
+- Scheduling
+- Networking
+- Health checks
+
+---
+
+# High Availability (HA)
+
+High Availability ensures APIs remain accessible despite failures.
+
+Without HA
+
+```
+Client
+
+ │
+
+ ▼
+
+Single API Server
+
+ │
+
+ ▼
+
+Failure
+
+↓
+
+Service Down
+```
+
+With HA
+
+```
+Client
+
+ │
+
+ ▼
+
+Load Balancer
+
+ │
+
+ ├─────────────┐
+
+ ▼             ▼
+
+API 1        API 2
+
+ │             │
+
+ └─────Database Cluster──────┘
+```
+
+If one server fails, traffic automatically shifts to healthy servers.
+
+---
+
+# Horizontal vs Vertical Scaling
+
+### Vertical Scaling
+
+Increase resources of one server.
+
+```
+CPU ↑
+
+RAM ↑
+
+Disk ↑
+```
+
+Advantages:
+
+- Simple
+
+Limitations:
+
+- Hardware limits
+- Downtime during upgrades
+
+---
+
+### Horizontal Scaling
+
+Add additional servers.
+
+```
+Server 1
+
+Server 2
+
+Server 3
+
+Server 4
+```
+
+Advantages:
+
+- Better fault tolerance
+- Greater scalability
+- Cloud friendly
+
+Modern APIs typically prefer horizontal scaling.
+
+---
+
+# Stateless API Design
+
+REST APIs should ideally be stateless.
+
+Each request contains all information needed for processing.
+
+```
+Request
+
+↓
+
+Authentication
+
+↓
+
+Processing
+
+↓
+
+Response
+```
+
+The server does not store session state between requests.
+
+Benefits:
+
+- Easier scaling
+- Better fault tolerance
+- Simpler load balancing
+- Improved reliability
+
+---
+
+# Caching
+
+Caching reduces repeated processing.
+
+```
+Request
+
+ │
+
+ ▼
+
+Cache
+
+ │
+
+ ├── Hit
+
+ │      ▼
+
+ │   Response
+
+ │
+
+ └── Miss
+
+        ▼
+
+Database
+
+        ▼
+
+Cache
+
+        ▼
+
+Response
+```
+
+Common cache technologies:
+
+- Redis
+- Memcached
+- CDN Cache
+
+Benefits:
+
+- Faster responses
+- Reduced database load
+- Improved scalability
+
+---
+
+# Enterprise Design Patterns
+
+Frequently used architectural patterns include:
+
+### API Gateway Pattern
+
+Single entry point for clients.
+
+---
+
+### Backend-for-Frontend (BFF)
+
+Separate backend for each client.
+
+```
+Web
+
+↓
+
+Web Backend
+
+```
+
+```
+Mobile
+
+↓
+
+Mobile Backend
+```
+
+Optimizes responses for different platforms.
+
+---
+
+### Aggregator Pattern
+
+Combines multiple APIs into one response.
+
+```
+Dashboard API
+
+↓
+
+Products
+
+Orders
+
+Payments
+
+Notifications
+```
+
+---
+
+### Circuit Breaker Pattern
+
+Prevents cascading failures.
+
+```
+Request
+
+↓
+
+Service Down
+
+↓
+
+Circuit Opens
+
+↓
+
+Immediate Failure Response
+```
+
+Protects dependent services from repeated failures.
+
+---
+
+### Retry Pattern
+
+Automatically retries temporary failures.
+
+Useful for:
+
+- Network interruptions
+- Temporary service outages
+- Cloud failures
+
+Retries should use exponential backoff to avoid overwhelming downstream services.
+
+---
+
+# Enterprise Example
+
+A multinational bank exposes over 800 APIs.
+
+Architecture:
+
+```
+Customers
+
+     │
+
+     ▼
+
+Global CDN
+
+     │
+
+     ▼
+
+Web Application Firewall
+
+     │
+
+     ▼
+
+API Gateway
+
+     │
+
+Kubernetes Cluster
+
+     │
+
+Istio Service Mesh
+
+     │
+
+Hundreds of Microservices
+
+     │
+
+Encrypted Databases
+
+     │
+
+Central SIEM
+
+     │
+
+SOC Monitoring
+```
+
+This architecture supports millions of daily transactions while maintaining strong security, high availability, and operational visibility.
+
+---
+
+# Key Takeaways
+
+- API Gateways centralize routing, authentication, authorization, monitoring, and traffic management.
+- Service Meshes secure and manage communication between internal services.
+- Cloud-native architectures use containers, Kubernetes, and automation for scalable API deployments.
+- High Availability relies on redundancy, load balancing, and health checks to minimize downtime.
+- Stateless APIs simplify scaling and improve resilience.
+- Caching enhances performance by reducing repeated work.
+- Enterprise design patterns such as BFF, Aggregator, Circuit Breaker, and Retry improve reliability and maintainability.
+- Modern enterprise APIs combine gateways, service meshes, orchestration platforms, and observability tools to build secure and scalable systems.
+
+---
+
+**Next:** **Part 4 – Security Architecture, Detection Engineering, Logging & Monitoring, Enterprise Case Studies, Hands-on Labs, Troubleshooting, Interview Questions, Summary, Review Questions, and References**
