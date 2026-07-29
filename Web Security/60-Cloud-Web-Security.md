@@ -603,6 +603,615 @@ Business Benefits
 - The Shared Responsibility Model defines security responsibilities between providers and customers.
 - Mature cloud security integrates Security by Design, Defense in Depth, governance, monitoring, and continuous improvement.
 
+# 60-Cloud-Web-Security.md
+
+# Part 2 — Cloud Identity, Access Management, Network Security, Data Protection, Secure Configuration, and Enterprise Governance
+
+> **"Strong identity management, secure networking, protected data, standardized configurations, and governance form the foundation of secure cloud operations."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Cloud Identity and Access Management (IAM)
+- Authentication
+- Authorization
+- Principle of Least Privilege
+- Cloud Networking
+- Network Segmentation
+- Data Protection
+- Encryption Concepts
+- Secure Configuration Management
+- Enterprise Governance
+
+---
+
+# Cloud Identity and Access Management (IAM)
+
+Identity is the primary security boundary in modern cloud environments.
+
+```
+User / Service
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Cloud Resources
+
+↓
+
+Audit Logging
+```
+
+Every interaction with cloud resources should be associated with a managed identity.
+
+---
+
+# Identity Types
+
+```
+Cloud Identities
+
+│
+
+├── Human Users
+
+├── Administrators
+
+├── Applications
+
+├── Services
+
+├── Automation Accounts
+
+├── External Partners
+
+├── Security Teams
+
+└── Operations Teams
+```
+
+Each identity should have clearly defined ownership and responsibilities.
+
+---
+
+# Authentication
+
+Authentication verifies the identity of a user or service.
+
+```
+Identity
+
+↓
+
+Authentication
+
+↓
+
+Verified Identity
+```
+
+Organizations should use strong authentication mechanisms and align them with enterprise identity policies.
+
+---
+
+# Authorization
+
+Authorization determines what an authenticated identity is allowed to do.
+
+```
+Verified Identity
+
+↓
+
+Authorization
+
+↓
+
+Approved Actions
+
+↓
+
+Cloud Resources
+```
+
+Authorization policies should be reviewed regularly to ensure they remain appropriate.
+
+---
+
+# Principle of Least Privilege
+
+Every identity should receive only the permissions required for its responsibilities.
+
+```
+Identity
+
+↓
+
+Assigned Role
+
+↓
+
+Minimum Permissions
+
+↓
+
+Authorized Resources
+```
+
+Least privilege reduces the impact of accidental or unauthorized actions.
+
+---
+
+# Role-Based Access Control (RBAC)
+
+RBAC simplifies permission management by assigning permissions through predefined roles.
+
+```
+Identity
+
+↓
+
+Role
+
+↓
+
+Permissions
+
+↓
+
+Cloud Services
+```
+
+Roles should align with business responsibilities and operational requirements.
+
+---
+
+# Access Governance
+
+```
+Access Request
+
+↓
+
+Manager Review
+
+↓
+
+Approval
+
+↓
+
+Provisioning
+
+↓
+
+Monitoring
+
+↓
+
+Periodic Review
+```
+
+Access should be reviewed regularly to ensure permissions remain appropriate.
+
+---
+
+# Cloud Networking
+
+Cloud networking enables communication between applications, services, and users.
+
+```
+Internet
+
+↓
+
+Cloud Gateway
+
+↓
+
+Application Tier
+
+↓
+
+Service Tier
+
+↓
+
+Database Tier
+```
+
+Network architecture should be documented and aligned with security requirements.
+
+---
+
+# Network Components
+
+```
+Cloud Network
+
+│
+
+├── Virtual Networks
+
+├── Subnets
+
+├── Gateways
+
+├── Load Balancers
+
+├── Firewalls
+
+├── DNS Services
+
+├── Routing
+
+└── Monitoring
+```
+
+Each component contributes to secure and reliable communication.
+
+---
+
+# Network Segmentation
+
+Logical segmentation limits unnecessary communication between workloads.
+
+```
+Cloud Network
+
+│
+
+├── Public Services
+
+├── Internal Services
+
+├── Databases
+
+├── Management Services
+
+├── Monitoring
+
+└── Backup Services
+```
+
+Segmentation improves operational resilience and simplifies governance.
+
+---
+
+# Data Protection
+
+Cloud environments process and store valuable business information.
+
+```
+Data
+
+↓
+
+Classification
+
+↓
+
+Protection
+
+↓
+
+Storage
+
+↓
+
+Monitoring
+```
+
+Data protection should align with organizational policies and regulatory requirements.
+
+---
+
+# Data Lifecycle
+
+```
+Creation
+
+↓
+
+Processing
+
+↓
+
+Storage
+
+↓
+
+Sharing
+
+↓
+
+Archiving
+
+↓
+
+Retention
+
+↓
+
+Deletion
+```
+
+Security controls should be applied throughout the complete data lifecycle.
+
+---
+
+# Encryption Concepts
+
+Encryption protects the confidentiality of data.
+
+```
+Data
+
+↓
+
+Encryption
+
+↓
+
+Protected Storage
+
+↓
+
+Authorized Access
+
+↓
+
+Decryption
+```
+
+Encryption should be considered for both stored data and data transmitted across networks.
+
+---
+
+# Data Classification
+
+```
+Business Data
+
+│
+
+├── Public
+
+├── Internal
+
+├── Confidential
+
+├── Restricted
+
+├── Financial
+
+├── Customer Data
+
+├── Operational Data
+
+└── Audit Records
+```
+
+Classification supports appropriate security controls and governance.
+
+---
+
+# Secure Configuration Management
+
+Cloud resources should follow standardized configuration procedures.
+
+```
+Planning
+
+↓
+
+Configuration
+
+↓
+
+Review
+
+↓
+
+Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+```
+
+Configuration consistency improves operational stability.
+
+---
+
+# Configuration Governance
+
+```
+Configuration
+
+│
+
+├── Documentation
+
+├── Version Control
+
+├── Peer Review
+
+├── Approval
+
+├── Deployment
+
+├── Monitoring
+
+├── Rollback Planning
+
+└── Audit Logging
+```
+
+Configuration governance reduces operational risk.
+
+---
+
+# Enterprise Cloud Workflow
+
+```
+Application Development
+
+↓
+
+Cloud Deployment
+
+↓
+
+Identity Management
+
+↓
+
+Cloud Services
+
+↓
+
+Monitoring
+
+↓
+
+Operations
+```
+
+Every stage contributes to secure cloud operations.
+
+---
+
+# Enterprise Example
+
+A multinational healthcare provider hosts patient portals and business applications across multiple cloud environments.
+
+```
+Development
+
+↓
+
+Cloud Platform
+
+↓
+
+Production
+
+↓
+
+Monitoring
+
+↓
+
+Governance
+```
+
+Platform engineers manage cloud infrastructure, developers deploy secure applications, and security teams oversee identity management, governance, network architecture, and operational monitoring.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Identity Review Completion | Access governance |
+| Resource Availability | Platform reliability |
+| Configuration Review Rate | Governance |
+| Data Classification Coverage | Data governance |
+| Storage Utilization | Capacity planning |
+| Network Availability | Operational reliability |
+| Platform Uptime | Business continuity |
+| Audit Review Completion | Accountability |
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Identity sprawl | Centralized IAM |
+| Complex permissions | RBAC and least privilege |
+| Network complexity | Standardized architecture |
+| Configuration drift | Version-controlled configuration |
+| Large data volumes | Data lifecycle governance |
+| Multiple cloud environments | Unified governance framework |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design an enterprise IAM architecture for a cloud environment.
+2. Identify roles and responsibilities using RBAC.
+3. Draw a segmented cloud network architecture.
+4. Create a data classification policy for cloud-hosted applications.
+5. Build a configuration management workflow covering review, approval, deployment, monitoring, and rollback.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on secure architecture, governance, defensive administration, and operational excellence.
+
+---
+
+# Interview Questions
+
+1. Why is IAM considered the foundation of cloud security?
+2. What is the difference between authentication and authorization?
+3. What is the Principle of Least Privilege?
+4. How does RBAC simplify permission management?
+5. Why is network segmentation important?
+6. What is data classification?
+7. Why should encryption be considered throughout the data lifecycle?
+8. Why is configuration governance important?
+9. Which operational metrics indicate cloud platform health?
+10. How does standardized governance improve cloud security?
+
+---
+
+# Best Practices
+
+- Use centralized IAM with clearly defined roles.
+- Apply least-privilege access across all cloud resources.
+- Document network architecture and segmentation.
+- Classify business data and apply appropriate protections.
+- Manage cloud configurations through version control and documented approvals.
+- Continuously review identities, permissions, and configurations.
+- Monitor cloud services using meaningful operational metrics.
+- Maintain governance documentation for audits and operational reviews.
+
+---
+
+# Common Mistakes
+
+- Granting excessive permissions to users or services.
+- Maintaining inconsistent cloud configurations.
+- Ignoring data classification.
+- Treating encryption as optional.
+- Allowing undocumented network changes.
+- Neglecting periodic access reviews.
+- Operating without centralized governance.
+
+---
+
+# Key Takeaways
+
+- Identity and Access Management is the cornerstone of cloud security.
+- Authentication, authorization, RBAC, and least privilege strengthen access control.
+- Secure networking, segmentation, and data protection improve platform resilience.
+- Standardized configuration management supports operational consistency.
+- Enterprise cloud environments benefit from centralized governance, monitoring, and continuous review.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
