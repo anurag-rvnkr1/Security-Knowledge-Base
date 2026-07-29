@@ -1,0 +1,670 @@
+# 01 - Introduction to APIs
+
+# Introduction to APIs
+
+---
+
+# Chapter Overview
+
+Application Programming Interfaces (APIs) are the backbone of modern software communication.
+
+Every time you:
+
+- Open Instagram
+- Transfer money using a banking app
+- Book an Uber
+- Order food from Swiggy or Zomato
+- Watch Netflix
+- Ask ChatGPT a question
+- Sync files to Google Drive
+
+your device is interacting with one or more APIs.
+
+In today's enterprise environments, organizations rarely build standalone applications. Instead, applications communicate with dozens or even hundreds of internal and external services using APIs.
+
+Understanding APIs is the first and most important step toward mastering API Security.
+
+---
+
+# Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- Define an API
+- Understand why APIs exist
+- Explain how APIs work
+- Differentiate APIs from web applications
+- Identify common API types
+- Understand enterprise API communication
+- Describe the API request-response lifecycle
+- Recognize where API security fits into the software ecosystem
+- Understand why APIs are attractive attack targets
+
+---
+
+# What is an API?
+
+API stands for:
+
+> **Application Programming Interface**
+
+An API is a set of rules and specifications that allow two software systems to communicate with each other.
+
+Think of it as a **messenger** between applications.
+
+Instead of directly accessing another application's database or internal code, applications communicate through predefined API endpoints.
+
+---
+
+## Simple Definition
+
+An API allows one application to request information or perform actions on another application in a secure and structured manner.
+
+---
+
+# Real-World Analogy
+
+Imagine a restaurant.
+
+```
+                 Restaurant Example
+
++----------------------------------------------+
+|                  Customer                    |
++----------------------------------------------+
+                |
+                | Order Food
+                v
++----------------------------------------------+
+|                 Waiter (API)                 |
++----------------------------------------------+
+                |
+                | Sends Order
+                v
++----------------------------------------------+
+|                 Kitchen                      |
++----------------------------------------------+
+                |
+                | Prepares Food
+                v
++----------------------------------------------+
+|                 Waiter                       |
++----------------------------------------------+
+                |
+                | Delivers Food
+                v
++----------------------------------------------+
+|                Customer                      |
++----------------------------------------------+
+```
+
+In this analogy:
+
+Customer = Client
+
+Kitchen = Server
+
+Waiter = API
+
+Food = Data
+
+The customer never enters the kitchen.
+
+Similarly,
+
+A client never directly accesses a server's internal logic or database.
+
+Instead, all communication happens through APIs.
+
+---
+
+# Why Do APIs Exist?
+
+Without APIs:
+
+- Applications cannot communicate
+- Mobile apps cannot retrieve data
+- Websites cannot authenticate users
+- Payment gateways cannot process payments
+- Cloud services cannot integrate
+- Microservices cannot exchange information
+
+APIs standardize communication between software systems.
+
+---
+
+# Everyday Examples
+
+## Banking
+
+Mobile banking app
+
+↓
+
+API
+
+↓
+
+Core banking system
+
+↓
+
+Database
+
+---
+
+## Food Delivery
+
+Customer App
+
+↓
+
+API
+
+↓
+
+Restaurant System
+
+↓
+
+Order Database
+
+---
+
+## Ride Sharing
+
+Mobile App
+
+↓
+
+API
+
+↓
+
+Location Service
+
+↓
+
+Maps
+
+↓
+
+Driver Matching
+
+↓
+
+Payment Service
+
+---
+
+## E-commerce
+
+Website
+
+↓
+
+API
+
+↓
+
+Inventory
+
+↓
+
+Payment
+
+↓
+
+Shipping
+
+↓
+
+Recommendation Engine
+
+---
+
+# API Communication Flow
+
+```
+        Client
+          |
+          |
+     HTTP Request
+          |
+          v
++---------------------+
+|       API           |
++---------------------+
+          |
+          |
+ Business Logic
+          |
+          |
+ Database Query
+          |
+          v
++---------------------+
+|      Database       |
++---------------------+
+          |
+          |
+    Response Data
+          |
+          v
++---------------------+
+|        API          |
++---------------------+
+          |
+     HTTP Response
+          |
+          v
+        Client
+```
+
+The client never directly interacts with the database.
+
+Everything passes through the API.
+
+---
+
+# Components of an API
+
+Every API generally consists of the following components.
+
+## Client
+
+The software requesting information.
+
+Examples:
+
+- Mobile app
+- Browser
+- Backend application
+- IoT device
+- Another API
+
+---
+
+## Server
+
+The system providing the requested information.
+
+---
+
+## Endpoint
+
+A specific URL where an API can be accessed.
+
+Example:
+
+```
+https://api.company.com/users
+```
+
+---
+
+## Request
+
+Information sent by the client.
+
+It may include:
+
+- HTTP Method
+- Headers
+- Authentication
+- Parameters
+- Request Body
+
+---
+
+## Response
+
+Information returned by the server.
+
+Usually contains:
+
+- Status Code
+- Headers
+- JSON Data
+- Error Messages
+
+---
+
+## Data Format
+
+Modern APIs commonly exchange data using:
+
+- JSON
+- XML
+- Protocol Buffers
+- YAML (less common)
+- Plain Text
+
+---
+
+# API vs Web Application
+
+| Web Application | API |
+|-----------------|-----|
+| Designed for humans | Designed for software |
+| Returns HTML | Returns structured data |
+| Uses graphical interface | Uses programmatic interface |
+| Browser interaction | Application interaction |
+| Displays pages | Exchanges data |
+| User clicks buttons | Client sends requests |
+
+Example:
+
+Web Page
+
+```
+https://shop.example.com/products
+```
+
+API
+
+```
+https://api.shop.example.com/products
+```
+
+The webpage returns HTML.
+
+The API returns JSON.
+
+---
+
+# API Request Lifecycle
+
+```
+User Opens Mobile App
+          |
+          v
+User Clicks Login
+          |
+          v
+App Sends API Request
+          |
+          v
+API Validates Request
+          |
+          v
+Authentication
+          |
+          v
+Business Logic
+          |
+          v
+Database Query
+          |
+          v
+Generate Response
+          |
+          v
+Return JSON
+          |
+          v
+App Displays Result
+```
+
+---
+
+# What Happens Behind the Scenes?
+
+Suppose a user opens a weather application.
+
+The app does not store weather information locally.
+
+Instead:
+
+```
+Open Weather App
+
+↓
+
+API Request
+
+↓
+
+Weather Server
+
+↓
+
+Weather Database
+
+↓
+
+Current Temperature
+
+↓
+
+JSON Response
+
+↓
+
+Display Weather
+```
+
+Thousands of such API requests happen every second around the world.
+
+---
+
+# API Example
+
+Request
+
+```
+GET /users/100
+```
+
+Response
+
+```json
+{
+    "id":100,
+    "name":"Alice",
+    "email":"alice@example.com"
+}
+```
+
+The client requested user information.
+
+The API returned structured JSON.
+
+---
+
+# Where APIs Are Used
+
+Modern APIs power nearly every digital service.
+
+Examples include:
+
+- Banking
+- Healthcare
+- Government Portals
+- Airlines
+- Retail
+- Cloud Platforms
+- Streaming Services
+- Gaming
+- Smart Homes
+- AI Platforms
+- IoT Devices
+- Enterprise SaaS
+- Logistics
+- Manufacturing
+- Telecommunications
+
+---
+
+# Enterprise Example
+
+Consider an online shopping platform.
+
+```
+Customer
+
+     |
+
+Website
+
+     |
+
+---------------- API Gateway ----------------
+
+     |
+
+--------------------------------------------
+|        |         |         |              |
+User    Order    Payment   Inventory   Delivery
+API      API       API         API        API
+--------------------------------------------
+
+     |
+
+Databases
+```
+
+Instead of one giant application, each service exposes APIs.
+
+This architecture is common in modern enterprises.
+
+---
+
+# APIs in Cloud Computing
+
+Cloud providers expose almost every service through APIs.
+
+Examples:
+
+- Create Virtual Machine
+- Upload Files
+- Create Kubernetes Cluster
+- Configure Firewall
+- Generate Access Tokens
+- Deploy Applications
+
+Even cloud management consoles internally use APIs.
+
+---
+
+# APIs in Microservices
+
+Modern applications consist of multiple independent services.
+
+```
+Authentication Service
+
+↓
+
+Profile Service
+
+↓
+
+Billing Service
+
+↓
+
+Notification Service
+
+↓
+
+Analytics Service
+
+↓
+
+Logging Service
+```
+
+Each service communicates using APIs.
+
+Without APIs, microservices cannot function effectively.
+
+---
+
+# Why APIs Matter in Cybersecurity
+
+APIs expose business functionality directly.
+
+Examples include:
+
+- Login
+- Money Transfer
+- Password Reset
+- File Upload
+- Payment Processing
+- Customer Records
+- Medical Records
+- Employee Data
+
+If these APIs are insecure, attackers may gain unauthorized access to critical systems and sensitive information.
+
+---
+
+# Common API Assets Worth Protecting
+
+Organizations protect APIs because they often expose:
+
+- Personally Identifiable Information (PII)
+- Financial Records
+- Health Records
+- Authentication Tokens
+- Customer Data
+- Employee Data
+- Business Secrets
+- Source Code
+- Intellectual Property
+- Internal Services
+
+APIs are often more valuable targets than traditional web pages because they provide direct access to business logic and data.
+
+---
+
+# Chapter Summary
+
+In this chapter, you learned:
+
+- What an API is
+- Why APIs exist
+- How clients and servers communicate
+- The API request-response lifecycle
+- Components of an API
+- Differences between APIs and web applications
+- Enterprise API usage
+- APIs in cloud computing and microservices
+- Why APIs are critical assets that require strong security
+
+These concepts form the foundation for understanding API architecture, protocols, authentication, authorization, and the security controls covered in later chapters.
+
+---
+
+# Chapter Review
+
+1. What does API stand for?
+2. Why do applications use APIs instead of directly accessing databases?
+3. What is the role of an API endpoint?
+4. What is the difference between a client and a server?
+5. Name common data formats used by APIs.
+6. How does an API differ from a traditional web application?
+7. Describe the API request-response lifecycle.
+8. Why are APIs essential in microservice architectures?
+9. Give three examples of APIs used in everyday applications.
+10. Why are APIs considered a major attack surface in modern cybersecurity?
+
+---
+
+# Next Chapter
+
+➡ **02 - API Architecture**
+
+In the next chapter, we will explore:
+
+- API architecture fundamentals
+- Monolithic vs Microservices
+- API communication models
+- API gateways
+- Enterprise API ecosystems
+- Service discovery
+- Scalability
+- High availability
+- Security architecture
+- Real-world enterprise API designs
