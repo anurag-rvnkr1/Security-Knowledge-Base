@@ -2122,6 +2122,693 @@ Together, these practices improve resilience, compliance, and operational reliab
 - Logging, monitoring, vulnerability management, and incident response are essential operational capabilities.
 - Strong security programs balance technical controls, business objectives, and organizational governance.
 
-```text id="rrks28"
-**Next:** Part 4
+# 66-Web-Security-Cheat-Sheet.md
+
+# Part 4 — Enterprise Security Checklist, Interview Revision, Commands, Ports, HTTP Headers, Quick Tables, and Chapter Summary
+
+> **"A cheat sheet is most valuable when it helps you quickly recall concepts, workflows, and best practices—not when it replaces understanding."**
+
+---
+
+# Learning Objectives
+
+After completing this final part, you will have a quick-reference guide for:
+
+- Enterprise Security Checklist
+- Security Review Checklist
+- Common Ports
+- HTTP Security Headers
+- HTTP Status Codes
+- Security Terminology
+- Secure Design Principles
+- Interview Revision
+- Final Quick Reference
+
+---
+
+# Enterprise Security Checklist
+
 ```
+Planning
+
+↓
+
+Architecture Review
+
+↓
+
+Secure Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment Review
+
+↓
+
+Monitoring
+
+↓
+
+Governance
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Application Security Checklist
+
+```
+✓ Authentication
+
+✓ Authorization
+
+✓ Least Privilege
+
+✓ Secure Sessions
+
+✓ HTTPS Everywhere
+
+✓ Input Validation
+
+✓ Output Encoding
+
+✓ Secure Error Handling
+
+✓ Logging
+
+✓ Monitoring
+
+✓ Secure Configuration
+
+✓ Backup Strategy
+```
+
+---
+
+# API Security Checklist
+
+```
+✓ Authentication
+
+✓ Authorization
+
+✓ HTTPS
+
+✓ Input Validation
+
+✓ Rate Limiting
+
+✓ Logging
+
+✓ Monitoring
+
+✓ Version Management
+
+✓ Secure Error Responses
+```
+
+---
+
+# Secure Deployment Checklist
+
+```
+✓ Secure Configuration
+
+✓ Secrets Management
+
+✓ HTTPS Enabled
+
+✓ Logging Enabled
+
+✓ Monitoring Enabled
+
+✓ Access Review Completed
+
+✓ Backup Verified
+
+✓ Documentation Updated
+```
+
+---
+
+# Logging Checklist
+
+```
+✓ Login Events
+
+✓ Logout Events
+
+✓ Permission Changes
+
+✓ Administrative Activities
+
+✓ Configuration Changes
+
+✓ Security Events
+
+✓ Application Errors
+
+✓ Audit Records
+```
+
+---
+
+# Monitoring Checklist
+
+```
+✓ System Health
+
+✓ Authentication Events
+
+✓ Authorization Failures
+
+✓ API Health
+
+✓ Resource Utilization
+
+✓ Security Alerts
+
+✓ Audit Dashboards
+
+✓ Availability Metrics
+```
+
+---
+
+# Incident Response Checklist
+
+```
+Preparation
+
+↓
+
+Detection
+
+↓
+
+Analysis
+
+↓
+
+Containment
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+
+↓
+
+Documentation
+```
+
+---
+
+# Business Continuity Checklist
+
+```
+✓ Critical Services Identified
+
+✓ Recovery Procedures
+
+✓ Backup Validation
+
+✓ Recovery Testing
+
+✓ Communication Plan
+
+✓ Documentation
+
+✓ Periodic Review
+```
+
+---
+
+# Security Governance Checklist
+
+```
+✓ Security Policies
+
+✓ Standards
+
+✓ Procedures
+
+✓ Risk Assessments
+
+✓ Compliance Reviews
+
+✓ Security Metrics
+
+✓ Training
+
+✓ Continuous Improvement
+```
+
+---
+
+# Secure Development Checklist
+
+```
+✓ Security Requirements
+
+✓ Threat Modeling
+
+✓ Secure Design
+
+✓ Code Review
+
+✓ Security Testing
+
+✓ Secure Deployment
+
+✓ Monitoring
+
+✓ Documentation
+```
+
+---
+
+# Common Network Ports
+
+| Port | Protocol | Typical Purpose |
+|------|----------|-----------------|
+| 20/21 | FTP | File transfer |
+| 22 | SSH | Secure remote administration |
+| 25 | SMTP | Email transfer |
+| 53 | DNS | Name resolution |
+| 80 | HTTP | Web traffic |
+| 110 | POP3 | Email retrieval |
+| 143 | IMAP | Email retrieval |
+| 443 | HTTPS | Secure web traffic |
+| 3306 | MySQL | Database service |
+| 5432 | PostgreSQL | Database service |
+
+> Actual usage depends on organizational architecture and configuration.
+
+---
+
+# HTTP Methods
+
+| Method | Purpose |
+|---------|----------|
+| GET | Retrieve information |
+| POST | Create new resources |
+| PUT | Replace existing resources |
+| PATCH | Partially update resources |
+| DELETE | Remove resources |
+| HEAD | Retrieve headers only |
+| OPTIONS | Discover supported methods |
+
+---
+
+# HTTP Status Codes
+
+## Success
+
+| Code | Meaning |
+|------|----------|
+| 200 | OK |
+| 201 | Created |
+| 204 | No Content |
+
+---
+
+## Redirection
+
+| Code | Meaning |
+|------|----------|
+| 301 | Moved Permanently |
+| 302 | Found |
+| 304 | Not Modified |
+
+---
+
+## Client Errors
+
+| Code | Meaning |
+|------|----------|
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 405 | Method Not Allowed |
+| 429 | Too Many Requests |
+
+---
+
+## Server Errors
+
+| Code | Meaning |
+|------|----------|
+| 500 | Internal Server Error |
+| 502 | Bad Gateway |
+| 503 | Service Unavailable |
+| 504 | Gateway Timeout |
+
+---
+
+# Important HTTP Security Headers
+
+| Header | Purpose |
+|---------|----------|
+| Content-Security-Policy | Restrict content sources |
+| Strict-Transport-Security | Enforce HTTPS |
+| X-Content-Type-Options | Prevent MIME type confusion |
+| Referrer-Policy | Control referrer information |
+| Permissions-Policy | Restrict browser capabilities |
+| Cache-Control | Manage response caching |
+
+---
+
+# Secure Cookie Attributes
+
+| Attribute | Purpose |
+|-----------|----------|
+| Secure | Send only over HTTPS |
+| HttpOnly | Reduce client-side script access |
+| SameSite | Reduce unintended cross-site requests |
+| Expiration | Control session lifetime |
+
+---
+
+# Common Security Acronyms
+
+| Acronym | Meaning |
+|----------|---------|
+| CIA | Confidentiality, Integrity, Availability |
+| IAM | Identity and Access Management |
+| MFA | Multi-Factor Authentication |
+| RBAC | Role-Based Access Control |
+| SSO | Single Sign-On |
+| API | Application Programming Interface |
+| SDLC | Software Development Lifecycle |
+| DevSecOps | Development, Security, and Operations |
+| CSP | Content Security Policy |
+| HSTS | HTTP Strict Transport Security |
+| SIEM | Security Information and Event Management |
+| SOC | Security Operations Center |
+| IDS | Intrusion Detection System |
+| IPS | Intrusion Prevention System |
+| WAF | Web Application Firewall |
+
+---
+
+# Authentication vs Authorization
+
+| Authentication | Authorization |
+|---------------|---------------|
+| Verify identity | Verify permissions |
+| First step | Second step |
+| User identity | Resource access |
+
+---
+
+# Security Principles
+
+```
+Security
+
+│
+
+├── Least Privilege
+
+├── Defense in Depth
+
+├── Secure by Design
+
+├── Secure by Default
+
+├── Fail Securely
+
+├── Separation of Duties
+
+├── Risk-Based Decisions
+
+└── Continuous Improvement
+```
+
+---
+
+# Secure SDLC Summary
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Operations
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Incident Response Summary
+
+```
+Prepare
+
+↓
+
+Detect
+
+↓
+
+Analyze
+
+↓
+
+Contain
+
+↓
+
+Recover
+
+↓
+
+Improve
+```
+
+---
+
+# Vulnerability Management Summary
+
+```
+Identify
+
+↓
+
+Assess
+
+↓
+
+Prioritize
+
+↓
+
+Remediate
+
+↓
+
+Validate
+
+↓
+
+Monitor
+```
+
+---
+
+# Interview Revision Sheet
+
+Remember these topics:
+
+```
+✓ CIA Triad
+
+✓ Authentication
+
+✓ Authorization
+
+✓ RBAC
+
+✓ IAM
+
+✓ HTTPS
+
+✓ Sessions
+
+✓ Secure Cookies
+
+✓ HTTP Methods
+
+✓ HTTP Status Codes
+
+✓ Security Headers
+
+✓ Secure SDLC
+
+✓ DevSecOps
+
+✓ Zero Trust
+
+✓ Defense in Depth
+
+✓ Logging
+
+✓ Monitoring
+
+✓ Incident Response
+
+✓ Cloud Security
+
+✓ Governance
+```
+
+---
+
+# Enterprise Architecture Quick View
+
+```
+Users
+
+↓
+
+Identity
+
+↓
+
+Application
+
+↓
+
+API
+
+↓
+
+Database
+
+↓
+
+Monitoring
+
+↓
+
+Governance
+
+↓
+
+Business Continuity
+```
+
+---
+
+# Enterprise Example
+
+A global banking organization maintains security by implementing:
+
+- Multi-factor authentication
+- Role-based access control
+- Secure HTTP headers
+- Encrypted communications
+- Secure session management
+- Centralized logging
+- Continuous monitoring
+- Vulnerability management
+- Security governance
+- Regular disaster recovery exercises
+
+These practices work together to provide defense in depth, operational resilience, and strong governance.
+
+---
+
+# Final One-Page Revision
+
+| Area | Remember |
+|------|----------|
+| CIA | Confidentiality, Integrity, Availability |
+| IAM | Manage identities and access |
+| RBAC | Permissions by role |
+| MFA | Multiple authentication factors |
+| HTTPS | Secure communication |
+| Sessions | Manage authenticated users securely |
+| Validation | Validate all inputs |
+| Encoding | Encode outputs appropriately |
+| Logging | Record important events |
+| Monitoring | Observe systems continuously |
+| SDLC | Integrate security throughout development |
+| DevSecOps | Security in the delivery pipeline |
+| Zero Trust | Verify every request |
+| Defense in Depth | Multiple independent layers |
+| Governance | Policies, standards, oversight |
+
+---
+
+# Conceptual Hands-on Lab
+
+1. Review this cheat sheet and explain every diagram from memory.
+2. Draw the Secure SDLC, Incident Response, and Defense in Depth models without notes.
+3. Create a one-page summary for interview revision using only the key tables.
+4. Compare authentication, authorization, IAM, and RBAC in your own words.
+5. Review a sample enterprise architecture and identify where authentication, authorization, logging, monitoring, and governance fit.
+
+> Perform all activities only in authorized environments. Use this cheat sheet as a learning and revision aid for defensive security practices.
+
+---
+
+# Best Practices
+
+- Review the cheat sheet regularly instead of relying on last-minute memorization.
+- Understand the purpose behind each security principle.
+- Relate diagrams to real enterprise architectures.
+- Use checklists during design reviews and security assessments.
+- Keep notes updated as standards and technologies evolve.
+
+---
+
+# Common Mistakes
+
+- Memorizing definitions without understanding concepts.
+- Ignoring governance while focusing only on technical controls.
+- Forgetting that security is a continuous process.
+- Overlooking monitoring and operational visibility.
+- Assuming one security control is sufficient.
+
+---
+
+# Chapter Summary
+
+In this chapter, you reviewed a concise reference covering the essential concepts of Web Security, including security principles, HTTP fundamentals, authentication, authorization, secure session management, secure cookies, HTTP security headers, API security, Secure SDLC, DevSecOps, cloud security, logging, monitoring, vulnerability management, incident response, governance, business continuity, and enterprise security checklists.
+
+The chapter also provided quick-reference tables, diagrams, interview revision notes, common ports, HTTP methods, HTTP status codes, security acronyms, and practical checklists that can be used during learning, interviews, architecture reviews, and secure software development.
+
+A well-maintained cheat sheet is not a substitute for experience, but it is an excellent companion for reinforcing concepts, supporting day-to-day work, and preparing for technical discussions. Consistent review, hands-on practice in authorized environments, and continuous learning remain the keys to becoming a skilled Web Security professional.
+
