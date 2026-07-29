@@ -794,4 +794,1262 @@ Avoid:
 
 ---
 
-**Next:** Passwordless Authentication, API Keys, Certificates, SAML, Kerberos, OpenID Connect, Enterprise Identity Providers, Authentication Attacks, Detection Engineering, SIEM Integration, Hands-on Labs, and Interview Questions.
+# Passwordless Authentication
+
+Passwordless authentication eliminates traditional passwords and replaces them with stronger authentication mechanisms.
+
+Common passwordless technologies include:
+
+- Passkeys
+- FIDO2
+- WebAuthn
+- Hardware Security Keys
+- Biometrics
+- Certificate-Based Authentication
+
+Benefits
+
+- Eliminates password reuse
+- Reduces phishing attacks
+- Removes password reset overhead
+- Improves user experience
+- Strengthens enterprise security
+
+---
+
+# Passwordless Authentication Flow
+
+```
+          User
+
+            │
+
+            ▼
+
+    Authentication Request
+
+            │
+
+            ▼
+
+      Device Authenticator
+
+            │
+
+   Biometric / PIN / Key
+
+            │
+
+            ▼
+
+     Signed Challenge
+
+            │
+
+            ▼
+
+ Authentication Server
+
+            │
+
+ Signature Verified
+
+            ▼
+
+ Access Granted
+```
+
+No password is transmitted or stored during authentication.
+
+---
+
+# Passkeys
+
+Passkeys are a modern authentication technology based on public-key cryptography.
+
+Instead of storing passwords,
+
+the system stores:
+
+- Public Key
+- User Identifier
+- Credential Metadata
+
+The private key never leaves the user's trusted device.
+
+---
+
+# Passkey Registration
+
+```
+User
+
+ │
+
+Create Account
+
+ │
+
+Generate Key Pair
+
+ │
+
+Private Key
+
+Stored Securely
+
+ │
+
+Public Key
+
+Sent to Server
+
+ ▼
+
+Registration Complete
+```
+
+---
+
+# Passkey Authentication
+
+```
+Login
+
+ │
+
+Server Sends Challenge
+
+ │
+
+Private Key Signs Challenge
+
+ │
+
+Signature Returned
+
+ │
+
+Server Verifies Signature
+
+ ▼
+
+Authenticated
+```
+
+Since the private key never leaves the device,
+
+credential theft becomes significantly more difficult.
+
+---
+
+# FIDO2
+
+FIDO2 is an open authentication standard developed by the FIDO Alliance.
+
+It combines:
+
+- WebAuthn
+- CTAP (Client to Authenticator Protocol)
+
+Supports:
+
+- Passwordless login
+- MFA
+- Hardware authenticators
+- Platform authenticators
+
+---
+
+# WebAuthn
+
+Web Authentication (WebAuthn) is a W3C standard supported by modern browsers.
+
+Example
+
+```
+Browser
+
+ │
+
+WebAuthn API
+
+ │
+
+Authenticator
+
+ │
+
+Cryptographic Signature
+
+ ▼
+
+Authentication
+```
+
+Benefits
+
+- Resistant to phishing
+- Resistant to replay attacks
+- No shared secrets
+- Strong cryptography
+
+---
+
+# Platform Authenticators
+
+Examples
+
+- Windows Hello
+- Apple Face ID
+- Apple Touch ID
+- Android Biometrics
+
+These authenticators are built into user devices.
+
+---
+
+# Roaming Authenticators
+
+External authenticators include:
+
+- YubiKey
+- Feitian Keys
+- Smart Cards
+- NFC Security Keys
+- USB Security Keys
+
+Useful for enterprise environments.
+
+---
+
+# Certificate-Based Authentication
+
+Certificates authenticate users or devices using Public Key Infrastructure (PKI).
+
+```
+Client
+
+ │
+
+Certificate
+
+ ▼
+
+Server
+
+ │
+
+Certificate Validation
+
+ ▼
+
+Authenticated
+```
+
+Commonly used for:
+
+- Enterprise VPNs
+- Device authentication
+- Internal APIs
+- Government systems
+
+---
+
+# Mutual TLS (mTLS)
+
+Mutual TLS authenticates both parties.
+
+Normal HTTPS
+
+```
+Client
+
+ │
+
+Verify Server
+
+ ▼
+
+Secure Connection
+```
+
+Mutual TLS
+
+```
+Client
+
+ │
+
+Verify Server
+
+ │
+
+Server Verifies Client
+
+ ▼
+
+Mutually Authenticated
+```
+
+Widely used for service-to-service communication.
+
+---
+
+# API Key Authentication
+
+API keys uniquely identify applications accessing APIs.
+
+Example
+
+```
+GET /api/users
+
+X-API-Key:
+
+abc123xyz
+```
+
+API keys authenticate applications,
+
+not end users.
+
+---
+
+# API Key Lifecycle
+
+```
+Generate Key
+
+      │
+
+Distribute
+
+      │
+
+Use
+
+      │
+
+Rotate
+
+      │
+
+Revoke
+
+      ▼
+
+Archive
+```
+
+Keys should be rotated regularly.
+
+---
+
+# API Key Best Practices
+
+Use
+
+- Long random values
+- Secure storage
+- HTTPS
+- Rotation
+- Usage monitoring
+- Least privilege
+
+Avoid
+
+- Hardcoding keys
+- Sharing keys
+- Logging keys
+- Embedding keys in client-side JavaScript
+
+---
+
+# Service Accounts
+
+Service accounts authenticate applications rather than humans.
+
+Examples
+
+```
+Microservice A
+
+↓
+
+Microservice B
+```
+
+```
+CI/CD Pipeline
+
+↓
+
+Cloud Platform
+```
+
+Security recommendations
+
+- Least privilege
+- Secret rotation
+- Separate identities
+- Audit logging
+
+---
+
+# Machine-to-Machine Authentication
+
+```
+Application A
+
+ │
+
+JWT
+
+Certificate
+
+API Key
+
+ ▼
+
+API Gateway
+
+ │
+
+Authentication
+
+ ▼
+
+Application B
+```
+
+Machine identities should be managed separately from human users.
+
+---
+
+# Single Sign-On (SSO)
+
+Single Sign-On allows users to authenticate once and access multiple applications.
+
+```
+User
+
+ │
+
+Login
+
+ ▼
+
+Identity Provider
+
+ │
+
+Authenticated
+
+ ├──────────────┐
+
+ ▼              ▼
+
+App A        App B
+
+       ▼
+
+App C
+```
+
+Benefits
+
+- Improved user experience
+- Centralized identity management
+- Reduced password fatigue
+- Easier auditing
+
+---
+
+# Identity Provider (IdP)
+
+An Identity Provider manages authentication.
+
+Examples include:
+
+- Microsoft Entra ID
+- Okta
+- Keycloak
+- Ping Identity
+- ForgeRock
+
+Responsibilities
+
+- Identity verification
+- Credential management
+- MFA
+- Token issuance
+- Federation
+
+---
+
+# Service Provider (SP)
+
+A Service Provider relies on an Identity Provider.
+
+```
+Identity Provider
+
+ │
+
+Authentication
+
+ ▼
+
+Service Provider
+
+ │
+
+Grant Access
+```
+
+Examples
+
+- SaaS applications
+- Enterprise portals
+- Cloud services
+
+---
+
+# Federation
+
+Federation enables identity sharing across organizations.
+
+```
+Company A
+
+ │
+
+Identity Provider
+
+ │
+
+Trust
+
+ ▼
+
+Company B
+
+Applications
+```
+
+Users authenticate with their home organization.
+
+---
+
+# Kerberos
+
+Kerberos is a ticket-based authentication protocol.
+
+Workflow
+
+```
+User
+
+ │
+
+Authentication Server
+
+ │
+
+Ticket Granting Ticket
+
+ │
+
+Service Ticket
+
+ ▼
+
+Application
+```
+
+Commonly used in Microsoft Active Directory environments.
+
+---
+
+# Security Assertion Markup Language (SAML)
+
+SAML is an XML-based authentication standard used primarily for enterprise SSO.
+
+```
+User
+
+ │
+
+Identity Provider
+
+ │
+
+SAML Assertion
+
+ ▼
+
+Service Provider
+
+ ▼
+
+Access
+```
+
+SAML is commonly used with:
+
+- Enterprise portals
+- HR systems
+- Business applications
+
+---
+
+# Authentication Attacks
+
+Common attacks include:
+
+- Credential stuffing
+- Password spraying
+- Brute force
+- Phishing
+- MFA fatigue
+- Session hijacking
+- Replay attacks
+- Token theft
+- API key leakage
+- Certificate theft
+
+---
+
+# Brute Force Attack
+
+```
+Attacker
+
+ │
+
+Password Guess
+
+ │
+
+Password Guess
+
+ │
+
+Password Guess
+
+ ▼
+
+Login
+```
+
+Mitigations
+
+- Rate limiting
+- MFA
+- Account lockout
+- CAPTCHA (where appropriate)
+- Monitoring
+
+---
+
+# Credential Stuffing
+
+Attackers reuse credentials leaked from unrelated breaches.
+
+```
+Leaked Database
+
+ │
+
+Credentials
+
+ ▼
+
+Target Website
+```
+
+Mitigations
+
+- MFA
+- Breached password detection
+- Passwordless authentication
+- Login anomaly detection
+
+---
+
+# Password Spraying
+
+Instead of many passwords against one account,
+
+attackers try one common password against many accounts.
+
+```
+Password123!
+
+↓
+
+User1
+
+User2
+
+User3
+
+User4
+```
+
+Mitigations
+
+- MFA
+- Smart lockout
+- Detection rules
+- Strong password policies
+
+---
+
+# Phishing
+
+```
+Victim
+
+ │
+
+Fake Login Page
+
+ │
+
+Credentials Entered
+
+ ▼
+
+Attacker
+```
+
+Mitigations
+
+- Passkeys
+- FIDO2
+- User awareness
+- Email security
+- MFA
+
+---
+
+# MFA Fatigue Attack
+
+Attackers repeatedly trigger MFA prompts hoping the user approves one.
+
+```
+Repeated MFA Requests
+
+↓
+
+User Fatigue
+
+↓
+
+Approval
+
+↓
+
+Compromise
+```
+
+Mitigations
+
+- Number matching
+- Push throttling
+- Risk-based authentication
+- User education
+
+---
+
+# Replay Attack
+
+Captured authentication data is resent.
+
+```
+Captured Token
+
+↓
+
+Replay
+
+↓
+
+Unauthorized Access
+```
+
+Mitigations
+
+- Nonces
+- Short-lived tokens
+- TLS
+- Token binding where applicable
+
+---
+
+# Session Hijacking
+
+```
+Session Cookie
+
+↓
+
+Stolen
+
+↓
+
+Attacker
+
+↓
+
+Authenticated Session
+```
+
+Mitigations
+
+- Secure cookies
+- HttpOnly
+- SameSite
+- HTTPS
+- Session expiration
+
+---
+
+# Authentication Logging
+
+Log
+
+- Successful logins
+- Failed logins
+- Password changes
+- Password resets
+- MFA enrollment
+- MFA failures
+- Token issuance
+- Token revocation
+- Account lockouts
+- Device registration
+
+Avoid logging:
+
+- Passwords
+- Secrets
+- API Keys
+- Tokens
+- Private Keys
+
+---
+
+# Detection Engineering
+
+Recommended detections
+
+| Detection | Indicator |
+|-----------|-----------|
+| Brute Force | Multiple failed logins from one source |
+| Password Spraying | One password attempted across many accounts |
+| Credential Stuffing | Many usernames with known breached patterns |
+| Impossible Travel | Logins from distant locations within unrealistic timeframes |
+| MFA Fatigue | Excessive MFA prompts followed by approval |
+| API Key Abuse | Key used from unexpected networks or regions |
+| Certificate Misuse | Unexpected client certificate usage |
+| Service Account Abuse | Interactive login using service account credentials |
+| Token Replay | Same token observed from multiple devices simultaneously |
+
+Detection thresholds should be tailored to normal enterprise behavior.
+
+---
+
+# SIEM Integration
+
+Recommended log sources
+
+```
+Identity Provider
+
+        │
+
+Authentication Server
+
+        │
+
+API Gateway
+
+        │
+
+VPN
+
+        │
+
+Cloud Identity
+
+        │
+
+Web Applications
+
+        ▼
+
+Enterprise SIEM
+
+        │
+
+Correlation Rules
+
+        ▼
+
+SOC Alerts
+```
+
+Example correlation rules
+
+- Five consecutive failed logins followed by a successful login
+- New device registration followed by privileged access
+- Multiple password reset requests for one account
+- Service account authenticating from an interactive workstation
+- API key suddenly used from multiple geographic regions
+
+---
+
+# Enterprise Authentication Architecture
+
+```
+                    Internet
+
+                        │
+
+                        ▼
+
+                  Load Balancer
+
+                        │
+
+                        ▼
+
+                  API Gateway
+
+                        │
+
+                        ▼
+
+                Identity Provider
+
+                        │
+
+            MFA / Passkeys / FIDO2
+
+                        │
+
+                        ▼
+
+             Token / Session Issuance
+
+                        │
+
+                        ▼
+
+             Applications & APIs
+
+                        │
+
+                        ▼
+
+             Logging & Monitoring
+
+                        │
+
+                        ▼
+
+                 SIEM / SOC
+```
+
+---
+
+# Hands-on Lab 1 – Password Policy Assessment
+
+**Objective**
+
+Review the password policy of an authorized application.
+
+**Steps**
+
+1. Examine password requirements.
+2. Verify minimum length and support for long passphrases.
+3. Check whether common or breached passwords are rejected.
+4. Confirm that password changes require appropriate verification.
+
+**Learning Outcomes**
+
+- Password policy analysis
+- Authentication assessment
+- Secure credential management
+
+---
+
+# Hands-on Lab 2 – MFA Verification
+
+**Objective**
+
+Assess Multi-Factor Authentication implementation.
+
+**Steps**
+
+1. Enroll a test account in MFA.
+2. Verify login with multiple factors.
+3. Confirm recovery procedures are secure.
+4. Review MFA-related logging.
+
+**Learning Outcomes**
+
+- MFA validation
+- Authentication workflow analysis
+- Enterprise identity controls
+
+---
+
+# Hands-on Lab 3 – API Key Security Review
+
+**Objective**
+
+Review API key management in an authorized environment.
+
+**Steps**
+
+1. Identify where API keys are generated.
+2. Verify secure storage and transmission.
+3. Review rotation and revocation procedures.
+4. Confirm usage is logged and monitored.
+
+**Learning Outcomes**
+
+- API key lifecycle management
+- Secret handling
+- Operational security
+
+---
+
+# Common Security Mistakes
+
+Avoid:
+
+- Storing plaintext passwords
+- Weak password hashing algorithms
+- Missing MFA for privileged users
+- Hardcoded API keys
+- Long-lived authentication tokens
+- Shared service accounts
+- Logging secrets
+- Weak password reset workflows
+- Ignoring authentication anomalies
+- Failing to rotate credentials
+
+---
+
+# Troubleshooting
+
+## Users Cannot Authenticate
+
+Possible causes
+
+- Incorrect credentials
+- Expired password
+- Disabled account
+- Authentication service outage
+
+---
+
+## MFA Failures
+
+Possible causes
+
+- Time synchronization issues
+- Lost authenticator device
+- Push notification delays
+- Incorrect recovery configuration
+
+---
+
+## API Key Rejected
+
+Possible causes
+
+- Revoked key
+- Expired key
+- Incorrect permissions
+- IP restrictions
+
+---
+
+## Certificate Authentication Failure
+
+Possible causes
+
+- Expired certificate
+- Untrusted certificate authority
+- Revoked certificate
+- Incorrect client configuration
+
+---
+
+## Unexpected Account Lockouts
+
+Possible causes
+
+- Password spraying
+- Automated tools
+- User error
+- Synchronization problems
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What is authentication?
+2. How does authentication differ from authorization?
+3. What are the three authentication factors?
+4. What is Multi-Factor Authentication?
+5. Why are passwords hashed instead of encrypted?
+6. What is a passkey?
+7. What is FIDO2?
+8. What is an API key?
+9. What is Single Sign-On?
+10. What is an Identity Provider?
+
+---
+
+## Intermediate
+
+11. Explain password salting.
+12. Compare passkeys and passwords.
+13. What are the security advantages of WebAuthn?
+14. How would you secure service accounts?
+15. Explain mutual TLS authentication.
+16. What is credential stuffing?
+17. How would you detect password spraying?
+18. Why should authentication events be logged?
+19. How should API keys be managed throughout their lifecycle?
+20. What authentication events should be forwarded to a SIEM?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+Your SOC observes thousands of failed login attempts against many accounts, all using the same password.
+
+- Which attack does this indicate?
+- How would you investigate and contain it?
+
+---
+
+**Scenario 2**
+
+A developer accidentally commits an API key to a public repository.
+
+- What immediate actions should be taken?
+- How can similar incidents be prevented in the future?
+
+---
+
+**Scenario 3**
+
+An executive reports receiving repeated MFA approval prompts despite not attempting to sign in.
+
+- What attack might this represent?
+- Which controls would you implement to reduce future risk?
+
+---
+
+# Chapter Summary
+
+In this chapter, we explored authentication and enterprise identity verification.
+
+We covered:
+
+- Authentication fundamentals
+- Authentication factors
+- Password security
+- Passkeys
+- FIDO2 and WebAuthn
+- API keys
+- Mutual TLS
+- SAML
+- Kerberos
+- Single Sign-On
+- Authentication attacks
+- Detection engineering
+- SIEM integration
+- Hands-on labs
+- Troubleshooting
+- Interview preparation
+
+Strong authentication forms the foundation of secure APIs, applications, cloud environments, and enterprise identity systems.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- How does authentication differ from authorization?
+- Why are passkeys more resistant to phishing than passwords?
+- How should passwords be securely stored?
+- When should API keys, certificates, or federated identity be used?
+- How can authentication attacks such as credential stuffing and password spraying be detected?
+- Which authentication events should be monitored by a SIEM?
+- How would you design an enterprise authentication architecture using MFA and an Identity Provider?
+
+If you can confidently answer these questions, you are ready to continue with **Chapter 10 – Authorization**, where you'll learn how authenticated identities are granted permissions using RBAC, ABAC, ACLs, policy engines, and modern authorization frameworks.
+
+---
+
+# References
+
+## Standards
+
+- FIDO2 Specifications
+- WebAuthn Level 3
+- RFC 6749 – OAuth 2.0
+- RFC 5280 – X.509 PKI
+- RFC 4120 – Kerberos
+- OASIS SAML 2.0
+
+## Security Standards
+
+- NIST SP 800-63 Digital Identity Guidelines
+- OWASP ASVS
+- OWASP Authentication Cheat Sheet
+- OWASP API Security Top 10
+- NIST Cybersecurity Framework (CSF)
+
+## Further Reading
+
+- FIDO Alliance Documentation
+- WebAuthn Developer Guide
+- Enterprise Identity Best Practices
+
+---
+
+# What's Next?
+
+➡️ **Chapter 10 – Authorization**
+
+In the next chapter, we will explore:
+
+- Authorization fundamentals
+- RBAC
+- ABAC
+- ACLs
+- Policy-Based Access Control (PBAC)
+- Object-Level Authorization
+- Function-Level Authorization
+- Least Privilege
+- Zero Trust authorization
+- Detection engineering
+- SIEM integration
+- Hands-on labs
+- Interview questions
