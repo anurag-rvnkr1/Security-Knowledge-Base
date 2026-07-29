@@ -2079,4 +2079,754 @@ Design APIs with retries and idempotency in mind, especially for financial and t
 
 ---
 
-**Next:** HTTP Request Structure, HTTP Response Structure, Status Codes, Content Negotiation, Headers, Error Handling, and Enterprise REST API Best Practices.
+# HTTP Request Structure
+
+Every interaction between a client and a REST API begins with an **HTTP request**.
+
+An HTTP request contains all the information required for the server to understand what the client wants to do.
+
+A typical request consists of:
+
+- Request Line
+- HTTP Headers
+- Optional Request Body
+
+Architecture
+
+```
+                HTTP Request
+
++------------------------------------------+
+| Request Line                             |
++------------------------------------------+
+| Headers                                  |
++------------------------------------------+
+| Blank Line                               |
++------------------------------------------+
+| Request Body (Optional)                  |
++------------------------------------------+
+```
+
+The server processes the request and generates an HTTP response.
+
+---
+
+# HTTP Request Lifecycle
+
+```
+Client
+
+   │
+
+Create HTTP Request
+
+   │
+
+DNS Resolution
+
+   │
+
+TCP Connection
+
+   │
+
+TLS Handshake (HTTPS)
+
+   │
+
+Send Request
+
+   ▼
+
+REST API
+
+   │
+
+Authentication
+
+   │
+
+Authorization
+
+   │
+
+Validation
+
+   │
+
+Business Logic
+
+   │
+
+Database
+
+   │
+
+Generate Response
+
+   ▼
+
+Client
+```
+
+Every API request follows this general lifecycle.
+
+---
+
+# Request Line
+
+The first line of an HTTP request contains three components.
+
+```
+GET /users/101 HTTP/1.1
+```
+
+Components
+
+| Component | Description |
+|-----------|-------------|
+| GET | HTTP Method |
+| /users/101 | Request URI |
+| HTTP/1.1 | HTTP Version |
+
+Example
+
+```
+POST /orders HTTP/1.1
+```
+
+This indicates:
+
+- Method → POST
+- Resource → /orders
+- Protocol → HTTP/1.1
+
+---
+
+# Request Headers
+
+Headers provide additional information about the request.
+
+Example
+
+```
+GET /users HTTP/1.1
+
+Host: api.company.com
+
+Authorization: Bearer <JWT>
+
+Accept: application/json
+
+User-Agent: Mozilla/5.0
+```
+
+Headers do not usually contain business data.
+
+Instead, they describe how the request should be processed.
+
+---
+
+# Common Request Headers
+
+| Header | Purpose |
+|----------|----------|
+| Host | Target server |
+| Authorization | Authentication token |
+| Accept | Expected response format |
+| Content-Type | Format of request body |
+| User-Agent | Client information |
+| Cookie | Session data |
+| Origin | Browser origin |
+| Referer | Previous page |
+| Accept-Language | Preferred language |
+| Cache-Control | Cache behavior |
+
+Many security mechanisms rely heavily on HTTP headers.
+
+---
+
+# Authorization Header
+
+The Authorization header carries authentication credentials.
+
+Example
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1...
+```
+
+Other examples:
+
+```
+Authorization: Basic username:password
+```
+
+```
+Authorization: ApiKey xxxxxxxxx
+```
+
+Proper validation of this header is critical for API security.
+
+---
+
+# Accept Header
+
+The client tells the server which response format it prefers.
+
+Example
+
+```
+Accept: application/json
+```
+
+Other examples
+
+```
+Accept: application/xml
+```
+
+```
+Accept: text/plain
+```
+
+The server attempts to return data in one of the requested formats.
+
+---
+
+# Content-Type Header
+
+Content-Type specifies the format of the request body.
+
+Example
+
+```
+Content-Type: application/json
+```
+
+Common values
+
+```
+application/json
+
+application/xml
+
+multipart/form-data
+
+application/x-www-form-urlencoded
+
+text/plain
+```
+
+Servers validate the body according to this header.
+
+---
+
+# User-Agent Header
+
+Identifies the client software.
+
+Example
+
+```
+User-Agent:
+
+Mozilla/5.0
+```
+
+Other examples
+
+```
+curl
+
+PostmanRuntime
+
+Python Requests
+
+Java HttpClient
+```
+
+Many organizations analyze User-Agent values during threat detection.
+
+---
+
+# Request Body
+
+The request body contains data sent to the server.
+
+Usually used with:
+
+- POST
+- PUT
+- PATCH
+
+Example
+
+```json
+{
+    "name": "Alice",
+    "email": "alice@example.com"
+}
+```
+
+GET requests generally do not include a request body.
+
+---
+
+# JSON Payload
+
+JSON has become the standard payload format for REST APIs.
+
+Example
+
+```json
+{
+    "id": 101,
+    "product": "Laptop",
+    "price": 85000,
+    "quantity": 2
+}
+```
+
+Advantages
+
+- Human readable
+- Lightweight
+- Widely supported
+- Easy to parse
+- Language independent
+
+---
+
+# XML Payload
+
+Some enterprise systems continue using XML.
+
+Example
+
+```xml
+<User>
+    <Name>Alice</Name>
+    <Email>alice@example.com</Email>
+</User>
+```
+
+XML is still common in:
+
+- Legacy systems
+- Banking
+- Telecommunications
+- SOAP services
+
+---
+
+# Multipart Requests
+
+Used primarily for file uploads.
+
+Example
+
+```
+POST /upload
+
+Content-Type:
+
+multipart/form-data
+```
+
+Body
+
+```
+Image
+
+Document
+
+Metadata
+```
+
+Common use cases
+
+- Profile pictures
+- PDFs
+- Videos
+- Medical images
+
+---
+
+# HTTP Response Structure
+
+After processing the request, the server returns a response.
+
+Architecture
+
+```
+              HTTP Response
+
++----------------------------------+
+| Status Line                      |
++----------------------------------+
+| Response Headers                 |
++----------------------------------+
+| Blank Line                       |
++----------------------------------+
+| Response Body                    |
++----------------------------------+
+```
+
+---
+
+# Status Line
+
+Example
+
+```
+HTTP/1.1 200 OK
+```
+
+Components
+
+| Component | Description |
+|-----------|-------------|
+| HTTP/1.1 | HTTP Version |
+| 200 | Status Code |
+| OK | Status Message |
+
+---
+
+# Response Headers
+
+Examples
+
+```
+Content-Type: application/json
+
+Cache-Control: no-cache
+
+Server: nginx
+
+Content-Length: 235
+```
+
+Response headers provide metadata about the returned data.
+
+---
+
+# Response Body
+
+Contains the requested resource or an error message.
+
+Example
+
+```json
+{
+    "id": 101,
+    "name": "Alice",
+    "email": "alice@example.com"
+}
+```
+
+---
+
+# HTTP Status Codes
+
+HTTP status codes indicate the result of processing a request.
+
+Categories
+
+| Range | Meaning |
+|---------|---------|
+| 1xx | Informational |
+| 2xx | Success |
+| 3xx | Redirection |
+| 4xx | Client Errors |
+| 5xx | Server Errors |
+
+---
+
+# 1xx Informational
+
+Examples
+
+```
+100 Continue
+
+101 Switching Protocols
+
+102 Processing
+```
+
+Rarely seen in everyday REST APIs.
+
+---
+
+# 2xx Success
+
+Common success codes
+
+| Status Code | Meaning |
+|--------------|----------|
+| 200 OK | Successful request |
+| 201 Created | Resource created |
+| 202 Accepted | Processing later |
+| 204 No Content | Successful without response body |
+
+Example
+
+```
+POST /users
+
+↓
+
+201 Created
+```
+
+---
+
+# 3xx Redirection
+
+Examples
+
+```
+301 Moved Permanently
+
+302 Found
+
+304 Not Modified
+
+307 Temporary Redirect
+
+308 Permanent Redirect
+```
+
+REST APIs generally use redirects less frequently than web browsers.
+
+---
+
+# 4xx Client Errors
+
+Common client-side errors
+
+| Code | Meaning |
+|-------|----------|
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 405 | Method Not Allowed |
+| 406 | Not Acceptable |
+| 408 | Request Timeout |
+| 409 | Conflict |
+| 415 | Unsupported Media Type |
+| 422 | Unprocessable Content |
+| 429 | Too Many Requests |
+
+These usually indicate issues with the client's request.
+
+---
+
+# 5xx Server Errors
+
+Common server-side errors
+
+| Code | Meaning |
+|-------|----------|
+| 500 | Internal Server Error |
+| 501 | Not Implemented |
+| 502 | Bad Gateway |
+| 503 | Service Unavailable |
+| 504 | Gateway Timeout |
+
+These errors indicate failures on the server or infrastructure.
+
+---
+
+# Content Negotiation
+
+Content negotiation allows clients and servers to agree on the data format.
+
+Example
+
+Client
+
+```
+Accept: application/json
+```
+
+Server
+
+```
+Content-Type: application/json
+```
+
+Another example
+
+Client
+
+```
+Accept: application/xml
+```
+
+Server
+
+```
+Content-Type: application/xml
+```
+
+This mechanism improves interoperability between diverse clients.
+
+---
+
+# Standard Error Response
+
+Well-designed APIs return structured error messages.
+
+Example
+
+```json
+{
+    "timestamp": "2026-07-29T12:30:00Z",
+    "status": 404,
+    "error": "Not Found",
+    "message": "User does not exist",
+    "path": "/users/500"
+}
+```
+
+Benefits
+
+- Easier debugging
+- Better automation
+- Consistent error handling
+- Improved developer experience
+
+---
+
+# Enterprise Request Example
+
+```
+POST /payments HTTP/1.1
+
+Host: api.bank.com
+
+Authorization: Bearer <JWT>
+
+Content-Type: application/json
+
+Accept: application/json
+```
+
+Body
+
+```json
+{
+    "fromAccount": "1001",
+    "toAccount": "2002",
+    "amount": 5000,
+    "currency": "INR"
+}
+```
+
+Response
+
+```
+HTTP/1.1 201 Created
+```
+
+```json
+{
+    "transactionId": "TX982734",
+    "status": "SUCCESS"
+}
+```
+
+---
+
+# Common Mistakes
+
+### Missing Content-Type
+
+Incorrect
+
+```
+POST /users
+```
+
+No Content-Type specified.
+
+Correct
+
+```
+Content-Type: application/json
+```
+
+---
+
+### Incorrect Status Codes
+
+Returning
+
+```
+200 OK
+```
+
+for every operation reduces clarity.
+
+Use appropriate status codes.
+
+Examples
+
+```
+201 Created
+
+204 No Content
+
+404 Not Found
+
+409 Conflict
+```
+
+---
+
+### Returning Sensitive Errors
+
+Avoid exposing:
+
+- Database names
+- Stack traces
+- SQL queries
+- Internal IP addresses
+- File paths
+- Framework versions
+
+Instead, return generic client-facing errors while logging detailed information internally.
+
+---
+
+# REST Response Best Practices
+
+- Return appropriate HTTP status codes.
+- Use JSON consistently unless another format is required.
+- Keep responses concise.
+- Avoid exposing internal implementation details.
+- Include meaningful error messages.
+- Support content negotiation where appropriate.
+- Use caching headers when applicable.
+- Document all response formats.
+- Ensure consistent response structures across endpoints.
+- Log errors internally without leaking sensitive information.
+
+---
+
+# Key Takeaways
+
+- HTTP requests consist of a request line, headers, and an optional body.
+- HTTP responses include a status line, headers, and an optional response body.
+- Headers carry metadata that influences request processing and response handling.
+- JSON is the dominant representation format for REST APIs, while XML remains common in some enterprise environments.
+- HTTP status codes communicate the outcome of a request and should be used consistently.
+- Content negotiation enables clients and servers to exchange data in mutually supported formats.
+- Structured error responses and consistent response design improve usability, security, and maintainability.
+
+---
+
+**Next:** REST API Security, Stateless Authentication, Caching, Versioning, Pagination, Filtering, HATEOAS, Best Practices, Hands-on Labs, Troubleshooting, and Interview Questions.
