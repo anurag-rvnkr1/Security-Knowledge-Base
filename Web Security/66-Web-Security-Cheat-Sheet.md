@@ -1397,6 +1397,731 @@ These controls work together to strengthen the organization's security posture.
 - Continuous monitoring, logging, vulnerability management, and governance help maintain a strong security posture.
 - Consistent application of best practices is more effective than relying on any single security control.
 
+# 66-Web-Security-Cheat-Sheet.md
+
+# Part 3 — Secure SDLC, DevSecOps, Cloud Security, Logging, Monitoring, Incident Response, Security Architecture, and Enterprise Operations
+
+> **"Enterprise security is not achieved by individual security controls—it is achieved by integrating security into architecture, development, deployment, operations, governance, and continuous improvement."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will have a quick-reference guide for:
+
+- Secure SDLC
+- DevSecOps
+- Security Architecture
+- Cloud Security
+- Logging
+- Monitoring
+- Incident Response
+- Vulnerability Management
+- Business Continuity
+- Enterprise Operations
+
+---
+
+# Secure SDLC
+
+```
+Requirements
+
+↓
+
+Threat Modeling
+
+↓
+
+Secure Design
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Operations
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Secure SDLC Checklist
+
+```
+✓ Security Requirements
+
+✓ Secure Architecture
+
+✓ Threat Modeling
+
+✓ Secure Coding
+
+✓ Code Reviews
+
+✓ Security Testing
+
+✓ Secure Deployment
+
+✓ Monitoring
+
+✓ Documentation
+```
+
+---
+
+# DevSecOps Pipeline
+
+```
+Plan
+
+↓
+
+Develop
+
+↓
+
+Build
+
+↓
+
+Security Testing
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Improve
+```
+
+Security is integrated throughout the development pipeline rather than added only at the end.
+
+---
+
+# DevSecOps Principles
+
+```
+DevSecOps
+
+│
+
+├── Automation
+
+├── Collaboration
+
+├── Continuous Testing
+
+├── Continuous Monitoring
+
+├── Secure Deployment
+
+├── Governance
+
+└── Continuous Improvement
+```
+
+---
+
+# Security Architecture Layers
+
+```
+Business
+
+↓
+
+Governance
+
+↓
+
+Identity
+
+↓
+
+Application
+
+↓
+
+Network
+
+↓
+
+Infrastructure
+
+↓
+
+Monitoring
+```
+
+Each layer contributes to overall organizational security.
+
+---
+
+# Defense in Depth
+
+```
+Users
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Application Security
+
+↓
+
+Network Security
+
+↓
+
+Infrastructure Security
+
+↓
+
+Monitoring
+```
+
+No single control should be considered sufficient.
+
+---
+
+# Zero Trust Architecture
+
+```
+Request
+
+↓
+
+Verify Identity
+
+↓
+
+Verify Device
+
+↓
+
+Policy Evaluation
+
+↓
+
+Least Privilege Access
+
+↓
+
+Continuous Monitoring
+```
+
+Trust should always be verified rather than assumed.
+
+---
+
+# Cloud Shared Responsibility Model
+
+```
+Cloud Provider
+
+↓
+
+Infrastructure
+
+↓
+
+Platform Services
+
+-------------------------
+
+Customer
+
+↓
+
+Identity
+
+↓
+
+Applications
+
+↓
+
+Data
+
+↓
+
+Configuration
+
+↓
+
+Monitoring
+```
+
+Responsibilities vary depending on the cloud service model, but organizations remain responsible for protecting their applications and data.
+
+---
+
+# Cloud Security Checklist
+
+```
+✓ Identity Management
+
+✓ Least Privilege
+
+✓ Secure Configuration
+
+✓ Encryption
+
+✓ Logging
+
+✓ Monitoring
+
+✓ Backup Strategy
+
+✓ Governance
+```
+
+---
+
+# Identity & Access Management (IAM)
+
+```
+Identity
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Access Review
+
+↓
+
+Audit
+```
+
+---
+
+# Security Logging
+
+Log events such as:
+
+```
+Logs
+
+│
+
+├── Authentication
+
+├── Authorization
+
+├── Administrative Activities
+
+├── Configuration Changes
+
+├── Application Errors
+
+├── Security Events
+
+└── Audit Records
+```
+
+---
+
+# Centralized Logging
+
+```
+Applications
+
+↓
+
+Central Log Collection
+
+↓
+
+Storage
+
+↓
+
+Analysis
+
+↓
+
+Alerting
+```
+
+Centralized logging improves visibility and supports operational investigations.
+
+---
+
+# Security Monitoring
+
+```
+Applications
+
+↓
+
+Logs
+
+↓
+
+Metrics
+
+↓
+
+Monitoring Platform
+
+↓
+
+Alerts
+
+↓
+
+Response
+```
+
+Continuous monitoring enables early identification of operational and security issues.
+
+---
+
+# Vulnerability Management
+
+```
+Discovery
+
+↓
+
+Assessment
+
+↓
+
+Prioritization
+
+↓
+
+Remediation
+
+↓
+
+Validation
+
+↓
+
+Continuous Monitoring
+```
+
+---
+
+# Patch Management
+
+```
+Patch Released
+
+↓
+
+Evaluation
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Verification
+
+↓
+
+Documentation
+```
+
+---
+
+# Security Configuration Management
+
+```
+Secure Baseline
+
+↓
+
+Deployment
+
+↓
+
+Configuration Review
+
+↓
+
+Compliance Check
+
+↓
+
+Continuous Monitoring
+```
+
+Maintaining secure configuration baselines reduces operational risk.
+
+---
+
+# Incident Response Lifecycle
+
+```
+Preparation
+
+↓
+
+Detection
+
+↓
+
+Analysis
+
+↓
+
+Containment
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+```
+
+---
+
+# Business Continuity
+
+```
+Business Services
+
+↓
+
+Resilience
+
+↓
+
+Recovery Planning
+
+↓
+
+Business Operations
+```
+
+Business continuity focuses on maintaining critical services during disruptions.
+
+---
+
+# Disaster Recovery
+
+```
+Disruption
+
+↓
+
+Recovery Procedures
+
+↓
+
+System Restoration
+
+↓
+
+Validation
+
+↓
+
+Normal Operations
+```
+
+Recovery plans should be documented and tested regularly.
+
+---
+
+# Security Governance
+
+```
+Governance
+
+│
+
+├── Policies
+
+├── Standards
+
+├── Procedures
+
+├── Risk Management
+
+├── Compliance
+
+├── Reviews
+
+└── Continuous Improvement
+```
+
+---
+
+# Enterprise Security Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Authentication Success Rate | Identity health |
+| Security Review Completion | Governance effectiveness |
+| Patch Compliance | Update management |
+| Configuration Compliance | Secure baseline adherence |
+| Vulnerability Remediation Time | Risk reduction |
+| Monitoring Coverage | Operational visibility |
+| Incident Response Readiness | Preparedness |
+| Backup Validation Success | Recovery confidence |
+
+---
+
+# Enterprise Security Workflow
+
+```
+Business Requirements
+
+↓
+
+Architecture
+
+↓
+
+Secure Development
+
+↓
+
+Security Validation
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Governance
+
+↓
+
+Continuous Improvement
+```
+
+---
+
+# Enterprise Example
+
+A healthcare organization secures its patient portal using:
+
+- Secure SDLC
+- Multi-factor authentication
+- Role-based access control
+- Secure cloud configuration
+- Centralized logging
+- Continuous monitoring
+- Security governance
+- Regular risk assessments
+- Business continuity planning
+- Disaster recovery testing
+
+Together, these practices improve resilience, compliance, and operational reliability.
+
+---
+
+# Quick Revision Table
+
+| Topic | Key Reminder |
+|--------|--------------|
+| Secure SDLC | Security in every phase |
+| DevSecOps | Security integrated into DevOps |
+| Zero Trust | Verify every request |
+| Defense in Depth | Multiple security layers |
+| IAM | Manage digital identities |
+| Logging | Record important events |
+| Monitoring | Detect operational issues |
+| Vulnerability Management | Identify and remediate weaknesses |
+| Incident Response | Prepare, detect, recover |
+| Governance | Policies, standards, oversight |
+
+---
+
+# Conceptual Hands-on Lab
+
+1. Draw the Secure SDLC lifecycle from memory.
+2. Design a conceptual DevSecOps pipeline including security activities.
+3. Create a layered enterprise security architecture diagram.
+4. Explain the shared responsibility model for cloud environments.
+5. Develop a conceptual incident response workflow for a web application.
+
+> Perform all exercises only in authorized environments. Focus on defensive concepts, governance, and operational resilience.
+
+---
+
+# Best Practices
+
+- Integrate security into every phase of software development.
+- Maintain secure architecture documentation.
+- Centralize logging and monitoring.
+- Continuously review configurations and access permissions.
+- Conduct regular vulnerability assessments and patch reviews.
+- Test business continuity and disaster recovery plans.
+- Use measurable security metrics to drive improvement.
+- Foster collaboration between development, operations, and security teams.
+
+---
+
+# Common Mistakes
+
+- Treating security as a final testing activity.
+- Ignoring governance and documentation.
+- Allowing configuration drift.
+- Delaying patch deployment without proper risk evaluation.
+- Collecting logs without monitoring them.
+- Failing to validate recovery procedures.
+- Neglecting continuous improvement after deployments.
+
+---
+
+# Key Takeaways
+
+- Secure SDLC and DevSecOps embed security throughout the software lifecycle.
+- Enterprise security relies on architecture, governance, monitoring, and continuous improvement.
+- Cloud security requires clear understanding of shared responsibilities.
+- Logging, monitoring, vulnerability management, and incident response are essential operational capabilities.
+- Strong security programs balance technical controls, business objectives, and organizational governance.
+
 ```text id="rrks28"
-**Next:** Part 3
+**Next:** Part 4
 ```
