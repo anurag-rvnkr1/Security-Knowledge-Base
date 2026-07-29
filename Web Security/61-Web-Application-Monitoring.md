@@ -623,6 +623,671 @@ Business Benefits
 - Centralized monitoring improves operational awareness and reliability.
 - Mature monitoring programs integrate security, operations, governance, and continuous improvement.
 
+# 61-Web-Application-Monitoring.md
+
+# Part 2 — Application Performance Monitoring (APM), Alerting, Dashboards, Health Checks, Availability Monitoring, and Enterprise Operations
+
+> **"Monitoring becomes valuable when collected data is transformed into actionable insights through performance analysis, meaningful dashboards, timely alerts, and continuous operational visibility."**
+
+---
+
+# Learning Objectives
+
+After completing this part, you will understand:
+
+- Application Performance Monitoring (APM)
+- Availability Monitoring
+- Health Checks
+- Alerting
+- Dashboard Design
+- Service Level Indicators (SLIs)
+- Service Level Objectives (SLOs)
+- Capacity Monitoring
+- Enterprise Monitoring Workflow
+- Operational Best Practices
+
+---
+
+# Application Performance Monitoring (APM)
+
+Application Performance Monitoring (APM) focuses on measuring how efficiently an application performs from both technical and business perspectives.
+
+```
+Users
+
+↓
+
+Web Application
+
+↓
+
+Performance Metrics
+
+↓
+
+Monitoring Platform
+
+↓
+
+Operations Team
+```
+
+APM helps organizations maintain reliable, responsive, and scalable applications.
+
+---
+
+# Objectives of APM
+
+```
+APM Objectives
+
+│
+
+├── Measure Performance
+
+├── Detect Slowdowns
+
+├── Improve User Experience
+
+├── Support Troubleshooting
+
+├── Capacity Planning
+
+├── Availability Monitoring
+
+├── Reliability
+
+└── Continuous Improvement
+```
+
+---
+
+# Performance Monitoring Workflow
+
+```
+Application
+
+↓
+
+Instrumentation
+
+↓
+
+Metrics Collection
+
+↓
+
+Analysis
+
+↓
+
+Dashboards
+
+↓
+
+Operational Review
+```
+
+Performance monitoring should be integrated into normal operational processes.
+
+---
+
+# Key Performance Metrics
+
+```
+Performance Metrics
+
+│
+
+├── Response Time
+
+├── Request Volume
+
+├── Throughput
+
+├── Error Rate
+
+├── CPU Utilization
+
+├── Memory Usage
+
+├── Storage Utilization
+
+└── Network Utilization
+```
+
+These metrics provide visibility into application health.
+
+---
+
+# Availability Monitoring
+
+Availability monitoring verifies that applications remain operational and accessible.
+
+```
+Users
+
+↓
+
+Availability Check
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboard
+
+↓
+
+Operations Team
+```
+
+High availability is a primary business objective for enterprise applications.
+
+---
+
+# Availability Metrics
+
+```
+Availability
+
+│
+
+├── Uptime
+
+├── Downtime
+
+├── Service Status
+
+├── Request Success
+
+├── Dependency Health
+
+├── Regional Status
+
+├── Infrastructure Health
+
+└── Overall Availability
+```
+
+Availability trends help organizations evaluate operational reliability.
+
+---
+
+# Health Checks
+
+Health checks determine whether an application and its supporting services are functioning correctly.
+
+```
+Application
+
+↓
+
+Health Check
+
+↓
+
+Healthy
+
+or
+
+Needs Attention
+```
+
+Health checks support automated operational monitoring.
+
+---
+
+# Types of Health Checks
+
+```
+Health Checks
+
+│
+
+├── Application Health
+
+├── Database Health
+
+├── API Health
+
+├── Cache Health
+
+├── Storage Health
+
+├── Network Health
+
+├── Dependency Health
+
+└── Infrastructure Health
+```
+
+Health checks should reflect critical business services.
+
+---
+
+# Alerting
+
+Alerting informs operational teams when predefined monitoring conditions require attention.
+
+```
+Metrics
+
+↓
+
+Evaluation
+
+↓
+
+Alert
+
+↓
+
+Operations Team
+
+↓
+
+Response
+```
+
+Effective alerting helps reduce response time and improve operational awareness.
+
+---
+
+# Alert Lifecycle
+
+```
+Monitoring
+
+↓
+
+Threshold Evaluation
+
+↓
+
+Alert Generation
+
+↓
+
+Notification
+
+↓
+
+Investigation
+
+↓
+
+Resolution
+
+↓
+
+Review
+```
+
+Alert management should include continuous evaluation and refinement.
+
+---
+
+# Alert Prioritization
+
+```
+Alerts
+
+│
+
+├── Informational
+
+├── Low Priority
+
+├── Medium Priority
+
+├── High Priority
+
+├── Critical
+
+├── Operational
+
+├── Security
+
+└── Business Impact
+```
+
+Prioritization supports efficient operational response.
+
+---
+
+# Dashboard Fundamentals
+
+Dashboards provide visual summaries of application and infrastructure health.
+
+```
+Metrics
+
+↓
+
+Visualization
+
+↓
+
+Dashboard
+
+↓
+
+Operations Team
+```
+
+Well-designed dashboards improve situational awareness.
+
+---
+
+# Dashboard Components
+
+```
+Dashboard
+
+│
+
+├── Availability
+
+├── Performance
+
+├── Error Trends
+
+├── Capacity
+
+├── Infrastructure
+
+├── Application Health
+
+├── Alerts
+
+└── Operational Status
+```
+
+Dashboards should present meaningful operational information.
+
+---
+
+# Dashboard Design Principles
+
+```
+Dashboard Design
+
+│
+
+├── Simplicity
+
+├── Clarity
+
+├── Consistency
+
+├── Actionable Information
+
+├── Real-Time Updates
+
+├── Historical Trends
+
+├── Business Context
+
+└── Operational Visibility
+```
+
+Effective dashboards reduce time spent interpreting monitoring data.
+
+---
+
+# Service Level Indicators (SLIs)
+
+SLIs are measurable indicators that reflect service performance.
+
+```
+Service
+
+↓
+
+Measurement
+
+↓
+
+Indicator
+
+↓
+
+Operational Review
+```
+
+Examples include availability, latency, and successful request rates.
+
+---
+
+# Service Level Objectives (SLOs)
+
+SLOs define desired operational targets for service quality.
+
+```
+Business Goal
+
+↓
+
+Service Objective
+
+↓
+
+Measurement
+
+↓
+
+Operational Monitoring
+```
+
+SLOs help align technical operations with business expectations.
+
+---
+
+# Capacity Monitoring
+
+Capacity monitoring evaluates resource consumption and future growth requirements.
+
+```
+Resources
+
+↓
+
+Usage
+
+↓
+
+Trend Analysis
+
+↓
+
+Capacity Planning
+```
+
+Capacity planning supports long-term operational stability.
+
+---
+
+# Capacity Metrics
+
+```
+Capacity
+
+│
+
+├── CPU
+
+├── Memory
+
+├── Storage
+
+├── Network
+
+├── Concurrent Users
+
+├── Requests
+
+├── Database Capacity
+
+└── Application Growth
+```
+
+Capacity metrics assist with infrastructure planning.
+
+---
+
+# Enterprise Monitoring Workflow
+
+```
+Application
+
+↓
+
+Metrics Collection
+
+↓
+
+Monitoring Platform
+
+↓
+
+Dashboards
+
+↓
+
+Alerts
+
+↓
+
+Operations Review
+
+↓
+
+Continuous Improvement
+```
+
+Monitoring should become an integral part of daily operations.
+
+---
+
+# Enterprise Example
+
+A global streaming platform serves millions of users across multiple geographic regions.
+
+```
+Users
+
+↓
+
+Application
+
+↓
+
+Monitoring Platform
+
+↓
+
+Operations Center
+
+↓
+
+Continuous Optimization
+```
+
+Operations teams monitor application performance, availability, infrastructure utilization, and business service health. Dashboards provide real-time operational visibility, while alerts notify teams of significant changes requiring investigation.
+
+---
+
+# Operational Metrics
+
+| Metric | Purpose |
+|---------|----------|
+| Application Availability | Service reliability |
+| Average Response Time | Performance evaluation |
+| Request Throughput | Traffic analysis |
+| Error Rate | Service quality |
+| CPU Utilization | Infrastructure planning |
+| Memory Utilization | Resource optimization |
+| Alert Resolution Time | Operational effectiveness |
+| Dashboard Availability | Monitoring reliability |
+
+---
+
+# Common Enterprise Challenges
+
+| Challenge | Recommended Approach |
+|-----------|----------------------|
+| Alert fatigue | Regular alert tuning |
+| Large metric volumes | Centralized monitoring platform |
+| Capacity uncertainty | Trend-based capacity planning |
+| Dashboard complexity | Business-focused dashboards |
+| Distributed applications | Unified monitoring strategy |
+| Growing infrastructure | Automated monitoring and reporting |
+
+---
+
+# Hands-on Lab (Conceptual)
+
+1. Design an Application Performance Monitoring architecture.
+2. Identify critical availability metrics for a customer-facing application.
+3. Create a dashboard layout displaying performance, availability, and infrastructure health.
+4. Define health checks for application, database, storage, and network services.
+5. Develop an alert lifecycle documenting evaluation, notification, investigation, and resolution.
+
+> Perform all activities only in environments where you have explicit authorization. Focus on monitoring architecture, operational visibility, and defensive engineering practices.
+
+---
+
+# Interview Questions
+
+1. What is Application Performance Monitoring (APM)?
+2. Why is availability monitoring important?
+3. What is a health check?
+4. What characteristics make an effective monitoring dashboard?
+5. Why should alerts be prioritized?
+6. What are Service Level Indicators (SLIs)?
+7. What are Service Level Objectives (SLOs)?
+8. Why is capacity monitoring important?
+9. Which metrics best indicate application health?
+10. How do dashboards improve operational awareness?
+
+---
+
+# Best Practices
+
+- Monitor application availability continuously.
+- Design dashboards around operational objectives.
+- Review alert thresholds periodically.
+- Implement meaningful health checks for critical services.
+- Track capacity trends for future planning.
+- Align SLIs and SLOs with business expectations.
+- Keep dashboards simple and actionable.
+- Continuously improve monitoring using operational feedback.
+
+---
+
+# Common Mistakes
+
+- Creating dashboards with excessive information.
+- Generating alerts without clear operational value.
+- Ignoring capacity trends.
+- Monitoring infrastructure while overlooking user experience.
+- Failing to review alert effectiveness.
+- Defining unrealistic operational objectives.
+- Maintaining inconsistent dashboard designs.
+
+---
+
+# Key Takeaways
+
+- APM provides continuous visibility into application performance and reliability.
+- Availability monitoring and health checks support resilient application operations.
+- Dashboards transform monitoring data into actionable operational insights.
+- SLIs, SLOs, and capacity monitoring help align technology with business goals.
+- Mature monitoring programs continuously refine dashboards, alerts, and operational processes.
+
 ```text id="rrks28"
-**Next:** Part 2
+**Next:** Part 3
 ```
