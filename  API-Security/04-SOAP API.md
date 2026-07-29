@@ -654,4 +654,792 @@ These characteristics are essential for financial systems where correctness and 
 
 ---
 
-**Next:** XML Namespaces, WSDL, SOAP Operations, RPC vs Document Style, Message Exchange Patterns, and Enterprise SOAP Service Design.
+# XML Namespaces
+
+SOAP messages rely heavily on **XML Namespaces** to uniquely identify XML elements and prevent naming conflicts.
+
+Without namespaces, different XML documents may define elements with identical names, making it difficult for applications to determine which element belongs to which schema.
+
+Example:
+
+```
+<Customer>
+
+<Name>
+
+</Name>
+
+</Customer>
+```
+
+If another application also defines a `<Customer>` element, conflicts occur.
+
+Namespaces solve this problem.
+
+---
+
+# What is an XML Namespace?
+
+An XML namespace uniquely identifies XML elements using a Uniform Resource Identifier (URI).
+
+Example
+
+```xml
+<soap:Envelope
+xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+```
+
+Here,
+
+```
+soap
+```
+
+is the namespace prefix, while
+
+```
+http://schemas.xmlsoap.org/soap/envelope/
+```
+
+identifies the SOAP specification.
+
+---
+
+# Namespace Structure
+
+```
+Prefix
+
+↓
+
+Namespace URI
+
+↓
+
+Element
+```
+
+Example
+
+```xml
+<soap:Body>
+```
+
+Where
+
+```
+soap
+
+↓
+
+Namespace Prefix
+
+↓
+
+SOAP Specification
+```
+
+---
+
+# Multiple Namespaces
+
+A SOAP message often uses multiple namespaces.
+
+Example
+
+```xml
+<soap:Envelope
+
+xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+
+xmlns:cus="http://company.com/customer">
+
+<soap:Body>
+
+<cus:GetCustomer>
+
+<cus:CustomerID>100</cus:CustomerID>
+
+</cus:GetCustomer>
+
+</soap:Body>
+
+</soap:Envelope>
+```
+
+Here:
+
+```
+soap
+
+↓
+
+SOAP Namespace
+```
+
+```
+cus
+
+↓
+
+Business Namespace
+```
+
+---
+
+# Why Namespaces Matter
+
+Benefits include:
+
+- Prevent naming conflicts
+- Improve interoperability
+- Enable schema validation
+- Separate business elements from protocol elements
+- Improve XML readability
+
+Namespaces are mandatory for interoperable SOAP services.
+
+---
+
+# SOAP Namespace Example
+
+```
+SOAP Envelope
+
+↓
+
+soap Namespace
+```
+
+```
+Business Request
+
+↓
+
+Application Namespace
+```
+
+Example
+
+```xml
+<soap:Body>
+
+<bank:TransferFunds>
+
+...
+
+</bank:TransferFunds>
+
+</soap:Body>
+```
+
+---
+
+# XML Schema (XSD)
+
+SOAP messages frequently rely on **XML Schema Definition (XSD)**.
+
+XSD defines:
+
+- Data types
+- Required elements
+- Optional elements
+- Constraints
+- Validation rules
+
+Example
+
+```
+CustomerID
+
+↓
+
+Integer
+```
+
+```
+Email
+
+↓
+
+String
+```
+
+Applications validate incoming XML against these schemas before processing requests.
+
+---
+
+# Web Services Description Language (WSDL)
+
+One of SOAP's defining characteristics is the use of **WSDL**.
+
+WSDL stands for:
+
+> **Web Services Description Language**
+
+It is an XML document that formally describes a SOAP web service.
+
+It defines:
+
+- Available operations
+- Input parameters
+- Output parameters
+- Message formats
+- Transport protocols
+- Service endpoints
+
+Unlike REST, where documentation is often external (such as OpenAPI), WSDL acts as a machine-readable service contract.
+
+---
+
+# Why WSDL Exists
+
+Before invoking a SOAP service, clients need to know:
+
+- Which operations exist?
+- Which parameters are required?
+- What data types are expected?
+- Which endpoint should be used?
+- Which protocol should be used?
+
+WSDL answers all of these questions.
+
+---
+
+# WSDL Architecture
+
+```
+Client
+
+    │
+
+Read WSDL
+
+    │
+
+Generate Client
+
+    │
+
+SOAP Request
+
+    ▼
+
+SOAP Service
+```
+
+Many development tools automatically generate client libraries directly from a WSDL document.
+
+---
+
+# WSDL Components
+
+A WSDL document consists of several major sections.
+
+```
+WSDL
+
+│
+
+├────────► Types
+
+├────────► Messages
+
+├────────► Port Types
+
+├────────► Bindings
+
+└────────► Service
+```
+
+Each component has a specific responsibility.
+
+---
+
+# Types
+
+The **Types** section defines data structures.
+
+Example
+
+```
+Customer
+
+Order
+
+Invoice
+
+Payment
+```
+
+These are usually described using XML Schema (XSD).
+
+---
+
+# Messages
+
+Messages define data exchanged between client and server.
+
+Example
+
+```
+GetCustomerRequest
+```
+
+```
+GetCustomerResponse
+```
+
+Each message specifies the required XML elements.
+
+---
+
+# Port Types
+
+Port Types define available operations.
+
+Example
+
+```
+Customer Service
+
+↓
+
+GetCustomer()
+
+CreateCustomer()
+
+DeleteCustomer()
+```
+
+A Port Type is conceptually similar to an interface in object-oriented programming.
+
+---
+
+# Bindings
+
+Bindings specify:
+
+- Transport protocol
+- Encoding style
+- SOAP version
+
+Example
+
+```
+SOAP 1.2
+
+↓
+
+HTTPS
+
+↓
+
+Document Style
+```
+
+---
+
+# Service
+
+The Service section identifies the actual endpoint.
+
+Example
+
+```
+https://api.company.com/customer
+```
+
+Clients connect to this endpoint when invoking SOAP operations.
+
+---
+
+# WSDL Workflow
+
+```
+Developer
+
+     │
+
+Publish WSDL
+
+     ▼
+
+Client Downloads WSDL
+
+     │
+
+Generate Client Library
+
+     │
+
+Invoke SOAP Service
+```
+
+This significantly reduces manual development effort.
+
+---
+
+# SOAP Operations
+
+SOAP supports several operation types.
+
+```
+One-Way
+
+Request-Response
+
+Solicit-Response
+
+Notification
+```
+
+Each defines how messages flow between client and server.
+
+---
+
+# One-Way Operation
+
+The client sends a request.
+
+No response is expected.
+
+```
+Client
+
+ │
+
+SOAP Request
+
+ ▼
+
+Server
+```
+
+Example:
+
+- Audit logging
+- Event notification
+- Fire-and-forget processing
+
+---
+
+# Request-Response
+
+Most common SOAP operation.
+
+```
+Client
+
+ │
+
+SOAP Request
+
+ ▼
+
+Server
+
+ │
+
+SOAP Response
+
+ ▼
+
+Client
+```
+
+Used for:
+
+- Banking
+- Authentication
+- Customer lookup
+- Payment processing
+
+---
+
+# Solicit-Response
+
+The server initiates communication.
+
+```
+Server
+
+ │
+
+Request
+
+ ▼
+
+Client
+
+ │
+
+Response
+
+ ▼
+
+Server
+```
+
+Rarely implemented in modern enterprise systems.
+
+---
+
+# Notification
+
+The server sends information without expecting a reply.
+
+```
+Server
+
+ │
+
+Notification
+
+ ▼
+
+Client
+```
+
+Example
+
+- Event alerts
+- Monitoring systems
+- Enterprise notifications
+
+---
+
+# RPC Style vs Document Style
+
+SOAP supports two messaging styles.
+
+```
+RPC Style
+```
+
+and
+
+```
+Document Style
+```
+
+---
+
+# RPC Style
+
+RPC (Remote Procedure Call) focuses on invoking methods.
+
+Example
+
+```
+GetCustomer()
+```
+
+Request
+
+```xml
+<GetCustomer>
+
+<CustomerID>100</CustomerID>
+
+</GetCustomer>
+```
+
+Advantages
+
+- Familiar programming model
+- Simple for developers
+
+Disadvantages
+
+- Tight coupling
+- Limited flexibility
+- Less interoperable
+
+---
+
+# Document Style
+
+Document Style exchanges XML documents instead of procedure calls.
+
+Example
+
+```xml
+<CustomerRequest>
+
+<CustomerID>100</CustomerID>
+
+</CustomerRequest>
+```
+
+Advantages
+
+- Better interoperability
+- Looser coupling
+- Easier validation
+- Enterprise preferred
+
+Today, most enterprise SOAP services use **Document/Literal** style.
+
+---
+
+# Literal vs Encoded
+
+SOAP also defines encoding styles.
+
+Literal
+
+```
+XML follows Schema
+
+↓
+
+Exact Validation
+```
+
+Encoded
+
+```
+SOAP Encoding Rules
+
+↓
+
+Less Common Today
+```
+
+Document/Literal is considered the industry best practice.
+
+---
+
+# Message Exchange Pattern
+
+```
+Application
+
+ │
+
+Generate XML
+
+ │
+
+SOAP Envelope
+
+ │
+
+HTTP POST
+
+ │
+
+SOAP Server
+
+ │
+
+Business Logic
+
+ │
+
+SOAP Response
+
+ │
+
+Client
+```
+
+Every SOAP transaction follows this general flow.
+
+---
+
+# Enterprise SOAP Workflow
+
+A banking transaction illustrates the complete lifecycle.
+
+```
+ATM
+
+ │
+
+SOAP Request
+
+ ▼
+
+API Gateway
+
+ │
+
+Authentication
+
+ ▼
+
+SOAP Service
+
+ │
+
+Fraud Detection
+
+ ▼
+
+Core Banking
+
+ │
+
+Transaction Database
+
+ │
+
+SOAP Response
+
+ ▼
+
+ATM
+```
+
+Each stage validates and processes the XML message before returning a response.
+
+---
+
+# Enterprise Design Principles
+
+Well-designed SOAP services follow these principles:
+
+- Strong contracts using WSDL
+- Schema validation using XSD
+- Document/Literal messaging
+- Secure transport using HTTPS
+- Versioned service contracts
+- Loose coupling
+- Consistent namespaces
+- Comprehensive error handling
+- Centralized authentication
+- Detailed logging and monitoring
+
+These practices improve interoperability and long-term maintainability.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Missing namespaces
+- Invalid XML
+- Ignoring schema validation
+- Mixing business logic into transport details
+- Using RPC style for complex enterprise integrations
+- Hardcoding endpoint URLs
+- Weak version management
+- Poor WSDL documentation
+
+---
+
+# Key Takeaways
+
+- XML namespaces uniquely identify XML elements and prevent naming conflicts.
+- XML Schema (XSD) validates SOAP message structure and data types.
+- WSDL acts as a formal, machine-readable contract describing SOAP services.
+- SOAP supports multiple operation types, including Request-Response and One-Way messaging.
+- Document/Literal messaging is the preferred style for enterprise interoperability.
+- Strong contracts, schema validation, and standardized messaging are key strengths of SOAP-based systems.
+
+---
+
+**Next:** WS-Security, SOAP Faults, Security Architecture, REST vs SOAP Comparison, Enterprise Use Cases, Hands-on Labs, Troubleshooting, Interview Questions, and Chapter Summary.
