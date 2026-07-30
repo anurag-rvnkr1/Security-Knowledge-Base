@@ -561,8 +561,4 @@ This handbook is inspired by industry best practices, cloud provider documentati
 
 ---
 
-# Next Step
 
-➡ **Chapter 01 — Introduction to Cloud Security**
-
-Begin your journey by understanding modern cloud computing, why cloud security is critical, the shared responsibility model, cloud attack surfaces, and the foundational principles that drive secure cloud architectures.
