@@ -1165,6 +1165,897 @@ Avoid the following pitfalls:
 
 ---
 
+# Detailed Customer Responsibilities
+
+## Introduction
+
+One of the biggest misconceptions in cloud computing is that once workloads are deployed to the cloud, security becomes the sole responsibility of the cloud provider.
+
+In reality, regardless of whether an organization uses Infrastructure as a Service (IaaS), Platform as a Service (PaaS), or Software as a Service (SaaS), **customers always retain responsibility for securing everything they own, configure, deploy, or control.**
+
+Cloud providers secure the underlying infrastructure, but customers remain responsible for protecting their:
+
+- Data
+- Users
+- Identities
+- Applications
+- Configurations
+- Access permissions
+- Business processes
+- Compliance requirements
+
+In most real-world cloud security incidents, investigations reveal that the cloud provider's infrastructure was functioning securely. The breach occurred because customer-managed resources were improperly configured, insufficiently monitored, or inadequately protected.
+
+Understanding customer responsibilities is therefore essential for building a secure cloud environment.
+
+---
+
+# Learning Objectives
+
+After completing this section, you will be able to:
+
+- Understand customer responsibilities within the Shared Responsibility Model.
+- Learn Identity and Access Management (IAM) responsibilities.
+- Understand data protection obligations.
+- Learn encryption responsibilities.
+- Understand network security ownership.
+- Learn operating system security responsibilities.
+- Understand application security obligations.
+- Learn vulnerability and patch management.
+- Understand logging and monitoring responsibilities.
+- Learn compliance and governance responsibilities.
+- Analyze enterprise customer security practices.
+
+---
+
+# Overview of Customer Responsibilities
+
+Although responsibilities vary slightly across cloud service models, customers are generally responsible for securing the following areas:
+
+```
+Customer Responsibilities
+
+│
+
+├── Identity & Access Management
+
+├── Data Protection
+
+├── Encryption
+
+├── Operating Systems*
+
+├── Applications
+
+├── Network Configuration*
+
+├── Firewalls*
+
+├── Secrets Management
+
+├── Logging
+
+├── Monitoring
+
+├── Vulnerability Management
+
+├── Compliance
+
+├── Governance
+
+├── Backup Strategy
+
+├── Incident Response
+
+└── Security Awareness
+
+*Primarily in IaaS and partially in PaaS.
+```
+
+Each area contributes to the organization's overall cloud security posture.
+
+---
+
+# Identity and Access Management (IAM)
+
+## Overview
+
+Identity is the new security perimeter in cloud computing.
+
+Unlike traditional environments that relied heavily on network boundaries, modern cloud platforms primarily depend on **Identity and Access Management (IAM)** to determine who can access resources and what actions they are permitted to perform.
+
+Customers are fully responsible for configuring IAM correctly.
+
+---
+
+# IAM Responsibilities
+
+Customers should manage:
+
+- User accounts
+- Service accounts
+- Roles
+- Groups
+- Policies
+- Authentication methods
+- Authorization rules
+- Temporary credentials
+- Federated identities
+- API credentials
+
+Poor IAM configuration remains one of the leading causes of cloud security incidents.
+
+---
+
+# Least Privilege Principle
+
+Every identity should receive only the minimum permissions required.
+
+```
+Developer
+
+↓
+
+Read Source Code
+
+Deploy Application
+
+────────────────────
+
+Not Allowed
+
+Delete Databases
+
+Manage Billing
+
+Modify IAM Policies
+```
+
+Excessive permissions increase the impact of compromised accounts.
+
+---
+
+# Multi-Factor Authentication (MFA)
+
+Customers should enable MFA for:
+
+- Administrative accounts
+- Privileged users
+- Remote access
+- Cloud consoles
+- Identity providers
+
+```
+User
+
+↓
+
+Password
+
++
+
+MFA
+
+↓
+
+Cloud Console
+```
+
+MFA significantly reduces the risk of credential-based attacks.
+
+---
+
+# Identity Lifecycle Management
+
+Organizations should manage user identities throughout their lifecycle.
+
+```
+Employee Joins
+
+↓
+
+Account Created
+
+↓
+
+Permissions Assigned
+
+↓
+
+Role Changes
+
+↓
+
+Permissions Updated
+
+↓
+
+Employee Leaves
+
+↓
+
+Account Disabled
+
+↓
+
+Account Removed
+```
+
+Inactive accounts present unnecessary security risks.
+
+---
+
+# Data Protection
+
+## Overview
+
+Cloud providers store customer data, but **customers own and are responsible for protecting that data**.
+
+Security responsibilities include:
+
+- Classification
+- Access control
+- Encryption
+- Backup
+- Retention
+- Secure deletion
+- Data lifecycle management
+
+---
+
+# Data Classification
+
+Organizations should classify information according to sensitivity.
+
+Example:
+
+```
+Data
+
+│
+
+├── Public
+
+├── Internal
+
+├── Confidential
+
+└── Restricted
+```
+
+Different classifications require different protection levels.
+
+---
+
+# Data Access Control
+
+Access should follow business requirements.
+
+```
+Finance Records
+
+↓
+
+Finance Team
+
+────────────────────
+
+Engineering Team
+
+↓
+
+Access Denied
+```
+
+Access reviews should be conducted regularly.
+
+---
+
+# Data Lifecycle
+
+```
+Data Created
+
+↓
+
+Stored
+
+↓
+
+Used
+
+↓
+
+Archived
+
+↓
+
+Deleted Securely
+```
+
+Security controls should exist throughout every phase.
+
+---
+
+# Encryption Responsibilities
+
+## Encryption in Transit
+
+Customers should ensure sensitive communications use secure protocols.
+
+Examples include:
+
+- HTTPS
+- TLS
+- SSH
+- VPN tunnels
+
+```
+User
+
+↓
+
+TLS Encryption
+
+↓
+
+Cloud Service
+```
+
+Unencrypted communication may expose sensitive information.
+
+---
+
+## Encryption at Rest
+
+Stored information should also be encrypted.
+
+Examples:
+
+- Databases
+- Object storage
+- Virtual disks
+- Backups
+- Snapshots
+
+Encryption reduces the impact of physical media compromise and unauthorized storage access.
+
+---
+
+## Encryption Key Management
+
+Customers should define:
+
+- Key ownership
+- Rotation schedules
+- Access permissions
+- Backup procedures
+- Revocation processes
+
+Poor key management can render encryption ineffective.
+
+---
+
+# Secrets Management
+
+Applications often require sensitive credentials.
+
+Examples include:
+
+- API keys
+- Database passwords
+- OAuth tokens
+- Certificates
+- Encryption keys
+
+These secrets should never be:
+
+- Hardcoded
+- Stored in source code
+- Shared via email
+- Embedded in container images
+
+Instead, use dedicated secrets management solutions.
+
+```
+Application
+
+↓
+
+Secrets Manager
+
+↓
+
+Credential Retrieved
+
+↓
+
+Secure Connection
+```
+
+---
+
+# Operating System Security
+
+*(Primarily applicable to Infrastructure as a Service)*
+
+Customers managing virtual machines are responsible for securing their operating systems.
+
+Responsibilities include:
+
+- OS hardening
+- Patch management
+- Malware protection
+- User management
+- Secure configuration
+- File permissions
+- System auditing
+
+---
+
+# Operating System Hardening
+
+Examples include:
+
+- Disable unnecessary services.
+- Remove unused software.
+- Restrict administrative access.
+- Enable host-based firewalls.
+- Configure secure logging.
+- Apply secure baseline configurations.
+
+Hardening reduces the attack surface.
+
+---
+
+# Patch Management
+
+Keeping systems updated is a customer responsibility in IaaS.
+
+```
+Security Update Released
+
+↓
+
+Testing
+
+↓
+
+Deployment
+
+↓
+
+Verification
+
+↓
+
+Documentation
+```
+
+Delaying security patches increases exposure to known vulnerabilities.
+
+---
+
+# Network Security
+
+Customers configure logical network security even though providers manage the physical network.
+
+Responsibilities include:
+
+- Virtual Private Clouds (VPCs)
+- Subnets
+- Route tables
+- Security Groups
+- Network ACLs
+- VPN configuration
+- Private endpoints
+- DNS configuration
+
+---
+
+# Network Segmentation
+
+Sensitive systems should be isolated.
+
+```
+Internet
+
+↓
+
+Public Subnet
+
+↓
+
+Application Tier
+
+↓
+
+Private Subnet
+
+↓
+
+Database Tier
+```
+
+Segmentation limits lateral movement.
+
+---
+
+# Firewall Configuration
+
+Example:
+
+```
+Internet
+
+↓
+
+Web Firewall
+
+↓
+
+Application
+
+↓
+
+Database Firewall
+
+↓
+
+Database
+```
+
+Only required ports should be opened.
+
+---
+
+# Application Security
+
+Applications remain the customer's responsibility in both IaaS and PaaS.
+
+Responsibilities include:
+
+- Secure coding
+- Authentication
+- Authorization
+- Session management
+- Input validation
+- API security
+- Dependency management
+- Secure deployment
+
+---
+
+# Secure Software Development Lifecycle (SSDLC)
+
+```
+Requirements
+
+↓
+
+Design
+
+↓
+
+Development
+
+↓
+
+Security Testing
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Maintenance
+```
+
+Security should be integrated throughout the development lifecycle rather than added after deployment.
+
+---
+
+# API Security
+
+Customers should secure APIs using:
+
+- Authentication
+- Authorization
+- Rate limiting
+- Input validation
+- TLS encryption
+- Logging
+- Monitoring
+- API gateways
+
+APIs often represent the primary attack surface for cloud-native applications.
+
+---
+
+# Vulnerability Management
+
+Customers should continuously identify and remediate vulnerabilities.
+
+Typical activities include:
+
+- Vulnerability scanning
+- Patch verification
+- Risk assessment
+- Penetration testing
+- Configuration reviews
+- Dependency scanning
+
+---
+
+# Vulnerability Management Lifecycle
+
+```
+Discover
+
+↓
+
+Assess
+
+↓
+
+Prioritize
+
+↓
+
+Remediate
+
+↓
+
+Verify
+
+↓
+
+Monitor
+```
+
+This process should be continuous rather than periodic.
+
+---
+
+# Logging Responsibilities
+
+Customers should configure comprehensive logging.
+
+Important logs include:
+
+- Authentication events
+- Administrative actions
+- API activity
+- Network changes
+- Database access
+- Security alerts
+- Application logs
+- Audit events
+
+Logs support investigations and compliance.
+
+---
+
+# Monitoring Responsibilities
+
+Monitoring should cover:
+
+- Infrastructure health
+- Security events
+- User activity
+- API traffic
+- Resource utilization
+- Configuration drift
+- Suspicious behavior
+- Threat detection
+
+```
+Cloud Resources
+
+↓
+
+Monitoring
+
+↓
+
+Alert
+
+↓
+
+Security Team
+
+↓
+
+Response
+```
+
+Continuous monitoring enables early detection of malicious activity.
+
+---
+
+# Backup Responsibilities
+
+Even when cloud providers offer backup services, customers remain responsible for defining backup strategies.
+
+Organizations should determine:
+
+- Backup frequency
+- Retention periods
+- Encryption
+- Recovery objectives
+- Geographic redundancy
+- Restoration testing
+
+A backup that has never been restored cannot be assumed to be usable.
+
+---
+
+# Incident Response
+
+Customers should establish documented incident response procedures.
+
+Typical lifecycle:
+
+```
+Preparation
+
+↓
+
+Detection
+
+↓
+
+Analysis
+
+↓
+
+Containment
+
+↓
+
+Eradication
+
+↓
+
+Recovery
+
+↓
+
+Lessons Learned
+```
+
+Cloud providers assist with infrastructure availability, but customers respond to incidents affecting their workloads.
+
+---
+
+# Compliance Responsibilities
+
+Organizations remain responsible for meeting regulatory obligations.
+
+Examples include:
+
+- Data residency
+- Privacy laws
+- Audit evidence
+- Access reviews
+- Retention policies
+- Risk assessments
+- Security documentation
+
+Provider certifications do not automatically make customer workloads compliant.
+
+---
+
+# Governance Responsibilities
+
+Cloud governance includes:
+
+- Policy management
+- Cost governance
+- Resource ownership
+- Change management
+- Risk management
+- Configuration standards
+- Security baselines
+- Continuous compliance
+
+Governance ensures cloud environments remain secure and consistent over time.
+
+---
+
+# Enterprise Example
+
+A healthcare provider hosts a patient management system in the cloud.
+
+Customer responsibilities include:
+
+- Configuring IAM
+- Enforcing MFA
+- Encrypting patient records
+- Securing APIs
+- Managing operating system patches
+- Monitoring user activity
+- Maintaining compliance documentation
+- Performing vulnerability assessments
+
+The cloud provider secures:
+
+- Physical servers
+- Storage hardware
+- Hypervisors
+- Networking infrastructure
+- Data center facilities
+
+Both parties must fulfill their responsibilities to maintain a secure environment.
+
+---
+
+# Common Customer Security Failures
+
+Many cloud incidents originate from preventable mistakes.
+
+Examples include:
+
+- Publicly accessible storage buckets
+- Weak IAM policies
+- Disabled MFA
+- Hardcoded secrets
+- Unpatched virtual machines
+- Exposed management ports
+- Poor API authentication
+- Missing encryption
+- Inadequate logging
+- Unmonitored privileged accounts
+
+Most of these failures occur within the customer's area of responsibility.
+
+---
+
+# Best Practices
+
+- Apply the Principle of Least Privilege to every identity.
+- Enable MFA for all privileged accounts.
+- Encrypt sensitive data in transit and at rest.
+- Regularly rotate credentials and encryption keys.
+- Harden operating systems and cloud workloads.
+- Continuously patch customer-managed resources.
+- Secure APIs with strong authentication and authorization.
+- Centralize logging and continuous monitoring.
+- Perform regular vulnerability assessments and penetration tests.
+- Test backup restoration and incident response procedures periodically.
+
+---
+
+# Common Mistakes
+
+Avoid the following pitfalls:
+
+- Assuming cloud providers manage customer identities.
+- Granting excessive permissions to users or services.
+- Storing secrets in application source code.
+- Leaving virtual machines unpatched.
+- Ignoring API security controls.
+- Disabling logging to reduce storage costs.
+- Failing to review backup and recovery processes.
+- Treating compliance as a one-time activity rather than a continuous process.
+
+---
+
+# Key Takeaways
+
+- Customers remain responsible for securing everything they deploy, configure, manage, or control within the cloud.
+- Identity, data protection, encryption, applications, configurations, logging, monitoring, and governance are core customer responsibilities across all cloud service models.
+- In IaaS, customers additionally manage operating systems, middleware, and many network configurations.
+- Continuous monitoring, vulnerability management, and incident response are essential for maintaining a strong cloud security posture.
+- Understanding and fulfilling customer responsibilities is critical to reducing risk, maintaining compliance, and preventing cloud security incidents.
+
+---
+
 ## Next Section
 
-The next section explores **Detailed Customer Responsibilities**, covering Identity and Access Management (IAM), data protection, encryption, operating system security, application security, network security, vulnerability management, logging, monitoring, incident response, compliance, and governance in enterprise cloud environments.
+The next section explores **Detailed Cloud Provider Responsibilities**, covering physical security, infrastructure protection, hardware lifecycle management, virtualization security, managed service operations, platform availability, resilience, compliance certifications, and provider-side security controls in enterprise cloud environments..
