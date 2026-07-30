@@ -1320,12 +1320,684 @@ Security teams should monitor:
 
 ---
 
-## Next Section
+## Prevention
 
-Prevention
+Preventing secret exposure requires protecting secrets throughout their entire lifecycle—from creation and storage to retrieval, rotation, revocation, and deletion. Since secrets grant access to critical systems and data, they should be treated as highly sensitive assets.
 
-Best Practices
+A comprehensive Secrets Management strategy should protect:
 
-Common Mistakes
+- Passwords
+- API keys
+- Database credentials
+- SSH keys
+- TLS private keys
+- OAuth tokens
+- Service account credentials
+- Application secrets
+- CI/CD credentials
+- Cloud access tokens
 
-References
+Security should be enforced using **Least Privilege**, **Zero Trust**, **Defense in Depth**, and **Continuous Monitoring**.
+
+---
+
+# Defense-in-Depth for Secrets Management
+
+```
+                Users / Applications
+
+                         │
+
+                         ▼
+
+               Identity Authentication
+
+                         │
+
+                         ▼
+
+                IAM Authorization
+
+                         │
+
+                         ▼
+
+             Secrets Management Service
+
+        ┌───────────────┼────────────────┐
+
+        ▼               ▼                ▼
+
+   Secret Storage   Secret Rotation   Access Policies
+
+        │               │                │
+
+        └───────────────┼────────────────┘
+
+                         ▼
+
+              Audit Logging & SIEM
+
+                         ▼
+
+              Security Monitoring
+```
+
+Each layer contributes to reducing the likelihood and impact of credential compromise.
+
+---
+
+# Use a Dedicated Secrets Manager
+
+Never store secrets directly within applications.
+
+Instead, use centralized Secrets Management solutions that provide:
+
+- Secure storage
+- Encryption
+- Fine-grained access control
+- Audit logging
+- Automatic rotation
+- Versioning
+
+```
+Application
+
+↓
+
+Secrets Manager
+
+↓
+
+Retrieve Secret
+
+↓
+
+Protected Resource
+```
+
+Centralized management improves consistency and reduces operational risk.
+
+---
+
+# Never Hardcode Secrets
+
+Hardcoding secrets into source code or configuration files is one of the most common causes of credential exposure.
+
+Avoid storing secrets in:
+
+- Source code
+- Git repositories
+- Configuration files
+- Dockerfiles
+- Container images
+- Shell scripts
+- Terraform files
+- CI/CD pipeline definitions
+
+Incorrect:
+
+```
+Database Password
+
+↓
+
+config.py
+```
+
+Recommended:
+
+```
+Application
+
+↓
+
+Secrets Manager
+
+↓
+
+Runtime Retrieval
+```
+
+---
+
+# Encrypt Stored Secrets
+
+Secrets should always be encrypted while stored.
+
+Recommended protections include:
+
+- AES-256 encryption
+- Hardware-backed encryption (where appropriate)
+- Customer-managed encryption keys
+- Access-controlled storage
+
+```
+Plain Secret
+
+↓
+
+Encryption
+
+↓
+
+Encrypted Secret
+```
+
+Encryption protects secrets against storage compromise.
+
+---
+
+# Protect Secrets in Transit
+
+Secrets should only be transmitted using secure encrypted channels.
+
+Recommended protocols:
+
+- TLS 1.2+
+- TLS 1.3
+- Mutual TLS (mTLS)
+- VPN
+- Secure service meshes
+
+```
+Application
+
+↓
+
+TLS
+
+↓
+
+Secrets Manager
+```
+
+Unencrypted transmission should never be permitted.
+
+---
+
+# Implement Least Privilege
+
+Only authorized identities should retrieve specific secrets.
+
+Access decisions should consider:
+
+- User identity
+- Service identity
+- Namespace
+- Environment
+- Device posture
+- Risk level
+
+Example:
+
+| Identity | Permission |
+|----------|------------|
+| Web Application | Database password |
+| CI/CD Pipeline | Deployment token |
+| Security Administrator | Manage secrets |
+| Auditor | View audit logs only |
+
+Permissions should be reviewed regularly.
+
+---
+
+# Use Short-Lived Credentials
+
+Prefer temporary credentials over permanent secrets.
+
+Examples:
+
+- Temporary cloud credentials
+- Dynamic database users
+- Short-lived API tokens
+- Temporary SSH certificates
+
+```
+Generate Secret
+
+↓
+
+Use
+
+↓
+
+Automatic Expiration
+```
+
+Short-lived credentials reduce exposure if compromised.
+
+---
+
+# Rotate Secrets Automatically
+
+Secrets should be rotated regularly.
+
+Common candidates include:
+
+- API keys
+- Database passwords
+- Service account credentials
+- SSH keys
+- OAuth client secrets
+- TLS certificates
+
+```
+Old Secret
+
+↓
+
+Rotation
+
+↓
+
+New Secret
+
+↓
+
+Old Secret Revoked
+```
+
+Automated rotation reduces administrative effort and limits long-lived credential risk.
+
+---
+
+# Protect Administrative Access
+
+Administrative access to the Secrets Management platform should require enhanced protections.
+
+Recommended controls:
+
+- Multi-Factor Authentication (MFA)
+- Privileged Access Management (PAM)
+- Dedicated administrator accounts
+- Approval workflows
+- Session recording
+
+Administrative accounts should never be shared.
+
+---
+
+# Secure CI/CD Pipelines
+
+Deployment pipelines frequently require secrets.
+
+Best practices:
+
+- Retrieve secrets at runtime
+- Avoid storing credentials in pipeline files
+- Limit pipeline permissions
+- Rotate deployment credentials
+- Use temporary tokens whenever possible
+
+```
+Pipeline
+
+↓
+
+Authenticate
+
+↓
+
+Secrets Manager
+
+↓
+
+Temporary Credential
+```
+
+---
+
+# Secure Kubernetes Secrets
+
+Avoid relying solely on native Kubernetes Secret objects for highly sensitive data without additional protections.
+
+Recommendations:
+
+- Integrate with an external Secrets Manager
+- Enable encryption at rest
+- Restrict RBAC permissions
+- Audit secret access
+- Rotate credentials regularly
+
+---
+
+# Monitor Secret Usage
+
+Every secret operation should be monitored.
+
+Track:
+
+- Secret creation
+- Secret retrieval
+- Secret rotation
+- Secret deletion
+- Authentication failures
+- Authorization failures
+- Policy modifications
+- Administrative actions
+
+```
+Secret Event
+
+↓
+
+Audit Log
+
+↓
+
+SIEM
+
+↓
+
+SOC Alert
+```
+
+Continuous monitoring improves detection of suspicious activity.
+
+---
+
+# Scan for Exposed Secrets
+
+Implement automated scanning across:
+
+- Git repositories
+- Container images
+- Infrastructure as Code templates
+- CI/CD pipelines
+- Documentation
+- Build artifacts
+
+Detect:
+
+- API keys
+- Passwords
+- Private keys
+- Cloud credentials
+- Tokens
+
+Early detection reduces the likelihood of successful exploitation.
+
+---
+
+# Protect Backup Copies
+
+Secrets included in backups require the same level of protection as production secrets.
+
+Recommendations:
+
+- Encrypt backups
+- Restrict access
+- Test restoration procedures
+- Secure backup encryption keys
+- Monitor backup access
+
+---
+
+# Revoke Compromised Secrets Immediately
+
+If compromise is suspected:
+
+```
+Compromised Secret
+
+↓
+
+Revoke
+
+↓
+
+Generate Replacement
+
+↓
+
+Update Applications
+```
+
+Prompt revocation limits attacker persistence.
+
+---
+
+# Best Practices
+
+## 1. Centralize Secret Storage
+
+Maintain all production secrets within an approved Secrets Management platform rather than distributing them across applications or infrastructure.
+
+---
+
+## 2. Eliminate Hardcoded Credentials
+
+Implement automated scanning to prevent credentials from entering:
+
+- Source code
+- Git repositories
+- Configuration files
+- Container images
+- Infrastructure templates
+
+---
+
+## 3. Use Dynamic Secrets Whenever Possible
+
+Prefer dynamically generated credentials that automatically expire over long-lived static passwords.
+
+Dynamic credentials reduce the impact of accidental disclosure.
+
+---
+
+## 4. Rotate Secrets Regularly
+
+Define documented rotation schedules for:
+
+- Database credentials
+- API keys
+- SSH keys
+- TLS certificates
+- OAuth client secrets
+- Cloud access credentials
+
+Automate rotation wherever supported.
+
+---
+
+## 5. Enforce Least Privilege
+
+Grant applications access only to the specific secrets they require.
+
+Review permissions periodically and remove unnecessary access.
+
+---
+
+## 6. Protect Administrative Accounts
+
+Require:
+
+- Multi-Factor Authentication
+- Privileged Access Management
+- Individual administrator accounts
+- Session auditing
+
+Administrative activities should always be logged.
+
+---
+
+## 7. Enable Comprehensive Audit Logging
+
+Record every important operation, including:
+
+- Secret creation
+- Retrieval
+- Rotation
+- Revocation
+- Deletion
+- Policy changes
+- Failed access attempts
+
+Forward logs to the organization's SIEM for continuous monitoring.
+
+---
+
+## 8. Encrypt Secrets at Rest and in Transit
+
+Protect secrets using strong encryption while stored and secure communication channels during retrieval.
+
+Encryption should be enabled by default.
+
+---
+
+## 9. Continuously Scan for Secret Exposure
+
+Integrate secret scanning into:
+
+- Source code repositories
+- CI/CD pipelines
+- Container image scanning
+- Infrastructure as Code validation
+
+Prevent exposed credentials from reaching production.
+
+---
+
+## 10. Regularly Review and Remove Unused Secrets
+
+Stale or unused credentials increase the attack surface.
+
+Periodically:
+
+- Identify unused secrets
+- Remove obsolete credentials
+- Disable inactive service accounts
+- Archive historical versions where appropriate
+
+Credential hygiene improves long-term security.
+
+---
+
+## Common Mistakes
+
+### Hardcoding Secrets in Source Code
+
+Embedding credentials directly into applications exposes them to developers, repositories, backups, and attackers.
+
+Always retrieve secrets securely at runtime.
+
+---
+
+### Storing Secrets in Git Repositories
+
+Accidentally committing secrets to version control is a frequent cause of cloud compromises.
+
+Use automated secret scanning and remove exposed credentials immediately if discovered.
+
+---
+
+### Using Long-Lived Credentials
+
+Permanent API keys, passwords, and access tokens increase organizational risk.
+
+Prefer temporary credentials and automatic expiration whenever feasible.
+
+---
+
+### Never Rotating Secrets
+
+Credentials that remain unchanged for extended periods provide attackers with more opportunity if compromised.
+
+Follow documented rotation schedules.
+
+---
+
+### Granting Excessive Access
+
+Applications should not retrieve every available secret.
+
+Restrict access to only the credentials required for their intended function.
+
+---
+
+### Ignoring Audit Logs
+
+Failure to monitor secret usage can delay detection of:
+
+- Credential theft
+- Unauthorized retrieval
+- Administrative misuse
+- Policy changes
+
+Integrate Secrets Management logs into centralized monitoring.
+
+---
+
+### Sharing Administrative Credentials
+
+Multiple administrators should never use the same privileged account.
+
+Individual identities improve accountability and support investigations.
+
+---
+
+### Storing Secrets in Environment Files Without Protection
+
+Files such as `.env` can expose sensitive credentials if improperly secured or committed to repositories.
+
+Protect environment files and avoid storing production secrets in plaintext.
+
+---
+
+### Forgetting to Revoke Compromised Credentials
+
+Replacing an exposed credential without revoking the old one leaves systems vulnerable.
+
+Immediately revoke compromised secrets before issuing replacements.
+
+---
+
+### Neglecting Stale Secrets
+
+Unused credentials often remain active long after applications or services are retired.
+
+Regularly identify and remove obsolete secrets to reduce the attack surface.
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-57 – Recommendation for Key Management
+- NIST SP 800-63 – Digital Identity Guidelines
+- NIST Cybersecurity Framework (CSF)
+- FIPS 140-3 – Security Requirements for Cryptographic Modules
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Critical Security Controls
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Provider Documentation
+
+- AWS Secrets Manager Documentation
+- AWS Systems Manager Parameter Store Documentation
+- Microsoft Azure Key Vault Documentation
+- Google Cloud Secret Manager Documentation
+- Oracle Cloud Infrastructure Vault Documentation
+- IBM Cloud Secrets Manager Documentation
+
+---
+
+### Industry Best Practices
+
+- Zero Trust Architecture
+- Principle of Least Privilege (PoLP)
+- Defense in Depth
+- Dynamic Secrets
+- Automated Secret Rotation
+- Runtime Secret Injection
+- Secure CI/CD Pipelines
+- Secure Kubernetes Secrets
+- Secret Scanning
+- Secure Credential Lifecycle Management
+
+---
