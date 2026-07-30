@@ -1337,3 +1337,810 @@ Security teams typically monitor:
 
 ---
 
+## Prevention
+
+Cloud Network Security should follow a **Defense-in-Depth** strategy, where multiple independent security controls protect workloads, applications, and data. No single security control should be relied upon to secure the entire cloud environment.
+
+A comprehensive prevention strategy combines:
+
+- Secure network architecture
+- Network segmentation
+- Identity-based access control
+- Encryption
+- Continuous monitoring
+- Secure configuration management
+- Zero Trust principles
+
+---
+
+# Defense-in-Depth Architecture
+
+```
+                    Internet
+
+                        │
+
+                        ▼
+
+               DDoS Protection
+
+                        │
+
+                        ▼
+
+            Web Application Firewall
+
+                        │
+
+                        ▼
+
+               Load Balancer
+
+                        │
+
+                        ▼
+
+              Virtual Cloud Network
+
+                        │
+
+        ┌───────────────┼───────────────┐
+
+        ▼               ▼               ▼
+
+  Security Group   Network ACL    Route Table
+
+        │
+
+        ▼
+
+     Virtual Machine
+
+        │
+
+        ▼
+
+  Host Firewall / IDS
+
+        │
+
+        ▼
+
+     Application Layer
+
+        │
+
+        ▼
+
+       Database
+```
+
+If one security layer fails, the remaining controls continue protecting the environment.
+
+---
+
+# Secure Network Architecture
+
+Security begins during network design.
+
+Organizations should:
+
+- Separate production and development environments.
+- Isolate sensitive workloads.
+- Keep databases private.
+- Limit internet exposure.
+- Use multiple Availability Zones.
+- Create dedicated management networks.
+- Implement private connectivity whenever possible.
+
+Example:
+
+```
+Production
+
+├── Public Subnet
+
+├── Application Subnet
+
+├── Database Subnet
+
+└── Management Subnet
+```
+
+Each subnet should have its own security policies.
+
+---
+
+# Network Segmentation
+
+Network segmentation limits communication between workloads.
+
+Instead of allowing unrestricted communication:
+
+```
+All Servers
+
+↓
+
+Communicate Freely
+```
+
+Use controlled communication:
+
+```
+Frontend
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+Management
+```
+
+Benefits include:
+
+- Reduced attack surface
+- Limited lateral movement
+- Better compliance
+- Easier monitoring
+- Smaller blast radius
+
+---
+
+# Implement Microsegmentation
+
+Microsegmentation applies security policies directly to workloads.
+
+Example:
+
+```
+Web Server
+
+↓
+
+Can Reach
+
+↓
+
+Application Server
+
+────────────────────
+
+Cannot Reach
+
+↓
+
+Database
+
+Unless Explicitly Allowed
+```
+
+Even workloads within the same subnet should not communicate unless required.
+
+---
+
+# Apply the Principle of Least Privilege
+
+Network access should be granted only when required.
+
+Example:
+
+| Resource | Allowed Communication |
+|----------|-----------------------|
+| Web Server | HTTPS only |
+| Application Server | Database only |
+| Database | Application servers only |
+| Bastion Host | Administrative access only |
+
+Avoid "allow all" firewall rules.
+
+---
+
+# Secure Security Groups
+
+Security Groups should follow these principles:
+
+- Permit only required ports.
+- Restrict source IP addresses.
+- Remove unused rules.
+- Review configurations regularly.
+- Apply separate groups for different workloads.
+
+Example:
+
+```
+HTTPS
+
+↓
+
+443
+
+↓
+
+Internet
+
+↓
+
+Allow
+
+-------------------
+
+SSH
+
+↓
+
+22
+
+↓
+
+Corporate VPN
+
+↓
+
+Allow
+
+-------------------
+
+Database
+
+↓
+
+3306
+
+↓
+
+Internet
+
+↓
+
+Deny
+```
+
+---
+
+# Secure Network ACLs
+
+Network ACLs provide an additional security layer.
+
+Best practices:
+
+- Deny unnecessary inbound traffic.
+- Restrict outbound communication.
+- Block unused ports.
+- Review ACLs regularly.
+- Keep rule sets simple.
+
+ACLs should complement Security Groups—not replace them.
+
+---
+
+# Protect Administrative Access
+
+Never expose administrative services directly to the internet.
+
+Instead:
+
+```
+Administrator
+
+↓
+
+VPN
+
+↓
+
+MFA
+
+↓
+
+Bastion Host
+
+↓
+
+Private Server
+```
+
+Administrative services include:
+
+- SSH
+- RDP
+- Kubernetes API
+- Database administration
+- Management consoles
+
+---
+
+# Secure Internet Connectivity
+
+Only workloads requiring internet access should receive public IP addresses.
+
+Preferred design:
+
+```
+Public Web Server
+
+↓
+
+Application Server
+
+↓
+
+Private Database
+```
+
+Avoid:
+
+```
+Database
+
+↓
+
+Public Internet
+```
+
+Databases should almost always remain private.
+
+---
+
+# Use NAT Gateways
+
+Private resources requiring software updates should access the internet through a NAT Gateway.
+
+```
+Private VM
+
+↓
+
+NAT Gateway
+
+↓
+
+Internet
+
+↓
+
+Software Repository
+```
+
+Benefits:
+
+- No inbound internet access
+- Secure outbound communication
+- Reduced exposure
+
+---
+
+# Encrypt Network Traffic
+
+Sensitive communications should always use encrypted protocols.
+
+Recommended protocols:
+
+- HTTPS
+- TLS
+- SSH
+- IPsec
+- VPN
+- mTLS
+
+```
+Application A
+
+↓
+
+TLS
+
+↓
+
+Application B
+```
+
+Encryption protects against interception and tampering.
+
+---
+
+# Secure Hybrid Connectivity
+
+Hybrid environments should use encrypted communication channels.
+
+```
+Corporate Office
+
+↓
+
+IPsec VPN
+
+↓
+
+Cloud Network
+
+↓
+
+Applications
+```
+
+Avoid transmitting sensitive information over unencrypted public networks.
+
+---
+
+# Implement Zero Trust Networking
+
+Zero Trust assumes no device or workload is trusted by default.
+
+Every request should verify:
+
+- Identity
+- Device
+- Network
+- Risk
+- Authorization
+
+```
+Request
+
+↓
+
+Verify Identity
+
+↓
+
+Evaluate Risk
+
+↓
+
+Authorize
+
+↓
+
+Allow Access
+```
+
+Trust should be continuously evaluated rather than assumed.
+
+---
+
+# Enable DDoS Protection
+
+Public-facing applications should use cloud-native DDoS protection services.
+
+Benefits:
+
+- Automatic traffic filtering
+- Attack absorption
+- Global mitigation
+- Service continuity
+
+```
+Attack Traffic
+
+↓
+
+DDoS Protection
+
+↓
+
+Legitimate Users
+
+↓
+
+Application
+```
+
+---
+
+# Deploy Web Application Firewalls (WAF)
+
+Internet-facing web applications should be protected by a WAF.
+
+A WAF helps prevent:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- File Inclusion
+- HTTP Floods
+- Bot attacks
+- Application-layer exploits
+
+---
+
+# Secure DNS
+
+DNS security recommendations include:
+
+- Enable DNSSEC where supported.
+- Monitor DNS logs.
+- Restrict zone transfers.
+- Use private DNS zones for internal services.
+- Detect malicious domains.
+
+DNS is a common target during cyber attacks.
+
+---
+
+# Continuous Network Monitoring
+
+Security teams should continuously monitor:
+
+- Network Flow Logs
+- Firewall Logs
+- VPN Logs
+- DNS Logs
+- Load Balancer Logs
+- WAF Logs
+- Cloud Audit Logs
+- IDS/IPS Alerts
+
+```
+Cloud Network
+
+↓
+
+Monitoring
+
+↓
+
+SIEM
+
+↓
+
+Alert
+
+↓
+
+SOC Analyst
+```
+
+Early detection minimizes incident impact.
+
+---
+
+# Secure Routing
+
+Route tables should be carefully reviewed.
+
+Recommendations:
+
+- Avoid unnecessary internet routes.
+- Separate production routing.
+- Validate gateway configurations.
+- Remove obsolete routes.
+- Restrict management traffic.
+
+Improper routing may expose private resources.
+
+---
+
+# Best Practices
+
+## 1. Design Secure Network Architecture
+
+Build security into the network from the beginning rather than adding controls later.
+
+---
+
+## 2. Keep Sensitive Resources Private
+
+Databases, internal APIs, and management services should not be publicly accessible.
+
+---
+
+## 3. Enable Network Segmentation
+
+Separate:
+
+- Public workloads
+- Internal services
+- Databases
+- Administrative systems
+
+---
+
+## 4. Follow Least Privilege Networking
+
+Permit only required communication between workloads.
+
+Block everything else by default.
+
+---
+
+## 5. Encrypt All Sensitive Traffic
+
+Use modern TLS versions and secure cryptographic configurations for all sensitive communications.
+
+---
+
+## 6. Protect Administrative Access
+
+Use:
+
+- Bastion Hosts
+- VPNs
+- MFA
+- Privileged Access Management (PAM)
+
+Never expose SSH or RDP directly to the internet.
+
+---
+
+## 7. Enable Continuous Monitoring
+
+Collect and review:
+
+- Flow Logs
+- Firewall Logs
+- DNS Logs
+- WAF Logs
+- VPN Logs
+
+Integrate them with SIEM and SOC workflows.
+
+---
+
+## 8. Regularly Review Firewall Rules
+
+Remove:
+
+- Unused ports
+- Obsolete rules
+- Temporary exceptions
+- Overly permissive configurations
+
+Periodic reviews reduce the attack surface.
+
+---
+
+## 9. Use Multiple Security Layers
+
+Combine:
+
+- Security Groups
+- Network ACLs
+- Firewalls
+- WAF
+- IDS/IPS
+- DDoS Protection
+
+Avoid relying on a single control.
+
+---
+
+## 10. Adopt Zero Trust Networking
+
+Continuously verify every connection regardless of source network or location.
+
+---
+
+## Common Mistakes
+
+### Exposing Databases to the Internet
+
+Production databases should remain in private networks unless there is a well-justified business requirement and additional compensating controls.
+
+---
+
+### Allowing "0.0.0.0/0" Administrative Access
+
+Permitting unrestricted SSH, RDP, or management access from any IP address significantly increases attack exposure.
+
+Restrict administrative access to trusted networks or VPNs.
+
+---
+
+### Overly Permissive Security Groups
+
+Rules such as:
+
+```
+Allow
+
+All Traffic
+
+From
+
+Any Source
+```
+
+should never exist in production environments.
+
+---
+
+### Ignoring East-West Traffic
+
+Many organizations focus only on internet-facing traffic.
+
+Internal lateral movement should also be monitored and restricted.
+
+---
+
+### Lack of Network Segmentation
+
+Hosting all workloads within a single unrestricted subnet increases the impact of successful compromises.
+
+---
+
+### Not Encrypting Internal Traffic
+
+Communication between internal workloads may contain sensitive information and should also use encryption where appropriate.
+
+---
+
+### Weak Hybrid Connectivity
+
+Using insecure remote connections instead of encrypted VPNs or dedicated private connectivity exposes enterprise traffic.
+
+---
+
+### Failing to Review Firewall Rules
+
+Firewall configurations often accumulate unnecessary rules over time.
+
+Regular audits are essential.
+
+---
+
+### Ignoring Network Logs
+
+Without network telemetry, organizations lose visibility into:
+
+- Reconnaissance
+- Lateral movement
+- Data exfiltration
+- Command-and-control traffic
+
+---
+
+### Treating the Cloud Like a Traditional Network
+
+Cloud environments are dynamic and identity-driven.
+
+Traditional perimeter-only security models are insufficient for modern cloud architectures.
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-41 Rev. 1 – Guidelines on Firewalls and Firewall Policy
+- NIST SP 800-207 – Zero Trust Architecture
+- NIST Cybersecurity Framework (CSF)
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Critical Security Controls
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Provider Documentation
+
+- AWS VPC Documentation
+- AWS Security Groups Documentation
+- Microsoft Azure Virtual Network Documentation
+- Microsoft Azure Network Security Groups Documentation
+- Google Cloud VPC Documentation
+- Google Cloud Firewall Rules Documentation
+- Oracle Cloud Infrastructure Networking Documentation
+- IBM Cloud Virtual Private Cloud Documentation
+
+---
+
+### Industry Best Practices
+
+- Defense in Depth
+- Zero Trust Networking
+- Network Segmentation
+- Microsegmentation
+- Least Privilege Networking
+- Secure Hybrid Connectivity
+- Continuous Network Monitoring
+- Secure DNS
+- Infrastructure Hardening
+- Secure Cloud Architecture
+
+---
