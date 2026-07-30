@@ -5494,6 +5494,1047 @@ Avoid the following pitfalls:
 
 ---
 
+# Event-Driven Architecture (EDA)
+
+## Introduction
+
+Traditional application architectures often rely on **synchronous communication**, where one service directly calls another and waits for an immediate response. While this approach is simple to understand, it can create bottlenecks, increase coupling between services, and reduce overall system resilience.
+
+As organizations began building cloud-native applications capable of processing millions of requests per second, a new architectural paradigm emerged—**Event-Driven Architecture (EDA)**.
+
+Event-Driven Architecture is an architectural pattern in which **events** become the primary mechanism for communication between services.
+
+Instead of directly invoking another service, an application publishes an event indicating that **something has happened**. Other services that are interested in that event receive it asynchronously and react accordingly.
+
+For example:
+
+A customer places an order on an e-commerce website.
+
+Instead of calling every downstream service directly, the Order Service simply publishes an event:
+
+```
+Order Created
+```
+
+Other services independently react:
+
+```
+Order Created
+
+        │
+
+        ├────────► Inventory Service
+
+        ├────────► Payment Service
+
+        ├────────► Shipping Service
+
+        ├────────► Analytics Service
+
+        ├────────► Recommendation Engine
+
+        └────────► Notification Service
+```
+
+The Order Service does not need to know how these services process the event.
+
+This loose coupling makes Event-Driven Architecture one of the most scalable and resilient architectural styles for modern cloud-native systems.
+
+Today, Event-Driven Architecture powers:
+
+- E-commerce platforms
+- Banking systems
+- Financial trading platforms
+- IoT ecosystems
+- Streaming platforms
+- Healthcare systems
+- Cybersecurity monitoring
+- SIEM platforms
+- Real-time analytics
+- Artificial Intelligence pipelines
+
+---
+
+# Learning Objectives
+
+After completing this section, you will be able to:
+
+- Understand Event-Driven Architecture.
+- Learn the concept of events.
+- Differentiate producers and consumers.
+- Understand event brokers.
+- Learn publish/subscribe messaging.
+- Understand event streaming.
+- Explore asynchronous communication.
+- Understand event processing workflows.
+- Learn event reliability techniques.
+- Understand Event-Driven security.
+- Analyze enterprise Event-Driven systems.
+
+---
+
+# What is an Event?
+
+An **event** is a record indicating that something meaningful has occurred within a system.
+
+Events describe facts that have already happened.
+
+Examples include:
+
+- User Registered
+- Login Successful
+- Login Failed
+- Password Changed
+- File Uploaded
+- Payment Completed
+- Order Created
+- Inventory Updated
+- Sensor Triggered
+- Threat Detected
+- VM Created
+- Container Started
+
+An event should describe **what happened**, not **what should happen**.
+
+---
+
+# Characteristics of Events
+
+A well-designed event is:
+
+- Immutable
+- Timestamped
+- Self-describing
+- Lightweight
+- Independent
+- Unique
+- Reliable
+
+Once published, an event should never be modified.
+
+---
+
+# Anatomy of an Event
+
+A typical event contains several fields.
+
+```
+Event
+
+│
+
+├── Event ID
+
+├── Event Type
+
+├── Timestamp
+
+├── Source
+
+├── Version
+
+├── Correlation ID
+
+├── Payload
+
+└── Metadata
+```
+
+Example:
+
+```
+Event ID:
+5d6c2a
+
+Event Type:
+OrderCreated
+
+Timestamp:
+2026-07-30T10:15:43Z
+
+Source:
+Order Service
+
+Payload:
+
+Customer ID
+
+Order ID
+
+Items
+
+Total Amount
+```
+
+The payload contains the business information associated with the event.
+
+---
+
+# Why Event-Driven Architecture?
+
+Large distributed systems encounter several challenges with synchronous communication.
+
+Example:
+
+```
+Order Service
+
+↓
+
+Payment Service
+
+↓
+
+Inventory Service
+
+↓
+
+Shipping Service
+
+↓
+
+Notification Service
+```
+
+Problems include:
+
+- High latency
+- Cascading failures
+- Tight coupling
+- Reduced scalability
+- Increased deployment complexity
+
+Event-Driven Architecture addresses these challenges by decoupling services.
+
+---
+
+# Traditional Request-Response Architecture
+
+```
+Customer
+
+↓
+
+Web Application
+
+↓
+
+Order Service
+
+↓
+
+Payment Service
+
+↓
+
+Inventory Service
+
+↓
+
+Shipping Service
+
+↓
+
+Notification Service
+
+↓
+
+Customer Receives Response
+```
+
+Each service waits for the previous one to finish.
+
+Failure in one component can delay the entire workflow.
+
+---
+
+# Event-Driven Architecture Workflow
+
+```
+Customer
+
+↓
+
+Order Service
+
+↓
+
+Publish Event
+
+↓
+
+Event Broker
+
+↓
+
+Inventory Service
+
+↓
+
+Payment Service
+
+↓
+
+Shipping Service
+
+↓
+
+Notification Service
+
+↓
+
+Analytics Service
+```
+
+All services process events independently.
+
+---
+
+# Core Components of Event-Driven Architecture
+
+```
+Event-Driven Architecture
+
+│
+
+├── Event Producers
+
+├── Events
+
+├── Event Broker
+
+├── Event Consumers
+
+├── Event Store
+
+├── Message Queue
+
+├── Event Stream
+
+├── Dead Letter Queue
+
+├── Monitoring
+
+└── Security
+```
+
+Each component plays a distinct role.
+
+---
+
+# Event Producer
+
+## What is an Event Producer?
+
+An Event Producer is a service that creates and publishes events.
+
+Examples:
+
+- Authentication Service
+- Payment Service
+- Order Service
+- Inventory Service
+- Kubernetes Controller
+- Cloud Monitoring Platform
+
+Example:
+
+```
+User Places Order
+
+↓
+
+Order Service
+
+↓
+
+Publish
+
+↓
+
+Order Created Event
+```
+
+The producer does not know which services consume the event.
+
+---
+
+# Event Consumer
+
+An Event Consumer subscribes to events and performs actions when they occur.
+
+Example:
+
+```
+Order Created
+
+↓
+
+Inventory Service
+
+↓
+
+Reduce Stock
+```
+
+Another consumer may process the same event differently.
+
+```
+Order Created
+
+↓
+
+Analytics Service
+
+↓
+
+Update Dashboard
+```
+
+Multiple consumers can react independently.
+
+---
+
+# Event Broker
+
+The Event Broker is responsible for distributing events from producers to consumers.
+
+```
+Producer
+
+↓
+
+Event Broker
+
+↓
+
+Consumer A
+
+Consumer B
+
+Consumer C
+
+Consumer D
+```
+
+Responsibilities include:
+
+- Routing
+- Buffering
+- Delivery
+- Retry handling
+- Ordering (when applicable)
+- Scalability
+
+The broker enables loose coupling between producers and consumers.
+
+---
+
+# Publish/Subscribe Model
+
+One of the most common communication models in Event-Driven systems is **Publish/Subscribe (Pub/Sub).**
+
+```
+Publisher
+
+↓
+
+Topic
+
+↓
+
+Subscriber A
+
+Subscriber B
+
+Subscriber C
+```
+
+Publishers send events to a topic.
+
+Subscribers receive events from topics they have subscribed to.
+
+The publisher never needs to know who the subscribers are.
+
+---
+
+# Point-to-Point Messaging
+
+Unlike Pub/Sub, point-to-point messaging delivers a message to only one consumer.
+
+```
+Producer
+
+↓
+
+Queue
+
+↓
+
+Consumer
+```
+
+This model is useful for workloads where a task should only be processed once.
+
+Examples:
+
+- Invoice generation
+- Image processing
+- Background jobs
+- Batch imports
+
+---
+
+# Event Topics
+
+Topics logically organize related events.
+
+Example:
+
+```
+Topics
+
+│
+
+├── Orders
+
+├── Payments
+
+├── Authentication
+
+├── Inventory
+
+├── Security
+
+├── Notifications
+
+└── Analytics
+```
+
+Consumers subscribe only to topics they require.
+
+---
+
+# Event Streaming
+
+Traditional messaging delivers messages individually.
+
+Event Streaming treats events as continuous streams.
+
+```
+Producer
+
+↓
+
+Event Stream
+
+↓
+
+Consumer Group A
+
+↓
+
+Consumer Group B
+
+↓
+
+Analytics Platform
+```
+
+Streaming platforms allow consumers to process historical and real-time events.
+
+Common use cases include:
+
+- Fraud detection
+- Log analytics
+- Real-time dashboards
+- Security monitoring
+- IoT telemetry
+
+---
+
+# Event Store
+
+Some systems persist every event.
+
+```
+Application
+
+↓
+
+Event Store
+
+↓
+
+Historical Events
+```
+
+Benefits include:
+
+- Complete audit trail
+- Recovery
+- Replay capability
+- Compliance
+- Analytics
+
+Event stores are commonly used with Event Sourcing architectures.
+
+---
+
+# Dead Letter Queue (DLQ)
+
+Occasionally, event processing fails.
+
+Rather than losing the event, failed messages are redirected to a Dead Letter Queue.
+
+```
+Producer
+
+↓
+
+Queue
+
+↓
+
+Consumer
+
+↓
+
+Failure
+
+↓
+
+Dead Letter Queue
+```
+
+Operations teams investigate and reprocess failed events later.
+
+---
+
+# Event Processing Lifecycle
+
+```
+Business Action
+
+↓
+
+Producer
+
+↓
+
+Create Event
+
+↓
+
+Publish Event
+
+↓
+
+Broker
+
+↓
+
+Route Event
+
+↓
+
+Consumer
+
+↓
+
+Process Event
+
+↓
+
+Success
+
+OR
+
+Retry
+
+OR
+
+Dead Letter Queue
+```
+
+This lifecycle provides resilience and reliability.
+
+---
+
+# Event Ordering
+
+Some applications require events to be processed in sequence.
+
+Example:
+
+```
+Account Created
+
+↓
+
+Password Set
+
+↓
+
+Profile Updated
+
+↓
+
+Account Activated
+```
+
+Processing these events out of order could produce inconsistent application states.
+
+Architects must determine whether ordering guarantees are required for each workload.
+
+---
+
+# Event Idempotency
+
+Distributed systems occasionally deliver duplicate events.
+
+Consumers should therefore be **idempotent**.
+
+Idempotency means processing the same event multiple times produces the same final result.
+
+Example:
+
+```
+Order Paid
+
+↓
+
+Payment Service Receives Event Twice
+
+↓
+
+Order Marked Paid
+
+↓
+
+No Duplicate Charge
+```
+
+Idempotency is essential for reliable event processing.
+
+---
+
+# Event Replay
+
+One of the major advantages of Event-Driven systems is the ability to replay historical events.
+
+```
+Historical Events
+
+↓
+
+Replay
+
+↓
+
+New Analytics Platform
+
+↓
+
+Dashboard Generated
+```
+
+Replay enables:
+
+- Recovery
+- Auditing
+- Debugging
+- Machine Learning
+- Historical analysis
+
+---
+
+# Event-Driven Security Architecture
+
+```
+Users
+
+↓
+
+Authentication
+
+↓
+
+API Gateway
+
+↓
+
+Producer
+
+↓
+
+Encrypted Event Broker
+
+↓
+
+Consumers
+
+↓
+
+Logging
+
+↓
+
+Monitoring
+
+↓
+
+SIEM
+```
+
+Security must protect every stage of event transmission.
+
+---
+
+# Security Considerations
+
+Event-Driven systems introduce unique security challenges.
+
+Examples include:
+
+- Unauthorized publishers
+- Unauthorized subscribers
+- Event tampering
+- Replay attacks
+- Message interception
+- Sensitive data exposure
+- Broker compromise
+- Queue poisoning
+- Denial-of-Service attacks
+- Insecure event schemas
+
+---
+
+# Security Controls
+
+Recommended controls include:
+
+- Mutual TLS
+- Encryption in transit
+- Encryption at rest
+- Authentication
+- Authorization
+- Digital signatures
+- Schema validation
+- Least Privilege
+- Audit logging
+- Secret management
+
+---
+
+# Event Schema Management
+
+As applications evolve, event structures may change.
+
+Schema management ensures compatibility between producers and consumers.
+
+Example:
+
+Version 1
+
+```
+Customer ID
+
+Order ID
+```
+
+Version 2
+
+```
+Customer ID
+
+Order ID
+
+Shipping Address
+```
+
+Consumers should be designed to handle version evolution without breaking existing integrations.
+
+---
+
+# Enterprise Example
+
+Consider a large online retail platform.
+
+```
+Customer Places Order
+
+↓
+
+Order Service
+
+↓
+
+Order Created Event
+
+↓
+
+Event Broker
+
+├────────► Inventory
+
+├────────► Payment
+
+├────────► Shipping
+
+├────────► Loyalty Points
+
+├────────► Analytics
+
+├────────► Recommendations
+
+├────────► Fraud Detection
+
+└────────► Notifications
+```
+
+Every downstream service operates independently while reacting to the same event.
+
+---
+
+# Advantages
+
+Event-Driven Architecture provides numerous benefits:
+
+- Loose coupling
+- Independent scalability
+- Fault isolation
+- High throughput
+- Asynchronous processing
+- Improved resilience
+- Better responsiveness
+- Flexible integrations
+- Easier expansion
+- Support for real-time processing
+
+---
+
+# Disadvantages
+
+Despite its advantages, Event-Driven Architecture also introduces complexity.
+
+Common challenges include:
+
+- Distributed debugging
+- Event ordering
+- Duplicate delivery
+- Eventual consistency
+- Schema evolution
+- Operational complexity
+- Monitoring multiple consumers
+- Increased infrastructure requirements
+
+Successful implementations require mature operational practices and robust observability.
+
+---
+
+# Event-Driven Architecture vs Request-Response
+
+| Feature | Request-Response | Event-Driven |
+|----------|------------------|--------------|
+| Communication | Synchronous | Asynchronous |
+| Coupling | Higher | Lower |
+| Scalability | Moderate | High |
+| Fault Isolation | Limited | Strong |
+| Latency | Immediate response required | Background processing possible |
+| Resilience | Lower | Higher |
+| Real-Time Streaming | Limited | Excellent |
+| Complexity | Lower | Higher |
+
+---
+
+# Real-World Use Cases
+
+Event-Driven Architecture is widely adopted across industries.
+
+Examples include:
+
+### E-Commerce
+
+- Order processing
+- Inventory updates
+- Shipment notifications
+
+### Banking
+
+- Transaction monitoring
+- Fraud detection
+- Payment processing
+
+### Healthcare
+
+- Patient monitoring
+- Laboratory notifications
+- Medical device telemetry
+
+### IoT
+
+- Sensor data ingestion
+- Smart city infrastructure
+- Industrial automation
+
+### Cybersecurity
+
+- SIEM event ingestion
+- Threat detection
+- Incident response automation
+- Security orchestration
+- Real-time alerting
+
+### Media Streaming
+
+- User activity tracking
+- Recommendation engines
+- Video processing pipelines
+
+---
+
+# Best Practices
+
+- Design events to represent completed business facts.
+- Keep event payloads concise and well-defined.
+- Version event schemas carefully.
+- Ensure consumers are idempotent.
+- Implement retries with exponential backoff.
+- Use Dead Letter Queues for failed processing.
+- Encrypt events both in transit and at rest.
+- Authenticate and authorize publishers and consumers.
+- Centralize monitoring and distributed tracing.
+- Regularly review event contracts between teams.
+
+---
+
+# Common Mistakes
+
+Avoid the following pitfalls:
+
+- Publishing commands instead of events.
+- Embedding sensitive data unnecessarily within event payloads.
+- Assuming events will always be delivered exactly once.
+- Ignoring duplicate event handling.
+- Allowing consumers to become tightly coupled to producer implementations.
+- Neglecting schema versioning.
+- Failing to monitor broker health and queue depth.
+- Treating asynchronous systems as if they behaved like synchronous workflows.
+
+---
+
+# Key Takeaways
+
+- Event-Driven Architecture enables services to communicate asynchronously through events rather than direct calls.
+- Producers publish events without needing to know which consumers will process them, enabling loose coupling and independent scalability.
+- Core components include producers, consumers, event brokers, topics, queues, event streams, event stores, and Dead Letter Queues.
+- Reliability depends on practices such as idempotency, retries, schema management, and observability.
+- Security controls—including authentication, authorization, encryption, and audit logging—must protect every stage of event generation, transmission, and processing.
+- Event-Driven Architecture is particularly well suited for cloud-native, distributed, and real-time systems where scalability and resilience are primary design goals.
+
+---
+
 ## Next Section
 
-In the next section, we will explore **Event-Driven Architecture (EDA)** in comprehensive detail, including events, producers, consumers, event brokers, messaging platforms, publish/subscribe models, event streaming, event sourcing, asynchronous processing, reliability patterns, security considerations, and enterprise use cases.
+In the next section, we will explore **Serverless Architecture**, including Function-as-a-Service (FaaS), event triggers, execution lifecycle, cold starts, scaling mechanisms, stateless execution, security architecture, cost optimization, observability, limitations, enterprise use cases, and cloud-native best practices in comprehensive detail.
