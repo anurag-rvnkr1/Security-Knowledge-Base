@@ -436,6 +436,735 @@ Avoid the following pitfalls:
 
 ---
 
+## Shared Responsibility Across IaaS, PaaS, and SaaS
+
+One of the most important aspects of the Shared Responsibility Model is that **customer responsibilities change depending on the cloud service model** being used.
+
+Many cloud security incidents occur because organizations incorrectly assume that moving from Infrastructure as a Service (IaaS) to Platform as a Service (PaaS) or Software as a Service (SaaS) completely removes their security obligations.
+
+While cloud providers assume more operational responsibility as services become increasingly managed, **customers always retain responsibility for protecting their data, identities, configurations, and business processes.**
+
+Understanding these differences is essential for designing secure cloud environments.
+
+---
+
+# Learning Objectives
+
+After completing this section, you will be able to:
+
+- Understand how responsibilities differ across cloud service models.
+- Compare IaaS, PaaS, and SaaS security responsibilities.
+- Identify customer-managed and provider-managed components.
+- Understand operational ownership.
+- Learn security implications of managed services.
+- Analyze enterprise deployment examples.
+- Understand responsibility transitions during cloud adoption.
+- Identify common mistakes made in each service model.
+
+---
+
+# Responsibility Progression
+
+As cloud services become more managed, provider responsibilities increase while customer infrastructure responsibilities decrease.
+
+```
+Customer Responsibility
+
+██████████████████████████
+
+Infrastructure as a Service
+
+███████████████
+
+Platform as a Service
+
+██████
+
+Software as a Service
+
+↓
+
+Provider Responsibility Increases
+```
+
+This shift only affects infrastructure management—not ownership of business data.
+
+---
+
+# Understanding the Layers
+
+Most cloud environments can be viewed as a stack of components.
+
+```
+Applications
+
+Data
+
+Identity & Access
+
+Operating System
+
+Runtime
+
+Middleware
+
+Virtualization
+
+Servers
+
+Storage
+
+Networking
+
+Physical Data Center
+```
+
+Responsibility for each layer depends on the service model.
+
+---
+
+# Infrastructure as a Service (IaaS)
+
+## Overview
+
+Infrastructure as a Service provides customers with virtualized computing resources while allowing them significant control over the operating environment.
+
+The cloud provider supplies the infrastructure.
+
+The customer manages almost everything above virtualization.
+
+Examples include:
+
+- Virtual Machines
+- Virtual Networks
+- Block Storage
+- Load Balancers
+- Virtual Firewalls
+
+IaaS offers maximum flexibility but also carries the highest customer security responsibility.
+
+---
+
+# IaaS Responsibility Diagram
+
+```
+Infrastructure as a Service
+
+────────────────────────────────────
+
+Customer Manages
+
+✔ Applications
+
+✔ Data
+
+✔ Identity
+
+✔ Network Configuration
+
+✔ Firewalls
+
+✔ Operating System
+
+✔ Middleware
+
+✔ Runtime
+
+────────────────────────────────────
+
+Provider Manages
+
+✔ Virtualization
+
+✔ Physical Servers
+
+✔ Storage Hardware
+
+✔ Networking Hardware
+
+✔ Data Centers
+```
+
+---
+
+# Customer Responsibilities in IaaS
+
+The customer is responsible for securing:
+
+- Operating systems
+- Virtual machine hardening
+- Security patches
+- Installed software
+- User accounts
+- IAM policies
+- Firewalls
+- Security groups
+- Network ACLs
+- Application security
+- Data encryption
+- Backup configuration
+- Endpoint protection
+- Vulnerability management
+- Logging and monitoring
+
+Failure in any of these areas can expose cloud workloads despite secure infrastructure.
+
+---
+
+# Provider Responsibilities in IaaS
+
+The provider secures:
+
+- Physical facilities
+- Building access
+- Hardware lifecycle
+- Power systems
+- Cooling
+- Physical networking
+- Hypervisors
+- Hardware replacement
+- Infrastructure availability
+- Core cloud services
+
+Customers generally have no direct control over these components.
+
+---
+
+# IaaS Example
+
+A company launches virtual machines hosting an online retail application.
+
+```
+Customer
+
+↓
+
+Deploy Virtual Machine
+
+↓
+
+Install Linux
+
+↓
+
+Configure Firewall
+
+↓
+
+Install Web Server
+
+↓
+
+Deploy Application
+
+↓
+
+Manage Updates
+```
+
+Meanwhile, the cloud provider maintains:
+
+- Physical servers
+- Storage devices
+- Hypervisors
+- Data centers
+
+---
+
+# Security Risks in IaaS
+
+Common customer mistakes include:
+
+- Unpatched operating systems
+- Weak SSH configurations
+- Open management ports
+- Default credentials
+- Excessive IAM permissions
+- Public storage exposure
+- Poor key management
+- Disabled logging
+- Weak backup strategies
+
+These issues remain customer responsibilities.
+
+---
+
+# Platform as a Service (PaaS)
+
+## Overview
+
+Platform as a Service abstracts much of the underlying infrastructure.
+
+Instead of managing operating systems and middleware, customers focus primarily on developing and deploying applications.
+
+Typical PaaS services include:
+
+- Managed databases
+- Application hosting platforms
+- Container platforms
+- Serverless runtimes
+- Managed Kubernetes services (shared responsibilities vary)
+
+PaaS accelerates development while reducing infrastructure management.
+
+---
+
+# PaaS Responsibility Diagram
+
+```
+Platform as a Service
+
+────────────────────────────────────
+
+Customer Manages
+
+✔ Applications
+
+✔ Data
+
+✔ Identity
+
+✔ Access Policies
+
+✔ Configuration
+
+────────────────────────────────────
+
+Provider Manages
+
+✔ Runtime
+
+✔ Middleware
+
+✔ Operating System
+
+✔ Virtualization
+
+✔ Servers
+
+✔ Storage
+
+✔ Networking
+
+✔ Physical Infrastructure
+```
+
+---
+
+# Customer Responsibilities in PaaS
+
+Customers remain responsible for:
+
+- Application code
+- Secure coding practices
+- Authentication
+- Authorization
+- API security
+- Secrets management
+- Encryption configuration
+- Business logic
+- IAM
+- Data classification
+- Compliance
+- Logging configuration
+- Access reviews
+
+Although infrastructure management decreases, application security becomes even more critical.
+
+---
+
+# Provider Responsibilities in PaaS
+
+The provider manages:
+
+- Runtime updates
+- Middleware
+- Operating system patches
+- Infrastructure scaling
+- High availability
+- Storage systems
+- Networking
+- Hypervisors
+- Physical hardware
+
+This reduces operational overhead for customers.
+
+---
+
+# Enterprise Example
+
+A software company deploys a web application using a managed application platform.
+
+Customer responsibilities:
+
+- Develop application
+- Secure APIs
+- Configure authentication
+- Protect customer data
+
+Provider responsibilities:
+
+- Patch operating systems
+- Manage runtime
+- Replace failed hardware
+- Scale infrastructure
+- Maintain availability
+
+---
+
+# Security Risks in PaaS
+
+Typical mistakes include:
+
+- Hardcoded API keys
+- Weak authentication
+- Vulnerable application code
+- Insecure APIs
+- Excessive privileges
+- Improper secret management
+- Missing encryption
+- Poor application logging
+
+Infrastructure security alone cannot protect vulnerable applications.
+
+---
+
+# Software as a Service (SaaS)
+
+## Overview
+
+Software as a Service provides complete applications over the internet.
+
+Customers consume the application without managing infrastructure, operating systems, or application deployments.
+
+Examples include:
+
+- Email platforms
+- CRM systems
+- Office productivity suites
+- Collaboration tools
+- HR platforms
+- Accounting software
+
+The provider manages almost the entire technology stack.
+
+---
+
+# SaaS Responsibility Diagram
+
+```
+Software as a Service
+
+────────────────────────────────────
+
+Customer Manages
+
+✔ Users
+
+✔ Identity
+
+✔ Access Permissions
+
+✔ Data
+
+✔ Information Sharing
+
+✔ Compliance Configuration
+
+────────────────────────────────────
+
+Provider Manages
+
+✔ Applications
+
+✔ Runtime
+
+✔ Middleware
+
+✔ Operating System
+
+✔ Virtualization
+
+✔ Servers
+
+✔ Storage
+
+✔ Networking
+
+✔ Physical Infrastructure
+```
+
+---
+
+# Customer Responsibilities in SaaS
+
+Although SaaS requires the least infrastructure management, customers still control critical security areas.
+
+Responsibilities include:
+
+- User lifecycle management
+- MFA enforcement
+- Password policies
+- Role assignments
+- Data ownership
+- Sharing permissions
+- Information classification
+- Compliance configuration
+- Third-party integrations
+- Security awareness training
+
+These responsibilities directly affect organizational security.
+
+---
+
+# Provider Responsibilities in SaaS
+
+The provider manages:
+
+- Entire application
+- Infrastructure
+- Updates
+- Feature deployment
+- Bug fixes
+- Platform availability
+- Runtime
+- Operating systems
+- Storage infrastructure
+- Physical security
+
+Customers generally cannot modify these components.
+
+---
+
+# Enterprise Example
+
+An organization adopts a cloud-based email service.
+
+Provider responsibilities:
+
+- Operate email platform
+- Patch servers
+- Maintain infrastructure
+- Provide availability
+
+Customer responsibilities:
+
+- Enable MFA
+- Configure spam policies
+- Manage user accounts
+- Assign permissions
+- Classify sensitive information
+- Configure data retention policies
+
+---
+
+# Responsibility Comparison Matrix
+
+| Component | IaaS | PaaS | SaaS |
+|------------|------|------|------|
+| Data | Customer | Customer | Customer |
+| Identity & Access | Customer | Customer | Customer |
+| Applications | Customer | Customer | Provider |
+| Runtime | Customer | Provider | Provider |
+| Middleware | Customer | Provider | Provider |
+| Operating System | Customer | Provider | Provider |
+| Virtualization | Provider | Provider | Provider |
+| Physical Servers | Provider | Provider | Provider |
+| Storage Hardware | Provider | Provider | Provider |
+| Physical Networking | Provider | Provider | Provider |
+| Data Center | Provider | Provider | Provider |
+
+---
+
+# Responsibility Shift Visualization
+
+```
+Physical Infrastructure
+
+Provider
+██████████████████████████
+
+────────────────────────────
+
+Virtualization
+
+Provider
+██████████████████████████
+
+────────────────────────────
+
+Operating System
+
+IaaS → Customer
+
+PaaS → Provider
+
+SaaS → Provider
+
+────────────────────────────
+
+Applications
+
+IaaS → Customer
+
+PaaS → Customer
+
+SaaS → Provider
+
+────────────────────────────
+
+Data
+
+Customer
+
+Across All Models
+```
+
+Notice that **data ownership remains with the customer in every service model**.
+
+---
+
+# Real-World Scenario
+
+Consider an employee whose SaaS account is compromised because Multi-Factor Authentication (MFA) was disabled.
+
+```
+Attacker
+
+↓
+
+Stolen Password
+
+↓
+
+Login Successful
+
+↓
+
+Sensitive Data Access
+```
+
+Who is responsible?
+
+The SaaS provider successfully secured:
+
+- Infrastructure
+- Servers
+- Application
+
+However, the customer failed to:
+
+- Enforce MFA
+- Monitor account activity
+- Review user permissions
+
+This incident falls within the customer's area of responsibility.
+
+---
+
+# Responsibility During Cloud Migration
+
+Organizations often migrate through multiple service models.
+
+```
+Traditional Data Center
+
+↓
+
+Infrastructure as a Service
+
+↓
+
+Platform as a Service
+
+↓
+
+Software as a Service
+```
+
+At each stage:
+
+- Infrastructure management decreases.
+- Application responsibility changes.
+- Operational complexity shifts.
+- Identity and data remain customer responsibilities.
+
+Migration planning should account for these transitions.
+
+---
+
+# Common Misunderstandings
+
+### "The provider patches everything."
+
+Only true for managed components.
+
+Customer-managed virtual machines still require patching.
+
+---
+
+### "Managed database means I don't secure it."
+
+Incorrect.
+
+Customers still manage:
+
+- Database accounts
+- Access policies
+- Encryption settings
+- Backup policies (depending on service)
+- Sensitive data
+
+---
+
+### "SaaS means no security work."
+
+Incorrect.
+
+Identity, permissions, information governance, compliance, and user education remain customer responsibilities.
+
+---
+
+# Best Practices
+
+- Identify responsibilities before deploying workloads.
+- Document ownership for every cloud resource.
+- Train teams on service-model differences.
+- Implement least-privilege access across all environments.
+- Continuously monitor customer-managed assets.
+- Review provider documentation for managed services.
+- Apply encryption and strong identity controls consistently.
+- Include shared responsibility reviews during architecture assessments.
+- Validate responsibilities during security audits.
+- Regularly reassess responsibilities as services evolve.
+
+---
+
+# Common Mistakes
+
+Avoid the following pitfalls:
+
+- Assuming managed services eliminate security obligations.
+- Neglecting IAM because infrastructure is provider-managed.
+- Forgetting to patch customer-managed virtual machines.
+- Misconfiguring managed storage services.
+- Ignoring SaaS permission reviews.
+- Confusing provider compliance certifications with customer compliance.
+- Leaving customer data unencrypted.
+- Failing to understand responsibility boundaries before cloud migration.
+
+---
+
+# Key Takeaways
+
+- Customer responsibilities decrease as organizations move from IaaS to PaaS and SaaS, but they never disappear.
+- In IaaS, customers manage operating systems, applications, identities, configurations, and data.
+- In PaaS, infrastructure management shifts largely to the provider, while customers remain responsible for applications, identities, and data.
+- In SaaS, providers manage the complete application platform, but customers continue to own user management, access control, data protection, and compliance.
+- Regardless of the service model, protecting identities, configurations, and business data remains a fundamental customer responsibility.
+
+---
+
 ## Next Section
 
-The next section explores **Shared Responsibility Across IaaS, PaaS, and SaaS**, examining how responsibilities evolve across different cloud service models with detailed comparisons, enterprise scenarios, security controls, and real-world examples.
+The next section explores **Detailed Customer Responsibilities**, covering Identity and Access Management (IAM), data protection, encryption, operating system security, application security, network security, vulnerability management, logging, monitoring, incident response, compliance, and governance in enterprise cloud environments.
