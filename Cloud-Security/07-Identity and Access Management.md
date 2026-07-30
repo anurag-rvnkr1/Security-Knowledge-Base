@@ -1394,3 +1394,794 @@ Security teams commonly analyze:
 
 ---
 
+## Prevention
+
+Preventing Identity and Access Management (IAM) attacks requires a layered security strategy that combines strong authentication, granular authorization, continuous monitoring, and effective governance.
+
+Since identities are now the primary security perimeter in cloud environments, protecting them should be considered a top organizational priority.
+
+A successful IAM prevention strategy focuses on:
+
+- Preventing unauthorized access
+- Limiting privilege abuse
+- Securing machine identities
+- Reducing credential theft
+- Enforcing least privilege
+- Continuously validating trust
+
+---
+
+# IAM Security Strategy
+
+```
+                IAM Security
+
+                     │
+
+     ┌───────────────┼────────────────┐
+
+     ▼               ▼                ▼
+
+Authentication   Authorization    Monitoring
+
+     │               │                │
+
+     ▼               ▼                ▼
+
+Strong Identity  Least Privilege   Continuous Audit
+
+                     │
+
+                     ▼
+
+            Secure Cloud Environment
+```
+
+---
+
+# Strong Authentication
+
+Authentication is the first line of defense against unauthorized access.
+
+Organizations should implement:
+
+- Multi-Factor Authentication (MFA)
+- Passwordless authentication
+- Hardware security keys
+- Adaptive authentication
+- Risk-based authentication
+- Certificate-based authentication
+- Biometric authentication
+
+---
+
+## Enforce Multi-Factor Authentication (MFA)
+
+Administrative accounts should always require MFA.
+
+```
+Username
+
+↓
+
+Password
+
+↓
+
+Authenticator App
+
+↓
+
+Access Granted
+```
+
+MFA significantly reduces attacks involving:
+
+- Password theft
+- Credential stuffing
+- Password spraying
+- Phishing
+- Brute-force attacks
+
+---
+
+## Password Policies
+
+Although passwordless authentication is becoming increasingly common, passwords remain widely used.
+
+Organizations should enforce:
+
+- Strong password complexity
+- Password length requirements
+- Password history
+- Account lockout policies
+- Password managers
+- Password breach detection
+
+Avoid:
+
+- Shared passwords
+- Default passwords
+- Reused passwords
+- Predictable passwords
+
+---
+
+## Passwordless Authentication
+
+Modern IAM platforms increasingly support passwordless authentication.
+
+Examples include:
+
+- FIDO2 security keys
+- Windows Hello
+- Apple Face ID
+- Passkeys
+- Smart cards
+
+```
+User
+
+↓
+
+Passkey
+
+↓
+
+Biometric Verification
+
+↓
+
+Authenticated
+```
+
+Benefits include:
+
+- Reduced phishing risk
+- Improved user experience
+- Elimination of password reuse
+- Strong cryptographic authentication
+
+---
+
+# Principle of Least Privilege (PoLP)
+
+Every identity should receive only the permissions necessary to perform assigned tasks.
+
+```
+Cloud Engineer
+
+↓
+
+Deploy Resources
+
+↓
+
+Monitor Systems
+
+──────────────────────
+
+No Billing Access
+
+No HR Access
+
+No Root Permissions
+```
+
+Benefits include:
+
+- Reduced attack surface
+- Limited lateral movement
+- Reduced insider threats
+- Easier compliance
+- Simplified auditing
+
+Least privilege should apply to:
+
+- Users
+- Service accounts
+- Applications
+- APIs
+- Containers
+- Virtual machines
+
+---
+
+# Role-Based Access Control (RBAC)
+
+Organizations should assign permissions through roles rather than directly to users.
+
+```
+Developer Role
+
+↓
+
+Assigned to
+
+↓
+
+Developer A
+
+Developer B
+
+Developer C
+```
+
+Advantages:
+
+- Consistency
+- Simpler management
+- Easier auditing
+- Reduced configuration errors
+
+---
+
+# Attribute-Based Access Control (ABAC)
+
+ABAC enables dynamic access decisions using contextual information.
+
+Example policy:
+
+```
+Department = Finance
+
+AND
+
+Location = Corporate Office
+
+AND
+
+MFA Enabled
+
+AND
+
+Managed Device
+
+↓
+
+Access Granted
+```
+
+Additional attributes may include:
+
+- Device compliance
+- Time of day
+- IP reputation
+- Risk score
+- Country
+- Network type
+
+---
+
+# Just-In-Time (JIT) Access
+
+Permanent administrative access should be avoided.
+
+Instead:
+
+```
+Administrator
+
+↓
+
+Requests Access
+
+↓
+
+Approval
+
+↓
+
+Temporary Privilege
+
+↓
+
+Task Completed
+
+↓
+
+Privilege Removed
+```
+
+Benefits:
+
+- Reduced standing privileges
+- Smaller attack window
+- Better auditability
+
+---
+
+# Privileged Access Management (PAM)
+
+Highly privileged accounts require additional protections.
+
+PAM solutions provide:
+
+- Credential vaulting
+- Session recording
+- Approval workflows
+- Temporary elevation
+- Password rotation
+- Activity monitoring
+
+```
+Administrator
+
+↓
+
+PAM Platform
+
+↓
+
+Temporary Credential
+
+↓
+
+Production Environment
+```
+
+---
+
+# Secure Machine Identities
+
+Applications also require identities.
+
+Instead of hardcoding credentials:
+
+```
+Application
+
+↓
+
+Managed Identity
+
+↓
+
+Temporary Token
+
+↓
+
+Database
+```
+
+Machine identities should use:
+
+- Short-lived credentials
+- Automatic rotation
+- Certificate authentication
+- Managed identities
+- Workload identities
+
+---
+
+# Credential Rotation
+
+Long-lived credentials increase risk.
+
+Organizations should rotate:
+
+- API keys
+- Certificates
+- Access tokens
+- Secrets
+- Service account credentials
+- Encryption keys (where appropriate)
+
+```
+Old Credential
+
+↓
+
+Rotation
+
+↓
+
+New Credential
+
+↓
+
+Old Credential Revoked
+```
+
+---
+
+# Conditional Access
+
+Conditional Access evaluates risk before granting access.
+
+Example conditions:
+
+- Geographic location
+- Device compliance
+- User risk
+- Application sensitivity
+- Time of day
+- Authentication strength
+
+```
+User Login
+
+↓
+
+Risk Evaluation
+
+↓
+
+Trusted Device?
+
+↓
+
+MFA?
+
+↓
+
+Location Approved?
+
+↓
+
+Allow Access
+```
+
+---
+
+# Identity Lifecycle Management
+
+Access should change as employee responsibilities change.
+
+```
+Hire
+
+↓
+
+Provision Identity
+
+↓
+
+Assign Role
+
+↓
+
+Role Change
+
+↓
+
+Permission Update
+
+↓
+
+Termination
+
+↓
+
+Disable Account
+
+↓
+
+Delete Identity
+```
+
+Automating identity lifecycle management reduces orphaned accounts.
+
+---
+
+# Access Reviews
+
+Regular access reviews help identify excessive permissions.
+
+Review:
+
+- Administrator accounts
+- Service accounts
+- Dormant users
+- Shared accounts
+- External identities
+- Third-party access
+
+Questions to ask:
+
+- Does the user still require access?
+- Is the assigned role appropriate?
+- Has the user changed departments?
+- Are permissions excessive?
+
+---
+
+# Federation Security
+
+When using identity federation:
+
+- Trust only approved Identity Providers
+- Validate SAML assertions
+- Secure OIDC configurations
+- Use signed tokens
+- Monitor federation events
+- Review trust relationships
+
+Federation reduces password sprawl while maintaining centralized identity management.
+
+---
+
+# Logging and Monitoring
+
+Every IAM deployment should log:
+
+- Authentication events
+- Authorization decisions
+- Role changes
+- Policy modifications
+- MFA events
+- Failed logins
+- API authentication
+- Administrative actions
+
+```
+IAM Event
+
+↓
+
+Audit Log
+
+↓
+
+SIEM
+
+↓
+
+Alert
+
+↓
+
+Security Analyst
+```
+
+Continuous monitoring enables rapid detection of identity-based attacks.
+
+---
+
+# Best Practices
+
+## 1. Enforce MFA Everywhere
+
+Require MFA for:
+
+- Administrators
+- Developers
+- Privileged users
+- Remote users
+- Third-party users
+
+---
+
+## 2. Apply Least Privilege
+
+Grant only the permissions required to perform assigned responsibilities.
+
+Review permissions regularly.
+
+---
+
+## 3. Eliminate Shared Accounts
+
+Every individual should have a unique identity.
+
+Benefits:
+
+- Accountability
+- Auditability
+- Easier investigations
+
+---
+
+## 4. Use Groups and Roles
+
+Assign permissions through:
+
+- Groups
+- Roles
+- Policies
+
+Avoid assigning permissions directly to individual users whenever possible.
+
+---
+
+## 5. Use Temporary Credentials
+
+Prefer:
+
+- Short-lived tokens
+- Managed identities
+- Federated authentication
+
+Avoid permanent credentials.
+
+---
+
+## 6. Regularly Review IAM Policies
+
+Remove:
+
+- Unused permissions
+- Obsolete roles
+- Duplicate policies
+- Excessive privileges
+
+---
+
+## 7. Protect Privileged Accounts
+
+Protect administrative identities with:
+
+- MFA
+- PAM
+- JIT access
+- Session monitoring
+- Approval workflows
+
+---
+
+## 8. Monitor IAM Continuously
+
+Alert on:
+
+- Failed logins
+- Privilege escalation
+- Policy changes
+- Root account usage
+- Dormant account activity
+
+---
+
+## 9. Automate Identity Lifecycle
+
+Automate:
+
+- User provisioning
+- Role assignment
+- Permission updates
+- Account deactivation
+
+Automation reduces human error.
+
+---
+
+## 10. Follow Zero Trust Principles
+
+Never assume trust based on network location.
+
+Always verify:
+
+- Identity
+- Device
+- Risk
+- Context
+- Authentication strength
+
+Every access request should be evaluated independently.
+
+---
+
+## Common Mistakes
+
+### Overly Permissive IAM Policies
+
+Granting excessive permissions increases the impact of compromised accounts.
+
+---
+
+### Using Root Accounts for Daily Operations
+
+Root or owner accounts should only be used for exceptional administrative tasks.
+
+---
+
+### Disabling MFA
+
+Accounts protected only by passwords are significantly more vulnerable to compromise.
+
+---
+
+### Hardcoding Credentials
+
+Never embed:
+
+- API keys
+- Passwords
+- Tokens
+- Secrets
+
+inside:
+
+- Source code
+- Scripts
+- Container images
+- Configuration files
+
+---
+
+### Ignoring Service Accounts
+
+Machine identities require the same level of protection as human identities.
+
+---
+
+### Leaving Dormant Accounts Active
+
+Inactive accounts become attractive targets for attackers.
+
+Regularly disable or remove unused identities.
+
+---
+
+### Failing to Review Permissions
+
+Employees frequently change roles.
+
+Permissions should evolve accordingly.
+
+---
+
+### Using Shared Administrative Accounts
+
+Shared accounts eliminate accountability and complicate forensic investigations.
+
+---
+
+### Permanent Administrative Access
+
+Standing administrative privileges increase organizational risk.
+
+Prefer Just-In-Time access.
+
+---
+
+### Ignoring Audit Logs
+
+Authentication and authorization logs provide critical evidence during:
+
+- Security incidents
+- Compliance audits
+- Threat hunting
+- Forensic investigations
+
+Ignoring them delays detection and response.
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-63 Digital Identity Guidelines
+- NIST Cybersecurity Framework (CSF)
+- NIST SP 800-207 Zero Trust Architecture
+- ISO/IEC 27001
+- ISO/IEC 27002
+- ISO/IEC 27017
+- CIS Controls
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Provider Documentation
+
+- AWS Identity and Access Management (IAM) Documentation
+- Microsoft Entra ID (formerly Azure Active Directory) Documentation
+- Google Cloud Identity and IAM Documentation
+- Oracle Cloud Infrastructure IAM Documentation
+- IBM Cloud IAM Documentation
+
+---
+
+### Industry Best Practices
+
+- Principle of Least Privilege (PoLP)
+- Role-Based Access Control (RBAC)
+- Attribute-Based Access Control (ABAC)
+- Privileged Access Management (PAM)
+- Just-In-Time (JIT) Access
+- Zero Trust Security Model
+- Passwordless Authentication
+- Identity Federation
+- Continuous Access Evaluation
+
+---
