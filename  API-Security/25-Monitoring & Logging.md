@@ -835,4 +835,1061 @@ Avoid
 
 ---
 
-**Next:** Advanced observability, OpenTelemetry, audit strategies, forensic logging, SOC dashboards, incident investigations, hands-on labs, troubleshooting, interview questions, and chapter summary.
+# Advanced API Observability
+
+Modern API monitoring extends beyond collecting logs.
+
+Enterprise observability provides comprehensive visibility into application behavior, infrastructure health, user activity, and security events.
+
+A mature observability platform enables organizations to answer:
+
+- What happened?
+- Why did it happen?
+- Where did it happen?
+- Who initiated it?
+- How severe is it?
+- What should happen next?
+
+```
+API Request
+
+      │
+
+Telemetry
+
+      │
+
+Correlation
+
+      │
+
+Analysis
+
+      │
+
+Investigation
+
+      ▼
+
+Resolution
+```
+
+---
+
+# OpenTelemetry
+
+OpenTelemetry (OTel) is an open standard for collecting telemetry across distributed systems.
+
+It provides standardized collection of:
+
+- Logs
+- Metrics
+- Traces
+
+```
+Application
+
+     │
+
+OpenTelemetry SDK
+
+     │
+
+Collector
+
+     │
+
+Observability Platform
+
+     ▼
+
+Dashboards
+```
+
+Benefits include:
+
+- Vendor-neutral instrumentation
+- Consistent telemetry
+- Simplified integration
+- Cross-platform visibility
+
+---
+
+# Distributed Trace Context
+
+Each request should carry trace context across services.
+
+```
+Client
+
+  │
+
+Trace ID
+
+  │
+
+Gateway
+
+  │
+
+Service A
+
+  │
+
+Service B
+
+  │
+
+Database
+```
+
+Every service contributes a span to the complete trace.
+
+---
+
+# Span Hierarchy
+
+```
+Root Span
+
+    │
+
+ ├───────────┐
+
+ │           │
+
+Auth      Business Logic
+
+ │           │
+
+Database   Cache
+
+ │           │
+
+Response    Response
+```
+
+Spans identify where time is spent during request processing.
+
+---
+
+# Telemetry Correlation
+
+A single security investigation may require correlating
+
+- Request ID
+- Trace ID
+- Session ID
+- User ID
+- Device ID (when appropriate)
+- API Key ID
+- Cloud Resource ID
+
+Correlation dramatically reduces investigation time.
+
+---
+
+# Centralized Log Management
+
+```
+API Gateway
+
+      │
+
+Application
+
+      │
+
+Containers
+
+      │
+
+Cloud Services
+
+      │
+
+Databases
+
+      ▼
+
+Central Log Platform
+```
+
+Benefits
+
+- Single search interface
+- Long-term retention
+- Correlation
+- Compliance support
+- Investigation efficiency
+
+---
+
+# Log Normalization
+
+Different systems generate different log formats.
+
+Normalization converts them into a consistent schema.
+
+Example normalized fields
+
+| Field | Description |
+|---------|-------------|
+| Timestamp | Event time |
+| Event Type | Authentication, Authorization, Error |
+| User | Identity |
+| Endpoint | API path |
+| Status | HTTP status |
+| Source | Component |
+| Severity | Log level |
+
+Normalization improves searching and detection engineering.
+
+---
+
+# Log Enrichment
+
+Raw logs become significantly more valuable after enrichment.
+
+Additional context may include
+
+- User role
+- Geo-location (where appropriate)
+- Threat intelligence
+- Asset classification
+- Business criticality
+- Cloud region
+- Environment
+
+```
+Raw Log
+
+   │
+
+Enrichment
+
+   │
+
+Context Added
+
+   ▼
+
+Investigation Ready
+```
+
+---
+
+# API Audit Strategy
+
+Audit logs should capture significant security events.
+
+Examples
+
+- Administrative changes
+- Privileged access
+- Permission modifications
+- API key creation
+- API key revocation
+- Configuration updates
+- Secret rotation
+
+Audit records should support accountability and compliance.
+
+---
+
+# Tamper Protection
+
+Security logs should be protected against unauthorized modification.
+
+Recommended controls
+
+- Write-once storage where appropriate
+- Cryptographic integrity verification
+- Restricted access
+- Centralized storage
+- Backup retention
+
+```
+Application
+
+      │
+
+Immutable Storage
+
+      │
+
+Integrity Verification
+
+      ▼
+
+Forensic Evidence
+```
+
+---
+
+# Log Retention Strategy
+
+Retention policies should consider
+
+- Regulatory requirements
+- Business requirements
+- Storage capacity
+- Investigation needs
+- Incident response
+
+Example retention lifecycle
+
+```
+Hot Storage
+
+     │
+
+Warm Storage
+
+     │
+
+Archive
+
+     │
+
+Deletion
+```
+
+Retention periods should align with organizational policies and legal obligations.
+
+---
+
+# API Health Monitoring
+
+Monitor
+
+- Availability
+- Error rates
+- Dependency health
+- Authentication service
+- Database connectivity
+- Queue health
+- Cache availability
+
+```
+Health Checks
+
+      │
+
+Healthy?
+
+ ┌────┴─────┐
+
+ ▼          ▼
+
+Yes      Alert
+```
+
+---
+
+# Synthetic Monitoring
+
+Synthetic monitoring proactively tests APIs.
+
+Example workflow
+
+```
+Monitoring Agent
+
+       │
+
+API Request
+
+       │
+
+Response
+
+       │
+
+Validation
+
+       ▼
+
+Dashboard
+```
+
+Benefits
+
+- Detect outages early
+- Validate critical workflows
+- Measure availability
+- Verify SLAs
+
+---
+
+# Real User Monitoring (RUM)
+
+Where applicable, Real User Monitoring measures actual user interactions.
+
+Metrics include
+
+- Response latency
+- Error frequency
+- Geographic performance
+- Browser behavior
+- Device trends
+
+RUM complements synthetic monitoring.
+
+---
+
+# Service Level Indicators (SLIs)
+
+Examples
+
+- Availability
+- Success rate
+- Latency
+- Error percentage
+- Request completion
+
+SLIs provide objective measurements of service quality.
+
+---
+
+# Service Level Objectives (SLOs)
+
+An SLO defines the expected target for an SLI.
+
+Examples
+
+| SLI | Example Objective |
+|------|-------------------|
+| Availability | 99.9% |
+| Authentication Success | ≥99.5% |
+| API Latency | P95 under defined threshold |
+| Error Rate | Below defined operational threshold |
+
+SLOs should reflect business and operational requirements.
+
+---
+
+# Error Budget
+
+An error budget defines the acceptable amount of service degradation within a measurement period.
+
+```
+Availability Target
+
+        │
+
+Allowed Failure
+
+        │
+
+Error Budget
+
+        ▼
+
+Operational Decisions
+```
+
+Error budgets help balance reliability improvements with feature delivery.
+
+---
+
+# API Performance Dashboard
+
+Recommended widgets
+
+- Requests per second
+- Latency percentiles
+- Error rates
+- Top endpoints
+- Slow endpoints
+- Authentication failures
+- Authorization failures
+- Active alerts
+- Resource utilization
+
+Dashboards should support rapid operational awareness.
+
+---
+
+# Security Dashboard
+
+Example dashboard sections
+
+```
+Authentication
+
+Authorization
+
+API Abuse
+
+Rate Limiting
+
+Threat Detection
+
+Configuration Changes
+
+Administrative Activity
+
+Open Incidents
+```
+
+Security dashboards should prioritize actionable information.
+
+---
+
+# SOC Dashboard
+
+Recommended SOC widgets
+
+- Active incidents
+- Critical alerts
+- Failed logins
+- Privilege escalation attempts
+- API abuse indicators
+- WAF events
+- Cloud security alerts
+- Investigation queue
+
+```
+Telemetry
+
+      │
+
+Correlation
+
+      │
+
+SOC Dashboard
+
+      │
+
+Incident Queue
+
+      ▼
+
+Analyst
+```
+
+---
+
+# API Abuse Detection
+
+Monitor for
+
+- Credential stuffing
+- API scraping
+- Object enumeration
+- Excessive pagination
+- High request velocity
+- Automated registrations
+- Replay attempts
+- Rate-limit violations
+
+Behavioral monitoring often detects attacks before signatures.
+
+---
+
+# Anomaly Detection
+
+Examples
+
+- Sudden traffic spikes
+- Geographic anomalies
+- New user behavior
+- Unexpected API versions
+- Unusual request timing
+- Rare endpoint access
+
+```
+Baseline
+
+    │
+
+Current Activity
+
+    │
+
+Deviation
+
+    ▼
+
+Alert
+```
+
+---
+
+# Behavioral Analytics
+
+Behavioral analysis evaluates patterns rather than individual events.
+
+Examples
+
+- Typical login locations
+- Normal API usage
+- Service-to-service communication
+- Administrative activity
+- Resource consumption
+
+Behavioral baselines improve detection accuracy.
+
+---
+
+# Detection Engineering
+
+Recommended detections
+
+| Detection | Indicator |
+|-----------|-----------|
+| Credential Stuffing | High failed login rate |
+| API Scraping | Large sequential data requests |
+| Object Enumeration | Sequential object IDs |
+| Token Replay | Repeated token identifiers |
+| GraphQL Abuse | Excessive query complexity |
+| API Version Scanning | Requests to deprecated versions |
+| Configuration Changes | Unexpected administrative actions |
+| Privileged Access | Unusual administrative activity |
+
+---
+
+# Detection Pipeline
+
+```
+Telemetry
+
+    │
+
+Normalization
+
+    │
+
+Enrichment
+
+    │
+
+Correlation
+
+    │
+
+Risk Scoring
+
+    │
+
+Alert
+
+    ▼
+
+SOC
+```
+
+---
+
+# SIEM Integration
+
+High-value telemetry includes
+
+- API Gateway
+- Identity Provider
+- Authentication Service
+- Application Logs
+- Database Audit Logs
+- Cloud Audit Logs
+- Kubernetes Audit Logs
+- WAF
+- Network Firewall
+- Endpoint Detection Platform
+
+```
+Telemetry
+
+      │
+
+SIEM
+
+      │
+
+Correlation
+
+      │
+
+Cases
+
+      ▼
+
+SOC
+```
+
+---
+
+# Example Correlation Rules
+
+## Rule 1 – API Scraping
+
+```
+Thousands of Requests
+
+          │
+
+Sequential Objects
+
+          │
+
+Successful Responses
+
+          ▼
+
+Possible Data Harvesting
+```
+
+---
+
+## Rule 2 – Authentication Abuse
+
+```
+Many Failed Logins
+
+        │
+
+Successful Login
+
+        │
+
+New Geographic Region
+
+        ▼
+
+Possible Account Compromise
+```
+
+---
+
+## Rule 3 – Administrative Activity
+
+```
+Administrator Login
+
+        │
+
+Configuration Change
+
+        │
+
+Multiple Permission Updates
+
+        ▼
+
+Review Required
+```
+
+---
+
+# Enterprise Observability Architecture
+
+```
+                    Clients
+
+                       │
+
+                       ▼
+
+                  API Gateway
+
+                       │
+
+       ┌───────────────┼───────────────┐
+
+       ▼               ▼               ▼
+
+     Logs           Metrics         Traces
+
+       │               │               │
+
+       └───────────────┼───────────────┘
+
+                       ▼
+
+            OpenTelemetry Collector
+
+                       │
+
+            Observability Platform
+
+       ┌───────────────┼───────────────┐
+
+       ▼               ▼               ▼
+
+   Dashboards        SIEM           Alerting
+
+                       │
+
+                       ▼
+
+                      SOC
+```
+
+---
+
+# Hands-on Lab 1 – Structured Logging Review
+
+**Objective**
+
+Evaluate structured logging quality.
+
+**Steps**
+
+1. Review API log format.
+2. Verify correlation identifiers.
+3. Confirm structured fields.
+4. Validate timestamp consistency.
+5. Review security events.
+
+**Learning Outcomes**
+
+- Structured logging
+- Correlation
+- Security visibility
+
+---
+
+# Hands-on Lab 2 – Dashboard Design
+
+**Objective**
+
+Create an operational API dashboard.
+
+**Steps**
+
+1. Select key metrics.
+2. Define alert thresholds.
+3. Build visualization panels.
+4. Verify data sources.
+5. Validate dashboard usefulness during simulated incidents.
+
+**Learning Outcomes**
+
+- Monitoring design
+- Operational visibility
+- Performance analysis
+
+---
+
+# Hands-on Lab 3 – Detection Validation
+
+**Objective**
+
+Validate API detection rules.
+
+**Steps**
+
+1. Generate authorized security events.
+2. Verify telemetry collection.
+3. Confirm SIEM ingestion.
+4. Review generated alerts.
+5. Document investigation workflow.
+
+**Learning Outcomes**
+
+- Detection engineering
+- SIEM validation
+- SOC operations
+
+---
+
+# Troubleshooting
+
+## Missing Correlation IDs
+
+Possible causes
+
+- Gateway misconfiguration
+- Service propagation failure
+- Legacy applications
+- Logging inconsistencies
+
+---
+
+## Incomplete Distributed Traces
+
+Possible causes
+
+- Missing instrumentation
+- Unsupported libraries
+- Sampling configuration
+- Collector connectivity
+
+---
+
+## Excessive Alert Volume
+
+Possible causes
+
+- Poor threshold tuning
+- Duplicate detections
+- Missing suppression logic
+- Temporary operational events
+
+---
+
+## Missing Audit Records
+
+Possible causes
+
+- Disabled auditing
+- Incorrect permissions
+- Log forwarding failures
+- Storage limitations
+
+---
+
+## Dashboard Data Delays
+
+Possible causes
+
+- Collector backlog
+- Indexing latency
+- Network congestion
+- Resource exhaustion
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. What are the three pillars of observability?
+2. Why are correlation IDs important?
+3. What is OpenTelemetry?
+4. Why should audit logs be protected from modification?
+5. What is the difference between logs, metrics, and traces?
+6. What is synthetic monitoring?
+7. Why is structured logging preferred?
+8. What is log enrichment?
+9. What is an SLO?
+10. What is an error budget?
+
+---
+
+## Intermediate
+
+11. How would you design an enterprise observability platform?
+12. Which security events should always be audited?
+13. How would you detect API scraping activity?
+14. Why should telemetry be normalized?
+15. How would you reduce false positives in monitoring?
+16. What telemetry sources are most valuable during incident investigations?
+17. How would you instrument a microservices-based API using OpenTelemetry?
+18. Why is behavioral analytics valuable?
+19. How would you secure centralized logging infrastructure?
+20. How would you measure monitoring effectiveness?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+An API experiences intermittent latency spikes, but infrastructure metrics appear normal.
+
+- Which telemetry would you review next?
+- How could distributed tracing help identify the root cause?
+- Which operational improvements would you recommend?
+
+---
+
+**Scenario 2**
+
+A security analyst discovers that audit logs for administrative actions are incomplete.
+
+- Why is this a security concern?
+- Which controls should be implemented to improve audit integrity?
+- How would you validate the solution?
+
+---
+
+**Scenario 3**
+
+A SOC receives alerts for unusually high API traffic from a trusted client application.
+
+- What additional context would you gather before concluding it is malicious?
+- Which telemetry sources would help distinguish legitimate growth from abuse?
+- How would you refine detection logic if the alerts prove benign?
+
+---
+
+# Chapter Summary
+
+This chapter expanded API monitoring into a comprehensive observability strategy covering logs, metrics, traces, OpenTelemetry, centralized logging, dashboards, detection engineering, and enterprise Security Operations Center workflows.
+
+We covered:
+
+- API observability
+- OpenTelemetry
+- Structured logging
+- Distributed tracing
+- Metrics and dashboards
+- Audit logging
+- Synthetic monitoring
+- Behavioral analytics
+- Detection engineering
+- SIEM integration
+- Enterprise observability architecture
+- Hands-on labs
+- Troubleshooting
+- Interview preparation
+
+A mature observability platform provides the visibility needed to detect threats, investigate incidents, improve performance, and maintain reliable API services. Effective monitoring combines operational telemetry with security intelligence to enable rapid, evidence-based response.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- How do logs, metrics, and traces complement one another?
+- Why are correlation IDs essential for distributed systems?
+- How does OpenTelemetry standardize observability?
+- Which events require immutable audit logging?
+- How would you design an enterprise API monitoring strategy?
+- Which telemetry sources provide the greatest investigative value?
+- How can observability improve both operational reliability and security posture?
+
+If you can confidently answer these questions, you are ready to continue with **Chapter 26 – API Incident Response**, where you'll learn incident preparation, detection, triage, containment, eradication, recovery, post-incident analysis, digital forensics, threat hunting, and enterprise SOC workflows for API security incidents.
+
+---
+
+# References
+
+## Standards
+
+- OpenTelemetry Specification
+- OWASP API Security Top 10
+- OWASP ASVS
+- NIST SP 800-61 Rev. 2 (Computer Security Incident Handling Guide)
+- NIST SP 800-53
+
+## Further Reading
+
+- OWASP Cheat Sheet Series
+- MITRE ATT&CK Framework
+- OpenTelemetry Documentation
+- Secure Software Development Framework (SSDF)
+
+---
+
+# What's Next?
+
+➡️ **Chapter 26 – API Incident Response**
+
+Topics include:
+
+- Incident response lifecycle
+- Preparation
+- Detection and analysis
+- Containment
+- Eradication
+- Recovery
+- Digital forensics
+- Threat hunting
+- Detection engineering
+- SIEM integration
+- Hands-on labs
+- Interview questions
