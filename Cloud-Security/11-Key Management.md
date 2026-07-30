@@ -595,20 +595,758 @@ Comprehensive logging supports investigations, compliance, and continuous monito
 
 ---
 
-## Next Section
+## How It Works
 
-How It Works
+Cloud Key Management works by securely generating, storing, protecting, distributing, rotating, and retiring cryptographic keys while ensuring that the keys themselves remain inaccessible to unauthorized users.
 
-Practical Example
-
-Detection
-
-Prevention
-
-Best Practices
-
-Common Mistakes
-
-References
+Instead of allowing applications to directly store or manage encryption keys, modern cloud platforms use a centralized **Key Management Service (KMS)**. Applications request cryptographic operations from the KMS, which performs encryption or decryption without unnecessarily exposing sensitive key material.
 
 ---
+
+## Key Management Workflow
+
+```
+               User / Application
+
+                       │
+
+                       ▼
+
+             Identity Verification
+
+                       │
+
+                       ▼
+
+                IAM Authorization
+
+                       │
+
+                       ▼
+
+              Key Management Service
+
+        ┌──────────────┼──────────────┐
+
+        ▼              ▼              ▼
+
+ Generate Key     Store Key      Key Policy Check
+
+        │              │              │
+
+        └──────────────┼──────────────┘
+
+                       ▼
+
+           Perform Cryptographic Operation
+
+                       │
+
+         ┌─────────────┼─────────────┐
+
+         ▼             ▼             ▼
+
+     Encrypt       Decrypt        Sign / Verify
+
+                       │
+
+                       ▼
+
+                 Audit Logging
+```
+
+Applications interact with the KMS rather than directly handling cryptographic keys.
+
+---
+
+## Step 1 – Application Requests Encryption
+
+A cloud application needs to protect sensitive information before storing it.
+
+Example:
+
+- Customer records
+- Payment information
+- Medical reports
+- Application secrets
+- Configuration files
+
+```
+Application
+
+↓
+
+Encrypt Request
+```
+
+The application sends a request to the Key Management Service.
+
+---
+
+## Step 2 – Identity Authentication
+
+Before any key operation occurs, the requesting identity is authenticated.
+
+```
+Application
+
+↓
+
+IAM Authentication
+
+↓
+
+Verified Identity
+```
+
+Authentication methods may include:
+
+- IAM roles
+- Service accounts
+- Managed identities
+- OAuth tokens
+- Temporary security credentials
+
+---
+
+## Step 3 – Authorization
+
+After authentication, KMS evaluates whether the requester is allowed to use the specified key.
+
+```
+Identity
+
+↓
+
+IAM Policy
+
+↓
+
+Key Policy
+
+↓
+
+Allowed?
+
+↓
+
+Yes / No
+```
+
+Access decisions commonly consider:
+
+- User role
+- Service identity
+- Resource policy
+- Organizational policy
+- Conditional access rules
+
+---
+
+## Step 4 – Generate a Data Encryption Key (DEK)
+
+If authorized, KMS generates a Data Encryption Key.
+
+```
+KMS
+
+↓
+
+Generate DEK
+
+↓
+
+AES-256 Key
+```
+
+The DEK encrypts the customer data.
+
+---
+
+## Step 5 – Encrypt Customer Data
+
+The application encrypts the data using the DEK.
+
+```
+Plaintext
+
+↓
+
+AES-256
+
+↓
+
+Ciphertext
+```
+
+Only encrypted information is stored.
+
+---
+
+## Step 6 – Protect the DEK
+
+The DEK itself is encrypted using a Key Encryption Key (KEK).
+
+```
+DEK
+
+↓
+
+KEK
+
+↓
+
+Encrypted DEK
+```
+
+The KEK remains securely protected inside the KMS.
+
+---
+
+## Step 7 – Store Encrypted Data
+
+The encrypted information and encrypted DEK are stored.
+
+```
+Encrypted Data
+
+↓
+
+Cloud Storage
+
+──────────────
+
+Encrypted DEK
+
+↓
+
+Metadata
+```
+
+The KEK never leaves the Key Management Service.
+
+---
+
+## Step 8 – Retrieve Data
+
+When an authorized application needs the information:
+
+```
+Application
+
+↓
+
+Read Request
+
+↓
+
+Encrypted Data Returned
+```
+
+The retrieved data remains encrypted.
+
+---
+
+## Step 9 – Request Decryption
+
+The application asks the KMS to decrypt the encrypted DEK.
+
+```
+Application
+
+↓
+
+Decrypt Request
+
+↓
+
+KMS
+```
+
+The KMS validates permissions again before performing the operation.
+
+---
+
+## Step 10 – Recover the DEK
+
+KMS decrypts the Data Encryption Key.
+
+```
+Encrypted DEK
+
+↓
+
+KEK
+
+↓
+
+Original DEK
+```
+
+The DEK is returned only to the authorized application or used internally, depending on the implementation.
+
+---
+
+## Step 11 – Decrypt Customer Data
+
+Using the recovered DEK:
+
+```
+Ciphertext
+
+↓
+
+DEK
+
+↓
+
+Plaintext
+```
+
+The application now has access to the original information.
+
+---
+
+## Step 12 – Audit Logging
+
+Every KMS operation generates audit records.
+
+Examples include:
+
+- Key generation
+- Encryption
+- Decryption
+- Rotation
+- Key deletion
+- Permission changes
+- Failed access attempts
+
+```
+KMS Operation
+
+↓
+
+Audit Log
+
+↓
+
+SIEM
+
+↓
+
+SOC Investigation
+```
+
+Comprehensive logging supports compliance and incident response.
+
+---
+
+## Envelope Encryption Process
+
+Envelope Encryption separates customer data from long-lived encryption keys.
+
+```
+Customer Data
+
+↓
+
+Generate DEK
+
+↓
+
+Encrypt Data
+
+↓
+
+Ciphertext
+
+──────────────────────────────
+
+DEK
+
+↓
+
+Encrypt Using KEK
+
+↓
+
+Encrypted DEK
+
+↓
+
+Store Metadata
+```
+
+During decryption:
+
+```
+Encrypted DEK
+
+↓
+
+KMS
+
+↓
+
+Recover DEK
+
+↓
+
+Decrypt Data
+
+↓
+
+Plaintext
+```
+
+This model provides both strong security and operational scalability.
+
+---
+
+## Key Lifecycle Example
+
+```
+Generate Key
+
+↓
+
+Activate Key
+
+↓
+
+Use Key
+
+↓
+
+Rotate Key
+
+↓
+
+Archive Key
+
+↓
+
+Disable Key
+
+↓
+
+Destroy Key
+```
+
+Proper lifecycle management reduces long-term cryptographic risk.
+
+---
+
+## Practical Example
+
+### Example 1 – Encrypting Cloud Storage
+
+A company uploads confidential financial reports.
+
+```
+Finance Application
+
+↓
+
+KMS
+
+↓
+
+Generate DEK
+
+↓
+
+Encrypt Report
+
+↓
+
+Object Storage
+```
+
+Security controls:
+
+- AES-256 encryption
+- Customer-managed key
+- IAM authorization
+- Audit logging
+
+---
+
+### Example 2 – Database Encryption
+
+A banking application stores customer account information.
+
+```
+Application
+
+↓
+
+Database
+
+↓
+
+Transparent Encryption
+
+↓
+
+KMS
+```
+
+Benefits:
+
+- Automatic encryption
+- Secure key storage
+- Centralized auditing
+- Controlled key access
+
+---
+
+### Example 3 – Secure Backup
+
+A nightly backup process creates encrypted backups.
+
+```
+Production Database
+
+↓
+
+Backup Job
+
+↓
+
+KMS
+
+↓
+
+Encrypted Backup Vault
+```
+
+Only authorized recovery systems can decrypt backup data.
+
+---
+
+### Example 4 – Customer-Managed Keys
+
+A healthcare organization manages its own encryption keys.
+
+```
+Healthcare Organization
+
+↓
+
+Create CMK
+
+↓
+
+Cloud KMS
+
+↓
+
+Encrypt Patient Data
+```
+
+The organization controls:
+
+- Key rotation
+- Access policies
+- Key deletion
+- Audit review
+
+---
+
+### Example 5 – Bring Your Own Key (BYOK)
+
+An enterprise imports keys generated inside its own Hardware Security Module.
+
+```
+Enterprise HSM
+
+↓
+
+Generate Key
+
+↓
+
+Import to KMS
+
+↓
+
+Application Uses Imported Key
+```
+
+This supports regulatory requirements while integrating with cloud-native encryption services.
+
+---
+
+## Key Management Components
+
+| Component | Purpose |
+|-----------|---------|
+| KMS | Centralized key management |
+| DEK | Encrypts customer data |
+| KEK | Encrypts DEKs |
+| IAM | Controls key access |
+| HSM | Hardware-based key protection |
+| Audit Logs | Tracks cryptographic operations |
+| Key Policies | Defines permitted operations |
+| Key Rotation | Periodically replaces cryptographic keys |
+
+---
+
+## Indicators of Key Management Issues (Detection)
+
+Effective monitoring helps identify unauthorized or suspicious key usage before it leads to data compromise.
+
+---
+
+### Unauthorized Key Access
+
+Unexpected attempts to access cryptographic keys may indicate:
+
+- Stolen credentials
+- Insider threats
+- Privilege escalation
+- Compromised workloads
+
+```
+Unknown Identity
+
+↓
+
+Access CMK
+
+↓
+
+Denied
+
+↓
+
+Security Alert
+```
+
+---
+
+### Excessive Decryption Requests
+
+A sudden increase in decryption activity may indicate:
+
+- Data theft
+- Automated scraping
+- Malware
+- Credential compromise
+
+Behavioral baselines help distinguish legitimate activity from anomalies.
+
+---
+
+### Failed KMS Requests
+
+Repeated failures may indicate:
+
+- Incorrect permissions
+- Application misconfiguration
+- Brute-force attempts
+- Unauthorized access
+
+These events should be investigated promptly.
+
+---
+
+### Key Policy Changes
+
+Unexpected modifications to key policies may expose sensitive information.
+
+Examples:
+
+- New administrator added
+- Broader decryption permissions
+- External account granted access
+- Conditional restrictions removed
+
+Every policy change should generate an audit event.
+
+---
+
+### Disabled or Deleted Keys
+
+Unexpected key disablement or deletion can:
+
+- Interrupt applications
+- Prevent data recovery
+- Indicate malicious activity
+
+Organizations should alert on:
+
+- Key deletion requests
+- Key disablement
+- Scheduled destruction
+- Recovery cancellation
+
+---
+
+### Missing Key Rotation
+
+Keys that exceed the organization's rotation policy should be identified automatically.
+
+Examples:
+
+- Rotation overdue
+- Automatic rotation disabled
+- Manual rotation skipped
+
+---
+
+### HSM Health Issues
+
+Managed HSM services should be monitored for:
+
+- Availability
+- Hardware faults
+- Synchronization problems
+- Failed cryptographic operations
+
+---
+
+### Unusual Geographic Access
+
+Unexpected key usage from unfamiliar locations or cloud regions may indicate account compromise.
+
+Risk indicators include:
+
+- New geographic region
+- Unrecognized cloud account
+- Unexpected service identity
+
+---
+
+### Audit Log Monitoring
+
+Security teams should monitor:
+
+- Key creation
+- Key import
+- Key export (if permitted)
+- Key deletion
+- Key rotation
+- Encrypt operations
+- Decrypt operations
+- IAM policy changes
+- KMS permission failures
+
+---
+
+## Detection Best Practices
+
+- Enable comprehensive logging for all KMS operations.
+- Alert on unauthorized or failed key access attempts.
+- Monitor key policy modifications.
+- Track overdue key rotation.
+- Investigate spikes in decryption activity.
+- Detect unexpected key deletion or disablement.
+- Continuously review IAM permissions for cryptographic operations.
+- Integrate KMS audit logs into the organization's SIEM.
+- Baseline normal key usage to identify anomalies.
+- Regularly validate the health and availability of managed HSM services.
+
+---
+
