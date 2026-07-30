@@ -1350,3 +1350,671 @@ Security teams should monitor:
 
 ---
 
+## Prevention
+
+Preventing key compromise is one of the most critical responsibilities in cloud security. Even when strong encryption algorithms are used, compromised cryptographic keys can allow attackers to decrypt sensitive information.
+
+An effective Key Management prevention strategy should protect:
+
+- Cryptographic keys
+- Key lifecycle
+- Key access
+- Key storage
+- Key distribution
+- Key rotation
+- Cryptographic operations
+- Audit records
+- Hardware Security Modules (HSMs)
+
+Key protection should follow the principles of **Least Privilege**, **Defense in Depth**, and **Zero Trust**.
+
+---
+
+# Defense-in-Depth for Key Management
+
+```
+               Applications / Users
+
+                        │
+
+                        ▼
+
+               Identity Verification
+
+                        │
+
+                        ▼
+
+                  IAM Authorization
+
+                        │
+
+                        ▼
+
+             Key Management Service
+
+        ┌───────────────┼────────────────┐
+
+        ▼               ▼                ▼
+
+   Access Policy    Key Storage     Key Rotation
+
+        │               │                │
+
+        └───────────────┼────────────────┘
+
+                        ▼
+
+             Audit Logging & SIEM
+
+                        ▼
+
+             Security Monitoring
+```
+
+Every cryptographic operation should be verified, authorized, logged, and monitored.
+
+---
+
+# Use a Dedicated Key Management Service
+
+Encryption keys should never be managed manually whenever a trusted cloud Key Management Service is available.
+
+Benefits include:
+
+- Secure key generation
+- Centralized management
+- Access control
+- Automatic auditing
+- Simplified rotation
+- Native cloud integration
+
+```
+Application
+
+↓
+
+Cloud KMS
+
+↓
+
+Encrypt / Decrypt
+
+↓
+
+Protected Data
+```
+
+Using a centralized KMS reduces operational errors and improves security.
+
+---
+
+# Protect Keys with Hardware Security Modules (HSMs)
+
+Highly sensitive keys should be stored inside Hardware Security Modules.
+
+Advantages include:
+
+- Hardware-backed protection
+- Tamper resistance
+- Secure key generation
+- Secure cryptographic operations
+- High assurance
+
+```
+Sensitive Key
+
+↓
+
+HSM
+
+↓
+
+Cryptographic Operation
+
+↓
+
+Result
+```
+
+HSMs significantly reduce the risk of key theft.
+
+---
+
+# Separate Keys from Encrypted Data
+
+Encryption keys should never be stored alongside the encrypted information they protect.
+
+Incorrect design:
+
+```
+Encrypted Database
+
+↓
+
+Encryption Key
+
+↓
+
+Same Storage
+```
+
+Recommended design:
+
+```
+Encrypted Data
+
+↓
+
+Cloud Storage
+
+──────────────
+
+Encryption Key
+
+↓
+
+Key Management Service
+```
+
+Logical and operational separation reduces the impact of storage compromise.
+
+---
+
+# Enforce Least Privilege
+
+Access to cryptographic keys should be restricted to only those users and services that require it.
+
+Recommendations:
+
+- Role-Based Access Control (RBAC)
+- Attribute-Based Access Control (ABAC)
+- Just-In-Time (JIT) access
+- Multi-Factor Authentication (MFA)
+- Separation of duties
+
+Example:
+
+| Role | Allowed Operations |
+|------|--------------------|
+| Security Administrator | Create and rotate keys |
+| Application | Encrypt and decrypt only |
+| Auditor | View logs only |
+| Developer | No production key access |
+
+---
+
+# Protect Administrative Access
+
+Administrative access to KMS should require stronger security controls.
+
+Recommended protections:
+
+- MFA
+- Privileged Access Management (PAM)
+- Dedicated administrator accounts
+- Approval workflows
+- Session monitoring
+
+```
+Administrator
+
+↓
+
+MFA
+
+↓
+
+PAM
+
+↓
+
+KMS Console
+```
+
+Production KMS administration should never rely on shared accounts.
+
+---
+
+# Rotate Keys Regularly
+
+Key rotation reduces the impact of key compromise.
+
+```
+Current Key
+
+↓
+
+Rotation Policy
+
+↓
+
+New Version
+
+↓
+
+Old Version Retired
+```
+
+Rotation should be defined by organizational policy and applicable compliance requirements.
+
+Keys commonly rotated include:
+
+- Data Encryption Keys (DEKs)
+- Key Encryption Keys (KEKs)
+- TLS certificates
+- API signing keys
+- Code-signing keys
+
+---
+
+# Use Envelope Encryption
+
+Envelope Encryption provides scalable key protection.
+
+```
+Customer Data
+
+↓
+
+DEK
+
+↓
+
+Encrypted Data
+
+──────────────
+
+DEK
+
+↓
+
+KEK
+
+↓
+
+KMS
+```
+
+Benefits include:
+
+- Faster encryption
+- Easier key rotation
+- Reduced key exposure
+- Centralized control
+
+---
+
+# Use Customer-Managed Keys When Appropriate
+
+Organizations with strict compliance requirements may prefer Customer-Managed Keys.
+
+Advantages:
+
+- Greater operational control
+- Custom rotation schedules
+- Detailed access policies
+- Better audit visibility
+- Compliance flexibility
+
+Not every workload requires customer-managed keys; the decision should align with organizational risk and regulatory obligations.
+
+---
+
+# Protect Key Backups
+
+Key backups are as sensitive as production keys.
+
+Recommendations:
+
+- Encrypt key backups
+- Restrict access
+- Store separately
+- Verify backup integrity
+- Test recovery procedures
+
+Loss of critical keys may permanently prevent decryption of protected data.
+
+---
+
+# Secure Key Distribution
+
+Keys should never be distributed through insecure methods.
+
+Avoid:
+
+- Email
+- Chat applications
+- Source code
+- Configuration files
+- Shared folders
+
+Instead, use:
+
+- KMS APIs
+- Secure cryptographic protocols
+- Managed identities
+- Secure application integration
+
+---
+
+# Monitor All Key Operations
+
+Every cryptographic event should be logged.
+
+Monitor:
+
+- Key creation
+- Key deletion
+- Key import
+- Key disablement
+- Key rotation
+- Encryption requests
+- Decryption requests
+- Permission changes
+
+```
+KMS Event
+
+↓
+
+Audit Log
+
+↓
+
+SIEM
+
+↓
+
+SOC Investigation
+```
+
+Continuous monitoring enables rapid detection of suspicious key activity.
+
+---
+
+# Implement Cryptographic Agility
+
+Cryptographic algorithms evolve over time.
+
+Organizations should be able to:
+
+- Replace deprecated algorithms
+- Upgrade key sizes
+- Introduce stronger algorithms
+- Update certificates
+- Migrate applications
+
+This capability is known as **Cryptographic Agility**.
+
+---
+
+# Secure APIs Accessing KMS
+
+Applications interacting with KMS should use:
+
+- TLS
+- Mutual TLS (where appropriate)
+- IAM authentication
+- Temporary credentials
+- Managed identities
+
+Applications should never embed long-lived credentials.
+
+---
+
+# Protect Logs
+
+Audit logs generated by the KMS should themselves be protected.
+
+Recommendations:
+
+- Restrict log access
+- Enable integrity protection
+- Centralize logs
+- Forward to SIEM
+- Define retention policies
+
+Logs are essential during investigations and compliance audits.
+
+---
+
+# Best Practices
+
+## 1. Centralize Key Management
+
+Use a dedicated Key Management Service for all production cryptographic operations.
+
+Avoid fragmented or application-specific key storage.
+
+---
+
+## 2. Store Keys in Secure Hardware
+
+Use managed HSM services for highly sensitive cryptographic material.
+
+Hardware-backed protection provides stronger security assurances than software-only storage.
+
+---
+
+## 3. Rotate Keys Regularly
+
+Implement documented rotation procedures and periodically verify that rotation processes are functioning correctly.
+
+---
+
+## 4. Enforce Least Privilege
+
+Limit cryptographic operations to authorized users, services, and applications.
+
+Review permissions regularly.
+
+---
+
+## 5. Enable Comprehensive Audit Logging
+
+Log every significant KMS event and forward logs to centralized monitoring systems.
+
+Protect audit logs from unauthorized modification.
+
+---
+
+## 6. Separate Administrative Responsibilities
+
+Separate responsibilities for:
+
+- Policy management
+- KMS administration
+- Application development
+- Security auditing
+
+Separation of duties reduces insider risk.
+
+---
+
+## 7. Protect Customer-Managed Keys
+
+If Customer-Managed Keys are used:
+
+- Protect them with strong IAM policies.
+- Monitor usage continuously.
+- Rotate according to policy.
+- Restrict administrative access.
+
+---
+
+## 8. Automate Key Lifecycle Management
+
+Automate:
+
+- Key creation
+- Rotation
+- Expiration notifications
+- Archival
+- Scheduled destruction
+
+Automation reduces human error and improves consistency.
+
+---
+
+## 9. Test Key Recovery Procedures
+
+Periodically validate that:
+
+- Key backups are usable.
+- Recovery procedures work as expected.
+- Disaster recovery documentation remains accurate.
+
+Recovery testing is essential for business continuity.
+
+---
+
+## 10. Follow Zero Trust Principles
+
+Every request to perform a cryptographic operation should verify:
+
+- Identity
+- Authorization
+- Device posture
+- Context
+- Risk
+
+No application or user should receive implicit trust.
+
+---
+
+## Common Mistakes
+
+### Storing Keys in Source Code
+
+Hardcoding encryption keys in:
+
+- Source code
+- Scripts
+- Configuration files
+- Container images
+
+is one of the most common and serious security mistakes.
+
+Use managed secrets and key management services instead.
+
+---
+
+### Keeping Keys with Encrypted Data
+
+If attackers obtain both the encrypted data and its corresponding keys from the same location, encryption provides little practical protection.
+
+Always maintain separation between keys and encrypted assets.
+
+---
+
+### Excessive Key Permissions
+
+Granting broad access to cryptographic keys increases the impact of compromised accounts.
+
+Apply least privilege and review permissions regularly.
+
+---
+
+### Never Rotating Keys
+
+Long-lived keys increase organizational exposure if they are compromised.
+
+Establish and enforce documented rotation policies.
+
+---
+
+### Ignoring Audit Logs
+
+Failure to monitor KMS activity can delay detection of:
+
+- Unauthorized decryption
+- Key misuse
+- Permission changes
+- Suspicious administrative actions
+
+Integrate KMS logs into centralized security monitoring.
+
+---
+
+### Using Weak or Deprecated Algorithms
+
+Avoid using outdated cryptographic algorithms or insufficient key lengths for new deployments.
+
+Review cryptographic standards periodically and migrate when necessary.
+
+---
+
+### Sharing Administrative Accounts
+
+Shared KMS administrator accounts reduce accountability and complicate investigations.
+
+Every administrator should use an individual identity protected by MFA.
+
+---
+
+### Failing to Protect Key Backups
+
+Unprotected key backups may expose encrypted information even if production systems remain secure.
+
+Treat backup copies with the same level of protection as active keys.
+
+---
+
+### Allowing Direct Internet Access to Management Interfaces
+
+Administrative interfaces for KMS or HSM services should be protected through secure administrative access methods such as VPNs, bastion hosts, or privileged access solutions.
+
+---
+
+### Not Planning for Key Loss
+
+Destroying or permanently losing critical encryption keys without a documented recovery strategy can make encrypted data unrecoverable.
+
+Develop and regularly test key recovery and disaster recovery procedures.
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-57 – Recommendation for Key Management
+- NIST SP 800-38 Series – Recommendation for Block Cipher Modes of Operation
+- NIST SP 800-175B – Guideline for Using Cryptographic Standards
+- FIPS 140-3 – Security Requirements for Cryptographic Modules
+- NIST Cybersecurity Framework (CSF)
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Critical Security Controls
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Provider Documentation
+
+- AWS Key Management Service (AWS KMS) Documentation
+- AWS CloudHSM Documentation
+- Microsoft Azure Key Vault Documentation
+- Microsoft Managed HSM Documentation
+- Google Cloud Key Management Service Documentation
+- Google Cloud Cloud HSM Documentation
+- Oracle Cloud Infrastructure Vault Documentation
+- IBM Cloud Hyper Protect Crypto Services Documentation
+
+---
+
+### Industry Best Practices
+
+- Envelope Encryption
+- Cryptographic Agility
+- Principle of Least Privilege (PoLP)
+- Zero Trust Architecture
+- Customer-Managed Keys (CMKs)
+- Bring Your Own Key (BYOK)
+- Hold Your Own Key (HYOK)
+- Hardware Security Modules (HSMs)
+- Separation of Duties
+- Secure Key Lifecycle Management
+
+---
