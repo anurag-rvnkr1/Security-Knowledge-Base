@@ -1390,12 +1390,688 @@ Security teams should monitor:
 
 ---
 
-## Next Section
+## Prevention
 
-Prevention
+Preventing cryptographic failures in cloud environments requires more than simply enabling encryption. Organizations must protect the entire cryptographic ecosystem, including encryption algorithms, key management, certificate management, access controls, monitoring, and governance.
 
-Best Practices
+An effective Cloud Encryption prevention strategy should protect:
 
-Common Mistakes
+- Data at rest
+- Data in transit
+- Data in use
+- Cryptographic keys
+- Certificates
+- Encryption services
+- Backup data
+- Applications
+- APIs
 
-References
+Encryption should be implemented as a default security control rather than an optional feature.
+
+---
+
+# Defense-in-Depth for Encryption
+
+```
+                  Sensitive Data
+
+                        │
+
+        ┌───────────────┼────────────────┐
+
+        ▼               ▼                ▼
+
+      IAM         Encryption       Network Security
+
+        │               │                │
+
+        └───────────────┼────────────────┘
+
+                        ▼
+
+             Key Management Service
+
+                        ▼
+
+               Logging & Monitoring
+
+                        ▼
+
+                Backup Protection
+```
+
+Every layer contributes to protecting encrypted information from unauthorized access.
+
+---
+
+# Encrypt Data at Rest
+
+All sensitive information stored in cloud environments should be encrypted.
+
+This includes:
+
+- Object Storage
+- File Storage
+- Block Storage
+- Databases
+- Virtual Disks
+- Snapshots
+- Backups
+- Log Storage
+
+```
+Plaintext
+
+↓
+
+AES-256
+
+↓
+
+Encrypted Storage
+```
+
+Encryption at rest significantly reduces the impact of storage compromise.
+
+---
+
+# Encrypt Data in Transit
+
+Every communication involving sensitive information should use secure transport encryption.
+
+Recommended protocols:
+
+- HTTPS
+- TLS 1.2 or later
+- TLS 1.3
+- SSH
+- IPsec
+- mTLS
+- VPN
+
+```
+Client
+
+↓
+
+TLS
+
+↓
+
+Cloud Service
+```
+
+Avoid transmitting sensitive information over unencrypted protocols.
+
+---
+
+# Protect Data in Use
+
+Sensitive workloads should also protect information while it is being processed.
+
+Emerging technologies include:
+
+- Confidential Computing
+- Trusted Execution Environments (TEE)
+- Secure Enclaves
+- Memory Encryption
+
+These technologies reduce exposure during active processing.
+
+---
+
+# Use Strong Cryptographic Algorithms
+
+Organizations should adopt modern, industry-approved algorithms.
+
+Recommended examples:
+
+| Purpose | Recommended Algorithms |
+|----------|------------------------|
+| Symmetric Encryption | AES-256, ChaCha20 |
+| Public-Key Cryptography | RSA-3072+, ECC |
+| Hashing | SHA-256, SHA-384, SHA-3 |
+| Digital Signatures | RSA, ECDSA, EdDSA |
+
+Avoid deprecated algorithms such as:
+
+- DES
+- RC4
+- MD5 (for security-sensitive purposes)
+- SHA-1 (for new security applications)
+
+---
+
+# Protect Cryptographic Keys
+
+Encryption is only effective if cryptographic keys remain secure.
+
+Best practices:
+
+- Store keys in a Key Management Service (KMS)
+- Restrict administrative access
+- Separate keys from encrypted data
+- Rotate keys regularly
+- Monitor key usage
+- Disable unused keys
+
+```
+Encrypted Data
+
+↓
+
+Separate KMS
+
+↓
+
+Authorized Decryption
+```
+
+Keys should never be stored in plaintext.
+
+---
+
+# Use Customer-Managed Keys When Required
+
+Many cloud providers support:
+
+- Cloud-managed keys
+- Customer-managed keys (CMKs)
+- Bring Your Own Key (BYOK)
+- Hold Your Own Key (HYOK)
+
+Organizations with strict compliance or regulatory requirements often prefer customer-managed key solutions for greater control.
+
+---
+
+# Implement Envelope Encryption
+
+Envelope Encryption improves scalability and security.
+
+```
+Customer Data
+
+↓
+
+Data Encryption Key (DEK)
+
+↓
+
+Encrypted Data
+
+────────────────────
+
+DEK
+
+↓
+
+Key Encryption Key (KEK)
+
+↓
+
+Key Management Service
+```
+
+Benefits include:
+
+- Faster encryption
+- Easier key rotation
+- Centralized key management
+- Reduced operational complexity
+
+---
+
+# Rotate Encryption Keys
+
+Cryptographic keys should not remain active indefinitely.
+
+Key rotation policies should define:
+
+- Rotation frequency
+- Approval process
+- Key retirement
+- Emergency replacement
+- Key archival
+
+```
+Old Key
+
+↓
+
+Rotation
+
+↓
+
+New Key
+
+↓
+
+Old Key Disabled
+```
+
+Regular rotation limits the impact of compromised keys.
+
+---
+
+# Secure Certificate Management
+
+Certificates protect encrypted communication.
+
+Organizations should:
+
+- Use trusted Certificate Authorities (CAs)
+- Renew certificates before expiration
+- Monitor certificate validity
+- Remove unused certificates
+- Protect private keys
+
+```
+TLS Certificate
+
+↓
+
+Valid
+
+↓
+
+Secure HTTPS
+```
+
+Expired certificates may interrupt secure communication.
+
+---
+
+# Enforce Least Privilege for Key Access
+
+Only authorized users and applications should access encryption keys.
+
+```
+Application
+
+↓
+
+IAM Policy
+
+↓
+
+Access KMS?
+
+↓
+
+Yes / No
+```
+
+Recommendations:
+
+- Role-Based Access Control (RBAC)
+- Multi-Factor Authentication (MFA)
+- Just-In-Time (JIT) access
+- Separation of duties
+
+---
+
+# Secure APIs Using Encryption
+
+Cloud APIs should always use encrypted communication.
+
+Recommendations:
+
+- HTTPS only
+- TLS 1.2+
+- Mutual TLS where appropriate
+- API authentication
+- Certificate validation
+
+Never expose APIs over plaintext HTTP.
+
+---
+
+# Protect Backups
+
+Backups often contain highly sensitive information.
+
+Recommendations:
+
+- Encrypt backup data
+- Encrypt backup metadata where appropriate
+- Restrict backup access
+- Store backups separately
+- Protect backup encryption keys
+- Regularly test recovery
+
+```
+Production Data
+
+↓
+
+Encrypted Backup
+
+↓
+
+Secure Backup Vault
+```
+
+---
+
+# Secure Storage Services
+
+Cloud storage should combine encryption with access control.
+
+Recommendations:
+
+- Enable server-side encryption
+- Disable unnecessary public access
+- Enable object versioning
+- Configure access logging
+- Restrict bucket permissions
+
+Encryption alone cannot compensate for poor access control.
+
+---
+
+# Monitor Cryptographic Events
+
+Organizations should continuously monitor:
+
+- Key creation
+- Key deletion
+- Key rotation
+- Failed decryptions
+- Certificate expiration
+- Encryption failures
+- KMS policy changes
+
+```
+Encryption Event
+
+↓
+
+Audit Log
+
+↓
+
+SIEM
+
+↓
+
+Security Alert
+```
+
+Continuous monitoring supports rapid detection of suspicious activity.
+
+---
+
+# Secure Secrets
+
+Applications should never store secrets directly in:
+
+- Source code
+- Configuration files
+- Container images
+- Git repositories
+
+Instead, use dedicated secrets management services integrated with KMS where appropriate.
+
+---
+
+# Best Practices
+
+## 1. Enable Encryption by Default
+
+All newly created storage resources should automatically enable encryption.
+
+Avoid optional encryption configurations for production environments.
+
+---
+
+## 2. Use Strong Industry-Approved Algorithms
+
+Adopt modern cryptographic standards and periodically review them against evolving industry guidance.
+
+Avoid obsolete algorithms for new deployments.
+
+---
+
+## 3. Protect Encryption Keys
+
+Treat cryptographic keys as highly sensitive assets.
+
+Store them separately from encrypted data and limit administrative access.
+
+---
+
+## 4. Rotate Keys Regularly
+
+Implement documented key rotation procedures for:
+
+- Data Encryption Keys (DEKs)
+- Key Encryption Keys (KEKs)
+- Certificates
+- API certificates
+
+Regular rotation limits exposure if keys are compromised.
+
+---
+
+## 5. Enforce Least Privilege
+
+Only authorized users, services, and applications should perform cryptographic operations.
+
+Review permissions regularly.
+
+---
+
+## 6. Encrypt Every Sensitive Communication
+
+Protect all sensitive traffic using secure transport protocols.
+
+This includes:
+
+- Web applications
+- APIs
+- Databases
+- Internal service communication
+- Hybrid cloud connectivity
+
+---
+
+## 7. Monitor Key Usage
+
+Alert on:
+
+- Unexpected decryption requests
+- Key deletions
+- Key disablement
+- Unusual KMS activity
+- Excessive cryptographic operations
+
+Behavioral monitoring can identify misuse early.
+
+---
+
+## 8. Protect Certificates
+
+Maintain an inventory of certificates and monitor:
+
+- Expiration dates
+- Issuing authorities
+- Revocation status
+- Private key protection
+
+Automate certificate renewal where possible.
+
+---
+
+## 9. Encrypt Backups and Archives
+
+Archived and backup data should receive the same level of cryptographic protection as production data.
+
+Regularly validate recovery procedures.
+
+---
+
+## 10. Integrate Encryption with Zero Trust
+
+Encryption should complement—not replace—identity verification and authorization.
+
+Every request to access encrypted data should verify:
+
+- Identity
+- Device
+- Context
+- Risk
+- Authorization
+
+---
+
+## Common Mistakes
+
+### Relying Only on Encryption
+
+Encryption does not replace:
+
+- IAM
+- Network security
+- Logging
+- Monitoring
+- Secure application design
+
+Multiple security controls should work together.
+
+---
+
+### Hardcoding Encryption Keys
+
+Embedding keys in:
+
+- Source code
+- Scripts
+- Configuration files
+- Container images
+
+creates a significant security risk.
+
+Use managed Key Management Services instead.
+
+---
+
+### Using Weak Algorithms
+
+Legacy algorithms such as DES, RC4, and MD5 (for security-sensitive uses) should not be used in modern cloud deployments.
+
+Follow current organizational and industry cryptographic standards.
+
+---
+
+### Failing to Rotate Keys
+
+Keys that remain active for extended periods increase organizational risk if compromised.
+
+Implement automated or policy-driven rotation where feasible.
+
+---
+
+### Storing Keys with Encrypted Data
+
+Encryption keys should never reside alongside the encrypted information they protect.
+
+Maintain logical and operational separation.
+
+---
+
+### Ignoring Certificate Expiration
+
+Expired TLS certificates may:
+
+- Interrupt secure communication
+- Cause application outages
+- Reduce user trust
+
+Monitor certificate lifecycles proactively.
+
+---
+
+### Leaving Data Unencrypted
+
+Sensitive resources such as databases, backups, object storage, and virtual disks should not remain unencrypted in production environments.
+
+---
+
+### Assuming Provider Defaults Meet Every Requirement
+
+Cloud providers often enable encryption capabilities, but organizations remain responsible for:
+
+- Key ownership decisions
+- Access control
+- Compliance requirements
+- Key rotation
+- Monitoring
+
+Review default configurations against business and regulatory needs.
+
+---
+
+### Ignoring Cryptographic Logs
+
+Without monitoring KMS and encryption events, organizations may miss:
+
+- Unauthorized key usage
+- Suspicious decryption activity
+- Key deletion attempts
+- Configuration changes
+
+Centralize cryptographic logs within the SIEM.
+
+---
+
+### Poor Secrets Management
+
+Using the same credentials or keys across multiple applications, environments, or teams increases the potential impact of compromise.
+
+Store secrets securely, rotate them regularly, and restrict access based on least privilege.
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-57 – Recommendation for Key Management
+- NIST SP 800-38 Series – Block Cipher Modes of Operation
+- NIST SP 800-175B – Guideline for Using Cryptographic Standards
+- NIST SP 800-52 Rev. 2 – Guidelines for TLS Implementations
+- FIPS 140-3 – Security Requirements for Cryptographic Modules
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Critical Security Controls
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Provider Documentation
+
+- AWS Key Management Service (AWS KMS) Documentation
+- AWS Encryption SDK Documentation
+- Microsoft Azure Key Vault Documentation
+- Microsoft Azure Storage Encryption Documentation
+- Google Cloud Key Management Service Documentation
+- Google Cloud Encryption at Rest Documentation
+- Oracle Cloud Infrastructure Vault Documentation
+- IBM Cloud Hyper Protect Crypto Services Documentation
+
+---
+
+### Industry Best Practices
+
+- Defense in Depth
+- Envelope Encryption
+- Key Rotation
+- Principle of Least Privilege (PoLP)
+- Zero Trust Security Model
+- Customer-Managed Keys (CMKs)
+- Bring Your Own Key (BYOK)
+- Hold Your Own Key (HYOK)
+- Secure Certificate Management
+- Cryptographic Agility
+
+---
