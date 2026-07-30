@@ -816,4 +816,733 @@ Avoid
 
 ---
 
-**Next:** Tool comparisons, enterprise architectures, detection engineering, SIEM integration, hands-on labs, troubleshooting, interview questions, and chapter summary.
+# API Security Tool Comparison
+
+Selecting the right API security tool depends on the organization's maturity, architecture, regulatory requirements, and security objectives.
+
+No single platform addresses every security requirement.
+
+---
+
+# Security Tool Matrix
+
+| Tool Category | Primary Purpose | SDLC Phase | Automation | Runtime Support |
+|---------------|-----------------|------------|------------|-----------------|
+| API Discovery | Inventory APIs | Operate | High | Yes |
+| API Documentation | API Design | Design | High | No |
+| API Client | Functional Testing | Develop/Test | Medium | No |
+| HTTP Proxy | Manual Assessment | Test | Low | No |
+| DAST | Runtime Security Testing | Test | High | Limited |
+| SAST | Source Code Analysis | Develop | High | No |
+| SCA | Dependency Security | Develop | High | No |
+| Fuzzing | Robustness Testing | Test | High | No |
+| Contract Testing | Specification Validation | Build/Test | High | No |
+| API Gateway | Traffic Management | Deploy | High | Yes |
+| WAF | Runtime Protection | Operate | High | Yes |
+| SIEM | Threat Detection | Operate | High | Yes |
+| SOAR | Automated Response | Operate | High | Yes |
+
+---
+
+# API Discovery Workflow
+
+```
+Internet
+
+     │
+
+Network Traffic
+
+     │
+
+Discovery Engine
+
+     │
+
+Classification
+
+     │
+
+Inventory
+
+     ▼
+
+Security Review
+```
+
+A continuously updated API inventory reduces the likelihood of unmanaged or forgotten APIs.
+
+---
+
+# Security Testing Workflow
+
+```
+Developer
+
+      │
+
+Build
+
+      │
+
+Unit Testing
+
+      │
+
+SAST
+
+      │
+
+Contract Testing
+
+      │
+
+DAST
+
+      │
+
+Fuzzing
+
+      ▼
+
+Deployment
+```
+
+Security validation should occur throughout the development lifecycle rather than only before release.
+
+---
+
+# Runtime Protection Workflow
+
+```
+Client
+
+   │
+
+API Gateway
+
+   │
+
+Authentication
+
+   │
+
+Rate Limiting
+
+   │
+
+WAF
+
+   │
+
+Backend API
+
+   ▼
+
+Application
+```
+
+Layered runtime controls improve resilience against both accidental misuse and malicious activity.
+
+---
+
+# Enterprise API Security Architecture
+
+```
+                   Developers
+
+                        │
+
+                Source Repository
+
+                        │
+
+                Continuous Integration
+
+        ┌───────────────┼────────────────┐
+
+        ▼               ▼                ▼
+
+      SAST         Dependency Scan   Contract Tests
+
+        │               │                │
+
+        └───────────────┼────────────────┘
+
+                        ▼
+
+                 API Security Tests
+
+                        │
+
+                Dynamic Testing
+
+                        │
+
+                 API Fuzzing
+
+                        │
+
+                        ▼
+
+                  Deployment
+
+                        │
+
+                 API Gateway
+
+                        │
+
+        ┌───────────────┼────────────────┐
+
+        ▼               ▼                ▼
+
+       WAF         Authentication     Monitoring
+
+                        │
+
+                 Backend Services
+
+                        │
+
+                Audit Logging
+
+                        │
+
+                 SIEM / SOAR
+
+                        │
+
+                        ▼
+
+                       SOC
+```
+
+---
+
+# Secure Development Toolchain
+
+Every API should ideally pass through multiple automated quality gates.
+
+```
+Design
+
+   │
+
+Specification Validation
+
+   │
+
+Code Review
+
+   │
+
+SAST
+
+   │
+
+Dependency Analysis
+
+   │
+
+Unit Testing
+
+   │
+
+Contract Testing
+
+   │
+
+DAST
+
+   │
+
+API Fuzzing
+
+   │
+
+Deployment Approval
+```
+
+Each stage reduces the likelihood of vulnerabilities reaching production.
+
+---
+
+# API Discovery Best Practices
+
+Maintain visibility into:
+
+- Public APIs
+- Internal APIs
+- Partner APIs
+- Mobile APIs
+- Deprecated APIs
+- Shadow APIs
+- Third-party APIs
+
+Review inventories regularly to ensure they reflect the current environment.
+
+---
+
+# API Gateway Best Practices
+
+Recommended controls include:
+
+- Strong authentication
+- Centralized authorization
+- Rate limiting
+- Request validation
+- Response transformation (when required)
+- Logging
+- Monitoring
+- TLS enforcement
+
+The gateway should enforce policy consistently while keeping backend services focused on business logic.
+
+---
+
+# Logging Best Practices
+
+Security-relevant events should include:
+
+- Timestamp
+- Request identifier
+- User or service identity
+- Source IP (where appropriate)
+- API endpoint
+- HTTP method
+- Response status
+- Authentication result
+- Authorization result
+
+Avoid logging secrets, passwords, or sensitive tokens.
+
+---
+
+# Monitoring Best Practices
+
+Continuously monitor:
+
+- API availability
+- Response latency
+- Error rates
+- Authentication failures
+- Authorization failures
+- Traffic spikes
+- Resource utilization
+- Version usage
+
+Trend analysis helps identify operational and security issues early.
+
+---
+
+# Detection Engineering
+
+High-value API detections include:
+
+| Detection | Indicator |
+|-----------|-----------|
+| Endpoint Enumeration | Sequential endpoint discovery attempts |
+| Object Enumeration | Sequential object identifier requests |
+| Brute Force | Repeated authentication failures |
+| Token Abuse | Invalid or expired token usage |
+| GraphQL Abuse | Excessive query depth or complexity |
+| Rate Limit Abuse | High request volume from a client |
+| Replay Activity | Duplicate request identifiers |
+| Deprecated API Access | Requests to retired endpoints |
+
+---
+
+# Example Detection Pipeline
+
+```
+API Gateway
+
+      │
+
+Application Logs
+
+      │
+
+Normalization
+
+      │
+
+Correlation Rules
+
+      │
+
+Risk Scoring
+
+      │
+
+Alert
+
+      ▼
+
+SOC Investigation
+```
+
+---
+
+# SIEM Data Sources
+
+A mature API security program typically ingests telemetry from:
+
+- API Gateway
+- Identity Provider
+- Web Application Firewall
+- Reverse Proxy
+- Application Logs
+- Database Audit Logs
+- Kubernetes Audit Logs
+- Cloud Audit Logs
+- Network Devices
+- Endpoint Detection Platforms
+
+Correlating events across multiple sources provides richer investigative context.
+
+---
+
+# Sample Correlation Rules
+
+## Rule 1 – Authentication Abuse
+
+```
+100 Failed Logins
+
+         │
+
+Single Account
+
+         │
+
+Successful Login
+
+         ▼
+
+Possible Account Compromise
+```
+
+---
+
+## Rule 2 – Object Enumeration
+
+```
+Sequential IDs
+
+      │
+
+Repeated 403 Responses
+
+      │
+
+High Request Rate
+
+      ▼
+
+Potential BOLA Enumeration
+```
+
+---
+
+## Rule 3 – Deprecated API Usage
+
+```
+Deprecated Endpoint
+
+         │
+
+Unexpected Requests
+
+         │
+
+External Source
+
+         ▼
+
+Security Review
+```
+
+---
+
+# Operational Metrics
+
+Track metrics such as:
+
+| Metric | Purpose |
+|---------|----------|
+| API Inventory Coverage | Visibility into managed APIs |
+| Mean Time to Detect (MTTD) | Detection effectiveness |
+| Mean Time to Respond (MTTR) | Response efficiency |
+| Vulnerabilities per Release | Development quality |
+| Security Test Coverage | Validation completeness |
+| Gateway Policy Compliance | Policy consistency |
+| Runtime Alert Volume | Monitoring effectiveness |
+| False Positive Rate | Detection quality |
+
+These metrics help evaluate both security posture and operational maturity.
+
+---
+
+# Hands-on Lab 1 – Build an API Inventory
+
+**Objective**
+
+Create a structured inventory of authorized APIs.
+
+**Steps**
+
+1. Collect API documentation.
+2. Identify deployed API versions.
+3. Record authentication methods.
+4. Classify APIs by business criticality.
+5. Review for deprecated or shadow APIs.
+
+**Learning Outcomes**
+
+- API governance
+- Asset inventory
+- Risk prioritization
+
+---
+
+# Hands-on Lab 2 – Gateway Policy Review
+
+**Objective**
+
+Review centralized API security controls.
+
+**Steps**
+
+1. Verify authentication enforcement.
+2. Review authorization policies.
+3. Confirm rate-limiting configuration.
+4. Check logging configuration.
+5. Validate TLS settings.
+
+**Learning Outcomes**
+
+- Gateway administration
+- Policy validation
+- Operational security
+
+---
+
+# Hands-on Lab 3 – Detection Rule Validation
+
+**Objective**
+
+Evaluate API monitoring effectiveness.
+
+**Steps**
+
+1. Generate authorized test events.
+2. Review centralized logs.
+3. Confirm SIEM ingestion.
+4. Verify correlation rule execution.
+5. Document alert results.
+
+**Learning Outcomes**
+
+- Detection engineering
+- SIEM validation
+- Operational monitoring
+
+---
+
+# Troubleshooting
+
+## Missing API Inventory Entries
+
+Possible causes
+
+- Shadow APIs
+- Incomplete discovery
+- Missing documentation
+- Outdated inventories
+
+---
+
+## Security Tests Produce Inconsistent Results
+
+Possible causes
+
+- Different environments
+- Cached responses
+- Authentication state
+- Configuration drift
+
+---
+
+## Runtime Alerts Are Missing
+
+Possible causes
+
+- Disabled logging
+- Incorrect log forwarding
+- Misconfigured correlation rules
+- Time synchronization issues
+
+---
+
+## Gateway Policies Are Not Enforced
+
+Possible causes
+
+- Routing configuration errors
+- Incorrect policy assignment
+- Legacy bypass routes
+- Version-specific exceptions
+
+---
+
+## Excessive False Positives
+
+Possible causes
+
+- Overly broad detection logic
+- Poorly tuned thresholds
+- Missing contextual information
+- Incomplete asset classification
+
+---
+
+# Interview Questions
+
+## Fundamental
+
+1. Why is API discovery important?
+2. What is the role of an API Gateway?
+3. How do SAST and DAST differ?
+4. What problems does Software Composition Analysis solve?
+5. Why is contract testing valuable?
+6. What is the purpose of runtime API protection?
+7. Why should secrets never be stored in source code?
+8. How does SIEM support API security?
+9. What is the difference between monitoring and logging?
+10. Why is API inventory considered the foundation of API security?
+
+---
+
+## Intermediate
+
+11. How would you design a secure API toolchain?
+12. Which controls belong at the API Gateway versus the backend service?
+13. How would you detect shadow APIs?
+14. Why should automated findings be manually validated?
+15. Which metrics best measure API security maturity?
+16. How would you prioritize investments in API security tooling?
+17. How can detection engineering improve API defenses?
+18. How would you integrate API security into DevSecOps?
+19. Which log sources are most valuable during an API incident?
+20. How would you evaluate the effectiveness of an enterprise API security platform?
+
+---
+
+## Scenario-Based
+
+**Scenario 1**
+
+A company has multiple API gateways across business units, but no centralized API inventory.
+
+- What operational and security risks does this create?
+- How would you build a complete inventory?
+- Which governance processes should be introduced?
+
+---
+
+**Scenario 2**
+
+A security assessment identifies several deprecated API versions still receiving production traffic.
+
+- Why is this concerning?
+- How would you investigate the remaining clients?
+- What retirement strategy would you recommend?
+
+---
+
+**Scenario 3**
+
+A SOC receives thousands of API-related alerts every day, but very few represent genuine security incidents.
+
+- What factors could be causing this?
+- How would you improve detection quality?
+- Which operational metrics would demonstrate improvement?
+
+---
+
+# Chapter Summary
+
+In this chapter, we explored the API security tooling ecosystem across development, testing, deployment, monitoring, and incident response.
+
+We covered:
+
+- API discovery and inventory
+- Documentation and contract validation
+- Security testing platforms
+- SAST, DAST, and SCA
+- API gateways and runtime protection
+- Monitoring, logging, SIEM, and SOAR
+- Enterprise architectures
+- Detection engineering
+- Operational metrics
+- Hands-on labs
+- Troubleshooting
+- Interview preparation
+
+A successful API security program relies on multiple integrated tools working together to provide visibility, prevention, detection, and response throughout the API lifecycle.
+
+---
+
+# Chapter Review
+
+You should now be able to answer:
+
+- Why is maintaining an API inventory essential?
+- How do SAST, DAST, SCA, and fuzzing complement one another?
+- Which responsibilities belong to an API Gateway?
+- What telemetry should be collected for effective API detection engineering?
+- Which metrics demonstrate API security maturity?
+- How would you design an enterprise API security toolchain?
+- How would you continuously improve API security operations using monitoring and feedback?
+
+If you can confidently answer these questions, you are ready to continue with **Chapter 24 – Secure API Development**, where you'll learn secure design principles, secure coding practices, threat modeling, secret management, input validation, secure deployment, DevSecOps integration, and defensive programming techniques.
+
+---
+
+# References
+
+## Standards
+
+- OpenAPI Specification
+- OWASP API Security Top 10
+- OWASP ASVS
+- NIST Secure Software Development Framework (SSDF)
+
+## Further Reading
+
+- MITRE ATT&CK Framework
+- OWASP Cheat Sheet Series
+- Secure Software Development Lifecycle (SSDLC)
+
+---
+
+# What's Next?
+
+➡️ **Chapter 24 – Secure API Development**
+
+Topics include:
+
+- Secure API design principles
+- Secure coding practices
+- Authentication and authorization implementation
+- Input validation and output encoding
+- Secret management
+- Error handling
+- Logging and auditing
+- DevSecOps integration
+- Threat modeling
+- Secure deployment
+- Hands-on labs
+- Interview questions
