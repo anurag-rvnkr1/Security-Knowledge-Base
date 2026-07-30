@@ -1396,4 +1396,1099 @@ SaaS is generally appropriate when organizations:
 
 ---
 
-**Next Section:** **Function as a Service (FaaS)** — learn serverless computing, event-driven architecture, execution lifecycle, cold starts, scaling mechanisms, security considerations, enterprise use cases, and how FaaS differs from traditional PaaS.
+# Function as a Service (FaaS)
+
+Function as a Service (FaaS), commonly known as **Serverless Computing**, is one of the most significant innovations in cloud computing. It enables developers to execute individual pieces of code—called **functions**—without provisioning, configuring, or managing servers.
+
+The term **serverless** can be misleading. Servers still exist, but the cloud provider completely manages them. Developers do not interact with the underlying infrastructure and instead focus solely on writing business logic.
+
+Unlike traditional applications that run continuously on virtual machines or application servers, FaaS applications execute **only when triggered by an event**. After execution, the computing resources are automatically released, and customers are billed only for the execution time and resources consumed.
+
+This model is highly efficient for event-driven workloads, microservices, APIs, automation tasks, and cloud-native applications.
+
+---
+
+# Learning Objectives
+
+After completing this section, you will be able to:
+
+- Understand Function as a Service (FaaS).
+- Explain serverless computing.
+- Understand event-driven architecture.
+- Learn the lifecycle of serverless functions.
+- Understand automatic scaling.
+- Learn cold starts and warm starts.
+- Understand execution environments.
+- Explore security considerations.
+- Identify enterprise use cases.
+- Compare FaaS with IaaS, PaaS, and SaaS.
+
+---
+
+# What is Function as a Service?
+
+Function as a Service is a cloud computing model where developers upload individual functions, and the cloud provider executes those functions automatically in response to specific events.
+
+Unlike traditional applications, there is no continuously running server waiting for requests.
+
+Instead:
+
+```
+Event
+
+↓
+
+Cloud Platform
+
+↓
+
+Execute Function
+
+↓
+
+Return Response
+
+↓
+
+Release Resources
+```
+
+This execution model greatly reduces infrastructure management while enabling highly scalable applications.
+
+---
+
+# Why FaaS Was Introduced
+
+Traditional application deployment required developers to manage:
+
+- Servers
+- Operating systems
+- Runtime environments
+- Scaling
+- Load balancing
+- Monitoring
+- High availability
+
+Even if an application received only a few requests each day, servers often remained powered on continuously.
+
+Example:
+
+```
+Server Running
+
+24 Hours
+
+↓
+
+Application Receives
+
+5 Requests
+
+↓
+
+Server Still Running
+```
+
+This approach wastes resources and increases operational costs.
+
+FaaS addresses this inefficiency by executing code **only when needed**.
+
+---
+
+# Serverless Computing Explained
+
+Serverless computing abstracts infrastructure completely.
+
+Developers simply write code.
+
+The provider automatically manages:
+
+- Servers
+- Virtual machines
+- Runtime environments
+- Scaling
+- Operating system updates
+- Networking
+- Load balancing
+- Availability
+- Infrastructure monitoring
+
+The developer focuses only on business functionality.
+
+```
+Developer
+
+↓
+
+Write Function
+
+↓
+
+Deploy Function
+
+↓
+
+Cloud Executes Automatically
+```
+
+---
+
+# Characteristics of FaaS
+
+Serverless functions have several defining characteristics.
+
+## Event Driven
+
+Functions execute only when triggered.
+
+Examples of events include:
+
+- HTTP requests
+- File uploads
+- Database updates
+- Message queue events
+- Scheduled tasks
+- IoT sensor data
+- Authentication events
+
+---
+
+## Stateless
+
+Functions generally do not maintain state between executions.
+
+Each execution should be independent.
+
+Example:
+
+```
+Request 1
+
+↓
+
+Function
+
+↓
+
+Ends
+
+────────────
+
+Request 2
+
+↓
+
+New Function Instance
+
+↓
+
+Ends
+```
+
+Persistent data should be stored in external services such as databases or object storage.
+
+---
+
+## Short-Lived
+
+Most cloud providers impose execution time limits.
+
+Functions are intended for:
+
+- Quick processing
+- Event handling
+- Automation
+- API requests
+
+Long-running workloads are typically better suited to virtual machines or containers.
+
+---
+
+## Automatic Scaling
+
+One of the greatest advantages of FaaS is automatic scaling.
+
+Example:
+
+```
+1 Request
+
+↓
+
+1 Function Instance
+
+────────────
+
+100 Requests
+
+↓
+
+100 Function Instances
+
+────────────
+
+10,000 Requests
+
+↓
+
+Thousands of Function Instances
+```
+
+Scaling occurs automatically without administrator intervention.
+
+---
+
+## Pay Per Execution
+
+Billing is based on:
+
+- Number of executions
+- Execution duration
+- Memory allocation
+- Additional cloud service usage
+
+If no requests occur, no compute charges are incurred.
+
+---
+
+# Event-Driven Architecture
+
+FaaS is built around events.
+
+```
+Event
+
+↓
+
+Trigger
+
+↓
+
+Function
+
+↓
+
+Business Logic
+
+↓
+
+Cloud Services
+
+↓
+
+Response
+```
+
+Events initiate execution automatically.
+
+---
+
+# Common Event Sources
+
+Serverless functions may be triggered by numerous cloud services.
+
+Examples include:
+
+### API Gateway
+
+```
+Client
+
+↓
+
+HTTP Request
+
+↓
+
+API Gateway
+
+↓
+
+Function
+
+↓
+
+Response
+```
+
+---
+
+### Object Storage
+
+```
+Upload File
+
+↓
+
+Storage Bucket
+
+↓
+
+Function
+
+↓
+
+Image Processing
+```
+
+---
+
+### Database Changes
+
+```
+Insert Record
+
+↓
+
+Database Event
+
+↓
+
+Function
+
+↓
+
+Notification
+```
+
+---
+
+### Message Queues
+
+```
+Application
+
+↓
+
+Queue
+
+↓
+
+Function
+
+↓
+
+Worker Process
+```
+
+---
+
+### Scheduled Events
+
+```
+Scheduler
+
+↓
+
+Function
+
+↓
+
+Daily Backup
+```
+
+---
+
+### Authentication Events
+
+```
+User Login
+
+↓
+
+Identity Service
+
+↓
+
+Function
+
+↓
+
+Audit Logging
+```
+
+---
+
+# Anatomy of a Serverless Function
+
+A serverless function generally contains:
+
+```
+Function
+
+├── Trigger
+
+├── Input
+
+├── Business Logic
+
+├── External Services
+
+├── Output
+
+└── Logs
+```
+
+Although functions are typically small, they may interact with numerous cloud services.
+
+---
+
+# Function Lifecycle
+
+Every execution follows a lifecycle.
+
+```
+Event Received
+
+↓
+
+Platform Starts Runtime
+
+↓
+
+Initialize Function
+
+↓
+
+Execute Business Logic
+
+↓
+
+Generate Response
+
+↓
+
+Runtime Terminates
+
+↓
+
+Resources Released
+```
+
+The provider manages the entire lifecycle.
+
+---
+
+# Cold Starts
+
+When no existing execution environment is available, the cloud provider must initialize a new runtime.
+
+This initialization is known as a **Cold Start**.
+
+```
+Request
+
+↓
+
+Create Runtime
+
+↓
+
+Load Function
+
+↓
+
+Initialize
+
+↓
+
+Execute
+```
+
+Cold starts introduce additional latency.
+
+Factors affecting cold starts include:
+
+- Runtime language
+- Package size
+- Dependencies
+- Memory allocation
+- Network initialization
+
+---
+
+# Warm Starts
+
+If an execution environment already exists, the platform can reuse it.
+
+```
+Request
+
+↓
+
+Existing Runtime
+
+↓
+
+Execute Immediately
+```
+
+Warm starts are faster because initialization has already occurred.
+
+---
+
+# Cold Start vs Warm Start
+
+| Cold Start | Warm Start |
+|------------|------------|
+| New runtime | Existing runtime |
+| Higher latency | Lower latency |
+| Initialization required | Initialization skipped |
+| More resource preparation | Immediate execution |
+
+Optimizing function size helps reduce cold-start latency.
+
+---
+
+# Runtime Environment
+
+Each function executes inside an isolated runtime.
+
+The runtime contains:
+
+- Language interpreter
+- Memory
+- Temporary storage
+- Environment variables
+- Execution context
+
+```
+Runtime
+
+├── Function Code
+
+├── Language Runtime
+
+├── Memory
+
+├── Temporary Files
+
+└── Logs
+```
+
+Isolation prevents functions from interfering with one another.
+
+---
+
+# Memory Allocation
+
+Functions receive configurable memory.
+
+```
+128 MB
+
+↓
+
+512 MB
+
+↓
+
+1 GB
+
+↓
+
+2 GB
+
+↓
+
+4 GB
+```
+
+Increasing memory often improves CPU performance because many cloud providers allocate CPU resources proportionally.
+
+However, excessive memory allocation increases costs.
+
+---
+
+# Stateless Design
+
+Serverless functions should remain stateless.
+
+Incorrect design:
+
+```
+Request 1
+
+↓
+
+Save Variable
+
+↓
+
+Request Ends
+
+↓
+
+Request 2
+
+↓
+
+Variable Missing
+```
+
+Correct design:
+
+```
+Request
+
+↓
+
+Database
+
+↓
+
+Function
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Persistent information belongs in external storage.
+
+---
+
+# FaaS Architecture
+
+```
+Client
+
+      │
+
+API Gateway
+
+      │
+
+Function
+
+      │
+
+Business Logic
+
+      │
+
+Database
+
+      │
+
+Storage
+
+      │
+
+Messaging
+
+      │
+
+Monitoring
+```
+
+Functions commonly orchestrate multiple managed services.
+
+---
+
+# Enterprise Serverless Workflow
+
+```
+Customer
+
+↓
+
+Mobile Application
+
+↓
+
+API Gateway
+
+↓
+
+Authentication
+
+↓
+
+Function
+
+↓
+
+Database
+
+↓
+
+Notification Service
+
+↓
+
+Email Sent
+```
+
+The entire workflow operates without dedicated application servers.
+
+---
+
+# Common FaaS Use Cases
+
+Organizations use FaaS for many workloads.
+
+Examples include:
+
+### REST APIs
+
+Functions process HTTP requests.
+
+---
+
+### Image Processing
+
+Automatically resize uploaded images.
+
+---
+
+### Log Processing
+
+Analyze security logs as they arrive.
+
+---
+
+### File Conversion
+
+Convert uploaded documents.
+
+---
+
+### Notifications
+
+Send emails or SMS messages.
+
+---
+
+### Scheduled Jobs
+
+Generate daily reports.
+
+---
+
+### IoT
+
+Process sensor data.
+
+---
+
+### Security Automation
+
+Respond automatically to security events.
+
+---
+
+### DevSecOps
+
+Automate deployments.
+
+---
+
+### AI Workflows
+
+Trigger machine learning inference.
+
+---
+
+# Advantages of FaaS
+
+## Reduced Operational Overhead
+
+No server administration.
+
+---
+
+## Automatic Scaling
+
+Handles unpredictable workloads automatically.
+
+---
+
+## Cost Efficiency
+
+Organizations pay only for execution.
+
+---
+
+## Rapid Deployment
+
+Functions deploy quickly.
+
+---
+
+## High Availability
+
+Managed by the provider.
+
+---
+
+## Faster Development
+
+Developers focus on business logic.
+
+---
+
+# Limitations of FaaS
+
+Despite its advantages, FaaS is not appropriate for every workload.
+
+Challenges include:
+
+- Cold starts
+- Execution time limits
+- Stateless design
+- Limited runtime customization
+- Vendor lock-in
+- Debugging complexity
+- Distributed architecture
+- Monitoring challenges
+
+Applications requiring long-running processes may be better suited to containers or virtual machines.
+
+---
+
+# Security Considerations
+
+Although the cloud provider secures the infrastructure, customers remain responsible for function security.
+
+Important considerations include:
+
+## Least Privilege
+
+Functions should receive only the permissions they require.
+
+Incorrect:
+
+```
+Function
+
+↓
+
+Administrator Access
+```
+
+Correct:
+
+```
+Function
+
+↓
+
+Read Storage
+
+↓
+
+Write Database
+
+↓
+
+Send Notification
+```
+
+---
+
+## Secret Management
+
+Avoid storing secrets directly inside source code.
+
+Use dedicated secret management services.
+
+Incorrect:
+
+```
+Password
+
+Inside Source Code
+```
+
+Correct:
+
+```
+Function
+
+↓
+
+Secret Manager
+
+↓
+
+Temporary Credential
+```
+
+---
+
+## Input Validation
+
+Never trust incoming input.
+
+Validate:
+
+- JSON
+- HTTP parameters
+- Uploaded files
+- Event payloads
+
+---
+
+## Logging
+
+Log:
+
+- Errors
+- Security events
+- Authentication failures
+- Permission errors
+- Execution failures
+
+Logs are critical for incident response.
+
+---
+
+## Dependency Management
+
+Serverless applications frequently rely on third-party libraries.
+
+Organizations should:
+
+- Scan dependencies
+- Update packages
+- Remove unused libraries
+- Monitor known vulnerabilities
+
+---
+
+# Common Security Risks
+
+Common FaaS risks include:
+
+- Excessive IAM permissions
+- Hardcoded secrets
+- Insecure dependencies
+- Event injection
+- Broken authentication
+- Broken authorization
+- Function chaining attacks
+- API abuse
+- Sensitive data leakage
+- Insufficient logging
+
+These risks require secure coding practices and continuous monitoring.
+
+---
+
+# FaaS vs PaaS
+
+| Feature | FaaS | PaaS |
+|----------|------|------|
+| Execution | Event Driven | Continuously Running |
+| Scaling | Automatic | Automatic |
+| Infrastructure | Fully Hidden | Mostly Hidden |
+| Billing | Per Execution | Running Resources |
+| State | Stateless | Stateful or Stateless |
+| Deployment Unit | Function | Application |
+| Startup Time | Milliseconds | Usually Continuous |
+
+---
+
+# FaaS vs IaaS
+
+| Feature | IaaS | FaaS |
+|----------|------|------|
+| Server Management | Customer | Provider |
+| Operating System | Customer | Provider |
+| Scaling | Customer Configures | Automatic |
+| Runtime | Customer | Provider |
+| Billing | Running VM | Execution Time |
+| Administrative Access | Full | None |
+
+---
+
+# Enterprise Example
+
+A banking application receives thousands of uploaded documents each day.
+
+```
+Customer Upload
+
+↓
+
+Object Storage
+
+↓
+
+Event Trigger
+
+↓
+
+Virus Scan Function
+
+↓
+
+OCR Function
+
+↓
+
+Compliance Check
+
+↓
+
+Database Update
+
+↓
+
+Notification
+```
+
+Each step executes independently.
+
+No application server remains running continuously.
+
+This architecture improves scalability while reducing operational overhead.
+
+---
+
+# Best Practices
+
+- Keep functions small and focused.
+- Apply the Principle of Least Privilege.
+- Store secrets in managed secret stores.
+- Validate all input.
+- Minimize package size.
+- Monitor execution logs.
+- Rotate credentials regularly.
+- Scan dependencies continuously.
+- Use Infrastructure as Code.
+- Implement comprehensive observability.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Granting administrator permissions.
+- Embedding credentials in source code.
+- Ignoring cold-start optimization.
+- Creating excessively large functions.
+- Storing state inside execution environments.
+- Disabling logging.
+- Using outdated libraries.
+- Trusting event payloads without validation.
+
+---
+
+# Key Takeaways
+
+- Function as a Service (FaaS) enables developers to execute code without managing servers.
+- Functions are event-driven, stateless, automatically scalable, and billed based on execution.
+- The cloud provider manages infrastructure, while customers remain responsible for code, permissions, secrets, and business logic.
+- Cold starts, execution limits, and dependency management are important design considerations.
+- FaaS is ideal for cloud-native, event-driven applications, automation workflows, APIs, and microservices, making it a cornerstone of modern cloud architectures.
+
+---
+
+**Next Section:** **Backend as a Service (BaaS)** — explore managed backend services, authentication, databases, storage, messaging, push notifications, mobile application backends, security architecture, enterprise use cases, and how BaaS accelerates application development.
