@@ -1098,4 +1098,633 @@ Avoid:
 
 ---
 
-**Next:** Explore the **Cloud Security Threat Landscape**, including common attack vectors, cloud-specific vulnerabilities, adversary techniques, and real-world cloud breach scenarios before moving into **Chapter 02 – Cloud Computing Fundamentals**.
+# Cloud Security Threat Landscape
+
+Understanding the cloud threat landscape is essential for designing resilient cloud architectures and implementing effective defensive controls.
+
+Unlike traditional environments where attackers often target physical infrastructure or internal corporate networks, cloud environments introduce new attack vectors centered around identities, APIs, automation, and misconfigurations.
+
+Today, the majority of successful cloud breaches are not caused by sophisticated zero-day vulnerabilities. Instead, they result from preventable security weaknesses such as:
+
+- Misconfigured cloud services
+- Excessive permissions
+- Weak identity controls
+- Exposed secrets
+- Insecure APIs
+- Human error
+
+Modern attackers exploit the speed and automation of cloud platforms to move quickly, escalate privileges, and access sensitive resources.
+
+Understanding how attackers operate enables defenders to build proactive security strategies.
+
+---
+
+# What is the Cloud Threat Landscape?
+
+The cloud threat landscape refers to the collection of potential threats, attack techniques, vulnerabilities, and risks that can affect cloud environments.
+
+It includes threats targeting:
+
+- Cloud infrastructure
+- Cloud identities
+- Virtual machines
+- Containers
+- Kubernetes clusters
+- Serverless applications
+- APIs
+- Cloud storage
+- CI/CD pipelines
+- Software supply chains
+- Cloud management interfaces
+
+The landscape continuously evolves as cloud technologies advance and attackers develop new techniques.
+
+---
+
+# Why Attackers Target the Cloud
+
+Cloud environments are attractive targets because they often contain valuable assets.
+
+Examples include:
+
+- Customer databases
+- Financial records
+- Intellectual property
+- Source code
+- Encryption keys
+- Machine learning models
+- Enterprise APIs
+- Administrative credentials
+- Backup data
+
+Compromising a single cloud account may provide access to hundreds or even thousands of cloud resources.
+
+---
+
+# Cloud Attack Surface
+
+The attack surface represents every possible point through which an attacker can interact with a cloud environment.
+
+```
+                    Internet
+
+                        │
+
+            Cloud Management Console
+
+                        │
+
+      ┌─────────────────┼─────────────────┐
+
+      ▼                 ▼                 ▼
+
+ Identity         Public APIs      Load Balancer
+
+      │                 │                 │
+
+      ├─────────────────┼─────────────────┤
+
+      ▼                 ▼                 ▼
+
+ Containers       Virtual Machines   Serverless
+
+      │                 │                 │
+
+      ├─────────────────┼─────────────────┤
+
+      ▼                 ▼                 ▼
+
+ Storage          Databases        Kubernetes
+
+                        │
+
+                        ▼
+
+                 Monitoring Systems
+
+                        │
+
+                        ▼
+
+                  Security Operations
+```
+
+Every exposed service increases the overall attack surface.
+
+Reducing unnecessary exposure is a fundamental security objective.
+
+---
+
+# Common Cloud Threat Categories
+
+Cloud threats generally fall into several categories.
+
+| Category | Examples |
+|-----------|----------|
+| Identity Attacks | Credential theft, MFA bypass |
+| Network Attacks | Scanning, DDoS, lateral movement |
+| Data Attacks | Data theft, unauthorized access |
+| API Attacks | Authentication bypass, API abuse |
+| Compute Attacks | VM compromise, container escape |
+| Supply Chain Attacks | Malicious dependencies |
+| Insider Threats | Privilege misuse |
+| Misconfiguration | Public storage, open ports |
+
+Each category requires different defensive controls.
+
+---
+
+# Identity-Based Attacks
+
+Identity has become the primary security perimeter in cloud computing.
+
+Attackers commonly attempt to compromise identities rather than infrastructure.
+
+Common techniques include:
+
+- Password spraying
+- Credential stuffing
+- Phishing
+- MFA fatigue attacks
+- Session hijacking
+- Token theft
+- API key compromise
+- Service account abuse
+
+```
+Attacker
+
+    │
+
+Credential Theft
+
+    │
+
+Cloud Identity
+
+    │
+
+Cloud Resources
+```
+
+Strong identity protection is therefore one of the highest priorities in cloud security.
+
+---
+
+# Credential Theft
+
+Stolen credentials remain one of the leading causes of cloud breaches.
+
+Credentials may include:
+
+- Usernames
+- Passwords
+- API keys
+- Access tokens
+- OAuth tokens
+- Cloud access keys
+- SSH keys
+- Service account credentials
+
+Attackers often obtain credentials through:
+
+- Phishing
+- Malware
+- Source code leaks
+- Public repositories
+- Social engineering
+- Insecure backups
+
+---
+
+# Excessive Permissions
+
+Many organizations grant users and applications more permissions than necessary.
+
+Example
+
+```
+Application
+
+Needs:
+
+Read Storage
+
+Granted:
+
+Administrator Access
+```
+
+This violates the Principle of Least Privilege.
+
+If the application is compromised, attackers inherit all unnecessary permissions.
+
+---
+
+# Cloud Misconfigurations
+
+Misconfiguration is consistently one of the most common causes of cloud security incidents.
+
+Examples include:
+
+- Public storage buckets
+- Open databases
+- Unrestricted security groups
+- Disabled encryption
+- Weak IAM policies
+- Public Kubernetes dashboards
+- Default credentials
+- Exposed management interfaces
+
+Most misconfigurations are accidental and can often be detected through automated configuration assessments.
+
+---
+
+# Public Storage Exposure
+
+Object storage services are designed for durability and accessibility, but incorrect permissions can unintentionally expose sensitive information.
+
+```
+Storage Bucket
+
+      │
+
+Public Access Enabled
+
+      │
+
+Internet
+
+      ▼
+
+Sensitive Data
+```
+
+Commonly exposed information includes:
+
+- Customer records
+- Backups
+- Source code
+- Internal documents
+- Application logs
+
+Restrict public access unless there is a clear business requirement.
+
+---
+
+# Insecure APIs
+
+Cloud platforms rely heavily on APIs.
+
+Attackers may target APIs to:
+
+- Enumerate resources
+- Bypass authentication
+- Exploit authorization flaws
+- Abuse business logic
+- Steal sensitive information
+
+API security requires:
+
+- Authentication
+- Authorization
+- Input validation
+- Rate limiting
+- Monitoring
+- Logging
+
+---
+
+# Server-Side Request Forgery (SSRF)
+
+Many cloud environments expose metadata services that provide temporary credentials to workloads.
+
+If an application is vulnerable to SSRF, an attacker may attempt to access these metadata services.
+
+```
+Attacker
+
+    │
+
+Malicious Request
+
+    │
+
+Vulnerable Application
+
+    │
+
+Metadata Service
+
+    │
+
+Temporary Credentials
+```
+
+Modern cloud platforms provide protections against metadata abuse, but secure application design remains essential.
+
+---
+
+# Secrets Exposure
+
+Applications often require credentials to access cloud services.
+
+Common secrets include:
+
+- API keys
+- Database passwords
+- OAuth secrets
+- Encryption keys
+- Cloud credentials
+- Certificates
+
+Common causes of exposure include:
+
+- Source code repositories
+- CI/CD logs
+- Configuration files
+- Container images
+- Shared documents
+
+Dedicated secrets management solutions should be used instead of embedding secrets directly into applications.
+
+---
+
+# Supply Chain Attacks
+
+Organizations increasingly rely on third-party software and open-source packages.
+
+An attacker may compromise:
+
+- Libraries
+- Container images
+- Build pipelines
+- CI/CD tools
+- Software repositories
+
+```
+Developer
+
+     │
+
+Dependency
+
+     │
+
+Malicious Package
+
+     │
+
+Application
+
+     ▼
+
+Cloud Environment
+```
+
+Software supply chain security has become a critical component of cloud security.
+
+---
+
+# Container Attacks
+
+Containers provide isolation but are not immune to compromise.
+
+Attackers may attempt to:
+
+- Exploit vulnerable images
+- Escape containers
+- Abuse privileged containers
+- Steal secrets
+- Access host resources
+
+Security controls include:
+
+- Minimal base images
+- Image scanning
+- Runtime protection
+- Least privilege
+- Read-only file systems where appropriate
+
+---
+
+# Kubernetes Threats
+
+Common Kubernetes risks include:
+
+- Anonymous access
+- Weak RBAC policies
+- Privileged pods
+- Exposed dashboards
+- Secret leakage
+- Insecure admission controllers
+- Vulnerable workloads
+
+Kubernetes security requires controls at multiple layers, including the control plane, worker nodes, workloads, networking, and identities.
+
+---
+
+# Serverless Threats
+
+Serverless computing reduces infrastructure management but introduces unique security considerations.
+
+Common risks include:
+
+- Excessive permissions
+- Dependency vulnerabilities
+- Event injection
+- Insecure environment variables
+- Function chaining attacks
+
+Because serverless functions are event-driven, monitoring invocation patterns is particularly important.
+
+---
+
+# Insider Threats
+
+Not all threats originate from external attackers.
+
+Insider threats may involve:
+
+- Malicious employees
+- Negligent administrators
+- Compromised contractors
+- Misused privileged accounts
+
+Strong auditing, segregation of duties, and least privilege help reduce insider risk.
+
+---
+
+# Ransomware in the Cloud
+
+Cloud environments are not immune to ransomware.
+
+Attackers may target:
+
+- Cloud storage
+- Virtual machines
+- Databases
+- Backup repositories
+- File synchronization services
+
+Defensive measures include:
+
+- Immutable backups
+- Multi-factor authentication
+- Network segmentation
+- Continuous monitoring
+- Regular recovery testing
+
+---
+
+# Data Exfiltration
+
+One of the primary goals of many attackers is unauthorized data extraction.
+
+```
+Sensitive Data
+
+      │
+
+Unauthorized Access
+
+      │
+
+Outbound Transfer
+
+      ▼
+
+Attacker
+```
+
+Detection strategies include monitoring:
+
+- Large downloads
+- Unusual API activity
+- Geographic anomalies
+- Excessive storage access
+- Unexpected outbound traffic
+
+---
+
+# Denial of Service (DoS)
+
+Attackers may attempt to disrupt cloud services through resource exhaustion.
+
+Targets include:
+
+- APIs
+- Load balancers
+- Web applications
+- Databases
+- Authentication services
+
+Mitigations include:
+
+- Rate limiting
+- Auto Scaling
+- DDoS protection services
+- Web Application Firewalls
+- Traffic filtering
+
+---
+
+# Threat Actors
+
+Cloud threats originate from various adversaries.
+
+| Threat Actor | Typical Motivation |
+|--------------|-------------------|
+| Cybercriminals | Financial gain |
+| Nation-State Groups | Espionage, disruption |
+| Hacktivists | Political or social causes |
+| Insider Threats | Personal or financial motives |
+| Competitors | Intellectual property theft |
+| Opportunistic Attackers | Exploiting exposed resources |
+
+Understanding attacker motivations helps prioritize defensive strategies.
+
+---
+
+# Defense-in-Depth
+
+No single security control can prevent every attack.
+
+Cloud security therefore relies on multiple layers of defense.
+
+```
+Users
+
+   │
+
+Identity Controls
+
+   │
+
+Network Controls
+
+   │
+
+Application Security
+
+   │
+
+Encryption
+
+   │
+
+Monitoring
+
+   │
+
+Threat Detection
+
+   │
+
+Incident Response
+```
+
+If one layer fails, additional controls help prevent compromise.
+
+---
+
+# Best Practices
+
+- Enable Multi-Factor Authentication for privileged accounts.
+- Apply the Principle of Least Privilege.
+- Encrypt sensitive data in transit and at rest.
+- Continuously monitor cloud activity.
+- Review IAM permissions regularly.
+- Scan Infrastructure as Code templates before deployment.
+- Use dedicated secrets management solutions.
+- Secure APIs with strong authentication and authorization.
+- Maintain an up-to-date inventory of cloud assets.
+- Test incident response procedures regularly.
+
+---
+
+# Common Mistakes
+
+Avoid:
+
+- Assuming cloud providers secure customer workloads automatically.
+- Granting administrator privileges by default.
+- Leaving storage publicly accessible.
+- Hard-coding credentials into applications.
+- Ignoring audit logs.
+- Failing to rotate secrets.
+- Skipping vulnerability management.
+- Disabling security monitoring to reduce operational costs.
+
+---
+
+# Key Takeaways
+
+- Cloud attacks increasingly target identities, APIs, automation, and misconfigurations rather than physical infrastructure.
+- Identity protection is the cornerstone of modern cloud security.
+- Continuous monitoring, least privilege, secure configuration, and layered defenses significantly reduce risk.
+- Understanding the threat landscape prepares you to design secure architectures and respond effectively to evolving threats.
+
+---
+
+**Next:** **Cloud Security Principles** — explore foundational concepts such as Zero Trust, Defense in Depth, Least Privilege, Shared Responsibility, Secure-by-Design, and Security-by-Default before moving into **Chapter 02 – Cloud Computing Fundamentals**.
