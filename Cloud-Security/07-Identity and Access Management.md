@@ -648,3 +648,749 @@ These accounts require enhanced protections such as:
 
 ---
 
+## How It Works
+
+Identity and Access Management (IAM) operates through a sequence of authentication, authorization, and policy evaluation steps before granting access to cloud resources.
+
+Every request—whether initiated by a human user, application, virtual machine, container, or API—is evaluated against configured IAM policies.
+
+The following workflow illustrates a typical IAM authorization process.
+
+```
+          User / Application
+
+                  │
+
+                  ▼
+
+        Identity Authentication
+
+                  │
+
+         Password / MFA / SSO
+
+                  │
+
+                  ▼
+
+      Authentication Successful?
+
+         │                    │
+
+       Yes                    No
+
+        │                     │
+
+        ▼                     ▼
+
+ Retrieve Roles & Policies   Access Denied
+
+        │
+
+        ▼
+
+ Evaluate Authorization Rules
+
+        │
+
+        ▼
+
+ Resource Access Granted?
+      │               │
+
+     Yes             No
+
+      │               │
+
+      ▼               ▼
+
+ Access Granted   Access Denied
+
+      │
+
+      ▼
+
+ Audit Logs Generated
+```
+
+Every successful and unsuccessful request should be recorded for auditing and forensic investigations.
+
+---
+
+### Step 1 – Identity Creation
+
+Before a user can access cloud resources, an identity must exist.
+
+Examples include:
+
+- Employee accounts
+- Administrator accounts
+- Service accounts
+- Applications
+- Virtual machines
+- Containers
+- Serverless functions
+
+Each identity should have:
+
+- Unique identifier
+- Authentication method
+- Assigned roles
+- Security policies
+- Ownership
+- Lifecycle management
+
+Example:
+
+```
+Developer
+
+↓
+
+Corporate Identity
+
+↓
+
+Cloud IAM Account
+
+↓
+
+Developer Role Assigned
+```
+
+---
+
+### Step 2 – Authentication
+
+The identity proves who it is.
+
+Authentication methods may include:
+
+- Password
+- Passkey
+- Multi-Factor Authentication
+- Security key
+- Certificate
+- Smart card
+- Biometrics
+
+Example:
+
+```
+Username
+
+↓
+
+Password
+
+↓
+
+MFA Challenge
+
+↓
+
+Identity Verified
+```
+
+Authentication alone does not provide access.
+
+---
+
+### Step 3 – Token Generation
+
+After successful authentication, the Identity Provider (IdP) usually issues a temporary authentication token.
+
+Examples:
+
+- JWT (JSON Web Token)
+- OAuth Access Token
+- SAML Assertion
+- OIDC ID Token
+
+```
+Identity Verified
+
+↓
+
+Token Issued
+
+↓
+
+Token Contains
+
+• Identity
+
+• Roles
+
+• Expiration
+
+• Claims
+```
+
+Temporary credentials are preferred over long-lived credentials because they reduce exposure if compromised.
+
+---
+
+### Step 4 – Authorization
+
+IAM evaluates whether the authenticated identity has permission to perform the requested action.
+
+Example request:
+
+```
+Developer
+
+↓
+
+Delete Production Database
+```
+
+IAM evaluates:
+
+```
+Developer Role
+
+↓
+
+Allowed Actions
+
+↓
+
+Requested Action
+
+↓
+
+Decision
+```
+
+If permission does not exist, the request is denied.
+
+---
+
+### Step 5 – Policy Evaluation
+
+Cloud platforms evaluate multiple policy sources before making an authorization decision.
+
+Typical evaluation includes:
+
+```
+Identity Policy
+
+↓
+
+Resource Policy
+
+↓
+
+Organization Policy
+
+↓
+
+Permission Boundary
+
+↓
+
+Conditional Rules
+
+↓
+
+Final Decision
+```
+
+An explicit deny normally overrides allow statements.
+
+---
+
+### Step 6 – Resource Access
+
+If authorization succeeds:
+
+```
+Identity
+
+↓
+
+Authorized
+
+↓
+
+Cloud Resource
+
+↓
+
+Operation Executed
+```
+
+Otherwise:
+
+```
+Identity
+
+↓
+
+Authorization Failed
+
+↓
+
+Access Denied
+```
+
+---
+
+### Step 7 – Audit Logging
+
+Every request should be logged.
+
+Typical log information includes:
+
+- Identity
+- Timestamp
+- Source IP
+- Requested resource
+- Action performed
+- Authentication method
+- Result
+- Geographic location
+- Device information
+
+Example:
+
+```
+09:42 UTC
+
+↓
+
+Developer
+
+↓
+
+Create Virtual Machine
+
+↓
+
+Success
+```
+
+These logs support:
+
+- Security investigations
+- Compliance
+- Threat hunting
+- Incident response
+
+---
+
+## IAM Authorization Flow
+
+```
+User
+
+↓
+
+Authenticate
+
+↓
+
+Identity Verified
+
+↓
+
+Retrieve Roles
+
+↓
+
+Retrieve Policies
+
+↓
+
+Evaluate Conditions
+
+↓
+
+Allow or Deny
+
+↓
+
+Audit Log
+```
+
+This process occurs within milliseconds for most cloud platforms.
+
+---
+
+## Practical Example
+
+### Example 1 – Developer Deploying an Application
+
+An application developer wants to deploy a new version of a web application.
+
+```
+Developer
+
+↓
+
+Authenticate
+
+↓
+
+MFA Verification
+
+↓
+
+Developer Role
+
+↓
+
+Deploy Application
+
+↓
+
+Deployment Successful
+```
+
+Permissions granted:
+
+- Deploy applications
+- Read logs
+- View monitoring dashboards
+
+Permissions denied:
+
+- Delete storage buckets
+- Modify IAM policies
+- Manage billing
+- Access HR databases
+
+This follows the Principle of Least Privilege.
+
+---
+
+### Example 2 – Unauthorized Database Deletion
+
+A developer accidentally attempts to delete a production database.
+
+```
+Developer
+
+↓
+
+Delete Database
+
+↓
+
+IAM Policy Evaluation
+
+↓
+
+Permission Missing
+
+↓
+
+Access Denied
+
+↓
+
+Security Log Created
+```
+
+IAM prevents accidental or malicious destructive actions.
+
+---
+
+### Example 3 – Administrator Access
+
+Cloud administrators require elevated permissions.
+
+```
+Administrator
+
+↓
+
+Authenticate
+
+↓
+
+MFA
+
+↓
+
+Privileged Role
+
+↓
+
+Modify Firewall Rules
+
+↓
+
+Access Granted
+```
+
+Administrative actions should be:
+
+- Logged
+- Monitored
+- Approved where appropriate
+- Regularly reviewed
+
+---
+
+### Example 4 – Machine Identity
+
+Applications frequently access cloud resources without human intervention.
+
+```
+Application
+
+↓
+
+Managed Identity
+
+↓
+
+Temporary Token
+
+↓
+
+Database Access
+
+↓
+
+Retrieve Records
+```
+
+No passwords are stored inside the application.
+
+---
+
+### Example 5 – Federated Login
+
+An employee signs in using corporate credentials.
+
+```
+Employee
+
+↓
+
+Corporate Identity Provider
+
+↓
+
+SAML Authentication
+
+↓
+
+Cloud Platform
+
+↓
+
+Cloud Dashboard
+```
+
+The employee never creates a separate cloud password.
+
+---
+
+### Example 6 – API Access
+
+A monitoring application calls a cloud API.
+
+```
+Application
+
+↓
+
+OAuth Token
+
+↓
+
+Cloud API
+
+↓
+
+Policy Evaluation
+
+↓
+
+Metrics Returned
+```
+
+The API validates the token before processing requests.
+
+---
+
+## IAM Decision Matrix
+
+| Identity | Requested Action | Permission | Result |
+|----------|------------------|------------|--------|
+| Developer | Deploy Application | Allow | Granted |
+| Developer | Delete Database | Deny | Blocked |
+| Auditor | Read Logs | Allow | Granted |
+| Auditor | Modify Resources | Deny | Blocked |
+| Administrator | Create VM | Allow | Granted |
+| Guest User | View Billing | Deny | Blocked |
+
+---
+
+## Common Authentication Methods
+
+| Method | Security Level | Typical Use Case |
+|---------|---------------|------------------|
+| Password | Medium | General user access |
+| Password + MFA | High | Administrative access |
+| Passkey | Very High | Passwordless authentication |
+| Smart Card | High | Enterprise environments |
+| Hardware Security Key | Very High | Privileged users |
+| Certificate Authentication | High | Servers and devices |
+| Biometrics | High | Mobile devices and secure workstations |
+
+---
+
+## Common Authorization Models
+
+| Model | Description | Example |
+|--------|-------------|---------|
+| RBAC | Access based on roles | Developer role |
+| ABAC | Access based on attributes | Department = Finance |
+| DAC | Resource owner grants permissions | File sharing |
+| MAC | Central authority controls access | Government systems |
+
+---
+
+## Indicators of IAM Security Issues (Detection)
+
+Effective IAM monitoring helps identify unauthorized access attempts, privilege misuse, and identity-based attacks before they lead to compromise.
+
+Common indicators include:
+
+### Unusual Login Activity
+
+Examples:
+
+- Logins from unfamiliar geographic locations
+- Impossible travel events
+- Logins outside business hours
+- Simultaneous logins from different countries
+
+Example:
+
+```
+09:00
+
+India Login
+
+↓
+
+09:20
+
+Germany Login
+
+↓
+
+Impossible Travel Alert
+```
+
+---
+
+### Repeated Authentication Failures
+
+Large numbers of failed login attempts may indicate:
+
+- Password spraying
+- Credential stuffing
+- Brute-force attacks
+- Account enumeration
+
+Example indicators:
+
+- Hundreds of failed logins
+- Multiple usernames targeted
+- Sequential password attempts
+
+---
+
+### Excessive Privilege Changes
+
+Security teams should investigate:
+
+- New administrator accounts
+- Privilege escalation
+- Unexpected role assignments
+- Policy modifications
+- Root account usage
+
+---
+
+### Dormant Account Activity
+
+Inactive accounts suddenly becoming active may indicate compromise.
+
+```
+Account Inactive
+
+↓
+
+180 Days
+
+↓
+
+Unexpected Login
+
+↓
+
+Security Investigation
+```
+
+---
+
+### Suspicious API Usage
+
+Indicators include:
+
+- Unusual API calls
+- Access from unknown IP addresses
+- Large numbers of failed API requests
+- Unexpected service account activity
+
+---
+
+### Machine Identity Abuse
+
+Security monitoring should detect:
+
+- Service accounts used by humans
+- Tokens used from unexpected locations
+- Expired credentials being reused
+- Unauthorized application access
+
+---
+
+### IAM Monitoring Sources
+
+Security teams commonly analyze:
+
+- Authentication logs
+- Authorization logs
+- Cloud audit logs
+- Identity Provider logs
+- API gateway logs
+- VPN logs
+- Privileged access logs
+- Federation events
+
+---
+
+## Detection Best Practices
+
+- Enable audit logging for all IAM activities.
+- Monitor privileged account usage continuously.
+- Detect impossible travel events.
+- Alert on privilege escalation attempts.
+- Review failed authentication trends.
+- Monitor inactive accounts.
+- Detect unusual API usage patterns.
+- Integrate IAM logs with SIEM platforms.
+- Perform regular access reviews.
+- Investigate all unexpected administrative activities.
+
+---
+
