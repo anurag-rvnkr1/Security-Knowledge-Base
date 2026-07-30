@@ -1397,14 +1397,682 @@ Security teams should monitor:
 
 ---
 
-## Next Section
+## Prevention
 
-Prevention
+Preventing cloud storage incidents requires securing every layer involved in storing and accessing data. Security should not rely solely on encryption but should also include strong identity controls, secure configurations, continuous monitoring, governance, and regular auditing.
 
-Best Practices
+An effective Cloud Storage Security prevention strategy should protect:
 
-Common Mistakes
+- Storage buckets
+- File shares
+- Block storage volumes
+- Snapshots
+- Backups
+- Storage accounts
+- Access policies
+- Encryption keys
+- Metadata
+- Audit logs
 
-References
+Cloud storage should follow the principles of **Least Privilege**, **Defense in Depth**, **Zero Trust**, and **Secure by Default**.
+
+---
+
+# Defense-in-Depth for Cloud Storage
+
+```
+                 Users / Applications
+
+                          │
+
+                          ▼
+
+               Identity Authentication
+
+                          │
+
+                          ▼
+
+                 IAM Authorization
+
+                          │
+
+                          ▼
+
+                 Storage Access Policies
+
+                          │
+
+                          ▼
+
+              Encrypted Cloud Storage
+
+          ┌───────────────┼────────────────┐
+
+          ▼               ▼                ▼
+
+   Object Storage   File Storage    Block Storage
+
+          │               │                │
+
+          └───────────────┼────────────────┘
+
+                          ▼
+
+              Logging & Continuous Monitoring
+
+                          ▼
+
+                 Backup & Disaster Recovery
+```
+
+Each security layer reduces the likelihood and impact of unauthorized access or data loss.
+
+---
+
+# Enforce Least Privilege
+
+Grant only the minimum permissions necessary for users, applications, and services.
+
+Examples:
+
+- Read-only access for auditors
+- Read/write access for application services
+- Administrative access only for authorized administrators
+
+```
+User
+
+↓
+
+IAM Role
+
+↓
+
+Limited Storage Permissions
+```
+
+Review permissions regularly and remove unnecessary access.
+
+---
+
+# Disable Public Access by Default
+
+Storage resources should remain private unless there is a clearly documented business requirement for public access.
+
+Recommended controls:
+
+- Disable anonymous access
+- Disable public bucket policies
+- Block public ACLs
+- Review internet-facing storage regularly
+
+```
+Storage Bucket
+
+↓
+
+Private
+
+↓
+
+Authorized Users Only
+```
+
+Public access should require formal approval.
+
+---
+
+# Encrypt Data at Rest
+
+Enable encryption for all sensitive storage resources.
+
+Protect:
+
+- Object storage
+- File storage
+- Block storage
+- Snapshots
+- Backups
+- Archive storage
+
+```
+Plain Data
+
+↓
+
+AES-256
+
+↓
+
+Encrypted Storage
+```
+
+Use customer-managed encryption keys where organizational or regulatory requirements demand additional control.
+
+---
+
+# Encrypt Data in Transit
+
+All communication with storage services should use encrypted protocols.
+
+Recommended:
+
+- HTTPS
+- TLS 1.2+
+- TLS 1.3
+- Mutual TLS where appropriate
+
+```
+Client
+
+↓
+
+TLS
+
+↓
+
+Cloud Storage
+```
+
+Reject unencrypted communication whenever possible.
+
+---
+
+# Enable Multi-Factor Authentication (MFA)
+
+Administrative access to storage services should require MFA.
+
+Protect:
+
+- Storage administrators
+- Cloud administrators
+- Backup administrators
+- Security administrators
+
+MFA reduces the effectiveness of compromised passwords.
+
+---
+
+# Use Customer-Managed Keys When Appropriate
+
+Organizations with higher security or compliance requirements should evaluate Customer-Managed Keys (CMKs).
+
+Benefits include:
+
+- Greater control
+- Custom rotation schedules
+- Improved auditability
+- Regulatory support
+
+Key access should be governed by strict IAM policies.
+
+---
+
+# Enable Object Versioning
+
+Versioning helps recover from:
+
+- Accidental deletion
+- Accidental modification
+- Ransomware
+- Insider threats
+
+```
+Object
+
+↓
+
+Version 1
+
+↓
+
+Version 2
+
+↓
+
+Version 3
+```
+
+Older versions should be retained according to organizational retention policies.
+
+---
+
+# Implement Immutable Storage
+
+Critical information should be protected using immutable storage.
+
+Suitable workloads include:
+
+- Compliance records
+- Audit evidence
+- Legal documents
+- Security logs
+- Backup data
+
+```
+Stored Object
+
+↓
+
+Immutable Lock
+
+↓
+
+Read Only
+```
+
+Immutable storage prevents unauthorized modification or deletion during the retention period.
+
+---
+
+# Protect Backup Storage
+
+Backups require the same security controls as production data.
+
+Recommendations:
+
+- Encrypt backups
+- Restrict backup access
+- Enable immutable backups where available
+- Test recovery procedures
+- Store copies in separate locations
+
+```
+Production Data
+
+↓
+
+Encrypted Backup
+
+↓
+
+Secondary Storage
+```
+
+---
+
+# Configure Lifecycle Policies Carefully
+
+Lifecycle automation should align with business and regulatory requirements.
+
+Examples:
+
+- Archive inactive data
+- Delete temporary files
+- Retain compliance records
+- Preserve legal evidence
+
+Improper lifecycle policies may result in premature data deletion.
+
+---
+
+# Restrict Administrative Access
+
+Administrative permissions should be limited to authorized personnel.
+
+Recommended controls:
+
+- Privileged Access Management (PAM)
+- Just-In-Time (JIT) access
+- Dedicated administrator accounts
+- Approval workflows
+- Session monitoring
+
+Shared administrator accounts should be avoided.
+
+---
+
+# Monitor Storage Continuously
+
+Monitor:
+
+- Public access changes
+- Permission changes
+- Large downloads
+- Object deletions
+- Authentication failures
+- Storage policy modifications
+- Encryption changes
+- Snapshot creation
+- Backup activity
+
+```
+Storage Event
+
+↓
+
+Audit Log
+
+↓
+
+SIEM
+
+↓
+
+Security Alert
+```
+
+Continuous monitoring supports rapid incident detection.
+
+---
+
+# Implement Data Classification
+
+Apply security controls based on data sensitivity.
+
+Example:
+
+| Classification | Recommended Controls |
+|---------------|----------------------|
+| Public | Basic access control |
+| Internal | IAM and logging |
+| Confidential | Encryption, versioning, restricted access |
+| Restricted | CMKs, immutable storage, continuous monitoring |
+
+Classification helps allocate appropriate protection.
+
+---
+
+# Secure Cross-Region Replication
+
+When using replication:
+
+- Encrypt replicated data
+- Restrict replication permissions
+- Monitor replication failures
+- Validate replication integrity
+
+Replication should strengthen resilience without weakening security.
+
+---
+
+# Scan for Misconfigurations
+
+Regularly assess storage resources for:
+
+- Public buckets
+- Disabled encryption
+- Weak IAM policies
+- Missing logging
+- Disabled versioning
+- Excessive permissions
+
+Automated configuration assessment reduces operational risk.
+
+---
+
+# Best Practices
+
+## 1. Keep Storage Private by Default
+
+Create all storage resources with private access enabled.
+
+Require documented approval before exposing any resource publicly.
+
+---
+
+## 2. Enable Encryption Everywhere
+
+Encrypt:
+
+- Object storage
+- File storage
+- Block storage
+- Snapshots
+- Backups
+- Archives
+
+Encryption should be enabled by default.
+
+---
+
+## 3. Apply Least Privilege
+
+Grant only the permissions required for legitimate business functions.
+
+Review access regularly and revoke unused permissions promptly.
+
+---
+
+## 4. Enable Comprehensive Audit Logging
+
+Record:
+
+- Uploads
+- Downloads
+- Deletions
+- Permission changes
+- Authentication events
+- Administrative actions
+
+Forward logs to the organization's SIEM.
+
+---
+
+## 5. Enable Versioning
+
+Protect important data by retaining previous object versions.
+
+Versioning supports recovery from accidental changes and ransomware incidents.
+
+---
+
+## 6. Use Immutable Storage for Critical Data
+
+Protect:
+
+- Compliance records
+- Audit evidence
+- Security logs
+- Backup repositories
+
+Immutability strengthens resilience against malicious deletion.
+
+---
+
+## 7. Protect Administrative Accounts
+
+Require:
+
+- Multi-Factor Authentication
+- Privileged Access Management
+- Individual administrator identities
+- Activity logging
+
+Administrative actions should always be attributable to a specific individual.
+
+---
+
+## 8. Continuously Monitor Storage Activity
+
+Alert on:
+
+- Public exposure
+- Large downloads
+- Permission modifications
+- Encryption changes
+- Unexpected deletions
+- Geographic anomalies
+
+Behavioral monitoring improves detection of suspicious activity.
+
+---
+
+## 9. Test Backup and Recovery Procedures
+
+Regularly validate that:
+
+- Backups are complete
+- Recovery procedures work
+- Recovery objectives are met
+- Backup encryption remains functional
+
+Testing is essential for disaster recovery readiness.
+
+---
+
+## 10. Regularly Assess Storage Configurations
+
+Perform periodic reviews to identify:
+
+- Misconfigured buckets
+- Excessive permissions
+- Missing encryption
+- Unused storage resources
+- Outdated lifecycle policies
+
+Continuous assessment improves overall security posture.
+
+---
+
+## Common Mistakes
+
+### Making Storage Public Unintentionally
+
+One of the most common cloud security incidents occurs when storage buckets or containers are accidentally configured for anonymous access.
+
+Review public access settings regularly.
+
+---
+
+### Granting Excessive Permissions
+
+Assigning broad storage permissions increases the impact of compromised accounts.
+
+Follow the Principle of Least Privilege.
+
+---
+
+### Disabling Encryption
+
+Sensitive data should never be stored without appropriate encryption.
+
+Verify that encryption remains enabled across all storage services.
+
+---
+
+### Ignoring Versioning
+
+Without versioning:
+
+- Deleted objects may be unrecoverable.
+- Overwritten files may be permanently lost.
+- Recovery from ransomware becomes more difficult.
+
+---
+
+### Poor Backup Security
+
+Backups that lack encryption or access controls may expose sensitive information.
+
+Treat backups as production assets from a security perspective.
+
+---
+
+### Ignoring Audit Logs
+
+Failure to review storage activity may delay detection of:
+
+- Unauthorized downloads
+- Object deletions
+- Permission changes
+- Administrative misuse
+
+Integrate storage logs with centralized monitoring platforms.
+
+---
+
+### Misconfigured Lifecycle Policies
+
+Incorrect lifecycle rules may:
+
+- Delete data prematurely
+- Violate retention requirements
+- Remove legal evidence
+- Increase compliance risk
+
+Review lifecycle configurations before deployment.
+
+---
+
+### Using Shared Administrative Accounts
+
+Shared accounts reduce accountability and complicate incident investigations.
+
+Provide each administrator with an individual identity protected by MFA.
+
+---
+
+### Neglecting Storage Configuration Reviews
+
+Cloud environments evolve continuously.
+
+Failing to periodically review storage configurations can leave:
+
+- Public buckets
+- Weak permissions
+- Disabled logging
+- Missing encryption
+
+undetected for extended periods.
+
+---
+
+### Assuming Provider Defaults Are Sufficient
+
+Cloud providers offer secure capabilities, but organizations remain responsible for configuring:
+
+- Access control
+- Data classification
+- Monitoring
+- Lifecycle policies
+- Compliance settings
+
+Always validate default configurations against organizational security requirements.
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-53 – Security and Privacy Controls for Information Systems and Organizations
+- NIST SP 800-171 – Protecting Controlled Unclassified Information
+- NIST Cybersecurity Framework (CSF)
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Critical Security Controls
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Provider Documentation
+
+- Amazon S3 Documentation
+- Amazon EBS Documentation
+- Amazon EFS Documentation
+- Microsoft Azure Blob Storage Documentation
+- Microsoft Azure Files Documentation
+- Azure Managed Disks Documentation
+- Google Cloud Storage Documentation
+- Google Persistent Disk Documentation
+- Oracle Cloud Object Storage Documentation
+- IBM Cloud Object Storage Documentation
+
+---
+
+### Industry Best Practices
+
+- Principle of Least Privilege (PoLP)
+- Zero Trust Architecture
+- Defense in Depth
+- Object Versioning
+- Immutable Storage
+- Customer-Managed Keys (CMKs)
+- Secure Backup Strategy
+- Secure Lifecycle Management
+- Continuous Configuration Assessment
+- Data Classification and Governance
 
 ---
