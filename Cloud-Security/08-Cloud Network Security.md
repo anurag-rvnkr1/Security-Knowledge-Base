@@ -554,3 +554,786 @@ Secure hybrid networking requires encryption, routing controls, identity verific
 
 ---
 
+## How It Works
+
+Cloud Network Security works by enforcing multiple security controls at different layers of the cloud network. Instead of relying on a single firewall, cloud providers implement **defense in depth**, where every network component validates, filters, encrypts, or monitors traffic before it reaches a workload.
+
+Every packet entering or leaving a cloud resource typically passes through several security checkpoints.
+
+```
+Internet
+
+↓
+
+DDoS Protection
+
+↓
+
+Web Application Firewall (WAF)
+
+↓
+
+Load Balancer
+
+↓
+
+Security Group
+
+↓
+
+Network ACL
+
+↓
+
+Virtual Machine / Container
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+If any security layer determines that traffic violates a policy, the request is blocked before reaching the destination.
+
+---
+
+### Step 1 – Request Initiation
+
+A user or application sends a request to a cloud-hosted service.
+
+Example:
+
+```
+User
+
+↓
+
+https://company.example
+
+↓
+
+Cloud Network
+```
+
+The request may originate from:
+
+- Web browsers
+- Mobile applications
+- APIs
+- Virtual machines
+- Containers
+- Partner networks
+- On-premises environments
+
+---
+
+### Step 2 – DNS Resolution
+
+The client resolves the domain name into an IP address.
+
+```
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Cloud DNS
+
+↓
+
+Public IP Address
+```
+
+Secure DNS services should support:
+
+- DNSSEC
+- Logging
+- Threat intelligence
+- Private DNS zones
+
+---
+
+### Step 3 – DDoS Protection
+
+Before traffic reaches the application, cloud DDoS protection services inspect incoming requests.
+
+```
+Incoming Traffic
+
+↓
+
+DDoS Detection
+
+↓
+
+Legitimate Traffic
+
+↓
+
+Application
+```
+
+Malicious traffic such as volumetric attacks or protocol floods is filtered before entering the virtual network.
+
+---
+
+### Step 4 – Web Application Firewall (WAF)
+
+For web applications, traffic is inspected at Layer 7.
+
+The WAF checks for attacks including:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Command Injection
+- File Inclusion
+- HTTP Floods
+- Malicious Bots
+
+```
+HTTP Request
+
+↓
+
+WAF
+
+↓
+
+Policy Evaluation
+
+↓
+
+Allow / Block
+```
+
+Requests violating security rules are rejected immediately.
+
+---
+
+### Step 5 – Load Balancer
+
+After passing the WAF, traffic reaches the cloud load balancer.
+
+Responsibilities include:
+
+- Traffic distribution
+- SSL/TLS termination
+- Health checks
+- Session persistence
+- High availability
+
+```
+Incoming Request
+
+↓
+
+Load Balancer
+
+├── Server A
+
+├── Server B
+
+└── Server C
+```
+
+The load balancer routes traffic only to healthy backend resources.
+
+---
+
+### Step 6 – Virtual Network Routing
+
+The cloud networking service determines where traffic should be delivered.
+
+```
+Destination IP
+
+↓
+
+Route Table
+
+↓
+
+Correct Subnet
+
+↓
+
+Target Resource
+```
+
+Possible routing targets include:
+
+- Internet Gateway
+- NAT Gateway
+- VPN Gateway
+- Peering Connection
+- Private Endpoint
+- Transit Gateway
+
+---
+
+### Step 7 – Network ACL Evaluation
+
+Before entering a subnet, traffic is evaluated against Network ACL rules.
+
+```
+Incoming Packet
+
+↓
+
+Network ACL
+
+↓
+
+Allow?
+
+↓
+
+Yes → Continue
+
+No → Drop Packet
+```
+
+ACLs typically provide subnet-level filtering.
+
+Example:
+
+| Source | Port | Action |
+|---------|------|--------|
+| Internet | 443 | Allow |
+| Internet | 22 | Deny |
+| Unknown IP | Any | Deny |
+
+---
+
+### Step 8 – Security Group Evaluation
+
+Security Groups protect individual cloud resources.
+
+```
+Packet
+
+↓
+
+Security Group
+
+↓
+
+Rule Evaluation
+
+↓
+
+Virtual Machine
+```
+
+Example rules:
+
+| Protocol | Port | Source | Result |
+|-----------|------|--------|--------|
+| HTTPS | 443 | Internet | Allow |
+| SSH | 22 | Bastion Host | Allow |
+| Database | 3306 | Internet | Deny |
+
+Only explicitly permitted traffic reaches the workload.
+
+---
+
+### Step 9 – Host Firewall
+
+Some organizations implement host-based firewalls in addition to cloud networking controls.
+
+```
+Packet
+
+↓
+
+Cloud Security Group
+
+↓
+
+Operating System Firewall
+
+↓
+
+Application
+```
+
+This provides another layer of protection.
+
+---
+
+### Step 10 – Application Processing
+
+Once traffic successfully passes all security controls, the application processes the request.
+
+```
+Application
+
+↓
+
+Business Logic
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+If authentication or authorization fails, the application rejects the request.
+
+---
+
+### Step 11 – Logging and Monitoring
+
+Every significant network event should be recorded.
+
+Typical logs include:
+
+- Firewall logs
+- Flow logs
+- VPN logs
+- DNS logs
+- Load balancer logs
+- WAF logs
+- API gateway logs
+- Security alerts
+
+```
+Network Event
+
+↓
+
+Logs
+
+↓
+
+SIEM
+
+↓
+
+Security Analyst
+```
+
+Continuous monitoring enables rapid detection of abnormal behavior.
+
+---
+
+## End-to-End Traffic Flow
+
+```
+Client
+
+↓
+
+DNS
+
+↓
+
+DDoS Protection
+
+↓
+
+Web Application Firewall
+
+↓
+
+Load Balancer
+
+↓
+
+Route Table
+
+↓
+
+Network ACL
+
+↓
+
+Security Group
+
+↓
+
+Virtual Machine
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Each layer contributes to overall network security.
+
+---
+
+## Practical Example
+
+### Example 1 – Secure Web Application
+
+A company hosts an e-commerce platform.
+
+Architecture:
+
+```
+Internet
+
+↓
+
+DDoS Protection
+
+↓
+
+WAF
+
+↓
+
+Load Balancer
+
+↓
+
+Public Web Servers
+
+↓
+
+Application Servers
+
+↓
+
+Private Database
+```
+
+Traffic flow:
+
+1. Customer visits the website.
+2. DNS resolves the domain.
+3. DDoS protection filters malicious traffic.
+4. WAF blocks application-layer attacks.
+5. Load balancer distributes traffic.
+6. Security Groups permit HTTPS only.
+7. Application servers access the database through private networking.
+8. Database is never exposed to the internet.
+
+---
+
+### Example 2 – Private Database Access
+
+Application servers require database connectivity.
+
+```
+Application Server
+
+↓
+
+Private Subnet
+
+↓
+
+Security Group
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Database rules:
+
+Allow:
+
+- Application subnet
+- Database administrators
+
+Deny:
+
+- Internet
+- Public IP addresses
+- Unknown networks
+
+---
+
+### Example 3 – Administrator Access
+
+Administrators should never connect directly to production servers from the internet.
+
+Secure architecture:
+
+```
+Administrator
+
+↓
+
+VPN
+
+↓
+
+MFA
+
+↓
+
+Bastion Host
+
+↓
+
+Private Server
+```
+
+Benefits:
+
+- Reduced attack surface
+- Session logging
+- Centralized administration
+- Better auditability
+
+---
+
+### Example 4 – Hybrid Cloud
+
+A financial institution connects its headquarters to the cloud.
+
+```
+Corporate Network
+
+↓
+
+Encrypted VPN
+
+↓
+
+Cloud Virtual Network
+
+↓
+
+Private Applications
+```
+
+Traffic never traverses the internet unencrypted.
+
+---
+
+### Example 5 – Microsegmentation
+
+A Kubernetes environment hosts multiple microservices.
+
+```
+Frontend
+
+↓
+
+API Service
+
+↓
+
+Payment Service
+
+↓
+
+Database
+```
+
+Policies enforce:
+
+- Frontend → API ✔
+
+- API → Payment ✔
+
+- Payment → Database ✔
+
+- Frontend → Database ✘
+
+Even if one workload is compromised, attackers cannot freely move between services.
+
+---
+
+## Network Traffic Examples
+
+| Source | Destination | Expected Result |
+|---------|-------------|-----------------|
+| Internet | Web Server (HTTPS) | Allow |
+| Internet | Database | Deny |
+| Bastion Host | Linux VM (SSH) | Allow |
+| Public User | Management Server | Deny |
+| Application Server | Database | Allow |
+| Unknown Network | Internal API | Deny |
+
+---
+
+## Common Cloud Network Components
+
+| Component | Purpose |
+|-----------|---------|
+| VPC / VNet | Logical network isolation |
+| Subnet | Workload segmentation |
+| Route Table | Traffic routing |
+| Internet Gateway | Internet connectivity |
+| NAT Gateway | Secure outbound internet access |
+| Security Group | Resource-level firewall |
+| Network ACL | Subnet-level filtering |
+| VPN Gateway | Encrypted hybrid connectivity |
+| Load Balancer | Traffic distribution |
+| WAF | Web application protection |
+| Bastion Host | Secure administrative access |
+
+---
+
+## Indicators of Network Security Issues (Detection)
+
+Cloud networks should be continuously monitored for abnormal activity.
+
+---
+
+### Unusual Inbound Connections
+
+Unexpected connections may indicate:
+
+- Port scanning
+- Exploitation attempts
+- Reconnaissance
+- Malware communication
+
+Example:
+
+```
+Single IP
+
+↓
+
+Ports 20–1000
+
+↓
+
+Security Alert
+```
+
+---
+
+### Unauthorized Open Ports
+
+Resources exposing unnecessary services increase attack surface.
+
+Examples:
+
+- SSH open to the internet
+- RDP publicly accessible
+- Database ports exposed
+- Kubernetes API publicly reachable
+
+Continuous configuration monitoring helps identify these issues.
+
+---
+
+### Excessive Failed Connections
+
+Large numbers of failed network connections may indicate:
+
+- Brute-force attacks
+- Reconnaissance
+- Firewall probing
+- Misconfigured applications
+
+---
+
+### Unexpected East-West Traffic
+
+After compromising one workload, attackers often attempt lateral movement.
+
+Example:
+
+```
+Compromised VM
+
+↓
+
+Connect to Every Internal Server
+
+↓
+
+Detection Alert
+```
+
+Microsegmentation and flow monitoring help identify this behavior.
+
+---
+
+### Data Exfiltration
+
+Large outbound transfers to unknown destinations should be investigated.
+
+Indicators include:
+
+- Unusual upload volumes
+- Unknown destinations
+- Unexpected protocols
+- Off-hours transfers
+
+---
+
+### DNS Anomalies
+
+Suspicious DNS activity includes:
+
+- Queries to malicious domains
+- High-frequency lookups
+- Algorithmically generated domains
+- DNS tunneling attempts
+
+---
+
+### VPN Misuse
+
+Indicators include:
+
+- Logins from unexpected countries
+- Simultaneous sessions
+- Excessive connection failures
+- Unauthorized administrator access
+
+---
+
+### Network Monitoring Sources
+
+Security teams typically monitor:
+
+- VPC/VNet Flow Logs
+- Firewall logs
+- WAF logs
+- Load Balancer logs
+- VPN logs
+- DNS logs
+- IDS/IPS alerts
+- Cloud audit logs
+- Network telemetry
+
+---
+
+## Detection Best Practices
+
+- Enable network flow logging for every production environment.
+- Continuously monitor Security Group and Network ACL changes.
+- Detect unusual east-west traffic patterns.
+- Alert on newly exposed internet-facing services.
+- Monitor outbound traffic for potential data exfiltration.
+- Integrate network logs into a centralized SIEM.
+- Perform continuous configuration monitoring.
+- Baseline normal network behavior to improve anomaly detection.
+- Review firewall and routing changes regularly.
+- Investigate all unexpected privileged network access.
+
+---
+
