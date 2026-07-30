@@ -595,13 +595,802 @@ Hashing verifies integrity, while encryption protects confidentiality.
 
 ---
 
+## How It Works
+
+Cloud Encryption protects sensitive information by transforming readable data into ciphertext before it is stored or transmitted. The encrypted data can only be accessed after successful authentication, authorization, and decryption using the appropriate cryptographic key.
+
+Cloud providers automate much of the encryption process through integrated encryption services and Key Management Services (KMS), while organizations remain responsible for choosing appropriate encryption strategies and protecting cryptographic keys.
+
+---
+
+## Cloud Encryption Workflow
+
+```
+               User / Application
+
+                       │
+
+                       ▼
+
+             Identity Verification
+
+                       │
+
+                       ▼
+
+                Authorization
+
+                       │
+
+                       ▼
+
+            Generate Encryption Key
+
+                       │
+
+                       ▼
+
+          Encrypt Plaintext to Ciphertext
+
+                       │
+
+                       ▼
+
+             Store Encrypted Data
+
+                       │
+
+                       ▼
+
+          Retrieve Encrypted Data
+
+                       │
+
+                       ▼
+
+          Authorize Decryption Request
+
+                       │
+
+                       ▼
+
+              Decrypt Ciphertext
+
+                       │
+
+                       ▼
+
+                 Original Data
+```
+
+Only authorized entities possessing valid permissions and cryptographic keys can recover the original information.
+
+---
+
+## Step 1 – Data Creation
+
+Applications generate or receive sensitive information.
+
+Examples include:
+
+- Customer registrations
+- Financial records
+- Healthcare information
+- Application logs
+- Images
+- Business documents
+- Source code
+
+```
+User
+
+↓
+
+Application
+
+↓
+
+Plaintext Data
+```
+
+At this stage, the information is still readable.
+
+---
+
+## Step 2 – Authentication
+
+Before encryption or decryption operations occur, identities are verified.
+
+```
+User
+
+↓
+
+Login
+
+↓
+
+MFA
+
+↓
+
+Authenticated
+```
+
+Authentication methods include:
+
+- Passwords
+- MFA
+- Biometrics
+- Passkeys
+- Hardware security keys
+- Single Sign-On (SSO)
+
+---
+
+## Step 3 – Authorization
+
+After authentication, IAM policies determine whether encryption or decryption operations are permitted.
+
+```
+Authenticated User
+
+↓
+
+IAM Policy
+
+↓
+
+Can Access Key?
+
+↓
+
+Yes / No
+```
+
+Authorization may depend on:
+
+- User role
+- Department
+- Device posture
+- Network location
+- Risk level
+- Time of access
+
+---
+
+## Step 4 – Key Generation
+
+Before encrypting data, a cryptographic key is generated.
+
+```
+Key Management Service
+
+↓
+
+Generate AES-256 Key
+
+↓
+
+Data Encryption Key (DEK)
+```
+
+The generated key is typically unique for each encryption operation or object, depending on the organization's policy.
+
+---
+
+## Step 5 – Encrypt the Data
+
+The encryption algorithm converts plaintext into ciphertext.
+
+```
+Plaintext
+
+↓
+
+AES-256
+
+↓
+
+Ciphertext
+```
+
+Example:
+
+```
+Original
+
+CustomerPassword123
+
+↓
+
+Encrypted
+
+7FD91A3C5E8F...
+```
+
+Without the correct key, the ciphertext remains unreadable.
+
+---
+
+## Step 6 – Protect the Encryption Key
+
+Cloud providers generally use **Envelope Encryption**.
+
+```
+Customer Data
+
+↓
+
+Data Encryption Key (DEK)
+
+↓
+
+Encrypted Data
+
+────────────────────
+
+DEK
+
+↓
+
+Encrypted by
+
+↓
+
+Key Encryption Key (KEK)
+
+↓
+
+Key Management Service
+```
+
+This approach protects encryption keys separately from the encrypted data.
+
+---
+
+## Step 7 – Store Encrypted Data
+
+Encrypted information is stored within cloud services.
+
+Examples include:
+
+- Object Storage
+- File Storage
+- Block Storage
+- Databases
+- Snapshots
+- Backups
+
+```
+Ciphertext
+
+↓
+
+Cloud Storage
+
+↓
+
+Protected Data
+```
+
+Even if storage media are compromised, attackers cannot easily recover the original information.
+
+---
+
+## Step 8 – Retrieve Encrypted Data
+
+When an authorized application requests data:
+
+```
+Application
+
+↓
+
+Storage
+
+↓
+
+Encrypted Data Returned
+```
+
+The retrieved data remains encrypted until authorization for decryption is granted.
+
+---
+
+## Step 9 – Decryption
+
+After IAM authorization and key validation:
+
+```
+Ciphertext
+
+↓
+
+Decryption Key
+
+↓
+
+Plaintext
+```
+
+Only trusted applications or users should perform decryption.
+
+---
+
+## Step 10 – Secure Transmission
+
+Encrypted information moving across networks should use secure transport protocols.
+
+```
+Browser
+
+↓
+
+HTTPS / TLS
+
+↓
+
+Cloud Application
+```
+
+Examples include:
+
+- HTTPS
+- TLS
+- SSH
+- IPsec
+- VPN
+- mTLS
+
+Transport encryption prevents attackers from intercepting readable information.
+
+---
+
+## Step 11 – Audit Logging
+
+Every cryptographic operation should be logged.
+
+Examples:
+
+- Key creation
+- Key deletion
+- Key rotation
+- Encryption requests
+- Decryption requests
+- Access failures
+
+```
+Encryption Event
+
+↓
+
+Audit Log
+
+↓
+
+SIEM
+
+↓
+
+SOC Analyst
+```
+
+Audit logs support compliance, investigations, and threat detection.
+
+---
+
+## Encryption Workflow Example
+
+```
+Customer Uploads File
+
+↓
+
+IAM Authentication
+
+↓
+
+Authorization
+
+↓
+
+Generate DEK
+
+↓
+
+Encrypt File
+
+↓
+
+Encrypt DEK
+
+↓
+
+Store File
+
+↓
+
+Store Encrypted DEK
+
+↓
+
+Cloud Storage
+```
+
+During download:
+
+```
+Download Request
+
+↓
+
+IAM Authentication
+
+↓
+
+Authorization
+
+↓
+
+Retrieve Encrypted File
+
+↓
+
+Retrieve Encrypted DEK
+
+↓
+
+Decrypt DEK
+
+↓
+
+Decrypt File
+
+↓
+
+Return Plaintext
+```
+
+---
+
+## Practical Example
+
+### Example 1 – Secure Object Storage
+
+A company stores confidential reports in cloud object storage.
+
+```
+Employee
+
+↓
+
+Upload File
+
+↓
+
+Server-Side Encryption
+
+↓
+
+Encrypted Bucket
+```
+
+Security controls:
+
+- AES-256 encryption
+- IAM bucket policies
+- Access logging
+- Versioning
+- Key Management Service
+
+---
+
+### Example 2 – Encrypted Database
+
+A financial application stores customer records.
+
+```
+Application
+
+↓
+
+AES Encryption
+
+↓
+
+Encrypted Database
+```
+
+Controls include:
+
+- Transparent database encryption
+- Customer-managed keys
+- Database audit logging
+- Regular key rotation
+
+---
+
+### Example 3 – HTTPS Web Application
+
+A customer logs into an online portal.
+
+```
+Browser
+
+↓
+
+TLS Handshake
+
+↓
+
+HTTPS Session
+
+↓
+
+Encrypted Communication
+```
+
+All credentials and session cookies travel through encrypted channels.
+
+---
+
+### Example 4 – Hybrid Cloud
+
+An enterprise synchronizes data between an on-premises data center and the cloud.
+
+```
+Data Center
+
+↓
+
+IPsec VPN
+
+↓
+
+Cloud Storage
+```
+
+Traffic remains encrypted throughout transmission.
+
+---
+
+### Example 5 – Client-Side Encryption
+
+A healthcare provider encrypts patient records before uploading them.
+
+```
+Medical Application
+
+↓
+
+Encrypt Locally
+
+↓
+
+Ciphertext
+
+↓
+
+Cloud Storage
+```
+
+The cloud provider stores only encrypted information and never receives plaintext.
+
+---
+
+## Server-Side vs Client-Side Encryption
+
+| Feature | Server-Side Encryption | Client-Side Encryption |
+|----------|------------------------|------------------------|
+| Encryption Location | Cloud provider | Customer application |
+| Plaintext Visible to Provider | Yes (during processing) | No |
+| Customer Key Control | Optional | Full |
+| Ease of Deployment | High | Moderate |
+| Operational Complexity | Low | Higher |
+
+Both models have valid use cases depending on security and compliance requirements.
+
+---
+
+## Common Cloud Encryption Flow
+
+```
+Create Data
+
+↓
+
+Authenticate User
+
+↓
+
+Authorize Request
+
+↓
+
+Generate Key
+
+↓
+
+Encrypt
+
+↓
+
+Store Ciphertext
+
+↓
+
+Retrieve Ciphertext
+
+↓
+
+Authorize Decryption
+
+↓
+
+Decrypt
+
+↓
+
+Return Plaintext
+```
+
+---
+
+## Indicators of Encryption Security Issues (Detection)
+
+Cloud environments should continuously monitor encryption-related events to identify misconfigurations, unauthorized access, and key misuse.
+
+---
+
+### Encryption Disabled
+
+Sensitive resources should never operate without encryption.
+
+Examples:
+
+- Unencrypted storage buckets
+- Unencrypted databases
+- Unencrypted virtual disks
+- Unencrypted backups
+
+Configuration monitoring should alert when encryption is disabled.
+
+---
+
+### Unauthorized Key Usage
+
+Unexpected use of encryption keys may indicate credential theft or privilege abuse.
+
+Examples:
+
+- Unknown user decrypting sensitive files
+- Unusual key access patterns
+- Excessive decryption requests
+
+```
+Unknown User
+
+↓
+
+Decrypt Request
+
+↓
+
+KMS Alert
+```
+
+---
+
+### Failed Decryption Attempts
+
+Repeated decryption failures may indicate:
+
+- Incorrect permissions
+- Brute-force attempts
+- Application misconfiguration
+- Unauthorized access
+
+These events should be investigated promptly.
+
+---
+
+### Missing Key Rotation
+
+Long-lived cryptographic keys increase risk if compromised.
+
+Monitor for:
+
+- Expired keys
+- Rotation failures
+- Keys exceeding organizational rotation policies
+
+---
+
+### Unexpected Key Deletion
+
+Deleting encryption keys can permanently prevent access to encrypted information.
+
+Alerts should trigger for:
+
+- Key deletion requests
+- Key disablement
+- Policy changes affecting KMS
+
+---
+
+### Weak Encryption Algorithms
+
+Legacy or deprecated algorithms should be identified.
+
+Examples include:
+
+- DES
+- 3DES (where deprecated by policy)
+- RC4
+- Weak SSL/TLS configurations
+
+Organizations should migrate to modern, approved cryptographic standards.
+
+---
+
+### Publicly Accessible Encrypted Data
+
+Encryption alone does not prevent unauthorized access if storage permissions are overly permissive.
+
+Monitor for:
+
+- Public storage buckets
+- Anonymous object access
+- Excessive sharing permissions
+
+Encryption and access control should always be used together.
+
+---
+
+### Certificate Issues
+
+Transport encryption depends on valid certificates.
+
+Monitor for:
+
+- Expired certificates
+- Weak cipher suites
+- Invalid certificate chains
+- Unexpected certificate changes
+
+---
+
+### Audit Log Monitoring
+
+Security teams should monitor:
+
+- Key creation
+- Key rotation
+- Key deletion
+- Encryption failures
+- Decryption requests
+- Certificate updates
+- KMS policy changes
+
+---
+
+## Detection Best Practices
+
+- Enable logging for all KMS operations.
+- Monitor encryption status across storage services.
+- Alert on unauthorized key usage.
+- Detect disabled or deleted encryption keys.
+- Monitor TLS certificate health and expiration.
+- Identify deprecated algorithms and cipher suites.
+- Review decryption activity for anomalous patterns.
+- Continuously validate encryption compliance across cloud resources.
+- Integrate KMS and encryption logs into the SIEM.
+- Regularly audit cryptographic configurations against organizational standards.
+
+---
+
 ## Next Section
-
-How It Works
-
-Practical Example
-
-Detection
 
 Prevention
 
