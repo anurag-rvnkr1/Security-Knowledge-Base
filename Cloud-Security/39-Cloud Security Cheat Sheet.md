@@ -695,3 +695,359 @@ Continuous Monitoring
 
 ---
 
+## Prevention
+
+Cloud Security is most effective when preventive controls are implemented before workloads are deployed. Prevention focuses on minimizing the attack surface, enforcing secure configurations, protecting identities and data, and continuously validating cloud environments.
+
+The following checklist summarizes essential preventive measures.
+
+---
+
+# Cloud Security Prevention Workflow
+
+```
+Plan
+
+   │
+
+   ▼
+
+Secure Design
+
+   │
+
+   ▼
+
+Identity Protection
+
+   │
+
+   ▼
+
+Network Security
+
+   │
+
+   ▼
+
+Data Protection
+
+   │
+
+   ▼
+
+Secure Development
+
+   │
+
+   ▼
+
+Continuous Validation
+
+   │
+
+   ▼
+
+Monitoring
+
+   │
+
+   ▼
+
+Continuous Improvement
+```
+
+---
+
+## Identity Security Checklist
+
+Always:
+
+- Enable Multi-Factor Authentication (MFA)
+- Enforce Role-Based Access Control (RBAC)
+- Apply the Principle of Least Privilege (PoLP)
+- Review permissions periodically
+- Rotate credentials
+- Use Single Sign-On (SSO)
+- Protect privileged accounts with Privileged Access Management (PAM)
+- Remove inactive accounts promptly
+
+Never:
+
+- Share administrator credentials
+- Hardcode passwords or API keys
+- Leave unused service accounts active
+- Grant permanent administrative access without justification
+
+---
+
+## Network Security Checklist
+
+- Use private subnets for internal resources
+- Restrict inbound traffic
+- Implement Security Groups and Network ACLs
+- Deploy Web Application Firewalls (WAF)
+- Enable Distributed Denial-of-Service (DDoS) protection
+- Segment networks
+- Use bastion hosts or secure administrative access
+- Disable unnecessary ports and protocols
+- Encrypt remote connectivity using VPN or private links
+
+---
+
+## Data Security Checklist
+
+- Encrypt data at rest
+- Encrypt data in transit
+- Enable automatic backups
+- Test backup restoration regularly
+- Rotate encryption keys
+- Classify sensitive information
+- Implement Data Loss Prevention (DLP)
+- Restrict access based on business need
+- Enable audit logging
+- Secure object storage from public exposure
+
+---
+
+## Compute Security Checklist
+
+- Harden operating systems
+- Apply security patches promptly
+- Remove unnecessary services
+- Restrict administrative access
+- Monitor running processes
+- Protect workloads with runtime security
+- Use approved machine images
+- Validate system integrity regularly
+
+---
+
+## Container & Kubernetes Checklist
+
+- Scan container images
+- Use trusted image registries
+- Avoid privileged containers
+- Enforce Pod Security Standards
+- Restrict cluster administrator access
+- Protect Kubernetes Secrets
+- Enable Kubernetes audit logging
+- Apply Network Policies
+- Keep clusters updated
+
+---
+
+## DevSecOps Checklist
+
+Integrate security throughout the development lifecycle.
+
+Perform:
+
+- Static Application Security Testing (SAST)
+- Dynamic Application Security Testing (DAST)
+- Software Composition Analysis (SCA)
+- Infrastructure as Code (IaC) scanning
+- Container image scanning
+- Secrets scanning
+- Artifact signing
+- Automated policy enforcement
+
+---
+
+## Monitoring Checklist
+
+Enable:
+
+- Cloud audit logging
+- Authentication logging
+- Network flow logs
+- Storage access logs
+- Application logs
+- Security event correlation
+- SIEM integration
+- Automated alerting
+- Threat intelligence feeds
+
+Visibility is essential for maintaining a secure cloud environment.
+
+---
+
+## Incident Preparedness Checklist
+
+Maintain:
+
+- Incident Response Plan
+- Disaster Recovery Plan
+- Business Continuity Plan
+- Forensic procedures
+- Communication strategy
+- Escalation process
+- Recovery documentation
+- Regular tabletop exercises
+
+Preparation reduces recovery time and operational disruption.
+
+---
+
+# Best Practices
+
+## Security by Design
+
+Incorporate security requirements during planning and architecture rather than after deployment.
+
+---
+
+## Defense in Depth
+
+Protect every layer of the cloud stack:
+
+```
+Users
+
+↓
+
+IAM
+
+↓
+
+Network
+
+↓
+
+Applications
+
+↓
+
+Compute
+
+↓
+
+Data
+
+↓
+
+Monitoring
+
+↓
+
+Incident Response
+```
+
+---
+
+## Zero Trust
+
+Follow the principle:
+
+- Never trust by default
+- Verify continuously
+- Enforce least privilege
+- Validate device posture
+- Monitor every request
+
+---
+
+## Automate Security
+
+Automate repetitive tasks including:
+
+- Compliance validation
+- Vulnerability scanning
+- Secret rotation
+- Configuration assessment
+- Security testing
+- Infrastructure deployment
+
+Automation improves consistency and reduces human error.
+
+---
+
+## Continuous Monitoring
+
+Continuously monitor:
+
+- IAM activity
+- API usage
+- Network traffic
+- Workload behavior
+- Configuration changes
+- Security alerts
+- Compliance status
+
+Early detection supports rapid response.
+
+---
+
+## Secure Secrets Management
+
+Store sensitive credentials in dedicated secrets management solutions.
+
+Never:
+
+- Store secrets in source code
+- Embed credentials in configuration files
+- Share API keys through messaging platforms
+- Commit secrets to version control
+
+---
+
+## Keep Everything Updated
+
+Regularly update:
+
+- Operating systems
+- Container images
+- Kubernetes clusters
+- Cloud SDKs
+- Third-party libraries
+- Security tools
+
+Patch management reduces exposure to known vulnerabilities.
+
+---
+
+## Validate Backups
+
+Backups should be:
+
+- Encrypted
+- Tested
+- Versioned
+- Immutable where supported
+- Stored redundantly
+
+Reliable backups are essential for disaster recovery and ransomware resilience.
+
+---
+
+## Measure Security
+
+Track metrics such as:
+
+- Mean Time to Detect (MTTD)
+- Mean Time to Respond (MTTR)
+- Patch compliance
+- MFA adoption
+- Critical vulnerability count
+- Policy compliance
+- Backup success rate
+
+Metrics enable continuous improvement and informed decision-making.
+
+---
+
+## Promote a Security Culture
+
+Encourage:
+
+- Regular security awareness training
+- Secure coding practices
+- Responsible disclosure
+- Cross-team collaboration
+- Continuous learning
+- Post-incident reviews
+
+Technology alone cannot secure a cloud environment; people and processes are equally important.
+
+---
+
