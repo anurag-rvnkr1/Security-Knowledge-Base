@@ -798,3 +798,402 @@ Unexpected access patterns may indicate data theft.
 
 ---
 
+## Prevention
+
+Effective Cloud Threat Hunting starts with building an environment where malicious activity is difficult to conceal. Prevention does not eliminate the need for threat hunting; instead, it provides the visibility, telemetry, and security controls necessary to identify sophisticated attacks quickly.
+
+A mature prevention strategy combines secure architecture, continuous monitoring, identity protection, automation, and intelligence-driven security operations.
+
+---
+
+# Cloud Threat Hunting Prevention Lifecycle
+
+```
+Secure Cloud Design
+
+        │
+
+        ▼
+
+Identity Protection
+
+        │
+
+        ▼
+
+Logging & Telemetry
+
+        │
+
+        ▼
+
+Threat Intelligence
+
+        │
+
+        ▼
+
+Continuous Threat Hunting
+
+        │
+
+        ▼
+
+Threat Detection
+
+        │
+
+        ▼
+
+Incident Response
+
+        │
+
+        ▼
+
+Lessons Learned
+
+        │
+
+        ▼
+
+Improved Security Controls
+```
+
+Threat hunting should operate as a continuous cycle that strengthens the organization's overall security posture.
+
+---
+
+# Implement Comprehensive Logging
+
+Threat hunters rely on complete and accurate telemetry.
+
+Enable logging for:
+
+- Cloud audit services
+- IAM events
+- Authentication logs
+- API gateway activity
+- Virtual machines
+- Containers
+- Kubernetes
+- Serverless functions
+- Object storage
+- Databases
+- Network devices
+- DNS services
+
+Missing logs create blind spots that attackers may exploit.
+
+---
+
+# Centralize Security Telemetry
+
+Collect cloud telemetry into a centralized security platform such as a SIEM.
+
+Benefits include:
+
+- Cross-service event correlation
+- Faster investigations
+- Long-term retention
+- Unified dashboards
+- Simplified searches
+- Improved threat visibility
+
+Centralized telemetry significantly improves hunting efficiency.
+
+---
+
+# Strengthen Identity Security
+
+Protect cloud identities using:
+
+- Multi-Factor Authentication (MFA)
+- Role-Based Access Control (RBAC)
+- Principle of Least Privilege (PoLP)
+- Just-In-Time (JIT) access
+- Privileged Access Management (PAM)
+- Regular access reviews
+
+Most cloud attacks involve identity misuse, making identity protection a critical preventive measure.
+
+---
+
+# Establish Behavioral Baselines
+
+Understand normal behavior for:
+
+- User logins
+- API usage
+- Administrative actions
+- Resource creation
+- Network traffic
+- Storage access
+- Database queries
+
+Behavioral baselines help threat hunters recognize meaningful anomalies.
+
+---
+
+# Integrate Threat Intelligence
+
+Use trusted threat intelligence to enrich investigations.
+
+Threat intelligence may include:
+
+- Malicious IP addresses
+- Suspicious domains
+- File hashes
+- Emerging vulnerabilities
+- Adversary tactics, techniques, and procedures (TTPs)
+- Industry-specific attack campaigns
+
+Current intelligence improves the relevance and effectiveness of threat hunting activities.
+
+---
+
+# Secure Cloud Configurations
+
+Reduce attack opportunities through:
+
+- Secure default settings
+- Configuration monitoring
+- Continuous compliance checks
+- Infrastructure as Code (IaC) validation
+- Automated remediation where appropriate
+
+Well-configured environments reduce attacker persistence opportunities.
+
+---
+
+# Protect Sensitive Data
+
+Implement:
+
+- Encryption at rest
+- Encryption in transit
+- Strong key management
+- Data classification
+- Data Loss Prevention (DLP)
+- Fine-grained access controls
+
+Monitoring access to sensitive data assists both prevention and threat hunting.
+
+---
+
+# Automate Repetitive Tasks
+
+Use automation to:
+
+- Enrich alerts
+- Correlate events
+- Collect evidence
+- Execute initial containment actions
+- Notify response teams
+- Generate investigation tickets
+
+```
+Telemetry
+
+↓
+
+Analytics
+
+↓
+
+Threat Identified
+
+↓
+
+Automated Enrichment
+
+↓
+
+Analyst Investigation
+```
+
+Automation enables analysts to focus on complex investigations.
+
+---
+
+# Continuously Validate Security Controls
+
+Regularly assess:
+
+- Detection rules
+- Logging coverage
+- Identity policies
+- Network segmentation
+- Endpoint visibility
+- Monitoring effectiveness
+
+Validation ensures preventive controls remain effective as cloud environments evolve.
+
+---
+
+# Train Threat Hunters
+
+Provide ongoing training in:
+
+- Cloud platforms
+- Threat intelligence
+- MITRE ATT&CK
+- Digital forensics
+- Incident response
+- Query languages
+- Security analytics
+
+Experienced analysts are better equipped to identify sophisticated threats.
+
+---
+
+## Best Practices
+
+### 1. Adopt a Hypothesis-Driven Approach
+
+Begin every hunt with a clearly defined hypothesis based on intelligence, recent incidents, or observed anomalies.
+
+Focused investigations produce more actionable results.
+
+---
+
+### 2. Collect High-Quality Telemetry
+
+Ensure visibility across:
+
+- Identity services
+- Compute resources
+- Containers
+- Kubernetes
+- Serverless platforms
+- Storage services
+- Databases
+- Networking
+- Applications
+
+Comprehensive telemetry is essential for reliable threat hunting.
+
+---
+
+### 3. Correlate Multiple Data Sources
+
+Avoid investigating isolated events.
+
+Correlate:
+
+- Authentication logs
+- Network activity
+- API requests
+- Infrastructure changes
+- Endpoint telemetry
+- Threat intelligence
+
+Cross-source correlation provides stronger evidence of malicious activity.
+
+---
+
+### 4. Continuously Update Hunting Hypotheses
+
+Threats evolve rapidly.
+
+Develop new hypotheses using:
+
+- Newly disclosed vulnerabilities
+- Threat intelligence reports
+- Red team findings
+- Incident response outcomes
+- Emerging attacker techniques
+
+Dynamic hypotheses keep hunting efforts aligned with current risks.
+
+---
+
+### 5. Map Findings to MITRE ATT&CK
+
+Categorize observed behavior using standardized techniques.
+
+Benefits include:
+
+- Consistent reporting
+- Improved communication
+- Better detection engineering
+- Easier gap analysis
+
+MITRE ATT&CK provides a common language for defenders.
+
+---
+
+### 6. Reduce False Positives
+
+Validate suspicious activity by:
+
+- Reviewing historical behavior
+- Comparing against maintenance windows
+- Confirming business context
+- Correlating additional evidence
+
+Reducing false positives allows analysts to prioritize genuine threats.
+
+---
+
+### 7. Integrate Threat Hunting with the SOC
+
+Threat hunting should complement Security Operations Center (SOC) workflows.
+
+Integration improves:
+
+- Alert validation
+- Incident escalation
+- Detection engineering
+- Knowledge sharing
+
+Collaboration strengthens overall defensive capabilities.
+
+---
+
+### 8. Measure Hunting Effectiveness
+
+Track metrics such as:
+
+- Number of hunts completed
+- Confirmed threats discovered
+- False positive rate
+- Mean Time to Detect (MTTD)
+- Mean Time to Investigate (MTTI)
+- Detection rule improvements
+
+Metrics help evaluate and improve the maturity of the threat hunting program.
+
+---
+
+### 9. Document Every Hunt
+
+Maintain records of:
+
+- Hypothesis
+- Data sources
+- Investigation methodology
+- Findings
+- Recommendations
+- Detection improvements
+
+Documentation supports knowledge transfer and future investigations.
+
+---
+
+### 10. Continuously Improve the Hunting Program
+
+Following each hunt:
+
+- Refine hypotheses
+- Update playbooks
+- Improve detections
+- Enhance automation
+- Expand telemetry coverage
+- Share lessons learned across teams
+
+Continuous improvement ensures the threat hunting capability remains effective against evolving cloud threats.
+
+---
+
+
