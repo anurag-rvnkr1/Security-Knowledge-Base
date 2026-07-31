@@ -1856,10 +1856,428 @@ Security should be continuous rather than a final deployment step.
 
 ---
 
-## Next Section
+## Common Mistakes
 
-Common Mistakes
+Container environments are highly dynamic, making them particularly vulnerable to configuration errors, insecure deployment practices, and software supply chain risks. Most container security incidents are caused by preventable mistakes rather than sophisticated zero-day exploits.
 
-References
+Understanding these common mistakes helps organizations build resilient cloud-native environments.
+
+---
+
+### 1. Using Untrusted Container Images
+
+Downloading images from unknown public registries without verification introduces significant risk.
+
+Potential issues include:
+
+- Malware
+- Backdoors
+- Cryptominers
+- Vulnerable packages
+- Hidden configuration changes
+
+```
+Unknown Registry
+
+↓
+
+Unverified Image
+
+↓
+
+Production Deployment
+
+↓
+
+Potential Compromise
+```
+
+Use only trusted, verified, and organization-approved image sources.
+
+---
+
+### 2. Running Containers as Root
+
+One of the most common security mistakes is executing containers with root privileges.
+
+```
+Container
+
+↓
+
+Root User
+
+↓
+
+Greater Host Risk
+```
+
+Running as root increases the impact of:
+
+- Container escape
+- Privilege escalation
+- Host compromise
+
+Always configure containers to run as non-root users whenever possible.
+
+---
+
+### 3. Using Privileged Containers
+
+Privileged containers have extensive access to host resources.
+
+Potential consequences include:
+
+- Host filesystem access
+- Device access
+- Kernel interaction
+- Container escape
+
+Privileged mode should be avoided unless absolutely required and formally approved.
+
+---
+
+### 4. Hardcoding Secrets
+
+Embedding sensitive information directly into:
+
+- Dockerfiles
+- Environment variables
+- Source code
+- Configuration files
+- Container images
+
+creates long-term security risks.
+
+```
+API Key
+
+↓
+
+Dockerfile
+
+↓
+
+Image
+
+↓
+
+Registry
+
+↓
+
+Credential Exposure
+```
+
+Use dedicated secrets management solutions instead.
+
+---
+
+### 5. Ignoring Image Vulnerabilities
+
+Organizations sometimes deploy images without vulnerability scanning.
+
+Consequences include:
+
+- Known CVEs
+- Outdated libraries
+- Exploitable dependencies
+- Compliance violations
+
+Every production image should be scanned before deployment and rescanned regularly.
+
+---
+
+### 6. Using Outdated Base Images
+
+Old base images often contain:
+
+- Unsupported packages
+- Missing security updates
+- Deprecated software
+- Known vulnerabilities
+
+Rebuild images regularly using current base images.
+
+---
+
+### 7. Granting Excessive Linux Capabilities
+
+Containers frequently receive more privileges than necessary.
+
+Examples include:
+
+- SYS_ADMIN
+- NET_ADMIN
+- SYS_MODULE
+- SYS_PTRACE
+
+Grant only the capabilities required by the workload.
+
+---
+
+### 8. Poor Network Segmentation
+
+Allowing unrestricted communication between containers enables attackers to move laterally.
+
+```
+Compromised Container
+
+↓
+
+Unrestricted Network
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+Internal Services
+```
+
+Implement network policies and micro-segmentation.
+
+---
+
+### 9. Ignoring Runtime Security
+
+Many organizations focus only on image scanning while neglecting runtime monitoring.
+
+Without runtime visibility:
+
+- Malware may execute undetected.
+- Reverse shells may remain active.
+- Container escapes may not be detected.
+- Cryptomining activity may continue unnoticed.
+
+Runtime monitoring complements preventive security controls.
+
+---
+
+### 10. Failing to Verify Image Signatures
+
+Deploying unsigned images increases the risk of software supply chain attacks.
+
+Deployment platforms should reject:
+
+- Unsigned images
+- Modified images
+- Images from unauthorized publishers
+
+Verify image integrity before every deployment.
+
+---
+
+### 11. Weak Registry Security
+
+Container registries are high-value targets.
+
+Common mistakes include:
+
+- Weak passwords
+- Missing MFA
+- Excessive permissions
+- Public repositories
+- No audit logging
+
+Protect registries with strong authentication, RBAC, and continuous monitoring.
+
+---
+
+### 12. Inadequate Resource Limits
+
+Containers without CPU or memory limits may consume excessive resources.
+
+Potential impacts include:
+
+- Denial-of-service
+- Host instability
+- Application failures
+
+Define appropriate resource requests and limits for every workload.
+
+---
+
+### 13. Treating Containers Like Virtual Machines
+
+Containers are designed to be immutable.
+
+Incorrect practice:
+
+```
+Running Container
+
+↓
+
+Manual Changes
+
+↓
+
+Production Continues
+```
+
+Correct practice:
+
+```
+Update Source Code
+
+↓
+
+Rebuild Image
+
+↓
+
+Deploy New Container
+
+↓
+
+Remove Old Container
+```
+
+Never rely on manual changes to running containers.
+
+---
+
+### 14. Ignoring Host Operating System Security
+
+Containers share the host kernel.
+
+Weak host security may affect every running container.
+
+Protect the host by:
+
+- Applying patches
+- Restricting administrative access
+- Enabling logging
+- Monitoring kernel activity
+- Hardening the operating system
+
+---
+
+### 15. Assuming Kubernetes Automatically Secures Containers
+
+Container orchestration platforms simplify deployment but do not automatically secure workloads.
+
+Organizations remain responsible for:
+
+- Image security
+- Secrets management
+- IAM
+- Network policies
+- Runtime protection
+- Monitoring
+- Compliance
+
+Security must be intentionally configured.
+
+---
+
+## Container Security Checklist
+
+| Control | Status |
+|---------|--------|
+| Trusted Base Images | ✓ |
+| Image Vulnerability Scanning | ✓ |
+| Image Signing Enabled | ✓ |
+| Private Registry | ✓ |
+| Registry MFA Enabled | ✓ |
+| Non-Root Containers | ✓ |
+| Privileged Containers Disabled | ✓ |
+| Secrets Manager Used | ✓ |
+| Runtime Monitoring Enabled | ✓ |
+| Network Policies Configured | ✓ |
+| Resource Limits Defined | ✓ |
+| Host OS Hardened | ✓ |
+| Continuous Logging Enabled | ✓ |
+| SIEM Integration | ✓ |
+| CI/CD Security Validation | ✓ |
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-190 – Application Container Security Guide
+- NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
+- NIST Cybersecurity Framework (CSF) 2.0
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Controls v8
+- CIS Docker Benchmark
+- CIS Kubernetes Benchmark
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Container Platform Documentation
+
+#### Docker
+
+- Docker Engine Documentation
+- Docker Security Documentation
+- Docker Hardened Images Documentation
+
+#### Kubernetes
+
+- Kubernetes Documentation
+- Kubernetes Security Best Practices
+- Pod Security Standards
+- Admission Controllers Documentation
+- Network Policies Documentation
+
+#### Container Runtimes
+
+- containerd Documentation
+- CRI-O Documentation
+- Open Container Initiative (OCI) Specifications
+
+#### Cloud Provider Documentation
+
+- Amazon Elastic Container Service (ECS)
+- Amazon Elastic Kubernetes Service (EKS)
+- Azure Kubernetes Service (AKS)
+- Google Kubernetes Engine (GKE)
+- Oracle Container Engine for Kubernetes (OKE)
+- IBM Cloud Kubernetes Service
+
+---
+
+### Security Frameworks
+
+- Zero Trust Architecture
+- Defense in Depth
+- Principle of Least Privilege (PoLP)
+- Secure Software Supply Chain
+- DevSecOps
+- Shift Left Security
+- Continuous Monitoring
+- Runtime Threat Detection
+- Vulnerability Management
+- Secure Configuration Management
+
+---
+
+### Recommended Learning Resources
+
+- MITRE ATT&CK Framework
+- MITRE D3FEND
+- OWASP Kubernetes Top Ten
+- OWASP Container Security Cheat Sheet
+- CNCF Security Whitepapers
+- CIS Benchmarks
+- SANS Cloud Security Resources
+- Cloud Security Alliance Research Publications
+
+---
+
+**End of Chapter 15 – Container Security**
+
+
 
 ---
