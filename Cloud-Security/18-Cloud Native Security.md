@@ -1627,10 +1627,402 @@ Cloud-native security requires continuous improvement rather than one-time imple
 
 ---
 
-## Next Section
+## Common Mistakes
 
-Common Mistakes
+Cloud-native environments combine multiple technologies such as containers, Kubernetes, serverless computing, APIs, CI/CD pipelines, and Infrastructure as Code (IaC). While these technologies provide flexibility and scalability, they also introduce new security risks when implemented incorrectly.
 
-References
+Most cloud-native security incidents are caused by misconfigurations, weak identity management, insecure software supply chains, or inadequate monitoring rather than vulnerabilities in the cloud platform itself.
+
+Understanding these common mistakes helps organizations build more secure and resilient cloud-native systems.
+
+---
+
+### 1. Treating Security as a Final Step
+
+One of the biggest mistakes is performing security testing only before production deployment.
+
+Cloud-native environments change continuously.
+
+Security should be integrated into:
+
+- Planning
+- Development
+- Testing
+- Deployment
+- Operations
+
+```
+Develop
+
+↓
+
+Deploy
+
+↓
+
+Secure Later ❌
+```
+
+Instead:
+
+```
+Plan
+
+↓
+
+Develop
+
+↓
+
+Secure
+
+↓
+
+Deploy
+
+↓
+
+Monitor ✓
+```
+
+Shift security left by integrating it into the SDLC.
+
+---
+
+### 2. Granting Excessive Permissions
+
+Applications frequently receive permissions far beyond their operational needs.
+
+Examples include:
+
+- Administrator roles
+- Wildcard IAM policies
+- Cluster-wide Kubernetes privileges
+- Full storage access
+
+Apply the Principle of Least Privilege to every identity.
+
+---
+
+### 3. Ignoring Software Supply Chain Security
+
+Using unverified packages, images, or build artifacts increases the risk of software supply chain attacks.
+
+Potential consequences include:
+
+- Malware
+- Backdoors
+- Dependency confusion
+- Malicious packages
+
+Verify:
+
+- Dependencies
+- Build artifacts
+- Container images
+- Deployment packages
+
+before deployment.
+
+---
+
+### 4. Hardcoding Secrets
+
+Sensitive information should never be stored in:
+
+- Source code
+- Git repositories
+- Container images
+- Configuration files
+
+```
+Database Password
+
+↓
+
+Git Repository
+
+↓
+
+Credential Exposure
+```
+
+Store secrets in managed secrets management services.
+
+---
+
+### 5. Insecure CI/CD Pipelines
+
+Weak deployment pipelines may allow attackers to introduce malicious code.
+
+Common issues include:
+
+- Shared credentials
+- Missing MFA
+- Unsigned artifacts
+- Unrestricted administrative access
+- No audit logging
+
+Protect CI/CD pipelines with strong identity controls and artifact verification.
+
+---
+
+### 6. Deploying Vulnerable Container Images
+
+Using outdated or unscanned images introduces known vulnerabilities into production.
+
+Always:
+
+- Scan images
+- Sign artifacts
+- Verify integrity
+- Rebuild regularly
+
+Trusted images should be the only images deployed.
+
+---
+
+### 7. Weak Kubernetes Configuration
+
+Common Kubernetes mistakes include:
+
+- Excessive RBAC permissions
+- Privileged containers
+- Public API servers
+- Missing network policies
+- Weak pod security settings
+
+Cluster hardening should be part of every deployment.
+
+---
+
+### 8. Ignoring Runtime Monitoring
+
+Preventive security controls alone cannot detect every attack.
+
+Without runtime monitoring, organizations may miss:
+
+- Container escapes
+- Privilege escalation
+- Cryptomining
+- Reverse shells
+- Unauthorized processes
+
+Continuous behavioral monitoring is essential.
+
+---
+
+### 9. Poor API Security
+
+APIs frequently expose business-critical functionality.
+
+Common mistakes include:
+
+- Missing authentication
+- Weak authorization
+- Lack of input validation
+- Missing rate limiting
+- Excessive error disclosure
+
+Secure APIs are fundamental to cloud-native architectures.
+
+---
+
+### 10. Ignoring Infrastructure as Code Security
+
+Infrastructure templates may accidentally create:
+
+- Public storage
+- Excessive IAM permissions
+- Weak networking
+- Missing encryption
+- Insecure Kubernetes resources
+
+Every Infrastructure as Code template should undergo automated security validation.
+
+---
+
+### 11. Configuration Drift
+
+Manual changes to production environments create inconsistencies between deployed infrastructure and version-controlled definitions.
+
+```
+Production
+
+↓
+
+Manual Changes
+
+↓
+
+Configuration Drift
+```
+
+Maintain immutable infrastructure and redeploy rather than modifying running systems.
+
+---
+
+### 12. Weak Network Segmentation
+
+Allowing unrestricted communication between workloads increases the likelihood of lateral movement.
+
+Use:
+
+- Network Policies
+- Service Mesh
+- Firewalls
+- Zero Trust principles
+
+to restrict unnecessary communication.
+
+---
+
+### 13. Poor Visibility
+
+Without centralized logging and monitoring, security teams may fail to detect:
+
+- Unauthorized deployments
+- IAM changes
+- API abuse
+- Secret access
+- Runtime anomalies
+
+Cloud-native environments require comprehensive observability.
+
+---
+
+### 14. Delayed Security Updates
+
+Outdated software introduces unnecessary risk.
+
+Regularly update:
+
+- Dependencies
+- Containers
+- Kubernetes
+- Serverless runtimes
+- Infrastructure definitions
+
+Timely updates reduce exposure to known vulnerabilities.
+
+---
+
+### 15. Assuming Cloud-Native Platforms Are Secure by Default
+
+Cloud-native technologies provide security capabilities but require proper implementation.
+
+Organizations remain responsible for securing:
+
+- Applications
+- APIs
+- Identities
+- Containers
+- Kubernetes
+- CI/CD pipelines
+- Infrastructure
+- Secrets
+- Monitoring
+- Compliance
+
+Security is a shared responsibility that must be continuously maintained.
+
+---
+
+## Cloud Native Security Checklist
+
+| Control | Status |
+|---------|--------|
+| Secure SDLC Implemented | ✓ |
+| DevSecOps Integrated | ✓ |
+| Least-Privilege IAM Applied | ✓ |
+| CI/CD Pipeline Protected | ✓ |
+| Software Supply Chain Verified | ✓ |
+| Container Images Scanned | ✓ |
+| Infrastructure as Code Validated | ✓ |
+| Kubernetes Hardened | ✓ |
+| APIs Protected | ✓ |
+| Secrets Managed Securely | ✓ |
+| Runtime Monitoring Enabled | ✓ |
+| Centralized Logging Configured | ✓ |
+| SIEM Integration Enabled | ✓ |
+| Immutable Infrastructure Adopted | ✓ |
+| Continuous Security Reviews Performed | ✓ |
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
+- NIST SP 800-190 – Application Container Security Guide
+- NIST SP 800-204A – Building Secure Microservices-Based Applications
+- NIST Cybersecurity Framework (CSF) 2.0
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Controls v8
+- CIS Kubernetes Benchmark
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Native Documentation
+
+#### Cloud Native Computing Foundation (CNCF)
+
+- CNCF Cloud Native Landscape
+- CNCF Security Whitepapers
+- CNCF Best Practices
+
+#### Kubernetes
+
+- Kubernetes Documentation
+- Kubernetes Security Documentation
+- Pod Security Standards
+
+#### Service Mesh
+
+- Istio Documentation
+- Linkerd Documentation
+
+#### Infrastructure as Code
+
+- Terraform Documentation
+- Pulumi Documentation
+- AWS CloudFormation Documentation
+- Azure Bicep Documentation
+
+---
+
+### Security Frameworks
+
+- Zero Trust Architecture
+- Defense in Depth
+- Principle of Least Privilege (PoLP)
+- DevSecOps
+- Secure Software Supply Chain
+- Continuous Monitoring
+- Secure Configuration Management
+- Vulnerability Management
+- Identity and Access Management (IAM)
+
+---
+
+### Recommended Learning Resources
+
+- OWASP Top 10
+- OWASP API Security Top 10
+- OWASP Kubernetes Top 10
+- MITRE ATT&CK Framework
+- MITRE D3FEND
+- CIS Benchmarks
+- SANS Cloud Security Resources
+- Cloud Security Alliance Research Publications
+
+---
+
+**End of Chapter 18 – Cloud Native Security**
+
+
 
 ---
