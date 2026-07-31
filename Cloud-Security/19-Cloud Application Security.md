@@ -1135,3 +1135,471 @@ Forward logs to the organization's SIEM for centralized correlation and long-ter
 
 ---
 
+## Prevention
+
+Preventing attacks against cloud applications requires a comprehensive, defense-in-depth strategy that secures users, identities, application code, APIs, cloud resources, data, sessions, dependencies, and runtime environments. Security should be integrated into every stage of the Secure Software Development Lifecycle (SSDLC) rather than applied only after deployment.
+
+A robust Cloud Application Security strategy should protect:
+
+- User identities
+- Authentication systems
+- Authorization mechanisms
+- Application code
+- APIs
+- Sessions
+- Databases
+- Cloud storage
+- Secrets
+- Dependencies
+- Runtime workloads
+- Monitoring infrastructure
+
+Organizations should implement the following security principles:
+
+- Zero Trust
+- Defense in Depth
+- Principle of Least Privilege
+- Secure by Default
+- Secure SDLC
+- Continuous Monitoring
+- Continuous Verification
+
+---
+
+# Defense-in-Depth for Cloud Applications
+
+```
+                  Users / Clients
+
+                        │
+
+                        ▼
+
+              Authentication (MFA)
+
+                        │
+
+                        ▼
+
+                 Authorization
+
+                        │
+
+                        ▼
+
+          Web Application Firewall (WAF)
+
+                        │
+
+                        ▼
+
+                 API Gateway
+
+                        │
+
+                        ▼
+
+              Cloud Application
+
+                        │
+
+        ┌───────────────┼───────────────┐
+
+        ▼               ▼               ▼
+
+    Database       Object Storage    External APIs
+
+                        │
+
+                        ▼
+
+        Logging • Monitoring • SIEM
+
+                        │
+
+                        ▼
+
+        Security Operations Center
+```
+
+Multiple security layers ensure that the failure of one control does not expose the entire application.
+
+---
+
+# Implement Strong Authentication
+
+Protect user accounts using:
+
+- Multi-Factor Authentication (MFA)
+- Strong password policies
+- Passkeys where supported
+- Adaptive authentication
+- Risk-based authentication
+
+Authentication should verify both the identity and context of each login attempt.
+
+---
+
+# Enforce Fine-Grained Authorization
+
+Authorization should be evaluated on every request.
+
+Implement:
+
+- Role-Based Access Control (RBAC)
+- Attribute-Based Access Control (ABAC) where appropriate
+- Resource ownership checks
+- Least-Privilege permissions
+
+Never rely solely on client-side authorization.
+
+```
+Authenticated User
+
+↓
+
+Authorization Check
+
+↓
+
+Permitted Action
+```
+
+---
+
+# Validate All Input
+
+Every input source should be treated as untrusted.
+
+Validate:
+
+- Form fields
+- URL parameters
+- API payloads
+- File uploads
+- Cookies
+- HTTP headers
+
+Input validation helps prevent:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Command Injection
+- Path Traversal
+- Server-Side Request Forgery (SSRF)
+
+---
+
+# Secure Session Management
+
+Protect active user sessions by:
+
+- Using secure, random session identifiers
+- Enabling `HttpOnly` cookies
+- Enabling `Secure` cookies
+- Using `SameSite` cookie attributes
+- Expiring inactive sessions
+- Rotating session identifiers after authentication
+
+Terminate sessions immediately after logout.
+
+---
+
+# Protect APIs
+
+Cloud applications depend heavily on APIs.
+
+API protection should include:
+
+- Authentication
+- Authorization
+- TLS encryption
+- Input validation
+- Rate limiting
+- Request size limits
+- Logging
+- API version management
+
+API Gateways should enforce security policies consistently.
+
+---
+
+# Secure Sensitive Data
+
+Protect sensitive information using:
+
+- Encryption at rest
+- TLS encryption in transit
+- Secure backups
+- Tokenization where appropriate
+- Data minimization
+
+Reduce unnecessary collection and retention of sensitive data.
+
+---
+
+# Protect Secrets
+
+Store credentials using managed secrets services.
+
+Examples include:
+
+- Database credentials
+- API keys
+- OAuth tokens
+- Certificates
+- Encryption keys
+
+```
+Application
+
+↓
+
+Secrets Manager
+
+↓
+
+Authorized Secret
+
+↓
+
+Application Logic
+```
+
+Rotate secrets regularly and monitor access.
+
+---
+
+# Secure Dependencies
+
+Third-party packages should be:
+
+- Verified
+- Vulnerability scanned
+- Updated regularly
+- Downloaded from trusted repositories
+
+Maintain an inventory of dependencies and generate Software Bills of Materials (SBOMs) where possible.
+
+---
+
+# Secure File Uploads
+
+Applications accepting uploaded content should:
+
+- Validate file extensions
+- Verify MIME types
+- Enforce file size limits
+- Scan files for malware
+- Rename uploaded files
+- Store files outside executable directories
+
+Never execute uploaded files directly.
+
+---
+
+# Secure Cloud Resources
+
+Applications should access cloud resources using dedicated service identities.
+
+Limit permissions for:
+
+- Storage
+- Databases
+- Queues
+- Messaging services
+- Secrets
+- Monitoring services
+
+Service identities should follow the Principle of Least Privilege.
+
+---
+
+# Enable Runtime Protection
+
+Runtime monitoring should detect:
+
+- Unauthorized processes
+- Memory anomalies
+- Unexpected outbound connections
+- Privilege escalation
+- Application abuse
+
+Behavioral analytics improve detection of sophisticated attacks.
+
+---
+
+# Enable Comprehensive Logging
+
+Collect logs for:
+
+- Authentication
+- Authorization
+- API requests
+- Administrative actions
+- File uploads
+- Application errors
+- Security events
+
+```
+Application Logs
+
+↓
+
+Central Logging
+
+↓
+
+SIEM
+
+↓
+
+Threat Detection
+```
+
+Centralized logging supports investigation, compliance, and incident response.
+
+---
+
+# Integrate Security into SSDLC
+
+Security should be embedded throughout development.
+
+Recommended activities:
+
+- Threat modeling
+- Secure coding
+- Code reviews
+- SAST
+- DAST
+- Dependency scanning
+- Secret scanning
+- Penetration testing
+
+Shift-left security reduces vulnerabilities before deployment.
+
+---
+
+## Best Practices
+
+### 1. Require Multi-Factor Authentication
+
+Protect privileged and customer accounts with MFA.
+
+Risk-based authentication should be considered for sensitive applications.
+
+---
+
+### 2. Follow the Principle of Least Privilege
+
+Grant users, applications, and services only the permissions required to perform their tasks.
+
+Review permissions regularly.
+
+---
+
+### 3. Secure Every API
+
+Require:
+
+- Authentication
+- Authorization
+- TLS
+- Input validation
+- Logging
+- Rate limiting
+
+Treat APIs as critical security boundaries.
+
+---
+
+### 4. Encrypt Sensitive Information
+
+Protect:
+
+- Credentials
+- Personal information
+- Financial records
+- Session tokens
+- Backup data
+
+Encryption should be enabled by default whenever practical.
+
+---
+
+### 5. Implement Secure Session Management
+
+Use:
+
+- Secure cookies
+- Session expiration
+- Session rotation
+- Logout invalidation
+
+Protect sessions from hijacking and fixation attacks.
+
+---
+
+### 6. Continuously Scan Dependencies
+
+Automatically detect:
+
+- Vulnerable packages
+- Malicious dependencies
+- Outdated frameworks
+- License compliance issues
+
+Integrate dependency scanning into CI/CD pipelines.
+
+---
+
+### 7. Monitor Application Behavior
+
+Monitor:
+
+- Login attempts
+- API usage
+- Administrative actions
+- Database access
+- Runtime activity
+- Error rates
+
+Behavioral monitoring helps detect attacks in progress.
+
+---
+
+### 8. Secure File Upload Functionality
+
+Validate every uploaded file before storage.
+
+Reject unsupported, oversized, or malicious files.
+
+---
+
+### 9. Protect Secrets Properly
+
+Never store credentials in:
+
+- Source code
+- Configuration files
+- Git repositories
+- Client-side applications
+
+Use centralized secrets management with regular rotation.
+
+---
+
+### 10. Continuously Assess Security
+
+Perform regular:
+
+- Vulnerability assessments
+- Penetration testing
+- Configuration reviews
+- Threat modeling
+- Security audits
+
+Cloud Application Security should evolve alongside the application and its threat landscape.
+
+---
+
