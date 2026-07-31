@@ -803,3 +803,413 @@ Runtime monitoring complements pre-deployment security testing.
 
 ---
 
+## Prevention
+
+Cloud DevSecOps emphasizes preventing security issues before they reach production. Rather than relying solely on post-deployment monitoring or periodic security reviews, preventive controls are embedded throughout the software development and cloud infrastructure lifecycle.
+
+By automating security validation and enforcing secure development practices, organizations can significantly reduce vulnerabilities, configuration errors, and operational risks while maintaining rapid delivery cycles.
+
+---
+
+# Cloud DevSecOps Prevention Lifecycle
+
+```
+Security Requirements
+
+        │
+
+        ▼
+
+Secure Development
+
+        │
+
+        ▼
+
+Source Control Protection
+
+        │
+
+        ▼
+
+Automated Security Testing
+
+        │
+
+        ▼
+
+Infrastructure Validation
+
+        │
+
+        ▼
+
+Secure CI/CD Pipeline
+
+        │
+
+        ▼
+
+Production Deployment
+
+        │
+
+        ▼
+
+Continuous Monitoring
+
+        │
+
+        ▼
+
+Continuous Improvement
+```
+
+This lifecycle ensures security is continuously integrated into development and operational processes.
+
+---
+
+# Define Security Requirements Early
+
+Security requirements should be established during project planning.
+
+Examples include:
+
+- Authentication requirements
+- Authorization rules
+- Encryption standards
+- Compliance requirements
+- Logging requirements
+- Data protection policies
+- Availability objectives
+
+Early planning reduces costly redesign later in the development lifecycle.
+
+---
+
+# Adopt Secure Coding Practices
+
+Developers should consistently follow secure coding principles.
+
+Key practices include:
+
+- Input validation
+- Output encoding
+- Parameterized queries
+- Secure session management
+- Strong authentication
+- Proper authorization checks
+- Secure error handling
+- Safe cryptographic implementations
+
+Secure coding minimizes application-level vulnerabilities.
+
+---
+
+# Protect Source Code Repositories
+
+Secure version control systems by implementing:
+
+- Multi-Factor Authentication (MFA)
+- Branch protection rules
+- Mandatory pull requests
+- Signed commits
+- Least privilege access
+- Repository audit logging
+- Protected release branches
+
+Source code repositories are critical assets and should receive strong protection.
+
+---
+
+# Automate Security Testing
+
+Every pipeline execution should automatically perform security validation.
+
+Recommended automated tests include:
+
+- Static Application Security Testing (SAST)
+- Software Composition Analysis (SCA)
+- Secrets scanning
+- Infrastructure as Code (IaC) scanning
+- Container image scanning
+- License compliance validation
+
+```
+Developer Commit
+
+       │
+
+       ▼
+
+CI Pipeline
+
+       │
+
+       ▼
+
+Security Tests
+
+       │
+
+ ┌─────┴─────┐
+
+ │           │
+
+Pass       Fail
+
+ │           │
+
+ ▼           ▼
+
+Deploy    Fix Issues
+```
+
+Automated testing enables rapid identification and remediation of security issues.
+
+---
+
+# Secure Infrastructure as Code
+
+Validate Infrastructure as Code templates before deployment.
+
+Check for:
+
+- Publicly exposed resources
+- Missing encryption
+- Weak IAM policies
+- Open security groups
+- Disabled logging
+- Non-compliant configurations
+
+Secure IaC prevents insecure infrastructure from being provisioned.
+
+---
+
+# Protect Secrets
+
+Never hardcode secrets into source code.
+
+Use dedicated secrets management solutions for:
+
+- API keys
+- Database credentials
+- Certificates
+- Cloud access keys
+- Encryption keys
+- Service account credentials
+
+Rotate secrets regularly and grant access based on the principle of least privilege.
+
+---
+
+# Secure CI/CD Pipelines
+
+Protect build and deployment systems through:
+
+- Strong authentication
+- Role-Based Access Control (RBAC)
+- Build isolation
+- Artifact integrity verification
+- Secure runners
+- Audit logging
+- Approval workflows for sensitive deployments
+
+A compromised CI/CD pipeline can affect every downstream deployment.
+
+---
+
+# Secure Software Supply Chain
+
+Reduce supply chain risk by:
+
+- Using trusted package repositories
+- Verifying software signatures
+- Scanning dependencies
+- Removing unused libraries
+- Maintaining software inventories (SBOMs)
+- Monitoring for newly disclosed vulnerabilities
+
+Supply chain security is an essential component of modern DevSecOps.
+
+---
+
+# Monitor Production Continuously
+
+Even after deployment, continuously monitor:
+
+- Application behavior
+- Infrastructure activity
+- Identity events
+- Container runtime
+- Kubernetes clusters
+- API activity
+- Network traffic
+- Security alerts
+
+Runtime monitoring complements preventive security controls.
+
+---
+
+# Train Development Teams
+
+Provide regular education on:
+
+- Secure coding
+- Cloud security
+- DevSecOps practices
+- Threat modeling
+- Secrets management
+- Incident reporting
+- Secure dependency management
+
+Knowledgeable teams are better equipped to prevent vulnerabilities before they are introduced.
+
+---
+
+## Best Practices
+
+### 1. Shift Security Left
+
+Integrate security from the earliest stages of development rather than waiting until testing or deployment.
+
+Early detection reduces remediation cost and accelerates secure delivery.
+
+---
+
+### 2. Treat Security as Code
+
+Represent security controls as code wherever possible.
+
+Examples include:
+
+- IAM policies
+- Infrastructure policies
+- Network rules
+- Compliance checks
+- Kubernetes admission policies
+- Policy-as-Code frameworks
+
+This approach improves consistency, automation, and version control.
+
+---
+
+### 3. Automate Everything Practical
+
+Automate repetitive security activities such as:
+
+- Code scanning
+- Dependency analysis
+- Secrets detection
+- IaC validation
+- Container scanning
+- Compliance verification
+- Deployment approvals (where appropriate)
+
+Automation reduces manual errors and improves scalability.
+
+---
+
+### 4. Enforce Least Privilege
+
+Apply least privilege across:
+
+- Developers
+- Service accounts
+- CI/CD runners
+- Cloud identities
+- Kubernetes workloads
+- Administrative users
+
+Regularly review and revoke unnecessary permissions.
+
+---
+
+### 5. Scan Dependencies Continuously
+
+Continuously evaluate third-party packages for:
+
+- Known vulnerabilities
+- Unsupported versions
+- Malicious packages
+- License issues
+
+Keep dependencies updated to reduce software supply chain risk.
+
+---
+
+### 6. Maintain Immutable Artifacts
+
+Build deployment artifacts once and promote the same verified artifact through testing and production environments.
+
+Benefits include:
+
+- Consistency
+- Traceability
+- Reduced deployment risk
+- Easier rollback
+
+---
+
+### 7. Secure Every Deployment
+
+Every deployment should validate:
+
+- Security policies
+- Configuration baselines
+- Infrastructure definitions
+- Secrets management
+- Compliance requirements
+- Artifact integrity
+
+Automated validation helps prevent insecure releases.
+
+---
+
+### 8. Integrate DevSecOps with Security Operations
+
+Ensure collaboration among:
+
+- Development teams
+- DevOps engineers
+- Security Operations Center (SOC)
+- Incident Response teams
+- Cloud Engineering
+- Compliance teams
+
+Integrated workflows improve both prevention and response.
+
+---
+
+### 9. Measure Security Performance
+
+Track metrics such as:
+
+- Mean Time to Remediate (MTTR)
+- Vulnerabilities detected before deployment
+- Build success rate
+- Secrets detected
+- Policy violations
+- Deployment frequency
+- Change failure rate
+- Security test coverage
+
+Metrics provide insight into DevSecOps maturity and areas for improvement.
+
+---
+
+### 10. Foster a Security-First Culture
+
+Encourage:
+
+- Shared ownership of security
+- Continuous learning
+- Blameless incident reviews
+- Cross-functional collaboration
+- Continuous feedback
+- Ongoing process improvement
+
+A strong security culture is essential for sustainable DevSecOps adoption.
+
+---
+
