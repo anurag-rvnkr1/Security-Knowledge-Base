@@ -1137,14 +1137,446 @@ Forward logs to the organization's SIEM for correlation and alerting.
 
 ---
 
-## Next Section
+## Prevention
 
-Prevention
+Preventing attacks against serverless applications requires securing identities, application code, event sources, APIs, dependencies, secrets, and cloud resources. Since the underlying infrastructure is managed by the cloud provider, organizations must focus on securing everything they build, configure, and deploy.
 
-Best Practices
+A strong Serverless Security strategy should protect:
 
-Common Mistakes
+- Application code
+- Serverless functions
+- APIs
+- Event sources
+- IAM identities
+- Execution roles
+- Secrets
+- Dependencies
+- Databases
+- Storage
+- Logging
+- Monitoring
 
-References
+Security should be incorporated into the Software Development Life Cycle (SDLC), CI/CD pipelines, and cloud governance processes.
 
 ---
+
+# Defense-in-Depth for Serverless
+
+```
+                Users / Applications
+
+                        │
+
+                        ▼
+
+                Authentication
+
+                        │
+
+                        ▼
+
+                Authorization
+
+                        │
+
+                        ▼
+
+                  API Gateway
+
+                        │
+
+                        ▼
+
+              Serverless Function
+
+                        │
+
+        ┌───────────────┼───────────────┐
+
+        ▼               ▼               ▼
+
+   Secrets Manager   Databases     Cloud Storage
+
+                        │
+
+                        ▼
+
+           Monitoring • Logging • SIEM
+
+                        │
+
+                        ▼
+
+             Incident Response Team
+```
+
+Each security layer reduces the likelihood of unauthorized access and limits the impact of a successful attack.
+
+---
+
+# Enforce Least-Privilege IAM
+
+Every serverless function should execute using a dedicated identity with only the permissions required for its specific task.
+
+Recommendations:
+
+- Create separate execution roles
+- Avoid wildcard permissions
+- Restrict access to required resources
+- Review IAM policies regularly
+- Remove unused identities
+
+```
+Function
+
+↓
+
+Minimal IAM Role
+
+↓
+
+Required Resources
+```
+
+Least Privilege significantly reduces the blast radius of compromised functions.
+
+---
+
+# Protect APIs
+
+Most serverless applications expose functionality through APIs.
+
+Secure APIs by enabling:
+
+- Authentication
+- Authorization
+- TLS encryption
+- Input validation
+- Rate limiting
+- Request throttling
+- Web Application Firewall (WAF) integration
+
+Proper API protection prevents abuse and unauthorized access.
+
+---
+
+# Validate Every Input
+
+Never trust incoming data.
+
+Validate:
+
+- Request format
+- File type
+- Input length
+- Allowed characters
+- Required parameters
+
+Input validation helps prevent:
+
+- Injection attacks
+- Malformed requests
+- Resource exhaustion
+- Logic manipulation
+
+---
+
+# Secure Secrets
+
+Credentials should never be embedded in:
+
+- Source code
+- Environment variables (unless securely managed)
+- Git repositories
+- Configuration files
+
+Use dedicated secrets management services.
+
+```
+Function
+
+↓
+
+Secrets Manager
+
+↓
+
+Temporary Secret
+
+↓
+
+Application
+```
+
+Rotate secrets regularly and audit all access.
+
+---
+
+# Secure Dependencies
+
+Third-party libraries are a major attack surface.
+
+Recommendations:
+
+- Use trusted repositories
+- Remove unused packages
+- Scan dependencies for vulnerabilities
+- Verify package integrity
+- Update libraries regularly
+
+Supply chain security should be part of every deployment.
+
+---
+
+# Encrypt Sensitive Data
+
+Enable encryption:
+
+- In transit
+- At rest
+- During backup
+
+Encrypt:
+
+- Databases
+- Object storage
+- Secrets
+- Logs containing sensitive metadata
+
+Protect encryption keys using an appropriate Key Management Service (KMS).
+
+---
+
+# Secure Event Sources
+
+Event sources should be authenticated and authorized where possible.
+
+Examples include:
+
+- API Gateway
+- Message queues
+- Event buses
+- Storage events
+- Database triggers
+
+Validate that only trusted services can trigger sensitive functions.
+
+---
+
+# Limit Function Permissions
+
+Functions should access only the cloud services necessary for business operations.
+
+Avoid granting permissions such as:
+
+- Full storage access
+- Administrative database permissions
+- Broad IAM management
+- Unrestricted network access
+
+Permission reviews should be part of routine security assessments.
+
+---
+
+# Implement Logging and Monitoring
+
+Enable centralized monitoring for:
+
+- Function invocations
+- Authentication events
+- Authorization failures
+- Secret access
+- Configuration changes
+- Runtime errors
+- API activity
+
+```
+Cloud Logs
+
+↓
+
+SIEM
+
+↓
+
+Correlation
+
+↓
+
+Security Alert
+```
+
+Continuous visibility enables faster detection of attacks.
+
+---
+
+# Protect the CI/CD Pipeline
+
+Serverless security begins before deployment.
+
+Secure the pipeline by implementing:
+
+- Code reviews
+- Static Application Security Testing (SAST)
+- Dependency scanning
+- Secret scanning
+- Artifact signing
+- Infrastructure validation
+
+Only verified artifacts should be deployed.
+
+---
+
+# Apply Resource Limits
+
+Configure reasonable limits for:
+
+- Execution timeout
+- Memory allocation
+- Concurrent executions
+- Retry behavior
+
+Resource limits reduce the impact of denial-of-service attacks and uncontrolled costs.
+
+---
+
+# Continuously Update Functions
+
+Maintain serverless applications by:
+
+- Updating dependencies
+- Removing deprecated APIs
+- Applying security patches
+- Rebuilding deployment packages
+
+Regular updates reduce exposure to known vulnerabilities.
+
+---
+
+## Best Practices
+
+### 1. Follow the Principle of Least Privilege
+
+Grant each function only the permissions required to complete its intended task.
+
+Review IAM policies periodically.
+
+---
+
+### 2. Authenticate and Authorize Every Request
+
+Require strong authentication before function invocation.
+
+Use modern identity standards such as OAuth 2.0 and OpenID Connect (OIDC) where appropriate.
+
+---
+
+### 3. Protect APIs
+
+Implement:
+
+- TLS
+- Rate limiting
+- Authentication
+- Authorization
+- Request validation
+- API logging
+
+APIs should never trust unauthenticated clients.
+
+---
+
+### 4. Secure Secrets
+
+Store credentials using managed secrets services.
+
+Rotate secrets frequently and monitor retrieval activity.
+
+---
+
+### 5. Scan Dependencies Continuously
+
+Automatically detect:
+
+- Vulnerable packages
+- Malicious dependencies
+- Outdated libraries
+- License issues
+
+Integrate dependency scanning into CI/CD pipelines.
+
+---
+
+### 6. Encrypt Sensitive Information
+
+Protect:
+
+- Databases
+- Object storage
+- Backups
+- Secrets
+- Communication channels
+
+Encryption should be enabled by default whenever supported.
+
+---
+
+### 7. Monitor Every Function Invocation
+
+Monitor:
+
+- Invocation frequency
+- Execution duration
+- Error rates
+- Authentication failures
+- Permission denials
+- Outbound network activity
+
+Behavioral baselines help identify anomalies.
+
+---
+
+### 8. Enable Comprehensive Logging
+
+Record:
+
+- Function executions
+- API requests
+- IAM activity
+- Secret access
+- Configuration changes
+- Deployment events
+
+Forward logs to the organization's SIEM for centralized analysis.
+
+---
+
+### 9. Secure the Development Pipeline
+
+Adopt DevSecOps practices by integrating:
+
+- Static code analysis
+- Dynamic testing where applicable
+- Dependency scanning
+- Secret detection
+- Automated policy validation
+
+Prevent vulnerabilities from reaching production.
+
+---
+
+### 10. Review Configurations Regularly
+
+Periodically assess:
+
+- IAM roles
+- Execution permissions
+- API configurations
+- Environment variables
+- Event triggers
+- Monitoring settings
+
+Routine configuration reviews strengthen the overall security posture.
+
+---
+
