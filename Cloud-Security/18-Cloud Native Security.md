@@ -1128,11 +1128,506 @@ Forward logs to the organization's SIEM for correlation and long-term retention.
 
 ---
 
+## Prevention
+
+Preventing attacks in cloud-native environments requires a holistic security strategy that protects applications, infrastructure, identities, workloads, APIs, software supply chains, and runtime environments. Because cloud-native systems are highly dynamic, security must be automated, continuous, and integrated throughout the Software Development Life Cycle (SDLC).
+
+An effective Cloud Native Security program should secure:
+
+- Source code
+- CI/CD pipelines
+- Infrastructure as Code (IaC)
+- Container images
+- Kubernetes clusters
+- Serverless functions
+- APIs
+- Identity and Access Management (IAM)
+- Secrets
+- Service-to-service communication
+- Runtime workloads
+- Monitoring and incident response
+
+Cloud-native environments should adopt the principles of:
+
+- Zero Trust
+- Defense in Depth
+- Least Privilege
+- Secure by Default
+- Immutable Infrastructure
+- Continuous Verification
+
+---
+
+# Defense-in-Depth for Cloud-Native Environments
+
+```
+                 Developers
+
+                      │
+
+                      ▼
+
+              Secure Source Code
+
+                      │
+
+                      ▼
+
+      SAST • Secret Scanning • SCA
+
+                      │
+
+                      ▼
+
+          Secure CI/CD Pipeline
+
+                      │
+
+                      ▼
+
+       Image & IaC Security Validation
+
+                      │
+
+                      ▼
+
+      Kubernetes / Serverless Platform
+
+                      │
+
+                      ▼
+
+   Runtime Protection • Service Mesh
+
+                      │
+
+                      ▼
+
+      Logging • Monitoring • SIEM
+
+                      │
+
+                      ▼
+
+         Incident Response & SOC
+```
+
+Each layer provides additional protection and minimizes the impact of security failures in other layers.
+
+---
+
+# Secure the Software Development Lifecycle
+
+Security should begin before application code is written.
+
+Recommended practices include:
+
+- Secure coding standards
+- Peer code reviews
+- Threat modeling
+- Security requirements definition
+- Developer security training
+
+Building security into development reduces vulnerabilities later in the lifecycle.
+
+---
+
+# Protect the CI/CD Pipeline
+
+The CI/CD pipeline is a high-value target because it controls deployments.
+
+Implement:
+
+- Multi-factor authentication
+- Role-based access control
+- Build artifact signing
+- Pipeline isolation
+- Secret protection
+- Audit logging
+
+Only trusted users and automated systems should modify deployment pipelines.
+
+---
+
+# Scan Source Code and Dependencies
+
+Automated scanning should detect:
+
+- Vulnerabilities
+- Hardcoded secrets
+- Insecure coding patterns
+- Outdated libraries
+- Malicious dependencies
+
+```
+Source Code
+
+↓
+
+Security Scan
+
+↓
+
+Remediation
+
+↓
+
+Approved Build
+```
+
+Prevent vulnerable code from reaching production.
+
+---
+
+# Validate Infrastructure as Code
+
+Infrastructure definitions should be validated before provisioning.
+
+Checks should include:
+
+- Public resource exposure
+- Encryption settings
+- Network segmentation
+- IAM permissions
+- Kubernetes configuration
+
+Policy-as-code helps enforce organizational standards consistently.
+
+---
+
+# Secure Container Images
+
+Container security should include:
+
+- Trusted base images
+- Vulnerability scanning
+- Image signing
+- Registry access controls
+- Image immutability
+
+Reject images that do not satisfy organizational security requirements.
+
+---
+
+# Harden Kubernetes and Serverless Platforms
+
+Protect orchestration platforms by:
+
+- Enforcing RBAC
+- Restricting administrative access
+- Enabling audit logging
+- Securing secrets
+- Applying Pod Security Standards
+- Using admission controllers
+
+For serverless workloads:
+
+- Apply least-privilege execution roles
+- Validate event sources
+- Configure execution limits
+
+---
+
+# Implement Zero Trust
+
+Assume no workload, user, or service is inherently trusted.
+
+Require:
+
+- Continuous authentication
+- Authorization
+- Encryption
+- Device and identity verification
+
+```
+Request
+
+↓
+
+Authenticate
+
+↓
+
+Authorize
+
+↓
+
+Verify
+
+↓
+
+Allow
+```
+
+Trust should be established for every request.
+
+---
+
+# Secure Service-to-Service Communication
+
+Protect internal communication using:
+
+- Mutual TLS (mTLS)
+- Service authentication
+- Authorization policies
+- Network segmentation
+
+A service mesh can simplify implementation and improve observability.
+
+---
+
+# Protect Secrets
+
+Store sensitive information in dedicated secrets management systems.
+
+Examples include:
+
+- API keys
+- Database credentials
+- OAuth tokens
+- Certificates
+- Encryption keys
+
+Rotate secrets regularly and audit all access events.
+
+---
+
+# Encrypt Sensitive Data
+
+Enable encryption:
+
+- At rest
+- In transit
+- During backup
+
+Protect:
+
+- Storage
+- Databases
+- Secrets
+- Communication channels
+
+Encryption keys should be managed through a secure Key Management Service (KMS).
+
+---
+
+# Monitor Runtime Activity
+
+Continuous runtime monitoring should detect:
+
+- Unexpected processes
+- Privilege escalation
+- Container escape attempts
+- Suspicious network traffic
+- Unauthorized API activity
+
+Behavioral analytics help identify attacks that bypass preventive controls.
+
+---
+
+# Centralize Logging
+
+Aggregate logs from:
+
+- Applications
+- Kubernetes
+- Containers
+- APIs
+- IAM
+- Cloud services
+- Infrastructure
+
+```
+Security Events
+
+↓
+
+Central Log Platform
+
+↓
+
+SIEM
+
+↓
+
+SOC Investigation
+```
+
+Centralized visibility improves incident detection and forensic analysis.
+
+---
+
+# Maintain Immutable Infrastructure
+
+Avoid manually modifying production systems.
+
+Instead:
+
+```
+Update Code
+
+↓
+
+Build New Artifact
+
+↓
+
+Deploy
+
+↓
+
+Retire Old Workload
+```
+
+Immutable infrastructure minimizes configuration drift and simplifies rollback.
+
+---
+
+# Conduct Continuous Security Assessments
+
+Regularly perform:
+
+- Vulnerability assessments
+- Penetration testing
+- Configuration reviews
+- Compliance audits
+- Architecture reviews
+
+Continuous assessment helps identify emerging risks before they are exploited.
+
+---
+
+## Best Practices
+
+### 1. Integrate Security into DevSecOps
+
+Embed security into every phase of development, testing, deployment, and operations.
+
+Automate security wherever possible.
+
+---
+
+### 2. Apply Least Privilege Everywhere
+
+Restrict permissions for:
+
+- Users
+- Service accounts
+- Applications
+- APIs
+- Infrastructure
+
+Review and remove unnecessary permissions regularly.
+
+---
+
+### 3. Secure the Software Supply Chain
+
+Implement:
+
+- Dependency scanning
+- Artifact signing
+- Trusted package repositories
+- Build integrity verification
+- SBOM (Software Bill of Materials) generation
+
+Supply chain security reduces the risk of introducing compromised software.
+
+---
+
+### 4. Protect APIs
+
+Require:
+
+- Strong authentication
+- Authorization
+- Input validation
+- Rate limiting
+- TLS encryption
+- Logging
+
+Secure APIs are fundamental to cloud-native architectures.
+
+---
+
+### 5. Use Immutable Infrastructure
+
+Never modify running workloads manually.
+
+Replace them with newly built and verified artifacts.
+
+---
+
+### 6. Enable Continuous Monitoring
+
+Monitor:
+
+- Runtime activity
+- API requests
+- IAM changes
+- Kubernetes events
+- Network traffic
+- Configuration drift
+
+Behavioral monitoring improves early threat detection.
+
+---
+
+### 7. Encrypt Sensitive Information
+
+Protect:
+
+- Storage
+- Secrets
+- Databases
+- Backups
+- Internal communications
+
+Encryption should be enabled by default whenever feasible.
+
+---
+
+### 8. Secure Secrets Properly
+
+Use centralized secrets management.
+
+Avoid embedding credentials into:
+
+- Source code
+- Configuration files
+- Container images
+
+Rotate secrets periodically.
+
+---
+
+### 9. Validate Infrastructure Before Deployment
+
+Scan Infrastructure as Code for:
+
+- Misconfigurations
+- Policy violations
+- Security weaknesses
+
+Prevent insecure infrastructure from being provisioned.
+
+---
+
+### 10. Continuously Review Security Posture
+
+Regularly evaluate:
+
+- Cluster configurations
+- IAM policies
+- CI/CD pipelines
+- Monitoring effectiveness
+- Compliance status
+
+Cloud-native security requires continuous improvement rather than one-time implementation.
+
+---
+
 ## Next Section
-
-Prevention
-
-Best Practices
 
 Common Mistakes
 
