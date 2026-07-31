@@ -1106,4 +1106,437 @@ Forward telemetry to the organization's SIEM for centralized correlation and inv
 
 ---
 
+## Prevention
+
+Preventing attacks in a Zero Trust cloud environment requires continuously validating every identity, device, application, workload, and network request. Rather than relying on perimeter defenses, Zero Trust assumes that compromise is always possible and applies security controls at every stage of access.
+
+An effective Zero Trust implementation protects:
+
+- Human identities
+- Service identities
+- Devices
+- Cloud applications
+- APIs
+- Virtual Machines
+- Containers
+- Kubernetes workloads
+- Serverless functions
+- Databases
+- Storage services
+- Administrative interfaces
+- Network communications
+
+Core Zero Trust principles include:
+
+- Never Trust, Always Verify
+- Verify Explicitly
+- Least Privilege Access
+- Assume Breach
+- Continuous Monitoring
+- Continuous Risk Assessment
+- Identity-Centric Security
+
+---
+
+# Defense-in-Depth for Zero Trust
+
+```
+                 User / Device
+
+                       │
+
+                       ▼
+
+             Identity Verification
+
+                       │
+
+                       ▼
+
+          Multi-Factor Authentication
+
+                       │
+
+                       ▼
+
+         Device Compliance Validation
+
+                       │
+
+                       ▼
+
+        Context & Risk Assessment Engine
+
+                       │
+
+                       ▼
+
+        Policy Decision Point (PDP)
+
+                       │
+
+                       ▼
+
+      Policy Enforcement Point (PEP)
+
+                       │
+
+                       ▼
+
+ Cloud Applications • APIs • Workloads
+
+                       │
+
+                       ▼
+
+     Logging • Monitoring • SIEM • SOC
+```
+
+Every layer independently evaluates access before resources are exposed.
+
+---
+
+# Strengthen Identity Security
+
+Identity is the foundation of Zero Trust.
+
+Protect identities by implementing:
+
+- Multi-Factor Authentication (MFA)
+- Passwordless authentication where appropriate
+- Strong password policies
+- Identity lifecycle management
+- Identity federation
+- Continuous authentication
+
+Every identity should be uniquely attributable and regularly reviewed.
+
+---
+
+# Enforce Least Privilege
+
+Grant users and services only the permissions required for their tasks.
+
+Examples include:
+
+- Read-only access
+- Resource-specific permissions
+- Temporary administrative privileges
+- Scoped API permissions
+
+Review permissions periodically to remove unnecessary access.
+
+---
+
+# Verify Device Compliance
+
+Access decisions should consider device health.
+
+Validate:
+
+- Operating system updates
+- Endpoint protection status
+- Disk encryption
+- Device ownership
+- Security policy compliance
+
+```
+Managed Device
+
+↓
+
+Compliance Check
+
+↓
+
+Access Evaluation
+```
+
+Non-compliant devices should receive restricted access or be denied entirely.
+
+---
+
+# Implement Context-Aware Access
+
+Evaluate contextual signals before granting access.
+
+Examples include:
+
+- Geographic location
+- Time of day
+- Network source
+- Device type
+- User behavior
+- Resource sensitivity
+
+Context-aware policies improve security while minimizing unnecessary user disruption.
+
+---
+
+# Secure Administrative Access
+
+Protect privileged accounts by requiring:
+
+- Multi-Factor Authentication
+- Just-In-Time (JIT) access
+- Privileged Access Management (PAM)
+- Session recording where appropriate
+- Approval workflows for elevated access
+
+Administrative access should be tightly controlled and continuously monitored.
+
+---
+
+# Implement Microsegmentation
+
+Divide cloud environments into smaller trust zones.
+
+```
+Application
+
+↓
+
+Policy Verification
+
+↓
+
+Database
+```
+
+Only explicitly authorized communication should be allowed between workloads.
+
+Microsegmentation limits lateral movement after compromise.
+
+---
+
+# Secure Service-to-Service Communication
+
+Cloud-native services should authenticate each other.
+
+Recommended controls include:
+
+- Mutual TLS (mTLS)
+- Service identities
+- Short-lived certificates
+- Authorization policies
+- Secure service meshes
+
+Every workload should verify the identity of communicating services.
+
+---
+
+# Encrypt Data Everywhere
+
+Protect information:
+
+- In transit using TLS
+- At rest using strong encryption
+- During backup using encrypted storage
+
+Secure encryption key management is equally important to effective encryption.
+
+---
+
+# Continuously Monitor Access
+
+Monitor:
+
+- Authentication events
+- Authorization decisions
+- Device compliance
+- API activity
+- Administrative actions
+- Workload communication
+- Risk score changes
+
+```
+Security Events
+
+↓
+
+Monitoring Platform
+
+↓
+
+SIEM
+
+↓
+
+Threat Detection
+```
+
+Continuous monitoring enables rapid identification of suspicious behavior.
+
+---
+
+# Automate Policy Enforcement
+
+Use centralized policy engines to enforce consistent security decisions.
+
+Automate:
+
+- Access approvals
+- Device compliance validation
+- Session restrictions
+- Risk-based authentication
+- Permission reviews
+
+Automation reduces human error and improves consistency.
+
+---
+
+# Protect APIs with Zero Trust Principles
+
+Apply Zero Trust controls to every API.
+
+Require:
+
+- Strong authentication
+- Authorization
+- Input validation
+- Rate limiting
+- Encryption
+- Logging
+
+APIs should never rely on network location for trust.
+
+---
+
+# Continuously Review Access
+
+Regularly review:
+
+- User permissions
+- Service accounts
+- Administrative roles
+- Third-party access
+- Dormant identities
+- Temporary privileges
+
+Timely reviews reduce unnecessary exposure.
+
+---
+
+## Best Practices
+
+### 1. Verify Every Access Request
+
+Authenticate, authorize, and validate every request regardless of where it originates.
+
+Do not assume internal traffic is trustworthy.
+
+---
+
+### 2. Require Multi-Factor Authentication
+
+Enable MFA for:
+
+- Administrators
+- Remote users
+- Privileged accounts
+- Sensitive business applications
+
+MFA should be enforced consistently across cloud environments.
+
+---
+
+### 3. Apply Least Privilege
+
+Grant only the minimum permissions required for users, applications, and services.
+
+Regularly review and revoke unnecessary privileges.
+
+---
+
+### 4. Continuously Evaluate Risk
+
+Assess access decisions using:
+
+- Device health
+- User behavior
+- Geographic location
+- Threat intelligence
+- Resource sensitivity
+
+Higher-risk requests should require additional verification or be denied.
+
+---
+
+### 5. Segment Cloud Resources
+
+Separate workloads into security zones using:
+
+- Virtual networks
+- Subnets
+- Microsegmentation
+- Network policies
+- Service meshes
+
+Segmentation reduces the impact of successful attacks.
+
+---
+
+### 6. Secure Machine Identities
+
+Protect service accounts, workload identities, and API credentials.
+
+Rotate credentials regularly and avoid long-lived secrets.
+
+---
+
+### 7. Monitor Continuously
+
+Collect telemetry from:
+
+- Identity providers
+- Cloud platforms
+- APIs
+- Applications
+- Networks
+- Endpoints
+
+Correlate events using centralized SIEM platforms.
+
+---
+
+### 8. Protect Administrative Accounts
+
+Require:
+
+- MFA
+- Privileged Access Management (PAM)
+- Just-In-Time access
+- Continuous auditing
+
+Administrative identities should receive the highest level of protection.
+
+---
+
+### 9. Automate Security Decisions
+
+Use policy engines and automation to:
+
+- Enforce access rules
+- Detect non-compliant devices
+- Respond to elevated risk
+- Revoke compromised sessions
+
+Automation improves consistency and response speed.
+
+---
+
+### 10. Continuously Improve the Zero Trust Architecture
+
+Regularly perform:
+
+- Architecture reviews
+- Identity audits
+- Permission reviews
+- Penetration testing
+- Threat modeling
+- Security assessments
+
+Zero Trust is an ongoing operational model that evolves alongside the organization's cloud environment.
+
+---
 
