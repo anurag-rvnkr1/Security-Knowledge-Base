@@ -1875,3 +1875,443 @@ Forward API logs to the organization's SIEM for centralized analysis, correlatio
 
 ---
 
+## Prevention
+
+Preventing attacks against cloud APIs requires a layered security strategy that protects every stage of the API lifecycle—from design and development to deployment, runtime monitoring, and retirement. Because APIs expose business functionality directly to users, applications, and third-party services, every request should be considered untrusted until verified.
+
+An effective Cloud API Security program protects:
+
+- API endpoints
+- Authentication mechanisms
+- Authorization controls
+- Access tokens
+- API keys
+- Business logic
+- Data exchanged through APIs
+- Backend services
+- Third-party integrations
+- Runtime infrastructure
+
+Organizations should implement the following principles:
+
+- Zero Trust
+- Defense in Depth
+- Least Privilege
+- Secure by Design
+- Secure API Lifecycle
+- Continuous Monitoring
+- Continuous Validation
+
+---
+
+# Defense-in-Depth for Cloud APIs
+
+```
+                  Client / Consumer
+
+                         │
+
+                         ▼
+
+                  TLS Encryption
+
+                         │
+
+                         ▼
+
+                    API Gateway
+
+      ┌──────────┬────────────┬────────────┐
+
+      ▼          ▼            ▼            ▼
+
+Authentication Authorization  WAF   Rate Limiting
+
+                         │
+
+                         ▼
+
+                 API Business Logic
+
+                         │
+
+          ┌──────────────┼──────────────┐
+
+          ▼              ▼              ▼
+
+      Database      Object Storage   Cloud Services
+
+                         │
+
+                         ▼
+
+         Logging • Monitoring • SIEM
+
+                         │
+
+                         ▼
+
+        Security Operations Center
+```
+
+Each layer provides independent security controls, reducing the impact of individual failures.
+
+---
+
+# Enforce Strong Authentication
+
+Every protected API should require robust authentication.
+
+Recommended methods include:
+
+- OAuth 2.0
+- OpenID Connect (OIDC)
+- Mutual TLS (mTLS)
+- JSON Web Tokens (JWT)
+- Client certificates
+
+Avoid relying solely on API keys for sensitive operations.
+
+---
+
+# Apply Fine-Grained Authorization
+
+Authorization must be evaluated for every request.
+
+Implement:
+
+- Role-Based Access Control (RBAC)
+- Attribute-Based Access Control (ABAC) where appropriate
+- Token scope validation
+- Resource ownership verification
+
+```
+Authenticated Client
+
+↓
+
+Authorization Check
+
+↓
+
+Permitted API Operation
+```
+
+Never trust authorization decisions made on the client side.
+
+---
+
+# Secure API Keys
+
+API keys should be:
+
+- Randomly generated
+- Stored securely
+- Rotated regularly
+- Scoped to specific services
+- Monitored for abuse
+
+Never expose API keys in:
+
+- Source code
+- Public repositories
+- Client-side JavaScript
+- Mobile application binaries
+
+---
+
+# Validate All Input
+
+Every request should undergo strict validation.
+
+Validate:
+
+- JSON payloads
+- Query parameters
+- HTTP headers
+- File uploads
+- Request sizes
+- Content types
+
+Input validation helps prevent:
+
+- SQL Injection
+- NoSQL Injection
+- Cross-Site Scripting (XSS)
+- Command Injection
+- Path Traversal
+- Server-Side Request Forgery (SSRF)
+
+---
+
+# Protect Tokens
+
+Access tokens should:
+
+- Have short expiration periods
+- Be digitally signed
+- Be transmitted only over HTTPS
+- Be validated on every request
+- Be revoked when compromised
+
+Applications should verify:
+
+- Signature
+- Expiration
+- Issuer
+- Audience
+- Scope
+
+before granting access.
+
+---
+
+# Secure API Gateway
+
+Configure the API Gateway to enforce:
+
+- Authentication
+- Authorization
+- TLS termination
+- Rate limiting
+- Request validation
+- Logging
+- IP filtering
+- Request routing
+
+The gateway should serve as the primary enforcement point for API security policies.
+
+---
+
+# Implement Rate Limiting
+
+Limit excessive requests to protect backend services.
+
+Example controls:
+
+- Requests per second
+- Requests per minute
+- Concurrent connection limits
+- Burst protection
+
+```
+Incoming Requests
+
+↓
+
+Rate Limiter
+
+↓
+
+Allowed / Blocked
+```
+
+Rate limiting mitigates abuse, scraping, and Denial-of-Service (DoS) attacks.
+
+---
+
+# Encrypt Data
+
+Protect API communications using:
+
+- HTTPS
+- TLS 1.2 or later
+- Strong cipher suites
+- Secure certificate management
+
+Sensitive information stored by backend services should also be encrypted at rest.
+
+---
+
+# Secure Backend Services
+
+Backend services should:
+
+- Use dedicated service identities
+- Follow Least Privilege
+- Validate internal requests
+- Authenticate service-to-service communication
+- Restrict direct internet exposure
+
+Internal APIs should not be assumed to be inherently trustworthy.
+
+---
+
+# Secure Third-Party Integrations
+
+When connecting external services:
+
+- Verify partner identities
+- Restrict permissions
+- Validate incoming data
+- Monitor API activity
+- Rotate shared credentials
+
+Review integrations regularly to ensure they remain necessary and secure.
+
+---
+
+# Enable Comprehensive Logging
+
+Log security-relevant API events, including:
+
+- Authentication attempts
+- Authorization failures
+- Token validation errors
+- Administrative actions
+- Rate limit violations
+- Configuration changes
+
+```
+API Activity
+
+↓
+
+Central Logging
+
+↓
+
+SIEM
+
+↓
+
+Threat Detection
+```
+
+Avoid logging passwords, tokens, or cryptographic secrets.
+
+---
+
+# Integrate Security into the API Lifecycle
+
+Security should be embedded throughout API development.
+
+Recommended activities:
+
+- Threat modeling
+- Secure API design reviews
+- Static Application Security Testing (SAST)
+- Dynamic Application Security Testing (DAST)
+- Dependency scanning
+- API penetration testing
+- Security validation before release
+
+Security controls should evolve alongside API functionality.
+
+---
+
+## Best Practices
+
+### 1. Design APIs with Security First
+
+Consider authentication, authorization, encryption, validation, and monitoring during API design rather than after implementation.
+
+---
+
+### 2. Require Strong Authentication
+
+Use OAuth 2.0, OpenID Connect, Mutual TLS, or other modern authentication mechanisms for protected APIs.
+
+Avoid exposing sensitive operations through anonymous endpoints.
+
+---
+
+### 3. Enforce Authorization on Every Request
+
+Every endpoint should verify that the authenticated client has permission to perform the requested action.
+
+Never rely solely on hidden URLs or client-side restrictions.
+
+---
+
+### 4. Validate All Inputs
+
+Treat every API request as potentially malicious.
+
+Validate:
+
+- Parameters
+- JSON bodies
+- Headers
+- Uploaded files
+- Request sizes
+
+Reject malformed or unexpected input.
+
+---
+
+### 5. Protect Tokens and Credentials
+
+Store API keys and tokens securely.
+
+Rotate credentials regularly and revoke compromised credentials immediately.
+
+Use short-lived access tokens whenever practical.
+
+---
+
+### 6. Enable Rate Limiting
+
+Apply request limits to reduce:
+
+- Brute-force attacks
+- Credential stuffing
+- API scraping
+- Denial-of-Service (DoS)
+
+Rate limiting should be configured according to application requirements.
+
+---
+
+### 7. Encrypt All Communications
+
+Require HTTPS for every API endpoint.
+
+Disable insecure protocols and outdated TLS versions.
+
+---
+
+### 8. Monitor API Activity Continuously
+
+Monitor:
+
+- Authentication events
+- Authorization failures
+- Request volumes
+- Error responses
+- Administrative operations
+- Geographic access patterns
+
+Behavioral monitoring improves early detection of attacks.
+
+---
+
+### 9. Test APIs Regularly
+
+Perform:
+
+- Vulnerability assessments
+- Penetration testing
+- Business logic testing
+- Authorization testing
+- API fuzz testing
+
+Continuous testing helps identify security weaknesses before attackers do.
+
+---
+
+### 10. Maintain an API Inventory
+
+Document and review:
+
+- Public APIs
+- Internal APIs
+- Deprecated versions
+- Third-party integrations
+- Authentication methods
+- Data classifications
+
+An accurate API inventory supports governance, security reviews, and lifecycle management.
+
+---
+
