@@ -339,3 +339,462 @@ Threat hunting focuses on proactive discovery, while incident response focuses o
 
 ---
 
+## How It Works
+
+Cloud Threat Hunting is a **hypothesis-driven, iterative process** that proactively searches for malicious activity across cloud environments. Instead of waiting for alerts from security tools, threat hunters use cloud telemetry, threat intelligence, and behavioral analysis to uncover threats that may have evaded automated detection.
+
+The objective is to identify attackers early, reduce dwell time, validate security controls, and continuously improve detection capabilities.
+
+---
+
+# Cloud Threat Hunting Workflow
+
+```
+Threat Intelligence
+
+        │
+
+        ▼
+
+Define Hunting Hypothesis
+
+        │
+
+        ▼
+
+Collect Cloud Telemetry
+
+        │
+
+        ▼
+
+Normalize & Correlate Data
+
+        │
+
+        ▼
+
+Behavioral Analysis
+
+        │
+
+        ▼
+
+Investigate Suspicious Activity
+
+        │
+
+        ▼
+
+Validate Findings
+
+        │
+
+        ▼
+
+Contain Threat (if confirmed)
+
+        │
+
+        ▼
+
+Update Detection Rules
+
+        │
+
+        ▼
+
+Document Lessons Learned
+```
+
+Threat hunting is cyclical, with each investigation refining future hunts.
+
+---
+
+## Step 1 – Define a Hunting Hypothesis
+
+Every hunt starts with a specific, testable hypothesis based on:
+
+- Threat intelligence
+- Recent vulnerabilities
+- Industry attack trends
+- Internal incidents
+- MITRE ATT&CK techniques
+- Suspicious environmental changes
+
+Example hypotheses:
+
+- A compromised IAM user is attempting privilege escalation.
+- Stolen API keys are being used from unfamiliar IP addresses.
+- Kubernetes service accounts are accessing resources outside their normal scope.
+- Sensitive storage buckets are experiencing abnormal download activity.
+
+A focused hypothesis improves efficiency and investigative accuracy.
+
+---
+
+## Step 2 – Collect Cloud Telemetry
+
+Gather relevant data from multiple cloud services.
+
+Common telemetry includes:
+
+- Cloud audit logs
+- IAM activity
+- Authentication logs
+- API gateway logs
+- Network flow logs
+- DNS queries
+- Kubernetes audit logs
+- Container runtime logs
+- Serverless execution logs
+- Object storage access logs
+- Database audit logs
+- Endpoint detection telemetry
+- SIEM events
+
+Comprehensive telemetry provides the foundation for effective hunting.
+
+---
+
+## Step 3 – Normalize and Correlate Data
+
+Cloud data originates from numerous services and formats.
+
+Normalization involves:
+
+- Standardizing timestamps
+- Unifying user identities
+- Mapping resource names
+- Removing duplicate events
+- Enriching records with contextual information
+
+Correlation combines events across systems to reveal attacker activity.
+
+Example:
+
+```
+Successful Login
+
+        │
+
+API Key Created
+
+        │
+
+Privilege Escalation
+
+        │
+
+Storage Access
+
+        │
+
+Large Data Download
+```
+
+A sequence that appears benign individually may indicate malicious activity when viewed together.
+
+---
+
+## Step 4 – Perform Behavioral Analysis
+
+Threat hunters compare current behavior against known baselines.
+
+Investigate anomalies such as:
+
+- Logins from unusual countries
+- Administrative activity outside business hours
+- Sudden increases in API requests
+- New privileged identities
+- Unexpected resource creation
+- Abnormal data transfers
+- Rare command execution patterns
+
+Behavioral analysis is particularly valuable against attackers using legitimate credentials.
+
+---
+
+## Step 5 – Investigate Suspicious Activity
+
+When anomalies are identified, investigators determine:
+
+- Who performed the activity?
+- Which systems were affected?
+- When did the activity begin?
+- How did the attacker gain access?
+- What actions were performed?
+- Is the activity malicious or legitimate?
+
+Investigation combines technical evidence with business context.
+
+---
+
+## Step 6 – Validate Findings
+
+Before declaring an incident:
+
+- Correlate multiple evidence sources.
+- Confirm timestamps.
+- Verify identities.
+- Review historical behavior.
+- Compare against known maintenance activities.
+- Eliminate false positives.
+
+Validation reduces unnecessary incident escalations.
+
+---
+
+## Step 7 – Initiate Incident Response
+
+If malicious activity is confirmed:
+
+- Isolate affected resources.
+- Disable compromised accounts.
+- Rotate credentials.
+- Preserve forensic evidence.
+- Notify stakeholders.
+- Begin incident response procedures.
+
+Threat hunting often serves as the trigger for incident response.
+
+---
+
+## Step 8 – Improve Detection
+
+Every confirmed hunt should improve future security.
+
+Examples include:
+
+- New SIEM detection rules
+- Updated behavioral baselines
+- Additional logging
+- Improved dashboards
+- New automation playbooks
+- Enhanced threat intelligence
+
+Continuous improvement is a core objective of mature hunting programs.
+
+---
+
+## Practical Example
+
+### Example 1 – Suspicious IAM Privilege Escalation
+
+Scenario:
+
+A cloud administrator receives no alerts, but a threat hunter notices an infrequently used IAM account assigning itself elevated permissions.
+
+Evidence reviewed:
+
+- IAM audit logs
+- Authentication history
+- API activity
+- Role assignment records
+
+Findings:
+
+- Credentials had been compromised.
+- Administrative privileges were granted without authorization.
+- Persistence mechanisms were being established.
+
+Outcome:
+
+- Account disabled
+- Sessions revoked
+- Privileges removed
+- Detection rule added for self-assigned administrative roles
+
+---
+
+### Example 2 – Kubernetes Service Account Abuse
+
+Scenario:
+
+A Kubernetes service account begins accessing namespaces outside its expected scope.
+
+Evidence reviewed:
+
+- Kubernetes audit logs
+- RBAC changes
+- Container runtime logs
+- Network telemetry
+
+Findings:
+
+- Excessive permissions enabled lateral movement.
+- Sensitive Secrets were accessed.
+
+Outcome:
+
+- RBAC corrected
+- Service account credentials rotated
+- Runtime policies strengthened
+- New alerts configured for cross-namespace access
+
+---
+
+### Example 3 – Abnormal Object Storage Access
+
+Scenario:
+
+Threat hunters identify unusually large downloads from a confidential storage bucket.
+
+Evidence reviewed:
+
+- Object storage access logs
+- IAM events
+- Network flow logs
+- API gateway logs
+
+Findings:
+
+- Compromised API credentials
+- Automated data exfiltration
+
+Outcome:
+
+- API keys revoked
+- Access policies updated
+- Additional monitoring deployed
+
+---
+
+### Example 4 – Serverless Function Abuse
+
+Scenario:
+
+A serverless function begins making outbound connections to unfamiliar domains.
+
+Evidence reviewed:
+
+- Function execution logs
+- DNS logs
+- Network flow records
+- Cloud audit logs
+
+Findings:
+
+- Malicious code injected into the deployment package
+- Unauthorized outbound communication established
+
+Outcome:
+
+- Function redeployed from a trusted source
+- Secrets rotated
+- Deployment pipeline reviewed
+- Monitoring enhanced
+
+---
+
+## Detection
+
+Threat hunting depends on high-quality detection and telemetry.
+
+---
+
+### Identity-Based Detection
+
+Monitor for:
+
+- Unusual login locations
+- MFA bypass attempts
+- New privileged users
+- Dormant account usage
+- Service account misuse
+- Unusual federation events
+
+Identity anomalies frequently indicate early attack stages.
+
+---
+
+### Infrastructure Detection
+
+Review:
+
+- Virtual machine creation
+- Snapshot activity
+- Security group changes
+- Configuration modifications
+- Resource deletions
+- Infrastructure as Code (IaC) drift
+
+Unexpected infrastructure changes warrant investigation.
+
+---
+
+### Network Detection
+
+Monitor:
+
+- Large outbound transfers
+- New external destinations
+- Lateral movement
+- DNS anomalies
+- VPN activity
+- Unusual protocol usage
+
+Network telemetry often reveals attacker movement and exfiltration.
+
+---
+
+### Cloud Application Detection
+
+Analyze:
+
+- Authentication events
+- Administrative actions
+- API request patterns
+- Session duration
+- Permission changes
+- Configuration updates
+
+Application activity provides valuable behavioral context.
+
+---
+
+### Kubernetes and Container Detection
+
+Review:
+
+- Pod creation events
+- Privileged container execution
+- Secret access
+- RBAC changes
+- Admission controller decisions
+- Container runtime activity
+
+Cloud-native workloads require specialized detection strategies.
+
+---
+
+### Data Access Detection
+
+Monitor:
+
+- Object storage downloads
+- Database exports
+- Backup operations
+- Encryption key usage
+- Bulk file access
+- Sensitive record queries
+
+Unexpected access patterns may indicate data theft.
+
+---
+
+### Detection Best Practices
+
+- Collect telemetry from every cloud service.
+- Normalize logs before analysis.
+- Correlate identity, network, infrastructure, and application events.
+- Continuously update behavioral baselines.
+- Use MITRE ATT&CK to categorize observed techniques.
+- Validate detections through periodic threat hunting exercises.
+- Integrate findings into SIEM and SOAR platforms.
+- Preserve evidence for potential forensic investigations.
+- Review false positives to improve detection quality.
+- Continuously refine hunting hypotheses using current threat intelligence and lessons learned.
+
+---
+
