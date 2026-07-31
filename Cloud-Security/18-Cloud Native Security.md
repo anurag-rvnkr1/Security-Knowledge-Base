@@ -431,13 +431,704 @@ Automation improves consistency and reduces manual effort.
 
 ---
 
+
+## How It Works
+
+Cloud Native Security works by integrating security controls into every stage of the cloud-native application lifecycle. Instead of relying on a traditional network perimeter, security is distributed across identities, infrastructure, workloads, APIs, software supply chains, runtime environments, and monitoring systems.
+
+Every deployment, request, and workload is continuously verified using automated security controls.
+
+A secure cloud-native workflow generally includes:
+
+1. Develop secure application code
+2. Scan source code and dependencies
+3. Build trusted artifacts
+4. Validate Infrastructure as Code (IaC)
+5. Deploy through a secure CI/CD pipeline
+6. Authenticate and authorize requests
+7. Secure workload communication
+8. Monitor runtime behavior
+9. Detect threats
+10. Respond to incidents
+
+This continuous approach ensures that security evolves alongside rapidly changing cloud-native environments.
+
+---
+
+## Cloud Native Security Workflow
+
+```
+                Developer
+
+                     │
+
+                     ▼
+
+               Source Code
+
+                     │
+
+                     ▼
+
+      SAST • Secret Scan • Dependency Scan
+
+                     │
+
+                     ▼
+
+                Build Pipeline
+
+                     │
+
+                     ▼
+
+             Container Image Scan
+
+                     │
+
+                     ▼
+
+          Artifact Signing & Verification
+
+                     │
+
+                     ▼
+
+          Kubernetes / Serverless Platform
+
+                     │
+
+                     ▼
+
+      Runtime Monitoring • Logging • SIEM
+
+                     │
+
+                     ▼
+
+             Security Operations Center
+```
+
+Security validation occurs before, during, and after deployment.
+
+---
+
+## Step 1 – Develop Secure Code
+
+Cloud-native security begins during development.
+
+Developers should:
+
+- Follow secure coding practices
+- Validate user input
+- Handle errors securely
+- Avoid hardcoded credentials
+- Review security requirements
+
+Secure development reduces vulnerabilities before deployment.
+
+---
+
+## Step 2 – Scan Source Code
+
+Before building applications, automated scanners analyze source code.
+
+Typical checks include:
+
+- Injection vulnerabilities
+- Insecure coding patterns
+- Hardcoded secrets
+- Weak cryptography
+- Authentication flaws
+
+```
+Source Code
+
+↓
+
+Static Analysis
+
+↓
+
+Security Findings
+```
+
+Issues should be addressed before code reaches production.
+
+---
+
+## Step 3 – Scan Dependencies
+
+Modern applications rely heavily on third-party libraries.
+
+Dependency scanning identifies:
+
+- Known CVEs
+- Outdated packages
+- Malicious libraries
+- License issues
+
+```
+Application
+
+↓
+
+Dependencies
+
+↓
+
+Vulnerability Scan
+```
+
+Only trusted and maintained packages should be used.
+
+---
+
+## Step 4 – Validate Infrastructure as Code
+
+Infrastructure definitions should undergo automated security validation.
+
+Checks include:
+
+- Public storage exposure
+- Excessive IAM permissions
+- Weak network configurations
+- Missing encryption
+- Misconfigured Kubernetes resources
+
+```
+IaC Template
+
+↓
+
+Policy Validation
+
+↓
+
+Approved Infrastructure
+```
+
+Infrastructure should be secure before deployment.
+
+---
+
+## Step 5 – Build Trusted Artifacts
+
+Application artifacts should be generated using secure build pipelines.
+
+Recommended controls include:
+
+- Artifact signing
+- Integrity verification
+- Secure build environments
+- Reproducible builds
+
+Trusted artifacts reduce software supply chain risk.
+
+---
+
+## Step 6 – Deploy Securely
+
+Applications are deployed through automated CI/CD pipelines.
+
+```
+CI/CD Pipeline
+
+↓
+
+Deployment Validation
+
+↓
+
+Cloud Platform
+```
+
+Deployment policies should verify:
+
+- Image signatures
+- Configuration compliance
+- Resource limits
+- Security contexts
+
+---
+
+## Step 7 – Authenticate Every Request
+
+Cloud-native applications authenticate users, workloads, and services.
+
+Authentication methods include:
+
+- OAuth 2.0
+- OpenID Connect (OIDC)
+- Mutual TLS (mTLS)
+- Cloud IAM
+- Service identities
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Verified Identity
+```
+
+Unauthenticated requests should never access protected services.
+
+---
+
+## Step 8 – Authorize Resource Access
+
+After authentication, authorization determines which resources may be accessed.
+
+```
+Identity
+
+↓
+
+IAM / RBAC
+
+↓
+
+Allowed Resources
+```
+
+Authorization should enforce the Principle of Least Privilege.
+
+---
+
+## Step 9 – Secure Service Communication
+
+Microservices exchange information across internal networks.
+
+Secure communication includes:
+
+- Mutual TLS
+- Service authentication
+- Traffic encryption
+- Authorization policies
+
+```
+Service A
+
+⇄ mTLS ⇄
+
+Service B
+```
+
+Service Mesh technologies help enforce these protections.
+
+---
+
+## Step 10 – Monitor Runtime Activity
+
+Runtime monitoring provides continuous visibility into workloads.
+
+Monitor:
+
+- Process execution
+- API activity
+- Network traffic
+- Resource consumption
+- Authentication failures
+- Configuration changes
+
+```
+Running Workload
+
+↓
+
+Runtime Monitoring
+
+↓
+
+Threat Detection
+```
+
+Behavior-based detection helps identify active attacks.
+
+---
+
+## Step 11 – Collect Security Telemetry
+
+Cloud-native platforms generate security telemetry from multiple sources.
+
+Examples include:
+
+- Application logs
+- Kubernetes audit logs
+- API Gateway logs
+- IAM events
+- Container runtime events
+- Network flow logs
+
+Centralized telemetry improves detection accuracy.
+
+---
+
+## Step 12 – Detect and Respond
+
+Security platforms correlate events to identify threats.
+
+```
+Security Events
+
+↓
+
+SIEM
+
+↓
+
+Correlation
+
+↓
+
+SOC Investigation
+
+↓
+
+Incident Response
+```
+
+Automated alerts reduce detection and response times.
+
+---
+
+## Cloud Native Application Lifecycle
+
+```
+Plan
+
+↓
+
+Develop
+
+↓
+
+Secure Code Review
+
+↓
+
+Build
+
+↓
+
+Scan
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Update
+
+↓
+
+Retire
+```
+
+Security activities should accompany every lifecycle stage.
+
+---
+
+## Secure Deployment Flow
+
+```
+Developer
+
+↓
+
+Source Repository
+
+↓
+
+CI/CD Pipeline
+
+↓
+
+Security Validation
+
+↓
+
+Container Registry
+
+↓
+
+Production Deployment
+```
+
+Every deployment should satisfy predefined security policies.
+
+---
+
+## Practical Example
+
+### Example 1 – Secure Microservice Deployment
+
+A development team deploys a new payment microservice.
+
+```
+Developer
+
+↓
+
+Code Review
+
+↓
+
+Dependency Scan
+
+↓
+
+Image Build
+
+↓
+
+Image Scan
+
+↓
+
+Signed Artifact
+
+↓
+
+Kubernetes Deployment
+```
+
+The deployment proceeds only after all security checks pass.
+
+---
+
+### Example 2 – Secure Service-to-Service Communication
+
+Two microservices exchange sensitive customer information.
+
+```
+Order Service
+
+⇄ mTLS ⇄
+
+Payment Service
+```
+
+Mutual TLS ensures encrypted and authenticated communication.
+
+---
+
+### Example 3 – Preventing IaC Misconfiguration
+
+A Terraform template attempts to create a publicly accessible storage bucket.
+
+```
+Terraform Template
+
+↓
+
+Policy Validation
+
+↓
+
+Deployment Blocked
+```
+
+Policy-as-code prevents insecure infrastructure from being provisioned.
+
+---
+
+### Example 4 – Runtime Threat Detection
+
+A compromised container attempts to launch an unexpected process.
+
+```
+Container
+
+↓
+
+Runtime Monitoring
+
+↓
+
+Threat Alert
+```
+
+The SOC investigates before the threat spreads.
+
+---
+
+### Example 5 – Detecting Supply Chain Risk
+
+A dependency scanner identifies a library containing a known critical vulnerability.
+
+```
+Dependency Scan
+
+↓
+
+Critical CVE
+
+↓
+
+Build Failed
+```
+
+The vulnerable package is updated before deployment.
+
+---
+
+## Cloud Native Security Components
+
+| Component | Purpose |
+|-----------|---------|
+| CI/CD Pipeline | Secure software delivery |
+| SAST | Static code analysis |
+| Dependency Scanner | Third-party package security |
+| IaC Scanner | Infrastructure validation |
+| Container Registry | Trusted artifact storage |
+| Kubernetes | Workload orchestration |
+| Service Mesh | Secure service communication |
+| IAM | Identity and access control |
+| SIEM | Centralized security analytics |
+| Runtime Monitoring | Continuous workload protection |
+
+---
+
+## Indicators of Cloud Native Compromise (Detection)
+
+Cloud-native environments generate vast amounts of telemetry that can reveal early indicators of malicious activity.
+
+---
+
+### Unexpected Workload Deployments
+
+Monitor for:
+
+- Unknown deployments
+- New namespaces
+- Unapproved container images
+- Unexpected replica increases
+
+Unexpected workloads may indicate unauthorized access or malicious deployments.
+
+---
+
+### Unauthorized IAM Changes
+
+Watch for:
+
+- New privileged roles
+- Policy modifications
+- Service account changes
+- Excessive permission grants
+
+Identity abuse is a common precursor to larger attacks.
+
+---
+
+### Suspicious API Activity
+
+Monitor for:
+
+- Repeated authentication failures
+- Excessive API requests
+- Unexpected endpoints
+- Invalid authorization attempts
+
+API anomalies may indicate reconnaissance or abuse.
+
+---
+
+### Service Mesh Policy Violations
+
+Unexpected communication between services may indicate:
+
+- Lateral movement
+- Misconfiguration
+- Unauthorized workloads
+
+Traffic policies should be continuously monitored.
+
+---
+
+### Runtime Behavioral Anomalies
+
+Detect:
+
+- Unexpected processes
+- Shell execution
+- Privilege escalation
+- File system modifications
+- Suspicious outbound connections
+
+Behavioral monitoring helps identify attacks that bypass preventive controls.
+
+---
+
+### Supply Chain Integrity Violations
+
+Alert on:
+
+- Unsigned artifacts
+- Modified deployment packages
+- Unexpected dependency updates
+- Failed integrity verification
+
+Supply chain validation protects against malicious software insertion.
+
+---
+
+### Infrastructure Drift
+
+Monitor for unauthorized changes to:
+
+- Kubernetes resources
+- IAM policies
+- Network configurations
+- Infrastructure as Code deployments
+
+Configuration drift may weaken the organization's security posture.
+
+---
+
+### Audit Log Analysis
+
+Continuously analyze:
+
+- Authentication events
+- Deployment activity
+- IAM changes
+- Secret access
+- API requests
+- Administrative actions
+- Runtime alerts
+
+Forward logs to the organization's SIEM for correlation and long-term retention.
+
+---
+
+## Detection Best Practices
+
+- Enable centralized logging across all cloud-native components.
+- Scan code, dependencies, and infrastructure before deployment.
+- Monitor runtime behavior continuously.
+- Verify artifact integrity before execution.
+- Alert on unauthorized IAM and configuration changes.
+- Analyze API activity for abnormal behavior.
+- Monitor service-to-service communication.
+- Detect infrastructure drift automatically.
+- Integrate cloud-native telemetry into the SIEM.
+- Establish behavioral baselines for workloads and services.
+
+---
+
 ## Next Section
-
-How It Works
-
-Practical Example
-
-Detection
 
 Prevention
 
