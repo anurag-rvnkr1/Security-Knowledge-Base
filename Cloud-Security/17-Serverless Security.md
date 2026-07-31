@@ -420,13 +420,724 @@ Software supply chain security is essential for modern serverless applications.
 
 ---
 
+## How It Works
+
+Serverless Security protects applications by securing every stage of the function lifecycle—from development and deployment to execution, monitoring, and retirement. Unlike traditional infrastructure, security focuses less on operating systems and more on identities, permissions, code, APIs, event sources, and cloud service interactions.
+
+Every serverless request should pass through multiple security controls before business logic is executed.
+
+A secure serverless workflow generally includes:
+
+1. Authenticate the caller
+2. Authorize access
+3. Validate the request
+4. Invoke the function
+5. Securely retrieve secrets
+6. Access cloud resources using least privilege
+7. Log execution
+8. Continuously monitor behavior
+
+This layered approach helps prevent unauthorized access, privilege escalation, and abuse of cloud resources.
+
+---
+
+## Serverless Security Workflow
+
+```
+               User / Application
+
+                        │
+
+                        ▼
+
+                 Authentication
+
+                        │
+
+                        ▼
+
+                 Authorization
+
+                        │
+
+                        ▼
+
+                  API Gateway
+
+                        │
+
+                        ▼
+
+              Serverless Function
+
+                        │
+
+        ┌───────────────┼───────────────┐
+
+        ▼               ▼               ▼
+
+   Secrets Manager   Database      Object Storage
+
+        │               │               │
+
+        └───────────────┼───────────────┘
+
+                        ▼
+
+            Logging • Monitoring • SIEM
+```
+
+Each request is evaluated before sensitive resources are accessed.
+
+---
+
+## Step 1 – Receive the Event
+
+A serverless function begins execution only after receiving an event.
+
+Common triggers include:
+
+- HTTP requests
+- File uploads
+- Queue messages
+- Database updates
+- Scheduled jobs
+- Event bus notifications
+
+```
+Event
+
+↓
+
+Trigger
+
+↓
+
+Function
+```
+
+All incoming events should be validated before processing.
+
+---
+
+## Step 2 – Authenticate the Caller
+
+Authentication verifies the identity of the user, application, or service initiating the request.
+
+Authentication methods include:
+
+- OAuth
+- OpenID Connect (OIDC)
+- Cloud IAM
+- API Keys
+- JWT Tokens
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Verified Identity
+```
+
+Unauthenticated requests should be rejected immediately.
+
+---
+
+## Step 3 – Authorize the Request
+
+After authentication, authorization determines whether the caller may invoke the function.
+
+```
+Identity
+
+↓
+
+IAM Policy
+
+↓
+
+Allowed?
+
+↓
+
+Yes / No
+```
+
+Authorization should enforce least-privilege access.
+
+---
+
+## Step 4 – Validate the Request
+
+Before business logic executes, the application should validate:
+
+- Input format
+- Content type
+- Request size
+- Required fields
+- Allowed values
+
+Input validation reduces risks such as:
+
+- Injection attacks
+- Malformed requests
+- Resource exhaustion
+- Unexpected application behavior
+
+---
+
+## Step 5 – Execute the Function
+
+Once validated, the serverless platform initializes the execution environment and runs the function.
+
+```
+Cloud Platform
+
+↓
+
+Execution Environment
+
+↓
+
+Application Code
+```
+
+The function should execute only the code necessary to complete its task.
+
+---
+
+## Step 6 – Retrieve Secrets Securely
+
+Applications often require credentials during execution.
+
+Instead of embedding them into source code:
+
+```
+Function
+
+↓
+
+Secrets Manager
+
+↓
+
+Authorized Secret
+
+↓
+
+Application
+```
+
+Secrets should be:
+
+- Encrypted
+- Rotated regularly
+- Retrieved only when required
+
+---
+
+## Step 7 – Access Cloud Resources
+
+The function may interact with:
+
+- Databases
+- Storage
+- Message queues
+- Notification services
+- APIs
+
+```
+Function
+
+↓
+
+IAM Role
+
+↓
+
+Cloud Resource
+```
+
+Access should be limited to only the required resources.
+
+---
+
+## Step 8 – Generate Logs
+
+Every invocation should produce logs that include:
+
+- Timestamp
+- Request identifier
+- Execution duration
+- Success or failure
+- Errors
+- Security events
+
+Avoid logging:
+
+- Passwords
+- Tokens
+- API keys
+- Personally Identifiable Information (PII)
+
+---
+
+## Step 9 – Monitor Runtime Behavior
+
+Continuous monitoring detects unusual activity such as:
+
+- Excessive invocations
+- Unexpected outbound connections
+- Repeated authentication failures
+- Permission errors
+- Long-running executions
+
+```
+Function
+
+↓
+
+Monitoring
+
+↓
+
+Threat Detection
+```
+
+Behavioral monitoring provides visibility into attacks that bypass preventive controls.
+
+---
+
+## Step 10 – Send Security Events to SIEM
+
+Security-relevant events should be centralized for analysis.
+
+```
+Cloud Logs
+
+↓
+
+SIEM
+
+↓
+
+Correlation
+
+↓
+
+SOC Investigation
+```
+
+Centralized logging improves incident response and compliance reporting.
+
+---
+
+## Serverless Application Lifecycle
+
+```
+Develop
+
+↓
+
+Code Review
+
+↓
+
+Dependency Scan
+
+↓
+
+Build
+
+↓
+
+Deploy
+
+↓
+
+Invoke
+
+↓
+
+Monitor
+
+↓
+
+Update
+
+↓
+
+Retire
+```
+
+Security checks should be integrated into every phase of the lifecycle.
+
+---
+
+## Secure Invocation Flow
+
+```
+Client
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+API Gateway
+
+↓
+
+Function
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Only authenticated and authorized requests should reach application logic.
+
+---
+
+## Secrets Access Workflow
+
+```
+Function Starts
+
+↓
+
+Request Secret
+
+↓
+
+Secrets Manager
+
+↓
+
+Authorized Retrieval
+
+↓
+
+Continue Execution
+```
+
+Secrets should never be stored permanently within the execution environment.
+
+---
+
+## Practical Example
+
+### Example 1 – Secure File Processing
+
+A user uploads a document to cloud storage.
+
+```
+File Upload
+
+↓
+
+Storage Event
+
+↓
+
+Serverless Function
+
+↓
+
+Virus Scan
+
+↓
+
+Store Metadata
+```
+
+Security controls include:
+
+- IAM permissions
+- Input validation
+- Malware scanning
+- Logging
+
+---
+
+### Example 2 – Payment API
+
+A payment API invokes a serverless function.
+
+```
+Client
+
+↓
+
+JWT Authentication
+
+↓
+
+API Gateway
+
+↓
+
+Payment Function
+
+↓
+
+Database
+```
+
+Only authenticated users may process transactions.
+
+---
+
+### Example 3 – Secure Secret Retrieval
+
+A reporting function requires database credentials.
+
+```
+Function
+
+↓
+
+Secrets Manager
+
+↓
+
+Temporary Credential
+
+↓
+
+Database Connection
+```
+
+No credentials are embedded in source code.
+
+---
+
+### Example 4 – Blocking Unauthorized Invocation
+
+An attacker attempts to invoke an administrative function.
+
+```
+Unauthorized Request
+
+↓
+
+IAM Evaluation
+
+↓
+
+Access Denied
+```
+
+Least-privilege IAM policies prevent unauthorized execution.
+
+---
+
+### Example 5 – Dependency Vulnerability Detection
+
+A CI/CD pipeline detects a vulnerable third-party package before deployment.
+
+```
+Dependency Scan
+
+↓
+
+Known CVE
+
+↓
+
+Deployment Blocked
+```
+
+Preventive scanning reduces software supply chain risk.
+
+---
+
+## Serverless Security Components
+
+| Component | Purpose |
+|-----------|---------|
+| API Gateway | Secure request entry point |
+| IAM | Authentication and authorization |
+| Serverless Function | Executes business logic |
+| Secrets Manager | Secure credential storage |
+| Cloud Storage | Persistent object storage |
+| Database | Persistent application data |
+| Monitoring | Performance and security visibility |
+| Logging | Audit and forensic records |
+| SIEM | Centralized security analytics |
+| CI/CD Pipeline | Automated secure deployment |
+
+---
+
+## Indicators of Serverless Compromise (Detection)
+
+Continuous monitoring is essential because serverless functions are short-lived, event-driven, and automatically scaled.
+
+---
+
+### Excessive Function Invocations
+
+A sudden increase in invocation frequency may indicate:
+
+- Denial-of-Service (DoS)
+- Credential abuse
+- Automated attacks
+- Event flooding
+
+```
+Unexpected Traffic
+
+↓
+
+Function Invocations
+
+↓
+
+Security Alert
+```
+
+---
+
+### Unusual IAM Activity
+
+Monitor for:
+
+- Unexpected role changes
+- Permission escalation
+- New execution roles
+- Unauthorized policy modifications
+
+Identity abuse is a common attack vector in serverless environments.
+
+---
+
+### Unauthorized Secret Access
+
+Unexpected retrieval of secrets may indicate:
+
+- Compromised functions
+- Stolen credentials
+- Insider threats
+- Malicious automation
+
+All secret access should be logged and reviewed.
+
+---
+
+### Unexpected Outbound Connections
+
+Serverless functions rarely require unrestricted internet access.
+
+Unexpected outbound traffic may indicate:
+
+- Data exfiltration
+- Command-and-control communication
+- Malware
+- Cryptomining
+
+Restrict outbound connectivity whenever possible.
+
+---
+
+### Function Configuration Changes
+
+Monitor changes to:
+
+- Environment variables
+- Memory allocation
+- Timeout settings
+- Execution roles
+- Trigger configuration
+
+Unauthorized modifications may introduce security risks.
+
+---
+
+### Dependency Integrity Violations
+
+Detect:
+
+- Unsigned packages
+- Unexpected dependency updates
+- Vulnerable libraries
+- Failed integrity verification
+
+Supply chain attacks often target application dependencies.
+
+---
+
+### Authentication Failures
+
+Repeated failed authentication attempts may indicate:
+
+- Credential stuffing
+- Brute-force attacks
+- Misconfigured clients
+
+Investigate unusual authentication patterns promptly.
+
+---
+
+### API Abuse
+
+Monitor for:
+
+- Excessive requests
+- Invalid parameters
+- Repeated authorization failures
+- Rate-limit violations
+
+API monitoring helps identify abuse before service availability is affected.
+
+---
+
+### Logging and Audit Monitoring
+
+Continuously analyze:
+
+- Invocation logs
+- IAM events
+- Secret access
+- Configuration changes
+- API Gateway logs
+- Storage access
+- Database activity
+- Deployment events
+
+Forward logs to the organization's SIEM for correlation and alerting.
+
+---
+
+## Detection Best Practices
+
+- Enable detailed function logging.
+- Monitor IAM role and policy changes.
+- Alert on excessive invocation rates.
+- Audit secret retrieval events.
+- Validate dependency integrity before deployment.
+- Monitor outbound network activity.
+- Analyze API Gateway access logs.
+- Forward serverless logs to the SIEM.
+- Establish behavioral baselines for normal function execution.
+- Continuously review cloud audit logs for suspicious activity.
+
+---
+
 ## Next Section
-
-How It Works
-
-Practical Example
-
-Detection
 
 Prevention
 
