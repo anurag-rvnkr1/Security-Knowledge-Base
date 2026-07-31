@@ -1098,3 +1098,423 @@ Forward network telemetry to the organization's SIEM for centralized correlation
 
 ---
 
+## Prevention
+
+Preventing attacks in cloud networks requires a defense-in-depth strategy that combines secure architecture, network segmentation, identity-aware access, encryption, continuous monitoring, and automated policy enforcement. Since cloud networks are highly dynamic, security controls must be consistently applied across all workloads, regions, and environments.
+
+A comprehensive Cloud Networking Security program should protect:
+
+- Virtual networks (VPCs/VNets)
+- Public and private subnets
+- Internet-facing services
+- Internal service communication
+- Administrative access
+- DNS infrastructure
+- Routing components
+- VPN and hybrid connections
+- Network firewalls
+- Cloud load balancers
+- Network traffic
+- Management interfaces
+
+Core security principles include:
+
+- Zero Trust
+- Defense in Depth
+- Least Privilege
+- Network Segmentation
+- Secure by Default
+- Continuous Monitoring
+- Policy Automation
+
+---
+
+# Defense-in-Depth for Cloud Networking
+
+```
+                  Internet
+
+                      │
+
+                      ▼
+
+          Web Application Firewall (WAF)
+
+                      │
+
+                      ▼
+
+              Network Firewall
+
+                      │
+
+                      ▼
+
+               Load Balancer
+
+                      │
+
+                      ▼
+
+               Public Subnet
+
+                      │
+
+                      ▼
+
+             Private Subnet Tier
+
+          ┌──────────┼──────────┐
+
+          ▼          ▼          ▼
+
+   Applications   Databases   Storage
+
+                      │
+
+                      ▼
+
+          Logging • Monitoring • SIEM
+
+                      │
+
+                      ▼
+
+      Security Operations Center (SOC)
+```
+
+Each layer enforces independent security controls to reduce the impact of a single point of failure.
+
+---
+
+# Design Secure Network Architecture
+
+Plan network topology before deploying workloads.
+
+Recommendations include:
+
+- Separate public and private resources
+- Minimize internet exposure
+- Use dedicated management networks
+- Isolate sensitive workloads
+- Define clear trust boundaries
+
+A well-designed architecture reduces the overall attack surface.
+
+---
+
+# Implement Network Segmentation
+
+Separate workloads into logical security zones.
+
+Typical segmentation includes:
+
+- Public subnet
+- Application subnet
+- Database subnet
+- Management subnet
+- Shared services subnet
+
+```
+Internet
+
+↓
+
+DMZ
+
+↓
+
+Application Tier
+
+↓
+
+Database Tier
+
+↓
+
+Management Network
+```
+
+Segmentation limits lateral movement if a workload is compromised.
+
+---
+
+# Minimize Public Exposure
+
+Only expose resources that must be reachable from the internet.
+
+Examples include:
+
+- Public websites
+- Public APIs
+- Load balancers
+
+Keep the following private whenever possible:
+
+- Databases
+- Internal APIs
+- Administrative interfaces
+- Storage services
+
+---
+
+# Secure Administrative Access
+
+Protect management interfaces using:
+
+- Multi-Factor Authentication (MFA)
+- Bastion hosts
+- VPN access
+- Just-In-Time (JIT) administration
+- Role-Based Access Control (RBAC)
+
+Avoid exposing SSH, RDP, or management consoles directly to the internet.
+
+---
+
+# Configure Security Groups Carefully
+
+Apply Security Groups using the Principle of Least Privilege.
+
+Allow only:
+
+- Required protocols
+- Required ports
+- Trusted source addresses
+
+Example:
+
+| Source | Protocol | Port | Action |
+|---------|----------|------|--------|
+| Load Balancer | HTTPS | 443 | Allow |
+| Bastion Host | SSH | 22 | Allow |
+| All Others | Any | Any | Deny |
+
+Review Security Group rules regularly to remove unnecessary access.
+
+---
+
+# Use Network ACLs as an Additional Layer
+
+Network ACLs provide subnet-level filtering.
+
+Best practices include:
+
+- Restrict unnecessary inbound traffic
+- Restrict unnecessary outbound traffic
+- Follow explicit allow/deny rules
+- Review ACL changes regularly
+
+Layering Security Groups with Network ACLs improves resilience.
+
+---
+
+# Encrypt Network Traffic
+
+Protect communications using:
+
+- TLS for application traffic
+- IPSec for VPN tunnels
+- Mutual TLS (mTLS) for service-to-service communication
+- Strong certificate management
+
+Encryption preserves confidentiality and integrity during transmission.
+
+---
+
+# Protect DNS Infrastructure
+
+Secure DNS services by:
+
+- Restricting administrative access
+- Monitoring DNS queries
+- Using private DNS zones where appropriate
+- Validating DNS configurations
+- Enabling DNS logging
+
+DNS security reduces the risk of spoofing and traffic redirection.
+
+---
+
+# Secure Hybrid Connectivity
+
+Hybrid cloud connections should:
+
+- Use encrypted VPN tunnels or dedicated private circuits
+- Restrict accessible networks
+- Authenticate endpoints
+- Monitor connection activity
+
+Review hybrid connectivity configurations regularly.
+
+---
+
+# Use Private Connectivity
+
+Prefer private networking over public internet access.
+
+Examples include:
+
+- Private Endpoints
+- Service Endpoints
+- Private Links
+- Dedicated Interconnects
+
+Private connectivity minimizes exposure to external threats.
+
+---
+
+# Monitor Network Activity Continuously
+
+Monitor:
+
+- Network flows
+- Firewall events
+- VPN activity
+- DNS requests
+- Administrative access
+- Route changes
+- Security Group modifications
+
+```
+Network Telemetry
+
+↓
+
+Central Monitoring
+
+↓
+
+SIEM
+
+↓
+
+Threat Detection
+```
+
+Continuous visibility enables faster detection of malicious activity.
+
+---
+
+# Automate Network Policy Enforcement
+
+Use Infrastructure as Code (IaC) and policy automation to:
+
+- Standardize network configurations
+- Prevent insecure deployments
+- Detect configuration drift
+- Enforce organizational standards
+
+Automation reduces manual errors and improves consistency.
+
+---
+
+## Best Practices
+
+### 1. Adopt Zero Trust Networking
+
+Assume that no network location is inherently trusted.
+
+Require authentication, authorization, and encryption for every connection, regardless of source.
+
+---
+
+### 2. Apply Least-Privilege Network Access
+
+Allow only the minimum required communication between systems.
+
+Regularly review and remove unnecessary firewall rules and network permissions.
+
+---
+
+### 3. Isolate Critical Workloads
+
+Place sensitive resources such as databases, key management services, and administrative systems in private subnets with restricted access.
+
+---
+
+### 4. Enable Comprehensive Network Logging
+
+Collect and retain:
+
+- Flow logs
+- Firewall logs
+- DNS logs
+- VPN logs
+- Gateway logs
+- Administrative events
+
+Forward logs to centralized monitoring platforms for analysis.
+
+---
+
+### 5. Encrypt All Network Communications
+
+Protect:
+
+- User connections
+- Internal service communication
+- Hybrid cloud traffic
+- Administrative sessions
+
+Use modern encryption standards and disable insecure protocols.
+
+---
+
+### 6. Protect Administrative Interfaces
+
+Limit administrative access through:
+
+- Bastion hosts
+- VPNs
+- MFA
+- JIT administration
+- IP allowlists where appropriate
+
+Monitor privileged access continuously.
+
+---
+
+### 7. Review Network Configurations Regularly
+
+Audit:
+
+- Route tables
+- Security Groups
+- Network ACLs
+- Gateways
+- DNS settings
+- VPN configurations
+
+Frequent reviews help identify misconfigurations before they are exploited.
+
+---
+
+### 8. Use Private Connectivity Whenever Possible
+
+Prefer private communication channels between cloud services instead of routing sensitive traffic across the public internet.
+
+---
+
+### 9. Continuously Monitor East-West Traffic
+
+Monitor communication between workloads inside the cloud environment.
+
+Unexpected east-west traffic may indicate lateral movement following a compromise.
+
+---
+
+### 10. Test Network Security Periodically
+
+Conduct:
+
+- Network architecture reviews
+- Vulnerability assessments
+- Penetration testing
+- Firewall rule validation
+- Segmentation testing
+
+Regular testing ensures that network controls remain effective as the environment evolves.
+
+---
+
