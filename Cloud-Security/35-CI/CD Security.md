@@ -378,20 +378,494 @@ CI/CD Security enables organizations to deliver software rapidly while maintaini
 
 ---
 
-## Next Section
+## How It Works
 
-How It Works
+CI/CD Security integrates automated security controls into every stage of the software delivery pipeline. Rather than treating security as a separate activity before production deployment, security becomes an integral part of building, testing, packaging, and releasing applications.
 
-Practical Example
-
-Detection
-
-Prevention
-
-Best Practices
-
-Common Mistakes
-
-References
+Every code change is automatically validated against security, quality, and compliance requirements before deployment.
 
 ---
+
+# Secure CI/CD Workflow
+
+```
+Developer Commit
+
+        │
+
+        ▼
+
+Source Code Repository
+
+        │
+
+        ▼
+
+Pull Request Review
+
+        │
+
+        ▼
+
+Continuous Integration
+
+        │
+
+ ┌──────┼─────────────────────────────────────┐
+ │      │             │            │          │
+ ▼      ▼             ▼            ▼          ▼
+
+SAST  Secrets Scan  SCA Scan   Unit Tests  IaC Scan
+
+ │      │             │            │          │
+ └──────┴─────────────┴────────────┴──────────┘
+
+                     │
+
+                     ▼
+
+Policy Validation
+
+                     │
+
+                     ▼
+
+Container Build
+
+                     │
+
+                     ▼
+
+Container Security Scan
+
+                     │
+
+                     ▼
+
+Artifact Signing
+
+                     │
+
+                     ▼
+
+Artifact Repository
+
+                     │
+
+                     ▼
+
+Deployment Approval
+
+                     │
+
+                     ▼
+
+Production Deployment
+
+                     │
+
+                     ▼
+
+Continuous Monitoring
+```
+
+Each stage introduces automated controls that reduce the likelihood of insecure software reaching production.
+
+---
+
+## Step 1 – Developer Commits Code
+
+Developers submit code changes to a version-controlled repository.
+
+Recommended controls include:
+
+- Multi-Factor Authentication (MFA)
+- Branch protection
+- Signed commits
+- Least privilege access
+- Mandatory pull requests
+- Audit logging
+
+These controls protect the integrity of the source code.
+
+---
+
+## Step 2 – Pull Request Review
+
+Infrastructure and application code undergo peer review before merging.
+
+Reviewers verify:
+
+- Secure coding practices
+- Authentication logic
+- Authorization controls
+- Error handling
+- Logging
+- Compliance requirements
+- Infrastructure definitions
+
+Peer reviews improve software quality and identify security concerns early.
+
+---
+
+## Step 3 – Continuous Integration
+
+Once approved, the CI pipeline automatically executes.
+
+Typical activities include:
+
+- Source retrieval
+- Compilation
+- Dependency installation
+- Automated testing
+- Build generation
+- Security validation
+
+CI ensures that every code change is evaluated consistently.
+
+---
+
+## Step 4 – Static Application Security Testing (SAST)
+
+Automated SAST tools analyze source code without executing it.
+
+Common findings include:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Command Injection
+- Weak cryptography
+- Hardcoded credentials
+- Authentication flaws
+
+Developers remediate vulnerabilities before the build progresses.
+
+---
+
+## Step 5 – Secrets Scanning
+
+Repositories and pipeline configurations are scanned for exposed secrets.
+
+Typical detections include:
+
+- API keys
+- Cloud credentials
+- Database passwords
+- Private keys
+- OAuth tokens
+- Certificates
+
+Secrets scanning helps prevent credential leakage.
+
+---
+
+## Step 6 – Software Composition Analysis (SCA)
+
+Dependencies are analyzed for security and compliance.
+
+Checks include:
+
+- Known CVEs
+- Outdated packages
+- Unsupported libraries
+- License compatibility
+- Malicious packages
+
+Organizations should update or replace vulnerable dependencies before release.
+
+---
+
+## Step 7 – Infrastructure as Code Validation
+
+Infrastructure definitions are scanned for security misconfigurations.
+
+Validation includes:
+
+- Encryption settings
+- IAM permissions
+- Firewall rules
+- Public resource exposure
+- Logging configuration
+- Compliance requirements
+
+Infrastructure security is validated before provisioning.
+
+---
+
+## Step 8 – Policy Validation
+
+Policy as Code engines automatically evaluate security requirements.
+
+Example policies:
+
+- Critical vulnerabilities prohibited
+- Encryption required
+- Mandatory resource tags
+- Approved deployment regions only
+- Signed container images
+- Approved base images
+
+Pipeline execution stops if policy violations are detected.
+
+---
+
+## Step 9 – Build and Scan Container Images
+
+For containerized applications, the pipeline builds and validates images.
+
+Security checks include:
+
+- Vulnerability scanning
+- Malware detection
+- Base image verification
+- Root user detection
+- Configuration validation
+- Image signing
+
+Only trusted images should be promoted to production.
+
+---
+
+## Step 10 – Artifact Signing
+
+Build outputs are cryptographically signed.
+
+Protected artifacts include:
+
+- Application binaries
+- Container images
+- Infrastructure packages
+- Deployment bundles
+
+Artifact signing ensures authenticity and integrity throughout the software supply chain.
+
+---
+
+## Step 11 – Deployment Approval
+
+Organizations may require approvals before production deployment.
+
+Approval criteria include:
+
+- Successful testing
+- Security scan completion
+- Compliance validation
+- Change management approval
+- Release readiness
+
+Approval workflows reduce deployment risk.
+
+---
+
+## Step 12 – Continuous Monitoring
+
+After deployment, continuously monitor:
+
+- Application health
+- Infrastructure changes
+- Security events
+- Authentication activity
+- Network traffic
+- Policy compliance
+- Runtime anomalies
+
+Continuous monitoring detects threats that may emerge after release.
+
+---
+
+## Practical Example
+
+### Example 1 – Secure Web Application Deployment
+
+Scenario:
+
+A development team submits a new feature for a cloud-hosted web application.
+
+Pipeline activities:
+
+- Source code review
+- SAST scan
+- Secrets scan
+- Dependency validation
+- Unit testing
+- Container image build
+- Image vulnerability scan
+- Artifact signing
+- Deployment approval
+- Production deployment
+
+Outcome:
+
+- Secure application release
+- Automated compliance validation
+- Reduced deployment risk
+
+---
+
+### Example 2 – Vulnerable Dependency Detection
+
+Scenario:
+
+A developer introduces a library containing a high-severity vulnerability.
+
+Pipeline actions:
+
+- Software Composition Analysis identifies the vulnerable dependency.
+- The build fails automatically.
+- Developers update the package.
+- The pipeline executes successfully after remediation.
+
+Outcome:
+
+- Vulnerable software never reaches production.
+- Supply chain security is strengthened.
+
+---
+
+### Example 3 – Secret Detection
+
+Scenario:
+
+A developer accidentally commits a cloud access key.
+
+Pipeline actions:
+
+- Secrets scanning identifies the exposed credential.
+- The pipeline stops.
+- The credential is revoked and rotated.
+- The repository is cleaned before deployment resumes.
+
+Outcome:
+
+- Credential exposure is contained before production deployment.
+
+---
+
+### Example 4 – Policy Violation
+
+Scenario:
+
+A deployment attempts to provision cloud storage without encryption.
+
+Policy engine response:
+
+- Encryption policy fails.
+- Deployment is blocked.
+- Security notification is generated.
+- Infrastructure is corrected.
+- Deployment resumes successfully.
+
+Outcome:
+
+- Organizational security policies remain consistently enforced.
+
+---
+
+## Detection
+
+Continuous detection provides visibility into pipeline activity, software integrity, and potential security threats.
+
+---
+
+### Source Code Detection
+
+Monitor repositories for:
+
+- Unauthorized commits
+- Force pushes
+- Suspicious branches
+- Repository permission changes
+- Unexpected administrative actions
+
+Repository monitoring protects software integrity.
+
+---
+
+### Pipeline Detection
+
+Detect:
+
+- Failed authentication attempts
+- Unauthorized pipeline execution
+- Runner compromise
+- Unexpected configuration changes
+- Privilege escalation
+- Build manipulation
+
+Pipeline monitoring reduces the likelihood of CI/CD compromise.
+
+---
+
+### Secrets Detection
+
+Continuously identify:
+
+- API keys
+- Database credentials
+- Private keys
+- Cloud credentials
+- OAuth tokens
+- Certificates
+
+Secrets should be removed and rotated immediately upon detection.
+
+---
+
+### Dependency Detection
+
+Monitor for:
+
+- Newly disclosed CVEs
+- Unsupported packages
+- License violations
+- Malicious dependencies
+- Outdated libraries
+
+Regular dependency analysis improves supply chain resilience.
+
+---
+
+### Artifact Detection
+
+Verify:
+
+- Digital signatures
+- Cryptographic hashes
+- Provenance metadata
+- Repository integrity
+- Unauthorized modifications
+
+Artifact verification prevents tampered software from being deployed.
+
+---
+
+### Runtime Detection
+
+Monitor deployed applications for:
+
+- Suspicious network activity
+- Unauthorized access
+- Privilege escalation
+- Unexpected process execution
+- Policy violations
+- Configuration drift
+
+Runtime monitoring complements pre-deployment security validation.
+
+---
+
+### Detection Best Practices
+
+- Require security validation for every pipeline execution.
+- Continuously scan source code and dependencies.
+- Monitor CI/CD runners and build environments.
+- Enforce artifact signing and integrity verification.
+- Detect exposed secrets before code is merged.
+- Continuously validate Infrastructure as Code templates.
+- Integrate CI/CD events into centralized SIEM platforms.
+- Alert on unauthorized pipeline configuration changes.
+- Regularly review repository access and pipeline permissions.
+- Investigate all failed security checks before approving releases.
+
+---
+
