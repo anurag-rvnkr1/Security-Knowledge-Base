@@ -1336,11 +1336,527 @@ Registry compromise can affect every deployment.
 
 ---
 
+## Prevention
+
+Preventing container attacks requires securing every layer of the container ecosystem, including application code, container images, registries, runtimes, orchestration platforms, host operating systems, and CI/CD pipelines. Security should be embedded into the software delivery lifecycle rather than added after deployment.
+
+An effective Container Security strategy should protect:
+
+- Source code
+- Build pipelines
+- Container images
+- Base images
+- Container registries
+- Runtime environments
+- Host operating systems
+- Secrets
+- Networks
+- Kubernetes clusters
+- Monitoring infrastructure
+
+Security controls should follow the principles of **Shift Left Security**, **Defense in Depth**, **Least Privilege**, **Zero Trust**, and **Continuous Verification**.
+
+---
+
+# Defense-in-Depth for Containers
+
+```
+                Developers
+
+                     │
+
+                     ▼
+
+              Secure Source Code
+
+                     │
+
+                     ▼
+
+               Secure CI/CD Pipeline
+
+                     │
+
+                     ▼
+
+         Image Scan & Signature Verification
+
+                     │
+
+                     ▼
+
+             Trusted Image Registry
+
+                     │
+
+                     ▼
+
+         Kubernetes / Container Runtime
+
+        ┌────────────┼────────────┐
+
+        ▼            ▼            ▼
+
+ Container A   Container B   Container C
+
+        │            │            │
+
+        └────────────┼────────────┘
+
+                     ▼
+
+      Runtime Monitoring & Threat Detection
+
+                     ▼
+
+            SIEM / SOC / Incident Response
+```
+
+Each security layer helps reduce the likelihood of compromise and limits attacker movement.
+
+---
+
+# Use Trusted Base Images
+
+Container security begins with selecting a secure base image.
+
+Choose images that are:
+
+- Officially maintained
+- Regularly updated
+- Minimal in size
+- Free from unnecessary packages
+- Supported by the vendor
+
+Examples include:
+
+- Distroless images
+- Alpine Linux (where appropriate)
+- Red Hat UBI
+- Official Ubuntu images
+- Official Debian images
+
+Avoid downloading images from unknown or untrusted sources.
+
+---
+
+# Scan Images Continuously
+
+Every image should undergo automated vulnerability scanning.
+
+Scanning should identify:
+
+- Known CVEs
+- Outdated packages
+- Malware
+- Embedded secrets
+- Misconfigurations
+- License compliance issues
+
+```
+Container Image
+
+↓
+
+Security Scan
+
+↓
+
+Risk Assessment
+```
+
+Block deployment of images that exceed the organization's risk threshold.
+
+---
+
+# Digitally Sign Images
+
+Digitally signed images provide assurance that they have not been modified after creation.
+
+```
+Verified Image
+
+↓
+
+Digital Signature
+
+↓
+
+Trusted Registry
+```
+
+Deployment platforms should reject:
+
+- Unsigned images
+- Tampered images
+- Unknown publishers
+
+Image signing strengthens software supply chain security.
+
+---
+
+# Use Private Registries
+
+Production workloads should obtain images only from trusted registries.
+
+Registry security should include:
+
+- Authentication
+- Multi-Factor Authentication
+- Role-Based Access Control
+- Audit logging
+- Image immutability
+- Repository access reviews
+
+Restrict who can push, pull, or delete images.
+
+---
+
+# Protect Secrets
+
+Never store sensitive information inside:
+
+- Dockerfiles
+- Container images
+- Git repositories
+- Configuration files
+- Source code
+
+Use dedicated secrets management systems to inject credentials securely at runtime.
+
+```
+Secrets Manager
+
+↓
+
+Runtime Injection
+
+↓
+
+Container
+```
+
+Rotate secrets regularly.
+
+---
+
+# Run Containers as Non-Root
+
+Containers should execute using non-privileged users.
+
+Avoid:
+
+```
+USER root
+```
+
+Prefer:
+
+```
+USER appuser
+```
+
+Running as a non-root user reduces the impact of container compromise.
+
+---
+
+# Restrict Linux Capabilities
+
+Containers often receive more Linux capabilities than required.
+
+Remove unnecessary privileges such as:
+
+- SYS_ADMIN
+- NET_ADMIN
+- SYS_MODULE
+- SYS_PTRACE
+
+Grant only the capabilities required by the application.
+
+---
+
+# Avoid Privileged Containers
+
+Privileged containers have elevated access to the host.
+
+```
+Privileged Container
+
+↓
+
+Host Resources
+
+↓
+
+Higher Risk
+```
+
+Only use privileged mode when absolutely necessary and after a documented security review.
+
+---
+
+# Use Read-Only File Systems
+
+Where practical, mount container file systems as read-only.
+
+Benefits include:
+
+- Preventing unauthorized file modification
+- Limiting malware persistence
+- Improving runtime integrity
+
+Writable storage should be restricted to required application directories.
+
+---
+
+# Implement Resource Limits
+
+Define CPU and memory limits for every container.
+
+```
+Container
+
+↓
+
+CPU Limit
+
+Memory Limit
+
+↓
+
+Controlled Resource Usage
+```
+
+Resource limits reduce the risk of denial-of-service attacks caused by resource exhaustion.
+
+---
+
+# Secure Container Networking
+
+Restrict communication between workloads using:
+
+- Network Policies
+- Service Mesh
+- Firewalls
+- Mutual TLS (mTLS)
+- Micro-segmentation
+
+Only required communication paths should be permitted.
+
+---
+
+# Protect the Host Operating System
+
+Containers share the host kernel.
+
+Therefore:
+
+- Patch the host regularly
+- Remove unnecessary software
+- Enable host firewalls
+- Monitor kernel activity
+- Restrict administrative access
+
+A compromised host may affect every running container.
+
+---
+
+# Enable Runtime Protection
+
+Runtime security should monitor:
+
+- Process execution
+- File modifications
+- Network activity
+- Privilege escalation
+- Container escape attempts
+- System calls
+
+Behavioral detection complements preventive controls.
+
+---
+
+# Secure Kubernetes Admission
+
+Admission controllers should enforce organizational security policies before workloads are deployed.
+
+Example policies:
+
+- Reject privileged containers
+- Require signed images
+- Enforce resource limits
+- Require non-root execution
+- Validate image sources
+
+Policy enforcement prevents insecure workloads from reaching production.
+
+---
+
+# Monitor Continuously
+
+Monitor:
+
+- Image deployments
+- Runtime activity
+- Registry access
+- Secret usage
+- Network behavior
+- Authentication events
+- Policy violations
+
+```
+Container Event
+
+↓
+
+Audit Logs
+
+↓
+
+SIEM
+
+↓
+
+SOC Alert
+```
+
+Continuous monitoring supports rapid threat detection.
+
+---
+
+## Best Practices
+
+### 1. Use Minimal Base Images
+
+Smaller images reduce:
+
+- Attack surface
+- Vulnerabilities
+- Patch complexity
+- Deployment size
+
+Deploy only the packages required by the application.
+
+---
+
+### 2. Automate Image Scanning
+
+Scan every image:
+
+- During build
+- Before registry upload
+- Before deployment
+- Periodically after deployment
+
+Automated scanning helps identify newly disclosed vulnerabilities.
+
+---
+
+### 3. Verify Image Signatures
+
+Deploy only images that:
+
+- Are digitally signed
+- Come from trusted publishers
+- Pass integrity verification
+
+Reject unsigned or modified images automatically.
+
+---
+
+### 4. Protect Secrets Properly
+
+Use dedicated secrets management platforms instead of embedding credentials in images or source code.
+
+Rotate secrets regularly and audit access.
+
+---
+
+### 5. Apply Least Privilege
+
+Run containers:
+
+- As non-root users
+- With minimal Linux capabilities
+- Without privileged mode
+- With restricted filesystem access
+
+Least Privilege significantly limits attacker capabilities.
+
+---
+
+### 6. Enable Runtime Monitoring
+
+Monitor:
+
+- Unexpected processes
+- Network anomalies
+- File modifications
+- Container escapes
+- Privilege escalation
+
+Runtime visibility is essential because preventive controls cannot stop every attack.
+
+---
+
+### 7. Secure Registries
+
+Protect image repositories using:
+
+- MFA
+- RBAC
+- Audit logs
+- Immutable repositories
+- Access reviews
+
+Registries represent critical software supply chain assets.
+
+---
+
+### 8. Patch Base Images Frequently
+
+Rebuild images whenever:
+
+- Base images receive security updates
+- Critical CVEs are disclosed
+- Dependencies become vulnerable
+
+Avoid patching running containers manually.
+
+---
+
+### 9. Enforce Security Policies
+
+Use admission policies to require:
+
+- Signed images
+- Resource limits
+- Non-root execution
+- Trusted registries
+- Approved namespaces
+
+Automated policy enforcement improves consistency.
+
+---
+
+### 10. Integrate Security into DevSecOps
+
+Embed security controls throughout the CI/CD pipeline.
+
+Examples include:
+
+- Static Application Security Testing (SAST)
+- Software Composition Analysis (SCA)
+- Secret scanning
+- Container image scanning
+- Infrastructure as Code scanning
+- Policy validation
+
+Security should be continuous rather than a final deployment step.
+
+---
+
 ## Next Section
-
-Prevention
-
-Best Practices
 
 Common Mistakes
 
