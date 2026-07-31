@@ -1580,3 +1580,364 @@ Routine configuration reviews strengthen the overall security posture.
 
 ---
 
+## Common Mistakes
+
+Serverless platforms simplify infrastructure management, but they do not eliminate security responsibilities. Most serverless security incidents are caused by insecure application design, excessive permissions, poor secret management, and inadequate monitoring rather than vulnerabilities in the cloud provider's platform.
+
+Recognizing these common mistakes helps organizations strengthen the security of their serverless workloads.
+
+---
+
+### 1. Granting Excessive IAM Permissions
+
+One of the most frequent mistakes is assigning broad permissions to function execution roles.
+
+Examples include:
+
+- Full storage access
+- Administrator privileges
+- Wildcard (`*`) permissions
+- Unrestricted database access
+
+```
+Function
+
+↓
+
+Administrator Role
+
+↓
+
+Entire Cloud Environment
+```
+
+Every function should receive only the permissions necessary to perform its intended task.
+
+---
+
+### 2. Hardcoding Secrets
+
+Embedding credentials directly into:
+
+- Source code
+- Configuration files
+- Deployment packages
+- Environment variables without protection
+
+creates long-term security risks.
+
+```
+API Key
+
+↓
+
+Source Code
+
+↓
+
+Repository
+
+↓
+
+Credential Exposure
+```
+
+Use managed secrets services instead of storing credentials within the application.
+
+---
+
+### 3. Trusting User Input
+
+Failing to validate incoming requests may result in:
+
+- Injection attacks
+- Logic manipulation
+- Resource exhaustion
+- Malformed requests
+- Unauthorized operations
+
+Every input should be validated before processing.
+
+---
+
+### 4. Ignoring Dependency Security
+
+Serverless applications commonly rely on numerous third-party libraries.
+
+Using outdated or vulnerable dependencies may introduce:
+
+- Known CVEs
+- Malware
+- Supply chain attacks
+- Remote code execution vulnerabilities
+
+Dependencies should be scanned continuously.
+
+---
+
+### 5. Exposing APIs Without Authentication
+
+Public APIs that lack authentication or authorization controls are common attack targets.
+
+Consequences include:
+
+- Unauthorized function execution
+- Data exposure
+- Service abuse
+- Automated attacks
+
+Protect APIs with strong authentication and authorization mechanisms.
+
+---
+
+### 6. Using Shared Execution Roles
+
+Multiple functions sharing the same execution role increases security risk.
+
+Problems include:
+
+- Excessive permissions
+- Reduced accountability
+- Larger attack surface
+
+Assign dedicated execution roles to individual functions whenever possible.
+
+---
+
+### 7. Logging Sensitive Information
+
+Sensitive data should never appear in logs.
+
+Avoid logging:
+
+- Passwords
+- API keys
+- OAuth tokens
+- Database credentials
+- Personally Identifiable Information (PII)
+
+Logs should contain only information necessary for monitoring and troubleshooting.
+
+---
+
+### 8. Ignoring Function Timeouts
+
+Functions without appropriate execution limits may:
+
+- Consume excessive resources
+- Increase operational costs
+- Be abused during attacks
+- Delay failure detection
+
+Configure reasonable timeout values for every function.
+
+---
+
+### 9. Poor Event Source Validation
+
+Not every event should automatically trigger business logic.
+
+Validate:
+
+- Event origin
+- Event format
+- Event authenticity
+- Authorization
+
+Only trusted event sources should invoke sensitive functions.
+
+---
+
+### 10. Insufficient Monitoring
+
+Without continuous monitoring, organizations may fail to detect:
+
+- Excessive invocations
+- Credential abuse
+- Configuration changes
+- Suspicious outbound traffic
+- Authentication failures
+
+Visibility is essential for timely threat detection.
+
+---
+
+### 11. Ignoring API Rate Limiting
+
+Unlimited request rates increase the risk of:
+
+- Denial-of-Service (DoS)
+- Cost amplification attacks
+- Resource exhaustion
+- Automated abuse
+
+Implement throttling and rate-limiting controls at the API Gateway.
+
+---
+
+### 12. Leaving Functions Outdated
+
+Running obsolete deployment packages may expose applications to:
+
+- Known vulnerabilities
+- Deprecated dependencies
+- Unsupported runtimes
+- Compatibility issues
+
+Rebuild and redeploy functions regularly using current runtime versions.
+
+---
+
+### 13. Weak CI/CD Security
+
+An insecure deployment pipeline may allow attackers to introduce malicious code or artifacts.
+
+Common issues include:
+
+- Missing code reviews
+- No dependency scanning
+- Unsigned deployment artifacts
+- Inadequate access controls
+
+Secure the software supply chain from development through deployment.
+
+---
+
+### 14. Assuming the Cloud Provider Secures Everything
+
+Under the Shared Responsibility Model, cloud providers secure the underlying infrastructure, while customers remain responsible for:
+
+- Application code
+- IAM policies
+- Secrets
+- APIs
+- Dependencies
+- Configuration
+- Monitoring
+- Compliance
+
+Misunderstanding these responsibilities often leads to security gaps.
+
+---
+
+### 15. Treating Serverless as "Set and Forget"
+
+Serverless applications require ongoing maintenance.
+
+Organizations should regularly:
+
+- Update dependencies
+- Rotate credentials
+- Review IAM policies
+- Test security controls
+- Monitor logs
+- Patch application code
+
+Continuous security is essential for long-term resilience.
+
+---
+
+## Serverless Security Checklist
+
+| Control | Status |
+|---------|--------|
+| Least-Privilege IAM Applied | ✓ |
+| APIs Protected with Authentication | ✓ |
+| Secrets Stored Securely | ✓ |
+| Dependencies Continuously Scanned | ✓ |
+| Input Validation Implemented | ✓ |
+| Encryption Enabled | ✓ |
+| Logging Configured | ✓ |
+| Monitoring Enabled | ✓ |
+| API Rate Limiting Configured | ✓ |
+| Dedicated Execution Roles | ✓ |
+| CI/CD Security Integrated | ✓ |
+| Function Timeouts Configured | ✓ |
+| Artifact Integrity Verified | ✓ |
+| SIEM Integration Enabled | ✓ |
+| Regular Security Reviews Performed | ✓ |
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-204A – Building Secure Microservices-Based Applications
+- NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
+- NIST Cybersecurity Framework (CSF) 2.0
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Controls v8
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Serverless Platform Documentation
+
+#### Amazon Web Services
+
+- AWS Lambda Documentation
+- AWS Lambda Security Best Practices
+- Amazon API Gateway Documentation
+- AWS IAM Documentation
+- AWS Secrets Manager Documentation
+
+#### Microsoft Azure
+
+- Azure Functions Documentation
+- Azure API Management Documentation
+- Microsoft Entra ID Documentation
+- Azure Key Vault Documentation
+
+#### Google Cloud Platform
+
+- Google Cloud Functions Documentation
+- Cloud Run Documentation
+- Google Cloud IAM Documentation
+- Secret Manager Documentation
+
+#### Oracle Cloud Infrastructure
+
+- Oracle Cloud Functions Documentation
+
+#### IBM Cloud
+
+- IBM Cloud Functions Documentation
+
+#### Cloudflare
+
+- Cloudflare Workers Documentation
+
+---
+
+### Security Frameworks
+
+- Zero Trust Architecture
+- Defense in Depth
+- Principle of Least Privilege (PoLP)
+- DevSecOps
+- Secure Software Supply Chain
+- Identity and Access Management (IAM)
+- Continuous Monitoring
+- Vulnerability Management
+- Secure Configuration Management
+
+---
+
+### Recommended Learning Resources
+
+- OWASP Serverless Top 10
+- OWASP API Security Top 10
+- MITRE ATT&CK Framework
+- MITRE D3FEND
+- Cloud Native Computing Foundation (CNCF) Security Whitepapers
+- CIS Benchmarks
+- SANS Cloud Security Resources
+- Cloud Security Alliance Research Publications
+
+---
+
+**End of Chapter 17 – Serverless Security**
+
+---
