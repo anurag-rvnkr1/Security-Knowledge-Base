@@ -1290,14 +1290,692 @@ Security teams should monitor:
 
 ---
 
-## Next Section
+## Prevention
 
-Prevention
+Preventing attacks against virtual machines requires securing every stage of the VM lifecycle—from image creation and deployment to operation, monitoring, patching, backup, and decommissioning. A secure VM is not achieved through a single control but through multiple, overlapping security mechanisms.
 
-Best Practices
+An effective Virtual Machine Security strategy should protect:
 
-Common Mistakes
+- Hypervisors
+- Guest operating systems
+- VM images
+- Virtual disks
+- Administrative access
+- Network interfaces
+- Snapshots
+- Backups
+- Management APIs
+- Monitoring infrastructure
 
-References
+Security controls should follow the principles of **Defense in Depth**, **Least Privilege**, **Zero Trust**, and **Continuous Monitoring**.
+
+---
+
+# Defense-in-Depth for Virtual Machines
+
+```
+               Users / Administrators
+
+                        │
+
+                        ▼
+
+             Identity Authentication
+
+                        │
+
+                        ▼
+
+              IAM Authorization
+
+                        │
+
+                        ▼
+
+             Hypervisor Protection
+
+                        │
+
+                        ▼
+
+             Hardened Virtual Machine
+
+      ┌──────────────┼───────────────┐
+
+      ▼              ▼               ▼
+
+ Guest OS       Network Security   Storage
+
+      │              │               │
+
+      └──────────────┼───────────────┘
+
+                     ▼
+
+         Logging, Monitoring & SIEM
+
+                     ▼
+
+          Backup & Disaster Recovery
+```
+
+Each layer contributes to reducing the attack surface and limiting the impact of compromise.
+
+---
+
+# Use Hardened Golden Images
+
+Deploy virtual machines from approved, hardened images.
+
+Golden images should include:
+
+- Latest security patches
+- Approved software
+- Secure operating system configurations
+- Endpoint protection
+- Logging agents
+- Compliance configurations
+
+```
+Golden Image
+
+↓
+
+Deploy VM
+
+↓
+
+Secure Instance
+```
+
+Avoid creating production VMs from outdated or unverified images.
+
+---
+
+# Keep Operating Systems Updated
+
+Regular patching reduces exposure to known vulnerabilities.
+
+Update:
+
+- Operating system
+- Security patches
+- Device drivers
+- Installed applications
+- Runtime components
+
+```
+Vendor Patch
+
+↓
+
+Deploy
+
+↓
+
+Restart (If Needed)
+
+↓
+
+Protected VM
+```
+
+Automate patch deployment whenever practical.
+
+---
+
+# Secure Administrative Access
+
+Administrative interfaces should be strongly protected.
+
+Recommendations:
+
+- Multi-Factor Authentication (MFA)
+- Bastion hosts
+- Privileged Access Management (PAM)
+- Dedicated administrator accounts
+- Session recording
+- Just-In-Time (JIT) access
+
+```
+Administrator
+
+↓
+
+MFA
+
+↓
+
+Bastion Host
+
+↓
+
+Virtual Machine
+```
+
+Avoid exposing SSH or RDP directly to the public internet whenever possible.
+
+---
+
+# Apply Least Privilege
+
+Grant administrators, applications, and automation only the permissions they require.
+
+Example:
+
+| Identity | Permissions |
+|----------|-------------|
+| Web Server | Read application files |
+| Database Administrator | Database management only |
+| Backup Service | Backup operations |
+| Security Team | Log analysis |
+
+Review permissions regularly.
+
+---
+
+# Encrypt Virtual Disks
+
+Protect stored data using encryption.
+
+Protect:
+
+- OS disks
+- Data disks
+- Temporary disks (where supported)
+- Snapshots
+- Backup images
+
+```
+Virtual Disk
+
+↓
+
+AES-256
+
+↓
+
+Encrypted Storage
+```
+
+Encryption reduces the impact of physical storage compromise.
+
+---
+
+# Enable Secure Boot
+
+Secure Boot validates trusted boot components before the operating system loads.
+
+Benefits include:
+
+- Preventing bootkits
+- Detecting unauthorized boot loaders
+- Maintaining platform integrity
+
+Enable Secure Boot wherever supported.
+
+---
+
+# Use Virtual TPM (vTPM)
+
+Virtual TPM provides hardware-backed security features to virtual machines.
+
+Capabilities include:
+
+- Secure key storage
+- Platform integrity verification
+- Secure Boot support
+- Cryptographic operations
+
+vTPM strengthens trust in the boot process and credential protection.
+
+---
+
+# Harden the Guest Operating System
+
+Reduce the attack surface by disabling unnecessary components.
+
+Recommendations:
+
+- Remove unused software
+- Disable unused services
+- Restrict administrative tools
+- Configure host firewalls
+- Enable security logging
+- Apply secure configuration baselines
+
+Regular hardening reduces opportunities for exploitation.
+
+---
+
+# Protect the Hypervisor
+
+Although cloud providers generally manage the hypervisor, organizations should protect management access where applicable.
+
+Recommendations:
+
+- Restrict administrative access
+- Monitor management APIs
+- Enable logging
+- Apply updates promptly (self-managed environments)
+- Review configuration changes
+
+Compromise of the hypervisor may affect multiple hosted virtual machines.
+
+---
+
+# Secure Network Communication
+
+Restrict network access using layered controls.
+
+Recommended controls:
+
+- Security Groups
+- Network Security Groups (NSGs)
+- Firewalls
+- Network ACLs
+- Micro-segmentation
+- Private networking
+
+```
+Internet
+
+↓
+
+Firewall
+
+↓
+
+Security Group
+
+↓
+
+Virtual Machine
+```
+
+Only required ports should be accessible.
+
+---
+
+# Deploy Endpoint Protection
+
+Every production VM should include endpoint security controls.
+
+Examples:
+
+- Endpoint Detection and Response (EDR)
+- Anti-malware
+- Host Intrusion Detection System (HIDS)
+- File Integrity Monitoring (FIM)
+- Host firewall
+
+These controls improve visibility and response to threats.
+
+---
+
+# Protect Snapshots and Backups
+
+Snapshots and backups often contain complete copies of production systems.
+
+Recommendations:
+
+- Encrypt snapshots
+- Restrict snapshot permissions
+- Protect backup repositories
+- Enable immutable backups where supported
+- Test restoration procedures
+
+```
+Running VM
+
+↓
+
+Encrypted Snapshot
+
+↓
+
+Secure Backup
+```
+
+Treat snapshots with the same level of protection as production systems.
+
+---
+
+# Monitor Virtual Machines Continuously
+
+Continuously monitor:
+
+- Login activity
+- Administrative actions
+- Configuration changes
+- Resource utilization
+- Network traffic
+- Security agent status
+- File integrity
+- Patch compliance
+
+```
+VM Activity
+
+↓
+
+Audit Logs
+
+↓
+
+SIEM
+
+↓
+
+SOC Alert
+```
+
+Continuous monitoring enables faster detection and response.
+
+---
+
+# Secure VM Images
+
+VM templates should undergo security validation before deployment.
+
+Image validation should include:
+
+- Vulnerability scanning
+- Malware scanning
+- Configuration review
+- Patch verification
+- Compliance assessment
+
+Only approved images should be available for production deployments.
+
+---
+
+# Remove Unused Virtual Machines
+
+Unused or forgotten virtual machines increase the attack surface.
+
+Regularly identify:
+
+- Stopped VMs
+- Abandoned development systems
+- Test environments
+- Orphaned snapshots
+- Unused disks
+
+Decommission unused resources securely.
+
+---
+
+# Best Practices
+
+## 1. Deploy Only Hardened Images
+
+Standardize deployments using approved Golden Images that include security baselines and current patches.
+
+---
+
+## 2. Patch Systems Regularly
+
+Maintain operating systems and applications with current security updates.
+
+Automated patch management improves consistency.
+
+---
+
+## 3. Restrict Administrative Access
+
+Require:
+
+- Multi-Factor Authentication
+- Bastion hosts
+- Individual administrator accounts
+- Privileged Access Management
+
+Avoid direct internet exposure of administrative services.
+
+---
+
+## 4. Enable Disk Encryption
+
+Encrypt:
+
+- Operating system disks
+- Data disks
+- Snapshots
+- Backup images
+
+Manage encryption keys securely using a Key Management Service (KMS).
+
+---
+
+## 5. Implement Network Segmentation
+
+Separate workloads into appropriate security zones.
+
+Examples:
+
+- Web tier
+- Application tier
+- Database tier
+- Management network
+
+Segmentation limits lateral movement.
+
+---
+
+## 6. Deploy Endpoint Security
+
+Install and maintain:
+
+- EDR
+- Anti-malware
+- Host firewalls
+- File integrity monitoring
+
+Ensure security agents remain operational.
+
+---
+
+## 7. Enable Comprehensive Logging
+
+Log:
+
+- Login events
+- Configuration changes
+- Snapshot operations
+- Administrative actions
+- Software installations
+- Security policy updates
+
+Forward logs to the organization's SIEM.
+
+---
+
+## 8. Protect Backups and Snapshots
+
+Encrypt backups, restrict access, and periodically test restoration procedures.
+
+Critical backups should be protected against unauthorized deletion where supported.
+
+---
+
+## 9. Continuously Assess VM Security
+
+Perform regular:
+
+- Vulnerability assessments
+- Configuration reviews
+- Compliance checks
+- Patch audits
+- Image validation
+
+Continuous assessment improves security posture.
+
+---
+
+## 10. Secure the Entire VM Lifecycle
+
+Apply security controls from:
+
+- Image creation
+- Deployment
+- Daily operations
+- Monitoring
+- Backup
+- Decommissioning
+
+Security should extend across the entire lifecycle.
+
+---
+
+## Common Mistakes
+
+### Deploying Outdated VM Images
+
+Old images may contain:
+
+- Known vulnerabilities
+- Unsupported software
+- Missing security updates
+- Weak configurations
+
+Refresh Golden Images regularly.
+
+---
+
+### Leaving Administrative Ports Publicly Accessible
+
+Exposing services such as:
+
+- SSH
+- RDP
+- Management consoles
+
+directly to the internet increases the likelihood of unauthorized access.
+
+Use bastion hosts or private administrative networks instead.
+
+---
+
+### Ignoring Patch Management
+
+Delaying security updates leaves virtual machines vulnerable to publicly known exploits.
+
+Maintain a consistent patch management process.
+
+---
+
+### Granting Excessive Privileges
+
+Providing unnecessary administrative permissions increases the potential impact of compromised accounts.
+
+Apply the Principle of Least Privilege.
+
+---
+
+### Disabling Security Agents
+
+Disabling:
+
+- EDR
+- Antivirus
+- Logging
+- Host firewall
+
+reduces visibility and weakens security controls.
+
+Investigate unexpected disablement immediately.
+
+---
+
+### Failing to Encrypt Virtual Disks
+
+Unencrypted disks and snapshots may expose sensitive information if accessed by unauthorized parties.
+
+Enable encryption for all production storage.
+
+---
+
+### Neglecting Snapshot Security
+
+Snapshots often contain complete operating systems and application data.
+
+Leaving snapshots unencrypted or broadly accessible can result in data exposure.
+
+---
+
+### Poor Network Segmentation
+
+Allowing unrestricted communication between virtual machines facilitates lateral movement following compromise.
+
+Implement appropriate segmentation and firewall rules.
+
+---
+
+### Ignoring Audit Logs
+
+Failure to review VM activity may delay detection of:
+
+- Unauthorized logins
+- Configuration changes
+- Privilege escalation
+- Malicious software installation
+
+Integrate VM logs into centralized monitoring.
+
+---
+
+### Forgetting to Remove Unused Virtual Machines
+
+Unused systems may:
+
+- Remain unpatched
+- Retain sensitive information
+- Increase operational costs
+- Expand the attack surface
+
+Regularly inventory and securely decommission obsolete virtual machines.
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-125 – Guide to Security for Full Virtualization Technologies
+- NIST SP 800-53 – Security and Privacy Controls for Information Systems and Organizations
+- NIST Cybersecurity Framework (CSF)
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Critical Security Controls
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Cloud Provider Documentation
+
+- Amazon EC2 Documentation
+- Amazon EC2 Image Builder Documentation
+- Azure Virtual Machines Documentation
+- Azure Bastion Documentation
+- Google Compute Engine Documentation
+- Google Shielded VM Documentation
+- Oracle Cloud Infrastructure Compute Documentation
+- IBM Cloud Virtual Servers Documentation
+
+---
+
+### Industry Best Practices
+
+- Defense in Depth
+- Principle of Least Privilege (PoLP)
+- Zero Trust Architecture
+- Secure Boot
+- Virtual Trusted Platform Module (vTPM)
+- Golden Image Management
+- Endpoint Detection and Response (EDR)
+- Network Segmentation
+- Secure Backup and Recovery
+- Continuous Vulnerability Management
 
 ---
