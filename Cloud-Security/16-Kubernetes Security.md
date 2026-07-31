@@ -1352,11 +1352,503 @@ Security teams should monitor:
 
 ---
 
+
+## Prevention
+
+Preventing attacks against Kubernetes environments requires securing every layer of the cluster, from infrastructure and identities to workloads, networking, storage, and runtime behavior. Security should be integrated into cluster design, deployment pipelines, and day-to-day operations rather than added after workloads are deployed.
+
+An effective Kubernetes Security strategy should protect:
+
+- Control Plane
+- API Server
+- etcd
+- Worker Nodes
+- Pods
+- Containers
+- Images
+- Service Accounts
+- Secrets
+- Network Communication
+- Persistent Storage
+- Admission Policies
+- Monitoring Infrastructure
+
+Organizations should apply the principles of **Zero Trust**, **Defense in Depth**, **Least Privilege**, **Secure by Default**, and **Continuous Verification**.
+
+---
+
+# Defense-in-Depth for Kubernetes
+
+```
+                 Users / CI/CD
+
+                      │
+
+                      ▼
+
+             Identity Authentication
+
+                      │
+
+                      ▼
+
+                RBAC Authorization
+
+                      │
+
+                      ▼
+
+           Admission Controllers
+
+                      │
+
+                      ▼
+
+              Kubernetes API Server
+
+                      │
+
+                      ▼
+
+               Control Plane Security
+
+                      │
+
+                      ▼
+
+                Worker Node Security
+
+                      │
+
+                      ▼
+
+         Pods • Containers • Services
+
+                      │
+
+                      ▼
+
+      Runtime Monitoring & Threat Detection
+
+                      │
+
+                      ▼
+
+             Logging • SIEM • SOC
+```
+
+Each security layer reduces risk and limits the blast radius of a successful attack.
+
+---
+
+# Secure the Control Plane
+
+The control plane manages the entire cluster and should receive the highest level of protection.
+
+Recommendations:
+
+- Restrict administrative access
+- Enable Multi-Factor Authentication
+- Use private API endpoints where supported
+- Encrypt communications
+- Enable audit logging
+- Regularly update Kubernetes versions
+
+Protecting the control plane helps prevent cluster-wide compromise.
+
+---
+
+# Protect the API Server
+
+The API Server is the primary entry point for cluster management.
+
+Recommendations:
+
+- Require strong authentication
+- Disable anonymous access
+- Restrict network exposure
+- Enable TLS
+- Audit API activity
+- Integrate with enterprise identity providers
+
+Only authorized users and services should communicate with the API Server.
+
+---
+
+# Encrypt etcd
+
+Because etcd stores sensitive cluster data, it should always be protected.
+
+Protect:
+
+- Secrets
+- Certificates
+- Cluster configuration
+- RBAC policies
+
+```
+Cluster State
+
+↓
+
+Encryption
+
+↓
+
+etcd
+```
+
+Enable encryption at rest and restrict direct access.
+
+---
+
+# Enforce Role-Based Access Control (RBAC)
+
+Apply Least Privilege to every identity.
+
+Recommendations:
+
+- Separate administrator roles
+- Limit service account permissions
+- Avoid cluster-admin where unnecessary
+- Periodically review permissions
+- Remove unused roles
+
+```
+Identity
+
+↓
+
+RBAC
+
+↓
+
+Minimum Permissions
+```
+
+RBAC is one of the most important Kubernetes security controls.
+
+---
+
+# Secure Service Accounts
+
+Applications should use dedicated service accounts with narrowly scoped permissions.
+
+Avoid:
+
+- Default service accounts
+- Shared service accounts
+- Excessive privileges
+
+Rotate credentials and audit service account usage regularly.
+
+---
+
+# Use Admission Controllers
+
+Admission Controllers should enforce organizational security policies.
+
+Examples:
+
+- Require signed images
+- Reject privileged containers
+- Require resource limits
+- Enforce namespace restrictions
+- Validate security contexts
+
+Policy enforcement prevents insecure workloads from entering the cluster.
+
+---
+
+# Enforce Pod Security Standards
+
+Every workload should follow secure pod configuration practices.
+
+Recommendations:
+
+- Run as non-root
+- Drop unnecessary Linux capabilities
+- Use read-only root filesystems
+- Restrict host networking
+- Restrict host PID/IPC access
+- Disable privileged mode
+
+Secure pod configurations reduce attack surfaces.
+
+---
+
+# Secure Container Images
+
+Only deploy trusted images.
+
+Image security should include:
+
+- Vulnerability scanning
+- Digital signatures
+- Trusted registries
+- Image immutability
+- Frequent rebuilds
+
+Reject images that fail organizational security policies.
+
+---
+
+# Protect Kubernetes Secrets
+
+Sensitive information should never be stored in:
+
+- Container images
+- Source code
+- Configuration repositories
+
+Use Kubernetes Secrets together with external secrets management solutions where appropriate.
+
+```
+Secrets Manager
+
+↓
+
+Encrypted Secret
+
+↓
+
+Authorized Pod
+```
+
+Rotate credentials regularly and audit secret access.
+
+---
+
+# Implement Network Policies
+
+Restrict communication between workloads.
+
+Examples:
+
+- Application → Database
+- Frontend → Backend
+- Monitoring → Nodes
+
+```
+Pod A
+
+↓
+
+Network Policy
+
+↓
+
+Pod B
+```
+
+Default-deny network policies provide a strong security baseline.
+
+---
+
+# Protect Worker Nodes
+
+Worker nodes execute application workloads and therefore require continuous protection.
+
+Recommendations:
+
+- Harden the operating system
+- Apply security patches
+- Restrict SSH access
+- Enable endpoint protection
+- Monitor node activity
+- Remove unnecessary software
+
+Compromised nodes may expose multiple workloads.
+
+---
+
+# Secure Persistent Storage
+
+Persistent storage should include:
+
+- Encryption
+- Access control
+- Backup
+- Integrity monitoring
+- Lifecycle management
+
+Storage security remains critical because data persists beyond pod lifetimes.
+
+---
+
+# Enable Runtime Security
+
+Runtime monitoring should detect:
+
+- Unexpected processes
+- Container escape attempts
+- File modifications
+- Privilege escalation
+- Malware
+- Cryptomining
+
+Behavior-based detection provides visibility beyond image scanning.
+
+---
+
+# Monitor Continuously
+
+Monitor:
+
+- API activity
+- Authentication
+- RBAC changes
+- Secret access
+- Network behavior
+- Runtime events
+- Node health
+- Resource usage
+- Policy violations
+
+```
+Cluster Event
+
+↓
+
+Audit Logs
+
+↓
+
+SIEM
+
+↓
+
+Security Alert
+```
+
+Continuous monitoring enables rapid detection and response.
+
+---
+
+# Best Practices
+
+## 1. Enable RBAC Everywhere
+
+Grant only the permissions required for each user, service account, and workload.
+
+Review permissions regularly.
+
+---
+
+## 2. Protect the API Server
+
+Require:
+
+- Strong authentication
+- TLS encryption
+- Audit logging
+- Restricted network exposure
+
+The API Server should never be unnecessarily exposed.
+
+---
+
+## 3. Encrypt Sensitive Data
+
+Encrypt:
+
+- etcd
+- Persistent volumes
+- Secrets
+- Backup storage
+
+Protect encryption keys using an appropriate Key Management Service (KMS).
+
+---
+
+## 4. Deploy Only Trusted Images
+
+Require:
+
+- Vulnerability scanning
+- Image signing
+- Trusted registries
+- Image integrity verification
+
+Block deployments that fail security validation.
+
+---
+
+## 5. Secure Pod Configurations
+
+Configure pods to:
+
+- Run as non-root
+- Drop unused capabilities
+- Use read-only root filesystems
+- Avoid privileged mode
+- Limit host access
+
+Pod security significantly reduces workload risk.
+
+---
+
+## 6. Apply Network Segmentation
+
+Use Network Policies to restrict communication between namespaces and workloads.
+
+Permit only required traffic.
+
+---
+
+## 7. Protect Secrets
+
+Store credentials securely and rotate them periodically.
+
+Monitor secret access continuously.
+
+---
+
+## 8. Enable Comprehensive Audit Logging
+
+Record:
+
+- Authentication events
+- RBAC modifications
+- API requests
+- Secret access
+- Pod deployments
+- Administrative actions
+
+Forward logs to the organization's SIEM.
+
+---
+
+## 9. Continuously Monitor Runtime Activity
+
+Monitor:
+
+- Unexpected processes
+- Container escapes
+- Privilege escalation
+- Suspicious network activity
+- Resource anomalies
+
+Behavioral monitoring complements preventive controls.
+
+---
+
+## 10. Maintain Cluster Hygiene
+
+Regularly:
+
+- Update Kubernetes versions
+- Remove unused namespaces
+- Delete abandoned workloads
+- Review cluster configuration
+- Patch worker nodes
+- Rotate credentials
+
+Routine maintenance strengthens long-term security.
+
+---
+
 ## Next Section
-
-Prevention
-
-Best Practices
 
 Common Mistakes
 
