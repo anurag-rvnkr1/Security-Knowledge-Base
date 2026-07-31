@@ -1304,3 +1304,404 @@ Continuous improvement helps pipelines adapt to evolving threats and technologie
 
 ---
 
+## Common Mistakes
+
+CI/CD pipelines are among the most privileged systems in modern cloud environments. A single security weakness can allow attackers to compromise source code, inject malicious software, steal secrets, or gain access to production infrastructure.
+
+Many organizations automate software delivery successfully but overlook critical security controls. The following are the most common CI/CD security mistakes and how they impact organizational security.
+
+---
+
+### 1. Hardcoding Secrets in Pipelines
+
+One of the most common mistakes is storing secrets directly inside:
+
+- Source code
+- Pipeline configuration files
+- Environment variables
+- Shell scripts
+- Dockerfiles
+- Infrastructure templates
+
+Examples include:
+
+- Cloud access keys
+- Database passwords
+- API keys
+- SSH private keys
+- OAuth tokens
+- Encryption keys
+
+```
+Developer
+
+     │
+
+     ▼
+
+Pipeline Configuration
+
+     │
+
+     ▼
+
+Hardcoded Secret
+
+     │
+
+     ▼
+
+Credential Exposure
+
+     │
+
+     ▼
+
+Cloud Compromise
+```
+
+Secrets should always be managed through dedicated secrets management systems.
+
+---
+
+### 2. Excessive Pipeline Permissions
+
+CI/CD pipelines frequently operate with administrator privileges.
+
+Common issues include:
+
+- Administrator service accounts
+- Wildcard IAM permissions
+- Shared deployment accounts
+- Broad cloud access
+- Long-lived credentials
+
+Pipelines should receive only the permissions required to complete specific tasks.
+
+---
+
+### 3. Skipping Security Scanning
+
+Some organizations prioritize deployment speed over security validation.
+
+Missing security checks may include:
+
+- Static Application Security Testing (SAST)
+- Software Composition Analysis (SCA)
+- Secrets scanning
+- Container image scanning
+- Infrastructure as Code (IaC) scanning
+- Policy validation
+
+Skipping automated security testing allows vulnerabilities to reach production.
+
+---
+
+### 4. Using Untrusted Third-Party Dependencies
+
+Modern software depends heavily on external packages and libraries.
+
+Risks include:
+
+- Vulnerable packages
+- Malicious dependencies
+- Abandoned projects
+- License violations
+- Supply chain attacks
+
+Dependencies should be continuously monitored and verified.
+
+---
+
+### 5. Weak Repository Protection
+
+Source code repositories without proper protections are attractive attack targets.
+
+Common weaknesses include:
+
+- Direct commits to production branches
+- Disabled branch protection
+- Missing peer reviews
+- Weak authentication
+- Excessive repository permissions
+
+Repository security forms the foundation of CI/CD security.
+
+---
+
+### 6. Ignoring Artifact Integrity
+
+Unsigned or unverified build artifacts may be modified after compilation.
+
+Risks include:
+
+- Artifact tampering
+- Malicious binary replacement
+- Supply chain compromise
+- Unauthorized software distribution
+
+Artifacts should always be digitally signed and verified before deployment.
+
+---
+
+### 7. Insecure Build Environments
+
+Long-lived build servers often accumulate:
+
+- Outdated software
+- Cached credentials
+- Sensitive artifacts
+- Unpatched vulnerabilities
+- Unnecessary services
+
+Organizations should prefer isolated, ephemeral build runners.
+
+---
+
+### 8. Weak Identity Management
+
+Poor identity management increases the risk of unauthorized pipeline access.
+
+Examples include:
+
+- Shared administrator accounts
+- Missing Multi-Factor Authentication (MFA)
+- Unused privileged accounts
+- Long-lived service credentials
+- Infrequent permission reviews
+
+Identity governance should extend across all CI/CD systems.
+
+---
+
+### 9. Bypassing Deployment Controls
+
+Manual deployments outside approved pipelines bypass important security mechanisms such as:
+
+- Automated testing
+- Policy validation
+- Audit logging
+- Deployment approvals
+- Artifact verification
+
+Production deployments should occur exclusively through controlled CI/CD pipelines.
+
+---
+
+### 10. Ignoring Runtime Security
+
+Pre-deployment validation alone cannot detect every threat.
+
+Organizations should continue monitoring for:
+
+- Runtime attacks
+- Unauthorized configuration changes
+- Privilege escalation
+- Suspicious application behavior
+- Unexpected network communication
+
+Runtime monitoring complements pipeline security.
+
+---
+
+### 11. Poor Logging and Audit Trails
+
+Insufficient logging limits visibility into security events.
+
+Important events to record include:
+
+- Repository access
+- Pipeline executions
+- Build failures
+- Deployment approvals
+- Administrative actions
+- Artifact downloads
+- Configuration changes
+
+Comprehensive audit logs support investigations and compliance.
+
+---
+
+### 12. Lack of Pipeline Segmentation
+
+Using a single pipeline for all environments increases operational risk.
+
+Separate pipelines or stages should exist for:
+
+- Development
+- Testing
+- Staging
+- Production
+
+Environment isolation limits the impact of failures and compromises.
+
+---
+
+### 13. Ignoring Compliance Validation
+
+Pipelines that do not enforce organizational policies may deploy non-compliant resources.
+
+Examples include:
+
+- Missing encryption
+- Weak IAM policies
+- Unapproved deployment regions
+- Missing resource tags
+- Disabled logging
+
+Compliance validation should execute automatically before deployment.
+
+---
+
+### 14. Treating CI/CD Security as a One-Time Setup
+
+Security controls require continuous maintenance.
+
+Regular activities include:
+
+- Updating security tools
+- Reviewing IAM permissions
+- Rotating credentials
+- Updating policies
+- Patching build environments
+- Reviewing dependency inventories
+
+Continuous improvement keeps pipelines resilient against evolving threats.
+
+---
+
+### 15. Viewing CI/CD Security as Solely a DevOps Responsibility
+
+CI/CD Security requires collaboration across multiple teams.
+
+Key stakeholders include:
+
+- Developers
+- DevOps engineers
+- DevSecOps engineers
+- Security Operations Center (SOC)
+- Cloud Security teams
+- Platform engineers
+- Governance, Risk, and Compliance (GRC) teams
+- Incident Response teams
+
+Shared responsibility strengthens software delivery security.
+
+---
+
+## CI/CD Security Checklist
+
+| Control | Status |
+|---------|--------|
+| Multi-Factor Authentication (MFA) Enabled | ✓ |
+| Branch Protection Configured | ✓ |
+| Mandatory Pull Request Reviews | ✓ |
+| Least Privilege IAM Implemented | ✓ |
+| Secrets Stored Securely | ✓ |
+| SAST Integrated into Pipeline | ✓ |
+| Software Composition Analysis (SCA) Enabled | ✓ |
+| Infrastructure as Code (IaC) Scanning Enabled | ✓ |
+| Container Image Scanning Automated | ✓ |
+| Policy as Code Implemented | ✓ |
+| Artifact Signing Enabled | ✓ |
+| Artifact Integrity Verification Performed | ✓ |
+| Secure Build Runners Used | ✓ |
+| Continuous Monitoring Enabled | ✓ |
+| Regular Security Reviews Conducted | ✓ |
+
+---
+
+## References
+
+### International Standards
+
+- ISO/IEC 27001 — Information Security Management Systems (ISMS)
+- ISO/IEC 27002 — Information Security Controls
+- ISO/IEC 27034 — Application Security
+- ISO/IEC 29147 — Vulnerability Disclosure
+- ISO/IEC 5230 (OpenChain) — Open Source License Compliance
+
+---
+
+### NIST Publications
+
+- NIST Secure Software Development Framework (SSDF) SP 800-218
+- NIST Cybersecurity Framework (CSF) 2.0
+- NIST SP 800-53 Rev. 5 — Security and Privacy Controls
+- NIST SP 800-161 Rev. 1 — Cybersecurity Supply Chain Risk Management
+- NIST SP 800-204 Series — Microservices Security
+
+---
+
+### OWASP Resources
+
+- OWASP Top 10
+- OWASP CI/CD Security Guidance
+- OWASP Software Assurance Maturity Model (SAMM)
+- OWASP Application Security Verification Standard (ASVS)
+- OWASP Cheat Sheet Series
+
+---
+
+### Supply Chain Security
+
+- SLSA (Supply-chain Levels for Software Artifacts)
+- in-toto Framework
+- Sigstore
+- SPDX Specification
+- CycloneDX Specification
+- Software Bill of Materials (SBOM)
+
+---
+
+### Cloud-Native Security
+
+- Cloud Native Computing Foundation (CNCF) Software Supply Chain Best Practices
+- Kubernetes Security Best Practices
+- Open Policy Agent (OPA)
+- SPIFFE and SPIRE
+
+---
+
+### Cloud Provider Documentation
+
+#### Amazon Web Services (AWS)
+
+- AWS CodePipeline
+- AWS CodeBuild
+- AWS CodeDeploy
+- AWS CodeArtifact
+- AWS Inspector
+- AWS Security Hub
+
+#### Microsoft Azure
+
+- Azure DevOps
+- Azure Pipelines
+- Azure Artifacts
+- Microsoft Defender for Cloud
+- Azure Policy
+
+#### Google Cloud Platform (GCP)
+
+- Cloud Build
+- Artifact Registry
+- Binary Authorization
+- Security Command Center
+- Cloud Deploy
+
+---
+
+### Recommended Learning Resources
+
+- NIST Computer Security Resource Center (CSRC)
+- Cloud Security Alliance (CSA) Research
+- CIS Benchmarks
+- Official AWS, Microsoft Azure, Google Cloud, GitHub Actions, GitLab CI/CD, Jenkins, and CNCF documentation
+
+---
+
+**End of Chapter 35 – CI/CD Security**
+
+
+---
