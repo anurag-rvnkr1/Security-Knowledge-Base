@@ -1182,3 +1182,375 @@ Continuous improvement keeps infrastructure resilient against evolving risks.
 
 ---
 
+## Common Mistakes
+
+Infrastructure as Code (IaC) provides consistency, scalability, and automation, but insecure development practices can rapidly propagate vulnerabilities across entire cloud environments. Since IaC templates are reusable, a single mistake can be replicated hundreds or thousands of times.
+
+Understanding and avoiding these common mistakes significantly improves cloud security, operational reliability, and compliance.
+
+---
+
+### 1. Hardcoding Secrets
+
+One of the most critical IaC security mistakes is embedding sensitive information directly into infrastructure definitions.
+
+Examples include:
+
+- Cloud access keys
+- Database passwords
+- API keys
+- SSH private keys
+- Certificates
+- Authentication tokens
+
+```
+Infrastructure Code
+
+        │
+
+        ▼
+
+Hardcoded Secret
+
+        │
+
+        ▼
+
+Credential Exposure
+
+        │
+
+        ▼
+
+Cloud Compromise
+```
+
+Sensitive information should always be stored in dedicated secrets management solutions.
+
+---
+
+### 2. Skipping IaC Security Scanning
+
+Deploying infrastructure without automated security validation allows insecure configurations into production.
+
+Examples include:
+
+- Public storage buckets
+- Open firewall rules
+- Weak IAM policies
+- Missing encryption
+- Disabled logging
+
+Security scanning should be mandatory before every deployment.
+
+---
+
+### 3. Excessive IAM Permissions
+
+Granting broad permissions to users, service accounts, or automation pipelines increases the attack surface.
+
+Common issues include:
+
+- Administrator permissions by default
+- Wildcard (`*`) permissions
+- Unused privileged roles
+- Long-lived credentials
+
+Apply the Principle of Least Privilege (PoLP) and review permissions regularly.
+
+---
+
+### 4. Ignoring Configuration Drift
+
+Manual changes made directly in cloud consoles create inconsistencies between deployed infrastructure and approved IaC templates.
+
+Consequences include:
+
+- Security baseline violations
+- Audit failures
+- Operational inconsistencies
+- Unexpected behavior
+
+Continuously detect and remediate configuration drift.
+
+---
+
+### 5. Weak Network Configurations
+
+Insecure networking remains a frequent source of cloud breaches.
+
+Examples include:
+
+- Open inbound ports
+- Unrestricted outbound access
+- Flat network architectures
+- Public administrative interfaces
+- Missing network segmentation
+
+Network configurations should be validated before deployment.
+
+---
+
+### 6. Disabling Encryption
+
+Failing to enable encryption for storage, databases, or backups exposes sensitive information.
+
+Encryption should protect:
+
+- Data at rest
+- Data in transit
+- Backup data
+- Secrets
+- Persistent storage
+
+Encryption should be enabled by default in infrastructure templates.
+
+---
+
+### 7. Missing Logging and Monitoring
+
+Infrastructure without adequate logging reduces visibility into security events.
+
+Common omissions include:
+
+- Audit logs
+- Access logs
+- Network flow logs
+- Storage access logs
+- Administrative activity logs
+
+Logging should be configured automatically during infrastructure provisioning.
+
+---
+
+### 8. Deploying Outside Approved Pipelines
+
+Manual deployments bypass security controls such as:
+
+- Policy validation
+- Peer reviews
+- Automated testing
+- Compliance checks
+- Audit logging
+
+Production infrastructure should only be deployed through approved CI/CD pipelines.
+
+---
+
+### 9. Using Untrusted Modules
+
+Third-party IaC modules may contain:
+
+- Security vulnerabilities
+- Malicious code
+- Poor configuration practices
+- Unsupported features
+
+Organizations should:
+
+- Use trusted module sources
+- Review module code
+- Track versions
+- Monitor security advisories
+
+---
+
+### 10. Poor Version Control Practices
+
+Common repository issues include:
+
+- Direct commits to production branches
+- Missing code reviews
+- Disabled branch protection
+- Excessive repository permissions
+- Inadequate audit logging
+
+Infrastructure code should follow secure software development practices.
+
+---
+
+### 11. Ignoring Compliance Requirements
+
+Infrastructure templates should enforce organizational and regulatory requirements.
+
+Common compliance gaps include:
+
+- Missing resource tags
+- Unsupported cloud regions
+- Disabled encryption
+- Improper data retention
+- Inadequate access controls
+
+Compliance validation should be automated within deployment pipelines.
+
+---
+
+### 12. Lack of Standardization
+
+Allowing each team to define infrastructure differently leads to:
+
+- Configuration inconsistencies
+- Operational complexity
+- Security gaps
+- Increased maintenance effort
+
+Reusable modules and standardized templates promote consistency.
+
+---
+
+### 13. Weak Change Management
+
+Infrastructure changes without proper approval or documentation increase operational and security risks.
+
+Implement:
+
+- Change requests
+- Peer reviews
+- Automated testing
+- Approval workflows
+- Rollback procedures
+
+Structured change management reduces deployment failures.
+
+---
+
+### 14. Treating IaC as a One-Time Activity
+
+Infrastructure code requires ongoing maintenance.
+
+Regularly:
+
+- Update modules
+- Patch dependencies
+- Review policies
+- Improve templates
+- Remove deprecated resources
+
+Continuous improvement keeps infrastructure aligned with evolving threats and cloud services.
+
+---
+
+### 15. Focusing Only on Deployment-Time Security
+
+Infrastructure remains exposed after deployment if runtime security is neglected.
+
+Continue monitoring for:
+
+- Unauthorized changes
+- Identity misuse
+- Policy violations
+- New vulnerabilities
+- Suspicious activity
+- Configuration drift
+
+IaC Security should extend throughout the operational lifecycle.
+
+---
+
+## Infrastructure as Code Security Checklist
+
+| Control | Status |
+|---------|--------|
+| Infrastructure Stored in Version Control | ✓ |
+| Branch Protection Enabled | ✓ |
+| Peer Reviews Required | ✓ |
+| Multi-Factor Authentication for Repositories | ✓ |
+| IaC Security Scanning Automated | ✓ |
+| Policy as Code Implemented | ✓ |
+| Secrets Managed Securely | ✓ |
+| Least Privilege IAM Applied | ✓ |
+| Secure CI/CD Pipeline Used | ✓ |
+| Configuration Drift Detection Enabled | ✓ |
+| Logging Automatically Configured | ✓ |
+| Encryption Enabled by Default | ✓ |
+| Standardized IaC Modules Used | ✓ |
+| Compliance Validation Automated | ✓ |
+| Continuous Improvement Process Established | ✓ |
+
+---
+
+## References
+
+### International Standards
+
+- ISO/IEC 27001 — Information Security Management Systems (ISMS)
+- ISO/IEC 27002 — Information Security Controls
+- ISO/IEC 27017 — Code of Practice for Information Security Controls for Cloud Services
+- ISO/IEC 27018 — Protection of Personally Identifiable Information (PII) in Public Clouds
+
+---
+
+### NIST Publications
+
+- NIST Cybersecurity Framework (CSF) 2.0
+- NIST SP 800-53 Rev. 5 — Security and Privacy Controls
+- NIST SP 800-190 — Application Container Security Guide
+- NIST SP 800-204 Series — Microservices Security
+- NIST Secure Software Development Framework (SSDF) SP 800-218
+
+---
+
+### Cloud-Native and DevSecOps Guidance
+
+- Cloud Native Computing Foundation (CNCF) Security Whitepaper
+- Open Policy Agent (OPA)
+- Kubernetes Security Best Practices
+- CIS Kubernetes Benchmark
+- CIS Docker Benchmark
+
+---
+
+### Infrastructure as Code Best Practices
+
+- Terraform Best Practices
+- OpenTofu Documentation
+- Pulumi Documentation
+- AWS CloudFormation Documentation
+- Azure Bicep Documentation
+- Google Cloud Deployment Manager Documentation (legacy)
+- Google Cloud Infrastructure Manager Documentation
+
+---
+
+### Cloud Provider Security Documentation
+
+#### Amazon Web Services (AWS)
+
+- AWS CloudFormation
+- AWS Config
+- AWS IAM Access Analyzer
+- AWS Security Hub
+- AWS Well-Architected Framework – Security Pillar
+
+#### Microsoft Azure
+
+- Azure Resource Manager (ARM)
+- Azure Bicep
+- Azure Policy
+- Microsoft Defender for Cloud
+- Azure Resource Graph
+
+#### Google Cloud Platform (GCP)
+
+- Google Cloud Infrastructure Manager
+- Google Cloud Asset Inventory
+- Google Cloud Organization Policy Service
+- Google Security Command Center
+
+---
+
+### Recommended Learning Resources
+
+- CIS Benchmarks
+- Cloud Security Alliance (CSA) Research
+- OWASP Infrastructure as Code Security Guidance
+- NIST Computer Security Resource Center (CSRC)
+- Official AWS, Microsoft Azure, Google Cloud, Terraform, OpenTofu, and Pulumi documentation
+
+---
+
+**End of Chapter 34 – Infrastructure as Code (IaC) Security**
+
+
+
+---
