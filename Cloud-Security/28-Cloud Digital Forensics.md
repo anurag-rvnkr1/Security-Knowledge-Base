@@ -370,3 +370,476 @@ Both approaches are often required for comprehensive cloud investigations.
 
 ---
 
+## How It Works
+
+Cloud Digital Forensics follows a structured methodology that enables investigators to identify, preserve, collect, analyze, and report digital evidence while maintaining its integrity and admissibility.
+
+Unlike traditional digital forensics, cloud investigations must address dynamic infrastructure, distributed services, ephemeral workloads, and shared responsibility between cloud providers and customers.
+
+A successful cloud forensic investigation aims to answer questions such as:
+
+- What happened?
+- When did it happen?
+- Who performed the activity?
+- Which resources were affected?
+- How did the attacker gain access?
+- What data was accessed or modified?
+- Has the attacker been fully removed?
+- What improvements are required?
+
+Every phase should preserve evidence integrity and support accurate incident reconstruction.
+
+---
+
+## Cloud Digital Forensics Workflow
+
+```
+Security Incident
+
+        │
+
+        ▼
+
+Evidence Identification
+
+        │
+
+        ▼
+
+Evidence Preservation
+
+        │
+
+        ▼
+
+Evidence Collection
+
+        │
+
+        ▼
+
+Evidence Verification
+
+        │
+
+        ▼
+
+Evidence Analysis
+
+        │
+
+        ▼
+
+Timeline Reconstruction
+
+        │
+
+        ▼
+
+Root Cause Analysis
+
+        │
+
+        ▼
+
+Reporting
+
+        │
+
+        ▼
+
+Lessons Learned
+```
+
+Each stage contributes to building an accurate and defensible understanding of the incident.
+
+---
+
+## Step 1 – Identify Evidence Sources
+
+Determine which cloud resources may contain relevant evidence.
+
+Potential evidence sources include:
+
+- Cloud audit logs
+- Identity and Access Management (IAM) logs
+- Authentication records
+- Virtual machine snapshots
+- Container runtime logs
+- Kubernetes audit logs
+- API gateway logs
+- Database logs
+- Object storage access logs
+- Serverless execution logs
+- Network flow logs
+- Endpoint security tools
+
+Early identification reduces the risk of evidence loss.
+
+---
+
+## Step 2 – Preserve Evidence
+
+Evidence should be preserved before remediation activities modify or remove it.
+
+Preservation techniques include:
+
+- Creating virtual machine snapshots
+- Exporting cloud logs
+- Capturing volatile memory (where feasible)
+- Securing configuration files
+- Restricting access to affected resources
+- Documenting preservation actions
+
+Preservation maintains evidence integrity for future analysis.
+
+---
+
+## Step 3 – Collect Evidence
+
+Collect evidence using approved forensic procedures.
+
+Examples include:
+
+- Audit logs
+- Authentication records
+- Cloud configuration data
+- Security alerts
+- Network captures
+- Database activity logs
+- Application logs
+- Container images
+- Kubernetes manifests
+
+Collection should minimize changes to original evidence whenever possible.
+
+---
+
+## Step 4 – Verify Evidence Integrity
+
+Verify that evidence has not been altered during collection or transfer.
+
+Common methods include:
+
+- Cryptographic hashing
+- Secure evidence repositories
+- Access controls
+- Audit logging
+- Chain of custody documentation
+
+Integrity verification increases confidence in investigative findings.
+
+---
+
+## Step 5 – Analyze Evidence
+
+Analyze collected evidence to determine:
+
+- Initial attack vector
+- Attacker behavior
+- Compromised resources
+- Privilege escalation
+- Lateral movement
+- Data access
+- Persistence mechanisms
+
+Analysis combines technical expertise with multiple evidence sources.
+
+---
+
+## Step 6 – Reconstruct the Timeline
+
+Arrange events chronologically to understand the progression of the incident.
+
+Example:
+
+```
+09:12  Successful Login
+
+        │
+
+09:16  Privileged Role Assigned
+
+        │
+
+09:20  API Key Generated
+
+        │
+
+09:27  Storage Bucket Accessed
+
+        │
+
+09:34  Sensitive Data Downloaded
+
+        │
+
+09:41  Logs Deleted Attempted
+```
+
+Timeline reconstruction provides context for investigative conclusions.
+
+---
+
+## Step 7 – Determine the Root Cause
+
+Investigators identify:
+
+- Vulnerability exploited
+- Security control failures
+- Configuration weaknesses
+- Human errors
+- Missing detections
+- Process deficiencies
+
+Root cause analysis enables meaningful long-term improvements.
+
+---
+
+## Step 8 – Produce the Investigation Report
+
+A comprehensive report should include:
+
+- Executive summary
+- Scope
+- Investigation methodology
+- Evidence collected
+- Timeline
+- Technical findings
+- Root cause
+- Business impact
+- Recommendations
+- Supporting evidence references
+
+Reports should remain objective, accurate, and reproducible.
+
+---
+
+## Practical Example
+
+### Example 1 – Compromised Cloud Administrator Account
+
+Scenario:
+
+A cloud administrator account is used from an unusual geographic location and performs privileged IAM changes.
+
+Evidence collected:
+
+- Authentication logs
+- MFA events
+- IAM audit logs
+- Cloud API activity
+- Session metadata
+
+Findings:
+
+- Successful credential compromise
+- New administrative account creation
+- Unauthorized privilege escalation
+
+Outcome:
+
+- Credentials rotated
+- Sessions revoked
+- IAM policies corrected
+- Additional monitoring enabled
+
+---
+
+### Example 2 – Public Storage Data Exposure
+
+Scenario:
+
+Sensitive files stored in object storage become publicly accessible.
+
+Evidence collected:
+
+- Bucket policy history
+- Storage access logs
+- API activity
+- Audit logs
+- User activity records
+
+Findings:
+
+- Misconfigured access policy
+- External downloads detected
+
+Outcome:
+
+- Public access removed
+- Impact assessed
+- Monitoring rules updated
+
+---
+
+### Example 3 – Kubernetes Cluster Investigation
+
+Scenario:
+
+A privileged container executes unexpected commands and accesses Kubernetes Secrets.
+
+Evidence collected:
+
+- Kubernetes audit logs
+- Container runtime logs
+- Node logs
+- Admission controller events
+- RBAC changes
+
+Findings:
+
+- Excessive permissions
+- Privileged workload deployment
+- Secret exposure attempt
+
+Outcome:
+
+- Workload isolated
+- RBAC corrected
+- Secrets rotated
+- Runtime policies strengthened
+
+---
+
+### Example 4 – API Credential Leakage
+
+Scenario:
+
+A production API key is exposed through a public source code repository.
+
+Evidence collected:
+
+- Source control history
+- Secret scanning alerts
+- API gateway logs
+- Authentication logs
+- Usage analytics
+
+Findings:
+
+- Unauthorized API requests
+- Elevated request volume
+- Data access attempts
+
+Outcome:
+
+- API key revoked
+- New credentials issued
+- Repository history reviewed
+- Secret management process improved
+
+---
+
+## Detection
+
+Cloud Digital Forensics relies heavily on accurate and comprehensive detection capabilities.
+
+---
+
+### Identity Evidence
+
+Monitor:
+
+- Authentication attempts
+- MFA failures
+- Privileged role assignments
+- Credential changes
+- Service account activity
+- Cross-account access
+
+Identity events often establish the beginning of an attack timeline.
+
+---
+
+### Infrastructure Evidence
+
+Collect:
+
+- Virtual machine logs
+- Instance lifecycle events
+- Configuration changes
+- Security Group updates
+- Snapshot creation
+- Resource deletions
+
+Infrastructure evidence supports reconstruction of attacker actions.
+
+---
+
+### Network Evidence
+
+Monitor:
+
+- Network flow logs
+- DNS queries
+- Outbound connections
+- Internal lateral movement
+- Large data transfers
+- VPN activity
+
+Network telemetry helps identify attacker communication patterns.
+
+---
+
+### Application Evidence
+
+Collect:
+
+- Authentication events
+- API requests
+- Error logs
+- Administrative actions
+- Session information
+- Application configuration changes
+
+Application logs provide detailed context during investigations.
+
+---
+
+### Kubernetes and Container Evidence
+
+Capture:
+
+- Kubernetes audit logs
+- Pod creation events
+- Namespace activity
+- RBAC modifications
+- Container runtime logs
+- Admission controller events
+- Secret access
+
+Cloud-native evidence is essential for containerized environments.
+
+---
+
+### Storage and Database Evidence
+
+Monitor:
+
+- Object storage access
+- Database queries
+- Data exports
+- Backup operations
+- Permission changes
+- Encryption key usage
+
+These logs help determine whether sensitive information was accessed or exfiltrated.
+
+---
+
+### Detection Best Practices
+
+- Enable audit logging across all cloud services.
+- Centralize forensic logs in secure repositories.
+- Synchronize timestamps across systems.
+- Protect evidence with strong access controls.
+- Use cryptographic hashes to verify evidence integrity.
+- Preserve volatile evidence before remediation when feasible.
+- Integrate forensic telemetry into SIEM platforms.
+- Correlate identity, infrastructure, application, and network events.
+- Regularly validate forensic readiness through incident simulations.
+- Continuously review evidence collection procedures to ensure they remain effective as cloud environments evolve.
+
+---
+
