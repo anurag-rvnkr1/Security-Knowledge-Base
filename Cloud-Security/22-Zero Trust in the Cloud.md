@@ -437,3 +437,673 @@ Mutual TLS (mTLS) is commonly used to secure service-to-service communication.
 
 ---
 
+## How It Works
+
+Zero Trust in the Cloud works by continuously verifying every access request before granting access to applications, APIs, workloads, data, or cloud infrastructure. Instead of relying on a trusted internal network, Zero Trust evaluates identity, device posture, context, risk, and policy for every request.
+
+Unlike traditional perimeter-based security, Zero Trust assumes that any user, device, workload, or application could be compromised. Therefore, trust is never permanent and must be re-established continuously.
+
+A typical Zero Trust workflow consists of:
+
+1. Identity verification
+2. Device validation
+3. Context evaluation
+4. Risk assessment
+5. Policy evaluation
+6. Authorization decision
+7. Secure resource access
+8. Continuous monitoring
+9. Behavioral analysis
+10. Continuous re-evaluation
+
+This approach minimizes unauthorized access while reducing the impact of compromised accounts or devices.
+
+---
+
+## Zero Trust Access Workflow
+
+```
+              User / Application
+
+                      │
+
+                      ▼
+
+            Identity Verification
+
+                      │
+
+                      ▼
+
+        Multi-Factor Authentication
+
+                      │
+
+                      ▼
+
+          Device Compliance Check
+
+                      │
+
+                      ▼
+
+         Context & Risk Evaluation
+
+                      │
+
+                      ▼
+
+         Policy Decision Point (PDP)
+
+                      │
+
+              Allow / Deny Decision
+
+                      │
+
+                      ▼
+
+      Policy Enforcement Point (PEP)
+
+                      │
+
+                      ▼
+
+      Cloud Applications / APIs / Data
+
+                      │
+
+                      ▼
+
+     Logging • Monitoring • SIEM • SOC
+```
+
+Every request follows the same evaluation process regardless of its origin.
+
+---
+
+## Step 1 – Identity Verification
+
+Every access request begins by verifying the identity of the requester.
+
+Identity verification may involve:
+
+- Username and password
+- OAuth 2.0
+- OpenID Connect (OIDC)
+- SAML
+- Passkeys
+- Certificates
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Verified Identity
+```
+
+Unauthenticated identities should never receive access to protected resources.
+
+---
+
+## Step 2 – Multi-Factor Authentication
+
+After verifying credentials, additional authentication factors are required for sensitive resources.
+
+Examples include:
+
+- Authenticator applications
+- Hardware security keys
+- Biometrics
+- One-Time Passwords (OTP)
+
+```
+Password
+
++
+
+MFA
+
+↓
+
+Verified User
+```
+
+MFA significantly reduces the effectiveness of stolen credentials.
+
+---
+
+## Step 3 – Device Validation
+
+Zero Trust evaluates the security posture of the connecting device.
+
+Typical checks include:
+
+- Operating system version
+- Security patch level
+- Endpoint protection status
+- Disk encryption
+- Compliance with organizational policies
+
+```
+Device
+
+↓
+
+Compliance Check
+
+↓
+
+Compliant / Non-Compliant
+```
+
+Access may be denied or restricted if the device fails compliance checks.
+
+---
+
+## Step 4 – Context Evaluation
+
+Zero Trust evaluates contextual information before making an access decision.
+
+Examples include:
+
+- Geographic location
+- Time of access
+- Device type
+- Network location
+- User behavior
+- Application sensitivity
+
+Context-aware access helps distinguish normal activity from suspicious behavior.
+
+---
+
+## Step 5 – Risk Assessment
+
+Each request receives a risk score based on multiple factors.
+
+Risk indicators may include:
+
+- Impossible travel
+- New devices
+- Suspicious IP addresses
+- Anonymous proxies
+- Multiple failed login attempts
+- Threat intelligence feeds
+
+```
+Access Request
+
+↓
+
+Risk Engine
+
+↓
+
+Low / Medium / High Risk
+```
+
+Higher-risk requests may require additional verification or be denied.
+
+---
+
+## Step 6 – Policy Evaluation
+
+The Policy Decision Point (PDP) evaluates organizational security policies.
+
+Policies may consider:
+
+- Identity
+- Role
+- Resource classification
+- Device posture
+- Risk score
+- Regulatory requirements
+
+Example policy:
+
+```
+Finance Database
+
+↓
+
+MFA Required
+
+↓
+
+Managed Device Required
+
+↓
+
+Access Approved
+```
+
+Policies should be centrally managed and consistently enforced.
+
+---
+
+## Step 7 – Policy Enforcement
+
+The Policy Enforcement Point (PEP) applies the PDP decision.
+
+Possible outcomes include:
+
+- Allow access
+- Deny access
+- Require step-up authentication
+- Provide read-only access
+- Restrict session duration
+
+Enforcement points may include:
+
+- API gateways
+- Reverse proxies
+- Identity-aware proxies
+- Cloud firewalls
+- Zero Trust Network Access (ZTNA) gateways
+
+---
+
+## Step 8 – Secure Resource Access
+
+Once authorized, the requester accesses only approved resources.
+
+```
+Authorized User
+
+↓
+
+Approved Resource
+
+↓
+
+Limited Access
+```
+
+Access should remain limited according to the Principle of Least Privilege.
+
+---
+
+## Step 9 – Continuous Monitoring
+
+Access decisions are continuously re-evaluated throughout the session.
+
+Monitor:
+
+- User behavior
+- Device health
+- Network activity
+- API requests
+- Administrative actions
+- Session duration
+
+```
+Active Session
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Behavior Analysis
+```
+
+Access may be revoked if suspicious activity is detected.
+
+---
+
+## Step 10 – Session Re-Evaluation
+
+Zero Trust does not assume that previously verified sessions remain trustworthy.
+
+Examples requiring re-evaluation include:
+
+- Privilege escalation
+- Device non-compliance
+- Geographic changes
+- Suspicious API usage
+- Elevated risk scores
+
+Sessions should be terminated or challenged when risk increases.
+
+---
+
+## Zero Trust Authentication Flow
+
+```
+User
+
+↓
+
+Identity Provider
+
+↓
+
+Password
+
+↓
+
+MFA
+
+↓
+
+Risk Evaluation
+
+↓
+
+Policy Decision
+
+↓
+
+Application Access
+```
+
+Authentication and authorization are evaluated together before access is granted.
+
+---
+
+## Zero Trust Service-to-Service Communication
+
+Modern cloud-native applications consist of multiple communicating services.
+
+```
+Service A
+
+↓
+
+Mutual TLS (mTLS)
+
+↓
+
+Identity Verification
+
+↓
+
+Authorization
+
+↓
+
+Service B
+```
+
+Each service authenticates and authorizes the other before exchanging data.
+
+---
+
+## Practical Example
+
+### Example 1 – Employee Accessing a Cloud Application
+
+An employee attempts to access a cloud-based HR application.
+
+```
+Employee
+
+↓
+
+Password
+
+↓
+
+MFA
+
+↓
+
+Device Compliance
+
+↓
+
+Policy Check
+
+↓
+
+HR Application
+```
+
+Access is granted only after successful verification of identity, device, and policy.
+
+---
+
+### Example 2 – Blocking a High-Risk Login
+
+A login attempt originates from an unfamiliar country using an unmanaged device.
+
+```
+Unknown Device
+
+↓
+
+High Risk Score
+
+↓
+
+Access Denied
+```
+
+The request is blocked because it violates organizational access policies.
+
+---
+
+### Example 3 – Secure Administrative Access
+
+A cloud administrator accesses a management portal.
+
+```
+Administrator
+
+↓
+
+MFA
+
+↓
+
+Managed Device
+
+↓
+
+Just-In-Time Access
+
+↓
+
+Cloud Console
+```
+
+Administrative sessions receive enhanced protection.
+
+---
+
+### Example 4 – Microsegmentation
+
+A compromised application attempts to access a database outside its authorized scope.
+
+```
+Compromised Service
+
+↓
+
+Microsegmentation Policy
+
+↓
+
+Connection Blocked
+```
+
+Microsegmentation prevents unauthorized lateral movement.
+
+---
+
+### Example 5 – Continuous Session Monitoring
+
+An authenticated user suddenly begins downloading unusually large amounts of sensitive data.
+
+```
+Behavior Change
+
+↓
+
+Risk Increase
+
+↓
+
+Policy Re-Evaluation
+
+↓
+
+Session Terminated
+```
+
+Continuous monitoring helps contain potential account compromise.
+
+---
+
+## Zero Trust Components
+
+| Component | Purpose |
+|-----------|---------|
+| Identity Provider (IdP) | Authenticate users and services |
+| Multi-Factor Authentication (MFA) | Strengthen identity verification |
+| Device Compliance Engine | Validate endpoint security posture |
+| Risk Engine | Calculate contextual risk |
+| Policy Decision Point (PDP) | Evaluate access policies |
+| Policy Enforcement Point (PEP) | Enforce policy decisions |
+| ZTNA Gateway | Provide application-specific secure access |
+| Logging Platform | Record security events |
+| SIEM | Correlate and analyze telemetry |
+| SOC | Investigate and respond to incidents |
+
+---
+
+## Indicators of Zero Trust Policy Violations (Detection)
+
+Continuous monitoring is essential because attackers may attempt to bypass identity, policy, or device-based controls.
+
+---
+
+### Repeated Authentication Failures
+
+Monitor for:
+
+- Multiple failed logins
+- MFA failures
+- Invalid certificates
+- Rejected authentication tokens
+
+```
+Authentication Failures
+
+↓
+
+Threshold Exceeded
+
+↓
+
+Security Alert
+```
+
+---
+
+### Device Compliance Failures
+
+Watch for:
+
+- Missing security patches
+- Disabled endpoint protection
+- Rooted or jailbroken devices
+- Missing disk encryption
+
+Non-compliant devices should receive restricted or denied access.
+
+---
+
+### Suspicious Geographic Access
+
+Detect:
+
+- Impossible travel
+- Access from unexpected countries
+- Anonymous proxy usage
+- VPN abuse inconsistent with policy
+
+Location anomalies may indicate credential compromise.
+
+---
+
+### Privilege Escalation Attempts
+
+Monitor for:
+
+- Unauthorized role changes
+- Administrative privilege requests
+- Access to restricted resources
+- Policy bypass attempts
+
+Every privilege elevation should be logged and reviewed.
+
+---
+
+### Abnormal User Behavior
+
+Analyze:
+
+- Large data downloads
+- Unusual login times
+- Excessive API requests
+- Access to unfamiliar resources
+- Rapid permission changes
+
+Behavioral analytics improve early detection of compromised accounts.
+
+---
+
+### Unauthorized Service-to-Service Communication
+
+Alert on:
+
+- Unexpected workload communication
+- Failed mTLS validation
+- Invalid service identities
+- Unauthorized API calls
+
+Internal traffic should follow Zero Trust principles.
+
+---
+
+### Audit Log Analysis
+
+Continuously review:
+
+- Authentication events
+- Authorization decisions
+- Policy evaluations
+- Device compliance results
+- Risk score changes
+- Administrative actions
+- Session terminations
+- API activity
+
+Forward telemetry to the organization's SIEM for centralized correlation and investigation.
+
+---
+
+## Detection Best Practices
+
+- Require MFA for all privileged access.
+- Continuously evaluate device compliance.
+- Monitor identity and authentication events.
+- Alert on impossible travel and geographic anomalies.
+- Continuously analyze user and entity behavior.
+- Review policy changes and privilege escalations.
+- Protect service-to-service communication with mTLS.
+- Integrate Zero Trust telemetry with the SIEM.
+- Periodically review access policies and trust decisions.
+- Perform regular Zero Trust architecture assessments.
+
+---
+
+
