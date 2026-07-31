@@ -553,13 +553,790 @@ Comprehensive logging supports threat detection, incident response, and complian
 
 ---
 
+## How It Works
+
+Container Security protects workloads throughout the entire container lifecycle, from source code and image creation to deployment, runtime protection, monitoring, and retirement. Security controls are integrated into development pipelines, registries, container runtimes, and orchestration platforms to minimize risk while maintaining deployment agility.
+
+A secure Container Security workflow typically includes:
+
+1. Develop application code
+2. Build a container image
+3. Scan the image for vulnerabilities
+4. Digitally sign the image
+5. Store it in a trusted registry
+6. Deploy through an orchestrator
+7. Apply runtime security controls
+8. Continuously monitor container activity
+
+This lifecycle approach helps identify and mitigate risks before they reach production.
+
+---
+
+## Container Security Workflow
+
+```
+              Developer
+
+                  │
+
+                  ▼
+
+            Application Code
+
+                  │
+
+                  ▼
+
+          Build Container Image
+
+                  │
+
+                  ▼
+
+      Vulnerability & Secret Scan
+
+                  │
+
+                  ▼
+
+          Image Signature Check
+
+                  │
+
+                  ▼
+
+         Trusted Image Registry
+
+                  │
+
+                  ▼
+
+      Kubernetes / Docker Runtime
+
+        ┌────────────┼────────────┐
+
+        ▼            ▼            ▼
+
+   Container A  Container B  Container C
+
+        │            │            │
+
+        └────────────┼────────────┘
+
+                     ▼
+
+          Logging & Runtime Monitoring
+
+                     ▼
+
+                    SIEM
+```
+
+Each stage introduces security controls that reduce the likelihood of compromised workloads reaching production.
+
+---
+
+## Step 1 – Develop Secure Application Code
+
+Security begins during application development.
+
+Developers should:
+
+- Validate user input
+- Avoid hardcoded secrets
+- Follow secure coding practices
+- Use approved libraries
+- Perform code reviews
+
+```
+Developer
+
+↓
+
+Secure Code
+
+↓
+
+Source Repository
+```
+
+Secure development reduces vulnerabilities before containerization.
+
+---
+
+## Step 2 – Build the Container Image
+
+The application is packaged into a container image.
+
+```
+Application
+
++
+
+Dependencies
+
++
+
+Runtime
+
+↓
+
+Container Image
+```
+
+The image should:
+
+- Use a trusted base image
+- Contain only required packages
+- Exclude unnecessary tools
+- Avoid embedded credentials
+
+---
+
+## Step 3 – Scan the Image
+
+Before deployment, images should undergo automated security scanning.
+
+Scanning identifies:
+
+- Known CVEs
+- Vulnerable packages
+- Malware
+- Embedded secrets
+- Misconfigurations
+- Outdated dependencies
+
+```
+Image
+
+↓
+
+Security Scanner
+
+↓
+
+Risk Report
+```
+
+Images failing security policies should not proceed to deployment.
+
+---
+
+## Step 4 – Digitally Sign the Image
+
+After validation, the image is digitally signed.
+
+```
+Verified Image
+
+↓
+
+Digital Signature
+
+↓
+
+Trusted Artifact
+```
+
+Image signing provides:
+
+- Integrity verification
+- Publisher authenticity
+- Supply chain protection
+
+Deployment systems should verify signatures before execution.
+
+---
+
+## Step 5 – Store in a Trusted Registry
+
+Approved images are uploaded to a secure registry.
+
+```
+Signed Image
+
+↓
+
+Private Registry
+
+↓
+
+Deployment Repository
+```
+
+Registry protections should include:
+
+- Authentication
+- Role-based access control
+- Image immutability
+- Audit logging
+
+---
+
+## Step 6 – Deploy the Container
+
+The orchestrator deploys containers using approved images.
+
+```
+Registry
+
+↓
+
+Kubernetes
+
+↓
+
+Running Container
+```
+
+Deployment policies may verify:
+
+- Image signature
+- Registry source
+- Security policies
+- Resource limits
+
+---
+
+## Step 7 – Apply Runtime Security
+
+Runtime protections monitor container behavior after deployment.
+
+Typical controls include:
+
+- Process monitoring
+- File integrity monitoring
+- Network monitoring
+- Privilege enforcement
+- System call monitoring
+
+```
+Running Container
+
+↓
+
+Runtime Security
+
+↓
+
+Threat Detection
+```
+
+Runtime security detects attacks that preventive controls may miss.
+
+---
+
+## Step 8 – Restrict Privileges
+
+Containers should execute with minimal permissions.
+
+Recommendations:
+
+- Run as non-root
+- Drop unnecessary Linux capabilities
+- Use read-only file systems
+- Restrict privileged mode
+- Limit host access
+
+```
+Container
+
+↓
+
+Least Privilege
+
+↓
+
+Reduced Risk
+```
+
+Privilege reduction limits attacker capabilities.
+
+---
+
+## Step 9 – Secure Networking
+
+Container communication should be controlled using network policies.
+
+```
+Container A
+
+↓
+
+Network Policy
+
+↓
+
+Container B
+```
+
+Allow only required communication paths.
+
+Implement:
+
+- Network segmentation
+- TLS encryption
+- Service mesh policies
+- Firewall rules
+
+---
+
+## Step 10 – Logging and Monitoring
+
+Container activity should be continuously monitored.
+
+Examples include:
+
+- Container creation
+- Container termination
+- Process execution
+- Network connections
+- Authentication events
+- Image deployments
+- Policy violations
+
+```
+Container Event
+
+↓
+
+Audit Logs
+
+↓
+
+SIEM
+
+↓
+
+SOC Investigation
+```
+
+Monitoring enables rapid detection and response.
+
+---
+
+## Container Lifecycle
+
+```
+Develop
+
+↓
+
+Build
+
+↓
+
+Scan
+
+↓
+
+Sign
+
+↓
+
+Store
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Update
+
+↓
+
+Retire
+```
+
+Security controls should exist at every lifecycle stage.
+
+---
+
+## Image Update Workflow
+
+```
+New Vulnerability
+
+↓
+
+Update Base Image
+
+↓
+
+Rebuild Image
+
+↓
+
+Security Scan
+
+↓
+
+Deploy Updated Container
+```
+
+Containers should be rebuilt rather than patched manually.
+
+---
+
+## Secrets Injection Workflow
+
+```
+Secrets Manager
+
+↓
+
+Runtime Injection
+
+↓
+
+Container
+
+↓
+
+Application
+```
+
+Secrets should never be stored inside container images.
+
+---
+
+## Runtime Monitoring Workflow
+
+```
+Container
+
+↓
+
+System Calls
+
+↓
+
+Behavior Analysis
+
+↓
+
+Security Alert
+```
+
+Behavioral monitoring helps identify attacks that bypass preventive controls.
+
+---
+
+## Practical Example
+
+### Example 1 – Secure Web Application Deployment
+
+A development team deploys a customer-facing web application.
+
+```
+Source Code
+
+↓
+
+Build Image
+
+↓
+
+Security Scan
+
+↓
+
+Private Registry
+
+↓
+
+Kubernetes Deployment
+```
+
+Security controls include:
+
+- Trusted base image
+- Vulnerability scanning
+- Image signing
+- Runtime monitoring
+
+---
+
+### Example 2 – Preventing Secret Exposure
+
+A database password is required by an application.
+
+Instead of embedding it inside the image:
+
+```
+Secrets Manager
+
+↓
+
+Runtime Injection
+
+↓
+
+Application
+```
+
+The secret is retrieved securely during container startup.
+
+---
+
+### Example 3 – Image Integrity Verification
+
+A deployment pipeline validates signatures before deployment.
+
+```
+Container Image
+
+↓
+
+Signature Verification
+
+↓
+
+Approved
+
+↓
+
+Deployment
+```
+
+Unsigned images are automatically rejected.
+
+---
+
+### Example 4 – Runtime Threat Detection
+
+A compromised container attempts to launch a reverse shell.
+
+```
+Container
+
+↓
+
+Unexpected Process
+
+↓
+
+Runtime Security
+
+↓
+
+Alert Generated
+```
+
+Security teams investigate before the threat spreads.
+
+---
+
+### Example 5 – Rolling Security Update
+
+A vulnerability is discovered in a base image.
+
+```
+Updated Base Image
+
+↓
+
+Rebuild
+
+↓
+
+Scan
+
+↓
+
+Deploy New Containers
+
+↓
+
+Terminate Old Containers
+```
+
+Immutable deployment ensures vulnerable containers are replaced rather than modified.
+
+---
+
+## Container Security Components
+
+| Component | Purpose |
+|-----------|---------|
+| Container Image | Packages application and dependencies |
+| Base Image | Foundation for container creation |
+| Registry | Stores trusted images |
+| Image Scanner | Detects vulnerabilities and misconfigurations |
+| Image Signing | Verifies authenticity and integrity |
+| Container Runtime | Executes containers securely |
+| Runtime Protection | Detects malicious behavior |
+| Network Policies | Restrict container communication |
+| Secrets Manager | Securely provides sensitive credentials |
+| SIEM | Centralized monitoring and alerting |
+
+---
+
+## Indicators of Container Compromise (Detection)
+
+Continuous monitoring is essential because containers are often short-lived and highly dynamic.
+
+---
+
+### Unexpected Process Execution
+
+Containers generally execute predictable processes.
+
+Unexpected commands may indicate:
+
+- Reverse shells
+- Malware
+- Cryptominers
+- Privilege escalation
+- Interactive attacker sessions
+
+```
+Container
+
+↓
+
+Unexpected Process
+
+↓
+
+Security Alert
+```
+
+---
+
+### Privileged Container Execution
+
+Containers running with excessive privileges increase security risk.
+
+Monitor for:
+
+- Privileged mode enabled
+- Host namespace access
+- Host filesystem mounts
+- Added Linux capabilities
+
+These configurations should be rare and justified.
+
+---
+
+### Container Escape Attempts
+
+Container escape techniques attempt to access the host operating system.
+
+Indicators include:
+
+- Unauthorized kernel interaction
+- Access to host devices
+- Host filesystem access
+- Namespace abuse
+
+These events require immediate investigation.
+
+---
+
+### Image Integrity Violations
+
+Unexpected image modifications or unsigned deployments may indicate supply chain attacks.
+
+Monitor for:
+
+- Signature verification failures
+- Registry tampering
+- Unauthorized image updates
+- Unapproved image sources
+
+---
+
+### Suspicious Network Activity
+
+Monitor for:
+
+- Unexpected outbound traffic
+- Communication with unknown IP addresses
+- Lateral movement between containers
+- Data exfiltration
+- Command-and-control communication
+
+Behavioral baselines improve anomaly detection.
+
+---
+
+### Unexpected File Changes
+
+Containers are generally immutable.
+
+Unexpected filesystem modifications may indicate:
+
+- Malware
+- Unauthorized software installation
+- Persistence mechanisms
+- Exploitation
+
+File integrity monitoring helps detect these events.
+
+---
+
+### Secrets Access Anomalies
+
+Monitor access to:
+
+- API keys
+- Tokens
+- Certificates
+- Database credentials
+
+Unexpected secret retrieval or unusually frequent access may indicate credential theft.
+
+---
+
+### Excessive Resource Consumption
+
+Abnormal CPU or memory utilization may indicate:
+
+- Cryptomining
+- Denial-of-service activity
+- Malware
+- Infinite application loops
+
+Resource monitoring assists with early detection.
+
+---
+
+### Registry Activity Monitoring
+
+Monitor:
+
+- Image uploads
+- Image deletions
+- Permission changes
+- Unauthorized pushes
+- Authentication failures
+
+Registry compromise can affect every deployment.
+
+---
+
+### Detection Best Practices
+
+- Scan every image before deployment.
+- Verify digital signatures before execution.
+- Monitor runtime process activity continuously.
+- Detect privileged container deployments.
+- Alert on container escape indicators.
+- Monitor registry access and image changes.
+- Analyze network behavior for anomalies.
+- Integrate container logs with the organization's SIEM.
+- Monitor secret access events.
+- Continuously baseline normal container behavior.
+
+---
+
 ## Next Section
-
-How It Works
-
-Practical Example
-
-Detection
 
 Prevention
 
