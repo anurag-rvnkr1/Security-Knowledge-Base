@@ -1006,3 +1006,470 @@ Data-centric monitoring helps identify exfiltration attempts.
 
 ---
 
+## Prevention
+
+Effective cloud threat modeling is proactive rather than reactive. The objective is to identify and mitigate security risks during architecture and design, reducing the likelihood of vulnerabilities reaching production environments.
+
+Threat prevention combines secure architecture, identity security, infrastructure hardening, continuous validation, and ongoing risk assessment.
+
+A mature threat modeling program integrates with every phase of the Software Development Life Cycle (SDLC) and Cloud Security Lifecycle.
+
+---
+
+# Threat Prevention Lifecycle
+
+```
+Business Requirements
+
+        │
+
+        ▼
+
+Secure Architecture Design
+
+        │
+
+        ▼
+
+Threat Modeling
+
+        │
+
+        ▼
+
+Risk Assessment
+
+        │
+
+        ▼
+
+Security Controls
+
+        │
+
+        ▼
+
+Secure Development
+
+        │
+
+        ▼
+
+Testing & Validation
+
+        │
+
+        ▼
+
+Deployment
+
+        │
+
+        ▼
+
+Continuous Monitoring
+
+        │
+
+        ▼
+
+Continuous Improvement
+```
+
+Threat prevention is an ongoing process rather than a one-time activity.
+
+---
+
+# Identify Critical Assets Early
+
+Successful threat prevention begins with identifying valuable assets.
+
+Examples include:
+
+- Customer information
+- Personally Identifiable Information (PII)
+- Financial records
+- APIs
+- Databases
+- Object storage
+- Encryption keys
+- Secrets
+- Identity providers
+- CI/CD pipelines
+
+Classify assets according to their sensitivity and business importance to prioritize protection efforts.
+
+---
+
+# Design Secure Architectures
+
+Architectures should be designed with security in mind from the beginning.
+
+Recommendations include:
+
+- Minimize attack surface
+- Apply network segmentation
+- Use private networking where possible
+- Implement secure trust boundaries
+- Design for least privilege
+- Separate production and non-production environments
+
+Security-by-design reduces costly redesigns later in the project lifecycle.
+
+---
+
+# Apply Strong Identity Security
+
+Identity is a primary target in cloud attacks.
+
+Implement:
+
+- Multi-Factor Authentication (MFA)
+- Single Sign-On (SSO)
+- Conditional Access
+- Identity federation
+- Privileged Access Management (PAM)
+- Just-In-Time (JIT) administrative access
+
+Protect both human and machine identities.
+
+---
+
+# Secure Trust Boundaries
+
+Every trust boundary should enforce:
+
+- Authentication
+- Authorization
+- Encryption
+- Input validation
+- Logging
+- Rate limiting (where applicable)
+
+Never assume requests crossing trust boundaries are inherently trustworthy.
+
+---
+
+# Protect APIs
+
+Secure APIs using:
+
+- Strong authentication
+- Authorization checks
+- Input validation
+- Rate limiting
+- Schema validation
+- Secure error handling
+- Transport Layer Security (TLS)
+
+APIs should expose only the functionality required by legitimate consumers.
+
+---
+
+# Implement Least Privilege
+
+Apply least privilege across:
+
+- IAM roles
+- Service accounts
+- Kubernetes RBAC
+- Storage permissions
+- Database access
+- API permissions
+
+Review and remove unnecessary permissions regularly.
+
+---
+
+# Encrypt Sensitive Data
+
+Protect sensitive information:
+
+- At rest using strong encryption algorithms
+- In transit using TLS
+- During backups using encrypted storage
+- During replication using secure channels
+
+Ensure encryption keys are managed securely using dedicated Key Management Services (KMS).
+
+---
+
+# Protect Secrets
+
+Store secrets using centralized secret management solutions rather than embedding them in:
+
+- Source code
+- Configuration files
+- Container images
+- Infrastructure templates
+- CI/CD pipelines
+
+Rotate secrets regularly and monitor access.
+
+---
+
+# Harden Cloud Infrastructure
+
+Reduce exploitable weaknesses by:
+
+- Applying security patches promptly
+- Disabling unused services
+- Removing default credentials
+- Restricting administrative interfaces
+- Enforcing secure configurations
+- Using hardened base images
+
+Infrastructure hardening reduces the available attack surface.
+
+---
+
+# Validate Infrastructure as Code (IaC)
+
+Infrastructure templates should undergo automated security validation before deployment.
+
+Check for:
+
+- Publicly exposed resources
+- Excessive IAM permissions
+- Open security groups
+- Missing encryption
+- Misconfigured networking
+- Hardcoded secrets
+
+Integrate IaC scanning into CI/CD pipelines.
+
+---
+
+# Secure Containers and Kubernetes
+
+Protect containerized workloads through:
+
+- Image scanning
+- Image signing
+- Runtime protection
+- Kubernetes RBAC
+- Network policies
+- Admission controllers
+- Secure pod configurations
+
+Container security should be incorporated into threat models from the outset.
+
+---
+
+# Secure Serverless Applications
+
+Threat models should evaluate:
+
+- Function permissions
+- Event sources
+- API integrations
+- Secret handling
+- Dependency security
+- Logging
+
+Serverless workloads require the same rigorous security analysis as traditional applications.
+
+---
+
+# Continuously Monitor Threats
+
+Collect telemetry from:
+
+- Identity providers
+- Cloud platforms
+- Applications
+- APIs
+- Networks
+- Containers
+- Kubernetes clusters
+- Serverless services
+
+```
+Cloud Logs
+
+↓
+
+Centralized Logging
+
+↓
+
+SIEM
+
+↓
+
+Threat Detection
+
+↓
+
+Incident Response
+```
+
+Continuous monitoring ensures that new threats are identified as environments evolve.
+
+---
+
+# Validate Through Security Testing
+
+Threat model assumptions should be verified using:
+
+- Penetration testing
+- Vulnerability assessments
+- Secure code reviews
+- Configuration reviews
+- Red team exercises
+- Purple team exercises
+- Breach simulations
+
+Testing confirms that implemented controls effectively mitigate identified threats.
+
+---
+
+## Best Practices
+
+### 1. Integrate Threat Modeling into the SDLC
+
+Perform threat modeling during:
+
+- Requirements gathering
+- Architecture design
+- Development
+- Testing
+- Deployment
+- Major system changes
+
+Early identification of threats reduces remediation costs.
+
+---
+
+### 2. Keep Threat Models Updated
+
+Review threat models whenever:
+
+- Infrastructure changes
+- Cloud services are added
+- APIs are modified
+- Third-party integrations change
+- New attack techniques emerge
+
+Threat models should evolve with the environment.
+
+---
+
+### 3. Focus on High-Value Assets
+
+Prioritize security efforts for systems that process or store:
+
+- Sensitive customer data
+- Financial information
+- Authentication systems
+- Encryption keys
+- Business-critical applications
+
+Risk-based prioritization improves resource allocation.
+
+---
+
+### 4. Use Established Threat Modeling Frameworks
+
+Leverage recognized methodologies such as:
+
+- STRIDE
+- PASTA
+- ATT&CK
+- DREAD (where appropriate)
+- LINDDUN (for privacy-focused assessments)
+
+Structured frameworks improve consistency and completeness.
+
+---
+
+### 5. Collaborate Across Teams
+
+Threat modeling should involve:
+
+- Security engineers
+- Cloud architects
+- Developers
+- DevOps engineers
+- Site Reliability Engineers (SREs)
+- Compliance teams
+- Business stakeholders
+
+Collaborative reviews produce more comprehensive threat analyses.
+
+---
+
+### 6. Document Assumptions
+
+Clearly document:
+
+- Trust boundaries
+- Third-party dependencies
+- Security assumptions
+- Compliance requirements
+- Existing security controls
+
+Revisit assumptions periodically to ensure they remain valid.
+
+---
+
+### 7. Prioritize Risks
+
+Rank identified threats based on:
+
+- Likelihood
+- Impact
+- Business criticality
+- Ease of exploitation
+- Existing mitigations
+
+Address the highest-risk issues first.
+
+---
+
+### 8. Automate Security Validation
+
+Incorporate automated checks for:
+
+- Infrastructure as Code
+- Container images
+- Dependencies
+- Cloud configurations
+- Secrets
+- Compliance
+
+Automation increases consistency and reduces manual errors.
+
+---
+
+### 9. Validate Mitigations Regularly
+
+Regularly verify that implemented controls continue to function as intended.
+
+Use:
+
+- Security testing
+- Continuous monitoring
+- Periodic audits
+- Tabletop exercises
+
+Security controls should be assessed throughout the system lifecycle.
+
+---
+
+### 10. Treat Threat Modeling as a Continuous Process
+
+Threat modeling should not conclude after deployment.
+
+Continuously:
+
+- Review architectures
+- Update threat intelligence
+- Reassess risks
+- Refine mitigations
+- Improve detection capabilities
+
+An iterative approach ensures that cloud defenses remain aligned with evolving threats.
+
+---
+
