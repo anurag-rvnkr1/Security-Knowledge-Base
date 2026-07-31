@@ -2315,3 +2315,348 @@ An accurate API inventory supports governance, security reviews, and lifecycle m
 
 ---
 
+## Common Mistakes
+
+Cloud APIs expose valuable business functionality and sensitive data directly to users, applications, and third-party services. A single security weakness can allow attackers to bypass controls, steal data, abuse business logic, or compromise backend infrastructure.
+
+Many API security incidents result from design flaws, insecure implementations, weak authentication, broken authorization, or insufficient monitoring rather than vulnerabilities in the API framework itself.
+
+Understanding these common mistakes helps organizations build secure, resilient, and maintainable APIs.
+
+---
+
+### 1. Exposing APIs Without Authentication
+
+Public APIs that do not require authentication allow unauthorized users to access protected resources.
+
+Examples include:
+
+- Customer information
+- Administrative endpoints
+- Financial records
+- Internal APIs
+
+```
+Unauthenticated Request
+
+↓
+
+Sensitive API
+
+↓
+
+Data Exposure
+```
+
+Require authentication for every protected endpoint.
+
+---
+
+### 2. Broken Authorization
+
+Authentication alone does not guarantee secure access.
+
+Common authorization mistakes include:
+
+- Missing ownership checks
+- Insecure Direct Object References (IDOR)
+- Privilege escalation
+- Excessive permissions
+- Missing role validation
+
+Every request should verify that the authenticated client is authorized to perform the requested action.
+
+---
+
+### 3. Hardcoding API Keys
+
+API keys should never appear in:
+
+- Source code
+- Public Git repositories
+- Client-side JavaScript
+- Mobile applications
+- Configuration files committed to version control
+
+```
+API Key
+
+↓
+
+Public Repository
+
+↓
+
+Credential Exposure
+```
+
+Store keys securely using managed secrets services.
+
+---
+
+### 4. Weak Token Validation
+
+Applications sometimes accept tokens without verifying:
+
+- Signature
+- Expiration
+- Issuer
+- Audience
+- Scope
+
+Improper validation may allow attackers to reuse forged, expired, or manipulated tokens.
+
+---
+
+### 5. Missing Rate Limiting
+
+Without request limits, attackers can perform:
+
+- Brute-force attacks
+- Credential stuffing
+- API scraping
+- Resource exhaustion
+- Denial-of-Service (DoS)
+
+Rate limiting should be applied to authentication endpoints and resource-intensive APIs.
+
+---
+
+### 6. Insufficient Input Validation
+
+Failure to validate API input can result in:
+
+- SQL Injection
+- NoSQL Injection
+- Cross-Site Scripting (XSS)
+- Command Injection
+- Path Traversal
+- Server-Side Request Forgery (SSRF)
+
+Every request should be validated on the server before processing.
+
+---
+
+### 7. Excessive Data Exposure
+
+Some APIs return more information than clients require.
+
+Examples include:
+
+- Internal identifiers
+- Administrative attributes
+- Personal information
+- Debug information
+
+Return only the minimum data required for the requested operation.
+
+---
+
+### 8. Exposing Detailed Error Messages
+
+Verbose error responses may reveal:
+
+- Database schemas
+- File paths
+- Stack traces
+- Framework versions
+- Internal implementation details
+
+Provide generic responses to clients while recording detailed diagnostics securely.
+
+---
+
+### 9. Ignoring API Version Management
+
+Maintaining unsupported API versions may expose:
+
+- Deprecated authentication methods
+- Known vulnerabilities
+- Legacy business logic
+- Unsupported dependencies
+
+Establish a version lifecycle with clear deprecation and retirement policies.
+
+---
+
+### 10. Logging Sensitive Information
+
+Avoid recording:
+
+- Passwords
+- Access tokens
+- Refresh tokens
+- API keys
+- Cryptographic keys
+- Personally Identifiable Information (PII)
+
+Logs should support investigations without exposing confidential data.
+
+---
+
+### 11. Insecure Third-Party Integrations
+
+Third-party APIs may introduce risks if they are granted excessive permissions or are not properly validated.
+
+Best practices include:
+
+- Restricting scopes
+- Monitoring usage
+- Validating responses
+- Rotating credentials
+- Reviewing integration requirements periodically
+
+---
+
+### 12. Missing HTTPS Enforcement
+
+APIs exposed over unencrypted connections risk:
+
+- Credential interception
+- Session hijacking
+- Data tampering
+- Man-in-the-Middle (MitM) attacks
+
+Require HTTPS for all API communication and disable insecure protocols.
+
+---
+
+### 13. Ignoring Monitoring and Alerting
+
+Without runtime visibility, organizations may fail to detect:
+
+- Credential abuse
+- Token theft
+- API scraping
+- Unauthorized administrative actions
+- Data exfiltration
+
+Continuous monitoring is essential for rapid detection and response.
+
+---
+
+### 14. Over-Privileged Service Accounts
+
+Backend services often receive more permissions than necessary.
+
+Examples include:
+
+- Full database administration
+- Wildcard IAM permissions
+- Unrestricted storage access
+
+Service identities should follow the Principle of Least Privilege.
+
+---
+
+### 15. Assuming Internal APIs Are Automatically Secure
+
+Internal APIs can also become attack targets.
+
+Protect internal APIs by implementing:
+
+- Authentication
+- Authorization
+- Mutual TLS (mTLS)
+- Network segmentation
+- Logging
+- Monitoring
+
+Zero Trust principles apply equally to internal and external APIs.
+
+---
+
+## Cloud API Security Checklist
+
+| Control | Status |
+|---------|--------|
+| HTTPS Enforced | ✓ |
+| Strong Authentication Implemented | ✓ |
+| Authorization Checked on Every Request | ✓ |
+| API Keys Stored Securely | ✓ |
+| JWT and OAuth Tokens Properly Validated | ✓ |
+| Input Validation Enabled | ✓ |
+| Rate Limiting Configured | ✓ |
+| Sensitive Data Minimized in Responses | ✓ |
+| API Gateway Secured | ✓ |
+| Backend Services Use Least Privilege | ✓ |
+| Third-Party Integrations Reviewed | ✓ |
+| Comprehensive Logging Enabled | ✓ |
+| Continuous Monitoring Configured | ✓ |
+| SIEM Integration Completed | ✓ |
+| Regular API Security Testing Performed | ✓ |
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
+- NIST Cybersecurity Framework (CSF) 2.0
+- NIST SP 800-204 – Security Strategies for Microservices-Based Applications
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Controls v8
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### API Security Documentation
+
+#### OWASP
+
+- OWASP API Security Top 10
+- OWASP Application Security Verification Standard (ASVS)
+- OWASP Web Security Testing Guide (WSTG)
+- OWASP Cheat Sheet Series
+
+#### API Standards
+
+- OpenAPI Specification (OAS)
+- JSON Web Token (JWT) Specifications
+- OAuth 2.0 Framework
+- OpenID Connect (OIDC) Specifications
+- GraphQL Security Best Practices
+- gRPC Security Documentation
+
+---
+
+### Cloud Platform Documentation
+
+- AWS API Gateway Documentation
+- Azure API Management Documentation
+- Google Cloud API Gateway Documentation
+- Kubernetes Gateway API Documentation
+
+---
+
+### Security Frameworks
+
+- Zero Trust Architecture
+- Defense in Depth
+- Principle of Least Privilege (PoLP)
+- Secure Software Development Lifecycle (SSDLC)
+- DevSecOps
+- Secure Software Supply Chain
+- Identity and Access Management (IAM)
+- Continuous Monitoring
+- Vulnerability Management
+
+---
+
+### Recommended Learning Resources
+
+- OWASP API Security Top 10
+- OWASP Top 10
+- MITRE ATT&CK Framework
+- MITRE D3FEND
+- CIS Benchmarks
+- SANS API Security Resources
+- Cloud Security Alliance Research Publications
+
+---
+
+**End of Chapter 20 – Cloud API Security**
+
+---
