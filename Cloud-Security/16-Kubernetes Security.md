@@ -1848,10 +1848,397 @@ Routine maintenance strengthens long-term security.
 
 ---
 
-## Next Section
+## Common Mistakes
 
-Common Mistakes
+Kubernetes environments are complex, distributed, and highly dynamic. Small configuration errors can expose an entire cluster to compromise. Most successful Kubernetes attacks exploit weak configurations, excessive permissions, or inadequate operational security rather than flaws in Kubernetes itself.
 
-References
+Understanding these common mistakes helps organizations build secure and resilient cloud-native platforms.
+
+---
+
+### 1. Granting Cluster Administrator Privileges Unnecessarily
+
+One of the most common security issues is assigning the **cluster-admin** role to users or service accounts that do not require full administrative access.
+
+Consequences include:
+
+- Complete cluster compromise
+- Secret exposure
+- Unauthorized deployments
+- Configuration manipulation
+- Privilege escalation
+
+```
+User
+
+↓
+
+Cluster Admin
+
+↓
+
+Entire Cluster Accessible
+```
+
+Grant only the minimum permissions required to perform specific tasks.
+
+---
+
+### 2. Running Pods as Root
+
+Containers executing with root privileges increase the impact of workload compromise.
+
+```
+Pod
+
+↓
+
+Root User
+
+↓
+
+Container Escape Risk
+```
+
+Configure workloads to:
+
+- Run as non-root
+- Use non-privileged users
+- Drop unnecessary Linux capabilities
+
+---
+
+### 3. Using the Default Service Account
+
+Many workloads unintentionally use the default service account.
+
+Problems include:
+
+- Shared credentials
+- Excessive permissions
+- Poor accountability
+
+Each workload should use a dedicated service account with narrowly scoped permissions.
+
+---
+
+### 4. Leaving the API Server Publicly Accessible
+
+Exposing the Kubernetes API Server directly to the internet significantly increases attack opportunities.
+
+Potential attacks include:
+
+- Brute-force authentication
+- Credential theft
+- API abuse
+- Automated scanning
+
+Restrict access using:
+
+- Private endpoints
+- VPNs
+- Bastion hosts
+- Firewall rules
+
+---
+
+### 5. Storing Secrets in Plain Text
+
+Sensitive information should never be stored in:
+
+- Source code
+- YAML manifests
+- Git repositories
+- Container images
+- Environment variables without protection
+
+```
+Database Password
+
+↓
+
+Git Repository
+
+↓
+
+Credential Exposure
+```
+
+Use Kubernetes Secrets together with external secrets management solutions.
+
+---
+
+### 6. Ignoring Image Security
+
+Deploying images without security validation introduces software supply chain risks.
+
+Examples include:
+
+- Malware
+- Vulnerable packages
+- Unsigned images
+- Outdated dependencies
+
+Every image should be scanned and verified before deployment.
+
+---
+
+### 7. Disabling Admission Policies
+
+Admission Controllers enforce organizational security standards.
+
+Disabling them may allow:
+
+- Privileged pods
+- Untrusted images
+- Missing resource limits
+- Insecure configurations
+
+Policy enforcement should remain enabled in production environments.
+
+---
+
+### 8. Weak Network Segmentation
+
+Allowing unrestricted communication between workloads enables lateral movement.
+
+```
+Compromised Pod
+
+↓
+
+Unrestricted Cluster Network
+
+↓
+
+Other Applications
+
+↓
+
+Database
+```
+
+Implement default-deny Network Policies and explicitly allow only required traffic.
+
+---
+
+### 9. Leaving etcd Unencrypted
+
+etcd stores highly sensitive cluster information.
+
+Unencrypted etcd may expose:
+
+- Secrets
+- Certificates
+- RBAC policies
+- Cluster configuration
+
+Enable encryption at rest and restrict administrative access.
+
+---
+
+### 10. Ignoring Worker Node Security
+
+Organizations often focus on Kubernetes while overlooking the operating systems hosting worker nodes.
+
+Worker nodes should be:
+
+- Hardened
+- Patched
+- Monitored
+- Access-controlled
+
+Compromise of a worker node may expose every workload running on it.
+
+---
+
+### 11. Failing to Monitor Runtime Activity
+
+Image scanning alone cannot detect runtime attacks.
+
+Without runtime monitoring, organizations may miss:
+
+- Reverse shells
+- Cryptomining
+- Privilege escalation
+- Container escape
+- Unauthorized process execution
+
+Runtime monitoring should complement preventive security controls.
+
+---
+
+### 12. Poor Namespace Management
+
+Using a single namespace for every workload increases operational and security risks.
+
+Separate workloads into logical namespaces such as:
+
+- Production
+- Development
+- Testing
+- Monitoring
+- Security
+
+Namespace isolation improves governance and access control.
+
+---
+
+### 13. Ignoring Audit Logs
+
+Audit logs contain critical security information.
+
+Ignoring them delays detection of:
+
+- Unauthorized API requests
+- RBAC modifications
+- Secret access
+- Pod deployments
+- Administrative activity
+
+Forward audit logs to a centralized SIEM for continuous analysis.
+
+---
+
+### 14. Delaying Kubernetes Updates
+
+Older Kubernetes versions may contain:
+
+- Security vulnerabilities
+- Deprecated APIs
+- Unsupported components
+- Missing security improvements
+
+Maintain a regular cluster upgrade strategy.
+
+---
+
+### 15. Assuming Kubernetes Is Secure by Default
+
+Kubernetes provides powerful security capabilities but requires proper configuration.
+
+Organizations remain responsible for securing:
+
+- RBAC
+- Pod Security
+- Network Policies
+- Secrets
+- Images
+- Worker nodes
+- Monitoring
+- Compliance
+
+Security must be intentionally designed, implemented, and maintained.
+
+---
+
+## Kubernetes Security Checklist
+
+| Control | Status |
+|---------|--------|
+| RBAC Enabled | ✓ |
+| Least Privilege Applied | ✓ |
+| API Server Protected | ✓ |
+| etcd Encryption Enabled | ✓ |
+| Audit Logging Enabled | ✓ |
+| Admission Controllers Configured | ✓ |
+| Trusted Images Only | ✓ |
+| Image Signing Verified | ✓ |
+| Network Policies Implemented | ✓ |
+| Secrets Protected | ✓ |
+| Non-Root Containers | ✓ |
+| Runtime Monitoring Enabled | ✓ |
+| Worker Nodes Hardened | ✓ |
+| SIEM Integration | ✓ |
+| Cluster Regularly Updated | ✓ |
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-190 – Application Container Security Guide
+- NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
+- NIST SP 800-204A – Building Secure Microservices-Based Applications
+- NIST Cybersecurity Framework (CSF) 2.0
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Controls v8
+- CIS Kubernetes Benchmark
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Kubernetes Documentation
+
+- Kubernetes Official Documentation
+- Kubernetes Security Documentation
+- Pod Security Standards
+- RBAC Documentation
+- Network Policies Documentation
+- Admission Controllers Documentation
+- Kubernetes Secrets Documentation
+- kube-apiserver Documentation
+- etcd Documentation
+
+---
+
+### Cloud Provider Documentation
+
+#### Amazon Web Services
+
+- Amazon Elastic Kubernetes Service (EKS)
+- AWS Security Best Practices for EKS
+
+#### Microsoft Azure
+
+- Azure Kubernetes Service (AKS)
+- Microsoft Defender for Containers
+
+#### Google Cloud Platform
+
+- Google Kubernetes Engine (GKE)
+- GKE Security Best Practices
+
+#### Oracle Cloud Infrastructure
+
+- Oracle Container Engine for Kubernetes (OKE)
+
+#### IBM Cloud
+
+- IBM Cloud Kubernetes Service Documentation
+
+---
+
+### Security Frameworks
+
+- Zero Trust Architecture
+- Defense in Depth
+- Principle of Least Privilege (PoLP)
+- DevSecOps
+- Secure Software Supply Chain
+- Continuous Monitoring
+- Runtime Threat Detection
+- Vulnerability Management
+- Secure Configuration Management
+- Identity and Access Management (IAM)
+
+---
+
+### Recommended Learning Resources
+
+- MITRE ATT&CK Framework
+- MITRE D3FEND
+- OWASP Kubernetes Top Ten
+- OWASP Container Security Cheat Sheet
+- CNCF Security Whitepapers
+- CIS Benchmarks
+- SANS Cloud Security Resources
+- Cloud Security Alliance Research Publications
+
+---
+
+**End of Chapter 16 – Kubernetes Security**
 
 ---
