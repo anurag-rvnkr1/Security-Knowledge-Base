@@ -869,3 +869,438 @@ Runtime monitoring complements pre-deployment security validation.
 
 ---
 
+## Prevention
+
+Preventing CI/CD security incidents requires protecting every stage of the software delivery lifecycle, from source code creation to production deployment. Preventive controls should be automated wherever possible to ensure consistent, repeatable, and scalable security.
+
+A defense-in-depth strategy should secure developers, repositories, pipelines, artifacts, infrastructure, deployment environments, and runtime workloads.
+
+---
+
+# CI/CD Security Prevention Lifecycle
+
+```
+Developer
+
+     │
+
+     ▼
+
+Secure Source Repository
+
+     │
+
+     ▼
+
+Protected Branches
+
+     │
+
+     ▼
+
+Peer Review
+
+     │
+
+     ▼
+
+Automated Security Validation
+
+     │
+
+     ▼
+
+Policy as Code
+
+     │
+
+     ▼
+
+Secure Build Environment
+
+     │
+
+     ▼
+
+Artifact Signing
+
+     │
+
+     ▼
+
+Controlled Deployment
+
+     │
+
+     ▼
+
+Continuous Monitoring
+
+     │
+
+     ▼
+
+Continuous Improvement
+```
+
+Security controls should be implemented throughout the lifecycle rather than concentrated at the final deployment stage.
+
+---
+
+## Secure Source Code Repositories
+
+Protect repositories using multiple layers of security.
+
+Recommended controls include:
+
+- Multi-Factor Authentication (MFA)
+- Role-Based Access Control (RBAC)
+- Branch protection
+- Mandatory pull requests
+- Signed commits
+- Repository audit logging
+- Least privilege permissions
+
+Repositories should serve as trusted sources for software delivery.
+
+---
+
+## Implement Secure Coding Practices
+
+Developers should follow secure software engineering principles.
+
+Examples include:
+
+- Input validation
+- Output encoding
+- Strong authentication
+- Secure session management
+- Parameterized queries
+- Secure error handling
+- Proper cryptographic implementation
+
+Secure coding reduces vulnerabilities before they enter the pipeline.
+
+---
+
+## Enforce Automated Security Testing
+
+Every pipeline execution should automatically perform:
+
+- Static Application Security Testing (SAST)
+- Software Composition Analysis (SCA)
+- Secrets scanning
+- Infrastructure as Code (IaC) scanning
+- Container image scanning
+- Policy validation
+
+```
+Code Commit
+
+      │
+
+      ▼
+
+Automated Security Checks
+
+      │
+
+ ┌────┴────┐
+
+ │         │
+
+Pass      Fail
+
+ │         │
+
+ ▼         ▼
+
+Deploy   Remediate
+```
+
+Automated validation ensures that insecure code cannot progress through the pipeline.
+
+---
+
+## Secure Build Environments
+
+Build environments should be isolated and hardened.
+
+Recommended protections include:
+
+- Ephemeral build runners
+- Minimal operating system images
+- Restricted network access
+- Strong authentication
+- Immutable build environments
+- Continuous patch management
+
+Ephemeral runners reduce persistence opportunities for attackers.
+
+---
+
+## Protect Secrets
+
+Sensitive credentials should never be stored in:
+
+- Source code
+- Pipeline definitions
+- Build scripts
+- Configuration files
+- Container images
+
+Instead:
+
+- Use centralized secrets management.
+- Rotate credentials regularly.
+- Grant temporary credentials where possible.
+- Audit secret usage continuously.
+
+---
+
+## Strengthen Identity and Access Management
+
+Restrict permissions across the pipeline.
+
+Apply:
+
+- Least Privilege
+- Just-In-Time (JIT) access where supported
+- Role separation
+- Service account isolation
+- Short-lived credentials
+- Continuous access reviews
+
+Strong identity management reduces the impact of credential compromise.
+
+---
+
+## Secure Third-Party Dependencies
+
+Verify all external software before use.
+
+Recommended controls:
+
+- Trusted package repositories
+- Dependency pinning
+- Signature verification
+- Continuous vulnerability monitoring
+- License validation
+- Dependency inventory management
+
+Supply chain security should extend to every external component.
+
+---
+
+## Protect Build Artifacts
+
+Every generated artifact should be:
+
+- Digitally signed
+- Integrity verified
+- Stored in trusted repositories
+- Protected by access controls
+- Versioned
+- Audited
+
+Artifact integrity ensures software authenticity throughout deployment.
+
+---
+
+## Enforce Policy as Code
+
+Automate security governance using policy engines.
+
+Example policies:
+
+- No critical vulnerabilities permitted
+- Encryption required
+- Approved base images only
+- Signed artifacts mandatory
+- Mandatory deployment approvals
+- Restricted production access
+
+Policy automation improves consistency and compliance.
+
+---
+
+## Secure Deployment Processes
+
+Production deployments should require:
+
+- Verified artifacts
+- Security validation
+- Approved change requests
+- Deployment approvals
+- Rollback procedures
+- Deployment audit logs
+
+Controlled releases reduce operational and security risks.
+
+---
+
+## Continuously Monitor the Pipeline
+
+Monitor for:
+
+- Unauthorized repository access
+- Suspicious build activity
+- Artifact tampering
+- Privilege escalation
+- Secrets exposure
+- Pipeline configuration changes
+- Unusual deployment behavior
+
+Continuous monitoring enables rapid detection and response.
+
+---
+
+## Best Practices
+
+### 1. Adopt a Shift-Left Security Strategy
+
+Integrate security as early as possible within the development lifecycle.
+
+Early validation reduces remediation costs and shortens feedback cycles.
+
+---
+
+### 2. Secure Every Pipeline Stage
+
+Every stage should include appropriate security controls.
+
+Protect:
+
+- Source repositories
+- Build environments
+- Dependencies
+- Containers
+- Infrastructure
+- Deployment processes
+- Production workloads
+
+End-to-end security minimizes attack opportunities.
+
+---
+
+### 3. Automate Security Validation
+
+Security testing should execute automatically for every code change.
+
+Recommended automated checks include:
+
+- SAST
+- SCA
+- Secrets scanning
+- IaC scanning
+- Container scanning
+- Policy evaluation
+
+Automation improves consistency and scalability.
+
+---
+
+### 4. Use Immutable Build Environments
+
+Prefer short-lived, disposable build runners.
+
+Benefits include:
+
+- Reduced persistence
+- Consistent builds
+- Lower attack surface
+- Simplified maintenance
+
+Immutable infrastructure strengthens build security.
+
+---
+
+### 5. Protect the Software Supply Chain
+
+Secure:
+
+- Source code
+- Dependencies
+- Build systems
+- Artifacts
+- Deployment mechanisms
+
+Supply chain protection reduces the risk of malicious software distribution.
+
+---
+
+### 6. Apply Least Privilege Everywhere
+
+Restrict permissions for:
+
+- Developers
+- Build runners
+- Service accounts
+- Deployment systems
+- Production environments
+
+Excessive permissions should be removed promptly.
+
+---
+
+### 7. Continuously Verify Artifact Integrity
+
+Ensure every artifact is:
+
+- Signed
+- Verified
+- Traceable
+- Stored securely
+- Protected against unauthorized modification
+
+Artifact integrity is fundamental to trustworthy deployments.
+
+---
+
+### 8. Integrate with Security Operations
+
+CI/CD Security should work closely with:
+
+- DevSecOps teams
+- Security Operations Centers (SOC)
+- Incident Response teams
+- Vulnerability Management teams
+- Cloud Security teams
+- Governance, Risk, and Compliance (GRC) teams
+
+Cross-functional collaboration improves organizational resilience.
+
+---
+
+### 9. Measure Security Performance
+
+Track metrics such as:
+
+- Pipeline success rate
+- Security scan coverage
+- Mean Time to Detect (MTTD)
+- Mean Time to Remediate (MTTR)
+- Critical vulnerability count
+- Secrets detected
+- Artifact verification rate
+- Deployment failure rate
+
+Metrics support continuous improvement.
+
+---
+
+### 10. Continuously Improve the Pipeline
+
+Regularly:
+
+- Update security tools
+- Patch build environments
+- Review access permissions
+- Improve policies
+- Enhance pipeline automation
+- Conduct security exercises
+
+Continuous improvement helps pipelines adapt to evolving threats and technologies.
+
+---
+
