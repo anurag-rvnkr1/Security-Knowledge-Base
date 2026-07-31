@@ -1213,3 +1213,375 @@ A strong security culture is essential for sustainable DevSecOps adoption.
 
 ---
 
+## Common Mistakes
+
+DevSecOps is not simply the addition of security tools to an existing DevOps pipeline. It is a cultural, operational, and technical transformation that integrates security into every phase of software development and cloud operations.
+
+Organizations frequently implement DevSecOps tools without adopting DevSecOps principles, resulting in recurring vulnerabilities, inefficient processes, and increased operational risk.
+
+The following are some of the most common mistakes observed in cloud DevSecOps implementations.
+
+---
+
+### 1. Treating Security as a Final Phase
+
+Many organizations continue to perform security reviews only before production deployment.
+
+Consequences include:
+
+- Late vulnerability discovery
+- Expensive remediation
+- Release delays
+- Increased operational risk
+
+Security should begin during planning and continue throughout the software lifecycle.
+
+---
+
+### 2. Lack of Developer Security Awareness
+
+Developers without adequate security knowledge may unintentionally introduce vulnerabilities such as:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Broken authentication
+- Hardcoded credentials
+- Insecure deserialization
+- Weak cryptography
+
+Regular secure coding education significantly reduces these risks.
+
+---
+
+### 3. Hardcoding Secrets
+
+Embedding secrets directly into source code remains one of the most common security mistakes.
+
+Examples include:
+
+- API keys
+- Database passwords
+- Cloud access keys
+- OAuth tokens
+- Certificates
+- Encryption keys
+
+Secrets should always be stored in dedicated secrets management solutions.
+
+---
+
+### 4. Ignoring Dependency Risks
+
+Modern applications depend heavily on third-party libraries.
+
+Common issues include:
+
+- Vulnerable packages
+- Unsupported dependencies
+- Malicious packages
+- Outdated versions
+- License violations
+
+Software Composition Analysis (SCA) should be integrated into every CI pipeline.
+
+---
+
+### 5. Skipping Infrastructure as Code Validation
+
+Deploying Infrastructure as Code without security validation can introduce:
+
+- Public storage
+- Weak IAM policies
+- Open security groups
+- Missing encryption
+- Logging disabled
+- Excessive permissions
+
+Every infrastructure definition should undergo automated security scanning before deployment.
+
+---
+
+### 6. Weak CI/CD Pipeline Security
+
+The CI/CD pipeline itself is a high-value target.
+
+Common weaknesses include:
+
+- Excessive pipeline permissions
+- Shared credentials
+- Untrusted build runners
+- Missing audit logs
+- Unsigned artifacts
+- Weak access controls
+
+Protecting the pipeline is as important as protecting the application.
+
+---
+
+### 7. Ignoring Container Security
+
+Organizations sometimes scan application code but overlook container images.
+
+Common container issues include:
+
+- Outdated base images
+- Critical CVEs
+- Running as root
+- Excessive Linux capabilities
+- Unnecessary packages
+- Insecure runtime configurations
+
+Container security should span both build-time and runtime.
+
+---
+
+### 8. Poor Kubernetes Security
+
+Common Kubernetes governance failures include:
+
+- Privileged pods
+- Unrestricted network communication
+- Missing admission controls
+- Excessive RBAC permissions
+- Insecure secrets management
+- Disabled audit logging
+
+Kubernetes environments require dedicated security controls beyond container security.
+
+---
+
+### 9. Manual Security Processes
+
+Manual reviews alone cannot keep pace with modern deployment frequencies.
+
+Consequences include:
+
+- Delayed releases
+- Inconsistent reviews
+- Human error
+- Reduced scalability
+
+Automation should handle repetitive security tasks wherever practical.
+
+---
+
+### 10. Ignoring Runtime Security
+
+Pre-deployment testing cannot identify every threat.
+
+Organizations should continuously monitor for:
+
+- Runtime attacks
+- Privilege escalation
+- Suspicious network activity
+- Unauthorized API access
+- Container escapes
+- Identity misuse
+
+Runtime monitoring complements Shift Left practices.
+
+---
+
+### 11. Poor Visibility Across the Pipeline
+
+Security teams should maintain visibility into:
+
+- Source code
+- Build systems
+- Artifact repositories
+- Infrastructure
+- Containers
+- Kubernetes
+- Cloud services
+- Production workloads
+
+Limited visibility creates detection gaps and delays incident response.
+
+---
+
+### 12. Weak Policy Enforcement
+
+Organizations sometimes define security policies without enforcing them.
+
+Examples include:
+
+- Optional code reviews
+- Ignored vulnerability thresholds
+- Unrestricted deployments
+- Missing branch protection
+- Inconsistent approval workflows
+
+Policy enforcement should be automated wherever possible.
+
+---
+
+### 13. Measuring Speed Instead of Secure Outcomes
+
+Deployment frequency alone does not indicate DevSecOps maturity.
+
+Organizations should also evaluate:
+
+- Vulnerability remediation time
+- Security test coverage
+- Production incident rate
+- Policy compliance
+- Change failure rate
+- Mean Time to Detect (MTTD)
+- Mean Time to Remediate (MTTR)
+
+Balanced metrics encourage both speed and security.
+
+---
+
+### 14. Lack of Cross-Team Collaboration
+
+DevSecOps requires collaboration between:
+
+- Developers
+- DevOps engineers
+- Security engineers
+- Cloud architects
+- Platform engineers
+- Compliance teams
+- Operations teams
+
+Security silos reduce the effectiveness of DevSecOps initiatives.
+
+---
+
+### 15. Treating DevSecOps as a Tool Rather Than a Culture
+
+Purchasing security tools alone does not establish DevSecOps.
+
+Successful adoption requires:
+
+- Leadership support
+- Process improvements
+- Automation
+- Continuous education
+- Shared ownership
+- Continuous feedback
+- Continuous improvement
+
+Culture is the foundation of sustainable DevSecOps.
+
+---
+
+## Cloud DevSecOps Checklist
+
+| Control | Status |
+|---------|--------|
+| Security Requirements Defined During Planning | ✓ |
+| Secure Coding Standards Adopted | ✓ |
+| Branch Protection Enabled | ✓ |
+| Multi-Factor Authentication for Repositories | ✓ |
+| Static Application Security Testing (SAST) Automated | ✓ |
+| Software Composition Analysis (SCA) Integrated | ✓ |
+| Secrets Scanning Enabled | ✓ |
+| Infrastructure as Code Security Validation Implemented | ✓ |
+| Container Image Scanning Automated | ✓ |
+| CI/CD Pipeline Protected | ✓ |
+| Artifact Integrity Verification Enabled | ✓ |
+| Runtime Security Monitoring Active | ✓ |
+| Security Metrics Continuously Measured | ✓ |
+| Cross-Team Collaboration Established | ✓ |
+| Continuous Improvement Process Active | ✓ |
+
+---
+
+## References
+
+### International Standards
+
+- ISO/IEC 27001 — Information Security Management Systems (ISMS)
+- ISO/IEC 27002 — Information Security Controls
+- ISO/IEC 27034 — Application Security
+- ISO/IEC 29147 — Vulnerability Disclosure
+
+---
+
+### NIST Publications
+
+- NIST Secure Software Development Framework (SSDF) SP 800-218
+- NIST Cybersecurity Framework (CSF) 2.0
+- NIST SP 800-53 Rev. 5 — Security and Privacy Controls
+- NIST SP 800-190 — Application Container Security Guide
+- NIST SP 800-204 Series — Microservices Security
+
+---
+
+### OWASP Resources
+
+- OWASP Top 10
+- OWASP API Security Top 10
+- OWASP ASVS (Application Security Verification Standard)
+- OWASP SAMM (Software Assurance Maturity Model)
+- OWASP Dependency-Check
+- OWASP Cheat Sheet Series
+
+---
+
+### CNCF and Cloud-Native Security
+
+- CNCF Cloud Native Security Whitepaper
+- Kubernetes Security Best Practices
+- Kubernetes Pod Security Standards
+- Open Policy Agent (OPA)
+- Sigstore
+- SPIFFE and SPIRE
+
+---
+
+### Supply Chain Security
+
+- SLSA (Supply-chain Levels for Software Artifacts)
+- in-toto Framework
+- Software Bill of Materials (SBOM)
+- SPDX Specification
+- CycloneDX Specification
+
+---
+
+### Cloud Provider Documentation
+
+#### Amazon Web Services (AWS)
+
+- AWS CodePipeline
+- AWS CodeBuild
+- AWS CodeDeploy
+- AWS Inspector
+- AWS Security Hub
+- AWS Well-Architected Framework – Security Pillar
+
+#### Microsoft Azure
+
+- Azure DevOps
+- Microsoft Defender for Cloud
+- Azure Policy
+- Azure Container Registry
+- Azure Kubernetes Service (AKS) Security Guidance
+
+#### Google Cloud Platform (GCP)
+
+- Cloud Build
+- Artifact Registry
+- Security Command Center
+- Binary Authorization
+- GKE Security Best Practices
+
+---
+
+### Recommended Learning Resources
+
+- NIST Secure Software Development Framework (SSDF)
+- OWASP DevSecOps Guideline
+- Cloud Native Computing Foundation (CNCF) Security Resources
+- CIS Benchmarks
+- Official AWS, Azure, and Google Cloud DevSecOps documentation
+
+---
+
+**End of Chapter 33 – DevSecOps for Cloud**
+
+
+---
