@@ -1473,3 +1473,373 @@ An iterative approach ensures that cloud defenses remain aligned with evolving t
 
 ---
 
+## Common Mistakes
+
+Cloud Threat Modeling is most effective when it is continuous, collaborative, and integrated into the entire cloud development lifecycle. However, organizations often perform threat modeling incorrectly or treat it as a one-time compliance activity, leaving significant security gaps.
+
+Recognizing these common mistakes helps organizations develop more accurate threat models and stronger cloud security architectures.
+
+---
+
+### 1. Performing Threat Modeling Too Late
+
+One of the most frequent mistakes is conducting threat modeling after deployment.
+
+```
+Development
+
+↓
+
+Production
+
+↓
+
+Threat Modeling ❌
+```
+
+Instead, threat modeling should begin during:
+
+- Requirements gathering
+- Architecture design
+- System planning
+
+Early threat modeling reduces remediation costs and minimizes architectural redesign.
+
+---
+
+### 2. Ignoring Cloud-Specific Threats
+
+Traditional threat models may overlook cloud-native risks such as:
+
+- IAM misconfigurations
+- Public storage exposure
+- Serverless abuse
+- Kubernetes attacks
+- Container escape
+- Infrastructure as Code (IaC) vulnerabilities
+- Cloud API abuse
+
+Threat models should reflect the unique characteristics of cloud environments.
+
+---
+
+### 3. Focusing Only on External Attackers
+
+Threat models often emphasize internet-based attacks while ignoring:
+
+- Insider threats
+- Compromised administrators
+- Malicious service accounts
+- Third-party vendors
+- Supply chain attacks
+
+Effective threat modeling considers both external and internal threat actors.
+
+---
+
+### 4. Incomplete Asset Identification
+
+Failing to identify all valuable assets results in incomplete protection.
+
+Commonly overlooked assets include:
+
+- Secrets
+- Encryption keys
+- CI/CD pipelines
+- Backup repositories
+- Logging infrastructure
+- Identity providers
+- Monitoring systems
+
+Every critical asset should be documented before threat analysis begins.
+
+---
+
+### 5. Missing Trust Boundaries
+
+Not identifying trust boundaries may allow insecure communication between components.
+
+Example:
+
+```
+Internet
+
+↓
+
+API
+
+↓
+
+Database
+```
+
+Each boundary should enforce:
+
+- Authentication
+- Authorization
+- Encryption
+- Input validation
+- Logging
+
+Trust boundaries should be clearly documented in architecture diagrams.
+
+---
+
+### 6. Ignoring Data Flows
+
+Threat modeling that focuses only on infrastructure may overlook how sensitive data moves through the environment.
+
+Analyze data flows involving:
+
+- Authentication
+- Payment information
+- Customer records
+- Secrets
+- Administrative actions
+- Cross-cloud communication
+
+Understanding data movement helps identify opportunities for interception, tampering, or disclosure.
+
+---
+
+### 7. Assuming Existing Controls Eliminate Risk
+
+Existing security controls reduce risk but rarely eliminate it.
+
+Examples include:
+
+- Firewalls
+- MFA
+- WAFs
+- IAM policies
+- Encryption
+
+Residual risk should always be documented and monitored.
+
+---
+
+### 8. Not Prioritizing Risks
+
+Treating every identified threat as equally important can overwhelm security teams.
+
+Use risk-based prioritization considering:
+
+- Likelihood
+- Business impact
+- Exploitability
+- Existing controls
+
+Focus remediation efforts on high-risk threats first.
+
+---
+
+### 9. Failing to Update Threat Models
+
+Cloud environments change frequently.
+
+Threat models become outdated when:
+
+- New APIs are introduced
+- Cloud services are added
+- IAM roles change
+- Architectures evolve
+- Third-party integrations are modified
+
+Threat models should be reviewed whenever significant changes occur.
+
+---
+
+### 10. Ignoring Third-Party Dependencies
+
+Modern cloud applications depend on numerous external services.
+
+Examples include:
+
+- SaaS providers
+- Identity providers
+- Payment gateways
+- Notification services
+- CI/CD platforms
+
+Each dependency introduces additional threats that should be incorporated into the threat model.
+
+---
+
+### 11. Overlooking Machine Identities
+
+Organizations often focus on human users while overlooking:
+
+- Service accounts
+- Workload identities
+- API keys
+- Containers
+- Kubernetes service accounts
+
+Machine identities should receive the same level of protection as human identities.
+
+---
+
+### 12. Insufficient Collaboration
+
+Threat modeling performed exclusively by security teams may miss operational or business-specific risks.
+
+Effective threat modeling should involve:
+
+- Cloud architects
+- Developers
+- DevOps engineers
+- Security engineers
+- Site Reliability Engineers (SREs)
+- Compliance teams
+- Business stakeholders
+
+Cross-functional collaboration improves the quality of threat analysis.
+
+---
+
+### 13. Poor Documentation
+
+Undocumented threat models quickly lose value.
+
+Documentation should include:
+
+- Architecture diagrams
+- Assets
+- Trust boundaries
+- Threat scenarios
+- Assumptions
+- Mitigations
+- Residual risks
+- Review history
+
+Well-maintained documentation supports audits, incident response, and future architecture changes.
+
+---
+
+### 14. Ignoring Validation
+
+Threat models should be validated through practical testing.
+
+Recommended validation methods include:
+
+- Penetration testing
+- Vulnerability assessments
+- Red team exercises
+- Purple team exercises
+- Secure code reviews
+- Configuration audits
+
+Validation ensures identified mitigations are effective.
+
+---
+
+### 15. Treating Threat Modeling as a Compliance Exercise
+
+Threat modeling should not be performed solely to satisfy regulatory or audit requirements.
+
+Its primary objective is to improve security by:
+
+- Identifying realistic attack paths
+- Reducing exploitable weaknesses
+- Supporting secure design decisions
+- Improving incident preparedness
+
+Organizations that embed threat modeling into engineering processes gain significantly greater security benefits than those treating it as a documentation requirement.
+
+---
+
+## Cloud Threat Modeling Checklist
+
+| Control | Status |
+|---------|--------|
+| System Scope Clearly Defined | ✓ |
+| Critical Assets Identified | ✓ |
+| Architecture Diagram Created | ✓ |
+| Data Flows Documented | ✓ |
+| Trust Boundaries Identified | ✓ |
+| STRIDE Analysis Completed | ✓ |
+| Risks Prioritized | ✓ |
+| Security Controls Selected | ✓ |
+| Residual Risks Documented | ✓ |
+| Threat Model Reviewed After Changes | ✓ |
+| Third-Party Dependencies Evaluated | ✓ |
+| Machine Identities Included | ✓ |
+| Security Testing Performed | ✓ |
+| Continuous Monitoring Enabled | ✓ |
+| Threat Model Maintained as a Living Document | ✓ |
+
+---
+
+## References
+
+### Standards
+
+- NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
+- NIST SP 800-207 – Zero Trust Architecture
+- NIST Cybersecurity Framework (CSF) 2.0
+- ISO/IEC 27001
+- ISO/IEC 27002
+- CIS Controls v8
+- Cloud Security Alliance (CSA) Security Guidance
+
+---
+
+### Threat Modeling Frameworks
+
+- Microsoft STRIDE
+- OWASP Threat Modeling Methodology
+- PASTA (Process for Attack Simulation and Threat Analysis)
+- LINDDUN Privacy Threat Modeling
+- DREAD Risk Rating Model (legacy, where applicable)
+- MITRE ATT&CK Framework
+- MITRE D3FEND
+
+---
+
+### Cloud Security Documentation
+
+#### Amazon Web Services (AWS)
+
+- AWS Well-Architected Framework – Security Pillar
+- AWS Security Reference Architecture
+
+#### Microsoft Azure
+
+- Azure Well-Architected Framework – Security
+- Microsoft Cloud Adoption Framework
+
+#### Google Cloud Platform (GCP)
+
+- Google Cloud Architecture Framework – Security
+- Google Cloud Security Foundations Guide
+
+---
+
+### Security Frameworks
+
+- Defense in Depth
+- Zero Trust Architecture
+- Secure by Design
+- Secure Software Development Lifecycle (SSDLC)
+- DevSecOps
+- Identity and Access Management (IAM)
+- Principle of Least Privilege (PoLP)
+
+---
+
+### Recommended Learning Resources
+
+- OWASP Threat Modeling Cheat Sheet
+- MITRE ATT&CK Knowledge Base
+- MITRE D3FEND Knowledge Base
+- CIS Benchmarks
+- SANS Threat Modeling Resources
+- Cloud Security Alliance Research Publications
+- Vendor Well-Architected Security Guides
+
+---
+
+**End of Chapter 23 – Cloud Threat Modeling**
+
+
+---
