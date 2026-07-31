@@ -399,3 +399,702 @@ Trust is established based on identity and policy rather than network location.
 
 ---
 
+## How It Works
+
+Cloud Networking enables secure communication between users, cloud workloads, applications, databases, storage services, and external systems through software-defined networking components. Unlike traditional physical networks, cloud networks are dynamically provisioned, policy-driven, and managed through cloud control planes.
+
+Every network request passes through multiple security and routing components before reaching its destination. These components authenticate traffic, enforce security policies, determine routing paths, and monitor network activity.
+
+A secure cloud networking workflow typically consists of:
+
+1. User or service initiates a connection
+2. DNS resolves the destination
+3. Traffic enters through the appropriate gateway
+4. Firewalls and security controls inspect traffic
+5. Route tables determine the network path
+6. Security Groups and Network ACLs enforce access policies
+7. Traffic reaches the destination workload
+8. Network events are logged and monitored
+9. Security tools analyze network behavior
+10. Security teams investigate anomalies
+
+This layered architecture minimizes unauthorized access while ensuring reliable communication.
+
+---
+
+## Cloud Networking Workflow
+
+```
+                User / Application
+
+                        │
+
+                        ▼
+
+                 DNS Resolution
+
+                        │
+
+                        ▼
+
+              Internet / Private Link
+
+                        │
+
+                        ▼
+
+          Internet Gateway / VPN Gateway
+
+                        │
+
+                        ▼
+
+          Firewall / Web Application Firewall
+
+                        │
+
+                        ▼
+
+                Route Table Lookup
+
+                        │
+
+                        ▼
+
+        Security Groups + Network ACLs
+
+                        │
+
+                        ▼
+
+            Cloud Workload (VM / Pod)
+
+                        │
+
+          ┌─────────────┼─────────────┐
+
+          ▼             ▼             ▼
+
+      Database      Object Storage   APIs
+
+                        │
+
+                        ▼
+
+          Logging • Monitoring • SIEM
+```
+
+Each network component performs a dedicated function before allowing communication.
+
+---
+
+## Step 1 – DNS Resolution
+
+Communication begins by resolving a domain name into an IP address.
+
+```
+Client
+
+↓
+
+DNS Query
+
+↓
+
+Cloud DNS
+
+↓
+
+Destination IP
+```
+
+Secure DNS services help prevent spoofing, cache poisoning, and unauthorized redirection.
+
+---
+
+## Step 2 – Establish Network Connectivity
+
+Depending on the workload, traffic may enter through:
+
+- Internet Gateway
+- VPN Gateway
+- Dedicated private connection
+- Private Endpoint
+- Service Endpoint
+
+Only approved entry points should be exposed publicly.
+
+---
+
+## Step 3 – Firewall Inspection
+
+Traffic should be inspected before entering the cloud environment.
+
+Security controls include:
+
+- Web Application Firewall (WAF)
+- Network Firewall
+- Distributed Firewall
+- Intrusion Detection Systems (IDS)
+- Intrusion Prevention Systems (IPS)
+
+```
+Incoming Traffic
+
+↓
+
+Firewall Inspection
+
+↓
+
+Allowed / Blocked
+```
+
+Only legitimate traffic should proceed to backend resources.
+
+---
+
+## Step 4 – Route Selection
+
+Route tables determine where traffic should be forwarded.
+
+Routes may direct traffic to:
+
+- Internet Gateway
+- NAT Gateway
+- VPN Gateway
+- Peered VPC/VNet
+- Private Endpoint
+- Local subnet
+
+Incorrect routing may expose internal services or disrupt communication.
+
+---
+
+## Step 5 – Security Group Evaluation
+
+Security Groups inspect traffic destined for specific resources.
+
+Typical rules evaluate:
+
+- Source IP
+- Destination port
+- Protocol
+- Direction (inbound/outbound)
+
+Example:
+
+```
+HTTPS (443)
+
+↓
+
+Security Group
+
+↓
+
+Web Server
+```
+
+Only explicitly permitted traffic should reach protected workloads.
+
+---
+
+## Step 6 – Network ACL Evaluation
+
+Network ACLs evaluate traffic at the subnet level.
+
+Characteristics:
+
+- Stateless
+- Ordered rule evaluation
+- Separate inbound and outbound rules
+
+Network ACLs provide an additional security layer alongside Security Groups.
+
+---
+
+## Step 7 – Resource Communication
+
+After passing all security controls, traffic reaches cloud resources.
+
+Examples include:
+
+- Virtual Machines
+- Kubernetes Pods
+- Serverless Functions
+- Databases
+- Storage Services
+
+Applications should communicate using private networking whenever possible.
+
+---
+
+## Step 8 – Secure Hybrid Connectivity
+
+Organizations frequently connect on-premises infrastructure with cloud environments.
+
+```
+Corporate Network
+
+↓
+
+Encrypted VPN
+
+↓
+
+Cloud VPN Gateway
+
+↓
+
+Cloud Resources
+```
+
+Dedicated private circuits may also be used for higher performance and reliability.
+
+---
+
+## Step 9 – Generate Network Logs
+
+Cloud networking components should generate logs for:
+
+- Accepted traffic
+- Rejected traffic
+- Route changes
+- Firewall events
+- VPN connections
+- DNS queries
+- Administrative actions
+
+Sensitive information should be protected while retaining sufficient detail for investigations.
+
+---
+
+## Step 10 – Continuous Network Monitoring
+
+Network telemetry should be analyzed continuously.
+
+```
+Network Logs
+
+↓
+
+Monitoring Platform
+
+↓
+
+SIEM
+
+↓
+
+Threat Detection
+
+↓
+
+SOC Investigation
+```
+
+Monitoring enables rapid detection of suspicious activity and network-based attacks.
+
+---
+
+## Cloud Network Traffic Flow
+
+```
+Client
+
+↓
+
+DNS
+
+↓
+
+Gateway
+
+↓
+
+Firewall
+
+↓
+
+Routing
+
+↓
+
+Security Controls
+
+↓
+
+Application
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Every stage contributes to secure and reliable communication.
+
+---
+
+## Public and Private Subnet Example
+
+```
+                 Internet
+
+                     │
+
+                     ▼
+
+             Internet Gateway
+
+                     │
+
+          ┌──────────┴──────────┐
+
+          ▼                     ▼
+
+   Public Subnet          Public Subnet
+
+     Web Server          Load Balancer
+
+          │
+
+          ▼
+
+     Private Subnet
+
+      Application
+
+          │
+
+          ▼
+
+     Database Subnet
+
+        Database
+```
+
+Only the public subnet communicates directly with the internet, while backend resources remain isolated.
+
+---
+
+## Hybrid Cloud Example
+
+```
+Head Office
+
+     │
+
+     ▼
+
+Encrypted VPN
+
+     │
+
+     ▼
+
+Cloud VPN Gateway
+
+     │
+
+     ▼
+
+Private Cloud Network
+
+     │
+
+     ▼
+
+Applications
+```
+
+Encryption protects communications across untrusted networks.
+
+---
+
+## Practical Example
+
+### Example 1 – Secure Web Application
+
+A user accesses an e-commerce website hosted in the cloud.
+
+```
+User
+
+↓
+
+DNS
+
+↓
+
+Load Balancer
+
+↓
+
+Web Server
+
+↓
+
+Application
+
+↓
+
+Database
+```
+
+The database remains in a private subnet and is inaccessible from the internet.
+
+---
+
+### Example 2 – Private Software Updates
+
+A virtual machine in a private subnet downloads operating system updates.
+
+```
+Private VM
+
+↓
+
+NAT Gateway
+
+↓
+
+Internet
+
+↓
+
+Software Repository
+```
+
+The VM initiates outbound traffic while remaining protected from inbound internet connections.
+
+---
+
+### Example 3 – Hybrid Connectivity
+
+A company connects its headquarters to its cloud environment.
+
+```
+Office Network
+
+↓
+
+VPN Tunnel
+
+↓
+
+Cloud Gateway
+
+↓
+
+Private Resources
+```
+
+Traffic is encrypted throughout the connection.
+
+---
+
+### Example 4 – Blocking Unauthorized SSH Access
+
+A Security Group allows SSH access only from the corporate administration network.
+
+```
+Unknown IP
+
+↓
+
+Security Group
+
+↓
+
+Connection Denied
+```
+
+Unauthorized administrative access is prevented.
+
+---
+
+### Example 5 – Secure Private Database Access
+
+An application accesses a database using private networking.
+
+```
+Application
+
+↓
+
+Private Subnet
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+The database has no direct internet exposure.
+
+---
+
+## Cloud Networking Components
+
+| Component | Purpose |
+|-----------|---------|
+| VPC / VNet | Isolated virtual network |
+| Subnet | Logical network segmentation |
+| Route Table | Determine traffic paths |
+| Internet Gateway | Public internet connectivity |
+| NAT Gateway | Secure outbound internet access |
+| VPN Gateway | Encrypted hybrid connectivity |
+| Security Group | Stateful workload firewall |
+| Network ACL | Stateless subnet firewall |
+| Load Balancer | Distribute incoming traffic |
+| DNS Service | Resolve domain names |
+| Private Endpoint | Secure private service access |
+| SIEM | Analyze network security telemetry |
+
+---
+
+## Indicators of Network Compromise (Detection)
+
+Continuous monitoring is essential because attackers frequently target cloud networks for reconnaissance, lateral movement, persistence, and data exfiltration.
+
+---
+
+### Unusual Network Traffic
+
+Monitor for:
+
+- Unexpected outbound connections
+- Large data transfers
+- Unknown destinations
+- High bandwidth usage
+
+```
+Network Flow
+
+↓
+
+Behavior Analysis
+
+↓
+
+Security Alert
+```
+
+---
+
+### Port Scanning
+
+Repeated connection attempts across multiple ports may indicate reconnaissance activity.
+
+Indicators include:
+
+- Sequential port access
+- High connection rates
+- Multiple failed connection attempts
+
+---
+
+### Unexpected Administrative Connections
+
+Alert on:
+
+- SSH access from unknown IP addresses
+- RDP access outside business hours
+- Administrative logins from unfamiliar locations
+
+Administrative access should be tightly controlled and monitored.
+
+---
+
+### DNS Anomalies
+
+Watch for:
+
+- Suspicious DNS queries
+- Excessive DNS requests
+- Connections to newly registered domains
+- DNS tunneling behavior
+
+DNS activity often provides early indicators of compromise.
+
+---
+
+### Firewall Rule Changes
+
+Monitor for:
+
+- Newly opened ports
+- Deleted firewall rules
+- Modified Security Groups
+- Network ACL changes
+
+Unauthorized rule modifications may expose protected resources.
+
+---
+
+### VPN and Gateway Events
+
+Monitor:
+
+- Failed VPN authentication
+- New VPN tunnels
+- Unexpected gateway configuration changes
+- Excessive connection attempts
+
+Hybrid connectivity components are high-value targets.
+
+---
+
+### Lateral Movement Indicators
+
+Watch for:
+
+- Unexpected east-west traffic
+- Connections between unrelated workloads
+- Unauthorized subnet access
+- Service-to-service communication anomalies
+
+Network segmentation helps reduce the impact of lateral movement.
+
+---
+
+### Audit Log Analysis
+
+Continuously review:
+
+- VPC Flow Logs
+- Firewall logs
+- DNS logs
+- Gateway events
+- Routing changes
+- Security Group modifications
+- Network ACL updates
+- Administrative activities
+
+Forward network telemetry to the organization's SIEM for centralized correlation and investigation.
+
+---
+
+## Detection Best Practices
+
+- Enable flow logs for all virtual networks.
+- Continuously monitor firewall and gateway activity.
+- Alert on unexpected administrative connections.
+- Analyze DNS traffic for anomalous behavior.
+- Review routing and firewall rule changes regularly.
+- Monitor east-west traffic between workloads.
+- Correlate network events with identity and application logs.
+- Integrate networking telemetry into the SIEM.
+- Establish normal traffic baselines and detect deviations.
+- Perform periodic reviews of network segmentation and connectivity.
+
+---
+
