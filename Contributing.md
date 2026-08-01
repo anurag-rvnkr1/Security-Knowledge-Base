@@ -1,6 +1,6 @@
 # Contributing to Cybersecurity Notes
 
-First off, thank you for your interest in contributing to **Cybersecurity Notes**! 🎉
+First off, thank you for your interest in contributing to **Cybersecurity Handbook**! 🎉
 
 Whether you're fixing a typo, improving an explanation, adding a new topic, or contributing a hands-on lab, your efforts help make this repository a valuable learning resource for the cybersecurity community.
 
@@ -20,7 +20,7 @@ We welcome contributions that improve the educational value, technical accuracy,
 
 ---
 
-# Ways to Contribute
+# Ways to Contribute.
 
 You can contribute by:
 
