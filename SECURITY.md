@@ -14,7 +14,7 @@ The latest version of the repository is actively maintained.
 | ------------------------ | :------------: |
 | Latest `main` branch     |        ✅       |
 | Previous tagged releases | ⚠️ Best effort |
-| Older archived versions  |        ❌       |
+
 
 Please use the latest version whenever possible.
 
