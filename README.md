@@ -316,7 +316,7 @@ Cybersecurity-Notes/
 * Windows Forensics
 * Linux Forensics
 * Memory Forensics
-* Disk Forensics
+* Disk Forensics 
 * Timeline Analysis
 * Registry Analysis
 * Browser Artifacts
@@ -353,7 +353,7 @@ Quick references for:
 * Splunk SPL
 * KQL
 * Sigma
-* YARA
+
 
 ---
 
