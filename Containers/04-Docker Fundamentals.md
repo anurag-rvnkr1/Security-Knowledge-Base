@@ -1212,3 +1212,465 @@ Understanding these relationships simplifies troubleshooting and prepares you fo
 
 ---
 
+## Common Mistakes
+
+Docker is designed to simplify application deployment, but incorrect usage can lead to security vulnerabilities, inefficient resource utilization, deployment failures, and operational complexity. Many Docker-related issues stem from misunderstanding Docker's architecture and workflow rather than problems with Docker itself.
+
+The following are some of the most common mistakes made by beginners and professionals.
+
+---
+
+### 1. Confusing Docker with Containers
+
+A common misconception is that Docker **is** the container.
+
+In reality:
+
+```
+Docker
+
+      │
+
+Creates
+
+      ▼
+
+Container Images
+
+      │
+
+Runs
+
+      ▼
+
+Containers
+```
+
+Docker is a **container platform**, while a **container** is the isolated environment in which an application executes.
+
+---
+
+### 2. Treating Docker as a Virtual Machine
+
+Many beginners expect Docker containers to behave like traditional servers.
+
+Example:
+
+```
+Docker Container
+
+↓
+
+Install Packages
+
+↓
+
+SSH Into Container
+
+↓
+
+Modify Files
+
+↓
+
+Save Forever
+```
+
+This is not the recommended approach.
+
+Containers should be:
+
+- Disposable
+- Immutable
+- Reproducible
+
+Instead of repairing containers, rebuild the image and redeploy.
+
+---
+
+### 3. Using the `latest` Tag Everywhere
+
+Example:
+
+```bash
+docker pull nginx:latest
+```
+
+The `latest` tag is not guaranteed to remain the same.
+
+Potential issues:
+
+- Unexpected upgrades
+- Compatibility problems
+- Difficult rollbacks
+
+Instead:
+
+```bash
+nginx:1.27.0
+
+python:3.12
+
+redis:7.4
+```
+
+Pinning versions improves deployment consistency.
+
+---
+
+### 4. Building Large Images
+
+Common causes include:
+
+- Large base images
+- Unnecessary packages
+- Temporary build files
+- Development tools included in production images
+
+Consequences:
+
+- Slower builds
+- Longer downloads
+- Increased storage usage
+- Larger attack surface
+
+Use minimal and purpose-built base images where appropriate.
+
+---
+
+### 5. Running Everything as Root
+
+By default, many containers run as the `root` user.
+
+Risks include:
+
+- Privilege escalation
+- Increased impact of vulnerabilities
+- Greater consequences if a container escape occurs
+
+Whenever possible, create and use a non-root user inside the container.
+
+---
+
+### 6. Hardcoding Secrets
+
+Avoid storing:
+
+- Passwords
+- API keys
+- Access tokens
+- Certificates
+- Database credentials
+
+inside:
+
+- Dockerfiles
+- Images
+- Source code
+- Version control
+
+Use dedicated secrets management solutions instead.
+
+---
+
+### 7. Ignoring Volumes
+
+A common mistake is storing important data inside the container.
+
+```
+Container
+
+↓
+
+Database Files
+
+↓
+
+Container Removed
+
+↓
+
+Database Lost
+```
+
+Instead:
+
+```
+Container
+
+↓
+
+Docker Volume
+
+↓
+
+Persistent Data
+```
+
+Volumes ensure important data survives container replacement.
+
+---
+
+### 8. Not Cleaning Up Docker Resources
+
+Over time, systems accumulate:
+
+- Dangling images
+- Unused containers
+- Unused networks
+- Unused volumes
+
+Consequences:
+
+- Disk space exhaustion
+- Slower builds
+- Operational clutter
+
+Regularly remove unused resources.
+
+---
+
+### 9. Publishing Unnecessary Ports
+
+Incorrect example:
+
+```bash
+docker run -p 22:22
+```
+
+if SSH is not required.
+
+Only publish ports that must be externally accessible.
+
+Principle:
+
+```
+Default
+
+↓
+
+Private
+
+↓
+
+Expose Only Required Services
+```
+
+Reducing exposed services minimizes the attack surface.
+
+---
+
+### 10. Ignoring Logs
+
+Containers generate valuable operational information.
+
+Monitor:
+
+- Startup failures
+- Application errors
+- Warnings
+- Health checks
+- Runtime exceptions
+
+Centralized logging simplifies troubleshooting and incident response.
+
+---
+
+### 11. Assuming Docker Automatically Provides Security
+
+Docker provides isolation but does not guarantee comprehensive security.
+
+Additional protections include:
+
+- Image scanning
+- Least privilege
+- Runtime protection
+- Secrets management
+- Network segmentation
+- Security policies
+- Continuous monitoring
+
+Security must be intentionally implemented.
+
+---
+
+### 12. Forgetting That Containers Are Ephemeral
+
+Containers should be treated as temporary execution environments.
+
+Incorrect workflow:
+
+```
+Fix Running Container
+
+↓
+
+Keep Using It
+```
+
+Recommended workflow:
+
+```
+Update Source
+
+↓
+
+Build New Image
+
+↓
+
+Deploy New Container
+
+↓
+
+Remove Old Container
+```
+
+This approach supports reliable and repeatable deployments.
+
+---
+
+### 13. Skipping Image Scanning
+
+Images may contain:
+
+- Known vulnerabilities
+- Outdated packages
+- Malware
+- Misconfigurations
+
+Scan images regularly before deployment into production.
+
+---
+
+### 14. Learning Only Docker Commands
+
+Memorizing commands such as:
+
+```bash
+docker run
+
+docker exec
+
+docker ps
+
+docker logs
+```
+
+without understanding:
+
+- Images
+- Layers
+- Registries
+- Runtimes
+- Networking
+- Volumes
+
+limits your ability to troubleshoot and design containerized systems.
+
+A strong conceptual foundation is more valuable than command memorization alone.
+
+---
+
+### 15. Ignoring Docker Best Practices in CI/CD
+
+Poor practices include:
+
+- Building images directly on production servers
+- Using unverified images
+- Skipping automated testing
+- Deploying without vulnerability scanning
+- Lack of image versioning
+
+Modern CI/CD pipelines should automate image building, testing, scanning, and deployment.
+
+---
+
+# Docker Fundamentals Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Docker Architecture | ✓ |
+| Understand Docker Client | ✓ |
+| Understand Docker Daemon | ✓ |
+| Understand Docker Engine | ✓ |
+| Understand Docker Images | ✓ |
+| Understand Docker Containers | ✓ |
+| Understand Docker Registries | ✓ |
+| Understand Docker Networks | ✓ |
+| Understand Docker Volumes | ✓ |
+| Understand Docker Workflow | ✓ |
+| Understand Docker Lifecycle | ✓ |
+| Understand Image Layers | ✓ |
+| Understand Docker vs Virtual Machines | ✓ |
+| Know Essential Docker Commands | ✓ |
+| Understand Core Docker Best Practices | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Engine Documentation
+- Docker CLI Documentation
+- Docker Build Documentation
+- Docker Hub Documentation
+- Docker Compose Documentation
+- Docker Desktop Documentation
+
+---
+
+## OCI Standards
+
+- Open Container Initiative (OCI) Image Specification
+- Open Container Initiative (OCI) Runtime Specification
+- Open Container Initiative (OCI) Distribution Specification
+
+---
+
+## Linux Documentation
+
+- Linux Namespaces
+- Linux cgroups
+- OverlayFS
+- Linux Capabilities
+
+---
+
+## CNCF Resources
+
+- Cloud Native Computing Foundation (CNCF)
+- Kubernetes Documentation
+- containerd Documentation
+- CRI-O Documentation
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+- CIS Docker Benchmark
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Container Security* — Liz Rice
+- *Kubernetes in Action* — Marko Lukša
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Docker Labs
+- Play with Docker
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+
