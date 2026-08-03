@@ -949,3 +949,567 @@ Continuous monitoring improves detection and response to security incidents.
 
 ---
 
+## Common Mistakes
+
+Container security is often misunderstood because many users assume Docker automatically secures applications. While Docker provides important isolation mechanisms, security depends on how images, containers, hosts, networks, registries, and deployment pipelines are configured.
+
+The following are the most common Docker security mistakes observed in real-world environments.
+
+---
+
+# 1. Running Containers as Root
+
+By default, many images execute applications as the **root** user.
+
+Example:
+
+```dockerfile
+FROM ubuntu
+
+CMD ["python","app.py"]
+```
+
+Risk:
+
+```
+Application
+
+↓
+
+Root User
+
+↓
+
+High Privileges
+
+↓
+
+Greater Impact if Compromised
+```
+
+Recommended:
+
+```dockerfile
+RUN useradd appuser
+
+USER appuser
+```
+
+Follow the Principle of Least Privilege whenever possible.
+
+---
+
+# 2. Using Untrusted Images
+
+Poor practice:
+
+```
+Internet
+
+↓
+
+Unknown Image
+
+↓
+
+Production
+```
+
+Risks:
+
+- Malware
+- Hidden backdoors
+- Cryptocurrency miners
+- Outdated software
+
+Prefer:
+
+- Official images
+- Verified publishers
+- Trusted enterprise registries
+
+---
+
+# 3. Never Updating Images
+
+Old images accumulate vulnerabilities over time.
+
+Example:
+
+```
+Ubuntu Image
+
+↓
+
+2 Years Old
+
+↓
+
+Hundreds of Known CVEs
+```
+
+Regularly:
+
+- Update base images
+- Rebuild images
+- Redeploy containers
+
+Security patches are delivered through updated images, not by modifying running containers.
+
+---
+
+# 4. Hardcoding Secrets
+
+Never place secrets in:
+
+```dockerfile
+ENV PASSWORD=secret123
+```
+
+or
+
+```yaml
+environment:
+
+  PASSWORD: secret123
+```
+
+or
+
+```
+Source Code
+```
+
+Use:
+
+- Secret managers
+- Docker Secrets
+- Kubernetes Secrets
+- Cloud secret management services
+
+---
+
+# 5. Exposing Too Many Ports
+
+Poor example:
+
+```
+80
+
+443
+
+5432
+
+3306
+
+6379
+
+27017
+```
+
+Every exposed port increases the attack surface.
+
+Expose only the services that must be reachable externally.
+
+---
+
+# 6. Ignoring Image Scanning
+
+Many deployments skip vulnerability scanning.
+
+Recommended workflow:
+
+```
+Build
+
+↓
+
+Security Scan
+
+↓
+
+Fix Issues
+
+↓
+
+Registry
+
+↓
+
+Deployment
+```
+
+Do not deploy images with known high-severity vulnerabilities unless there is a documented and accepted risk.
+
+---
+
+# 7. Assuming Containers Are Virtual Machines
+
+Containers share the host kernel.
+
+```
+Host Kernel
+
+↓
+
+Container A
+
+↓
+
+Container B
+```
+
+Unlike virtual machines, containers do not provide hardware-level isolation.
+
+Protect the host because its security affects every container.
+
+---
+
+# 8. Running Privileged Containers
+
+Example:
+
+```bash
+docker run --privileged
+```
+
+This grants extensive access to the host.
+
+Risks include:
+
+- Kernel interaction
+- Device access
+- Increased potential impact of a container compromise
+
+Avoid privileged mode unless there is a clearly justified requirement.
+
+---
+
+# 9. Ignoring Container Logs
+
+Security events often appear first in application logs.
+
+Monitor:
+
+- Authentication failures
+- Unexpected restarts
+- Permission errors
+- Suspicious commands
+- Network anomalies
+
+Logs are a critical source of operational and security insight.
+
+---
+
+# 10. Giving Containers Excessive Permissions
+
+Containers should not receive unnecessary:
+
+- Linux capabilities
+- Mounted host directories
+- Network access
+- Administrative privileges
+
+Restrict permissions to the minimum required for the application.
+
+---
+
+# 11. Forgetting Runtime Security
+
+Security does not end after deployment.
+
+Applications should continue to be monitored for:
+
+- New processes
+- Unexpected outbound connections
+- File modifications
+- Privilege escalation attempts
+- Resource abuse
+
+Runtime monitoring complements preventive security controls.
+
+---
+
+# 12. Skipping Host Security
+
+A secure container cannot compensate for an insecure host.
+
+Protect the Docker host by:
+
+- Applying updates
+- Limiting administrative access
+- Enabling firewalls
+- Monitoring activity
+- Hardening the operating system
+
+---
+
+# 13. Trusting Every Registry
+
+Not every registry provides the same level of security.
+
+Before using images:
+
+Verify:
+
+- Publisher identity
+- Image maintenance
+- Security practices
+- Reputation
+
+Prefer trusted organizational or official registries.
+
+---
+
+# 14. Forgetting Supply Chain Security
+
+Modern attacks increasingly target the software supply chain.
+
+Secure the entire process:
+
+```
+Source Code
+
+↓
+
+Dependencies
+
+↓
+
+Dockerfile
+
+↓
+
+Image
+
+↓
+
+Registry
+
+↓
+
+Deployment
+```
+
+Each stage should include security verification.
+
+---
+
+# 15. Treating Security as a Final Step
+
+Traditional workflow:
+
+```
+Develop
+
+↓
+
+Deploy
+
+↓
+
+Security
+```
+
+Modern DevSecOps workflow:
+
+```
+Develop
+
+↓
+
+Build
+
+↓
+
+Test
+
+↓
+
+Scan
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+```
+
+Security should be integrated continuously throughout the development lifecycle.
+
+---
+
+# Docker Security Quick Revision
+
+## Defense in Depth
+
+```
+Application
+
+↓
+
+Container
+
+↓
+
+Image
+
+↓
+
+Docker Engine
+
+↓
+
+Host
+
+↓
+
+Infrastructure
+```
+
+Multiple security layers provide stronger protection than any single control.
+
+---
+
+## Secure Image Workflow
+
+```
+Trusted Base Image
+
+↓
+
+Build
+
+↓
+
+Scan
+
+↓
+
+Registry
+
+↓
+
+Deploy
+```
+
+---
+
+## Security Controls
+
+- Non-root users
+- Minimal images
+- Vulnerability scanning
+- Secret management
+- Private registries
+- Network segmentation
+- Runtime monitoring
+- Logging
+- Access control
+
+---
+
+## Common Security Commands
+
+```bash
+docker inspect
+
+docker history
+
+docker logs
+
+docker top
+
+docker stats
+
+docker system prune
+```
+
+These commands assist with inspection, monitoring, and maintenance. They complement dedicated security tooling but are not substitutes for it.
+
+---
+
+# Docker Security Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Host Security | ✓ |
+| Understand Image Security | ✓ |
+| Understand Container Security | ✓ |
+| Understand Runtime Security | ✓ |
+| Understand Registry Security | ✓ |
+| Understand Secrets Management | ✓ |
+| Understand Access Control | ✓ |
+| Understand Network Security | ✓ |
+| Understand Vulnerability Management | ✓ |
+| Understand Secure Supply Chain | ✓ |
+| Understand DevSecOps Integration | ✓ |
+| Understand Least Privilege | ✓ |
+| Understand Defense in Depth | ✓ |
+| Understand Security Best Practices | ✓ |
+| Understand Common Security Mistakes | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Security Documentation
+- Docker Engine Security Guide
+- Docker CLI Documentation
+- Docker Build Documentation
+- Docker Hardened Images Documentation
+
+---
+
+## OCI Standards
+
+- OCI Image Specification
+- OCI Runtime Specification
+- OCI Distribution Specification
+
+---
+
+## CNCF Resources
+
+- Kubernetes Security Documentation
+- Cloud Native Computing Foundation (CNCF)
+- Falco Documentation
+- Open Policy Agent (OPA) Documentation
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+- CIS Docker Benchmark
+- MITRE ATT&CK for Containers
+- Sigstore Documentation
+- Notary Documentation
+
+---
+
+## Books
+
+- *Container Security* — Liz Rice
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Kubernetes Security* — Liz Rice
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Docker Labs
+- Linux Foundation Training
+- CNCF Learning Paths
+- Play with Docker
+- NIST Computer Security Resource Center (CSRC)
+- OWASP Projects
+
