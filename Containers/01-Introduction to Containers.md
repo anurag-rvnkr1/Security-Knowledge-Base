@@ -971,3 +971,433 @@ to conserve system resources.
 
 ---
 
+## Common Mistakes
+
+Containers simplify application deployment and management, but incorrect usage can introduce security risks, operational issues, and performance problems. Many of the following mistakes are commonly observed in development, DevOps, and production environments.
+
+Understanding these mistakes helps build reliable, secure, and maintainable containerized applications.
+
+---
+
+### 1. Confusing Containers with Virtual Machines
+
+One of the most common beginner mistakes is assuming containers are lightweight virtual machines.
+
+**Virtual Machines**
+
+- Include a complete guest operating system
+- Require a hypervisor
+- Larger storage footprint
+- Higher memory usage
+- Slower startup
+
+**Containers**
+
+- Share the host operating system kernel
+- Do not require a guest operating system
+- Smaller footprint
+- Lower resource consumption
+- Start in seconds or less
+
+```
+Virtual Machine
+
+Hardware
+
+    │
+
+Hypervisor
+
+    │
+
+Guest OS
+
+    │
+
+Application
+
+
+Container
+
+Hardware
+
+    │
+
+Host OS
+
+    │
+
+Container Runtime
+
+    │
+
+Application
+```
+
+Understanding this distinction is fundamental to container technology.
+
+---
+
+### 2. Running Everything Inside One Container
+
+A container should ideally run **one primary application or service**.
+
+Incorrect example:
+
+```
+Container
+
+├── Web Server
+├── Database
+├── Redis
+├── Cron
+├── SSH
+└── Mail Server
+```
+
+Correct approach:
+
+```
+Container A → Web Server
+
+Container B → Database
+
+Container C → Redis
+
+Container D → Worker
+```
+
+This improves scalability, maintainability, and fault isolation.
+
+---
+
+### 3. Using the `latest` Image Tag Everywhere
+
+Many beginners deploy images using:
+
+```bash
+docker pull nginx:latest
+```
+
+The `latest` tag can change over time, making deployments unpredictable.
+
+Instead, use explicit versions:
+
+```bash
+nginx:1.27.0
+
+python:3.12
+
+node:22
+```
+
+Version pinning improves consistency and simplifies rollbacks.
+
+---
+
+### 4. Modifying Running Containers
+
+A running container should not be treated like a traditional server.
+
+Avoid:
+
+- Installing packages manually
+- Editing application files
+- Changing configurations interactively
+
+Instead:
+
+1. Modify the source or Dockerfile.
+2. Build a new image.
+3. Replace the old container.
+
+This follows the immutable infrastructure principle.
+
+---
+
+### 5. Ignoring Persistent Storage
+
+Containers are ephemeral by design.
+
+If application data is stored only inside the container:
+
+```
+Container Deleted
+
+↓
+
+Application Data Lost
+```
+
+Use:
+
+- Docker Volumes
+- Bind Mounts
+- Persistent Volumes (Kubernetes)
+
+for data that must survive container recreation.
+
+---
+
+### 6. Running Containers as the Root User
+
+Running applications as `root` increases security risk.
+
+Potential consequences:
+
+- Privilege escalation
+- Host compromise (if combined with other vulnerabilities)
+- Greater impact of container escape attacks
+
+Use non-root users whenever possible.
+
+---
+
+### 7. Hardcoding Secrets
+
+Avoid embedding:
+
+- API keys
+- Passwords
+- Database credentials
+- Tokens
+- Certificates
+
+inside:
+
+- Dockerfiles
+- Images
+- Source code
+- Environment files committed to version control
+
+Use dedicated secrets management solutions instead.
+
+---
+
+### 8. Using Large Base Images
+
+Large images:
+
+- Increase build time
+- Consume more storage
+- Expand the attack surface
+- Slow deployments
+
+Choose minimal and maintained base images whenever practical.
+
+Examples:
+
+- Alpine Linux
+- Distroless Images
+- Official slim variants
+
+---
+
+### 9. Ignoring Image Updates
+
+Base images receive security patches regularly.
+
+Failing to rebuild images can leave applications vulnerable to known exploits.
+
+Regularly:
+
+- Update base images
+- Rebuild images
+- Scan for vulnerabilities
+- Redeploy updated containers
+
+---
+
+### 10. Leaving Unused Containers and Images
+
+Over time, systems accumulate:
+
+- Stopped containers
+- Dangling images
+- Unused networks
+- Unused volumes
+
+This wastes disk space and complicates management.
+
+Perform periodic cleanup of unused resources.
+
+---
+
+### 11. Not Understanding Networking
+
+Beginners often assume containers communicate like processes on the host.
+
+In reality, containers have isolated networking.
+
+Understand concepts such as:
+
+- Bridge networks
+- Host networking
+- Overlay networks
+- Port publishing
+- DNS-based service discovery
+
+Networking knowledge is essential for multi-container applications.
+
+---
+
+### 12. Assuming Containers Are Secure by Default
+
+Containers provide isolation, but they are **not** inherently secure.
+
+Additional protections are required, including:
+
+- Least privilege
+- Image scanning
+- Runtime monitoring
+- Secrets management
+- Network segmentation
+- Security policies
+
+Security should be intentionally designed into container deployments.
+
+---
+
+### 13. Ignoring Logs
+
+Troubleshooting becomes difficult without collecting and reviewing container logs.
+
+Monitor:
+
+- Application logs
+- Startup failures
+- Runtime errors
+- Health checks
+- Resource usage
+
+Centralized logging improves visibility and operational support.
+
+---
+
+### 14. Not Learning the Linux Fundamentals
+
+Containers rely heavily on Linux concepts such as:
+
+- Processes
+- Filesystems
+- Permissions
+- Namespaces
+- cgroups
+- Networking
+
+A solid understanding of Linux significantly improves container troubleshooting and administration.
+
+---
+
+### 15. Treating Containers as Traditional Servers
+
+Containers are intended to be:
+
+- Disposable
+- Immutable
+- Automated
+- Reproducible
+
+Instead of repairing a broken container:
+
+```
+Old Container
+
+        │
+
+Delete
+
+        │
+
+Deploy New Container
+```
+
+This approach simplifies maintenance and aligns with cloud-native practices.
+
+---
+
+# Introduction to Containers Checklist
+
+| Item | Status |
+|------|:------:|
+| Understand Containers vs Virtual Machines | ✓ |
+| Know Container Architecture | ✓ |
+| Understand Images and Containers | ✓ |
+| Understand Container Runtime | ✓ |
+| Understand Portability | ✓ |
+| Understand Isolation | ✓ |
+| Understand Immutability | ✓ |
+| Understand Scalability | ✓ |
+| Know Basic Docker Commands | ✓ |
+| Understand Container Lifecycle | ✓ |
+| Know Common Use Cases | ✓ |
+| Understand Container Limitations | ✓ |
+
+---
+
+# References
+
+## International Standards
+
+- Open Container Initiative (OCI) Runtime Specification
+- Open Container Initiative (OCI) Image Specification
+- Open Container Initiative (OCI) Distribution Specification
+
+---
+
+## CNCF Resources
+
+- Cloud Native Computing Foundation (CNCF)
+- Kubernetes Documentation
+- containerd Documentation
+- CRI-O Documentation
+
+---
+
+## Docker Documentation
+
+- Docker Engine Documentation
+- Docker CLI Documentation
+- Docker Hub Documentation
+- Docker Build Documentation
+- Docker Compose Documentation
+
+---
+
+## Linux Documentation
+
+- Linux Namespaces
+- Linux Control Groups (cgroups)
+- OverlayFS Documentation
+- Linux Capabilities Documentation
+
+---
+
+## Security Resources
+
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+- NIST SP 800-190 — Application Container Security Guide
+- CIS Docker Benchmark
+- CIS Kubernetes Benchmark
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Kubernetes in Action* — Marko Lukša
+- *Container Security* — Liz Rice
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Training
+- Kubernetes Official Documentation
+- CNCF Learning Paths
+- Linux Foundation Training
+- NIST Computer Security Resource Center (CSRC)
+
+
