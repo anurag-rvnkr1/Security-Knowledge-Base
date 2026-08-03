@@ -1209,3 +1209,445 @@ Troubleshooting becomes much easier when you understand how each container compo
 
 ---
 
+## Common Mistakes
+
+Container components work together as an integrated ecosystem. Misunderstanding the role of any single component can lead to deployment failures, security weaknesses, performance issues, or data loss. The following are some of the most common mistakes engineers make when working with container components.
+
+---
+
+### 1. Confusing Images and Containers
+
+A common misconception is treating an image and a container as the same thing.
+
+**Image**
+
+- Read-only
+- Immutable
+- Blueprint
+- Stored in a registry or locally
+
+**Container**
+
+- Running instance of an image
+- Has a writable layer
+- Can be started, stopped, or removed
+
+```
+Container Image
+
+        │
+
+Create
+
+        ▼
+
+Container
+
+        │
+
+Run
+
+        ▼
+
+Application
+```
+
+Think of an image as a **class** in programming and a container as an **object (instance)** created from that class.
+
+---
+
+### 2. Assuming Data Is Stored in the Image
+
+Images do **not** store runtime data.
+
+Incorrect assumption:
+
+```
+Image
+
+↓
+
+Application Data Saved
+```
+
+Correct behavior:
+
+```
+Image
+
+↓
+
+Container
+
+↓
+
+Writable Layer
+
+↓
+
+Data Lost When Container Is Removed
+```
+
+Persistent data belongs in **volumes**, not images.
+
+---
+
+### 3. Ignoring Image Layers
+
+Every Dockerfile instruction typically creates a new image layer.
+
+Poor layer management results in:
+
+- Larger images
+- Slower builds
+- Reduced cache efficiency
+- Longer downloads
+
+Optimize Dockerfiles to reuse layers effectively.
+
+---
+
+### 4. Treating the Writable Layer as Permanent Storage
+
+The writable layer exists only for the lifetime of the container.
+
+```
+Container Removed
+
+        │
+
+Writable Layer Deleted
+
+        │
+
+Application Data Lost
+```
+
+Use:
+
+- Docker Volumes
+- Bind Mounts
+- Network Storage
+- Cloud Storage
+
+for persistent information.
+
+---
+
+### 5. Using Public Registries Without Verification
+
+Downloading arbitrary images from public registries can introduce:
+
+- Malware
+- Backdoors
+- Vulnerable software
+- Outdated packages
+
+Always:
+
+- Prefer official images.
+- Verify publishers.
+- Scan images before deployment.
+
+---
+
+### 6. Ignoring the Container Runtime
+
+Many engineers interact only with the Docker CLI and overlook the runtime responsible for executing containers.
+
+Understanding runtimes such as:
+
+- containerd
+- CRI-O
+- runc
+
+is especially important when working with Kubernetes.
+
+---
+
+### 7. Misunderstanding Namespaces
+
+Without namespaces, containers would not have isolated:
+
+- Processes
+- Networking
+- Filesystems
+- Hostnames
+- User IDs
+
+Namespaces are fundamental to container isolation and should not be viewed as optional features.
+
+---
+
+### 8. Not Configuring Resource Limits
+
+Failing to configure cgroups may allow one container to consume excessive:
+
+- CPU
+- Memory
+- Disk I/O
+- Network bandwidth
+
+This can degrade performance for other workloads on the same host.
+
+---
+
+### 9. Overlooking Network Configuration
+
+Common networking mistakes include:
+
+- Exposing unnecessary ports
+- Publishing internal services publicly
+- Assuming `localhost` inside a container refers to the host
+- Misconfiguring bridge networks
+- Ignoring DNS-based service discovery
+
+A solid understanding of container networking is essential for reliable deployments.
+
+---
+
+### 10. Running Multiple Unrelated Services in One Container
+
+Example:
+
+```
+Container
+
+├── Nginx
+
+├── PostgreSQL
+
+├── Redis
+
+├── SSH
+
+└── Cron
+```
+
+This approach complicates:
+
+- Scaling
+- Security
+- Monitoring
+- Troubleshooting
+- Maintenance
+
+Deploy independent services in separate containers.
+
+---
+
+### 11. Forgetting That Containers Are Ephemeral
+
+Containers are designed to be disposable.
+
+Best practice:
+
+```
+Old Container
+
+↓
+
+Delete
+
+↓
+
+New Container
+
+↓
+
+Application Continues
+```
+
+Avoid repairing running containers manually.
+
+---
+
+### 12. Ignoring Image Updates
+
+Container images age over time.
+
+Older images may contain:
+
+- Security vulnerabilities
+- Unsupported software
+- Outdated dependencies
+
+Rebuild and redeploy images regularly using updated base images.
+
+---
+
+### 13. Misusing Environment Variables
+
+Environment variables are convenient for configuration, but they are **not** suitable for storing sensitive information such as:
+
+- Passwords
+- API keys
+- Tokens
+- Certificates
+
+Use a dedicated secrets management solution for sensitive data.
+
+---
+
+### 14. Believing Components Work Independently
+
+Container components depend on each other.
+
+Example:
+
+```
+Image
+
+↓
+
+Registry
+
+↓
+
+Runtime
+
+↓
+
+Namespaces
+
+↓
+
+cgroups
+
+↓
+
+Container
+
+↓
+
+Application
+```
+
+Understanding these relationships simplifies debugging and system design.
+
+---
+
+### 15. Memorizing Commands Without Understanding Components
+
+Many engineers memorize commands such as:
+
+```bash
+docker run
+
+docker pull
+
+docker exec
+
+docker ps
+```
+
+without understanding:
+
+- Images
+- Registries
+- Layers
+- Runtimes
+- Namespaces
+- cgroups
+- Volumes
+
+Conceptual understanding is far more valuable than memorizing commands alone.
+
+---
+
+# Container Components Checklist
+
+| Component | Status |
+|-----------|:------:|
+| Understand Images | ✓ |
+| Understand Containers | ✓ |
+| Understand Registries | ✓ |
+| Understand Image Layers | ✓ |
+| Understand Container Runtime | ✓ |
+| Understand Volumes | ✓ |
+| Understand Networking | ✓ |
+| Understand Linux Namespaces | ✓ |
+| Understand cgroups | ✓ |
+| Understand Init Process | ✓ |
+| Understand Component Relationships | ✓ |
+| Understand Container Lifecycle | ✓ |
+| Understand Persistent Storage | ✓ |
+| Understand Isolation | ✓ |
+| Understand Resource Management | ✓ |
+
+---
+
+# References
+
+## OCI Standards
+
+- Open Container Initiative (OCI) Image Specification
+- Open Container Initiative (OCI) Runtime Specification
+- Open Container Initiative (OCI) Distribution Specification
+
+---
+
+## Docker Documentation
+
+- Docker Engine
+- Docker CLI
+- Docker Images
+- Docker Volumes
+- Docker Networks
+- Docker Build
+
+---
+
+## Linux Documentation
+
+- Linux Namespaces
+- Linux cgroups
+- OverlayFS
+- Linux Capabilities
+
+---
+
+## Container Runtimes
+
+- containerd
+- CRI-O
+- runc
+- Podman
+
+---
+
+## CNCF Resources
+
+- Kubernetes Documentation
+- Cloud Native Computing Foundation (CNCF)
+- Container Runtime Interface (CRI)
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+- CIS Docker Benchmark
+- CIS Kubernetes Benchmark
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Container Security* — Liz Rice
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Kubernetes in Action* — Marko Lukša
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Kubernetes Official Documentation
+- CNCF Learning Paths
+- Linux Foundation Training
+- NIST Computer Security Resource Center (CSRC)
+
