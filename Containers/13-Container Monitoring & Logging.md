@@ -1334,3 +1334,609 @@ Define retention policies based on:
 
 ---
 
+## Common Mistakes
+
+Container Monitoring and Logging are essential for maintaining application reliability, troubleshooting production issues, and detecting security incidents. However, many organizations either collect insufficient data or collect excessive data without meaningful analysis.
+
+The following are the most common mistakes encountered in production container environments.
+
+---
+
+# 1. Not Monitoring Containers at All
+
+Some teams deploy applications and assume everything is functioning correctly.
+
+```
+Deploy
+
+↓
+
+Production
+
+↓
+
+No Monitoring
+
+↓
+
+Unknown Failure
+
+↓
+
+Customer Reports Issue
+```
+
+Without monitoring:
+
+- Performance issues remain undetected.
+- Resource exhaustion is unnoticed.
+- Security incidents are harder to identify.
+- Failures are discovered only after users are affected.
+
+Monitoring should be enabled before production deployment.
+
+---
+
+# 2. Relying Only on Logs
+
+Many teams depend exclusively on:
+
+```
+docker logs
+```
+
+Logs explain **what happened**.
+
+They do **not** always explain:
+
+- CPU utilization
+- Memory exhaustion
+- Network congestion
+- Resource saturation
+
+Metrics and logs should always be used together.
+
+---
+
+# 3. Ignoring Container Restarts
+
+Repeated restarts indicate an unhealthy application.
+
+Example:
+
+```
+Container
+
+↓
+
+Crash
+
+↓
+
+Restart
+
+↓
+
+Crash
+
+↓
+
+Restart
+```
+
+Ignoring restart counts may hide:
+
+- Memory leaks
+- Application bugs
+- Configuration errors
+- Resource exhaustion
+
+Frequent restarts should always be investigated.
+
+---
+
+# 4. No Alerting
+
+Monitoring without alerting is reactive.
+
+```
+Problem
+
+↓
+
+Dashboard Updated
+
+↓
+
+Nobody Looking
+
+↓
+
+Outage Continues
+```
+
+Alerts should notify operators automatically when predefined thresholds are exceeded.
+
+---
+
+# 5. Alert Fatigue
+
+The opposite problem is generating too many alerts.
+
+Example:
+
+```
+1000 Alerts
+
+↓
+
+Engineers Ignore Them
+
+↓
+
+Real Incident Missed
+```
+
+Alert rules should prioritize meaningful operational events.
+
+---
+
+# 6. Logging Sensitive Information
+
+Never log:
+
+- Passwords
+- API keys
+- Access tokens
+- Session cookies
+- Credit card numbers
+- Personally identifiable information (PII)
+
+Poor example:
+
+```
+Login
+
+↓
+
+Password Logged
+```
+
+Sensitive information should be masked or excluded from logs.
+
+---
+
+# 7. Keeping Logs Only Inside Containers
+
+Incorrect approach:
+
+```
+Container
+
+↓
+
+Logs
+
+↓
+
+Container Deleted
+
+↓
+
+Logs Lost
+```
+
+Logs should be forwarded to centralized storage where they remain available even after containers are removed.
+
+---
+
+# 8. Using Unstructured Logs
+
+Poor example:
+
+```
+Something failed
+```
+
+Better example (structured JSON):
+
+```json
+{
+  "timestamp": "2026-08-03T10:15:30Z",
+  "level": "ERROR",
+  "service": "payment-api",
+  "request_id": "abc123",
+  "message": "Database connection failed"
+}
+```
+
+Structured logs improve searching, filtering, and automated analysis.
+
+---
+
+# 9. Monitoring Only Infrastructure
+
+Monitoring:
+
+- CPU
+- Memory
+- Disk
+
+is not enough.
+
+Applications should also expose business and operational metrics such as:
+
+- Request rate
+- Response time
+- Error rate
+- Queue length
+- Active users
+
+Infrastructure metrics alone cannot explain application behavior.
+
+---
+
+# 10. Ignoring Golden Signals
+
+Organizations often collect hundreds of metrics while overlooking the four most important:
+
+```
+Latency
+
+Traffic
+
+Errors
+
+Saturation
+```
+
+Monitoring these consistently provides a strong operational baseline.
+
+---
+
+# 11. Short Log Retention
+
+Example:
+
+```
+Security Incident
+
+↓
+
+Occurred 30 Days Ago
+
+↓
+
+Logs Deleted
+
+↓
+
+Investigation Impossible
+```
+
+Log retention policies should align with:
+
+- Business requirements
+- Compliance obligations
+- Incident response needs
+
+---
+
+# 12. No Correlation IDs
+
+Microservices commonly involve multiple services.
+
+```
+Frontend
+
+↓
+
+API
+
+↓
+
+Authentication
+
+↓
+
+Database
+```
+
+Without a shared request identifier, tracing a single transaction becomes extremely difficult.
+
+Correlation IDs simplify troubleshooting across distributed systems.
+
+---
+
+# 13. Ignoring Failed Health Checks
+
+Repeated health check failures often indicate:
+
+- Application instability
+- Database connectivity issues
+- Dependency failures
+- Resource shortages
+
+Health check failures should trigger investigation before they become outages.
+
+---
+
+# 14. Monitoring Without Capacity Planning
+
+Monitoring should support long-term planning.
+
+Examples:
+
+```
+CPU Usage
+
+↓
+
+Monthly Growth
+
+↓
+
+Infrastructure Planning
+```
+
+Historical metrics help predict:
+
+- Resource requirements
+- Scaling needs
+- Future infrastructure costs
+
+---
+
+# 15. Assuming Monitoring Equals Security
+
+Monitoring detects operational issues.
+
+Security monitoring focuses on:
+
+- Unauthorized access
+- Suspicious processes
+- Privilege escalation
+- Malware activity
+- Policy violations
+
+Operational monitoring and security monitoring complement each other but serve different objectives.
+
+---
+
+# Container Monitoring & Logging Quick Revision
+
+## Monitoring Workflow
+
+```
+Container
+
+↓
+
+Metrics
+
+↓
+
+Collector
+
+↓
+
+Database
+
+↓
+
+Dashboard
+
+↓
+
+Alerts
+```
+
+---
+
+## Logging Workflow
+
+```
+Application
+
+↓
+
+stdout / stderr
+
+↓
+
+Docker
+
+↓
+
+Log Collector
+
+↓
+
+Central Storage
+
+↓
+
+Search
+```
+
+---
+
+## Three Pillars of Observability
+
+```
+Metrics
+
+↓
+
+Logs
+
+↓
+
+Traces
+```
+
+These three pillars work together to improve visibility into distributed systems.
+
+---
+
+## Golden Signals
+
+```
+Latency
+
+↓
+
+Traffic
+
+↓
+
+Errors
+
+↓
+
+Saturation
+```
+
+Monitor these continuously for user-facing services.
+
+---
+
+## RED Method
+
+```
+Rate
+
+↓
+
+Errors
+
+↓
+
+Duration
+```
+
+Designed primarily for monitoring APIs and microservices.
+
+---
+
+## USE Method
+
+```
+Utilization
+
+↓
+
+Saturation
+
+↓
+
+Errors
+```
+
+Designed primarily for monitoring infrastructure resources.
+
+---
+
+## Common Monitoring Commands
+
+```bash
+docker ps
+
+docker logs
+
+docker logs -f
+
+docker stats
+
+docker inspect
+
+docker top
+
+docker events
+```
+
+These commands provide basic operational visibility into Docker containers.
+
+---
+
+# Container Monitoring & Logging Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Monitoring | ✓ |
+| Understand Logging | ✓ |
+| Understand Observability | ✓ |
+| Understand Metrics | ✓ |
+| Understand Logs | ✓ |
+| Understand Dashboards | ✓ |
+| Understand Alerting | ✓ |
+| Understand Golden Signals | ✓ |
+| Understand RED Method | ✓ |
+| Understand USE Method | ✓ |
+| Understand Structured Logging | ✓ |
+| Understand Correlation IDs | ✓ |
+| Understand Centralized Logging | ✓ |
+| Understand Best Practices | ✓ |
+| Understand Common Mistakes | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Logging Documentation
+- Docker CLI Documentation
+- Docker Engine Documentation
+- Docker Logging Drivers Documentation
+
+---
+
+## CNCF Resources
+
+- Prometheus Documentation
+- Grafana Documentation
+- OpenTelemetry Documentation
+- Fluent Bit Documentation
+- Fluentd Documentation
+- Kubernetes Monitoring Documentation
+
+---
+
+## Observability Resources
+
+- Google Site Reliability Engineering (SRE) Book
+- OpenTelemetry Specification
+- Prometheus Best Practices
+- Grafana Learning Resources
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- CIS Docker Benchmark
+- MITRE ATT&CK for Containers
+
+---
+
+## Books
+
+- *Site Reliability Engineering* — Google
+- *The Site Reliability Workbook* — Google
+- *Observability Engineering* — Charity Majors, Liz Fong-Jones & George Miranda
+- *Container Security* — Liz Rice
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Prometheus Documentation
+- Grafana Documentation
+- OpenTelemetry Documentation
+- CNCF Learning Paths
+- Linux Foundation Training
+- NIST Computer Security Resource Center (CSRC)
+
