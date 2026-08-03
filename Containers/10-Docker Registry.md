@@ -1106,3 +1106,586 @@ This ensures consistent, repeatable software delivery.
 
 ---
 
+## Common Mistakes
+
+Container registries are a critical component of the software supply chain. Improper registry usage can lead to inconsistent deployments, security vulnerabilities, image sprawl, and unauthorized access. The following are the most common mistakes made when working with Docker Registry and Docker Hub.
+
+---
+
+# 1. Using `latest` for Production
+
+One of the most common mistakes is deploying:
+
+```bash
+docker pull nginx:latest
+```
+
+Problem:
+
+```
+latest
+
+↓
+
+Changes Over Time
+
+↓
+
+Different Image
+
+↓
+
+Unexpected Deployment
+```
+
+Instead:
+
+```bash
+docker pull nginx:1.27
+```
+
+Always deploy using explicit version tags or image digests.
+
+---
+
+# 2. Not Tagging Images Properly
+
+Poor practice:
+
+```
+myapp
+
+↓
+
+latest
+```
+
+Better:
+
+```
+myapp:1.0
+
+↓
+
+myapp:1.1
+
+↓
+
+myapp:2.0
+```
+
+Versioned tags make deployments:
+
+- Reproducible
+- Traceable
+- Easier to roll back
+
+---
+
+# 3. Pushing Sensitive Images to Public Registries
+
+Example:
+
+```
+Internal Banking App
+
+↓
+
+Public Docker Hub
+```
+
+Potential consequences:
+
+- Source exposure
+- Configuration leaks
+- Proprietary software disclosure
+
+Private applications should be stored in private registries.
+
+---
+
+# 4. Hardcoding Credentials
+
+Never store:
+
+```bash
+docker login
+
+Username
+
+Password
+```
+
+inside:
+
+- Shell scripts
+- CI/CD configuration files
+- Source code repositories
+
+Instead use:
+
+- Personal Access Tokens
+- Cloud IAM
+- Secret management solutions
+- CI/CD secret stores
+
+---
+
+# 5. Ignoring Image Scanning
+
+Images may contain:
+
+- Vulnerable packages
+- Malware
+- Outdated libraries
+- Misconfigurations
+
+Always scan images before publishing them to a registry.
+
+Typical scanning occurs:
+
+```
+Build
+
+↓
+
+Security Scan
+
+↓
+
+Push Registry
+```
+
+---
+
+# 6. Building Images Directly on Production Servers
+
+Poor workflow:
+
+```
+Production Server
+
+↓
+
+docker build
+
+↓
+
+Run Application
+```
+
+Recommended workflow:
+
+```
+Developer
+
+↓
+
+CI/CD
+
+↓
+
+Registry
+
+↓
+
+Production
+
+↓
+
+docker pull
+```
+
+Production systems should pull tested images rather than building them.
+
+---
+
+# 7. Forgetting to Remove Old Tags
+
+Repositories often accumulate:
+
+```
+v1
+
+v2
+
+v3
+
+v4
+
+v5
+
+v6
+
+v7
+```
+
+Many versions may no longer be required.
+
+Old images:
+
+- Consume storage
+- Increase management complexity
+- Slow repository browsing
+
+Implement image retention policies.
+
+---
+
+# 8. Assuming Tags Are Immutable
+
+Some registries allow a tag to be overwritten.
+
+Example:
+
+```
+v1
+
+↓
+
+Different Image
+
+↓
+
+Still Tagged v1
+```
+
+This creates deployment inconsistency.
+
+For critical environments:
+
+- Protect important tags
+- Prefer immutable tags where supported
+- Verify image digests
+
+---
+
+# 9. Not Verifying Image Source
+
+Anyone can publish container images to many public registries.
+
+Before pulling:
+
+Verify:
+
+- Official publisher
+- Trusted organization
+- Image popularity
+- Maintenance status
+- Security practices
+
+Prefer official or verified images whenever possible.
+
+---
+
+# 10. Using Registry as Backup Storage
+
+Registries store **images**, not application data.
+
+Incorrect assumption:
+
+```
+Registry
+
+↓
+
+Database Backup
+```
+
+Persistent application data should be backed up separately using dedicated backup solutions.
+
+---
+
+# 11. Ignoring Access Control
+
+Not every user should be allowed to:
+
+- Push images
+- Delete repositories
+- Modify tags
+- Manage permissions
+
+Apply Role-Based Access Control (RBAC) where supported.
+
+---
+
+# 12. Forgetting Image Signing
+
+Images can be modified or replaced if the software supply chain is compromised.
+
+Image signing helps verify:
+
+- Publisher identity
+- Image integrity
+- Authenticity
+
+Consider adopting image signing technologies supported by your environment.
+
+---
+
+# 13. Not Using Digests for Critical Deployments
+
+Tags are convenient but may be changed.
+
+A digest uniquely identifies image content.
+
+Example:
+
+```
+myapp@sha256:xxxxxxxx
+```
+
+Using digests ensures the exact intended image is deployed.
+
+---
+
+# 14. Skipping CI/CD Automation
+
+Manual process:
+
+```
+Build
+
+↓
+
+Push
+
+↓
+
+Deploy
+```
+
+Recommended:
+
+```
+Git Push
+
+↓
+
+Build
+
+↓
+
+Test
+
+↓
+
+Scan
+
+↓
+
+Registry
+
+↓
+
+Deploy
+```
+
+Automation improves consistency, repeatability, and security.
+
+---
+
+# 15. Forgetting Registry Cleanup
+
+Unused repositories and obsolete images accumulate over time.
+
+Consequences:
+
+- Increased storage costs
+- Slower management
+- Repository clutter
+
+Regularly remove:
+
+- Unused repositories
+- Obsolete image tags
+- Expired builds
+- Test images
+
+---
+
+# Docker Registry Quick Revision
+
+## Image Lifecycle
+
+```
+Dockerfile
+
+↓
+
+docker build
+
+↓
+
+Image
+
+↓
+
+docker tag
+
+↓
+
+docker push
+
+↓
+
+Registry
+
+↓
+
+docker pull
+
+↓
+
+Container
+```
+
+---
+
+## Registry Components
+
+```
+Registry
+
+↓
+
+Repositories
+
+↓
+
+Tags
+
+↓
+
+Image Layers
+```
+
+---
+
+## Common Commands
+
+```bash
+docker login
+
+docker logout
+
+docker pull
+
+docker push
+
+docker tag
+
+docker search
+
+docker images
+
+docker inspect
+```
+
+---
+
+## Image Identification
+
+```
+Repository
+
+↓
+
+Tag
+
+↓
+
+Digest
+```
+
+Example:
+
+```
+myapp:1.0
+
+↓
+
+sha256:xxxxxxxx
+```
+
+---
+
+# Docker Registry Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Docker Registry | ✓ |
+| Understand Docker Hub | ✓ |
+| Understand Repositories | ✓ |
+| Understand Image Tags | ✓ |
+| Understand Image Digests | ✓ |
+| Understand Registry Workflow | ✓ |
+| Understand Authentication | ✓ |
+| Understand Public vs Private Registries | ✓ |
+| Know Essential Registry Commands | ✓ |
+| Understand CI/CD Integration | ✓ |
+| Understand Image Distribution | ✓ |
+| Understand Registry Security | ✓ |
+| Understand Image Versioning | ✓ |
+| Understand Registry Best Practices | ✓ |
+| Understand Common Registry Mistakes | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Hub Documentation
+- Docker Registry Documentation
+- Docker CLI Documentation
+- Docker Image Specification
+- Docker Trusted Content Documentation
+
+---
+
+## OCI Standards
+
+- OCI Image Specification
+- OCI Distribution Specification
+- OCI Runtime Specification
+
+---
+
+## CNCF Resources
+
+- Harbor Documentation
+- Kubernetes Image Management
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- CIS Docker Benchmark
+- Sigstore Documentation
+- Notary Documentation
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Container Security* — Liz Rice
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Docker Labs
+- Play with Docker
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+
+---
+
