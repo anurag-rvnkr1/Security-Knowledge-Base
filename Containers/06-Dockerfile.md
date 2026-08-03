@@ -1196,3 +1196,614 @@ A well-structured Dockerfile is easier to review, maintain, and troubleshoot.
 
 ---
 
+## Common Mistakes
+
+A Dockerfile defines how container images are built. Poor Dockerfile design can lead to large images, security vulnerabilities, slower builds, and difficult maintenance. The following are the most common mistakes encountered in real-world Dockerfiles.
+
+---
+
+# 1. Using `latest` as the Base Image
+
+Many beginners write:
+
+```dockerfile
+FROM python:latest
+```
+
+The `latest` tag changes over time, which can make builds inconsistent.
+
+**Recommended**
+
+```dockerfile
+FROM python:3.12
+```
+
+Benefits:
+
+- Reproducible builds
+- Easier rollbacks
+- Predictable dependency versions
+
+---
+
+# 2. Choosing Large Base Images
+
+Example:
+
+```dockerfile
+FROM ubuntu
+```
+
+when only Python is required.
+
+A large base image increases:
+
+- Build time
+- Download size
+- Storage usage
+- Attack surface
+
+Prefer minimal images when appropriate:
+
+- Alpine
+- Debian Slim
+- Distroless
+- Official slim language images
+
+---
+
+# 3. Installing Unnecessary Packages
+
+Poor example:
+
+```dockerfile
+RUN apt update
+
+RUN apt install -y
+
+curl
+
+vim
+
+nano
+
+gcc
+
+make
+
+git
+
+wget
+```
+
+Only install packages required by the application.
+
+Extra packages increase:
+
+- Image size
+- Vulnerability count
+- Maintenance effort
+
+---
+
+# 4. Creating Too Many Layers
+
+Example:
+
+```dockerfile
+RUN apt update
+
+RUN apt install -y python3
+
+RUN apt install -y curl
+
+RUN apt install -y git
+```
+
+Better:
+
+```dockerfile
+RUN apt update && \
+    apt install -y \
+    python3 \
+    curl \
+    git
+```
+
+This reduces unnecessary image layers and simplifies the build.
+
+---
+
+# 5. Copying the Entire Project Too Early
+
+Poor Dockerfile:
+
+```dockerfile
+COPY . .
+
+RUN pip install -r requirements.txt
+```
+
+Whenever any file changes:
+
+```
+COPY Layer
+
+↓
+
+Dependency Layer
+
+↓
+
+Everything Rebuilds
+```
+
+Better approach:
+
+```dockerfile
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY . .
+```
+
+Dependencies are cached unless the requirements file changes.
+
+---
+
+# 6. Forgetting `.dockerignore`
+
+Without a `.dockerignore` file, Docker may include:
+
+- `.git`
+- Logs
+- Temporary files
+- Build artifacts
+- IDE settings
+- Local caches
+
+This results in:
+
+- Larger build context
+- Slower builds
+- Bigger images
+- Potential exposure of sensitive files
+
+Always exclude unnecessary files from the build context.
+
+---
+
+# 7. Running Applications as Root
+
+Example:
+
+```dockerfile
+FROM ubuntu
+
+CMD ["python", "app.py"]
+```
+
+If no `USER` is specified, many images run as `root` by default.
+
+Recommended:
+
+```dockerfile
+RUN useradd appuser
+
+USER appuser
+```
+
+Running as a non-root user improves container security.
+
+---
+
+# 8. Hardcoding Secrets
+
+Never include:
+
+```dockerfile
+ENV PASSWORD=secret123
+```
+
+or
+
+```dockerfile
+ENV API_KEY=abcd1234
+```
+
+Secrets should be managed using:
+
+- Docker Secrets
+- Kubernetes Secrets
+- Cloud Secret Managers
+- Environment variables supplied securely at runtime
+
+Never bake secrets into images.
+
+---
+
+# 9. Misusing `ADD`
+
+Many Dockerfiles use:
+
+```dockerfile
+ADD . .
+```
+
+when:
+
+```dockerfile
+COPY . .
+```
+
+is sufficient.
+
+Use `ADD` only when you specifically need:
+
+- Automatic extraction of local tar archives
+- (Rarely) remote URL retrieval
+
+Otherwise, prefer `COPY` for clarity and predictability.
+
+---
+
+# 10. Forgetting to Clean Package Caches
+
+Example:
+
+```dockerfile
+RUN apt update && apt install -y curl
+```
+
+Package manager caches remain inside the image unless removed.
+
+Example cleanup:
+
+```dockerfile
+RUN apt update && \
+    apt install -y curl && \
+    rm -rf /var/lib/apt/lists/*
+```
+
+Removing package lists reduces final image size.
+
+---
+
+# 11. Not Versioning Images
+
+Avoid:
+
+```dockerfile
+FROM node
+```
+
+Prefer:
+
+```dockerfile
+FROM node:22
+```
+
+Explicit versions improve consistency across environments.
+
+---
+
+# 12. Ignoring Multi-Stage Builds
+
+Single-stage build:
+
+```
+Source Code
+
+↓
+
+Compiler
+
+↓
+
+Application
+
+↓
+
+Production Image
+```
+
+Compiler tools remain inside the production image.
+
+Better approach:
+
+```
+Stage 1
+
+Compile
+
+↓
+
+Stage 2
+
+Copy Binary
+
+↓
+
+Production Image
+```
+
+Benefits:
+
+- Smaller images
+- Reduced attack surface
+- Faster deployments
+
+(Multi-stage builds will be covered in detail later in this chapter.)
+
+---
+
+# 13. Writing Long, Unorganized Dockerfiles
+
+Poor organization makes Dockerfiles:
+
+- Hard to understand
+- Difficult to maintain
+- Error-prone
+
+Organize instructions logically:
+
+```
+FROM
+
+↓
+
+LABEL
+
+↓
+
+WORKDIR
+
+↓
+
+COPY Dependencies
+
+↓
+
+RUN Install
+
+↓
+
+COPY Source
+
+↓
+
+ENV
+
+↓
+
+EXPOSE
+
+↓
+
+USER
+
+↓
+
+CMD
+```
+
+A consistent structure improves readability.
+
+---
+
+# 14. Assuming `EXPOSE` Opens a Port
+
+Many beginners think:
+
+```dockerfile
+EXPOSE 80
+```
+
+makes the application available externally.
+
+In reality:
+
+`EXPOSE` only documents the intended listening port.
+
+To publish the port:
+
+```bash
+docker run -p 8080:80 image_name
+```
+
+Port publishing occurs when the container is started, not during image creation.
+
+---
+
+# 15. Forgetting That Dockerfiles Are Code
+
+Dockerfiles should be treated like application source code.
+
+They should:
+
+- Be stored in Git
+- Undergo code review
+- Be tested
+- Be version controlled
+- Follow organizational standards
+
+A Dockerfile is infrastructure code and deserves the same engineering discipline as application code.
+
+---
+
+# Dockerfile Quick Revision
+
+## Core Instructions
+
+```dockerfile
+FROM
+
+LABEL
+
+WORKDIR
+
+COPY
+
+ADD
+
+RUN
+
+ENV
+
+EXPOSE
+
+USER
+
+CMD
+
+ENTRYPOINT
+```
+
+---
+
+## Build Workflow
+
+```
+Dockerfile
+
+↓
+
+Docker Build
+
+↓
+
+Image Layers
+
+↓
+
+Container Image
+
+↓
+
+Run Container
+```
+
+---
+
+## Recommended Build Order
+
+```
+FROM
+
+↓
+
+LABEL
+
+↓
+
+WORKDIR
+
+↓
+
+COPY Dependencies
+
+↓
+
+RUN Install Packages
+
+↓
+
+COPY Source Code
+
+↓
+
+ENV
+
+↓
+
+EXPOSE
+
+↓
+
+USER
+
+↓
+
+CMD
+```
+
+---
+
+# Dockerfile Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Dockerfile Purpose | ✓ |
+| Understand Build Workflow | ✓ |
+| Understand Image Layers | ✓ |
+| Understand Core Instructions | ✓ |
+| Understand Layer Caching | ✓ |
+| Understand Base Images | ✓ |
+| Understand COPY vs ADD | ✓ |
+| Understand CMD vs ENTRYPOINT | ✓ |
+| Understand Environment Variables | ✓ |
+| Understand EXPOSE | ✓ |
+| Understand USER | ✓ |
+| Understand Image Versioning | ✓ |
+| Understand Build Optimization | ✓ |
+| Understand Dockerfile Security | ✓ |
+| Understand Dockerfile Best Practices | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Dockerfile Reference
+- Docker Build Documentation
+- Docker BuildKit Documentation
+- Docker Best Practices
+- Docker CLI Documentation
+
+---
+
+## OCI Standards
+
+- Open Container Initiative (OCI) Image Specification
+- Open Container Initiative (OCI) Runtime Specification
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- CIS Docker Benchmark
+- OWASP Container Security Verification Standard
+
+---
+
+## Linux Documentation
+
+- OverlayFS Documentation
+- Linux Namespaces
+- Linux cgroups
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Container Security* — Liz Rice
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Docker Labs
+- Play with Docker
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+
+
+
