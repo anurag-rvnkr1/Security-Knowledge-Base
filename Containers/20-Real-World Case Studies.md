@@ -688,3 +688,709 @@ These practices lead to resilient, scalable, and maintainable container platform
 
 ---
 
+# Chapter 20 – Container Troubleshooting Playbook
+
+# Overview
+
+Even well-designed containerized applications experience issues in production. Effective troubleshooting requires a **structured, repeatable methodology** rather than guessing or making random configuration changes.
+
+This playbook provides a systematic approach to diagnosing and resolving common Docker and container-related problems encountered in development and production environments.
+
+It is intended for:
+
+- DevOps Engineers
+- DevSecOps Engineers
+- Platform Engineers
+- Cloud Engineers
+- Site Reliability Engineers (SRE)
+- Security Engineers
+- Software Engineers
+
+---
+
+# Troubleshooting Philosophy
+
+Avoid this approach:
+
+```
+Problem
+
+↓
+
+Guess
+
+↓
+
+Random Changes
+
+↓
+
+More Problems
+```
+
+Instead, follow a structured workflow:
+
+```
+Observe
+
+↓
+
+Collect Evidence
+
+↓
+
+Analyze
+
+↓
+
+Identify Root Cause
+
+↓
+
+Implement Fix
+
+↓
+
+Validate
+
+↓
+
+Document
+```
+
+The objective is to solve the **root cause**, not just the visible symptoms.
+
+---
+
+# Universal Troubleshooting Workflow
+
+```
+Problem Reported
+
+↓
+
+Verify Problem
+
+↓
+
+Collect Logs
+
+↓
+
+Inspect Container
+
+↓
+
+Review Configuration
+
+↓
+
+Analyze Metrics
+
+↓
+
+Identify Root Cause
+
+↓
+
+Apply Fix
+
+↓
+
+Verify Resolution
+
+↓
+
+Document Findings
+```
+
+---
+
+# Scenario 1 – Container Will Not Start
+
+## Symptoms
+
+- Container exits immediately.
+- Restart loop.
+- Application unavailable.
+
+---
+
+## Investigation
+
+Check all containers:
+
+```bash
+docker ps -a
+```
+
+View logs:
+
+```bash
+docker logs container_name
+```
+
+Inspect configuration:
+
+```bash
+docker inspect container_name
+```
+
+---
+
+## Common Causes
+
+- Incorrect command
+- Missing dependencies
+- Missing environment variables
+- Configuration errors
+- Permission problems
+- Application crash
+
+---
+
+## Resolution
+
+Fix the root cause.
+
+Rebuild the image if necessary.
+
+Deploy a new container.
+
+---
+
+# Scenario 2 – Container Continuously Restarts
+
+## Investigation
+
+```
+Restart
+
+↓
+
+Logs
+
+↓
+
+Exit Code
+
+↓
+
+Health Check
+
+↓
+
+Resources
+
+↓
+
+Application
+```
+
+Useful commands:
+
+```bash
+docker logs
+
+docker inspect
+
+docker events
+
+docker stats
+```
+
+---
+
+## Possible Causes
+
+- Memory exhaustion
+- Failed health checks
+- Application exceptions
+- Database unavailable
+- Invalid configuration
+
+---
+
+# Scenario 3 – Application Is Slow
+
+## Investigation
+
+Check:
+
+```bash
+docker stats
+```
+
+Review:
+
+- CPU
+- Memory
+- Network
+- Storage
+- Application logs
+
+---
+
+## Possible Causes
+
+- Resource limits
+- High traffic
+- Slow database
+- Memory leak
+- Inefficient queries
+
+---
+
+# Scenario 4 – Database Connection Failure
+
+## Investigation Workflow
+
+```
+Application
+
+↓
+
+Database Running?
+
+↓
+
+Network
+
+↓
+
+DNS
+
+↓
+
+Credentials
+
+↓
+
+Firewall
+```
+
+Useful commands:
+
+```bash
+docker ps
+
+docker network ls
+
+docker network inspect
+```
+
+---
+
+## Resolution
+
+Verify:
+
+- Database status
+- Container networking
+- Environment variables
+- Connection string
+
+---
+
+# Scenario 5 – Container Cannot Access Internet
+
+## Check
+
+- Network configuration
+- DNS
+- Firewall
+- Proxy configuration
+- Host connectivity
+
+Inspect:
+
+```bash
+docker inspect container_name
+```
+
+---
+
+# Scenario 6 – Port Already in Use
+
+Error:
+
+```
+Bind for 0.0.0.0:8080 failed
+```
+
+---
+
+## Investigation
+
+Determine which service is using the port.
+
+On Linux:
+
+```bash
+ss -tulnp
+```
+
+or
+
+```bash
+netstat -tulnp
+```
+
+---
+
+## Resolution
+
+- Stop the conflicting service.
+- Choose another host port.
+- Reconfigure the application.
+
+---
+
+# Scenario 7 – Volume Data Missing
+
+## Investigation
+
+Inspect:
+
+```bash
+docker volume ls
+
+docker volume inspect volume_name
+```
+
+Verify:
+
+- Correct volume
+- Mount point
+- Container configuration
+
+---
+
+## Common Causes
+
+- Wrong volume
+- Container recreation
+- Incorrect mount
+- Data stored in writable layer
+
+---
+
+# Scenario 8 – High Disk Usage
+
+Check:
+
+```bash
+docker system df
+```
+
+---
+
+Remove unused resources:
+
+```bash
+docker system prune
+```
+
+Review before deleting resources in production.
+
+---
+
+# Scenario 9 – Container Networking Problems
+
+Verify:
+
+```bash
+docker network ls
+
+docker network inspect network_name
+```
+
+---
+
+Common Issues
+
+- Wrong network
+- DNS problems
+- Firewall rules
+- Incorrect hostname
+
+---
+
+# Scenario 10 – Image Build Failure
+
+Review:
+
+```
+Dockerfile
+
+↓
+
+Build Logs
+
+↓
+
+Dependencies
+
+↓
+
+COPY Paths
+```
+
+Build with detailed output:
+
+```bash
+docker build .
+```
+
+Read the reported errors carefully to identify the failing instruction.
+
+---
+
+# Common Docker Commands
+
+## Containers
+
+```bash
+docker ps
+
+docker ps -a
+
+docker stop
+
+docker start
+
+docker restart
+
+docker rm
+```
+
+---
+
+## Images
+
+```bash
+docker images
+
+docker build
+
+docker pull
+
+docker push
+
+docker rmi
+```
+
+---
+
+## Logs
+
+```bash
+docker logs
+
+docker logs -f
+```
+
+---
+
+## Monitoring
+
+```bash
+docker stats
+
+docker top
+
+docker events
+```
+
+---
+
+## Inspection
+
+```bash
+docker inspect
+```
+
+---
+
+## Networks
+
+```bash
+docker network ls
+
+docker network inspect
+```
+
+---
+
+## Volumes
+
+```bash
+docker volume ls
+
+docker volume inspect
+```
+
+---
+
+## Cleanup
+
+```bash
+docker system df
+
+docker system prune
+```
+
+---
+
+# Root Cause Analysis Checklist
+
+When troubleshooting, ask:
+
+- What changed recently?
+- When did the issue begin?
+- Is the issue reproducible?
+- Which services are affected?
+- Are logs available?
+- Are metrics available?
+- Were recent deployments made?
+- Were configuration changes introduced?
+
+Avoid assuming the first observed symptom is the root cause.
+
+---
+
+# Troubleshooting Decision Tree
+
+```
+Application Fails
+
+↓
+
+Container Running?
+
+↓
+
+No
+
+↓
+
+Check Logs
+
+↓
+
+Check Configuration
+
+↓
+
+Restart?
+
+↓
+
+Investigate Exit Code
+
+↓
+
+Fix
+
+↓
+
+Redeploy
+
+↓
+
+Validate
+```
+
+If the container is running:
+
+```
+Running
+
+↓
+
+Health Check
+
+↓
+
+Logs
+
+↓
+
+Resources
+
+↓
+
+Networking
+
+↓
+
+Dependencies
+
+↓
+
+Root Cause
+```
+
+---
+
+# Best Practices
+
+- Reproduce the issue in a safe environment when possible.
+- Gather evidence before making changes.
+- Review logs and metrics together.
+- Investigate recent deployments.
+- Make one change at a time.
+- Validate every fix.
+- Document findings and preventive actions.
+
+---
+
+# Troubleshooting Checklist
+
+| Item | Verify |
+|------|--------|
+| Container Running | ✓ |
+| Logs Reviewed | ✓ |
+| Image Valid | ✓ |
+| Environment Variables | ✓ |
+| Network Connectivity | ✓ |
+| Storage Mounted | ✓ |
+| Resource Limits | ✓ |
+| Health Checks | ✓ |
+| Recent Changes | ✓ |
+| Monitoring Data | ✓ |
+
+---
+
+# Key Takeaways
+
+Successful troubleshooting follows this pattern:
+
+```
+Observe
+
+↓
+
+Measure
+
+↓
+
+Analyze
+
+↓
+
+Fix
+
+↓
+
+Validate
+
+↓
+
+Document
+```
+
+A structured process reduces downtime, avoids unnecessary changes, and improves long-term operational reliability.
+
+---
+
