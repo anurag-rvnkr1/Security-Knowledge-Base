@@ -729,18 +729,618 @@ Docker commands can be integrated into:
 
 ---
 
-## Next Section
 
-How It Works
+## How It Works
 
-Practical Examples
+Docker commands are executed through the Docker Command-Line Interface (CLI). Every command entered by the user is sent to the Docker Engine API, which communicates with the Docker Daemon (`dockerd`). The daemon performs the requested operation—such as building an image, creating a container, managing a network, or removing unused resources.
 
-Hands-on Exercises
-
-Best Practices
-
-Common Mistakes
-
-References
+Understanding this flow helps explain why Docker commands behave the way they do and how Docker manages containerized applications behind the scenes.
 
 ---
+
+# Docker Command Execution Flow
+
+```
+User
+
+  │
+
+  ▼
+
+Docker CLI
+
+  │
+
+  ▼
+
+Docker Engine API
+
+  │
+
+  ▼
+
+Docker Daemon (dockerd)
+
+  │
+
+  ├──────────────┬───────────────┬─────────────┐
+
+  ▼              ▼               ▼             ▼
+
+Images      Containers      Networks      Volumes
+
+  │
+
+  ▼
+
+Linux Kernel
+
+  │
+
+  ▼
+
+Application Running
+```
+
+Every Docker command ultimately results in an operation performed by the Docker Daemon.
+
+---
+
+## Step 1 – User Executes a Command
+
+Example:
+
+```bash
+docker run nginx
+```
+
+The Docker CLI parses the command and sends it to the Docker Engine API.
+
+The CLI itself does **not** create containers—it only communicates with the daemon.
+
+---
+
+## Step 2 – Docker Daemon Receives the Request
+
+The Docker Daemon validates the command.
+
+Example workflow:
+
+```
+docker run nginx
+
+        │
+
+Check Image Exists?
+
+        │
+
+   ┌────┴────┐
+
+   │         │
+
+ Yes        No
+
+   │         │
+
+   ▼         ▼
+
+Create    Pull Image
+
+Container
+
+        │
+
+        ▼
+
+Start Container
+```
+
+The daemon performs all image and container operations.
+
+---
+
+## Step 3 – Image Retrieval
+
+If the image is unavailable locally:
+
+```
+Docker Hub
+
+      │
+
+Download Image
+
+      │
+
+Store Locally
+
+      │
+
+Run Container
+```
+
+Docker downloads only missing image layers.
+
+Previously downloaded layers are reused.
+
+---
+
+## Step 4 – Container Creation
+
+The Docker Daemon creates:
+
+- Writable layer
+- Namespaces
+- cgroups
+- Network configuration
+- Mounted volumes
+- Environment variables
+
+Result:
+
+```
+Image
+
+    │
+
+Container
+
+    │
+
+Running Process
+```
+
+The image itself remains unchanged.
+
+---
+
+## Step 5 – Application Starts
+
+The container runtime launches the application's primary process.
+
+```
+Container
+
+      │
+
+PID 1
+
+      │
+
+Application
+
+      │
+
+Listening for Requests
+```
+
+The container remains active while this primary process is running.
+
+---
+
+## Step 6 – Runtime Monitoring
+
+Docker continuously monitors:
+
+- Process status
+- Resource usage
+- Logs
+- Health status
+- Restart policy
+- Mounted storage
+
+Commands such as:
+
+```bash
+docker ps
+
+docker stats
+
+docker logs
+```
+
+retrieve this information from the Docker Daemon.
+
+---
+
+## Step 7 – Container Stops
+
+Containers stop when:
+
+- The application exits.
+- A user executes:
+
+```bash
+docker stop
+```
+
+- A failure occurs.
+- The host shuts down.
+
+The image remains available for future container creation.
+
+---
+
+# Practical Examples
+
+## Example 1 – Running an Nginx Web Server
+
+Command:
+
+```bash
+docker run -d -p 8080:80 nginx
+```
+
+Workflow:
+
+```
+docker run
+
+      │
+
+Image Available?
+
+      │
+
+Download If Needed
+
+      │
+
+Create Container
+
+      │
+
+Map Port 8080 → 80
+
+      │
+
+Start Nginx
+
+      │
+
+Web Server Running
+```
+
+The application is now accessible on port **8080** of the host.
+
+---
+
+## Example 2 – Building an Image
+
+Command:
+
+```bash
+docker build -t myapp .
+```
+
+Workflow:
+
+```
+Dockerfile
+
+      │
+
+Read Instructions
+
+      │
+
+Download Base Image
+
+      │
+
+Execute Commands
+
+      │
+
+Create Layers
+
+      │
+
+Generate Image
+```
+
+The final image can be reused multiple times.
+
+---
+
+## Example 3 – Viewing Logs
+
+Command:
+
+```bash
+docker logs web
+```
+
+Workflow:
+
+```
+Container
+
+      │
+
+Application Output
+
+      │
+
+Docker Daemon
+
+      │
+
+CLI
+
+      │
+
+Terminal
+```
+
+Logs are invaluable for troubleshooting and monitoring.
+
+---
+
+## Example 4 – Executing a Command Inside a Container
+
+Command:
+
+```bash
+docker exec -it web bash
+```
+
+Workflow:
+
+```
+Running Container
+
+        │
+
+Open Bash
+
+        │
+
+Interactive Terminal
+```
+
+This is useful for debugging or inspecting the runtime environment.
+
+---
+
+# Hands-on Exercises
+
+## Exercise 1 – Verify Docker Installation
+
+```bash
+docker version
+```
+
+Expected result:
+
+- Docker Client version
+- Docker Server version
+
+---
+
+## Exercise 2 – Download Ubuntu
+
+```bash
+docker pull ubuntu
+```
+
+Verify:
+
+```bash
+docker images
+```
+
+The Ubuntu image should appear in the local image list.
+
+---
+
+## Exercise 3 – Start an Interactive Container
+
+```bash
+docker run -it ubuntu bash
+```
+
+Inside the container:
+
+```bash
+pwd
+
+ls
+
+whoami
+
+hostname
+```
+
+Type:
+
+```bash
+exit
+```
+
+to leave the container.
+
+---
+
+## Exercise 4 – Start Nginx
+
+```bash
+docker run -d --name web -p 8080:80 nginx
+```
+
+Verify:
+
+```bash
+docker ps
+```
+
+Then visit:
+
+```
+http://localhost:8080
+```
+
+You should see the default Nginx welcome page.
+
+---
+
+## Exercise 5 – View Logs
+
+```bash
+docker logs web
+```
+
+Observe the startup output.
+
+---
+
+## Exercise 6 – Enter the Running Container
+
+```bash
+docker exec -it web bash
+```
+
+Try:
+
+```bash
+ls
+
+pwd
+
+cat /etc/os-release
+```
+
+Exit:
+
+```bash
+exit
+```
+
+---
+
+## Exercise 7 – Stop the Container
+
+```bash
+docker stop web
+```
+
+Confirm:
+
+```bash
+docker ps
+```
+
+The container should no longer appear in the running list.
+
+---
+
+## Exercise 8 – Remove the Container
+
+```bash
+docker rm web
+```
+
+Verify:
+
+```bash
+docker ps -a
+```
+
+The container should be removed.
+
+---
+
+# Best Practices
+
+### 1. Understand Commands Before Memorizing Them
+
+Instead of memorizing syntax, understand **what each command does** and **how it affects Docker objects**.
+
+---
+
+### 2. Use Explicit Image Versions
+
+Prefer:
+
+```bash
+docker pull nginx:1.27
+```
+
+over:
+
+```bash
+docker pull nginx:latest
+```
+
+Version pinning provides predictable deployments.
+
+---
+
+### 3. Name Important Containers
+
+Instead of relying on automatically generated names:
+
+```bash
+docker run --name web nginx
+```
+
+Named containers are easier to manage.
+
+---
+
+### 4. Monitor Resource Usage
+
+Regularly check:
+
+```bash
+docker stats
+```
+
+to identify resource bottlenecks.
+
+---
+
+### 5. Review Logs First During Troubleshooting
+
+When a container fails, start with:
+
+```bash
+docker logs <container_name>
+```
+
+Logs often provide the fastest insight into startup failures.
+
+---
+
+### 6. Clean Up Unused Resources
+
+Periodically remove:
+
+- Stopped containers
+- Dangling images
+- Unused networks
+- Unused volumes
+
+to maintain a clean Docker environment.
+
+---
+
+### 7. Learn Command Categories
+
+Rather than memorizing hundreds of commands individually, group them by purpose:
+
+- Information
+- Images
+- Containers
+- Networks
+- Volumes
+- Build
+- Registry
+- Monitoring
+- Cleanup
+
+This makes Docker CLI easier to learn and remember.
+
+---
+
