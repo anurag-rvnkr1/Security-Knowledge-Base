@@ -1230,3 +1230,595 @@ Continuous improvement is a core objective of mature forensic practices.
 
 ---
 
+## Common Mistakes
+
+Container Forensics requires careful planning, disciplined evidence handling, and a deep understanding of container technology. Because containers are ephemeral and highly dynamic, traditional forensic approaches are often insufficient.
+
+The following are the most common mistakes encountered during container forensic investigations.
+
+---
+
+# 1. Deleting the Container Before Collecting Evidence
+
+The most common mistake is:
+
+```
+Security Alert
+
+↓
+
+Delete Container
+
+↓
+
+Evidence Lost
+```
+
+Potentially lost evidence includes:
+
+- Running processes
+- Runtime metadata
+- Temporary files
+- Network connections
+- Memory-resident artifacts
+- Recent logs
+
+Whenever practical, preserve and collect relevant evidence before removing or replacing the container.
+
+---
+
+# 2. Ignoring Volatile Evidence
+
+Volatile evidence disappears quickly.
+
+Examples:
+
+```
+Running Processes
+
+↓
+
+Memory
+
+↓
+
+Network Connections
+
+↓
+
+Temporary Files
+```
+
+Investigators should prioritize volatile data collection early in the response process.
+
+---
+
+# 3. Investigating Only the Container
+
+A container is only one layer of the environment.
+
+Investigations should also include:
+
+```
+Container
+
+↓
+
+Image
+
+↓
+
+Docker Engine
+
+↓
+
+Host
+
+↓
+
+Cloud Platform
+
+↓
+
+Registry
+```
+
+Multi-layer investigations produce more accurate findings.
+
+---
+
+# 4. Forgetting the Host Operating System
+
+Containers share the host kernel.
+
+Potential host evidence includes:
+
+- Authentication logs
+- Kernel logs
+- Docker daemon logs
+- System logs
+- File system metadata
+
+If a container escape or privilege escalation occurred, host evidence becomes especially important.
+
+---
+
+# 5. Modifying the Evidence
+
+Examples:
+
+```
+Install Tools
+
+↓
+
+Delete Files
+
+↓
+
+Restart Container
+
+↓
+
+Overwrite Logs
+```
+
+Every modification may change or destroy evidence.
+
+When feasible, collect evidence before making changes, following organizational forensic procedures.
+
+---
+
+# 6. Not Synchronizing Time
+
+Different systems may report different timestamps.
+
+Example:
+
+```
+Container
+
+10:15
+
+↓
+
+Host
+
+10:13
+
+↓
+
+Cloud
+
+10:16
+```
+
+Consistent time synchronization is essential for accurate timeline reconstruction.
+
+---
+
+# 7. Ignoring Registry Evidence
+
+The registry may reveal:
+
+- Image origin
+- Push history
+- Pull history
+- Tags
+- Digests
+- User activity
+
+Registry metadata often explains how compromised images reached production.
+
+---
+
+# 8. Assuming Logs Tell the Whole Story
+
+Logs may be:
+
+- Incomplete
+- Deleted
+- Altered
+- Misconfigured
+
+Correlate logs with:
+
+- Docker events
+- Monitoring data
+- Cloud audit logs
+- Runtime alerts
+- Registry records
+
+No single evidence source should be considered definitive.
+
+---
+
+# 9. Forgetting the CI/CD Pipeline
+
+The compromise may have occurred during software delivery.
+
+Possible attack path:
+
+```
+Source Code
+
+↓
+
+CI/CD
+
+↓
+
+Container Image
+
+↓
+
+Registry
+
+↓
+
+Production
+```
+
+Investigate:
+
+- Build history
+- Pipeline logs
+- Artifact repositories
+- Deployment records
+
+---
+
+# 10. Ignoring Cloud Audit Logs
+
+Cloud platforms record valuable events.
+
+Examples:
+
+- Identity activity
+- Resource creation
+- Network changes
+- Storage access
+- Registry operations
+
+Cloud audit logs frequently provide evidence unavailable inside the container.
+
+---
+
+# 11. Failing to Preserve Chain of Custody
+
+Without documentation:
+
+```
+Evidence
+
+↓
+
+Unknown Handling
+
+↓
+
+Reduced Trust
+```
+
+Maintain records of:
+
+- Collection time
+- Collector
+- Storage location
+- Transfer history
+- Integrity verification
+
+This is especially important for regulated environments and legal proceedings.
+
+---
+
+# 12. No Timeline Reconstruction
+
+Investigations should reconstruct events in order.
+
+```
+Image Pulled
+
+↓
+
+Container Started
+
+↓
+
+Initial Access
+
+↓
+
+Privilege Escalation
+
+↓
+
+Credential Access
+
+↓
+
+Data Exfiltration
+
+↓
+
+Container Removed
+```
+
+Without a timeline, determining cause and impact becomes much more difficult.
+
+---
+
+# 13. Trusting Compromised Systems Completely
+
+Attackers may:
+
+- Modify logs
+- Remove evidence
+- Hide processes
+- Change timestamps
+- Disable monitoring
+
+Validate findings using multiple independent evidence sources whenever possible.
+
+---
+
+# 14. Focusing Only on Technical Evidence
+
+Effective investigations also consider:
+
+- Change records
+- Deployment approvals
+- User activity
+- Administrative actions
+- Security policies
+- Operational procedures
+
+Human actions and process failures may contribute to an incident.
+
+---
+
+# 15. Closing the Investigation Without Improvements
+
+Incorrect workflow:
+
+```
+Incident Closed
+
+↓
+
+No Improvements
+```
+
+Recommended workflow:
+
+```
+Investigation
+
+↓
+
+Lessons Learned
+
+↓
+
+Improve Controls
+
+↓
+
+Update Playbooks
+
+↓
+
+Training
+
+↓
+
+Future Preparedness
+```
+
+Every investigation should strengthen the organization's security posture.
+
+---
+
+# Container Forensics Quick Revision
+
+## Investigation Workflow
+
+```
+Incident
+
+↓
+
+Preserve Evidence
+
+↓
+
+Collect
+
+↓
+
+Analyze
+
+↓
+
+Correlate
+
+↓
+
+Timeline
+
+↓
+
+Root Cause
+
+↓
+
+Report
+```
+
+---
+
+## Evidence Sources
+
+```
+Application
+
+↓
+
+Container
+
+↓
+
+Image
+
+↓
+
+Docker Engine
+
+↓
+
+Host
+
+↓
+
+Cloud
+
+↓
+
+Registry
+```
+
+A complete investigation typically combines evidence from multiple layers.
+
+---
+
+## Volatile vs Non-Volatile Evidence
+
+| Volatile | Non-Volatile |
+|----------|--------------|
+| Running processes | Container images |
+| Active network connections | Dockerfiles |
+| Runtime metadata | Volumes |
+| Memory (where applicable) | Registry metadata |
+| Temporary files | Audit logs |
+
+Volatile evidence should generally be collected first because it may disappear quickly.
+
+---
+
+## Common Investigation Commands
+
+```bash
+docker ps
+
+docker ps -a
+
+docker inspect
+
+docker logs
+
+docker logs -f
+
+docker top
+
+docker stats
+
+docker events
+
+docker history
+```
+
+These commands provide valuable operational information but should be used within approved forensic and incident response procedures.
+
+---
+
+# Container Forensics Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Digital Forensics | ✓ |
+| Understand Forensic Readiness | ✓ |
+| Understand Evidence Collection | ✓ |
+| Understand Volatile Evidence | ✓ |
+| Understand Non-Volatile Evidence | ✓ |
+| Understand Timeline Analysis | ✓ |
+| Understand Chain of Custody | ✓ |
+| Understand Multi-Layer Investigation | ✓ |
+| Understand Image Analysis | ✓ |
+| Understand Host Analysis | ✓ |
+| Understand Registry Evidence | ✓ |
+| Understand Cloud Evidence | ✓ |
+| Understand Best Practices | ✓ |
+| Understand Common Mistakes | ✓ |
+| Understand Continuous Improvement | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Engine Documentation
+- Docker CLI Documentation
+- Docker Logging Documentation
+- Docker Security Documentation
+- Docker Build Documentation
+
+---
+
+## CNCF Resources
+
+- Kubernetes Forensics Guidance
+- Falco Documentation
+- OpenTelemetry Documentation
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security Standards
+
+- NIST SP 800-61 Rev. 2 — Computer Security Incident Handling Guide *(or the latest revision adopted by your organization)*
+- NIST SP 800-190 — Application Container Security Guide
+- CIS Docker Benchmark
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+
+---
+
+## Threat Intelligence & Frameworks
+
+- MITRE ATT&CK
+- MITRE ATT&CK for Containers
+- National Vulnerability Database (NVD)
+- CVE Program
+- ATT&CK Evaluations (where applicable)
+
+---
+
+## Supply Chain & Integrity
+
+- Sigstore Documentation
+- Notary Documentation
+- SPDX Specification
+- CycloneDX Specification
+- SLSA (Supply-chain Levels for Software Artifacts)
+
+---
+
+## Books
+
+- *Container Security* — Liz Rice
+- *Incident Response & Computer Forensics* — Jason T. Luttgens, Matthew Pepe & Kevin Mandia
+- *Practical Cloud Native Security with Falco* — Loris Degioanni
+- *Digital Forensics and Incident Response* — Gerard Johansen
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+- OWASP Projects
+- SANS DFIR Resources
+
