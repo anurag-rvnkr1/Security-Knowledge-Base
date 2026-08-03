@@ -1388,3 +1388,772 @@ After completing Labs **11–25**, you will have practical experience with:
 
 ---
 
+# Advanced Security Hands-on Labs
+
+These labs simulate enterprise container security practices used in production environments. They focus on vulnerability management, runtime security, incident response, monitoring, secure supply chains, and forensic investigations.
+
+> **Note:** Perform these labs only in a controlled lab environment. Do **not** intentionally introduce vulnerabilities or run security testing against systems you do not own or have explicit authorization to test.
+
+---
+
+# Lab 26 – Vulnerability Scanning Pipeline
+
+## Objective
+
+Integrate container image scanning into the build process.
+
+---
+
+## Architecture
+
+```
+Source Code
+
+↓
+
+Docker Build
+
+↓
+
+Image Scanner
+
+↓
+
+Security Report
+
+↓
+
+Approved Image
+
+↓
+
+Registry
+```
+
+---
+
+## Steps
+
+Build the image:
+
+```bash
+docker build -t secure-app:v1 .
+```
+
+Scan the image:
+
+```bash
+trivy image secure-app:v1
+```
+
+or
+
+```bash
+docker scout quickview secure-app:v1
+```
+
+Review:
+
+- Critical vulnerabilities
+- High vulnerabilities
+- Suggested fixes
+
+---
+
+## Expected Outcome
+
+Only images meeting your organization's security policy proceed to deployment.
+
+---
+
+## Challenge
+
+Compare scan results before and after updating the base image.
+
+---
+
+# Lab 27 – Runtime Monitoring
+
+## Objective
+
+Observe container activity during execution.
+
+---
+
+## Architecture
+
+```
+Application
+
+↓
+
+Container
+
+↓
+
+Runtime Metrics
+
+↓
+
+Monitoring Dashboard
+```
+
+---
+
+## Steps
+
+Start several containers.
+
+Monitor:
+
+```bash
+docker stats
+```
+
+Inspect:
+
+```bash
+docker top container_name
+```
+
+Review:
+
+```bash
+docker events
+```
+
+---
+
+## Expected Outcome
+
+Understand how resource usage changes during application activity.
+
+---
+
+## Challenge
+
+Generate workload and observe CPU and memory trends.
+
+---
+
+# Lab 28 – Log Investigation
+
+## Objective
+
+Analyze logs to identify application problems.
+
+---
+
+## Scenario
+
+Users report intermittent failures.
+
+---
+
+## Investigation
+
+Review logs:
+
+```bash
+docker logs container_name
+```
+
+Follow logs:
+
+```bash
+docker logs -f container_name
+```
+
+Look for:
+
+- Exceptions
+- Startup failures
+- Connection errors
+- Timeout messages
+
+---
+
+## Expected Outcome
+
+Identify the probable root cause using log evidence.
+
+---
+
+## Challenge
+
+Modify the application to generate structured JSON logs and compare them with plain text logs.
+
+---
+
+# Lab 29 – Secure Secret Handling
+
+## Objective
+
+Avoid embedding secrets inside images.
+
+---
+
+## Poor Practice
+
+```dockerfile
+ENV API_KEY=my-secret
+```
+
+---
+
+## Better Practice
+
+Provide configuration at runtime:
+
+```bash
+docker run \
+-e API_KEY=<value> \
+myapp
+```
+
+For production environments, use an approved secret management solution provided by your orchestration platform or cloud provider.
+
+---
+
+## Verify
+
+Ensure the Dockerfile and source repository do not contain secrets.
+
+---
+
+## Challenge
+
+Replace hardcoded configuration with runtime configuration.
+
+---
+
+# Lab 30 – Non-Root Containers
+
+## Objective
+
+Run applications using a dedicated non-root user.
+
+---
+
+## Dockerfile
+
+```dockerfile
+FROM python:3.12-slim
+
+RUN useradd appuser
+
+USER appuser
+
+WORKDIR /app
+
+COPY . .
+
+CMD ["python","app.py"]
+```
+
+---
+
+## Verify
+
+Inspect the image:
+
+```bash
+docker inspect image_name
+```
+
+Confirm the configured user.
+
+---
+
+## Challenge
+
+Compare behavior between root and non-root containers.
+
+---
+
+# Lab 31 – Incident Response Exercise
+
+## Objective
+
+Practice a structured incident response workflow.
+
+---
+
+## Scenario
+
+Monitoring reports:
+
+```
+High CPU Usage
+
+↓
+
+Unexpected Restart
+
+↓
+
+Application Errors
+```
+
+---
+
+## Investigation Workflow
+
+```
+Validate Alert
+
+↓
+
+Review Logs
+
+↓
+
+Inspect Container
+
+↓
+
+Review Events
+
+↓
+
+Identify Root Cause
+
+↓
+
+Recover
+```
+
+Useful commands:
+
+```bash
+docker logs
+
+docker inspect
+
+docker events
+
+docker stats
+```
+
+---
+
+## Expected Outcome
+
+Document:
+
+- Timeline
+- Findings
+- Root cause
+- Recovery actions
+
+---
+
+## Challenge
+
+Create an incident report using the evidence collected.
+
+---
+
+# Lab 32 – Container Forensics
+
+## Objective
+
+Collect forensic artifacts after a simulated incident.
+
+---
+
+## Evidence Sources
+
+```
+Container Logs
+
+↓
+
+Docker Events
+
+↓
+
+Image Metadata
+
+↓
+
+Running Processes
+```
+
+---
+
+## Commands
+
+```bash
+docker ps -a
+
+docker inspect container_name
+
+docker history image_name
+
+docker logs container_name
+
+docker top container_name
+```
+
+---
+
+## Tasks
+
+Collect:
+
+- Image ID
+- Container ID
+- Network configuration
+- Mounted volumes
+- Running processes
+
+---
+
+## Challenge
+
+Construct a simple timeline using timestamps from multiple evidence sources.
+
+---
+
+# Lab 33 – Resource Limit Testing
+
+## Objective
+
+Understand the effect of CPU and memory limits.
+
+---
+
+## Run
+
+```bash
+docker run \
+--memory=512m \
+--cpus=1 \
+nginx
+```
+
+---
+
+## Observe
+
+```bash
+docker stats
+```
+
+---
+
+## Expected Outcome
+
+Understand how configured limits affect runtime behavior.
+
+---
+
+## Challenge
+
+Compare two containers with different resource limits.
+
+---
+
+# Lab 34 – Image Optimization
+
+## Objective
+
+Reduce image size.
+
+---
+
+## Compare
+
+Single-stage build
+
+↓
+
+Multi-stage build
+
+↓
+
+Minimal base image
+
+---
+
+## Commands
+
+```bash
+docker images
+```
+
+```bash
+docker history image_name
+```
+
+---
+
+## Expected Outcome
+
+Smaller production-ready image.
+
+---
+
+## Challenge
+
+Reduce image size by removing unnecessary packages and artifacts.
+
+---
+
+# Lab 35 – Production Readiness Review
+
+## Objective
+
+Review a containerized application before production deployment.
+
+---
+
+## Checklist
+
+- Image scanned
+- Version tag assigned
+- Trusted base image
+- Non-root user
+- Resource limits configured
+- Health check implemented
+- Secrets managed securely
+- Logging centralized
+- Monitoring enabled
+- Backup strategy documented
+
+---
+
+## Expected Outcome
+
+Produce a deployment readiness report identifying strengths and areas for improvement.
+
+---
+
+# Mini Project 1 – Secure Web Application
+
+## Objective
+
+Containerize a web application following best practices.
+
+---
+
+## Requirements
+
+- Dockerfile
+- Multi-stage build (if applicable)
+- Non-root execution
+- Health check
+- Versioned image
+- Logging
+- Resource limits
+- Vulnerability scan
+
+---
+
+## Deliverables
+
+```
+Source Code
+
+↓
+
+Dockerfile
+
+↓
+
+Container Image
+
+↓
+
+Security Scan Report
+
+↓
+
+Deployment Notes
+```
+
+---
+
+# Mini Project 2 – Multi-Container Stack
+
+## Objective
+
+Deploy a complete application using Docker Compose.
+
+---
+
+## Architecture
+
+```
+Browser
+
+↓
+
+Frontend
+
+↓
+
+Backend API
+
+↓
+
+Database
+
+↓
+
+Redis
+```
+
+---
+
+## Requirements
+
+- Docker Compose
+- Named volumes
+- User-defined network
+- Environment configuration
+- Health checks
+
+---
+
+## Challenge
+
+Add monitoring and centralized logging to the stack.
+
+---
+
+# Mini Project 3 – Secure CI/CD Workflow (Conceptual)
+
+## Objective
+
+Design a secure container delivery pipeline.
+
+---
+
+## Pipeline
+
+```
+Git Commit
+
+↓
+
+Build Image
+
+↓
+
+Unit Tests
+
+↓
+
+Security Scan
+
+↓
+
+SBOM Generation
+
+↓
+
+Push Registry
+
+↓
+
+Deploy
+
+↓
+
+Runtime Monitoring
+```
+
+---
+
+## Discussion Points
+
+Explain:
+
+- Why images are scanned
+- Why version tags matter
+- Why immutable deployments are preferred
+- How monitoring supports production operations
+
+---
+
+# Skills Gained
+
+After completing Labs **26–35**, you will be able to:
+
+- Integrate vulnerability scanning into workflows
+- Monitor container runtime behavior
+- Investigate logs systematically
+- Apply secure secret management practices
+- Build non-root containers
+- Perform basic incident response
+- Collect forensic evidence
+- Optimize images
+- Evaluate production readiness
+- Design secure container delivery pipelines
+
+---
+
+# Final Capstone Challenge
+
+Build a production-style containerized application that includes:
+
+```
+Application
+
+↓
+
+Dockerfile
+
+↓
+
+Multi-Stage Build
+
+↓
+
+Docker Compose
+
+↓
+
+Named Volumes
+
+↓
+
+Custom Network
+
+↓
+
+Health Checks
+
+↓
+
+Versioned Images
+
+↓
+
+Image Scanning
+
+↓
+
+Centralized Logging
+
+↓
+
+Monitoring
+
+↓
+
+Production Readiness Review
+```
+
+Document:
+
+- Architecture
+- Deployment steps
+- Security controls
+- Monitoring approach
+- Recovery considerations
+- Lessons learned
+
+---
