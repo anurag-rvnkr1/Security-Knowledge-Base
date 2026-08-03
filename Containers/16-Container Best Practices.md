@@ -534,3 +534,702 @@ Regularly review architectures, processes, monitoring, and security controls to 
 
 ---
 
+## How It Works
+
+Container Best Practices are applied throughout the Software Development Life Cycle (SDLC), ensuring that security, reliability, performance, and maintainability are considered from development through production. Rather than being a single configuration or tool, best practices represent a collection of engineering decisions that improve the overall quality of containerized applications.
+
+A mature container platform continuously applies these practices during:
+
+- Development
+- Image Build
+- Security Validation
+- Testing
+- Deployment
+- Runtime Operations
+- Monitoring
+- Incident Response
+
+Organizations that integrate these practices into their workflows achieve greater consistency, stronger security, and improved operational resilience.
+
+---
+
+# Container Best Practices Workflow
+
+```
+Application Development
+
+        │
+
+        ▼
+
+Dockerfile
+
+        │
+
+        ▼
+
+Build Image
+
+        │
+
+        ▼
+
+Security Scan
+
+        │
+
+        ▼
+
+Testing
+
+        │
+
+        ▼
+
+Push Registry
+
+        │
+
+        ▼
+
+Deployment
+
+        │
+
+        ▼
+
+Monitoring
+
+        │
+
+        ▼
+
+Continuous Improvement
+```
+
+Every stage contributes to building a secure and reliable container ecosystem.
+
+---
+
+# Step 1 – Design the Application
+
+Good containerization begins during application design.
+
+Recommended architecture:
+
+```
+Frontend
+
+↓
+
+Backend API
+
+↓
+
+Database
+
+↓
+
+Cache
+
+↓
+
+Message Queue
+```
+
+Each service should have a clearly defined responsibility.
+
+Benefits:
+
+- Independent scaling
+- Easier maintenance
+- Better fault isolation
+- Simpler deployments
+
+---
+
+# Step 2 – Create a Secure Dockerfile
+
+Example:
+
+```dockerfile
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+USER appuser
+
+CMD ["python", "app.py"]
+```
+
+Good practices demonstrated:
+
+- Minimal base image
+- Defined working directory
+- No package cache retained
+- Non-root execution
+- Single application entry point
+
+---
+
+# Step 3 – Build the Image
+
+```
+Dockerfile
+
+↓
+
+docker build
+
+↓
+
+Container Image
+```
+
+The image becomes the deployable artifact used throughout all environments.
+
+Build once and promote the same image through testing and production.
+
+---
+
+# Step 4 – Scan the Image
+
+Before deployment:
+
+```
+Image
+
+↓
+
+Security Scanner
+
+↓
+
+Vulnerabilities
+
+↓
+
+Fix
+
+↓
+
+Rebuild
+```
+
+Scanning should identify:
+
+- Known CVEs
+- Misconfigurations
+- Exposed secrets (tool-dependent)
+- Outdated dependencies
+- Policy violations
+
+---
+
+# Step 5 – Run Automated Tests
+
+CI/CD pipeline:
+
+```
+Image
+
+↓
+
+Unit Tests
+
+↓
+
+Integration Tests
+
+↓
+
+Security Tests
+
+↓
+
+Pass
+
+↓
+
+Deploy
+```
+
+Testing before deployment reduces operational risk.
+
+---
+
+# Step 6 – Push to Registry
+
+After validation:
+
+```
+Image
+
+↓
+
+Registry
+
+↓
+
+Versioned Tag
+
+↓
+
+Production Ready
+```
+
+Registry benefits:
+
+- Version control
+- Image sharing
+- Rollback capability
+- Deployment consistency
+
+---
+
+# Step 7 – Deploy Containers
+
+Deploy using:
+
+```
+Docker
+
+↓
+
+Docker Compose
+
+↓
+
+Kubernetes
+
+↓
+
+Cloud Platform
+```
+
+The same validated image should be deployed across all environments.
+
+---
+
+# Step 8 – Configure Runtime Security
+
+Production containers should use:
+
+```
+Non-root User
+
+↓
+
+Resource Limits
+
+↓
+
+Read-only Filesystem
+
+↓
+
+Minimal Capabilities
+
+↓
+
+Private Networking
+```
+
+These controls reduce attack surface and improve stability.
+
+---
+
+# Step 9 – Monitor Production
+
+Observe:
+
+```
+CPU
+
+↓
+
+Memory
+
+↓
+
+Logs
+
+↓
+
+Errors
+
+↓
+
+Latency
+
+↓
+
+Security Alerts
+```
+
+Monitoring provides early detection of:
+
+- Performance degradation
+- Application failures
+- Resource exhaustion
+- Security incidents
+
+---
+
+# Step 10 – Continuous Improvement
+
+Production feedback drives future improvements.
+
+```
+Monitoring
+
+↓
+
+Incident Review
+
+↓
+
+Optimization
+
+↓
+
+Rebuild
+
+↓
+
+Redeploy
+```
+
+Container best practices evolve continuously as applications and threats change.
+
+---
+
+# Production Architecture Example
+
+```
+                    Internet
+
+                        │
+
+                        ▼
+
+                 Load Balancer
+
+                        │
+
+                        ▼
+
+                 Reverse Proxy
+
+                        │
+
+      ┌─────────────────┼─────────────────┐
+
+      ▼                 ▼                 ▼
+
+ Frontend API      Authentication     Background Workers
+
+      │                 │                 │
+
+      └──────────────┬──┴─────────────────┘
+
+                     ▼
+
+                 Database
+
+                     │
+
+                     ▼
+
+                   Storage
+```
+
+Supporting components:
+
+```
+Monitoring
+
+↓
+
+Logging
+
+↓
+
+Alerting
+
+↓
+
+Backup
+
+↓
+
+Security Scanning
+```
+
+Modern production systems continuously observe every component.
+
+---
+
+# Practical Examples
+
+## Example 1 – Minimal Image
+
+Instead of:
+
+```dockerfile
+FROM ubuntu
+```
+
+Prefer:
+
+```dockerfile
+FROM python:3.12-slim
+```
+
+Benefits:
+
+- Smaller image
+- Faster download
+- Reduced attack surface
+- Lower storage requirements
+
+---
+
+## Example 2 – Immutable Deployment
+
+Incorrect approach:
+
+```
+Running Container
+
+↓
+
+Manual Update
+```
+
+Correct approach:
+
+```
+Update Dockerfile
+
+↓
+
+Build Image
+
+↓
+
+Deploy New Container
+
+↓
+
+Remove Old Container
+```
+
+This ensures repeatable deployments.
+
+---
+
+## Example 3 – Resource Limits
+
+Application:
+
+```
+Container
+
+↓
+
+CPU Limit
+
+↓
+
+Memory Limit
+
+↓
+
+Stable Operation
+```
+
+Resource limits help prevent a single container from consuming excessive host resources.
+
+---
+
+## Example 4 – Health Monitoring
+
+```
+Application
+
+↓
+
+Health Check
+
+↓
+
+Healthy
+
+↓
+
+Receive Traffic
+```
+
+If unhealthy:
+
+```
+Health Check Failed
+
+↓
+
+Restart
+
+or
+
+Traffic Removed
+```
+
+Health checks improve application availability.
+
+---
+
+# Hands-on Validation Commands
+
+## Inspect Running Containers
+
+```bash
+docker ps
+```
+
+---
+
+## Inspect Container Configuration
+
+```bash
+docker inspect container_name
+```
+
+Verify:
+
+- User
+- Mounts
+- Networks
+- Restart policy
+- Resource configuration
+
+---
+
+## Review Resource Usage
+
+```bash
+docker stats
+```
+
+Monitor:
+
+- CPU
+- Memory
+- Network
+- Block I/O
+
+---
+
+## View Logs
+
+```bash
+docker logs container_name
+```
+
+Review application behavior and errors.
+
+---
+
+## Display Running Processes
+
+```bash
+docker top container_name
+```
+
+Confirm only expected processes are running.
+
+---
+
+## Inspect Image Layers
+
+```bash
+docker history image_name
+```
+
+Review build history and identify unnecessary layers.
+
+---
+
+## Review Docker Events
+
+```bash
+docker events
+```
+
+Monitor container lifecycle activity in real time.
+
+---
+
+# Production Readiness Checklist
+
+Before deploying to production, verify:
+
+- Images are scanned.
+- Images are versioned.
+- Containers run as non-root where feasible.
+- Secrets are managed securely.
+- Health checks are configured.
+- Resource limits are defined.
+- Monitoring is enabled.
+- Logging is centralized.
+- Backups are configured.
+- Recovery procedures are documented.
+
+---
+
+# Best Practices Checklist
+
+## Development
+
+- Keep Dockerfiles simple.
+- Use official or trusted base images.
+- Keep dependencies updated.
+- Avoid unnecessary packages.
+- Follow secure coding practices.
+
+---
+
+## Build
+
+- Build reproducible images.
+- Use version tags.
+- Scan images.
+- Remove build artifacts.
+- Generate an SBOM where appropriate.
+
+---
+
+## Deployment
+
+- Deploy immutable images.
+- Use automated CI/CD.
+- Validate before production.
+- Limit privileges.
+- Apply network segmentation.
+
+---
+
+## Operations
+
+- Monitor continuously.
+- Rotate credentials when necessary.
+- Patch regularly by rebuilding images.
+- Review logs.
+- Perform periodic security assessments.
+
+---
+
