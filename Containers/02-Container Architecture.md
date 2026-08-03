@@ -1073,3 +1073,419 @@ Regularly observe CPU, memory, storage, and network utilization to identify bott
 
 ---
 
+## Common Mistakes
+
+Understanding container architecture is essential for building secure, scalable, and efficient containerized applications. Many operational problems arise from misunderstandings about how containers actually work beneath the surface.
+
+The following are some of the most common architectural mistakes made by beginners and even experienced engineers.
+
+---
+
+### 1. Thinking Containers Have Their Own Kernel
+
+This is the most common misconception.
+
+**Incorrect**
+
+```
+Container A
+
+Linux Kernel
+
+
+Container B
+
+Linux Kernel
+
+
+Container C
+
+Linux Kernel
+```
+
+**Correct**
+
+```
+Applications
+
+      │
+
+Containers
+
+      │
+
+Shared Linux Kernel
+
+      │
+
+Host Operating System
+```
+
+All containers on the same host share the host operating system's kernel.
+
+---
+
+### 2. Treating Containers Like Virtual Machines
+
+Containers are **operating system-level virtualization**, not hardware virtualization.
+
+| Virtual Machine | Container |
+|----------------|-----------|
+| Guest Operating System | Shared Host Kernel |
+| Hypervisor | Container Runtime |
+| Larger Resource Usage | Lightweight |
+| Slower Startup | Fast Startup |
+| Stronger Isolation | Process Isolation |
+
+Understanding this distinction is fundamental to container architecture.
+
+---
+
+### 3. Ignoring Namespaces
+
+Namespaces provide isolation between containers.
+
+Without namespaces:
+
+- Processes become visible across applications.
+- Network interfaces are shared.
+- Hostnames conflict.
+- Filesystem separation is lost.
+
+Namespaces are the primary mechanism that gives containers their isolated environment.
+
+---
+
+### 4. Ignoring cgroups
+
+Without Control Groups (cgroups), a single container could consume:
+
+- All CPU resources
+- Available memory
+- Disk I/O bandwidth
+- Network bandwidth
+
+Always define appropriate resource limits for production workloads.
+
+---
+
+### 5. Assuming Containers Are Completely Isolated
+
+Although containers provide strong process isolation, they still share:
+
+- Linux kernel
+- Host hardware
+- Kernel modules
+- Some operating system resources
+
+A kernel vulnerability can potentially affect multiple containers.
+
+For stronger isolation requirements, consider technologies such as virtual machines or sandboxed containers.
+
+---
+
+### 6. Modifying Running Containers
+
+Avoid treating running containers like traditional servers.
+
+Incorrect workflow:
+
+```
+SSH Into Container
+
+↓
+
+Install Packages
+
+↓
+
+Modify Configuration
+
+↓
+
+Hope It Persists
+```
+
+Recommended workflow:
+
+```
+Update Dockerfile
+
+↓
+
+Build New Image
+
+↓
+
+Deploy New Container
+
+↓
+
+Remove Old Container
+```
+
+Immutable infrastructure is a core container principle.
+
+---
+
+### 7. Misunderstanding Image Layers
+
+Each Dockerfile instruction generally creates a new image layer.
+
+Poor Dockerfile design can result in:
+
+- Larger images
+- Longer build times
+- Inefficient caching
+- Higher storage usage
+
+Optimize layer ordering to maximize cache reuse.
+
+---
+
+### 8. Using Large Base Images
+
+Choosing unnecessarily large base images results in:
+
+- Increased download times
+- More storage consumption
+- Longer deployments
+- Expanded attack surface
+
+Prefer minimal, well-maintained images when appropriate.
+
+---
+
+### 9. Forgetting That Containers Are Ephemeral
+
+Containers are designed to be temporary.
+
+If important data is stored only inside the writable layer:
+
+```
+Container Removed
+
+↓
+
+Writable Layer Deleted
+
+↓
+
+Data Lost
+```
+
+Persist important data using:
+
+- Docker Volumes
+- Bind Mounts
+- Network storage
+- Cloud storage services
+
+---
+
+### 10. Ignoring the Container Runtime
+
+The runtime is responsible for creating and managing containers.
+
+Understanding its role helps troubleshoot issues related to:
+
+- Startup failures
+- Networking
+- Resource limits
+- Filesystems
+- Process management
+
+Modern environments frequently use `containerd` or `CRI-O` even if Docker is not installed.
+
+---
+
+### 11. Overlooking Host Operating System Security
+
+Because containers share the host kernel:
+
+- Kernel vulnerabilities affect all containers.
+- Weak host security increases overall risk.
+- Host patching remains essential.
+
+Container security begins with securing the host operating system.
+
+---
+
+### 12. Misconfiguring Networking
+
+Common networking mistakes include:
+
+- Publishing unnecessary ports
+- Overusing host networking
+- Weak firewall rules
+- Missing network segmentation
+- Assuming localhost inside a container refers to the host
+
+Understand container networking concepts before deploying production workloads.
+
+---
+
+### 13. Assuming Every File Is Persistent
+
+Only data stored in external volumes or bind mounts survives container recreation.
+
+Everything stored in the writable layer is temporary unless persisted intentionally.
+
+---
+
+### 14. Running Multiple Unrelated Services
+
+Example:
+
+```
+Container
+
+├── Nginx
+
+├── MySQL
+
+├── Redis
+
+├── SSH
+
+└── Cron
+```
+
+This complicates:
+
+- Scaling
+- Monitoring
+- Troubleshooting
+- Security
+- Updates
+
+Instead, deploy separate containers for independent services.
+
+---
+
+### 15. Learning Docker Commands Without Understanding Architecture
+
+Many engineers memorize commands such as:
+
+```bash
+docker run
+
+docker ps
+
+docker exec
+
+docker stop
+```
+
+Without understanding:
+
+- Namespaces
+- cgroups
+- Filesystems
+- Runtimes
+- Image layers
+
+this knowledge remains superficial.
+
+Understanding architecture makes Docker, Kubernetes, and container security much easier to master.
+
+---
+
+# Container Architecture Checklist
+
+| Item | Status |
+|------|:------:|
+| Understand Host Operating System | ✓ |
+| Understand Linux Kernel | ✓ |
+| Understand Namespaces | ✓ |
+| Understand cgroups | ✓ |
+| Understand Union File Systems | ✓ |
+| Understand Container Runtime | ✓ |
+| Understand Container Images | ✓ |
+| Understand Running Containers | ✓ |
+| Understand Container Lifecycle | ✓ |
+| Understand Image Layers | ✓ |
+| Understand Resource Isolation | ✓ |
+| Understand Process Isolation | ✓ |
+| Understand Filesystem Isolation | ✓ |
+| Understand Networking Basics | ✓ |
+| Understand Portability | ✓ |
+
+---
+
+# References
+
+## OCI Standards
+
+- Open Container Initiative (OCI) Runtime Specification
+- Open Container Initiative (OCI) Image Specification
+- Open Container Initiative (OCI) Distribution Specification
+
+---
+
+## Linux Documentation
+
+- Linux Namespaces
+- Linux Control Groups (cgroups)
+- OverlayFS Documentation
+- Linux Kernel Documentation
+- Linux Capabilities Documentation
+
+---
+
+## Docker Documentation
+
+- Docker Engine
+- Docker CLI
+- Docker Build
+- Docker Images
+- Docker Networking
+- Docker Storage
+
+---
+
+## Container Runtimes
+
+- containerd
+- CRI-O
+- Podman
+- runc
+
+---
+
+## CNCF Resources
+
+- Kubernetes Documentation
+- Container Runtime Interface (CRI)
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+- CIS Docker Benchmark
+- CIS Kubernetes Benchmark
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Container Security* — Liz Rice
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Kubernetes in Action* — Marko Lukša
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Kubernetes Official Documentation
+- CNCF Learning Paths
+- Linux Foundation Training
+- NIST Computer Security Resource Center (CSRC)
+
+
