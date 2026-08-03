@@ -453,18 +453,662 @@ Selecting the appropriate network driver depends on the application's communicat
 
 ---
 
-## Next Section
+## How It Works
 
-How It Works
+Container networking enables communication between containers, the host system, and external networks while maintaining isolation through Linux kernel networking features. Docker automates the creation of virtual networks, assigns IP addresses, configures DNS, and manages routing rules so applications can communicate without manual network configuration.
 
-Practical Examples
+Internally, Docker uses Linux networking technologies such as:
 
-Hands-on Commands
+- Network Namespaces
+- Virtual Ethernet (veth) pairs
+- Linux Bridges
+- iptables / nftables (depending on the host configuration)
+- Network Address Translation (NAT)
+- Embedded DNS (on user-defined networks)
 
-Best Practices
-
-Common Mistakes
-
-References
+These components work together to provide secure and efficient networking for containerized applications.
 
 ---
+
+# Container Networking Workflow
+
+```
+Application
+
+      │
+
+      ▼
+
+Container
+
+      │
+
+Network Namespace
+
+      │
+
+Virtual Ethernet (veth)
+
+      │
+
+Docker Bridge
+
+      │
+
+Host Network
+
+      │
+
+Internet
+```
+
+Every network packet follows this path unless a different network driver is used.
+
+---
+
+## Step 1 – Create the Container
+
+When a container starts:
+
+```bash
+docker run nginx
+```
+
+Docker automatically:
+
+- Creates a network namespace
+- Creates a virtual Ethernet pair
+- Assigns an IP address
+- Configures routing
+- Configures DNS
+- Connects the container to a Docker network
+
+---
+
+## Step 2 – Create a Network Namespace
+
+Every container receives an isolated network stack.
+
+```
+Host
+
+│
+
+├── Container A
+
+│      eth0
+
+│      Routing Table
+
+│      Firewall Rules
+
+│
+
+└── Container B
+
+       eth0
+
+       Routing Table
+
+       Firewall Rules
+```
+
+Containers cannot directly access each other's networking configuration.
+
+---
+
+## Step 3 – Create a Virtual Ethernet Pair
+
+Docker creates a **veth pair**.
+
+```
+Container
+
+eth0
+
+      │
+
+Virtual Cable
+
+      │
+
+Host veth
+
+      │
+
+Docker Bridge
+```
+
+Think of it as plugging the container into a virtual network switch.
+
+---
+
+## Step 4 – Connect to Docker Bridge
+
+By default:
+
+```
+docker0
+```
+
+acts as a virtual bridge.
+
+```
+Host
+
+      │
+
+docker0
+
+ ┌────┼─────┐
+
+ ▼    ▼     ▼
+
+C1   C2    C3
+```
+
+Every container connected to the bridge receives:
+
+- IP address
+- Default gateway
+- DNS configuration
+
+Containers on the same bridge network can communicate with one another according to the network's rules.
+
+---
+
+## Step 5 – Assign an IP Address
+
+Docker assigns an internal IP.
+
+Example:
+
+```
+Container A
+
+172.17.0.2
+
+
+Container B
+
+172.17.0.3
+```
+
+These addresses are typically private and managed by Docker.
+
+Applications should generally communicate using service or container names on user-defined networks instead of relying on these IP addresses.
+
+---
+
+## Step 6 – Configure DNS
+
+On user-defined bridge networks, Docker provides an embedded DNS service.
+
+Instead of:
+
+```
+172.18.0.5
+```
+
+applications use:
+
+```
+database
+```
+
+Workflow:
+
+```
+Web
+
+↓
+
+database
+
+↓
+
+DNS Lookup
+
+↓
+
+172.18.0.5
+```
+
+Docker resolves the service name automatically.
+
+---
+
+## Step 7 – Configure Port Mapping
+
+Suppose Nginx listens on:
+
+```
+80
+```
+
+inside the container.
+
+Run:
+
+```bash
+docker run -p 8080:80 nginx
+```
+
+Docker configures port forwarding:
+
+```
+Internet
+
+      │
+
+Host 8080
+
+      │
+
+Docker NAT
+
+      │
+
+Container 80
+```
+
+Users access:
+
+```
+http://host:8080
+```
+
+Docker forwards requests to the container's port 80.
+
+---
+
+## Step 8 – Communicate Between Containers
+
+Containers attached to the same user-defined network communicate directly.
+
+```
+Web
+
+ │
+
+ ▼
+
+API
+
+ │
+
+ ▼
+
+Database
+```
+
+Applications simply use service names:
+
+```
+database
+
+redis
+
+backend
+
+frontend
+```
+
+No manual IP management is required.
+
+---
+
+## Step 9 – Access External Networks
+
+Containers can also access the Internet.
+
+Example:
+
+```
+Container
+
+↓
+
+Docker Bridge
+
+↓
+
+Host Network
+
+↓
+
+Router
+
+↓
+
+Internet
+```
+
+This allows containers to:
+
+- Download software updates
+- Call APIs
+- Connect to cloud services
+- Access external databases (when permitted)
+
+---
+
+# Practical Examples
+
+## Example 1 – Two Containers
+
+Run:
+
+```bash
+docker run --name web nginx
+```
+
+Run:
+
+```bash
+docker run --name api ubuntu
+```
+
+If both are attached to the same user-defined network, they can communicate using:
+
+```
+web
+
+api
+```
+
+rather than IP addresses.
+
+---
+
+## Example 2 – Docker Compose
+
+Compose file:
+
+```yaml
+services:
+
+  web:
+
+    image: nginx
+
+  database:
+
+    image: postgres
+```
+
+Docker automatically creates:
+
+```
+Compose Network
+
+     │
+
+ ┌───┼────┐
+
+ ▼   ▼    ▼
+
+Web DB Redis
+```
+
+Each service is reachable by its service name.
+
+---
+
+## Example 3 – Port Mapping
+
+Command:
+
+```bash
+docker run -p 5000:5000 flask-app
+```
+
+Network flow:
+
+```
+Browser
+
+↓
+
+localhost:5000
+
+↓
+
+Docker
+
+↓
+
+Flask Application
+```
+
+The host forwards incoming traffic to the container.
+
+---
+
+## Example 4 – Host Network
+
+Command:
+
+```bash
+docker run --network host nginx
+```
+
+Result:
+
+```
+Container
+
+↓
+
+Uses Host Network Directly
+```
+
+No bridge or virtual interface is created for the container's network.
+
+---
+
+# Hands-on Commands
+
+## List Networks
+
+```bash
+docker network ls
+```
+
+Displays all Docker networks.
+
+---
+
+## Inspect a Network
+
+```bash
+docker network inspect bridge
+```
+
+Displays:
+
+- Connected containers
+- Network driver
+- Subnet
+- Gateway
+- IP assignments
+
+---
+
+## Create a Network
+
+```bash
+docker network create mynetwork
+```
+
+Creates a user-defined bridge network.
+
+---
+
+## Run a Container on a Network
+
+```bash
+docker run --network mynetwork nginx
+```
+
+Attaches the container to the specified network.
+
+---
+
+## Connect an Existing Container
+
+```bash
+docker network connect mynetwork web
+```
+
+Connects a running container to another network.
+
+---
+
+## Disconnect a Container
+
+```bash
+docker network disconnect mynetwork web
+```
+
+Removes the container from the network.
+
+---
+
+## Remove a Network
+
+```bash
+docker network rm mynetwork
+```
+
+Deletes an unused network.
+
+---
+
+## View Port Mappings
+
+```bash
+docker port web
+```
+
+Displays published ports for a container.
+
+---
+
+## Inspect Network Configuration
+
+```bash
+docker inspect web
+```
+
+Review the **NetworkSettings** section for:
+
+- IP address
+- Gateway
+- MAC address
+- Connected networks
+- Port bindings
+
+---
+
+# Best Practices
+
+### 1. Use User-Defined Bridge Networks
+
+Prefer creating your own bridge networks instead of relying on the default `bridge` network.
+
+Benefits include:
+
+- Better DNS-based service discovery
+- Improved isolation
+- Simpler communication using service names
+
+---
+
+### 2. Publish Only Required Ports
+
+Expose only the services that must be reachable externally.
+
+Keep databases, caches, and internal services on private networks whenever possible.
+
+---
+
+### 3. Use Service Names Instead of IP Addresses
+
+Avoid hardcoded IP addresses.
+
+Prefer:
+
+```
+database
+```
+
+instead of:
+
+```
+172.18.0.4
+```
+
+Docker's DNS makes service names stable and portable.
+
+---
+
+### 4. Separate Public and Private Services
+
+Example:
+
+```
+Internet
+
+↓
+
+Frontend
+
+↓
+
+Backend
+
+↓
+
+Database
+```
+
+Only the frontend should generally be exposed to external users.
+
+---
+
+### 5. Avoid Host Networking Unless Necessary
+
+The host network driver reduces isolation.
+
+Use it only when specific performance or networking requirements justify the trade-off.
+
+---
+
+### 6. Document Port Usage
+
+Clearly document:
+
+- Container ports
+- Published host ports
+- Internal service ports
+
+This simplifies troubleshooting and maintenance.
+
+---
+
+### 7. Monitor Network Connectivity
+
+Regularly verify:
+
+- Container communication
+- DNS resolution
+- Port mappings
+- Firewall rules
+- Network performance
+
+Early monitoring helps detect configuration issues before they impact applications.
+
+---
+
+
