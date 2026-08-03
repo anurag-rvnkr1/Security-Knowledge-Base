@@ -1344,3 +1344,619 @@ This makes Docker CLI easier to learn and remember.
 
 ---
 
+## Common Mistakes
+
+Docker provides hundreds of CLI commands, but many operational problems arise from using the wrong command, misunderstanding command behavior, or failing to understand the relationship between Docker objects. The following are the most common mistakes encountered by beginners and professionals.
+
+---
+
+# 1. Confusing `docker run` with `docker start`
+
+Many users believe these commands perform the same action.
+
+### `docker run`
+
+Creates **and** starts a **new** container.
+
+```
+Image
+
+   │
+
+docker run
+
+   │
+
+New Container
+
+   │
+
+Running
+```
+
+Example:
+
+```bash
+docker run nginx
+```
+
+---
+
+### `docker start`
+
+Starts an **existing** stopped container.
+
+```
+Stopped Container
+
+        │
+
+docker start
+
+        │
+
+Running Container
+```
+
+Example:
+
+```bash
+docker start web
+```
+
+**Rule to Remember**
+
+- `docker run` → Create + Start
+- `docker start` → Start Existing
+
+---
+
+# 2. Forgetting Detached Mode (`-d`)
+
+Running:
+
+```bash
+docker run nginx
+```
+
+keeps the terminal attached to the container.
+
+Instead, use:
+
+```bash
+docker run -d nginx
+```
+
+Detached mode allows the container to run in the background.
+
+---
+
+# 3. Not Publishing Required Ports
+
+Example:
+
+```bash
+docker run nginx
+```
+
+The web server starts successfully, but cannot be accessed from the host.
+
+Correct approach:
+
+```bash
+docker run -p 8080:80 nginx
+```
+
+```
+Host
+
+8080
+
+ │
+
+ ▼
+
+Container
+
+80
+```
+
+Without port mapping, services remain inaccessible from outside the container.
+
+---
+
+# 4. Using `docker exec` Instead of `docker run`
+
+Incorrect:
+
+```bash
+docker exec ubuntu bash
+```
+
+`docker exec` requires an **already running container**.
+
+Correct sequence:
+
+```bash
+docker run -it ubuntu bash
+```
+
+or
+
+```bash
+docker exec -it running_container bash
+```
+
+---
+
+# 5. Using `docker kill` Instead of `docker stop`
+
+### `docker stop`
+
+```
+SIGTERM
+
+↓
+
+Graceful Shutdown
+
+↓
+
+Application Cleans Up
+
+↓
+
+Container Stops
+```
+
+---
+
+### `docker kill`
+
+```
+SIGKILL
+
+↓
+
+Immediate Termination
+```
+
+`docker stop` is recommended unless immediate termination is necessary.
+
+---
+
+# 6. Forgetting to Name Containers
+
+Without:
+
+```bash
+--name
+```
+
+Docker generates names such as:
+
+```
+happy_lamarr
+
+adoring_turing
+
+nostalgic_newton
+```
+
+Instead:
+
+```bash
+docker run --name web nginx
+```
+
+Named containers simplify management and automation.
+
+---
+
+# 7. Using `latest` Everywhere
+
+Avoid:
+
+```bash
+docker pull python:latest
+```
+
+Prefer:
+
+```bash
+docker pull python:3.12
+
+docker pull nginx:1.27
+```
+
+Explicit versions improve reproducibility and simplify rollbacks.
+
+---
+
+# 8. Ignoring Logs During Troubleshooting
+
+Many users restart containers repeatedly without reviewing logs.
+
+Always begin troubleshooting with:
+
+```bash
+docker logs <container_name>
+```
+
+Logs often reveal:
+
+- Configuration errors
+- Missing files
+- Permission issues
+- Runtime exceptions
+
+---
+
+# 9. Forgetting Cleanup
+
+Repeated testing leaves behind:
+
+- Stopped containers
+- Unused images
+- Networks
+- Volumes
+
+Example cleanup commands:
+
+```bash
+docker container prune
+
+docker image prune
+
+docker volume prune
+
+docker network prune
+```
+
+Neglecting cleanup can consume significant disk space over time.
+
+---
+
+# 10. Assuming `docker rm` Removes Images
+
+Incorrect assumption:
+
+```bash
+docker rm nginx
+```
+
+removes the image.
+
+Actual behavior:
+
+```
+docker rm
+
+↓
+
+Removes Container Only
+```
+
+To remove an image:
+
+```bash
+docker rmi nginx
+```
+
+---
+
+# 11. Ignoring Image Size
+
+Using unnecessarily large images increases:
+
+- Download time
+- Storage usage
+- Build time
+- Attack surface
+
+Prefer minimal images when suitable.
+
+Examples:
+
+- Alpine
+- Debian Slim
+- Distroless
+
+---
+
+# 12. Forgetting That Containers Are Ephemeral
+
+Example:
+
+```
+Container
+
+↓
+
+Application Writes Data
+
+↓
+
+Container Removed
+
+↓
+
+Data Lost
+```
+
+Persistent data should always be stored in volumes or external storage.
+
+---
+
+# 13. Using Root Inside Containers
+
+Many official images default to the `root` user.
+
+Risks:
+
+- Greater impact of vulnerabilities
+- Privilege escalation
+- Increased attack surface
+
+Create and run applications as non-root users whenever practical.
+
+---
+
+# 14. Memorizing Commands Without Understanding Objects
+
+Many users memorize:
+
+```bash
+docker pull
+
+docker run
+
+docker ps
+
+docker stop
+```
+
+without understanding the underlying Docker objects:
+
+- Images
+- Containers
+- Networks
+- Volumes
+- Registries
+
+Conceptual understanding makes command usage much more intuitive.
+
+---
+
+# 15. Skipping `docker inspect`
+
+When troubleshooting, many users overlook one of Docker's most valuable commands:
+
+```bash
+docker inspect <container_name>
+```
+
+It provides detailed information including:
+
+- Environment variables
+- IP addresses
+- Mounted volumes
+- Network configuration
+- Labels
+- Resource limits
+
+Use it before making assumptions about a container's configuration.
+
+---
+
+# Docker Commands Quick Revision
+
+## Information
+
+```bash
+docker version
+
+docker info
+
+docker --help
+```
+
+---
+
+## Images
+
+```bash
+docker images
+
+docker pull
+
+docker push
+
+docker rmi
+
+docker history
+
+docker inspect
+```
+
+---
+
+## Containers
+
+```bash
+docker run
+
+docker start
+
+docker stop
+
+docker restart
+
+docker kill
+
+docker rm
+
+docker ps
+
+docker ps -a
+```
+
+---
+
+## Container Access
+
+```bash
+docker exec
+
+docker logs
+
+docker top
+
+docker inspect
+
+docker stats
+```
+
+---
+
+## Build
+
+```bash
+docker build
+```
+
+---
+
+## Networks
+
+```bash
+docker network ls
+
+docker network create
+
+docker network inspect
+
+docker network connect
+
+docker network disconnect
+```
+
+---
+
+## Volumes
+
+```bash
+docker volume ls
+
+docker volume create
+
+docker volume inspect
+
+docker volume rm
+```
+
+---
+
+## Cleanup
+
+```bash
+docker image prune
+
+docker container prune
+
+docker volume prune
+
+docker network prune
+
+docker system prune
+```
+
+---
+
+# Docker Commands Checklist
+
+| Command Category | Status |
+|------------------|:------:|
+| Information Commands | ✓ |
+| Image Commands | ✓ |
+| Container Commands | ✓ |
+| Build Commands | ✓ |
+| Network Commands | ✓ |
+| Volume Commands | ✓ |
+| Registry Commands | ✓ |
+| Monitoring Commands | ✓ |
+| Inspection Commands | ✓ |
+| Cleanup Commands | ✓ |
+| Logging Commands | ✓ |
+| Interactive Commands | ✓ |
+| Troubleshooting Commands | ✓ |
+| Docker Workflow Commands | ✓ |
+| Command Best Practices | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker CLI Documentation
+- Docker Engine Documentation
+- Docker Build Documentation
+- Docker Hub Documentation
+- Docker Networking Documentation
+- Docker Volumes Documentation
+
+---
+
+## OCI Standards
+
+- Open Container Initiative (OCI) Image Specification
+- Open Container Initiative (OCI) Runtime Specification
+- Open Container Initiative (OCI) Distribution Specification
+
+---
+
+## Linux Documentation
+
+- Linux Namespaces
+- Linux cgroups
+- OverlayFS Documentation
+- Linux Capabilities Documentation
+
+---
+
+## CNCF Resources
+
+- Cloud Native Computing Foundation (CNCF)
+- Kubernetes Documentation
+- containerd Documentation
+- CRI-O Documentation
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+- CIS Docker Benchmark
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Container Security* — Liz Rice
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Docker Labs
+- Play with Docker
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+
