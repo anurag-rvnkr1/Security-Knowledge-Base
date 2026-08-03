@@ -513,3 +513,686 @@ Images created from Dockerfiles can be deployed consistently across development,
 
 ---
 
+## How It Works
+
+A Dockerfile acts as a set of instructions that Docker follows to build a container image. During the build process, Docker reads the Dockerfile from top to bottom, executes each instruction, and creates a series of immutable image layers. The completed image can then be used to create one or more containers.
+
+Docker also uses a **layer cache**, which means that unchanged instructions are reused during subsequent builds. This significantly reduces build time and improves development efficiency.
+
+---
+
+# Dockerfile Build Workflow
+
+```
+Application Source Code
+
+          │
+
+          ▼
+
+Dockerfile
+
+          │
+
+          ▼
+
+Docker Build
+
+          │
+
+          ▼
+
+Read Instructions
+
+          │
+
+          ▼
+
+Execute Each Instruction
+
+          │
+
+          ▼
+
+Create Image Layers
+
+          │
+
+          ▼
+
+Final Container Image
+
+          │
+
+          ▼
+
+Run Container
+```
+
+Every successful build produces an immutable container image.
+
+---
+
+## Step 1 – Write the Dockerfile
+
+The developer creates a file named:
+
+```
+Dockerfile
+```
+
+Example:
+
+```dockerfile
+FROM python:3.12
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "app.py"]
+```
+
+This file defines exactly how the image should be built.
+
+---
+
+## Step 2 – Execute Docker Build
+
+The image is created using:
+
+```bash
+docker build -t myapp .
+```
+
+Docker performs the following operations:
+
+```
+Read Dockerfile
+
+↓
+
+Validate Instructions
+
+↓
+
+Download Base Image (if needed)
+
+↓
+
+Execute Commands
+
+↓
+
+Create Layers
+
+↓
+
+Generate Image
+```
+
+---
+
+## Step 3 – Download the Base Image
+
+Docker checks whether the base image already exists locally.
+
+Example:
+
+```dockerfile
+FROM python:3.12
+```
+
+Workflow:
+
+```
+Base Image Exists?
+
+        │
+
+   ┌────┴────┐
+
+   │         │
+
+ Yes        No
+
+   │         │
+
+   ▼         ▼
+
+Continue  Download Image
+
+              │
+
+              ▼
+
+        Continue Build
+```
+
+Only missing base images are downloaded.
+
+---
+
+## Step 4 – Execute Each Instruction
+
+Docker processes the Dockerfile sequentially.
+
+Example:
+
+```dockerfile
+FROM python:3.12
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+CMD ["python","app.py"]
+```
+
+Execution order:
+
+```
+FROM
+
+↓
+
+WORKDIR
+
+↓
+
+COPY
+
+↓
+
+RUN
+
+↓
+
+CMD
+```
+
+Each instruction builds upon the previous one.
+
+---
+
+## Step 5 – Create Image Layers
+
+Most Dockerfile instructions create a new image layer.
+
+Example:
+
+```
+CMD Layer
+
+──────────────
+
+Application Layer
+
+──────────────
+
+Dependencies Layer
+
+──────────────
+
+Python Runtime
+
+──────────────
+
+Ubuntu Base
+```
+
+Docker stores these layers independently.
+
+Advantages:
+
+- Layer reuse
+- Smaller downloads
+- Faster builds
+- Efficient storage
+
+---
+
+## Step 6 – Use Build Cache
+
+Docker compares each instruction with previous builds.
+
+```
+Instruction Changed?
+
+       │
+
+  ┌────┴─────┐
+
+  │          │
+
+ No         Yes
+
+  │          │
+
+Reuse Cache Rebuild Layer
+```
+
+Only changed layers (and those after them) are rebuilt.
+
+Example:
+
+If only the application source code changes:
+
+```
+Base Image
+
+↓
+
+Dependencies
+
+↓
+
+Application Layer ← Rebuilt
+
+↓
+
+CMD
+```
+
+The dependency layer is reused, making builds significantly faster.
+
+---
+
+## Step 7 – Generate the Final Image
+
+After all instructions are processed:
+
+```
+Dockerfile
+
+↓
+
+Layers
+
+↓
+
+Final Image
+```
+
+The image becomes available locally and can be viewed using:
+
+```bash
+docker images
+```
+
+---
+
+## Step 8 – Run the Image
+
+The image can now be executed:
+
+```bash
+docker run myapp
+```
+
+Workflow:
+
+```
+Image
+
+↓
+
+Container
+
+↓
+
+Application Starts
+```
+
+Each container receives:
+
+- Writable layer
+- Isolated filesystem
+- Networking
+- Resource limits
+
+The original image remains unchanged.
+
+---
+
+# Practical Examples
+
+## Example 1 – Python Flask Application
+
+Dockerfile:
+
+```dockerfile
+FROM python:3.12
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "app.py"]
+```
+
+Workflow:
+
+```
+Python Base Image
+
+↓
+
+Install Dependencies
+
+↓
+
+Copy Application
+
+↓
+
+Create Image
+
+↓
+
+Run Container
+```
+
+The application behaves consistently across development and production.
+
+---
+
+## Example 2 – Nginx Web Server
+
+Dockerfile:
+
+```dockerfile
+FROM nginx:1.27
+
+COPY index.html /usr/share/nginx/html
+```
+
+Workflow:
+
+```
+Nginx Base Image
+
+↓
+
+Copy Website
+
+↓
+
+Create Image
+
+↓
+
+Run Container
+
+↓
+
+Website Available
+```
+
+This produces a customized Nginx image serving a static website.
+
+---
+
+## Example 3 – Java Application
+
+```
+Application
+
+↓
+
+Dockerfile
+
+↓
+
+OpenJDK Base Image
+
+↓
+
+Build Image
+
+↓
+
+Run Container
+```
+
+The Java application can now run identically on any Docker-enabled host.
+
+---
+
+## Example 4 – Multi-Layer Build
+
+Dockerfile:
+
+```dockerfile
+FROM ubuntu:24.04
+
+RUN apt update
+
+RUN apt install -y python3
+
+COPY . .
+
+CMD ["python3", "app.py"]
+```
+
+Resulting layers:
+
+```
+CMD
+
+──────────────
+
+Application
+
+──────────────
+
+Python
+
+──────────────
+
+Ubuntu
+```
+
+Each layer is cached independently.
+
+---
+
+# Hands-on Commands
+
+## Build an Image
+
+```bash
+docker build -t myapp .
+```
+
+Builds an image named **myapp** from the current directory.
+
+---
+
+## Build with a Tag
+
+```bash
+docker build -t myapp:v1 .
+```
+
+Assigns a version tag during the build.
+
+---
+
+## Use a Custom Dockerfile
+
+```bash
+docker build -f Dockerfile.prod -t myapp .
+```
+
+Builds using a specified Dockerfile.
+
+---
+
+## List Images
+
+```bash
+docker images
+```
+
+Displays all locally available images.
+
+---
+
+## Display Build History
+
+```bash
+docker history myapp
+```
+
+Shows image layers and the instructions that created them.
+
+---
+
+## Inspect the Image
+
+```bash
+docker inspect myapp
+```
+
+Displays detailed metadata, configuration, and layer information.
+
+---
+
+## Run the Image
+
+```bash
+docker run myapp
+```
+
+Creates and starts a container from the image.
+
+---
+
+## Tag an Image
+
+```bash
+docker tag myapp:v1 username/myapp:v1
+```
+
+Prepares the image for pushing to a registry.
+
+---
+
+## Push an Image
+
+```bash
+docker push username/myapp:v1
+```
+
+Uploads the tagged image to a registry.
+
+---
+
+# Best Practices
+
+### 1. Choose Small Base Images
+
+Prefer minimal, trusted base images whenever possible.
+
+Examples:
+
+- Alpine Linux
+- Debian Slim
+- Distroless
+- Official language runtime images
+
+Smaller images improve build speed and reduce the attack surface.
+
+---
+
+### 2. Order Instructions for Better Caching
+
+Place instructions that change infrequently near the top of the Dockerfile.
+
+Example:
+
+```
+FROM
+
+↓
+
+Install Dependencies
+
+↓
+
+Copy Application
+```
+
+Since application code changes more often than dependencies, this ordering maximizes cache reuse.
+
+---
+
+### 3. Combine Related `RUN` Instructions
+
+Instead of:
+
+```dockerfile
+RUN apt update
+
+RUN apt install -y curl
+```
+
+prefer:
+
+```dockerfile
+RUN apt update && apt install -y curl
+```
+
+Combining related commands reduces image layers and can simplify image management.
+
+---
+
+### 4. Prefer `COPY` Over `ADD`
+
+Use `COPY` unless you specifically need `ADD` features such as automatic extraction of local tar archives.
+
+`COPY` is generally more predictable and easier to understand.
+
+---
+
+### 5. Run as a Non-Root User
+
+Use the `USER` instruction to execute the application with the least privileges required.
+
+This reduces the impact of potential vulnerabilities.
+
+---
+
+### 6. Pin Base Image Versions
+
+Instead of:
+
+```dockerfile
+FROM python:latest
+```
+
+prefer:
+
+```dockerfile
+FROM python:3.12
+```
+
+Explicit versions improve reproducibility and prevent unexpected changes.
+
+---
+
+### 7. Keep Dockerfiles Readable
+
+Use logical ordering, comments where appropriate, and consistent formatting.
+
+A well-structured Dockerfile is easier to review, maintain, and troubleshoot.
+
+---
+
