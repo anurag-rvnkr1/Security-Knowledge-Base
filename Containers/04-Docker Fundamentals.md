@@ -515,18 +515,700 @@ Automation is one of Docker's greatest strengths.
 
 ---
 
-## Next Section
+## How It Works
 
-How It Works
+Docker simplifies container creation and management by automating the entire container lifecycle. Instead of manually installing operating systems, libraries, dependencies, and applications on every server, Docker packages everything into an immutable image that can be executed consistently anywhere Docker is available.
 
-Practical Examples
-
-Hands-on Commands
-
-Best Practices
-
-Common Mistakes
-
-References
+Internally, Docker combines several components—including the Docker Client, Docker Daemon, Docker Engine API, container runtime, Linux kernel features, and container images—to create and manage isolated application environments.
 
 ---
+
+# Docker Workflow
+
+```
+Developer
+
+      │
+
+      ▼
+
+Write Application
+
+      │
+
+      ▼
+
+Create Dockerfile
+
+      │
+
+      ▼
+
+Docker Build
+
+      │
+
+      ▼
+
+Container Image
+
+      │
+
+      ▼
+
+Docker Registry
+
+      │
+
+      ▼
+
+Docker Pull
+
+      │
+
+      ▼
+
+Docker Run
+
+      │
+
+      ▼
+
+Running Container
+
+      │
+
+      ▼
+
+Application Available
+```
+
+Each stage contributes to a consistent and repeatable deployment process.
+
+---
+
+## Step 1 – Write the Application
+
+The workflow begins with application development.
+
+Example languages include:
+
+- Python
+- Java
+- Go
+- Node.js
+- C#
+- PHP
+
+The application may depend on:
+
+- Runtime
+- Third-party libraries
+- Environment variables
+- Configuration files
+
+Docker packages these requirements together.
+
+---
+
+## Step 2 – Create a Dockerfile
+
+The Dockerfile defines how the image should be built.
+
+Example workflow:
+
+```
+Select Base Image
+
+↓
+
+Install Packages
+
+↓
+
+Copy Application
+
+↓
+
+Configure Environment
+
+↓
+
+Specify Startup Command
+```
+
+The Dockerfile serves as a blueprint for image creation.
+
+---
+
+## Step 3 – Build the Image
+
+The command:
+
+```bash
+docker build
+```
+
+instructs Docker to:
+
+1. Read the Dockerfile.
+2. Download the base image if necessary.
+3. Execute each instruction.
+4. Create image layers.
+5. Generate the final image.
+
+Example:
+
+```
+Dockerfile
+
+      │
+
+Docker Build
+
+      │
+
+Image Layers
+
+      │
+
+Final Image
+```
+
+The resulting image is immutable and versioned.
+
+---
+
+## Step 4 – Store the Image
+
+Images may remain local or be uploaded to a registry.
+
+```
+Local Image
+
+      │
+
+Push
+
+      │
+
+Docker Hub
+
+or
+
+Private Registry
+```
+
+Registries simplify image sharing between developers, CI/CD pipelines, and production environments.
+
+---
+
+## Step 5 – Pull the Image
+
+When another system requires the application:
+
+```
+docker pull
+```
+
+Docker:
+
+- Contacts the registry.
+- Downloads missing layers.
+- Reuses existing layers when possible.
+- Stores the image locally.
+
+Layer reuse minimizes download size and deployment time.
+
+---
+
+## Step 6 – Create the Container
+
+Running:
+
+```bash
+docker run
+```
+
+causes Docker to:
+
+- Create a writable layer.
+- Configure namespaces.
+- Apply cgroups.
+- Configure networking.
+- Mount volumes.
+- Allocate resources.
+
+```
+Image
+
+     │
+
+Create Container
+
+     │
+
+Apply Isolation
+
+     │
+
+Prepare Runtime
+```
+
+The image itself remains unchanged.
+
+---
+
+## Step 7 – Start the Application
+
+Docker starts the application's primary process.
+
+```
+Container
+
+     │
+
+PID 1
+
+     │
+
+Application
+
+     │
+
+Listening for Requests
+```
+
+The container remains active while the main process continues running.
+
+If the primary process exits, Docker considers the container stopped.
+
+---
+
+## Step 8 – Runtime Management
+
+During execution, Docker manages:
+
+- Process lifecycle
+- Networking
+- Mounted volumes
+- Resource limits
+- Logging
+- Restart policies
+- Health status
+
+Docker continuously interacts with the Linux kernel to maintain isolation and resource control.
+
+---
+
+## Step 9 – Stop and Remove the Container
+
+Containers may be:
+
+```
+Running
+
+   │
+
+Stop
+
+   │
+
+Exited
+
+   │
+
+Remove
+```
+
+Removing a container:
+
+- Deletes the writable layer.
+- Preserves the image.
+- Preserves external volumes (unless explicitly removed).
+
+A new container can later be created from the same image.
+
+---
+
+# Practical Examples
+
+## Example 1 – Web Server Deployment
+
+A developer wants to deploy Nginx.
+
+Workflow:
+
+```
+docker pull nginx
+
+↓
+
+docker run nginx
+
+↓
+
+Web Server Running
+```
+
+No manual installation or dependency configuration is required.
+
+---
+
+## Example 2 – Team Collaboration
+
+Five developers work on the same project.
+
+Without Docker:
+
+- Different package versions
+- Different runtimes
+- Different operating systems
+
+Result:
+
+> "It works on my machine."
+
+With Docker:
+
+```
+Shared Docker Image
+
+        │
+
+Developer A
+
+Developer B
+
+Developer C
+
+Developer D
+
+Developer E
+```
+
+All developers use identical environments, eliminating configuration inconsistencies.
+
+---
+
+## Example 3 – CI/CD Pipeline
+
+```
+Git Commit
+
+     │
+
+CI Pipeline
+
+     │
+
+Build Docker Image
+
+     │
+
+Push Registry
+
+     │
+
+Deploy Container
+```
+
+This enables automated, repeatable deployments across environments.
+
+---
+
+## Example 4 – Scaling an API
+
+Suppose an API experiences increased traffic.
+
+Instead of upgrading a single server:
+
+```
+API Image
+
+    │
+
+ ┌──┼──┐
+
+ ▼  ▼  ▼
+
+API API API
+```
+
+Multiple containers can be launched from the same image to handle additional requests.
+
+---
+
+# Hands-on Commands
+
+## Display Docker Version
+
+```bash
+docker version
+```
+
+Displays Docker Client and Docker Engine versions.
+
+---
+
+## Display Docker Information
+
+```bash
+docker info
+```
+
+Shows:
+
+- Storage driver
+- Number of containers
+- Number of images
+- CPU
+- Memory
+- Runtime
+- Docker Root Directory
+
+---
+
+## Search Docker Hub
+
+```bash
+docker search nginx
+```
+
+Searches Docker Hub for available images.
+
+---
+
+## Pull an Image
+
+```bash
+docker pull nginx
+```
+
+Downloads the latest official Nginx image.
+
+---
+
+## List Images
+
+```bash
+docker images
+```
+
+Displays locally stored images.
+
+---
+
+## Run a Container
+
+```bash
+docker run nginx
+```
+
+Creates and starts a container.
+
+---
+
+## Run in Detached Mode
+
+```bash
+docker run -d nginx
+```
+
+Runs the container in the background.
+
+---
+
+## Publish a Port
+
+```bash
+docker run -p 8080:80 nginx
+```
+
+Maps:
+
+```
+Host Port 8080
+
+↓
+
+Container Port 80
+```
+
+allowing external access to the web server.
+
+---
+
+## View Running Containers
+
+```bash
+docker ps
+```
+
+Lists active containers.
+
+---
+
+## View All Containers
+
+```bash
+docker ps -a
+```
+
+Lists running and stopped containers.
+
+---
+
+## Stop a Container
+
+```bash
+docker stop <container_name>
+```
+
+Gracefully stops the container.
+
+---
+
+## Remove a Container
+
+```bash
+docker rm <container_name>
+```
+
+Deletes a stopped container.
+
+---
+
+## Remove an Image
+
+```bash
+docker rmi <image_name>
+```
+
+Deletes a local image.
+
+---
+
+## View Container Logs
+
+```bash
+docker logs <container_name>
+```
+
+Displays application output and error logs.
+
+---
+
+## Execute Commands Inside a Container
+
+```bash
+docker exec -it <container_name> bash
+```
+
+Starts an interactive Bash shell inside the running container.
+
+---
+
+## Inspect Docker Objects
+
+```bash
+docker inspect <container_name>
+```
+
+Displays detailed JSON information about Docker objects.
+
+---
+
+# Best Practices
+
+### 1. Learn the Docker Workflow
+
+Understand the complete flow:
+
+```
+Dockerfile
+
+↓
+
+Image
+
+↓
+
+Registry
+
+↓
+
+Container
+
+↓
+
+Application
+```
+
+before learning advanced topics such as Docker Compose and Kubernetes.
+
+---
+
+### 2. Use Official Images
+
+Prefer trusted images maintained by verified publishers.
+
+---
+
+### 3. Version Images
+
+Use explicit tags such as:
+
+```
+python:3.12
+
+nginx:1.27
+
+postgres:17
+```
+
+instead of relying on `latest`.
+
+---
+
+### 4. Keep Images Small
+
+Use minimal base images to improve security, reduce download size, and speed up deployments.
+
+---
+
+### 5. Avoid Manual Container Changes
+
+Never treat production containers like traditional servers.
+
+Rebuild images instead of modifying running containers.
+
+---
+
+### 6. Separate Configuration from Images
+
+Store configuration outside the image using:
+
+- Environment variables
+- Configuration files
+- Secrets management
+
+This makes images reusable across environments.
+
+---
+
+### 7. Understand Every Docker Object
+
+Know the purpose of:
+
+- Images
+- Containers
+- Networks
+- Volumes
+- Registries
+- Dockerfiles
+
+Understanding these relationships simplifies troubleshooting and prepares you for orchestration platforms such as Kubernetes.
+
+---
+
