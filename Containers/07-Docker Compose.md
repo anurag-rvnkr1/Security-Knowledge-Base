@@ -1224,3 +1224,533 @@ Validation reduces deployment failures.
 
 ---
 
+## Common Mistakes
+
+Docker Compose greatly simplifies multi-container deployments, but incorrect configuration can lead to networking issues, startup failures, data loss, security risks, and maintenance challenges. Understanding the following common mistakes will help you create reliable and production-ready Compose configurations.
+
+---
+
+# 1. Confusing Docker Compose with Docker
+
+Many beginners think Docker Compose is a replacement for Docker.
+
+In reality:
+
+```
+Docker
+
+↓
+
+Container Platform
+
+↓
+
+Docker Compose
+
+↓
+
+Multi-Container Management
+```
+
+Docker Compose **uses Docker** to create and manage containers.
+
+---
+
+# 2. Using Compose for Large Production Clusters
+
+Docker Compose is designed primarily for:
+
+- Development
+- Testing
+- Local environments
+- Small deployments
+
+Large production environments typically use container orchestration platforms such as:
+
+- Kubernetes
+- Docker Swarm (legacy)
+- Amazon ECS
+- Azure Container Apps
+- Google Kubernetes Engine (GKE)
+
+Compose is excellent for development but not a complete orchestration platform.
+
+---
+
+# 3. Using `latest` Image Tags
+
+Avoid:
+
+```yaml
+image: nginx:latest
+```
+
+Prefer:
+
+```yaml
+image: nginx:1.27
+```
+
+Benefits:
+
+- Predictable deployments
+- Easier rollback
+- Better reproducibility
+
+---
+
+# 4. Hardcoding Secrets
+
+Never place sensitive information directly in the Compose file.
+
+Poor example:
+
+```yaml
+environment:
+
+  DB_PASSWORD: mypassword123
+```
+
+Instead use:
+
+- Docker Secrets
+- Kubernetes Secrets
+- Cloud Secret Managers
+- Secure environment variable injection
+
+Sensitive information should not be committed to version control.
+
+---
+
+# 5. Forgetting Persistent Volumes
+
+Incorrect configuration:
+
+```
+PostgreSQL
+
+↓
+
+Container Filesystem
+
+↓
+
+Container Removed
+
+↓
+
+Database Lost
+```
+
+Correct approach:
+
+```yaml
+volumes:
+
+  - db_data:/var/lib/postgresql/data
+```
+
+Named volumes preserve application data across container recreation.
+
+---
+
+# 6. Assuming `depends_on` Waits for Readiness
+
+Many developers believe:
+
+```yaml
+depends_on:
+
+  - database
+```
+
+means the database is fully ready.
+
+Actual behavior:
+
+```
+Database Container Starts
+
+↓
+
+API Container Starts Immediately
+```
+
+The database process may still be initializing.
+
+For applications that require readiness, use:
+
+- Health checks
+- Retry logic
+- Startup scripts
+
+---
+
+# 7. Publishing Every Port
+
+Poor example:
+
+```yaml
+ports:
+
+  - "80:80"
+
+  - "5432:5432"
+
+  - "6379:6379"
+
+  - "5672:5672"
+```
+
+Only publish ports that require external access.
+
+Example:
+
+```
+Internet
+
+↓
+
+Web
+
+↓
+
+API
+
+↓
+
+Database (Internal Only)
+```
+
+Internal services should generally remain accessible only within the Compose network.
+
+---
+
+# 8. Using IP Addresses Instead of Service Names
+
+Incorrect:
+
+```
+Database
+
+↓
+
+172.18.0.4
+```
+
+Correct:
+
+```
+database
+```
+
+Docker Compose automatically provides DNS-based service discovery.
+
+Service names are stable, while container IP addresses may change.
+
+---
+
+# 9. Ignoring Restart Policies
+
+Without restart policies:
+
+```
+Application Crash
+
+↓
+
+Container Stops
+
+↓
+
+Manual Restart Required
+```
+
+Example:
+
+```yaml
+restart: unless-stopped
+```
+
+Appropriate restart policies improve application availability.
+
+---
+
+# 10. Creating One Giant Compose File
+
+Large Compose files become difficult to maintain.
+
+Instead of:
+
+```
+1000-Line Compose File
+```
+
+consider organizing services logically or using Compose overrides for different environments.
+
+---
+
+# 11. Ignoring Environment Variables
+
+Avoid modifying the Compose file for every environment.
+
+Instead use:
+
+```
+Development
+
+↓
+
+.env
+
+↓
+
+Compose
+
+↓
+
+Production
+
+↓
+
+.env
+```
+
+External configuration improves portability.
+
+---
+
+# 12. Running Everything as Root
+
+Many official images run as `root` by default.
+
+Where possible:
+
+- Create non-root users
+- Configure the `user` directive
+- Follow the Principle of Least Privilege
+
+This reduces the impact of vulnerabilities.
+
+---
+
+# 13. Forgetting to Clean Up
+
+Repeated testing can leave behind:
+
+- Stopped containers
+- Unused networks
+- Orphaned volumes
+- Old images
+
+Use cleanup commands periodically to maintain a healthy development environment.
+
+---
+
+# 14. Not Validating the Compose File
+
+Before deployment, validate:
+
+- YAML indentation
+- Service definitions
+- Port mappings
+- Volume declarations
+- Environment variables
+- Image names
+
+A small formatting mistake can prevent the entire application stack from starting.
+
+---
+
+# 15. Treating Compose Files as Temporary Scripts
+
+A Compose file represents infrastructure.
+
+It should:
+
+- Be stored in Git
+- Be reviewed
+- Follow coding standards
+- Include comments where appropriate
+- Be tested regularly
+
+Treat Compose files with the same discipline as application source code.
+
+---
+
+# Docker Compose Quick Revision
+
+## Basic Workflow
+
+```
+compose.yaml
+
+↓
+
+docker compose up
+
+↓
+
+Networks
+
+↓
+
+Volumes
+
+↓
+
+Containers
+
+↓
+
+Running Application
+```
+
+---
+
+## Common Commands
+
+```bash
+docker compose up
+
+docker compose up -d
+
+docker compose down
+
+docker compose stop
+
+docker compose restart
+
+docker compose ps
+
+docker compose logs
+
+docker compose build
+
+docker compose pull
+```
+
+---
+
+## Core Compose Components
+
+```
+Services
+
+↓
+
+Networks
+
+↓
+
+Volumes
+
+↓
+
+Environment Variables
+
+↓
+
+Restart Policies
+
+↓
+
+Dependencies
+```
+
+---
+
+## Service Communication
+
+```
+Web
+
+↓
+
+API
+
+↓
+
+Database
+```
+
+Containers communicate using **service names**, not IP addresses.
+
+---
+
+# Docker Compose Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Docker Compose Purpose | ✓ |
+| Understand Compose Architecture | ✓ |
+| Understand Services | ✓ |
+| Understand Images & Build | ✓ |
+| Understand Networks | ✓ |
+| Understand Volumes | ✓ |
+| Understand Environment Variables | ✓ |
+| Understand Port Mapping | ✓ |
+| Understand Restart Policies | ✓ |
+| Understand `depends_on` | ✓ |
+| Understand Service Discovery | ✓ |
+| Know Essential Compose Commands | ✓ |
+| Understand Multi-Container Applications | ✓ |
+| Understand Compose Best Practices | ✓ |
+| Understand Common Mistakes | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Compose Documentation
+- Compose File Reference
+- Docker CLI Documentation
+- Docker Networking Documentation
+- Docker Volumes Documentation
+
+---
+
+## OCI Standards
+
+- Open Container Initiative (OCI) Image Specification
+- Open Container Initiative (OCI) Runtime Specification
+
+---
+
+## CNCF Resources
+
+- Kubernetes Documentation
+- Cloud Native Computing Foundation (CNCF)
+- containerd Documentation
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- CIS Docker Benchmark
+- OWASP Container Security Verification Standard
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Container Security* — Liz Rice
+- *Kubernetes in Action* — Marko Lukša
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Docker Labs
+- Play with Docker
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+
