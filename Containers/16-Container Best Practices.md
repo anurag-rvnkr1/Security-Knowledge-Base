@@ -1233,3 +1233,706 @@ Before deploying to production, verify:
 
 ---
 
+## Common Mistakes
+
+Container Best Practices are often overlooked because containers are perceived as "lightweight virtual machines." In reality, containers require a different operational mindset centered around immutability, automation, security, and observability.
+
+The following are the most common mistakes observed in containerized environments.
+
+---
+
+# 1. Treating Containers Like Virtual Machines
+
+Incorrect approach:
+
+```
+Deploy Container
+
+↓
+
+SSH Into Container
+
+↓
+
+Install Software
+
+↓
+
+Modify Files
+
+↓
+
+Continue Running
+```
+
+Problems:
+
+- Configuration drift
+- Inconsistent environments
+- Difficult troubleshooting
+- Unreliable deployments
+
+Correct approach:
+
+```
+Update Dockerfile
+
+↓
+
+Build New Image
+
+↓
+
+Deploy New Container
+
+↓
+
+Remove Old Container
+```
+
+Containers should be treated as **immutable infrastructure**.
+
+---
+
+# 2. Building Large Images
+
+Example:
+
+```
+Ubuntu
+
++
+
+Unused Packages
+
++
+
+Development Tools
+
++
+
+Temporary Files
+
+↓
+
+2 GB Image
+```
+
+Large images result in:
+
+- Slower builds
+- Slower downloads
+- Increased storage usage
+- Larger attack surface
+
+Use minimal base images and remove unnecessary software.
+
+---
+
+# 3. Running Everything as Root
+
+Default behavior in many images:
+
+```
+Application
+
+↓
+
+Root User
+```
+
+Risks:
+
+- Privilege escalation
+- Greater impact of exploitation
+- Increased security exposure
+
+Always use a non-root user whenever feasible.
+
+---
+
+# 4. Hardcoding Secrets
+
+Never store:
+
+- Passwords
+- API keys
+- Cloud credentials
+- Certificates
+- Tokens
+
+inside:
+
+```
+Dockerfile
+
+↓
+
+Image
+
+↓
+
+Git Repository
+```
+
+Use dedicated secret management solutions.
+
+---
+
+# 5. Using `latest` in Production
+
+Poor practice:
+
+```bash
+myapp:latest
+```
+
+Problem:
+
+```
+latest
+
+↓
+
+Different Image
+
+↓
+
+Unexpected Deployment
+```
+
+Instead:
+
+```bash
+myapp:2.4.1
+```
+
+Version-specific tags improve predictability and simplify rollbacks.
+
+---
+
+# 6. Ignoring Image Scanning
+
+Deploying unscanned images may introduce:
+
+- Known CVEs
+- Malware
+- Vulnerable packages
+- Misconfigurations
+
+Recommended workflow:
+
+```
+Build
+
+↓
+
+Scan
+
+↓
+
+Fix
+
+↓
+
+Deploy
+```
+
+---
+
+# 7. Not Setting Resource Limits
+
+Without limits:
+
+```
+Container
+
+↓
+
+Consumes All Memory
+
+↓
+
+Host Becomes Unstable
+```
+
+Resource limits protect both the application and the host.
+
+Define:
+
+- CPU limits
+- Memory limits
+- Process limits
+- Storage limits (where applicable)
+
+---
+
+# 8. Exposing Unnecessary Ports
+
+Example:
+
+```
+80
+
+443
+
+3306
+
+5432
+
+6379
+
+27017
+```
+
+Every exposed port increases the attack surface.
+
+Expose only services that require external access.
+
+---
+
+# 9. Ignoring Logging
+
+Without centralized logging:
+
+```
+Application Failure
+
+↓
+
+No Logs
+
+↓
+
+Unknown Root Cause
+```
+
+Logs should be:
+
+- Centralized
+- Searchable
+- Retained appropriately
+- Monitored
+
+---
+
+# 10. Not Monitoring Production
+
+Applications should continuously monitor:
+
+- CPU
+- Memory
+- Network
+- Errors
+- Latency
+- Restarts
+
+Monitoring enables early detection of issues before users are significantly affected.
+
+---
+
+# 11. Skipping Health Checks
+
+Without health checks:
+
+```
+Application Hung
+
+↓
+
+Still Running
+
+↓
+
+Traffic Continues
+
+↓
+
+User Failures
+```
+
+Health checks allow orchestration platforms to detect unhealthy workloads and take corrective action.
+
+---
+
+# 12. Manual Production Changes
+
+Avoid:
+
+```
+SSH
+
+↓
+
+Modify Container
+
+↓
+
+Restart
+```
+
+Instead:
+
+```
+Git Commit
+
+↓
+
+CI/CD
+
+↓
+
+Build
+
+↓
+
+Deploy
+```
+
+Automated deployments improve consistency and auditability.
+
+---
+
+# 13. Keeping Unused Images
+
+Over time:
+
+```
+Old Images
+
+↓
+
+Disk Usage
+
+↓
+
+Storage Problems
+```
+
+Regularly remove:
+
+- Obsolete images
+- Unused containers
+- Unused networks
+- Unused volumes
+
+while following organizational retention policies.
+
+---
+
+# 14. No Backup Strategy
+
+Containers are replaceable.
+
+Application data often is not.
+
+Back up:
+
+- Databases
+- Persistent volumes
+- Configuration
+- Secrets (using approved procedures)
+- Critical business data
+
+Recovery plans should be tested regularly.
+
+---
+
+# 15. Treating Best Practices as Optional
+
+Organizations sometimes implement:
+
+- Security
+- Monitoring
+- Logging
+- Scanning
+
+only after experiencing an incident.
+
+A better approach is:
+
+```
+Design
+
+↓
+
+Build
+
+↓
+
+Secure
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Improve
+```
+
+Best practices should be integrated from the beginning of the application lifecycle.
+
+---
+
+# Container Best Practices Quick Revision
+
+## Secure Development Lifecycle
+
+```
+Design
+
+↓
+
+Dockerfile
+
+↓
+
+Build
+
+↓
+
+Scan
+
+↓
+
+Test
+
+↓
+
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Improve
+```
+
+---
+
+## Security Principles
+
+```
+Least Privilege
+
+↓
+
+Defense in Depth
+
+↓
+
+Immutable Infrastructure
+
+↓
+
+Zero Trust
+
+↓
+
+Continuous Improvement
+```
+
+These principles reinforce one another to create a resilient container platform.
+
+---
+
+## Production Readiness
+
+Before deployment:
+
+- Images scanned
+- Secrets secured
+- Resource limits configured
+- Health checks enabled
+- Logging centralized
+- Monitoring active
+- Backups verified
+- CI/CD validated
+
+---
+
+## Operational Priorities
+
+```
+Automation
+
+↓
+
+Monitoring
+
+↓
+
+Logging
+
+↓
+
+Alerting
+
+↓
+
+Incident Response
+
+↓
+
+Continuous Improvement
+```
+
+Automation reduces manual error while improving consistency.
+
+---
+
+## Common Validation Commands
+
+```bash
+docker ps
+
+docker inspect
+
+docker logs
+
+docker stats
+
+docker top
+
+docker history
+
+docker events
+
+docker system df
+```
+
+These commands help validate the operational state of Docker environments.
+
+---
+
+# Container Best Practices Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Build Small Images | ✓ |
+| Use Trusted Base Images | ✓ |
+| Run as Non-Root | ✓ |
+| Secure Secrets | ✓ |
+| Scan Images | ✓ |
+| Version Images | ✓ |
+| Use Immutable Infrastructure | ✓ |
+| Configure Resource Limits | ✓ |
+| Enable Health Checks | ✓ |
+| Centralize Logging | ✓ |
+| Monitor Continuously | ✓ |
+| Automate CI/CD | ✓ |
+| Back Up Persistent Data | ✓ |
+| Apply Least Privilege | ✓ |
+| Follow Continuous Improvement | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Best Practices
+- Docker Engine Documentation
+- Docker Build Documentation
+- Docker Security Documentation
+- Docker CLI Documentation
+
+---
+
+## CNCF Resources
+
+- Kubernetes Best Practices
+- Cloud Native Computing Foundation (CNCF)
+- Prometheus Documentation
+- OpenTelemetry Documentation
+- Falco Documentation
+
+---
+
+## Security Standards
+
+- NIST SP 800-190 — Application Container Security Guide
+- NIST Secure Software Development Framework (SSDF)
+- CIS Docker Benchmark
+- OWASP Docker Security Cheat Sheet
+- OWASP Container Security Verification Standard
+
+---
+
+## Supply Chain Security
+
+- Sigstore Documentation
+- Notary Documentation
+- SPDX Specification
+- CycloneDX Specification
+- SLSA (Supply-chain Levels for Software Artifacts)
+
+---
+
+## Books
+
+- *Container Security* — Liz Rice
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *The Site Reliability Workbook* — Google
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Linux Foundation Training
+- CNCF Learning Paths
+- OWASP Projects
+- NIST Computer Security Resource Center (CSRC)
+- Google Site Reliability Engineering Resources
+
+---
+
+# Container Best Practices Summary
+
+```
+Secure by Design
+
+        │
+
+Automate Everything
+
+        │
+
+Build Small Images
+
+        │
+
+Run as Non-Root
+
+        │
+
+Scan Continuously
+
+        │
+
+Deploy Immutably
+
+        │
+
+Monitor Continuously
+
+        │
+
+Respond Quickly
+
+        │
+
+Continuously Improve
+```
+
+These principles form the foundation of modern, production-ready container platforms.
+
