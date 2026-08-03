@@ -407,3 +407,770 @@ Review the incident to improve security controls, processes, and response capabi
 
 ---
 
+## How It Works
+
+Container Incident Response follows a structured workflow that enables security teams to quickly detect, investigate, contain, eradicate, and recover from security incidents affecting containerized environments. Because containers are often short-lived and automatically recreated, investigators must preserve evidence early in the investigation.
+
+Unlike traditional incident response, where compromised servers may remain available for analysis, container investigations often rely heavily on:
+
+- Centralized logging
+- Monitoring systems
+- Runtime security tools
+- Container metadata
+- Cloud audit logs
+- Registry information
+- Orchestration events
+
+Rapid evidence collection is essential because containers may terminate automatically.
+
+---
+
+# Container Incident Response Workflow
+
+```
+Security Event
+
+       │
+
+       ▼
+
+Detection
+
+       │
+
+       ▼
+
+Alert
+
+       │
+
+       ▼
+
+Initial Investigation
+
+       │
+
+       ▼
+
+Evidence Collection
+
+       │
+
+       ▼
+
+Containment
+
+       │
+
+       ▼
+
+Root Cause Analysis
+
+       │
+
+       ▼
+
+Eradication
+
+       │
+
+       ▼
+
+Recovery
+
+       │
+
+       ▼
+
+Lessons Learned
+```
+
+Every phase should be documented to support post-incident review and continuous improvement.
+
+---
+
+# Step 1 – Incident Detection
+
+Detection may originate from:
+
+```
+Monitoring
+
+↓
+
+Runtime Security
+
+↓
+
+SIEM
+
+↓
+
+SOC Analyst
+
+↓
+
+User Report
+```
+
+Examples:
+
+- Unexpected outbound traffic
+- Malware detection
+- Container escape alert
+- Image integrity failure
+- Multiple authentication failures
+
+Early detection reduces attacker dwell time.
+
+---
+
+# Step 2 – Initial Triage
+
+Security analysts determine:
+
+- Is the alert legitimate?
+- Which containers are affected?
+- What systems are involved?
+- What is the potential impact?
+- Is the incident still active?
+
+Example:
+
+```
+Alert
+
+↓
+
+Validate
+
+↓
+
+False Positive?
+
+↓
+
+Yes → Close
+
+↓
+
+No → Continue Investigation
+```
+
+---
+
+# Step 3 – Evidence Collection
+
+Evidence should be gathered before making major changes.
+
+Possible evidence includes:
+
+```
+Container Logs
+
+↓
+
+Docker Events
+
+↓
+
+Image Metadata
+
+↓
+
+Running Processes
+
+↓
+
+Network Connections
+
+↓
+
+Volumes
+
+↓
+
+Cloud Audit Logs
+```
+
+Evidence should be collected according to organizational procedures and legal requirements where applicable.
+
+---
+
+# Step 4 – Scope the Incident
+
+Determine:
+
+```
+Compromised Container
+
+↓
+
+Single Host?
+
+↓
+
+Multiple Containers?
+
+↓
+
+Entire Cluster?
+
+↓
+
+Cloud Resources?
+```
+
+Understanding scope prevents incomplete remediation.
+
+---
+
+# Step 5 – Containment
+
+Containment limits attacker activity while minimizing disruption.
+
+Examples:
+
+```
+Compromised Container
+
+↓
+
+Network Isolation
+
+↓
+
+Credential Rotation
+
+↓
+
+Block Malicious Traffic
+```
+
+In many environments, replacing the compromised container with a trusted image is preferable to modifying the running container.
+
+---
+
+# Step 6 – Root Cause Analysis
+
+Investigate:
+
+- Initial access
+- Exploited vulnerability
+- Attacker actions
+- Persistence mechanisms
+- Data accessed
+- Lateral movement
+- Indicators of compromise
+
+Example:
+
+```
+Internet
+
+↓
+
+Web Application
+
+↓
+
+Known CVE
+
+↓
+
+Remote Code Execution
+
+↓
+
+Container Compromise
+```
+
+Understanding the attack path helps prevent recurrence.
+
+---
+
+# Step 7 – Eradication
+
+Remove the underlying cause.
+
+Examples:
+
+```
+Update Base Image
+
+↓
+
+Patch Application
+
+↓
+
+Rotate Secrets
+
+↓
+
+Remove Malware
+
+↓
+
+Delete Malicious Images
+```
+
+Eradication should address the root cause rather than only the visible symptoms.
+
+---
+
+# Step 8 – Recovery
+
+Recovery uses trusted artifacts.
+
+```
+Trusted Image
+
+↓
+
+Deploy New Container
+
+↓
+
+Restore Data
+
+↓
+
+Validate Application
+
+↓
+
+Resume Operations
+```
+
+Recovery should include verification that the vulnerability has been addressed.
+
+---
+
+# Step 9 – Lessons Learned
+
+After recovery:
+
+```
+Incident Review
+
+↓
+
+Timeline
+
+↓
+
+Root Cause
+
+↓
+
+Recommendations
+
+↓
+
+Security Improvements
+```
+
+Organizations often review:
+
+- Detection effectiveness
+- Response time
+- Communication
+- Monitoring gaps
+- Process improvements
+
+---
+
+# Real-World Incident Workflow
+
+Example:
+
+```
+Attacker
+
+↓
+
+Exploits Vulnerability
+
+↓
+
+Container Compromised
+
+↓
+
+Unexpected Network Traffic
+
+↓
+
+Monitoring Alert
+
+↓
+
+SOC Investigation
+
+↓
+
+Evidence Collected
+
+↓
+
+Container Isolated
+
+↓
+
+Image Updated
+
+↓
+
+New Container Deployed
+
+↓
+
+Incident Closed
+```
+
+---
+
+# Evidence Collection Checklist
+
+Collect evidence from:
+
+- Container logs
+- Docker daemon logs
+- Docker events
+- Running processes
+- Mounted volumes
+- Image metadata
+- Container configuration
+- Network connections
+- Registry activity
+- Cloud audit logs
+- SIEM alerts
+- Runtime security alerts
+
+Collect evidence before deleting or replacing affected containers whenever feasible.
+
+---
+
+# Practical Examples
+
+## Example 1 – Unexpected Container Restart
+
+Monitoring reports:
+
+```
+Container
+
+↓
+
+Crash
+
+↓
+
+Restart
+
+↓
+
+Repeated
+```
+
+Investigation:
+
+```
+Container Logs
+
+↓
+
+Application Error
+
+↓
+
+Memory Exhaustion
+
+↓
+
+Root Cause Identified
+```
+
+---
+
+## Example 2 – Suspicious Process
+
+Runtime monitoring detects:
+
+```
+Container
+
+↓
+
+Unexpected Shell
+
+↓
+
+Security Alert
+```
+
+Investigation focuses on:
+
+- Running processes
+- Network activity
+- Image history
+- Recent deployments
+
+---
+
+## Example 3 – Credential Theft
+
+Logs indicate:
+
+```
+API Key Access
+
+↓
+
+Unknown Location
+
+↓
+
+Alert
+
+↓
+
+Credential Rotation
+
+↓
+
+Investigation
+```
+
+Recovery includes rotating exposed credentials and reviewing access logs.
+
+---
+
+## Example 4 – Vulnerable Image
+
+Security scanner reports:
+
+```
+Critical CVE
+
+↓
+
+Production Image
+
+↓
+
+Replace Image
+
+↓
+
+Redeploy
+```
+
+Recovery uses an updated, scanned image rather than modifying the running container.
+
+---
+
+# Hands-on Investigation Commands
+
+> **Note:** These commands assist with inspection and troubleshooting. Production investigations should follow organizational incident response procedures.
+
+---
+
+## List Running Containers
+
+```bash
+docker ps
+```
+
+Identify running workloads.
+
+---
+
+## View Container Logs
+
+```bash
+docker logs container_name
+```
+
+Review application output.
+
+---
+
+## Stream Logs
+
+```bash
+docker logs -f container_name
+```
+
+Observe log activity in real time.
+
+---
+
+## Inspect Container
+
+```bash
+docker inspect container_name
+```
+
+Review:
+
+- Configuration
+- Mounts
+- Networks
+- Environment variables
+- Restart policy
+- Image information
+
+---
+
+## Display Running Processes
+
+```bash
+docker top container_name
+```
+
+Look for unexpected processes.
+
+---
+
+## Monitor Resource Usage
+
+```bash
+docker stats
+```
+
+Review CPU, memory, and network utilization.
+
+Unexpected spikes may indicate abnormal activity.
+
+---
+
+## Display Docker Events
+
+```bash
+docker events
+```
+
+Review container lifecycle events.
+
+---
+
+## Inspect Image History
+
+```bash
+docker history image_name
+```
+
+Review image layers and build history.
+
+---
+
+## View Image Metadata
+
+```bash
+docker inspect image_name
+```
+
+Review image configuration and metadata.
+
+---
+
+# Best Practices
+
+### 1. Prepare Before Incidents
+
+Develop:
+
+- Incident response playbooks
+- Monitoring
+- Logging
+- Backup procedures
+- Communication plans
+
+Preparation improves response efficiency.
+
+---
+
+### 2. Preserve Evidence Early
+
+Containers may terminate quickly.
+
+Collect:
+
+- Logs
+- Metadata
+- Runtime information
+- Cloud audit records
+
+before replacing or removing affected containers whenever practical.
+
+---
+
+### 3. Centralize Logs
+
+Centralized logging preserves historical evidence even after containers are deleted.
+
+---
+
+### 4. Replace Rather Than Repair
+
+Instead of modifying compromised containers:
+
+```
+Trusted Image
+
+↓
+
+New Container
+
+↓
+
+Replace Old Container
+```
+
+This aligns with immutable infrastructure principles.
+
+---
+
+### 5. Rotate Secrets After Compromise
+
+If credentials may have been exposed:
+
+- Rotate passwords
+- Replace API keys
+- Issue new certificates
+- Rotate access tokens
+
+Do not assume secrets remain secure after an incident.
+
+---
+
+### 6. Document Every Step
+
+Maintain records of:
+
+- Timeline
+- Evidence
+- Decisions
+- Actions
+- Recovery steps
+
+Documentation supports lessons learned and compliance requirements.
+
+---
+
+### 7. Review and Improve
+
+Every incident should strengthen:
+
+- Detection capabilities
+- Monitoring
+- Playbooks
+- Security controls
+- Training
+
+Continuous improvement reduces future risk.
+
+---
+
