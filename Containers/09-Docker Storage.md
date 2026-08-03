@@ -1082,3 +1082,534 @@ This improves maintainability, portability, and disaster recovery.
 
 ---
 
+## Common Mistakes
+
+Persistent storage is one of the most critical aspects of containerized applications. Many production outages and data-loss incidents occur because storage is misunderstood or configured incorrectly. The following are the most common mistakes related to Docker storage, along with recommended practices to avoid them.
+
+---
+
+# 1. Storing Important Data in the Writable Layer
+
+This is the most common mistake.
+
+```
+Application
+
+↓
+
+Writable Layer
+
+↓
+
+Container Removed
+
+↓
+
+Data Lost
+```
+
+The writable layer exists only for the lifetime of the container.
+
+**Recommended**
+
+```
+Application
+
+↓
+
+Docker Volume
+
+↓
+
+Persistent Storage
+```
+
+Critical data should always reside outside the writable layer.
+
+---
+
+# 2. Confusing Volumes with Bind Mounts
+
+Many engineers use bind mounts when Docker volumes are more appropriate.
+
+### Docker Volume
+
+```
+Docker
+
+↓
+
+Volume
+
+↓
+
+Persistent Storage
+```
+
+- Managed by Docker
+- Portable
+- Production-friendly
+- Easier to back up
+
+---
+
+### Bind Mount
+
+```
+Host Directory
+
+↓
+
+Container
+```
+
+- Direct access to host files
+- Excellent for development
+- Depends on host directory structure
+
+Choose the storage mechanism that matches your use case.
+
+---
+
+# 3. Forgetting Volume Backups
+
+Volumes persist beyond the container lifecycle, but they are **not** automatically backed up.
+
+Without backups:
+
+```
+Disk Failure
+
+↓
+
+Volume Lost
+
+↓
+
+Application Data Lost
+```
+
+Establish a regular backup and recovery strategy for production data.
+
+---
+
+# 4. Mounting the Wrong Directory
+
+Example:
+
+```bash
+docker run
+
+-v /home/user:/var/lib/postgresql/data
+```
+
+An incorrect host path may:
+
+- Overwrite expected files
+- Expose unintended data
+- Prevent the application from starting
+
+Always verify both the source and destination paths.
+
+---
+
+# 5. Running Databases Without Persistent Storage
+
+Incorrect:
+
+```bash
+docker run postgres
+```
+
+Correct:
+
+```bash
+docker run
+
+-v postgres_data:/var/lib/postgresql/data
+
+postgres
+```
+
+Without persistent storage, deleting the container also deletes the database.
+
+---
+
+# 6. Giving Containers Unnecessary Write Access
+
+Configuration files rarely need write access.
+
+Example:
+
+```bash
+-v ./config:/app/config
+```
+
+Better:
+
+```bash
+-v ./config:/app/config:ro
+```
+
+Read-only mounts reduce the risk of accidental modification or compromise.
+
+---
+
+# 7. Ignoring File Permissions
+
+A container process may not have permission to access mounted files.
+
+Typical symptoms:
+
+- "Permission denied"
+- Application startup failures
+- Read/write errors
+
+Verify:
+
+- File ownership
+- User IDs (UIDs)
+- Group IDs (GIDs)
+- Read/write permissions
+
+---
+
+# 8. Using Anonymous Volumes Without Tracking Them
+
+Example:
+
+```dockerfile
+VOLUME /data
+```
+
+Docker creates an anonymous volume with a generated name.
+
+Over time:
+
+```
+Anonymous Volume
+
+↓
+
+Container Deleted
+
+↓
+
+Volume Remains
+
+↓
+
+Unused Disk Space
+```
+
+Named volumes are generally easier to manage.
+
+---
+
+# 9. Assuming Bind Mounts Are Portable
+
+Example:
+
+```bash
+-v /home/user/project:/app
+```
+
+This path may not exist on another system.
+
+Bind mounts depend on the host filesystem layout, while Docker volumes are more portable across environments.
+
+---
+
+# 10. Sharing Sensitive Host Directories
+
+Avoid mounting directories such as:
+
+```
+/
+
+or
+
+/etc
+
+or
+
+/home
+```
+
+unless absolutely necessary.
+
+Exposing large portions of the host filesystem increases security risk.
+
+Grant containers access only to the files they genuinely require.
+
+---
+
+# 11. Ignoring Volume Cleanup
+
+Development environments often accumulate:
+
+- Unused named volumes
+- Anonymous volumes
+- Old test data
+
+Regular cleanup helps reclaim storage and reduce clutter.
+
+Example:
+
+```bash
+docker volume prune
+```
+
+---
+
+# 12. Using tmpfs for Persistent Data
+
+A `tmpfs` mount stores data in memory only.
+
+```
+tmpfs
+
+↓
+
+RAM
+
+↓
+
+Container Stops
+
+↓
+
+Data Disappears
+```
+
+Use `tmpfs` only for temporary information such as:
+
+- Session data
+- Temporary caches
+- Sensitive temporary files
+
+Never store important application data there.
+
+---
+
+# 13. Forgetting That Multiple Containers Can Share a Volume
+
+Example:
+
+```
+Container A
+
+↓
+
+Docker Volume
+
+↓
+
+Container B
+```
+
+Concurrent writes may introduce:
+
+- Race conditions
+- File locking issues
+- Data corruption
+
+Ensure applications are designed for shared storage when using shared volumes.
+
+---
+
+# 14. Hardcoding Host Paths
+
+Example:
+
+```bash
+-v C:\Users\John\Desktop:/app
+```
+
+or
+
+```bash
+-v /home/john/project:/app
+```
+
+Hardcoded, user-specific paths reduce portability.
+
+Use environment variables, standardized project structures, or Compose configurations where appropriate.
+
+---
+
+# 15. Not Monitoring Storage Usage
+
+Volumes can grow indefinitely.
+
+Examples:
+
+- Database growth
+- Log accumulation
+- Uploaded files
+- Cache expansion
+
+Regularly monitor:
+
+- Disk usage
+- Volume size
+- Available storage
+- Backup status
+
+Monitoring helps prevent unexpected outages due to full disks.
+
+---
+
+# Docker Storage Quick Revision
+
+## Storage Types
+
+| Storage | Best Use |
+|----------|----------|
+| Writable Layer | Temporary runtime data |
+| Docker Volume | Persistent production data |
+| Bind Mount | Development and host integration |
+| tmpfs | Temporary in-memory storage |
+
+---
+
+## Storage Workflow
+
+```
+Application
+
+↓
+
+Container
+
+↓
+
+Volume / Bind Mount
+
+↓
+
+Persistent Storage
+```
+
+---
+
+## Common Volume Commands
+
+```bash
+docker volume ls
+
+docker volume create
+
+docker volume inspect
+
+docker volume rm
+
+docker volume prune
+```
+
+---
+
+## Bind Mount Example
+
+```bash
+docker run
+
+-v /home/user/project:/app
+```
+
+Maps a host directory into the container.
+
+---
+
+## Volume Example
+
+```bash
+docker run
+
+-v postgres_data:/var/lib/postgresql/data
+
+postgres
+```
+
+Stores PostgreSQL data persistently in a Docker-managed volume.
+
+---
+
+# Docker Storage Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Writable Layer | ✓ |
+| Understand Docker Volumes | ✓ |
+| Understand Named Volumes | ✓ |
+| Understand Anonymous Volumes | ✓ |
+| Understand Bind Mounts | ✓ |
+| Understand tmpfs Mounts | ✓ |
+| Understand Persistent Storage | ✓ |
+| Understand Volume Lifecycle | ✓ |
+| Know Essential Storage Commands | ✓ |
+| Understand Storage Best Practices | ✓ |
+| Understand Read-Only Mounts | ✓ |
+| Understand Volume Sharing | ✓ |
+| Understand Backup Considerations | ✓ |
+| Understand Storage Security | ✓ |
+| Understand Common Storage Mistakes | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Storage Documentation
+- Docker Volumes Documentation
+- Bind Mounts Documentation
+- tmpfs Mount Documentation
+- Docker CLI Documentation
+
+---
+
+## Linux Documentation
+
+- Linux Filesystems
+- OverlayFS Documentation
+- tmpfs Documentation
+- Linux Mount Documentation
+
+---
+
+## CNCF Resources
+
+- Kubernetes Persistent Volumes Documentation
+- Kubernetes Storage Classes
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- CIS Docker Benchmark
+- OWASP Container Security Verification Standard
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+- *Container Security* — Liz Rice
+- *Kubernetes in Action* — Marko Lukša
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Docker Labs
+- Play with Docker
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+
