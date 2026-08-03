@@ -569,18 +569,643 @@ Understanding these relationships simplifies troubleshooting and architecture de
 
 ---
 
-## Next Section
+## How It Works
 
-How It Works
+Every container is created by combining several core components that work together in a defined sequence. A container does not start by itself—it begins as application source code, is packaged into an image, stored in a registry, executed by a container runtime, and finally runs as an isolated process on the host operating system.
 
-Practical Examples
-
-Hands-on Commands
-
-Best Practices
-
-Common Mistakes
-
-References
+Understanding how these components interact makes it much easier to troubleshoot container issues, optimize deployments, and understand platforms like Docker and Kubernetes.
 
 ---
+
+# Container Component Workflow
+
+```
+Application Source Code
+
+          │
+
+          ▼
+
+Dockerfile
+
+          │
+
+          ▼
+
+Container Image
+
+          │
+
+          ▼
+
+Container Registry
+
+          │
+
+          ▼
+
+Container Runtime
+
+          │
+
+          ▼
+
+Namespaces + cgroups
+
+          │
+
+          ▼
+
+Container Network
+
+          │
+
+          ▼
+
+Volumes
+
+          │
+
+          ▼
+
+Running Container
+```
+
+Each component performs a specific function before the application becomes operational.
+
+---
+
+## Step 1 – Create the Application
+
+The process begins with application source code.
+
+Example technologies:
+
+- Python
+- Java
+- Go
+- Node.js
+- .NET
+- PHP
+
+The application may require:
+
+- Libraries
+- Runtime
+- Configuration
+- Environment variables
+- Dependencies
+
+These requirements are documented in a Dockerfile.
+
+---
+
+## Step 2 – Build the Image
+
+The Docker Engine reads the Dockerfile and builds a container image.
+
+During this stage:
+
+```
+Dockerfile
+
+      │
+
+Read Instructions
+
+      │
+
+Download Base Image
+
+      │
+
+Install Dependencies
+
+      │
+
+Copy Files
+
+      │
+
+Configure Runtime
+
+      │
+
+Build Final Image
+```
+
+Each instruction generally creates a new image layer.
+
+The completed image is immutable and ready for deployment.
+
+---
+
+## Step 3 – Store the Image
+
+The image can be stored locally or pushed to a registry.
+
+```
+Local Image
+
+      │
+
+Push
+
+      │
+
+Container Registry
+
+      │
+
+Pull
+
+      │
+
+Deployment Server
+```
+
+Registries allow teams to distribute standardized application images securely.
+
+---
+
+## Step 4 – Pull the Image
+
+When a container is launched, the runtime checks whether the image exists locally.
+
+```
+Image Found?
+
+   │
+
+ ┌─┴─────────┐
+
+ │           │
+
+Yes         No
+
+ │           │
+
+ ▼           ▼
+
+Run      Pull Image
+
+             │
+
+             ▼
+
+        Store Locally
+
+             │
+
+             ▼
+
+           Run
+```
+
+This ensures that the correct image version is available.
+
+---
+
+## Step 5 – Create the Container
+
+The runtime creates a new container using the image.
+
+At this point:
+
+- Image layers become available.
+- A writable layer is created.
+- Namespaces are configured.
+- cgroups are applied.
+- Network interfaces are assigned.
+- Volumes are mounted if specified.
+
+The image itself remains unchanged.
+
+---
+
+## Step 6 – Apply Namespaces
+
+Namespaces isolate container resources.
+
+Each container receives its own:
+
+- Process IDs
+- Network stack
+- Hostname
+- Filesystem view
+- IPC resources
+- User namespace
+
+Example:
+
+```
+Host
+
+│
+
+├── Container A
+
+│      PID 1
+
+│      Hostname: web
+
+│
+
+└── Container B
+
+       PID 1
+
+       Hostname: api
+```
+
+Although both containers contain a process with PID 1, they operate independently.
+
+---
+
+## Step 7 – Apply cgroups
+
+Control Groups (cgroups) limit resource consumption.
+
+Example:
+
+```
+Container A
+
+CPU: 2
+
+RAM: 4 GB
+
+
+Container B
+
+CPU: 1
+
+RAM: 2 GB
+```
+
+Without these limits, one workload could negatively impact others running on the same host.
+
+---
+
+## Step 8 – Configure Networking
+
+Every container receives network connectivity.
+
+Typical configuration includes:
+
+- Virtual Ethernet interface
+- IP address
+- Routing table
+- DNS settings
+- Firewall rules
+
+Example:
+
+```
+Internet
+
+    │
+
+Host
+
+    │
+
+Bridge Network
+
+ ┌──┴────┐
+
+ ▼       ▼
+
+Web     API
+```
+
+Containers can communicate securely through container networks.
+
+---
+
+## Step 9 – Mount Volumes
+
+If persistent storage is required:
+
+```
+Container
+
+     │
+
+Volume
+
+     │
+
+Persistent Data
+```
+
+Benefits:
+
+- Data survives container recreation.
+- Multiple containers can share storage.
+- Backups become easier.
+
+Without a volume, application data stored inside the writable layer is lost when the container is removed.
+
+---
+
+## Step 10 – Start the Main Process
+
+Finally, the runtime launches the application.
+
+```
+Container
+
+PID 1
+
+↓
+
+Application
+
+↓
+
+Serving Requests
+```
+
+The container remains active while its primary process continues running.
+
+---
+
+# Practical Examples
+
+## Example 1 – Running a Web Server
+
+A developer builds an Nginx image.
+
+Workflow:
+
+```
+Dockerfile
+
+↓
+
+Image
+
+↓
+
+Registry
+
+↓
+
+Runtime
+
+↓
+
+Container
+
+↓
+
+Web Server
+```
+
+The same image can run consistently on:
+
+- Local development machines
+- Test servers
+- Production
+- Public cloud
+
+---
+
+## Example 2 – Shared Base Images
+
+Three applications use Ubuntu as the base image.
+
+Instead of storing Ubuntu three times:
+
+```
+Ubuntu Layer
+
+      │
+
+ ┌────┼────┐
+
+ ▼    ▼    ▼
+
+App1 App2 App3
+```
+
+The shared base layer saves disk space and speeds up downloads.
+
+---
+
+## Example 3 – Persistent Database
+
+A PostgreSQL container uses a Docker volume.
+
+```
+PostgreSQL Container
+
+         │
+
+Docker Volume
+
+         │
+
+Database Files
+```
+
+Even if the container is replaced, the database remains intact.
+
+---
+
+## Example 4 – Multiple Containers
+
+A microservices application consists of:
+
+```
+Frontend
+
+Backend
+
+Database
+
+Redis
+
+Message Queue
+```
+
+Each service runs in its own container while communicating through a virtual network.
+
+Benefits:
+
+- Independent scaling
+- Fault isolation
+- Simplified updates
+- Better maintainability
+
+---
+
+# Hands-on Commands
+
+## List Local Images
+
+```bash
+docker images
+```
+
+Displays all locally available container images.
+
+---
+
+## Pull an Image
+
+```bash
+docker pull ubuntu
+```
+
+Downloads the Ubuntu image from a registry.
+
+---
+
+## Run a Container
+
+```bash
+docker run ubuntu
+```
+
+Creates and starts a container from the Ubuntu image.
+
+---
+
+## Run an Interactive Shell
+
+```bash
+docker run -it ubuntu bash
+```
+
+Starts a container and opens a Bash shell inside it.
+
+---
+
+## View Running Containers
+
+```bash
+docker ps
+```
+
+Shows active containers.
+
+---
+
+## Inspect a Container
+
+```bash
+docker inspect <container_name>
+```
+
+Displays:
+
+- Image details
+- Network configuration
+- Mounted volumes
+- Environment variables
+- Resource settings
+
+---
+
+## View Mounted Volumes
+
+```bash
+docker inspect <container_name>
+```
+
+Review the **Mounts** section to identify attached volumes.
+
+---
+
+## View Network Information
+
+```bash
+docker network ls
+```
+
+Lists all Docker networks.
+
+---
+
+## Display Volume Information
+
+```bash
+docker volume ls
+```
+
+Lists Docker-managed volumes.
+
+---
+
+## View Running Processes
+
+```bash
+docker top <container_name>
+```
+
+Displays the process tree inside a container.
+
+---
+
+# Best Practices
+
+### 1. Understand Every Component
+
+Do not think of a container as a single object.
+
+Learn how:
+
+- Images
+- Registries
+- Runtimes
+- Networks
+- Volumes
+- Namespaces
+- cgroups
+
+work together.
+
+---
+
+### 2. Use Official Images
+
+Prefer trusted, verified images from reputable publishers.
+
+Avoid unknown or unmaintained images.
+
+---
+
+### 3. Reuse Image Layers
+
+Structure Dockerfiles to maximize layer caching and reduce build times.
+
+---
+
+### 4. Store Persistent Data Outside Containers
+
+Use volumes or external storage for any data that must survive container replacement.
+
+---
+
+### 5. Apply Resource Limits
+
+Configure CPU and memory limits to improve host stability and workload isolation.
+
+---
+
+### 6. Use Versioned Images
+
+Avoid relying solely on the `latest` tag.
+
+Use explicit version numbers for predictable deployments.
+
+---
+
+### 7. Understand Component Relationships
+
+Troubleshooting becomes much easier when you understand how each container component depends on the others.
+
+---
+
