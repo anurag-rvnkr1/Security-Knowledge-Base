@@ -1112,3 +1112,558 @@ Early monitoring helps detect configuration issues before they impact applicatio
 ---
 
 
+## Common Mistakes
+
+Container networking is often one of the most misunderstood aspects of Docker. Many networking issues arise from incorrect assumptions about how containers communicate, how port mapping works, or how Docker networks are configured. Understanding these common mistakes will help you troubleshoot problems more effectively and design secure, reliable containerized applications.
+
+---
+
+# 1. Confusing `EXPOSE` with Port Publishing
+
+Many beginners believe:
+
+```dockerfile
+EXPOSE 80
+```
+
+makes the application accessible from the host.
+
+**Incorrect assumption**
+
+```
+EXPOSE 80
+
+↓
+
+Accessible from Internet
+```
+
+**Correct behavior**
+
+`EXPOSE` only documents the intended listening port.
+
+To make the application accessible:
+
+```bash
+docker run -p 8080:80 nginx
+```
+
+```
+Host Port 8080
+
+        │
+
+        ▼
+
+Container Port 80
+```
+
+---
+
+# 2. Using Container IP Addresses
+
+Incorrect:
+
+```
+172.17.0.3
+
+172.17.0.4
+
+172.17.0.5
+```
+
+Container IP addresses may change whenever containers restart.
+
+Instead use:
+
+```
+database
+
+redis
+
+backend
+
+frontend
+```
+
+Docker automatically resolves service names on user-defined networks.
+
+---
+
+# 3. Publishing Every Port
+
+Example:
+
+```bash
+docker run
+
+-p 80:80
+
+-p 5432:5432
+
+-p 6379:6379
+
+-p 27017:27017
+```
+
+This unnecessarily exposes internal services.
+
+Better architecture:
+
+```
+Internet
+
+↓
+
+Web
+
+↓
+
+API
+
+↓
+
+Database (Private)
+```
+
+Only publish ports that require external access.
+
+---
+
+# 4. Using the Default Bridge for Everything
+
+Docker automatically creates:
+
+```
+bridge
+```
+
+Although suitable for basic usage, production-style applications benefit from user-defined bridge networks because they provide:
+
+- Better service discovery
+- Improved isolation
+- Simpler container communication
+- Easier network management
+
+---
+
+# 5. Assuming `localhost` Refers to the Host
+
+Inside a container:
+
+```
+localhost
+
+or
+
+127.0.0.1
+```
+
+refers to the **container itself**, not the Docker host.
+
+Example:
+
+```
+Container
+
+localhost
+
+↓
+
+Container
+```
+
+It does **not** automatically reach services running on the host machine.
+
+---
+
+# 6. Ignoring Network Isolation
+
+Containers on different Docker networks cannot communicate unless explicitly connected.
+
+Example:
+
+```
+Network A
+
+↓
+
+Web
+
+
+Network B
+
+↓
+
+Database
+```
+
+Communication fails unless routing or shared network membership is configured.
+
+---
+
+# 7. Misunderstanding Host Networking
+
+Using:
+
+```bash
+docker run --network host
+```
+
+means:
+
+```
+Container
+
+↓
+
+Host Network Stack
+```
+
+Benefits:
+
+- Lower networking overhead
+- No port mapping required
+
+Risks:
+
+- Reduced isolation
+- Greater exposure
+- Potential port conflicts
+
+Host networking should be used only when necessary.
+
+---
+
+# 8. Forgetting DNS-Based Service Discovery
+
+Instead of:
+
+```
+172.18.0.5
+```
+
+applications should connect using:
+
+```
+database
+```
+
+Benefits:
+
+- Stable names
+- No IP management
+- Better portability
+- Easier scaling
+
+---
+
+# 9. Assuming `depends_on` Solves Networking
+
+Example:
+
+```yaml
+depends_on:
+
+  - database
+```
+
+`depends_on` only controls startup order.
+
+It does **not**:
+
+- Guarantee connectivity
+- Ensure the database is accepting connections
+- Verify application readiness
+
+Use health checks and retry logic when required.
+
+---
+
+# 10. Ignoring Firewall Rules
+
+Container communication may be affected by:
+
+- Host firewall configuration
+- Cloud security groups
+- Network ACLs
+- Organizational firewall policies
+
+Networking problems are not always caused by Docker configuration alone.
+
+---
+
+# 11. Using Host Ports That Are Already in Use
+
+Example:
+
+```bash
+docker run -p 80:80 nginx
+```
+
+If another service already occupies port 80:
+
+```
+Bind Failed
+
+↓
+
+Container Cannot Start
+```
+
+Check host port availability before publishing ports.
+
+---
+
+# 12. Exposing Databases to the Internet
+
+Poor configuration:
+
+```
+Internet
+
+↓
+
+PostgreSQL
+
+↓
+
+Database
+```
+
+Databases should generally remain on private networks.
+
+Expose only application endpoints that require external access.
+
+---
+
+# 13. Forgetting Network Cleanup
+
+Over time, development environments accumulate:
+
+- Unused bridge networks
+- Orphaned Compose networks
+- Temporary testing networks
+
+Regular cleanup prevents clutter and simplifies troubleshooting.
+
+---
+
+# 14. Assuming All Network Drivers Behave the Same
+
+Each driver serves different purposes.
+
+| Driver | Typical Use |
+|---------|-------------|
+| Bridge | Single-host applications |
+| Host | High-performance host networking |
+| Overlay | Multi-host communication |
+| Macvlan | Direct network integration |
+| None | Fully isolated workloads |
+
+Selecting the appropriate driver is important for performance, security, and functionality.
+
+---
+
+# 15. Memorizing Commands Without Understanding Networking
+
+Many engineers memorize:
+
+```bash
+docker network ls
+
+docker network create
+
+docker network inspect
+
+docker network connect
+```
+
+without understanding:
+
+- Network namespaces
+- Bridges
+- veth pairs
+- DNS
+- NAT
+- Port mapping
+- Routing
+
+A conceptual understanding makes networking issues much easier to diagnose.
+
+---
+
+# Container Networking Quick Revision
+
+## Network Flow
+
+```
+Application
+
+↓
+
+Container
+
+↓
+
+veth Pair
+
+↓
+
+Docker Bridge
+
+↓
+
+Host Network
+
+↓
+
+Internet
+```
+
+---
+
+## Docker Network Drivers
+
+| Driver | Purpose |
+|---------|---------|
+| Bridge | Default single-host networking |
+| Host | Uses the host's network stack |
+| Overlay | Multi-host networking |
+| Macvlan | Assigns MAC addresses to containers |
+| None | No networking |
+
+---
+
+## Port Mapping
+
+```bash
+docker run -p 8080:80 nginx
+```
+
+```
+Host 8080
+
+↓
+
+Container 80
+```
+
+---
+
+## Common Network Commands
+
+```bash
+docker network ls
+
+docker network create
+
+docker network inspect
+
+docker network connect
+
+docker network disconnect
+
+docker network rm
+```
+
+---
+
+## Communication Best Practice
+
+Instead of:
+
+```
+172.18.0.5
+```
+
+Use:
+
+```
+database
+```
+
+Service names are more stable, portable, and easier to maintain.
+
+---
+
+# Container Networking Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Network Namespaces | ✓ |
+| Understand Virtual Ethernet (veth) | ✓ |
+| Understand Docker Bridge | ✓ |
+| Understand Port Mapping | ✓ |
+| Understand Network Drivers | ✓ |
+| Understand DNS-Based Service Discovery | ✓ |
+| Understand Network Isolation | ✓ |
+| Understand Host Networking | ✓ |
+| Understand Overlay Networks | ✓ |
+| Understand Macvlan Networks | ✓ |
+| Understand User-Defined Networks | ✓ |
+| Know Essential Networking Commands | ✓ |
+| Understand Networking Best Practices | ✓ |
+| Understand Common Networking Mistakes | ✓ |
+| Understand Container Communication | ✓ |
+
+---
+
+# References
+
+## Docker Documentation
+
+- Docker Networking Documentation
+- Docker Bridge Network Documentation
+- Docker Overlay Network Documentation
+- Docker CLI Documentation
+- Docker Compose Networking Documentation
+
+---
+
+## Linux Documentation
+
+- Linux Network Namespaces
+- Linux Virtual Ethernet (veth)
+- Linux Bridge Documentation
+- iptables Documentation
+- nftables Documentation
+
+---
+
+## CNCF Resources
+
+- Kubernetes Networking Documentation
+- Container Network Interface (CNI) Specification
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security Resources
+
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Docker Security Cheat Sheet
+- CIS Docker Benchmark
+- OWASP Container Security Verification Standard
+
+---
+
+## Books
+
+- *Docker Deep Dive* — Nigel Poulton
+- *Container Security* — Liz Rice
+- *Kubernetes in Action* — Marko Lukša
+- *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
+
+---
+
+## Recommended Learning Resources
+
+- Docker Official Documentation
+- Play with Docker
+- Docker Labs
+- Linux Foundation Training
+- CNCF Learning Paths
+- NIST Computer Security Resource Center (CSRC)
+
+
