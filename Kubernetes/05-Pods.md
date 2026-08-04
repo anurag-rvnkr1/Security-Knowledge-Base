@@ -1962,3 +1962,581 @@ Containers inside the same Pod should communicate over the shared network namesp
 If two containers require independent scaling, upgrades, or lifecycles, they likely belong in separate Pods.
 
 ---
+
+# Init Containers
+
+## Overview
+
+An **Init Container** is a special type of container that runs **before** the regular application containers in a Pod.
+
+Unlike normal containers:
+
+- Init Containers run **to completion**.
+- They execute **one at a time**, in the order they are defined.
+- Each Init Container **must complete successfully** before the next Init Container (or any application container) starts.
+- If an Init Container fails, Kubernetes retries it according to the Pod's restart policy until it succeeds or the Pod fails.
+
+Init Containers are commonly used to perform setup tasks that must finish before the application starts.
+
+---
+
+# Why Init Containers?
+
+Many applications require preparation before they can run.
+
+Examples:
+
+- Wait for a database
+- Download configuration files
+- Initialize directories
+- Perform database migrations
+- Generate certificates
+- Verify dependencies
+- Prepare shared volumes
+
+Instead of embedding this logic in the application container, Kubernetes allows these tasks to run separately.
+
+---
+
+# Pod Startup Sequence
+
+```
+Create Pod
+
+↓
+
+Init Container 1
+
+↓
+
+Init Container 2
+
+↓
+
+Application Container(s)
+
+↓
+
+Running
+```
+
+Application containers **do not start** until all Init Containers complete successfully.
+
+---
+
+# Architecture
+
+```
+                Pod
+
+┌────────────────────────────────────┐
+
+│                                    │
+
+│  Init Container                    │
+
+│      ↓                             │
+
+│  Init Container                    │
+
+│      ↓                             │
+
+│  Main Application                  │
+
+│                                    │
+
+└────────────────────────────────────┘
+```
+
+---
+
+# Execution Order
+
+Example:
+
+```
+Init A
+
+↓
+
+Complete
+
+↓
+
+Init B
+
+↓
+
+Complete
+
+↓
+
+NGINX
+
+↓
+
+Running
+```
+
+Execution is always sequential.
+
+---
+
+# Init Container Example
+
+```yaml
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: nginx-init
+
+spec:
+
+  initContainers:
+
+  - name: setup
+
+    image: busybox
+
+    command:
+    - sh
+    - -c
+    - echo "Initialization Complete"
+
+  containers:
+
+  - name: nginx
+
+    image: nginx
+```
+
+The application container starts **only after** the `setup` Init Container exits successfully.
+
+---
+
+# Multiple Init Containers
+
+Example:
+
+```yaml
+initContainers:
+
+- name: prepare-storage
+  image: busybox
+
+- name: verify-config
+  image: busybox
+
+containers:
+
+- name: app
+  image: nginx
+```
+
+Execution order:
+
+```
+prepare-storage
+
+↓
+
+verify-config
+
+↓
+
+app
+```
+
+---
+
+# Shared Volumes
+
+Init Containers commonly prepare shared storage.
+
+```
+Init Container
+
+↓
+
+Shared Volume
+
+↓
+
+Application Container
+```
+
+Example:
+
+```
+Init Container
+
+↓
+
+Create Configuration File
+
+↓
+
+Shared Volume
+
+↓
+
+Application Reads File
+```
+
+---
+
+# Waiting for Dependencies
+
+A common pattern is ensuring a dependency is available before starting the application.
+
+Conceptually:
+
+```
+Init Container
+
+↓
+
+Verify Dependency
+
+↓
+
+Ready?
+
+↓
+
+Yes
+
+↓
+
+Application Starts
+```
+
+This improves startup reliability without modifying application code.
+
+---
+
+# Pod Lifecycle with Init Containers
+
+```
+Pod Created
+
+↓
+
+Init Container
+
+↓
+
+Completed
+
+↓
+
+Application Starts
+
+↓
+
+Running
+```
+
+If an Init Container fails:
+
+```
+Init Container
+
+↓
+
+Failure
+
+↓
+
+Retry
+
+↓
+
+Success
+
+↓
+
+Continue
+```
+
+---
+
+# Viewing Init Containers
+
+Describe the Pod:
+
+```bash
+kubectl describe pod nginx-init
+```
+
+Output includes:
+
+- Init Container status
+- Completion status
+- Events
+
+---
+
+# Viewing Pod Status
+
+```bash
+kubectl get pods
+```
+
+Possible output while initialization is in progress:
+
+```
+Init:0/1
+```
+
+Meaning:
+
+```
+0 Completed
+
+1 Total
+```
+
+Example:
+
+```
+Init:1/2
+```
+
+Meaning:
+
+```
+1 Completed
+
+1 Remaining
+```
+
+---
+
+# Viewing Logs
+
+View logs from an Init Container:
+
+```bash
+kubectl logs nginx-init \
+-c setup
+```
+
+This is particularly useful when initialization fails.
+
+---
+
+# Shared Storage Example
+
+```
+Init Container
+
+↓
+
+Create File
+
+↓
+
+Volume
+
+↓
+
+Application
+
+↓
+
+Reads File
+```
+
+Example volume:
+
+```yaml
+volumes:
+
+- name: shared-data
+
+  emptyDir: {}
+```
+
+Mounted by both the Init Container and the application container.
+
+---
+
+# Restart Behavior
+
+If an Init Container fails:
+
+```
+Failure
+
+↓
+
+Retry
+
+↓
+
+Retry
+
+↓
+
+Retry
+
+↓
+
+Success
+```
+
+Only after successful completion do application containers start.
+
+---
+
+# Init Containers vs Regular Containers
+
+| Init Container | Regular Container |
+|----------------|-------------------|
+| Runs before application | Runs after initialization |
+| Executes to completion | Usually runs continuously |
+| Sequential execution | Normal application lifecycle |
+| Used for setup tasks | Runs the workload |
+| Must finish successfully | May restart depending on policy |
+
+---
+
+# Common Use Cases
+
+Init Containers are commonly used for:
+
+- Environment preparation
+- Configuration generation
+- Database initialization
+- Dependency verification
+- Shared volume preparation
+- Certificate generation
+- File permission setup
+
+---
+
+# Hands-on Exercise
+
+## Pod with Init Container
+
+```yaml
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: init-demo
+
+spec:
+
+  initContainers:
+
+  - name: setup
+
+    image: busybox
+
+    command:
+    - sh
+    - -c
+    - echo "Initialization Finished"
+
+  containers:
+
+  - name: app
+
+    image: nginx
+```
+
+Deploy:
+
+```bash
+kubectl apply -f init.yaml
+```
+
+---
+
+## Verify
+
+```bash
+kubectl get pods
+```
+
+---
+
+## Describe
+
+```bash
+kubectl describe pod init-demo
+```
+
+---
+
+## View Init Container Logs
+
+```bash
+kubectl logs init-demo \
+-c setup
+```
+
+---
+
+## Delete
+
+```bash
+kubectl delete pod init-demo
+```
+
+---
+
+# Advantages
+
+- Clean separation of initialization logic
+- Improved application portability
+- Better startup reliability
+- Reusable initialization tasks
+- Easier troubleshooting
+
+---
+
+# Limitations
+
+- Init Containers cannot run alongside application containers.
+- They increase startup time if initialization is lengthy.
+- A failed Init Container prevents the application from starting.
+
+---
+
+# Best Practices
+
+### 1. Keep Init Containers Lightweight
+
+Perform only initialization tasks required before application startup.
+
+---
+
+### 2. Avoid Long-Running Processes
+
+Init Containers should exit after completing their work.
+
+---
+
+### 3. Share Data Through Volumes
+
+Use shared volumes instead of attempting inter-container communication during initialization.
+
+---
+
+### 4. Log Initialization Steps
+
+Meaningful logs simplify troubleshooting when initialization fails.
+
+---
+
+### 5. Make Initialization Idempotent
+
+Initialization tasks should be safe to retry because Kubernetes may execute them multiple times after failures.
+
+---
