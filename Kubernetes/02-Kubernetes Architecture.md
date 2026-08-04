@@ -741,3 +741,877 @@ This architecture enables Kubernetes to manage thousands of workloads across man
 
 ---
 
+## How Kubernetes Architecture Works Internally
+
+Kubernetes is built around a **control loop architecture**. Every component continuously communicates with the Kubernetes API Server to ensure that the **actual state** of the cluster matches the **desired state** defined by users.
+
+Unlike traditional systems where administrators manually manage infrastructure, Kubernetes continuously automates cluster operations.
+
+---
+
+# Complete Kubernetes Request Flow
+
+Suppose a developer deploys an application.
+
+Command:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+Complete workflow:
+
+```
+Developer
+
+↓
+
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Admission Controllers
+
+↓
+
+Store in etcd
+
+↓
+
+Controller Detects New Deployment
+
+↓
+
+ReplicaSet Created
+
+↓
+
+Scheduler Selects Node
+
+↓
+
+kubelet Receives Assignment
+
+↓
+
+Container Runtime Pulls Image
+
+↓
+
+Container Starts
+
+↓
+
+Pod Running
+
+↓
+
+Status Reported Back
+
+↓
+
+API Server Updated
+
+↓
+
+etcd Updated
+```
+
+Everything revolves around the API Server.
+
+---
+
+# Step 1 – User Sends Request
+
+Example:
+
+```bash
+kubectl apply -f nginx.yaml
+```
+
+The request is converted into an API request.
+
+```
+kubectl
+
+↓
+
+REST API
+
+↓
+
+API Server
+```
+
+---
+
+# Step 2 – Authentication
+
+The API Server verifies:
+
+```
+Who is making the request?
+```
+
+Possible methods include:
+
+- Client certificates
+- Bearer tokens
+- OpenID Connect (OIDC)
+- Service Accounts
+- External identity providers
+
+If authentication fails:
+
+```
+Request Rejected
+```
+
+---
+
+# Step 3 – Authorization
+
+After identity is verified:
+
+```
+Can this user perform the requested action?
+```
+
+Common authorization mechanisms:
+
+- RBAC
+- Node Authorization
+- Webhook Authorization
+
+If unauthorized:
+
+```
+403 Forbidden
+```
+
+---
+
+# Step 4 – Request Validation
+
+The API Server validates:
+
+- YAML syntax
+- Object schema
+- API version
+- Required fields
+
+Example:
+
+```yaml
+apiVersion: apps/v1
+
+kind: Deployment
+```
+
+Invalid manifests are rejected before reaching the cluster.
+
+---
+
+# Step 5 – Admission Controllers
+
+Admission Controllers may:
+
+- Apply defaults
+- Validate policies
+- Mutate objects
+- Reject requests
+
+Example workflow:
+
+```
+Deployment
+
+↓
+
+Policy Check
+
+↓
+
+Approved
+
+↓
+
+Stored
+```
+
+Examples include namespace lifecycle management, image policy enforcement, and resource validation.
+
+---
+
+# Step 6 – Store in etcd
+
+Validated objects are stored.
+
+```
+API Server
+
+↓
+
+etcd
+```
+
+etcd becomes the authoritative source of truth.
+
+Stored objects include:
+
+- Pods
+- Deployments
+- Services
+- ConfigMaps
+- Secrets
+- Nodes
+
+---
+
+# Step 7 – Controller Manager
+
+Controllers constantly monitor Kubernetes objects.
+
+Example:
+
+```
+Deployment
+
+↓
+
+Desired Replicas = 3
+
+↓
+
+Current = 0
+
+↓
+
+Create ReplicaSet
+```
+
+Controllers do not directly run containers.
+
+They create or update Kubernetes objects.
+
+---
+
+# Step 8 – ReplicaSet Controller
+
+ReplicaSet ensures:
+
+```
+Desired
+
+↓
+
+3 Pods
+
+↓
+
+Current
+
+↓
+
+0 Pods
+
+↓
+
+Create 3 Pods
+```
+
+Pods initially remain:
+
+```
+Pending
+```
+
+because no node has been assigned yet.
+
+---
+
+# Step 9 – Scheduler
+
+Scheduler evaluates available nodes.
+
+Decision factors include:
+
+- CPU availability
+- Memory availability
+- Resource requests
+- Taints and tolerations
+- Node affinity
+- Pod affinity
+- Scheduling policies
+
+Workflow:
+
+```
+Pending Pod
+
+↓
+
+Evaluate Nodes
+
+↓
+
+Best Node Selected
+```
+
+---
+
+# Step 10 – kubelet
+
+The kubelet running on the selected worker node receives the assignment.
+
+Workflow:
+
+```
+API Server
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Start Pod
+```
+
+The kubelet continuously reports node and Pod status back to the Control Plane.
+
+---
+
+# Step 11 – Container Runtime
+
+The runtime performs:
+
+```
+Pull Image
+
+↓
+
+Create Container
+
+↓
+
+Start Container
+```
+
+If the image already exists locally:
+
+```
+Use Local Image
+```
+
+Otherwise:
+
+```
+Pull From Registry
+```
+
+---
+
+# Step 12 – Pod Initialization
+
+Before the application begins serving traffic:
+
+```
+Pod Created
+
+↓
+
+Containers Start
+
+↓
+
+Initialization
+
+↓
+
+Readiness Check
+
+↓
+
+Ready
+```
+
+Only after the Pod is ready will it receive traffic through a Service (if configured).
+
+---
+
+# Step 13 – Status Updates
+
+The kubelet continuously reports:
+
+- Pod status
+- Container status
+- Node health
+- Resource usage
+
+Workflow:
+
+```
+Worker Node
+
+↓
+
+API Server
+
+↓
+
+etcd Updated
+```
+
+---
+
+# Continuous Reconciliation
+
+Controllers never stop working.
+
+```
+Desired State
+
+↓
+
+Current State
+
+↓
+
+Difference?
+
+↓
+
+Correct Difference
+
+↓
+
+Desired State Restored
+```
+
+This loop runs throughout the lifetime of the cluster.
+
+---
+
+# Example – Pod Failure
+
+Suppose one Pod crashes.
+
+Current state:
+
+```
+Deployment
+
+↓
+
+3 Desired
+
+↓
+
+2 Running
+```
+
+Controller detects:
+
+```
+Missing Pod
+
+↓
+
+Create New Pod
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+Running
+```
+
+No administrator intervention is required.
+
+---
+
+# Example – Node Failure
+
+Worker Node:
+
+```
+Node A
+
+↓
+
+Offline
+```
+
+Result:
+
+```
+Pods Lost
+
+↓
+
+Node Controller Detects Failure
+
+↓
+
+Scheduler
+
+↓
+
+Healthy Nodes
+
+↓
+
+Replacement Pods
+```
+
+Provided sufficient cluster capacity exists, workloads are recreated on other nodes.
+
+---
+
+# Kubernetes Watches
+
+Most Kubernetes components use **watch mechanisms** rather than continuously polling.
+
+Example:
+
+```
+Deployment Updated
+
+↓
+
+API Server
+
+↓
+
+Notify Controllers
+
+↓
+
+Controllers React
+```
+
+This event-driven design improves scalability and efficiency.
+
+---
+
+# API-Centric Architecture
+
+Every component communicates through the API Server.
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+Controller Manager
+
+↓
+
+kubelet
+
+↓
+
+Controllers
+```
+
+Direct communication between most components is intentionally minimized.
+
+---
+
+# Control Plane Responsibilities
+
+```
+Receive Requests
+
+↓
+
+Validate
+
+↓
+
+Store State
+
+↓
+
+Schedule Work
+
+↓
+
+Maintain Desired State
+
+↓
+
+Report Status
+```
+
+---
+
+# Worker Node Responsibilities
+
+```
+Receive Pod Assignment
+
+↓
+
+Pull Images
+
+↓
+
+Start Containers
+
+↓
+
+Run Applications
+
+↓
+
+Report Health
+```
+
+---
+
+# Complete Internal Workflow
+
+```
+Developer
+
+↓
+
+Git
+
+↓
+
+CI/CD
+
+↓
+
+Container Registry
+
+↓
+
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Admission Controllers
+
+↓
+
+etcd
+
+↓
+
+Controller Manager
+
+↓
+
+ReplicaSet
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pod
+
+↓
+
+Service
+
+↓
+
+User
+```
+
+This represents the complete lifecycle from deployment to a running application.
+
+---
+
+# Hands-on Commands
+
+## View Cluster Information
+
+```bash
+kubectl cluster-info
+```
+
+---
+
+## View Nodes
+
+```bash
+kubectl get nodes -o wide
+```
+
+---
+
+## View All Pods
+
+```bash
+kubectl get pods -A
+```
+
+---
+
+## View Deployments
+
+```bash
+kubectl get deployments -A
+```
+
+---
+
+## View ReplicaSets
+
+```bash
+kubectl get replicasets -A
+```
+
+---
+
+## View Services
+
+```bash
+kubectl get services -A
+```
+
+---
+
+## Describe a Node
+
+```bash
+kubectl describe node <node-name>
+```
+
+Useful information includes:
+
+- Capacity
+- Allocatable resources
+- Conditions
+- Labels
+- Taints
+
+---
+
+## Describe a Pod
+
+```bash
+kubectl describe pod <pod-name>
+```
+
+This provides details about:
+
+- Events
+- Scheduling
+- Containers
+- Volumes
+- Conditions
+
+---
+
+## View Cluster Events
+
+```bash
+kubectl get events -A
+```
+
+Events are often the first place to investigate deployment or scheduling issues.
+
+---
+
+# Best Practices
+
+### 1. Think in Desired State
+
+Define what the system should look like rather than manually managing individual Pods.
+
+---
+
+### 2. Treat the API Server as the Central Entry Point
+
+All cluster changes should flow through the Kubernetes API.
+
+---
+
+### 3. Avoid Modifying Running Pods
+
+Update manifests and perform new deployments instead of manually changing live workloads.
+
+---
+
+### 4. Monitor Control Plane Health
+
+A healthy Control Plane is essential for cluster stability.
+
+---
+
+### 5. Keep etcd Protected
+
+Because etcd contains the cluster's state, secure access, perform backups, and monitor its health carefully.
+
+---
+
