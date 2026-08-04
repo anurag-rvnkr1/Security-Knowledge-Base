@@ -662,20 +662,1087 @@ For production environments, update manifests and apply changes rather than rely
 
 ---
 
-## Next Section
+# How ReplicaSets Work Internally
 
-How ReplicaSets Work Internally
+## Overview
 
-ReplicaSet Lifecycle Deep Dive
+A ReplicaSet continuously ensures that the **actual number of running Pods** matches the **desired number of replicas** defined in its specification.
 
-Label Selectors
+Unlike a Pod, which simply runs an application, a ReplicaSet actively watches the cluster and automatically creates or removes Pods to maintain the desired state.
 
-Hands-on Labs
+This behavior is powered by Kubernetes' **reconciliation loop**.
 
-Common Mistakes
+---
 
-Quick Revision
+# Complete ReplicaSet Workflow
 
-References
+Suppose a ReplicaSet specifies:
+
+```yaml
+replicas: 3
+```
+
+Complete workflow:
+
+```
+Developer
+
+↓
+
+kubectl apply
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+etcd
+
+↓
+
+ReplicaSet Controller
+
+↓
+
+Compare Desired State
+
+↓
+
+Create Missing Pods
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pods Running
+```
+
+---
+
+# Step 1 – User Creates ReplicaSet
+
+Example:
+
+```yaml
+apiVersion: apps/v1
+
+kind: ReplicaSet
+
+metadata:
+
+  name: nginx-rs
+```
+
+Deploy:
+
+```bash
+kubectl apply -f replicaset.yaml
+```
+
+---
+
+# Step 2 – API Server
+
+The API Server:
+
+- Authenticates user
+- Authorizes request
+- Validates YAML
+- Stores ReplicaSet
+
+Workflow:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+ReplicaSet Stored
+```
+
+---
+
+# Step 3 – Store in etcd
+
+```
+API Server
+
+↓
+
+etcd
+```
+
+At this point:
+
+```
+ReplicaSet Exists
+
+↓
+
+No Pods Yet
+```
+
+---
+
+# Step 4 – ReplicaSet Controller
+
+The ReplicaSet Controller continuously watches the API Server.
+
+```
+ReplicaSet
+
+↓
+
+Desired = 3
+
+↓
+
+Current = 0
+```
+
+Difference detected:
+
+```
+Need 3 Pods
+```
+
+---
+
+# Step 5 – Pod Creation
+
+ReplicaSet creates Pod objects.
+
+```
+ReplicaSet
+
+↓
+
+Pod 1
+
+Pod 2
+
+Pod 3
+```
+
+Initially:
+
+```
+Pending
+```
+
+because scheduling has not yet occurred.
+
+---
+
+# Step 6 – Scheduler
+
+Scheduler evaluates:
+
+- CPU
+- Memory
+- Labels
+- Taints
+- Affinity
+- Policies
+
+Example:
+
+```
+Pod 1
+
+↓
+
+Node A
+
+Pod 2
+
+↓
+
+Node B
+
+Pod 3
+
+↓
+
+Node A
+```
+
+---
+
+# Step 7 – kubelet
+
+Worker node:
+
+```
+API Server
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pod Starts
+```
+
+---
+
+# Step 8 – Running
+
+Final state:
+
+```
+ReplicaSet
+
+↓
+
+3 Running Pods
+```
+
+Desired state achieved.
+
+---
+
+# Continuous Monitoring
+
+ReplicaSet never stops monitoring.
+
+```
+Desired = 3
+
+↓
+
+Current = 3
+
+↓
+
+Healthy
+```
+
+Every few moments:
+
+```
+Compare
+
+↓
+
+Difference?
+
+↓
+
+Take Action
+```
+
+This is the reconciliation loop.
+
+---
+
+# Pod Failure Example
+
+Suppose:
+
+```
+ReplicaSet
+
+↓
+
+3 Pods
+```
+
+Current state:
+
+```
+Pod 2 Crashes
+```
+
+Result:
+
+```
+Current = 2
+
+↓
+
+ReplicaSet Detects
+
+↓
+
+Create New Pod
+
+↓
+
+3 Pods Running
+```
+
+No administrator intervention is required.
+
+---
+
+# Manual Pod Deletion
+
+Command:
+
+```bash
+kubectl delete pod pod-name
+```
+
+Workflow:
+
+```
+Delete Pod
+
+↓
+
+ReplicaSet
+
+↓
+
+Current = 2
+
+↓
+
+Create Replacement
+
+↓
+
+3 Pods
+```
+
+This surprises many beginners but is expected behavior.
+
+---
+
+# Scaling Up
+
+Current:
+
+```
+3 Pods
+```
+
+Command:
+
+```bash
+kubectl scale rs nginx-rs \
+--replicas=5
+```
+
+Workflow:
+
+```
+Desired = 5
+
+↓
+
+Current = 3
+
+↓
+
+Create 2 Pods
+
+↓
+
+5 Running
+```
+
+---
+
+# Scaling Down
+
+Command:
+
+```bash
+kubectl scale rs nginx-rs \
+--replicas=2
+```
+
+Workflow:
+
+```
+Desired = 2
+
+↓
+
+Current = 5
+
+↓
+
+Delete 3 Pods
+
+↓
+
+2 Running
+```
+
+---
+
+# Label Selectors
+
+ReplicaSets identify Pods using labels.
+
+Example:
+
+ReplicaSet selector:
+
+```yaml
+selector:
+
+  matchLabels:
+
+    app: nginx
+```
+
+Pod:
+
+```yaml
+labels:
+
+  app: nginx
+```
+
+Workflow:
+
+```
+Label Match
+
+↓
+
+Managed
+```
+
+---
+
+# Non-Matching Pods
+
+ReplicaSet:
+
+```
+app=nginx
+```
+
+Pod:
+
+```
+app=apache
+```
+
+Result:
+
+```
+Ignored
+```
+
+Only matching Pods are counted.
+
+---
+
+# Owner References
+
+Every Pod contains:
+
+```
+Owner Reference
+
+↓
+
+ReplicaSet
+```
+
+This relationship allows Kubernetes to determine which controller owns the Pod.
+
+View:
+
+```bash
+kubectl get pod <pod-name> -o yaml
+```
+
+Look for:
+
+```yaml
+ownerReferences:
+```
+
+---
+
+# ReplicaSet Lifecycle
+
+```
+ReplicaSet Created
+
+↓
+
+Pods Created
+
+↓
+
+Pods Running
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Scale
+
+↓
+
+Delete
+```
+
+---
+
+# Internal Architecture
+
+```
+ReplicaSet
+
+↓
+
+Desired Replicas
+
+↓
+
+Selector
+
+↓
+
+Matching Pods
+
+↓
+
+Scheduler
+
+↓
+
+Worker Nodes
+
+↓
+
+Running Pods
+```
+
+---
+
+# Self-Healing Architecture
+
+```
+Pod Failure
+
+↓
+
+ReplicaSet Detects
+
+↓
+
+Create Replacement
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+Application Restored
+```
+
+This automatic recovery is one of Kubernetes' key features.
+
+---
+
+# Hands-on Lab 1 – Create a ReplicaSet
+
+## Step 1 – Create YAML
+
+```yaml
+apiVersion: apps/v1
+
+kind: ReplicaSet
+
+metadata:
+  name: nginx-rs
+
+spec:
+
+  replicas: 3
+
+  selector:
+
+    matchLabels:
+
+      app: nginx
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: nginx
+
+    spec:
+
+      containers:
+
+      - name: nginx
+
+        image: nginx
+```
+
+---
+
+## Step 2 – Deploy
+
+```bash
+kubectl apply -f replicaset.yaml
+```
+
+---
+
+## Step 3 – Verify
+
+```bash
+kubectl get rs
+
+kubectl get pods
+```
+
+Expected:
+
+```
+ReplicaSet
+
+↓
+
+3 Pods
+```
+
+---
+
+# Hands-on Lab 2 – Observe Self-Healing
+
+Delete one Pod:
+
+```bash
+kubectl delete pod <pod-name>
+```
+
+Immediately observe:
+
+```bash
+kubectl get pods -w
+```
+
+Expected:
+
+```
+Delete
+
+↓
+
+ReplicaSet Detects
+
+↓
+
+New Pod
+
+↓
+
+Running
+```
+
+---
+
+# Hands-on Lab 3 – Scale ReplicaSet
+
+Scale up:
+
+```bash
+kubectl scale rs nginx-rs \
+--replicas=5
+```
+
+Verify:
+
+```bash
+kubectl get pods
+```
+
+Scale down:
+
+```bash
+kubectl scale rs nginx-rs \
+--replicas=2
+```
+
+Observe Pod deletion.
+
+---
+
+# Hands-on Lab 4 – Describe ReplicaSet
+
+```bash
+kubectl describe rs nginx-rs
+```
+
+Review:
+
+- Desired replicas
+- Current replicas
+- Ready replicas
+- Pod template
+- Events
+
+---
+
+# Hands-on Lab 5 – View Owner References
+
+Choose a Pod:
+
+```bash
+kubectl get pod <pod-name> -o yaml
+```
+
+Locate:
+
+```yaml
+ownerReferences:
+```
+
+Confirm that the Pod belongs to the ReplicaSet.
+
+---
+
+# Common Mistakes
+
+## 1. Creating Standalone Pods
+
+Incorrect:
+
+```
+Pod
+
+↓
+
+Production
+```
+
+Correct:
+
+```
+ReplicaSet
+
+↓
+
+Pods
+```
+
+---
+
+## 2. Label Mismatch
+
+ReplicaSet:
+
+```yaml
+app: nginx
+```
+
+Pod:
+
+```yaml
+app: web
+```
+
+Result:
+
+```
+No Match
+
+↓
+
+ReplicaSet Creates Additional Pods
+```
+
+---
+
+## 3. Deleting Pods Instead of Investigating
+
+Deleting a managed Pod:
+
+```bash
+kubectl delete pod
+```
+
+does **not** solve the problem.
+
+ReplicaSet immediately creates another Pod.
+
+---
+
+## 4. Editing Managed Pods
+
+Changes made directly to ReplicaSet-managed Pods are temporary.
+
+If the Pod is recreated:
+
+```
+Pod Deleted
+
+↓
+
+New Pod
+
+↓
+
+Changes Lost
+```
+
+Update the ReplicaSet (or Deployment) template instead.
+
+---
+
+## 5. Using ReplicaSets Instead of Deployments
+
+ReplicaSets provide:
+
+- Self-healing
+- Scaling
+
+Deployments additionally provide:
+
+- Rolling updates
+- Rollbacks
+- Revision history
+
+Production applications should generally use Deployments.
+
+---
+
+# ReplicaSet Quick Revision
+
+## Architecture
+
+```
+ReplicaSet
+
+↓
+
+Desired State
+
+↓
+
+Current State
+
+↓
+
+Compare
+
+↓
+
+Create/Delete Pods
+
+↓
+
+Desired State Restored
+```
+
+---
+
+## Lifecycle
+
+```
+Create
+
+↓
+
+Pods
+
+↓
+
+Monitor
+
+↓
+
+Scale
+
+↓
+
+Replace Failed Pods
+
+↓
+
+Delete
+```
+
+---
+
+## Important Commands
+
+Create:
+
+```bash
+kubectl apply -f replicaset.yaml
+```
+
+View:
+
+```bash
+kubectl get rs
+
+kubectl get pods
+```
+
+Describe:
+
+```bash
+kubectl describe rs nginx-rs
+```
+
+Scale:
+
+```bash
+kubectl scale rs nginx-rs \
+--replicas=5
+```
+
+Delete:
+
+```bash
+kubectl delete rs nginx-rs
+```
+
+---
+
+# ReplicaSet Checklist
+
+| Topic | Status |
+|--------|:------:|
+| ReplicaSet Basics | ✓ |
+| Desired State | ✓ |
+| Label Selectors | ✓ |
+| Self-Healing | ✓ |
+| Scaling | ✓ |
+| Pod Ownership | ✓ |
+| Lifecycle | ✓ |
+| Hands-on Labs | ✓ |
+| Common Mistakes | ✓ |
+
+---
+
+# References
+
+## Official Kubernetes Documentation
+
+- Kubernetes ReplicaSet Documentation
+- Kubernetes Controllers
+- Labels and Selectors
+- Kubernetes API Reference
+
+---
+
+## CNCF Resources
+
+- Kubernetes Learning Path
+- Kubernetes Best Practices
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security & Operations
+
+- CIS Kubernetes Benchmark
+- Kubernetes Production Best Practices
+- NIST SP 800-190 — Application Container Security Guide
+
+---
+
+## Recommended Practice
+
+- Create a ReplicaSet with 3 replicas.
+- Delete Pods and observe automatic recreation.
+- Scale up to 5 replicas, then down to 2.
+- Modify labels and observe selector behavior.
+- Inspect `ownerReferences` in Pod YAML.
+- Compare ReplicaSet behavior with a Deployment in the next chapter.
+
+---
+
+# Chapter Summary
+
+```
+ReplicaSet Created
+
+↓
+
+Desired Replicas
+
+↓
+
+ReplicaSet Controller
+
+↓
+
+Create Pods
+
+↓
+
+Scheduler
+
+↓
+
+Worker Nodes
+
+↓
+
+Pods Running
+
+↓
+
+Continuous Monitoring
+
+↓
+
+Self-Healing & Scaling
+```
+
+ReplicaSets introduce one of Kubernetes' core capabilities: **automatic reconciliation**. They ensure that the cluster continuously moves toward the desired state by creating or removing Pods as needed. While ReplicaSets are fundamental to Kubernetes, in real-world environments they are almost always managed by **Deployments**, which build on ReplicaSets to provide rolling updates, rollbacks, and application version management.
 
 ---
