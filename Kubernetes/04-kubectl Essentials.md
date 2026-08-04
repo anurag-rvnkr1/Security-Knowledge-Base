@@ -1474,3 +1474,618 @@ Collect evidence before making changes.
 
 ---
 
+## Common Mistakes
+
+`kubectl` is one of the most frequently used tools in Kubernetes. While the commands are straightforward, misuse can lead to failed deployments, accidental production changes, or difficult troubleshooting sessions.
+
+This section highlights the most common mistakes made by Kubernetes users and how to avoid them.
+
+---
+
+# 1. Running Commands Against the Wrong Cluster
+
+One of the most serious mistakes is applying changes to the wrong Kubernetes cluster.
+
+Example:
+
+```
+Development
+
+↓
+
+Testing
+
+↓
+
+Production
+```
+
+You intend to update **Development**, but your current context points to **Production**.
+
+Always verify:
+
+```bash
+kubectl config current-context
+```
+
+before applying or deleting resources.
+
+---
+
+# 2. Forgetting the Namespace
+
+Many commands default to the `default` namespace.
+
+Example:
+
+```bash
+kubectl get pods
+```
+
+If your application is deployed in the `production` namespace, you may incorrectly assume no Pods exist.
+
+Specify the namespace:
+
+```bash
+kubectl get pods -n production
+```
+
+Or view all namespaces:
+
+```bash
+kubectl get pods -A
+```
+
+---
+
+# 3. Using Imperative Commands in Production
+
+Creating resources like this:
+
+```bash
+kubectl create deployment nginx --image=nginx
+```
+
+is useful for learning and quick experiments.
+
+For production environments, prefer declarative manifests:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+Benefits:
+
+- Version control
+- Repeatability
+- Easier rollback
+- CI/CD integration
+
+---
+
+# 4. Editing Live Resources Manually
+
+Avoid repeatedly using:
+
+```bash
+kubectl edit deployment nginx
+```
+
+Instead:
+
+```
+Update YAML
+
+↓
+
+Commit to Git
+
+↓
+
+CI/CD
+
+↓
+
+kubectl apply
+```
+
+This keeps infrastructure changes traceable and consistent.
+
+---
+
+# 5. Ignoring Events
+
+Many users check only logs.
+
+Example:
+
+```bash
+kubectl logs pod-name
+```
+
+Also inspect:
+
+```bash
+kubectl get events
+```
+
+Events often explain:
+
+- Failed scheduling
+- Image pull failures
+- Probe failures
+- Resource shortages
+
+---
+
+# 6. Using `kubectl delete pod` to "Fix" Problems
+
+Suppose a Pod is managed by a Deployment.
+
+```
+Delete Pod
+
+↓
+
+Deployment
+
+↓
+
+New Pod Created
+```
+
+Deleting the Pod does **not** solve the underlying issue.
+
+Investigate the root cause instead.
+
+---
+
+# 7. Not Using `kubectl describe`
+
+`kubectl get` provides a summary.
+
+Example:
+
+```bash
+kubectl get pod
+```
+
+For detailed diagnostics, use:
+
+```bash
+kubectl describe pod <pod-name>
+```
+
+This displays:
+
+- Events
+- Conditions
+- Resource requests
+- Node assignment
+- Volumes
+- Container status
+
+---
+
+# 8. Forgetting Resource Names
+
+Incorrect:
+
+```bash
+kubectl logs deployment
+```
+
+Correct:
+
+```bash
+kubectl logs pod-name
+```
+
+Understand which commands operate on which resource types.
+
+---
+
+# 9. Ignoring Output Formats
+
+Many users only use the default table output.
+
+Explore:
+
+```bash
+kubectl get pod nginx -o yaml
+```
+
+or
+
+```bash
+kubectl get pod nginx -o json
+```
+
+These formats are invaluable for debugging, scripting, and understanding object definitions.
+
+---
+
+# 10. Misunderstanding `apply` vs `create`
+
+### `create`
+
+Creates a new object.
+
+Fails if the object already exists.
+
+### `apply`
+
+Creates the object if it does not exist.
+
+Updates it if it already exists.
+
+For ongoing management, `apply` is generally preferred.
+
+---
+
+# 11. Not Using Labels and Selectors
+
+Instead of searching manually:
+
+```bash
+kubectl get pods
+```
+
+Filter resources:
+
+```bash
+kubectl get pods -l app=frontend
+```
+
+Labels become increasingly important as clusters grow.
+
+---
+
+# 12. Ignoring RBAC Errors
+
+Receiving:
+
+```
+403 Forbidden
+```
+
+does not necessarily indicate a cluster problem.
+
+It often means your identity lacks permission for the requested action.
+
+Verify your access with your cluster administrator or review RBAC configuration.
+
+---
+
+# 13. Assuming Every Error Comes from Kubernetes
+
+Sometimes the problem is the application itself.
+
+Example:
+
+```
+Pod Running
+
+↓
+
+Application Error
+
+↓
+
+Crash
+```
+
+Kubernetes successfully started the Pod, but the application failed.
+
+Always examine both Kubernetes resources and application logs.
+
+---
+
+# 14. Forgetting to Watch Resources
+
+During deployments, instead of repeatedly running:
+
+```bash
+kubectl get pods
+```
+
+Use:
+
+```bash
+kubectl get pods -w
+```
+
+This continuously displays status changes in real time.
+
+---
+
+# 15. Memorizing Commands Without Understanding the Workflow
+
+Instead of memorizing:
+
+```bash
+kubectl get
+
+kubectl describe
+
+kubectl logs
+```
+
+Understand the request path:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Cluster
+
+↓
+
+Response
+```
+
+Understanding the architecture makes troubleshooting much easier.
+
+---
+
+# kubectl Quick Revision
+
+## Request Flow
+
+```
+User
+
+↓
+
+kubectl
+
+↓
+
+kubeconfig
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Admission Controllers
+
+↓
+
+Cluster
+
+↓
+
+Response
+```
+
+---
+
+## Essential Commands
+
+### Cluster
+
+```bash
+kubectl cluster-info
+
+kubectl get nodes
+```
+
+---
+
+### Pods
+
+```bash
+kubectl get pods
+
+kubectl describe pod <pod-name>
+
+kubectl logs <pod-name>
+
+kubectl exec -it <pod-name> -- /bin/sh
+```
+
+---
+
+### Deployments
+
+```bash
+kubectl get deployments
+
+kubectl scale deployment <name> --replicas=5
+
+kubectl rollout status deployment <name>
+
+kubectl rollout undo deployment <name>
+```
+
+---
+
+### Services
+
+```bash
+kubectl get services
+
+kubectl describe service <service-name>
+```
+
+---
+
+### Configuration
+
+```bash
+kubectl config view
+
+kubectl config current-context
+
+kubectl config get-contexts
+
+kubectl config use-context <context-name>
+```
+
+---
+
+### Events
+
+```bash
+kubectl get events
+
+kubectl get events -A
+```
+
+---
+
+### Output Formats
+
+```bash
+kubectl get pods -o wide
+
+kubectl get pod <pod-name> -o yaml
+
+kubectl get pod <pod-name> -o json
+```
+
+---
+
+# kubectl Best Practices Checklist
+
+| Practice | Status |
+|----------|:------:|
+| Verify Current Context | ✓ |
+| Use Namespaces | ✓ |
+| Prefer Declarative Manifests | ✓ |
+| Store YAML in Git | ✓ |
+| Use `describe` for Troubleshooting | ✓ |
+| Check Events | ✓ |
+| Review Logs | ✓ |
+| Use Labels for Filtering | ✓ |
+| Use Output Formats for Debugging | ✓ |
+| Understand API Workflow | ✓ |
+
+---
+
+# Interview Tips
+
+Interviewers often expect you to know these commands without reference.
+
+Frequently asked commands include:
+
+```bash
+kubectl get pods
+
+kubectl describe pod
+
+kubectl logs
+
+kubectl exec
+
+kubectl get events
+
+kubectl rollout undo
+
+kubectl scale
+
+kubectl apply
+
+kubectl delete
+
+kubectl config current-context
+```
+
+Be prepared to explain **what each command does**, **when to use it**, and **how it fits into the Kubernetes workflow**.
+
+---
+
+# References
+
+## Official Documentation
+
+- Kubernetes Documentation
+- kubectl Reference
+- Kubernetes API Reference
+- kubectl Cheat Sheet
+
+---
+
+## CNCF Resources
+
+- Kubernetes Learning Path
+- Kubernetes Best Practices
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Recommended Practice
+
+- Create a local cluster with Kind or Minikube.
+- Deploy a sample application.
+- Practice `get`, `describe`, `logs`, `exec`, and `rollout`.
+- Switch between multiple contexts.
+- Explore YAML output using `-o yaml`.
+- Use `kubectl explain` to inspect API objects.
+- Troubleshoot intentionally broken deployments to build confidence.
+
+---
+
+# Chapter Summary
+
+```
+User
+
+↓
+
+kubectl
+
+↓
+
+kubeconfig
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Cluster
+
+↓
+
+Response
+
+↓
+
+Display Results
+```
+
+Mastering `kubectl` is the foundation of Kubernetes administration. Nearly every task—from deploying applications and inspecting workloads to debugging production issues and managing clusters—relies on effective use of this tool.
+
