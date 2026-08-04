@@ -2161,3 +2161,722 @@ As applications evolve, adjust quotas to reflect current operational requirement
 
 ---
 
+# LimitRanges
+
+## Overview
+
+A **LimitRange** is a Kubernetes object that defines **default, minimum, and maximum resource constraints** for individual Pods and Containers within a Namespace.
+
+While **ResourceQuota** controls the **total resources** a Namespace can consume, **LimitRange** controls **how much each Pod or Container can request or use**.
+
+These two objects complement each other and are commonly used together in production clusters.
+
+---
+
+# Why LimitRanges?
+
+Imagine a shared Kubernetes cluster.
+
+Without LimitRanges:
+
+```
+Namespace
+
+↓
+
+Container A
+
+↓
+
+Memory = 32 GiB
+```
+
+One developer accidentally requests excessive resources.
+
+Result:
+
+```
+Scheduler
+
+↓
+
+Cannot Place Pods
+
+↓
+
+Resource Waste
+```
+
+With a LimitRange:
+
+```
+Namespace
+
+↓
+
+Maximum Memory
+
+↓
+
+2 GiB
+```
+
+The oversized request is rejected.
+
+---
+
+# LimitRange Architecture
+
+```
+Namespace
+
+↓
+
+LimitRange
+
+↓
+
+Minimum Resources
+
+↓
+
+Default Resources
+
+↓
+
+Maximum Resources
+```
+
+Every new Pod or Container is evaluated against these rules.
+
+---
+
+# ResourceQuota vs LimitRange
+
+| ResourceQuota | LimitRange |
+|---------------|------------|
+| Limits the Namespace as a whole | Limits each Pod or Container |
+| Controls total CPU and Memory | Controls per-object CPU and Memory |
+| Prevents one team from exhausting cluster resources | Prevents individual workloads from requesting unreasonable resources |
+| Tracks aggregate usage | Applies validation and defaults |
+
+Think of them together:
+
+```
+Namespace
+
+│
+
+├── ResourceQuota
+
+│      Total Limits
+
+│
+
+└── LimitRange
+
+       Individual Limits
+```
+
+---
+
+# What Can a LimitRange Control?
+
+A LimitRange can define:
+
+- Default CPU requests
+- Default CPU limits
+- Default memory requests
+- Default memory limits
+- Minimum CPU
+- Maximum CPU
+- Minimum memory
+- Maximum memory
+- Maximum request-to-limit ratio (for certain resources)
+
+---
+
+# LimitRange Workflow
+
+```
+User
+
+↓
+
+Create Pod
+
+↓
+
+API Server
+
+↓
+
+LimitRange Validation
+
+↓
+
+Valid?
+
+↓
+
+Yes
+
+↓
+
+Create Pod
+```
+
+If the resource specification violates the LimitRange:
+
+```
+Rejected
+```
+
+---
+
+# Default Values
+
+Suppose a developer creates:
+
+```yaml
+containers:
+
+- name: app
+
+  image: nginx
+```
+
+No CPU or memory values are specified.
+
+LimitRange automatically applies defaults:
+
+```
+CPU Request
+
+↓
+
+100m
+
+Memory Request
+
+↓
+
+128Mi
+```
+
+The exact values depend on the configured LimitRange.
+
+---
+
+# LimitRange YAML
+
+Example:
+
+```yaml
+apiVersion: v1
+
+kind: LimitRange
+
+metadata:
+
+  name: container-limits
+
+spec:
+
+  limits:
+
+  - type: Container
+
+    default:
+
+      cpu: "500m"
+
+      memory: "512Mi"
+
+    defaultRequest:
+
+      cpu: "250m"
+
+      memory: "256Mi"
+
+    min:
+
+      cpu: "100m"
+
+      memory: "128Mi"
+
+    max:
+
+      cpu: "2"
+
+      memory: "2Gi"
+```
+
+---
+
+# YAML Structure
+
+```
+LimitRange
+
+↓
+
+Container Rules
+
+↓
+
+Minimum
+
+↓
+
+Default Request
+
+↓
+
+Default Limit
+
+↓
+
+Maximum
+```
+
+---
+
+# Minimum Resources
+
+Example:
+
+```
+Minimum CPU
+
+↓
+
+100m
+```
+
+Developer requests:
+
+```
+50m
+```
+
+Result:
+
+```
+Rejected
+```
+
+The request is below the configured minimum.
+
+---
+
+# Maximum Resources
+
+Example:
+
+```
+Maximum Memory
+
+↓
+
+2 GiB
+```
+
+Developer requests:
+
+```
+4 GiB
+```
+
+Result:
+
+```
+Rejected
+```
+
+---
+
+# Default Requests
+
+Developer submits:
+
+```yaml
+resources: {}
+```
+
+LimitRange automatically applies:
+
+```
+CPU Request
+
+↓
+
+250m
+
+Memory Request
+
+↓
+
+256Mi
+```
+
+This helps the scheduler make informed placement decisions.
+
+---
+
+# Default Limits
+
+If no limits are specified:
+
+```
+Container
+
+↓
+
+LimitRange
+
+↓
+
+CPU Limit
+
+↓
+
+500m
+
+↓
+
+Memory Limit
+
+↓
+
+512Mi
+```
+
+Defaults help prevent unbounded resource consumption.
+
+---
+
+# Namespace Scope
+
+LimitRanges apply only within their Namespace.
+
+Example:
+
+```
+Development
+
+↓
+
+Maximum CPU = 2
+```
+
+Production:
+
+```
+Maximum CPU = 8
+```
+
+Each Namespace can define its own policy.
+
+---
+
+# Multiple Namespaces
+
+```
+Development
+
+↓
+
+LimitRange A
+```
+
+```
+Testing
+
+↓
+
+LimitRange B
+```
+
+```
+Production
+
+↓
+
+LimitRange C
+```
+
+Each team or environment can have different limits.
+
+---
+
+# Creating a LimitRange
+
+Apply:
+
+```bash
+kubectl apply -f limitrange.yaml
+```
+
+Verify:
+
+```bash
+kubectl get limitrange
+```
+
+or
+
+```bash
+kubectl get limits
+```
+
+---
+
+# Describe LimitRange
+
+```bash
+kubectl describe limitrange container-limits
+```
+
+Example output:
+
+```
+Type
+
+↓
+
+Container
+
+↓
+
+Default
+
+↓
+
+Minimum
+
+↓
+
+Maximum
+```
+
+---
+
+# Hands-on Lab 1 – Create Namespace
+
+```bash
+kubectl create namespace development
+```
+
+---
+
+# Hands-on Lab 2 – Create LimitRange
+
+Example:
+
+```yaml
+apiVersion: v1
+
+kind: LimitRange
+
+metadata:
+
+  name: dev-limits
+
+spec:
+
+  limits:
+
+  - type: Container
+
+    default:
+
+      cpu: "500m"
+
+      memory: "512Mi"
+
+    defaultRequest:
+
+      cpu: "250m"
+
+      memory: "256Mi"
+
+    min:
+
+      cpu: "100m"
+
+      memory: "128Mi"
+
+    max:
+
+      cpu: "2"
+
+      memory: "2Gi"
+```
+
+Deploy:
+
+```bash
+kubectl apply -f limitrange.yaml \
+-n development
+```
+
+---
+
+# Hands-on Lab 3 – Verify
+
+```bash
+kubectl get limits \
+-n development
+```
+
+Describe:
+
+```bash
+kubectl describe limitrange dev-limits \
+-n development
+```
+
+---
+
+# Hands-on Lab 4 – Create a Pod Without Resources
+
+Deploy a Pod that omits the `resources` section.
+
+Inspect the Pod:
+
+```bash
+kubectl get pod <pod-name> -o yaml
+```
+
+Observe that Kubernetes has applied the default resource requests and limits defined by the LimitRange.
+
+---
+
+# Hands-on Lab 5 – Exceed Maximum
+
+Create a Pod requesting:
+
+```
+CPU
+
+↓
+
+4
+```
+
+LimitRange:
+
+```
+Maximum = 2
+```
+
+Expected result:
+
+```
+Rejected
+```
+
+The API Server denies the request.
+
+---
+
+# Common Validation Flow
+
+```
+Create Pod
+
+↓
+
+LimitRange
+
+↓
+
+Within Limits?
+
+↓
+
+Yes
+
+↓
+
+Create
+```
+
+Otherwise:
+
+```
+Rejected
+```
+
+---
+
+# Resource Scheduling
+
+LimitRanges improve scheduling by ensuring Pods have predictable resource requests.
+
+```
+Pod
+
+↓
+
+CPU Request
+
+↓
+
+Scheduler
+
+↓
+
+Node Selected
+```
+
+Without requests, scheduling decisions become less accurate.
+
+---
+
+# Benefits
+
+- Prevents oversized resource requests
+- Provides sensible defaults
+- Improves scheduling
+- Supports fair resource usage
+- Standardizes resource policies
+
+---
+
+# Best Practices
+
+### 1. Use LimitRanges with ResourceQuotas
+
+ResourceQuota controls Namespace totals.
+
+LimitRange controls individual workloads.
+
+Use both.
+
+---
+
+### 2. Always Define Defaults
+
+This ensures developers who omit resource settings still receive reasonable values.
+
+---
+
+### 3. Set Practical Minimums
+
+Avoid values that are unrealistically low or unnecessarily restrictive.
+
+---
+
+### 4. Prevent Oversized Containers
+
+Maximum values help protect cluster stability.
+
+---
+
+### 5. Review Resource Policies Regularly
+
+As workloads evolve, revisit LimitRanges to ensure they still meet operational needs.
+
+---
