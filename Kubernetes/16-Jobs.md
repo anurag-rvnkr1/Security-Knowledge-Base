@@ -1287,9 +1287,3 @@ Complete
 - Kubernetes Best Practices
 
 ---
-
-**End of Chapter 16 – Jobs**
-
-**Next Chapter:** **Chapter 17 – CronJobs**
-
----
