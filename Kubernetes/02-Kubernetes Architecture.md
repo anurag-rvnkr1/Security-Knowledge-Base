@@ -1615,3 +1615,702 @@ Because etcd contains the cluster's state, secure access, perform backups, and m
 
 ---
 
+## Common Mistakes
+
+Understanding Kubernetes architecture is essential because many production issues stem from misconceptions about how the Control Plane and Worker Nodes operate.
+
+The following are some of the most common mistakes encountered when learning or operating Kubernetes clusters.
+
+---
+
+# 1. Thinking Kubernetes Runs Containers Directly
+
+Many beginners believe:
+
+```
+Kubernetes
+
+↓
+
+Runs Containers
+```
+
+This is incorrect.
+
+Actual workflow:
+
+```
+Kubernetes
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Containers
+```
+
+Kubernetes orchestrates workloads, while the container runtime (such as **containerd** or **CRI-O**) is responsible for creating and managing containers.
+
+---
+
+# 2. Ignoring the Role of the API Server
+
+Some engineers assume components communicate directly.
+
+In reality:
+
+```
+Scheduler
+
+↓
+
+API Server
+
+↓
+
+kubelet
+```
+
+Most Kubernetes components interact through the **API Server**, making it the central communication hub of the cluster.
+
+---
+
+# 3. Confusing etcd with a Database for Applications
+
+Incorrect assumption:
+
+```
+Application
+
+↓
+
+Store Data in etcd
+```
+
+This is **not** the purpose of etcd.
+
+etcd stores **Kubernetes cluster state**, such as:
+
+- Deployments
+- Pods
+- Services
+- Secrets
+- ConfigMaps
+- Nodes
+- Cluster configuration
+
+Application data belongs in databases such as PostgreSQL, MySQL, MongoDB, etc.
+
+---
+
+# 4. Assuming the Scheduler Starts Pods
+
+Many candidates answer:
+
+```
+Scheduler
+
+↓
+
+Runs Pods
+```
+
+This is incorrect.
+
+Actual workflow:
+
+```
+Scheduler
+
+↓
+
+Select Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pod Starts
+```
+
+The Scheduler only **chooses the node**.
+
+---
+
+# 5. Forgetting Controllers
+
+Controllers are responsible for maintaining the desired state.
+
+Example:
+
+```
+Desired
+
+↓
+
+3 Pods
+
+↓
+
+Current
+
+↓
+
+2 Pods
+
+↓
+
+Controller Creates 1 Pod
+```
+
+Without controllers, Kubernetes would not provide self-healing.
+
+---
+
+# 6. Assuming Pods Are Permanent
+
+Pods are **ephemeral**.
+
+Incorrect mindset:
+
+```
+Pod
+
+↓
+
+Permanent
+```
+
+Correct mindset:
+
+```
+Pod
+
+↓
+
+Replaceable
+```
+
+Applications should tolerate Pod recreation.
+
+---
+
+# 7. Editing Running Pods
+
+Incorrect approach:
+
+```bash
+kubectl edit pod
+```
+
+Most production changes should instead be made by updating the managing resource (for example, a Deployment) and applying the updated manifest.
+
+Recommended workflow:
+
+```
+Update YAML
+
+↓
+
+Git
+
+↓
+
+CI/CD
+
+↓
+
+kubectl apply
+```
+
+---
+
+# 8. Ignoring Cluster State
+
+Kubernetes always works toward:
+
+```
+Desired State
+```
+
+If administrators manually delete a Pod managed by a Deployment:
+
+```
+Delete Pod
+
+↓
+
+Controller Detects
+
+↓
+
+New Pod Created
+```
+
+This is expected behavior.
+
+---
+
+# 9. Believing Every Node Is Identical
+
+Worker nodes may differ in:
+
+- CPU
+- Memory
+- Labels
+- Taints
+- Hardware
+- Architecture
+
+The Scheduler considers these characteristics when placing Pods.
+
+---
+
+# 10. Ignoring Node Capacity
+
+A Pod requiring:
+
+```
+CPU = 8
+
+Memory = 32 GB
+```
+
+cannot be scheduled onto a node that lacks those resources.
+
+Always define realistic resource requests.
+
+---
+
+# 11. Misunderstanding Worker Nodes
+
+Worker nodes are not passive machines.
+
+Each worker node actively runs:
+
+- kubelet
+- kube-proxy (or an equivalent networking implementation, depending on the cluster)
+- Container Runtime
+
+These components continuously communicate with the Control Plane.
+
+---
+
+# 12. Ignoring Events
+
+Many engineers check only logs.
+
+Also review:
+
+```bash
+kubectl get events
+```
+
+Events often explain:
+
+- Failed scheduling
+- Image pull failures
+- Probe failures
+- Resource shortages
+
+---
+
+# 13. Not Backing Up etcd
+
+etcd contains the cluster's desired state.
+
+Without appropriate backups, recovering the Control Plane after a serious failure becomes much more difficult.
+
+Back up etcd according to your organization's operational procedures.
+
+---
+
+# 14. Assuming Kubernetes Solves Every Problem Automatically
+
+Kubernetes provides automation, but it cannot automatically fix:
+
+- Application bugs
+- Incorrect configuration
+- Poor architecture
+- Database corruption
+- External service failures
+
+It maintains the desired state of infrastructure—not application correctness.
+
+---
+
+# 15. Learning Components Independently
+
+Many people memorize:
+
+- API Server
+- Scheduler
+- kubelet
+- etcd
+
+without understanding how they work together.
+
+Think of Kubernetes as one coordinated system:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+etcd
+
+↓
+
+Controller Manager
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pod
+```
+
+Understanding this flow is far more valuable than memorizing component definitions.
+
+---
+
+# Kubernetes Architecture Quick Revision
+
+## Cluster Architecture
+
+```
+Control Plane
+
+↓
+
+Worker Nodes
+
+↓
+
+Pods
+```
+
+---
+
+## Control Plane
+
+```
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+Controller Manager
+
+↓
+
+etcd
+```
+
+---
+
+## Worker Node
+
+```
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pods
+
+↓
+
+Networking
+```
+
+---
+
+## Complete Request Flow
+
+```
+Developer
+
+↓
+
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Admission Controllers
+
+↓
+
+etcd
+
+↓
+
+Controller Manager
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pod Running
+```
+
+---
+
+## Reconciliation Loop
+
+```
+Desired State
+
+↓
+
+Current State
+
+↓
+
+Compare
+
+↓
+
+Difference?
+
+↓
+
+Correct
+
+↓
+
+Desired State Restored
+```
+
+This reconciliation loop is one of the defining characteristics of Kubernetes.
+
+---
+
+## Component Responsibilities
+
+| Component | Primary Responsibility |
+|------------|------------------------|
+| API Server | Cluster entry point and API management |
+| etcd | Persistent cluster state |
+| Scheduler | Selects nodes for Pods |
+| Controller Manager | Maintains desired state |
+| kubelet | Manages Pods on a node |
+| Container Runtime | Creates and runs containers |
+| kube-proxy* | Implements Service networking *(or equivalent networking implementation, depending on cluster configuration)* |
+
+---
+
+## Most Important kubectl Commands
+
+```bash
+kubectl cluster-info
+
+kubectl get nodes
+
+kubectl get pods -A
+
+kubectl get deployments -A
+
+kubectl get services -A
+
+kubectl describe node <node-name>
+
+kubectl describe pod <pod-name>
+
+kubectl logs <pod-name>
+
+kubectl get events -A
+```
+
+---
+
+# Kubernetes Architecture Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Cluster Architecture | ✓ |
+| Control Plane | ✓ |
+| Worker Nodes | ✓ |
+| API Server | ✓ |
+| Scheduler | ✓ |
+| Controller Manager | ✓ |
+| etcd | ✓ |
+| kubelet | ✓ |
+| Container Runtime | ✓ |
+| Request Lifecycle | ✓ |
+| Desired State | ✓ |
+| Reconciliation Loop | ✓ |
+| High Availability | ✓ |
+| Best Practices | ✓ |
+| Common Mistakes | ✓ |
+
+---
+
+# References
+
+## Official Kubernetes Resources
+
+- Kubernetes Architecture Documentation
+- Kubernetes Components Documentation
+- Kubernetes API Reference
+- kubectl Reference
+- etcd Documentation
+
+---
+
+## CNCF Resources
+
+- Cloud Native Computing Foundation (CNCF)
+- Kubernetes Best Practices
+- Kubernetes Learning Path
+- Kubernetes Architecture Whitepapers
+
+---
+
+## Security Standards
+
+- CIS Kubernetes Benchmark
+- NIST SP 800-190 — Application Container Security Guide
+- NSA/CISA Kubernetes Hardening Guidance
+- OWASP Kubernetes Top 10
+
+---
+
+## Recommended Books
+
+- *Kubernetes Up & Running* — Kelsey Hightower, Brendan Burns & Joe Beda
+- *Kubernetes in Action* — Marko Lukša
+- *Production Kubernetes* — Josh Rosso & Rich Lander
+- *Managing Kubernetes* — Brendan Burns, Craig Tracey & Joe Beda
+
+---
+
+## Recommended Practice
+
+- Build a local cluster using Kind, Minikube, or k3d.
+- Observe how Deployments create ReplicaSets and Pods.
+- Use `kubectl describe` to inspect scheduling decisions.
+- Review Events after every deployment.
+- Experiment with scaling and rolling updates.
+- Explore the Kubernetes API using `kubectl`.
+
+---
+
+# Chapter Summary
+
+```
+User
+
+↓
+
+kubectl
+
+↓
+
+API Server
+
+↓
+
+etcd
+
+↓
+
+Controller Manager
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pod
+
+↓
+
+Service
+
+↓
+
+Application Available
+```
+
+Understanding this architecture is the foundation for mastering every advanced Kubernetes concept, from networking and storage to security and troubleshooting.
+
