@@ -1436,3 +1436,529 @@ before making changes.
 
 ---
 
+# Multi-Container Pods
+
+## Overview
+
+Although most Kubernetes Pods contain a **single container**, Kubernetes allows a Pod to run **multiple containers** that work together as a single unit.
+
+Containers inside the same Pod:
+
+- Share the same network namespace
+- Share the same IP address
+- Share the same storage volumes (when configured)
+- Are scheduled together
+- Have the same lifecycle
+
+A multi-container Pod is useful when containers have a **strong dependency** on each other and need to cooperate closely.
+
+---
+
+# Single vs Multi-Container Pods
+
+## Single-Container Pod
+
+```
+Pod
+
+┌──────────────────┐
+
+│                  │
+
+│   NGINX          │
+
+│                  │
+
+└──────────────────┘
+```
+
+Most production applications follow this pattern.
+
+---
+
+## Multi-Container Pod
+
+```
+Pod
+
+┌─────────────────────────────┐
+
+│                             │
+
+│  Web Server                 │
+
+│                             │
+
+│  Log Collector              │
+
+│                             │
+
+│  Shared Network             │
+
+│                             │
+
+│  Shared Volume              │
+
+└─────────────────────────────┘
+```
+
+Both containers cooperate to perform one logical task.
+
+---
+
+# Why Use Multiple Containers?
+
+Typical reasons include:
+
+- Log collection
+- Monitoring
+- Proxying traffic
+- Configuration generation
+- Data synchronization
+- Service mesh sidecars
+- Supporting utilities
+
+---
+
+# Shared Network
+
+Every container shares:
+
+```
+Pod
+
+↓
+
+One IP Address
+```
+
+Example:
+
+```
+Container A
+
+↓
+
+localhost:8080
+
+↓
+
+Container B
+```
+
+Communication occurs over `localhost` because all containers share the same network namespace.
+
+---
+
+# Shared Storage
+
+Containers may share volumes.
+
+```
+Volume
+
+↓
+
+Container A
+
+↓
+
+Container B
+```
+
+Example:
+
+```
+Application
+
+↓
+
+Writes Logs
+
+↓
+
+Shared Volume
+
+↓
+
+Log Collector
+
+↓
+
+Reads Logs
+```
+
+---
+
+# Multi-Container Pod YAML
+
+Example:
+
+```yaml
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: multi-container
+
+spec:
+
+  containers:
+
+  - name: web
+
+    image: nginx
+
+  - name: logger
+
+    image: busybox
+
+    command:
+    - sh
+    - -c
+    - while true; do sleep 3600; done
+```
+
+This Pod contains two containers.
+
+---
+
+# Viewing Containers
+
+Display Pods:
+
+```bash
+kubectl get pods
+```
+
+Describe:
+
+```bash
+kubectl describe pod multi-container
+```
+
+The output lists both containers.
+
+---
+
+# Viewing Logs
+
+Specify the container:
+
+```bash
+kubectl logs multi-container \
+-c web
+```
+
+Another container:
+
+```bash
+kubectl logs multi-container \
+-c logger
+```
+
+Without specifying `-c`, Kubernetes cannot determine which container's logs you want if there are multiple regular containers.
+
+---
+
+# Executing Commands
+
+Example:
+
+```bash
+kubectl exec -it multi-container \
+-c web -- /bin/sh
+```
+
+Logger container:
+
+```bash
+kubectl exec -it multi-container \
+-c logger -- /bin/sh
+```
+
+Always specify the container name when multiple containers are present.
+
+---
+
+# Container Startup
+
+Containers within a Pod are generally started by Kubernetes as part of the Pod startup process, but applications should **not rely on a particular startup order** between regular containers.
+
+If initialization must occur before application containers start, use **Init Containers**, which are covered later in this chapter.
+
+---
+
+# Multi-Container Communication
+
+Example:
+
+```
+Web Container
+
+↓
+
+localhost
+
+↓
+
+Logging Container
+```
+
+or
+
+```
+Application
+
+↓
+
+localhost
+
+↓
+
+Proxy
+```
+
+No Kubernetes Service is required for communication within the same Pod.
+
+---
+
+# Common Multi-Container Patterns
+
+---
+
+## 1. Sidecar Pattern
+
+A sidecar extends the functionality of the main application.
+
+Example:
+
+```
+Pod
+
+├── Application
+
+└── Log Collector
+```
+
+Examples:
+
+- Log forwarding
+- Metrics collection
+- Service mesh proxy
+- Configuration reload helper
+
+This is the most common multi-container pattern.
+
+---
+
+## 2. Ambassador Pattern
+
+An ambassador container acts as a local proxy.
+
+```
+Application
+
+↓
+
+Ambassador
+
+↓
+
+External Service
+```
+
+Examples:
+
+- Database proxy
+- API gateway helper
+- TLS proxy
+
+---
+
+## 3. Adapter Pattern
+
+An adapter transforms application output.
+
+```
+Application
+
+↓
+
+Adapter
+
+↓
+
+Monitoring System
+```
+
+Example:
+
+- Convert custom metrics into Prometheus-compatible metrics.
+
+---
+
+# Example Architecture
+
+```
+                 Pod
+
+     ┌──────────────────────────────┐
+
+     │                              │
+
+     │  Application                 │
+
+     │                              │
+
+     │  Prometheus Exporter         │
+
+     │                              │
+
+     │  Shared Volume               │
+
+     │                              │
+
+     │  localhost Communication     │
+
+     └──────────────────────────────┘
+```
+
+---
+
+# Advantages
+
+- Shared networking
+- Shared storage
+- Tight integration
+- Simplified communication
+- Unified deployment
+- Single scheduling unit
+
+---
+
+# Disadvantages
+
+- Containers cannot scale independently.
+- Increased resource sharing complexity.
+- Debugging may become more involved.
+- A poorly designed Pod can become tightly coupled.
+
+Use multiple containers only when they represent a single logical workload.
+
+---
+
+# Hands-on Exercise
+
+## Create a Multi-Container Pod
+
+Example:
+
+```yaml
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: demo
+
+spec:
+
+  containers:
+
+  - name: web
+
+    image: nginx
+
+  - name: helper
+
+    image: busybox
+
+    command:
+    - sh
+    - -c
+    - while true; do sleep 3600; done
+```
+
+Deploy:
+
+```bash
+kubectl apply -f pod.yaml
+```
+
+---
+
+## Verify
+
+```bash
+kubectl get pods
+```
+
+---
+
+## Describe
+
+```bash
+kubectl describe pod demo
+```
+
+---
+
+## Logs
+
+```bash
+kubectl logs demo \
+-c web
+```
+
+---
+
+## Execute
+
+```bash
+kubectl exec -it demo \
+-c helper -- /bin/sh
+```
+
+---
+
+## Delete
+
+```bash
+kubectl delete pod demo
+```
+
+---
+
+# Best Practices
+
+### 1. Use Multiple Containers Only When Necessary
+
+If containers can operate independently, deploy them in separate Pods.
+
+---
+
+### 2. Keep One Main Application Container
+
+Supporting containers should complement—not replace—the primary application.
+
+---
+
+### 3. Use Shared Volumes Carefully
+
+Only share data that must be accessed by multiple containers.
+
+---
+
+### 4. Prefer localhost Communication
+
+Containers inside the same Pod should communicate over the shared network namespace.
+
+---
+
+### 5. Avoid Tight Coupling
+
+If two containers require independent scaling, upgrades, or lifecycles, they likely belong in separate Pods.
+
+---
