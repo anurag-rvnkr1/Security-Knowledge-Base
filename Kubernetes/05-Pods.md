@@ -2540,3 +2540,666 @@ Meaningful logs simplify troubleshooting when initialization fails.
 Initialization tasks should be safe to retry because Kubernetes may execute them multiple times after failures.
 
 ---
+
+# Health Probes
+
+## Overview
+
+Running containers are **not necessarily healthy containers**.
+
+An application may:
+
+- Start successfully but never become ready
+- Stop responding while the container continues running
+- Require additional startup time before serving requests
+
+To address these situations, Kubernetes provides **Health Probes**.
+
+Health probes allow Kubernetes to determine:
+
+- Is the application running?
+- Is the application ready to receive traffic?
+- Has the application finished starting?
+
+These checks improve application reliability, availability, and automated recovery.
+
+---
+
+# Why Health Probes?
+
+Without probes:
+
+```
+Container Running
+
+↓
+
+Application Hung
+
+↓
+
+Traffic Continues
+
+↓
+
+Users Receive Errors
+```
+
+With probes:
+
+```
+Container Running
+
+↓
+
+Health Check
+
+↓
+
+Failure Detected
+
+↓
+
+Recovery Action
+```
+
+---
+
+# Types of Health Probes
+
+Kubernetes supports three probe types:
+
+```
+Health Probes
+
+│
+
+├── Startup Probe
+
+├── Readiness Probe
+
+└── Liveness Probe
+```
+
+Each probe has a different responsibility.
+
+---
+
+# Startup Probe
+
+## Purpose
+
+Determines whether an application has **finished starting**.
+
+Useful for:
+
+- Java applications
+- Spring Boot
+- Machine Learning models
+- Large applications
+- Applications with long initialization times
+
+Workflow:
+
+```
+Container Starts
+
+↓
+
+Startup Probe
+
+↓
+
+Success
+
+↓
+
+Enable Other Probes
+```
+
+Until the Startup Probe succeeds:
+
+- Readiness Probe is effectively deferred.
+- Liveness Probe is not used to restart the container.
+
+---
+
+# Startup Probe Example
+
+```yaml
+startupProbe:
+
+  httpGet:
+
+    path: /
+
+    port: 80
+
+  periodSeconds: 10
+
+  failureThreshold: 30
+```
+
+This allows the application additional time to initialize.
+
+---
+
+# Readiness Probe
+
+## Purpose
+
+Determines whether a Pod is **ready to receive traffic**.
+
+Workflow:
+
+```
+Application Running
+
+↓
+
+Readiness Probe
+
+↓
+
+Ready?
+
+↓
+
+Yes
+
+↓
+
+Receive Traffic
+```
+
+If the readiness check fails:
+
+```
+Pod Running
+
+↓
+
+Not Ready
+
+↓
+
+Removed From Service Endpoints
+```
+
+The container keeps running, but Kubernetes stops routing new traffic to it through Services.
+
+---
+
+# Readiness Probe Example
+
+```yaml
+readinessProbe:
+
+  httpGet:
+
+    path: /
+
+    port: 80
+
+  initialDelaySeconds: 5
+
+  periodSeconds: 10
+```
+
+---
+
+# Liveness Probe
+
+## Purpose
+
+Determines whether the application is still functioning.
+
+Workflow:
+
+```
+Application Running
+
+↓
+
+Liveness Probe
+
+↓
+
+Healthy?
+
+↓
+
+No
+
+↓
+
+Restart Container
+```
+
+Unlike the Readiness Probe, a failed Liveness Probe causes Kubernetes to restart the container.
+
+---
+
+# Liveness Probe Example
+
+```yaml
+livenessProbe:
+
+  httpGet:
+
+    path: /
+
+    port: 80
+
+  initialDelaySeconds: 15
+
+  periodSeconds: 20
+```
+
+---
+
+# Probe Comparison
+
+| Probe | Purpose | Failure Result |
+|--------|---------|----------------|
+| Startup | Detect application startup completion | Startup continues to be checked; other probes remain deferred until success |
+| Readiness | Determine if Pod can receive traffic | Pod removed from Service endpoints |
+| Liveness | Detect unhealthy application | Container restarted |
+
+---
+
+# Probe Lifecycle
+
+```
+Container Starts
+
+↓
+
+Startup Probe
+
+↓
+
+Success
+
+↓
+
+Readiness Probe
+
+↓
+
+Ready
+
+↓
+
+Receive Traffic
+
+↓
+
+Liveness Probe
+
+↓
+
+Healthy
+
+↓
+
+Continue Running
+```
+
+---
+
+# HTTP Probe
+
+Uses an HTTP request.
+
+Example:
+
+```yaml
+livenessProbe:
+
+  httpGet:
+
+    path: /health
+
+    port: 8080
+```
+
+Kubernetes expects a successful HTTP response.
+
+Suitable for:
+
+- REST APIs
+- Web Applications
+- Microservices
+
+---
+
+# TCP Probe
+
+Checks whether a TCP port accepts connections.
+
+Example:
+
+```yaml
+readinessProbe:
+
+  tcpSocket:
+
+    port: 5432
+```
+
+Suitable for:
+
+- Databases
+- TCP services
+- Message brokers
+
+---
+
+# Exec Probe
+
+Runs a command inside the container.
+
+Example:
+
+```yaml
+livenessProbe:
+
+  exec:
+
+    command:
+
+    - cat
+
+    - /tmp/healthy
+```
+
+Useful when application health cannot be determined through HTTP or TCP.
+
+---
+
+# Probe Timing Parameters
+
+Common parameters:
+
+| Parameter | Description |
+|-----------|-------------|
+| initialDelaySeconds | Delay before the first probe |
+| periodSeconds | Time between probes |
+| timeoutSeconds | Probe timeout |
+| successThreshold | Consecutive successes required (primarily useful for readiness probes) |
+| failureThreshold | Consecutive failures before Kubernetes considers the probe failed |
+
+These values should be tuned according to application behavior.
+
+---
+
+# Complete Example
+
+```yaml
+containers:
+
+- name: nginx
+
+  image: nginx
+
+  startupProbe:
+
+    httpGet:
+
+      path: /
+
+      port: 80
+
+  readinessProbe:
+
+    httpGet:
+
+      path: /
+
+      port: 80
+
+  livenessProbe:
+
+    httpGet:
+
+      path: /
+
+      port: 80
+```
+
+This configuration enables all three probe types.
+
+---
+
+# Probe Workflow
+
+```
+Application Starts
+
+↓
+
+Startup Probe
+
+↓
+
+Success
+
+↓
+
+Readiness Probe
+
+↓
+
+Receive Traffic
+
+↓
+
+Liveness Probe
+
+↓
+
+Monitor Continuously
+```
+
+---
+
+# Viewing Probe Status
+
+Describe the Pod:
+
+```bash
+kubectl describe pod nginx
+```
+
+Look for:
+
+- Conditions
+- Events
+- Probe failures
+- Restart count
+
+---
+
+# Troubleshooting Probe Failures
+
+Useful commands:
+
+```bash
+kubectl describe pod nginx
+
+kubectl logs nginx
+
+kubectl get events
+```
+
+Common symptoms:
+
+```
+Unhealthy
+
+↓
+
+Probe Failure
+
+↓
+
+Restart
+```
+
+---
+
+# Common Probe Scenarios
+
+## Slow Startup
+
+```
+Application
+
+↓
+
+90 Seconds Startup
+
+↓
+
+Startup Probe
+
+↓
+
+Wait
+
+↓
+
+Application Ready
+```
+
+---
+
+## Temporary Database Outage
+
+```
+Database Down
+
+↓
+
+Readiness Fails
+
+↓
+
+No New Traffic
+
+↓
+
+Database Returns
+
+↓
+
+Ready Again
+```
+
+The container is not restarted.
+
+---
+
+## Application Deadlock
+
+```
+Application
+
+↓
+
+Stops Responding
+
+↓
+
+Liveness Fails
+
+↓
+
+Restart Container
+```
+
+---
+
+# Hands-on Exercise
+
+Create a Pod:
+
+```yaml
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+
+  name: nginx
+
+spec:
+
+  containers:
+
+  - name: nginx
+
+    image: nginx
+
+    readinessProbe:
+
+      httpGet:
+
+        path: /
+
+        port: 80
+
+    livenessProbe:
+
+      httpGet:
+
+        path: /
+
+        port: 80
+```
+
+Deploy:
+
+```bash
+kubectl apply -f pod.yaml
+```
+
+Inspect:
+
+```bash
+kubectl describe pod nginx
+```
+
+---
+
+# Best Practices
+
+### 1. Configure Readiness and Liveness Separately
+
+They solve different operational problems.
+
+---
+
+### 2. Use Startup Probes for Slow Applications
+
+Prevent premature restarts during initialization.
+
+---
+
+### 3. Choose Appropriate Endpoints
+
+Health endpoints should verify application health without performing expensive operations.
+
+---
+
+### 4. Tune Probe Timings
+
+Avoid values that are too aggressive or too slow.
+
+---
+
+### 5. Monitor Probe Failures
+
+Frequent probe failures often indicate application or infrastructure issues that require investigation.
+
