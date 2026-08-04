@@ -743,3 +743,1138 @@ Examples:
 
 ---
 
+# How ConfigMaps Work Internally
+
+## Overview
+
+A ConfigMap is much more than a simple collection of key-value pairs.
+
+Internally, Kubernetes stores ConfigMaps as API objects inside **etcd**, and Pods retrieve their configuration through the **API Server**.
+
+Depending on how the ConfigMap is used, Kubernetes injects the configuration into the container as:
+
+- Environment Variables
+- Mounted Files
+- Command-Line Arguments
+
+Understanding this internal workflow is essential for troubleshooting configuration-related issues in production clusters.
+
+---
+
+# High-Level Architecture
+
+```
+                 ConfigMap
+
+                     │
+
+               API Server
+
+                     │
+
+                  etcd
+
+                     │
+
+        ┌────────────┼────────────┐
+
+        ▼            ▼            ▼
+
+ Environment      Volume       Arguments
+
+ Variables        Mount
+
+                     │
+
+                     ▼
+
+               Running Container
+```
+
+---
+
+# Complete Workflow
+
+Suppose a ConfigMap is created.
+
+```
+Developer
+
+↓
+
+kubectl apply
+
+↓
+
+API Server
+
+↓
+
+Validation
+
+↓
+
+Store in etcd
+
+↓
+
+Pod Requests ConfigMap
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Application
+```
+
+---
+
+# Step 1 – Create ConfigMap
+
+Example:
+
+```yaml
+apiVersion: v1
+
+kind: ConfigMap
+
+metadata:
+
+  name: app-config
+
+data:
+
+  APP_ENV: production
+
+  LOG_LEVEL: INFO
+```
+
+Deploy:
+
+```bash
+kubectl apply -f configmap.yaml
+```
+
+---
+
+# Step 2 – API Server
+
+The API Server:
+
+- Authenticates the request
+- Authorizes the request
+- Validates the ConfigMap
+- Stores it in etcd
+
+Workflow:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+ConfigMap Stored
+```
+
+---
+
+# Step 3 – etcd Storage
+
+Internally:
+
+```
+etcd
+
+↓
+
+ConfigMap
+
+↓
+
+Key
+
+↓
+
+Value
+```
+
+Example:
+
+```
+APP_ENV
+
+↓
+
+production
+```
+
+---
+
+# Step 4 – Pod Creation
+
+Suppose a Pod references:
+
+```yaml
+configMapRef:
+
+  name: app-config
+```
+
+Workflow:
+
+```
+Pod Created
+
+↓
+
+API Server
+
+↓
+
+ConfigMap Lookup
+```
+
+---
+
+# Step 5 – kubelet
+
+Worker node:
+
+```
+API Server
+
+↓
+
+kubelet
+
+↓
+
+Fetch ConfigMap
+```
+
+kubelet retrieves the ConfigMap before starting the container.
+
+---
+
+# Step 6 – Container Startup
+
+Depending on configuration:
+
+```
+ConfigMap
+
+↓
+
+Environment Variables
+```
+
+or
+
+```
+ConfigMap
+
+↓
+
+Mounted Files
+```
+
+Both methods are supported.
+
+---
+
+# Environment Variable Flow
+
+```
+ConfigMap
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Environment Variables
+
+↓
+
+Application
+```
+
+Example:
+
+```
+APP_ENV=production
+
+LOG_LEVEL=INFO
+```
+
+The values are available immediately when the container starts.
+
+---
+
+# Volume Mount Flow
+
+```
+ConfigMap
+
+↓
+
+Volume
+
+↓
+
+Files
+
+↓
+
+Container
+
+↓
+
+Application
+```
+
+Each key becomes a file.
+
+---
+
+# Example
+
+ConfigMap:
+
+```
+APP_ENV
+
+↓
+
+production
+```
+
+Mounted:
+
+```
+/etc/config/
+
+↓
+
+APP_ENV
+```
+
+Contents:
+
+```
+production
+```
+
+---
+
+# Multiple Keys
+
+ConfigMap:
+
+```
+DATABASE_HOST
+
+↓
+
+LOG_LEVEL
+
+↓
+
+API_URL
+```
+
+Mounted directory:
+
+```
+/etc/config/
+
+├── DATABASE_HOST
+
+├── LOG_LEVEL
+
+└── API_URL
+```
+
+Each file contains the corresponding value.
+
+---
+
+# ConfigMap Sharing
+
+A single ConfigMap can be used by many Pods.
+
+```
+ConfigMap
+
+↓
+
+Pod A
+
+↓
+
+Pod B
+
+↓
+
+Pod C
+```
+
+This promotes consistent configuration across replicas.
+
+---
+
+# Namespace Scope
+
+ConfigMaps are Namespace-scoped.
+
+Example:
+
+```
+development
+
+↓
+
+app-config
+```
+
+```
+production
+
+↓
+
+app-config
+```
+
+These are separate ConfigMaps.
+
+---
+
+# ConfigMap Lookup
+
+Suppose:
+
+```
+Pod
+
+↓
+
+Namespace
+
+↓
+
+development
+```
+
+ConfigMap:
+
+```
+production/app-config
+```
+
+Result:
+
+```
+Not Found
+```
+
+Pods can only reference ConfigMaps in the **same Namespace**.
+
+---
+
+# ConfigMap Update
+
+Modify:
+
+```bash
+kubectl edit configmap app-config
+```
+
+Updated:
+
+```
+API Server
+
+↓
+
+etcd
+
+↓
+
+New Values
+```
+
+What happens next depends on how the ConfigMap is consumed.
+
+---
+
+# Environment Variable Updates
+
+Suppose:
+
+```
+ConfigMap Updated
+```
+
+Container:
+
+```
+Environment Variables
+```
+
+Result:
+
+```
+No Change
+```
+
+Environment variables are read when the container starts.
+
+To use updated values:
+
+```
+Restart Pod
+```
+
+or recreate the Pod through the controller.
+
+---
+
+# Volume Updates
+
+Mounted ConfigMaps behave differently.
+
+```
+ConfigMap Updated
+
+↓
+
+kubelet Detects Change
+
+↓
+
+Mounted Files Updated
+```
+
+Kubernetes periodically refreshes projected ConfigMap volumes.
+
+> **Important:** The application itself must reread the updated file if it does not automatically monitor configuration changes.
+
+---
+
+# Immutable ConfigMaps
+
+Large production clusters can mark ConfigMaps as immutable.
+
+Example:
+
+```yaml
+immutable: true
+```
+
+Benefits:
+
+- Better API Server performance
+- Prevents accidental modifications
+- Reduced watch overhead
+
+To change an immutable ConfigMap:
+
+```
+Delete
+
+↓
+
+Create New
+```
+
+---
+
+# Internal Architecture
+
+```
+Developer
+
+↓
+
+ConfigMap
+
+↓
+
+API Server
+
+↓
+
+etcd
+
+↓
+
+kubelet
+
+↓
+
+Container
+
+↓
+
+Application
+```
+
+---
+
+# ConfigMap Access Modes
+
+```
+ConfigMap
+
+│
+
+├── Environment Variables
+
+├── Volume Mount
+
+└── Command Arguments
+```
+
+Each approach has different operational characteristics.
+
+---
+
+# Command-Line Arguments
+
+Example:
+
+```yaml
+args:
+
+- "--environment=$(APP_ENV)"
+```
+
+Combined with:
+
+```yaml
+env:
+
+- name: APP_ENV
+
+  valueFrom:
+
+    configMapKeyRef:
+
+      name: app-config
+
+      key: APP_ENV
+```
+
+Workflow:
+
+```
+ConfigMap
+
+↓
+
+Environment Variable
+
+↓
+
+Container Argument
+
+↓
+
+Application
+```
+
+---
+
+# Failure Scenario
+
+Suppose:
+
+```
+Pod
+
+↓
+
+ConfigMap
+
+↓
+
+Not Found
+```
+
+Result:
+
+```
+Container
+
+↓
+
+Cannot Start
+```
+
+The Pod may remain in a waiting state until the referenced ConfigMap exists (or fail if the reference is mandatory).
+
+---
+
+# Hands-on Lab 1 – Create ConfigMap
+
+```bash
+kubectl create configmap app-config \
+--from-literal=APP_ENV=production \
+--from-literal=LOG_LEVEL=INFO
+```
+
+Verify:
+
+```bash
+kubectl get cm
+```
+
+---
+
+# Hands-on Lab 2 – Use Environment Variables
+
+Create a Pod:
+
+```yaml
+envFrom:
+
+- configMapRef:
+
+    name: app-config
+```
+
+Deploy:
+
+```bash
+kubectl apply -f pod.yaml
+```
+
+Verify:
+
+```bash
+kubectl exec -it <pod-name> -- printenv
+```
+
+Observe:
+
+```
+APP_ENV
+
+LOG_LEVEL
+```
+
+---
+
+# Hands-on Lab 3 – Mount as Volume
+
+Example:
+
+```yaml
+volumes:
+
+- name: config
+
+  configMap:
+
+    name: app-config
+```
+
+Mount:
+
+```yaml
+volumeMounts:
+
+- mountPath: /etc/config
+
+  name: config
+```
+
+Verify:
+
+```bash
+kubectl exec -it <pod-name> -- ls /etc/config
+```
+
+Read a file:
+
+```bash
+kubectl exec -it <pod-name> -- cat /etc/config/APP_ENV
+```
+
+---
+
+# Hands-on Lab 4 – Update ConfigMap
+
+Edit:
+
+```bash
+kubectl edit configmap app-config
+```
+
+Observe:
+
+- Mounted files may update automatically after a short delay.
+- Environment variables remain unchanged until the Pod is restarted.
+
+---
+
+# Hands-on Lab 5 – Immutable ConfigMap
+
+Example:
+
+```yaml
+immutable: true
+```
+
+Apply:
+
+```bash
+kubectl apply -f configmap.yaml
+```
+
+Attempt:
+
+```bash
+kubectl edit configmap app-config
+```
+
+Expected:
+
+```
+Rejected
+
+↓
+
+Immutable
+```
+
+---
+
+# Common Mistakes
+
+## 1. Storing Passwords
+
+Incorrect:
+
+```
+ConfigMap
+
+↓
+
+Database Password
+```
+
+Correct:
+
+```
+Secret
+```
+
+---
+
+## 2. Expecting Environment Variables to Update Automatically
+
+```
+ConfigMap Updated
+
+↓
+
+Container Environment
+
+↓
+
+Unchanged
+```
+
+Restart the Pod to load updated environment variables.
+
+---
+
+## 3. Assuming Volume Updates Restart the Application
+
+Kubernetes updates mounted files.
+
+It does **not** restart the application or force it to reload configuration.
+
+---
+
+## 4. Sharing One Large ConfigMap
+
+Avoid:
+
+```
+One ConfigMap
+
+↓
+
+Entire Company
+```
+
+Prefer:
+
+```
+One Application
+
+↓
+
+One ConfigMap
+```
+
+This improves maintainability.
+
+---
+
+## 5. Hardcoding Configuration
+
+Incorrect:
+
+```
+Container Image
+
+↓
+
+Database Host
+```
+
+Correct:
+
+```
+Container Image
+
+↓
+
+ConfigMap
+```
+
+---
+
+# ConfigMaps Quick Revision
+
+## Architecture
+
+```
+ConfigMap
+
+↓
+
+API Server
+
+↓
+
+etcd
+
+↓
+
+kubelet
+
+↓
+
+Container
+
+↓
+
+Application
+```
+
+---
+
+## Access Methods
+
+```
+ConfigMap
+
+├── Environment Variables
+
+├── Mounted Files
+
+└── Command Arguments
+```
+
+---
+
+## Update Behavior
+
+```
+Environment Variables
+
+↓
+
+Restart Required
+```
+
+```
+Mounted Files
+
+↓
+
+Automatically Refreshed
+
+↓
+
+Application Must Reload If Needed
+```
+
+---
+
+# Essential kubectl Commands
+
+Create:
+
+```bash
+kubectl create configmap app-config \
+--from-literal=APP_ENV=production
+```
+
+View:
+
+```bash
+kubectl get cm
+```
+
+Describe:
+
+```bash
+kubectl describe configmap app-config
+```
+
+View YAML:
+
+```bash
+kubectl get cm app-config -o yaml
+```
+
+Edit:
+
+```bash
+kubectl edit configmap app-config
+```
+
+Delete:
+
+```bash
+kubectl delete configmap app-config
+```
+
+---
+
+# Interview Questions
+
+### Basic
+
+- What is a ConfigMap?
+- Why should ConfigMaps be used?
+- What type of data belongs in a ConfigMap?
+
+---
+
+### Intermediate
+
+- What are the ways to consume a ConfigMap?
+- How are ConfigMaps mounted as volumes?
+- What happens when a ConfigMap is updated?
+
+---
+
+### Advanced
+
+- Why don't environment variables update automatically?
+- How does kubelet keep mounted ConfigMaps up to date?
+- What is an immutable ConfigMap?
+- Why are ConfigMaps Namespace-scoped?
+- When should ConfigMaps be preferred over rebuilding container images?
+
+---
+
+# References
+
+## Official Kubernetes Documentation
+
+- ConfigMaps
+- Inject Data into Applications
+- Volumes
+- Environment Variables
+- Immutable ConfigMaps
+
+---
+
+## CNCF Resources
+
+- Kubernetes Best Practices
+- Kubernetes Configuration Management
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security & Operations
+
+- CIS Kubernetes Benchmark
+- NIST SP 800-190
+- Kubernetes Production Best Practices
+- OWASP Kubernetes Top 10
+
+---
+
+## Recommended Practice
+
+1. Create ConfigMaps using YAML, literals, files, and directories.
+2. Consume ConfigMaps through environment variables and volume mounts.
+3. Compare update behavior between environment variables and mounted files.
+4. Create an immutable ConfigMap and observe update restrictions.
+5. Share one ConfigMap across multiple Pods.
+6. Inspect ConfigMap objects using `kubectl describe` and `kubectl get -o yaml`.
+7. Practice troubleshooting Pods with missing ConfigMap references.
+
+---
+
+# Chapter Summary
+
+```
+Developer
+
+↓
+
+ConfigMap
+
+↓
+
+API Server
+
+↓
+
+etcd
+
+↓
+
+kubelet
+
+↓
+
+Environment Variables
+
+or
+
+Mounted Files
+
+↓
+
+Application
+```
+
+ConfigMaps provide a **declarative, reusable, and centralized configuration mechanism** for Kubernetes applications. By separating configuration from container images, they enable environment-specific deployments, easier updates, and better adherence to cloud-native application design principles.
+
+---
