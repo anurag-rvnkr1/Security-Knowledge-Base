@@ -714,20 +714,3 @@ Incorrect labels lead to Services without backend Pods.
 
 ---
 
-## Next Section
-
-How NodePort Works Internally
-
-kube-proxy Packet Flow
-
-iptables vs IPVS
-
-Hands-on Labs
-
-Common Mistakes
-
-Quick Revision
-
-References
-
----
