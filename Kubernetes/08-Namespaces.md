@@ -1477,3 +1477,687 @@ Consistent naming simplifies automation and administration.
 
 ---
 
+# Resource Quotas
+
+## Overview
+
+A **ResourceQuota** is a Kubernetes object that limits the total amount of resources a Namespace can consume.
+
+Without ResourceQuotas, a single application or team could consume excessive:
+
+- CPU
+- Memory
+- Storage
+- Pods
+- Services
+- ConfigMaps
+- Secrets
+
+This could negatively impact other workloads sharing the same cluster.
+
+ResourceQuotas help ensure **fair resource allocation** among teams and applications.
+
+---
+
+# Why Resource Quotas?
+
+Imagine three teams sharing one cluster.
+
+Without quotas:
+
+```
+Cluster
+
+│
+
+├── Team A
+
+│      200 Pods
+
+│
+
+├── Team B
+
+│      2 Pods
+
+│
+
+└── Team C
+
+       Cannot Schedule Pods
+```
+
+Team A consumes most of the cluster resources.
+
+With quotas:
+
+```
+Cluster
+
+│
+
+├── Team A
+
+│      Maximum 50 Pods
+
+│
+
+├── Team B
+
+│      Maximum 50 Pods
+
+│
+
+└── Team C
+
+       Maximum 50 Pods
+```
+
+Each team receives a controlled allocation.
+
+---
+
+# ResourceQuota Architecture
+
+```
+Namespace
+
+↓
+
+ResourceQuota
+
+↓
+
+CPU
+
+↓
+
+Memory
+
+↓
+
+Pods
+
+↓
+
+Storage
+
+↓
+
+Objects
+```
+
+Every ResourceQuota belongs to a Namespace.
+
+---
+
+# What Can ResourceQuota Limit?
+
+Examples include:
+
+### Compute Resources
+
+- CPU Requests
+- CPU Limits
+- Memory Requests
+- Memory Limits
+
+---
+
+### Storage
+
+- Persistent Volume Claims (PVCs)
+- Requested Storage
+
+---
+
+### Object Counts
+
+- Pods
+- Services
+- Secrets
+- ConfigMaps
+- Jobs
+- CronJobs
+- PersistentVolumeClaims
+
+---
+
+# ResourceQuota Workflow
+
+```
+User
+
+↓
+
+Create Pod
+
+↓
+
+API Server
+
+↓
+
+ResourceQuota Check
+
+↓
+
+Within Limit?
+
+↓
+
+Yes
+
+↓
+
+Create Pod
+```
+
+If limits are exceeded:
+
+```
+Rejected
+```
+
+---
+
+# ResourceQuota YAML
+
+Example:
+
+```yaml
+apiVersion: v1
+
+kind: ResourceQuota
+
+metadata:
+
+  name: dev-quota
+
+spec:
+
+  hard:
+
+    requests.cpu: "4"
+
+    requests.memory: 8Gi
+
+    limits.cpu: "8"
+
+    limits.memory: 16Gi
+
+    pods: "20"
+
+    services: "10"
+```
+
+---
+
+# Understanding the YAML
+
+```
+Namespace
+
+↓
+
+ResourceQuota
+
+↓
+
+Hard Limits
+```
+
+Example:
+
+```
+Pods
+
+↓
+
+Maximum = 20
+```
+
+Once 20 Pods exist, additional Pods are rejected until resources become available.
+
+---
+
+# Creating a ResourceQuota
+
+Apply:
+
+```bash
+kubectl apply -f quota.yaml
+```
+
+Verify:
+
+```bash
+kubectl get resourcequota
+```
+
+or
+
+```bash
+kubectl get quota
+```
+
+---
+
+# Describe ResourceQuota
+
+```bash
+kubectl describe quota dev-quota
+```
+
+Example output:
+
+```
+Used CPU
+
+↓
+
+Allowed CPU
+
+↓
+
+Remaining CPU
+```
+
+This shows current usage versus configured limits.
+
+---
+
+# ResourceQuota Example
+
+Suppose:
+
+```
+Maximum Pods
+
+↓
+
+5
+```
+
+Current:
+
+```
+4 Pods
+```
+
+Create another:
+
+```
+Success
+```
+
+Current:
+
+```
+5 Pods
+```
+
+Create one more:
+
+```
+Rejected
+```
+
+The quota prevents exceeding the configured limit.
+
+---
+
+# CPU Quota Example
+
+Quota:
+
+```
+CPU Requests
+
+↓
+
+4
+```
+
+Current requests:
+
+```
+3 CPU
+```
+
+New Pod:
+
+```
+Requests 2 CPU
+```
+
+Result:
+
+```
+Total = 5 CPU
+
+↓
+
+Rejected
+```
+
+---
+
+# Memory Quota Example
+
+Namespace:
+
+```
+Memory Limit
+
+↓
+
+8 GiB
+```
+
+Current usage:
+
+```
+7 GiB
+```
+
+New Pod:
+
+```
+Requests 2 GiB
+```
+
+Result:
+
+```
+Rejected
+```
+
+---
+
+# Object Count Quotas
+
+Example:
+
+```
+Secrets
+
+↓
+
+Maximum = 20
+```
+
+After:
+
+```
+20 Secrets
+```
+
+Create another:
+
+```
+Rejected
+```
+
+The same concept applies to other supported resource types.
+
+---
+
+# ResourceQuota Scope
+
+ResourceQuotas apply only to:
+
+```
+Namespace
+```
+
+Example:
+
+```
+Development
+
+↓
+
+20 Pods
+```
+
+Production:
+
+```
+Unlimited
+```
+
+unless another ResourceQuota exists.
+
+---
+
+# Multiple Namespaces
+
+```
+Development
+
+↓
+
+Quota A
+```
+
+```
+Testing
+
+↓
+
+Quota B
+```
+
+```
+Production
+
+↓
+
+Quota C
+```
+
+Each Namespace can have its own limits.
+
+---
+
+# Viewing Resource Usage
+
+Describe:
+
+```bash
+kubectl describe quota
+```
+
+Example:
+
+```
+Resource
+
+↓
+
+Used
+
+↓
+
+Hard
+```
+
+This helps administrators monitor consumption.
+
+---
+
+# Hands-on Lab 1 – Create Namespace
+
+```bash
+kubectl create namespace development
+```
+
+---
+
+# Hands-on Lab 2 – Create ResourceQuota
+
+Example:
+
+```yaml
+apiVersion: v1
+
+kind: ResourceQuota
+
+metadata:
+
+  name: development-quota
+
+spec:
+
+  hard:
+
+    pods: "5"
+
+    requests.cpu: "2"
+
+    requests.memory: 4Gi
+```
+
+Deploy:
+
+```bash
+kubectl apply -f quota.yaml \
+-n development
+```
+
+---
+
+# Hands-on Lab 3 – Verify
+
+```bash
+kubectl get quota \
+-n development
+```
+
+Describe:
+
+```bash
+kubectl describe quota development-quota \
+-n development
+```
+
+---
+
+# Hands-on Lab 4 – Create Pods
+
+Create several Pods.
+
+Observe quota usage:
+
+```bash
+kubectl describe quota \
+-n development
+```
+
+Watch the **Used** values increase.
+
+---
+
+# Hands-on Lab 5 – Exceed Quota
+
+Attempt to create more Pods than allowed.
+
+Expected result:
+
+```
+Forbidden
+
+↓
+
+Quota Exceeded
+```
+
+Kubernetes rejects the request.
+
+---
+
+# ResourceQuota Lifecycle
+
+```
+Namespace Created
+
+↓
+
+Quota Created
+
+↓
+
+Resources Created
+
+↓
+
+Quota Updated
+
+↓
+
+Resources Deleted
+```
+
+---
+
+# ResourceQuota vs LimitRange
+
+| ResourceQuota | LimitRange |
+|---------------|------------|
+| Limits Namespace totals | Limits individual Pods and Containers |
+| Controls overall resource consumption | Controls per-object resource configuration |
+| Prevents one team from exhausting cluster resources | Prevents individual workloads from using unreasonable defaults or values |
+
+These two resources are commonly used together.
+
+---
+
+# Benefits
+
+- Fair resource sharing
+- Prevents resource exhaustion
+- Improves cluster stability
+- Supports multi-tenancy
+- Simplifies capacity planning
+
+---
+
+# Best Practices
+
+### 1. Configure ResourceQuotas for Shared Clusters
+
+Especially when multiple teams or applications share the same environment.
+
+---
+
+### 2. Combine with LimitRanges
+
+Use LimitRanges to control individual Pods while ResourceQuotas manage Namespace-wide consumption.
+
+---
+
+### 3. Monitor Usage
+
+Review:
+
+```bash
+kubectl describe quota
+```
+
+regularly.
+
+---
+
+### 4. Set Realistic Limits
+
+Avoid values that unnecessarily block legitimate workloads.
+
+---
+
+### 5. Review Quotas Periodically
+
+As applications evolve, adjust quotas to reflect current operational requirements.
+
+---
+
