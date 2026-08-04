@@ -667,3 +667,773 @@ Applications can run across different infrastructure providers with minimal chan
 
 ---
 
+## How Kubernetes Works
+
+Kubernetes operates using a **declarative model**. Instead of telling Kubernetes **how** to perform every action, you declare **what** the desired state of the application should be. Kubernetes continuously compares the **desired state** with the **current state** and automatically performs the actions required to make them match.
+
+This is one of the biggest differences between Kubernetes and traditional infrastructure management.
+
+---
+
+# Desired State vs Current State
+
+Suppose you want your application to always have **3 running Pods**.
+
+Desired State
+
+```
+Application
+
+↓
+
+3 Pods
+```
+
+Current State
+
+```
+Application
+
+↓
+
+2 Pods
+```
+
+Kubernetes detects the difference.
+
+```
+Desired State
+
+↓
+
+3 Pods
+
+↓
+
+Current State
+
+↓
+
+2 Pods
+
+↓
+
+Create 1 New Pod
+```
+
+The cluster automatically returns to the desired state.
+
+---
+
+# Kubernetes Control Loop
+
+Kubernetes continuously runs reconciliation loops.
+
+```
+Desired State
+
+↓
+
+Observe Current State
+
+↓
+
+Compare
+
+↓
+
+Difference Found?
+
+↓
+
+Yes
+
+↓
+
+Take Action
+
+↓
+
+Current State Updated
+```
+
+This process runs continuously throughout the lifetime of the cluster.
+
+---
+
+# High-Level Kubernetes Workflow
+
+```
+Developer
+
+↓
+
+Write YAML
+
+↓
+
+kubectl apply
+
+↓
+
+API Server
+
+↓
+
+Store Configuration (etcd)
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+Pod Created
+
+↓
+
+Application Running
+```
+
+Every deployment follows this general workflow.
+
+---
+
+# Step 1 – Developer Creates a Manifest
+
+Example:
+
+```yaml
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: nginx
+
+spec:
+  replicas: 3
+```
+
+This file describes the desired state.
+
+---
+
+# Step 2 – kubectl Sends Request
+
+Command:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+The request is sent to the Kubernetes API Server.
+
+```
+kubectl
+
+↓
+
+API Server
+```
+
+The API Server is the entry point for all cluster operations.
+
+---
+
+# Step 3 – API Server Validates Request
+
+The API Server performs checks such as:
+
+- Authentication
+- Authorization
+- Schema validation
+- Admission control
+
+If valid:
+
+```
+Request
+
+↓
+
+Validated
+
+↓
+
+Stored
+```
+
+---
+
+# Step 4 – Desired State Stored in etcd
+
+```
+API Server
+
+↓
+
+etcd
+```
+
+etcd stores:
+
+- Cluster configuration
+- Object definitions
+- Cluster state
+
+It acts as Kubernetes' distributed key-value database.
+
+---
+
+# Step 5 – Scheduler Selects a Node
+
+The Scheduler determines:
+
+```
+Available Nodes
+
+↓
+
+CPU
+
+↓
+
+Memory
+
+↓
+
+Policies
+
+↓
+
+Best Node
+```
+
+It decides **where** the Pod should run.
+
+---
+
+# Step 6 – kubelet Starts the Pod
+
+The selected worker node receives instructions.
+
+```
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Create Pod
+```
+
+The kubelet communicates with the container runtime to start the workload.
+
+---
+
+# Step 7 – Pod Becomes Running
+
+```
+Pod
+
+↓
+
+Container Started
+
+↓
+
+Application Ready
+```
+
+If readiness probes are configured, traffic is sent only after the Pod reports it is ready.
+
+---
+
+# Step 8 – Continuous Monitoring
+
+Kubernetes never stops monitoring.
+
+```
+Pod Running
+
+↓
+
+Health Check
+
+↓
+
+Still Healthy?
+
+↓
+
+Yes
+
+↓
+
+Continue
+```
+
+---
+
+# Self-Healing Example
+
+Suppose one Pod crashes.
+
+```
+3 Pods
+
+↓
+
+1 Pod Crash
+
+↓
+
+Only 2 Pods Running
+```
+
+Kubernetes notices the difference.
+
+```
+Desired
+
+↓
+
+3 Pods
+
+↓
+
+Current
+
+↓
+
+2 Pods
+
+↓
+
+Create New Pod
+```
+
+The application returns to its desired state automatically.
+
+---
+
+# Scaling Example
+
+Current state:
+
+```
+3 Pods
+```
+
+Administrator updates:
+
+```yaml
+replicas: 6
+```
+
+Workflow:
+
+```
+Deployment Updated
+
+↓
+
+Scheduler
+
+↓
+
+3 Additional Pods
+
+↓
+
+6 Running Pods
+```
+
+Scaling is handled automatically by Kubernetes.
+
+---
+
+# Rolling Update Example
+
+Current version:
+
+```
+v1
+
+↓
+
+Pod 1
+
+Pod 2
+
+Pod 3
+```
+
+Deploy version 2.
+
+```
+Replace Pod 1
+
+↓
+
+Healthy?
+
+↓
+
+Yes
+
+↓
+
+Replace Pod 2
+
+↓
+
+Healthy?
+
+↓
+
+Yes
+
+↓
+
+Replace Pod 3
+```
+
+This minimizes downtime and risk during deployments.
+
+---
+
+# Rollback Example
+
+Deployment:
+
+```
+Version 2
+
+↓
+
+Application Errors
+```
+
+Rollback:
+
+```bash
+kubectl rollout undo deployment nginx
+```
+
+Workflow:
+
+```
+Rollback
+
+↓
+
+Restore Previous ReplicaSet
+
+↓
+
+Application Healthy
+```
+
+---
+
+# Service Discovery
+
+Pods receive dynamic IP addresses.
+
+Instead of connecting directly to Pods:
+
+```
+Application
+
+↓
+
+Service
+
+↓
+
+Pods
+```
+
+Applications communicate through Services, which provide stable endpoints.
+
+---
+
+# Load Balancing
+
+```
+Incoming Request
+
+↓
+
+Service
+
+↓
+
+Pod A
+
+Pod B
+
+Pod C
+```
+
+The Service distributes traffic among healthy Pods.
+
+---
+
+# Automatic Recovery
+
+Suppose a worker node fails.
+
+```
+Worker Node
+
+↓
+
+Unavailable
+```
+
+If the cluster has additional capacity:
+
+```
+Pods Lost
+
+↓
+
+Scheduler
+
+↓
+
+Healthy Node
+
+↓
+
+New Pods
+```
+
+Kubernetes recreates workloads on other available nodes.
+
+---
+
+# Kubernetes Reconciliation
+
+Everything in Kubernetes revolves around reconciliation.
+
+```
+Desired State
+
+↓
+
+Controller
+
+↓
+
+Current State
+
+↓
+
+Match?
+
+↓
+
+No
+
+↓
+
+Correct State
+```
+
+Controllers continuously work to maintain the declared configuration.
+
+---
+
+# Real-World Deployment Workflow
+
+```
+Developer
+
+↓
+
+Git Repository
+
+↓
+
+CI/CD Pipeline
+
+↓
+
+Docker Image
+
+↓
+
+Container Registry
+
+↓
+
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+Worker Nodes
+
+↓
+
+Pods
+
+↓
+
+Users
+```
+
+Modern organizations typically integrate Kubernetes with automated delivery pipelines.
+
+---
+
+# Hands-on Commands
+
+## Check Cluster Information
+
+```bash
+kubectl cluster-info
+```
+
+---
+
+## View Nodes
+
+```bash
+kubectl get nodes
+```
+
+---
+
+## View Pods
+
+```bash
+kubectl get pods
+```
+
+---
+
+## View Deployments
+
+```bash
+kubectl get deployments
+```
+
+---
+
+## View Services
+
+```bash
+kubectl get services
+```
+
+---
+
+## Apply Configuration
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+---
+
+## Delete Resources
+
+```bash
+kubectl delete -f deployment.yaml
+```
+
+---
+
+## Describe Resource
+
+```bash
+kubectl describe pod pod-name
+```
+
+Provides detailed information about the selected resource.
+
+---
+
+## View Logs
+
+```bash
+kubectl logs pod-name
+```
+
+Displays application output from the Pod.
+
+---
+
+# Best Practices
+
+### 1. Use Declarative Configuration
+
+Store manifests in version control and apply them consistently.
+
+---
+
+### 2. Treat Infrastructure as Code
+
+Manage Kubernetes manifests alongside application code where appropriate.
+
+---
+
+### 3. Keep Deployments Immutable
+
+Update images and redeploy rather than modifying running Pods.
+
+---
+
+### 4. Configure Health Checks
+
+Use readiness and liveness probes to improve reliability.
+
+---
+
+### 5. Monitor Continuously
+
+Track:
+
+- CPU
+- Memory
+- Pod status
+- Events
+- Logs
+- Application metrics
+
+---
+
+### 6. Automate Deployments
+
+Use CI/CD pipelines to improve consistency and reduce manual errors.
+
+---
+
+### 7. Document Cluster Architecture
+
+Maintain diagrams, manifests, runbooks, and recovery procedures.
+
+---
+
