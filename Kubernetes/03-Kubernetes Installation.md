@@ -1284,3 +1284,551 @@ Minikube, Kind, k3d, kubeadm, and managed Kubernetes abstract different operatio
 
 ---
 
+## Common Mistakes
+
+Installing Kubernetes is often straightforward with modern tools like **Minikube**, **Kind**, and **k3d**, but many beginners encounter issues because they misunderstand how clusters are created and managed.
+
+The following are the most common mistakes made during Kubernetes installation and initial setup.
+
+---
+
+# 1. Choosing the Wrong Installation Method
+
+Many beginners immediately try to install a production cluster.
+
+Incorrect approach:
+
+```
+New Learner
+
+↓
+
+High Availability Cluster
+
+↓
+
+Complex Setup
+```
+
+Recommended learning path:
+
+```
+Minikube
+
+↓
+
+Kind
+
+↓
+
+k3d
+
+↓
+
+kubeadm
+
+↓
+
+Managed Kubernetes
+
+↓
+
+Production
+```
+
+Start simple and gradually move toward enterprise deployments.
+
+---
+
+# 2. Confusing Docker with Kubernetes
+
+Installing Docker does **not** install Kubernetes.
+
+```
+Docker
+
+≠
+
+Kubernetes
+```
+
+Docker provides container capabilities, while Kubernetes orchestrates containers across one or more machines.
+
+---
+
+# 3. Skipping kubectl Installation
+
+Without kubectl:
+
+```
+Cluster Running
+
+↓
+
+No Management
+```
+
+Always verify:
+
+```bash
+kubectl version --client
+```
+
+---
+
+# 4. Forgetting to Verify the Cluster
+
+Many users immediately deploy applications.
+
+Instead, first verify:
+
+```bash
+kubectl cluster-info
+
+kubectl get nodes
+
+kubectl get pods -A
+```
+
+Confirm the cluster is healthy before troubleshooting application issues.
+
+---
+
+# 5. Ignoring System Pods
+
+System Pods usually run in:
+
+```
+kube-system
+```
+
+Check:
+
+```bash
+kubectl get pods -n kube-system
+```
+
+Core components should generally be running before deploying workloads.
+
+---
+
+# 6. Running Out of Resources
+
+Example:
+
+```
+Laptop
+
+↓
+
+4 GB RAM
+
+↓
+
+Multiple Clusters
+
+↓
+
+Resource Exhaustion
+```
+
+Symptoms may include:
+
+- Slow performance
+- Pending Pods
+- Node pressure
+- Failed startups
+
+Allocate sufficient CPU, memory, and storage for your chosen installation method.
+
+---
+
+# 7. Confusing Minikube and Kind
+
+Both create local Kubernetes clusters, but they differ.
+
+| Minikube | Kind |
+|----------|------|
+| VM or container-based depending on driver | Runs Kubernetes nodes as Docker containers |
+| Great for beginners | Excellent for CI/CD and testing |
+| Single-node by default | Easily supports multi-node clusters |
+
+Choose the tool that best fits your learning goals.
+
+---
+
+# 8. Using the Wrong kubectl Context
+
+When managing multiple clusters:
+
+```
+Development
+
+↓
+
+Testing
+
+↓
+
+Production
+```
+
+Verify current context:
+
+```bash
+kubectl config current-context
+```
+
+Before applying changes.
+
+---
+
+# 9. Ignoring Version Compatibility
+
+Using significantly mismatched versions of:
+
+- Kubernetes
+- kubectl
+
+can lead to unexpected behavior.
+
+Check:
+
+```bash
+kubectl version
+```
+
+Follow the Kubernetes version skew policy for supported version differences.
+
+---
+
+# 10. Not Understanding kubeconfig
+
+Many users accidentally overwrite or delete their kubeconfig file.
+
+Without kubeconfig:
+
+```
+kubectl
+
+↓
+
+Cannot Connect
+```
+
+Inspect configuration:
+
+```bash
+kubectl config view
+```
+
+---
+
+# 11. Assuming Local Clusters Behave Exactly Like Production
+
+Local clusters are excellent for learning, but they may differ from production in areas such as:
+
+- High availability
+- Networking
+- Storage
+- Cloud integrations
+- Load balancing
+
+Treat them as learning environments rather than exact production replicas.
+
+---
+
+# 12. Ignoring Cluster Cleanup
+
+After experimentation:
+
+Unused clusters consume:
+
+- CPU
+- Memory
+- Disk
+
+Delete clusters when no longer needed.
+
+Examples:
+
+Minikube:
+
+```bash
+minikube delete
+```
+
+Kind:
+
+```bash
+kind delete cluster
+```
+
+k3d:
+
+```bash
+k3d cluster delete demo
+```
+
+---
+
+# 13. Skipping Hands-on Practice
+
+Reading alone is insufficient.
+
+Practice repeatedly:
+
+```
+Create Cluster
+
+↓
+
+Deploy Application
+
+↓
+
+Delete Cluster
+
+↓
+
+Repeat
+```
+
+Hands-on experience builds confidence and troubleshooting skills.
+
+---
+
+# 14. Thinking Kubernetes Is Only for Large Companies
+
+Organizations of many sizes use Kubernetes.
+
+Common users include:
+
+- Startups
+- Small businesses
+- Enterprises
+- Research organizations
+- Educational institutions
+
+The choice depends on operational needs, not company size alone.
+
+---
+
+# 15. Learning Commands Without Understanding Architecture
+
+Avoid memorizing only:
+
+```bash
+kubectl get pods
+```
+
+Instead, understand:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+Pod
+```
+
+Architecture knowledge makes troubleshooting much easier.
+
+---
+
+# Kubernetes Installation Quick Revision
+
+## Installation Workflow
+
+```
+Install Tools
+
+↓
+
+Create Cluster
+
+↓
+
+Initialize Control Plane
+
+↓
+
+Register Worker Nodes
+
+↓
+
+Configure kubectl
+
+↓
+
+Verify
+
+↓
+
+Deploy Applications
+```
+
+---
+
+## Local Installation Options
+
+```
+Minikube
+
+↓
+
+Kind
+
+↓
+
+k3d
+
+↓
+
+MicroK8s
+
+↓
+
+kubeadm
+```
+
+Each serves different use cases.
+
+---
+
+## Production Options
+
+```
+Managed Kubernetes
+
+or
+
+High Availability kubeadm Cluster
+```
+
+---
+
+## Verification Commands
+
+```bash
+kubectl cluster-info
+
+kubectl get nodes
+
+kubectl get pods -A
+
+kubectl get namespaces
+
+kubectl get services -A
+
+kubectl config current-context
+
+kubectl config view
+```
+
+These commands should become part of your regular workflow.
+
+---
+
+# Installation Checklist
+
+| Task | Status |
+|------|:------:|
+| Choose Installation Method | ✓ |
+| Install Container Runtime (if required) | ✓ |
+| Install kubectl | ✓ |
+| Create Cluster | ✓ |
+| Verify Control Plane | ✓ |
+| Verify Nodes | ✓ |
+| Verify System Pods | ✓ |
+| Configure kubeconfig | ✓ |
+| Deploy Test Application | ✓ |
+| Delete Test Application | ✓ |
+
+---
+
+# References
+
+## Official Documentation
+
+- Kubernetes Documentation
+- kubectl Documentation
+- Minikube Documentation
+- Kind Documentation
+- k3d Documentation
+- kubeadm Documentation
+
+---
+
+## CNCF Resources
+
+- Kubernetes Learning Path
+- Kubernetes Best Practices
+- Cloud Native Computing Foundation (CNCF)
+
+---
+
+## Security Guidance
+
+- CIS Kubernetes Benchmark
+- NSA/CISA Kubernetes Hardening Guidance
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Kubernetes Top 10
+
+---
+
+## Recommended Practice
+
+- Create a cluster with Minikube.
+- Repeat the same exercise using Kind.
+- Compare the cluster architectures.
+- Deploy a simple NGINX application.
+- Delete and recreate the cluster several times.
+- Practice switching between multiple contexts.
+
+---
+
+# Chapter Summary
+
+```
+Prepare Environment
+
+↓
+
+Install Tools
+
+↓
+
+Create Cluster
+
+↓
+
+Verify Cluster
+
+↓
+
+Configure kubectl
+
+↓
+
+Deploy Application
+
+↓
+
+Learn Kubernetes
+```
+
+Mastering Kubernetes installation provides the foundation for every topic that follows, including Pods, Deployments, Networking, Storage, Security, and Cluster Administration.
+
