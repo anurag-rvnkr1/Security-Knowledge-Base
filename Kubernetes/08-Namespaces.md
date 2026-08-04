@@ -679,3 +679,801 @@ monitoring
 Consistent naming improves automation and administration.
 
 ---
+
+# How Namespaces Work Internally
+
+## Overview
+
+Namespaces are one of Kubernetes' most fundamental organizational features.
+
+They provide **logical isolation** within a single Kubernetes cluster, allowing multiple teams, environments, and applications to share the same cluster safely and efficiently.
+
+Unlike virtual machines or separate Kubernetes clusters, Namespaces do **not** create isolated operating systems or separate control planes.
+
+Instead, they organize Kubernetes resources at the API level.
+
+---
+
+# High-Level Architecture
+
+```
+                  Kubernetes Cluster
+
+                           │
+
+        ┌──────────────────┼──────────────────┐
+
+        ▼                  ▼                  ▼
+
+   Development         Production        Monitoring
+
+        │                  │                  │
+
+   Deployments        Deployments        Prometheus
+
+   ReplicaSets        ReplicaSets        Grafana
+
+   Pods               Pods
+
+   Services           Services
+```
+
+The cluster is shared, but resources are logically grouped.
+
+---
+
+# How Kubernetes Stores Namespaces
+
+Every Kubernetes object contains metadata.
+
+Example:
+
+```yaml
+metadata:
+
+  namespace: development
+```
+
+Internally, Kubernetes stores resources using:
+
+```
+Namespace
+
++
+
+Resource Name
+```
+
+For example:
+
+```
+development/nginx
+
+production/nginx
+```
+
+These are treated as two completely different objects.
+
+---
+
+# Internal Workflow
+
+Suppose a user creates a Deployment.
+
+Command:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+Manifest:
+
+```yaml
+metadata:
+
+  namespace: production
+```
+
+Workflow:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+Namespace Check
+
+↓
+
+Store in etcd
+
+↓
+
+Deployment Controller
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+```
+
+---
+
+# Namespace Resolution
+
+If a Namespace is specified:
+
+```yaml
+namespace: production
+```
+
+Kubernetes stores the object there.
+
+If omitted:
+
+```
+default
+```
+
+is generally used.
+
+---
+
+# API Server Processing
+
+The API Server performs several checks.
+
+```
+Request
+
+↓
+
+Namespace Exists?
+
+↓
+
+Yes
+
+↓
+
+Store Object
+
+↓
+
+Controller Watches Namespace
+```
+
+If the Namespace does not exist:
+
+```
+Error
+
+↓
+
+Namespace Not Found
+```
+
+---
+
+# etcd Storage
+
+Internally:
+
+```
+Namespace
+
+↓
+
+Objects
+
+↓
+
+Pods
+
+↓
+
+Deployments
+
+↓
+
+Services
+```
+
+The Namespace becomes part of the resource identity.
+
+---
+
+# Resource Lookup
+
+Example:
+
+```bash
+kubectl get pods
+```
+
+Without specifying a Namespace:
+
+```
+Current Namespace
+
+↓
+
+Pods
+```
+
+With:
+
+```bash
+kubectl get pods -n production
+```
+
+Workflow:
+
+```
+API Server
+
+↓
+
+Production Namespace
+
+↓
+
+Return Pods
+```
+
+---
+
+# Viewing All Namespaces
+
+Command:
+
+```bash
+kubectl get pods -A
+```
+
+Workflow:
+
+```
+API Server
+
+↓
+
+Development
+
+Production
+
+Monitoring
+
+↓
+
+Return Everything
+```
+
+This is useful for cluster administrators.
+
+---
+
+# Namespace Creation
+
+Command:
+
+```bash
+kubectl create namespace testing
+```
+
+Workflow:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Namespace Object
+
+↓
+
+etcd
+```
+
+After creation:
+
+```
+Ready For Resources
+```
+
+---
+
+# Resource Creation
+
+Example:
+
+```
+Namespace
+
+↓
+
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+```
+
+All namespace-scoped resources are associated with the Namespace.
+
+---
+
+# Namespace Deletion
+
+Delete:
+
+```bash
+kubectl delete namespace testing
+```
+
+Workflow:
+
+```
+Namespace
+
+↓
+
+Find Resources
+
+↓
+
+Delete Resources
+
+↓
+
+Delete Namespace
+```
+
+This process is managed by Kubernetes controllers.
+
+---
+
+# Namespace Finalization
+
+Before a Namespace is removed:
+
+```
+Namespace
+
+↓
+
+Delete Resources
+
+↓
+
+Cleanup
+
+↓
+
+Finalize
+
+↓
+
+Removed
+```
+
+If resources cannot be removed, the Namespace may remain in a **Terminating** state until cleanup is complete.
+
+---
+
+# Namespace Isolation
+
+Example:
+
+Development:
+
+```
+Pod
+
+↓
+
+frontend
+```
+
+Production:
+
+```
+Pod
+
+↓
+
+frontend
+```
+
+These Pods have identical names but exist independently because their Namespaces differ.
+
+---
+
+# Object Identity
+
+Internally:
+
+```
+Namespace
+
++
+
+Object Name
+
+=
+
+Unique Resource
+```
+
+Example:
+
+```
+development/api
+
+production/api
+```
+
+Both are valid.
+
+---
+
+# Namespace Communication
+
+Namespaces organize resources but **do not block network traffic** by default.
+
+Example:
+
+```
+Development Pod
+
+↓
+
+Production Pod
+```
+
+Communication is generally allowed unless restricted by **Network Policies** or other security controls.
+
+---
+
+# Resource Discovery
+
+View resources:
+
+```bash
+kubectl get all \
+-n development
+```
+
+Workflow:
+
+```
+Namespace
+
+↓
+
+Deployments
+
+↓
+
+ReplicaSets
+
+↓
+
+Pods
+
+↓
+
+Services
+```
+
+---
+
+# Namespace Context
+
+kubectl can operate within a chosen Namespace.
+
+View current context:
+
+```bash
+kubectl config view
+```
+
+Set a default Namespace for the current context:
+
+```bash
+kubectl config set-context --current \
+--namespace=development
+```
+
+Verify:
+
+```bash
+kubectl config view --minify
+```
+
+After this, many `kubectl` commands will use the selected Namespace unless overridden with `-n`.
+
+---
+
+# Internal Architecture
+
+```
+Kubernetes Cluster
+
+↓
+
+API Server
+
+↓
+
+Namespaces
+
+↓
+
+Controllers
+
+↓
+
+Resources
+```
+
+Each controller watches only the resources relevant to its operation.
+
+---
+
+# Namespace Lifecycle
+
+```
+Namespace Created
+
+↓
+
+Resources Added
+
+↓
+
+Applications Running
+
+↓
+
+Resources Deleted
+
+↓
+
+Namespace Removed
+```
+
+---
+
+# Hands-on Lab 1 – Create Namespace
+
+Create:
+
+```bash
+kubectl create namespace development
+```
+
+Verify:
+
+```bash
+kubectl get ns
+```
+
+---
+
+# Hands-on Lab 2 – Deploy Application
+
+```bash
+kubectl create deployment nginx \
+--image=nginx \
+-n development
+```
+
+Verify:
+
+```bash
+kubectl get deployments \
+-n development
+```
+
+---
+
+# Hands-on Lab 3 – View Resources
+
+Pods:
+
+```bash
+kubectl get pods \
+-n development
+```
+
+Everything:
+
+```bash
+kubectl get all \
+-n development
+```
+
+---
+
+# Hands-on Lab 4 – View Across All Namespaces
+
+```bash
+kubectl get pods -A
+```
+
+Observe:
+
+- kube-system
+- default
+- development
+
+---
+
+# Hands-on Lab 5 – Delete Namespace
+
+```bash
+kubectl delete namespace development
+```
+
+Watch:
+
+```bash
+kubectl get ns
+```
+
+Observe the Namespace progressing toward deletion.
+
+---
+
+# Resource Quotas (Preview)
+
+Namespaces can limit resource consumption.
+
+Example:
+
+```
+Namespace
+
+↓
+
+Maximum CPU
+
+↓
+
+Maximum Memory
+
+↓
+
+Maximum Pods
+```
+
+This prevents a single Namespace from consuming all cluster resources.
+
+---
+
+# LimitRanges (Preview)
+
+LimitRanges define default or maximum/minimum resource values for containers and Pods within a Namespace.
+
+Example:
+
+```
+Namespace
+
+↓
+
+Default CPU
+
+↓
+
+Default Memory
+```
+
+---
+
+# RBAC with Namespaces (Preview)
+
+RBAC commonly grants permissions at the Namespace level.
+
+Example:
+
+```
+Developer
+
+↓
+
+Development Namespace
+
+✓ Allowed
+
+↓
+
+Production Namespace
+
+✗ Denied
+```
+
+This is a fundamental security practice.
+
+---
+
+# Best Practices
+
+### 1. Use Namespaces to Organize Workloads
+
+Separate applications and environments logically.
+
+---
+
+### 2. Apply Namespace-Level Security
+
+Combine Namespaces with:
+
+- RBAC
+- Network Policies
+- Resource Quotas
+
+for stronger isolation.
+
+---
+
+### 3. Avoid Using `default` for Everything
+
+Create dedicated Namespaces for production workloads.
+
+---
+
+### 4. Monitor Namespace Resources
+
+Regularly inspect CPU, memory, and object usage per Namespace.
+
+---
+
+### 5. Keep Namespace Names Predictable
+
+Examples:
+
+```
+development
+
+testing
+
+staging
+
+production
+
+monitoring
+```
+
+Consistent naming simplifies automation and administration.
+
+---
+
