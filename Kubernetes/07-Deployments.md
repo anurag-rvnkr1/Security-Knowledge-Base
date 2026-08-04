@@ -830,3 +830,831 @@ Use GitOps or Infrastructure as Code practices for reproducible deployments.
 
 ---
 
+# How Deployments Work Internally
+
+## Overview
+
+A Deployment is one of the most intelligent controllers in Kubernetes.
+
+Unlike a ReplicaSet, which only ensures a certain number of Pods exist, a Deployment manages the **entire application lifecycle** by creating, updating, and replacing ReplicaSets.
+
+The Deployment Controller continuously compares the desired application state with the current state and performs the necessary actions to keep them synchronized.
+
+---
+
+# Complete Deployment Workflow
+
+Suppose a Deployment is created.
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+Complete workflow:
+
+```
+Developer
+
+↓
+
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Validation
+
+↓
+
+etcd
+
+↓
+
+Deployment Controller
+
+↓
+
+ReplicaSet
+
+↓
+
+Scheduler
+
+↓
+
+Worker Nodes
+
+↓
+
+Pods
+
+↓
+
+Application Running
+```
+
+---
+
+# Step 1 – User Creates Deployment
+
+Example:
+
+```yaml
+kind: Deployment
+```
+
+Deploy:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+---
+
+# Step 2 – API Server
+
+The API Server:
+
+- Authenticates user
+- Authorizes request
+- Validates manifest
+- Stores Deployment
+
+Workflow:
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Deployment Stored
+```
+
+---
+
+# Step 3 – Store in etcd
+
+```
+API Server
+
+↓
+
+etcd
+```
+
+Current state:
+
+```
+Deployment Exists
+
+↓
+
+No ReplicaSet Yet
+```
+
+---
+
+# Step 4 – Deployment Controller
+
+The Deployment Controller watches Deployment objects.
+
+It detects:
+
+```
+Deployment Created
+```
+
+and creates:
+
+```
+ReplicaSet
+```
+
+---
+
+# Step 5 – ReplicaSet Creation
+
+Example:
+
+```
+Deployment
+
+↓
+
+ReplicaSet A
+```
+
+ReplicaSet receives:
+
+```
+replicas = 3
+```
+
+---
+
+# Step 6 – ReplicaSet Creates Pods
+
+ReplicaSet detects:
+
+```
+Desired = 3
+
+↓
+
+Current = 0
+
+↓
+
+Create 3 Pods
+```
+
+Initially:
+
+```
+Pending
+```
+
+---
+
+# Step 7 – Scheduler
+
+Scheduler assigns Pods.
+
+```
+Pod
+
+↓
+
+Best Node
+
+↓
+
+Worker Node
+```
+
+---
+
+# Step 8 – kubelet
+
+Worker node:
+
+```
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Container Starts
+```
+
+---
+
+# Step 9 – Running
+
+Final state:
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+3 Running Pods
+```
+
+Application becomes available.
+
+---
+
+# Continuous Monitoring
+
+Deployment Controller continuously watches:
+
+```
+Deployment
+
+↓
+
+ReplicaSets
+
+↓
+
+Pods
+```
+
+It reacts whenever changes occur.
+
+---
+
+# Updating a Deployment
+
+Suppose:
+
+```
+Image
+
+↓
+
+nginx:1.29
+```
+
+Update:
+
+```
+nginx:1.30
+```
+
+Command:
+
+```bash
+kubectl set image deployment/nginx \
+nginx=nginx:1.30
+```
+
+Deployment detects:
+
+```
+Template Changed
+```
+
+---
+
+# New ReplicaSet
+
+Old state:
+
+```
+Deployment
+
+↓
+
+ReplicaSet A
+
+↓
+
+Pods v1
+```
+
+Update:
+
+```
+Deployment
+
+↓
+
+ReplicaSet A
+
+↓
+
+ReplicaSet B
+```
+
+ReplicaSet B contains:
+
+```
+Updated Image
+```
+
+---
+
+# Rolling Update Workflow
+
+```
+ReplicaSet B
+
+↓
+
+Create 1 Pod
+
+↓
+
+Healthy
+
+↓
+
+Delete 1 Pod
+
+↓
+
+Repeat
+```
+
+Until:
+
+```
+ReplicaSet B
+
+↓
+
+All Pods Running
+```
+
+---
+
+# Old ReplicaSet
+
+Deployment does **not** immediately delete the previous ReplicaSet.
+
+Instead:
+
+```
+ReplicaSet A
+
+↓
+
+Scaled Down
+
+↓
+
+Retained
+```
+
+This enables rollbacks.
+
+---
+
+# Rollback Workflow
+
+Suppose:
+
+```
+ReplicaSet B
+
+↓
+
+Application Errors
+```
+
+Rollback:
+
+```bash
+kubectl rollout undo deployment nginx
+```
+
+Workflow:
+
+```
+Deployment
+
+↓
+
+ReplicaSet A
+
+↓
+
+Scale Up
+
+↓
+
+ReplicaSet B
+
+↓
+
+Scale Down
+```
+
+Application returns to the previous version.
+
+---
+
+# Scaling Deployment
+
+Command:
+
+```bash
+kubectl scale deployment nginx \
+--replicas=6
+```
+
+Workflow:
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Desired = 6
+
+↓
+
+Current = 3
+
+↓
+
+Create 3 Pods
+```
+
+---
+
+# Scaling Down
+
+Command:
+
+```bash
+kubectl scale deployment nginx \
+--replicas=2
+```
+
+Workflow:
+
+```
+Desired = 2
+
+↓
+
+Delete Extra Pods
+
+↓
+
+2 Running
+```
+
+---
+
+# Deployment Conditions
+
+Deployments report several conditions.
+
+Examples:
+
+- Available
+- Progressing
+
+View:
+
+```bash
+kubectl describe deployment nginx
+```
+
+---
+
+# Deployment Status
+
+Check rollout:
+
+```bash
+kubectl rollout status deployment nginx
+```
+
+Example:
+
+```
+Waiting
+
+↓
+
+Updating
+
+↓
+
+Complete
+```
+
+---
+
+# Deployment History
+
+View revisions:
+
+```bash
+kubectl rollout history deployment nginx
+```
+
+Example:
+
+```
+Revision 1
+
+↓
+
+Revision 2
+
+↓
+
+Revision 3
+```
+
+---
+
+# Internal Architecture
+
+```
+Deployment
+
+↓
+
+Deployment Controller
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+
+↓
+
+Containers
+```
+
+---
+
+# Rolling Update Internals
+
+Before update:
+
+```
+ReplicaSet A
+
+↓
+
+3 Pods
+```
+
+After update begins:
+
+```
+ReplicaSet A
+
+↓
+
+2 Pods
+
+ReplicaSet B
+
+↓
+
+1 Pod
+```
+
+Later:
+
+```
+ReplicaSet A
+
+↓
+
+1 Pod
+
+ReplicaSet B
+
+↓
+
+2 Pods
+```
+
+Finally:
+
+```
+ReplicaSet B
+
+↓
+
+3 Pods
+```
+
+This gradual transition minimizes service disruption.
+
+---
+
+# Hands-on Lab 1 – Create Deployment
+
+Deployment YAML:
+
+```yaml
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: nginx
+
+spec:
+
+  replicas: 3
+
+  selector:
+
+    matchLabels:
+
+      app: nginx
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: nginx
+
+    spec:
+
+      containers:
+
+      - name: nginx
+
+        image: nginx:1.29
+```
+
+Deploy:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+---
+
+# Hands-on Lab 2 – Verify
+
+```bash
+kubectl get deployments
+
+kubectl get rs
+
+kubectl get pods
+```
+
+Observe:
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+```
+
+---
+
+# Hands-on Lab 3 – Scale
+
+```bash
+kubectl scale deployment nginx \
+--replicas=5
+```
+
+Verify:
+
+```bash
+kubectl get pods
+```
+
+Scale down:
+
+```bash
+kubectl scale deployment nginx \
+--replicas=2
+```
+
+---
+
+# Hands-on Lab 4 – Rolling Update
+
+Update image:
+
+```bash
+kubectl set image deployment/nginx \
+nginx=nginx:1.30
+```
+
+Watch:
+
+```bash
+kubectl rollout status deployment nginx
+```
+
+Observe Pods:
+
+```bash
+kubectl get pods -w
+```
+
+---
+
+# Hands-on Lab 5 – Rollback
+
+Rollback:
+
+```bash
+kubectl rollout undo deployment nginx
+```
+
+Verify:
+
+```bash
+kubectl rollout history deployment nginx
+```
+
+---
+
+# Best Practices
+
+### 1. Always Use Deployments for Stateless Applications
+
+Avoid standalone ReplicaSets unless you have a specific learning or troubleshooting objective.
+
+---
+
+### 2. Monitor Rollouts
+
+Verify every update using:
+
+```bash
+kubectl rollout status
+```
+
+---
+
+### 3. Keep Image Tags Immutable
+
+Use explicit version tags instead of mutable tags like `latest`.
+
+---
+
+### 4. Review Deployment History
+
+Check revision history before performing rollbacks.
+
+---
+
+### 5. Validate After Every Update
+
+Confirm:
+
+- Pods are Ready
+- ReplicaSets are healthy
+- Application responds correctly
+- Events show no errors
+
+---
