@@ -720,16 +720,757 @@ to improve organization and reduce operational risk.
 
 ---
 
-## Next Section
+## How kubectl Works Internally
 
-How kubectl Works Internally
+Although `kubectl` appears to be a simple command-line tool, every command triggers a series of interactions with the Kubernetes Control Plane.
 
-Advanced kubectl Features
+Understanding this workflow helps explain:
 
-Common Mistakes
-
-Quick Revision
-
-References
+- Why certain commands fail
+- How authentication works
+- How authorization is enforced
+- How Kubernetes processes requests
+- How resources are created and updated
 
 ---
+
+# High-Level kubectl Workflow
+
+Suppose a user executes:
+
+```bash
+kubectl get pods
+```
+
+The complete workflow is:
+
+```
+User
+
+↓
+
+kubectl
+
+↓
+
+Read kubeconfig
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Retrieve Resource
+
+↓
+
+Return Response
+
+↓
+
+Display Output
+```
+
+Everything flows through the Kubernetes API Server.
+
+---
+
+# Step 1 – Read kubeconfig
+
+Before contacting the cluster, `kubectl` reads the **kubeconfig** file.
+
+The kubeconfig contains:
+
+- Cluster information
+- User credentials
+- Contexts
+- API Server address
+
+Workflow:
+
+```
+kubectl
+
+↓
+
+kubeconfig
+
+↓
+
+Cluster Information
+```
+
+View configuration:
+
+```bash
+kubectl config view
+```
+
+---
+
+# Step 2 – Select Context
+
+A kubeconfig may contain multiple clusters.
+
+Example:
+
+```
+Development
+
+Testing
+
+Production
+```
+
+Current context:
+
+```bash
+kubectl config current-context
+```
+
+Switch context:
+
+```bash
+kubectl config use-context production
+```
+
+The selected context determines which cluster receives the request.
+
+---
+
+# Step 3 – Connect to API Server
+
+```
+kubectl
+
+↓
+
+HTTPS Request
+
+↓
+
+API Server
+```
+
+All communication uses the Kubernetes REST API.
+
+No request goes directly to Worker Nodes.
+
+---
+
+# Step 4 – Authentication
+
+The API Server verifies the client's identity.
+
+Possible authentication methods include:
+
+```
+Client Certificate
+
+Bearer Token
+
+OIDC
+
+Service Account
+
+External Identity Provider
+```
+
+If authentication fails:
+
+```
+401 Unauthorized
+```
+
+---
+
+# Step 5 – Authorization
+
+Once authenticated:
+
+```
+Can this identity perform this action?
+```
+
+Most production clusters use **Role-Based Access Control (RBAC)**.
+
+Example:
+
+```
+Developer
+
+↓
+
+View Pods
+
+✓ Allowed
+
+↓
+
+Delete Nodes
+
+✗ Denied
+```
+
+If authorization fails:
+
+```
+403 Forbidden
+```
+
+---
+
+# Step 6 – Admission Controllers
+
+Admission Controllers perform additional checks.
+
+Example:
+
+```
+Deployment
+
+↓
+
+Policy Validation
+
+↓
+
+Approved
+```
+
+Possible actions:
+
+- Validate requests
+- Mutate objects
+- Reject requests
+- Apply defaults
+
+---
+
+# Step 7 – API Processing
+
+The API Server processes the request.
+
+Examples:
+
+```
+GET
+
+↓
+
+Retrieve Object
+```
+
+```
+CREATE
+
+↓
+
+Store Object
+```
+
+```
+DELETE
+
+↓
+
+Remove Object
+```
+
+---
+
+# Step 8 – etcd
+
+If the request changes cluster state:
+
+```
+API Server
+
+↓
+
+etcd
+```
+
+Examples:
+
+- New Deployment
+- New Service
+- Updated ConfigMap
+- Deleted Pod
+
+Read-only requests retrieve information from the current cluster state without modifying it.
+
+---
+
+# Step 9 – Controllers React
+
+Suppose:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+Controller detects:
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods Needed
+```
+
+The Controller Manager begins reconciliation.
+
+---
+
+# Step 10 – Scheduler
+
+Pods initially remain:
+
+```
+Pending
+```
+
+Scheduler workflow:
+
+```
+Pending Pod
+
+↓
+
+Available Nodes
+
+↓
+
+Scheduling Decision
+
+↓
+
+Node Assigned
+```
+
+---
+
+# Step 11 – kubelet
+
+Worker Node:
+
+```
+API Server
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Start Pod
+```
+
+The kubelet ensures the assigned Pod is created and maintained.
+
+---
+
+# Step 12 – Status Returned
+
+The kubelet reports:
+
+```
+Pod Running
+
+↓
+
+API Server
+
+↓
+
+kubectl Displays Result
+```
+
+Example:
+
+```bash
+kubectl get pods
+```
+
+Output:
+
+```
+Running
+```
+
+---
+
+# Internal Request Flow
+
+```
+User
+
+↓
+
+kubectl
+
+↓
+
+kubeconfig
+
+↓
+
+API Server
+
+↓
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Admission Controllers
+
+↓
+
+etcd
+
+↓
+
+Controllers
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+Pod
+
+↓
+
+Status Back to API Server
+
+↓
+
+kubectl
+```
+
+This is the complete lifecycle for many Kubernetes operations.
+
+---
+
+# Imperative vs Declarative Commands
+
+## Imperative
+
+Example:
+
+```bash
+kubectl create deployment nginx \
+--image=nginx
+```
+
+Workflow:
+
+```
+Command
+
+↓
+
+API Server
+
+↓
+
+Deployment Created
+```
+
+---
+
+## Declarative
+
+Example:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+Workflow:
+
+```
+YAML
+
+↓
+
+Desired State
+
+↓
+
+API Server
+
+↓
+
+Reconciliation
+
+↓
+
+Deployment
+```
+
+Declarative workflows are preferred for production because they support:
+
+- Version control
+- Auditing
+- CI/CD
+- Repeatability
+
+---
+
+# Resource Discovery
+
+View available resource types:
+
+```bash
+kubectl api-resources
+```
+
+View supported API versions:
+
+```bash
+kubectl api-versions
+```
+
+These commands help explore cluster capabilities.
+
+---
+
+# Advanced Output Options
+
+Wide output:
+
+```bash
+kubectl get pods -o wide
+```
+
+YAML:
+
+```bash
+kubectl get deployment nginx -o yaml
+```
+
+JSON:
+
+```bash
+kubectl get deployment nginx -o json
+```
+
+Custom columns:
+
+```bash
+kubectl get pods \
+-o custom-columns=NAME:.metadata.name,STATUS:.status.phase
+```
+
+JSONPath:
+
+```bash
+kubectl get pods \
+-o jsonpath='{.items[*].metadata.name}'
+```
+
+These formats are useful for scripting and automation.
+
+---
+
+# Dry Run
+
+Preview resource creation:
+
+```bash
+kubectl create deployment nginx \
+--image=nginx \
+--dry-run=client -o yaml
+```
+
+Benefits:
+
+- Validate commands
+- Generate manifests
+- Avoid unintended changes
+
+---
+
+# Explain API Objects
+
+Example:
+
+```bash
+kubectl explain pod
+```
+
+Nested fields:
+
+```bash
+kubectl explain deployment.spec.template
+```
+
+Useful when writing YAML without referencing documentation.
+
+---
+
+# Useful Debugging Commands
+
+Describe Pod:
+
+```bash
+kubectl describe pod <pod-name>
+```
+
+Logs:
+
+```bash
+kubectl logs <pod-name>
+```
+
+Events:
+
+```bash
+kubectl get events --sort-by=.metadata.creationTimestamp
+```
+
+Watch resources:
+
+```bash
+kubectl get pods -w
+```
+
+These commands are often the first tools used during troubleshooting.
+
+---
+
+# Hands-on Exercise
+
+## Create a Deployment
+
+```bash
+kubectl create deployment nginx \
+--image=nginx
+```
+
+---
+
+## Verify
+
+```bash
+kubectl get deployments
+
+kubectl get pods
+```
+
+---
+
+## Inspect
+
+```bash
+kubectl describe deployment nginx
+```
+
+---
+
+## View YAML
+
+```bash
+kubectl get deployment nginx \
+-o yaml
+```
+
+---
+
+## Delete
+
+```bash
+kubectl delete deployment nginx
+```
+
+---
+
+# Best Practices
+
+### 1. Use Declarative Workflows
+
+Store manifests in Git and use:
+
+```bash
+kubectl apply -f
+```
+
+for deployments.
+
+---
+
+### 2. Learn Resource Discovery Commands
+
+`kubectl api-resources` and `kubectl explain` are invaluable when learning Kubernetes APIs.
+
+---
+
+### 3. Always Check Context
+
+Before running commands:
+
+```bash
+kubectl config current-context
+```
+
+to avoid modifying the wrong cluster.
+
+---
+
+### 4. Use Output Formats for Automation
+
+Prefer JSON or YAML when integrating with scripts or CI/CD pipelines.
+
+---
+
+### 5. Investigate Before Changing
+
+When troubleshooting:
+
+1. `kubectl get`
+2. `kubectl describe`
+3. `kubectl logs`
+4. `kubectl get events`
+
+Collect evidence before making changes.
+
+---
+
