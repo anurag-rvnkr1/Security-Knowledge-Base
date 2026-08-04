@@ -1658,3 +1658,774 @@ Confirm:
 - Events show no errors
 
 ---
+
+# Common Mistakes
+
+Deployments are the **most commonly used workload controller** in Kubernetes. While they simplify application management, many production incidents occur because of incorrect Deployment configurations or misunderstandings of how Deployments interact with ReplicaSets and Pods.
+
+The following are the most common mistakes made when working with Deployments.
+
+---
+
+# 1. Creating Standalone Pods Instead of Deployments
+
+Many beginners deploy applications like this:
+
+```yaml
+kind: Pod
+```
+
+Although this works, it provides:
+
+- No automatic scaling
+- No rolling updates
+- No rollback
+- No version history
+
+Recommended:
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+```
+
+Use Deployments for almost all stateless production applications.
+
+---
+
+# 2. Editing Pods Directly
+
+Incorrect workflow:
+
+```bash
+kubectl edit pod nginx
+```
+
+Suppose the Pod belongs to a Deployment.
+
+```
+Pod Edited
+
+↓
+
+Pod Deleted
+
+↓
+
+Deployment Creates New Pod
+
+↓
+
+Changes Lost
+```
+
+Correct workflow:
+
+```
+Edit Deployment
+
+↓
+
+New ReplicaSet
+
+↓
+
+Rolling Update
+```
+
+Always modify the Deployment rather than individual Pods.
+
+---
+
+# 3. Using `latest` Image Tag
+
+Avoid:
+
+```yaml
+image: nginx:latest
+```
+
+Problems:
+
+- Unpredictable deployments
+- Difficult troubleshooting
+- Complicated rollbacks
+
+Preferred:
+
+```yaml
+image: nginx:1.29.1
+```
+
+Use immutable image versions whenever possible.
+
+---
+
+# 4. Not Monitoring Rollouts
+
+Many users execute:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+and immediately assume success.
+
+Always verify:
+
+```bash
+kubectl rollout status deployment nginx
+```
+
+and inspect Pods:
+
+```bash
+kubectl get pods
+```
+
+---
+
+# 5. Ignoring ReplicaSets
+
+Some engineers believe Deployments manage Pods directly.
+
+Actual hierarchy:
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+```
+
+Understanding this relationship is essential for troubleshooting updates and rollbacks.
+
+---
+
+# 6. Deleting Pods to Fix Problems
+
+Suppose:
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+```
+
+Deleting a Pod:
+
+```bash
+kubectl delete pod pod-name
+```
+
+results in:
+
+```
+ReplicaSet
+
+↓
+
+Creates New Pod
+```
+
+Deleting the Pod rarely fixes the underlying issue.
+
+Investigate the root cause instead.
+
+---
+
+# 7. Forgetting Label Selectors
+
+Deployment selector:
+
+```yaml
+selector:
+
+  matchLabels:
+
+    app: nginx
+```
+
+Pod template:
+
+```yaml
+labels:
+
+  app: web
+```
+
+Result:
+
+```
+Selector Mismatch
+
+↓
+
+Deployment Cannot Manage Intended Pods
+```
+
+Selectors and template labels must match.
+
+---
+
+# 8. Scaling Pods Manually
+
+Incorrect:
+
+```
+Pod
+
+↓
+
+Duplicate Pod
+```
+
+Correct:
+
+```bash
+kubectl scale deployment nginx \
+--replicas=5
+```
+
+Scaling should occur at the Deployment level.
+
+---
+
+# 9. Forgetting Rollback Capability
+
+Before major deployments:
+
+Verify revision history:
+
+```bash
+kubectl rollout history deployment nginx
+```
+
+Rollback if required:
+
+```bash
+kubectl rollout undo deployment nginx
+```
+
+Always confirm rollback procedures work before critical production releases.
+
+---
+
+# 10. Ignoring Deployment Events
+
+Many users only inspect application logs.
+
+Also check:
+
+```bash
+kubectl describe deployment nginx
+```
+
+Review:
+
+- Events
+- Conditions
+- ReplicaSets
+- Progress status
+
+Events often reveal rollout problems.
+
+---
+
+# 11. Misunderstanding Rolling Updates
+
+Incorrect assumption:
+
+```
+Old Pods
+
+↓
+
+Deleted
+
+↓
+
+New Pods
+```
+
+Actual Rolling Update:
+
+```
+Old Pod
+
+↓
+
+New Pod
+
+↓
+
+Ready
+
+↓
+
+Delete Old Pod
+
+↓
+
+Repeat
+```
+
+This process minimizes downtime.
+
+---
+
+# 12. Updating Without Health Probes
+
+Without readiness probes:
+
+```
+New Pod
+
+↓
+
+Not Ready
+
+↓
+
+Traffic Sent
+
+↓
+
+Users Experience Errors
+```
+
+Deployments work best when Pods implement:
+
+- Startup Probes
+- Readiness Probes
+- Liveness Probes
+
+---
+
+# 13. Ignoring Resource Requests and Limits
+
+Pods without resource requests may be difficult to schedule or may compete unfairly for cluster resources.
+
+Always define:
+
+- CPU requests
+- CPU limits
+- Memory requests
+- Memory limits
+
+for production workloads.
+
+---
+
+# 14. Forgetting Namespace Context
+
+Example:
+
+```bash
+kubectl get deployments
+```
+
+returns nothing.
+
+Reason:
+
+Deployment exists in:
+
+```
+production
+```
+
+Specify:
+
+```bash
+kubectl get deployments \
+-n production
+```
+
+or verify the current context and namespace.
+
+---
+
+# 15. Using Deployments for Stateful Applications
+
+Deployments are designed for **stateless** applications.
+
+Examples:
+
+Suitable:
+
+- Web servers
+- REST APIs
+- Microservices
+- Frontend applications
+
+Generally use **StatefulSets** for workloads such as:
+
+- Databases
+- Distributed storage systems
+- Applications requiring stable identities
+
+---
+
+# Deployment Quick Revision
+
+## Architecture
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+
+↓
+
+Containers
+```
+
+---
+
+## Deployment Workflow
+
+```
+Developer
+
+↓
+
+kubectl apply
+
+↓
+
+API Server
+
+↓
+
+Deployment Controller
+
+↓
+
+ReplicaSet
+
+↓
+
+Scheduler
+
+↓
+
+Worker Nodes
+
+↓
+
+Pods Running
+```
+
+---
+
+## Rolling Update
+
+```
+ReplicaSet A
+
+↓
+
+ReplicaSet B
+
+↓
+
+Gradual Replacement
+
+↓
+
+Application Updated
+```
+
+---
+
+## Rollback
+
+```
+Current ReplicaSet
+
+↓
+
+Previous ReplicaSet
+
+↓
+
+Application Restored
+```
+
+---
+
+## Scaling
+
+```
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pods
+
+↓
+
+Desired Replicas
+```
+
+---
+
+# Essential kubectl Commands
+
+Create:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+View:
+
+```bash
+kubectl get deployments
+
+kubectl get rs
+
+kubectl get pods
+```
+
+Describe:
+
+```bash
+kubectl describe deployment nginx
+```
+
+Scale:
+
+```bash
+kubectl scale deployment nginx \
+--replicas=5
+```
+
+Update Image:
+
+```bash
+kubectl set image deployment/nginx \
+nginx=nginx:1.30
+```
+
+Check Rollout:
+
+```bash
+kubectl rollout status deployment nginx
+```
+
+View History:
+
+```bash
+kubectl rollout history deployment nginx
+```
+
+Rollback:
+
+```bash
+kubectl rollout undo deployment nginx
+```
+
+Delete:
+
+```bash
+kubectl delete deployment nginx
+```
+
+---
+
+# Deployment Feature Comparison
+
+| Feature | Deployment |
+|----------|:----------:|
+| Self-Healing | ✓ |
+| Scaling | ✓ |
+| Replica Management | ✓ |
+| Rolling Updates | ✓ |
+| Rollbacks | ✓ |
+| Revision History | ✓ |
+| Declarative Updates | ✓ |
+| High Availability | ✓ |
+
+---
+
+# Deployment Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Deployment Basics | ✓ |
+| Deployment Architecture | ✓ |
+| Deployment Lifecycle | ✓ |
+| ReplicaSet Relationship | ✓ |
+| Rolling Updates | ✓ |
+| Rollbacks | ✓ |
+| Scaling | ✓ |
+| Deployment Strategies | ✓ |
+| Hands-on Labs | ✓ |
+| Common Mistakes | ✓ |
+
+---
+
+# Interview Questions
+
+### Basic
+
+- What is a Deployment?
+- Why are Deployments preferred over ReplicaSets?
+- How does a Deployment manage Pods?
+- What is the relationship between a Deployment and a ReplicaSet?
+- What happens when you delete a Pod managed by a Deployment?
+
+---
+
+### Intermediate
+
+- Explain the Deployment lifecycle.
+- How does a Rolling Update work?
+- What is the difference between RollingUpdate and Recreate strategies?
+- How do you scale a Deployment?
+- How do you check rollout progress?
+
+---
+
+### Advanced
+
+- How does Kubernetes perform a rollback?
+- What triggers the creation of a new ReplicaSet?
+- Why does a Deployment retain old ReplicaSets?
+- What happens internally when `kubectl set image` is executed?
+- How do readiness probes affect rolling updates?
+
+---
+
+# References
+
+## Official Kubernetes Documentation
+
+- Kubernetes Deployments Documentation
+- Deployment Concepts
+- Rolling Updates
+- ReplicaSets
+- Kubernetes API Reference
+- kubectl Reference
+
+---
+
+## CNCF Resources
+
+- Cloud Native Computing Foundation (CNCF)
+- Kubernetes Best Practices
+- Kubernetes Learning Path
+- Production Kubernetes Guides
+
+---
+
+## Security & Operations
+
+- CIS Kubernetes Benchmark
+- NIST SP 800-190 — Application Container Security Guide
+- NSA/CISA Kubernetes Hardening Guidance
+- OWASP Kubernetes Top 10
+
+---
+
+## Recommended Books
+
+- *Kubernetes Up & Running* — Kelsey Hightower, Brendan Burns & Joe Beda
+- *Kubernetes in Action* — Marko Lukša
+- *Production Kubernetes* — Josh Rosso & Rich Lander
+- *Managing Kubernetes* — Brendan Burns, Craig Tracey & Joe Beda
+
+---
+
+## Recommended Hands-on Practice
+
+1. Create a Deployment with three replicas.
+2. Observe the automatically created ReplicaSet.
+3. Scale the Deployment up and down.
+4. Perform a rolling update using a new container image.
+5. Watch Pods during the rollout using:
+
+```bash
+kubectl get pods -w
+```
+
+6. Roll back to the previous revision.
+7. Inspect Deployment events and ReplicaSet history.
+8. Experiment with both `RollingUpdate` and `Recreate` strategies in a non-production environment.
+
+---
+
+# Chapter Summary
+
+```
+Deployment Created
+
+↓
+
+Deployment Controller
+
+↓
+
+ReplicaSet Created
+
+↓
+
+Pods Created
+
+↓
+
+Scheduler
+
+↓
+
+Worker Nodes
+
+↓
+
+Application Running
+
+↓
+
+Rolling Updates
+
+↓
+
+Rollback (if required)
+
+↓
+
+Continuous Reconciliation
+```
+
+A Deployment is the **standard controller for stateless applications** in Kubernetes. It builds upon ReplicaSets to provide **automated updates, version history, controlled rollouts, self-healing, scaling, and rollback capabilities**, making it the preferred choice for modern cloud-native application deployment.
+
