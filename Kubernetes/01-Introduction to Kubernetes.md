@@ -1437,3 +1437,562 @@ Maintain diagrams, manifests, runbooks, and recovery procedures.
 
 ---
 
+## Common Mistakes
+
+Kubernetes automates many operational tasks, but it does **not** eliminate the need for good engineering practices. Many production issues occur because teams misunderstand Kubernetes concepts or apply traditional infrastructure approaches to cloud-native environments.
+
+The following are some of the most common mistakes made by beginners and even experienced engineers.
+
+---
+
+# 1. Treating Kubernetes Like Docker
+
+One of the biggest misconceptions is assuming Kubernetes is simply "Docker at scale."
+
+Incorrect mindset:
+
+```
+Docker
+
+↓
+
+Run Container
+
+↓
+
+Done
+```
+
+Kubernetes is much more than a container runtime.
+
+It provides:
+
+- Scheduling
+- Self-healing
+- Scaling
+- Networking
+- Service discovery
+- Storage orchestration
+- Declarative configuration
+
+Think of Kubernetes as a **container orchestration platform**, not merely a way to run containers.
+
+---
+
+# 2. Not Understanding Pods
+
+Many beginners assume:
+
+```
+Container = Pod
+```
+
+This is incorrect.
+
+Relationship:
+
+```
+Pod
+
+↓
+
+One or More Containers
+```
+
+A Pod is the smallest deployable Kubernetes object, not the individual container.
+
+---
+
+# 3. Using Imperative Commands for Everything
+
+Incorrect workflow:
+
+```bash
+kubectl run
+
+kubectl expose
+
+kubectl edit
+```
+
+Recommended workflow:
+
+```
+YAML Manifest
+
+↓
+
+Git
+
+↓
+
+kubectl apply
+```
+
+Declarative configuration improves:
+
+- Repeatability
+- Version control
+- Automation
+- Collaboration
+
+---
+
+# 4. Editing Production Objects Manually
+
+Avoid repeatedly modifying live resources using:
+
+```bash
+kubectl edit
+```
+
+Better approach:
+
+```
+Update YAML
+
+↓
+
+Commit
+
+↓
+
+CI/CD
+
+↓
+
+Apply
+```
+
+This keeps infrastructure consistent and auditable.
+
+---
+
+# 5. Ignoring Namespaces
+
+Deploying everything into:
+
+```
+default
+```
+
+can quickly become difficult to manage.
+
+Instead, separate workloads:
+
+```
+Development
+
+↓
+
+Testing
+
+↓
+
+Staging
+
+↓
+
+Production
+```
+
+Namespaces provide logical isolation within a cluster.
+
+---
+
+# 6. Using the `latest` Image Tag
+
+Avoid:
+
+```yaml
+image: nginx:latest
+```
+
+Prefer:
+
+```yaml
+image: nginx:1.29.1
+```
+
+Benefits:
+
+- Predictable deployments
+- Easier rollbacks
+- Version tracking
+
+---
+
+# 7. Forgetting Resource Requests and Limits
+
+Without resource controls:
+
+```
+Pod
+
+↓
+
+Consumes Excessive Memory
+
+↓
+
+Node Pressure
+
+↓
+
+Other Pods Affected
+```
+
+Always define appropriate:
+
+- CPU requests
+- CPU limits
+- Memory requests
+- Memory limits
+
+---
+
+# 8. Ignoring Health Probes
+
+Applications may appear running while actually being unusable.
+
+Without probes:
+
+```
+Pod Running
+
+↓
+
+Application Hung
+
+↓
+
+Traffic Continues
+
+↓
+
+Users Receive Errors
+```
+
+Use:
+
+- Liveness probes
+- Readiness probes
+- Startup probes (when appropriate)
+
+---
+
+# 9. Hardcoding Configuration
+
+Avoid embedding:
+
+- Database hosts
+- API keys
+- Credentials
+- Environment-specific values
+
+inside container images.
+
+Use:
+
+- ConfigMaps
+- Secrets
+
+for runtime configuration.
+
+---
+
+# 10. Running Everything as Cluster Administrator
+
+Granting every user cluster-admin permissions increases risk.
+
+Instead:
+
+```
+Users
+
+↓
+
+RBAC
+
+↓
+
+Least Privilege
+```
+
+Grant only the permissions required.
+
+---
+
+# 11. Ignoring Logs and Events
+
+Many engineers check only Pods.
+
+Always inspect:
+
+```bash
+kubectl logs
+
+kubectl describe
+
+kubectl get events
+```
+
+Events frequently explain scheduling failures and deployment issues.
+
+---
+
+# 12. Not Understanding Desired State
+
+Some engineers manually restart Pods to "fix" problems.
+
+However:
+
+```
+Pod Deleted
+
+↓
+
+Deployment
+
+↓
+
+New Pod Created
+```
+
+Controllers maintain the declared desired state automatically.
+
+Investigate the underlying issue instead of relying on repeated manual restarts.
+
+---
+
+# 13. Ignoring Persistent Storage
+
+Containers and Pods are replaceable.
+
+Important application data should not depend on ephemeral storage.
+
+Use:
+
+- Persistent Volumes (PV)
+- Persistent Volume Claims (PVC)
+
+for persistent workloads.
+
+---
+
+# 14. Skipping Monitoring
+
+Production clusters should continuously monitor:
+
+- Nodes
+- Pods
+- CPU
+- Memory
+- Disk
+- Network
+- Events
+- Application metrics
+
+Without monitoring, failures may remain undetected until users report them.
+
+---
+
+# 15. Deploying Without Rollback Planning
+
+Every deployment should include:
+
+```
+Deploy
+
+↓
+
+Monitor
+
+↓
+
+Validate
+
+↓
+
+Rollback (if needed)
+```
+
+Always verify that rollback procedures are documented and tested.
+
+---
+
+# Kubernetes Quick Revision
+
+## Kubernetes Workflow
+
+```
+Developer
+
+↓
+
+YAML
+
+↓
+
+kubectl
+
+↓
+
+API Server
+
+↓
+
+etcd
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+Pod Running
+```
+
+---
+
+## Desired State Model
+
+```
+Desired State
+
+↓
+
+Current State
+
+↓
+
+Controller
+
+↓
+
+Reconciliation
+
+↓
+
+Desired State Restored
+```
+
+This reconciliation loop is fundamental to Kubernetes.
+
+---
+
+## Kubernetes Benefits
+
+- Automated deployment
+- Self-healing
+- Horizontal scaling
+- Rolling updates
+- Rollbacks
+- Service discovery
+- Load balancing
+- Declarative management
+- High availability
+
+---
+
+## Common kubectl Commands
+
+```bash
+kubectl cluster-info
+
+kubectl get nodes
+
+kubectl get pods
+
+kubectl get deployments
+
+kubectl get services
+
+kubectl describe pod <pod-name>
+
+kubectl logs <pod-name>
+
+kubectl apply -f deployment.yaml
+
+kubectl delete -f deployment.yaml
+```
+
+---
+
+# Kubernetes Fundamentals Checklist
+
+| Topic | Status |
+|--------|:------:|
+| Understand Kubernetes | ✓ |
+| Understand Container Orchestration | ✓ |
+| Understand Desired State | ✓ |
+| Understand Control Loop | ✓ |
+| Understand Pods | ✓ |
+| Understand Deployments | ✓ |
+| Understand Services | ✓ |
+| Understand High-Level Architecture | ✓ |
+| Understand Scaling | ✓ |
+| Understand Self-Healing | ✓ |
+| Understand Rolling Updates | ✓ |
+| Understand Rollbacks | ✓ |
+| Understand kubectl Basics | ✓ |
+| Understand Best Practices | ✓ |
+| Understand Common Mistakes | ✓ |
+
+---
+
+# References
+
+## Official Kubernetes Resources
+
+- Kubernetes Documentation
+- Kubernetes Concepts
+- Kubernetes API Reference
+- kubectl Reference
+- Kubernetes Tutorials
+
+---
+
+## CNCF Resources
+
+- Cloud Native Computing Foundation (CNCF)
+- Kubernetes Learning Path
+- Kubernetes Best Practices
+- Kubernetes Security Whitepapers
+
+---
+
+## Security Standards
+
+- Kubernetes Hardening Guidance
+- CIS Kubernetes Benchmark
+- NIST SP 800-190 — Application Container Security Guide
+- OWASP Kubernetes Top 10
+- NSA/CISA Kubernetes Hardening Guidance
+
+---
+
+## Recommended Books
+
+- *Kubernetes Up & Running* — Kelsey Hightower, Brendan Burns & Joe Beda
+- *Kubernetes in Action* — Marko Lukša
+- *Production Kubernetes* — Josh Rosso & Rich Lander
+- *Managing Kubernetes* — Brendan Burns, Craig Tracey & Joe Beda
+
+---
+
+## Recommended Practice
+
+- Install a local Kubernetes cluster (Kind, Minikube, or k3d).
+- Deploy a simple application.
+- Scale Deployments.
+- Create Services.
+- Explore Pods with `kubectl`.
+- Practice reading Events and Logs.
+- Store manifests in Git.
+- Experiment with rolling updates and rollbacks.
+
