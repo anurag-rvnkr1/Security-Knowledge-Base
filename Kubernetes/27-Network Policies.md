@@ -841,22 +841,3 @@ Ensure your CNI plugin enforces Network Policies.
 
 ---
 
-## Next Section
-
-How Network Policies Work Internally
-
-CNI Enforcement
-
-Packet Flow
-
-Ingress vs Egress Processing
-
-Hands-on Labs
-
-Common Mistakes
-
-Quick Revision
-
-References
-
----
