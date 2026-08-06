@@ -737,23 +737,3 @@ Networking plugins receive important:
 Verify Pod-to-Pod communication across Nodes after cluster changes.
 
 ---
-
-## Next Section
-
-How CNI Plugins Work Internally
-
-CNI Packet Flow
-
-IPAM Deep Dive
-
-Overlay Networks
-
-Hands-on Labs
-
-Common Mistakes
-
-Quick Revision
-
-References
-
----
