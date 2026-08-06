@@ -737,3 +737,1102 @@ Networking plugins receive important:
 Verify Pod-to-Pod communication across Nodes after cluster changes.
 
 ---
+
+# Chapter 29 – How CNI Plugins Work Internally
+
+## Overview
+
+Installing a CNI plugin is only the beginning.
+
+The real magic happens **when a Pod is created**.
+
+Every time Kubernetes schedules a new Pod, multiple components work together to configure networking automatically.
+
+The workflow involves:
+
+- API Server
+- Scheduler
+- kubelet
+- Container Runtime
+- CNI Plugin
+- IPAM
+- Linux Kernel
+- Network Namespace
+- Virtual Ethernet (veth)
+- Routing Tables
+
+Within milliseconds, a new Pod receives:
+
+- A unique IP address
+- Network interfaces
+- Routing information
+- Connectivity to every other Pod
+
+This chapter explains exactly how that happens.
+
+---
+
+# Learning Objectives
+
+After completing this chapter, you will understand:
+
+- Complete Pod networking lifecycle
+- kubelet and CNI interaction
+- CNI ADD and DEL commands
+- IPAM internals
+- Network namespace creation
+- Virtual Ethernet (veth) creation
+- Linux bridge integration
+- Overlay networking
+- Packet flow
+- Network teardown
+
+---
+
+# High-Level Architecture
+
+```
+               Kubernetes API
+
+                     │
+
+                     ▼
+
+                 Scheduler
+
+                     │
+
+                     ▼
+
+                  Worker Node
+
+                     │
+
+                     ▼
+
+                  kubelet
+
+                     │
+
+                     ▼
+
+             Container Runtime
+
+                     │
+
+                     ▼
+
+                 CNI Plugin
+
+                     │
+
+      ┌──────────────┼──────────────┐
+
+      ▼              ▼              ▼
+
+   IPAM          veth Pair      Routing
+
+                     │
+
+                     ▼
+
+                    Pod
+```
+
+---
+
+# Complete Workflow
+
+```
+kubectl apply
+
+↓
+
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+CNI ADD
+
+↓
+
+Network Ready
+
+↓
+
+Pod Starts
+```
+
+---
+
+# Step 1 – Pod Creation
+
+Example:
+
+```bash
+kubectl apply -f pod.yaml
+```
+
+The API Server stores the Pod definition.
+
+---
+
+# Step 2 – Scheduler
+
+The Scheduler selects the most suitable Node.
+
+```
+Pending Pod
+
+↓
+
+Worker Node 2
+```
+
+The Pod is assigned to that Node.
+
+---
+
+# Step 3 – kubelet
+
+The kubelet on the selected Node notices the assignment.
+
+Responsibilities:
+
+- Create the Pod
+- Start containers
+- Configure networking
+- Monitor Pod health
+
+Before application containers start:
+
+```
+Networking
+
+↓
+
+Must Exist
+```
+
+---
+
+# Step 4 – Container Runtime
+
+The container runtime (for example, containerd or CRI-O):
+
+- Creates the Pod sandbox
+- Creates the pause container
+- Creates the network namespace
+
+```
+Container Runtime
+
+↓
+
+Pause Container
+
+↓
+
+Network Namespace
+```
+
+---
+
+# Pause Container
+
+Every Pod contains a hidden **pause container**.
+
+Its primary job is to own shared namespaces:
+
+- Network namespace
+- IPC namespace
+- UTS namespace
+
+All application containers join these namespaces.
+
+---
+
+# Step 5 – CNI ADD Command
+
+The container runtime invokes the CNI plugin.
+
+Command:
+
+```
+ADD
+```
+
+The CNI receives details such as:
+
+- Pod name
+- Namespace
+- Container ID
+- Network namespace path
+- Interface name
+
+---
+
+# CNI ADD Workflow
+
+```
+Container Runtime
+
+↓
+
+CNI Plugin
+
+↓
+
+Configure Networking
+```
+
+---
+
+# Step 6 – Create Network Namespace
+
+The CNI enters the Pod's network namespace.
+
+Creates:
+
+```
+Network Namespace
+
+↓
+
+eth0
+
+↓
+
+Routing Table
+
+↓
+
+Loopback Interface
+```
+
+---
+
+# Step 7 – Create veth Pair
+
+The CNI creates a virtual Ethernet pair.
+
+```
+Pod
+
+↓
+
+eth0
+
+══════════════
+
+veth
+
+↓
+
+Worker Node
+```
+
+One interface is moved into the Pod.
+
+The other stays on the host.
+
+---
+
+# Step 8 – Connect to Linux Bridge
+
+Many CNIs attach the host-side interface to a bridge.
+
+```
+Pod
+
+↓
+
+veth
+
+↓
+
+Linux Bridge
+
+↓
+
+Other Pods
+```
+
+Local Pod communication now becomes possible.
+
+---
+
+# Step 9 – IPAM Allocation
+
+The CNI contacts its IP Address Management (IPAM) component.
+
+Example:
+
+```
+Available Pool
+
+↓
+
+10.244.2.0/24
+```
+
+Assigned:
+
+```
+Pod
+
+↓
+
+10.244.2.15
+```
+
+The IP is reserved until the Pod is deleted.
+
+---
+
+# Step 10 – Configure Interfaces
+
+Inside the Pod:
+
+```
+eth0
+
+↓
+
+10.244.2.15/24
+```
+
+Loopback:
+
+```
+lo
+```
+
+Both interfaces become active.
+
+---
+
+# Step 11 – Configure Routes
+
+Example routing table:
+
+```
+Destination
+
+↓
+
+Default Gateway
+
+↓
+
+Linux Bridge
+```
+
+The Pod can now communicate beyond its namespace.
+
+---
+
+# Step 12 – Configure ARP
+
+The Linux kernel updates:
+
+- ARP tables
+- Neighbor tables
+- Interface state
+
+Network communication becomes possible.
+
+---
+
+# Step 13 – Return Success
+
+The CNI reports:
+
+```
+Success
+```
+
+The container runtime continues starting application containers.
+
+```
+Networking
+
+↓
+
+Ready
+
+↓
+
+Containers Start
+```
+
+---
+
+# Pod Ready
+
+Final state:
+
+```
+Pod
+
+↓
+
+IP Address
+
+↓
+
+Routes
+
+↓
+
+Interfaces
+
+↓
+
+Reachable
+```
+
+---
+
+# Packet Flow (Same Node)
+
+```
+Pod A
+
+↓
+
+eth0
+
+↓
+
+veth
+
+↓
+
+Linux Bridge
+
+↓
+
+veth
+
+↓
+
+Pod B
+```
+
+Traffic never leaves the Node.
+
+---
+
+# Packet Flow (Different Nodes)
+
+```
+Pod A
+
+↓
+
+Bridge
+
+↓
+
+Overlay Network
+
+↓
+
+Bridge
+
+↓
+
+Pod B
+```
+
+The CNI handles inter-node transport.
+
+---
+
+# Overlay Networking
+
+Most CNIs use encapsulation.
+
+Common technologies:
+
+- VXLAN
+- Geneve
+- IP-in-IP (plugin dependent)
+
+Example:
+
+```
+Node 1
+
+↓
+
+VXLAN Tunnel
+
+↓
+
+Node 2
+```
+
+---
+
+# Underlay Networking
+
+Some CNIs use direct routing.
+
+```
+Pod
+
+↓
+
+Physical Network
+
+↓
+
+Destination Pod
+```
+
+Requires the network infrastructure to understand Pod CIDRs.
+
+---
+
+# CNI DEL Command
+
+When a Pod is deleted:
+
+```
+Pod Deleted
+
+↓
+
+Container Runtime
+
+↓
+
+CNI DEL
+```
+
+The plugin:
+
+- Removes interfaces
+- Releases IP
+- Deletes routes
+- Cleans namespaces
+
+---
+
+# CNI DEL Workflow
+
+```
+Delete Pod
+
+↓
+
+Release IP
+
+↓
+
+Delete veth
+
+↓
+
+Remove Routes
+
+↓
+
+Cleanup Complete
+```
+
+---
+
+# CNI CHECK Command
+
+Some plugins support:
+
+```
+CHECK
+```
+
+Purpose:
+
+- Validate network configuration
+- Detect inconsistencies
+- Verify interface state
+
+Support is optional.
+
+---
+
+# Internal Architecture
+
+```
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+CNI ADD
+
+↓
+
+IPAM
+
+↓
+
+veth
+
+↓
+
+Bridge
+
+↓
+
+Routes
+
+↓
+
+Pod Ready
+```
+
+---
+
+# CNI Configuration Files
+
+Typical location:
+
+```bash
+/etc/cni/net.d/
+```
+
+Example:
+
+```json
+{
+  "cniVersion": "1.0.0",
+  "name": "cluster-network",
+  "type": "calico"
+}
+```
+
+---
+
+# CNI Binary Directory
+
+Typical location:
+
+```bash
+/opt/cni/bin/
+```
+
+Contains plugin executables such as:
+
+- bridge
+- host-local
+- loopback
+- calico
+- flannel
+- cilium
+
+---
+
+# Hands-on Lab 1 – View CNI Configuration
+
+```bash
+ls /etc/cni/net.d/
+```
+
+Observe available network configuration files.
+
+---
+
+# Hands-on Lab 2 – View Installed Plugins
+
+```bash
+ls /opt/cni/bin/
+```
+
+Review installed CNI binaries.
+
+---
+
+# Hands-on Lab 3 – Inspect Pod Networking
+
+Create a Pod:
+
+```bash
+kubectl run nginx \
+--image=nginx
+```
+
+View:
+
+```bash
+kubectl get pod nginx -o wide
+```
+
+Observe the assigned Pod IP.
+
+---
+
+# Hands-on Lab 4 – Inspect Interfaces
+
+Inside the Pod:
+
+```bash
+ip addr
+```
+
+Observe:
+
+- `eth0`
+- `lo`
+
+---
+
+# Hands-on Lab 5 – Inspect Routes
+
+Inside the Pod:
+
+```bash
+ip route
+```
+
+Observe:
+
+- Default route
+- Pod network
+- Gateway
+
+---
+
+# Common Mistakes
+
+## 1. Assuming Kubernetes Configures Networking
+
+Incorrect:
+
+```
+Kubernetes
+
+↓
+
+Creates Network
+```
+
+Correct:
+
+```
+Kubernetes
+
+↓
+
+Calls CNI
+
+↓
+
+CNI Configures Network
+```
+
+---
+
+## 2. Forgetting the Pause Container
+
+The pause container owns the Pod's shared network namespace.
+
+Without it, containers in the Pod could not share networking.
+
+---
+
+## 3. Ignoring IPAM
+
+Every Pod IP comes from an IPAM component.
+
+Duplicate IP addresses are prevented through IPAM management.
+
+---
+
+## 4. Confusing Bridge with Overlay
+
+Bridge:
+
+```
+Local Node
+```
+
+Overlay:
+
+```
+Multiple Nodes
+```
+
+They solve different networking problems.
+
+---
+
+## 5. Forgetting Cleanup
+
+A correct CNI implementation must release:
+
+- IP addresses
+- Interfaces
+- Routes
+
+when Pods are deleted.
+
+---
+
+# Quick Revision
+
+## Pod Creation
+
+```
+Scheduler
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+CNI ADD
+
+↓
+
+Pod Ready
+```
+
+---
+
+## Networking Setup
+
+```
+Network Namespace
+
+↓
+
+veth Pair
+
+↓
+
+Bridge
+
+↓
+
+IP Address
+
+↓
+
+Routes
+```
+
+---
+
+## Pod Deletion
+
+```
+Delete Pod
+
+↓
+
+CNI DEL
+
+↓
+
+Release IP
+
+↓
+
+Cleanup
+```
+
+---
+
+# Essential Commands
+
+View Pod IPs:
+
+```bash
+kubectl get pods -o wide
+```
+
+View CNI Pods:
+
+```bash
+kubectl get pods -A
+```
+
+View CNI Config:
+
+```bash
+ls /etc/cni/net.d/
+```
+
+View CNI Plugins:
+
+```bash
+ls /opt/cni/bin/
+```
+
+Inspect Pod Network:
+
+```bash
+kubectl exec -it <pod> -- ip addr
+```
+
+Inspect Routes:
+
+```bash
+kubectl exec -it <pod> -- ip route
+```
+
+---
+
+# Interview Questions
+
+### Basic
+
+- What is a CNI plugin?
+- Why is a CNI required in Kubernetes?
+- What is the purpose of IPAM?
+
+---
+
+### Intermediate
+
+- What happens when the CNI `ADD` command is executed?
+- Why does Kubernetes use a pause container?
+- What is a veth pair?
+
+---
+
+### Advanced
+
+- Explain the complete Pod networking lifecycle from scheduling to a running Pod.
+- Compare overlay and underlay networking.
+- What happens during the `DEL` operation?
+- How do CNI plugins integrate with the Linux kernel?
+- Why is the bridge used only for local Pod communication?
+
+---
+
+# References
+
+## Official Documentation
+
+- CNI Specification
+- Kubernetes Networking
+- CRI Specification
+- Kubernetes Pod Lifecycle
+
+---
+
+## CNCF Resources
+
+- Container Network Interface
+- SIG Network
+- Kubernetes Networking Guide
+
+---
+
+## Security & Operations
+
+- Kubernetes Production Networking
+- CIS Kubernetes Benchmark
+- NIST SP 800-190
+
+---
+
+# Chapter Summary
+
+```
+kubectl
+
+↓
+
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+kubelet
+
+↓
+
+Container Runtime
+
+↓
+
+CNI ADD
+
+↓
+
+Network Namespace
+
+↓
+
+veth Pair
+
+↓
+
+IPAM
+
+↓
+
+Routes
+
+↓
+
+Pod Ready
+```
+
+The **Container Network Interface (CNI)** is the networking engine behind every Kubernetes Pod. It creates network namespaces, assigns IP addresses, configures interfaces and routing, and connects Pods to the cluster network. By following the standardized CNI specification, Kubernetes can support multiple networking implementations while providing consistent Pod-to-Pod communication across the cluster.
+
+Topics include:
+
+- Calico Architecture
+- Felix
+- Typha
+- BGP
+- VXLAN
+- IP-in-IP
+- eBPF Mode
+- Network Policy Enforcement
+- Production Deployment
+- Troubleshooting
+- Hands-on Labs
+
+---
