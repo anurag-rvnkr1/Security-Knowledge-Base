@@ -1,0 +1,3186 @@
+# Chapter 81 – Kustomize
+
+## Overview
+
+Kustomize is a Kubernetes-native configuration management tool that allows you to customize Kubernetes manifests without using a separate templating language.
+
+It is built around the idea of:
+
+```text
+Base Manifests
+      ↓
+Overlay
+      ↓
+Environment-Specific Configuration
+      ↓
+Kubernetes Manifests
+```
+
+For example, an organization may maintain one application definition and customize it for:
+
+```text
+Development
+Staging
+Production
+```
+
+using Kustomize overlays.
+
+A typical structure is:
+
+```text
+my-app/
+├── base/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── kustomization.yaml
+│
+└── overlays/
+    ├── dev/
+    │   └── kustomization.yaml
+    ├── staging/
+    │   └── kustomization.yaml
+    └── production/
+        └── kustomization.yaml
+```
+
+Kustomize is integrated directly into the Kubernetes CLI:
+
+```bash
+kubectl apply -k .
+```
+
+---
+
+# Learning Objectives
+
+After completing this chapter, you will understand:
+
+- Kustomize fundamentals
+- What Kustomize is
+- Why Kustomize is used
+- Kustomize architecture
+- Declarative configuration
+- Bases and overlays
+- `kustomization.yaml`
+- Resources
+- Namespaces
+- Common labels
+- Common annotations
+- Name prefixes
+- Name suffixes
+- Images
+- Replicas
+- ConfigMap generators
+- Secret generators
+- Generators
+- Patches
+- Strategic Merge Patches
+- JSON Patches
+- JSON6902
+- Replacements
+- Transformers
+- Built-in transformers
+- Components
+- Variables
+- Environment management
+- Development
+- Staging
+- Production
+- Multi-cluster configuration
+- Kustomize directory structure
+- `kustomize build`
+- `kustomize edit`
+- Kustomize validation
+- Kustomize with `kubectl`
+- Kustomize with GitOps
+- Kustomize with Argo CD
+- Kustomize with Flux
+- Kustomize with CI/CD
+- Secrets
+- Secret security
+- Configuration management
+- Image updates
+- Immutable images
+- Patches
+- Patch ordering
+- Overlay design
+- Base design
+- Reusability
+- Production best practices
+- Kustomize vs Helm
+- Common mistakes
+- Troubleshooting
+- Hands-on labs
+- Quick revision
+- Interview questions
+
+---
+
+# What Is Kustomize?
+
+Kustomize is a configuration customization tool designed specifically for Kubernetes manifests.
+
+Instead of:
+
+```text
+Template
++
+Variables
+```
+
+Kustomize generally works with:
+
+```text
+Existing YAML
++
+Customization
+```
+
+---
+
+# Why Kustomize?
+
+Suppose you have:
+
+```yaml
+replicas: 2
+```
+
+for development.
+
+Production requires:
+
+```yaml
+replicas: 5
+```
+
+Instead of maintaining two completely separate Deployments, Kustomize allows you to keep a common base and customize the differences.
+
+---
+
+# Kustomize Philosophy
+
+The core idea is:
+
+```text
+Don't duplicate the entire manifest.
+
+Reuse the base and customize only what changes.
+```
+
+---
+
+# Kustomize Architecture
+
+```text
+                  Base
+                   │
+          ┌────────┼────────┐
+          ▼        ▼        ▼
+         Dev    Staging   Production
+          │        │        │
+          ▼        ▼        ▼
+       Overlay  Overlay  Overlay
+          │        │        │
+          └────────┼────────┘
+                   ▼
+             Final Manifest
+                   │
+                   ▼
+              Kubernetes
+```
+
+---
+
+# Base
+
+A base contains common Kubernetes configuration.
+
+Example:
+
+```text
+base/
+├── deployment.yaml
+├── service.yaml
+└── kustomization.yaml
+```
+
+---
+
+# Overlay
+
+An overlay contains environment-specific customizations.
+
+Example:
+
+```text
+overlays/
+├── dev/
+├── staging/
+└── production/
+```
+
+---
+
+# Base and Overlay Relationship
+
+```text
+Base
+ │
+ ├── Dev Overlay
+ ├── Staging Overlay
+ └── Production Overlay
+```
+
+This prevents unnecessary duplication.
+
+---
+
+# `kustomization.yaml`
+
+The main Kustomize configuration file is:
+
+```text
+kustomization.yaml
+```
+
+Example:
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+```
+
+---
+
+# Basic Kustomize Structure
+
+```text
+base/
+├── deployment.yaml
+├── service.yaml
+└── kustomization.yaml
+```
+
+`kustomization.yaml`:
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+```
+
+---
+
+# Build Kustomize
+
+Render the manifests:
+
+```bash
+kubectl kustomize base/
+```
+
+Or:
+
+```bash
+kustomize build base/
+```
+
+---
+
+# Apply Kustomize
+
+```bash
+kubectl apply -k base/
+```
+
+The `-k` flag tells `kubectl` to process a Kustomization.
+
+---
+
+# Delete Kustomize Resources
+
+```bash
+kubectl delete -k base/
+```
+
+Use carefully, especially in production.
+
+---
+
+# Resources
+
+Resources define Kubernetes manifests included by the Kustomization.
+
+Example:
+
+```yaml
+resources:
+  - deployment.yaml
+  - service.yaml
+  - configmap.yaml
+```
+
+---
+
+# Resource Directories
+
+A resource can also reference another Kustomization directory.
+
+Example:
+
+```yaml
+resources:
+  - ../../base
+```
+
+---
+
+# Namespace
+
+Kustomize can assign a namespace.
+
+Example:
+
+```yaml
+namespace: production
+```
+
+Resources generated by the Kustomization can receive that namespace where applicable.
+
+---
+
+# Common Labels
+
+Example:
+
+```yaml
+commonLabels:
+  app: api
+  environment: production
+```
+
+Modern Kustomize configurations may also use more targeted label transformations depending on the desired behavior.
+
+---
+
+# Common Annotations
+
+Example:
+
+```yaml
+commonAnnotations:
+  owner: platform-team
+```
+
+Annotations can provide metadata used by tooling.
+
+---
+
+# Name Prefix
+
+Example:
+
+```yaml
+namePrefix: prod-
+```
+
+A resource:
+
+```text
+api
+```
+
+may become:
+
+```text
+prod-api
+```
+
+---
+
+# Name Suffix
+
+Example:
+
+```yaml
+nameSuffix: -v2
+```
+
+A resource:
+
+```text
+api
+```
+
+may become:
+
+```text
+api-v2
+```
+
+---
+
+# Images
+
+Kustomize can modify container images without directly editing the Deployment.
+
+Example:
+
+```yaml
+images:
+  - name: nginx
+    newName: nginx
+    newTag: "1.27"
+```
+
+---
+
+# Image Digest
+
+For stronger immutability, an image can be referenced by digest where appropriate.
+
+Conceptually:
+
+```text
+image@sha256:<digest>
+```
+
+This identifies specific image content.
+
+---
+
+# Image Replacement
+
+Base:
+
+```yaml
+image: example/api:1.0.0
+```
+
+Production overlay:
+
+```yaml
+images:
+  - name: example/api
+    newTag: "2.0.0"
+```
+
+---
+
+# Replicas
+
+Kustomize can customize replica counts.
+
+Example:
+
+```yaml
+replicas:
+  - name: api
+    count: 5
+```
+
+---
+
+# ConfigMap Generator
+
+Kustomize can generate ConfigMaps.
+
+Example:
+
+```yaml
+configMapGenerator:
+  - name: api-config
+    literals:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=info
+```
+
+---
+
+# Generated ConfigMap
+
+Kustomize generates a ConfigMap based on the specified configuration.
+
+Generated names can include a content hash depending on generator behavior.
+
+This helps trigger workload updates when generated configuration changes.
+
+---
+
+# ConfigMap From File
+
+Example:
+
+```yaml
+configMapGenerator:
+  - name: api-config
+    files:
+      - application.properties
+```
+
+---
+
+# ConfigMap From Environment File
+
+Example:
+
+```yaml
+configMapGenerator:
+  - name: api-config
+    envs:
+      - .env
+```
+
+Be careful not to accidentally include sensitive values.
+
+---
+
+# Secret Generator
+
+Kustomize can generate Secrets.
+
+Example:
+
+```yaml
+secretGenerator:
+  - name: api-secret
+    literals:
+      - username=demo
+      - password=change-me
+```
+
+Do not use plaintext credentials in production Git repositories.
+
+---
+
+# Secret Generator From File
+
+Example:
+
+```yaml
+secretGenerator:
+  - name: api-secret
+    files:
+      - credentials.txt
+```
+
+The file itself must still be protected.
+
+---
+
+# Secret Security
+
+Kustomize's Secret generator does not magically make secrets secure.
+
+Generated Secrets can still expose sensitive data in:
+
+```text
+Git
+Build Systems
+Logs
+Rendered Manifests
+```
+
+Use an appropriate external secret-management solution for production.
+
+---
+
+# Generators
+
+Common generators include:
+
+```text
+ConfigMap Generator
+Secret Generator
+```
+
+Generators are useful when configuration should be derived from files or literals.
+
+---
+
+# Patches
+
+Patches modify existing resources.
+
+Example use cases:
+
+```text
+Change Replicas
+Change Image
+Change Environment Variables
+Add Resources
+Modify Service
+Modify SecurityContext
+```
+
+---
+
+# Strategic Merge Patches
+
+Kubernetes-aware patching historically used strategic merge behavior.
+
+Example:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 5
+```
+
+This can modify only the desired field.
+
+Modern Kustomize configurations may favor explicit patch mechanisms depending on the resource and use case.
+
+---
+
+# JSON Patches
+
+Kustomize can use JSON 6902 patches.
+
+Example:
+
+```yaml
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: api
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 5
+```
+
+---
+
+# JSON Patch Operations
+
+Common operations include:
+
+```text
+add
+remove
+replace
+move
+copy
+test
+```
+
+---
+
+# Patch Targeting
+
+A patch can target a resource using fields such as:
+
+```text
+Group
+Version
+Kind
+Name
+Namespace
+Label Selector
+Annotation Selector
+```
+
+---
+
+# Modern `patches` Field
+
+A common approach is:
+
+```yaml
+patches:
+  - path: production-patch.yaml
+```
+
+or inline patch configuration.
+
+---
+
+# Patch File Example
+
+`production-patch.yaml`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 5
+```
+
+Then:
+
+```yaml
+patches:
+  - path: production-patch.yaml
+```
+
+---
+
+# Patch Strategy
+
+Use the simplest patch mechanism that clearly expresses the desired change.
+
+Prefer:
+
+```text
+Small
+Explicit
+Easy to Review
+```
+
+patches.
+
+---
+
+# Patch Ordering
+
+When multiple transformations or patches modify the same resources, ordering can affect the final output.
+
+Therefore:
+
+```text
+Keep patches focused
+Avoid conflicting patches
+Test rendered output
+```
+
+---
+
+# Replacements
+
+Kustomize supports replacements for copying values between fields.
+
+Conceptually:
+
+```text
+Source Field
+     ↓
+Replacement
+     ↓
+Target Field
+```
+
+---
+
+# Replacement Example
+
+A value from one resource can be propagated into another resource.
+
+This can reduce hardcoded duplication.
+
+---
+
+# Transformers
+
+Transformers modify generated resources.
+
+Examples include transformations for:
+
+```text
+Names
+Labels
+Annotations
+Images
+Namespaces
+Replicas
+```
+
+---
+
+# Built-In Transformers
+
+Kustomize provides several built-in transformation capabilities.
+
+Examples include:
+
+```text
+namePrefix
+nameSuffix
+namespace
+labels
+annotations
+images
+replicas
+```
+
+---
+
+# Components
+
+Components allow reusable optional configuration.
+
+Example:
+
+```text
+components/
+└── monitoring/
+```
+
+An environment can include:
+
+```text
+Monitoring Component
+```
+
+without copying all of its configuration.
+
+---
+
+# Example Component Structure
+
+```text
+components/
+└── monitoring/
+    ├── service-monitor.yaml
+    └── kustomization.yaml
+```
+
+---
+
+# Environment Management
+
+A common Kustomize layout:
+
+```text
+k8s/
+├── base/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── kustomization.yaml
+│
+└── overlays/
+    ├── dev/
+    │   └── kustomization.yaml
+    ├── staging/
+    │   └── kustomization.yaml
+    └── production/
+        └── kustomization.yaml
+```
+
+---
+
+# Development Overlay
+
+Example:
+
+```yaml
+resources:
+  - ../../base
+
+namespace: dev
+
+replicas:
+  - name: api
+    count: 1
+
+images:
+  - name: example/api
+    newTag: "dev"
+```
+
+---
+
+# Staging Overlay
+
+Example:
+
+```yaml
+resources:
+  - ../../base
+
+namespace: staging
+
+replicas:
+  - name: api
+    count: 2
+
+images:
+  - name: example/api
+    newTag: "staging"
+```
+
+---
+
+# Production Overlay
+
+Example:
+
+```yaml
+resources:
+  - ../../base
+
+namespace: production
+
+replicas:
+  - name: api
+    count: 5
+
+images:
+  - name: example/api
+    newTag: "2.0.0"
+```
+
+For production, immutable digests can be preferable to mutable tags.
+
+---
+
+# Base Design
+
+The base should contain configuration shared across environments.
+
+Example:
+
+```text
+Deployment
+Service
+ServiceAccount
+NetworkPolicy
+```
+
+Avoid putting environment-specific values into the base.
+
+---
+
+# Overlay Design
+
+Overlays should contain only differences.
+
+Example:
+
+```text
+Production:
+5 replicas
+
+Development:
+1 replica
+```
+
+---
+
+# Good Overlay
+
+```text
+base
+  +
+replicas
+  +
+image
+  +
+environment
+```
+
+---
+
+# Bad Overlay
+
+Copying the entire base into every environment creates:
+
+```text
+Duplication
+Drift
+Maintenance Problems
+```
+
+---
+
+# Kustomize and Multiple Clusters
+
+A structure may look like:
+
+```text
+clusters/
+├── dev-cluster/
+├── staging-cluster/
+└── production-cluster/
+```
+
+Each cluster can use:
+
+```text
+Base
++
+Cluster Overlay
+```
+
+---
+
+# Multi-Cluster Architecture
+
+```text
+                  Base
+                   │
+        ┌──────────┼──────────┐
+        ▼          ▼          ▼
+     Cluster A  Cluster B  Cluster C
+        │          │          │
+        ▼          ▼          ▼
+     Overlay    Overlay    Overlay
+```
+
+---
+
+# Kustomize and `kubectl`
+
+Kustomize is integrated with `kubectl`.
+
+Build:
+
+```bash
+kubectl kustomize overlays/production
+```
+
+Apply:
+
+```bash
+kubectl apply -k overlays/production
+```
+
+Delete:
+
+```bash
+kubectl delete -k overlays/production
+```
+
+---
+
+# Kustomize Build
+
+Using the standalone tool:
+
+```bash
+kustomize build overlays/production
+```
+
+---
+
+# Output Redirection
+
+You can render manifests to a file:
+
+```bash
+kustomize build overlays/production > production.yaml
+```
+
+Inspect the resulting YAML before deployment.
+
+---
+
+# Kustomize Edit
+
+The `kustomize edit` command can modify Kustomization configuration.
+
+Example:
+
+```bash
+kustomize edit set image example/api:2.0.0
+```
+
+Use carefully in automation because it changes repository files.
+
+---
+
+# Validate Generated Configuration
+
+A useful workflow:
+
+```text
+Kustomization
+     ↓
+Build
+     ↓
+Rendered YAML
+     ↓
+Lint / Policy
+     ↓
+Server Validation
+     ↓
+Deploy
+```
+
+---
+
+# Server-Side Dry Run
+
+Rendered manifests can be validated using:
+
+```bash
+kubectl apply \
+  --dry-run=server \
+  -f production.yaml
+```
+
+---
+
+# Kustomize With CI/CD
+
+A pipeline can run:
+
+```text
+Pull Request
+     ↓
+kustomize build
+     ↓
+YAML Validation
+     ↓
+Security Scan
+     ↓
+Policy Check
+     ↓
+Review
+```
+
+---
+
+# Kustomize With GitOps
+
+Kustomize works particularly well with GitOps.
+
+Architecture:
+
+```text
+Git
+ ↓
+Kustomize Overlay
+ ↓
+Argo CD / Flux
+ ↓
+Kubernetes
+```
+
+---
+
+# Argo CD and Kustomize
+
+Argo CD can use a Kustomize directory as an application source.
+
+Conceptually:
+
+```text
+Git Repository
+      ↓
+overlays/production
+      ↓
+Argo CD
+      ↓
+Kustomize
+      ↓
+Kubernetes
+```
+
+---
+
+# Flux and Kustomize
+
+Flux commonly uses a Kustomization resource to reconcile manifests from Git.
+
+Conceptually:
+
+```text
+Git
+ ↓
+Flux
+ ↓
+Kustomize Build
+ ↓
+Kubernetes
+```
+
+---
+
+# Kustomize and Helm
+
+Kustomize can work alongside Helm.
+
+One common architecture is:
+
+```text
+Helm
+ ↓
+Generate Base Manifests
+ ↓
+Kustomize
+ ↓
+Environment Customization
+```
+
+This should be used only when the additional complexity is justified.
+
+---
+
+# Helm vs Kustomize
+
+| Helm | Kustomize |
+|---|---|
+| Package manager | Configuration customization |
+| Uses templates | Uses existing YAML |
+| Strong packaging | Strong overlays |
+| Values system | Patches/transformations |
+| Chart dependencies | Resource composition |
+| Release management | No equivalent release abstraction |
+| Rollback support | Usually delegated to Git/Kubernetes/GitOps |
+| Templating | Declarative customization |
+
+---
+
+# When to Use Helm
+
+Helm is useful when:
+
+```text
+Packaging Applications
+Distributing Applications
+Reusable Charts
+Chart Dependencies
+Versioned Releases
+```
+
+are important.
+
+---
+
+# When to Use Kustomize
+
+Kustomize is useful when:
+
+```text
+You Already Have Kubernetes YAML
+Environment Differences Are Small
+You Want Minimal Templating
+You Prefer Kubernetes-Native Configuration
+```
+
+---
+
+# Kustomize vs Raw YAML
+
+Raw YAML:
+
+```text
+Dev Manifest
+Staging Manifest
+Production Manifest
+```
+
+may create duplication.
+
+Kustomize:
+
+```text
+Base
+ +
+Overlays
+```
+
+reduces duplication.
+
+---
+
+# Kustomize vs Templates
+
+Template systems typically introduce:
+
+```text
+Variables
+Conditionals
+Loops
+Functions
+```
+
+Kustomize generally keeps manifests closer to standard Kubernetes YAML.
+
+---
+
+# Configuration Management
+
+Kustomize is useful for:
+
+```text
+Environment Configuration
+Image Versions
+Replica Counts
+Labels
+Namespaces
+Resource Patches
+```
+
+---
+
+# Immutable Images
+
+Base:
+
+```yaml
+image: example/api
+```
+
+Production configuration should ideally identify an exact artifact:
+
+```text
+example/api@sha256:<digest>
+```
+
+where supported by the deployment workflow.
+
+---
+
+# Image Automation
+
+GitOps systems can update image references automatically.
+
+Example:
+
+```text
+New Image
+    ↓
+Security Scan
+    ↓
+Update Git
+    ↓
+Kustomize
+    ↓
+GitOps
+    ↓
+Kubernetes
+```
+
+---
+
+# Kustomize Security
+
+Kustomize itself does not secure the resulting application.
+
+You must review generated manifests for:
+
+```text
+RBAC
+SecurityContext
+Secrets
+NetworkPolicy
+Images
+Capabilities
+Host Access
+Resource Limits
+```
+
+---
+
+# Generated Secrets
+
+Remember:
+
+```text
+Secret Generator
+≠
+Secret Management System
+```
+
+Sensitive production secrets should generally be retrieved from a proper secret-management system.
+
+---
+
+# Kustomize and RBAC
+
+Review overlays carefully.
+
+A production overlay should not accidentally introduce:
+
+```text
+cluster-admin
+```
+
+or broad ClusterRoleBindings.
+
+---
+
+# Kustomize and NetworkPolicy
+
+Network policies can be part of the base or environment overlays.
+
+Example:
+
+```text
+base/
+└── networkpolicy.yaml
+```
+
+or:
+
+```text
+overlays/production/
+└── networkpolicy-patch.yaml
+```
+
+---
+
+# Kustomize and Resource Limits
+
+Base:
+
+```yaml
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+```
+
+Production overlay can increase resource requirements.
+
+---
+
+# Kustomize and HPA
+
+The base may include an HPA.
+
+Production overlay can customize:
+
+```text
+Min Replicas
+Max Replicas
+CPU Target
+Memory Target
+```
+
+---
+
+# Kustomize and PDB
+
+Production can add or customize:
+
+```text
+PodDisruptionBudget
+```
+
+to protect availability during voluntary disruptions.
+
+---
+
+# Kustomize and Service
+
+An overlay can modify:
+
+```text
+Service Type
+Ports
+Annotations
+Load Balancer Configuration
+```
+
+---
+
+# Kustomize and Ingress
+
+Production may enable an Ingress while development uses only ClusterIP.
+
+---
+
+# Kustomize and Gateway API
+
+An overlay can customize:
+
+```text
+Gateway
+HTTPRoute
+TLS
+Hostnames
+```
+
+without duplicating the entire application configuration.
+
+---
+
+# Kustomize and ConfigMaps
+
+Use generators when configuration changes should result in a new generated ConfigMap name.
+
+This can help trigger workload updates when the ConfigMap is referenced appropriately.
+
+---
+
+# Kustomize and Secret Generators
+
+Secret generators can similarly create generated Secret names.
+
+However, this does not replace secure external secret management.
+
+---
+
+# Name Hashing
+
+Generated ConfigMaps and Secrets may receive a hash suffix based on their generated content.
+
+Conceptually:
+
+```text
+api-config
+```
+
+becomes:
+
+```text
+api-config-<hash>
+```
+
+This allows changes to generated configuration to produce a new resource identity.
+
+---
+
+# Generator Options
+
+Kustomize provides generator configuration options to control behaviors such as name suffix hashing.
+
+Use such settings carefully because disabling hashes can affect rollout behavior.
+
+---
+
+# Replacements vs Variables
+
+Modern Kustomize workflows generally favor:
+
+```text
+Replacements
+```
+
+over older variable substitution patterns.
+
+Replacements explicitly define:
+
+```text
+Source
+ ↓
+Target
+```
+
+---
+
+# Variables
+
+Kustomize has historically supported variable substitution, but it has limitations.
+
+For new designs, prefer more explicit mechanisms such as:
+
+```text
+Replacements
+Patches
+Generators
+```
+
+where appropriate.
+
+---
+
+# Replacements Example
+
+Conceptually:
+
+```text
+Service.metadata.name
+        ↓
+Replacement
+        ↓
+Environment variable
+```
+
+This avoids duplicating the same value manually.
+
+---
+
+# Components
+
+Components can represent optional features.
+
+Example:
+
+```text
+components/
+├── monitoring/
+├── tracing/
+└── security/
+```
+
+An environment can include the required components.
+
+---
+
+# Production Architecture
+
+```text
+                         Git
+                          │
+                          ▼
+                        Base
+                          │
+             ┌────────────┼────────────┐
+             ▼            ▼            ▼
+            Dev        Staging     Production
+             │            │            │
+          Overlay       Overlay       Overlay
+             │            │            │
+             └────────────┼────────────┘
+                          ▼
+                    Kustomize Build
+                          │
+                          ▼
+                   Policy Validation
+                          │
+                          ▼
+                      GitOps
+                          │
+                          ▼
+                    Kubernetes
+                          │
+              ┌───────────┼───────────┐
+              ▼           ▼           ▼
+           Metrics       Logs       Alerts
+```
+
+---
+
+# Production Directory Structure
+
+A larger project may use:
+
+```text
+k8s/
+├── base/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── serviceaccount.yaml
+│   ├── networkpolicy.yaml
+│   ├── pdb.yaml
+│   └── kustomization.yaml
+│
+├── components/
+│   ├── monitoring/
+│   ├── tracing/
+│   └── security/
+│
+└── overlays/
+    ├── dev/
+    │   └── kustomization.yaml
+    ├── staging/
+    │   └── kustomization.yaml
+    └── production/
+        ├── kustomization.yaml
+        └── patches/
+```
+
+---
+
+# Base Best Practices
+
+The base should contain:
+
+```text
+Common Resources
+Common Security Defaults
+Common Labels
+Common Application Configuration
+```
+
+---
+
+# Overlay Best Practices
+
+Overlays should contain:
+
+```text
+Environment Differences
+Cluster Differences
+Image Versions
+Replica Counts
+Resource Sizes
+Environment-Specific Integrations
+```
+
+---
+
+# Avoid Deep Overlay Chains
+
+Too many nested bases and overlays can make configuration difficult to understand.
+
+Prefer:
+
+```text
+Simple Base
++
+Small Overlay
+```
+
+---
+
+# Avoid Patch Conflicts
+
+If multiple patches modify:
+
+```text
+spec.replicas
+```
+
+the final result may become difficult to reason about.
+
+Keep ownership clear.
+
+---
+
+# Review Generated YAML
+
+Always inspect:
+
+```bash
+kustomize build overlays/production
+```
+
+before deploying significant changes.
+
+---
+
+# GitOps Workflow
+
+A production workflow:
+
+```text
+Developer
+    ↓
+Git Pull Request
+    ↓
+Kustomize Build
+    ↓
+Security Scan
+    ↓
+Policy Check
+    ↓
+Review
+    ↓
+Merge
+    ↓
+GitOps Controller
+    ↓
+Kubernetes
+```
+
+---
+
+# Drift Detection
+
+GitOps tools can detect when:
+
+```text
+Git Desired State
+        ≠
+Cluster Actual State
+```
+
+Kustomize itself is not the drift-management system.
+
+The GitOps controller provides reconciliation.
+
+---
+
+# Rollback With Kustomize
+
+Kustomize does not provide a Helm-style release rollback mechanism.
+
+A GitOps rollback generally means:
+
+```text
+Revert Git Commit
+      ↓
+GitOps Reconciliation
+      ↓
+Kubernetes
+```
+
+Kubernetes rollout mechanisms can also be used, but Git should be corrected in GitOps workflows.
+
+---
+
+# Kustomize Troubleshooting
+
+Use this process:
+
+```text
+1. Inspect kustomization.yaml
+2. Run kustomize build
+3. Inspect generated YAML
+4. Validate against Kubernetes
+5. Check GitOps status
+6. Check Kubernetes events
+7. Check Pods
+8. Check Logs
+```
+
+---
+
+# Common Kustomize Errors
+
+Possible issues:
+
+```text
+Resource Not Found
+Incorrect Patch Target
+Duplicate Resource
+Invalid YAML
+Wrong Path
+Missing Base
+Invalid Generator
+Incorrect Image Name
+```
+
+---
+
+# Incorrect Patch Target
+
+A patch may fail if:
+
+```text
+Group
+Version
+Kind
+Name
+Namespace
+```
+
+does not match the target resource.
+
+---
+
+# Wrong Relative Path
+
+Example:
+
+```yaml
+resources:
+  - ../../base
+```
+
+must correctly point to the intended base.
+
+---
+
+# Duplicate Resources
+
+Including the same resource multiple times can produce conflicts.
+
+Keep resource ownership clear.
+
+---
+
+# Kustomize and CI Validation
+
+A robust CI pipeline:
+
+```text
+Pull Request
+ ↓
+kustomize build
+ ↓
+YAML Validation
+ ↓
+Schema Validation
+ ↓
+Security Scan
+ ↓
+Policy Check
+ ↓
+Review
+```
+
+---
+
+# Kustomize and Admission Control
+
+Even if CI validates manifests, admission policies provide another enforcement layer:
+
+```text
+Git
+ ↓
+CI
+ ↓
+GitOps
+ ↓
+Admission
+ ↓
+Kubernetes
+```
+
+---
+
+# Kustomize Best Practices
+
+### 1. Keep Bases Generic
+
+Do not put production-specific configuration into the base.
+
+---
+
+### 2. Keep Overlays Small
+
+Only customize what is different.
+
+---
+
+### 3. Review Rendered Manifests
+
+Use:
+
+```bash
+kustomize build
+```
+
+---
+
+### 4. Use Explicit Patches
+
+Avoid complicated patch chains.
+
+---
+
+### 5. Prefer Replacements Over Legacy Variable Patterns
+
+Use explicit source-to-target relationships.
+
+---
+
+### 6. Secure Secrets
+
+Do not assume Secret generators encrypt Git content.
+
+---
+
+### 7. Pin Image Versions
+
+Prefer immutable references where possible.
+
+---
+
+### 8. Validate in CI
+
+Run:
+
+```text
+Build
++
+Schema Validation
++
+Security
++
+Policy
+```
+
+---
+
+### 9. Use GitOps
+
+Kustomize works well with:
+
+```text
+Argo CD
+Flux
+```
+
+---
+
+### 10. Keep Repository Structure Clear
+
+A new engineer should quickly understand:
+
+```text
+Base
+Overlay
+Component
+Environment
+Cluster
+```
+
+---
+
+# Common Mistakes
+
+## 1. Duplicating Entire Manifests
+
+This defeats the purpose of overlays.
+
+---
+
+## 2. Making the Base Environment-Specific
+
+Keep the base reusable.
+
+---
+
+## 3. Too Many Overlays
+
+Over-engineering makes configuration difficult to understand.
+
+---
+
+## 4. Complex Patch Chains
+
+Keep patches focused.
+
+---
+
+## 5. Plaintext Secrets
+
+Secret generators do not automatically solve secret-management requirements.
+
+---
+
+## 6. Mutable Image Tags
+
+Tags such as:
+
+```text
+latest
+```
+
+can lead to unpredictable deployments.
+
+---
+
+## 7. No Render Validation
+
+Always inspect generated manifests.
+
+---
+
+## 8. Duplicate Resources
+
+Avoid including the same resource through multiple paths.
+
+---
+
+## 9. Incorrect Patch Targets
+
+Ensure the patch matches the actual resource.
+
+---
+
+## 10. Mixing Too Many Configuration Systems
+
+Using:
+
+```text
+Helm
++
+Kustomize
++
+Multiple Template Engines
++
+Custom Scripts
+```
+
+can create unnecessary complexity.
+
+---
+
+## 11. Treating Kustomize as GitOps
+
+Kustomize generates configuration.
+
+GitOps provides:
+
+```text
+Reconciliation
+Drift Detection
+Deployment Automation
+```
+
+---
+
+## 12. Assuming Kustomize Provides Rollback
+
+Rollback generally comes from:
+
+```text
+Git
++
+GitOps
++
+Kubernetes
+```
+
+rather than Kustomize itself.
+
+---
+
+# Hands-on Lab 1 – Basic Kustomize
+
+Create:
+
+```text
+base/
+├── deployment.yaml
+├── service.yaml
+└── kustomization.yaml
+```
+
+Build:
+
+```bash
+kustomize build base/
+```
+
+---
+
+# Hands-on Lab 2 – Base and Dev Overlay
+
+Create:
+
+```text
+overlays/dev/
+```
+
+Reference:
+
+```yaml
+resources:
+  - ../../base
+```
+
+Change:
+
+```text
+replicas
+image
+namespace
+```
+
+---
+
+# Hands-on Lab 3 – Production Overlay
+
+Create:
+
+```text
+overlays/production/
+```
+
+Set:
+
+```text
+5 replicas
+production namespace
+production image
+```
+
+Render:
+
+```bash
+kustomize build overlays/production
+```
+
+---
+
+# Hands-on Lab 4 – Apply With kubectl
+
+Apply:
+
+```bash
+kubectl apply -k overlays/dev
+```
+
+Verify:
+
+```bash
+kubectl get all -n dev
+```
+
+---
+
+# Hands-on Lab 5 – Image Customization
+
+Use:
+
+```yaml
+images:
+  - name: nginx
+    newTag: "1.27"
+```
+
+Render and verify the generated image.
+
+---
+
+# Hands-on Lab 6 – Replica Customization
+
+Set:
+
+```yaml
+replicas:
+  - name: api
+    count: 5
+```
+
+Verify the generated Deployment.
+
+---
+
+# Hands-on Lab 7 – ConfigMap Generator
+
+Create:
+
+```yaml
+configMapGenerator:
+  - name: api-config
+    literals:
+      - ENVIRONMENT=production
+```
+
+Build and inspect the generated ConfigMap.
+
+---
+
+# Hands-on Lab 8 – Patch
+
+Create a production patch that changes:
+
+```text
+replicas
+resources
+environment variables
+```
+
+Build the overlay.
+
+---
+
+# Hands-on Lab 9 – JSON6902 Patch
+
+Create a JSON patch:
+
+```yaml
+- op: replace
+  path: /spec/replicas
+  value: 5
+```
+
+Apply it to the Deployment.
+
+---
+
+# Hands-on Lab 10 – Replacements
+
+Create two resources.
+
+Copy a value from one resource into another using a Kustomize replacement.
+
+Verify the generated output.
+
+---
+
+# Hands-on Lab 11 – Components
+
+Create:
+
+```text
+components/monitoring/
+```
+
+Add optional monitoring configuration.
+
+Enable it only for staging and production.
+
+---
+
+# Hands-on Lab 12 – Multi-Cluster Configuration
+
+Create:
+
+```text
+clusters/
+├── cluster-a/
+└── cluster-b/
+```
+
+Customize:
+
+```text
+namespace
+replicas
+image
+```
+
+for each cluster.
+
+---
+
+# Hands-on Lab 13 – Kustomize With GitOps
+
+Create:
+
+```text
+base/
+overlays/dev/
+overlays/staging/
+overlays/production/
+```
+
+Deploy each overlay using Argo CD or Flux.
+
+---
+
+# Hands-on Lab 14 – CI Validation
+
+Build a pipeline:
+
+```text
+Pull Request
+ ↓
+kustomize build
+ ↓
+YAML Validation
+ ↓
+Security Scan
+ ↓
+Policy Validation
+```
+
+Fail the pipeline on invalid configuration.
+
+---
+
+# Hands-on Lab 15 – Security Review
+
+Render the production overlay.
+
+Review:
+
+```text
+RBAC
+SecurityContext
+Images
+Secrets
+Capabilities
+NetworkPolicy
+Host Access
+```
+
+Document the findings.
+
+---
+
+# Hands-on Lab 16 – Immutable Image Deployment
+
+Use an image digest in the production overlay.
+
+Verify that the exact image is deployed.
+
+---
+
+# Hands-on Lab 17 – Environment Promotion
+
+Promote:
+
+```text
+v1
+```
+
+through:
+
+```text
+Dev
+ ↓
+Staging
+ ↓
+Production
+```
+
+using Git changes.
+
+---
+
+# Hands-on Lab 18 – Drift Detection
+
+Deploy through GitOps.
+
+Manually modify a managed resource.
+
+Observe:
+
+```text
+Drift
+```
+
+Then restore the Git state.
+
+---
+
+# Hands-on Lab 19 – Rollback
+
+Revert a Git commit that introduced an invalid configuration.
+
+Observe GitOps reconciliation.
+
+---
+
+# Hands-on Lab 20 – Complete Production Kustomize Project
+
+Build:
+
+```text
+base/
+├── deployment
+├── service
+├── serviceaccount
+├── networkpolicy
+├── pdb
+└── kustomization
+
+components/
+├── monitoring
+└── security
+
+overlays/
+├── dev
+├── staging
+└── production
+```
+
+Integrate with:
+
+```text
+CI/CD
++
+GitOps
++
+Policy as Code
++
+Image Security
++
+Secret Management
++
+Monitoring
+```
+
+---
+
+# Quick Revision
+
+## Kustomize
+
+```text
+Kubernetes Configuration Customization Tool
+```
+
+---
+
+## Base
+
+```text
+Shared Kubernetes Configuration
+```
+
+---
+
+## Overlay
+
+```text
+Environment-Specific Customization
+```
+
+---
+
+## `kustomization.yaml`
+
+```text
+Defines Kustomize Configuration
+```
+
+---
+
+## `kustomize build`
+
+```text
+Render Final Kubernetes Manifests
+```
+
+---
+
+## `kubectl apply -k`
+
+```text
+Apply a Kustomization
+```
+
+---
+
+## Patch
+
+```text
+Modify an Existing Resource
+```
+
+---
+
+## Generator
+
+```text
+Generate ConfigMaps or Secrets
+```
+
+---
+
+## Component
+
+```text
+Reusable Optional Configuration
+```
+
+---
+
+## Replacement
+
+```text
+Copy a Value From One Resource Field to Another
+```
+
+---
+
+## Kustomize + GitOps
+
+```text
+Git
+ ↓
+Kustomize
+ ↓
+GitOps Controller
+ ↓
+Kubernetes
+```
+
+---
+
+# Essential Commands
+
+Build:
+
+```bash
+kustomize build base/
+```
+
+Build production:
+
+```bash
+kustomize build overlays/production/
+```
+
+Using kubectl:
+
+```bash
+kubectl kustomize overlays/production/
+```
+
+Apply:
+
+```bash
+kubectl apply -k overlays/production/
+```
+
+Delete:
+
+```bash
+kubectl delete -k overlays/production/
+```
+
+Server-side dry run:
+
+```bash
+kubectl kustomize overlays/production/ \
+  | kubectl apply --dry-run=server -f -
+```
+
+Set image:
+
+```bash
+kustomize edit set image example/api:2.0.0
+```
+
+Inspect Kubernetes resources:
+
+```bash
+kubectl get all -n production
+```
+
+Check events:
+
+```bash
+kubectl get events \
+  -n production \
+  --sort-by=.lastTimestamp
+```
+
+Check Pods:
+
+```bash
+kubectl get pods -n production
+```
+
+Check Pod details:
+
+```bash
+kubectl describe pod <pod> -n production
+```
+
+Check logs:
+
+```bash
+kubectl logs <pod> -n production
+```
+
+---
+
+# Interview Questions
+
+## Basic
+
+- What is Kustomize?
+- Why is Kustomize used?
+- What is a base?
+- What is an overlay?
+- What is `kustomization.yaml`?
+- What does `kustomize build` do?
+- What does `kubectl apply -k` do?
+- What are Kustomize generators?
+- What are patches?
+- What is a ConfigMap generator?
+- What is a Secret generator?
+- What is a Kustomize component?
+- What are replacements?
+- What is the difference between Kustomize and Helm?
+
+---
+
+## Intermediate
+
+- How do you manage dev, staging, and production with Kustomize?
+- How do you customize container images?
+- How do you change replica counts?
+- How do you generate ConfigMaps?
+- How do you manage Secrets?
+- How do you patch Kubernetes resources?
+- What is JSON6902?
+- What is strategic merge patching?
+- How do you validate Kustomize output?
+- How do you use Kustomize with GitOps?
+- How does Argo CD use Kustomize?
+- How does Flux use Kustomize?
+- How do you manage multiple clusters with Kustomize?
+
+---
+
+## Advanced
+
+- Design a production Kustomize repository.
+- How would you structure bases and overlays for 50 environments?
+- How would you prevent configuration duplication?
+- How would you secure Kustomize-generated Secrets?
+- How would you integrate Kustomize with CI/CD?
+- How would you implement policy validation for Kustomize output?
+- How would you use Kustomize with GitOps?
+- When would you choose Helm instead of Kustomize?
+- When would you combine Helm and Kustomize?
+- How would you design multi-cluster Kustomize architecture?
+- How would you implement image promotion using Kustomize?
+- How would you troubleshoot a failed Kustomize deployment?
+
+---
+
+# Interview Scenario 1
+
+### Question
+
+> What is the main difference between Helm and Kustomize?
+
+### Answer
+
+Helm is primarily a:
+
+```text
+Package Manager
++
+Template Engine
++
+Release Manager
+```
+
+Kustomize is primarily a:
+
+```text
+Kubernetes Configuration Customization Tool
+```
+
+Helm uses:
+
+```text
+Templates
++
+Values
+```
+
+while Kustomize commonly uses:
+
+```text
+Base
++
+Overlay
++
+Patches
++
+Transformations
+```
+
+---
+
+# Interview Scenario 2
+
+### Question
+
+> Why use Kustomize overlays?
+
+### Answer
+
+Overlays allow multiple environments to reuse a common base.
+
+Example:
+
+```text
+Base
+ ├── Dev
+ ├── Staging
+ └── Production
+```
+
+Only environment-specific differences need to be maintained.
+
+---
+
+# Interview Scenario 3
+
+### Question
+
+> How do you change an image without modifying the Deployment?
+
+### Answer
+
+Use the `images` field:
+
+```yaml
+images:
+  - name: example/api
+    newTag: "2.0.0"
+```
+
+This allows the overlay to customize the image.
+
+For production, an immutable digest can provide stronger deployment determinism.
+
+---
+
+# Interview Scenario 4
+
+### Question
+
+> Does Kustomize provide rollback?
+
+### Answer
+
+Not in the same release-management sense as Helm.
+
+In a GitOps environment, rollback commonly means:
+
+```text
+Revert Git Commit
+ ↓
+GitOps Reconciliation
+ ↓
+Kubernetes
+```
+
+Kubernetes rollout mechanisms can also participate in recovery.
+
+---
+
+# Interview Scenario 5
+
+### Question
+
+> Are Kustomize-generated Secrets secure?
+
+### Answer
+
+Not automatically.
+
+A Secret generator creates Kubernetes Secret manifests, but sensitive source values still need secure storage.
+
+Production environments should generally use:
+
+```text
+External Secret Manager
++
+KMS
++
+Secret Operator
+```
+
+or another approved mechanism.
+
+---
+
+# Interview Scenario 6
+
+### Question
+
+> How would you structure Kustomize for dev, staging, and production?
+
+### Answer
+
+I would use:
+
+```text
+base/
+├── deployment.yaml
+├── service.yaml
+└── kustomization.yaml
+
+overlays/
+├── dev/
+│   └── kustomization.yaml
+├── staging/
+│   └── kustomization.yaml
+└── production/
+    └── kustomization.yaml
+```
+
+The base contains common configuration and overlays contain environment-specific differences.
+
+---
+
+# Interview Scenario 7
+
+### Question
+
+> How do you validate a Kustomize configuration before production?
+
+### Answer
+
+I would:
+
+```text
+1. Run kustomize build
+2. Inspect generated YAML
+3. Run schema validation
+4. Run security scanning
+5. Run policy checks
+6. Perform server-side dry run
+7. Review the Pull Request
+```
+
+---
+
+# Interview Scenario 8
+
+### Question
+
+> What happens if someone manually changes a Kustomize-managed resource?
+
+### Answer
+
+Kustomize itself does not continuously monitor the cluster.
+
+If the configuration is managed by GitOps:
+
+```text
+Git Desired State
+       ↓
+GitOps Controller
+       ↓
+Drift Detection
+       ↓
+Reconciliation
+```
+
+the controller can detect and correct the drift according to its configuration.
+
+---
+
+# Interview Scenario 9
+
+### Question
+
+> Why shouldn't you copy the entire base for every environment?
+
+### Answer
+
+It creates:
+
+```text
+Duplication
++
+Configuration Drift
++
+Maintenance Overhead
+```
+
+A better model is:
+
+```text
+One Base
++
+Small Environment Overlays
+```
+
+---
+
+# Interview Scenario 10
+
+### Question
+
+> Design a production Kustomize architecture.
+
+### Answer
+
+```text
+                         Git
+                          │
+                          ▼
+                         Base
+                          │
+            ┌─────────────┼─────────────┐
+            ▼             ▼             ▼
+           Dev         Staging      Production
+            │             │             │
+         Overlay        Overlay        Overlay
+            │             │             │
+            └─────────────┼─────────────┘
+                          ▼
+                   Kustomize Build
+                          │
+                          ▼
+                  Security Validation
+                          │
+                          ▼
+                   Policy Validation
+                          │
+                          ▼
+                    GitOps Controller
+                          │
+                          ▼
+                      Kubernetes
+                          │
+                 ┌────────┼────────┐
+                 ▼        ▼        ▼
+              Metrics    Logs    Alerts
+```
+
+Production overlays should include appropriate:
+
+```text
+Resource Requests
+Resource Limits
+SecurityContext
+NetworkPolicy
+PDB
+HPA
+Health Probes
+Immutable Image References
+```
+
+---
+
+# Production Kustomize Checklist
+
+```text
+☑ Base defined
+☑ Environment overlays defined
+☑ Overlay differences minimized
+☑ kustomization.yaml validated
+☑ Rendered manifests reviewed
+☑ Schema validation enabled
+☑ Security scanning enabled
+☑ Policy validation enabled
+☑ Image versions controlled
+☑ Immutable image references considered
+☑ Secrets protected
+☑ RBAC reviewed
+☑ SecurityContext configured
+☑ NetworkPolicy configured
+☑ Resource requests configured
+☑ Resource limits configured
+☑ Health probes configured
+☑ PDB configured where appropriate
+☑ HPA configured where appropriate
+☑ CI validation enabled
+☑ GitOps integration configured
+☑ Drift detection enabled
+☑ Rollback process documented
+☑ Multi-cluster strategy documented
+☑ Components documented
+☑ Patches kept small
+☑ Repository structure documented
+☑ Production changes reviewed
+```
+
+---
+
+# Chapter Summary
+
+Kustomize provides a Kubernetes-native way to customize YAML without requiring a separate template language.
+
+The core model is:
+
+```text
+Base
+ +
+Overlay
+ ↓
+Customized Kubernetes Manifests
+ ↓
+Kubernetes
+```
+
+The most important concepts are:
+
+```text
+Base
+Overlay
+Patches
+Generators
+Transformers
+Components
+Replacements
+Images
+```
+
+Kustomize is especially useful for:
+
+```text
+Environment Management
+Multi-Cluster Configuration
+GitOps
+Declarative Configuration
+Reducing YAML Duplication
+```
+
+It works naturally with:
+
+```text
+kubectl
+Argo CD
+Flux
+CI/CD
+Policy Engines
+```
+
+Kustomize does not replace:
+
+```text
+GitOps
+Secret Management
+Security
+Monitoring
+Rollback Strategy
+```
+
+Instead, it provides the configuration layer that other Kubernetes operational systems can consume.
+
+The most important principle is:
+
+> **Keep a clean, reusable base, express environment-specific differences through small overlays and explicit patches, validate the fully rendered manifests before deployment, and use GitOps to continuously reconcile the desired Kustomize configuration with the Kubernetes cluster.**
+
+---
+
+## Next Chapter
+
+# Chapter 82 – Operators
+
+Topics will include:
+
+- Kubernetes Operators
+- What Is an Operator?
+- Why Operators?
+- Operator Pattern
+- Kubernetes API Extensions
+- Controllers
+- Reconciliation
+- Desired State
+- Actual State
+- Custom Resources
+- Custom Resource Definitions
+- CRDs
+- Custom Controllers
+- Operator Lifecycle
+- Operator Architecture
+- Operator SDK
+- Kubebuilder
+- Controller Runtime
+- Watchers
+- Events
+- Reconciliation Loops
+- Finalizers
+- Owner References
+- Status Conditions
+- Spec vs Status
+- API Design
+- Versioning
+- Conversion
+- Webhooks
+- Admission Webhooks
+- Mutating Webhooks
+- Validating Webhooks
+- Leader Election
+- RBAC
+- Operator Security
+- Operator Deployment
+- Operator Lifecycle Manager
+- OLM
+- OperatorHub
+- Helm-Based Operators
+- Ansible-Based Operators
+- Go-Based Operators
+- Stateful Application Operators
+- Database Operators
+- Backup Operators
+- Monitoring Operators
+- Storage Operators
+- Multi-Cluster Operators
+- Operator Dependencies
+- Operator Upgrades
+- Operator Rollbacks
+- Operator Testing
+- Unit Testing
+- Integration Testing
+- End-to-End Testing
+- Operator Observability
+- Logging
+- Metrics
+- Events
+- Failure Handling
+- Reconciliation Failures
+- Idempotency
+- Production Best Practices
+- Common Mistakes
+- Troubleshooting
+- Hands-on Labs
+- Quick Revision
+- Interview Questions
+- References
+
+---
+```
