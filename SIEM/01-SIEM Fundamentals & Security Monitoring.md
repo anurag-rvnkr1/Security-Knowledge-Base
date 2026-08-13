@@ -1,0 +1,2935 @@
+# Chapter 01 – SIEM Fundamentals & Security Monitoring
+
+> **SIEM (Security Information and Event Management)** is a centralized security monitoring capability that collects, processes, analyzes, correlates, and presents security-relevant telemetry to help security teams detect, investigate, and respond to threats.
+
+---
+
+# 1. What is SIEM?
+
+**SIEM** stands for:
+
+```text
+Security
+Information and
+Event
+Management
+```
+
+A SIEM collects security telemetry from multiple systems and provides a centralized platform for:
+
+```text
+Log Collection
+      ↓
+Log Processing
+      ↓
+Normalization
+      ↓
+Storage
+      ↓
+Search
+      ↓
+Correlation
+      ↓
+Detection
+      ↓
+Alerting
+      ↓
+Investigation
+      ↓
+Incident Response
+```
+
+The fundamental idea is:
+
+> **Bring security-relevant data together and turn it into actionable security information.**
+
+---
+
+# 2. Why Do Organizations Need SIEM?
+
+Modern organizations have hundreds or thousands of systems:
+
+```text
+Users
+Servers
+Laptops
+Cloud Services
+Applications
+Databases
+Firewalls
+Routers
+VPNs
+Identity Providers
+Email Systems
+Security Appliances
+Containers
+Kubernetes
+```
+
+Each system generates its own logs.
+
+Without centralized monitoring:
+
+```text
+Windows Logs     → Windows Server
+Linux Logs       → Linux Server
+Firewall Logs    → Firewall
+DNS Logs         → DNS Server
+Cloud Logs       → Cloud Platform
+EDR Logs         → EDR Platform
+```
+
+An analyst would need to investigate each system independently.
+
+A SIEM centralizes relevant telemetry:
+
+```text
+Windows ────────┐
+Linux ──────────┤
+Firewall ───────┤
+DNS ────────────┤
+EDR ────────────┤
+Cloud ──────────┤
+Identity ───────┤
+Applications ───┤
+                ▼
+               SIEM
+                │
+                ▼
+       Centralized Analysis
+```
+
+---
+
+# 3. The Core Problem SIEM Solves
+
+The main problem is not simply:
+
+> "There are too many logs."
+
+The deeper problem is:
+
+> **Security-relevant signals are distributed across many systems and must be correlated to understand an attack.**
+
+For example:
+
+```text
+Firewall:
+Connection from 185.x.x.x
+
+      +
+
+VPN:
+Successful login
+
+      +
+
+Windows:
+New privileged process
+
+      +
+
+Active Directory:
+User added to Administrators
+
+      +
+
+EDR:
+Suspicious PowerShell execution
+```
+
+Individually, each event may appear unrelated.
+
+Together:
+
+```text
+Possible Account Compromise
+        +
+Privilege Escalation
+        +
+Post-Compromise Activity
+```
+
+This is where centralized correlation becomes valuable.
+
+---
+
+# 4. SIEM in a SOC
+
+A SIEM is one component of a broader **Security Operations Center (SOC)**.
+
+A simplified SOC:
+
+```text
+                    SOC
+                     │
+        ┌────────────┼────────────┐
+        ▼            ▼            ▼
+      People       Process     Technology
+        │            │            │
+        │            │       ┌────┴────┐
+        │            │       ▼         ▼
+        │            │     SIEM       EDR
+        │            │       │         │
+        │            │       ▼         ▼
+        │            │     SOAR       NDR
+        │            │
+        └────────────┼───────────────┐
+                     │               │
+                     ▼               ▼
+                Investigation   Response
+```
+
+SIEM provides visibility and analytical capabilities, while SOC analysts use the resulting information to make security decisions.
+
+---
+
+# 5. SIEM Does Not Equal SOC
+
+A common misconception is:
+
+```text
+SIEM = SOC
+```
+
+This is incorrect.
+
+A SOC includes:
+
+```text
+People
+Processes
+Technology
+```
+
+SIEM is a technology/capability used by the SOC.
+
+For example:
+
+```text
+SOC Analyst
+      │
+      ▼
+    SIEM
+      │
+      ▼
+Investigates Alert
+      │
+      ▼
+Incident Response
+```
+
+---
+
+# 6. Security Information vs Security Event Management
+
+SIEM combines concepts traditionally associated with two areas.
+
+## Security Information Management
+
+Focuses heavily on:
+
+```text
+Collection
+Storage
+Analysis
+Reporting
+Historical Security Data
+```
+
+## Security Event Management
+
+Focuses heavily on:
+
+```text
+Real-Time Events
+Monitoring
+Correlation
+Alerting
+Detection
+```
+
+Modern SIEM platforms combine both capabilities.
+
+---
+
+# 7. What is a Security Event?
+
+A **security event** is a recorded occurrence that may have security relevance.
+
+Examples:
+
+```text
+User Login
+Failed Login
+Password Change
+Firewall Connection
+Process Creation
+File Access
+Privilege Change
+MFA Event
+DNS Query
+Network Connection
+Cloud API Call
+```
+
+Not every security event represents an attack.
+
+Example:
+
+```text
+Successful Login
+```
+
+could be:
+
+```text
+Normal User Activity
+```
+
+or:
+
+```text
+Account Compromise
+```
+
+Context determines its significance.
+
+---
+
+# 8. What is a Log?
+
+A log is a record generated by a system, application, service, or security control.
+
+Example:
+
+```text
+2026-08-13 09:12:31
+User=anurag
+SourceIP=10.10.20.15
+Action=LOGIN
+Status=FAILED
+```
+
+A log may contain:
+
+```text
+Timestamp
+Hostname
+Username
+Source IP
+Destination IP
+Port
+Action
+Status
+Process
+File
+Application
+Event ID
+```
+
+---
+
+# 9. Event vs Log
+
+These concepts are related but not identical.
+
+### Event
+
+Something that happened.
+
+```text
+User login failed.
+```
+
+### Log
+
+The recorded representation of that event.
+
+```text
+2026-08-13 09:12:31
+user=alice
+action=login
+status=failed
+```
+
+Simplified:
+
+```text
+EVENT
+  ↓
+Generated Activity
+  ↓
+LOG
+  ↓
+Recorded Representation
+```
+
+---
+
+# 10. What is an Alert?
+
+An **alert** is a notification generated when activity matches a detection condition or exceeds a defined risk threshold.
+
+Example:
+
+```text
+10 failed logins
+from same IP
+within 60 seconds
+        ↓
+Detection Rule
+        ↓
+ALERT
+```
+
+An alert means:
+
+> Something potentially suspicious happened.
+
+It does **not automatically mean a confirmed incident occurred**.
+
+---
+
+# 11. What is an Incident?
+
+An incident is a security event or collection of events that requires investigation and potentially response.
+
+Example:
+
+```text
+Alert:
+Multiple failed logins
+       ↓
+Investigation
+       ↓
+Successful login
+       ↓
+Impossible travel
+       ↓
+MFA disabled
+       ↓
+Mailbox accessed
+       ↓
+Confirmed account compromise
+```
+
+The original alert becomes part of a larger security incident.
+
+---
+
+# 12. Event → Alert → Incident
+
+This distinction is extremely important.
+
+```text
+EVENT
+Something happened
+       ↓
+DETECTION
+Activity matches suspicious condition
+       ↓
+ALERT
+Analyst is notified
+       ↓
+INVESTIGATION
+Context is gathered
+       ↓
+INCIDENT
+Confirmed/suspected security issue
+       ↓
+RESPONSE
+Containment and remediation
+```
+
+---
+
+# 13. False Positive
+
+A **false positive** occurs when a detection generates an alert for activity that is actually legitimate.
+
+Example:
+
+```text
+Detection:
+More than 20 login attempts
+→ Alert
+```
+
+A legitimate vulnerability scanner performs:
+
+```text
+50 authentication attempts
+```
+
+The SIEM generates an alert.
+
+Investigation determines:
+
+```text
+Authorized Security Scan
+```
+
+Therefore:
+
+```text
+Alert = True
+Threat = False
+```
+
+This is a false positive.
+
+---
+
+# 14. False Negative
+
+A **false negative** occurs when malicious activity happens but the detection system fails to identify it.
+
+Example:
+
+```text
+Attacker compromises account
+        ↓
+No detection triggered
+        ↓
+Analyst never receives alert
+```
+
+This is generally more dangerous than a false positive because malicious activity can remain undetected.
+
+---
+
+# 15. True Positive
+
+A **true positive** occurs when:
+
+```text
+Detection fires
+        +
+Activity is genuinely malicious/suspicious
+```
+
+Example:
+
+```text
+Password spraying
+        ↓
+Detection
+        ↓
+Alert
+        ↓
+Investigation
+        ↓
+Confirmed attack
+```
+
+---
+
+# 16. Detection Accuracy
+
+A simplified classification:
+
+| Reality | Detection | Result |
+|---|---|---|
+| Malicious | Alert | True Positive |
+| Legitimate | Alert | False Positive |
+| Malicious | No Alert | False Negative |
+| Legitimate | No Alert | True Negative |
+
+---
+
+# 17. SIEM Core Functions
+
+A SIEM generally performs these functions:
+
+```text
+1. Collect
+2. Ingest
+3. Parse
+4. Normalize
+5. Enrich
+6. Store
+7. Search
+8. Correlate
+9. Detect
+10. Alert
+11. Investigate
+12. Report
+```
+
+---
+
+# 18. SIEM Data Flow
+
+A typical SIEM data flow:
+
+```text
+Data Source
+     │
+     ▼
+Collector / Agent
+     │
+     ▼
+Transport
+     │
+     ▼
+Ingestion
+     │
+     ▼
+Parsing
+     │
+     ▼
+Normalization
+     │
+     ▼
+Enrichment
+     │
+     ▼
+Storage / Indexing
+     │
+     ▼
+Search / Detection
+     │
+     ▼
+Alert
+```
+
+---
+
+# 19. Data Sources
+
+A SIEM can ingest data from many sources.
+
+## Endpoint
+
+```text
+Windows
+Linux
+macOS
+EDR
+Antivirus
+Sysmon
+```
+
+## Network
+
+```text
+Firewall
+IDS
+IPS
+NDR
+Router
+Switch
+VPN
+Proxy
+DNS
+DHCP
+```
+
+## Identity
+
+```text
+Active Directory
+Entra ID
+LDAP
+SSO
+MFA
+IAM
+```
+
+## Applications
+
+```text
+Web Server
+API
+Database
+Email
+Business Applications
+```
+
+## Cloud
+
+```text
+AWS
+Azure
+Google Cloud
+SaaS
+Kubernetes
+Containers
+Serverless
+```
+
+---
+
+# 20. Endpoint Telemetry
+
+Endpoints can provide highly valuable telemetry.
+
+Examples:
+
+```text
+Process Creation
+Process Termination
+File Creation
+File Modification
+Registry Changes
+Network Connections
+User Logins
+PowerShell Activity
+Command Execution
+USB Activity
+Security Events
+```
+
+Example:
+
+```text
+powershell.exe
+    ↓
+Encoded Command
+    ↓
+Internet Connection
+    ↓
+Suspicious Process
+```
+
+A SIEM can correlate these events with identity and network activity.
+
+---
+
+# 21. Network Telemetry
+
+Network devices generate information such as:
+
+```text
+Source IP
+Destination IP
+Source Port
+Destination Port
+Protocol
+Bytes
+Packets
+Action
+Timestamp
+```
+
+Example:
+
+```text
+10.10.10.25
+      ↓
+185.x.x.x:443
+      ↓
+Allowed
+```
+
+Network telemetry can help identify:
+
+```text
+Scanning
+C2
+Data Exfiltration
+Lateral Movement
+Unusual Connections
+DNS Abuse
+```
+
+---
+
+# 22. Identity Telemetry
+
+Identity events are critical because attackers frequently target credentials.
+
+Examples:
+
+```text
+Login
+Logout
+Failed Login
+MFA Challenge
+MFA Failure
+Password Reset
+Account Creation
+Account Deletion
+Group Membership Change
+Privilege Assignment
+Token Issuance
+```
+
+---
+
+# 23. Application Logs
+
+Applications can provide:
+
+```text
+Authentication
+Authorization
+API Requests
+Errors
+Administrative Actions
+Data Access
+Configuration Changes
+```
+
+Example:
+
+```text
+POST /api/login
+user=alice
+status=401
+```
+
+Repeated requests could indicate:
+
+```text
+Credential Attack
+```
+
+---
+
+# 24. Cloud Logs
+
+Cloud platforms generate extensive audit telemetry.
+
+Examples:
+
+```text
+IAM Changes
+API Calls
+Storage Access
+Security Group Changes
+Network Changes
+Resource Creation
+Resource Deletion
+Authentication
+Privilege Changes
+```
+
+Example:
+
+```text
+CreateAccessKey
+        +
+CreateAdminPolicy
+        +
+Unusual Source IP
+```
+
+could indicate compromised cloud credentials.
+
+---
+
+# 25. SIEM Data Collection
+
+Data must be collected from source systems.
+
+Common mechanisms include:
+
+```text
+Agents
+Collectors
+Forwarders
+Syslog
+APIs
+Cloud Connectors
+Event Forwarding
+File Monitoring
+Message Queues
+```
+
+---
+
+# 26. Agent-Based Collection
+
+An agent runs on the monitored host.
+
+Example:
+
+```text
+Windows
+   │
+   ▼
+SIEM Agent
+   │
+   ▼
+SIEM
+```
+
+Advantages:
+
+```text
+Rich telemetry
+Local processing
+Filtering
+Reliable forwarding
+```
+
+Potential disadvantages:
+
+```text
+Deployment overhead
+Resource usage
+Agent management
+```
+
+---
+
+# 27. Agentless Collection
+
+The SIEM can retrieve data without installing a dedicated agent.
+
+Examples:
+
+```text
+Syslog
+API
+WMI
+Cloud API
+Network Protocol
+```
+
+Architecture:
+
+```text
+System
+   │
+   ▼
+Network / API
+   │
+   ▼
+SIEM Collector
+```
+
+---
+
+# 28. Syslog
+
+**Syslog** is a widely used logging mechanism in network and Unix-like environments.
+
+Conceptually:
+
+```text
+Device
+  │
+  ▼
+Syslog
+  │
+  ▼
+Collector
+  │
+  ▼
+SIEM
+```
+
+Common transport:
+
+```text
+UDP
+TCP
+TLS
+```
+
+For security-sensitive deployments, encrypted and reliable transport should be preferred where supported.
+
+---
+
+# 29. Log Forwarder
+
+A log forwarder collects logs and forwards them to another system.
+
+```text
+Endpoint
+   │
+   ▼
+Forwarder
+   │
+   ▼
+SIEM
+```
+
+Forwarders may perform:
+
+```text
+Filtering
+Parsing
+Buffering
+Compression
+Routing
+```
+
+---
+
+# 30. Parsing
+
+Raw logs are often difficult to analyze directly.
+
+Example:
+
+```text
+Aug 13 09:15 server sshd[1234]:
+Failed password for alice from 10.0.0.5 port 55221
+```
+
+Parsing extracts:
+
+```text
+timestamp = Aug 13 09:15
+service = sshd
+event = authentication_failure
+username = alice
+source_ip = 10.0.0.5
+source_port = 55221
+```
+
+---
+
+# 31. Normalization
+
+Different systems may use different field names.
+
+Example:
+
+```text
+Windows:
+SourceAddress
+
+Firewall:
+src_ip
+
+Application:
+client_ip
+```
+
+Normalization maps them to a common field:
+
+```text
+source.ip
+```
+
+This allows consistent queries and detections.
+
+---
+
+# 32. Why Normalization Matters
+
+Without normalization:
+
+```text
+Windows → src_ip?
+Firewall → source_ip?
+Linux → client?
+Application → remote_address?
+```
+
+Detection logic becomes complicated.
+
+With normalization:
+
+```text
+source.ip
+destination.ip
+user.name
+event.action
+event.outcome
+```
+
+Detection becomes more portable.
+
+---
+
+# 33. Enrichment
+
+Enrichment adds additional context.
+
+Example:
+
+```text
+Source IP
+   ↓
+Threat Intelligence
+   ↓
+Known Malicious IP
+```
+
+Other enrichment sources:
+
+```text
+GeoIP
+Asset Inventory
+User Directory
+Threat Intelligence
+Vulnerability Data
+WHOIS
+DNS
+Identity
+Device Information
+```
+
+---
+
+# 34. SIEM Storage
+
+SIEM platforms typically store large amounts of security telemetry.
+
+Storage allows:
+
+```text
+Historical Search
+Incident Investigation
+Threat Hunting
+Compliance
+Reporting
+Forensics
+Detection Validation
+```
+
+---
+
+# 35. Hot, Warm and Cold Data
+
+Large SIEM environments often classify data by accessibility and cost.
+
+```text
+HOT
+ ↓
+Fast Search
+High Cost
+
+WARM
+ ↓
+Moderate Search
+Lower Cost
+
+COLD / ARCHIVE
+ ↓
+Long-Term Retention
+Lowest Cost
+```
+
+---
+
+# 36. Search
+
+Analysts need to search large amounts of telemetry efficiently.
+
+Example conceptual query:
+
+```text
+Find:
+event.action = login
+AND
+event.outcome = failure
+AND
+source.ip = 10.10.10.10
+```
+
+Search is fundamental to:
+
+```text
+Triage
+Investigation
+Threat Hunting
+Detection Development
+```
+
+---
+
+# 37. Correlation
+
+Correlation connects multiple events.
+
+Example:
+
+```text
+Failed Login × 10
+       ↓
+Successful Login
+       ↓
+Privilege Change
+       ↓
+Sensitive File Access
+```
+
+A SIEM can correlate these into a higher-confidence detection.
+
+---
+
+# 38. Detection
+
+Detection identifies activity that matches a security condition.
+
+Example:
+
+```text
+IF
+failed_logins >= 10
+WITHIN
+5 minutes
+FROM
+same source_ip
+THEN
+generate alert
+```
+
+---
+
+# 39. Rule-Based Detection
+
+Traditional detection:
+
+```text
+IF condition
+THEN alert
+```
+
+Example:
+
+```text
+IF
+new_admin_account_created = true
+
+THEN
+generate_high_severity_alert
+```
+
+---
+
+# 40. Threshold Detection
+
+Example:
+
+```text
+Failed logins > 20
+within 5 minutes
+```
+
+Useful for:
+
+```text
+Brute Force
+Password Spraying
+Scanning
+Flooding
+Abnormal Activity
+```
+
+But thresholds require careful tuning.
+
+---
+
+# 41. Sequence Detection
+
+Sequence detection identifies events occurring in a particular order.
+
+Example:
+
+```text
+Login Failure
+     ↓
+Successful Login
+     ↓
+Privilege Escalation
+     ↓
+Suspicious Command
+```
+
+This can provide more context than looking at each event independently.
+
+---
+
+# 42. Behavioral Detection
+
+Instead of relying solely on known signatures, behavioral detections identify unusual activity.
+
+Example:
+
+```text
+User normally:
+India
+9 AM
+Corporate Laptop
+Office Network
+
+Suddenly:
+Foreign Country
+3 AM
+Unknown Device
+New IP
+```
+
+This may indicate:
+
+```text
+Account Compromise
+```
+
+---
+
+# 43. Risk-Based Detection
+
+Instead of treating every alert equally:
+
+```text
+Low-Risk Event → Score 10
+Suspicious Login → Score 20
+Privilege Escalation → Score 40
+Malware → Score 60
+Critical Asset → +30
+```
+
+Final:
+
+```text
+Risk Score = 160
+```
+
+Higher score:
+
+```text
+Higher Priority
+```
+
+---
+
+# 44. Alerting
+
+When a detection triggers:
+
+```text
+Detection
+   ↓
+Alert
+```
+
+The alert should ideally include:
+
+```text
+What happened?
+When?
+Where?
+Who?
+Why suspicious?
+Affected assets?
+Related events?
+Severity?
+Recommended action?
+```
+
+---
+
+# 45. Alert Context
+
+A poor alert:
+
+```text
+Suspicious Activity Detected
+```
+
+A useful alert:
+
+```text
+Password Spraying Detected
+
+Source IP:
+10.20.30.40
+
+Target Accounts:
+18
+
+Failed Attempts:
+73
+
+Time Window:
+5 minutes
+
+Affected Hosts:
+6
+
+MITRE:
+T1110 – Brute Force
+
+Severity:
+High
+```
+
+Context significantly reduces investigation time.
+
+---
+
+# 46. Alert Enrichment
+
+A SIEM can enrich an alert with:
+
+```text
+Threat Intelligence
+Asset Criticality
+User Role
+GeoIP
+Vulnerability Data
+Previous Alerts
+Known Host Information
+```
+
+Example:
+
+```text
+Malicious IP
+     +
+Domain Controller
+     +
+Domain Admin
+     +
+Active Connection
+```
+
+should receive substantially more attention than the same IP contacting a low-value test machine.
+
+---
+
+# 47. Alert Severity
+
+Common severity levels:
+
+```text
+Informational
+Low
+Medium
+High
+Critical
+```
+
+Severity should consider:
+
+```text
+Confidence
+Impact
+Asset Criticality
+User Privilege
+Attack Stage
+Threat Intelligence
+Scope
+```
+
+---
+
+# 48. Alert Fatigue
+
+If a SOC receives:
+
+```text
+10,000 alerts/day
+```
+
+but:
+
+```text
+9,800 are irrelevant
+```
+
+analysts may become overwhelmed.
+
+This is:
+
+```text
+Alert Fatigue
+```
+
+Consequences:
+
+```text
+Slow Response
+Missed Alerts
+Analyst Burnout
+Poor Investigation Quality
+```
+
+---
+
+# 49. Reducing Alert Fatigue
+
+Methods include:
+
+```text
+Rule Tuning
+Threshold Optimization
+Deduplication
+Suppression
+Aggregation
+Risk Scoring
+Asset Context
+Threat Intelligence
+Allowlisting
+Behavioral Analysis
+```
+
+---
+
+# 50. SIEM Investigation
+
+When an alert appears, an analyst should investigate systematically.
+
+A basic framework:
+
+```text
+WHO?
+WHAT?
+WHEN?
+WHERE?
+HOW?
+WHY?
+WHAT ELSE?
+```
+
+---
+
+# 51. Investigation Example
+
+Alert:
+
+```text
+Multiple Failed Logins
+```
+
+Analyst asks:
+
+```text
+Which account?
+
+Which source IP?
+
+Which destination?
+
+How many attempts?
+
+What time?
+
+Was there a successful login afterward?
+
+Was MFA triggered?
+
+Was the source IP malicious?
+
+What did the account do afterward?
+
+Were privileges changed?
+```
+
+This transforms:
+
+```text
+Alert
+```
+
+into:
+
+```text
+Security Investigation
+```
+
+---
+
+# 52. Threat Hunting
+
+Threat hunting is proactive searching for suspicious behavior.
+
+Traditional SOC:
+
+```text
+Alert
+ ↓
+Investigate
+```
+
+Threat hunting:
+
+```text
+Hypothesis
+ ↓
+Search
+ ↓
+Analyze
+ ↓
+Find Suspicious Activity
+ ↓
+Investigate
+```
+
+Example:
+
+> "An attacker may be using compromised credentials to access multiple internal systems."
+
+Search:
+
+```text
+Authentication
++
+Source IP
++
+User
++
+Host
++
+Time
+```
+
+---
+
+# 53. Incident Response
+
+SIEM supports the incident response lifecycle.
+
+Simplified:
+
+```text
+Preparation
+    ↓
+Detection
+    ↓
+Analysis
+    ↓
+Containment
+    ↓
+Eradication
+    ↓
+Recovery
+    ↓
+Lessons Learned
+```
+
+SIEM primarily contributes strong capabilities around:
+
+```text
+Detection
+Analysis
+Investigation
+Evidence
+Monitoring
+Post-Incident Review
+```
+
+---
+
+# 54. SIEM and Incident Response
+
+Example:
+
+```text
+SIEM
+ ↓
+Detects suspicious login
+ ↓
+Analyst investigates
+ ↓
+Confirms account compromise
+ ↓
+Incident created
+ ↓
+Account disabled
+ ↓
+Sessions revoked
+ ↓
+Endpoint investigated
+ ↓
+Threat contained
+```
+
+---
+
+# 55. SIEM and Threat Intelligence
+
+Threat intelligence provides context.
+
+Example:
+
+```text
+Source IP:
+185.x.x.x
+```
+
+SIEM enrichment:
+
+```text
+Known malicious infrastructure
+Confidence: High
+Threat Type: C2
+First Seen: ...
+Last Seen: ...
+```
+
+Detection confidence increases.
+
+---
+
+# 56. SIEM and MITRE ATT&CK
+
+MITRE ATT&CK helps organizations understand:
+
+```text
+How attackers operate
+```
+
+A detection can be mapped to:
+
+```text
+Tactic
+ ↓
+Technique
+ ↓
+Sub-Technique
+ ↓
+Detection
+```
+
+Example:
+
+```text
+Credential Access
+      ↓
+Brute Force
+      ↓
+Password Guessing
+      ↓
+Authentication Logs
+```
+
+---
+
+# 57. SIEM and Compliance
+
+SIEM can support compliance requirements through:
+
+```text
+Centralized Logging
+Audit Trails
+Monitoring
+Retention
+Reporting
+Access Monitoring
+Security Event Detection
+```
+
+Examples of frameworks/regulations that may involve logging and monitoring requirements include:
+
+```text
+ISO 27001
+PCI DSS
+HIPAA
+SOC 2
+NIST-based security programs
+```
+
+Exact requirements depend on the organization's scope and applicable regulations.
+
+---
+
+# 58. SIEM Does Not Replace Security Controls
+
+A SIEM does not replace:
+
+```text
+Firewall
+EDR
+IDS/IPS
+MFA
+IAM
+Vulnerability Management
+Secure Coding
+Network Segmentation
+Endpoint Security
+```
+
+Instead:
+
+```text
+Security Controls
+       ↓
+Generate Telemetry
+       ↓
+SIEM
+       ↓
+Detection / Correlation
+       ↓
+SOC
+```
+
+---
+
+# 59. SIEM vs Firewall
+
+| SIEM | Firewall |
+|---|---|
+| Collects/analyzes telemetry | Controls network traffic |
+| Detects patterns | Enforces traffic policy |
+| Historical investigation | Primarily traffic control |
+| Correlation | Rule-based network filtering |
+| Alerting | Allow/Deny |
+| Broad data sources | Primarily network flows/connections |
+
+They serve different purposes.
+
+---
+
+# 60. SIEM vs IDS/IPS
+
+### IDS
+
+Detects suspicious network activity.
+
+```text
+Traffic
+ ↓
+IDS
+ ↓
+Alert
+```
+
+### IPS
+
+Can actively block suspicious traffic.
+
+### SIEM
+
+Can ingest:
+
+```text
+IDS/IPS Logs
+```
+
+and correlate them with:
+
+```text
+Endpoint
+Identity
+Cloud
+Firewall
+Application
+```
+
+---
+
+# 61. SIEM vs EDR
+
+### EDR
+
+Focused primarily on endpoint visibility and response.
+
+```text
+Process
+File
+Registry
+Network
+Endpoint
+```
+
+### SIEM
+
+Aggregates telemetry across multiple domains.
+
+```text
+Endpoint
++
+Network
++
+Identity
++
+Cloud
++
+Application
+```
+
+---
+
+# 62. SIEM vs SOAR
+
+### SIEM
+
+```text
+Collect
+Search
+Correlate
+Detect
+Alert
+Investigate
+```
+
+### SOAR
+
+```text
+Orchestrate
+Automate
+Respond
+Execute Playbooks
+```
+
+Together:
+
+```text
+SIEM
+ ↓
+Detection
+ ↓
+SOAR
+ ↓
+Automated Response
+```
+
+---
+
+# 63. SIEM vs XDR
+
+There is significant vendor overlap.
+
+A simplified distinction:
+
+### SIEM
+
+Broad telemetry aggregation and analytics.
+
+### XDR
+
+More tightly integrated detection and response across multiple security domains.
+
+Modern platforms increasingly combine capabilities from both categories.
+
+---
+
+# 64. SIEM Architecture — High Level
+
+```text
+                    DATA SOURCES
+                         │
+          ┌──────────────┼──────────────┐
+          ▼              ▼              ▼
+       Endpoint        Network         Cloud
+          │              │              │
+          └──────────────┼──────────────┘
+                         ▼
+                    COLLECTION
+                         │
+                         ▼
+                     INGESTION
+                         │
+                         ▼
+                      PARSING
+                         │
+                         ▼
+                    NORMALIZATION
+                         │
+                         ▼
+                    ENRICHMENT
+                         │
+                         ▼
+                  STORAGE / INDEX
+                         │
+            ┌────────────┼────────────┐
+            ▼            ▼            ▼
+         SEARCH       DETECTION    DASHBOARD
+            │            │
+            │            ▼
+            │          ALERT
+            │            │
+            └────────────┤
+                         ▼
+                    INVESTIGATION
+                         │
+                         ▼
+                   INCIDENT RESPONSE
+```
+
+---
+
+# 65. SIEM Components
+
+Typical components may include:
+
+```text
+Data Sources
+Collectors
+Agents
+Forwarders
+Ingestion Pipeline
+Parser
+Normalizer
+Enrichment Engine
+Storage
+Indexer
+Search Engine
+Correlation Engine
+Detection Engine
+Alert Manager
+Dashboard
+Case Management
+API
+```
+
+Not every SIEM exposes these as separate components.
+
+---
+
+# 66. SIEM Architecture Models
+
+Common deployment approaches:
+
+```text
+On-Premises
+Cloud
+Hybrid
+Managed SIEM
+```
+
+---
+
+# 67. On-Premises SIEM
+
+```text
+Enterprise
+   │
+   ├── Servers
+   ├── Network
+   ├── Endpoints
+   │
+   ▼
+On-Prem SIEM
+```
+
+Advantages:
+
+```text
+Control
+Customization
+Data Residency
+```
+
+Challenges:
+
+```text
+Infrastructure
+Scaling
+Maintenance
+Storage
+Operations
+```
+
+---
+
+# 68. Cloud SIEM
+
+```text
+Cloud
+ │
+ ├── Identity
+ ├── Workloads
+ ├── Network
+ ├── Applications
+ │
+ ▼
+Cloud SIEM
+```
+
+Advantages:
+
+```text
+Scalability
+Managed Infrastructure
+Elastic Storage
+Cloud Integrations
+```
+
+Challenges:
+
+```text
+Cost
+Data Volume
+Vendor Dependency
+Data Residency
+Configuration
+```
+
+---
+
+# 69. Hybrid SIEM
+
+Many enterprises operate:
+
+```text
+On-Premises
+     +
+Cloud
+```
+
+Architecture:
+
+```text
+On-Prem Logs ───┐
+Cloud Logs ─────┤
+SaaS Logs ──────┤
+Endpoint ───────┤
+                ▼
+             SIEM
+```
+
+---
+
+# 70. SIEM as a Security Data Platform
+
+A modern SIEM can be viewed as:
+
+```text
+Security Data Platform
+        │
+        ├── Collect
+        ├── Normalize
+        ├── Store
+        ├── Search
+        ├── Detect
+        ├── Enrich
+        ├── Investigate
+        └── Automate
+```
+
+This is broader than simply:
+
+```text
+"Log Management"
+```
+
+---
+
+# 71. Log Management vs SIEM
+
+### Log Management
+
+Primarily focuses on:
+
+```text
+Collect
+Store
+Search
+Retain
+```
+
+### SIEM
+
+Adds:
+
+```text
+Correlation
+Detection
+Alerting
+Security Analytics
+Investigation
+Threat Intelligence
+Security Workflows
+```
+
+---
+
+# 72. SIEM Limitations
+
+SIEM is powerful but not magic.
+
+Limitations include:
+
+```text
+Poor Data Quality
+Missing Telemetry
+False Positives
+False Negatives
+High Cost
+Complex Configuration
+Detection Gaps
+Storage Challenges
+Query Performance
+Integration Complexity
+```
+
+A SIEM cannot detect activity that it has no visibility into.
+
+---
+
+# 73. The Visibility Problem
+
+Suppose an attacker performs:
+
+```text
+Credential Theft
+```
+
+but the organization has:
+
+```text
+No authentication logs
+No endpoint telemetry
+No identity monitoring
+```
+
+The SIEM cannot reliably detect what it cannot observe.
+
+Therefore:
+
+> **Detection quality depends heavily on visibility.**
+
+---
+
+# 74. Detection Coverage
+
+A mature SIEM should answer:
+
+```text
+What threats can we detect?
+
+What threats can we partially detect?
+
+What threats cannot we detect?
+
+Which telemetry is missing?
+
+Which ATT&CK techniques are covered?
+
+Where are the gaps?
+```
+
+---
+
+# 75. Security Monitoring Lifecycle
+
+A mature monitoring program:
+
+```text
+Identify Assets
+      ↓
+Identify Threats
+      ↓
+Identify Telemetry
+      ↓
+Collect Logs
+      ↓
+Normalize
+      ↓
+Build Detections
+      ↓
+Test
+      ↓
+Deploy
+      ↓
+Monitor
+      ↓
+Investigate
+      ↓
+Tune
+      ↓
+Measure
+      ↓
+Improve
+```
+
+---
+
+# 76. SIEM Metrics
+
+Important operational metrics may include:
+
+```text
+Events Per Second
+Data Ingestion Volume
+Alert Volume
+True Positive Rate
+False Positive Rate
+Mean Time to Detect (MTTD)
+Mean Time to Respond (MTTR)
+Detection Coverage
+Log Source Coverage
+Rule Performance
+Data Loss
+Storage Utilization
+```
+
+---
+
+# 77. MTTD
+
+**Mean Time to Detect**
+
+Measures how quickly suspicious activity is detected.
+
+Simplified:
+
+```text
+Attack Occurs
+     ↓
+Detection
+```
+
+Shorter time:
+
+```text
+Better Detection Speed
+```
+
+---
+
+# 78. MTTR
+
+**Mean Time to Respond/Recover** can refer to different operational measurements depending on the organization's definition.
+
+Generally:
+
+```text
+Incident Detected
+      ↓
+Response
+      ↓
+Containment / Recovery
+```
+
+Lower response time generally indicates faster operational handling.
+
+---
+
+# 79. Detection Coverage
+
+Example:
+
+```text
+MITRE ATT&CK Techniques:
+100
+
+Detected:
+65
+
+Coverage:
+65%
+```
+
+This is only a simplified metric.
+
+Coverage quality also depends on:
+
+```text
+Detection Fidelity
+Telemetry Quality
+Environment Applicability
+Testing
+```
+
+---
+
+# 80. SIEM Data Quality Metrics
+
+Monitor:
+
+```text
+Log Source Health
+Event Drop Rate
+Parsing Success
+Timestamp Accuracy
+Duplicate Rate
+Ingestion Delay
+Field Completeness
+```
+
+Example:
+
+```text
+Firewall Logs
+Expected:
+10,000 events/min
+
+Received:
+9,100 events/min
+```
+
+Possible:
+
+```text
+Collector Failure
+Network Issue
+Filtering
+Capacity Problem
+```
+
+---
+
+# 81. SIEM Security
+
+The SIEM itself is a sensitive security system.
+
+Protect it with:
+
+```text
+Strong Authentication
+MFA
+RBAC
+Least Privilege
+Encryption
+Network Segmentation
+Audit Logging
+Secure APIs
+Backup
+Patch Management
+```
+
+---
+
+# 82. SIEM Access Control
+
+Typical roles:
+
+```text
+SOC Analyst
+Senior Analyst
+Detection Engineer
+SIEM Engineer
+Administrator
+Auditor
+```
+
+Permissions should follow:
+
+```text
+Least Privilege
+```
+
+An analyst does not necessarily need administrative permissions.
+
+---
+
+# 83. SIEM Contains Sensitive Data
+
+SIEM data may include:
+
+```text
+Usernames
+IP Addresses
+Email Addresses
+Authentication Events
+Command Lines
+URLs
+File Paths
+Cloud Activity
+Security Events
+Potentially Sensitive Business Data
+```
+
+Therefore:
+
+> **The SIEM itself must be treated as a high-value security asset.**
+
+---
+
+# 84. Common SIEM Misconceptions
+
+## Misconception 1
+
+> SIEM automatically detects every attack.
+
+Reality:
+
+```text
+Detection depends on:
+Telemetry
++
+Detection Logic
++
+Configuration
++
+Coverage
+```
+
+---
+
+## Misconception 2
+
+> More logs always mean better security.
+
+Reality:
+
+```text
+More Data
++
+Poor Quality
++
+No Detection
+=
+More Cost
+```
+
+---
+
+## Misconception 3
+
+> Every SIEM alert is an incident.
+
+Reality:
+
+```text
+Alert
+→ Requires Investigation
+→ May or may not become an Incident
+```
+
+---
+
+## Misconception 4
+
+> SIEM replaces EDR.
+
+Reality:
+
+```text
+EDR + SIEM
+```
+
+often provides stronger visibility than either alone.
+
+---
+
+## Misconception 5
+
+> SIEM is only for compliance.
+
+Reality:
+
+```text
+Detection
+Investigation
+Threat Hunting
+Incident Response
+Compliance
+```
+
+---
+
+# 85. Example End-to-End Attack
+
+Consider:
+
+```text
+Attacker
+   ↓
+Phishing Email
+   ↓
+User Clicks Link
+   ↓
+Credentials Stolen
+   ↓
+Attacker Logs In
+   ↓
+MFA Challenge
+   ↓
+Session Compromise
+   ↓
+Cloud Access
+   ↓
+Privilege Escalation
+   ↓
+Data Access
+   ↓
+Exfiltration
+```
+
+Different systems may see different parts.
+
+```text
+Email Security
+      ↓
+Identity Provider
+      ↓
+Endpoint
+      ↓
+Cloud IAM
+      ↓
+Storage
+      ↓
+Network
+```
+
+SIEM can bring those events together.
+
+---
+
+# 86. Attack Correlation
+
+Example:
+
+```text
+Email Event
+    +
+Suspicious URL
+    +
+Login From New Location
+    +
+New Device
+    +
+Privilege Change
+    +
+Large Data Download
+```
+
+Correlation:
+
+```text
+Possible Account Takeover
++
+Privilege Abuse
++
+Data Exfiltration
+```
+
+---
+
+# 87. Security Monitoring Principle
+
+A strong monitoring program follows:
+
+```text
+Collect What Matters
+        ↓
+Normalize Correctly
+        ↓
+Detect Meaningful Behavior
+        ↓
+Add Context
+        ↓
+Prioritize Risk
+        ↓
+Investigate Quickly
+        ↓
+Respond Effectively
+```
+
+---
+
+# 88. SIEM Learning Checklist
+
+By the end of this chapter, you should be able to explain:
+
+```text
+☐ What SIEM means
+☐ Why SIEM is used
+☐ SIEM's role in a SOC
+☐ Difference between log and event
+☐ Difference between event and alert
+☐ Difference between alert and incident
+☐ False positive
+☐ False negative
+☐ True positive
+☐ SIEM data sources
+☐ Log collection
+☐ Parsing
+☐ Normalization
+☐ Enrichment
+☐ Storage
+☐ Search
+☐ Correlation
+☐ Detection
+☐ Alerting
+☐ Investigation
+☐ Threat hunting
+☐ Incident response
+☐ Threat intelligence
+☐ MITRE ATT&CK
+☐ SIEM vs EDR
+☐ SIEM vs SOAR
+☐ SIEM vs XDR
+☐ SIEM limitations
+☐ SIEM metrics
+☐ SIEM security
+```
+
+---
+
+# 89. Interview Quick Questions
+
+### What is SIEM?
+
+> SIEM is a security monitoring capability that centralizes security telemetry and provides collection, analysis, correlation, detection, alerting, and investigation capabilities.
+
+### Why is SIEM important?
+
+> It provides centralized visibility across multiple security and IT systems and helps analysts correlate events to detect and investigate threats.
+
+### What is a security event?
+
+> A recorded occurrence that may have security relevance, such as a login, process creation, or firewall connection.
+
+### What is an alert?
+
+> A notification generated when activity matches a detection condition or risk threshold.
+
+### What is an incident?
+
+> A confirmed or suspected security event requiring investigation and potentially response.
+
+### What is a false positive?
+
+> An alert generated for activity that is actually legitimate.
+
+### What is a false negative?
+
+> Malicious activity occurs but the detection system fails to identify it.
+
+### What is correlation?
+
+> Combining multiple events or signals to identify relationships and potentially detect suspicious behavior.
+
+### What is normalization?
+
+> Converting different log formats into a consistent structure and field representation.
+
+### What is enrichment?
+
+> Adding contextual information such as threat intelligence, asset information, or user identity to an event.
+
+### What is alert fatigue?
+
+> A condition where excessive low-value alerts overwhelm analysts and reduce their ability to identify important threats.
+
+### What is threat hunting?
+
+> Proactively searching security telemetry for evidence of threats without waiting for a detection alert.
+
+### Does SIEM replace EDR?
+
+> No. EDR provides specialized endpoint visibility and response, while SIEM provides broader cross-domain security analytics.
+
+### SIEM vs SOAR?
+
+> SIEM focuses heavily on collecting, analyzing, correlating, and detecting; SOAR focuses on orchestrating and automating response workflows.
+
+### What is MTTD?
+
+> Mean Time to Detect, measuring how quickly suspicious activity is detected.
+
+### What is MTTR?
+
+> A response/recovery time metric measuring how quickly an organization handles an incident, with the exact definition depending on the organization.
+
+---
+
+# 90. One-Minute SIEM Revision
+
+```text
+SIEM
+ ↓
+Centralized Security Monitoring
+
+COLLECT
+ ↓
+Logs from endpoints, networks, identity,
+applications, cloud and security tools
+
+INGEST
+ ↓
+Receive and process telemetry
+
+PARSE
+ ↓
+Extract fields
+
+NORMALIZE
+ ↓
+Create consistent schema
+
+ENRICH
+ ↓
+Add threat/user/asset context
+
+STORE
+ ↓
+Retain security data
+
+SEARCH
+ ↓
+Investigate events
+
+CORRELATE
+ ↓
+Connect multiple events
+
+DETECT
+ ↓
+Identify suspicious behavior
+
+ALERT
+ ↓
+Notify analysts
+
+TRIAGE
+ ↓
+Determine priority
+
+INVESTIGATE
+ ↓
+Determine what happened
+
+INCIDENT
+ ↓
+Confirm security issue
+
+RESPOND
+ ↓
+Contain / Eradicate / Recover
+
+TUNE
+ ↓
+Improve detections
+
+REPEAT
+ ↓
+Continuous Security Monitoring
+```
+
+---
+
+# 91. Final Mental Model
+
+Remember SIEM using this model:
+
+```text
+                 SIEM
+                  │
+        ┌─────────┴─────────┐
+        ▼                   ▼
+      DATA                PEOPLE
+        │                   │
+        ▼                   ▼
+     COLLECT             ANALYST
+        │                   │
+        ▼                   ▼
+     NORMALIZE            SEARCH
+        │                   │
+        ▼                   ▼
+      STORE              ANALYZE
+        │                   │
+        └─────────┬─────────┘
+                  ▼
+               DETECT
+                  │
+                  ▼
+              CORRELATE
+                  │
+                  ▼
+                ALERT
+                  │
+                  ▼
+               TRIAGE
+                  │
+                  ▼
+            INVESTIGATE
+                  │
+                  ▼
+              INCIDENT
+                  │
+                  ▼
+               RESPOND
+                  │
+                  ▼
+                TUNE
+                  │
+                  ▼
+              IMPROVE
+```
+
+---
+
+# 92. Golden Rules
+
+```text
+1. A SIEM is only as good as its telemetry.
+
+2. Not every log is a security event.
+
+3. Not every event is an alert.
+
+4. Not every alert is an incident.
+
+5. Context is critical for detection.
+
+6. Correlation turns isolated events into security stories.
+
+7. More alerts do not necessarily mean better security.
+
+8. Detection quality matters more than raw alert volume.
+
+9. False positives must be continuously tuned.
+
+10. False negatives represent detection gaps.
+
+11. Threat intelligence adds context, not certainty.
+
+12. MITRE ATT&CK helps structure threat-informed detection.
+
+13. Threat hunting is proactive; alert triage is reactive.
+
+14. SIEM does not replace EDR, IDS, IAM, firewalls, or other controls.
+
+15. SIEM itself is a high-value security asset.
+
+16. Accurate timestamps are critical for investigation.
+
+17. Missing telemetry creates blind spots.
+
+18. Detection engineering should be continuously tested and improved.
+
+19. Security monitoring is a continuous lifecycle, not a one-time deployment.
+
+20. The ultimate goal is not collecting the most logs—it is detecting meaningful threats quickly and enabling effective response.
+```
+
+---
+
+# 93. Chapter Summary
+
+This chapter established the foundation for the entire SIEM section.
+
+The key flow is:
+
+```text
+DATA
+ ↓
+COLLECTION
+ ↓
+INGESTION
+ ↓
+PARSING
+ ↓
+NORMALIZATION
+ ↓
+ENRICHMENT
+ ↓
+STORAGE
+ ↓
+SEARCH
+ ↓
+CORRELATION
+ ↓
+DETECTION
+ ↓
+ALERT
+ ↓
+TRIAGE
+ ↓
+INVESTIGATION
+ ↓
+INCIDENT RESPONSE
+ ↓
+TUNING
+ ↓
+CONTINUOUS IMPROVEMENT
+```
+
+The most important concept to remember is:
+
+> **A SIEM does not simply collect logs. It transforms security telemetry into context, detections, investigations, and actionable security decisions.**
+
+The next chapter builds on this foundation by examining the most important part of any SIEM:
+
+```text
+Chapter 02
+    ↓
+Log Sources, Events & Data Collection
+```
+
+There we move from **"What is SIEM?"** to **"What data does a SIEM actually receive, where does it come from, and how is it collected?"**
