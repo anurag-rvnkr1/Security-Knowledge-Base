@@ -28,7 +28,7 @@
 
 Unlike traditional notes, this repository focuses on **practical understanding**, **real-world examples**, **security best practices**, **hands-on labs**, and **professional documentation**.
 
-The goal is to build a single place where learners and professionals can quickly reference security concepts without searching across dozens of websites.
+The goal is to build a single place where learners and professionals can quickly reference security concepts without searching across dozen of websites.
 
 ---
 
