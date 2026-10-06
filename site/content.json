@@ -1,44 +1,5710 @@
 {
   "version": 1,
+  "generatedFrom": "main",
   "repository": "https://github.com/anurag-rvnkr1/Security-Knowledge-Base",
   "pages": "https://anurag-rvnkr1.github.io/Security-Knowledge-Base/",
-  "stats": {"repositoryFiles": 682,"markdownDocuments":674},
-  "generatedFrom": "main",
-  "note": "The document list is generated from the repository tree by scripts/build-content-index.py. The frontend falls back to the public GitHub tree API if documents are absent here, allowing the portal to remain synchronized while the index is regenerated.",
+  "stats": {
+    "markdownDocuments": 677
+  },
   "categories": [
-    {"name":"API Security","path":"API-Security","documents":[],"description":"API architecture, authentication, authorization, testing and monitoring."},
-    {"name":"Active Directory","path":"Active-Directory","documents":[],"description":"Directory architecture, administration, security and blue-team practices."},
-    {"name":"CTF Writeups","path":"CTF-Writeups","documents":[],"description":"Hands-on challenge writeups organized by security domain."},
-    {"name":"Cheatsheets","path":"Cheatsheets","documents":[],"description":"Compact technical references for security workflows and tools."},
-    {"name":"Cloud Security","path":"Cloud-Security","documents":[],"description":"Cloud security concepts, controls, architecture and monitoring."},
-    {"name":"Containers","path":"Containers","documents":[],"description":"Container architecture, security, hardening and runtime concepts."},
-    {"name":"Cryptography","path":"Cryptography","documents":[],"description":"Cryptographic foundations, algorithms, protocols and applied security."},
-    {"name":"Detection Engineering","path":"Detection-Engineering","documents":[],"description":"Telemetry, detection logic, validation, tuning and lifecycle practices."},
-    {"name":"DevSecOps","path":"DevSecOps","documents":[],"description":"Security integrated into development, CI/CD and software delivery."},
-    {"name":"Digital Forensics","path":"Digital-Forensics","documents":[],"description":"Forensic evidence, artifacts, analysis and investigation workflows."},
-    {"name":"Email Security","path":"Email-Security","documents":[],"description":"Email threats, authentication, phishing analysis and defensive controls."},
-    {"name":"Endpoint Security","path":"Endpoint-Security","documents":[],"description":"Endpoint visibility, hardening, monitoring and protection."},
-    {"name":"Identity and Access Management","path":"Identity-and-Access-Management","documents":[],"description":"Identity, authentication, authorization, access control and governance."},
-    {"name":"Incident Response","path":"Incident-Response","documents":[],"description":"Incident preparation, triage, containment, recovery and investigation."},
-    {"name":"Kubernetes","path":"Kubernetes","documents":[],"description":"Kubernetes architecture, operations and cloud-native security."},
-    {"name":"Labs","path":"Labs","documents":[],"description":"Controlled hands-on security exercises and practical worksheets."},
-    {"name":"Linux","path":"Linux","documents":[],"description":"Linux administration, security, monitoring and defensive operations."},
-    {"name":"MITRE ATT&CK","path":"MITRE-ATTACK","documents":[],"description":"ATT&CK tactics, techniques, mapping and defensive context."},
-    {"name":"Malware Analysis","path":"Malware-Analysis","documents":[],"description":"Malware analysis workflows, artifacts and defensive investigation."},
-    {"name":"Network Security","path":"Network-Security","documents":[],"description":"Network protection, monitoring, architecture and defensive controls."},
-    {"name":"Networking","path":"Networking","documents":[],"description":"Networking fundamentals underpinning security operations."},
-    {"name":"OSINT","path":"OSINT","documents":[],"description":"Open-source intelligence collection, analysis and research workflows."},
-    {"name":"OWASP","path":"OWASP","documents":[],"description":"Application-security guidance, vulnerabilities and defensive practices."},
-    {"name":"Resources","path":"Resources","documents":[],"description":"Courses, tools, standards, research and learning references."},
-    {"name":"Reverse Engineering","path":"Reverse-Engineering","documents":[],"description":"Reverse-engineering concepts and technical analysis."},
-    {"name":"SIEM","path":"SIEM","documents":[],"description":"Security monitoring, telemetry, analysis, detection and operations."},
-    {"name":"SOC","path":"SOC","documents":[],"description":"Security operations, triage, alert handling and analyst workflows."},
-    {"name":"Security Architecture","path":"Security-Architecture","documents":[],"description":"Security architecture, design principles, controls and planning."},
-    {"name":"Security Automation","path":"Security-Automation","documents":[],"description":"Automation patterns for repeatable security operations."},
-    {"name":"Threat Hunting","path":"Threat-Hunting","documents":[],"description":"Hypothesis-driven hunting, telemetry, analysis and investigation."},
-    {"name":"Threat Intelligence","path":"Threat-Intelligence","documents":[],"description":"Threat intelligence collection, enrichment, analysis and use."},
-    {"name":"Vulnerability Management","path":"Vulnerability-Management","documents":[],"description":"Discovery, assessment, prioritization, remediation and lifecycle management."},
-    {"name":"Web Security","path":"Web-Security","documents":[],"description":"Web application security, vulnerabilities, testing and defensive practices."},
-    {"name":"Windows","path":"Windows","documents":[],"description":"Windows administration, logging, security and hardening."}
+    {
+      "name": "API Security",
+      "path": "API-Security",
+      "description": "API architecture, authentication, authorization, testing and monitoring.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Introduction To API",
+          "path": "API-Security/01-Introduction-to-API.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Architecture",
+          "path": "API-Security/02-API-Architecture.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Rest API",
+          "path": "API-Security/03-REST-API.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Soap API",
+          "path": "API-Security/04-SOAP-API.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Graphql Security",
+          "path": "API-Security/05-GraphQL-Security.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Grpc Security",
+          "path": "API-Security/06-gRPC-Security.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Http Methods",
+          "path": "API-Security/07-HTTP-Methods.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Http Headers",
+          "path": "API-Security/08-HTTP-Headers.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Authentication",
+          "path": "API-Security/09-Authentication.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Authorization",
+          "path": "API-Security/10-Authorization.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Jwt",
+          "path": "API-Security/11-JWT.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Oauth 2.0",
+          "path": "API-Security/12-OAuth-2.0.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Openid Connect",
+          "path": "API-Security/13-OpenID-Connect.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Gateways",
+          "path": "API-Security/14-API-Gateways.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Rate Limiting",
+          "path": "API-Security/15-Rate-Limiting.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cors",
+          "path": "API-Security/16-CORS.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Csrf",
+          "path": "API-Security/17-CSRF.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Input Validation",
+          "path": "API-Security/18-Input-Validation.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "OWASP API Top 10",
+          "path": "API-Security/19-OWASP-API-Top-10.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Vulnerability Testing",
+          "path": "API-Security/20-API-Vulnerability-Testing.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Fuzzing",
+          "path": "API-Security/21-API-Fuzzing.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Pentesting",
+          "path": "API-Security/22-API-Pentesting.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Security Tools",
+          "path": "API-Security/23-API-Security-Tools.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Secure Development",
+          "path": "API-Security/24-Secure-Development.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Monitoring And Logging",
+          "path": "API-Security/25-Monitoring-and-Logging.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Response",
+          "path": "API-Security/26-Incident-Response.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Security Interview Questions",
+          "path": "API-Security/27-API-Security-Interview-Questions.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "API-Security/Readme.md",
+          "tags": [
+            "API-Security"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Active Directory",
+      "path": "Active-Directory",
+      "description": "Directory architecture, administration, security and blue-team practices.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Introduction To Active Directory",
+          "path": "Active-Directory/01-Introduction-to-Active-Directory.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ad Architecture",
+          "path": "Active-Directory/02-AD-Architecture.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Domain And Forest",
+          "path": "Active-Directory/03-Domain-and-Forest.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Domain Controllers",
+          "path": "Active-Directory/04-Domain-Controllers.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory Dns",
+          "path": "Active-Directory/05-Active-Directory-DNS.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Organizational Units",
+          "path": "Active-Directory/06-Organizational-Units.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Users Groups And Computers",
+          "path": "Active-Directory/07-Users-Groups-and-Computers.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Group Policy Basics",
+          "path": "Active-Directory/08-Group-Policy-Basics.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Fsmo Roles",
+          "path": "Active-Directory/09-FSMO-Roles.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Global Catalog",
+          "path": "Active-Directory/10-Global-Catalog.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Sites And Replication",
+          "path": "Active-Directory/11-Sites-and-Replication.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kerberos And Ntlm",
+          "path": "Active-Directory/12-Kerberos-and-NTLM.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ldap",
+          "path": "Active-Directory/13-LDAP.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Trusts",
+          "path": "Active-Directory/14-Trusts.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ad Certificate Services",
+          "path": "Active-Directory/15-AD-Certificate-Services.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory Administration",
+          "path": "Active-Directory/16-Active-Directory-Administration.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Powershell For Ad",
+          "path": "Active-Directory/17-PowerShell-for-AD.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ad Security",
+          "path": "Active-Directory/18-AD-Security.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ad Attacks",
+          "path": "Active-Directory/19-AD-Attacks.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ad Defense And Hardening",
+          "path": "Active-Directory/20-AD-Defense-and-Hardening.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory For Blue Team",
+          "path": "Active-Directory/21-Active-Directory-for-Blue-Team.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory For Red Team",
+          "path": "Active-Directory/22-Active-Directory-for-Red-Team.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Bloodhound",
+          "path": "Active-Directory/23-BloodHound.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Laps",
+          "path": "Active-Directory/24-Windows-LAPS.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Microsoft Entra Id Hybrid",
+          "path": "Active-Directory/25-Microsoft-Entra-ID-Hybrid.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ad Troubleshooting",
+          "path": "Active-Directory/26-AD-Troubleshooting.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory Interview Questions",
+          "path": "Active-Directory/27-Active-Directory-Interview-Questions.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory Cheat Sheet",
+          "path": "Active-Directory/28-Active-Directory-Cheat-Sheet.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Active-Directory/Readme.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Resources",
+          "path": "Active-Directory/Resources.md",
+          "tags": [
+            "Active-Directory"
+          ],
+          "kind": "document"
+        }
+      ]
+    },
+    {
+      "name": "Changelog.Md",
+      "path": "CHANGELOG.md",
+      "description": "Knowledge material covering Changelog.Md.",
+      "icon": "book",
+      "documents": []
+    },
+    {
+      "name": "Code Of Conduct.Md",
+      "path": "CODE_OF_CONDUCT.md",
+      "description": "Knowledge material covering Code Of Conduct.Md.",
+      "icon": "book",
+      "documents": []
+    },
+    {
+      "name": "Ctf Writeups",
+      "path": "CTF-Writeups",
+      "description": "Hands-on challenge writeups organized by security domain.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Active-Directory/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Cryptography/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Forensics/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Linux/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Misc/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Network/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/OSINT/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Reverse-Engineering/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Steganography/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Writeup Template",
+          "path": "CTF-Writeups/WRITEUP-TEMPLATE.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "template"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Web/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "CTF-Writeups/Windows/README.md",
+          "tags": [
+            "CTF-Writeups"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Cheatsheets",
+      "path": "Cheatsheets",
+      "description": "Compact technical references for security workflows and tools.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "API Security",
+          "path": "Cheatsheets/API-Security.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory",
+          "path": "Cheatsheets/Active-Directory.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Burp Suite",
+          "path": "Cheatsheets/Burp-Suite.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Digital Forensics",
+          "path": "Cheatsheets/Digital-Forensics.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Docker",
+          "path": "Cheatsheets/Docker.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Git",
+          "path": "Cheatsheets/Git.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Github",
+          "path": "Cheatsheets/GitHub.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Response",
+          "path": "Cheatsheets/Incident-Response.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kerberos",
+          "path": "Cheatsheets/Kerberos.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes",
+          "path": "Cheatsheets/Kubernetes.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux",
+          "path": "Cheatsheets/Linux.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Malware Analysis",
+          "path": "Cheatsheets/Malware-Analysis.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Microsoft Sentinel Kql",
+          "path": "Cheatsheets/Microsoft-Sentinel-KQL.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Networking",
+          "path": "Cheatsheets/Networking.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Nmap",
+          "path": "Cheatsheets/Nmap.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "OWASP",
+          "path": "Cheatsheets/OWASP.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Powershell",
+          "path": "Cheatsheets/PowerShell.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Python",
+          "path": "Cheatsheets/Python.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Cheatsheets/README.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "SIEM",
+          "path": "Cheatsheets/SIEM.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Security Commands",
+          "path": "Cheatsheets/Security-Commands.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Sigma",
+          "path": "Cheatsheets/Sigma.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Snort",
+          "path": "Cheatsheets/Snort.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Splunk Spl",
+          "path": "Cheatsheets/Splunk-SPL.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Suricata",
+          "path": "Cheatsheets/Suricata.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Hunting",
+          "path": "Cheatsheets/Threat-Hunting.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Security",
+          "path": "Cheatsheets/Web-Security.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows",
+          "path": "Cheatsheets/Windows.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Wireshark",
+          "path": "Cheatsheets/Wireshark.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Yara",
+          "path": "Cheatsheets/YARA.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Zeek",
+          "path": "Cheatsheets/Zeek.md",
+          "tags": [
+            "Cheatsheets"
+          ],
+          "kind": "document"
+        }
+      ]
+    },
+    {
+      "name": "Cloud Security",
+      "path": "Cloud-Security",
+      "description": "Cloud security concepts, controls, architecture and monitoring.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Introduction To Cloud Security",
+          "path": "Cloud-Security/01-Introduction-to-Cloud-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Computing Fundamentals",
+          "path": "Cloud-Security/02-Cloud-Computing-Fundamentals.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Service Models",
+          "path": "Cloud-Security/03-Cloud-Service-Models.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Deployment Models",
+          "path": "Cloud-Security/04-Cloud-Deployment-Models.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Architecture",
+          "path": "Cloud-Security/05-Cloud-Architecture.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Shared Responsibility Model",
+          "path": "Cloud-Security/06-Shared-Responsibility-Model.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Identity And Access Management",
+          "path": "Cloud-Security/07-Identity-and-Access-Management.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Network Security",
+          "path": "Cloud-Security/08-Cloud-Network-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Data Security",
+          "path": "Cloud-Security/09-Cloud-Data-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Encryption",
+          "path": "Cloud-Security/10-Cloud-Encryption.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Key Management",
+          "path": "Cloud-Security/11-Key-Management.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Secrets Management",
+          "path": "Cloud-Security/12-Secrets-Management.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Storage Security",
+          "path": "Cloud-Security/13-Cloud-Storage-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Virtual Machine Security",
+          "path": "Cloud-Security/14-Virtual-Machine-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Security",
+          "path": "Cloud-Security/15-Container-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Security",
+          "path": "Cloud-Security/16-Kubernetes-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Serverless Security",
+          "path": "Cloud-Security/17-Serverless-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Native Security",
+          "path": "Cloud-Security/18-Cloud-Native-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Application Security",
+          "path": "Cloud-Security/19-Cloud-Application-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud API Security",
+          "path": "Cloud-Security/20-Cloud-API-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Networking",
+          "path": "Cloud-Security/21-Cloud-Networking.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Zero Trust In The Cloud",
+          "path": "Cloud-Security/22-Zero-Trust-in-the-Cloud.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Threat Modeling",
+          "path": "Cloud-Security/23-Cloud-Threat-Modeling.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Vulnerability Management",
+          "path": "Cloud-Security/24-Cloud-Vulnerability-Management.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Penetration Testing",
+          "path": "Cloud-Security/25-Cloud-Penetration-Testing.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Monitoring And Logging",
+          "path": "Cloud-Security/26-Cloud-Monitoring-and-Logging.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Incident Response",
+          "path": "Cloud-Security/27-Cloud-Incident-Response.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Digital Forensics",
+          "path": "Cloud-Security/28-Cloud-Digital-Forensics.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Threat Hunting",
+          "path": "Cloud-Security/29-Cloud-Threat-Hunting.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud SIEM And SOC",
+          "path": "Cloud-Security/30-Cloud-SIEM-and-SOC.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Compliance",
+          "path": "Cloud-Security/31-Cloud-Compliance.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Governance",
+          "path": "Cloud-Security/32-Cloud-Governance.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Devsecops For Cloud",
+          "path": "Cloud-Security/33-DevSecOps-for-Cloud.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Infrastructure As Code Security",
+          "path": "Cloud-Security/34-Infrastructure-as-Code-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cl\\Cd Security",
+          "path": "Cloud-Security/35-CL\\CD-Security.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Security Tools",
+          "path": "Cloud-Security/36-Cloud-Security-Tools.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Security Best Practices",
+          "path": "Cloud-Security/37-Cloud-Security-Best-Practices.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Security Interview Questions",
+          "path": "Cloud-Security/38-Cloud-Security-Interview-Questions.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Security Cheat Sheet",
+          "path": "Cloud-Security/39-Cloud-Security-Cheat-Sheet.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Cloud-Security/Readme.md",
+          "tags": [
+            "Cloud-Security"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Containers",
+      "path": "Containers",
+      "description": "Container architecture, security, hardening and runtime concepts.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Introduction To Containers",
+          "path": "Containers/01-Introduction-to-Containers.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Architecture",
+          "path": "Containers/02-Container-Architecture.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Components",
+          "path": "Containers/03-Container-Components.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Docker Fundamentals",
+          "path": "Containers/04-Docker-Fundamentals.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Docker Commands",
+          "path": "Containers/05-Docker-Commands.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dockerfile",
+          "path": "Containers/06-Dockerfile.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Docker Compose",
+          "path": "Containers/07-Docker-Compose.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Networking",
+          "path": "Containers/08-Container-Networking.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Docker Storage",
+          "path": "Containers/09-Docker-Storage.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Docker Registry",
+          "path": "Containers/10-Docker-Registry.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Docker Security",
+          "path": "Containers/11-Docker-Security.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Vulnerability Management",
+          "path": "Containers/12-Container-Vulnerability-Management.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Monitoring And Logging",
+          "path": "Containers/13-Container-Monitoring-and-Logging.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Incident Response",
+          "path": "Containers/14-Container-Incident-Response.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Forensics",
+          "path": "Containers/15-Container-Forensics.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Best Practices",
+          "path": "Containers/16-Container-Best-Practices.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Interview Questions",
+          "path": "Containers/17-Container-Interview-Questions.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Cheat Sheet",
+          "path": "Containers/18-Container-Cheat-Sheet.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Hands On Labs",
+          "path": "Containers/19-Hands-on-Labs.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Real World Case Studies",
+          "path": "Containers/20-Real-World-Case-Studies.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Containers/Readme.md",
+          "tags": [
+            "Containers"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Contributing.Md",
+      "path": "Contributing.md",
+      "description": "Knowledge material covering Contributing.Md.",
+      "icon": "book",
+      "documents": []
+    },
+    {
+      "name": "Cryptography",
+      "path": "Cryptography",
+      "description": "Cryptographic foundations, algorithms, protocols and applied security.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Cryptography Fundamentals",
+          "path": "Cryptography/01-Cryptography-Fundamentals.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Classical Cryptography And Historical Ciphers",
+          "path": "Cryptography/02-Classical-Cryptography-and-Historical-Ciphers.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Symmetric Key Cryptography",
+          "path": "Cryptography/03-Symmetric-Key-Cryptography.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Asymmetric Key Cryptography",
+          "path": "Cryptography/04-Asymmetric-Key-Cryptography.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Hash Functions And Message Integrity",
+          "path": "Cryptography/05-Hash-Functions-and-Message-Integrity.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Message Authentication And Macs",
+          "path": "Cryptography/06-Message-Authentication-and-MACs.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Digital Signatures And Pki",
+          "path": "Cryptography/07-Digital-Signatures-and-PKI.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Key Management And Key Exchange",
+          "path": "Cryptography/08-Key-Management-and-Key-Exchange.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Randomness, Nonces And Cryptographic Primitives",
+          "path": "Cryptography/09-Randomness,-Nonces-and-Cryptographic-Primitives.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Tls, Https And Cryptographic Protocols",
+          "path": "Cryptography/10-TLS,-HTTPS-and-Cryptographic-Protocols.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Applied Cryptography And Common Attacks",
+          "path": "Cryptography/11-Applied-Cryptography-and-Common-Attacks.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Modern Cryptography And Post Quantum Cryptography",
+          "path": "Cryptography/12-Modern-Cryptography-and-Post-Quantum-Cryptography.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cryptography Cheatsheet",
+          "path": "Cryptography/13-cryptography-cheatsheet.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Cryptography/Readme.md",
+          "tags": [
+            "Cryptography"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Detection Engineering",
+      "path": "Detection-Engineering",
+      "description": "Telemetry, detection logic, validation, tuning and lifecycle practices.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Detection Engineering Fundamentals",
+          "path": "Detection-Engineering/01-Detection-Engineering-Fundamentals.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Security Telemetry, Data Sources And Visibility",
+          "path": "Detection-Engineering/02-Security-Telemetry,-Data-Sources-and-Visibility.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Logic, Rules And Query Development",
+          "path": "Detection-Engineering/03-Detection-Logic,-Rules-and-Query-Development.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Methodologies And Detection Types",
+          "path": "Detection-Engineering/04-Detection-Methodologies-and-Detection-Types.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ioc, Signature And Indicator Based Detection",
+          "path": "Detection-Engineering/05-IOC,-Signature-and-Indicator-Based-Detection.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Behavioral, Anomaly And Statistical Detection",
+          "path": "Detection-Engineering/06-Behavioral,-Anomaly-and-Statistical-Detection.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Correlation, Sequence Detection And Risk Based Detection",
+          "path": "Detection-Engineering/07-Correlation,-Sequence-Detection-and-Risk-Based-Detection.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "MITRE Att And Ck And Threat Informed Detection",
+          "path": "Detection-Engineering/08-MITRE-ATT-and-CK-and-Threat-Informed-Detection.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Engineering For Endpoint, Network And Identity",
+          "path": "Detection-Engineering/09-Detection-Engineering-for-Endpoint,-Network-and-Identity.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud, Application And Container Detection",
+          "path": "Detection-Engineering/10-Cloud,-Application-and-Container-Detection.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection As Code, Git And Ci Cd",
+          "path": "Detection-Engineering/11-Detection-as-Code,-Git-and-CI-CD.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Testing, Validation And Purple Teaming",
+          "path": "Detection-Engineering/12-Detection-Testing,-Validation-and-Purple-Teaming.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Tuning, False Positives And Performance",
+          "path": "Detection-Engineering/13-Detection-Tuning,-False-Positives-and-Performance.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Operations, Coverage And Lifecycle Management",
+          "path": "Detection-Engineering/14-Detection-Operations,-Coverage-and-Lifecycle-Management.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Advanced Detection, Ai And Modern Detection Engineering",
+          "path": "Detection-Engineering/15-Advanced-Detection,-AI-and-Modern-Detection-Engineering.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Engineering Cheatsheet Plus Interview Questions",
+          "path": "Detection-Engineering/Detection-Engineering-CheatSheet-plus-Interview-Questions.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Detection-Engineering/Readme.md",
+          "tags": [
+            "Detection-Engineering"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Devsecops",
+      "path": "DevSecOps",
+      "description": "Security integrated into development, CI/CD and software delivery.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Devsecops Fundamentals",
+          "path": "DevSecOps/01-DevSecOps-Fundamentals.md",
+          "tags": [
+            "DevSecOps"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Secure Sdlc And Ci Cd Security",
+          "path": "DevSecOps/02-Secure-SDLC-and-CI-CD-Security.md",
+          "tags": [
+            "DevSecOps"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Sast Dast Sca And Secrets Scanning",
+          "path": "DevSecOps/03-SAST-DAST-SCA-and-Secrets-Scanning.md",
+          "tags": [
+            "DevSecOps"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Iac Container And Supply Chain Security",
+          "path": "DevSecOps/04-IaC-Container-and-Supply-Chain-Security.md",
+          "tags": [
+            "DevSecOps"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Sbom Signing And Artifact Security",
+          "path": "DevSecOps/05-SBOM-Signing-and-Artifact-Security.md",
+          "tags": [
+            "DevSecOps"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Devsecops Operations And Metrics",
+          "path": "DevSecOps/06-DevSecOps-Operations-and-Metrics.md",
+          "tags": [
+            "DevSecOps"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "DevSecOps/README.md",
+          "tags": [
+            "DevSecOps"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Digital Forensics",
+      "path": "Digital-Forensics",
+      "description": "Forensic evidence, artifacts, analysis and investigation workflows.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Digital Forensics Fundamentals",
+          "path": "Digital-Forensics/01-Digital-Forensics-Fundamentals.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Forensic Acquisition And Evidence Preservation",
+          "path": "Digital-Forensics/02-Forensic-Acquisition-and-Evidence-Preservation.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Forensics",
+          "path": "Digital-Forensics/03-Windows-Forensics.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Forensics",
+          "path": "Digital-Forensics/04-Linux-Forensics.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Memory Forensics",
+          "path": "Digital-Forensics/05-Memory-Forensics.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Disk And File System Forensics",
+          "path": "Digital-Forensics/06-Disk-and-File-System-Forensics.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network And Network Traffic Forensics",
+          "path": "Digital-Forensics/07-Network-and-Network-Traffic-Forensics.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Container And Mobile Forensics",
+          "path": "Digital-Forensics/08-Cloud-Container-and-Mobile-Forensics.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Malware Forensics And Reverse Engineering",
+          "path": "Digital-Forensics/09-Malware-Forensics-and-Reverse-Engineering.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Forensic Timelines Investigation And Case Studies",
+          "path": "Digital-Forensics/10-Forensic-Timelines-Investigation-and-Case-Studies.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Digital-Forensics/Readme.md",
+          "tags": [
+            "Digital-Forensics"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Email Security",
+      "path": "Email-Security",
+      "description": "Email threats, authentication, phishing analysis and defensive controls.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Email Security Fundamentals",
+          "path": "Email-Security/01-Email-Security-Fundamentals.md",
+          "tags": [
+            "Email-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Smtp Spf Dkim And Dmarc",
+          "path": "Email-Security/02-SMTP-SPF-DKIM-and-DMARC.md",
+          "tags": [
+            "Email-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Phishing Spear Phishing And Bec",
+          "path": "Email-Security/03-Phishing-Spear-Phishing-and-BEC.md",
+          "tags": [
+            "Email-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Malicious Links Attachments And Url Analysis",
+          "path": "Email-Security/04-Malicious-Links-Attachments-and-URL-Analysis.md",
+          "tags": [
+            "Email-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Email Header Analysis And Investigation",
+          "path": "Email-Security/05-Email-Header-Analysis-and-Investigation.md",
+          "tags": [
+            "Email-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Email Sandboxing And Defense",
+          "path": "Email-Security/06-Email-Sandboxing-and-Defense.md",
+          "tags": [
+            "Email-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Email-Security/README.md",
+          "tags": [
+            "Email-Security"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Endpoint Security",
+      "path": "Endpoint-Security",
+      "description": "Endpoint visibility, hardening, monitoring and protection.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Endpoint Security Fundamentals",
+          "path": "Endpoint-Security/01-Endpoint-Security-Fundamentals.md",
+          "tags": [
+            "Endpoint-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Edr Xdr And Antivirus",
+          "path": "Endpoint-Security/02-EDR-XDR-and-Antivirus.md",
+          "tags": [
+            "Endpoint-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Host Firewalls Application Control And Hardening",
+          "path": "Endpoint-Security/03-Host-Firewalls-Application-Control-and-Hardening.md",
+          "tags": [
+            "Endpoint-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Sysmon Telemetry And Process Monitoring",
+          "path": "Endpoint-Security/04-Sysmon-Telemetry-and-Process-Monitoring.md",
+          "tags": [
+            "Endpoint-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Credential Access And Persistence Detection",
+          "path": "Endpoint-Security/05-Credential-Access-and-Persistence-Detection.md",
+          "tags": [
+            "Endpoint-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Endpoint Investigation And Response",
+          "path": "Endpoint-Security/06-Endpoint-Investigation-and-Response.md",
+          "tags": [
+            "Endpoint-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Endpoint-Security/README.md",
+          "tags": [
+            "Endpoint-Security"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Identity And Access Management",
+      "path": "Identity-and-Access-Management",
+      "description": "Identity, authentication, authorization, access control and governance.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "IAM Fundamentals",
+          "path": "Identity-and-Access-Management/01-IAM-Fundamentals.md",
+          "tags": [
+            "Identity-and-Access-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Authentication And Authorization",
+          "path": "Identity-and-Access-Management/02-Authentication-and-Authorization.md",
+          "tags": [
+            "Identity-and-Access-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Mfa Sso And Federation",
+          "path": "Identity-and-Access-Management/03-MFA-SSO-and-Federation.md",
+          "tags": [
+            "Identity-and-Access-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Rbac Abac And Pam",
+          "path": "Identity-and-Access-Management/04-RBAC-ABAC-and-PAM.md",
+          "tags": [
+            "Identity-and-Access-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "IAM Lifecycle And Privileged Accounts",
+          "path": "Identity-and-Access-Management/05-IAM-Lifecycle-and-Privileged-Accounts.md",
+          "tags": [
+            "Identity-and-Access-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Oauth Oidc And Saml",
+          "path": "Identity-and-Access-Management/06-OAuth-OIDC-and-SAML.md",
+          "tags": [
+            "Identity-and-Access-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Identity-and-Access-Management/README.md",
+          "tags": [
+            "Identity-and-Access-Management"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Incident Response",
+      "path": "Incident-Response",
+      "description": "Incident preparation, triage, containment, recovery and investigation.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Incident Response Fundamentals",
+          "path": "Incident-Response/01-Incident-Response-Fundamentals.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Response Preparation And Readiness",
+          "path": "Incident-Response/02-Incident-Response-Preparation-and-Readiness.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Detection, Triage And Classification",
+          "path": "Incident-Response/03-Incident-Detection,-Triage-and-Classification.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Analysis And Scoping",
+          "path": "Incident-Response/04-Incident-Analysis-and-Scoping.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Containment Strategies",
+          "path": "Incident-Response/05-Containment-Strategies.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Eradication And Recovery",
+          "path": "Incident-Response/06-Eradication-and-Recovery.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Digital Evidence And Forensic Handling",
+          "path": "Incident-Response/07-Digital-Evidence-and-Forensic-Handling.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Identity, Account Compromise, And Cloud Incidents.",
+          "path": "Incident-Response/08-Identity,-Account-Compromise,-and-Cloud-Incidents..md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Malware, Ransomware, And Data Breach Response",
+          "path": "Incident-Response/09-Malware,-Ransomware,-and-Data-Breach-Response.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network, Endpoint, And Application Incident Response",
+          "path": "Incident-Response/10-Network,-Endpoint,-and-Application-Incident-Response.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Response Playbooks And Case Studies",
+          "path": "Incident-Response/11-Incident-Response-Playbooks-and-Case-Studies.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Post Incident Review, Metrics, And Continuous Improvement",
+          "path": "Incident-Response/12-Post-Incident-Review,-Metrics,-and-Continuous-Improvement.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Incident-Response/Readme.md",
+          "tags": [
+            "Incident-Response"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Kubernetes",
+      "path": "Kubernetes",
+      "description": "Kubernetes architecture, operations and cloud-native security.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Introduction To Kubernetes",
+          "path": "Kubernetes/01-Introduction-to-Kubernetes.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Architecture",
+          "path": "Kubernetes/02-Kubernetes-Architecture.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Installation",
+          "path": "Kubernetes/03-Kubernetes-Installation.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubectl Essentials",
+          "path": "Kubernetes/04-kubectl-Essentials.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Pods",
+          "path": "Kubernetes/05-Pods.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Replicasets",
+          "path": "Kubernetes/06-ReplicaSets.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Deployments",
+          "path": "Kubernetes/07-Deployments.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Namespaces",
+          "path": "Kubernetes/08-Namespaces.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Labels And Selectors",
+          "path": "Kubernetes/09-Labels-and-Selectors.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Annotations",
+          "path": "Kubernetes/10-Annotations.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Services",
+          "path": "Kubernetes/11-Services.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Configmaps",
+          "path": "Kubernetes/12-ConfigMaps.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Secrets",
+          "path": "Kubernetes/13-Secrets.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Daemonsets",
+          "path": "Kubernetes/14-DaemonSets.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Statefulsets",
+          "path": "Kubernetes/15-StatefulSets.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Jobs",
+          "path": "Kubernetes/16-Jobs.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cronjobs",
+          "path": "Kubernetes/17-CronJobs.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Init Containers",
+          "path": "Kubernetes/18-Init-Containers.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Sidecar Containers",
+          "path": "Kubernetes/19-Sidecar-Containers.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Multi Container Pods",
+          "path": "Kubernetes/20-Multi-Container-Pods.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Networking Fundamentals",
+          "path": "Kubernetes/21-Kubernetes-Networking-Fundamentals.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Clusterip",
+          "path": "Kubernetes/22-ClusterIP.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Nodeport",
+          "path": "Kubernetes/23-NodePort.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Loadbalancer",
+          "path": "Kubernetes/24-LoadBalancer.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ingress",
+          "path": "Kubernetes/25-Ingress.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Gateway API",
+          "path": "Kubernetes/26-Gateway-API.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Policies",
+          "path": "Kubernetes/27-Network-Policies.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dns In Kubernetes",
+          "path": "Kubernetes/28-DNS-in-Kubernetes.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cni Plugins",
+          "path": "Kubernetes/29-CNI-Plugins.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Volumes",
+          "path": "Kubernetes/30-Volumes.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Persistent Volumes",
+          "path": "Kubernetes/31-Persistent-Volumes.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Persistent Volume Claims",
+          "path": "Kubernetes/32-Persistent-Volume-Claims.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Storage Classes",
+          "path": "Kubernetes/33-Storage-Classes.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dynamic Provisioning",
+          "path": "Kubernetes/34-Dynamic-Provisioning.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Csi Drivers",
+          "path": "Kubernetes/35-CSI-Drivers.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Scheduler",
+          "path": "Kubernetes/36-Scheduler.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Node Selectors",
+          "path": "Kubernetes/37-Node-Selectors.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Node Affinity",
+          "path": "Kubernetes/38-Node-Affinity.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Pod Affinity And Anti Affinity",
+          "path": "Kubernetes/39-Pod-Affinity-and-Anti-Affinity.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Taints And Tolerations",
+          "path": "Kubernetes/40-Taints-and-Tolerations.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Priority Classes",
+          "path": "Kubernetes/41-Priority-Classes.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Resource Requests And Limits",
+          "path": "Kubernetes/42-Resource-Requests-and-Limits.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Horizontal Pod Autoscaler",
+          "path": "Kubernetes/43-Horizontal-Pod-Autoscaler.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Vertical Pod Autoscaler",
+          "path": "Kubernetes/44-Vertical-Pod-Autoscaler.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cluster Autoscaler",
+          "path": "Kubernetes/45-Cluster-Autoscaler.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Security Fundamentals",
+          "path": "Kubernetes/46-Kubernetes-Security-Fundamentals.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Authentication",
+          "path": "Kubernetes/47-Authentication.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Authorization (Rbac)",
+          "path": "Kubernetes/48-Authorization-(RBAC).md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Service Accounts",
+          "path": "Kubernetes/49-Service-Accounts.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Admission Controllers",
+          "path": "Kubernetes/50-Admission-Controllers.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Pod Security Standards",
+          "path": "Kubernetes/51-Pod-Security-Standards.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Security",
+          "path": "Kubernetes/52-Network-Security.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Secret Management",
+          "path": "Kubernetes/53-Secret-Management.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Image Security",
+          "path": "Kubernetes/54-Image-Security.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Runtime Security",
+          "path": "Kubernetes/55-Runtime-Security.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Supply Chain Security",
+          "path": "Kubernetes/56-Supply-Chain-Security.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Logging",
+          "path": "Kubernetes/57-Logging.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Monitoring",
+          "path": "Kubernetes/58-Monitoring.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Metrics Server",
+          "path": "Kubernetes/59-Metrics-Server.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Prometheus",
+          "path": "Kubernetes/60-Prometheus.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Grafana",
+          "path": "Kubernetes/61-Grafana.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Alertmanager",
+          "path": "Kubernetes/62-Alertmanager.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Opentelemetry",
+          "path": "Kubernetes/63-OpenTelemetry.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Distributed Tracing",
+          "path": "Kubernetes/64-Distributed-Tracing.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cluster Administration",
+          "path": "Kubernetes/65-Cluster-Administration.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Backup And Restore",
+          "path": "Kubernetes/66-Backup-and-Restore.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Upgrades",
+          "path": "Kubernetes/67-Upgrades.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "High Availability",
+          "path": "Kubernetes/68-High-Availability.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Disaster Recovery",
+          "path": "Kubernetes/69-Disaster-Recovery.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cluster Maintenance",
+          "path": "Kubernetes/70-Cluster-Maintenance.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Resource Optimization",
+          "path": "Kubernetes/71-Resource-Optimization.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Vulnerability Management",
+          "path": "Kubernetes/72-Vulnerability-Management.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Response",
+          "path": "Kubernetes/73-Incident-Response.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Forensics",
+          "path": "Kubernetes/74-Kubernetes-Forensics.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Runtime Threat Detection",
+          "path": "Kubernetes/75-Runtime-Threat-Detection.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Compliance And Auditing",
+          "path": "Kubernetes/76-Compliance-and-Auditing.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Production Best Practices",
+          "path": "Kubernetes/77-Production-Best-Practices.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Gitops",
+          "path": "Kubernetes/78-GitOps.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ci Cd With Kubernetes",
+          "path": "Kubernetes/79-CI-CD-with-Kubernetes.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Helm",
+          "path": "Kubernetes/80-Helm.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kustomize",
+          "path": "Kubernetes/81-Kustomize.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Operators",
+          "path": "Kubernetes/82-Operators.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Service Mesh",
+          "path": "Kubernetes/83-Service-Mesh.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Interview Questions",
+          "path": "Kubernetes/84-Kubernetes-Interview-Questions.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Cheat Sheet",
+          "path": "Kubernetes/85-Kubernetes-Cheat-Sheet.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Hands On Labs",
+          "path": "Kubernetes/86-Hands-on-Labs.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Real World Case Studies",
+          "path": "Kubernetes/87-Real-World-Case-Studies.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Troubleshooting Playbook",
+          "path": "Kubernetes/88-Troubleshooting-Playbook.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Production Operations Checklist",
+          "path": "Kubernetes/89-Production-Operations-Checklist.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Kubernetes/readme.md",
+          "tags": [
+            "Kubernetes"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Labs",
+      "path": "Labs",
+      "description": "Controlled hands-on security exercises and practical worksheets.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Readme",
+          "path": "Labs/Active-Directory/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Cloud-Security/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Detection Validation Worksheet",
+          "path": "Labs/Detection-Engineering/01-Detection-Validation-Worksheet.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Detection-Engineering/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Hash And Preserve A Text Artifact",
+          "path": "Labs/Digital-Forensics/01-Hash-and-Preserve-a-Text-Artifact.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Digital-Forensics/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Tabletop Account Compromise",
+          "path": "Labs/Incident-Response/01-Tabletop-Account-Compromise.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Incident-Response/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Lab Template",
+          "path": "Labs/LAB-TEMPLATE.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "template"
+        },
+        {
+          "title": "Host Baseline Review",
+          "path": "Labs/Linux-Security/01-Host-Baseline-Review.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Linux-Security/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Malware-Analysis/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Loopback Traffic Inspection",
+          "path": "Labs/Network-Security/01-Loopback-Traffic-Inspection.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Network-Security/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Analyze Synthetic Authentication Events",
+          "path": "Labs/SIEM/01-Analyze-Synthetic-Authentication-Events.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/SIEM/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Safe Csv Triage",
+          "path": "Labs/Security-Automation/01-Safe-CSV-Triage.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Security-Automation/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Hypothesis Driven Hunt",
+          "path": "Labs/Threat-Hunting/01-Hypothesis-Driven-Hunt.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Threat-Hunting/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Web-Security/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Review System Events",
+          "path": "Labs/Windows-Security/01-Review-System-Events.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Labs/Windows-Security/README.md",
+          "tags": [
+            "Labs"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Linux",
+      "path": "Linux",
+      "description": "Linux administration, security, monitoring and defensive operations.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Linux Fundamentals",
+          "path": "Linux/01-Linux-Fundamentals.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Installation",
+          "path": "Linux/02-Linux-Installation.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Architecture",
+          "path": "Linux/03-Linux-Architecture.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Boot Process",
+          "path": "Linux/04-Linux-Boot-Process.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux File System",
+          "path": "Linux/05-Linux-File-System.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux File Management",
+          "path": "Linux/06-Linux-File-Management.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Text Processing",
+          "path": "Linux/07-Linux-Text-Processing.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Users And Groups",
+          "path": "Linux/08-Linux-Users-and-Groups.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Permissions And Acl",
+          "path": "Linux/09-Linux-Permissions-and-ACL.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Processes",
+          "path": "Linux/10-Linux-Processes.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Systemd And Services",
+          "path": "Linux/11-Linux-Systemd-and-Services.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Package Management",
+          "path": "Linux/12-Linux-Package-Management.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Networking",
+          "path": "Linux/13-Linux-Networking.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Storage Management",
+          "path": "Linux/14-Linux-Storage-Management.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Shell And Bash Scripting",
+          "path": "Linux/15-Linux-Shell-and-Bash-Scripting.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux System Monitoring",
+          "path": "Linux/16-Linux-System-Monitoring.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Logging",
+          "path": "Linux/17-Linux-Logging.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Security",
+          "path": "Linux/18-Linux-Security.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Firewalls",
+          "path": "Linux/19-Linux-Firewalls.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Ssh",
+          "path": "Linux/20-Linux-SSH.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Automation",
+          "path": "Linux/21-Linux-Automation.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Hardening",
+          "path": "Linux/22-Linux-Hardening.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux For Cybersecurity",
+          "path": "Linux/23-Linux-for-Cybersecurity.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Troubleshooting",
+          "path": "Linux/24-Linux-Troubleshooting.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Interview Questions",
+          "path": "Linux/25-Linux-Interview-Questions.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Cheat Sheet",
+          "path": "Linux/26-Linux-Cheat-Sheet.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Linux/README.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Resources",
+          "path": "Linux/Resources.md",
+          "tags": [
+            "Linux"
+          ],
+          "kind": "document"
+        }
+      ]
+    },
+    {
+      "name": "MITRE Attack",
+      "path": "MITRE-ATTACK",
+      "description": "ATT&CK tactics, techniques, mapping and defensive context.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "MITRE Attack Fundamentals",
+          "path": "MITRE-ATTACK/01-MITRE-ATTACK-Fundamentals.md",
+          "tags": [
+            "MITRE-ATTACK"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Attack Tactics Techniques And Subtechniques",
+          "path": "MITRE-ATTACK/02-Attack-Tactics-Techniques-and-Subtechniques.md",
+          "tags": [
+            "MITRE-ATTACK"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Attack For Detection Engineering",
+          "path": "MITRE-ATTACK/03-ATTACK-for-Detection-Engineering.md",
+          "tags": [
+            "MITRE-ATTACK"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Attack For Threat Hunting And Ir",
+          "path": "MITRE-ATTACK/04-ATTACK-for-Threat-Hunting-and-IR.md",
+          "tags": [
+            "MITRE-ATTACK"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Attack Use Cases And Reporting",
+          "path": "MITRE-ATTACK/05-ATTACK-Use-Cases-and-Reporting.md",
+          "tags": [
+            "MITRE-ATTACK"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Attack Heatmaps And Defense Planning",
+          "path": "MITRE-ATTACK/06-ATTACK-Heatmaps-and-Defense-Planning.md",
+          "tags": [
+            "MITRE-ATTACK"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "MITRE-ATTACK/README.md",
+          "tags": [
+            "MITRE-ATTACK"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Malware Analysis",
+      "path": "Malware-Analysis",
+      "description": "Malware analysis workflows, artifacts and defensive investigation.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Malware Analysis Fundamentals",
+          "path": "Malware-Analysis/01-Malware-Analysis-Fundamentals.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Malware Samples And Safe Lab Setup",
+          "path": "Malware-Analysis/02-Malware-Samples-and-Safe-Lab-Setup.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Static Malware Analysis",
+          "path": "Malware-Analysis/03-Static-Malware-Analysis.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dynamic And Behavioral Malware Analysis",
+          "path": "Malware-Analysis/04-Dynamic-and-Behavioral-Malware-Analysis.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Malware Analysis",
+          "path": "Malware-Analysis/05-Windows-Malware-Analysis.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network And C2 Malware Analysis",
+          "path": "Malware-Analysis/06-Network-and-C2-Malware-Analysis.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Memory Malware Analysis",
+          "path": "Malware-Analysis/07-Memory-Malware-Analysis.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Reverse Engineering And Code Analysis",
+          "path": "Malware-Analysis/08-Reverse-Engineering-and-Code-Analysis.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Malware Analysis Automation And Detection",
+          "path": "Malware-Analysis/09-Malware-Analysis-Automation-and-Detection.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Advanced Malware Investigation And Case Studies",
+          "path": "Malware-Analysis/10-Advanced-Malware-Investigation-and-Case-Studies.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Malware-Analysis/README.md",
+          "tags": [
+            "Malware-Analysis"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Network Security",
+      "path": "Network-Security",
+      "description": "Network protection, monitoring, architecture and defensive controls.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Network Security Architecture",
+          "path": "Network-Security/01-Network-Security-Architecture.md",
+          "tags": [
+            "Network-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Firewalls Ids Ips And Ndr",
+          "path": "Network-Security/02-Firewalls-IDS-IPS-and-NDR.md",
+          "tags": [
+            "Network-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Segmentation Vlans Nac And Vpn",
+          "path": "Network-Security/03-Segmentation-VLANs-NAC-and-VPN.md",
+          "tags": [
+            "Network-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dns Proxy Tls And Inspection",
+          "path": "Network-Security/04-DNS-Proxy-TLS-and-Inspection.md",
+          "tags": [
+            "Network-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Monitoring And Packet Analysis",
+          "path": "Network-Security/05-Network-Monitoring-and-Packet-Analysis.md",
+          "tags": [
+            "Network-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Attacks And Hardening",
+          "path": "Network-Security/06-Network-Attacks-and-Hardening.md",
+          "tags": [
+            "Network-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Network-Security/README.md",
+          "tags": [
+            "Network-Security"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Networking",
+      "path": "Networking",
+      "description": "Networking fundamentals underpinning security operations.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Networking Fundamentals",
+          "path": "Networking/01-Networking-Fundamentals.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Osi Model",
+          "path": "Networking/02-OSI-Model.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Tcp Ip Model",
+          "path": "Networking/03-TCP-IP-Model.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ethernet",
+          "path": "Networking/04-Ethernet.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ip Addressing",
+          "path": "Networking/05-IP-Addressing.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Subnetting",
+          "path": "Networking/06-Subnetting.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Routing",
+          "path": "Networking/07-Routing.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Switching",
+          "path": "Networking/08-Switching.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Address Resolution Protocol (Arp)",
+          "path": "Networking/09-Address-Resolution-Protocol-(ARP).md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dynamic Host Configuration Protocol (Dhcp)",
+          "path": "Networking/10-Dynamic-Host-Configuration-Protocol-(DHCP).md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dns",
+          "path": "Networking/11-DNS.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Tcp",
+          "path": "Networking/12-TCP.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Udp",
+          "path": "Networking/13-UDP.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Icmp",
+          "path": "Networking/14-ICMP.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Devices",
+          "path": "Networking/15-Network-Devices.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Firewalls",
+          "path": "Networking/16-Firewalls.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Vpn",
+          "path": "Networking/17-VPN.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Wireless Networks",
+          "path": "Networking/18-Wireless-Networks.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ipv6",
+          "path": "Networking/19-IPv6.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Enterprise Networking",
+          "path": "Networking/20-Enterprise-Networking.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Networking",
+          "path": "Networking/21-Cloud-Networking.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Security",
+          "path": "Networking/22-Network-Security.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Monitoring",
+          "path": "Networking/23-Network-Monitoring.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Troubleshooting",
+          "path": "Networking/24-Network-Troubleshooting.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Interview Questions",
+          "path": "Networking/25-Interview-Questions.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cheat Sheet",
+          "path": "Networking/26-Cheat-Sheet.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Networking/README.md",
+          "tags": [
+            "Networking"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "OSINT",
+      "path": "OSINT",
+      "description": "Open-source intelligence collection, analysis and research workflows.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "OSINT Fundamentals",
+          "path": "OSINT/01-OSINT-Fundamentals.md",
+          "tags": [
+            "OSINT"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Collection Methodology And Search Operators",
+          "path": "OSINT/02-Collection-Methodology-and-Search-Operators.md",
+          "tags": [
+            "OSINT"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Whois Dns And Certificate Intelligence",
+          "path": "OSINT/03-WHOIS-DNS-and-Certificate-Intelligence.md",
+          "tags": [
+            "OSINT"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Username SOCial And Metadata Research",
+          "path": "OSINT/04-Username-Social-and-Metadata-Research.md",
+          "tags": [
+            "OSINT"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Breach Code And Entity Research",
+          "path": "OSINT/05-Breach-Code-and-Entity-Research.md",
+          "tags": [
+            "OSINT"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "OSINT Operational Security And Evidence Validation",
+          "path": "OSINT/06-OSINT-Operational-Security-and-Evidence-Validation.md",
+          "tags": [
+            "OSINT"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "OSINT/README.md",
+          "tags": [
+            "OSINT"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "OWASP",
+      "path": "OWASP",
+      "description": "Application-security guidance, vulnerabilities and defensive practices.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "A01 Broken Access Control",
+          "path": "OWASP/A01-Broken-Access-Control.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A02 Cryptographic Failures",
+          "path": "OWASP/A02-Cryptographic-Failures.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A03 Injection",
+          "path": "OWASP/A03-Injection.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A04 Insecure Design",
+          "path": "OWASP/A04-Insecure-Design.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A05 Security Misconfiguration",
+          "path": "OWASP/A05-Security-Misconfiguration.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A06 Vulnerable And Outdated Components",
+          "path": "OWASP/A06-Vulnerable-and-Outdated-Components.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A07 Identification And Authentication Failures",
+          "path": "OWASP/A07-Identification-and-Authentication-Failures.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A08 Software And Data Integrity Failures",
+          "path": "OWASP/A08-Software-and-Data-Integrity-Failures.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A09 Security Logging And Monitoring Failures",
+          "path": "OWASP/A09-Security-Logging-and-Monitoring-Failures.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "A10 Server Side Request Forgery (Ssrf)",
+          "path": "OWASP/A10-Server-Side-Request-Forgery-(SSRF).md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "OWASP/README.md",
+          "tags": [
+            "OWASP"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Readme.Md",
+      "path": "README.md",
+      "description": "Knowledge material covering Readme.Md.",
+      "icon": "book",
+      "documents": []
+    },
+    {
+      "name": "Resources",
+      "path": "Resources",
+      "description": "Courses, tools, standards, research and learning references.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Application Security",
+          "path": "Resources/Application-Security.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Blogs",
+          "path": "Resources/Blogs.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Blue Team",
+          "path": "Resources/Blue-Team.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Books",
+          "path": "Resources/Books.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Certifications",
+          "path": "Resources/Certifications.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Security",
+          "path": "Resources/Cloud-Security.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Communities",
+          "path": "Resources/Communities.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Courses",
+          "path": "Resources/Courses.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dfir",
+          "path": "Resources/DFIR.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Engineering",
+          "path": "Resources/Detection-Engineering.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Documentation",
+          "path": "Resources/Documentation.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Malware Analysis",
+          "path": "Resources/Malware-Analysis.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "OSINT",
+          "path": "Resources/OSINT.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Practice Platforms",
+          "path": "Resources/Practice-Platforms.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Resources/README.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Rfcs",
+          "path": "Resources/RFCs.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Red Team",
+          "path": "Resources/Red-Team.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Research Papers",
+          "path": "Resources/Research-Papers.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Security Organizations",
+          "path": "Resources/Security-Organizations.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Standards",
+          "path": "Resources/Standards.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Hunting",
+          "path": "Resources/Threat-Hunting.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Intelligence",
+          "path": "Resources/Threat-Intelligence.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Tools",
+          "path": "Resources/Tools.md",
+          "tags": [
+            "Resources"
+          ],
+          "kind": "document"
+        }
+      ]
+    },
+    {
+      "name": "Reverse Engineering",
+      "path": "Reverse-Engineering",
+      "description": "Reverse-engineering concepts and technical analysis.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Readme",
+          "path": "Reverse-Engineering/README.md",
+          "tags": [
+            "Reverse-Engineering"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Security.Md",
+      "path": "SECURITY.md",
+      "description": "Knowledge material covering Security.Md.",
+      "icon": "book",
+      "documents": []
+    },
+    {
+      "name": "SIEM",
+      "path": "SIEM",
+      "description": "Security monitoring, telemetry, analysis, detection and operations.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "SIEM Fundamentals And Security Monitoring",
+          "path": "SIEM/01-SIEM-Fundamentals-and-Security-Monitoring.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Log Sources, Events And Data Collection",
+          "path": "SIEM/02-Log-Sources,-Events-and-Data-Collection.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Log Ingestion, Parsing And Normalization",
+          "path": "SIEM/03-Log-Ingestion,-Parsing-and-Normalization.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "SIEM Architecture, Components And Data Pipeline",
+          "path": "SIEM/04-SIEM-Architecture,-Components-and-Data-Pipeline.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Search, Queries And Event Analysis",
+          "path": "SIEM/05-Search,-Queries-and-Event-Analysis.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Engineering And Detection Rules",
+          "path": "SIEM/06-Detection-Engineering-and-Detection-Rules.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Correlation Rules, Risk Scoring And Alerting",
+          "path": "SIEM/07-Correlation-Rules,-Risk-Scoring-and-Alerting.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Intelligence And Ioc Integration",
+          "path": "SIEM/08-Threat-Intelligence-and-IOC-Integration.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "MITRE Att And Ck And Threat Based Detection",
+          "path": "SIEM/09-MITRE-ATT-and-CK-and-Threat-Based-Detection.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Security Investigations, Hunting And Triage",
+          "path": "SIEM/10-Security-Investigations,-Hunting-and-Triage.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Response And SIEM Workflows",
+          "path": "SIEM/11-Incident-Response-and-SIEM-Workflows.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "SIEM Use Cases And Detection Scenarios",
+          "path": "SIEM/12-SIEM-Use-Cases-and-Detection-Scenarios.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "SIEM Engineering, Tuning And Optimization",
+          "path": "SIEM/13-SIEM-Engineering,-Tuning-and-Optimization.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "SIEM Deployment, Operations And Cloud Security",
+          "path": "SIEM/14-SIEM-Deployment,-Operations-and-Cloud-Security.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Advanced SIEM, Soar, Ueba And Modern SOC",
+          "path": "SIEM/15-Advanced-SIEM,-SOAR,-UEBA-and-Modern-SOC.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "SIEM/Readme.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "SIEM Cheatsheet",
+          "path": "SIEM/SIEM-CheatSheet.md",
+          "tags": [
+            "SIEM"
+          ],
+          "kind": "document"
+        }
+      ]
+    },
+    {
+      "name": "SOC",
+      "path": "SOC",
+      "description": "Security operations, triage, alert handling and analyst workflows.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "SOC Fundamentals",
+          "path": "SOC/01-SOC-Fundamentals.md",
+          "tags": [
+            "SOC"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "SOC Workflow And Operations",
+          "path": "SOC/02-SOC-Workflow-and-Operations.md",
+          "tags": [
+            "SOC"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Incident Triage And Case Management",
+          "path": "SOC/03-Incident-Triage-and-Case-Management.md",
+          "tags": [
+            "SOC"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Alerting Dashboards And SIEM Operations",
+          "path": "SOC/04-Alerting-Dashboards-and-SIEM-Operations.md",
+          "tags": [
+            "SOC"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Hunting And Analyst Workflow",
+          "path": "SOC/05-Threat-Hunting-and-Analyst-Workflow.md",
+          "tags": [
+            "SOC"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "SOC Metrics And Continuous Improvement",
+          "path": "SOC/06-SOC-Metrics-and-Continuous-Improvement.md",
+          "tags": [
+            "SOC"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "SOC/README.md",
+          "tags": [
+            "SOC"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Security Architecture",
+      "path": "Security-Architecture",
+      "description": "Security architecture, design principles, controls and planning.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Security Architecture Fundamentals",
+          "path": "Security-Architecture/01-Security-Architecture-Fundamentals.md",
+          "tags": [
+            "Security-Architecture"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Defense In Depth And Zero Trust",
+          "path": "Security-Architecture/02-Defense-in-Depth-and-Zero-Trust.md",
+          "tags": [
+            "Security-Architecture"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Segmentation And Trust Boundaries",
+          "path": "Security-Architecture/03-Network-Segmentation-and-Trust-Boundaries.md",
+          "tags": [
+            "Security-Architecture"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud And Application Security Architecture",
+          "path": "Security-Architecture/04-Cloud-and-Application-Security-Architecture.md",
+          "tags": [
+            "Security-Architecture"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Logging Monitoring And Security Controls",
+          "path": "Security-Architecture/05-Logging-Monitoring-and-Security-Controls.md",
+          "tags": [
+            "Security-Architecture"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Modeling And Architecture Reviews",
+          "path": "Security-Architecture/06-Threat-Modeling-and-Architecture-Reviews.md",
+          "tags": [
+            "Security-Architecture"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Security-Architecture/README.md",
+          "tags": [
+            "Security-Architecture"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Security Automation",
+      "path": "Security-Automation",
+      "description": "Automation patterns for repeatable security operations.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Security Automation Fundamentals",
+          "path": "Security-Automation/01-Security-Automation-Fundamentals.md",
+          "tags": [
+            "Security-Automation"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Soar Playbooks And Orchestration",
+          "path": "Security-Automation/02-SOAR-Playbooks-and-Orchestration.md",
+          "tags": [
+            "Security-Automation"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Python For Security Automation",
+          "path": "Security-Automation/03-Python-for-Security-Automation.md",
+          "tags": [
+            "Security-Automation"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Automation And Ioc Enrichment",
+          "path": "Security-Automation/04-API-Automation-and-IOC-Enrichment.md",
+          "tags": [
+            "Security-Automation"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Automated Triage And Alert Enrichment",
+          "path": "Security-Automation/05-Automated-Triage-and-Alert-Enrichment.md",
+          "tags": [
+            "Security-Automation"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Automation Safety And Human In The Loop",
+          "path": "Security-Automation/06-Automation-Safety-and-Human-in-the-Loop.md",
+          "tags": [
+            "Security-Automation"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Security-Automation/README.md",
+          "tags": [
+            "Security-Automation"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Threat Hunting",
+      "path": "Threat-Hunting",
+      "description": "Hypothesis-driven hunting, telemetry, analysis and investigation.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Threat Hunting Fundamentals",
+          "path": "Threat-Hunting/01-Threat-Hunting-Fundamentals.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "MITRE Att And Ck For Threat Hunters",
+          "path": "Threat-Hunting/02-MITRE-ATT-and-CK-for-Threat-Hunters.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Intelligence And Hunt Hypotheses",
+          "path": "Threat-Hunting/03-Threat-Intelligence-and-Hunt-Hypotheses.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Threat Hunting",
+          "path": "Threat-Hunting/04-Windows-Threat-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Linux Threat Hunting",
+          "path": "Threat-Hunting/05-Linux-Threat-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Endpoint Detection And Edr Hunting",
+          "path": "Threat-Hunting/06-Endpoint-Detection-and-EDR-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Network Threat Hunting",
+          "path": "Threat-Hunting/07-Network-Threat-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dns Threat Hunting",
+          "path": "Threat-Hunting/08-DNS-Threat-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Identity And Authentication Hunting",
+          "path": "Threat-Hunting/09-Identity-and-Authentication-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Threat Hunting",
+          "path": "Threat-Hunting/10-Cloud-Threat-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "SIEM Threat Hunting",
+          "path": "Threat-Hunting/11-SIEM-Threat-Hunting.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Hunting Query Engineering",
+          "path": "Threat-Hunting/12-Hunting-Query-Engineering.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Engineering",
+          "path": "Threat-Hunting/13-Detection-Engineering.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Hunting Playbooks And Labs",
+          "path": "Threat-Hunting/14-Threat-Hunting-Playbooks-and-Labs.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Real World Threat Hunting Case Study",
+          "path": "Threat-Hunting/15-Real-World-Threat-Hunting-Case-Study.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Threat-Hunting/readme.md",
+          "tags": [
+            "Threat-Hunting"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Threat Intelligence",
+      "path": "Threat-Intelligence",
+      "description": "Threat intelligence collection, enrichment, analysis and use.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Threat Intelligence Fundamentals",
+          "path": "Threat-Intelligence/01-Threat-Intelligence-Fundamentals.md",
+          "tags": [
+            "Threat-Intelligence"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Actor Modeling And Intel Types",
+          "path": "Threat-Intelligence/02-Threat-Actor-Modeling-and-Intel-Types.md",
+          "tags": [
+            "Threat-Intelligence"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ioc Lifecycle And Ttps",
+          "path": "Threat-Intelligence/03-IOC-Lifecycle-and-TTPs.md",
+          "tags": [
+            "Threat-Intelligence"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Stix Taxii And Misp",
+          "path": "Threat-Intelligence/04-STIX-TAXII-and-MISP.md",
+          "tags": [
+            "Threat-Intelligence"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Feeds And Intel Operations",
+          "path": "Threat-Intelligence/05-Threat-Feeds-and-Intel-Operations.md",
+          "tags": [
+            "Threat-Intelligence"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Intel Driven Defense And Hunting",
+          "path": "Threat-Intelligence/06-Intel-Driven-Defense-and-Hunting.md",
+          "tags": [
+            "Threat-Intelligence"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Threat-Intelligence/README.md",
+          "tags": [
+            "Threat-Intelligence"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Vulnerability Management",
+      "path": "Vulnerability-Management",
+      "description": "Discovery, assessment, prioritization, remediation and lifecycle management.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Vulnerability Management Fundamentals",
+          "path": "Vulnerability-Management/01-Vulnerability-Management-Fundamentals.md",
+          "tags": [
+            "Vulnerability-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Asset Discovery And Inventory",
+          "path": "Vulnerability-Management/02-Asset-Discovery-and-Inventory.md",
+          "tags": [
+            "Vulnerability-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Vulnerability Discovery And Scanning",
+          "path": "Vulnerability-Management/03-Vulnerability-Discovery-and-Scanning.md",
+          "tags": [
+            "Vulnerability-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cve Cvss Cwe And Cpe",
+          "path": "Vulnerability-Management/04-CVE-CVSS-CWE-and-CPE.md",
+          "tags": [
+            "Vulnerability-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Risk Prioritization And Remediation",
+          "path": "Vulnerability-Management/05-Risk-Prioritization-and-Remediation.md",
+          "tags": [
+            "Vulnerability-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Exception Management And Continuous Vm",
+          "path": "Vulnerability-Management/06-Exception-Management-and-Continuous-VM.md",
+          "tags": [
+            "Vulnerability-Management"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Vulnerability-Management/README.md",
+          "tags": [
+            "Vulnerability-Management"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Web Security",
+      "path": "Web-Security",
+      "description": "Web application security, vulnerabilities, testing and defensive practices.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Introduction To Web Security",
+          "path": "Web-Security/01-Introduction-to-Web-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "How The Web Works",
+          "path": "Web-Security/02-How-the-Web-Works.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Http Protocol",
+          "path": "Web-Security/03-HTTP-Protocol.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Https And Tls",
+          "path": "Web-Security/04-HTTPS-and-TLS.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Dns For Web Security",
+          "path": "Web-Security/05-DNS-for-Web-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Browsers",
+          "path": "Web-Security/06-Web-Browsers.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Servers",
+          "path": "Web-Security/07-Web-Servers.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Reverse Proxies And Load Balancers",
+          "path": "Web-Security/08-Reverse-Proxies-and-Load-Balancers.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Html Css Javascript Security",
+          "path": "Web-Security/09-HTML-CSS-JavaScript-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cookies Sessions And Storage",
+          "path": "Web-Security/10-Cookies-Sessions-and-Storage.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Authentication",
+          "path": "Web-Security/11-Authentication.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Authorization And Access Control",
+          "path": "Web-Security/12-Authorization-and-Access-Control.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Same Origin Policy",
+          "path": "Web-Security/13-Same-Origin-Policy.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cors",
+          "path": "Web-Security/14-CORS.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Csrf",
+          "path": "Web-Security/15-CSRF.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Xss",
+          "path": "Web-Security/16-XSS.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Content Security Policy",
+          "path": "Web-Security/17-Content-Security-Policy.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "OWASP Top 10 Overview",
+          "path": "Web-Security/18-OWASP-Top-10-Overview.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Broken Access Control",
+          "path": "Web-Security/19-Broken-Access-Control.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cryptographic Failures",
+          "path": "Web-Security/20-Cryptographic-Failures.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Injection",
+          "path": "Web-Security/21-Injection.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Insecure Design",
+          "path": "Web-Security/22-Insecure-Design.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Security Misconfiguration",
+          "path": "Web-Security/23-Security-Misconfiguration.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Vulnerable And Outdated Components",
+          "path": "Web-Security/24-Vulnerable-and-Outdated-Components.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Identification And Authentication Failures",
+          "path": "Web-Security/25-Identification-and-Authentication-Failures.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Software And Data Integrity Failures",
+          "path": "Web-Security/26-Software-and-Data-Integrity-Failures.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Security Logging And Monitoring",
+          "path": "Web-Security/27-Security-Logging-and-Monitoring.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ssrf",
+          "path": "Web-Security/28-SSRF.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "API Security",
+          "path": "Web-Security/29-API-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Rest Security",
+          "path": "Web-Security/30-REST-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Graphql Security",
+          "path": "Web-Security/31-GraphQL-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Websockets Security",
+          "path": "Web-Security/32-WebSockets-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Oauth And Oidc",
+          "path": "Web-Security/33-OAuth-and-OIDC.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Jwt Security",
+          "path": "Web-Security/34-JWT-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "File Upload Security",
+          "path": "Web-Security/35-File-Upload-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Deserialization",
+          "path": "Web-Security/36-Deserialization.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Race Conditions",
+          "path": "Web-Security/37-Race-Conditions.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Business Logic Flaws",
+          "path": "Web-Security/38-Business-Logic-Flaws.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Request Smuggling",
+          "path": "Web-Security/39-Request-Smuggling.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Http Response Splitting",
+          "path": "Web-Security/40-HTTP-Response-Splitting.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cache Poisoning",
+          "path": "Web-Security/41-Cache-Poisoning.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Xxe",
+          "path": "Web-Security/42-XXE.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Clickjacking",
+          "path": "Web-Security/43-Clickjacking.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Open Redirect",
+          "path": "Web-Security/44-Open-Redirect.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Host Header Attacks",
+          "path": "Web-Security/45-Host-Header-Attacks.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Prototype Pollution",
+          "path": "Web-Security/46-Prototype-Pollution.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Server Side Template Injection",
+          "path": "Web-Security/47-Server-Side-Template-Injection.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "template"
+        },
+        {
+          "title": "Path Traversal",
+          "path": "Web-Security/48-Path-Traversal.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Command Injection",
+          "path": "Web-Security/49-Command-Injection.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "File Inclusion",
+          "path": "Web-Security/50-File-Inclusion.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Application Firewalls",
+          "path": "Web-Security/51-Web-Application-Firewalls.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Rate Limiting",
+          "path": "Web-Security/52-Rate-Limiting.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Bot Protection",
+          "path": "Web-Security/53-Bot-Protection.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Secure Coding",
+          "path": "Web-Security/54-Secure-Coding.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Modeling",
+          "path": "Web-Security/55-Threat-Modeling.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Devsecops",
+          "path": "Web-Security/56-DevSecOps.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Ci Cd Security",
+          "path": "Web-Security/57-CI-CD-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Container Web Security",
+          "path": "Web-Security/58-Container-Web-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Kubernetes Web Security",
+          "path": "Web-Security/59-Kubernetes-Web-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cloud Web Security",
+          "path": "Web-Security/60-Cloud-Web-Security.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Application Monitoring",
+          "path": "Web-Security/61-Web-Application-Monitoring.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Incident Response",
+          "path": "Web-Security/62-Web-Incident-Response.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Security Architecture",
+          "path": "Web-Security/63-Web-Security-Architecture.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Security Best Practices",
+          "path": "Web-Security/64-Web-Security-Best-Practices.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Security Interview Questions",
+          "path": "Web-Security/65-Web-Security-Interview-Questions.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Web Security Cheat Sheet",
+          "path": "Web-Security/66-Web-Security-Cheat-Sheet.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Resources",
+          "path": "Web-Security/67-Resources.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Web-Security/README.md",
+          "tags": [
+            "Web-Security"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Windows",
+      "path": "Windows",
+      "description": "Windows administration, logging, security and hardening.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Windows Fundamentals",
+          "path": "Windows/01-Windows-Fundamentals.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Installation",
+          "path": "Windows/02-Windows-Installation.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Architecture",
+          "path": "Windows/03-Windows-Architecture.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Boot Process",
+          "path": "Windows/04-Windows-Boot-Process.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows File System",
+          "path": "Windows/05-Windows-File-System.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows File Management",
+          "path": "Windows/06-Windows-File-Management.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Command Line",
+          "path": "Windows/07-Windows-Command-Line.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Users And Groups",
+          "path": "Windows/08-Windows-Users-and-Groups.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Permissions And Ntfs",
+          "path": "Windows/09-Windows-Permissions-and-NTFS.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Processes And Threads",
+          "path": "Windows/10-Windows-Processes-and-Threads.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Services",
+          "path": "Windows/11-Windows-Services.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Registry",
+          "path": "Windows/12-Windows-Registry.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Networking",
+          "path": "Windows/13-Windows-Networking.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Storage Management",
+          "path": "Windows/14-Windows-Storage-Management.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Powershell And Scripting",
+          "path": "Windows/15-PowerShell-and-Scripting.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows System Monitoring",
+          "path": "Windows/16-Windows-System-Monitoring.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Logging And Event Viewer",
+          "path": "Windows/17-Windows-Logging-and-Event-Viewer.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Security",
+          "path": "Windows/18-Windows-Security.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Firewall",
+          "path": "Windows/19-Windows-Firewall.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Remote Management",
+          "path": "Windows/20-Windows-Remote-Management.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Automation",
+          "path": "Windows/21-Windows-Automation.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Hardening",
+          "path": "Windows/22-Windows-Hardening.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Active Directory",
+          "path": "Windows/23-Active-Directory.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Group Policy",
+          "path": "Windows/24-Group-Policy.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows For Cybersecurity",
+          "path": "Windows/25-Windows-for-Cybersecurity.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Troubleshooting",
+          "path": "Windows/26-Windows-Troubleshooting.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Interview Questions",
+          "path": "Windows/27-Windows-Interview-Questions.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Windows Cheat Sheet",
+          "path": "Windows/28-Windows-Cheat-Sheet.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "Windows/README.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Resources",
+          "path": "Windows/Resources.md",
+          "tags": [
+            "Windows"
+          ],
+          "kind": "document"
+        }
+      ]
+    },
+    {
+      "name": "Assets",
+      "path": "assets",
+      "description": "Knowledge material covering Assets.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Readme",
+          "path": "assets/README.md",
+          "tags": [
+            "assets"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "assets/diagrams/README.md",
+          "tags": [
+            "assets"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "assets/icons/README.md",
+          "tags": [
+            "assets"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "assets/images/README.md",
+          "tags": [
+            "assets"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "assets/screenshots/README.md",
+          "tags": [
+            "assets"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme",
+          "path": "assets/templates/README.md",
+          "tags": [
+            "assets"
+          ],
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "name": "Docs",
+      "path": "docs",
+      "description": "Knowledge material covering Docs.",
+      "icon": "book",
+      "documents": [
+        {
+          "title": "Ctf Writeup Guide",
+          "path": "docs/CTF-Writeup-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Cheatsheet Guide",
+          "path": "docs/Cheatsheet-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Contribution Workflow",
+          "path": "docs/Contribution-Workflow.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Deployment",
+          "path": "docs/DEPLOYMENT.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Detection Documentation Guide",
+          "path": "docs/Detection-Documentation-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Documentation Guide",
+          "path": "docs/Documentation-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Lab Documentation Guide",
+          "path": "docs/Lab-Documentation-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Learning Paths",
+          "path": "docs/Learning-Paths.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Markdown Style Guide",
+          "path": "docs/Markdown-Style-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Naming Conventions",
+          "path": "docs/Naming-Conventions.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Readme",
+          "path": "docs/README.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "index"
+        },
+        {
+          "title": "Readme2.0",
+          "path": "docs/README2.0.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Resource Curation Guide",
+          "path": "docs/Resource-Curation-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Responsible Use",
+          "path": "docs/Responsible-Use.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Security Research Methodology",
+          "path": "docs/Security-Research-Methodology.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Troubleshooting",
+          "path": "docs/TROUBLESHOOTING.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Threat Hunting Documentation Guide",
+          "path": "docs/Threat-Hunting-Documentation-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        },
+        {
+          "title": "Tool Documentation Guide",
+          "path": "docs/Tool-Documentation-Guide.md",
+          "tags": [
+            "docs"
+          ],
+          "kind": "document"
+        }
+      ]
+    }
   ]
 }
