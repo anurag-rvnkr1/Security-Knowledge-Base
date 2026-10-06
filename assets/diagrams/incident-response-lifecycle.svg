@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="390" viewBox="0 0 800 390" role="img" aria-labelledby="title desc">
+  <title id="title">Incident response lifecycle</title>
+  <desc id="desc">Preparation leads to detection and analysis, containment, eradication and recovery, and post-incident improvement, which informs preparation.</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0v6l8-3z" fill="#334155"/></marker></defs>
+  <rect width="800" height="390" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial,sans-serif" font-size="14" text-anchor="middle" fill="#0f172a" font-weight="700">
+    <rect x="300" y="30" width="200" height="58" rx="12" fill="#dbeafe" stroke="#2563eb"/><text x="400" y="65">Preparation</text>
+    <rect x="535" y="145" width="220" height="58" rx="12" fill="#fef3c7" stroke="#d97706"/><text x="645" y="180">Detection and analysis</text>
+    <rect x="450" y="285" width="200" height="58" rx="12" fill="#ffedd5" stroke="#ea580c"/><text x="550" y="320">Containment</text>
+    <rect x="150" y="285" width="230" height="58" rx="12" fill="#fee2e2" stroke="#dc2626"/><text x="265" y="320">Eradication and recovery</text>
+    <rect x="45" y="145" width="220" height="58" rx="12" fill="#dcfce7" stroke="#16a34a"/><text x="155" y="180">Post-incident improvement</text>
+  </g>
+  <g fill="none" stroke="#334155" stroke-width="2.5" marker-end="url(#a)">
+    <path d="M500 67h70v70"/><path d="M645 203v50l-35 30"/><path d="M450 314H390"/>
+    <path d="M150 285l-35-82"/><path d="M265 174h30V62"/>
+  </g>
+</svg>

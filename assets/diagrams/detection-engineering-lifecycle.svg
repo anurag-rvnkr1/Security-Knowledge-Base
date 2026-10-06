@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="300" viewBox="0 0 920 300" role="img" aria-labelledby="title desc">
+  <title id="title">Detection engineering lifecycle</title>
+  <desc id="desc">A detection lifecycle connects threat behavior, telemetry, rule design, testing, deployment, and monitoring feedback.</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0v6l8-3z" fill="#334155"/></marker></defs>
+  <rect width="920" height="300" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial,sans-serif" font-size="13" text-anchor="middle" fill="#0f172a" font-weight="700">
+    <rect x="20" y="95" width="130" height="58" rx="10" fill="#dbeafe" stroke="#2563eb"/><text x="85" y="130">Behavior</text>
+    <rect x="175" y="95" width="130" height="58" rx="10" fill="#e0e7ff" stroke="#4f46e5"/><text x="240" y="130">Telemetry</text>
+    <rect x="330" y="95" width="130" height="58" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="395" y="130">Rule design</text>
+    <rect x="485" y="95" width="130" height="58" rx="10" fill="#fef3c7" stroke="#d97706"/><text x="550" y="130">Test and tune</text>
+    <rect x="640" y="95" width="130" height="58" rx="10" fill="#ffedd5" stroke="#ea580c"/><text x="705" y="130">Deploy</text>
+    <rect x="795" y="95" width="105" height="58" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="847" y="130">Monitor</text>
+  </g>
+  <g fill="none" stroke="#334155" stroke-width="2.5" marker-end="url(#a)">
+    <path d="M150 124h22"/><path d="M305 124h22"/><path d="M460 124h22"/><path d="M615 124h22"/><path d="M770 124h18"/>
+    <path d="M847 153v66H395v-61"/>
+  </g>
+  <text x="600" y="253" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#475569">Monitoring feedback drives improvements to logic, telemetry, and coverage</text>
+</svg>

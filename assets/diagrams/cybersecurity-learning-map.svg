@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="350" viewBox="0 0 900 350" role="img" aria-labelledby="title desc">
+  <title id="title">Cybersecurity learning map</title>
+  <desc id="desc">Foundations support security engineering and operations, which connect through telemetry to detection, hunting, and incident response.</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0v6l8-3z" fill="#334155"/></marker></defs>
+  <rect width="900" height="350" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial,sans-serif" font-size="14" text-anchor="middle" fill="#0f172a" font-weight="700">
+    <rect x="35" y="45" width="220" height="70" rx="12" fill="#dbeafe" stroke="#2563eb"/><text x="145" y="75">Foundations</text><text x="145" y="96" font-size="11" font-weight="400">Networking · Linux · Windows</text>
+    <rect x="340" y="45" width="220" height="70" rx="12" fill="#e0e7ff" stroke="#4f46e5"/><text x="450" y="75">Security Engineering</text><text x="450" y="96" font-size="11" font-weight="400">Identity · Cloud · AppSec</text>
+    <rect x="645" y="45" width="220" height="70" rx="12" fill="#ede9fe" stroke="#7c3aed"/><text x="755" y="75">Telemetry</text><text x="755" y="96" font-size="11" font-weight="400">Endpoint · Network · Cloud</text>
+    <rect x="120" y="220" width="180" height="70" rx="12" fill="#fef3c7" stroke="#d97706"/><text x="210" y="260">Detection</text>
+    <rect x="360" y="220" width="180" height="70" rx="12" fill="#ffedd5" stroke="#ea580c"/><text x="450" y="260">Threat Hunting</text>
+    <rect x="600" y="220" width="180" height="70" rx="12" fill="#dcfce7" stroke="#16a34a"/><text x="690" y="260">Incident Response</text>
+  </g>
+  <g fill="none" stroke="#334155" stroke-width="2.5" marker-end="url(#a)">
+    <path d="M255 80h78"/><path d="M560 80h78"/>
+    <path d="M755 115v52H210v48"/><path d="M755 115v52H450v48"/><path d="M755 115v52H690v48"/>
+    <path d="M300 255h52"/><path d="M540 255h52"/>
+  </g>
+</svg>

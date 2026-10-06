@@ -61,6 +61,14 @@ This structure supports both beginner learning and professional operational refe
 - [Vulnerability-Management](./Vulnerability-Management)
 - [Security-Automation](./Security-Automation)
 
+### Learning and Contribution Support
+- [CTF Writeups](./CTF-Writeups/)
+- [Labs](./Labs/)
+- [Cheatsheets](./Cheatsheets/)
+- [Resources](./Resources/)
+- [Reusable Assets](./assets/)
+- [Documentation Guides](./docs/)
+
 ---
 
 ## Repository Structure
@@ -98,6 +106,12 @@ Security-Knowledge-Base/
 ├── DevSecOps/
 ├── Security-Automation/
 ├── OSINT/
+├── CTF-Writeups/
+├── Labs/
+├── Cheatsheets/
+├── Resources/
+├── assets/
+├── docs/
 ├── LICENSE
 ├── CONTRIBUTING.md
 ├── SECURITY.md

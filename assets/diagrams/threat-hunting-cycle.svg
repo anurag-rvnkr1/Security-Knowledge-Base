@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280" role="img" aria-labelledby="title desc">
+  <title id="title">Threat hunting cycle</title>
+  <desc id="desc">A hypothesis guides telemetry selection and search; findings are investigated, validated, and used to improve detections.</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0v6l8-3z" fill="#334155"/></marker></defs>
+  <rect width="900" height="280" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial,sans-serif" font-size="14" text-anchor="middle" fill="#0f172a" font-weight="700">
+    <rect x="25" y="90" width="145" height="64" rx="11" fill="#dbeafe" stroke="#2563eb"/><text x="97" y="128">Hypothesis</text>
+    <rect x="205" y="90" width="145" height="64" rx="11" fill="#e0e7ff" stroke="#4f46e5"/><text x="277" y="128">Select telemetry</text>
+    <rect x="385" y="90" width="145" height="64" rx="11" fill="#ede9fe" stroke="#7c3aed"/><text x="457" y="128">Search</text>
+    <rect x="565" y="90" width="145" height="64" rx="11" fill="#fef3c7" stroke="#d97706"/><text x="637" y="128">Investigate</text>
+    <rect x="745" y="90" width="130" height="64" rx="11" fill="#dcfce7" stroke="#16a34a"/><text x="810" y="128">Improve</text>
+  </g>
+  <g fill="none" stroke="#334155" stroke-width="2.5" marker-end="url(#a)">
+    <path d="M170 122h30"/><path d="M350 122h30"/><path d="M530 122h30"/><path d="M710 122h30"/>
+    <path d="M810 154v62H97V160"/>
+  </g>
+  <text x="450" y="250" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#475569">Document coverage, assumptions, evidence, false positives, and outcomes</text>
+</svg>

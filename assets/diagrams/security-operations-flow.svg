@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="300" viewBox="0 0 920 300" role="img" aria-labelledby="title desc">
+  <title id="title">Security operations flow</title>
+  <desc id="desc">Telemetry feeds monitoring and detection, then triage, investigation, response, and lessons learned that improve detection.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker></defs>
+  <rect width="920" height="300" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#0f172a">
+    <g font-size="15" font-weight="700">
+      <rect x="25" y="102" width="120" height="58" rx="10" fill="#dbeafe" stroke="#2563eb"/><text x="85" y="137">Telemetry</text>
+      <rect x="185" y="102" width="120" height="58" rx="10" fill="#e0e7ff" stroke="#4f46e5"/><text x="245" y="137">Monitor</text>
+      <rect x="345" y="102" width="120" height="58" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="405" y="137">Detect</text>
+      <rect x="505" y="102" width="120" height="58" rx="10" fill="#fef3c7" stroke="#d97706"/><text x="565" y="137">Triage</text>
+      <rect x="665" y="102" width="120" height="58" rx="10" fill="#ffedd5" stroke="#ea580c"/><text x="725" y="137">Respond</text>
+    </g>
+    <g stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M145 131h34"/><path d="M305 131h34"/><path d="M465 131h34"/><path d="M625 131h34"/>
+      <path d="M725 160v58H405v-54"/>
+    </g>
+    <rect x="320" y="220" width="170" height="48" rx="9" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="405" y="250" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a">Lessons learned</text>
+    <text x="460" y="286" font-family="Arial,sans-serif" font-size="12" fill="#475569">Use feedback to improve telemetry and detection coverage</text>
+  </g>
+</svg>
