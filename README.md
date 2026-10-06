@@ -1,84 +1,85 @@
+# Security Knowledge Base
 
-<div align="center">
+## Mission
 
-# 📚 Cybersecurity Knowledge Base
+This repository is a practical, connected cybersecurity knowledge base for students, analysts, engineers, defenders, and security leaders. It combines foundational theory, modern defensive operations, detection engineering, threat hunting, cloud and application security, adversary tradecraft, and hands-on security workflows.
 
-### A Professional Collection of Cybersecurity Notes, Labs, Cheatsheets, Detection Engineering, Threat Hunting, Blue Teaming, and Security Research
-
-<p>
-
-![GitHub stars](https://img.shields.io/github/stars/anurag-rvnkr1/Cybersecurity-Notes?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/anurag-rvnkr1/Cybersecurity-Notes?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/anurag-rvnkr1/Cybersecurity-Notes?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/anurag-rvnkr1/Cybersecurity-Notes?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
-![Markdown](https://img.shields.io/badge/Built%20With-Markdown-blue?style=for-the-badge)
-
-</p>
-
-**Built for Security Engineers • Penetration Testers • SOC Analysts • Threat Hunters • DevSecOps Engineers • Students • Researchers**
-
-</div>
+The goal is to help readers understand not just what a security concept is, but why it matters, how it is used operationally, where it appears in the threat lifecycle, and how defenders can detect, investigate, and reduce risk.
 
 ---
 
-# 📖 About
+## Overview
 
-**Cybersecurity Notes** is a continuously growing knowledge base covering modern cybersecurity concepts, attack techniques, defensive strategies, detection engineering, incident response, cloud security, malware analysis, digital forensics, and secure software development.
+The repository is organized as a learning platform rather than a random collection of notes. Related concepts are connected across domains such as:
 
-Unlike traditional notes, this repository focuses on **practical understanding**, **real-world examples**, **security best practices**, **hands-on labs**, and **professional documentation**.
+- Threat Intelligence -> Detection Engineering -> Threat Hunting -> Incident Response
+- Endpoint Security -> Windows / Linux -> SIEM -> MITRE ATT&CK -> SOC
+- DevSecOps -> OWASP -> Web Security -> API Security -> Cloud Security
+- Vulnerability Management -> Patch Engineering -> Security Architecture -> Governance
 
-The goal is to build a single place where learners and professionals can quickly reference security concepts without searching across dozen of websites.
-
----
-
-# 🎯 Objectives
-
-* Build a structured cybersecurity knowledge base
-* Document practical security concepts
-* Simplify complex topics
-* Share security engineering knowledge
-* Create recruiter-friendly technical documentation
-* Continuously improve through hands-on labs
-* Encourage ethical learning and responsible security practices
+This structure supports both beginner learning and professional operational reference.
 
 ---
 
-# 👨‍💻 Intended Audience
+## Knowledge Domains
 
-This repository is designed for:
+### Core Security Foundations
+- [OWASP](./OWASP)
+- [Web-Security](./Web-Security)
+- [API-Security](./API-Security)
+- [Networking](./Networking)
+- [Network-Security](./Network-Security)
+- [Linux](./Linux)
+- [Windows](./Windows)
+- [Active-Directory](./Active-Directory)
+- [Cryptography](./Cryptography)
 
-* Security Engineers
-* Penetration Testers
-* SOC Analysts
-* Threat Hunters
-* Detection Engineers
-* Incident Responders
-* Malware Analysts
-* DevSecOps Engineers
-* Cloud Security Engineers
-* Students
-* Researchers
-* Anyone interested in cybersecurity
+### Defensive Operations and Response
+- [SIEM](./SIEM)
+- [Detection-Engineering](./Detection-Engineering)
+- [Threat-Hunting](./Threat-Hunting)
+- [Incident-Response](./Incident-Response)
+- [Digital-Forensics](./Digital-Forensics)
+- [Malware-Analysis](./Malware-Analysis)
+- [Endpoint-Security](./Endpoint-Security)
+- [Email-Security](./Email-Security)
+- [SOC](./SOC)
+
+### Adversary and Intelligence
+- [Threat-Intelligence](./Threat-Intelligence)
+- [MITRE-ATTACK](./MITRE-ATTACK)
+- [OSINT](./OSINT)
+- [Reverse-Engineering](./Reverse-Engineering)
+
+### Security Engineering and Governance
+- [Cloud-Security](./Cloud-Security)
+- [Containers](./Containers)
+- [Kubernetes](./Kubernetes)
+- [DevSecOps](./DevSecOps)
+- [Security-Architecture](./Security-Architecture)
+- [Identity-and-Access-Management](./Identity-and-Access-Management)
+- [Vulnerability-Management](./Vulnerability-Management)
+- [Security-Automation](./Security-Automation)
 
 ---
 
-# 📂 Repository Structure
+## Repository Structure
 
 ```text
-Cybersecurity-Notes/
-
+Security-Knowledge-Base/
+├── README.md
 ├── OWASP/
+├── Web-Security/
+├── API-Security/
 ├── Networking/
+├── Network-Security/
 ├── Linux/
 ├── Windows/
 ├── Active-Directory/
-├── Web-Security/
-├── API-Security/
+├── Cryptography/
 ├── Cloud-Security/
 ├── Containers/
 ├── Kubernetes/
-├── Cryptography/
 ├── SIEM/
 ├── Detection-Engineering/
 ├── Threat-Hunting/
@@ -89,362 +90,200 @@ Cybersecurity-Notes/
 ├── Threat-Intelligence/
 ├── SOC/
 ├── MITRE-ATTACK/
-├── CTF-Writeups/
-├── Labs/
-├── Cheatsheets/
-├── Resources/
-├── assets/
-└── docs/
+├── Endpoint-Security/
+├── Email-Security/
+├── Security-Architecture/
+├── Vulnerability-Management/
+├── Identity-and-Access-Management/
+├── DevSecOps/
+├── Security-Automation/
+├── OSINT/
+├── LICENSE
+├── CONTRIBUTING.md
+├── SECURITY.md
+└── CHANGELOG.md
 ```
 
 ---
 
-# 📚 Topics Covered
+## Learning Paths
 
-## 🌐 Web Security
+### Blue Team Path
+- Foundations: Linux, Windows, Networking, SIEM
+- Detection: Detection Engineering, Threat Hunting, MITRE ATT&CK
+- Response: Incident Response, Digital Forensics, Endpoint Security
+- Governance: Security Architecture, Vulnerability Management, Identity and Access Management
 
-* OWASP Top 10
-* Authentication
-* Authorization
-* Session Management
-* CSRF
-* XSS
-* SQL Injection
-* XXE
-* SSRF
-* IDOR
-* Clickjacking
-* Security Headers
-* CSP
-* JWT Security
+### SOC Analyst Path
+- SIEM and log pipelines
+- Triage and alert handling
+- Threat intelligence enrichment
+- Case management and escalation
+- Hunting and detection tuning
 
----
+### Threat Hunter Path
+- Threat intelligence and hypotheses
+- Endpoint, network, identity, and cloud telemetry
+- ATT&CK mapping and anomalous behavior analysis
+- Detection validation and continuous improvement
 
-## 🌍 Networking
+### Detection Engineer Path
+- Data source design and telemetry coverage
+- Detection logic and rule authoring
+- Testing, tuning, and MITRE mapping
+- Detection as code and CI/CD
 
-* OSI Model
-* TCP/IP
-* IPv4
-* IPv6
-* Routing
-* Switching
-* DNS
-* DHCP
-* NAT
-* VPN
-* TLS
-* HTTP
-* HTTPS
-* Firewalls
-* Proxy Servers
-* Load Balancers
-* Packet Analysis
-* Wireshark
+### Security Research Path
+- Reverse engineering and malware analysis
+- OSINT, threat actor research, IOC enrichment
+- Security automation and pipeline validation
+- Architecture and threat modeling
+
+### Cloud and Application Security Path
+- Cloud Security and IAM
+- DevSecOps and secure SDLC
+- API and Web Security fundamentals
+- Containers, Kubernetes, and supply-chain security
 
 ---
 
-## 🐧 Linux Security
+## Practical Focus
 
-* Linux Fundamentals
-* File Permissions
-* Users & Groups
-* SSH
-* Systemd
-* Cron Jobs
-* Networking
-* Firewall
-* SELinux
-* AppArmor
-* Log Analysis
-* Linux Hardening
-* Privilege Escalation Concepts
+The repository emphasizes:
+
+- Attack and defense perspectives
+- Authoritative references
+- Practical commands and examples
+- Detection engineering patterns
+- Threat hunting workflows
+- Defensive architecture decisions
+- Secure engineering practices
+- Responsible use and ethical boundaries
 
 ---
 
-## 🪟 Windows Security
+## Core Career Paths
 
-* Windows Architecture
-* Registry
-* Event Viewer
-* Sysmon
-* PowerShell
-* Windows Defender
-* Kerberos
-* NTLM
-* Active Directory
-* SMB
-* Group Policy
-* Windows Hardening
+### Blue Team Path
+- Endpoint, identity, network, and cloud detection
+- SIEM operations, SOC workflows, and response readiness
+- Detection tuning, hunting, and adversary behavior analysis
 
----
+### SOC Analyst Path
+- Alert triage and case management
+- Log analysis and correlation
+- Threat intelligence enrichment and escalation
+- Incident documentation and operational metrics
 
-## 🛡️ Detection Engineering
+### Threat Hunter Path
+- Hypothesis-driven hunting
+- Detection validation and Red/Blue feedback loops
+- ATT&CK mapping across endpoint, identity, and cloud telemetry
+- Known and unknown threat activity analysis
 
-* Sigma Rules
-* YARA Rules
-* Snort
-* Suricata
-* Zeek
-* Detection Logic
-* Windows Event IDs
-* IOC Detection
-* Behavioral Detection
-* MITRE ATT&CK Mapping
+### Detection Engineer Path
+- Data source engineering
+- Rule authoring and detection logic
+- Testing, tuning, and improvement pipelines
+- Detection-as-code and enforcement in CI/CD
 
----
+### Security Research Path
+- OSINT, malware analysis, reverse engineering, and adversary tracking
+- Technical analysis of tactics, infrastructure, and artifacts
+- Research-driven defense and tradecraft understanding
 
-## 📊 SIEM
+### Cloud Security Path
+- IAM, network control, observability, and secure design
+- Container and Kubernetes hardening
+- DevSecOps, IaC security, and supply-chain governance
 
-* Splunk
-* Elastic Stack
-* Microsoft Sentinel
-* Wazuh
-* QRadar Concepts
-* Log Collection
-* Correlation Rules
-* Dashboards
-* Alerting
-* Parsing
-* Log Normalization
+### Application Security Path
+- OWASP, API Security, Web Security, and secure SDLC practices
+- Quality gates, code review, secrets handling, and testing automation
 
----
+### DFIR Path
+- Evidence preservation, timeline building, and investigation
+- Digital forensics, incident response, and recovery planning
 
-## 🎯 Threat Hunting
-
-* Hunting Methodologies
-* Threat Intelligence
-* IOC Hunting
-* DNS Hunting
-* Authentication Hunting
-* PowerShell Hunting
-* Network Hunting
-* Cloud Hunting
-* ATT&CK-Based Hunting
+### Malware Analysis Path
+- Behavioral analysis, static code review, and malicious artifact handling
+- IOC extraction, persistence, and defense relevance
 
 ---
 
-## ☁️ Cloud Security
+## Tools and Operational Areas
 
-* AWS Security
-* Azure Security
-* Google Cloud Security
-* IAM
-* CloudTrail
-* Security Groups
-* CSPM
-* Storage Security
-* Logging
-* Identity Security
+This repository connects major operational tools and disciplines, including:
+
+- SIEM and analytics platforms
+- EDR, XDR, network security, and endpoint telemetry
+- Packet analysis, log ingestion, and query languages
+- Threat intelligence feeds and IOC enrichment
+- Vulnerability scanners, policy engines, and IAM tooling
+- CI/CD security, IaC scanners, and secret detection tooling
 
 ---
 
-## 📦 Containers
+## Practical Labs and Cheatsheets
 
-* Docker
-* Docker Security
-* Images
-* Volumes
-* Networking
-* Rootless Containers
-* Container Hardening
-* Image Scanning
+The project includes practical labs, quick references, and operational notes to support hands-on learning across:
 
----
-
-## ☸ Kubernetes
-
-* Architecture
-* Pods
-* Deployments
-* Services
-* RBAC
-* Secrets
-* Network Policies
-* Admission Controllers
-* Pod Security
-* Runtime Security
+- Linux and Windows security
+- Networking and protocol analysis
+- Cloud and Kubernetes workloads
+- Detection engineering and threat hunting
+- AppSec and secure software delivery
+- Incident response and digital forensics
 
 ---
 
-## 🔐 Cryptography
+## MITRE ATT&CK Coverage
 
-* Encryption
-* Hashing
-* Digital Signatures
-* PKI
-* Certificates
-* AES
-* RSA
-* ECC
-* TLS
-* HMAC
-* JWT
-* Random Number Generation
+The repository uses ATT&CK as a common defensive language to connect:
+
+- Alert design and detection validation
+- Threat hunting and investigative hypotheses
+- Purple-team and adversary emulation exercises
+- Security architecture and risk prioritization
 
 ---
 
-## 🧬 Malware Analysis
+## Repository Statistics
 
-* Static Analysis
-* Dynamic Analysis
-* PE Files
-* ELF Files
-* Packers
-* Obfuscation
-* Sandboxing
-* Volatility
-* Memory Analysis
-* IOC Extraction
+- Multiple security domains spanning fundamentals to operations
+- Detection engineering and hunting workflows across enterprise environments
+- Practical, connected notes for blue team, analyst, and engineering work
+- Strong emphasis on adversary behavior, defense, and security operations
 
 ---
 
-## 🚨 Incident Response
+## Contributing
 
-* Incident Lifecycle
-* Triage
-* Containment
-* Eradication
-* Recovery
-* Lessons Learned
-* Reporting
-* Evidence Handling
+Contributions are welcome when they improve technical accuracy, security rigor, clarity, or educational value. The repository is intended to be a reliable professional reference for defenders, analysts, engineers, and researchers.
 
 ---
 
-## 🔬 Digital Forensics
+## Responsible Use
 
-* Windows Forensics
-* Linux Forensics
-* Memory Forensics
-* Disk Forensics 
-* Timeline Analysis
-* Registry Analysis
-* Browser Artifacts
+This repository is for educational, defensive, and authorized security research use only. Always operate within applicable laws and organizational policy. Do not test or analyze systems without explicit authorization.
 
 ---
 
-## 🧪 Hands-on Labs
+## References
 
-Every practical lab includes:
-
-* Objective
-* Lab Environment
-* Commands Used
-* Analysis
-* Observations
-* Lessons Learned
-
----
-
-## 📝 Cheatsheets
-
-Quick references for:
-
-* Linux
-* Windows
-* PowerShell
-* Git
-* Docker
-* Python
-* Regex
-* Nmap
-* Burp Suite
-* Wireshark
-* Splunk SPL
-* KQL
-* Sigma
-
+- MITRE ATT&CK
+- NIST Cybersecurity Framework
+- CISA
+- OWASP
+- Microsoft Learn
+- AWS Security Documentation
+- Google Cloud Security Documentation
+- Kubernetes Documentation
+- CIS Benchmarks
+- FIRST
 
 ---
 
-# 💡 Repository Philosophy
+## License
 
-Every topic aims to answer:
-
-* What is it?
-* Why does it matter?
-* How does it work?
-* Common attack techniques
-* Detection opportunities
-* Prevention strategies
-* Best practices
-* Practical examples
-* References for deeper learning
-
----
-
-# 🚀 Roadmap
-
-* Expand practical labs
-* Add architecture diagrams
-* Publish detection engineering playbooks
-* Create SOC investigation guides
-* Add cloud security walkthroughs
-* Document Kubernetes security
-* Publish malware analysis case studies
-* Add threat hunting playbooks
-* Expand digital forensics notes
-* Build comprehensive interview preparation content
-
----
-
-# 🤝 Contributing
-
-Contributions that improve accuracy, clarity, or educational value are welcome.
-
-Please read the **CONTRIBUTING.md** guide before opening issues or pull requests.
-
----
-
-# ⚖️ Responsible Use
-
-This repository is intended for **educational, defensive, and authorized security research purposes only**.
-
-Readers are expected to comply with all applicable laws, organizational policies, and responsible disclosure practices. Always obtain proper authorization before testing systems you do not own or manage.
-
----
-
-# 📚 References
-
-Some topics reference publicly available security resources, including:
-
-* OWASP
-* MITRE ATT&CK
-* NIST
-* CISA
-* Microsoft Learn
-* Google Cloud Documentation
-* AWS Documentation
-* Kubernetes Documentation
-* Docker Documentation
-* Mozilla Developer Network (MDN)
-
----
-
-# 📄 License
-
-This project is licensed under the **MIT License**.
-
-See the **LICENSE** file for details.
-
----
-
-# ⭐ Support
-
-If you find this repository useful:
-
-* ⭐ Star the repository
-* 🍴 Fork the project
-* 🛠️ Contribute improvements
-* 🐞 Report issues
-* 📢 Share it with the cybersecurity community
-
----
-
-<div align="center">
-
-## 🔒 Learn Responsibly • Share Knowledge • Build Secure Systems
-
-**Happy Learning! 🚀**
-
-</div>
+This project is licensed under the MIT License.
